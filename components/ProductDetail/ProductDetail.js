@@ -15,14 +15,38 @@ import "./ProductDetail.css";
 import Link from "next/link";
 import ProductsSlider from "./../ProductsSlider";
 import Explorer from "../Common/Explorer";
+import { getData } from "../../services/userApi";
 
 
 
 class ProductDetail extends Component {
 
+  constructor(props) {
+      super(props);
+      this.state = {
+          questions: []
+       }         
+
+  }
+
+  componentDidMount(){
+    this.loadQuestions();
+  }
+
+  loadQuestions(){
+    getData("/getQuestions/"+this.props.data.product_id)
+    .then((response) => {
+        this.setState({ questions: response.data });
+    }).catch((error) => {
+      console.error(error);
+    });
+
+  }
+
   render() {
     const mdata = this.props.data;
     const u_data = this.props.user_data;
+
     return (
       <div>
         <Nav user={u_data.user} authenticated={u_data.authenticated} />
@@ -53,8 +77,8 @@ class ProductDetail extends Component {
                 <Pay seller={mdata.user} price={mdata.price} title={mdata.title} stock={mdata.stock} />
               </div>
               <Detail desciption={mdata.description}/>
-              <Question />
-              <QuestionItem />
+              <Question user_data={this.props.user_data} product_id={this.props.data.product_id}  cb={this.loadQuestions} />
+              <QuestionItem questions={this.state.questions} />
             </div>
             <div className="pay-section-pc">
               <Pay seller={mdata.user} price={mdata.price} title={mdata.title} stock={mdata.stock} />

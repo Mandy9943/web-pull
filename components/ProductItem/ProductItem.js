@@ -6,8 +6,7 @@ import { getImgUrl } from "../../lib/config"
 
 export default class ProductItem extends Component {
     render() {
-        console.log("this.props.order")
-        console.log(this.props.order)
+
         const product = this.props.order.product;
         const detail_link="/detalle/"+product.product_id+"_"+product.title.split(" ").join("-");
         let image_url = (product.images[0] && product.images[0].url !== "") ?

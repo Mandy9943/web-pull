@@ -1,4 +1,4 @@
-import {get, postForm, putForm, sget} from "../lib/request";
+import {get, post, postForm, putForm, sget} from "../lib/request";
 
 const getDataJWT = (endpoint, jwt) => {
     try {
@@ -85,6 +85,20 @@ export const updateProduct = (data, jwt) => {
     try {
         let postFormData = putForm("/updateProduct", data, jwt)
         return postFormData;
+    } catch (error) {
+        return error;
+    }
+};
+
+export const sendQuestion = (msg, product_id, jwt) => {
+    try {
+        const msgData = {
+            "question": msg,
+            "product_id": product_id
+        }
+        let data = post("/newQuestion", msgData, jwt)
+
+        return data;
     } catch (error) {
         return error;
     }

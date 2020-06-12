@@ -2,7 +2,7 @@ import React from "react";
 import Head from "next/head";
 import Detail from "../../components/ProductDetail";
 import { getProductDetail } from "../../services/productsApi";
-import {getUser, isAuthenticated } from "../../lib/auth";
+import {getUser, isAuthenticated, getJwt } from "../../lib/auth";
 
 function Product({data, u_data}) {
     return (
@@ -28,10 +28,12 @@ export async function getServerSideProps(context) {
     const data = await res.data
 
     let usr = getUser(context);
+    let jwt = getJwt(context);
 
     const u_data = {
         user: (usr !== undefined ? usr  : null),
-        authenticated: isAuthenticated(context)
+        authenticated: isAuthenticated(context),
+        jwt: jwt ? jwt : '' 
     }
 
     return { props: { data, u_data } }

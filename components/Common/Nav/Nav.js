@@ -69,7 +69,7 @@ export default class Nav extends Component {
     }
 
     componentDidMount() {
-        const endp = this.props.mode === "sell" ? "/getSells" : "/getOrders"
+
         getData("/getMainCategories")
             .then((response) => {
                 this.setState({ categories: response.data });
