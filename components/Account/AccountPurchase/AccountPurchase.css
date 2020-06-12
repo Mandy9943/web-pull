@@ -1,0 +1,91 @@
+.account-purchase-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.account-purchase-subtitle {
+  margin-bottom: 10px;
+}
+
+.account-purchase-subtitle p {
+  font-size: .8rem;
+  color: grey;
+  margin-top: 5px;
+}
+
+.account-purchase-item {
+  padding: 20px;
+  background: white;
+  border-radius: 5px;
+}
+
+.account-purchase-wrap-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.account-purchase-wrap-img {
+  margin-right: 10px;
+}
+
+.account-purchase-wrap-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.account-purchase-wrap-info p:nth-child(2) {
+  margin: 10px 0px;
+}
+
+.account-purchase-wrap-info p:nth-child(3) {
+  color: grey;
+}
+
+.account-purchase-wrap-info-seller {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.account-purchase-wrap-info-seller h4 {
+  margin-top: 5px;
+}
+
+.account-purchase-wrap-info-seller p:nth-child(3) {
+  margin: 5px 0px;
+}
+
+.account-purchase-wrap-info-seller p:nth-child(1), .account-purchase-wrap-info-seller p:nth-last-child(1) {
+  color: #d11e36;
+}
+/*# sourceMappingURL=AccountPurchase.css.map */

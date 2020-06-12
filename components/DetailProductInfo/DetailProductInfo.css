@@ -1,0 +1,27 @@
+.wrap-detail-info {
+  border-top: 1px solid #9F9F9F;
+  padding: 40px;
+  color: #545454;
+}
+
+.wrap-detail-info h4 {
+  font-size: 20px;
+}
+
+.item-detail-info {
+  margin-bottom: 20px;
+}
+
+.item-detail-info:nth-child(2) {
+  margin-top: 20px;
+}
+
+.item-detail-info h5 {
+  margin-bottom: 10px;
+  text-transform: capitalize;
+}
+
+.item-detail-info p {
+  margin-bottom: 10px;
+}
+/*# sourceMappingURL=DetailProductInfo.css.map */

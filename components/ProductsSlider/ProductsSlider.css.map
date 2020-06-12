@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,gBAAgB,CAAC;EACb,aAAa,EAAE,IAAI;EACnB,KAAK,EAAE,IAAI;CAMY;;AAR3B,AAGI,gBAHY,CAGZ,wBAAwB,CAAC;EACrB,OAAO,EAAE,IAAI;EACb,qBAAqB,EAAE,cAAa;EACpC,QAAQ,EAAE,IAAI;EAEd,QAAQ,EAAE,IAAI;CAAG",
+    "sources": [
+        "ProductsSlider.sass"
+    ],
+    "names": [],
+    "file": "ProductsSlider.css"
+}

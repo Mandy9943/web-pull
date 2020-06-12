@@ -1,0 +1,90 @@
+.account-store-product-wrap-back {
+  color: #d11e36;
+  margin-bottom: 30px;
+}
+
+.account-store-product-wrap-back span {
+  font-size: .85rem;
+}
+
+.account-store-product-wrap {
+  margin: 0px 40px;
+}
+
+.account-store-product-header {
+  margin-bottom: 20px;
+}
+
+.account-store-product-header p {
+  font-size: .8rem;
+}
+
+.account-store-product-info-1, .account-store-product-info-2 {
+  margin-bottom: 20px;
+}
+
+.account-store-product-info-2 {
+  width: 35%;
+}
+
+.account-store-product-wrap-add-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.account-store-product-wrap-add-info div > h3 {
+  margin-bottom: 20px;
+}
+
+.account-store-product-wrap-add-photo {
+  background: white;
+  border-radius: 5px;
+  padding: 20px;
+  -webkit-box-shadow: 0px 3px 6px #00000029;
+          box-shadow: 0px 3px 6px #00000029;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.account-store-product-wrap-add-photo div > h4 {
+  margin-bottom: 20px;
+}
+
+.account-store-product-wrap-add-photo div > button {
+  background: #d11e36;
+  color: white;
+}
+
+.account-store-product-wrap-gallery {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.account-store-product-wrap-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.account-store-product-wrap-button button {
+  width: 49%;
+  background: #d11e36;
+  color: white;
+}
+
+.account-store-product-wrap-section-2 {
+  margin-top: 30px;
+}
+/*# sourceMappingURL=AccountStoreProduct.css.map */

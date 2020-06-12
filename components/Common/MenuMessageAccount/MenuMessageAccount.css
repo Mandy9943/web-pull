@@ -1,0 +1,60 @@
+.chat-menu {
+  -webkit-box-flex: 1.5;
+      -ms-flex: 1.5;
+          flex: 1.5;
+  padding-top: 20px;
+}
+
+.chat-menu-help {
+  text-align: right;
+  color: #D11E36;
+  margin-bottom: 20px;
+}
+
+.chat-menu-wrap-subtitle {
+  padding: 0px 15px;
+}
+
+.chat-menu-wrap-img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
+  width: 60px;
+  height: 60px;
+}
+
+.chat-menu-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space_between;
+      -ms-flex-pack: space_between;
+          justify-content: space_between;
+  padding: 15px;
+}
+
+.chat-menu-wrap-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+/*# sourceMappingURL=MenuMessageAccount.css.map */

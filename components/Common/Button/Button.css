@@ -1,0 +1,14 @@
+.main-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 5px auto;
+  width: auto;
+  padding: 10px 40px;
+  background-color: #CF0A2C;
+}
+
+.main-button p {
+  font-size: 18px;
+}
+/*# sourceMappingURL=Button.css.map */

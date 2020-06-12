@@ -1,0 +1,83 @@
+.help
+    position: relative
+    a
+        color: #717171
+        font-size: 14px
+    .help-top
+        z-index: 100
+        position: relative
+        padding: 100px 0px
+        background: #FBFBFB
+        box-shadow: 0px 3px 6px #00000029
+        .content-help-top
+            display: grid
+            grid-template-columns: repeat(2,1fr)
+            grid-gap: 15px
+            margin: 0px auto
+            width: 70%
+            h3
+                color: #717171
+                font-size: 26px
+                font-weight: lighter
+            .help-search
+                display: grid
+                grid-template-columns: auto 1fr
+                background: #FFFFFF
+                box-shadow: 0px 3px 6px #00000029
+                border-radius: 5px
+                .help-search-icon
+                    padding: 0px 15px
+                    align-self: center
+                input
+                    border: none
+    .content-help
+        z-index: 0
+        position: relative
+        display: grid
+        grid-template-columns: 3fr 2fr
+        grid-gap: 80px
+        margin: 0px auto
+        width: 70%
+        .help-left
+            padding: 80px 0px
+            a.help-button
+                display: grid
+                grid-template-columns: auto 1fr
+                grid-gap: 10px
+                margin-bottom: 20px
+                padding: 15px 20px
+                background-color: #fff
+                border: 0.5px solid #9E9E9E
+                border-radius: 6px
+        .help-right
+            padding: 40px
+            min-height: 50vh
+            background-color: #FBFBFB
+            h5
+                margin-bottom: 20px
+                color: #D11E36
+            .help-accordion-title
+                display: grid
+                grid-template-columns: 1fr auto
+                grid-gap: 10px
+                padding: 15px 10px
+                border-top: 0.5px solid #717171
+                cursor: pointer
+                &.active
+                    p
+                        color: #D11E36
+                p
+                    color: #717171
+                    font-size: 12px
+                &.fisrt-element
+                    border: none
+            .help-accordion
+                display: none
+                padding: 0px 20px 10px 20px
+                &.active
+                    display: block
+                p
+                    margin-bottom: 10px
+                    color: #717171
+                    font-size: 12px
+

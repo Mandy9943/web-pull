@@ -1,0 +1,25 @@
+.pay-bar {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  margin: 50px auto;
+  padding: 20px;
+  width: calc(90% - 40px);
+  background-color: #fff;
+}
+
+.pay-bar .payment-methods {
+  text-align: center;
+}
+
+.pay-bar .payment-methods p.payment-methods-text {
+  color: #606060;
+  font-size: 16px;
+}
+
+.pay-bar .payment-methods a.more-link {
+  color: #CF0A2C;
+  font-size: 13px;
+}
+/*# sourceMappingURL=PayBar.css.map */

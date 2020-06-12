@@ -1,0 +1,73 @@
+.explorer
+    margin-bottom: 50px
+<<<<<<< HEAD
+    .container-explorer
+        display: flex
+        justify-content: space-between
+    .main-img
+        flex: 1
+        position: relative
+        img
+            width: 100%
+            height: 100%
+        div
+            width: 100%
+            position: absolute
+            bottom: 0px 
+            background: #ffffff
+            padding: 10px
+            box-sizing: border-box
+    .group-img
+        margin-left: 20px
+        flex: 2
+        display: grid
+        grid-template-columns: repeat(4,1fr)
+        grid-template-row: repeat(2,1fr)
+        grid-gap: 20px
+.wrapImgExplorer
+    img
+        width: 100%
+        height: 100%
+@media (max-width: 768px) 
+    .explorer
+        flex-direction: column
+        //width: 50%
+        .group-img
+            grid-template-columns: repeat(2,1fr)
+            grid-template-row: repeat(4,1fr)
+            //margin-left: 0px
+            //margin-top: 5px
+    .wrapImgExplorer:nth-child(n+5)
+        display: none
+=======
+    .content-explorer
+        display: grid
+        grid-template-columns: 1fr 2fr
+        grid-gap: 20px
+        img
+            width: 100%
+        .main-img
+            //flex: 1
+        .group-img
+            //flex: 2
+            display: grid
+            grid-template-columns: repeat(4,1fr)
+            grid-template-rows: repeat(2,1fr)
+            grid-gap: 20px
+@media (max-width: 800px)
+    .explorer
+        .content-explorer
+            display: grid
+            grid-template-columns: 1fr
+            grid-template-rows: 0fr 1fr
+            grid-gap: 40px
+            .main-img
+                flex: 1
+                margin: 0px
+            .group-img
+                display: grid
+                grid-template-columns: repeat(2,1fr)
+                grid-template-rows: repeat(2,1fr)
+    .wrapImgExplorer:nth-child(n+5)
+        display: none
+>>>>>>> Jorge

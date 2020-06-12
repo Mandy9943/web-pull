@@ -1,0 +1,22 @@
+.account-questions-wrap-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 0px 30px;
+  margin-bottom: 20px;
+}
+
+.account-questions-wrap-questions {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 0px 30px;
+}
+
+.account-questions-wrap-item {
+  color: #d11e36;
+}
+/*# sourceMappingURL=AccountQuestions.css.map */

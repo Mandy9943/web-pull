@@ -1,0 +1,30 @@
+.principal-slider {
+  margin-bottom: 50px;
+}
+
+.principal-slider .slider {
+  height: 400px;
+}
+
+.principal-slider .slider .previousButton {
+  left: 0px;
+  padding: 50px 20px;
+  background: #FFFFFF;
+  -webkit-box-shadow: 0px 3px 6px #00000029;
+          box-shadow: 0px 3px 6px #00000029;
+}
+
+.principal-slider .slider .nextButton {
+  right: 0px;
+  padding: 50px 20px;
+  background: #FFFFFF;
+  -webkit-box-shadow: 0px 3px 6px #00000029;
+          box-shadow: 0px 3px 6px #00000029;
+}
+
+.principal-slider .slider .slide {
+  height: auto;
+  overflow: hidden;
+  text-align: center;
+}
+/*# sourceMappingURL=PrincipalSlider.css.map */

@@ -1,0 +1,18 @@
+.home-content {
+  margin: 0px auto;
+  width: 70%;
+}
+
+.home-section-title {
+  margin-bottom: 20px;
+  color: #757575;
+  font-size: 20px;
+  font-weight: lighter;
+}
+
+.home-section-title a {
+  margin-left: 20px;
+  color: #CF0A2C;
+  font-size: 16px;
+}
+/*# sourceMappingURL=Home.css.map */

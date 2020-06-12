@@ -1,0 +1,60 @@
+.account-validate-pass-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  height: 74.6vh;
+}
+
+.account-validate-pass {
+  padding: 30px;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: white;
+  width: 20%;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.account-validate-pass h3, .account-validate-pass p {
+  margin-bottom: 20px;
+}
+
+.account-validate-pass p {
+  font-size: .8rem;
+}
+
+.account-validate-pass p > span {
+  padding: 8px 9px;
+  border-radius: 50%;
+  background: #d11e36;
+  color: white;
+  margin-right: 5px;
+}
+
+.account-validate-pass-form button {
+  background: #d11e36;
+  color: white;
+}
+
+.account-validate-pass-form p {
+  font-size: .7rem;
+}
+/*# sourceMappingURL=AccountValidation.css.map */

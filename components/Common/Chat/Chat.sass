@@ -1,0 +1,66 @@
+.chat-msg-in
+    background: #F5F5F5
+    padding: 20px
+    margin: 0px 20px
+    margin-right: 250px
+    position: relative
+.chat-msg-in::before
+    content: ""
+    width: 0px
+    height: 0px
+    border-top: 15px solid #F5F5F5
+    border-right: 15px solid transparent
+    position: absolute
+    left: 0px
+    bottom: -10px
+.chat-msg-out
+    background: #FFD6D6
+    padding: 20px
+    margin: 0px 20px
+    margin-left: 250px
+    position: relative
+.chat-msg-out::after
+    content: ""
+    width: 0px
+    height: 0px
+    border-top: 15px solid #FFD6D6
+    border-left: 15px solid transparent
+    position: absolute
+    right: 0px
+    bottom: -10px
+.chat-wrap-in,.chat-wrap-out
+    display: flex
+    justify-content: flex-start
+    align-items: flex-estart
+    width: 100%
+    margin-bottom: 30px
+.chat-wrap-out
+    justify-content: flex-end
+.chat-wrap
+    background: white
+    padding-top: 20px
+.chat-input
+    background: white
+    display: flex
+    justify-content: space-between
+    border-top: 1px solid #c5c5c5
+    padding: 20px
+    input
+        margin: 0px
+.chat-wrap-button
+    display: flex
+    label
+        width: 100%
+        display: flex
+        justify-content: center
+        align-items: center
+        padding: 10px
+        border-radius: 5px
+        margin: 0px 10px
+        color: #D11E36
+        border: 1px solid grey
+        cursor: pointer
+    button
+        background: #E9E8E8
+        border: 1px solid grey
+        margin: 0px

@@ -1,0 +1,47 @@
+.data-sheet-wrap-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 0px;
+  padding: 0px;
+}
+
+.data-sheet-wrap-section-form {
+  width: 49%;
+}
+
+.data-sheet-item-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 15px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.data-sheet-item-form button {
+  width: 49%;
+  margin: 0px;
+  color: white;
+  background: #d11e36;
+}
+
+.data-sheet-item-form input {
+  margin: 0px;
+}
+
+.data-sheet-item-form select {
+  min-width: 15%;
+  border-radius: 5px;
+  margin-left: 5px;
+  outline: none;
+}
+
+.data-sheet-wrap-title {
+  margin: 20px 0px;
+}
+/*# sourceMappingURL=DataSheet.css.map */

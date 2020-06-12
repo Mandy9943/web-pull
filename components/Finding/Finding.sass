@@ -1,0 +1,54 @@
+.wrap-finding
+    margin-bottom: 50px
+.content-finding
+    display: grid
+    grid-template-columns: repeat(2,1fr)
+    grid-gap: 20px
+.finding
+    //width: 49%
+    display: flex
+    justify-content: space-between
+    background: white
+    padding: 10px
+    box-sizing: border-box 
+.wrap-img
+    width: 100%
+    display: flex
+    justify-content: center
+    align-items: center
+    img
+        width: 100%
+        max-height: 100%
+.wrap-info
+    width: 100%
+    margin-left: 10px
+    display: flex
+    justify-content: center
+    align-items: flex-start
+    flex-direction: column
+    .category-text
+        color: #7B7B7B
+        font-size: 18px
+    .finding-title
+        font-size: 27px
+    button
+        width: auto
+        background: #D11E36
+        color: white
+        border-radius: 2px
+<<<<<<< HEAD
+@media (max-width: 768px)
+    .wrap-finding
+        flex-direction: column
+    .finding
+        width: 100%
+        &:nth-child(1)
+            //margin-bottom: 10px
+=======
+@media (max-width: 800px)
+    .wrap-finding
+        flex-direction: column
+        .content-finding
+            grid-template-columns: repeat(1, 1fr)
+            grid-template-rows: repeat(2,1fr)
+>>>>>>> Jorge

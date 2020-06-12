@@ -1,0 +1,34 @@
+.header {
+  position: relative;
+  top: 0px;
+  right: 0px;
+  padding: 20px;
+  width: calc(100% - 40px);
+  background-color: #D11E36;
+}
+
+.header-content {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  margin: 0px auto;
+  width: 80%;
+}
+
+.help-link-content {
+  display: -ms-grid;
+  display: grid;
+}
+
+.help-link-content .help-link {
+  text-align: right;
+  -ms-flex-item-align: end;
+      -ms-grid-row-align: end;
+      align-self: end;
+}
+
+.help-link-content .help-link p {
+  color: #fff;
+}
+/*# sourceMappingURL=Header.css.map */

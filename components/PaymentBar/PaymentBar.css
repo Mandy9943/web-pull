@@ -1,0 +1,51 @@
+.payment {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+<<<<<<< HEAD
+  margin-bottom: 50px;
+  background: white;
+  padding: 20px;
+=======
+  background: white;
+  width: 100%;
+  margin-bottom: 50px;
+  padding: 30px;
+>>>>>>> Jorge
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.payment-block {
+  cursor: pointer;
+}
+
+.payments-item-block {
+  color: #d11e36;
+<<<<<<< HEAD
+  font-size: 13px;
+  text-align: center;
+}
+
+.payments-item-block:nth-child(2) {
+  color: #606060;
+  font-size: 16px;
+=======
+  text-align: center;
+}
+
+.payments-item-block:nth-child(1) {
+  font-size: 2rem;
+}
+
+.payments-item-block:nth-child(2) {
+  color: black;
+}
+
+.payments-icon svg {
+  font-size: 25px;
+>>>>>>> Jorge
+}
+/*# sourceMappingURL=PaymentBar.css.map */

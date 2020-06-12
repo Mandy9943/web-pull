@@ -1,0 +1,57 @@
+.forgot-pass {
+  margin: 80px auto 42vh auto;
+  padding: 6vh 3vw;
+  width: 17vw;
+  min-width: 325px;
+  color: #929292;
+  background-color: #fff;
+  border-radius: 20px;
+  -webkit-box-shadow: 0px 3px 6px #00000029;
+          box-shadow: 0px 3px 6px #00000029;
+}
+
+.forgot-pass p.forgot-pass-text {
+  font-size: 14px;
+}
+
+.forgot-pass h1 {
+  font-size: 28;
+  text-align: center;
+  font-weight: lighter;
+}
+
+.forgot-pass-content {
+  margin-bottom: 20px;
+  padding: 0px 60px;
+}
+
+.forgot-pass-text {
+  margin-top: 20px;
+  line-height: 20px;
+  text-align: center;
+}
+
+.input {
+  max-width: 95%;
+}
+
+.input::-webkit-input-placeholder {
+  color: #929292;
+  text-align: center;
+}
+
+.input:-ms-input-placeholder {
+  color: #929292;
+  text-align: center;
+}
+
+.input::-ms-input-placeholder {
+  color: #929292;
+  text-align: center;
+}
+
+.input::placeholder {
+  color: #929292;
+  text-align: center;
+}
+/*# sourceMappingURL=ForgotPass.css.map */

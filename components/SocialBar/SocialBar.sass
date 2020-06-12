@@ -1,0 +1,37 @@
+.wrap-social-bar
+    background: white
+    margin-bottom: 50px
+    .content-social-bar
+        display: grid
+        grid-template-columns: 1fr 2fr
+        grid-gap: 20px
+        margin: 0px auto
+        width: 70%
+        padding: 10px 0px
+    .social-bar
+        text-align: left
+    .social-bar-icons
+        display: grid
+        grid-template-columns: repeat(7,1fr)
+        grid-gap: 10px
+        text-align: -webkit-right
+        img
+            align-self: center
+@media (max-width: 768px)
+    .wrap-social-bar
+        flex-direction: column
+        align-items: center
+        width: 100%
+        padding: 10px
+        box-sizing: border-box
+    .social-bar:nth-child(1)
+        //margin-bottom: 20px
+@media (max-width: 999px)
+    .wrap-social-bar
+        .content-social-bar
+            grid-template-columns: repeat(1,1fr)
+            grid-template-rows: repeat(2,1fr)
+        .social-bar
+            text-align: center
+        .social-bar-icons
+            text-align: -webkit-center

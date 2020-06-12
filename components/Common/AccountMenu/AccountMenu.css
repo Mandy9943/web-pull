@@ -1,0 +1,16 @@
+.menu-account {
+  list-style: none;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.menu-account li:nth-child(1) {
+  margin: 40px 0px;
+}
+
+.menu-account li {
+  margin-bottom: 30px;
+  text-transform: capitalize;
+}
+/*# sourceMappingURL=AccountMenu.css.map */

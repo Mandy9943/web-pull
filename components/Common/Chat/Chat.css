@@ -1,0 +1,110 @@
+.chat-msg-in {
+  background: #F5F5F5;
+  padding: 20px;
+  margin: 0px 20px;
+  margin-right: 250px;
+  position: relative;
+}
+
+.chat-msg-in::before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  border-top: 15px solid #F5F5F5;
+  border-right: 15px solid transparent;
+  position: absolute;
+  left: 0px;
+  bottom: -10px;
+}
+
+.chat-msg-out {
+  background: #FFD6D6;
+  padding: 20px;
+  margin: 0px 20px;
+  margin-left: 250px;
+  position: relative;
+}
+
+.chat-msg-out::after {
+  content: "";
+  width: 0px;
+  height: 0px;
+  border-top: 15px solid #FFD6D6;
+  border-left: 15px solid transparent;
+  position: absolute;
+  right: 0px;
+  bottom: -10px;
+}
+
+.chat-wrap-in, .chat-wrap-out {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: flex-estart;
+      -ms-flex-align: flex-estart;
+          align-items: flex-estart;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.chat-wrap-out {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.chat-wrap {
+  background: white;
+  padding-top: 20px;
+}
+
+.chat-input {
+  background: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-top: 1px solid #c5c5c5;
+  padding: 20px;
+}
+
+.chat-input input {
+  margin: 0px;
+}
+
+.chat-wrap-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.chat-wrap-button label {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 0px 10px;
+  color: #D11E36;
+  border: 1px solid grey;
+  cursor: pointer;
+}
+
+.chat-wrap-button button {
+  background: #E9E8E8;
+  border: 1px solid grey;
+  margin: 0px;
+}
+/*# sourceMappingURL=Chat.css.map */

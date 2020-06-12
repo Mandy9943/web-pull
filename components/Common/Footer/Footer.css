@@ -1,0 +1,65 @@
+.footer {
+  padding: 20px;
+  width: calc(100% - 40px);
+  background-color: #D11E36;
+}
+
+.footer-content {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 3fr 1fr;
+      grid-template-columns: 3fr 1fr;
+  margin: 0px auto;
+  width: 80%;
+}
+
+.footer-tex {
+  color: #F59D9D;
+  font-size: 14px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.footer-tex ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 20px;
+}
+
+.footer-tex ul a {
+  margin-right: 20px;
+  color: #fff;
+}
+
+.footer-download {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.footer-download .download-app {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 5fr;
+      grid-template-columns: 1fr 5fr;
+  grid-gap: 10px;
+  float: right;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 12px;
+}
+
+.footer-download .download-app img.phone-img {
+  float: left;
+}
+
+.footer-download .download-app p {
+  color: #D11E36;
+  font-size: 20px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+/*# sourceMappingURL=Footer.css.map */

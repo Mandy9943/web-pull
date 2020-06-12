@@ -1,0 +1,45 @@
+.wrap-info-block {
+  margin-bottom: 50px;
+  background: white;
+}
+
+.wrap-info-block .content-info-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 0px auto;
+  width: 70%;
+  padding: 20px 0px;
+}
+
+.info-item {
+  text-align: center;
+  width: 100%;
+  color: #707070;
+}
+
+.info-item h3 {
+  margin: 10px 0px;
+  font-size: 18px;
+  font-weight: lighter;
+}
+
+.info-item p {
+  font-size: 15px;
+}
+
+<<<<<<< HEAD
+=======
+.info-item .info-icon {
+  color: #CF0A2C;
+  font-size: 40px;
+}
+
+>>>>>>> Jorge
+.info-item:nth-child(2) {
+  margin: 0px 20px;
+}
+/*# sourceMappingURL=Info.css.map */

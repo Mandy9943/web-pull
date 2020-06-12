@@ -1,0 +1,18 @@
+.breadcrumbs-wrap {
+  padding: 20px 10px;
+  background: white;
+}
+
+.breadcrumbs {
+  margin-right: 10px;
+  text-transform: capitalize;
+}
+
+.breadcrumbs:nth-last-child(1) {
+  margin: 0px;
+}
+
+.breadcrumbs:nth-child(even) {
+  font-size: .9rem;
+}
+/*# sourceMappingURL=BreadCrumbs.css.map */

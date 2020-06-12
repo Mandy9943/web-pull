@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,iBAAiB,CAAC;EACd,OAAO,EAAE,SAAS;EAClB,UAAU,EAAE,KAAK;CAAG;;AACxB,AAAA,YAAY,CAAC;EACT,YAAY,EAAE,IAAI;EAClB,cAAc,EAAE,UAAU;CAAG;;AACjC,AAAA,YAAY,AAAA,eAAgB,CAAA,CAAC,EAAE;EAC3B,MAAM,EAAE,GAAG;CAAG;;AAClB,AAAA,YAAY,AAAA,UAAW,CAAA,IAAI,EAAE;EACzB,SAAS,EAAE,KAAK;CAAG",
+    "sources": [
+        "BreadCrumbs.sass"
+    ],
+    "names": [],
+    "file": "BreadCrumbs.css"
+}

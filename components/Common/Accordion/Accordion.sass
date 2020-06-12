@@ -1,0 +1,19 @@
+details
+    background: white
+    padding: 10px
+    border-radius: 5px
+    box-shadow: 0px 3px 6px #00000029;
+    margin-bottom: 10px
+summary
+    outline: none
+    cursor: pointer
+summary::-webkit-details-marker
+    display: none
+details > summary:first-of-type
+    list-style-type: none
+details[open] > summary
+    margin-bottom: 5px
+    padding-bottom: 5px
+    border-bottom: 1px solid #c7c7c7
+details[open] > summary > span
+    transform: rotateZ(180deg)

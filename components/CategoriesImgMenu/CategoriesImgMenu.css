@@ -1,0 +1,45 @@
+.categories-img-menu {
+  margin-bottom: 50px;
+}
+
+.categories-img-menu .content-categories-img-menu {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[7];
+      grid-template-columns: repeat(7, 1fr);
+  -ms-grid-rows: (1fr)[2];
+      grid-template-rows: repeat(2, 1fr);
+  font-size: 12px;
+  text-align: center;
+  background-color: #fff;
+}
+
+.categories-img-menu .content-categories-img-menu a.categories-img {
+<<<<<<< HEAD
+  padding: 20px;
+=======
+  padding: 40px 20px;
+>>>>>>> Jorge
+  color: #707070;
+  border-right: 1px solid #F2F2F2;
+  border-bottom: 1px solid #F2F2F2;
+}
+
+<<<<<<< HEAD
+=======
+.categories-img-menu .content-categories-img-menu a.categories-img p.categories-menu-icon {
+  margin-bottom: 20px;
+  color: #CF0A2C;
+  font-size: 50px;
+}
+
+>>>>>>> Jorge
+@media (max-width: 999px) {
+  .categories-img-menu .content-categories-img-menu {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+    -ms-grid-rows: (1fr)[7];
+        grid-template-rows: repeat(7, 1fr);
+  }
+}
+/*# sourceMappingURL=CategoriesImgMenu.css.map */

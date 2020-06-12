@@ -1,0 +1,12 @@
+.product-card-finding {
+  margin-bottom: 50px;
+}
+
+.product-card-finding .content-product-card-finding {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[5];
+      grid-template-columns: repeat(5, 1fr);
+  grid-gap: 20px;
+}
+/*# sourceMappingURL=ProductCardFinding.css.map */

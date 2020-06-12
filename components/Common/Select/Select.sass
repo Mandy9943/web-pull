@@ -1,0 +1,33 @@
+.wrap-select
+    position: relative
+.wrap-select::before, .wrap-select::after
+    content: ""
+    width: 7px
+    height: 2px
+    background: #6F6F6F
+    position: absolute
+    transform: rotateZ(45deg)
+    border-radius: 50px
+    right: 5px
+    z-index: 1
+    top: 9px
+.wrap-select::before
+    right: 0px
+    transform: rotateZ(135deg)
+select
+    border: 0px
+    appearance: none
+    background: transparent
+    position: relative
+    width: 100%
+    height: 100%
+    padding: 1px 15px 1px 1px
+    z-index: 2
+    outline: none
+    color: #737272
+    cursor: pointer
+select:after, select:before
+    content: ""
+    width: 100px
+    height: 100px
+    background: lime
