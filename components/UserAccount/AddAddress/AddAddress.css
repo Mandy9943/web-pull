@@ -1,0 +1,91 @@
+.add-addess {
+  position: relative;
+}
+
+.add-addess .add-adress-container {
+  margin: 80px auto 0px auto;
+  width: 50%;
+}
+
+.add-addess .add-adress-container h2 {
+  margin-bottom: 20px;
+}
+
+.add-addess .add-adress-container .add-address-box {
+  margin-bottom: 60px;
+  padding: 30px;
+  background: #FFFFFF;
+  -webkit-box-shadow: 0px 3px 6px #00000029;
+          box-shadow: 0px 3px 6px #00000029;
+  border-radius: 20px;
+}
+
+.add-addess .add-adress-container .add-address-box .add-address-input {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  grid-gap: 30px;
+}
+
+.add-addess .add-adress-container .add-address-box label {
+  color: #717171;
+  font-size: 14px;
+}
+
+.add-addess .add-adress-container .add-address-box label p {
+  margin-bottom: 10px;
+}
+
+.add-addess .add-adress-container .add-address-box label input {
+  margin-bottom: 20px;
+}
+
+.add-addess .add-adress-container .add-address-box form {
+  margin-bottom: 50px;
+}
+
+.add-addess .add-adress-container .add-address-box .add-address-actions {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  grid-gap: 40px;
+}
+
+.add-addess .add-adress-container .add-address-box .add-address-actions .save-btn {
+  margin: auto;
+  width: 100%;
+}
+
+.add-addess .add-adress-container .add-address-box .add-address-actions .save-btn button {
+  margin: inherit;
+}
+
+.add-addess .add-adress-container .add-address-box .add-address-actions .save-btn button p {
+  color: #fff;
+}
+
+.add-addess .add-adress-container .add-address-box .add-address-actions .cancel-btn {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+@media (max-width: 700px) {
+  .add-addess .add-adress-container {
+    width: 90%;
+    margin: 15px auto;
+  }
+  .add-addess .add-adress-container .add-address-box {
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+  .add-addess .add-adress-container .add-address-box .add-address-actions {
+    grid-gap: 10px;
+  }
+  .add-addess .add-adress-container .add-address-box .add-address-actions .cancel-btn {
+    margin: auto;
+  }
+}
+/*# sourceMappingURL=AddAddress.css.map */

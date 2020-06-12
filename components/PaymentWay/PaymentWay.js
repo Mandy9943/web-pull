@@ -6,6 +6,7 @@ import Button from "../Common/Button/Button";
 import Header from "../Common/Header/Header";
 import Footer from "../Common/Footer";
 import "./PaymentWay.css";
+import "./PaymentWayMovil.css";
 
 export default class PaymentWay extends Component {
     constructor(props) {
@@ -39,6 +40,14 @@ export default class PaymentWay extends Component {
             <div className="payment-way">
                 <Header />
                 <div className="container-payment-way">
+                    <div className="product-description payment-way-box only-movil">
+                        <img src={ProductImg} />
+                            <div className="content-product-description">
+                                <p>{this.state.productDescription}</p>
+                                <p className="quantity">Cantidad: {this.state.productQuantity}</p>
+                                <h3>Total: ${this.state.productPrice}</h3>
+                            </div>
+                    </div>
                     <h2>Elige la forma de pago</h2>
                     <div className="content-payment-way">
                         <div className="way-to-pay">
@@ -110,7 +119,7 @@ export default class PaymentWay extends Component {
                             </div>
                         </div>
                         <div className="payment-data">
-                            <div className="product-description payment-way-box">
+                            <div className="product-description payment-way-box only-desktop">
                                 <img src={ProductImg} />
                                 <div className="content-product-description">
                                     <p>{this.state.productDescription}</p>

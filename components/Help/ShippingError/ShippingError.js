@@ -1,0 +1,48 @@
+import React from 'react';
+import Link from 'next/link';
+import Header from '../../Common/Header';
+import Footer from '../../Common/Footer';
+import Button from "../../Common/Button/Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faAngleLeft
+} from "@fortawesome/free-solid-svg-icons";
+import "./ShippingError.css";
+
+export default function ShippingError() {
+    return (
+        <div className="shipping-error">
+            <Header />
+                <div className="shipping-error-top">
+                    <div className="shipping-error-bar">
+                        <div className="back-btn">
+                            <Link href="/ayuda">
+                                <a>
+                                    <p className="back-btn-icon">
+                                        <FontAwesomeIcon icon={faAngleLeft} />
+                                    </p>
+                                    <p>Volver</p>
+                                </a>
+                            </Link>
+                        </div>
+                        <h2>No llegó el envío</h2>
+                    </div>
+                </div>
+                <div className="shipping-error-content">
+                    <div className="shipping-error-box">
+                        <div  className="shipping-error-box-text">
+                            <p>Si el producto que compraste aparece como "producto entregado" pero aún no lo recibes <Link href="#"><a>comunicate con el vendedor</a></Link>.</p>
+                            <p>Tambien puedes validar el <Link href="#"><a>estado del envío</a></Link>.</p>
+                            <p>Te sugerimos validar la dirección indicada en la compra, en caso de encontras un error <Link href="#"><a>comunicate con el vendedor</a></Link>.</p>
+                        </div>
+                        <div className="shipping-error-box-btns">
+                            <Button text={"Comunicate con el vendedor"} />
+                            <Button text={"Ver estado de envío"} />
+                            <Button text={"Iniciar reclamo"} />
+                        </div>
+                    </div>
+                </div>
+            <Footer />
+        </div>
+    )
+}

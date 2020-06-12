@@ -4,7 +4,7 @@ import "./AccountPurchase.css";
 class AccountPurchase extends Component {
   render() {
     return (
-      <div>
+      <div className="billing-page">
         <div className="account-purchase-title">
           <h2>Compras</h2>
           <span>todos</span>
@@ -15,7 +15,7 @@ class AccountPurchase extends Component {
             <p>28 dias desde que se entrego</p>
           </div>
           <div className="account-purchase-wrap-content">
-            <div className="account-purchase-wrap-content">
+            <div className="account-purchase-wrap-content-picture ">
               <div className="account-purchase-wrap-img">
                 <img src="https://picsum.photos/200" />
               </div>

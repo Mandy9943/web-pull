@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import Modal from "./../Common/Modal";
+import CreditCard from "../../assets/img/pay-credit.png";
+import BankTransfer from "../../assets/img/pay-transfer.png";
+import OnlineTransfer from "../../assets/img/pay-online.png";
 import "./PaymentBar.css";
-<<<<<<< HEAD
-=======
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUniversity,
   faPlusCircle,
   faMoneyBillAlt,
 } from "@fortawesome/free-solid-svg-icons";
->>>>>>> Jorge
 
 class PaymentBar extends Component {
   constructor(props) {
@@ -32,19 +32,19 @@ class PaymentBar extends Component {
         <div className="header-modal">
           <h3>Más Metodos de pagos</h3>
         </div>
-        <div className="textCenter">
+        <div className="payment-way-content">
           <h4>Tarjetas de credito</h4>
-          <img src="assets\img\payTransfer.png" alt="tarjetas credito" />
+          <img className="payment-way-img" src={CreditCard} alt="Tarjetas de credito" />
           <p>
             El banco incluirá los intereses de las cuotas en el resumen de tu
             tarjeta
           </p>
           <h4>Transferencia desde tu banco</h4>
-          <img src="" alt="tarjetas credito" />
+          <img className="payment-way-img" src={BankTransfer} alt="TRansferencia bancaria" />
           <h4>Traspaso Online</h4>
-          <img src="" alt="tarjetas credito" />
+          <img className="payment-way-img" src={OnlineTransfer} alt="Pago online" />
           <p>
-            cuando termines tu compra, te daremos las instrucciones para que
+            Cuando termines tu compra, te daremos las instrucciones para que
             sepas cómo y dónde pagarla
           </p>
         </div>
@@ -53,9 +53,10 @@ class PaymentBar extends Component {
     const content2 = (
       <>
         <div className="header-modal">
-          <h3>Transferencia bancaria</h3>
+          <h3>Transferencia desde tu banco</h3>
         </div>
-        <div>
+        <div className="bank-transfer-content">
+          <h4>Consignación Bancaria</h4>
           <p>
             Acércate a cualquier oficina Bancolombia a nivel nacional para
             realizar tu consignación
@@ -75,7 +76,7 @@ class PaymentBar extends Component {
         <div className="header-modal">
           <h3>Paga en efectivo</h3>
         </div>
-        <div>
+        <div className="cash-transfer-content">
           <h4>Efecty</h4>
           <p>
             Acércate a cualquier punto Efecty del país, tienes un plazo de 2
@@ -98,15 +99,11 @@ class PaymentBar extends Component {
             this.toggleModal(1);
           }}
         >
-<<<<<<< HEAD
-          <p className="payments-item-block">icono</p>
-=======
         <p className="payments-icon payments-item-block">
           <FontAwesomeIcon icon={faPlusCircle} />
         </p>
->>>>>>> Jorge
           <p className="payments-item-block">Más Metodos de pagos</p>
-          <p className="payments-item-block">Ver más</p>
+          <p className="payments-item-block sub">Ver más</p>
         </div>
         {this.state.modal2 ? (
           <Modal toggle={this.toggleModal} num="2" content={content2} />
@@ -117,15 +114,11 @@ class PaymentBar extends Component {
             this.toggleModal(2);
           }}
         >
-<<<<<<< HEAD
-          <p className="payments-item-block">icono</p>
-=======
           <p className="payments-icon payments-item-block">
             <FontAwesomeIcon icon={faUniversity} />
           </p>
->>>>>>> Jorge
           <p className="payments-item-block">Transferencia bancaria</p>
-          <p className="payments-item-block">Ver más</p>
+          <p className="payments-item-block sub">Ver más</p>
         </div>
         {this.state.modal3 ? (
           <Modal toggle={this.toggleModal} num="3" content={content3} />
@@ -136,15 +129,11 @@ class PaymentBar extends Component {
             this.toggleModal(3);
           }}
         >
-<<<<<<< HEAD
-          <p className="payments-item-block">icono</p>
-=======
           <p className="payments-icon payments-item-block">
             <FontAwesomeIcon icon={faMoneyBillAlt} />
           </p>
->>>>>>> Jorge
           <p className="payments-item-block">Paga en efectivo</p>
-          <p className="payments-item-block">Ver más</p>
+          <p className="payments-item-block sub">Ver más</p>
         </div>
       </div>
     );

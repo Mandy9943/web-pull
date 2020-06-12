@@ -1,38 +1,35 @@
 import React, { Component } from "react";
 import "./DetailImg.css";
+import SliderDetail from "./../SliderDetail";
+import { getImgUrl } from "../../lib/config"
+
 
 class Detail extends Component {
   constructor(props) {
     super(props);
-    this.state = { data: null, image: null };
+    
+    this.state = { image: getImgUrl(this.props.images[0].url) };
     this.showImage = this.showImage.bind(this);
   }
-  componentDidMount() {
-    fetch("https://picsum.photos/v2/list")
-      .then((r) => r.json())
-      .then((r) => {
-        this.setState({ data: r });
-        const mainImg = r.find((img) => img.id == 0);
-        this.setState({ image: mainImg.download_url });
-      });
+
+  showImage(url) {
+    this.setState({ image: getImgUrl(url) });
   }
-  showImage(num) {
-    const result = num ? this.state.data.find((img) => img.id == num) : 0;
-    this.setState({ image: result.download_url });
-  }
+
+
   render() {
     return (
       <>
         <div className="wrap-gallery">
           <div className="list-gallery">
-            {this.state.data && this.state.data.length ? (
-              this.state.data.map((img, i) =>
+            {this.props.images && this.props.images.length ? (
+              this.props.images.map((img, i) =>
                 i < 5 ? (
                   <img
-                    src={img.download_url}
+                    src={getImgUrl(img.url)}
                     className="size-img-list"
                     onMouseEnter={() => {
-                      this.showImage(img.id);
+                      this.showImage(img.url);
                     }}
                     key={i}
                   />
@@ -43,11 +40,11 @@ class Detail extends Component {
             )}
           </div>
           <div className="main-image">
-            <img src={this.state.image} className="size-img-main" />
+            <img src={getImgUrl(this.state.image)} className="size-img-main" />
           </div>
         </div>
         <div className="gallery-responsive">
-          <div>SLIDER</div>
+          <SliderDetail img={this.props.images} />
         </div>
       </>
     );

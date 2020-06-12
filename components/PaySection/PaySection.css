@@ -1,9 +1,35 @@
 .pay {
   padding: 20px 0px;
   background: white;
-  border-bottom: 1px solid #9F9F9F;
-  border-top: 1px solid #9F9F9F;
-  border-right: 1px solid #9F9F9F;
+  border-bottom: 0.5px solid #9F9F9F;
+  border-top: 0.5px solid #9F9F9F;
+  border-right: 0.5px solid #9F9F9F;
+}
+
+.pay-img {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: min-content auto;
+      grid-template-columns: -webkit-min-content auto;
+      grid-template-columns: min-content auto;
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.pay-img img {
+  height: 38px !important;
+  margin: auto;
+  margin-bottom: 4px;
+}
+
+.pay-img .pay-section-img {
+  margin-left: 0 !important;
+}
+
+.pay-img a {
+  position: absolute;
+  bottom: -10px;
+  left: 19px;
 }
 
 .pay-item {
@@ -19,34 +45,43 @@
 
 .pay-item button {
   margin-top: 20px;
-  background: #d11e36;
+  background: #CF0A2C;
   color: white;
+  width: 80%;
 }
 
 .pay-item select {
   padding: 10px;
   border-radius: 5px;
-  width: 100%;
+  width: 40%;
+  outline: none !important;
+}
+
+.pay-item select:focus {
+  outline: none !important;
 }
 
 .title-pay-product-detail {
-  font-size: 1.1rem;
+  font-size: 20px;
   font-weight: 600;
+  color: #565555;
 }
 
 .price-pay-product-detail {
-  font-size: 2.5rem;
+  font-size: 36px;
+  color: #404040;
   font-weight: lighter;
 }
 
 .info-pay-product-detail h3 {
-  color: #d11e36;
+  color: #CF0A2C;
   margin-bottom: 5px;
 }
 
 .info-pay-product-detail p {
-  font-size: 0.85rem;
+  font-size: 15px;
   margin-bottom: 5px;
+  color: #434446;
 }
 
 .pay-section-img {
@@ -54,7 +89,7 @@
 }
 
 .section-pay-type {
-  border-top: 1px solid #9F9F9F;
+  border-top: 0.5px solid #9F9F9F;
   padding: 20px;
 }
 
@@ -80,7 +115,7 @@
 }
 
 .section-pay-type .section-pay-type-title svg {
-  color: #D11E36;
+  color: #CF0A2C;
 }
 
 .section-pay-type p {
@@ -95,7 +130,7 @@
 
 .section-pay-send {
   padding: 20px;
-  border-top: 1px solid #9F9F9F;
+  border-top: 0.5px solid #9F9F9F;
 }
 
 .section-pay-send .section-pay-send-title {
@@ -110,7 +145,7 @@
 }
 
 .section-pay-send .section-pay-send-title svg {
-  color: #D11E36;
+  color: #CF0A2C;
 }
 
 .section-pay-send .section-pay-send-subtitle {
@@ -119,7 +154,7 @@
   -ms-grid-columns: auto 1fr;
       grid-template-columns: auto 1fr;
   grid-gap: 15px;
-  color: #D11E36;
+  color: #CF0A2C;
   font-size: 15px;
 }
 
@@ -140,7 +175,7 @@
 }
 
 .section-pay-wrap-seller {
-  border-top: 1px solid #9F9F9F;
+  border-top: 0.5px solid #9F9F9F;
   padding: 20px;
 }
 

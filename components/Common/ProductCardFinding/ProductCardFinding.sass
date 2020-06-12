@@ -4,3 +4,40 @@
         display: grid
         grid-template-columns: repeat(5,1fr)
         grid-gap: 20px
+
+@media(min-width:1100px)
+    .product-card-finding
+        .content-product-card-finding
+            grid-template-columns: repeat(6,1fr)
+            
+
+
+@media(max-width:700px)
+    .product-card-finding
+        padding: 0 15px;
+        width: auto;
+        .slider-movil
+            position: relative
+            min-height: 260px
+            width: 100%
+            .content-product-card-finding
+                grid-template-columns: auto
+                display: -webkit-inline-box
+                position: absolute
+                top: 0
+                left: 0
+                right: 0
+                bottom: 0
+                overflow: auto
+                height: min-content;
+                .producto-card
+                    width: 33%
+                    display: block
+                    margin: 0% 1.5%;
+                    min-width: 140px
+                    padding: 20px 0px 0
+
+
+
+    
+    

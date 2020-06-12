@@ -1,3 +1,7 @@
+.billing-page {
+  padding: 15px;
+}
+
 .account-purchase-title {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -25,32 +29,21 @@
 }
 
 .account-purchase-wrap-content {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr auto;
+      grid-template-columns: 1fr auto;
+}
+
+.account-purchase-wrap-content-picture {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr auto;
+      grid-template-columns: 1fr auto;
 }
 
 .account-purchase-wrap-img {
   margin-right: 10px;
-}
-
-.account-purchase-wrap-info {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
 }
 
 .account-purchase-wrap-info p:nth-child(2) {
@@ -62,19 +55,7 @@
 }
 
 .account-purchase-wrap-info-seller {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  text-align: right;
 }
 
 .account-purchase-wrap-info-seller h4 {
@@ -86,6 +67,29 @@
 }
 
 .account-purchase-wrap-info-seller p:nth-child(1), .account-purchase-wrap-info-seller p:nth-last-child(1) {
-  color: #d11e36;
+  color: #CF0A2C;
+}
+
+@media (min-width: 600px) {
+  .account-purchase-wrap-content-picture {
+    -ms-grid-columns: auto 1fr;
+        grid-template-columns: auto 1fr;
+  }
+}
+
+@media (max-width: 380px) {
+  .account-purchase-wrap-content {
+    -ms-grid-columns: auto;
+        grid-template-columns: auto;
+  }
+  .account-purchase-wrap-content .account-purchase-wrap-img {
+    max-width: 150px;
+  }
+  .account-purchase-wrap-content .account-purchase-wrap-img img {
+    width: 100%;
+  }
+  .account-purchase-wrap-content .account-purchase-wrap-info-seller {
+    text-align: left;
+  }
 }
 /*# sourceMappingURL=AccountPurchase.css.map */

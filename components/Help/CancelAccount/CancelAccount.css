@@ -1,0 +1,111 @@
+.cancel-account-top {
+  padding: 60px 0px;
+  color: #717171;
+  background: #FFFFFF;
+  -webkit-box-shadow: 0px 3px 6px #00000029;
+          box-shadow: 0px 3px 6px #00000029;
+}
+
+.cancel-account-top .cancel-account-bar {
+  margin: auto;
+  width: 80%;
+}
+
+.cancel-account-top .cancel-account-bar .back-btn a {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (auto)[2];
+      grid-template-columns: repeat(2, auto);
+  grid-gap: 15px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  color: #CF0A2C;
+}
+
+.cancel-account-top .cancel-account-bar h2 {
+  margin: 40px auto 0px auto;
+  width: 70%;
+}
+
+.cancel-account-content {
+  margin: auto;
+  padding: 40px;
+  width: 50%;
+  min-height: 50vh;
+}
+
+.cancel-account-content .cancel-account-box {
+  padding: 20px 40px;
+  color: #717171;
+  background: #FFFFFF;
+  border: 1px solid #717171;
+  border-radius: 5px;
+}
+
+.cancel-account-content .cancel-account-box h3 {
+  margin-bottom: 20px;
+}
+
+.cancel-account-content .cancel-account-box .cancel-account-checkbox {
+  margin: 20px auto;
+  width: 80%;
+}
+
+.cancel-account-content .cancel-account-box .cancel-account-checkbox label {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto 1fr;
+      grid-template-columns: auto 1fr;
+  grid-gap: 15px;
+  margin: 5px 0px;
+}
+
+.cancel-account-content .cancel-account-box .cancel-account-checkbox label input {
+  margin: 0px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.cancel-account-content .cancel-account-box .cancel-account-textarea {
+  margin: auto;
+  width: 70%;
+}
+
+.cancel-account-content .cancel-account-box .cancel-account-textarea textarea {
+  margin-top: 15px;
+  max-width: 100%;
+  min-width: 100%;
+  min-height: 100px;
+}
+
+.cancel-account-content .cancel-account-box .cancel-account-box-btn {
+  margin-top: 20px;
+}
+
+.cancel-account-content .cancel-account-box .cancel-account-box-btn button {
+  color: #fff;
+}
+
+@media (max-width: 700px) {
+  .cancel-account-top {
+    padding: 15px;
+  }
+  .cancel-account-top .cancel-account-bar {
+    width: auto;
+  }
+  .cancel-account-top .cancel-account-bar h2 {
+    margin: 15px auto 0px 27px;
+    width: auto;
+  }
+  .cancel-account-content {
+    margin: auto;
+    padding: 15px;
+    width: auto;
+  }
+  .cancel-account-content .cancel-account-box {
+    padding: 15px;
+  }
+}
+/*# sourceMappingURL=CancelAccount.css.map */

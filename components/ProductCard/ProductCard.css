@@ -1,11 +1,8 @@
 .producto-card {
   padding: 20px 0px;
-<<<<<<< HEAD
-  width: 220px;
-=======
+  padding-bottom: 0;
   width: 100%;
-  min-width: 220px;
->>>>>>> Jorge
+  width: 100%;
   background-color: #FFFFFF;
   -webkit-box-shadow: 0px 3px 3px #00000029;
           box-shadow: 0px 3px 3px #00000029;
@@ -15,11 +12,13 @@
 .producto-card .product-card-img {
   padding-bottom: 20px;
   border-bottom: 1px solid #F2F2F2;
+  height: 140px;
 }
 
 .producto-card .product-card-img img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  min-height: 118px;
 }
 
 .producto-card button {
@@ -27,15 +26,21 @@
   top: -20px;
   right: 10px;
   float: right;
-  width: auto;
-  color: #DF1616;
+  width: auto !important;
+  height: auto !important;
+  color: #CF0A2C;
   font-size: 11px;
   background-color: #fff;
   border: 1px solid #F2F2F2;
+  min-width: initial !important;
 }
 
 .producto-card h3 {
   padding: 15px;
-  font-weight: lighter;
+  white-space: nowrap;
+  margin-top: 20px;
+  color: #545454;
+  font-size: 15px;
+  font-family: 'Open Sans', sans-serif;
 }
 /*# sourceMappingURL=ProductCard.css.map */

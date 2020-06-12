@@ -12,37 +12,60 @@ class DataSheet extends Component {
             etiqueta, envase o usando las especificaciones del fabricante
           </h4>
         </div>
-        <form className="data-sheet-wrap-form">
+        <div className="data-sheet-wrap-form">
           <div className="data-sheet-wrap-section-form">
             <div className="data-sheet-item-form">
-              <input placeholder="Marca" />
+              <input name="brand" placeholder="Marca" onChange={(e) => { this.props.call("brand",e); }}/>
             </div>
             <div className="data-sheet-item-form">
-              <input placeholder="Material" />
+              <input name="material" placeholder="Material"  onChange={(e) => { this.props.call("material",e); }}/>
             </div>
             <div className="data-sheet-item-form">
-              <input placeholder="Modelo" />
+              <input name="model" placeholder="Modelo" onChange={(e) => { this.props.call("model",e); }}/>
             </div>
           </div>
           <div className="data-sheet-wrap-section-form">
             <div className="data-sheet-item-form">
-              <input placeholder="Ancho" />
-              <select>
-                <option>CM</option>
+              <input name="width" placeholder="Ancho" onChange={(e) => { this.props.call("width",e); }}/>
+              <select name="width_type">
+                <option>mm</option>
+                <option>cm</option>
+                <option>Ft</option>
+                <option>Mt</option>
               </select>
             </div>
+
             <div className="data-sheet-item-form">
-              <input placeholder="Largo" />
-              <select>
-                <option>CM</option>
+              <input name="height" placeholder="Alto" onChange={(e) => { this.props.call("height",e); }}/>
+              <select name="height_type">
+                <option>mm</option>
+                <option>cm</option>
+                <option>Ft</option>
+                <option>Mt</option>
               </select>
             </div>
+
             <div className="data-sheet-item-form">
-              <button>cancelar</button>
-              <button>confirmar</button>
+              <input name="long" placeholder="Largo" onChange={(e) => { this.props.call("long",e); }}/>
+              <select name="long_type">
+                <option>mm</option>
+                <option>cm</option>
+                <option>Ft</option>
+                <option>Mt</option>
+              </select>
             </div>
+
+            <div className="data-sheet-item-form">
+              <input name="weight" placeholder="Peso" onChange={(e) => { this.props.call("weight",e); }}/>
+              <select name="weight_type">
+                <option>Gr</option>
+                <option>Kg</option>
+                <option>Tn</option>
+              </select>
+            </div>
+
           </div>
-        </form>
+        </div>
       </Accordion>
     );
   }

@@ -1,0 +1,80 @@
+.product-item-edit
+    padding: 20px
+    width: auto
+    background-color: #FFFFFF
+    box-shadow: 0px 3px 3px #00000029
+    border-radius: 6px
+    height: fit-content;
+    margin: 20px 
+    &.off
+        background: transparent !important
+        box-shadow: 0px 3px 3px #00000087
+    .content
+        display: grid
+        grid-template-columns: 80% 1fr
+        grid-gap: 15px
+    .actions
+        display: grid    
+        .edit
+            margin: 0 0 auto auto
+        .delete
+            margin: auto 0 0 auto
+        .main-button
+            color: white !important
+            border-radius: 5px
+        a
+            color:  #CF0A2C
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%
+    .product
+        display: grid
+        grid-template-columns: auto 1fr
+        .product-card-img
+        img
+            max-width: 150px
+            height: auto
+            max-height: 84px
+        .description
+            align-self: end;
+            h3
+                padding: 0 0 0 15px
+                font-weight: bold
+                font-size: 15px
+                color:  #717171
+            p
+                padding: 0 15px
+                strong
+                    color:  #CF0A2C
+                    text-transform: capitalize;
+                    margin-left: 5px;
+    .info
+        text-align: right;
+
+    
+@media (max-width:700px)
+    .product-item-edit 
+        width: auto
+        padding: 15px
+        .content
+            padding: 0
+            grid-template-columns: auto;
+            .description
+                h3
+                    white-space: initial !important;
+            .actions
+                a
+                    width: 80% !important
+                    margin:  7.5px auto!important
+                   
+
+
+@media (max-width:375px)
+    .product-item-edit 
+        width: 80%;
+        padding: 15px;
+        margin: 15px auto;
+        .content
+            padding: 0 
+                

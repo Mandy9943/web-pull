@@ -1,13 +1,58 @@
 .account-summary-title
-    margin-bottom: 20px
+    margin-bottom: 30px
+    color: #393838
 .account-summary-wrap-items
-    margin-left: 10px
-    margin-bottom: 20px
+    margin-bottom: 30px
+    .question
+        padding: 20px
+        font-size: 16px
+        color: #393838
+        .item-question
+            display: grid
+            grid-template-columns: auto 1fr
+            grid-gap: 15px
+            margin-top: 15px
+            img
+                height: 49px
+                width: 57px
+                border-radius: 50%
+            .text
+                display: grid
+                .title
+                    color: #393838
+                    white-space: nowrap
+                    text-overflow: ellipsis
+                    overflow: hidden
+                .responses
+                    color: #CF0A2C
 .account-summary-item-title
-    border-bottom: 1px solid grey
+    border-bottom: 0.5px dashed #999999
+    color: #393838
     padding-bottom: 7px
     margin-bottom: 7px
+    font-size: 17px
+    svg
+        color: #6F6F6F
+        width: 20px !important
+        height: 20px
+        margin-right: 7px
 .account-summary-item
     color: grey
+    .Count
+        background: #6F6F6F;
+        color: white;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 7px
+        font-size: 13px;
 .account-summary-wrap
-    padding: 0px 20px
+    padding: 20px
+    padding-top: 42px
+
+@media (max-width: 700px)
+    .account-summary-wrap
+        padding-top: 20px

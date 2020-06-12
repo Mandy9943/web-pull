@@ -1,0 +1,117 @@
+.summary-content {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: auto 1fr auto;
+      grid-template-rows: auto 1fr auto;
+  height: 100%;
+}
+
+.summary-content p {
+  color: #717171;
+}
+
+.summary-content .user-account-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto 1fr;
+      grid-template-columns: auto 1fr;
+  margin: auto;
+  width: 80%;
+  height: 100%;
+}
+
+.summary-content .user-account-container .user-account-menu {
+  padding: 40px 20px;
+}
+
+.summary-content .user-account-container .user-account-menu h3 {
+  color: #717171;
+}
+
+.summary-content .user-account-container .user-account-menu .user-account-menu-item {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto auto;
+      grid-template-columns: auto auto auto;
+  grid-gap: 10px;
+  margin-bottom: 40px;
+  cursor: pointer;
+}
+
+.summary-content .user-account-container .user-account-menu .user-account-menu-item .user-account-accordion {
+  display: none;
+}
+
+.summary-content .user-account-container .user-account-menu .user-account-menu-item .user-account-accordion p {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.summary-content .user-account-container .user-account-menu .user-account-menu-item.active .user-account-menu-icon {
+  color: #CF0A2C;
+}
+
+.summary-content .user-account-container .user-account-menu .user-account-menu-item.active .user-account-accordion {
+  display: block;
+}
+
+.summary-content .user-account-container .summary {
+  padding: 40px;
+  background-color: #EBEBEB;
+}
+
+.summary-content .user-account-container .summary .items {
+  margin-top: 30px;
+}
+
+.summary-content .user-account-container .summary .items .title {
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  border-bottom: 0.5px dashed #9E9E9E;
+}
+
+.modal-actions {
+  grid-gap: 15px !important;
+}
+
+@media (min-width: 700px) {
+  .user-account-menu {
+    padding: 40px 20px !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .summary-content .user-account-container {
+    width: 100%;
+    position: relative;
+    -ms-grid-columns: auto;
+        grid-template-columns: auto;
+  }
+  .summary-content .user-account-container .user-account-content {
+    padding: 0;
+  }
+  .summary-content .user-account-container .user-account-content h2 {
+    margin: 15px 15px 30px;
+  }
+  .summary-content .user-account-container .user-account-content .user-acount-info {
+    width: 90%;
+    margin: 15px auto;
+  }
+  .summary-content .user-account-container .user-account-content .user-accunt-info-box .user-accunt-info-tab.user-accunt-info-address p:first-child {
+    padding: 30px;
+  }
+  .summary-content .user-account-container .user-account-menu {
+    background: #F2F2F2;
+    position: fixed;
+    width: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    overflow-x: hidden;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    padding: 0;
+  }
+}
+/*# sourceMappingURL=Summary.css.map */

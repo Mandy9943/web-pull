@@ -1,0 +1,117 @@
+.shipping-error-top {
+  padding: 60px 0px;
+  color: #717171;
+  background: #FFFFFF;
+  -webkit-box-shadow: 0px 3px 6px #00000029;
+          box-shadow: 0px 3px 6px #00000029;
+}
+
+.shipping-error-top .shipping-error-bar {
+  margin: auto;
+  width: 80%;
+}
+
+.shipping-error-top .shipping-error-bar .back-btn a {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (auto)[2];
+      grid-template-columns: repeat(2, auto);
+  grid-gap: 15px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  color: #CF0A2C;
+}
+
+.shipping-error-top .shipping-error-bar h2 {
+  margin: 40px auto 0px auto;
+  width: 70%;
+}
+
+.shipping-error-content {
+  margin: auto;
+  padding: 40px;
+  width: 50%;
+  min-height: 50vh;
+}
+
+.shipping-error-content .shipping-error-box {
+  padding: 20px 40px;
+  color: #717171;
+  background: #FFFFFF;
+  border: 1px solid #717171;
+  border-radius: 5px;
+}
+
+.shipping-error-content .shipping-error-box .shipping-error-box-text p {
+  margin: 30px 0px;
+}
+
+.shipping-error-content .shipping-error-box .shipping-error-box-text a {
+  color: #CF0A2C;
+}
+
+.shipping-error-content .shipping-error-box .shipping-error-box-btns {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 7px;
+  margin: 20px 0px;
+}
+
+.shipping-error-content .shipping-error-box .shipping-error-box-btns button {
+  margin: 0px;
+  color: #fff;
+  padding: 15px 5px;
+  width: 100%;
+}
+
+.shipping-error-content .shipping-error-box .shipping-error-box-btns button p {
+  text-align: center;
+  width: 100%;
+}
+
+.shipping-error-content .shipping-error-box .shipping-error-box-btns button:last-child {
+  color: #CF0A2C;
+  background-color: #fff;
+  border: 1px solid #CF0A2C;
+}
+
+@media (max-width: 700px) {
+  .shipping-error-top {
+    padding: 15px;
+  }
+  .shipping-error-top .shipping-error-bar {
+    width: auto;
+  }
+  .shipping-error-top .shipping-error-bar .back-btn a {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (auto)[2];
+        grid-template-columns: repeat(2, auto);
+    grid-gap: 15px;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    color: #CF0A2C;
+  }
+  .shipping-error-top .shipping-error-bar h2 {
+    margin: 15px auto 0px 27px;
+  }
+  .shipping-error-content {
+    width: auto;
+    padding: 15px;
+    height: auto;
+  }
+  .shipping-error-content .shipping-error-box {
+    padding: 15px;
+  }
+  .shipping-error-content .shipping-error-box .shipping-error-box-btns {
+    -ms-grid-columns: auto;
+        grid-template-columns: auto;
+    -ms-grid-rows: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+  }
+}
+/*# sourceMappingURL=ShippingError.css.map */

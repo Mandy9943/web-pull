@@ -11,6 +11,10 @@
   font-weight: lighter;
 }
 
+.container-payment-way .only-movil {
+  display: none !important;
+}
+
 .content-payment-way {
   display: -ms-grid;
   display: grid;

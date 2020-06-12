@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import Link from "next/link";
-<<<<<<< HEAD
-=======
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faDog,
@@ -19,199 +17,159 @@ import {
     faDrum,
     faCar
 } from "@fortawesome/free-solid-svg-icons";
->>>>>>> Jorge
 import "./CategoriesImgMenu.css";
+import Button from "../Common/Button/Button";
+
 
 export default class CategoriesImgMenu extends Component {
     render() {
         return (
             <div className="categories-img-menu">
-                <h2 className="home-section-title">Encuentra los mejores productos de Electrónica</h2>
+                <h2 className="home-section-title">Categorías populares</h2>
                 <div className="content-categories-img-menu">
-                    <Link href="#">
+                    <Link href="/categoria/Animales y Mascotas">
                         <a className="categories-img">
-                            <div>
-<<<<<<< HEAD
-=======
+                            <div className="item">
                                 <p className="categories-menu-icon">
                                     <FontAwesomeIcon icon={faDog} />
                                 </p>
->>>>>>> Jorge
                                 <p>Animales y Mascotas</p>
                             </div>
                         </a>
                     </Link>
-                    <Link href="#">
+                    <Link href="/categoria/Bebés">
                         <a className="categories-img">
-                            <div>
-<<<<<<< HEAD
-=======
+                        <div className="item">
                                 <p className="categories-menu-icon">
                                     <FontAwesomeIcon icon={faBabyCarriage} />
                                 </p>
->>>>>>> Jorge
                                 <p>Bebés</p>
                             </div>
                         </a>
                     </Link>
-                    <Link href="#">
+                    <Link href="/categoria/Cámaras y Accesorios">
                         <a className="categories-img">
-                            <div>
-<<<<<<< HEAD
-=======
+                        <div className="item">
                                 <p className="categories-menu-icon">
                                     <FontAwesomeIcon icon={faCameraRetro} />
                                 </p>
->>>>>>> Jorge
                                 <p>Cámaras y Accesorios</p>
                             </div>
                         </a>
                     </Link>
-                    <Link href="#">
+                    <Link href="/categoria/Hogar y Muebles">
                         <a className="categories-img">
-                            <div>
-<<<<<<< HEAD
-=======
+                        <div className="item">
                                 <p className="categories-menu-icon">
                                     <FontAwesomeIcon icon={faChair} />
                                 </p>
->>>>>>> Jorge
                                 <p>Hogar y Muebles</p>
                             </div>
                         </a>
                     </Link>
-                    <Link href="#">
-                        <a className="categories-img">
-                            <div>
-<<<<<<< HEAD
-=======
+                    <Link href="/categoria/Salud">
+                        <a className="categories-img no-movil">
+                        <div className="item">
                                 <p className="categories-menu-icon">
                                     <FontAwesomeIcon icon={faFemale} />
                                 </p>
->>>>>>> Jorge
                                 <p>Salud</p>
                             </div>
                         </a>
                     </Link>
-                    <Link href="#">
-                        <a className="categories-img">
-                            <div>
-<<<<<<< HEAD
-=======
+                    <Link href="/categoria/Industrias y Ofocinas">
+                        <a className="categories-img no-movil">
+                        <div className="item">
                                 <p className="categories-menu-icon">
                                     <FontAwesomeIcon icon={faBriefcase} />
                                 </p>
->>>>>>> Jorge
                                 <p>Industrias y Ofocinas</p>
                             </div>
                         </a>
                     </Link>
-                    <Link href="#">
-                        <a className="categories-img">
-                            <div>
-<<<<<<< HEAD
-=======
+                    <Link href="/categoria/Celulares y Teléfonos">
+                        <a className="categories-img no-movil">
+                        <div className="item">
                                 <p className="categories-menu-icon">
                                     <FontAwesomeIcon icon={faMobileAlt} />
                                 </p>
->>>>>>> Jorge
                                 <p>Celulares y Teléfonos</p>
                             </div>
                         </a>
                     </Link>
                     {/*----------------------------- DIVISION ---------------------------*/}
-                    <Link href="#">
-                        <a className="categories-img">
-                            <div>
-<<<<<<< HEAD
-=======
+                    <Link href="/categoria/Electrónica">
+                        <a className="categories-img no-movil">
+                        <div className="item">
                                 <p className="categories-menu-icon">
                                     <FontAwesomeIcon icon={faHeadphones} />
                                 </p>
->>>>>>> Jorge
                                 <p>Electrónica</p>
                             </div>
                         </a>
                     </Link>
-                    <Link href="#">
-                        <a className="categories-img">
-                            <div>
-<<<<<<< HEAD
-=======
+                    <Link href="/categoria/Deportes y Fitness">
+                        <a className="categories-img no-movil">
+                        <div className="item">
                                 <p className="categories-menu-icon">
                                     <FontAwesomeIcon icon={faFutbol} />
                                 </p>
->>>>>>> Jorge
                                 <p>Deportes y Fitness</p>
                             </div>
                         </a>
                     </Link>
-                    <Link href="#">
-                        <a className="categories-img">
-                            <div>
-<<<<<<< HEAD
-=======
+                    <Link href="/categoria/Consolas y Videojuegos">
+                        <a className="categories-img no-movil">
+                        <div className="item">
                                 <p className="categories-menu-icon">
                                     <FontAwesomeIcon icon={faGamepad} />
                                 </p>
->>>>>>> Jorge
                                 <p>Consolas y Videojuegos</p>
                             </div>
                         </a>
                     </Link>
-                    <Link href="#">
-                        <a className="categories-img">
-                            <div>
-<<<<<<< HEAD
-=======
+                    <Link href="/categoria/Computación">
+                        <a className="categories-img no-movil">
+                        <div className="item">
                                 <p className="categories-menu-icon">
                                     <FontAwesomeIcon icon={faDesktop} />
                                 </p>
->>>>>>> Jorge
                                 <p>Computación</p>
                             </div>
                         </a>
                     </Link>
-                    <Link href="#">
-                        <a className="categories-img">
-                            <div>
-<<<<<<< HEAD
-=======
+                    <Link href="/categoria/Juegos y Juguetes">
+                        <a className="categories-img no-movil">
+                        <div className="item">
                                 <p className="categories-menu-icon">
                                     <FontAwesomeIcon icon={faDice} />
                                 </p>
->>>>>>> Jorge
                                 <p>Juegos y Juguetes</p>
                             </div>
                         </a>
                     </Link>
-                    <Link href="#">
-                        <a className="categories-img">
-                            <div>
-<<<<<<< HEAD
-=======
+                    <Link href="/categoria/Instrumentos Musicales">
+                        <a className="categories-img no-movil">
+                        <div className="item">
                                 <p className="categories-menu-icon">
                                     <FontAwesomeIcon icon={faDrum} />
                                 </p>
->>>>>>> Jorge
                                 <p>Instrumentos Musicales</p>
                             </div>
                         </a>
                     </Link>
-                    <Link href="#">
-                        <a className="categories-img">
-                            <div>
-<<<<<<< HEAD
-=======
+                    <Link href="/categoria/Accesorios para Vehiculos">
+                        <a className="categories-img no-movil">
+                        <div className="item">
                                 <p className="categories-menu-icon">
                                     <FontAwesomeIcon icon={faCar} />
                                 </p>
->>>>>>> Jorge
                                 <p>Accesorios para Vehiculos</p>
                             </div>
                         </a>
                     </Link>
                 </div>
+                <Button className="show-more" text={"ver mas"}/>
             </div>
         )
     }

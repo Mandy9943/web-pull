@@ -1,7 +1,10 @@
 .footer
     padding: 20px
     width: calc(100% - 40px)
-    background-color: #D11E36
+    background-color: #CF0A2C
+    .footer-movil
+            display: none
+
 
 .footer-content
     display: grid
@@ -15,7 +18,6 @@
     align-self: center
     ul
         display: flex
-        //justify-content: space-between
         margin-top: 20px
         a
             margin-right: 20px
@@ -33,7 +35,34 @@
         border-radius: 12px
         img.phone-img
             float: left
+            height: 30px
         p
-            color: #D11E36
+            color: #CF0A2C
             font-size: 20px
             align-self: center
+
+@media(max-width:700px)
+    .footer
+        padding: 0px 20px 20px 20px !important
+        .footer-content
+            display: none
+        .footer-movil
+            display: grid !important
+            grid-template-columns: auto
+            grid-template-rows: 1fr 1fr
+            width: auto
+            .footer-download
+                margin: auto
+            .footer-tex ul
+                margin-top: 15px
+                display: grid
+                grid-template-columns: 1fr 1fr
+                a
+                    font-size: 15px
+                    margin-bottom: 15px
+                p                    
+                    font-size: 15px
+
+
+
+

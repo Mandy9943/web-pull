@@ -94,7 +94,7 @@ class AccountStoreQuestions extends Component {
         </div>
         <div className="response-modal-wrap-button">
           <button type="button">responder</button>
-          <button type="button" onClick={this.toggleModal}>
+          <button className="cancel-btn" type="button" onClick={this.toggleModal}>
             cancelar
           </button>
         </div>

@@ -1,0 +1,59 @@
+.how-to-pay-container
+    margin: auto
+    padding: 40px 20px
+    width: 80%
+    .back-btn
+        a
+            display: grid
+            grid-template-columns: repeat(2,auto)
+            grid-gap: 15px
+            width: fit-content
+            color: #CF0A2C
+    .how-to-pay-content
+        margin: auto
+        padding: 40px
+        width: 70%
+        h2
+            margin-bottom: 20px
+            color: #717171
+        .how-to-pay-box
+            padding: 40px
+            color: #717171
+            background: #FFFFFF
+            box-shadow: 0px 3px 6px #00000029
+            border-radius: 15px
+            .how-to-pay-box-content
+                p
+                    margin: 20px 0px
+                h4
+                    font-weight: 600
+                .how-to-pay-ways
+                    display: grid
+                    grid-template-columns: repeat(2,1fr)
+                    grid-template-rows: repeat(3,1fr)
+                    grid-gap: 15px
+                    margin: 20px auto
+                    width: 60%
+                    text-align: center
+                    border: 1px solid #F2F2F2
+                    img
+                        width: 100%
+            button
+                margin-top: 40px
+                color: #fff
+
+@media (max-width:700px)
+    .how-to-pay-container
+        padding: 15px
+        width: auto
+        .how-to-pay-content
+            width: auto
+            padding: 0
+            h2
+                margin-left: 23px
+            .how-to-pay-box
+                padding: 15px
+                .how-to-pay-ways
+                    width: auto !important
+                    grid-template-columns: auto !important  
+

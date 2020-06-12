@@ -1,0 +1,94 @@
+.seller-reputation-container {
+  margin: auto;
+  padding: 40px;
+  width: 80%;
+}
+
+.seller-reputation-container .back-btn a {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (auto)[2];
+      grid-template-columns: repeat(2, auto);
+  grid-gap: 15px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  color: #CF0A2C;
+}
+
+.seller-reputation-container .seller-reputation-content {
+  margin: auto;
+  padding: 40px;
+  width: 70%;
+}
+
+.seller-reputation-container .seller-reputation-content h2 {
+  margin-bottom: 20px;
+  color: #717171;
+}
+
+.seller-reputation-container .seller-reputation-content .seller-reputation-box {
+  padding: 20px 40px;
+  color: #717171;
+  background: #FFFFFF;
+  -webkit-box-shadow: 0px 3px 6px #00000029;
+          box-shadow: 0px 3px 6px #00000029;
+  border-radius: 15px;
+}
+
+.seller-reputation-container .seller-reputation-content .seller-reputation-box p {
+  margin: 20px 0px;
+}
+
+.seller-reputation-container .seller-reputation-content .seller-reputation-box h4 {
+  font-weight: 600;
+}
+
+.seller-reputation-container .seller-reputation-content .seller-reputation-box .seller-reputations-qualification {
+  margin: auto;
+  max-width: 50%;
+}
+
+.seller-reputation-container .seller-reputation-content .seller-reputation-box .seller-reputations-qualification h4 {
+  text-align: center;
+}
+
+.seller-reputation-container .seller-reputation-content .seller-reputation-box .seller-reputations-qualification .seller-reputations-qualification-starts {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (auto)[5];
+      grid-template-columns: repeat(5, auto);
+  grid-gap: 15px;
+  margin: auto;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.seller-reputation-container .seller-reputation-content .seller-reputation-box .seller-reputations-qualification .seller-reputations-qualification-starts .seller-reputations-icon {
+  color: #3F7FE1;
+  font-size: 30px;
+}
+
+@media (max-width: 700px) {
+  .seller-reputation-container {
+    padding: 15px;
+    width: auto;
+  }
+  .seller-reputation-container .seller-reputation-content {
+    margin: auto;
+    padding: 0;
+    width: auto;
+  }
+  .seller-reputation-container .seller-reputation-content h2 {
+    margin: 15px auto 15px 20px;
+  }
+  .seller-reputation-container .seller-reputation-content .seller-reputation-box {
+    width: auto;
+    padding: 15px;
+  }
+  .seller-reputation-container .seller-reputation-content .seller-reputation-box .seller-reputations-qualification {
+    max-width: none;
+  }
+}
+/*# sourceMappingURL=SellerReputation.css.map */

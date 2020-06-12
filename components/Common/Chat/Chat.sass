@@ -4,6 +4,11 @@
     margin: 0px 20px
     margin-right: 250px
     position: relative
+    border-radius: 5px
+    font-weight: bold
+    padding-bottom: 25px
+    .hours
+        left: 18px
 .chat-msg-in::before
     content: ""
     width: 0px
@@ -18,7 +23,13 @@
     padding: 20px
     margin: 0px 20px
     margin-left: 250px
+    border-radius: 5px
     position: relative
+    text-align: right
+    font-weight: bold
+    padding-bottom: 25px
+    .hours
+        right: 18px
 .chat-msg-out::after
     content: ""
     width: 0px
@@ -38,15 +49,36 @@
     justify-content: flex-end
 .chat-wrap
     background: white
-    padding-top: 20px
+    border-radius: 5px
+    border: 1px solid #c5c5c5
+    width: 80%
+    margin: auto
+    display: grid
+    grid-template-rows: auto 1fr auto
+    height: 65vh
+    h5
+        padding: 15px
+        font-weight: bold
+        background: #CF0A2C 
+        color: white
+        border-radius: 5px 5px 0px 0px
+.msg
+    overflow-y: scroll;
+.chat-wrap-none
+        text-align: center
+        margin: 15px
+        font-size: 15px
+        color: #565555
 .chat-input
     background: white
     display: flex
     justify-content: space-between
     border-top: 1px solid #c5c5c5
     padding: 20px
+    border-radius: 0 0 5px 
     input
         margin: 0px
+        border: 1px solid #c5c5c5
 .chat-wrap-button
     display: flex
     label
@@ -57,10 +89,34 @@
         padding: 10px
         border-radius: 5px
         margin: 0px 10px
-        color: #D11E36
-        border: 1px solid grey
+        color: #CF0A2C
+        border: 1px solid #c5c5c5
         cursor: pointer
     button
         background: #E9E8E8
-        border: 1px solid grey
+        border: 1px solid #c5c5c5
         margin: 0px
+
+.chat-msg-none
+    .hours
+        display: none
+
+.hours
+        position: absolute
+        bottom: -17px
+        font-size: 12px
+        font-weight: bold
+        color: #565555
+
+@media (max-width:550px)
+    .chat-wrap
+        width: 90%
+        margin: auto
+        height: auto
+        overflow: inherit
+        margin: 15px auto
+        height: auto
+    .chat-msg-in
+        margin-right: 50px
+    .chat-msg-out
+            margin-left: 50px

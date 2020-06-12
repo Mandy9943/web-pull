@@ -1,8 +1,16 @@
+.forgot-component {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: auto 1fr auto;
+      grid-template-rows: auto 1fr auto;
+  height: 100vh;
+}
+
 .forgot-pass {
-  margin: 80px auto 42vh auto;
+  margin: auto;
   padding: 6vh 3vw;
   width: 17vw;
-  min-width: 325px;
+  min-width: 320px;
   color: #929292;
   background-color: #fff;
   border-radius: 20px;
@@ -12,12 +20,17 @@
 
 .forgot-pass p.forgot-pass-text {
   font-size: 14px;
+  margin-bottom: 30px;
 }
 
 .forgot-pass h1 {
-  font-size: 28;
+  font-size: 26px;
   text-align: center;
   font-weight: lighter;
+}
+
+.forgot-pass .main-button p {
+  padding: 0 !important;
 }
 
 .forgot-pass-content {
@@ -26,7 +39,7 @@
 }
 
 .forgot-pass-text {
-  margin-top: 20px;
+  margin-top: 30px;
   line-height: 20px;
   text-align: center;
 }
@@ -53,5 +66,31 @@
 .input::placeholder {
   color: #929292;
   text-align: center;
+}
+
+@media (max-width: 700px) {
+  .forgot-component {
+    background-color: #fff !important;
+  }
+  .forgot-component .forgot-pass {
+    border-radius: inherit !important;
+    padding: 15px !important;
+    -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+    margin: 7vh auto 7vh auto !important;
+    min-width: 280px;
+  }
+  .forgot-component .forgot-pass h1 {
+    margin: auto;
+  }
+  .forgot-component .footer {
+    display: none;
+  }
+}
+
+@media (max-height: 700px) and (min-width: 700px) {
+  .forgot-pass {
+    margin: 80px auto 80px auto;
+  }
 }
 /*# sourceMappingURL=ForgotPass.css.map */

@@ -13,6 +13,8 @@ import {
     faAngleDown
 } from "@fortawesome/free-solid-svg-icons";
 import "./Help.css";
+import "./HelpTips.css";
+
 
 export default class Help extends Component {
     constructor(props) {
@@ -31,6 +33,10 @@ export default class Help extends Component {
             helpIconSecurity: faAngleRight,
             helpIconAccount: faAngleRight,
             //iconOpen: faAngleDown
+            closeBuyHelp: true,
+            accordionBuyHelpTitle: true,
+            closeAskInPost: true,
+            accordionAskInPostTitle: true,
         }
     }
     accordionBuy = () => {
@@ -48,6 +54,18 @@ export default class Help extends Component {
                 helpIconBuy: faAngleRight
             })
         }
+    }
+    accordionBuyHelp = () => {
+        this.setState({
+            closeBuyHelp: !this.state.closeBuyHelp,
+            accordionBuyHelpTitle: !this.state.accordionBuyHelpTitle,
+        });
+    }
+    accordionAskInPost = () => {
+        this.setState({
+            closeAskInPost: !this.state.closeAskInPost,
+            accordionAskInPostTitle: !this.state.accordionAskInPostTitle,
+        });
     }
     accordionSecurity = () => {
         this.setState({
@@ -97,6 +115,7 @@ export default class Help extends Component {
                     </div>
                 </div>
                 <div className="content-help">
+                    {/*
                     <div className="help-left">
                         <Link href="#">
                             <a className="help-button">
@@ -130,7 +149,28 @@ export default class Help extends Component {
                                 <p>Seguridad</p>
                             </a>
                         </Link>
+                    </div> 
+                    */}
+
+                    <div className="help-tip-1">
+                            <p>En el momento que tengas el producto, puedes dejar un comentario al vendedor, este se mostrara en su perfil.
+                                La forma de realizar este comentario depende como hayas recibido el producto.
+                            </p>
+                            <h5>A traves de Kiero Envios</h5>
+                            <p>En esta opicion encontraras en el menu de listado de compras alli podras opinar sobre el vendedor</p>
+                            <h5>Entrega acordada</h5>
+                            <p>Si acordaste la entrega perosnalemente con el vendor, o en su defecto uso una forma propia de envio te haremos llegar
+                                un email asi podremos asegurarnos de que recibiste el producto de forma correcta. Una vez confirmado el estado y experiencia
+                                de tu entrega podras dejar un comentario.
+                            </p>
+
+                            <button className="main-button">
+                                <p>
+                                    Ir al listado de compras
+                                </p>
+                            </button>
                     </div>
+                    
                     <div className="help-right">
                         <h5>Ayuda Kiero</h5>
                         <div className="help-accordion-title fisrt-element">
@@ -147,9 +187,40 @@ export default class Help extends Component {
                             </p>
                         </div>
                         <div className={this.state.closeBuy ? "help-accordion" : "help-accordion active"}>
-                            <p>Comprar</p>
+                            <p className={this.state.accordionBuyHelpTitle ? "help-buy-accordion-title" : "help-buy-accordion-title active"} onClick={() => this.accordionBuyHelp()}>Comprar</p>
+                            <div className={this.state.closeBuyHelp ? "help-buy-accordion" : "help-buy-accordion active"}>
+                                <Link href="/reputacion_de_vendedor">
+                                    <a>
+                                        <p>Como saber a quien comprarle</p>
+                                    </a>
+                                </Link>
+                                <Link href="/como_pagar">
+                                    <a>
+                                        <p>Como puedes pagar tu compra</p>
+                                    </a>
+                                </Link>
+                                <Link href="#">
+                                    <a>
+                                        <p>Como recibo mi compra</p>
+                                    </a>
+                                </Link>
+                                <Link href="#">
+                                    <a>
+                                        <p>Soluciuonar problemas en la compra</p>
+                                    </a>
+                                </Link>
+                                <Link href="#">
+                                    <a>
+                                        <p>Protección al comprador</p>
+                                    </a>
+                                </Link>
+                            </div>
                             <p>¿En qué momento debo opinar sobre el vendedor?</p>
-                            <p>Preguntar en publicaciones</p>
+                            <p className={this.state.accordionAskInPostTitle ? "ask-in-post-title" : "ask-in-post-title active"} onClick={() => this.accordionAskInPost()}>Preguntar en publicaciones</p>
+                                <div className={this.state.closeAskInPost ? "ask-in-post-accordion": "ask-in-post-accordion active"}>
+                                    <p>Han eliminado una pregunta que he realizado</p>
+                                    <p>No puedo efectuar una pregunta</p>
+                                </div>
                         </div>
                         <div className={this.state.accordionTitleSecurity ? "help-accordion-title" : "help-accordion-title active"} onClick={() => this.accordionSecurity()}>
                             <p>Seguridad</p>

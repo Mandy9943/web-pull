@@ -1,0 +1,49 @@
+.modify-category-container
+    margin: auto
+    padding: 40px
+    width: 80%
+    min-height: 70vh
+    color: #717171
+    .back-btn
+        a
+            display: grid
+            grid-template-columns: repeat(2,auto)
+            grid-gap: 15px
+            width: fit-content
+            color: #CF0A2C
+    h2
+        margin: 20px 0px
+    .modify-category-actual, .modify-category-select
+        margin-bottom: 40px
+        .modify-category-select-level
+            display: grid
+            grid-template-columns: repeat(4,1fr)
+            grid-gap: 15px
+
+.modify-category-box
+    padding: 10px
+    background: #FFFFFF
+    box-shadow: 0px 3px 6px #00000029
+    border-radius: 5px
+    p
+        color: #CF0A2C
+        font-size: 14px
+
+.modify-category-btn
+    display: grid
+    grid-template-columns: repeat(2,1fr)
+    grid-gap: 15px
+    button
+        margin: auto 0px auto auto
+        color: #fff
+    .modify-category-cancel-btn
+        align-self: center
+        a
+            float: left
+            color: #717171
+
+@media (max-width:700px)
+    .modify-category-container
+        width: auto
+        padding: 15px
+

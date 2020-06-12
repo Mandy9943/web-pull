@@ -1,0 +1,99 @@
+.nav-botton .wrap-modal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: fixed;
+  top: 50px;
+  left: 0px;
+  width: 100%;
+  height: calc(100vh - 50px);
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  z-index: 100;
+  color: #6D6D6D;
+  background: rgba(0, 0, 0, 0.68);
+}
+
+.nav-botton .wrap-modal .modal {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background: transparent;
+  max-width: initial;
+  margin-top: 15px;
+  padding: 0 !important;
+  width: 100%;
+}
+
+.nav-botton .wrap-modal .modal .header-modal, .nav-botton .wrap-modal .modal .footer-modal {
+  padding: 15px;
+  background: white;
+  margin: 0 15px 15px;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.nav-botton .wrap-modal .modal .header-modal .actions, .nav-botton .wrap-modal .modal .footer-modal .actions {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  margin-top: 15px;
+  grid-gap: 5px;
+}
+
+.nav-botton .wrap-modal .modal .header-modal .actions .main-button, .nav-botton .wrap-modal .modal .footer-modal .actions .main-button {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.nav-botton .wrap-modal .modal .footer-modal {
+  padding-top: 1px;
+}
+
+.nav-botton .wrap-modal .modal .footer-modal a {
+  color: #757575 !important;
+  margin-top: 15px;
+  display: block;
+  position: relative;
+}
+
+.nav-botton .wrap-modal .modal .footer-modal a p {
+  display: inline-block;
+  position: absolute;
+  top: 4px;
+  left: 30px;
+}
+
+.nav-botton .wrap-modal .modal .footer-modal a svg {
+  background: #757575;
+  border-radius: 50%;
+  padding: 4px;
+  width: 14px;
+  height: 14px;
+  color: white;
+}
+
+.nav-botton .wrap-modal .modal .footer-modal hr {
+  margin-top: 15px;
+  border-bottom: none;
+}
+
+@media (max-width: 370px) {
+  .nav-botton .wrap-modal .modal .header-modal .actions, .nav-botton .wrap-modal .modal .footer-modal .actions {
+    grid-gap: 15px;
+  }
+  .nav-botton .wrap-modal .modal .header-modal .actions .main-button, .nav-botton .wrap-modal .modal .footer-modal .actions .main-button {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=modal-home.css.map */

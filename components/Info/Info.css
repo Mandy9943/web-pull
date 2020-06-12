@@ -31,15 +31,24 @@
   font-size: 15px;
 }
 
-<<<<<<< HEAD
-=======
 .info-item .info-icon {
   color: #CF0A2C;
   font-size: 40px;
 }
 
->>>>>>> Jorge
 .info-item:nth-child(2) {
   margin: 0px 20px;
+}
+
+@media (max-width: 700px) {
+  .wrap-info-block .content-info-block {
+    width: auto;
+  }
+  .info-item {
+    margin: 0px 5px;
+  }
+  .only-desktop {
+    display: none;
+  }
 }
 /*# sourceMappingURL=Info.css.map */

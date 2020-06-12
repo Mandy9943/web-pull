@@ -1,0 +1,112 @@
+import React, { Component } from 'react';
+import Link from "next/link";
+import Modal from "../Common/Modal/Modal";
+import Button from "../Common/Button/Button";
+import Nav from "../Common/Nav/Nav";
+import Footer from "../Common/Footer/Footer";
+import UserAccount from '../../components/UserAccount/UserAccount';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faBars,
+    faListUl,
+    faMoneyBillWave,
+    faShoppingBag,
+    faCog,
+    faAngleRight,
+    faAngleDown
+} from "@fortawesome/free-solid-svg-icons";
+import "./Summary.css";
+import Sidebar from '../Sidebar/Sidebar';
+import Purchases from '../Purchases/Purchases';
+import AccountData from '../Account/AccountData';
+import AccountPurchase from '../Account/AccountPurchase';
+import AccountBilling from '../Account/AccountBilling';
+import AccountQuestions from "../Account/AccountQuestions";
+import AccountSummary from "../Account/AccountSummary";
+import MyProducts from '../MyProducts/MyProducts';
+
+
+export default class Summary extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            userName: this.props.user_data.user,
+            accordionMyData: true,
+            closeMyData: true,
+            iconMyData: true,
+            userAccountIconMyData: faAngleRight,
+            display: {
+                resume: true,
+                myData: false,
+                bill: false,
+                orders: false,
+                questions: false,
+                items: false
+            }
+        }
+    }
+
+    accordionMyData = () => {
+        this.setState({
+            closeMyData: !this.state.closeMyData,
+            iconMyData: !this.state.iconMyData
+        });
+        if (this.state.iconMyData === true) {
+            this.setState({
+                userAccountIconMyData: faAngleDown
+            })
+        } else if (this.state.icon1MyData === false) {
+            this.setState({
+                userAccountIconMyData: faAngleRight
+            })
+        }
+    }
+
+    toggleModal = (modal) => {
+      const newState = { ...this.state };
+      newState[`modal${modal}`] = !newState[`modal${modal}`] ? true : false;
+      this.setState(newState);
+    }
+
+    showSection = (section,e) => {
+
+        this.setState({
+            display: {
+                resume: section==="resume",
+                myData: section==="myData",
+                myProducts: section==="myProducts",
+                mySales: section==="mySales",
+                bill: section==="bill",
+                orders: section==="orders",
+                questions: section==="questions",
+                items: section==="items"
+            }
+        })
+    }
+
+
+    render() {
+
+        let u_data = this.props.user_data;
+
+        return (
+            <div className="summary-content">
+                <Nav user={u_data.user} home={false} authenticated={u_data.authenticated} />
+                <div className="user-account-container" >
+                    <Sidebar user_data={u_data} cb={this.showSection}/>
+                    {this.state.display.resume && <AccountSummary user={u_data} /> }
+                    {this.state.display.orders && <Purchases mode={"buy"} user={u_data} /> }
+                    
+                    {this.state.display.myData && <UserAccount user={u_data} /> }
+                    {this.state.display.mySales && <Purchases mode={"sell"} user={u_data} /> }
+
+                    {this.state.display.myProducts && <MyProducts jwt={u_data.jwt} /> }
+                    {this.state.display.questions && <AccountQuestions user={u_data} /> }
+                    {this.state.display.bill && <AccountPurchase user={u_data} /> }
+                </div>
+                <Footer />
+            </div>
+        )
+    }
+}

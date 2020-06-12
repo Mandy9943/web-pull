@@ -1,0 +1,117 @@
+.listProductMovil {
+  margin-bottom: 15px;
+  background-color: #FFFFFF;
+  border: 0.5px solid #A5A5A5;
+  border-bottom: 0.5px solid #A5A5A5;
+  border-radius: 5px;
+  display: none;
+  -webkit-box-shadow: 0px 3px 3px #00000029;
+          box-shadow: 0px 3px 3px #00000029;
+}
+
+.listProductMovil h3 {
+  padding: 15px;
+  color: #757575;
+  font-size: 16px;
+}
+
+.listProductMovil a.send {
+  padding: 15px;
+  color: #CF0A2C;
+  font-size: 14px;
+  display: block;
+  border-top: 0.5px solid #A5A5A5;
+}
+
+.product-item-edit {
+  padding: 20px;
+  width: auto;
+  background-color: #FFFFFF;
+  border-radius: 0;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  border: 0.5px solid #A5A5A5;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+}
+
+.product-item-edit:last-child {
+  border-bottom: 0.5px solid #A5A5A5;
+}
+
+.product-item-edit .product {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto 1fr;
+      grid-template-columns: auto 1fr;
+}
+
+.product-item-edit .product img {
+  max-width: 150px;
+  height: auto;
+  max-height: 84px;
+}
+
+.product-item-edit .product .description {
+  -ms-flex-item-align: end;
+      -ms-grid-row-align: end;
+      align-self: end;
+}
+
+.product-item-edit .product .description h3 {
+  padding: 0 0 0 15px;
+  font-size: 13px;
+  color: #707070;
+}
+
+.product-item-edit .product .description h3.price {
+  color: #3B3B3B;
+  font-size: 18px;
+}
+
+.product-item-edit .product .description span {
+  color: #DF1616;
+  padding: 5px 0 0 15px;
+  display: block;
+}
+
+.product-item-edit .info {
+  text-align: right;
+}
+
+@media (max-width: 700px) {
+  .listProductMovil {
+    display: block;
+    margin: 15px;
+  }
+  .listProductMovil .product-item-edit {
+    width: auto;
+    padding: 15px 10px 15px 0px;
+  }
+  .listProductMovil .product-item-edit .content {
+    padding: 0;
+    -ms-grid-columns: auto;
+        grid-template-columns: auto;
+  }
+  .listProductMovil .product-item-edit .content .description h3 {
+    white-space: initial !important;
+  }
+  .listProductMovil .product-item-edit .content .actions a {
+    width: 80% !important;
+    margin: 7.5px auto !important;
+  }
+}
+
+@media (max-width: 375px) {
+  .product-item-edit {
+    width: 80%;
+    padding: 15px;
+    margin: 15px auto;
+  }
+  .product-item-edit .content {
+    padding: 0;
+  }
+}
+/*# sourceMappingURL=listProductMovil.css.map */

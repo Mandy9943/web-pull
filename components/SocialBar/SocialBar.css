@@ -33,6 +33,12 @@
       align-self: center;
 }
 
+@media (max-width: 700px) {
+  .wrap-social-bar {
+    display: none !important;
+  }
+}
+
 @media (max-width: 768px) {
   .wrap-social-bar {
     -webkit-box-orient: vertical;
@@ -55,6 +61,7 @@
         grid-template-columns: repeat(1, 1fr);
     -ms-grid-rows: (1fr)[2];
         grid-template-rows: repeat(2, 1fr);
+    width: auto !important;
   }
   .wrap-social-bar .social-bar {
     text-align: center;

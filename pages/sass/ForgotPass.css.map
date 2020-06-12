@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,YAAY,CAAC;EACT,gBAAgB,EAAE,WAAW;CAAG;;AAEpC,MAAM,EAAC,SAAS,EAAE,KAAK;EACnB,AAAA,YAAY,CAAC;IACT,gBAAgB,EAAE,IAAI;GAAG",
+    "sources": [
+        "ForgotPass.sass"
+    ],
+    "names": [],
+    "file": "ForgotPass.css"
+}

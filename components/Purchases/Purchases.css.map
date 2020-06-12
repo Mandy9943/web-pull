@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,cAAc,CAAC;EACX,OAAO,EAAE,IAAI;EACb,WAAW,EAAE,IAAI;CAAG;;AAGxB,MAAM,EAAE,SAAS,EAAE,KAAK;EACpB,AAAA,cAAc,CAAC;IACX,OAAO,EAAE,CAAC;GAAG",
+    "sources": [
+        "Purchases.sass"
+    ],
+    "names": [],
+    "file": "Purchases.css"
+}

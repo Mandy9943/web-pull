@@ -1,0 +1,59 @@
+.user-account-menu
+    padding: 40px 20px
+    h3
+        color: #717171
+    .user-account-menu-item
+        display: grid
+        grid-template-columns: auto auto auto
+        grid-gap: 10px
+        margin-bottom: 40px
+        cursor: pointer
+        .user-account-menu-icon
+            display: grid
+            margin: auto
+            margin-right: 0
+            margin-top: 0;
+            img
+                width: 39px;
+                border-radius: 50%;
+                box-shadow: 0px 3px 6px #00000029;
+        .user-account-accordion
+            display: none
+            p
+                margin-top: 20px
+                font-size: 14px
+            &.active
+                .user-account-menu-icon
+                    color: #CF0A2C
+                .user-account-accordion
+                        display: block
+        
+
+@media(min-width:700px)
+    .user-account-menu
+        padding: 40px 20px !important
+
+@media(max-width:700px)
+    .user-account-menu
+                background: #F2F2F2
+                position: fixed
+                width: 0
+                top: 0
+                left: 0
+                bottom: 0
+                z-index: 1
+                overflow-x: hidden
+                transition: 0.4s
+                box-sizing:border-box
+                padding: 0
+                
+
+                
+                
+
+
+
+
+                
+
+

@@ -1,0 +1,91 @@
+.how-to-pay-container {
+  margin: auto;
+  padding: 40px 20px;
+  width: 80%;
+}
+
+.how-to-pay-container .back-btn a {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (auto)[2];
+      grid-template-columns: repeat(2, auto);
+  grid-gap: 15px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  color: #CF0A2C;
+}
+
+.how-to-pay-container .how-to-pay-content {
+  margin: auto;
+  padding: 40px;
+  width: 70%;
+}
+
+.how-to-pay-container .how-to-pay-content h2 {
+  margin-bottom: 20px;
+  color: #717171;
+}
+
+.how-to-pay-container .how-to-pay-content .how-to-pay-box {
+  padding: 40px;
+  color: #717171;
+  background: #FFFFFF;
+  -webkit-box-shadow: 0px 3px 6px #00000029;
+          box-shadow: 0px 3px 6px #00000029;
+  border-radius: 15px;
+}
+
+.how-to-pay-container .how-to-pay-content .how-to-pay-box .how-to-pay-box-content p {
+  margin: 20px 0px;
+}
+
+.how-to-pay-container .how-to-pay-content .how-to-pay-box .how-to-pay-box-content h4 {
+  font-weight: 600;
+}
+
+.how-to-pay-container .how-to-pay-content .how-to-pay-box .how-to-pay-box-content .how-to-pay-ways {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  -ms-grid-rows: (1fr)[3];
+      grid-template-rows: repeat(3, 1fr);
+  grid-gap: 15px;
+  margin: 20px auto;
+  width: 60%;
+  text-align: center;
+  border: 1px solid #F2F2F2;
+}
+
+.how-to-pay-container .how-to-pay-content .how-to-pay-box .how-to-pay-box-content .how-to-pay-ways img {
+  width: 100%;
+}
+
+.how-to-pay-container .how-to-pay-content .how-to-pay-box button {
+  margin-top: 40px;
+  color: #fff;
+}
+
+@media (max-width: 700px) {
+  .how-to-pay-container {
+    padding: 15px;
+    width: auto;
+  }
+  .how-to-pay-container .how-to-pay-content {
+    width: auto;
+    padding: 0;
+  }
+  .how-to-pay-container .how-to-pay-content h2 {
+    margin-left: 23px;
+  }
+  .how-to-pay-container .how-to-pay-content .how-to-pay-box {
+    padding: 15px;
+  }
+  .how-to-pay-container .how-to-pay-content .how-to-pay-box .how-to-pay-ways {
+    width: auto !important;
+    -ms-grid-columns: auto !important;
+        grid-template-columns: auto !important;
+  }
+}
+/*# sourceMappingURL=HowToPay.css.map */

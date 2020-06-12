@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./PaySection.css";
 import PayCredit from "../../assets/img/pay-credit.png";
+import iconCredit from "../../assets/img/card.svg";
+
 import PayOnline from "../../assets/img/pay-online.png";
 import PayTransfer from "../../assets/img/pay-transfer.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,18 +12,23 @@ import Link from "next/link";
 
 class PaySection extends Component {
   render() {
+    let qty_options = [];
+    for (let i = 1; i <= this.props.stock; i++) {
+      qty_options[i - 1] = (<option key={"d" + i} value={i}>{i}</option>);
+    }
     return (
       <div className="pay">
         <div className="pay-item">
           <span>Producto Nuevo</span>
         </div>
         <div className="pay-item">
-          <h3 className="title-pay-product-detail">Relojes de pulsera, reloj deportivo de acero inoxidable</h3>
+          <h3 className="title-pay-product-detail">{this.props.title}</h3>
         </div>
         <div className="pay-item">
-          <h3 className="price-pay-product-detail">$900.000</h3>
+          <h3 className="price-pay-product-detail">{this.props.price}</h3>
         </div>
-        <div className="pay-item">
+        <div className="pay-item pay-img">
+        <img src={iconCredit} className="icon-credit" />
           <img src={PayCredit} className="pay-section-img" />
           <Link href="#">
             <a>
@@ -38,15 +45,20 @@ class PaySection extends Component {
             </a>
           </Link>
         </div>
-        <div className="pay-item">
-          <select>
-            <option value="">seleccione una cantidad</option>
-            <option value="1">1 unidad</option>
+        {this.props.stock > 0 ? <div className="pay-item">
+
+          <select defaultValue={1}>
+            {qty_options}
           </select>
+
           <button>Comprar</button>
+
         </div>
+          :
+          <div className="pay-item info-pay-product-detail" ><h3>Sin unidades disponibles.</h3></div>
+        }
         <div className="pay-item">
-          <span>Disponible: 1</span>
+          <span>Disponible: {this.props.stock}</span>
         </div>
         <div className="section-pay-type">
           <div className="section-pay-type-title">
@@ -89,7 +101,7 @@ class PaySection extends Component {
           </div>
         </div>
         <div className="section-pay-wrap-seller">
-          <Seller />
+          <Seller seller={this.props.seller} />
         </div>
       </div>
     );

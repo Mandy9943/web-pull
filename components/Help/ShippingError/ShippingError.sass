@@ -1,0 +1,78 @@
+.shipping-error-top
+    padding: 60px 0px
+    color: #717171
+    background: #FFFFFF
+    box-shadow: 0px 3px 6px #00000029
+    .shipping-error-bar
+        margin: auto
+        width: 80%
+        .back-btn
+            a
+                display: grid
+                grid-template-columns: repeat(2,auto)
+                grid-gap: 15px
+                width: fit-content
+                color: #CF0A2C
+        h2
+            margin: 40px auto 0px auto
+            width: 70%
+
+.shipping-error-content
+    margin: auto
+    padding: 40px
+    width: 50%
+    min-height: 50vh
+    .shipping-error-box
+        padding: 20px 40px
+        color: #717171
+        background: #FFFFFF
+        border: 1px solid #717171
+        border-radius: 5px
+        .shipping-error-box-text
+            p
+                margin: 30px 0px
+            a
+                color: #CF0A2C
+        .shipping-error-box-btns
+            display: grid
+            grid-template-columns: 1fr 1fr 1fr
+            grid-gap: 7px
+            margin: 20px 0px
+            button
+                margin: 0px
+                color: #fff
+                padding: 15px 5px
+                width: 100%
+                p   
+                    text-align: center
+                    width: 100%
+                &:last-child
+                    color: #CF0A2C
+                    background-color: #fff
+                    border: 1px solid #CF0A2C
+
+@media (max-width:700px)
+    .shipping-error-top
+        padding: 15px
+        .shipping-error-bar
+            width: auto
+            .back-btn
+                a
+                    display: grid
+                    grid-template-columns: repeat(2,auto)
+                    grid-gap: 15px
+                    width: fit-content
+                    color: #CF0A2C
+            h2
+                margin: 15px auto 0px 27px
+                width: 
+    .shipping-error-content
+        width: auto
+        padding: 15px
+        height: auto
+        .shipping-error-box
+            padding: 15px
+            .shipping-error-box-btns
+                grid-template-columns: auto
+                grid-template-rows: 1fr 1fr 1fr
+

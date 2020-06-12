@@ -1,0 +1,10 @@
+.register-page {
+  background-color: transparent;
+}
+
+@media (max-width: 700px) {
+  .register-page {
+    background-color: #fff;
+  }
+}
+/*# sourceMappingURL=Register.css.map */

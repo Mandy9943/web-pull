@@ -14,11 +14,12 @@
       -ms-flex-pack: center;
           justify-content: center;
   z-index: 1;
+  color: #6D6D6D;
 }
 
 .modal {
-  padding: 10px;
-  border-radius: 3px;
+  padding: 40px;
+  border-radius: 15px;
   -webkit-box-shadow: 0px 0px 5px 1000px rgba(0, 0, 0, 0.75);
           box-shadow: 0px 0px 5px 1000px rgba(0, 0, 0, 0.75);
   background: white;
@@ -35,12 +36,17 @@
 .header-modal {
   padding-bottom: 10px;
   margin-bottom: 10px;
-  border-bottom: 1px solid #c3c3c3;
 }
 
-.action-modal {
-  padding-top: 10px;
-  margin-top: 10px;
-  border-top: 1px solid #c3c3c3;
+.header-modal h3 {
+  font-size: 24px;
+}
+
+@media (max-width: 700px) {
+  .wrap-modal .modal {
+    max-width: initial;
+    width: 80%;
+    padding: 20px !important;
+  }
 }
 /*# sourceMappingURL=Modal.css.map */

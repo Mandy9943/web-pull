@@ -4,18 +4,13 @@
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-<<<<<<< HEAD
-  margin-bottom: 50px;
-  background: white;
-  padding: 20px;
-=======
   background: white;
   width: 100%;
   margin-bottom: 50px;
-  padding: 30px;
->>>>>>> Jorge
+  padding: 25px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  height: 110px;
 }
 
 .payment-block {
@@ -23,29 +18,52 @@
 }
 
 .payments-item-block {
-  color: #d11e36;
-<<<<<<< HEAD
-  font-size: 13px;
-  text-align: center;
-}
-
-.payments-item-block:nth-child(2) {
   color: #606060;
-  font-size: 16px;
-=======
   text-align: center;
 }
 
-.payments-item-block:nth-child(1) {
-  font-size: 2rem;
-}
-
-.payments-item-block:nth-child(2) {
-  color: black;
+.sub {
+  color: #CF0A2C;
+  font-size: 13px;
 }
 
 .payments-icon svg {
   font-size: 25px;
->>>>>>> Jorge
+  color: #CF0A2C;
+}
+
+.payment-way-content {
+  text-align: center;
+}
+
+.payment-way-content h4 {
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.payment-way-content .payment-way-img {
+  width: 60%;
+  margin-bottom: 20px;
+}
+
+.bank-transfer-content h4 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.bank-transfer-content p {
+  margin: 20px 0px;
+}
+
+.cash-transfer-content h4 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.cash-transfer-content p {
+  margin: 20px 0px;
+  line-height: 40px;
 }
 /*# sourceMappingURL=PaymentBar.css.map */

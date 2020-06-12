@@ -15,31 +15,90 @@
 }
 
 .categories-img-menu .content-categories-img-menu a.categories-img {
-<<<<<<< HEAD
-  padding: 20px;
-=======
   padding: 40px 20px;
->>>>>>> Jorge
   color: #707070;
   border-right: 1px solid #F2F2F2;
   border-bottom: 1px solid #F2F2F2;
 }
 
-<<<<<<< HEAD
-=======
 .categories-img-menu .content-categories-img-menu a.categories-img p.categories-menu-icon {
   margin-bottom: 20px;
   color: #CF0A2C;
   font-size: 50px;
 }
 
->>>>>>> Jorge
+.categories-img-menu .main-button {
+  display: none;
+}
+
 @media (max-width: 999px) {
+  .categories-img-menu {
+    margin: 15px;
+  }
   .categories-img-menu .content-categories-img-menu {
     -ms-grid-columns: (1fr)[2];
         grid-template-columns: repeat(2, 1fr);
     -ms-grid-rows: (1fr)[7];
         grid-template-rows: repeat(7, 1fr);
+    grid-gap: 20px;
+    background: #EAF0F0 0% 0%;
+  }
+  .categories-img-menu .content-categories-img-menu a.categories-img {
+    -webkit-box-shadow: 0px 3px 6px #00000029;
+            box-shadow: 0px 3px 6px #00000029;
+    background: white;
+  }
+  .categories-img-menu .content-categories-img-menu a.categories-img p {
+    font-size: 20px;
+  }
+  .categories-img-menu .content-categories-img-menu a.categories-img .categories-menu-icon {
+    font-size: 85px !important;
+  }
+  .categories-img-menu .main-button {
+    background: white !important;
+    color: red !important;
+    -webkit-box-shadow: 0px 3px 6px #00000029;
+            box-shadow: 0px 3px 6px #00000029;
+    margin-top: 20px !important;
+    padding: 10px 91px !important;
+    display: block !important;
+    width: 100% !important;
+  }
+  .categories-img-menu .main-button p {
+    padding: 0;
+  }
+}
+
+@media (max-width: 777px) {
+  .categories-img-menu {
+    margin: 15px;
+  }
+  .categories-img-menu .content-categories-img-menu {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+    -ms-grid-rows: unset;
+        grid-template-rows: unset;
+  }
+  .no-movil {
+    display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .categories-img-menu .content-categories-img-menu {
+    grid-gap: 10px;
+  }
+  .categories-img-menu .content-categories-img-menu .categories-img {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 20px 10px !important;
+  }
+  .categories-img-menu .content-categories-img-menu .categories-img .item {
+    margin: auto;
   }
 }
 /*# sourceMappingURL=CategoriesImgMenu.css.map */

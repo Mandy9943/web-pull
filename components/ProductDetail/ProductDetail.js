@@ -5,7 +5,7 @@ import DetailImg from "../DetailImg";
 import Pay from "./../PaySection";
 import Detail from "./../DetailProductInfo";
 import Question from "./../Question";
-import Explorer from "./../Common/Explorer";
+import QuestionItem from "./../QuestionItem";
 import ProductCardFinding from "./../Common/ProductCardFinding";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,42 +13,55 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "./ProductDetail.css";
 import Link from "next/link";
+import ProductsSlider from "./../ProductsSlider";
+import Explorer from "../Common/Explorer";
+
+
 
 class ProductDetail extends Component {
+
   render() {
+    const mdata = this.props.data;
+    const u_data = this.props.user_data;
     return (
       <div>
-        <Nav />
+        <Nav user={u_data.user} authenticated={u_data.authenticated} />
         <div className="detail-content">
           <div className="breadcrumb">
-            <Link href="#">
+
+          <Link href="/">
               <a>
-                Belleza y cuidado personal
+                Home
               </a>
             </Link>
+
             <FontAwesomeIcon icon={faAngleRight} />
-            <Link href="#">
+
+            <Link href={"/categoria/"+mdata.category.name}>
               <a>
-                Electrodomésticos de Belleza
+                {mdata.category.name}
               </a>
             </Link>
           </div>
           <div className="wrap-section-1">
             <div className="wrap-product">
-              <DetailImg />
-              <div className="wrap-slider-product-detail">SLIDER</div>
-              <div className="pay-section-responsive">
-                <Pay />
+              <DetailImg images={mdata.images}/>
+              <div className="wrap-slider-product-detail">
+              <ProductsSlider images={mdata.images} category={mdata.category.name} />
               </div>
-              <Detail />
+              <div className="pay-section-responsive">
+                <Pay seller={mdata.user} price={mdata.price} title={mdata.title} stock={mdata.stock} />
+              </div>
+              <Detail desciption={mdata.description}/>
               <Question />
+              <QuestionItem />
             </div>
             <div className="pay-section-pc">
-              <Pay />
+              <Pay seller={mdata.user} price={mdata.price} title={mdata.title} stock={mdata.stock} />
             </div>
           </div>
           <Explorer />
-          <ProductCardFinding />
+          <ProductCardFinding notitle={"true"} category={mdata.category.name} />>
         </div>
         <Footer />
       </div>

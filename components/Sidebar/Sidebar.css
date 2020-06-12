@@ -1,0 +1,72 @@
+.user-account-menu {
+  padding: 40px 20px;
+}
+
+.user-account-menu h3 {
+  color: #717171;
+}
+
+.user-account-menu .user-account-menu-item {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto auto;
+      grid-template-columns: auto auto auto;
+  grid-gap: 10px;
+  margin-bottom: 40px;
+  cursor: pointer;
+}
+
+.user-account-menu .user-account-menu-item .user-account-menu-icon {
+  display: -ms-grid;
+  display: grid;
+  margin: auto;
+  margin-right: 0;
+  margin-top: 0;
+}
+
+.user-account-menu .user-account-menu-item .user-account-menu-icon img {
+  width: 39px;
+  border-radius: 50%;
+  -webkit-box-shadow: 0px 3px 6px #00000029;
+          box-shadow: 0px 3px 6px #00000029;
+}
+
+.user-account-menu .user-account-menu-item .user-account-accordion {
+  display: none;
+}
+
+.user-account-menu .user-account-menu-item .user-account-accordion p {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.user-account-menu .user-account-menu-item .user-account-accordion.active .user-account-menu-icon {
+  color: #CF0A2C;
+}
+
+.user-account-menu .user-account-menu-item .user-account-accordion.active .user-account-accordion {
+  display: block;
+}
+
+@media (min-width: 700px) {
+  .user-account-menu {
+    padding: 40px 20px !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .user-account-menu {
+    background: #F2F2F2;
+    position: fixed;
+    width: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    overflow-x: hidden;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    padding: 0;
+  }
+}
+/*# sourceMappingURL=Sidebar.css.map */

@@ -27,7 +27,7 @@
   width: 49%;
   margin: 0px;
   color: white;
-  background: #d11e36;
+  background: #CF0A2C;
 }
 
 .data-sheet-item-form input {
@@ -35,10 +35,14 @@
 }
 
 .data-sheet-item-form select {
-  min-width: 15%;
   border-radius: 5px;
-  margin-left: 5px;
   outline: none;
+  background: #CF0A2C;
+  color: white;
+  width: 70px;
+  margin: auto;
+  padding: 9px 10px;
+  margin-left: 5px;
 }
 
 .data-sheet-wrap-title {

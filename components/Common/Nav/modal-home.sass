@@ -1,0 +1,69 @@
+.nav-botton .wrap-modal
+    display: flex
+    position: fixed
+    top: 50px
+    left: 0px
+    width: 100%
+    height:  calc(100vh - 50px)
+    align-items: flex-start
+    justify-content: center
+    z-index: 100
+    color: #6D6D6D
+    background: rgba(0, 0, 0, 0.68)
+    .modal
+        box-shadow: none
+        background: transparent
+        max-width: initial
+        margin-top: 15px
+        padding: 0 !important
+        width: 100%
+        .header-modal, .footer-modal
+            padding: 15px
+            background: white
+            margin: 0 15px 15px
+            border-radius: 5px
+            font-size: 15px
+            .actions
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                margin-top: 15px
+                grid-gap: 5px
+                .main-button
+                    justify-content: center
+                    align-items: center
+                    border-radius: 5px
+                    width: 100%
+        .footer-modal
+            padding-top: 1px;
+            a
+                color: #757575 !important
+                margin-top: 15px
+                display: block
+                position: relative
+                p   
+                    display: inline-block
+                    position: absolute
+                    top: 4px
+                    left: 30px
+                svg
+                    background: #757575
+                    border-radius: 50%
+                    padding: 4px
+                    width: 14px
+                    height: 14px
+                    color: white
+            hr
+                margin-top: 15px
+                border-bottom: none
+
+@media (max-width:370px)
+    .nav-botton .wrap-modal
+        .modal
+            .header-modal, .footer-modal
+                .actions
+                    grid-gap: 15px
+                    .main-button
+                        width: 100%
+        
+
+

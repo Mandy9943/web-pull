@@ -65,37 +65,29 @@
 }
 
 .wrap-info .finding-title {
-  font-size: 27px;
+  font-size: 22px;
 }
 
 .wrap-info button {
   width: auto;
-  background: #D11E36;
+  background: #CF0A2C;
   color: white;
   border-radius: 2px;
 }
 
-<<<<<<< HEAD
-@media (max-width: 768px) {
-=======
 @media (max-width: 800px) {
->>>>>>> Jorge
   .wrap-finding {
+    margin: 15px;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
   }
-<<<<<<< HEAD
-  .finding {
-    width: 100%;
-=======
   .wrap-finding .content-finding {
     -ms-grid-columns: (1fr)[1];
         grid-template-columns: repeat(1, 1fr);
     -ms-grid-rows: (1fr)[2];
         grid-template-rows: repeat(2, 1fr);
->>>>>>> Jorge
   }
 }
 /*# sourceMappingURL=Finding.css.map */

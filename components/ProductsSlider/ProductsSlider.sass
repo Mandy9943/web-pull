@@ -3,7 +3,39 @@
     width: 100%
     .content-products-slider
         display: grid
-        grid-template-columns: repeat(8,1fr)
+        grid-template-columns: repeat(5,1fr)
         grid-gap: 20px
-        //background-color: red
         overflow: auto
+        .producto-card
+            padding: 20px 0px 0
+            width: 100%
+            display: none
+            &:nth-child(-n+5)
+                display: block
+
+@media(max-width:700px)
+    .products-slider
+        padding: 0 15px;
+        margin-bottom: 15px
+        width: auto;
+        .slider-movil
+            position: relative
+            min-height: 260px
+            width: 100%
+            .content-products-slider
+                grid-template-columns: auto
+                display: -webkit-inline-box
+                position: absolute
+                top: 0
+                left: 0
+                right: 0
+                bottom: 0
+                height: min-content;
+                .producto-card
+                    width: 33%
+                    min-width: 140px
+                    display: block
+                    margin: 0% 1.5%;
+                    padding: 20px 0px 0
+
+    

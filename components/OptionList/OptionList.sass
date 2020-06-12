@@ -1,0 +1,51 @@
+.Option-list
+    display: grid
+    grid-template-columns: 4fr 2fr 1fr 2fr
+    box-shadow: 0px 3px 6px #00000029
+    background: white
+    border-radius: 5px;
+    border: 0.5px solid #707070
+    h5
+        text-align: center
+        padding: 7.5px 0
+        border: 0.5px solid #707070
+        border-top: 0
+        &:nth-child(1)
+            border-left: 0
+        &:nth-child(2)
+            border-left: 0
+        &:nth-child(3)
+            border-right: 0
+            border-left: 0
+        &:nth-child(4)
+            border-right: 0
+    .option
+        border: 0.5px solid #707070
+        border-top: 0
+        border-left: 0
+        &:nth-last-child(-n+4)
+            border-bottom: 0 !important        
+    .id
+        border-right: 0              
+
+
+.product
+    display: grid
+    grid-template-columns: auto 1fr
+    .product-card-img
+        img
+            max-width: 150px
+            height: auto
+            max-height: 84px
+    .description
+        align-self: end;
+        h3
+            padding: 0 0 0 15px
+            font-weight: lighter
+            font-size: 15px
+            color:  #717171
+
+
+@media (max-width: 700px)
+    .Option-list
+        padding: 0

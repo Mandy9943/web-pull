@@ -1,48 +1,83 @@
 import React, { Component } from "react";
+import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faTruck
+} from "@fortawesome/free-solid-svg-icons";
 import "./ListCategory.css";
+import { getImgUrl } from "../../lib/config"
+
 
 class ListCategory extends Component {
   constructor(props) {
     super(props);
     this.state = { data: null };
   }
-  componentDidMount() {
-    fetch("https://picsum.photos/v2/list")
-      .then((r) => r.json())
-      .then((r) => this.setState({ data: r }));
-  }
+
+
+
   render() {
     const Class = this.props.format == "grid" ? "grid" : "list";
     return (
-      <div className="wrap-list-category">
-        <div className={Class}>
-          {this.state.data && this.state.data.length > 0 ? (
-            this.props.format == "grid" ? (
-              this.state.data.map((product, i) => (
-                <div key={i} className="temp-card">
-                  <h3>{product.author}</h3>
-                  <img src={product.download_url} className="img" />
-                  <a href={product.url} target="_blank">
-                    <p>click to see</p>
-                  </a>
-                </div>
-              ))
+        <div className="wrap-list-category">
+          <div className={Class}>
+            {this.props.products && this.props.products.products && this.props.products.products.length > 0 ? (
+                this.props.format == "grid" ? (
+                    this.props.products.products.map((product, i) => (
+                      
+                        <Link href={"/detalle/"+product.product_id+"_"+product.title.split(" ").join("-")} key={i}>
+                          <a>
+                            <div className="temp-card">
+                              <div className="product-card-img">
+                                <img src={getImgUrl(product.image)} className="img" />
+                              </div>
+                              <div className="product-card-description-box">
+                                <h3>{product.user} </h3>
+                                <div className="kiero-envios-card">
+                                  <p className="kiero-envios-card-icon">
+                                    <FontAwesomeIcon icon={faTruck} />
+                                  </p>
+                                  <p>envío gratis</p>
+                                </div>
+                                <div className="product-card-description">
+                                  <p title={product.title}>{product.title.substr(0,92)+(product.title.length>92?"...":".")}</p>
+                                  <p>Nuevo</p>
+                                  <p>{product.price}</p>
+                                </div>
+                              </div>
+                            </div>
+                          </a>
+                        </Link>
+                    ))
+                ) : (
+                    this.props.products.products.map((product, i) => (
+                        <Link href={"/detalle/"+product.product_id+"_"+product.title.split(" ").join("-")} key={i}>
+                          <a>
+                            <div className="temp-list">
+                              <div className="product-list-img">
+                                <img src={getImgUrl(product.image)} className="img" />
+                              </div>
+                              <div className="product-list-description-box">
+                                <h3 className="product-list-title">{product.title}</h3>
+                                <h3 className="product-list-title">{product.user} </h3>
+                                <h3>{product.price} </h3>
+                                <div className="kiero-envios-card">
+                                  <p className="kiero-envios-card-icon">
+                                    <FontAwesomeIcon icon={faTruck} />
+                                  </p>
+                                  <p>envío gratis</p>
+                                </div>
+                              </div>
+                            </div>
+                          </a>
+                        </Link>
+                    ))
+                )
             ) : (
-              this.state.data.map((product, i) => (
-                <div key={i} className="temp-list">
-                  <h3>{product.author}</h3>
-                  <img src={product.download_url} className="img" />
-                  <a href={product.url} target="_blank">
-                    <p>click to see</p>
-                  </a>
-                </div>
-              ))
-            )
-          ) : (
-            <div>cargando...</div>
-          )}
+                <div>{this.props.products ? "Lo sentimos, no logramos encontrar lo que buscas.":"Cargando resultados..."}</div>
+            )}
+          </div>
         </div>
-      </div>
     );
   }
 }

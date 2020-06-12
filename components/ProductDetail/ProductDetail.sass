@@ -6,7 +6,7 @@
     justify-content: space-between
     margin-bottom: 50px
 .wrap-product
-    border: 1px solid #9F9F9F
+    border: 0.5px solid #9F9F9F
     background: white
     flex: 2
 .pay-section-pc
@@ -22,9 +22,38 @@
         font-size: 15px
 .wrap-slider-product-detail
     padding: 20px
-    border-top: 1px solid #9F9F9F
+    border-top: 0.5px solid #9F9F9F
+    .products-slider
+        margin: 0 
+        .slider-movil
+            height: 230px
+            position: relative
+            .content-products-slider
+                grid-template-columns: repeat(4, 1fr);
+                overflow: auto;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                .producto-card
+                    padding: 0
+                    width: 100%
+                    display: none
+                    &:nth-child(-n+4)
+                        display: block
+                    .product-card-img
+                        padding: 0
+                    h3
+                        font-size: 15px
+                        font-family: 'Open Sans', sans-serif;
+                    button
+                        width: auto !important
+                        height: auto !important
+                        min-width: initial !important
+        
 .pay-section-responsive
     display: none
+
 @media (max-width: 768px)
     .wrap-section-1
         flex-direction: column

@@ -27,6 +27,3 @@ module.exports = withCSS( withSass( withImages({
         ],
     },
 })));
-
-const withFonts = require('next-fonts');
-module.exports = withFonts();

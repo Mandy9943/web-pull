@@ -1,9 +1,24 @@
 .pay
     padding: 20px 0px
     background: white
-    border-bottom: 1px solid #9F9F9F
-    border-top: 1px solid #9F9F9F
-    border-right: 1px solid #9F9F9F
+    border-bottom: 0.5px solid #9F9F9F
+    border-top: 0.5px solid #9F9F9F
+    border-right: 0.5px solid #9F9F9F
+.pay-img
+    display: grid
+    grid-template-columns: min-content auto
+    position: relative
+    margin-bottom: 15px;
+    img
+        height: 38px !important
+        margin: auto
+        margin-bottom: 4px
+    .pay-section-img
+        margin-left: 0 !important
+    a
+        position: absolute
+        bottom: -10px
+        left: 19px
 .pay-item
     padding: 10px 20px
     color: #565555
@@ -13,29 +28,37 @@
         height: 50px
     button
         margin-top: 20px
-        background: #d11e36
+        background: #CF0A2C
         color: white
+        width: 80%
     select
         padding: 10px
         border-radius: 5px
-        width: 100%
+        width: 40%
+        outline: none !important
+        &:focus
+            outline: none !important
 .title-pay-product-detail
-    font-size: 1.1rem
+    font-size: 20px
     font-weight: 600
+    color: #565555
 .price-pay-product-detail
-    font-size: 2.5rem
+    font-size: 36px
+    color: #404040
     font-weight: lighter
 .info-pay-product-detail
     h3
-        color: #d11e36
+        color: #CF0A2C
         margin-bottom: 5px
+        font-22px
     p
-        font-size: 0.85rem
+        font-size: 15px
         margin-bottom: 5px
+        color: #434446
 .pay-section-img
     width: 100%
 .section-pay-type
-    border-top: 1px solid #9F9F9F
+    border-top: 0.5px solid #9F9F9F
     padding: 20px
     img
         width: auto
@@ -51,7 +74,7 @@
             font-size: 17px
             font-weight: 600
         svg
-            color: #D11E36
+            color: #CF0A2C
     p
         margin: 10px 0px
         color: #7F8081
@@ -60,7 +83,7 @@
         padding: 20px 10px
 .section-pay-send
     padding: 20px
-    border-top: 1px solid #9F9F9F
+    border-top: 0.5px solid #9F9F9F
     .section-pay-send-title
         display: grid
         grid-template-columns: auto 1fr
@@ -69,12 +92,12 @@
         color: #7F8081
         font-size: 16px
         svg
-            color: #D11E36
+            color: #CF0A2C
     .section-pay-send-subtitle
         display: grid
         grid-template-columns: auto 1fr
         grid-gap: 15px
-        color: #D11E36
+        color: #CF0A2C
         font-size: 15px
         p
             align-self: center
@@ -85,7 +108,7 @@
         color: #545454
         font-size: 15px
 .section-pay-wrap-seller
-    border-top: 1px solid #9F9F9F
+    border-top: 0.5px solid #9F9F9F
     padding: 20px
 @media (max-width: 768px)
     .pay

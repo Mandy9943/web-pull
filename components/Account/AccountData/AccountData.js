@@ -45,7 +45,7 @@ class AccountData extends Component {
         </div>
         <div className="account-data-form-wrap-button">
           <button>enviar</button>
-          <button
+          <button className="cancel-btn"
             onClick={() => {
               this.toggleModal(1);
             }}
@@ -71,7 +71,7 @@ class AccountData extends Component {
         </div>
         <div className="account-data-form-wrap-button">
           <button>enviar</button>
-          <button
+          <button className="cancel-btn"
             onClick={() => {
               this.toggleModal(2);
             }}
@@ -91,7 +91,7 @@ class AccountData extends Component {
         </div>
         <div className="account-data-form-wrap-button">
           <button>enviar</button>
-          <button
+          <button className="cancel-btn"
             onClick={() => {
               this.toggleModal(3);
             }}

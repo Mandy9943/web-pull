@@ -17,6 +17,11 @@ summary::-webkit-details-marker {
 }
 
 details > summary:first-of-type {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr auto;
+      grid-template-columns: 1fr auto;
+  grid-gap: 15px;
   list-style-type: none;
 }
 

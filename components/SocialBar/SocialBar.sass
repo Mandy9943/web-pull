@@ -17,6 +17,9 @@
         text-align: -webkit-right
         img
             align-self: center
+@media (max-width: 700px)
+    .wrap-social-bar
+        display: none !important
 @media (max-width: 768px)
     .wrap-social-bar
         flex-direction: column
@@ -31,6 +34,7 @@
         .content-social-bar
             grid-template-columns: repeat(1,1fr)
             grid-template-rows: repeat(2,1fr)
+            width: auto !important
         .social-bar
             text-align: center
         .social-bar-icons

@@ -1,10 +1,32 @@
-.wrap-account-content
-    width: 80%
-    margin: auto
-    display: flex
-    justify-content: space-between
 .wrap-account-module
-    padding: 40px 0px
-    flex: 5
-    background: #EBEBEB
-    min-height: 62.6vh;
+    display: grid
+    margin: auto
+    width: 80%
+    
+@media(min-width:700px)
+    .wrap-account-content
+        width: 80%
+        margin: auto
+        display: flex
+        justify-content: space-between
+    .wrap-account-module
+        padding: 40px 0px
+        flex: 5
+        background: #EBEBEB
+        min-height: 62.6vh;
+
+
+@media(max-width:700px)
+    .wrap-account-module
+        padding: 15px 0px
+        width: auto
+        display: block
+        .account-store-product-wrap
+            margin: 0px 15px
+            min-height: auto
+        .account-store-product-wrap-add-photo
+            margin-bottom: 15px
+            .account-store-product-wrap-gallery
+                display: grid
+                grid-template-columns: auto auto auto
+

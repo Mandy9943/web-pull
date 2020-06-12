@@ -10,7 +10,7 @@ class SellerInfo extends Component {
       <div>
         <div className="title-seller-bar">
           <p>Vendedor</p>
-          <Link href="#">
+          <Link href={"/reputacion_de_vendedor/"+this.props.seller.user_id}>
             <a>
               <p>Ver productos</p>
             </a>
@@ -19,11 +19,10 @@ class SellerInfo extends Component {
         </div>
         <div className="profile-seller">
           <div className="wrap-img-profile-seller">
-            <img src="https://picsum.photos/100" />
+            <img src={!this.props.seller.photo ? "https://recap-project.eu/wp-content/uploads/2017/02/default-user.jpg" : this.props.seller.photo  } />
           </div>
           <div className="info-profile-seller">
-            <p>Wild Commerce</p>
-            <p>123 456 7890</p>
+            <p>{this.props.seller.name} {this.props.seller.last_name}</p>
           </div>
         </div>
         <div className="rank-seller">

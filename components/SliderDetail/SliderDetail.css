@@ -1,0 +1,28 @@
+.SliderDetail {
+  margin-botton: 50px;
+}
+
+.SliderDetail .mobil {
+  display: none;
+}
+
+@media (max-width: 500px) {
+  .SliderDetail .mobil {
+    display: block !important;
+  }
+  .SliderDetail .mobil .slider {
+    height: 300px;
+    display: block !important;
+  }
+  .SliderDetail .mobil .slider img {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  .SliderDetail .mobil .slider .previousButton {
+    left: 0px;
+  }
+  .SliderDetail .mobil .slider .nextButton {
+    right: 0px;
+  }
+}
+/*# sourceMappingURL=SliderDetail.css.map */

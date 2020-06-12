@@ -1,0 +1,137 @@
+.payment-problem-container {
+  margin: auto;
+  padding: 40px 20px;
+  width: 80%;
+  height: 75vh;
+}
+
+.payment-problem-container .back-btn a {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (auto)[2];
+      grid-template-columns: repeat(2, auto);
+  grid-gap: 15px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  color: #CF0A2C;
+}
+
+.payment-problem-container .payment-problem-content {
+  margin: auto;
+  padding: 40px;
+  width: 70%;
+}
+
+.payment-problem-container .payment-problem-content h2 {
+  margin-bottom: 20px;
+  color: #717171;
+}
+
+.payment-problem-container .payment-problem-content .payment-problem-box {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 2fr 1fr;
+      grid-template-columns: 2fr 1fr;
+  grid-gap: 15px;
+  padding: 40px;
+  color: #717171;
+  background: #FFFFFF;
+  -webkit-box-shadow: 0px 3px 6px #00000029;
+          box-shadow: 0px 3px 6px #00000029;
+  border-radius: 15px;
+}
+
+.payment-problem-container .payment-problem-content .payment-problem-box .payment-problem-icon {
+  color: #CF0A2C;
+  font-size: 24px;
+}
+
+.payment-problem-container .payment-problem-content .payment-problem-box .payment-problem-status {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto 1fr;
+      grid-template-columns: auto 1fr;
+  grid-gap: 15px;
+  margin: auto;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.payment-problem-container .payment-problem-content .payment-problem-box .payment-problem-status h3 {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.payment-problem-container .payment-problem-content .payment-problem-box .payment-problem-orders {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
+  grid-gap: 15px;
+}
+
+.payment-problem-container .payment-problem-content .payment-problem-box .payment-problem-orders .payment-problem-order-box {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto 1fr;
+      grid-template-columns: auto 1fr;
+  grid-gap: 15px;
+  padding: 20px;
+  background: #FFFFFF;
+  -webkit-box-shadow: 0px 3px 6px #00000029;
+          box-shadow: 0px 3px 6px #00000029;
+  border-radius: 15px;
+}
+
+.payment-problem-container .payment-problem-content .payment-problem-box .payment-problem-orders .payment-problem-order-box .payment-problem-icon {
+  padding: 13px 15px;
+  background: #FFFFFF;
+  -webkit-box-shadow: 0px 3px 6px #00000029;
+          box-shadow: 0px 3px 6px #00000029;
+  border-radius: 50%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.payment-problem-container .payment-problem-content .payment-problem-box .payment-problem-orders .payment-problem-order-box h3 {
+  margin: 10px 0px;
+}
+
+.payment-problem-container .payment-problem-content .payment-problem-box .payment-problem-orders .payment-problem-order-box .payment-problem-order-box-text {
+  margin: 10px 0px;
+}
+
+.payment-problem-container .payment-problem-content .payment-problem-box .payment-problem-orders .payment-problem-order-box .payment-problem-order-box-text p {
+  margin: 5px 0px;
+  font-size: 14px;
+}
+
+@media (max-width: 700px) {
+  .payment-problem-container {
+    padding: 15px;
+    width: auto;
+    height: auto;
+  }
+  .payment-problem-container .payment-problem-content {
+    padding: 0;
+    width: auto;
+  }
+  .payment-problem-container .payment-problem-content h2 {
+    margin: 15px auto 15px 20px;
+  }
+  .payment-problem-container .payment-problem-content .payment-problem-box {
+    -ms-grid-columns: auto;
+        grid-template-columns: auto;
+    padding: 15px;
+  }
+  .payment-problem-container .payment-problem-content .payment-problem-box .payment-problem-status {
+    margin-left: 35px;
+  }
+}
+/*# sourceMappingURL=PaymentProblem.css.map */

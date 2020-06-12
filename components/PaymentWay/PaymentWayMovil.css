@@ -1,0 +1,28 @@
+@media (max-width: 700px) {
+  .container-payment-way {
+    width: auto;
+    margin: 15px 15px auto;
+    min-height: auto;
+  }
+  .container-payment-way h2 {
+    margin-bottom: 15px;
+  }
+  .container-payment-way .only-movil {
+    display: block !important;
+  }
+  .container-payment-way .content-payment-way {
+    -ms-grid-columns: auto;
+        grid-template-columns: auto;
+    grid-gap: 0;
+  }
+  .container-payment-way .content-payment-way .payment-way-box {
+    margin-bottom: 15px;
+  }
+  .container-payment-way .content-payment-way .accordion-payment-way.active {
+    margin-top: 15px;
+  }
+  .container-payment-way .content-payment-way .only-desktop {
+    display: none !important;
+  }
+}
+/*# sourceMappingURL=PaymentWayMovil.css.map */

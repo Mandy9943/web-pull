@@ -1,20 +1,49 @@
-.wrap-account-content {
-  width: 80%;
+.wrap-account-module {
+  display: -ms-grid;
+  display: grid;
   margin: auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  width: 80%;
 }
 
-.wrap-account-module {
-  padding: 40px 0px;
-  -webkit-box-flex: 5;
-      -ms-flex: 5;
-          flex: 5;
-  background: #EBEBEB;
-  min-height: 62.6vh;
+@media (min-width: 700px) {
+  .wrap-account-content {
+    width: 80%;
+    margin: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .wrap-account-module {
+    padding: 40px 0px;
+    -webkit-box-flex: 5;
+        -ms-flex: 5;
+            flex: 5;
+    background: #EBEBEB;
+    min-height: 62.6vh;
+  }
+}
+
+@media (max-width: 700px) {
+  .wrap-account-module {
+    padding: 15px 0px;
+    width: auto;
+    display: block;
+  }
+  .wrap-account-module .account-store-product-wrap {
+    margin: 0px 15px;
+    min-height: auto;
+  }
+  .wrap-account-module .account-store-product-wrap-add-photo {
+    margin-bottom: 15px;
+  }
+  .wrap-account-module .account-store-product-wrap-add-photo .account-store-product-wrap-gallery {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: auto auto auto;
+        grid-template-columns: auto auto auto;
+  }
 }
 /*# sourceMappingURL=AccountStore.css.map */

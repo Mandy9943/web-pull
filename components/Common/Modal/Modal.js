@@ -13,11 +13,6 @@ class Modal extends Component {
         />
         <div className="modal">
           {this.props.content}
-          {this.props.button ? (
-            <div className="action-modal">
-              <button>Aceptar</button>
-            </div>
-          ) : null}
         </div>
       </div>
     );

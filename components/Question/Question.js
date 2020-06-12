@@ -12,7 +12,7 @@ class Question extends Component {
           <button className="button-question-product-detail">Garantía</button>
         </div>
         <div className="wrap-question-input">
-          <input type="text" />
+          <input type="text" placeholder="Pregunta al vendedor" />
           <button className="button-question-product-detail">Preguntar</button>
         </div>
       </div>
