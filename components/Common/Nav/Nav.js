@@ -68,13 +68,16 @@ export default class Nav extends Component {
         this.setState({showMenu: !this.state.showMenu})
     }
 
+    menuBlur = () => {
+        setTimeout(this.showHideMenu,200);
+    }
+
     componentDidMount() {
 
         getData("/getMainCategories")
             .then((response) => {
                 this.setState({ categories: response.data });
             });
-
     }
 
     render() {
@@ -82,7 +85,6 @@ export default class Nav extends Component {
         let authenticated = this.props.authenticated
         let user = this.props.user
         let home = this.props.home
-
 
         const listCategories = this.state.categories.map(function (cat, i) {
             return <li key={i}><a href={"/categoria/" + cat.name}>{cat.name}</a></li>
@@ -145,7 +147,7 @@ export default class Nav extends Component {
                             </div>
                         }
                         {authenticated &&
-                            <div className="user-menu" onBlur={ this.showHideMenu } >
+                            <div className="user-menu" onBlur={ this.menuBlur } >
                                 <ul>
                                     <Link href="#"><a className="bell">Ayuda / PQR <FontAwesomeIcon icon={faBell} /></a></Link>
                                     <Link href="#"><a onClick={() => this.showHideMenu()} className="user-icon"><FontAwesomeIcon icon={faUser} /> Usuario <FontAwesomeIcon icon={faAngleDown} /></a></Link>

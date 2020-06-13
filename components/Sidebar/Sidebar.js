@@ -107,7 +107,7 @@ export default class Sidebar extends Component {
             <div id="sidebar" className="user-account-menu">
                 <div className="user-account-menu-item">
                     <p className="user-account-menu-icon">
-                    <img src="https://picsum.photos/100" />
+                    <img src="https://stockcharts.com/sales/img/user-icon.png" />
                     </p>
                     <div className="user-name">
                         <h3>Mi cuenta</h3>
