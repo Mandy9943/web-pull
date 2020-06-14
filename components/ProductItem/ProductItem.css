@@ -1,6 +1,5 @@
 .product-item {
   padding: 20px;
-  width: 100%;
   background-color: #FFFFFF;
   -webkit-box-shadow: 0px 3px 3px #00000029;
           box-shadow: 0px 3px 3px #00000029;
@@ -8,7 +7,7 @@
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  margin: 20px 0;
+  margin: 10px 0 0;
 }
 
 .product-item .status {
@@ -70,6 +69,8 @@
   }
   .product-item .content {
     padding: 0;
+    -ms-grid-columns: 1fr auto;
+        grid-template-columns: 1fr auto;
   }
 }
 
