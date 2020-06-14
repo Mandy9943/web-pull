@@ -9,12 +9,8 @@ class Question extends Component {
     e.preventDefault();
 
     const question = e.target.elements.question.value;
-    console.log(question)
     const r = sendQuestion(question, this.props.product_id, this.props.user_data.jwt);
-    console.log(r);
-
     if(r.msg=="ok"){
-      console.log("LISTO!")
       this.props.cb();
     }else{
 
@@ -22,7 +18,6 @@ class Question extends Component {
   };
 
   render() {
-    console.log(this.props);
     return (
       <div className="wrap-question">
         <h3>Preguntas y respuestas</h3>

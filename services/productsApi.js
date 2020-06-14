@@ -103,3 +103,17 @@ export const sendQuestion = (msg, product_id, jwt) => {
         return error;
     }
 };
+
+export const sendAnswer = (msg, product_id, jwt) => {
+    try {
+        const msgData = {
+            "answer": msg,
+            "question_id": product_id
+        }
+        let data = post("/replyQuestion", msgData, jwt)
+
+        return data;
+    } catch (error) {
+        return error;
+    }
+};

@@ -107,7 +107,7 @@ export default class Sidebar extends Component {
             <div id="sidebar" className="user-account-menu">
                 <div className="user-account-menu-item">
                     <p className="user-account-menu-icon">
-                    <img src="https://picsum.photos/100" />
+                    <img src="https://stockcharts.com/sales/img/user-icon.png" />
                     </p>
                     <div className="user-name">
                         <h3>Mi cuenta</h3>
@@ -130,6 +130,7 @@ export default class Sidebar extends Component {
                             <p onClick={this.newProduct} >Agregar nuevo producto</p>
                             <p onClick={(e)=>this.props.cb("myProducts", e)} >Mis Productos</p>
                             <p onClick={(e)=>this.props.cb("mySales", e)} >Mis ventas</p>
+                            <p onClick={(e)=>this.props.cb("questions", e)} >Pregúntas</p>
                         </div>
                     </div>
                     <p className="user-account-menu-icon">
