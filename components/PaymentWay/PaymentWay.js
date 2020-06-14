@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ProductImg from "../../assets/img/cards-img/lovgdodfRecurso 6.png";
 import CardImg from "../../assets/img/default.webp";
 import PayOnline from "../../assets/img/pay-online.png";
 import Button from "../Common/Button/Button";
@@ -12,9 +11,7 @@ export default class PaymentWay extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            productDescription: "Disco Estado Solido Ssd Western Wd Green 480gb M2 2280 New",
             productQuantity: 1,
-            productPrice: "287.000",
             closeCredit: true,
             closeCash: true,
             closeTransfer: true,
@@ -36,16 +33,19 @@ export default class PaymentWay extends Component {
         });
     }
     render() {
+
+        console.log(this.props)
+
         return (
             <div className="payment-way">
                 <Header />
                 <div className="container-payment-way">
                     <div className="product-description payment-way-box only-movil">
-                        <img src={ProductImg} />
+                        <img src={ this.props.data.images.length > 0 ? this.props.data.images[0].url : 'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png'} />
                             <div className="content-product-description">
-                                <p>{this.state.productDescription}</p>
+                                <p>{this.props.data.title}</p>
                                 <p className="quantity">Cantidad: {this.state.productQuantity}</p>
-                                <h3>Total: ${this.state.productPrice}</h3>
+                                <h3>Total: {this.props.data.price}</h3>
                             </div>
                     </div>
                     <h2>Elige la forma de pago</h2>
@@ -120,11 +120,11 @@ export default class PaymentWay extends Component {
                         </div>
                         <div className="payment-data">
                             <div className="product-description payment-way-box only-desktop">
-                                <img src={ProductImg} />
+                            <img src={ this.props.data.images.length > 0 ? this.props.data.images[0].url : 'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png'} />
                                 <div className="content-product-description">
-                                    <p>{this.state.productDescription}</p>
+                                    <p>{this.props.data.title}</p>
                                     <p className="quantity">Cantidad: {this.state.productQuantity}</p>
-                                    <h3>Total: ${this.state.productPrice}</h3>
+                                    <h3>Total: {this.props.data.price}</h3>
                                 </div>
                             </div>
                             <div className="shipping-address payment-way-box">

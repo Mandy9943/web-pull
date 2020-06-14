@@ -11,11 +11,20 @@ import Seller from "./../SellerInfo";
 import Link from "next/link";
 
 class PaySection extends Component {
+
+  go = (id) => {
+    window.location="/pagar/"+id;
+  }
+
+
   render() {
     let qty_options = [];
     for (let i = 1; i <= this.props.stock; i++) {
       qty_options[i - 1] = (<option key={"d" + i} value={i}>{i}</option>);
     }
+
+    console.log("PAYMENT SECTION");
+    console.log(this.props);
     return (
       <div className="pay">
         <div className="pay-item">
@@ -51,7 +60,7 @@ class PaySection extends Component {
             {qty_options}
           </select>
 
-          <button>Comprar</button>
+          <button onClick={() => this.go(this.props.pid)}>Comprar</button>
 
         </div>
           :

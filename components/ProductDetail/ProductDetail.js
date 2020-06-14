@@ -74,18 +74,18 @@ class ProductDetail extends Component {
               <ProductsSlider images={mdata.images} category={mdata.category.name} />
               </div>
               <div className="pay-section-responsive">
-                <Pay seller={mdata.user} price={mdata.price} title={mdata.title} stock={mdata.stock} />
+                <Pay pid={mdata.product_id} seller={mdata.user} price={mdata.price} title={mdata.title} stock={mdata.stock} />
               </div>
               <Detail desciption={mdata.description}/>
-              <Question user_data={this.props.user_data} product_id={this.props.data.product_id}  cb={this.loadQuestions} />
+              <Question user_data={this.props.user_data} product_id={mdata.product_id}  cb={this.loadQuestions} />
               <QuestionItem questions={this.state.questions} />
             </div>
             <div className="pay-section-pc">
-              <Pay seller={mdata.user} price={mdata.price} title={mdata.title} stock={mdata.stock} />
+              <Pay pid={mdata.product_id}  seller={mdata.user} price={mdata.price} title={mdata.title} stock={mdata.stock} />
             </div>
           </div>
           <Explorer />
-          <ProductCardFinding notitle={"true"} category={mdata.category.name} />>
+          <ProductCardFinding notitle={"true"} category={mdata.category.name} />
         </div>
         <Footer />
       </div>
