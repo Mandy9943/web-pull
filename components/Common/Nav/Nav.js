@@ -49,7 +49,6 @@ export default class Nav extends Component {
 
 
     changeSearcherValue = (event) => {
-        event.target.value = "AS";
         this.setState({ query: event.target.value })
     }
 
@@ -69,7 +68,7 @@ export default class Nav extends Component {
     }
 
     menuBlur = () => {
-        setTimeout(this.showHideMenu,200);
+        setTimeout(() => this.setState({showMenu: false}),200);
     }
 
     componentDidMount() {

@@ -7,11 +7,7 @@ import Footer from "../Common/Footer/Footer";
 import UserAccount from '../../components/UserAccount/UserAccount';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-    faBars,
-    faListUl,
-    faMoneyBillWave,
-    faShoppingBag,
-    faCog,
+
     faAngleRight,
     faAngleDown
 } from "@fortawesome/free-solid-svg-icons";
