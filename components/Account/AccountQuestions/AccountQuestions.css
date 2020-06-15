@@ -3,6 +3,16 @@
   background: white;
 }
 
+.question-component .modal-question .button-question-product-detail {
+  background: #CF0A2C !important;
+  color: white !important;
+  border: none !important;
+}
+
+.question-component .modal-question .cancel-btn {
+  margin-top: 15px;
+}
+
 .account-questions-wrap-title {
   display: -webkit-box;
   display: -ms-flexbox;

@@ -65,7 +65,7 @@ class AccountQuestions extends Component {
     console.log(this.state.questions)
     const mid = this.state.modal;
     const content1 = this.state.modal >= 0 ? (
-      <>
+      <div className="modal-question">
         <div className="header-modal">
           <h3>Responder pregúnta:</h3>
         </div>
@@ -100,12 +100,12 @@ class AccountQuestions extends Component {
               this.setState({modal:-1});
             }}
           >
-            Cancelar
+            <p>Cancelar</p>
           </button>
         </div>
           </p>
         </div>
-      </>
+      </div>
     ) : (<></>);
 
 
