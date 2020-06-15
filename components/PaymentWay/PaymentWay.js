@@ -6,6 +6,7 @@ import Header from "../Common/Header/Header";
 import Footer from "../Common/Footer";
 import "./PaymentWay.css";
 import "./PaymentWayMovil.css";
+import { getData } from "../../services/userApi"
 
 export default class PaymentWay extends Component {
     constructor(props) {
@@ -15,8 +16,23 @@ export default class PaymentWay extends Component {
             closeCredit: true,
             closeCash: true,
             closeTransfer: true,
+            banks: []
         }
     }
+    
+    componentDidMount() {
+        this.loadBanks();
+      }
+
+    
+      loadBanks(){
+        getData("/getPseBanks")
+            .then((response) => {
+                this.setState({ banks: response.data.banks });
+            });
+      }
+
+
     accordionCredit = () => {
         this.setState({
             closeCredit: !this.state.closeCredit,
@@ -49,6 +65,10 @@ export default class PaymentWay extends Component {
                             </div>
                     </div>
                     <h2>Elige la forma de pago</h2>
+                    
+                    
+                    
+                    
                     <div className="content-payment-way">
                         <div className="way-to-pay">
                             <div className="credit payment-way-box" onClick={() => this.accordionCredit()}>
@@ -76,12 +96,26 @@ export default class PaymentWay extends Component {
                                 </div>
                                 <Button text={"Continuar"}/>
                             </div>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
                             <div className="cash payment-way-box" onClick={() => this.accordionCash()}>
                                     <p>Efectivo</p>
                             </div>
                             <div className={this.state.closeCash ? "accordion-payment-way" : "accordion-payment-way active"}>
                                 <img src={PayOnline} />
                             </div>
+                            
+                            
+                            
+                            
+                            
+                            
                             <div className="transfer payment-way-box" onClick={() => this.accordionTransfer()}>
                                     <p>Transferencia desde PSE</p>
                             </div>
@@ -97,11 +131,23 @@ export default class PaymentWay extends Component {
                                             </label>
                                             <label>
                                                 <p>Banco</p>
-                                                <input placeholder="Nombre completo *" />
+                                                <select name={"bank_id"}>
+                                                    
+                                                {this.state.banks.map( (bank,i) => {
+                                                    return <option value={bank.pseCode}> {bank.description} </option> 
+                                                })} 
+
+                                                </select>
                                             </label>
                                             <label>
                                                 <p>Tipo de persona</p>
-                                                <input placeholder="Nombre completo *" />
+                                                
+                                                <select name={"person_type"}>
+
+                                                    <option value={"N"}>Natural</option>
+                                                    <option value={"J"}>Juridica</option>
+
+                                                </select>
                                             </label>
                                         </form>
                                     </div>
@@ -109,11 +155,26 @@ export default class PaymentWay extends Component {
                                         <form>
                                             <label>
                                                 <p>Documento de identificación</p>
-                                                <input placeholder="Tipo de documento" />
-                                                <input placeholder="Número documento" />
+                                                
+                                                <select name={"document_type"}>
+                                                    <option value={"CC"}>Cédula de ciudadanía </option>
+                                                    <option value={"CE"}>Cédula de extranjería </option>
+                                                    <option value={"NIT"}>En caso de ser una empresa </option>
+                                                    <option value={"TI"}>Tarjeta de Identidad </option>
+                                                    <option value={"PP"}>Pasaporte </option>
+                                                    <option value={"DE"}>Documento de identificación extranjero </option>
+                                                </select>
+
+                                                <input name={"document_number"} placeholder="Número documento" />
                                             </label>
+                                        
+                                            <button type="submit" className="main-button">
+                                                <p>Continuar con la compra</p>
+                                            </button>
+                                        
                                         </form>
-                                        <Button text={"Continuar compra"}/>
+                                        
+
                                     </div>
                                 </div>
                             </div>
