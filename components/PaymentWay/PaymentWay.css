@@ -20,7 +20,7 @@
   display: grid;
   -ms-grid-columns: 3fr 2fr;
       grid-template-columns: 3fr 2fr;
-  grid-gap: 100px;
+  grid-gap: 70px;
 }
 
 .product-description {
@@ -128,14 +128,19 @@
 .accordion-payment-way .content-accordion {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
+  -ms-grid-columns: 1fr auto;
+      grid-template-columns: 1fr auto;
   grid-gap: 20px;
+}
+
+.accordion-payment-way .content-accordion .cardImg {
+  max-width: 220px;
+  margin: auto;
 }
 
 .accordion-payment-way button.main-button {
   float: right;
-  padding: 10px 80px;
+  width: 220px;
 }
 
 .content-accordion-form {
@@ -145,7 +150,6 @@
 
 .content-accordion-form button.main-button {
   float: none;
-  padding: 10px 80px;
   -ms-flex-item-align: end;
       -ms-grid-row-align: end;
       align-self: end;

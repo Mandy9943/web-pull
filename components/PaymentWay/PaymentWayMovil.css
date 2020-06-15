@@ -18,8 +18,15 @@
   .container-payment-way .content-payment-way .payment-way-box {
     margin-bottom: 15px;
   }
-  .container-payment-way .content-payment-way .accordion-payment-way.active {
+  .container-payment-way .content-payment-way .accordion-payment-way {
     margin-top: 15px;
+  }
+  .container-payment-way .content-payment-way .accordion-payment-way .main-button {
+    float: none;
+  }
+  .container-payment-way .content-payment-way .accordion-payment-way .content-accordion {
+    -ms-grid-columns: auto;
+        grid-template-columns: auto;
   }
   .container-payment-way .content-payment-way .only-desktop {
     display: none !important;

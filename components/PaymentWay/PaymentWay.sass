@@ -13,7 +13,7 @@
 .content-payment-way
     display: grid
     grid-template-columns: 3fr 2fr
-    grid-gap: 100px
+    grid-gap: 70px
 
 .product-description
     display: grid
@@ -84,17 +84,19 @@
         opacity: 1
     .content-accordion
         display: grid
-        grid-template-columns: 1fr 1fr
+        grid-template-columns: 1fr auto
         grid-gap: 20px
+        .cardImg
+            max-width: 220px
+            margin: auto
     button.main-button
         float: right
-        padding: 10px 80px
+        width: 220px
 
 .content-accordion-form
     display: grid
     button.main-button
         float: none
-        padding: 10px 80px
         align-self: end
 
 .shipping-address

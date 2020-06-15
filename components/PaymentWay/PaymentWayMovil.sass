@@ -7,13 +7,17 @@
             margin-bottom: 15px
         .only-movil
             display: block !important
-       
         .content-payment-way
             grid-template-columns: auto
             grid-gap: 0
             .payment-way-box
                 margin-bottom: 15px
-            .accordion-payment-way.active
+            .accordion-payment-way
+                &.active
                 margin-top: 15px
+                .main-button
+                    float: none
+                .content-accordion
+                    grid-template-columns: auto
             .only-desktop
                 display: none !important
