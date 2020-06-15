@@ -1,0 +1,105 @@
+.seller-movil .info-shops {
+  -ms-grid-columns: 1fr auto;
+      grid-template-columns: 1fr auto;
+}
+
+.seller-movil .info-shops a p {
+  color: #434446;
+}
+
+.seller-movil .ubication {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto 1fr;
+      grid-template-columns: auto 1fr;
+  margin-top: 15px;
+  color: #434446;
+}
+
+.seller-movil .ubication svg, .seller-movil .ubication img {
+  width: 70px;
+  height: 70px;
+}
+
+.seller-movil .ubication .title {
+  display: -ms-grid;
+  display: grid;
+  font-size: 14px;
+  margin: auto;
+  margin-left: 0;
+  grid-gap: 5px;
+}
+
+.seller-movil .ubication .title span {
+  font-size: 16px;
+}
+
+.seller-movil .name-seller {
+  margin-top: 5px;
+}
+
+.seller-movil .name-seller .title span {
+  color: #CF0A2C;
+}
+
+.seller-movil .reputations {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[5];
+      grid-template-columns: repeat(5, 1fr);
+  grid-gap: 5px;
+}
+
+.seller-movil .reputations .item {
+  width: 100%;
+  height: 20px;
+  opacity: 0.5;
+}
+
+.seller-movil .reputations .color1 {
+  background: #FFE7E6;
+}
+
+.seller-movil .reputations .color2 {
+  background: #FFF4E7;
+}
+
+.seller-movil .reputations .color3 {
+  background: #FFFDE5;
+}
+
+.seller-movil .reputations .color4 {
+  background: #F4FEE5;
+}
+
+.seller-movil .reputations .color5 {
+  background: #00A650;
+}
+
+.seller-movil .statistics {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  margin-top: 30px;
+}
+
+.seller-movil .statistics .item {
+  display: -ms-grid;
+  display: grid;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.seller-movil .statistics .item .title {
+  font-size: 18px;
+}
+
+.seller-movil .statistics .item .title svg {
+  font-size: 18px;
+}
+
+.seller-movil .statistics .item .sub-title {
+  font-size: 12px;
+}
+/*# sourceMappingURL=SellerMovil.css.map */

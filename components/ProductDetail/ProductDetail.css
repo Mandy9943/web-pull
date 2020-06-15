@@ -154,6 +154,15 @@
 }
 
 @media (max-width: 768px) {
+  .detail-content .wrap-product {
+    background: transparent;
+  }
+  .detail-content .wrap-product .wrap-detail-info {
+    background: white;
+  }
+  .detail-content .wrap-product .wrap-detail-info h4 {
+    font-size: 17px;
+  }
   .detail-content .questions-movil {
     background: white;
     padding-bottom: 1px;

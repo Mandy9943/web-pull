@@ -1,5 +1,6 @@
 .wrap-detail-info {
   border-top: 0.5px solid #9F9F9F;
+  font-family: 'Montserrat', sans-serif;
   padding: 40px;
   color: #545454;
 }
@@ -23,5 +24,72 @@
 
 .item-detail-info p {
   margin-bottom: 10px;
+}
+
+.characteristics, .guarantee {
+  font-family: 'Montserrat', sans-serif;
+  padding: 20px;
+  border-bottom: 0.5px solid #9F9F9F;
+  background: white;
+}
+
+.characteristics .edit, .guarantee .edit {
+  -ms-grid-columns: 1fr auto;
+      grid-template-columns: 1fr auto;
+  font-size: 17px;
+}
+
+.characteristics .info, .guarantee .info {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+
+.characteristics .info .item, .guarantee .info .item {
+  display: -ms-grid;
+  display: grid;
+  margin-top: 15px;
+}
+
+.characteristics .info .item .title, .guarantee .info .item .title {
+  font-size: 12px;
+  color: #434446;
+}
+
+.characteristics .info .item .sub-title, .guarantee .info .item .sub-title {
+  font-size: 14px;
+  font-weight: 400;
+  color: #7F8081;
+  margin-top: 5px;
+}
+
+.guarantee {
+  border-top: 0.5px solid #9F9F9F;
+  padding: 30px 20px;
+}
+
+.guarantee h5 {
+  margin-bottom: 20px;
+  font-size: 17px;
+  color: #434446;
+}
+
+.guarantee .title {
+  display: block;
+  color: #7F8081;
+  font-size: 16px;
+}
+
+.guarantee .sub-title {
+  display: block;
+  color: #434446;
+  font-size: 14px;
+}
+
+@media (max-width: 700px) {
+  .wrap-detail-info {
+    padding: 20px;
+  }
 }
 /*# sourceMappingURL=DetailProductInfo.css.map */
