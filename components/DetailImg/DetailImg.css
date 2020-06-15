@@ -59,7 +59,7 @@
 }
 
 .gallery-responsive .principal-slider .slider .previousButton, .gallery-responsive .principal-slider .slider .nextButton {
-  display: block !important;
+  display: none !important;
   background: transparent !important;
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
@@ -86,7 +86,22 @@
   }
   .gallery-responsive {
     display: block;
+    position: relative;
     padding: 0;
+  }
+  .gallery-responsive .back-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.28)), color-stop(77%, rgba(0, 0, 0, 0)), color-stop(81%, rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0)));
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.28) 0%, rgba(0, 0, 0, 0) 77%, rgba(0, 0, 0, 0) 81%, rgba(0, 0, 0, 0) 100%);
+    padding: 10px 10px 30px;
+    color: white;
+  }
+  .gallery-responsive .back-button svg {
+    color: #CF0A2C;
   }
 }
 /*# sourceMappingURL=DetailImg.css.map */
