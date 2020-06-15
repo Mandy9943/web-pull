@@ -3,6 +3,36 @@
   width: 70%;
 }
 
+.detail-content .advertising-movil {
+  margin-bottom: 15px;
+}
+
+.detail-content .advertising-movil .advertising {
+  background: gray;
+  width: 60%;
+  margin: auto;
+  height: 60vh;
+  margin-bottom: 30px;
+}
+
+.detail-content .advertising-movil .product-card-finding .slider-movil .content-product-card-finding {
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  display: -ms-grid;
+  display: grid;
+  position: inherit;
+}
+
+.detail-content .advertising-movil .product-card-finding .slider-movil .content-product-card-finding .producto-card {
+  width: 100%;
+  margin: 0;
+  display: none;
+}
+
+.detail-content .advertising-movil .product-card-finding .slider-movil .content-product-card-finding .producto-card:nth-child(-n+4) {
+  display: block;
+}
+
 .wrap-section-1 {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -101,6 +131,7 @@
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+    margin: 0;
   }
   .detail-content {
     width: 100%;
@@ -118,6 +149,36 @@
     display: none;
   }
   .pay-section-responsive {
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  .detail-content .questions-movil {
+    background: white;
+    padding-bottom: 1px;
+    margin-bottom: 15px;
+  }
+  .detail-content .questions-movil .QuestionItem-list {
+    border: none !important;
+  }
+  .detail-content .questions-movil .QuestionItem-list .title {
+    margin: 0 30px 15px 15px;
+    padding-top: 15px;
+  }
+  .detail-content .questions-movil .product-card-finding .slider-movil .content-product-card-finding {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+    display: -ms-grid;
+    display: grid;
+    position: inherit;
+  }
+  .detail-content .questions-movil .product-card-finding .slider-movil .content-product-card-finding .producto-card {
+    width: 100%;
+    margin: 0;
+    display: none;
+  }
+  .detail-content .questions-movil .product-card-finding .slider-movil .content-product-card-finding .producto-card:nth-child(-n+2) {
     display: block;
   }
 }

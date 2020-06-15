@@ -1,6 +1,24 @@
 .detail-content
     margin: auto
     width: 70%
+    .advertising-movil
+        margin-bottom: 15px
+        .advertising
+            background: gray
+            width: 60%
+            margin: auto
+            height: 60vh
+            margin-bottom: 30px;
+        .product-card-finding .slider-movil .content-product-card-finding
+            grid-template-columns: 1fr 1fr
+            display: grid
+            position: inherit
+            .producto-card
+                width: 100%
+                margin: 0
+                display: none
+                &:nth-child(-n+4)
+                    display: block    
 .wrap-section-1
     display: flex
     justify-content: space-between
@@ -57,6 +75,7 @@
 @media (max-width: 768px)
     .wrap-section-1
         flex-direction: column
+        margin: 0
     .detail-content
         width: 100%
     .breadcrumb
@@ -69,3 +88,29 @@
         display: none
     .pay-section-responsive
         display: block
+
+@media (max-width: 768px)
+    .detail-content
+        .questions-movil
+            background: white
+            padding-bottom: 1px
+            margin-bottom: 15px
+            .QuestionItem-list
+                border: none !important
+                .title 
+                    margin: 0 30px 15px 15px
+                    padding-top: 15px
+            .product-card-finding .slider-movil .content-product-card-finding
+                grid-template-columns: 1fr 1fr
+                display: grid
+                position: inherit
+                .producto-card
+                    width: 100%
+                    margin: 0
+                    display: none
+                    &:nth-child(-n+2)
+                        display: block
+    
+
+
+        

@@ -18,6 +18,8 @@ import PayOnline from "../../assets/img/pay-online.png";
 import PayTransfer from "../../assets/img/pay-transfer.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTruck, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import Logo1 from "../../assets/img/logo-social.png";
+import Logo2 from "../../assets/img/logo-social1.png";
 
 
 
@@ -48,6 +50,7 @@ class ProductDetail extends Component {
   render() {
     const mdata = this.props.data;
     const u_data = this.props.user_data;
+    let url= "//www.sic.gov.co";
 
     return (
       <div>
@@ -80,8 +83,10 @@ class ProductDetail extends Component {
               </div>
               <Detail desciption={mdata.description} />
               <Question user_data={this.props.user_data} product_id={mdata.product_id} cb={this.loadQuestions} />
-              <QuestionItem questions={this.state.questions} />
-                <div className="section-pay-type pay-movil no-web">
+              <section className="no-movil">
+                <QuestionItem questions={this.state.questions} />
+              </section>
+              <div className="section-pay-type pay-movil no-web">
                   <div className="section-pay-type-title">
                     <h4>Medios de pago</h4>
                     <FontAwesomeIcon icon={faAngleRight} />
@@ -124,16 +129,37 @@ class ProductDetail extends Component {
                       rapida y segura
                     </p>
                   </div>
-                </div>
+              </div>
             </div>
             <div className="pay-section-pc">
               <Pay pid={mdata.product_id} seller={mdata.user} price={mdata.price} title={mdata.title} stock={mdata.stock} />
             </div>
           </div>
-          <Explorer />
-          <ProductCardFinding notitle={"true"} category={mdata.category.name} />
+          <section className="questions-movil no-web">
+            <QuestionItem questions={this.state.questions} />
+            <section className='no-movil'>
+              <Explorer />
+            </section>
+            <ProductCardFinding notitle={"true"} category={mdata.category.name} />
+          </section>
+          <section className='no-movil'>
+              <Explorer />
+              <ProductCardFinding notitle={"true"} category={mdata.category.name} />
+            </section>
+          <section className="advertising-movil no-web">
+            <div className="advertising">
+              <img src='#' />
+            </div>
+            <ProductCardFinding notitle={"true"} category={mdata.category.name} />
+          </section>
         </div>
-        <Footer />
+        <section className='no-movil'>
+          <Footer />
+        </section>
+        <div className="footer-social">
+          <Link href={url}><a><img src={Logo1}/></a></Link>
+          <Link href={url}><a><img src={Logo2}/></a></Link>
+        </div>
       </div>
     );
   }
