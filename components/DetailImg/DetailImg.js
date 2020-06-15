@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import "./DetailImg.css";
 import SliderDetail from "./../SliderDetail";
 import { getImgUrl } from "../../lib/config"
+import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
+
 
 
 class Detail extends Component {
@@ -44,6 +48,7 @@ class Detail extends Component {
           </div>
         </div>
         <div className="gallery-responsive">
+          <Link href="#"><a className="back-button"><FontAwesomeIcon icon={faAngleLeft} /> Ir al listado</a></Link>
           <SliderDetail img={this.props.images} />
         </div>
       </>

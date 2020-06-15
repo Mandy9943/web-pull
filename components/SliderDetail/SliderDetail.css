@@ -6,7 +6,7 @@
   display: none;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 700px) {
   .SliderDetail .mobil {
     display: block !important;
   }
@@ -18,11 +18,8 @@
     width: 100% !important;
     height: 100% !important;
   }
-  .SliderDetail .mobil .slider .previousButton {
-    left: 0px;
-  }
-  .SliderDetail .mobil .slider .nextButton {
-    right: 0px;
+  .SliderDetail .mobil .slider .previousButton, .SliderDetail .mobil .slider .nextButton {
+    display: none;
   }
 }
 /*# sourceMappingURL=SliderDetail.css.map */

@@ -50,10 +50,15 @@
   width: 80%;
 }
 
+@media (max-width: 700px) {
+  .pay-item button {
+    width: 100%;
+  }
+}
+
 .pay-item select {
   padding: 10px;
   border-radius: 5px;
-  width: 40%;
   outline: none !important;
 }
 
@@ -76,6 +81,7 @@
 .info-pay-product-detail h3 {
   color: #CF0A2C;
   margin-bottom: 5px;
+  text-transform: capitalize;
 }
 
 .info-pay-product-detail p {
@@ -91,6 +97,10 @@
 .section-pay-type {
   border-top: 0.5px solid #9F9F9F;
   padding: 20px;
+}
+
+.section-pay-type.pay-movil {
+  background: #EAF0F0 !important;
 }
 
 .section-pay-type img {
@@ -116,6 +126,15 @@
 
 .section-pay-type .section-pay-type-title svg {
   color: #CF0A2C;
+}
+
+.section-pay-type .main-button {
+  width: 100%;
+}
+
+.section-pay-type .main-button p {
+  margin: 0 !important;
+  color: white !important;
 }
 
 .section-pay-type p {
