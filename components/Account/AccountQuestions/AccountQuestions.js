@@ -111,7 +111,7 @@ class AccountQuestions extends Component {
 
 
     return (
-      <div>
+      <div className="question-component">
         {this.state.modal>-1 ? (
           <Modal toggle={() => this.setState({modal:-1})} content={content1} button />
         ) : null}
@@ -127,7 +127,6 @@ class AccountQuestions extends Component {
           </div>
         </div>
         <div className="account-questions-wrap-questions">
-         
         {this.state.questions.length == 0 &&
           <div className="account-questions-wrap-item">
           <span>
@@ -138,8 +137,7 @@ class AccountQuestions extends Component {
         }
 
         {this.state.questions.length > 0 && 
-
-          <table width="90%" className="account-questions-wrap-questions" >
+          <table className="account-questions-wrap-questions" >
             <thead><tr style={{background: "#eeeeee"}} >
               <th>Pregunta</th>
               <th>Fecha</th>
@@ -147,7 +145,6 @@ class AccountQuestions extends Component {
             </tr>
             </thead>
             <tbody>
-
               {this.state.questions.map( (question,i) => {
                 return <tr key={i} onClick={() => this.reply(question.question_id, i)}>
                   <td>
