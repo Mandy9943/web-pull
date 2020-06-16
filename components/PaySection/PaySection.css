@@ -56,13 +56,29 @@
   }
 }
 
-.pay-item select {
+.pay-item .select-icon {
+  position: relative;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.pay-item .select-icon svg {
+  position: absolute;
+  right: 15px;
+  top: 11px;
+  color: #CF0A2C;
+}
+
+.pay-item .select-icon select {
   padding: 10px;
   border-radius: 5px;
   outline: none !important;
+  border: 0.3px solid #707070;
+  width: 195px !important;
 }
 
-.pay-item select:focus {
+.pay-item .select-icon select:focus {
   outline: none !important;
 }
 
@@ -88,6 +104,10 @@
   font-size: 15px;
   margin-bottom: 5px;
   color: #434446;
+}
+
+.info-pay-product-detail .icon-right {
+  margin-left: 12%;
 }
 
 .pay-section-img {

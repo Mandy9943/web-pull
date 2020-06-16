@@ -24,13 +24,111 @@
   margin-bottom: 20px;
 }
 
-.account-questions-wrap-questions {
-  border-radius: 10px;
-  width: auto;
-  margin: auto;
-}
-
 .account-questions-wrap-item {
   color: #CF0A2C;
+}
+
+.account-questions-wrap-questions {
+  width: auto;
+  margin: auto;
+  border-radius: 5px;
+  border: 0.5px solid #707070;
+  -webkit-box-shadow: -5px 5px 6px #00000029;
+          box-shadow: -5px 5px 6px #00000029;
+  border-radius: 5px;
+}
+
+.account-questions-wrap-questions .question-table {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: auto 1fr;
+      grid-template-rows: auto 1fr;
+  color: #393838;
+}
+
+.account-questions-wrap-questions .question-table .title-head {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 4fr 100px 1fr;
+      grid-template-columns: 4fr 100px 1fr;
+  border-radius: 5px 5px 0px 0;
+  font-size: 14px;
+  background: #EEEEEE;
+  border-bottom: 0.5px solid #707070;
+}
+
+.account-questions-wrap-questions .question-table .title-head .title {
+  padding: 7px 15px !important;
+}
+
+.account-questions-wrap-questions .question-table .title-head .fetch {
+  padding: 7px 0 !important;
+}
+
+.account-questions-wrap-questions .question-table .question-item {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 4fr 100px 1fr;
+      grid-template-columns: 4fr 100px 1fr;
+  font-size: 13px;
+  background: white;
+  border-bottom: 0.5px solid #707070;
+}
+
+.account-questions-wrap-questions .question-table .question-item:last-child {
+  border-radius: 0 0 5px 5px;
+  border: none;
+}
+
+.title {
+  border-right: 0.5px solid #707070;
+  padding-left: 15px;
+}
+
+.fetch {
+  width: 100px;
+  text-align: center;
+  border-right: 0.5px solid #707070;
+}
+
+.name-user {
+  padding-left: 7px;
+}
+
+.title, .name-user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media (max-width: 700px) {
+  .title {
+    padding-left: 7px;
+  }
+  .title-head {
+    -ms-grid-columns: 2fr 70px 1fr;
+        grid-template-columns: 2fr 70px 1fr;
+  }
+  .question-item {
+    -ms-grid-columns: 2fr 70px 1fr;
+        grid-template-columns: 2fr 70px 1fr;
+  }
+  .question-item .title {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .fetch {
+    width: auto;
+  }
+  .account-questions-wrap-title {
+    margin: 0px 30px 30px 0;
+  }
+  .question-component {
+    padding: 7px;
+  }
 }
 /*# sourceMappingURL=AccountQuestions.css.map */

@@ -5,7 +5,7 @@ import iconCredit from "../../assets/img/card.svg";
 import PayOnline from "../../assets/img/pay-online.png";
 import PayTransfer from "../../assets/img/pay-transfer.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTruck, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { faTruck, faAngleRight, faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import Seller from "./../SellerInfo";
 import Link from "next/link";
 import ListProductMovil from "./../listProductMovil/listProductMovil"
@@ -20,7 +20,7 @@ class PaySection extends Component {
   constructor(props) {
     super(props);
   }
-  
+
   render() {
 
     let u_data = this.props.user_data
@@ -39,7 +39,7 @@ class PaySection extends Component {
         <div className="pay-item">
           <h3 className="price-pay-product-detail">{this.props.price}</h3>
         </div>
-        <div className="pay-item pay-img">
+        <div className="pay-item pay-img no-movil">
           <img src={iconCredit} className="icon-credit" />
           <img src={PayCredit} className="pay-section-img" />
           <Link href="#">
@@ -49,7 +49,7 @@ class PaySection extends Component {
           </Link>
         </div>
         <div className="pay-item info-pay-product-detail">
-          <h3><span className="no-movil">Kiero</span> envíos <span className='no-web'>gratis</span> <FontAwesomeIcon icon={faTruck} /></h3>
+          <h3><span className="no-movil">Kiero</span> envíos <span className='no-web'>gratis</span> <FontAwesomeIcon icon={faTruck} /> <FontAwesomeIcon className="no-web icon-right" icon={faAngleRight} /></h3>
           <p>Nuestros productos son importados</p>
           <Link href="#">
             <a>
@@ -58,9 +58,12 @@ class PaySection extends Component {
           </Link>
         </div>
         {this.props.stock > 0 ? <div className="pay-item">
-          <select defaultValue={1}>
-            {qty_options}
-          </select>
+          <section className="select-icon">
+            <FontAwesomeIcon icon={faAngleRight} />
+            <select defaultValue={1}>
+              {qty_options}
+            </select>
+          </section>
           <button onClick={() => this.go(this.props.pid)}>Comprar</button>
         </div>
           :

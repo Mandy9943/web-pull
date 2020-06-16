@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./AccountQuestions.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faQuestionCircle, faClock, faCheckCircle, faCheck } from "@fortawesome/free-solid-svg-icons";
+import { faQuestionCircle, faClock, faCheckCircle, faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import Select from "./../../Common/Select";
 import Table from "../../Common/Table/Table";
 import { getData } from "../../../services/userApi"
@@ -14,8 +14,8 @@ class AccountQuestions extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        questions : [],
-        modal: -1
+      questions: [],
+      modal: -1
     }
   }
 
@@ -24,18 +24,18 @@ class AccountQuestions extends Component {
     this.loadData();
   }
 
-  loadData(){
+  loadData() {
     getData("/getAQ", this.props.user.jwt)
-        .then((response) => {
-            console.log(response.data);
-            this.setState({ questions: response.data.answers });
-        });
+      .then((response) => {
+        console.log(response.data);
+        this.setState({ questions: response.data.answers });
+      });
   }
 
-  reply = (id,i) => {
+  reply = (id, i) => {
     console.log(id)
     console.log(this.state.questions[i])
-    this.setState({modal: i})
+    this.setState({ modal: i })
   }
 
 
@@ -45,24 +45,24 @@ class AccountQuestions extends Component {
 
     const answer = e.target.elements.answer.value;
     sendAnswer(answer, this.state.questions[this.state.modal].question_id, this.props.user.jwt)
-    .then((result) => {
-      console.log(result);
+      .then((result) => {
+        console.log(result);
 
-      if(result.data.result=="ok"){
+        if (result.data.result == "ok") {
 
-        this.loadData();
-        this.setState({modal:-1});
+          this.loadData();
+          this.setState({ modal: -1 });
 
-      }else{
-        alert("Error al responder.");
-      }
+        } else {
+          alert("Error al responder.");
+        }
 
-    });
-    
+      });
+
   };
-  
+
   render() {
-    
+
     console.log(this.state.questions)
 
     const mid = this.state.modal;
@@ -74,9 +74,9 @@ class AccountQuestions extends Component {
           <h3>Responder pregúnta:</h3>
         </div>
         <div>
-         <b className="account-questions-wrap-item">Usuario:</b>
+          <b className="account-questions-wrap-item">Usuario:</b>
           <p>
-            {this.state.questions[mid].user.name+" "+this.state.questions[mid].user.last_name}
+            {this.state.questions[mid].user.name + " " + this.state.questions[mid].user.last_name}
           </p>
           <b className="account-questions-wrap-item">Pregúnta:</b>
           <p>
@@ -86,27 +86,27 @@ class AccountQuestions extends Component {
           <br /><h4><div className="">
 
             {
-              this.state.questions[mid].answer === "" ? 
-              <form className="wrap-question-input" onSubmit={this.replyQuestion}>
-                <input type="text" name={"answer"} placeholder={"Responde a "+this.state.questions[mid].user.name} />
-                <button type="submit" className="button-question-product-detail">Responder</button>
-              </form>
-              :
-            <><b>Respondiste: </b>{this.state.questions[mid].answer}</>
+              this.state.questions[mid].answer === "" ?
+                <form className="wrap-question-input" onSubmit={this.replyQuestion}>
+                  <input type="text" name={"answer"} placeholder={"Responde a " + this.state.questions[mid].user.name} />
+                  <button type="submit" className="button-question-product-detail">Responder</button>
+                </form>
+                :
+                <><b>Respondiste: </b>{this.state.questions[mid].answer}</>
             }
 
 
           </div></h4>
           <p>
-          <div className="account-data-form-wrap-button">
-          <button className="cancel-btn"
-            onClick={() => {
-              this.setState({modal:-1});
-            }}
-          >
-            <p>Cancelar</p>
-          </button>
-        </div>
+            <div className="account-data-form-wrap-button">
+              <button className="cancel-btn"
+                onClick={() => {
+                  this.setState({ modal: -1 });
+                }}
+              >
+                <p>Cancelar</p>
+              </button>
+            </div>
           </p>
         </div>
       </div>
@@ -116,8 +116,8 @@ class AccountQuestions extends Component {
 
     return (
       <div className="question-component">
-        {this.state.modal>-1 ? (
-          <Modal toggle={() => this.setState({modal:-1})} content={content1} button />
+        {this.state.modal > -1 ? (
+          <Modal toggle={() => this.setState({ modal: -1 })} content={content1} button />
         ) : null}
 
         <div className="account-questions-wrap-title">
@@ -131,50 +131,38 @@ class AccountQuestions extends Component {
           </div>
         </div>
         <div className="account-questions-wrap-questions">
-        {this.state.questions.length == 0 &&
-          <div className="account-questions-wrap-item">
-          <span>
-            <FontAwesomeIcon icon={faQuestionCircle} />
-          </span>
-          &nbsp;En este momento no tienes preguntas
-        </div>
-        }
-
-        {this.state.questions.length > 0 && 
-          <table className="account-questions-wrap-questions" >
-            <thead><tr style={{background: "#eeeeee"}} >
-              <th>Pregunta</th>
-              <th>Fecha</th>
-              <th>Cliente</th>
-            </tr>
-            </thead>
-            <tbody>
-              {this.state.questions.map( (question,i) => {
-                return <tr key={i} onClick={() => this.reply(question.question_id, i)}>
-                  <td>
-                    { question.answer == "" ?
-                    <span>
-                      <FontAwesomeIcon style={{color:"#d3d3d3"}} icon={faClock} />
-                    </span>
-                    :
-                    <span>
-                     <FontAwesomeIcon style={{color:"green"}} icon={faCheckCircle} />
-                    </span>
-
-                    }
+          {this.state.questions.length == 0 &&
+            <div className="account-questions-wrap-item">
+              <span>
+                <FontAwesomeIcon icon={faQuestionCircle} />
+              </span>
+            &nbsp;En este momento no tienes preguntas
+          </div>
+          }
+          {this.state.questions.length > 0 &&
+            <div className="question-table" >
+              <section class="title-head">
+                <span className="title">Pregunta</span>
+                <span className="fetch">Fecha</span>
+                <span className="name-user">Cliente</span>
+              </section>
+              <section className="body">
+                {this.state.questions.map((question, i) => {
+                  return <div className="question-item" key={i} onClick={() => this.reply(question.question_id, i)}>
+                    <span className="title">
+                      <span>
+                        <FontAwesomeIcon icon={faAngleDown} />
+                      </span>
                     &nbsp;
                     {question.content}
-
-                  </td>
-                  <td>{question.created_since.split(":").slice(0,-1).join(":")}</td>
-                  <td>{question.user.name+" "+question.user.last_name}</td>
-                </tr> 
-
-            })}
-            </tbody>
-          </table>
-        }
-
+                    </span>
+                    <span className="fetch">{question.created_since.split(":").slice(0, -1).join(":")}</span>
+                    <span className='name-user'>{question.user.name + " " + question.user.last_name}</span>
+                  </div>
+                })}
+              </section>
+            </div>
+          }
         </div>
       </div>
     );

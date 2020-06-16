@@ -155,9 +155,10 @@ export default class PaymentWay extends Component {
                                     </form>
                                     <div className="cardImg">
                                         <img src={CardImg} />
+                                        <Button text={"Continuar"}/>
                                     </div>
                                 </div>
-                                <Button text={"Continuar"}/>
+
                             </div>
                             
                             

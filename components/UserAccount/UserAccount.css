@@ -102,7 +102,7 @@
 }
 
 .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal {
-  padding: 20px 100px;
+  padding: 20px 50px;
   border-radius: 15px;
 }
 
@@ -134,7 +134,11 @@
   margin-top: 20px;
 }
 
-.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal .modal-actions .save-btn button p, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal .modal-actions .save-btn button p {
+.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal .modal-actions .main-button, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal .modal-actions .main-button {
+  width: 100% !important;
+}
+
+.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal .modal-actions .save-btn p, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal .modal-actions .save-btn p {
   color: #fff;
 }
 
@@ -142,6 +146,7 @@
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
+  width: 100% !important;
 }
 
 .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal .modal-actions .cancel-btn p, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal .modal-actions .cancel-btn p {
