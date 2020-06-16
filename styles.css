@@ -14,8 +14,8 @@ body {
 }
 
 svg {
-    max-height: 1em !important;
-    max-width: 0.625em !important;
+    max-height: 30px !important;
+    max-width: 30px !important;
     display: inline !important;
 }
 
