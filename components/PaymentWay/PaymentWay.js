@@ -4,9 +4,12 @@ import PayOnline from "../../assets/img/pay-online.png";
 import Button from "../Common/Button/Button";
 import Header from "../Common/Header/Header";
 import Footer from "../Common/Footer";
+import Select from "../Common/Select";
 import "./PaymentWay.css";
 import "./PaymentWayMovil.css";
 import { getData } from "../../services/userApi"
+import Modal from "../Common/Modal";
+import AddAddress from "../UserAccount/AddAddress"
 
 export default class PaymentWay extends Component {
     constructor(props) {
@@ -16,21 +19,38 @@ export default class PaymentWay extends Component {
             closeCredit: true,
             closeCash: true,
             closeTransfer: true,
-            banks: []
+            banks: [],
+            addresses: [],
+            modal:  false,
+            modalAddr: false,
+            selectedAddr: -1,
+            auxAddr:0,
+
         }
+        this.addrRef = React.createRef();
+
     }
     
     componentDidMount() {
         this.loadBanks();
-      }
+        this.loadAddresses();
+    }
 
     
-      loadBanks(){
+    loadBanks(){
         getData("/getPseBanks")
             .then((response) => {
-                this.setState({ banks: response.data.banks });
-            });
-      }
+                this.setState({ banks: (response.data.banks ? response.data.banks : []) });
+        });
+    }
+
+
+    loadAddresses(){
+        getData("/getAddresses", this.props.user.jwt)
+            .then((response) => {
+                this.setState({ addresses: response.data });
+        });
+    }
 
 
     accordionCredit = () => {
@@ -38,6 +58,7 @@ export default class PaymentWay extends Component {
             closeCredit: !this.state.closeCredit,
         });
     }
+
     accordionCash = () => {
         this.setState({
             closeCash: !this.state.closeCash,
@@ -48,13 +69,55 @@ export default class PaymentWay extends Component {
             closeTransfer: !this.state.closeTransfer,
         });
     }
+
+    openAddrsModal = () => {
+        this.setState({
+            modalAddr: true
+        });
+    }
+
+
+    setAddr = () => {
+        const x = this.state.auxAddr; 
+        this.setState( { modalAddr:false } );
+        this.setState( { selectedAddr: x } );
+    }
+
+
+    tmpChangeAddr = (e) => {
+        this.setState({auxAddr:e.target.value});
+    }
+
     render() {
 
-        console.log(this.props)
+        const addAddressContent = <AddAddress save={this.loadAddresses} cancel={()=>this.setState({modal: false})} noheader="1" />;
+        
+        const addressListContent = <>
+            <Select onChange={this.tmpChangeAddr} >
+                <option value="-1">Seleccione una dirección</option>
+                {this.state.addresses.map((addr, i)=>{
+                    return <option key={i} value={i}>{addr.address}</option>
+                })}
+            </Select>
+            <Button onClick={this.setAddr} text={"Cambiar"}/>
+        </>;
+
 
         return (
             <div className="payment-way">
+
+                {this.state.modal ? (
+                        <Modal toggle={() => this.setState({modal: false})} content={addAddressContent} button />
+                        ) : null}
+
+                {this.state.modalAddr ? (
+                        <Modal toggle={() => this.setState({modalAddr: false})} content={addressListContent} button />
+                        ) : null}
+
                 <Header />
+
+                
+
                 <div className="container-payment-way">
                     <div className="product-description payment-way-box only-movil">
                         <img src={ this.props.data.images.length > 0 ? this.props.data.images[0].url : 'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png'} />
@@ -131,23 +194,23 @@ export default class PaymentWay extends Component {
                                             </label>
                                             <label>
                                                 <p>Banco</p>
-                                                <select name={"bank_id"}>
+                                                <Select name={"bank_id"}>
                                                     
                                                 {this.state.banks.map( (bank,i) => {
                                                     return <option value={bank.pseCode}> {bank.description} </option> 
                                                 })} 
 
-                                                </select>
+                                                </Select>
                                             </label>
                                             <label>
                                                 <p>Tipo de persona</p>
                                                 
-                                                <select name={"person_type"}>
+                                                <Select name={"person_type"}>
 
                                                     <option value={"N"}>Natural</option>
                                                     <option value={"J"}>Juridica</option>
 
-                                                </select>
+                                                </Select>
                                             </label>
                                         </form>
                                     </div>
@@ -156,14 +219,14 @@ export default class PaymentWay extends Component {
                                             <label>
                                                 <p>Documento de identificación</p>
                                                 
-                                                <select name={"document_type"}>
+                                                <Select name={"document_type"}>
                                                     <option value={"CC"}>Cédula de ciudadanía </option>
                                                     <option value={"CE"}>Cédula de extranjería </option>
                                                     <option value={"NIT"}>En caso de ser una empresa </option>
                                                     <option value={"TI"}>Tarjeta de Identidad </option>
                                                     <option value={"PP"}>Pasaporte </option>
                                                     <option value={"DE"}>Documento de identificación extranjero </option>
-                                                </select>
+                                                </Select>
 
                                                 <input name={"document_number"} placeholder="Número documento" />
                                             </label>
@@ -188,15 +251,44 @@ export default class PaymentWay extends Component {
                                     <h3>Total: {this.props.data.price}</h3>
                                 </div>
                             </div>
+
+
+
+
                             <div className="shipping-address payment-way-box">
-                                <h3>Dirección de envío</h3>
-                                <p>Dirección:</p>
-                                <p>Dirección #2:</p>
-                                <p>Barrio:</p>
-                                <p>Departamento:</p>
-                                <p>Ciudad:</p>
-                                <Button text={"Cambiar dirección"}/>
+                                
+
+                            {
+                                this.state.addresses.length==0 && 
+                                <>
+                                    <h3>No tienes direcciones registradas.</h3>
+                                    <   Button onClick={() => this.setState({modal:1})} text={"Agregar dirección"} />
+                                </>
+                            }
+
+                            {
+                                 this.state.selectedAddr > -1 ?   
+                                <>
+                                    <p>{this.state.addresses[this.state.selectedAddr].description}</p>
+                                    <h3>Dirección de envío</h3>
+                                    <p>Dirección: {this.state.addresses[this.state.selectedAddr].address}</p>
+                                    <p>Barrio:{this.state.addresses[this.state.selectedAddr].neighborhood}</p>
+                                    <p>Departamento:{this.state.addresses[this.state.selectedAddr].department}</p>
+                                    <p>Ciudad:{this.state.addresses[this.state.selectedAddr].city}</p>
+                                    
+                                
+                                    <Button onClick={this.openAddrsModal} text={"Cambiar dirección"}/>
+                                </>
+                                :
+                                <>
+                                    <Button onClick={this.openAddrsModal} text={"Selecciona tu dirección"}/>
+                                </>
+                            }
+
                             </div>
+
+
+
                         </div>
                     </div>
                 </div>

@@ -62,8 +62,12 @@ class AccountQuestions extends Component {
   };
   
   render() {
+    
     console.log(this.state.questions)
+
     const mid = this.state.modal;
+
+
     const content1 = this.state.modal >= 0 ? (
       <div className="modal-question">
         <div className="header-modal">

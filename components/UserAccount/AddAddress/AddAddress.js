@@ -35,15 +35,29 @@ export default class addAddress extends React.Component {
             });
             return false;
         }else{
-            redirect("/cuenta");
+            if(!this.props.cancel){
+                redirect("/cuenta");
+            }else{
+                this.props.save();
+            }
         }
     };
+
+    cancelHandler = () => {
+        
+        if(!this.props.cancel){
+            redirect("/cuenta");
+        }else{
+            this.props.cancel();
+        }
+
+    }
 
     render(){
         const { error } = this.state;
         return (
-            <div className="add-addess">
-                <Header />
+            <div className={!this.props.noheader && "add-addess"}>
+                {!this.props.noheader && <Header />}
                 <div className="add-adress-container">
                     <h2>Agregar domicilio</h2>
                     <div className="add-address-box">
@@ -100,20 +114,20 @@ export default class addAddress extends React.Component {
                                     </button>
                                 </div>
                                 <div className="cancel-btn">
-                                    <Link href="/cuenta">
+                                    
                                         <a>
-                                            <p onClick={() => redirect("/cuenta")}>
+                                            <p onClick={ this.cancelHandler }>
                                                 Cancelar
                                             </p>
                                         </a>
-                                    </Link>
+                                    
                                 </div>
                             </div>
                         </form>
                         {error && error!=="" && <Error message={error} />}
                     </div>
                 </div>
-                <Footer />
+                {!this.props.noheader && <Footer />}
             </div>
         )
     }

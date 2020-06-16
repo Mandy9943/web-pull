@@ -4,7 +4,7 @@ class Select extends Component {
   render() {
     return (
       <div className="wrap-select">
-        <select>{this.props.children}</select>
+        <select onChange={this.props.onChange}>{this.props.children}</select>
       </div>
     );
   }
