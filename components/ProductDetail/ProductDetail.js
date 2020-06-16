@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Nav from "../Common/Nav";
 import Footer from "../Common/Footer";
+import FooterMovil from "../Common/FooterMovil";
 import DetailImg from "../DetailImg";
 import Pay from "./../PaySection";
 import Detail from "./../DetailProductInfo";
@@ -20,6 +21,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTruck, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import Logo1 from "../../assets/img/logo-social.png";
 import Logo2 from "../../assets/img/logo-social1.png";
+
+
 
 
 
@@ -50,7 +53,7 @@ class ProductDetail extends Component {
   render() {
     const mdata = this.props.data;
     const u_data = this.props.user_data;
-    let url= "//www.sic.gov.co";
+    let url = "//www.sic.gov.co";
 
     return (
       <div>
@@ -87,48 +90,48 @@ class ProductDetail extends Component {
                 <QuestionItem questions={this.state.questions} />
               </section>
               <div className="section-pay-type pay-movil no-web">
-                  <div className="section-pay-type-title">
-                    <h4>Medios de pago</h4>
-                    <FontAwesomeIcon icon={faAngleRight} />
-                  </div>
-                  {1 > 0 ? 
+                <div className="section-pay-type-title">
+                  <h4>Medios de pago</h4>
+                  <FontAwesomeIcon icon={faAngleRight} />
+                </div>
+                {1 > 0 ?
                   <button className="main-button" onClick={() => this.go(this.props.pid)}><p>Comprar</p></button>
-                  : null }
-                  {/*NEED FIX this shit*/}
-                  <div className="section-pay-type-items">
-                    <p>Tarjetas de crédito</p>
-                    <div>
-                      <img src={PayCredit} />
-                    </div>
-                    <p>Efectivo en puntos de pago</p>
-                    <div>
-                      <img src={PayOnline} />
-                    </div>
-                    <p>Transferencia desde tu banco</p>
-                    <div>
-                      <img src={PayTransfer} />
-                    </div>
+                  : null}
+                {/*NEED FIX this shit*/}
+                <div className="section-pay-type-items">
+                  <p>Tarjetas de crédito</p>
+                  <div>
+                    <img src={PayCredit} />
+                  </div>
+                  <p>Efectivo en puntos de pago</p>
+                  <div>
+                    <img src={PayOnline} />
+                  </div>
+                  <p>Transferencia desde tu banco</p>
+                  <div>
+                    <img src={PayTransfer} />
                   </div>
                 </div>
-                <div className="section-pay-send no-web">
-                  <div className="section-pay-send-title">
-                    <h4>Formas de envio</h4>
-                    <FontAwesomeIcon icon={faAngleRight} />
-                  </div>
-                  <div className="section-pay-send-subtitle">
-                    <span>
-                      <FontAwesomeIcon icon={faTruck} />
-                    </span>
-                    <p>
-                      Envíos gratis a todo el país
+              </div>
+              <div className="section-pay-send no-web">
+                <div className="section-pay-send-title">
+                  <h4>Formas de envio</h4>
+                  <FontAwesomeIcon icon={faAngleRight} />
+                </div>
+                <div className="section-pay-send-subtitle">
+                  <span>
+                    <FontAwesomeIcon icon={faTruck} />
+                  </span>
+                  <p>
+                    Envíos gratis a todo el país
                     </p>
-                  </div>
-                  <div className="section-pay-send-description">
-                    <p>
-                      Es el servicio de kiero que permite recibir tus productos de forma
-                      rapida y segura
+                </div>
+                <div className="section-pay-send-description">
+                  <p>
+                    Es el servicio de kiero que permite recibir tus productos de forma
+                    rapida y segura
                     </p>
-                  </div>
+                </div>
               </div>
             </div>
             <div className="pay-section-pc">
@@ -143,9 +146,9 @@ class ProductDetail extends Component {
             <ProductCardFinding notitle={"true"} category={mdata.category.name} />
           </section>
           <section className='no-movil'>
-              <Explorer />
-              <ProductCardFinding notitle={"true"} category={mdata.category.name} />
-            </section>
+            <Explorer />
+            <ProductCardFinding notitle={"true"} category={mdata.category.name} />
+          </section>
           <section className="advertising-movil no-web">
             <div className="advertising">
               <img src='#' />
@@ -153,12 +156,13 @@ class ProductDetail extends Component {
             <ProductCardFinding notitle={"true"} category={mdata.category.name} />
           </section>
         </div>
+        <FooterMovil />
         <section className='no-movil'>
           <Footer />
         </section>
         <div className="footer-social">
-          <Link href={url}><a><img src={Logo1}/></a></Link>
-          <Link href={url}><a><img src={Logo2}/></a></Link>
+          <Link href={url}><a><img src={Logo1} /></a></Link>
+          <Link href={url}><a><img src={Logo2} /></a></Link>
         </div>
       </div>
     );

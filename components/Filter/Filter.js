@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import Link from "next/link";
 import "./Filter.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faList, faTh, faTimes, faAngleRight, faChevronCircleRight,
-  faWindowClose
+import {
+  faList, faTh, faTimes, faAngleRight, faChevronCircleRight,
+  faWindowClose, faTruck
 } from "@fortawesome/free-solid-svg-icons";
 
 class Filter extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       menuOrder: false,
@@ -20,13 +21,13 @@ class Filter extends Component {
 
   }
 
-  toggleMenuOrder(){
+  toggleMenuOrder() {
     !this.state.menuOrder
       ? this.setState({ menuOrder: true })
       : this.setState({ menuOrder: false });
   }
 
-  toggleMenuFilter(){
+  toggleMenuFilter() {
     !this.state.menuFilter
       ? this.setState({ menuFilter: true })
       : this.setState({ menuFilter: false });
@@ -36,31 +37,31 @@ class Filter extends Component {
   render() {
     let res_categories = [];
 
-    if(this.props.data && this.props.data.categories){
+    if (this.props.data && this.props.data.categories) {
       for (var cat in this.props.data.categories) {
-        if(this.props.filters.indexOf("category|"+cat+" ("+this.props.data.categories[cat]+")") === -1)
-        res_categories.push([cat+" ("+this.props.data.categories[cat]+")", 
-        this.props.data.categories[cat]]);
+        if (this.props.filters.indexOf("category|" + cat + " (" + this.props.data.categories[cat] + ")") === -1)
+          res_categories.push([cat + " (" + this.props.data.categories[cat] + ")",
+          this.props.data.categories[cat]]);
       }
-      res_categories.sort(function(a, b) {
-          return b[1] - a[1];
+      res_categories.sort(function (a, b) {
+        return b[1] - a[1];
       });
 
     }
 
     let res_brands = [];
 
-    if(this.props.data && this.props.data.brands){
+    if (this.props.data && this.props.data.brands) {
 
       for (var brand in this.props.data.brands) {
 
-        if(this.props.filters.indexOf("brand|"+brand+" ("+this.props.data.brands[brand]+")") === -1)
-          res_brands.push([brand+" ("+this.props.data.brands[brand]+")", 
-                                      this.props.data.brands[brand]]);
+        if (this.props.filters.indexOf("brand|" + brand + " (" + this.props.data.brands[brand] + ")") === -1)
+          res_brands.push([brand + " (" + this.props.data.brands[brand] + ")",
+          this.props.data.brands[brand]]);
       }
 
-      res_brands.sort(function(a, b) {
-          return b[1] - a[1];
+      res_brands.sort(function (a, b) {
+        return b[1] - a[1];
       });
 
 
@@ -68,52 +69,53 @@ class Filter extends Component {
 
     let prices = [];
 
-    if(this.props.data && this.props.data.max_price){
+    if (this.props.data && this.props.data.max_price) {
       var max_price = this.props.data.max_price;
       let top = 0;
 
-      if(max_price>99999999999){
+      if (max_price > 99999999999) {
         top = 100000000000;
-      }else if(max_price>9999999999){
+      } else if (max_price > 9999999999) {
         top = 10000000000;
-      }else if(max_price>999999999){
+      } else if (max_price > 999999999) {
         top = 1000000000;
-      }else if(max_price>99999999){
+      } else if (max_price > 99999999) {
         top = 100000000;
-      }else if(max_price>9999999){
+      } else if (max_price > 9999999) {
         top = 10000000;
-      }else if(max_price>999999){
+      } else if (max_price > 999999) {
         top = 1000000;
-      }else if(max_price>99999){
+      } else if (max_price > 99999) {
         top = 100000;
-      }else if(max_price>9999){
+      } else if (max_price > 9999) {
         top = 10000;
-      }else if(max_price>999){
+      } else if (max_price > 999) {
         top = 1000;
-      }else if(max_price>99){
+      } else if (max_price > 99) {
         top = 100;
-      }else if(max_price>9){
+      } else if (max_price > 9) {
         top = 10;
       }
-  
-      let div = top/4;
-      prices.push("Más de "+(top).toLocaleString())
+
+      let div = top / 4;
+      prices.push("Más de " + (top).toLocaleString())
       for (let it = 0; it < 4; it++) {
-        if(this.props.filters.indexOf("price|"+"Desde "+(top-(div*(it+1))+1).toLocaleString()+" Hasta "+(top-(div*it)).toLocaleString()) === -1)
-        prices.push("Desde "+(top-(div*(it+1))+1).toLocaleString()+" Hasta "+(top-(div*it)).toLocaleString())
+        if (this.props.filters.indexOf("price|" + "Desde " + (top - (div * (it + 1)) + 1).toLocaleString() + " Hasta " + (top - (div * it)).toLocaleString()) === -1)
+          prices.push("Desde " + (top - (div * (it + 1)) + 1).toLocaleString() + " Hasta " + (top - (div * it)).toLocaleString())
       }
     }
-   
+
 
     const filters = this.props.filters.map((item, index) => {
       return <p className="result" onClick={() => {
         this.props.removeFilter(index);
-      }}> 
+      }}>
         {item.split("|")[1]} <FontAwesomeIcon icon={faWindowClose} /> </p>
     });
 
     const buttonState = this.props.format;
     const responsiveButton = buttonState == "grid" ? faTh : faList;
+    const text = buttonState == "grid" ? "mosaico" : "lista";
     return (
       <>
         <div className="wrap-filter">
@@ -165,28 +167,28 @@ class Filter extends Component {
             <h4>Marca</h4>
             <div>
               {
-              res_brands.map((item, index) => (
-                  <div key={index} className="item-filter-group"
+                res_brands.map((item, index) => (
+                  <div key={index} className="item-filter-group show"
                     onClick={() => {
                       this.props.applyFilter("brand", item[0]);
                     }}>
-                      {item[0]}
-                </div>
-                
-              ))
+                    {item[0]}
+                  </div>
+                ))
               }
             </div>
+            <Link href="#"><a className="view-all">ver todos</a></Link>
           </div>
-          <div className="filter-group">
+          <div className="filter-group show">
             <h4>Rango de precios</h4>
             <div>
-              { prices.map((item, index)=>(
-              <div key={index}
-              onClick={() => {
-                this.props.applyFilter("price", item);
-              }}>
-                <p className="item-filter-group">{item}</p>
-              </div>
+              {prices.map((item, index) => (
+                <div key={index}
+                  onClick={() => {
+                    this.props.applyFilter("price", item);
+                  }}>
+                  <p className="item-filter-group show">{item}</p>
+                </div>
 
               ))}
             </div>
@@ -198,18 +200,23 @@ class Filter extends Component {
               <button>Filtrar</button>
             </div>
           </div>
+            <div className="send-free">
+              <h5>Envio</h5>
+              <span>Envío gratis <FontAwesomeIcon icon={faTruck} /></span>
+            </div> 
           <div className="filter-group">
             <h4>Categorias</h4>
             <div>
               {res_categories.map((item, index) => (
                 <div key={index} className="item-filter-group"
-                onClick={() => {
-                  this.props.applyFilter("category", item[0]);
-                }}>
+                  onClick={() => {
+                    this.props.applyFilter("category", item[0]);
+                  }}>
                   {item[0]}
                 </div>
               ))}
             </div>
+            <Link href="#"><a className="view-all">ver todos</a></Link>
           </div>
         </div>
         <div className="responsive-filter">
@@ -217,7 +224,7 @@ class Filter extends Component {
             className="responsive-filter-item"
             onClick={this.toggleMenuOrder}
           >
-            Ordenar
+            categorias
           </div>
           <div
             className="responsive-filter-item"
@@ -227,10 +234,10 @@ class Filter extends Component {
               this.props.toggle(format);
             }}
           >
-            <FontAwesomeIcon icon={responsiveButton} />
+            {text} <FontAwesomeIcon icon={responsiveButton} />
           </div>
           <div
-            className="responsive-filter-item"
+            className="responsive-filter-item border-none"
             onClick={this.toggleMenuFilter}
           >
             Filtrar
@@ -238,7 +245,7 @@ class Filter extends Component {
           <div
             className={`responsive-menu-filter ${
               this.state.menuOrder ? "show" : null
-            }`}
+              }`}
           >
             <ul>
               <li>
@@ -256,7 +263,7 @@ class Filter extends Component {
           <div
             className={`responsive-menu-filter ${
               this.state.menuFilter ? "show" : null
-            }`}
+              }`}
           >
             <ul>
               <li>
@@ -271,9 +278,9 @@ class Filter extends Component {
                   <summary>Categoria</summary>
                   {res_categories.map((item, index) => (
                     <div key={index} className="responsive-dropdown-item"
-                    onClick={() => {
-                      this.props.applyFilter("category", item[0]);
-                    }}>
+                      onClick={() => {
+                        this.props.applyFilter("category", item[0]);
+                      }}>
                       {item[0]}
                     </div>
                   ))}
@@ -284,9 +291,9 @@ class Filter extends Component {
                   <summary>Marca</summary>
                   {res_brands.map((item, index) => (
                     <div key={index} className="responsive-dropdown-item"
-                    onClick={() => {
-                      this.props.applyFilter("brand", item[0]);
-                    }}>
+                      onClick={() => {
+                        this.props.applyFilter("brand", item[0]);
+                      }}>
                       {item[0]}
                     </div>
                   ))}

@@ -1,0 +1,56 @@
+.download {
+  background: #D11E36;
+  padding: 20px 0;
+  margin-bottom: 15px;
+}
+
+.download span {
+  color: #F6F8FB;
+  font-size: 17px;
+  margin-top: -15px;
+  color: #F6F8FB;
+  top: -30px;
+  position: relative;
+  margin-left: 35px;
+}
+
+.download img {
+  width: 70px;
+  height: 70px;
+  -webkit-box-shadow: 0px 3px 6px #00000029;
+          box-shadow: 0px 3px 6px #00000029;
+  border-radius: 5px;
+  margin-left: 50px;
+}
+
+.menu-items {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  padding: 20px 15px;
+  font-size: 12px;
+}
+
+.menu-items a {
+  color: #565555;
+  margin: 7px;
+}
+
+.login-menu {
+  border-top: 0.2px solid #707070;
+  border-bottom: 0.2px solid #707070;
+  padding: 30px 15px;
+  margin-bottom: 30px;
+}
+
+.login-menu a {
+  color: #4E8EFE;
+}
+
+.login-menu span {
+  color: #434446;
+  white-space: nowrap;
+  margin-top: 15px;
+}
+/*# sourceMappingURL=FooterMovil.css.map */

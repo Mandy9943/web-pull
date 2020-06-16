@@ -91,5 +91,9 @@
   .wrap-detail-info {
     padding: 20px;
   }
+  .footer-social {
+    display: -ms-grid;
+    display: grid;
+  }
 }
 /*# sourceMappingURL=DetailProductInfo.css.map */
