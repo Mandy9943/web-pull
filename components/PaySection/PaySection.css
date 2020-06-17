@@ -63,7 +63,7 @@
   width: fit-content;
 }
 
-.pay-item .select-icon svg {
+.pay-item .select-icon .icon-select {
   position: absolute;
   right: 15px;
   top: 11px;

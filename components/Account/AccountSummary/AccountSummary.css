@@ -56,11 +56,14 @@
   color: #6F6F6F;
   width: 20px !important;
   height: 20px;
-  margin-right: 7px;
+  margin-right: 10px;
+  position: relative;
+  top: 3px;
 }
 
 .account-summary-item {
-  color: grey;
+  color: #393838;
+  font-size: 14px;
 }
 
 .account-summary-item .Count {
@@ -83,8 +86,10 @@
 }
 
 .account-summary-wrap {
-  padding: 20px;
+  padding: 40px;
   padding-top: 42px;
+  background: #EBEBEB;
+  font-family: 'Montserrat', sans-serif;
 }
 
 @media (max-width: 700px) {

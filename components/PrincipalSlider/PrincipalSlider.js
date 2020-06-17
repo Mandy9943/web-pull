@@ -4,6 +4,8 @@ import 'react-animated-slider/build/horizontal.css';
 import BannerImg1 from "../../assets/img/banners/banner-grande-v2-10col-03.jpg";
 import BannerImg2 from "../../assets/img/banners/banner-grande-v2-10col-04.jpg";
 import BannerImg3 from "../../assets/img/banners/banner-grande-v2-10col-05.jpg";
+import BannerImg4 from "../../assets/img/banners/banner-grande-v2-10col-06.jpg";
+import BannerImg5 from "../../assets/img/banners/banner-grande-v2-10col-07.jpg";
 import BannerMobil1 from "../../assets/img/bannerCelular/banners-apk.jpg";
 import BannerMobil2 from "../../assets/img/bannerCelular/banners-apk5.jpg";
 import BannerMobil3 from "../../assets/img/bannerCelular/banners-apk2.jpg";
@@ -14,8 +16,10 @@ import ProductCard from "../ProductCard";
 
 let slides = [
     { url: BannerImg1 },
+    {url: BannerImg2},
     {url: BannerImg3},
-    { url: BannerImg2,
+    {url: BannerImg4},
+    { url: BannerImg5,
         slider: 'slider',
         previousButton: 'previousButton',
         nextButton: 'nextButton',

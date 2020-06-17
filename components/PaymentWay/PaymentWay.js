@@ -279,7 +279,7 @@ export default class PaymentWay extends Component {
                                                 <input name={"document_number"} placeholder="Número documento" />
                                             </label>
                                         
-                                            <button type="submit" className="main-button">
+                                            <button type="submit" className="button-continue main-button">
                                                 <p>Continuar con la compra</p>
                                             </button>
 

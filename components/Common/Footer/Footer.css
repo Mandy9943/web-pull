@@ -25,6 +25,10 @@
       align-self: center;
 }
 
+.footer-tex p {
+  color: #F59D9D !important;
+}
+
 .footer-tex ul {
   display: -webkit-box;
   display: -ms-flexbox;

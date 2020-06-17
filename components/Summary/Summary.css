@@ -13,8 +13,9 @@
 .summary-content .user-account-container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: auto 1fr;
-      grid-template-columns: auto 1fr;
+  -ms-grid-columns: 1fr 4fr;
+      grid-template-columns: 1fr 4fr;
+  grid-gap: 30px;
   margin: auto;
   width: 80%;
   height: 100%;
@@ -45,10 +46,6 @@
 .summary-content .user-account-container .user-account-menu .user-account-menu-item .user-account-accordion p {
   margin-top: 20px;
   font-size: 14px;
-}
-
-.summary-content .user-account-container .user-account-menu .user-account-menu-item.active .user-account-menu-icon {
-  color: #CF0A2C;
 }
 
 .summary-content .user-account-container .user-account-menu .user-account-menu-item.active .user-account-accordion {

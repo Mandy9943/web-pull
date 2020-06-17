@@ -238,7 +238,7 @@ export default class UserAccount extends Component {
                                     <p>Usuario</p>
                                     <p>{this.state.userData.email}</p>
                                     <p className="user-accunt-info-box-icon">
-                                        { /*<FontAwesomeIcon icon={faAngleRight} /> */}
+                                        <FontAwesomeIcon icon={faAngleRight} />
                                     </p>
                                 </div>
                                 <div className="user-accunt-info-tab">
@@ -266,7 +266,7 @@ export default class UserAccount extends Component {
                                     <p>Nombre y apellido</p>
                                     <p>{this.state.userData.name+" "+this.state.userData.last_name}</p>
                                     <p className="user-accunt-info-box-icon">
-                                        { /*<FontAwesomeIcon icon={faAngleRight} /> */}
+                                        <FontAwesomeIcon icon={faAngleRight} />
                                     </p>
                                 </div>
                                 <div className="user-accunt-info-tab">

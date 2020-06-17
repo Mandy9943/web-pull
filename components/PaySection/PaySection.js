@@ -59,7 +59,7 @@ class PaySection extends Component {
         </div>
         {this.props.stock > 0 ? <div className="pay-item">
           <section className="select-icon">
-            <FontAwesomeIcon icon={faAngleRight} />
+
             <select defaultValue={1}>
               {qty_options}
             </select>
