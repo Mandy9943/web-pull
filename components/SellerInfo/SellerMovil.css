@@ -10,15 +10,16 @@
 .seller-movil .ubication {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: auto 1fr;
-      grid-template-columns: auto 1fr;
+  -ms-grid-columns: 60px 1fr;
+      grid-template-columns: 60px 1fr;
   margin-top: 15px;
   color: #434446;
 }
 
-.seller-movil .ubication svg, .seller-movil .ubication img {
-  width: 70px;
-  height: 70px;
+.seller-movil .ubication img {
+  width: 45px;
+  height: 45px;
+  margin: auto;
 }
 
 .seller-movil .ubication .title {
@@ -36,6 +37,11 @@
 
 .seller-movil .name-seller {
   margin-top: 5px;
+}
+
+.seller-movil .name-seller img {
+  width: 60px;
+  height: 60px;
 }
 
 .seller-movil .name-seller .title span {

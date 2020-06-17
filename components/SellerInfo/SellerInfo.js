@@ -5,6 +5,7 @@ import "./SellerMovil.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import logo from "../../assets/img/logo-kiero.png";
+import ubication from "../../assets/img/iconos/UBICACIÓN-01.svg";
 
 
 class SellerInfo extends Component {
@@ -66,10 +67,10 @@ class SellerInfo extends Component {
               <FontAwesomeIcon icon={faAngleRight} />
             </div>
             <div className="ubication">
-              <FontAwesomeIcon icon={faAngleRight} />
+              <img src={ubication} />
               <section className="title">
                 <span className="strong">Ubicacion</span>
-                Ciudad donde esta la verga 
+                Ciudad generica
               </section>
             </div>
             <div className="ubication name-seller">
