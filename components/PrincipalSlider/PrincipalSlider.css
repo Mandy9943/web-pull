@@ -57,10 +57,10 @@
     height: 100%;
   }
   .principal-slider .mobil .slider .previousButton {
-    left: 0px;
+    display: none;
   }
   .principal-slider .mobil .slider .nextButton {
-    right: 0px;
+    display: none;
   }
 }
 

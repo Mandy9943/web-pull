@@ -4,9 +4,11 @@ import 'react-animated-slider/build/horizontal.css';
 import BannerImg1 from "../../assets/img/banners/banner-grande-v2-10col-03.jpg";
 import BannerImg2 from "../../assets/img/banners/banner-grande-v2-10col-04.jpg";
 import BannerImg3 from "../../assets/img/banners/banner-grande-v2-10col-05.jpg";
-import BannerMobil1 from "../../assets/img/bannerCelular/banner-bebes.jpg";
-import BannerMobil2 from "../../assets/img/bannerCelular/banner-electronica.jpg";
-import BannerMobil3 from "../../assets/img/bannerCelular/dispositivos-belleza.png";
+import BannerMobil1 from "../../assets/img/bannerCelular/banners-apk.jpg";
+import BannerMobil2 from "../../assets/img/bannerCelular/banners-apk5.jpg";
+import BannerMobil3 from "../../assets/img/bannerCelular/banners-apk2.jpg";
+import BannerMobil4 from "../../assets/img/bannerCelular/banners-apk3.jpg";
+import BannerMobil5 from "../../assets/img/bannerCelular/banners-apk4.jpg";
 import "./PrincipalSlider.css";
 import ProductCard from "../ProductCard";
 
@@ -32,7 +34,9 @@ let slides = [
 let slidesMobil = [
     { url: BannerMobil1 },
     { url: BannerMobil2 },
-    { url: BannerMobil3,
+    { url: BannerMobil3 },
+    { url: BannerMobil4 },
+    { url: BannerMobil5,
         slider: 'slider',
         previousButton: 'previousButton',
         nextButton: 'nextButton',
