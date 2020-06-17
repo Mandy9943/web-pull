@@ -7,7 +7,7 @@ import Footer from "../Common/Footer";
 import Select from "../Common/Select";
 import "./PaymentWay.css";
 import "./PaymentWayMovil.css";
-import { getData } from "../../services/userApi"
+import { getData, savePrivateData } from "../../services/userApi"
 import Modal from "../Common/Modal";
 import AddAddress from "../UserAccount/AddAddress"
 
@@ -25,6 +25,8 @@ export default class PaymentWay extends Component {
             modalAddr: false,
             selectedAddr: -1,
             auxAddr:0,
+            addrLoaded: false,
+            error: null
 
         }
         this.addrRef = React.createRef();
@@ -48,7 +50,8 @@ export default class PaymentWay extends Component {
     loadAddresses(){
         getData("/getAddresses", this.props.user.jwt)
             .then((response) => {
-                this.setState({ addresses: response.data });
+                this.setState({ addresses: response.data, addrLoaded: true });
+                
         });
     }
 
@@ -87,6 +90,46 @@ export default class PaymentWay extends Component {
     tmpChangeAddr = (e) => {
         this.setState({auxAddr:e.target.value});
     }
+
+
+
+    payPSE = async e => {
+        e.preventDefault();
+
+        if(this.state.selectedAddr==-1){
+            this.setState({ modalAddr: true });
+        }
+
+
+        const error = await savePrivateData("/psePayment",{
+
+            product_id: this.props.data.product_id,
+            address_id: this.state.selectedAddr,
+
+            names: e.target.elements.names.value,
+            email: e.target.elements.email.value,
+            phone: e.target.elements.phone.value,
+            person_type: e.target.elements.person_type.value,
+            document_type: e.target.elements.document_type.value,
+            document_number: e.target.elements.document_number.value,
+            bank_id: e.target.elements.bank_id.value,
+
+
+        }, this.props.user.jwt);
+
+        console.log(error);
+        if (error) {
+            this.setState({
+                error: error
+            });
+            return false;
+        }else{
+            alert("OKK");
+        }
+
+    };
+
+
 
     render() {
 
@@ -183,15 +226,19 @@ export default class PaymentWay extends Component {
                             <div className="transfer payment-way-box" onClick={() => this.accordionTransfer()}>
                                     <p>Transferencia desde PSE</p>
                             </div>
+
+                            <form onSubmit={this.payPSE}>
+
                             <div className={this.state.closeTransfer ? "accordion-payment-way" : "accordion-payment-way active"}>
                                 <div className="content-accordion">
-                                    <div className="content-accordion-form">
-                                        <form>
+                                    
+                                       <div className="content-accordion-form">
+                                        
                                             <label>
                                                 <p>Datos de titular</p>
-                                                <input placeholder="Nombre completo *" />
-                                                <input placeholder="Email *" />
-                                                <input placeholder="Teléfono *" />
+                                                <input name={"names"} placeholder="Nombre completo *" />
+                                                <input name={"email"} placeholder="Email *" />
+                                                <input name={"phone"} placeholder="Teléfono *" />
                                             </label>
                                             <label>
                                                 <p>Banco</p>
@@ -213,17 +260,17 @@ export default class PaymentWay extends Component {
 
                                                 </Select>
                                             </label>
-                                        </form>
+                                        
                                     </div>
                                     <div className="content-accordion-form">
-                                        <form>
+                                        
                                             <label>
                                                 <p>Documento de identificación</p>
                                                 
                                                 <Select name={"document_type"}>
                                                     <option value={"CC"}>Cédula de ciudadanía </option>
                                                     <option value={"CE"}>Cédula de extranjería </option>
-                                                    <option value={"NIT"}>En caso de ser una empresa </option>
+                                                    <option value={"NIT"}> NIT </option>
                                                     <option value={"TI"}>Tarjeta de Identidad </option>
                                                     <option value={"PP"}>Pasaporte </option>
                                                     <option value={"DE"}>Documento de identificación extranjero </option>
@@ -235,13 +282,12 @@ export default class PaymentWay extends Component {
                                             <button type="submit" className="main-button">
                                                 <p>Continuar con la compra</p>
                                             </button>
-                                        
-                                        </form>
-                                        
 
                                     </div>
+                                    
                                 </div>
                             </div>
+                            </form>
                         </div>
                         <div className="payment-data">
                             <div className="product-description payment-way-box only-desktop">
@@ -260,7 +306,7 @@ export default class PaymentWay extends Component {
                                 
 
                             {
-                                this.state.addresses.length==0 && 
+                                (this.state.addrLoaded && this.state.addresses.length==0) && 
                                 <>
                                     <h3>No tienes direcciones registradas.</h3>
                                     <   Button onClick={() => this.setState({modal:1})} text={"Agregar dirección"} />
