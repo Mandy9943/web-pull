@@ -1,28 +1,81 @@
-.News
-    background: white
-    padding: 25px
-    margin-bottom: 50px;
-    display: none
-    .title
-        display: flex
-        justify-content: center
-        align-items: center
-        .logo
-            height: 40px
-    .icons
-        display: flex
-        margin: auto
-        margin-top: 25px
-        a
-            margin: auto
-        img
-            width: 35px
-            height: 35px
-
-
 @media (max-width:700px)
     .News
         display: block
-        justify-content: center
-        align-items: center
+        background: white
+        padding: 25px
+        margin-bottom: 50px;
+        .content
+            justify-content: center
+            align-items: center
+            .title
+                display: flex
+                justify-content: center
+                align-items: center
+                .logo
+                    height: 40px
+            .icons
+                display: flex
+                margin: auto
+                margin-top: 25px
+                a
+                    margin: auto
+                img
+                    width: 35px
+                    height: 35px
 
+@media (min-width: 700px)
+    .News
+        background: white
+        .content
+            padding: 25px
+            margin: auto
+            margin-bottom: 50px
+            justify-content: center
+            align-items: center
+            display: grid
+            width: 70%
+            grid-template-columns: 1fr 1fr
+            .title
+                display: flex
+                align-items: center
+                .logo
+                    height: 50px
+            .icons
+                display: flex
+                margin: auto
+                margin-top: 10px
+                margin-right: 0
+                a
+                    margin: auto
+                img
+                    width: 50px
+                    height: 50px
+
+
+@media (min-width: 1100px)
+    .News
+        .content
+            .title
+                .logo
+                    height: 75px
+            .icons
+                img
+                    width: 80px
+                    height: 80px
+
+@media (min-width: 1500px)
+    .News
+        .content
+            .title
+                margin: auto
+                .logo
+                    height: 75px
+                    margin: auto
+            .icons
+                margin: auto
+                margin-top: 10px
+                img
+                    width: 80px
+                    height: 80px
+
+                    

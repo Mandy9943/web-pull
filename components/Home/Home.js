@@ -50,8 +50,8 @@ export default class Home extends Component {
           <ListProductMovil jwt={u_data.jwt} />
           <CategoriesImgMenu />
           <Tickets />
-          <News />
         </div>
+        <News />
         <Info />
         {/*<Social />*/}
         <Footer />

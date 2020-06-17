@@ -19,16 +19,18 @@ class News extends Component {
   render() {
     return (
       <div className="News">
-        <section className="title"><img src={logo}  className="logo"/></section>
-        <sections className="icons">
-          <Link href="#"><a><img src={src}/></a></Link>
-          <Link href="#"><a><img src={src1}/></a></Link>
-          <Link href="#"><a><img src={src3}/></a></Link>
-          <Link href="#"><a><img src={src7}/></a></Link>
-          <Link href="#"><a><img src={src2}/></a></Link>
-          <Link href="#"><a><img src={src5}/></a></Link>
-          <Link href="#"><a><img src={src4}/></a></Link>
-        </sections>
+        <section className="content">
+          <section className="title"><img src={logo} className="logo" /></section>
+          <sections className="icons">
+            <Link href="#"><a><img src={src} /></a></Link>
+            <Link href="#"><a><img src={src1} /></a></Link>
+            <Link href="#"><a><img src={src3} /></a></Link>
+            <Link href="#"><a><img src={src7} /></a></Link>
+            <Link href="#"><a><img src={src2} /></a></Link>
+            <Link href="#"><a><img src={src5} /></a></Link>
+            <Link href="#"><a><img src={src4} /></a></Link>
+          </sections>
+        </section>
       </div>
     );
   }
