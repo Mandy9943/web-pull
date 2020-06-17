@@ -35,7 +35,7 @@ class PaymentBar extends Component {
         <div className="payment-way-content">
           <h4>Tarjetas de credito</h4>
           <img className="payment-way-img" src={CreditCard} alt="Tarjetas de credito" />
-          <p>
+          <p className="sub-title">
             El banco incluirá los intereses de las cuotas en el resumen de tu
             tarjeta
           </p>

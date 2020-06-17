@@ -10,7 +10,8 @@ import {
     faShoppingBag,
     faCog,
     faAngleRight,
-    faAngleDown
+    faAngleDown,
+    faAngleUp
 } from "@fortawesome/free-solid-svg-icons";
 import "./Sidebar.css";
 import redirect from "../../lib/redirect";
@@ -31,9 +32,9 @@ export default class Sidebar extends Component {
             iconShop: true,
             iconBill: true,
             iconMyData: true,
-            userAccountIconMyData: faAngleRight,
-            userAccountIconShop: faAngleRight,
-            userAccountIconBill: faAngleRight,
+            userAccountIconMyData: faAngleDown,
+            userAccountIconShop: faAngleDown,
+            userAccountIconBill: faAngleDown,
             modal1: false,
             modal2: false
         }
@@ -48,12 +49,12 @@ export default class Sidebar extends Component {
 
         if (this.state.iconBill === true) {
             this.setState({
-                userAccountIconBill: faAngleDown
+                userAccountIconBill: faAngleUp
             })
 
         } else if (this.state.iconBill === false) {
             this.setState({
-                userAccountIconBill: faAngleRight
+                userAccountIconBill: faAngleDown
             })
         }
 
@@ -66,11 +67,11 @@ export default class Sidebar extends Component {
         });
         if (this.state.iconShop === true) {
             this.setState({
-                userAccountIconShop: faAngleDown
+                userAccountIconShop: faAngleUp
             })
         } else if (this.state.iconShop === false) {
             this.setState({
-                userAccountIconShop: faAngleRight
+                userAccountIconShop: faAngleDown
             })
         }
     }
@@ -82,11 +83,11 @@ export default class Sidebar extends Component {
         });
         if (this.state.iconMyData === true) {
             this.setState({
-                userAccountIconMyData: faAngleDown
+                userAccountIconMyData: faAngleUp
             })
         } else if (this.state.iconMyData === false) {
             this.setState({
-                userAccountIconMyData: faAngleRight
+                userAccountIconMyData: faAngleDown
             })
         }
     }

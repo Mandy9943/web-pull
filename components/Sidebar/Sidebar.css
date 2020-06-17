@@ -24,6 +24,11 @@
   margin-top: 0;
 }
 
+.user-account-menu .user-account-menu-item .user-account-menu-icon svg {
+  position: relative;
+  top: 1px;
+}
+
 .user-account-menu .user-account-menu-item .user-account-menu-icon img {
   width: 39px;
   border-radius: 50%;
@@ -38,10 +43,6 @@
 .user-account-menu .user-account-menu-item .user-account-accordion p {
   margin-top: 20px;
   font-size: 14px;
-}
-
-.user-account-menu .user-account-menu-item .user-account-accordion.active .user-account-menu-icon {
-  color: #CF0A2C;
 }
 
 .user-account-menu .user-account-menu-item .user-account-accordion.active .user-account-accordion {

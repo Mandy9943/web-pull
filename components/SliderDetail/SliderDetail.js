@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
 import Slider from 'react-animated-slider';
 import 'react-animated-slider/build/horizontal.css';
-import BannerMobil1 from "../../assets/img/bannerCelular/banner-bebes.jpg";
-import BannerMobil2 from "../../assets/img/bannerCelular/banner-electronica.jpg";
-import BannerMobil3 from "../../assets/img/bannerCelular/dispositivos-belleza.png";
 import "./SliderDetail.css";
 import { getImgUrl } from "../../lib/config"
 
 let slidesMobil = [
-    { url: BannerMobil1 },
-    { url: BannerMobil2 },
-    { url: BannerMobil3,
+    {
         slider: 'slider',
         previousButton: 'previousButton',
         nextButton: 'nextButton',

@@ -1,3 +1,7 @@
+.user-account {
+  font-family: 'Montserrat', sans-serif;
+}
+
 .user-account p {
   color: #717171;
 }
@@ -37,10 +41,6 @@
   font-size: 14px;
 }
 
-.user-account .user-container .user-account-menu .user-account-menu-item.active .user-account-menu-icon {
-  color: #CF0A2C;
-}
-
 .user-account .user-container .user-account-menu .user-account-menu-item.active .user-account-accordion {
   display: block;
 }
@@ -67,10 +67,16 @@
   margin-bottom: 15px;
 }
 
+.user-account .user-container .user-account-content .user-acount-info-title h3 {
+  font-size: 18px;
+  color: #393838;
+  font-weight: 500;
+}
+
 .user-account .user-container .user-account-content .user-acount-info-title a p {
   float: right;
   color: #CF0A2C;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .user-account .user-container .user-account-content .user-accunt-info-box {
@@ -88,6 +94,11 @@
   grid-gap: 15px;
   padding: 20px;
   border-bottom: 0.5px solid #EBEBEB;
+}
+
+.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab p {
+  color: #393838;
+  font-size: 14px;
 }
 
 .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab p.modal-btn {

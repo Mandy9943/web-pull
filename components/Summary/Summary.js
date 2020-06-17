@@ -20,6 +20,8 @@ import AccountBilling from '../Account/AccountBilling';
 import AccountQuestions from "../Account/AccountQuestions";
 import AccountSummary from "../Account/AccountSummary";
 import MyProducts from '../MyProducts/MyProducts';
+import Logo1 from "../../assets/img/logo-social.png";
+import Logo2 from "../../assets/img/logo-social1.png";
 
 
 export default class Summary extends Component {
@@ -43,6 +45,8 @@ export default class Summary extends Component {
         }
     }
 
+    
+
     accordionMyData = () => {
         this.setState({
             closeMyData: !this.state.closeMyData,
@@ -60,23 +64,23 @@ export default class Summary extends Component {
     }
 
     toggleModal = (modal) => {
-      const newState = { ...this.state };
-      newState[`modal${modal}`] = !newState[`modal${modal}`] ? true : false;
-      this.setState(newState);
+        const newState = { ...this.state };
+        newState[`modal${modal}`] = !newState[`modal${modal}`] ? true : false;
+        this.setState(newState);
     }
 
-    showSection = (section,e) => {
+    showSection = (section, e) => {
 
         this.setState({
             display: {
-                resume: section==="resume",
-                myData: section==="myData",
-                myProducts: section==="myProducts",
-                mySales: section==="mySales",
-                bill: section==="bill",
-                orders: section==="orders",
-                questions: section==="questions",
-                items: section==="items"
+                resume: section === "resume",
+                myData: section === "myData",
+                myProducts: section === "myProducts",
+                mySales: section === "mySales",
+                bill: section === "bill",
+                orders: section === "orders",
+                questions: section === "questions",
+                items: section === "items"
             }
         })
     }
@@ -86,22 +90,28 @@ export default class Summary extends Component {
 
         let u_data = this.props.user_data;
 
+        let url= "//www.sic.gov.co";
+
         return (
             <div className="summary-content">
                 <Nav user={u_data.user} home={false} authenticated={u_data.authenticated} />
                 <div className="user-account-container" >
-                    <Sidebar user_data={u_data} cb={this.showSection}/>
-                    {this.state.display.resume && <AccountSummary user={u_data} /> }
-                    {this.state.display.orders && <Purchases mode={"buy"} user={u_data} /> }
-                    
-                    {this.state.display.myData && <UserAccount user={u_data} /> }
-                    {this.state.display.mySales && <Purchases mode={"sell"} user={u_data} /> }
+                    <Sidebar user_data={u_data} cb={this.showSection} />
+                    {this.state.display.resume && <AccountSummary user={u_data} />}
+                    {this.state.display.orders && <Purchases mode={"buy"} user={u_data} />}
 
-                    {this.state.display.myProducts && <MyProducts jwt={u_data.jwt} /> }
-                    {this.state.display.questions && <AccountQuestions user={u_data} /> }
-                    {this.state.display.bill && <AccountPurchase user={u_data} /> }
+                    {this.state.display.myData && <UserAccount user={u_data} />}
+                    {this.state.display.mySales && <Purchases mode={"sell"} user={u_data} />}
+
+                    {this.state.display.myProducts && <MyProducts jwt={u_data.jwt} />}
+                    {this.state.display.questions && <AccountQuestions user={u_data} />}
+                    {this.state.display.bill && <AccountPurchase user={u_data} />}
                 </div>
                 <Footer />
+                <div className="footer-social">
+                    <Link href={url}><a><img src={Logo1} /></a></Link>
+                    <Link href={url}><a><img src={Logo2} /></a></Link>
+                </div>
             </div>
         )
     }
