@@ -1,0 +1,23 @@
+.secon-slider {
+  margin-botton: 50px;
+}
+
+.secon-slider .slider {
+  height: 300px;
+  margin: auto;
+}
+
+.secon-slider .slider .previousButton, .secon-slider .slider .nextButton {
+  display: none !important;
+}
+
+.secon-slider .slider .slide {
+  height: auto;
+  overflow: hidden;
+  text-align: center;
+}
+
+.secon-slider .slider .slide img {
+  width: 100% !important;
+}
+/*# sourceMappingURL=SeconSlider.css.map */

@@ -17,6 +17,8 @@ import ProductCardFinding from "../Common/ProductCardFinding/ProductCardFinding"
 import ListProductMovil from "./../listProductMovil/listProductMovil"
 import Logo1 from "../../assets/img/logo-social.png";
 import Logo2 from "../../assets/img/logo-social1.png";
+import SeconSlider from "./../SeconSlider";
+
 
 export default class Home extends Component {
   render() {
@@ -33,6 +35,7 @@ export default class Home extends Component {
           <Payment />
           <ProductsSlider category={"Computación"} />
           <ProductsSlider category={"Belleza y Cuidado Personal"} />
+          <SeconSlider />
           {!authenticated ?
             <section className="login-home-movil">
               <h5>Crea tu cuenta y descrubre los mejores productos</h5>
