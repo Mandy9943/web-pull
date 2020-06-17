@@ -27,6 +27,13 @@
   font-size: 50px;
 }
 
+.categories-img-menu .content-categories-img-menu a.categories-img p.categories-menu-icon svg {
+  width: 45px !important;
+  max-width: 45px !important;
+  height: 45px !important;
+  max-height: 45px !important;
+}
+
 .categories-img-menu .main-button {
   display: none;
 }
@@ -50,9 +57,6 @@
   }
   .categories-img-menu .content-categories-img-menu a.categories-img p {
     font-size: 20px;
-  }
-  .categories-img-menu .content-categories-img-menu a.categories-img .categories-menu-icon {
-    font-size: 85px !important;
   }
   .categories-img-menu .main-button {
     background: white !important;
@@ -81,6 +85,12 @@
   }
   .no-movil {
     display: none;
+  }
+  .categories-menu-icon svg {
+    width: 75px !important;
+    max-width: 75px !important;
+    height: 75px !important;
+    max-height: 75px !important;
   }
 }
 

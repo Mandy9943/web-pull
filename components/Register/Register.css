@@ -33,6 +33,10 @@
   padding: 0px 10px;
 }
 
+.register .main-button {
+  width: auto;
+}
+
 .register-text {
   font-size: 14px;
   text-align: center;
