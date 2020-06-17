@@ -161,7 +161,8 @@
 }
 
 .nav-top .user-menu .menu-off h5 {
-  margin-left: 15px;
+  margin-left: 87px;
+  text-align: left;
 }
 
 .nav-top .user-menu .menu-off .name {
@@ -181,10 +182,12 @@
 .nav-top .user-menu .menu-off .main-button {
   margin: 15px auto !important;
   border-radius: 5px;
+  padding: 5px 0;
 }
 
 .nav-top .user-menu .menu-off .main-button p {
   color: white;
+  font-size: 16px;
 }
 
 .nav-top .user-menu .menu-off .options {
