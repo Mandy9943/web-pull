@@ -1,6 +1,6 @@
 export function FetchData(endPoint, postData, method, headers) {
     let data
-    let baseURL = "http://158.69.183.108/"
+    let baseURL = "https://kieroapi.net/"
 
     return new Promise((resolve, rejects) => {
         fetch(baseURL + endPoint, {
