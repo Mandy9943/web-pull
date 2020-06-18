@@ -20,7 +20,7 @@ import BannerImg16 from "../../assets/img/banners/news/2 (16).jpg";
 import BannerImg17 from "../../assets/img/banners/news/2 (17).jpg";
 import BannerImg18 from "../../assets/img/banners/news/2 (18).jpg";
 import BannerImg19 from "../../assets/img/banners/news/2 (19).jpg";
-import "./SeconSlider.css";
+import "./SecundarySlider.css";
 
 
 let slides = [
@@ -59,12 +59,12 @@ let slides = [
     },
 ];
 
-export default class SeconSlider extends Component {
+export default class SecundarySlider extends Component {
 
     render() {
         return (
-            <div className="secon-slider no-movil">
-                <Slider autoplay={2500}>
+            <div className="secundary-slider no-movil">
+                <Slider autoplay={4500}>
                     {slides.map((slide, index) =>
                         <div key={index}>
                             <img src={slide.url} />

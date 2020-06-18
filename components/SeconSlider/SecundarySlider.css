@@ -1,0 +1,23 @@
+.secundary-slider {
+  margin-botton: 50px;
+}
+
+.secundary-slider .slider {
+  height: 300px;
+  margin: auto;
+}
+
+.secundary-slider .slider .previousButton, .secundary-slider .slider .nextButton {
+  display: none !important;
+}
+
+.secundary-slider .slider .slide {
+  height: auto;
+  overflow: hidden;
+  text-align: center;
+}
+
+.secundary-slider .slider .slide img {
+  width: 100% !important;
+}
+/*# sourceMappingURL=SecundarySlider.css.map */
