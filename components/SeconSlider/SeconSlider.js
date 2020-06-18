@@ -64,7 +64,7 @@ export default class SeconSlider extends Component {
     render() {
         return (
             <div className="secon-slider no-movil">
-                <Slider autoplay={3000}>
+                <Slider autoplay={2500}>
                     {slides.map((slide, index) =>
                         <div key={index}>
                             <img src={slide.url} />
