@@ -9,26 +9,26 @@ class AccountStoreSales extends Component {
       <div className="account-store-sales-wrap-task-bar">
         <div className="account-store-sales-item-task-bar">
           <section>
-            <p>para preparar</p>
-            <p>0 ventas</p>
+            <p>Para preparar</p>
+            <p>0 Ventas</p>
           </section>
         </div>
         <div className="account-store-sales-item-task-bar">
         <section>
-          <p>listos para despachar</p>
-          <p>0 ventas</p>
+          <p>Listos para despachar</p>
+          <p>0 Ventas</p>
         </section>
         </div>
         <div className="account-store-sales-item-task-bar">
         <section>
-          <p>en proceso</p>
-          <p>0 ventas</p>
+          <p>En proceso</p>
+          <p>0 Ventas</p>
         </section>
         </div>
         <div className="account-store-sales-item-task-bar">
         <section>
-          <p>finalizadas</p>
-          <p>0 ventas</p>
+          <p>Finalizadas</p>
+          <p>0 Ventas</p>
         </section>
         </div>
       </div>

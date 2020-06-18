@@ -53,7 +53,7 @@ export default class Purchases extends Component {
                         <input className="account-store-sales-input-search" placeholder='buscar por # o titulo'/>
                         </div>
                     </div>
-                    <p>ventas</p>
+                    {/*<p>ventas</p>*/}
                 </div>
                 {orderList}
             </div>
