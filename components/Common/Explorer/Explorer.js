@@ -47,7 +47,7 @@ class Explorer extends Component {
   
   componentDidMount() {
 
-    const categoryRandom=(Math.floor((Math.random() * 4) + 1) )-1 
+    const categoryRandom=(Math.floor((Math.random() * 21) + 1) )-1 
     const category = [
         //{name:"Accesorios", image: accesorios},
         {name:"Accesorios para Vehículos", image: accesoriosvehiculos},
