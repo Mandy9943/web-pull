@@ -43,7 +43,8 @@ export default function HowToPay() {
                                 <p>Traspaso Online</p>
                             </iv>
                             <p>El banco incluirá los intereses de las cuotas en el resumen de tu tarjeta.</p>
-                            <h4>Cuando termines tu compra, te daremos las instrucciones para que sepas cómo y dónde pagarla.</h4>
+                            <h4>Cuando termines tu compra, te daremos las instrucciones 
+                                para que sepas cómo y dónde pagarla.</h4>
                         </div>
                         <Link href="/problemas_de_pago">
                             <a>
