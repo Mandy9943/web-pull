@@ -173,7 +173,11 @@
   padding: 20px;
   width: 100%;
   text-align: center;
-  border-right: 0.5px solid;
+  border-right: 0.5px solid #C6C6C6;
+}
+
+.responsive-filter-item svg {
+  color: #757575;
 }
 
 .border-none {

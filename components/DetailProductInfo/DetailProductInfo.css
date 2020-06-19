@@ -1,5 +1,5 @@
 .wrap-detail-info {
-  border-top: 0.5px solid #9F9F9F;
+  border-top: 0.5px solid #C6C6C6;
   font-family: 'Montserrat', sans-serif;
   padding: 40px;
   color: #545454;
@@ -29,7 +29,7 @@
 .characteristics, .guarantee {
   font-family: 'Montserrat', sans-serif;
   padding: 20px;
-  border-bottom: 0.5px solid #9F9F9F;
+  border-bottom: 0.5px solid #C6C6C6;
   background: white;
 }
 
@@ -65,7 +65,7 @@
 }
 
 .guarantee {
-  border-top: 0.5px solid #9F9F9F;
+  border-top: 0.5px solid #C6C6C6;
   padding: 30px 20px;
 }
 
