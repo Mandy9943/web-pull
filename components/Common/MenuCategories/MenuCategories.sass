@@ -12,20 +12,33 @@
     font-family: 'Montserrat', sans-serif;
 .menu-categories
     border-radius: 15px 
-    box-shadow: 0px 0px 5px 1000px rgba(0,0,0,0.75)
+    box-shadow: 0px 0px 5px 1000px rgba(0,0,0,0.65)
     background: white
     width: 70%
     position: absolute;
     top: 92px
     display: grid
     grid-template-columns: 300px 3fr
+    &:before
+        content: ''
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        left: 0;
+        bottom: 0;
+        background: red;
+        filter: drop-shadow(1px 1px 2px black)
+        border-radius: 5px
     a
         color: #292929 !important
 .title-categories
     background: #F2F2F2
     padding: 15px
+    z-index: 1000
     svg
         float: right;
+    border-radius: 0 0px 0 5px;
     span
         font-size: 20px
         margin-bottom: 7px
@@ -39,9 +52,11 @@
     padding-top: 100px
     grid-template-rows: min-content;
     box-shadow: 0px 3px 6px #00000029;
+    border-radius: 0  0 5px 0
     img
         height: 100px
         position: absolute
+        width: 90%
         top: 0
         left: 4px
     span
