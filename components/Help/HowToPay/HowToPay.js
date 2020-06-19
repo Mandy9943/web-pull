@@ -32,7 +32,7 @@ export default function HowToPay() {
                     <div className="how-to-pay-box">
                         <div className="how-to-pay-box-content">
                             <h4>Puedes pagar con confianza</h4>
-                            <p>Te devolveremos el dinero si el producto no es lo q  ue esperabas.</p>
+                            <p>Te devolveremos el dinero si el producto no es lo que esperabas.</p>
                             <h4>Elige entre cualquiera de estos medios de pago:</h4>
                             <iv className="how-to-pay-ways">
                                 <img src={CreditCard} />
@@ -40,10 +40,10 @@ export default function HowToPay() {
                                 <img src={BankTransfer} />
                                 <p>Transferencias desde tu banco</p>
                                 <img src={OnlineTransfer} />
-                                <p>TTraspaso Online</p>
+                                <p>Traspaso Online</p>
                             </iv>
-                            <p>El banco inclurá los inetereses de las cuotas en el resumen de tu tarjeta.</p>
-                            <h4>Cuando termines tu compra, te daremos las intrucciones paara que sepas cómo y dónde pagarla.</h4>
+                            <p>El banco incluirá los intereses de las cuotas en el resumen de tu tarjeta.</p>
+                            <h4>Cuando termines tu compra, te daremos las instrucciones para que sepas cómo y dónde pagarla.</h4>
                         </div>
                         <Link href="/problemas_de_pago">
                             <a>
