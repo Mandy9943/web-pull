@@ -6,6 +6,7 @@ import "./modal-home.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getData } from "../../../services/userApi";
 import Modal from "../Modal/Modal";
+import MenuCategories from "../MenuCategories";
 import {
     faBars,
     faSearch,
@@ -30,6 +31,8 @@ export default class Nav extends Component {
             mostrar: true,
             ocultar: true,
             modal1: false,
+            modal2: false,
+            showCategories: false,
             categories: [],
             showMenu: false,
         }
@@ -79,18 +82,23 @@ export default class Nav extends Component {
             });
     }
 
+    mouseEnter = () => {
+        this.setState({ showCategories: true });
+      }
+
+    mouseLeave = () => {
+        this.setState({ showCategories: false });
+    }
+
+
     render() {
 
         let authenticated = this.props.authenticated
         let user = this.props.user
         let home = this.props.home
 
-        const listCategories = this.state.categories.map(function (cat, i) {
-            return <li key={i}><a href={"/categoria/" + cat.name}>{cat.name}</a></li>
-        });
-
         const content1 = (
-            <>
+            <> 
                 <div className="header-modal">
                     <h5>Bienvenido</h5>
                     <p>Crea tu cuenta o inicia sesion</p>
@@ -111,8 +119,15 @@ export default class Nav extends Component {
 
 
         return (
+
+            
+
             <div className="nav">
+
+
                 <div className="nav-content desktop-nav">
+               
+               
                     <div className="nav-top">
                         <Logo />
                         <div className="search-bar">
@@ -175,11 +190,10 @@ export default class Nav extends Component {
                             <ul>
                                 <section className="menu">
                                     <ul>
-                                        <li>
+                                        <li onMouseEnter={this.mouseEnter} onMouseLeave={this.mouseLeave}>
+                                            {this.state.showCategories ? (<MenuCategories  toggle={this.mouseLeave} num="2" categories={this.state.categories} />) : null}
                                             Categorías <FontAwesomeIcon icon={faAngleDown} />
-                                            <ul>
-                                                {listCategories}
-                                            </ul>
+
                                         </li>
                                     </ul>
                                 </section>
@@ -226,7 +240,8 @@ export default class Nav extends Component {
                     {home ?
                         <div className="nav-botton">
                             {this.state.modal2 ? (<Modal toggle={this.toggleModal} num="1" content={content1} button />) : null}
-                            <div onClick={() => { this.toggleModal(2); }}>
+                            
+                                <div onClick={() => { this.toggleModal(2); }}>
                                 <FontAwesomeIcon icon={faBars} />
                             </div>
                         </div>
