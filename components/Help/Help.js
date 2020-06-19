@@ -153,24 +153,24 @@ export default class Help extends Component {
                     */}
 
                     <div className="help-tip-1">
-                            <p>En el momento que tengas el producto, puedes dejar un comentario al vendedor, este se mostrara en su perfil.
-                                La forma de realizar este comentario depende como hayas recibido el producto.
+                        <p>En el momento que tengas el producto, puedes dejar un comentario al vendedor, este se mostrara en su perfil.
+                        La forma de realizar este comentario depende como hayas recibido el producto.
                             </p>
-                            <h5>A traves de Kiero Envios</h5>
-                            <p>En esta opicion encontraras en el menu de listado de compras alli podras opinar sobre el vendedor</p>
-                            <h5>Entrega acordada</h5>
-                            <p>Si acordaste la entrega perosnalemente con el vendor, o en su defecto uso una forma propia de envio te haremos llegar
-                                un email asi podremos asegurarnos de que recibiste el producto de forma correcta. Una vez confirmado el estado y experiencia
-                                de tu entrega podras dejar un comentario.
+                        <h5>A través de Kiero Envíos</h5>
+                        <p>En esta opicion encontraras en el menú de listado de compras allí podrás opinar sobre el vendedor</p>
+                        <h5>Entrega acordada</h5>
+                        <p>Si acordaste la entrega personalmente con el vendor, o en su defecto uso una forma propia de envió
+                        te haremos llegar un email así podremos asegurarnos de que recibiste el producto de forma correcta.
+                        Una vez confirmado el estado y experiencia de tu entrega podrás dejar un comentario.
                             </p>
 
-                            <button className="main-button">
-                                <p>
-                                    Ir al listado de compras
+                        <button className="main-button">
+                            <p>
+                                Ir al listado de compras
                                 </p>
-                            </button>
+                        </button>
                     </div>
-                    
+
                     <div className="help-right">
                         <h5>Ayuda Kiero</h5>
                         <div className="help-accordion-title fisrt-element">
@@ -217,10 +217,10 @@ export default class Help extends Component {
                             </div>
                             <p>¿En qué momento debo opinar sobre el vendedor?</p>
                             <p className={this.state.accordionAskInPostTitle ? "ask-in-post-title" : "ask-in-post-title active"} onClick={() => this.accordionAskInPost()}>Preguntar en publicaciones</p>
-                                <div className={this.state.closeAskInPost ? "ask-in-post-accordion": "ask-in-post-accordion active"}>
-                                    <p>Han eliminado una pregunta que he realizado</p>
-                                    <p>No puedo efectuar una pregunta</p>
-                                </div>
+                            <div className={this.state.closeAskInPost ? "ask-in-post-accordion" : "ask-in-post-accordion active"}>
+                                <p>Han eliminado una pregunta que he realizado</p>
+                                <p>No puedo efectuar una pregunta</p>
+                            </div>
                         </div>
                         <div className={this.state.accordionTitleSecurity ? "help-accordion-title" : "help-accordion-title active"} onClick={() => this.accordionSecurity()}>
                             <p>Seguridad</p>

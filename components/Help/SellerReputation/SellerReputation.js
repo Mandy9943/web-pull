@@ -47,13 +47,16 @@ export default function SellerReputation() {
                                     </p>
                                 </div>
                                 <h4>Si tiene 5 estrellas, excelente</h4>
-                                <p>Esto quiere decir que es un KinderLider, es un vendedor garantizado por la cantidad de ventas realizadas, laa calidad de servicio ofrecido a sus clientes y el cumplimiento de normas fiscales</p>
+                                <p>Esto quiere decir que es un KinderLider, es un vendedor garantizado por la cantidad de ventas realizadas, 
+                                    la calidad de servicio ofrecido a sus clientes y el cumplimiento de normas fiscales</p>
                             </div>
-                            <p>Si lo que buscas es un servicio de calidad, te seugerimos leer cada una de las opinones de las personas que han contratado a este vendedor.</p>
+                            <p>Si lo que buscas es un servicio de calidad, te sugerimos leer cada una de las opiniones de las personas que han contratado a este vendedor.</p>
                             <h4>Lee detalladamente la publicación.</h4>
-                            <p>Debes leer detenidamente  y con mucha atención la descripción y las fotos pusblicadas, de esta forma estar seguro de las pilíticas de ventas expuestas por el vendedor.</p>
-                            <h4>Confirma que el producto tenga garantia y que puedas devolverlo en caso de ser necesario.</h4>
-                            <p>Si aun depyés de leer todas las opiniones y publicaciones sigues teniendo dudas en cuanto al producto, pregúntale al vendedor todo aquello de te genere dudas. Ejemplo si requires de un comprobante de pago, realiza todas las preguntas que sean necesaria en cuanto al tema.</p>
+                            <p>Debes leer detenidamente y con mucha atención la descripción y las fotos publicadas, 
+                                de esta forma estar seguro de las políticas de ventas expuestas por el vendedor.</p>
+                            <h4>Confirma que el producto tenga garantía y que puedas devolverlo en caso de ser necesario.</h4>
+                            <p>Si aun depues de leer todas las opiniones y publicaciones sigues teniendo dudas en cuanto al producto, pregúntale al vendedor todo aquello de te genere dudas. 
+                                Ejemplo si requieres de un comprobante de pago, realiza todas las preguntas que sean necesaria en cuanto al tema.</p>
                         </div>
                     </div>
                 </div>
