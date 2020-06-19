@@ -24,9 +24,9 @@ export default class Home extends Component {
   render() {
     let u_data = this.props.user_data
     let authenticated = this.props.authenticated
-    let url= "//www.sic.gov.co";
+    let url = "//www.sic.gov.co";
 
-    
+
     return (
       <div className="container">
         <Nav user={u_data.user} home={true} authenticated={u_data.authenticated} />
@@ -54,13 +54,14 @@ export default class Home extends Component {
           <CategoriesImgMenu />
           <Tickets />
         </div>
-        <News />
+
         <Info />
+        <News />
         {/*<Social />*/}
         <Footer />
         <div className="footer-social">
-          <Link href={url}><a><img src={Logo1}/></a></Link>
-          <Link href={url}><a><img src={Logo2}/></a></Link>
+          <Link href={url}><a><img src={Logo1} /></a></Link>
+          <Link href={url}><a><img src={Logo2} /></a></Link>
         </div>
       </div>
     );

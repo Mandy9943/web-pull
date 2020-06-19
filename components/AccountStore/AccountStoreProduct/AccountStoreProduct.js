@@ -4,10 +4,10 @@ import Button from "../../Common/Button/Button";
 import Pagination from "../../Common/Pagination/Pagination";
 import "./AccountStoreProduct.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faAngleLeft, faTimes, faPaperclip, faAngleRight} from "@fortawesome/free-solid-svg-icons";
+import { faAngleLeft, faTimes, faPaperclip, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import DataSheet from "./../../DataSheet";
 import Remove from "./../../Remove";
-import {getCategories, saveProduct, updateProduct} from "../../../services/productsApi";
+import { getCategories, saveProduct, updateProduct } from "../../../services/productsApi";
 import { getImgUrl } from "../../../lib/config"
 import CKEditor from 'ckeditor4-react';
 
@@ -17,7 +17,7 @@ class AccountStoreProduct extends Component {
 
     super(props);
     this.state = {
-      title: (this.props.data && this.props.data.title ?  this.props.data.title : ""),
+      title: (this.props.data && this.props.data.title ? this.props.data.title : ""),
       inputs: [],
       images: (this.props.data && this.props.data.images ? this.props.data.images : []),
       removed_images: [],
@@ -40,26 +40,26 @@ class AccountStoreProduct extends Component {
 
   onImageChange = (key, event) => {
     let files = this.state.inputs;
-    files[key].file=event.target.files[0]
-    this.setState({ inputs: files})
+    files[key].file = event.target.files[0]
+    this.setState({ inputs: files })
   };
 
   onChangeTitle = (e) => {
-    this.setState({title: e.target.value});
+    this.setState({ title: e.target.value });
   }
 
   addNewFile = (e) => {
     e.preventDefault()
     let files = this.state.inputs;
-    files.push({key: this.state.file_count, file: null});
-    let nextVal=this.state.file_count+1;
-    this.setState({ inputs: files, file_count: nextVal})
+    files.push({ key: this.state.file_count, file: null });
+    let nextVal = this.state.file_count + 1;
+    this.setState({ inputs: files, file_count: nextVal })
   }
 
   updateDataSheet = (key, event) => {
     let tmp = this.state.dataSheet;
-    tmp[key]=event.target.value;
-    this.setState({ dataSheet: tmp});
+    tmp[key] = event.target.value;
+    this.setState({ dataSheet: tmp });
   }
 
   newProduct = async e => {
@@ -88,20 +88,20 @@ class AccountStoreProduct extends Component {
     formData.append('weight', this.state.dataSheet.weight);
 
     let error;
-    if(this.props.data){
+    if (this.props.data) {
       formData.append('removed_images', this.state.removed_images.join(","));
       formData.append('product_id', this.props.data.product_id);
       error = await updateProduct(formData, this.props.jwt);
-    }else{
+    } else {
       error = await saveProduct(formData, this.props.jwt);
     }
 
-    if(error && error.status === 200){
+    if (error && error.status === 200) {
       alert("Guardado correctamente.");
-      setTimeout(function(){
+      setTimeout(function () {
         location.href = "/cuenta";
-      }, 2000);      
-    }else{
+      }, 2000);
+    } else {
       alert("Error al crear el producto.")
     }
 
@@ -109,14 +109,14 @@ class AccountStoreProduct extends Component {
 
   componentDidMount() {
     getCategories()
-        .then((response) => {
-          let data = [];
-          let category;
-          for (product in response.data.products) {
-            data.push(response.data.products[product]);
-          }
-          this.setState({categories: data });
-        });
+      .then((response) => {
+        let data = [];
+        let category;
+        for (product in response.data.products) {
+          data.push(response.data.products[product]);
+        }
+        this.setState({ categories: data });
+      });
   }
 
   changeCategory(cat) {
@@ -125,48 +125,48 @@ class AccountStoreProduct extends Component {
     });
   }
 
-  removeImg(id,e) {
+  removeImg(id, e) {
     let im = this.state.images;
     this.state.removed_images.push(im[id].file_id);
-    im.splice(id,1);
-    this.setState({images: im});
+    im.splice(id, 1);
+    this.setState({ images: im });
   }
 
 
   render() {
-    const listFiles = this.state.inputs.map((point,i) => {
-      return <input type={"file"} name="images" key={i} onChange={(e)=> {
-        this.onImageChange(i,e)
-      }}/>;
+    const listFiles = this.state.inputs.map((point, i) => {
+      return <input type={"file"} name="images" key={i} onChange={(e) => {
+        this.onImageChange(i, e)
+      }} />;
     });
 
-    const categories = this.state.categories.map((category,i) => {
+    const categories = this.state.categories.map((category, i) => {
       let kid = 0;
-      function rec(obj, tree_n){
-        if(obj.parent){
+      function rec(obj, tree_n) {
+        if (obj.parent) {
           let i;
           let more = [];
           for (i = 0; i < obj.parent.length; i++) {
-            more.push(rec(obj.parent[i],tree_n+1))
+            more.push(rec(obj.parent[i], tree_n + 1))
           }
           let c = <option value={obj.category_id} key={kid++}>{
             Array(tree_n + 1).join("  -  ")
           }{obj.name}</option>
-            return <>{c}{more.map((cat,i) => {
-              return cat
-            })}
+          return <>{c}{more.map((cat, i) => {
+            return cat
+          })}
           </>
         } else return <option value={obj.category_id} key={kid++}>{
           Array(tree_n + 1).join("  -  ")
         }{obj.name}</option>
       }
-        return rec(category, 0)
+      return rec(category, 0)
     });
 
-    const imagesList = this.state.images.map((img,i) => {
+    const imagesList = this.state.images.map((img, i) => {
       return <div className="img-uploaded">
-        
-          <a onClick={(e) => { this.removeImg(i,e); }}><FontAwesomeIcon icon={faTimes} /></a>
+
+        <a onClick={(e) => { this.removeImg(i, e); }}><FontAwesomeIcon icon={faTimes} /></a>
 
         <img src={getImgUrl(img.url)} />
       </div>
@@ -193,84 +193,58 @@ class AccountStoreProduct extends Component {
             <input defaultValue={this.props.data ? this.props.data.title : ""} type="text" name={"title"} onChange={this.onChangeTitle} />
           </div>
 
-         
-
-        <section id="menu">
-          <ul>
-            <li>
-              <a href="#">Enlace 2</a>
-              <ul>
-                <li><a href="#">Enlace 2.1</a></li>
-                <li><a href="#">Enlace 2.2</a>
-                <ul>
-                        <li><a href="#">Enlace 2.1</a></li>
-                    </ul>
-                </li>
-                <li>
-                  <a href="#">Enlace 3.3</a>
-                    <ul>
-                        <li><a href="#">Enlace 3.1</a></li>
-                    </ul>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </section>
-
-
-
           <div className="account-store-product-info-2">
             <label>Categoría</label>
-            <select value={ this.state.category_id !== ''? this.state.category_id : (this.props.data ? this.props.data.category_id:'')  }
-                    onChange={this.changeCategory.bind(this)}
-                    name={"category_id"}>
+            <select value={this.state.category_id !== '' ? this.state.category_id : (this.props.data ? this.props.data.category_id : '')}
+              onChange={this.changeCategory.bind(this)}
+              name={"category_id"}>
               <option value={""}>- Seleccione una categoría -</option>
-              { categories }
+              {categories}
             </select>
           </div>
           <CKEditor
-              onChange={evt => this.setState({description:evt.editor.getData()}) }
-              data={this.props.data ? this.props.data.description : '' }  />
+            onChange={evt => this.setState({ description: evt.editor.getData() })}
+            data={this.props.data ? this.props.data.description : ''} />
           <div className="account-store-product-info-2">
             <label>Precio</label>
-            <input defaultValue={this.props.data ? this.props.data.price : '' } type="text" name={"price"} />
+            <input defaultValue={this.props.data ? this.props.data.price : ''} type="text" name={"price"} />
           </div>
           <Remove call={this.updateDataSheet} title="Retiro en persona" />
           <div className="account-store-product-wrap-add-info">
 
-              <div className="account-store-product-photos-features">
+            <div className="account-store-product-photos-features">
               <h3>Caracteristicas del producto</h3>
-                <div className="account-store-product-wrap-add-photo">
-                  <div>
-                    <h4>Fotos</h4>
+              <div className="account-store-product-wrap-add-photo">
+                <div>
+                  <h4>Fotos</h4>
+                </div>
+                <div className="account-store-product-wrap-gallery">
+                  {imagesList}
+                </div>
+                <div>
+                  <div className="upload-file" id="dynamicInput">
+                    {listFiles}
                   </div>
-                  <div className="account-store-product-wrap-gallery">
-                    {imagesList }
-                  </div>
-                  <div>
-                    <div className="upload-file" id="dynamicInput">
-                      {listFiles}
-                    </div>
-                    <button onClick={this.addNewFile} className="main-button">
-                      <p>Agregar</p>
-                    </button>
-                  </div>
+                  <button onClick={this.addNewFile} className="main-button">
+                    <p>Agregar</p>
+                  </button>
                 </div>
               </div>
-              <div className="s">
-                  <div className="account-store-product-info-1">
-                    <label>Color</label>
-                    <input defaultValue={this.props.data ? this.props.data.color : '' } name={"color"} type="text" />
-                  </div>
-                  <div className="account-store-product-info-1">
-                    <label>Cantidad</label>
-                    <input defaultValue={this.props.data ? this.props.data.stock : '' } name="stock" type="number" />
-                  </div>
-                  <div className="account-store-product-info-1">
-                    <label>Codigo universal del producto</label>
-                    <input defaultValue={this.props.data ? this.props.data.sku : '' } name="sku" type="text" />
-                  </div>
-                </div>
+            </div>
+            <div className="s">
+              <div className="account-store-product-info-1">
+                <label>Color</label>
+                <input defaultValue={this.props.data ? this.props.data.color : ''} name={"color"} type="text" />
+              </div>
+              <div className="account-store-product-info-1">
+                <label>Cantidad</label>
+                <input defaultValue={this.props.data ? this.props.data.stock : ''} name="stock" type="number" />
+              </div>
+              <div className="account-store-product-info-1">
+                <label>Codigo universal del producto</label>
+                <input defaultValue={this.props.data ? this.props.data.sku : ''} name="sku" type="text" />
+              </div>
+            </div>
           </div>
           <div className="account-store-product-wrap-section-2">
             <DataSheet call={this.updateDataSheet} title="Ficha tecnica" />

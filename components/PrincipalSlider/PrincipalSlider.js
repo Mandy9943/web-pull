@@ -101,8 +101,6 @@ export default class PrincipalSlider extends Component {
                         </div>)}
                     </Slider>
                 </section>
-
-
                 <section className="mobil">
                     <Slider autoplay={3000}>
                         {slidesMobil.map((slide, index) =>
