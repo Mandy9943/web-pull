@@ -88,6 +88,16 @@ export const savePrivateData = async (endpoint, data, jwt) => {
     }
 };
 
+
+export const makePayment = async (data, jwt) => {
+    try {
+        const response = await post("/psePayment", data, jwt);
+        return response.data ? response : {"error": "E000000132 : No se pudo guardar la información, intentelo nuevamente."};
+    } catch (error) {
+        return error.response && {"error": "No se pudo guardar la información, intentelo nuevamente."};
+    }
+};
+
 export const getUserData = async (jwt) => {
     try {
         const response = await get("/getUserData", jwt);

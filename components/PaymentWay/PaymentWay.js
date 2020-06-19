@@ -7,7 +7,7 @@ import Footer from "../Common/Footer";
 import Select from "../Common/Select";
 import "./PaymentWay.css";
 import "./PaymentWayMovil.css";
-import { getData, savePrivateData } from "../../services/userApi"
+import { getData, makePayment } from "../../services/userApi"
 import Modal from "../Common/Modal";
 import AddAddress from "../UserAccount/AddAddress"
 
@@ -98,10 +98,11 @@ export default class PaymentWay extends Component {
 
         if(this.state.selectedAddr==-1){
             this.setState({ modalAddr: true });
+            return false;
         }
 
 
-        const error = await savePrivateData("/psePayment",{
+        const result = await makePayment({
 
             product_id: this.props.data.product_id,
             address_id: this.state.selectedAddr,
@@ -117,14 +118,13 @@ export default class PaymentWay extends Component {
 
         }, this.props.user.jwt);
 
-        console.log(error);
-        if (error) {
-            this.setState({
-                error: error
-            });
-            return false;
+        console.log(result);
+        if (result.data) {
+            window.location = result.data.URL;
         }else{
-            alert("OKK");
+            this.setState({
+                error: result.error
+            });
         }
 
     };
