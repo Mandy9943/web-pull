@@ -17,7 +17,7 @@ class Detail extends Component {
   }
 
   showImage(url) {
-    this.setState({ image: getImgUrl(url) });
+    this.setState({ image: url });
   }
 
 
@@ -44,7 +44,7 @@ class Detail extends Component {
             )}
           </div>
           <div className="main-image">
-            <img src={getImgUrl(this.state.image)} className="size-img-main" />
+            <img src={this.state.image} className="size-img-main" />
           </div>
         </div>
         <div className="gallery-responsive">

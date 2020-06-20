@@ -89,7 +89,6 @@ class Explorer extends Component {
 
 
   render() {
-        console.log(this.state.data)
         return (
         <div className="explorer">
         <h2 className="home-section-title">Encuentra los mejores productos de {this.state.categoryName} <Link href={"/categoria/"+this.state.categoryName}><a>Ver todos</a></Link></h2>
@@ -101,7 +100,7 @@ class Explorer extends Component {
           <div className="group-img">
             {this.state.data.map((item, i) => (
               <div className="wrapImgExplorer" key={i}>
-                <img src={item.image} />
+                <img src={ getImgUrl(item.image) } />
               </div>
             ))}
           </div>
