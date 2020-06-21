@@ -88,12 +88,13 @@
 }
 
 .temp-list .product-list-img img {
-  width: 115%;
-  height: 115%;
+  width: 100%;
+  height: 100%;/*
   -o-object-fit: cover;
      object-fit: cover;
   -webkit-transform: translate(-6%, -5%);
           transform: translate(-6%, -5%);
+          */
 }
 
 .temp-list .product-list-description-box {
