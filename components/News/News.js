@@ -23,7 +23,7 @@ class News extends Component {
     let tw = "//twitter.com/KIEROGROUP1";
     let lk = "//www.linkedin.com/in/kiero-group-15a6a7190/";
     let pt = "//co.pinterest.com/novedadeskiero/pins/";
-    let yt = "//www.sic.gov.co";
+    let yt = "//www.youtube.com/user/KieroGroup";
     let ws = "//api.whatsapp.com/send?phone=5715800817&data=Abtjl_JlVp4Y7IoFRWKf-hlWAs-VGJ3oAFmXn4IGwwa3ocqSHrFkuqFrQCSStHVIt7TzEC6yGVjy6TA3FT5FYdPlrLxnmJ5kcvdfZ3tIaO0LElI4BnU3BkZT5O1suCVDqlk&source=FB_Ads&fbclid=IwAR1yaqUnrxYjWvfQ7Ggvz6jWEhP2R0ApqB2GIJcMq7Y52REAaoJCSkBjx00";
     let news = "//www.novedades.kiero.co"
 
@@ -40,7 +40,7 @@ class News extends Component {
             <Link href={lk}><a  target="_blank"><img src={src3} /></a></Link>
             <Link href={ws}><a  target="_blank"><img src={src7} /></a></Link>
             <Link href={tw}><a  target="_blank"><img src={src2} /></a></Link>
-            {/*<img src={src5} />*/}
+            <Link href={yt}><a  target="_blank"><img src={src5} /></a></Link>
             <Link href={pt}><a  target="_blank"><img src={src4} /></a></Link>
           </sections>
         </section>
