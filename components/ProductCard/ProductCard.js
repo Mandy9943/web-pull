@@ -7,17 +7,15 @@ export default class ProductCard extends Component {
     render() {
         return (
             <div className="producto-card">
-                <Link href={"/detalle/"+this.props.product_id+"_"+this.props.title.split(" ").join("-")}>
-                <a>
-
-                <div className="product-card-img">
-                    <img src={this.props.url ? this.props.url : "https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png" } />
-                </div>
+                <Link href={"/detalle/" + this.props.product_id + "_" + this.props.title.split(" ").join("-")}>
+                    <a>
+                        <div className="product-card-img">
+                            <img src={this.props.url ? this.props.url : "https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png"} />
+                        </div>
                         <button>Envío gratis</button>
-                        </a>
+                        <h3>{this.props.price ? this.props.price : "$ ... "}</h3>
+                    </a>
                 </Link>
-                <h3>{this.props.price ? this.props.price : "$ ... " }</h3>
-
             </div>
         )
     }
