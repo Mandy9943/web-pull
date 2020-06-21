@@ -40,7 +40,7 @@ class ListCategory extends Component {
                                   <p>envío gratis</p>
                                 </div>
                                 <div className="product-card-description">
-                                  <p title={product.title}>{product.title.substr(0,92)+(product.title.length>92?"...":".")}</p>
+                                  <p title={product.title}>{product.title.substr(0,65)+(product.title.length>65?"...":".")}</p>
                                   <p>Nuevo</p>
                                   <p>{product.price}</p>
                                 </div>
@@ -58,7 +58,7 @@ class ListCategory extends Component {
                                 <img src={getImgUrl(product.image)} className="img" />
                               </div>
                               <div className="product-list-description-box">
-                                <h3 className="product-list-title">{product.title}</h3>
+                                <h3 className="product-list-title">{product.title.substr(0,65)+(product.title.length>65?"...":".")}</h3>
                                 <h3 className="product-list-title">{product.user} </h3>
                                 <h3>{product.price} </h3>
                                 <div className="kiero-envios-card">
