@@ -1,8 +1,8 @@
-.buyer-protection
+.seller-protection
     height: 100vh;
     display: grid;
     grid-template-rows: auto 1fr
-    .buyer-protection-container
+    .seller-protection-container
         margin: 0 auto;
         padding: 40px
         width: 80%
@@ -13,7 +13,7 @@
                 grid-gap: 15px
                 width: fit-content
                 color: #CF0A2C
-        .buyer-protection-content
+        .seller-protection-content
             margin: auto
             padding: 40px
             width: 70%
@@ -21,7 +21,7 @@
                 margin-bottom: 20px
                 color: #717171
                 font-size: 26px
-            .buyer-protection-box
+            .seller-protection-box
                 padding: 20px 40px
                 color: #717171
                 background: #FFFFFF
@@ -32,25 +32,41 @@
                     font-size: 14px
                     position: relative
                     margin-left: 20px;
-                    &:first-child
-                        margin-left: 0
+                    .accent
+                        color: #D11E36
                     svg
                         color: #CF0A2C
                         position: absolute
                         left: -18px
+                .main-button
+                    border-radius: 5px
+                    text-align: center
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background: #D11E36
+                    border: 1px solid #D11E36
+                    width: 178px;
+                    height: 35px;
+                    color: white
+                    p
+                        margin: 0
+                        color: white
         
 @media (max-width:700px)
-    .buyer-protection   
-        .buyer-protection-container
+    .seller-protection   
+        .seller-protection-container
             padding: 15px
             width: auto
-            .buyer-protection-content
+            .seller-protection-content
                 margin: auto
                 padding: 0
                 width: auto
                 h2
                     margin: 15px auto 15px 20px
-                .buyer-protection-box
+                .seller-protection-box
                     width: auto
                     padding: 15px
+                    .main-button
+                        margin: auto
                     

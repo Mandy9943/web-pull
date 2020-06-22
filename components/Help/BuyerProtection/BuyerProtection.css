@@ -1,10 +1,18 @@
-.buyer-brotection-container {
-  margin: auto;
+.buyer-protection {
+  height: 100vh;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: auto 1fr;
+      grid-template-rows: auto 1fr;
+}
+
+.buyer-protection .buyer-protection-container {
+  margin: 0 auto;
   padding: 40px;
   width: 80%;
 }
 
-.buyer-brotection-container .back-btn a {
+.buyer-protection .buyer-protection-container .back-btn a {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (auto)[2];
@@ -16,18 +24,19 @@
   color: #CF0A2C;
 }
 
-.buyer-brotection-container .seller-reputation-content {
+.buyer-protection .buyer-protection-container .buyer-protection-content {
   margin: auto;
   padding: 40px;
   width: 70%;
 }
 
-.buyer-brotection-container .seller-reputation-content h2 {
+.buyer-protection .buyer-protection-container .buyer-protection-content h2 {
   margin-bottom: 20px;
   color: #717171;
+  font-size: 26px;
 }
 
-.buyer-brotection-container .seller-reputation-content .seller-reputation-box {
+.buyer-protection .buyer-protection-container .buyer-protection-content .buyer-protection-box {
   padding: 20px 40px;
   color: #717171;
   background: #FFFFFF;
@@ -36,59 +45,39 @@
   border-radius: 15px;
 }
 
-.buyer-brotection-container .seller-reputation-content .seller-reputation-box p {
+.buyer-protection .buyer-protection-container .buyer-protection-content .buyer-protection-box p {
   margin: 20px 0px;
+  font-size: 14px;
+  position: relative;
+  margin-left: 20px;
 }
 
-.buyer-brotection-container .seller-reputation-content .seller-reputation-box h4 {
-  font-weight: 600;
+.buyer-protection .buyer-protection-container .buyer-protection-content .buyer-protection-box p:first-child {
+  margin-left: 0;
 }
 
-.buyer-brotection-container .seller-reputation-content .seller-reputation-box .seller-reputations-qualification {
-  margin: auto;
-  max-width: 50%;
-}
-
-.buyer-brotection-container .seller-reputation-content .seller-reputation-box .seller-reputations-qualification h4 {
-  text-align: center;
-}
-
-.buyer-brotection-container .seller-reputation-content .seller-reputation-box .seller-reputations-qualification .seller-reputations-qualification-starts {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (auto)[5];
-      grid-template-columns: repeat(5, auto);
-  grid-gap: 15px;
-  margin: auto;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.buyer-brotection-container .seller-reputation-content .seller-reputation-box .seller-reputations-qualification .seller-reputations-qualification-starts .seller-reputations-icon {
-  color: #3F7FE1;
-  font-size: 30px;
+.buyer-protection .buyer-protection-container .buyer-protection-content .buyer-protection-box p svg {
+  color: #CF0A2C;
+  position: absolute;
+  left: -18px;
 }
 
 @media (max-width: 700px) {
-  .seller-reputation-container {
+  .buyer-protection .buyer-protection-container {
     padding: 15px;
     width: auto;
   }
-  .seller-reputation-container .seller-reputation-content {
+  .buyer-protection .buyer-protection-container .buyer-protection-content {
     margin: auto;
     padding: 0;
     width: auto;
   }
-  .seller-reputation-container .seller-reputation-content h2 {
+  .buyer-protection .buyer-protection-container .buyer-protection-content h2 {
     margin: 15px auto 15px 20px;
   }
-  .seller-reputation-container .seller-reputation-content .seller-reputation-box {
+  .buyer-protection .buyer-protection-container .buyer-protection-content .buyer-protection-box {
     width: auto;
     padding: 15px;
-  }
-  .seller-reputation-container .seller-reputation-content .seller-reputation-box .seller-reputations-qualification {
-    max-width: none;
   }
 }
 /*# sourceMappingURL=BuyerProtection.css.map */
