@@ -95,6 +95,8 @@
 
 .cancel-account-content .cancel-account-box .cancel-account-box-btn button {
   color: #fff;
+  width: 228px;
+  padding: 5px;
 }
 
 @media (max-width: 700px) {

@@ -1,0 +1,102 @@
+.contact-wsp {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: auto auto 1fr auto;
+      grid-template-rows: auto auto 1fr auto;
+  height: 100%;
+}
+
+.contact-wsp .contact-wsp-top {
+  padding: 56px 0px;
+  color: #717171;
+  background: #FFFFFF;
+  -webkit-box-shadow: 0px 3px 6px #00000029;
+          box-shadow: 0px 3px 6px #00000029;
+}
+
+.contact-wsp .contact-wsp-top .contact-wsp-bar {
+  margin: auto;
+  width: 80%;
+}
+
+.contact-wsp .contact-wsp-top .contact-wsp-bar .back-btn a {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (auto)[2];
+      grid-template-columns: repeat(2, auto);
+  grid-gap: 15px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  color: #CF0A2C;
+}
+
+.contact-wsp .contact-wsp-top .contact-wsp-bar h2 {
+  margin: 0 auto 0px auto;
+  width: 70%;
+  font-size: 26px;
+}
+
+.contact-wsp-content {
+  margin: auto;
+  padding: 40px;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.contact-wsp-content .contact-wsp-box {
+  padding: 20px 40px;
+  color: #717171;
+  background: #FBFBFB;
+  border: 1px solid #717171;
+  border-radius: 5px;
+}
+
+.contact-wsp-content .contact-wsp-box .code-input {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 102px 1fr;
+      grid-template-columns: 102px 1fr;
+  grid-gap: 5px;
+  width: 50%;
+  margin: 30px auto;
+}
+
+.contact-wsp-content .contact-wsp-box .code-input input {
+  border: none;
+  border-bottom: 0.5px solid #717171;
+  background: 00;
+  border-radius: 0;
+}
+
+.contact-wsp-content .contact-wsp-box .contact-wsp-box-btn {
+  margin-top: 20px;
+}
+
+.contact-wsp-content .contact-wsp-box .contact-wsp-box-btn button {
+  color: #fff;
+  width: 228px;
+  padding: 5px;
+}
+
+@media (max-width: 700px) {
+  .contact-wsp .contact-wsp-top {
+    padding: 15px;
+  }
+  .contact-wsp .contact-wsp-top .contact-wsp-bar {
+    width: auto;
+  }
+  .contact-wsp .contact-wsp-top .contact-wsp-bar h2 {
+    margin: 15px auto 0px 27px;
+    width: auto;
+  }
+  .contact-wsp .contact-wsp-content {
+    margin: 0 auto;
+    padding: 15px;
+    width: auto;
+  }
+  .contact-wsp .contact-wsp-content .contact-wsp-box {
+    padding: 15px;
+  }
+}
+/*# sourceMappingURL=ContactWsp.css.map */
