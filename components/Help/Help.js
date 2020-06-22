@@ -219,7 +219,12 @@ export default class Help extends Component {
                                     <p>¿Seguridad proporcionada para los vendedores?</p>
                                 </a>
                             </Link>
-                            <p>¿Cómo resguardar la seguridad de mi cuenta?</p>
+                            <Link href="/seguridad">
+                                <a>
+                                    <p>¿Cómo resguardar la seguridad de mi cuenta?</p>
+                                </a>
+                            </Link>
+
                         </div>
                         <div className={this.state.accordionTitleAccount ? "help-accordion-title" : "help-accordion-title active"} onClick={() => this.accordionAccount()}>
                             <p>Mi cuenta</p>
@@ -245,7 +250,7 @@ export default class Help extends Component {
                                     <p>Modificar mis datos</p>
                                 </a>
                             </Link>
-                            <Link href="#">
+                            <Link href="/anular_cuenta">
                                 <a>
                                     <p>¿Cómo anular mi cuenta?</p>
                                 </a>
