@@ -1,0 +1,91 @@
+.question-problem {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: auto auto 1fr auto;
+      grid-template-rows: auto auto 1fr auto;
+  height: 100%;
+}
+
+.question-problem .question-problem-top {
+  padding: 56px 0px;
+  color: #717171;
+  background: #FFFFFF;
+  -webkit-box-shadow: 0px 3px 6px #00000029;
+          box-shadow: 0px 3px 6px #00000029;
+}
+
+.question-problem .question-problem-top .question-problem-bar {
+  margin: auto;
+  width: 80%;
+}
+
+.question-problem .question-problem-top .question-problem-bar .back-btn a {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (auto)[2];
+      grid-template-columns: repeat(2, auto);
+  grid-gap: 15px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  color: #CF0A2C;
+}
+
+.question-problem .question-problem-top .question-problem-bar h2 {
+  margin: 0 auto 0px auto;
+  width: 70%;
+  font-size: 26px;
+}
+
+.question-problem-content {
+  margin: auto;
+  padding: 40px;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.question-problem-content .question-problem-box {
+  padding: 20px 40px;
+  color: #717171;
+  background: #FBFBFB;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  -webkit-box-shadow: 0px 3px 6px #00000029;
+          box-shadow: 0px 3px 6px #00000029;
+}
+
+.question-problem-content .question-problem-box p {
+  margin: 20px 0;
+  font-size: 16px;
+}
+
+.question-problem-content .question-problem-box .accent {
+  color: #D11E36;
+}
+
+.question-problem-content .question-problem-box .accent p {
+  font-size: 18px;
+}
+
+@media (max-width: 700px) {
+  .cancel-account-top {
+    padding: 15px;
+  }
+  .cancel-account-top .cancel-account-bar {
+    width: auto;
+  }
+  .cancel-account-top .cancel-account-bar h2 {
+    margin: 15px auto 0px 27px;
+    width: auto;
+  }
+  .cancel-account-content {
+    margin: auto;
+    padding: 15px;
+    width: auto;
+  }
+  .cancel-account-content .cancel-account-box {
+    padding: 15px;
+  }
+}
+/*# sourceMappingURL=QuestionProblem.css.map */

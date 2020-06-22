@@ -30,10 +30,10 @@
 .seller-reputation-container .seller-reputation-content .seller-reputation-box {
   padding: 20px 40px;
   color: #717171;
-  background: #FFFFFF;
+  background: #FBFBFB;
   -webkit-box-shadow: 0px 3px 6px #00000029;
           box-shadow: 0px 3px 6px #00000029;
-  border-radius: 15px;
+  border-radius: 5px;
 }
 
 .seller-reputation-container .seller-reputation-content .seller-reputation-box p {

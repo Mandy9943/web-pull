@@ -37,7 +37,7 @@ export default function UserChange() {
                     <section className='actions'>
                         <Link href="#">
                             <a className="button-a">
-                                <p>Volver</p>
+                                <p>Modificar</p>
                             </a>
                         </Link>
                         <Link href="/ayuda">
