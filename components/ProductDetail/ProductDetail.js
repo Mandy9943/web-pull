@@ -149,7 +149,7 @@ class ProductDetail extends Component {
             <Explorer />
             <ProductCardFinding notitle={"true"} category={mdata.category.name} />
           </section>
-          <section className="advertising-movil no-web">
+          <section className="advertising-movil no-movil no-web">
             <div className="advertising">
               <img src='#' />
             </div>
