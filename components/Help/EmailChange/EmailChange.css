@@ -1,0 +1,111 @@
+.email-change {
+  height: 100vh;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: auto 1fr auto;
+      grid-template-rows: auto 1fr auto;
+}
+
+.email-change .email-change-container {
+  margin: 0 auto;
+  padding: 40px;
+  width: 80%;
+}
+
+.email-change .email-change-container .email-change-content {
+  margin: auto;
+  padding: 40px;
+  width: 70%;
+}
+
+.email-change .email-change-container .email-change-content h2 {
+  margin-bottom: 20px;
+  color: #717171;
+}
+
+.email-change .email-change-container .email-change-content .email-change-box {
+  padding: 20px 40px;
+  color: #717171;
+  background: #FBFBFB;
+  -webkit-box-shadow: 0px 3px 6px #00000029;
+          box-shadow: 0px 3px 6px #00000029;
+  border-radius: 5px;
+}
+
+.email-change .email-change-container .email-change-content .email-change-box p {
+  margin: 20px 0px 0;
+  font-size: 13px;
+}
+
+.email-change .email-change-container .email-change-content .email-change-box input {
+  width: 50%;
+  min-width: 200px;
+}
+
+.email-change .email-change-container .email-change-content .email-change-box .actions {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: min-content min-content;
+      grid-template-columns: -webkit-min-content -webkit-min-content;
+      grid-template-columns: min-content min-content;
+  margin-top: 15px;
+}
+
+.email-change .email-change-container .email-change-content .email-change-box .actions .button-a {
+  border-radius: 5px;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #D11E36;
+  border: 1px solid #D11E36;
+  width: 178px;
+  height: 35px;
+  color: white;
+  margin-top: 15px;
+}
+
+.email-change .email-change-container .email-change-content .email-change-box .actions .button-a p {
+  margin: 0;
+  color: white;
+}
+
+.email-change .email-change-container .email-change-content .email-change-box .actions .cancel-btn {
+  background: 000 !important;
+  border: none;
+}
+
+.email-change .email-change-container .email-change-content .email-change-box .actions .cancel-btn p {
+  color: #D11E36 !important;
+}
+
+@media (max-width: 700px) {
+  .email-change-container {
+    padding: 15px;
+    width: auto;
+  }
+  .email-change-container .email-change-content {
+    margin: auto;
+    padding: 0;
+    width: auto;
+  }
+  .email-change-container .email-change-content h2 {
+    margin: 15px auto 15px 20px;
+  }
+  .email-change-container .email-change-content .actions {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: auto;
+        grid-template-columns: auto;
+  }
+  .email-change-container .email-change-content .actions .button-a {
+    margin: auto;
+  }
+}
+/*# sourceMappingURL=EmailChange.css.map */

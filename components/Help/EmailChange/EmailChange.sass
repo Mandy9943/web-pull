@@ -1,0 +1,70 @@
+.email-change
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    .email-change-container
+        margin: 0 auto
+        padding: 40px
+        width: 80%
+        .email-change-content
+            margin: auto
+            padding: 40px
+            width: 70%
+            h2
+                margin-bottom: 20px
+                color: #717171
+            .email-change-box
+                padding: 20px 40px
+                color: #717171
+                background: #FBFBFB 
+                box-shadow: 0px 3px 6px #00000029
+                border-radius: 5px
+                p
+                    margin: 20px 0px 0
+                    font-size: 13px
+                input
+                    width: 50%
+                    min-width: 200px
+                .actions
+                    display: grid
+                    grid-template-columns: min-content min-content
+                    margin-top: 15px
+                    .button-a
+                        border-radius: 5px
+                        text-align: center
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background: #D11E36
+                        border: 1px solid #D11E36
+                        width: 178px;
+                        height: 35px;
+                        color: white
+                        margin-top: 15px
+                        p
+                            margin: 0
+                            color: white
+                    .cancel-btn
+                        background: 000 !important
+                        border: none
+                        p
+                            color: #D11E36 !important
+
+            
+
+@media (max-width:700px)
+    .email-change-container
+        padding: 15px
+        width: auto
+        .email-change-content
+            margin: auto
+            padding: 0
+            width: auto
+            h2
+                margin: 15px auto 15px 20px
+            .actions
+                display: grid
+                grid-template-columns: auto
+                .button-a
+                    margin: auto
+            
