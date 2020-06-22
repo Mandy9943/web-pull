@@ -215,7 +215,7 @@ export default class Nav extends Component {
                         <div className="search-bar">
                             <input
                                 type="text"
-                                defaultValue="asdsada"
+                                defaultValue={this.props.actualSearch}
                                 name={"searchBar"}
                                 placeholder="Buscar productos"
 
