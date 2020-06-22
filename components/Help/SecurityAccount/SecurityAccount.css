@@ -1,0 +1,111 @@
+.security-account {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: auto auto 1fr auto;
+      grid-template-rows: auto auto 1fr auto;
+  height: 100%;
+}
+
+.security-account .security-account-top {
+  padding: 30px 0px;
+  color: #717171;
+  background: #FFFFFF;
+  -webkit-box-shadow: 0px 3px 6px #00000029;
+          box-shadow: 0px 3px 6px #00000029;
+}
+
+.security-account .security-account-top .security-account-bar {
+  margin: auto;
+  width: 80%;
+}
+
+.security-account .security-account-top .security-account-bar .back-btn a {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (auto)[2];
+      grid-template-columns: repeat(2, auto);
+  grid-gap: 15px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  color: #CF0A2C;
+}
+
+.security-account .security-account-top .security-account-bar h2 {
+  margin: 40px auto 0px auto;
+  width: 70%;
+}
+
+.security-account-content {
+  margin: auto;
+  padding: 40px;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.security-account-content .security-account-box {
+  padding: 20px 40px;
+  color: #717171;
+  background: #FFFFFF;
+  border: 1px solid #717171;
+  border-radius: 5px;
+}
+
+.security-account-content .security-account-box p {
+  margin: 20px 0px;
+}
+
+.security-account-content .security-account-box .accent {
+  color: #D11E36;
+}
+
+.security-account-content .security-account-box .button-a {
+  border-radius: 5px;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #D11E36;
+  border: 1px solid #D11E36;
+  width: 178px;
+  height: 35px;
+  color: white;
+  margin-top: 15px;
+}
+
+.security-account-content .security-account-box .button-a p {
+  margin: 0;
+  color: white;
+}
+
+@media (max-width: 700px) {
+  .security-account .security-account-top {
+    padding: 15px;
+  }
+  .security-account .security-account-top .security-account-bar {
+    width: auto;
+  }
+  .security-account .security-account-top .security-account-bar h2 {
+    margin: 15px auto 0px 27px;
+    width: auto;
+  }
+  .security-account .security-account-content {
+    margin: auto;
+    padding: 15px;
+    width: auto;
+    margin-top: 30px;
+  }
+  .security-account .security-account-content .security-account-box {
+    padding: 15px;
+  }
+  .security-account .security-account-content .security-account-box .button-a {
+    margin: auto;
+  }
+}
+/*# sourceMappingURL=SecurityAccount.css.map */

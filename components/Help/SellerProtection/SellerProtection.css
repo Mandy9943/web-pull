@@ -62,7 +62,7 @@
   left: -18px;
 }
 
-.seller-protection .seller-protection-container .seller-protection-content .seller-protection-box .main-button {
+.seller-protection .seller-protection-container .seller-protection-content .seller-protection-box .button-a {
   border-radius: 5px;
   text-align: center;
   display: -webkit-box;
@@ -79,9 +79,10 @@
   width: 178px;
   height: 35px;
   color: white;
+  margin-top: 15px;
 }
 
-.seller-protection .seller-protection-container .seller-protection-content .seller-protection-box .main-button p {
+.seller-protection .seller-protection-container .seller-protection-content .seller-protection-box .button-a p {
   margin: 0;
   color: white;
 }
@@ -103,7 +104,7 @@
     width: auto;
     padding: 15px;
   }
-  .seller-protection .seller-protection-container .seller-protection-content .seller-protection-box .main-button {
+  .seller-protection .seller-protection-container .seller-protection-content .seller-protection-box .button-a {
     margin: auto;
   }
 }

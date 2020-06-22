@@ -41,7 +41,7 @@ export default function SellerProtection() {
                         de esta forma no tendrás que preocuparte. En caso de ver el <span className='accent'>pago acreditado</span> es señal de que puedes entregar el producto con toda confianza.</p>
 
                         <Link href="/ayuda">
-                            <a className="main-button">
+                            <a className="button-a">
                                 <p>Volver</p>
                             </a>
                         </Link>

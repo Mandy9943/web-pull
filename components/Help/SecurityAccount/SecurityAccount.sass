@@ -1,0 +1,72 @@
+.security-account    
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    height: 100%;
+    .security-account-top
+        padding: 30px 0px
+        color: #717171
+        background: #FFFFFF
+        box-shadow: 0px 3px 6px #00000029
+        .security-account-bar
+            margin: auto
+            width: 80%
+            .back-btn
+                a
+                    display: grid
+                    grid-template-columns: repeat(2,auto)
+                    grid-gap: 15px
+                    width: fit-content
+                    color: #CF0A2C
+            h2
+                margin: 40px auto 0px auto
+                width: 70%
+            
+.security-account-content
+    margin: auto
+    padding: 40px
+    width: 50%
+    margin: 0 auto
+    .security-account-box
+        padding: 20px 40px
+        color: #717171
+        background: #FFFFFF
+        border: 1px solid #717171
+        border-radius: 5px
+        p   
+            margin: 20px 0px;
+        .accent
+            color: #D11E36
+        .button-a
+            border-radius: 5px
+            text-align: center
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #D11E36
+            border: 1px solid #D11E36
+            width: 178px;
+            height: 35px;
+            color: white
+            margin-top: 15px
+            p
+                margin: 0
+                color: white
+    
+@media (max-width:700px)
+    .security-account    
+        .security-account-top
+            padding: 15px
+            .security-account-bar
+                width:  auto
+                h2
+                    margin: 15px auto 0px 27px
+                    width: auto
+        .security-account-content
+            margin: auto
+            padding: 15px
+            width: auto
+            margin-top: 30px;
+            .security-account-box
+                padding: 15px
+                .button-a
+                    margin: auto
