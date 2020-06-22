@@ -189,7 +189,7 @@ export default class Help extends Component {
                                         <p>Soluciuonar problemas en la compra</p>
                                     </a>
                                 </Link>
-                                <Link href="#">
+                                <Link href="/proteccion_comprador">
                                     <a>
                                         <p>Protección al comprador</p>
                                     </a>
