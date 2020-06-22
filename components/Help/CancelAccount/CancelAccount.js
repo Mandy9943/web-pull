@@ -79,6 +79,7 @@ export default class CancelAccount extends Component {
                             <div className="cancel-account-box-btn">
                                 <Button text={"Confirmar"} />
                             </div>
+                            {/*NEED FIX THIS SHIT */}
                         </div>
                     </div>
                 <Footer />

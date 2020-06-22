@@ -39,6 +39,7 @@ export default class HowCanHelp extends Component {
                             </div>
                         </a>
                     </Link>
+                    {/*NEED FIX THIS SHIT */}
                     <Link href="/ayuda">
                         <a className="button-b">
                             <div className="question-problem-box classic">
