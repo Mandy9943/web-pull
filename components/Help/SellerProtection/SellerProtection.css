@@ -1,0 +1,110 @@
+.seller-protection {
+  height: 100vh;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: auto 1fr;
+      grid-template-rows: auto 1fr;
+}
+
+.seller-protection .seller-protection-container {
+  margin: 0 auto;
+  padding: 40px;
+  width: 80%;
+}
+
+.seller-protection .seller-protection-container .back-btn a {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (auto)[2];
+      grid-template-columns: repeat(2, auto);
+  grid-gap: 15px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  color: #CF0A2C;
+}
+
+.seller-protection .seller-protection-container .seller-protection-content {
+  margin: auto;
+  padding: 40px;
+  width: 70%;
+}
+
+.seller-protection .seller-protection-container .seller-protection-content h2 {
+  margin-bottom: 20px;
+  color: #717171;
+  font-size: 26px;
+}
+
+.seller-protection .seller-protection-container .seller-protection-content .seller-protection-box {
+  padding: 20px 40px;
+  color: #717171;
+  background: #FFFFFF;
+  -webkit-box-shadow: 0px 3px 6px #00000029;
+          box-shadow: 0px 3px 6px #00000029;
+  border-radius: 15px;
+}
+
+.seller-protection .seller-protection-container .seller-protection-content .seller-protection-box p {
+  margin: 20px 0px;
+  font-size: 14px;
+  position: relative;
+  margin-left: 20px;
+}
+
+.seller-protection .seller-protection-container .seller-protection-content .seller-protection-box p .accent {
+  color: #D11E36;
+}
+
+.seller-protection .seller-protection-container .seller-protection-content .seller-protection-box p svg {
+  color: #CF0A2C;
+  position: absolute;
+  left: -18px;
+}
+
+.seller-protection .seller-protection-container .seller-protection-content .seller-protection-box .main-button {
+  border-radius: 5px;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #D11E36;
+  border: 1px solid #D11E36;
+  width: 178px;
+  height: 35px;
+  color: white;
+}
+
+.seller-protection .seller-protection-container .seller-protection-content .seller-protection-box .main-button p {
+  margin: 0;
+  color: white;
+}
+
+@media (max-width: 700px) {
+  .seller-protection .seller-protection-container {
+    padding: 15px;
+    width: auto;
+  }
+  .seller-protection .seller-protection-container .seller-protection-content {
+    margin: auto;
+    padding: 0;
+    width: auto;
+  }
+  .seller-protection .seller-protection-container .seller-protection-content h2 {
+    margin: 15px auto 15px 20px;
+  }
+  .seller-protection .seller-protection-container .seller-protection-content .seller-protection-box {
+    width: auto;
+    padding: 15px;
+  }
+  .seller-protection .seller-protection-container .seller-protection-content .seller-protection-box .main-button {
+    margin: auto;
+  }
+}
+/*# sourceMappingURL=SellerProtection.css.map */

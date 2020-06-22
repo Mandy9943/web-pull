@@ -209,8 +209,16 @@ export default class Help extends Component {
                             </p>
                         </div>
                         <div className={this.state.closeSecurity ? "help-accordion" : "help-accordion active"}>
-                            <p>Protección al comprador</p>
-                            <p>¿Seguridad proporcionada para los vendedores?</p>
+                            <Link href="/proteccion_comprador">
+                                <a>
+                                    <p>Protección al comprador</p>
+                                </a>
+                            </Link>
+                            <Link href="/proteccion_vendedor">
+                                <a>
+                                    <p>¿Seguridad proporcionada para los vendedores?</p>
+                                </a>
+                            </Link>
                             <p>¿Cómo resguardar la seguridad de mi cuenta?</p>
                         </div>
                         <div className={this.state.accordionTitleAccount ? "help-accordion-title" : "help-accordion-title active"} onClick={() => this.accordionAccount()}>
