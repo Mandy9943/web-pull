@@ -134,6 +134,7 @@ export default class Nav extends Component {
                             <input
                                 type="text"
                                 name={"searchBar"}
+                                defaultValue={this.props.actualSearch}
                                 placeholder="Buscar productos..."
                                 onChange={this.handleChange}
                                 onKeyPress={(event) => {
@@ -214,6 +215,7 @@ export default class Nav extends Component {
                         <div className="search-bar">
                             <input
                                 type="text"
+                                defaultValue="asdsada"
                                 name={"searchBar"}
                                 placeholder="Buscar productos"
 

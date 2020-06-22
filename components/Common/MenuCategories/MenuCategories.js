@@ -16,7 +16,10 @@ class MenuCategories extends Component {
             this.props.toggle(this.props.num);
           }}
         />
-        <div className="menu-categories">
+        <div className="menu-categories" 
+          onMouseLeave={() => {
+            this.props.toggle(this.props.num);
+          }}>
           <section className="title-categories">          {
             this.props.categories.map(function (cat, i) {
                 return <span key={i}><Link href={"/categoria/" + cat.name}><a>{cat.name} <FontAwesomeIcon icon={faAngleRight}  /></a></Link></span>

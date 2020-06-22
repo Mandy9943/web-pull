@@ -101,7 +101,7 @@ class  Category extends Component {
     
     return (
       <div className="">
-          <Nav user={this.props.user_data.user} authenticated={this.props.user_data.authenticated} />
+          <Nav user={this.props.user_data.user} actualSearch={this.props.data.search} authenticated={this.props.user_data.authenticated} />
         <div className="search-content">
           
           <Filter 
