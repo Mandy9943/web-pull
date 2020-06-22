@@ -87,22 +87,22 @@
 }
 
 @media (max-width: 700px) {
-  .cancel-account-top {
+  .question-problem .question-problem-top {
     padding: 15px;
   }
-  .cancel-account-top .cancel-account-bar {
+  .question-problem .question-problem-top .question-problem-bar {
     width: auto;
   }
-  .cancel-account-top .cancel-account-bar h2 {
+  .question-problem .question-problem-top .question-problem-bar h2 {
     margin: 15px auto 0px 27px;
     width: auto;
   }
-  .cancel-account-content {
-    margin: auto;
+  .question-problem .question-problem-content {
+    margin: 0 auto;
     padding: 15px;
     width: auto;
   }
-  .cancel-account-content .cancel-account-box {
+  .question-problem .question-problem-content .question-problem-box {
     padding: 15px;
   }
 }
