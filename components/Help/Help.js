@@ -199,7 +199,12 @@ export default class Help extends Component {
                             <p className={this.state.accordionAskInPostTitle ? "ask-in-post-title" : "ask-in-post-title active"} onClick={() => this.accordionAskInPost()}>Preguntar en publicaciones</p>
                             <div className={this.state.closeAskInPost ? "ask-in-post-accordion" : "ask-in-post-accordion active"}>
                                 <p>Han eliminado una pregunta que he realizado</p>
-                                <p>No puedo efectuar una pregunta</p>
+                                <Link href="/pregunta_problemas">
+                                    <a>
+                                        <p>No puedo efectuar una preguntar</p>
+                                    </a>
+                                </Link>
+
                             </div>
                         </div>
                         <div className={this.state.accordionTitleSecurity ? "help-accordion-title" : "help-accordion-title active"} onClick={() => this.accordionSecurity()}>
