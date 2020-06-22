@@ -21,6 +21,7 @@ export default class Footer extends Component {
                             <Link href="/ayuda"><a>Ayuda / PQR</a></Link>
                         </ul>
                     </div>
+                    {/*
                     <div className="footer-download">
                         <Link href="#">
                             <a className="download-app">
@@ -28,9 +29,11 @@ export default class Footer extends Component {
                                 <p>¡Descarga gratis la app!</p>
                             </a>
                         </Link>
-                    </div>
+                    </div>*/}
                 </div>
+                
                 <div className="footer-content footer-movil">
+                    {/*
                     <div className="footer-download">
                         <Link href="#">
                             <a className="download-app">
@@ -38,7 +41,7 @@ export default class Footer extends Component {
                                 <p>¡Descarga gratis la app!</p>
                             </a>
                         </Link>
-                    </div>
+                    </div>*/}
                     <div className="footer-tex">
                         <ul>
                             <Link href="/ayuda"><a>Ayuda / PQR</a></Link>

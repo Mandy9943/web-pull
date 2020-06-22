@@ -84,8 +84,6 @@
     display: grid !important;
     -ms-grid-columns: auto;
         grid-template-columns: auto;
-    -ms-grid-rows: 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
     width: auto;
   }
   .footer .footer-movil .footer-download {
