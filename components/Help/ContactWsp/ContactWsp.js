@@ -28,13 +28,13 @@ export default class ContactWsp extends Component {
                                     </a>
                                 </Link>
                             </div>
-                            <h2>Anular cuenta</h2>
+                        <h2>Contáctanos por Whatsapp</h2>
                         </div>
                     </div>
                     <div className="contact-wsp-content">
                         <div className="contact-wsp-box">
                             
-                            <p>Indícanos tu número de celular y nuestro equipo se pondrá en contacto.</p>
+                            <p>Indícanos tu e-mail nuestro equipo se pondrá en contacto.</p>
                             <div className="code-input"><input placeholder="(Código area)" /><input placeholder="Celular"/>
                             </div>
                             {/*NEED FIX THIS SHIT*/}
