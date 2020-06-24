@@ -132,7 +132,7 @@ class AccountQuestions extends Component {
         </div>
         <div className="account-questions-wrap-questions">
           {this.state.questions.length == 0 &&
-            <div className="account-questions-wrap-item">
+            <div className="account-questions-wrap-item no-question">
               <span>
                 <FontAwesomeIcon icon={faQuestionCircle} />
               </span>

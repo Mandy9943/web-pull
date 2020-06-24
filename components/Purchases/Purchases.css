@@ -1,10 +1,12 @@
 .purchase-list {
-  padding: 20px;
+  padding: 40px;
   padding-top: 42px;
+  background: #EBEBEB;
 }
 
-.purchase-list .status {
+.purchase-list .status-title {
   color: #393838;
+  font-size: 27px;
 }
 
 .account-store-sales-wrap-search, .account-store-sales-wrap-filter {
@@ -17,6 +19,11 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.account-store-sales-wrap-search .sub-title, .account-store-sales-wrap-filter .sub-title {
+  color: #444444;
+  font-size: 13px;
 }
 
 .account-store-sales-wrap-filter p {

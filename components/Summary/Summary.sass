@@ -14,7 +14,11 @@
         .user-account-menu
             padding: 40px 20px
             h3
-                color: #717171
+                color: #393838
+                font-size: 17px
+            .user-account-menu-text
+                color: #393838
+                font-size: 14px
             .user-account-menu-item
                 display: grid
                 grid-template-columns: auto auto auto
@@ -40,9 +44,15 @@
                     margin-bottom: 15px
                     border-bottom: 0.5px dashed #9E9E9E
 
-@media(max-width:700px)
-.modal-actions
-    grid-gap: 15px !important
+.footer-social
+    width: 80%
+    margin: auto
+    padding: 25px 0
+    img
+        &:last-child
+            margin-left: 30px
+
+
 
 @media(min-width:700px)
     .user-account-menu
@@ -76,6 +86,17 @@
                 transition: 0.4s
                 box-sizing:border-box
                 padding: 0
+    .modal-actions
+        grid-gap: 15px !important
+    .footer-social
+        width: 100%
+        margin: auto
+        padding: 30px 0
+        display: grid
+        grid-template-columns: 1fr 1fr
+        img
+            width: 80%
+            margin: auto !important
                 
 
                 

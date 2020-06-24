@@ -176,7 +176,7 @@ class AccountStoreProduct extends Component {
       <div className="account-store-product-wrap">
         <form onSubmit={this.newProduct}>
           <div className="back-btn">
-            <Link href="#">
+            <Link href="/cuenta">
               <a>
                 <p className="seller-reputations-icon">
                   <FontAwesomeIcon icon={faAngleLeft} />
