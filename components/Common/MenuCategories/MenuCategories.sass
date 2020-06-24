@@ -11,39 +11,44 @@
     color: #6D6D6D
     background: rgba(0, 0, 0, 0.68)
 .menu-categories
-    border-radius: 15px 
+    border-radius: 5px 
     box-shadow: none
     background: transparent
     background: white
-    width: 70%
+    width: auto
     position: absolute;
-    top: 30px
+    top: 0
+    left: 10%
     display: grid
     grid-template-columns: 300px 3fr
+    &.active
+        width: 70%
     &:before
         content: ''
         position: absolute;
         top: 0;
         right: 0;
         left: 0;
-        left: 0;
         bottom: 0;
-        background: red;
         filter: drop-shadow(1px 1px 2px black)
         border-radius: 5px
     a
         color: #292929 !important
 .title-categories
     background: #F2F2F2
-    padding: 15px
     z-index: 1000
     svg
         float: right;
     border-radius: 0 0px 0 5px;
     span
         font-size: 20px
-        margin-bottom: 7px
         display: block;
+        padding: 7px 15px
+    .active-link
+        &:hover
+            background: #CF0A2C
+            a
+                color: white !important
 .sub-categories
     background: #FFFFFF
     position: relative
@@ -64,6 +69,8 @@
         font-size: 18px
         display: block;
         margin-bottom: 15px;
+
+
     
 .close
     position: fixed

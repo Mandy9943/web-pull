@@ -7,7 +7,28 @@ import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 
 class MenuCategories extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      show: false
+    }
+  }
+
+  mouseEnter = () => {
+    this.setState({ show: true });
+  }
+
+  mouseLeave = () => {
+    this.setState({ show: false });
+  }
+
   render() {
+
+    let cls = 1 === 1 ? "active " : '  '
+
+    let menu = 1 === 2 ? "active " : '  '
+
     return (
       <div className="wrap-menu-categories">
         <div
@@ -16,25 +37,30 @@ class MenuCategories extends Component {
             this.props.toggle(this.props.num);
           }}
         />
-        <div className="menu-categories" 
+        <div className={`${menu} menu-categories`}
           onMouseLeave={() => {
             this.props.toggle(this.props.num);
           }}>
           <section className="title-categories">          {
             this.props.categories.map(function (cat, i) {
-                return <span key={i}><Link href={"/categoria/" + cat.name}><a>{cat.name} <FontAwesomeIcon icon={faAngleRight}  /></a></Link></span>
+              return <span className="active-link" key={i} onMouseEnter={this.mouseEnter} onMouseLeave={this.mouseLeave}>
+                <Link href={"/categoria/" + cat.name}><a>{cat.name} <FontAwesomeIcon icon={faAngleRight} />
+                </a></Link></span>
             })
           }
           </section>
-          <section className="sub-categories">
-            <img src={categories} />
-            {/* NEED FIX THIS SHIT*/}
-            <span><Link href="#"><a>sub-categoria generica</a></Link></span>
-            <span><Link href="#"><a>sub-categoria generica</a></Link></span>
-            <span><Link href="#"><a>sub-categoria generica</a></Link></span>
-            <span><Link href="#"><a>sub-categoria generica</a></Link></span>
-            <span><Link href="#"><a>sub-categoria generica</a></Link></span>
-          </section>
+          {this.state.showCategories ?
+            <section toggle={this.mouseLeave} className={`${cls} sub-categories`}>
+              <img src={categories} />
+              {/* NEED FIX THIS SHIT*/}
+              <span><Link href="#"><a>sub-categoria generica</a></Link></span>
+              <span><Link href="#"><a>sub-categoria generica</a></Link></span>
+              <span><Link href="#"><a>sub-categoria generica</a></Link></span>
+              <span><Link href="#"><a>sub-categoria generica</a></Link></span>
+              <span><Link href="#"><a>sub-categoria generica</a></Link></span>
+            </section>
+
+            : null}
 
         </div>
       </div>

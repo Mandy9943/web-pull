@@ -67,11 +67,11 @@ export default class Nav extends Component {
     }
 
     showHideMenu = () => {
-        this.setState({showMenu: !this.state.showMenu})
+        this.setState({ showMenu: !this.state.showMenu })
     }
 
     menuBlur = () => {
-        setTimeout(() => this.setState({showMenu: false}),200);
+        setTimeout(() => this.setState({ showMenu: false }), 200);
     }
 
     componentDidMount() {
@@ -84,7 +84,7 @@ export default class Nav extends Component {
 
     mouseEnter = () => {
         this.setState({ showCategories: true });
-      }
+    }
 
     mouseLeave = () => {
         this.setState({ showCategories: false });
@@ -98,7 +98,7 @@ export default class Nav extends Component {
         let home = this.props.home
 
         const content1 = (
-            <> 
+            <>
                 <div className="header-modal">
                     <h5>Bienvenido</h5>
                     <p>Crea tu cuenta o inicia sesion</p>
@@ -119,7 +119,6 @@ export default class Nav extends Component {
 
 
         return (
-
             <div className="nav">
                 <div className="nav-content desktop-nav">
                     <div className="nav-top">
@@ -156,7 +155,7 @@ export default class Nav extends Component {
                             </div>
                         }
                         {authenticated &&
-                            <div className="user-menu" onBlur={ this.menuBlur } >
+                            <div className="user-menu" onBlur={this.menuBlur} >
                                 <ul>
                                     <Link href="#"><a className="bell">Ayuda / PQR <FontAwesomeIcon icon={faBell} /></a></Link>
                                     <Link href="#"><a onClick={() => this.showHideMenu()} className="user-icon"><FontAwesomeIcon icon={faUser} /> Usuario <FontAwesomeIcon icon={faAngleDown} /></a></Link>
@@ -169,11 +168,11 @@ export default class Nav extends Component {
                                         <h5><FontAwesomeIcon className="icon" icon={faUser} /> Bienvenido <b className="name">Hola, {user}</b></h5>
                                         <Link href="/cuenta"><a className="main-button"><p>Mi cuenta</p></a></Link>
                                         <section className="options">
-                                            <hr/>
+                                            <hr />
                                             <Link href="/cuenta#facturacion"><a className="items"> <FontAwesomeIcon icon={faMoneyBillWave} />Facturacion</a></Link>
                                             <Link href="/cuenta#compras"><a className="items"> <FontAwesomeIcon icon={faShoppingBag} />Compras</a></Link>
                                             <Link href="/cuenta#opciones"><a className="items"> <FontAwesomeIcon icon={faCog} />Opciones</a></Link>
-                                            <hr/>
+                                            <hr />
                                             <Link href="/logout"><a className="items">Cerrar sesion</a></Link>
                                         </section>
                                     </section>
@@ -185,8 +184,8 @@ export default class Nav extends Component {
                             <ul>
                                 <section className="menu">
                                     <ul>
-                                        <li onMouseEnter={this.mouseEnter}>
-                                            {this.state.showCategories ? (<MenuCategories  toggle={this.mouseLeave} num="2" categories={this.state.categories} />) : null}
+                                        <li onMouseEnter={this.mouseEnter} onMouseLeave={this.mouseLeave}>
+                                            {this.state.showCategories ? (<MenuCategories toggle={this.mouseLeave} num="2" categories={this.state.categories} />) : null}
                                             Categorías <FontAwesomeIcon icon={faAngleDown} />
                                         </li>
                                     </ul>
@@ -211,9 +210,7 @@ export default class Nav extends Component {
                                 defaultValue={this.props.actualSearch}
                                 name={"searchBar"}
                                 placeholder="Buscar productos"
-
                                 onChange={this.handleChange}
-
                                 onKeyPress={(event) => {
                                     if (event.key === 'Enter') {
                                         this.search()
@@ -235,8 +232,7 @@ export default class Nav extends Component {
                     {home ?
                         <div className="nav-botton">
                             {this.state.modal2 ? (<Modal toggle={this.toggleModal} num="1" content={content1} button />) : null}
-                            
-                                <div onClick={() => { this.toggleModal(2); }}>
+                            <div onClick={() => { this.toggleModal(2); }}>
                                 <FontAwesomeIcon icon={faBars} />
                             </div>
                         </div>
