@@ -39,7 +39,7 @@
   background: #FBFBFB;
   -webkit-box-shadow: 0px 3px 6px #00000029;
           box-shadow: 0px 3px 6px #00000029;
-  border-radius: 15px;
+  border-radius: 5px;
 }
 
 .payment-problem-container .payment-problem-content .payment-problem-box .payment-problem-icon {
@@ -85,7 +85,7 @@
   background: #FFFFFF;
   -webkit-box-shadow: 0px 3px 6px #00000029;
           box-shadow: 0px 3px 6px #00000029;
-  border-radius: 15px;
+  border-radius: 5px;
 }
 
 .payment-problem-container .payment-problem-content .payment-problem-box .payment-problem-orders .payment-problem-order-box .payment-problem-icon {

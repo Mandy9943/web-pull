@@ -117,6 +117,7 @@ export default class Help extends Component {
                 <div className="content-help">
 
                     <div className="help-left">
+                        {/*
                         <Link href="#">
                             <a className="help-button">
                                 <p className="help-icon">
@@ -125,16 +126,17 @@ export default class Help extends Component {
                                 <p>Vende en kiero</p>
                             </a>
                         </Link>
+                        */}
                         <Link href="#">
-                            <a className="help-button">
-                                <p className="help-icon">
+                            <a className="help-button" onClick={() => this.accordionBuy()}>
+                                <p className="help-icon" >
                                     <FontAwesomeIcon icon={faShoppingBag} />
                                 </p>
                                 <p>Compras</p>
                             </a>
                         </Link>
                         <Link href="#">
-                            <a className="help-button">
+                            <a className="help-button" onClick={() => this.accordionAccount()}>
                                 <p className="help-icon">
                                     <FontAwesomeIcon icon={faCog} />
                                 </p>
@@ -142,7 +144,7 @@ export default class Help extends Component {
                             </a>
                         </Link>
                         <Link href="#">
-                            <a className="help-button">
+                            <a className="help-button" onClick={() => this.accordionSecurity()}>
                                 <p className="help-icon">
                                     <FontAwesomeIcon icon={faLock} />
                                 </p>
@@ -160,7 +162,7 @@ export default class Help extends Component {
                         </div>
                         */}
                         <div className="help-accordion"></div>
-                        <div className={this.state.accordionTitleBuy ? "help-accordion-title" : "help-accordion-title active"} onClick={() => this.accordionBuy()}>
+                        <div className={this.state.accordionTitleBuy ? "help-accordion-title fisrt-element" : "help-accordion-title active"} onClick={() => this.accordionBuy()}>
                             <p>Compras</p>
                             <p className="help-icon">
                                 <FontAwesomeIcon icon={this.state.helpIconBuy} />
@@ -207,30 +209,6 @@ export default class Help extends Component {
 
                             </div>
                         </div>
-                        <div className={this.state.accordionTitleSecurity ? "help-accordion-title" : "help-accordion-title active"} onClick={() => this.accordionSecurity()}>
-                            <p>Seguridad</p>
-                            <p className="help-icon">
-                                <FontAwesomeIcon icon={this.state.helpIconSecurity} />
-                            </p>
-                        </div>
-                        <div className={this.state.closeSecurity ? "help-accordion" : "help-accordion active"}>
-                            <Link href="/proteccion_comprador">
-                                <a>
-                                    <p>Protección al comprador</p>
-                                </a>
-                            </Link>
-                            <Link href="/proteccion_vendedor">
-                                <a>
-                                    <p>¿Seguridad proporcionada para los vendedores?</p>
-                                </a>
-                            </Link>
-                            <Link href="/seguridad">
-                                <a>
-                                    <p>¿Cómo resguardar la seguridad de mi cuenta?</p>
-                                </a>
-                            </Link>
-
-                        </div>
                         <div className={this.state.accordionTitleAccount ? "help-accordion-title" : "help-accordion-title active"} onClick={() => this.accordionAccount()}>
                             <p>Mi cuenta</p>
                             <p className="help-icon">
@@ -260,6 +238,30 @@ export default class Help extends Component {
                                     <p>¿Cómo anular mi cuenta?</p>
                                 </a>
                             </Link>
+                        </div>
+                        <div className={this.state.accordionTitleSecurity ? "help-accordion-title" : "help-accordion-title active"} onClick={() => this.accordionSecurity()}>
+                            <p>Seguridad</p>
+                            <p className="help-icon">
+                                <FontAwesomeIcon icon={this.state.helpIconSecurity} />
+                            </p>
+                        </div>
+                        <div className={this.state.closeSecurity ? "help-accordion" : "help-accordion active"}>
+                            <Link href="/proteccion_comprador">
+                                <a>
+                                    <p>Protección al comprador</p>
+                                </a>
+                            </Link>
+                            <Link href="/proteccion_vendedor">
+                                <a>
+                                    <p>¿Seguridad proporcionada para los vendedores?</p>
+                                </a>
+                            </Link>
+                            <Link href="/seguridad">
+                                <a>
+                                    <p>¿Cómo resguardar la seguridad de mi cuenta?</p>
+                                </a>
+                            </Link>
+
                         </div>
                     </div>
                 </div>
