@@ -31,14 +31,15 @@ export default function HowToPay() {
                     <h2>Como pagar tu compra</h2>
                     <div className="how-to-pay-box">
                         <div className="how-to-pay-box-content">
-                            <h4>Puedes pagar con confianza</h4>
-                            <p>Te devolveremos el dinero si el producto no es lo que esperabas.</p>
+                            <p><span>Puedes pagar con confianza,</span>ee devolveremos el dinero si el producto no es lo que esperabas.</p>
                             <h4>Elige entre cualquiera de estos medios de pago:</h4>
                             <iv className="how-to-pay-ways">
                                 <img src={CreditCard} />
+                                <hr/>
                                 <p>Tarjetas de crédito</p>
                                 <img src={BankTransfer} />
                                 <p>Transferencias desde tu banco</p>
+                                <hr className="last-element"/>
                                 <img src={OnlineTransfer} />
                                 <p>Traspaso Online</p>
                             </iv>

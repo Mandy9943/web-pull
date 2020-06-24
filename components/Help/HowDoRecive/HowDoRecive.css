@@ -26,6 +26,7 @@
 .how-do-recive-container .how-do-recive-content h2 {
   margin-bottom: 20px;
   color: #717171;
+  font-size: 26px;
 }
 
 .how-do-recive-container .how-do-recive-content .how-do-recive-box {
@@ -39,12 +40,13 @@
 
 .how-do-recive-container .how-do-recive-content .how-do-recive-box p {
   margin: 20px auto;
-  width: 90%;
-  line-height: 30px;
+  font-size: 14px;
+  line-height: 20px;
 }
 
 .how-do-recive-container .how-do-recive-content .how-do-recive-box h4 {
   font-weight: 600;
+  font-size: 14px;
 }
 
 .how-do-recive-container .how-do-recive-content .how-do-recive-box .kiero-envios {
@@ -54,7 +56,7 @@
       grid-template-columns: 1fr auto;
   grid-gap: 15px;
   margin: 0px auto 20px auto;
-  padding: 10px 20px;
+  padding: 10px 30px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;

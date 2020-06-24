@@ -25,6 +25,7 @@
 .seller-reputation-container .seller-reputation-content h2 {
   margin-bottom: 20px;
   color: #717171;
+  font-size: 26px;
 }
 
 .seller-reputation-container .seller-reputation-content .seller-reputation-box {
@@ -38,10 +39,12 @@
 
 .seller-reputation-container .seller-reputation-content .seller-reputation-box p {
   margin: 20px 0px;
+  font-size: 14px;
 }
 
 .seller-reputation-container .seller-reputation-content .seller-reputation-box h4 {
   font-weight: 600;
+  font-size: 14px;
 }
 
 .seller-reputation-container .seller-reputation-content .seller-reputation-box .seller-reputations-qualification {

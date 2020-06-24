@@ -47,7 +47,7 @@ export default function SellerReputation() {
                                     </p>
                                 </div>
                                 <h4>Si tiene 5 estrellas, excelente</h4>
-                                <p>Esto quiere decir que es un KinderLider, es un vendedor garantizado por la cantidad de ventas realizadas, 
+                                <p className="center-block">Esto quiere decir que es un KinderLider, es un vendedor garantizado por la cantidad de ventas realizadas, 
                                     la calidad de servicio ofrecido a sus clientes y el cumplimiento de normas fiscales</p>
                             </div>
                             <p>Si lo que buscas es un servicio de calidad, te sugerimos leer cada una de las opiniones de las personas que han contratado a este vendedor.</p>

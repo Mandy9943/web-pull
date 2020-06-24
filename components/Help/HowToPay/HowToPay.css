@@ -26,6 +26,7 @@
 .how-to-pay-container .how-to-pay-content h2 {
   margin-bottom: 20px;
   color: #717171;
+  font-size: 26px;
 }
 
 .how-to-pay-container .how-to-pay-content .how-to-pay-box {
@@ -39,6 +40,12 @@
 
 .how-to-pay-container .how-to-pay-content .how-to-pay-box .how-to-pay-box-content p {
   margin: 20px 0px;
+  font-size: 14px;
+}
+
+.how-to-pay-container .how-to-pay-content .how-to-pay-box .how-to-pay-box-content p span {
+  font-weight: bold;
+  margin-right: 5px;
 }
 
 .how-to-pay-container .how-to-pay-content .how-to-pay-box .how-to-pay-box-content h4 {
@@ -54,9 +61,33 @@
       grid-template-rows: repeat(3, 1fr);
   grid-gap: 15px;
   margin: 20px auto;
-  width: 60%;
+  width: 90%;
   text-align: center;
-  border: 1px solid #F2F2F2;
+  border: 0.5px solid #A1A1A1;
+  position: relative;
+}
+
+.how-to-pay-container .how-to-pay-content .how-to-pay-box .how-to-pay-box-content .how-to-pay-ways hr {
+  position: absolute;
+  top: 32%;
+  left: 0;
+  right: 0;
+  border-width: 0.5px;
+  -webkit-margin-before: 0;
+          margin-block-start: 0;
+  -webkit-margin-after: 0;
+          margin-block-end: 0;
+  border-color: #A1A1A1;
+  border-top: 0;
+}
+
+.how-to-pay-container .how-to-pay-content .how-to-pay-box .how-to-pay-box-content .how-to-pay-ways .last-element {
+  top: 62%;
+}
+
+.how-to-pay-container .how-to-pay-content .how-to-pay-box .how-to-pay-box-content .how-to-pay-ways p {
+  margin: auto;
+  font-size: 16px;
 }
 
 .how-to-pay-container .how-to-pay-content .how-to-pay-box .how-to-pay-box-content .how-to-pay-ways img {
@@ -66,6 +97,16 @@
 .how-to-pay-container .how-to-pay-content .how-to-pay-box button {
   margin-top: 40px;
   color: #fff;
+  width: 268px;
+  height: 35px;
+  border-radius: 8px;
+  margin-left: 0;
+}
+
+.how-to-pay-container .how-to-pay-content .how-to-pay-box button p {
+  font-size: 14px;
+  margin: auto;
+  padding: 0;
 }
 
 @media (max-width: 700px) {
