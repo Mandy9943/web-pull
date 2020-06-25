@@ -11,23 +11,29 @@ class MenuCategories extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      show: false
+        showMenu: false
     }
   }
 
-  mouseEnter = (cat_it) => {
-    this.setState({ show: true, selectecCategory: cat_it });
-  }
+    menuMouseEnter = (cat_it) => {
+        this.setState({ showMenu: true, selectecCategory: cat_it });
+    }
 
-  mouseLeave = () => {
-    this.setState({ show: false });
-  }
+    menuMouseLeave = () => {
+        setInterval(() => {
+            this.setState({ showMenu: true});
+        },100);
+    }
+
+    subMenuMouseEnter = () => {
+        this.setState({ showMenu: true});
+    }
+
 
   render() {
 
-  
 
-    let menu = this.state.show ? " full-width " : '  '
+    let menu = this.state.showMenu ? " full-width " : '  '
 
     return (
       <div className="wrap-menu-categories">
@@ -43,14 +49,14 @@ class MenuCategories extends Component {
           }}>
           <section className="title-categories">          {
             this.props.categories.map((cat, i)  => {
-              return <span className="active-link" key={i} onMouseEnter={() => this.mouseEnter(i)} onMouseLeave={this.mouseLeave}>
+              return <span className="active-link" key={i} onMouseEnter={() => this.menuMouseEnter(i)} onMouseLeave={this.menuMouseLeave}>
                 <Link href={"/categoria/" + cat.name}><a>{cat.name} <FontAwesomeIcon icon={faAngleRight} />
                 </a></Link></span>
             })
           }
           </section>
-          {this.state.show ?
-            <section toggle={this.mouseLeave} className={`${menu} sub-categories`}>
+          {this.state.showMenu ?
+            <section onMouseEnter={this.subMenuMouseEnter} className={`${menu} sub-categories`}>
                 {this.props.categories[this.state.selectecCategory].childs.map((ccat, i) => {
                     return <span key={i}><Link href="#"><a>{ccat.name}</a></Link></span>
                 })}
