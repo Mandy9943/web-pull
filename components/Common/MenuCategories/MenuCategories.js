@@ -25,9 +25,9 @@ class MenuCategories extends Component {
 
   render() {
 
-    let cls = 1 === 1 ? "active " : '  '
+  
 
-    let menu = 1 === 2 ? "active " : '  '
+    let menu = this.state.show ? " full-width " : '  '
 
     return (
       <div className="wrap-menu-categories">
@@ -37,7 +37,7 @@ class MenuCategories extends Component {
             this.props.toggle(this.props.num);
           }}
         />
-        <div className={`${menu} menu-categories`}
+        <div className="menu-categories"
           onMouseLeave={() => {
             this.props.toggle(this.props.num);
           }}>
@@ -50,8 +50,7 @@ class MenuCategories extends Component {
           }
           </section>
           {this.state.show ?
-            <section toggle={this.mouseLeave} className={`${cls} sub-categories`}>
-              <img src={categories} />
+            <section toggle={this.mouseLeave} className={`${menu} sub-categories`}>
                 {this.props.categories[this.state.selectecCategory].childs.map((ccat, i) => {
                     return <span key={i}><Link href="#"><a>{ccat.name}</a></Link></span>
                 })}
