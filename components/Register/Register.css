@@ -11,7 +11,7 @@
   padding: 6vh 5vw;
   width: 15vw;
   min-width: 320px;
-  color: #929292;
+  color: #4E4E4E;
   background-color: #fff;
   border-radius: 20px;
   -webkit-box-shadow: 0px 3px 6px #00000029;
@@ -47,22 +47,22 @@
 }
 
 .input::-webkit-input-placeholder {
-  color: #929292;
+  color: #4E4E4E;
   text-align: center;
 }
 
 .input:-ms-input-placeholder {
-  color: #929292;
+  color: #4E4E4E;
   text-align: center;
 }
 
 .input::-ms-input-placeholder {
-  color: #929292;
+  color: #4E4E4E;
   text-align: center;
 }
 
 .input::placeholder {
-  color: #929292;
+  color: #4E4E4E;
   text-align: center;
 }
 
@@ -73,11 +73,12 @@ p.terms {
 
 @media (max-width: 700px) {
   .register-component {
-    background-color: #fff !important;
+    background-color: transparent !important;
     height: auto !important;
   }
   .register-component .register {
     border-radius: inherit !important;
+    background-color: transparent !important;
     padding: 15px !important;
     -webkit-box-shadow: none !important;
             box-shadow: none !important;

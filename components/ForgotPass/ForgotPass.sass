@@ -8,7 +8,7 @@
     padding: 6vh 3vw
     width: 17vw
     min-width: 320px
-    color: #929292
+    color: #4E4E4E
     background-color: #fff
     border-radius: 20px
     box-shadow: 0px 3px 6px #00000029
@@ -36,18 +36,22 @@
 .input
     max-width: 95%
     &::placeholder
-        color: #929292
+        color: #4E4E4E
         text-align: center
 
 @media(max-width:700px)
     .forgot-component
-        background-color: #fff !important
+        background: transparent
         .forgot-pass
             border-radius:inherit !important
             padding: 15px !important
-            box-shadow:none !important
+            background: transparent
+            box-shadow: none !important
             margin: 7vh auto 7vh auto !important
             min-width: 280px
+            width: auto
+            .main-button
+                max-width: 200px
             h1
                 margin: auto
         .footer
