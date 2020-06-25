@@ -15,8 +15,8 @@ class MenuCategories extends Component {
     }
   }
 
-  mouseEnter = () => {
-    this.setState({ show: true });
+  mouseEnter = (cat_it) => {
+    this.setState({ show: true, selectecCategory: cat_it });
   }
 
   mouseLeave = () => {
@@ -43,7 +43,7 @@ class MenuCategories extends Component {
           }}>
           <section className="title-categories">          {
             this.props.categories.map((cat, i)  => {
-              return <span className="active-link" key={i} onMouseEnter={this.mouseEnter} onMouseLeave={this.mouseLeave}>
+              return <span className="active-link" key={i} onMouseEnter={() => this.mouseEnter(i)} onMouseLeave={this.mouseLeave}>
                 <Link href={"/categoria/" + cat.name}><a>{cat.name} <FontAwesomeIcon icon={faAngleRight} />
                 </a></Link></span>
             })
@@ -52,12 +52,9 @@ class MenuCategories extends Component {
           {this.state.show ?
             <section toggle={this.mouseLeave} className={`${cls} sub-categories`}>
               <img src={categories} />
-              {/* NEED FIX THIS SHIT*/}
-              <span><Link href="#"><a>sub-categoria generica</a></Link></span>
-              <span><Link href="#"><a>sub-categoria generica</a></Link></span>
-              <span><Link href="#"><a>sub-categoria generica</a></Link></span>
-              <span><Link href="#"><a>sub-categoria generica</a></Link></span>
-              <span><Link href="#"><a>sub-categoria generica</a></Link></span>
+                {this.props.categories[this.state.selectecCategory].childs.map((ccat, i) => {
+                    return <span key={i}><Link href="#"><a>{ccat.name}</a></Link></span>
+                })}
             </section>
 
             : null}

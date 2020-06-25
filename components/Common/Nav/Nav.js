@@ -75,8 +75,7 @@ export default class Nav extends Component {
     }
 
     componentDidMount() {
-
-        getData("/getMainCategories")
+        getData("/getMenuCategories")
             .then((response) => {
                 this.setState({ categories: response.data });
             });
@@ -157,7 +156,7 @@ export default class Nav extends Component {
                         {authenticated &&
                             <div className="user-menu" onBlur={this.menuBlur} >
                                 <ul>
-                                    <Link href="#"><a className="bell">Ayuda / PQR <FontAwesomeIcon icon={faBell} /></a></Link>
+                                    <Link href="/ayuda"><a className="bell">Ayuda / PQR <FontAwesomeIcon icon={faBell} /></a></Link>
                                     <Link href="#"><a onClick={() => this.showHideMenu()} className="user-icon"><FontAwesomeIcon icon={faUser} /> Usuario <FontAwesomeIcon icon={faAngleDown} /></a></Link>
                                     {/*
                                     <span style={{ color: '#FFFFFF' }}>Hola, <b>{user}</b></span>
