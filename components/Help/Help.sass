@@ -77,6 +77,8 @@
                 &.active
                     p
                         color: #D11E36
+                &.active
+                    display: grid
                 p
                     color: #717171
                     font-size: 12px
@@ -120,6 +122,10 @@
             grid-template-columns: 2fr 1fr;
             min-height: auto
             grid-gap: 15px
+            .off
+                display: none !important
+            .active
+                display: block
             .help-left
                 padding: 40px 15px 0
                 a.help-button
@@ -130,6 +136,10 @@
             .help-right
                 padding: 55px 15px 0
                 min-height: auto
+.off
+    display: none !important
+.active
+    display: block
 
 
 

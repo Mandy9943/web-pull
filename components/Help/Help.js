@@ -35,6 +35,10 @@ export default class Help extends Component {
             //iconOpen: faAngleDown
             closeBuyHelp: true,
             accordionBuyHelpTitle: true,
+            accordionTip: true,
+            closeTip: true,
+            accordionTip2: true,
+            closeTip2: true,
             closeAskInPost: true,
             accordionAskInPostTitle: true,
         }
@@ -59,6 +63,18 @@ export default class Help extends Component {
         this.setState({
             closeBuyHelp: !this.state.closeBuyHelp,
             accordionBuyHelpTitle: !this.state.accordionBuyHelpTitle,
+        });
+    }
+    accordionTip = () => {
+        this.setState({
+            closeTip: !this.state.closeTip,
+            accordionTip: !this.state.accordionTip,
+        });
+    }
+    accordionTip2 = () => {
+        this.setState({
+            closeTip2: !this.state.closeTip2,
+            accordionTip2: !this.state.accordionTip2,
         });
     }
     accordionAskInPost = () => {
@@ -105,7 +121,7 @@ export default class Help extends Component {
                 <Header />
                 <div className="help-top">
                     <div className="content-help-top">
-                        <h3>En qué podemos ayudarte?</h3>
+                        {this.state.accordionAskInPostTitle ? <h3>{this.state.accordionTip ? "En qué podemos ayudarte?" : "¿Cuándo opinar sobre el vendedor?"}</h3> : <h3>Te asesoramos para realizar tus preguntas</h3>}
                         <div className="help-search">
                             <p className="help-search-icon">
                                 <FontAwesomeIcon icon={faSearch} />
@@ -116,8 +132,45 @@ export default class Help extends Component {
                 </div>
                 <div className="content-help">
 
-                    <div className="help-left">
-                        {/*
+                    <div className={this.state.accordionTip ? "help-tip-1" : "help-tip-1 active"}>
+                        <p>En el momento que tengas el producto, puedes dejar un comentario al vendedor, este se mostrara en su perfil.
+                        La forma de realizar este comentario depende como hayas recibido el producto.
+                            </p>
+                        <h5>A traves de Kiero Envios</h5>
+                        <p>En esta opicion encontraras en el menu de listado de compras alli podras opinar sobre el vendedor</p>
+                        <h5>Entrega acordada</h5>
+                        <p>Si acordaste la entrega perosnalemente con el vendor, o en su defecto uso una forma propia de envio te haremos llegar
+                        un email asi podremos asegurarnos de que recibiste el producto de forma correcta. Una vez confirmado el estado y experiencia
+                        de tu entrega podras dejar un comentario.
+                            </p>
+                            {/*NEED FIX THIS SHIT*/}
+                        <Link href="/cuenta#orders">
+                            <a className="main-button" onClick={() => this.accordionBuy()}>
+                                <p>
+                                    Ir al listado de compras
+                                </p>
+                            </a>
+                        </Link>
+                    </div>
+                    
+
+                    {this.state.accordionAskInPostTitle ? null :
+                        <div className="help-left active">
+                            <Link href="#">
+                                <a className="help-button">
+                                    <p>Han eliminado una pregunta que he realizado</p>
+                                </a>
+                            </Link>
+                            <Link href="#">
+                                <a className="help-button">
+                                    <p>No puedo efectuar una pregunta</p>
+                                </a>
+                            </Link>
+                        </div>
+                    }
+                    {this.state.accordionAskInPostTitle ? 
+                        <div className={this.state.accordionTip ? "help-left active " : "help-left off"}>
+                            {/*
                         <Link href="#">
                             <a className="help-button">
                                 <p className="help-icon">
@@ -127,31 +180,34 @@ export default class Help extends Component {
                             </a>
                         </Link>
                         */}
-                        <Link href="#">
-                            <a className="help-button" onClick={() => this.accordionBuy()}>
-                                <p className="help-icon" >
-                                    <FontAwesomeIcon icon={faShoppingBag} />
-                                </p>
-                                <p>Compras</p>
-                            </a>
-                        </Link>
-                        <Link href="#">
-                            <a className="help-button" onClick={() => this.accordionAccount()}>
-                                <p className="help-icon">
-                                    <FontAwesomeIcon icon={faCog} />
-                                </p>
-                                <p>Mi cuenta</p>
-                            </a>
-                        </Link>
-                        <Link href="#">
-                            <a className="help-button" onClick={() => this.accordionSecurity()}>
-                                <p className="help-icon">
-                                    <FontAwesomeIcon icon={faLock} />
-                                </p>
-                                <p>Seguridad</p>
-                            </a>
-                        </Link>
-                    </div>
+                            <Link href="#">
+                                <a className="help-button" onClick={() => this.accordionBuy()}>
+                                    <p className="help-icon" >
+                                        <FontAwesomeIcon icon={faShoppingBag} />
+                                    </p>
+                                    <p>Compras</p>
+                                </a>
+                            </Link>
+                            <Link href="#">
+                                <a className="help-button" onClick={() => this.accordionAccount()}>
+                                    <p className="help-icon">
+                                        <FontAwesomeIcon icon={faCog} />
+                                    </p>
+                                    <p>Mi cuenta</p>
+                                </a>
+                            </Link>
+                            <Link href="#">
+                                <a className="help-button" onClick={() => this.accordionSecurity()}>
+                                    <p className="help-icon">
+                                        <FontAwesomeIcon icon={faLock} />
+                                    </p>
+                                    <p>Seguridad</p>
+                                </a>
+                            </Link>
+                        </div>
+                    : null}
+
+                    
                     <div className="help-right">
                         <h5>Ayuda Kiero</h5>
                         {/*<div className="help-accordion-title fisrt-element">
@@ -197,7 +253,7 @@ export default class Help extends Component {
                                     </a>
                                 </Link>
                             </div>
-                            <p>¿En qué momento debo opinar sobre el vendedor?</p>
+                            <p onClick={() => this.accordionTip()}>¿En qué momento debo opinar sobre el vendedor?</p>
                             <p className={this.state.accordionAskInPostTitle ? "ask-in-post-title" : "ask-in-post-title active"} onClick={() => this.accordionAskInPost()}>Preguntar en publicaciones</p>
                             <div className={this.state.closeAskInPost ? "ask-in-post-accordion" : "ask-in-post-accordion active"}>
                                 <p>Han eliminado una pregunta que he realizado</p>

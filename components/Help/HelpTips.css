@@ -1,10 +1,22 @@
 .content-help .help-tip-1 {
+  display: none;
   padding: 30px;
   margin: 40px 0;
   background: #FBFBFB;
   border-radius: 6px;
   border: 0.5px solid  #9E9E9E;
   text-align: left;
+  color: #717171;
+}
+
+.content-help .help-tip-1 .main-button {
+  color: white;
+  border-radius: 5px;
+  margin-top: 30px;
+}
+
+.content-help .help-tip-1 .main-button p {
+  color: white;
 }
 
 .content-help .help-tip-1 p {
@@ -12,12 +24,16 @@
 }
 
 .content-help .help-tip-1 h5 {
-  font-size: 16px;
+  font-size: 15px;
   margin: 20px 0;
 }
 
 .content-help .help-tip-1 button {
   margin-top: 30px;
+}
+
+.content-help .active {
+  display: block;
 }
 
 @media (max-width: 700px) {

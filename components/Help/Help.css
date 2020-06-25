@@ -127,6 +127,11 @@
   color: #D11E36;
 }
 
+.help .content-help .help-right .help-accordion-title.active {
+  display: -ms-grid;
+  display: grid;
+}
+
 .help .content-help .help-right .help-accordion-title p {
   color: #717171;
   font-size: 12px;
@@ -191,6 +196,12 @@
     min-height: auto;
     grid-gap: 15px;
   }
+  .help .content-help .off {
+    display: none !important;
+  }
+  .help .content-help .active {
+    display: block;
+  }
   .help .content-help .help-left {
     padding: 40px 15px 0;
   }
@@ -205,5 +216,13 @@
     padding: 55px 15px 0;
     min-height: auto;
   }
+}
+
+.off {
+  display: none !important;
+}
+
+.active {
+  display: block;
 }
 /*# sourceMappingURL=Help.css.map */
