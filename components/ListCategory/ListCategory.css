@@ -34,7 +34,7 @@
 .temp-card .product-card-img {
   z-index: 0;
   position: relative;
-  border-bottom: 1px solid #717171;
+  border-bottom: 1px solid #5A5A5A;
 }
 
 .temp-card .product-card-img img {
@@ -56,7 +56,7 @@
 
 .temp-card .product-card-description-box .product-card-description {
   margin-top: 15px;
-  color: #717171;
+  color: #5A5A5A;
   font-size: 14px;
 }
 
@@ -99,7 +99,7 @@
 }
 
 .temp-list .product-list-description-box .product-list-title {
-  color: #717171;
+  color: #5A5A5A;
 }
 
 .kiero-envios-card {

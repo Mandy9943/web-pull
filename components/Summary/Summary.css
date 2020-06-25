@@ -7,7 +7,7 @@
 }
 
 .summary-content p {
-  color: #717171;
+  color: #5A5A5A;
 }
 
 .summary-content .user-account-container {
@@ -26,12 +26,12 @@
 }
 
 .summary-content .user-account-container .user-account-menu h3 {
-  color: #393838;
+  color: #5A5A5A;
   font-size: 17px;
 }
 
 .summary-content .user-account-container .user-account-menu .user-account-menu-text {
-  color: #393838;
+  color: #5A5A5A;
   font-size: 14px;
 }
 
@@ -60,7 +60,6 @@
 
 .summary-content .user-account-container .summary {
   padding: 40px;
-  background-color: #EBEBEB;
 }
 
 .summary-content .user-account-container .summary .items {

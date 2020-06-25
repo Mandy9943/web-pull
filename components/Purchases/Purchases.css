@@ -1,11 +1,10 @@
 .purchase-list {
   padding: 40px;
   padding-top: 42px;
-  background: #EBEBEB;
 }
 
 .purchase-list .status-title {
-  color: #393838;
+  color: #5A5A5A;
   font-size: 27px;
 }
 
@@ -46,7 +45,7 @@
 
 .account-store-sales-input-search {
   border: 0px;
-  border-bottom: 0.5px solid #707070;
+  border-bottom: 0.5px solid #5A5A5A;
   border-radius: 0px;
   background: transparent;
   padding-left: 22px;

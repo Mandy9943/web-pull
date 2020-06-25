@@ -3,7 +3,7 @@
 }
 
 .QuestionItem-list .title {
-  color: #707070;
+  color: #5A5A5A;
   font-size: 20px;
   margin: 15px 30px;
 }
@@ -19,7 +19,7 @@
 }
 
 .QuestionItem-list .question-item .responses-title {
-  color: #707070;
+  color: #5A5A5A;
   margin-left: 15px;
   margin-top: 10px;
 }

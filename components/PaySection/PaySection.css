@@ -74,7 +74,7 @@
   padding: 10px;
   border-radius: 5px;
   outline: none !important;
-  border: 0.3px solid #707070;
+  border: 0.3px solid #5A5A5A;
   width: 195px !important;
 }
 
@@ -90,7 +90,7 @@
 
 .price-pay-product-detail {
   font-size: 36px;
-  color: #404040;
+  color: #5A5A5A;
   font-weight: lighter;
 }
 
@@ -103,7 +103,7 @@
 .info-pay-product-detail p {
   font-size: 15px;
   margin-bottom: 5px;
-  color: #434446;
+  color: #5A5A5A;
 }
 
 .info-pay-product-detail .icon-right {
@@ -139,7 +139,7 @@
 }
 
 .section-pay-type .section-pay-type-title h4 {
-  color: #434446;
+  color: #5A5A5A;
   font-size: 17px;
   font-weight: 600;
 }
@@ -159,7 +159,7 @@
 
 .section-pay-type p {
   margin: 10px 0px;
-  color: #7F8081;
+  color: #5A5A5A;
   font-size: 16px;
 }
 
@@ -179,7 +179,7 @@
       grid-template-columns: auto 1fr;
   grid-gap: 15px;
   margin: 20px 0px;
-  color: #7F8081;
+  color: #5A5A5A;
   font-size: 16px;
 }
 

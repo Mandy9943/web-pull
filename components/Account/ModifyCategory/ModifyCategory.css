@@ -3,7 +3,7 @@
   padding: 40px;
   width: 80%;
   min-height: 70vh;
-  color: #717171;
+  color: #5A5A5A;
 }
 
 .modify-category-container .back-btn a {
@@ -68,7 +68,7 @@
 
 .modify-category-btn .modify-category-cancel-btn a {
   float: left;
-  color: #717171;
+  color: #5A5A5A;
 }
 
 @media (max-width: 700px) {
