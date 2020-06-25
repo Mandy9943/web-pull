@@ -11,12 +11,21 @@ class MenuCategories extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showMenu: false
+      showMenu: false,
+      moreAll: false,
+      lessAll: true,
     }
   }
 
   menuMouseEnter = (cat_it) => {
     this.setState({ showMenu: true, selectecCategory: cat_it });
+  }
+
+  showAll = () => {
+    this.setState({
+      lessAll: !this.state.lessAll,
+      moreAll: !this.state.moreAll,
+    });
   }
 
   menuMouseLeave = () => {
@@ -32,8 +41,7 @@ class MenuCategories extends Component {
 
   render() {
 
-
-    let menu = this.state.showMenu ? " full-width " : '  '
+    let menu = this.state.moreAll ? " show-all" : '  '
 
     return (
       <div className="wrap-menu-categories">
@@ -58,8 +66,14 @@ class MenuCategories extends Component {
           {this.state.showMenu ?
             <section onMouseEnter={this.subMenuMouseEnter} className={`${menu} sub-categories`}>
 
-              {this.props.categories[this.state.selectecCategory].childs.length > 20 ? <span className="load-more"><Link href="#"><a>ver mas</a></Link></span> : null}
-
+              {this.props.categories[this.state.selectecCategory].childs.length > 20 ? 
+                <span onClick={this.showAll} className="load-more">
+                  <Link href="#"><a className="accent">{!this.state.moreAll ? "Ver mas" : 'Ver menos'}</a>
+                  </Link>
+                </span> 
+                : 
+                null
+              }
               {this.props.categories[this.state.selectecCategory].childs.map((ccat, i) => {
                 return <span key={i}><Link href="#"><a>{ccat.name}</a></Link></span>
               })}

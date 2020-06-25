@@ -1,8 +1,9 @@
 .wrap-menu-categories
     display: flex
     position: absolute
-    top: 33px
-    left: 0px
+    top: 32px
+    left: -12px
+    right: 0
     width: 100%
     height:  calc(100vh - 90px)
     align-items: flex-start
@@ -34,7 +35,7 @@
     a
         color: #292929 !important
 .title-categories
-    background: #F2F2F2
+    background: #CF0A2C
     z-index: 1000
     svg
         float: right;
@@ -43,35 +44,41 @@
         font-size: 20px
         display: block;
         padding: 2px 15px
+        a
+            color: white !important
     .active-link
         &:hover
-            background: #CF0A2C
+            background: white
             a
-                color: white !important
+                color: #CF0A2C !important
 .sub-categories
     background: #FFFFFF
     position: relative
     display: grid
     grid-template-columns: 1fr 1fr 1fr
-    padding: 30px
-    grid-template-rows: repeat(10, auto) ;
+    padding: 15px 30px 
+    grid-template-rows: repeat(10, 1fr) ;
     box-shadow: 0px 3px 6px #00000029;
     border-radius: 0  0 5px 0
-    width: 600px
-    max-width: 600px
+    width: 220%
     position: absolute
     top: 0
     bottom: 0
     left: 300px
-    .show-all
-        bottom: auto
+    @media (max-width: 1024px)
+        max-width: 600px
+    &.show-all
         span
             display: grid !important
     span
         display: grid;
         margin: auto
         margin-left: 0
+        margin-top: 0
+        margin-right: 5px
         display: none
+        .accent
+            color: #CF0A2C !important
         &:nth-child(-n+15)
             display: grid
         a
