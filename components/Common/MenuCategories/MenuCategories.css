@@ -2,8 +2,8 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  position: fixed;
-  top: 90px;
+  position: absolute;
+  top: 33px;
   left: 0px;
   width: 100%;
   height: calc(100vh - 90px);
@@ -15,7 +15,6 @@
           justify-content: center;
   z-index: 100;
   color: #6D6D6D;
-  background: rgba(0, 0, 0, 0.68);
 }
 
 .menu-categories {
