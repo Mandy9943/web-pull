@@ -143,16 +143,16 @@ export default class Help extends Component {
                         un email asi podremos asegurarnos de que recibiste el producto de forma correcta. Una vez confirmado el estado y experiencia
                         de tu entrega podras dejar un comentario.
                             </p>
-                            {/*NEED FIX THIS SHIT*/}
+                        {/*NEED FIX THIS SHIT*/}
                         <Link href="/cuenta#orders">
-                            <a className="main-button" onClick={() => this.accordionBuy()}>
+                            <a className="main-button">
                                 <p>
                                     Ir al listado de compras
                                 </p>
                             </a>
                         </Link>
                     </div>
-                    
+
 
                     {this.state.accordionAskInPostTitle ? null :
                         <div className="help-left active">
@@ -168,44 +168,56 @@ export default class Help extends Component {
                             </Link>
                         </div>
                     }
-                    {this.state.accordionAskInPostTitle ? 
-                        <div className={this.state.accordionTip ? "help-left active " : "help-left off"}>
-                            {/*
-                        <Link href="#">
-                            <a className="help-button">
-                                <p className="help-icon">
-                                    <FontAwesomeIcon icon={faTag} />
-                                </p>
-                                <p>Vende en kiero</p>
-                            </a>
-                        </Link>
-                        */}
-                            <Link href="#">
-                                <a className="help-button" onClick={() => this.accordionBuy()}>
-                                    <p className="help-icon" >
-                                        <FontAwesomeIcon icon={faShoppingBag} />
-                                    </p>
-                                    <p>Compras</p>
+                    {this.state.accordionTip2 ?
+                        <>{this.state.accordionAskInPostTitle ?
+                            <div className={this.state.accordionTip ? "help-left active " : "help-left off"}>
+                                {/*<Link href="#">
+                                    <a className="help-button">
+                                        <p className="help-icon">
+                                            <FontAwesomeIcon icon={faTag} />
+                                        </p>
+                                        <p>Vende en kiero</p>
+                                    </a>
+                                </Link>*/}
+                                <Link href="#">
+                                    <a className="help-button" onClick={() => this.accordionBuy()}>
+                                        <p className="help-icon" >
+                                            <FontAwesomeIcon icon={faShoppingBag} />
+                                        </p>
+                                        <p>Compras</p>
+                                    </a>
+                                </Link>
+                                <Link href="#">
+                                    <a className="help-button" onClick={() => this.accordionAccount()}>
+                                        <p className="help-icon">
+                                            <FontAwesomeIcon icon={faCog} />
+                                        </p>
+                                        <p>Mi cuenta</p>
+                                    </a>
+                                </Link>
+                                <Link href="#">
+                                    <a className="help-button" onClick={() => this.accordionSecurity()}>
+                                        <p className="help-icon">
+                                            <FontAwesomeIcon icon={faLock} />
+                                        </p>
+                                        <p>Seguridad</p>
+                                    </a>
+                                </Link>
+                            </div>
+                            : null} </> :
+                        <div className="help-left active">
+                            <Link href="/contactanos_email">
+                                <a className="help-button">
+                                    <p>Contáctanos por e-mail Te enviaremos un formulario y los requerimientos</p>
                                 </a>
                             </Link>
-                            <Link href="#">
-                                <a className="help-button" onClick={() => this.accordionAccount()}>
-                                    <p className="help-icon">
-                                        <FontAwesomeIcon icon={faCog} />
-                                    </p>
-                                    <p>Mi cuenta</p>
-                                </a>
-                            </Link>
-                            <Link href="#">
-                                <a className="help-button" onClick={() => this.accordionSecurity()}>
-                                    <p className="help-icon">
-                                        <FontAwesomeIcon icon={faLock} />
-                                    </p>
-                                    <p>Seguridad</p>
+                            <Link href="/contactanos_wsp">
+                                <a className="help-button">
+                                    <p>Te contactamos por Whatsapp</p>
                                 </a>
                             </Link>
                         </div>
-                    : null}
+                    }
 
                     <div className="help-right">
                         <h5>Ayuda Kiero</h5>
@@ -272,7 +284,7 @@ export default class Help extends Component {
                         </div>
                         <div className={this.state.closeAccount ? "help-accordion" : "help-accordion active"}>
                             <Link href="#">
-                                <a>
+                                <a onClick={() => this.accordionTip2()}>
                                     <p>Crear una cuenta como empresa</p>
                                 </a>
                             </Link>
