@@ -1,7 +1,7 @@
 .wrap-menu-categories
     display: flex
-    position: fixed
-    top: 90px
+    position: absolute
+    top: 33px
     left: 0px
     width: 100%
     height:  calc(100vh - 90px)
@@ -9,7 +9,6 @@
     justify-content: center
     z-index: 100
     color: #6D6D6D
-    background: rgba(0, 0, 0, 0.68)
 .menu-categories
     border-radius: 5px 
     box-shadow: none
@@ -55,11 +54,16 @@
     display: grid
     grid-template-columns: 1fr 1fr 1fr
     padding: 30px
-    grid-template-rows: min-content min-content min-content min-content min-content min-content min-content min-content;
+    grid-template-rows: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto ;
     box-shadow: 0px 3px 6px #00000029;
     border-radius: 0  0 5px 0
     width: 600px
     max-width: 600px
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 300px
+    overflow-y: scroll;
     span
         font-size: 18px
         display: block;
