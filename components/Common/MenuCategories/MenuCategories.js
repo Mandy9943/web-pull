@@ -42,7 +42,7 @@ class MenuCategories extends Component {
             this.props.toggle(this.props.num);
           }}>
           <section className="title-categories">          {
-            this.props.categories.map(function (cat, i) {
+            this.props.categories.map((cat, i)  => {
               return <span className="active-link" key={i} onMouseEnter={this.mouseEnter} onMouseLeave={this.mouseLeave}>
                 <Link href={"/categoria/" + cat.name}><a>{cat.name} <FontAwesomeIcon icon={faAngleRight} />
                 </a></Link></span>
