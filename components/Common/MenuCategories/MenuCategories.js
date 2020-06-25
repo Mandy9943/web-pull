@@ -49,7 +49,7 @@ class MenuCategories extends Component {
             })
           }
           </section>
-          {this.state.showCategories ?
+          {this.state.show ?
             <section toggle={this.mouseLeave} className={`${cls} sub-categories`}>
               <img src={categories} />
               {/* NEED FIX THIS SHIT*/}

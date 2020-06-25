@@ -207,7 +207,6 @@ export default class Help extends Component {
                         </div>
                     : null}
 
-                    
                     <div className="help-right">
                         <h5>Ayuda Kiero</h5>
                         {/*<div className="help-accordion-title fisrt-element">

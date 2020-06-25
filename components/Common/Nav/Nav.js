@@ -184,7 +184,7 @@ export default class Nav extends Component {
                             <ul>
                                 <section className="menu">
                                     <ul>
-                                        <li onMouseEnter={this.mouseEnter} onMouseLeave={this.mouseLeave}>
+                                        <li onMouseEnter={this.mouseEnter}>
                                             {this.state.showCategories ? (<MenuCategories toggle={this.mouseLeave} num="2" categories={this.state.categories} />) : null}
                                             Categorías <FontAwesomeIcon icon={faAngleDown} />
                                         </li>
