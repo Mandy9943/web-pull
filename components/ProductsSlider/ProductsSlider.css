@@ -30,7 +30,7 @@
   }
   .products-slider .slider-movil {
     position: relative;
-    min-height: 260px;
+    min-height: 280px;
     width: 100%;
   }
   .products-slider .slider-movil .content-products-slider {
@@ -45,13 +45,13 @@
     height: -webkit-min-content;
     height: -moz-min-content;
     height: min-content;
+    padding: 5px 0;
   }
   .products-slider .slider-movil .content-products-slider .producto-card {
     width: 33%;
-    min-width: 140px;
     display: block;
-    margin: 0% 1.5%;
-    padding: 20px 0px 0;
+    margin: 0% 1%;
+    padding: 10px 0px 0;
   }
 }
 /*# sourceMappingURL=ProductsSlider.css.map */

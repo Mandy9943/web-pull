@@ -80,4 +80,12 @@
   margin: 20px 0px;
   line-height: 40px;
 }
+
+.payment-movil .slider {
+  height: auto !important;
+}
+
+.payment-movil .slider .nextButton, .payment-movil .slider .previousButton {
+  display: none !important;
+}
 /*# sourceMappingURL=PaymentBar.css.map */

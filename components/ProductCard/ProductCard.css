@@ -6,7 +6,7 @@
   background-color: #FFFFFF;
   -webkit-box-shadow: 0px 3px 3px #00000029;
           box-shadow: 0px 3px 3px #00000029;
-  border-radius: 3px;
+  border-radius: 4px;
 }
 
 .producto-card .product-card-img {
@@ -66,7 +66,7 @@
 .producto-card h3 {
   padding: 15px;
   white-space: nowrap;
-  margin-top: 20px;
+  margin-top: 12px;
   color: #545454;
   font-size: 15px;
   font-family: 'Open Sans', sans-serif;

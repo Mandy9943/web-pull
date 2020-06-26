@@ -138,14 +138,8 @@ class PaymentBar extends Component {
             <p className="payments-item-block sub">Ver más</p>
           </div>
         </div>
-
-
-
-
-
-        <div className="payment no-web">
-
-
+                        {/*payments-movil*/}
+        <div className="payment payment-movil no-web">
             {this.state.modal1 ? (
                 <Modal toggle={this.toggleModal} num="1" content={content1} button />
             ) : null}
@@ -157,9 +151,7 @@ class PaymentBar extends Component {
                 <Modal toggle={this.toggleModal} num="3" content={content3} />
             ) : null}
 
-
             <Slider autoplay={3000}>
-
               <div
                 className="payment-block"
                 onClick={() => {
@@ -172,7 +164,6 @@ class PaymentBar extends Component {
                 <p className="payments-item-block">Más Metodos de pagos</p>
                 <p className="payments-item-block sub">Ver más</p>
               </div>
-
               <div
                 className="payment-block"
                 onClick={() => {
