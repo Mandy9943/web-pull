@@ -57,6 +57,7 @@ export default function PaymentProblem() {
                                         <p>Cantidad: 1</p>
                                     </div>
                                     <h3>Total: $287.000</h3>
+                                    {/*NEED FIX THIS SHIT*/}
                                 </div>
                             </div>
                         </div>

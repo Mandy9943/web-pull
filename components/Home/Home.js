@@ -32,7 +32,8 @@ export default class Home extends Component {
         <Nav user={u_data.user} home={true} authenticated={u_data.authenticated} />
         <PrincipalSlider />
         <div className="home-content">
-          <Payment />
+          <section className="no-movil"><Payment /></section>
+          <section className="no-web">{/*slider movil here*/}<Payment /> </section>
           <ProductsSlider category={"Computación"} />
           <ProductsSlider category={"Belleza y Cuidado Personal"} />
           <SecundarySlider />
