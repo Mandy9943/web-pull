@@ -4,6 +4,7 @@ import CreditCard from "../../assets/img/pay-credit.png";
 import BankTransfer from "../../assets/img/pay-transfer.png";
 import OnlineTransfer from "../../assets/img/pay-online.png";
 import "./PaymentBar.css";
+import Slider from 'react-animated-slider';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUniversity,
@@ -137,52 +138,67 @@ class PaymentBar extends Component {
             <p className="payments-item-block sub">Ver más</p>
           </div>
         </div>
+
+
+
+
+
         <div className="payment no-web">
-          {this.state.modal1 ? (
-            <Modal toggle={this.toggleModal} num="1" content={content1} button />
-          ) : null}
-          <div
-            className="payment-block"
-            onClick={() => {
-              this.toggleModal(1);
-            }}
-          >
-            <p className="payments-icon payments-item-block">
-              <FontAwesomeIcon icon={faPlusCircle} />
-            </p>
-            <p className="payments-item-block">Más Metodos de pagos</p>
-            <p className="payments-item-block sub">Ver más</p>
-          </div>
-          {this.state.modal2 ? (
-            <Modal toggle={this.toggleModal} num="2" content={content2} />
-          ) : null}
-          <div
-            className="payment-block"
-            onClick={() => {
-              this.toggleModal(2);
-            }}
-          >
-            <p className="payments-icon payments-item-block">
-              <FontAwesomeIcon icon={faUniversity} />
-            </p>
-            <p className="payments-item-block">Transferencia bancaria</p>
-            <p className="payments-item-block sub">Ver más</p>
-          </div>
-          {this.state.modal3 ? (
-            <Modal toggle={this.toggleModal} num="3" content={content3} />
-          ) : null}
-          <div
-            className="payment-block"
-            onClick={() => {
-              this.toggleModal(3);
-            }}
-          >
-            <p className="payments-icon payments-item-block">
-              <FontAwesomeIcon icon={faMoneyBillAlt} />
-            </p>
-            <p className="payments-item-block">Paga en efectivo</p>
-            <p className="payments-item-block sub">Ver más</p>
-          </div>
+
+
+            {this.state.modal1 ? (
+                <Modal toggle={this.toggleModal} num="1" content={content1} button />
+            ) : null}
+
+            {this.state.modal2 ? (
+                <Modal toggle={this.toggleModal} num="2" content={content2} />
+            ) : null}
+            {this.state.modal3 ? (
+                <Modal toggle={this.toggleModal} num="3" content={content3} />
+            ) : null}
+
+
+            <Slider autoplay={3000}>
+
+              <div
+                className="payment-block"
+                onClick={() => {
+                  this.toggleModal(1);
+                }}
+              >
+                <p className="payments-icon payments-item-block">
+                  <FontAwesomeIcon icon={faPlusCircle} />
+                </p>
+                <p className="payments-item-block">Más Metodos de pagos</p>
+                <p className="payments-item-block sub">Ver más</p>
+              </div>
+
+              <div
+                className="payment-block"
+                onClick={() => {
+                  this.toggleModal(2);
+                }}
+              >
+                <p className="payments-icon payments-item-block">
+                  <FontAwesomeIcon icon={faUniversity} />
+                </p>
+                <p className="payments-item-block">Transferencia bancaria</p>
+                <p className="payments-item-block sub">Ver más</p>
+              </div>
+
+              <div
+                className="payment-block"
+                onClick={() => {
+                  this.toggleModal(3);
+                }}
+              >
+                <p className="payments-icon payments-item-block">
+                  <FontAwesomeIcon icon={faMoneyBillAlt} />
+                </p>
+                <p className="payments-item-block">Paga en efectivo</p>
+                <p className="payments-item-block sub">Ver más</p>
+              </div>
+            </Slider>
         </div>
       </>
     );
