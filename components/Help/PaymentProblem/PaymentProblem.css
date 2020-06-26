@@ -25,7 +25,7 @@
 
 .payment-problem-container .payment-problem-content h2 {
   margin-bottom: 20px;
-  color: #5A5A5A;
+  color: #4E4E4E;
 }
 
 .payment-problem-container .payment-problem-content .payment-problem-box {
@@ -35,7 +35,7 @@
       grid-template-columns: 1fr 1fr;
   grid-gap: 15px;
   padding: 40px;
-  color: #5A5A5A;
+  color: #4E4E4E;
   background: #FBFBFB;
   -webkit-box-shadow: 0px 3px 6px #00000029;
           box-shadow: 0px 3px 6px #00000029;

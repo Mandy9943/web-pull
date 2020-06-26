@@ -2,7 +2,7 @@
   border-top: 0.5px solid #C6C6C6;
   font-family: 'Montserrat', sans-serif;
   padding: 40px;
-  color: #545454;
+  color: #4E4E4E;
 }
 
 .wrap-detail-info h4 {
@@ -54,13 +54,13 @@
 
 .characteristics .info .item .title, .guarantee .info .item .title {
   font-size: 12px;
-  color: #5A5A5A;
+  color: #4E4E4E;
 }
 
 .characteristics .info .item .sub-title, .guarantee .info .item .sub-title {
   font-size: 14px;
   font-weight: 400;
-  color: #5A5A5A;
+  color: #4E4E4E;
   margin-top: 5px;
 }
 
@@ -72,18 +72,18 @@
 .guarantee h5 {
   margin-bottom: 20px;
   font-size: 17px;
-  color: #5A5A5A;
+  color: #4E4E4E;
 }
 
 .guarantee .title {
   display: block;
-  color: #5A5A5A;
+  color: #4E4E4E;
   font-size: 16px;
 }
 
 .guarantee .sub-title {
   display: block;
-  color: #5A5A5A;
+  color: #4E4E4E;
   font-size: 14px;
 }
 

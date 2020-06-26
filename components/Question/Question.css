@@ -4,7 +4,7 @@
 }
 
 .wrap-question h3 {
-  color: #5A5A5A;
+  color: #4E4E4E;
   font-size: 20px;
 }
 
@@ -18,7 +18,7 @@
 }
 
 .wrap-question-buttons .button-question-product-detail {
-  color: #5A5A5A;
+  color: #4E4E4E;
   font-size: 18px;
   background-color: #fff;
   border: 1px solid #D11E36;
@@ -38,10 +38,10 @@
 }
 
 .button-question-product-detail {
-  color: #5A5A5A;
+  color: #4E4E4E;
   font-size: 18px;
   background-color: #fff;
-  border: 0.5px solid #5A5A5A;
+  border: 0.5px solid #4E4E4E;
 }
 
 @media (max-width: 768px) {

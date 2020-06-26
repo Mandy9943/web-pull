@@ -151,7 +151,7 @@ class PaymentBar extends Component {
                 <Modal toggle={this.toggleModal} num="3" content={content3} />
             ) : null}
 
-            <Slider autoplay={3000}>
+            <Slider autoplay={5000}>
               <div
                 className="payment-block"
                 onClick={() => {

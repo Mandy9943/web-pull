@@ -4,7 +4,7 @@
 }
 
 .seller-movil .info-shops a p {
-  color: #5A5A5A;
+  color: #4E4E4E;
 }
 
 .seller-movil .ubication {
@@ -13,7 +13,7 @@
   -ms-grid-columns: 60px 1fr;
       grid-template-columns: 60px 1fr;
   margin-top: 15px;
-  color: #5A5A5A;
+  color: #4E4E4E;
 }
 
 .seller-movil .ubication img {
