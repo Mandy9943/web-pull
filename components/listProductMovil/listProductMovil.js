@@ -27,41 +27,16 @@ export default class listProductMovil extends Component {
             });
     }
 
-    changePState = async (id, newState, e) => {
-
-        let formData = new FormData();
-        formData.append('product_id', id);
-        formData.append('status', newState);
-        let request;
-
-        request = await updateProduct(formData, this.props.jwt);
-        console.log(request);
-        if (request && request.status === 200) {
-            getProductsBasic("Computación", 5)
-                .then((response) => {
-                    console.log(response.data)
-                    this.setState(
-                        { products: response.data.products }
-                    );
-                });
-        } else {
-            alert("ERROR.")
-        }
-
-    }
-
-
     render() {
 
         const productList = this.state.products.map((product, i) => {
-            let clsItem = product.status === "1" ? "product-item-edit" : "product-item-edit off"
             let image_url = product.image ?
                 getImgUrl(product.image) :
                 "https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png"
 
             const detail_link = "/detalle/" + product.product_id + "_" + product.title.split(" ").join("-");
 
-            return (<div key={i} className={clsItem}>
+            return (<div key={i} className="product-item-edit">
                 <div className="content">
                     <Link href={detail_link}>
                         <a>
