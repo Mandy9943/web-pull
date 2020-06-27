@@ -75,7 +75,7 @@ class MenuCategories extends Component {
                 null
               }
               {this.props.categories[this.state.selectecCategory].childs.map((ccat, i) => {
-                return <span key={i}><Link href={"/categoria/" + cat.name}><a>{ccat.name}</a></Link></span>
+                return <span key={i}><Link href={"/categoria/" + ccat.name}><a>{ccat.name}</a></Link></span>
               })}
             </section>
             : null}
