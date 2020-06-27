@@ -115,7 +115,7 @@ class Filter extends Component {
 
     const buttonState = this.props.format;
     const responsiveButton = buttonState == "grid" ? faTh : faList;
-    const text = buttonState == "grid" ? "mosaico" : "lista";
+    const text = buttonState == "grid" ? "Mosaico" : "Lista";
     return (
       <>
         <div className="wrap-filter">
@@ -224,7 +224,7 @@ class Filter extends Component {
             className="responsive-filter-item"
             onClick={this.toggleMenuOrder}
           >
-            categorias
+            Ordenes
           </div>
           <div
             className="responsive-filter-item"
