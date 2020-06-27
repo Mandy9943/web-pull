@@ -149,7 +149,13 @@ class ProductDetail extends Component {
             <ProductCardFinding notitle={"true"} category={mdata.category.name} />
           </section>
         </div>
+
+        <span className="no-web">
+          <FooterMovil />
+        </span>         
+        <span className="no-movil">
           <Footer />
+        </span>
         <div className="footer-social">
           <Link href={url}><a><img src={Logo1} /></a></Link>
           <Link href={url}><a><img src={Logo2} /></a></Link>
