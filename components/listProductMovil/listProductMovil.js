@@ -60,8 +60,8 @@ export default class listProductMovil extends Component {
 
             let clsItem = product.status == "1" ? "product-item-edit" : "product-item-edit off"
 
-            let image_url = product.images ?
-                getImgUrl(product.images[0].url) :
+            let image_url = product.image ?
+                getImgUrl(product.image) :
                 "https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png"
 
             const detail_link = "/detalle/" + product.product_id + "_" + product.title.split(" ").join("-");
@@ -88,9 +88,9 @@ export default class listProductMovil extends Component {
 
         return (
             <div className="listProductMovil">
-                <h3>Descrube productos de electronica</h3>
+                <h3>Descrube productos de Electronica</h3>
                 {productList}
-                <Link href={"#"}><a className="send">ver todos</a></Link>
+                <Link href={"/categoria/Computación"}><a className="send">Ver todos</a></Link>
             </div>
         )
     }
