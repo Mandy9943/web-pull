@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
-import CardImg from "../../assets/img/cards-img/kohgsdfRecurso28.png";
 import "./listProductMovil.css";
-import ProductItem from "../ProductItem"
-import { getData } from "../../services/userApi";
 import { updateProduct, getProductsBasic } from "../../services/productsApi"
 import { getImgUrl } from "../../lib/config"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -56,10 +53,8 @@ export default class listProductMovil extends Component {
 
     render() {
 
-        let productList = this.state.products.map((product, i) => {
-
-            let clsItem = product.status == "1" ? "product-item-edit" : "product-item-edit off"
-
+        const productList = this.state.products.map((product, i) => {
+            let clsItem = product.status === "1" ? "product-item-edit" : "product-item-edit off"
             let image_url = product.image ?
                 getImgUrl(product.image) :
                 "https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png"
@@ -72,7 +67,7 @@ export default class listProductMovil extends Component {
                         <a>
                             <section className="product">
                                 <div className="product-card-img">
-                                    <img src={image_url} />
+                                    <img src={image_url} alt={product.title} />
                                 </div>
                                 <section className='description'>
                                     <h3>{product.title}</h3>
@@ -85,6 +80,8 @@ export default class listProductMovil extends Component {
                 </div>
             </div>)
         });
+
+        console.log(productList)
 
         return (
             <div className="listProductMovil">
