@@ -19,7 +19,6 @@ class SellerInfo extends Component {
 
     return (
       <>
-      <section className="no-movil">
         <div className="title-seller-bar">
           <p>Vendedor</p>
           <Link href={"/reputacion_de_vendedor/"+this.props.seller.user_id}>
@@ -56,58 +55,6 @@ class SellerInfo extends Component {
             </Link>
             <FontAwesomeIcon icon={faAngleRight} />
           </div>
-        </section>
-        <div className="seller-movil no-web">
-            <div className="info-shops">
-              <Link href="#">
-                <a>
-                  <p>Información sobre el vendedor</p>
-                </a>
-              </Link>
-              <FontAwesomeIcon icon={faAngleRight} />
-            </div>
-            <div className="ubication">
-              <img src={ubication} />
-              <section className="title">
-                <span className="strong">Ubicacion</span>
-                Ciudad generica
-              </section>
-            </div>
-            <div className="ubication name-seller">
-              <img src={logo} />
-              <section className="title">
-                <span className="strong">Ubicacion</span>
-                ¡Es uno de los mejores sitios!
-              </section>
-            </div>
-            <div className="reputations">
-              <div className={`item color1 ${reputacion >= 20 ? cls : ""}`}  />
-              <div className={`item color2 ${reputacion > 40 ? cls : ""}`}  />
-              <div className={`item color3 ${reputacion > 60 ? cls : ""}`} />
-              <div className={`item color4 ${reputacion > 80 ? cls : ""}`}  />
-              <div className={`item color5 ${reputacion < 100 ? cls : ""}`}  />
-            </div>
-            <div className="statistics">
-              <section className="item">
-                <span className="title">{numberSell}</span>
-                <span className="sub-title">
-                  Venta en los últimos 4 meses
-                </span>
-              </section>
-              <section className="item">
-                <span className="title"><FontAwesomeIcon icon={faAngleRight} /></span>
-                <span className="sub-title">
-                  Brinda buena atenciòn
-                </span>
-              </section>
-              <section className="item">
-                <span className="title"><FontAwesomeIcon icon={faAngleRight} /></span>
-                <span className="sub-title">
-                Entrega sus productos a tiempo
-                </span>
-              </section>
-            </div>
-        </div>
       </>
     );
   }

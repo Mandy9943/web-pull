@@ -60,7 +60,6 @@ class ProductDetail extends Component {
         <Nav user={u_data.user} authenticated={u_data.authenticated} />
         <div className="detail-content">
           <div className="breadcrumb">
-
             <Link href="/">
               <a>
                 Home
@@ -68,7 +67,6 @@ class ProductDetail extends Component {
             </Link>
 
             <FontAwesomeIcon icon={faAngleRight} />
-
             <Link href={"/categoria/" + mdata.category.name}>
               <a>
                 {mdata.category.name}
@@ -92,7 +90,6 @@ class ProductDetail extends Component {
               <div className="section-pay-type pay-movil no-web">
                 <div className="section-pay-type-title">
                   <h4>Medios de pago</h4>
-                  <FontAwesomeIcon icon={faAngleRight} />
                 </div>
                 {1 > 0 ?
                   <button className="main-button" onClick={() => this.go(this.props.pid)}><p>Comprar</p></button>
@@ -116,7 +113,6 @@ class ProductDetail extends Component {
               <div className="section-pay-send no-web">
                 <div className="section-pay-send-title">
                   <h4>Formas de envio</h4>
-                  <FontAwesomeIcon icon={faAngleRight} />
                 </div>
                 <div className="section-pay-send-subtitle">
                   <span>
@@ -140,26 +136,20 @@ class ProductDetail extends Component {
           </div>
           <section className="questions-movil no-web">
             <QuestionItem questions={this.state.questions} />
-            <section className='no-movil'>
-              <Explorer />
+            <ProductsSlider images={mdata.images} category={mdata.category.name} />
+            <ProductsSlider images={mdata.images} category={mdata.category.name} />
+            <Explorer />
             </section>
-            <ProductCardFinding notitle={"true"} category={mdata.category.name} />
-          </section>
+            
           <section className='no-movil'>
             <Explorer />
             <ProductCardFinding notitle={"true"} category={mdata.category.name} />
           </section>
           <section className="advertising-movil no-movil no-web">
-            <div className="advertising">
-              <img src='#' />
-            </div>
             <ProductCardFinding notitle={"true"} category={mdata.category.name} />
           </section>
         </div>
-        <FooterMovil />
-        <section className='no-movil'>
           <Footer />
-        </section>
         <div className="footer-social">
           <Link href={url}><a><img src={Logo1} /></a></Link>
           <Link href={url}><a><img src={Logo2} /></a></Link>

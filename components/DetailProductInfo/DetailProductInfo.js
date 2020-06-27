@@ -8,11 +8,7 @@ class DetailProductInfo extends Component {
   render() {
     return (
       <>
-      <section className="guarantee no-web">
-        <h5>Garantia</h5>
-        <span className="title">Garantìa del vendedor</span>
-        <span className="sub-title">Garantìa de fàbrica: 12 meses</span>
-      </section>
+      {/*
         <section className="characteristics no-web">
             <div className="info-shops edit">
               <Link href="#">
@@ -37,6 +33,7 @@ class DetailProductInfo extends Component {
               </div>
             </div>
         </section>
+      */}
       <div className="wrap-detail-info">
         <h4>DETALLE DEL PRODUCTO</h4>
         <div className="item-detail-info">
@@ -45,6 +42,13 @@ class DetailProductInfo extends Component {
           </p>
         </div>
       </div>
+        <section className="guarantee no-web">
+          <h5>Garantia</h5>
+          <span className="title">Compra protegida</span>
+          <span className="sub-title">En caso de que surja algún problema o no recibas el producto tal como lo compraste, te devolveremos el dinero que pagaste.</span>
+          <span className="title">Garantìa del vendedor</span>
+          <span className="sub-title">Garantia por defecto de fabrica de (1) un mes.</span>
+        </section>
       </>
     );
   }
