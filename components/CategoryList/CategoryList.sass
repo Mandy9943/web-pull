@@ -1,0 +1,54 @@
+.category-list
+    .content
+        padding: 0 15px
+        .secundary-slider.no-movil
+            display: block !important
+            .slider
+                height: 230px
+                margin-bottom: 20px
+        .wrap-finding
+            margin-bottom: 20px
+            .finding
+                box-shadow: 0px 3px 6px #00000029 !important
+            .home-section-title
+                display: none
+        .wrap-tickets
+            .tickets
+                box-shadow: 0px 3px 6px #00000029 !important
+
+.footer-social
+    width: 80%
+    margin: auto
+    padding: 25px 0
+    img
+        &:last-child
+            margin-left: 30px
+
+
+@media(max-width:700px)
+    .category-list
+        .footer-social
+            width: 100%
+            margin: auto
+            padding: 30px 0
+            display: grid
+            grid-template-columns: 1fr 1fr
+            img
+                width: 80%
+                margin: auto !important
+        .wrap-finding
+            margin: auto
+            margin-bottom: 0 !important
+            .content-finding
+                margin-bottom: 20px
+        .wrap-tickets
+            display: block !important
+            margin: 0
+            margin-bottom: 20px !important
+            .tickets
+                margin: auto
+                margin-bottom: 20px
+                img
+                    width: 100%
+
+
