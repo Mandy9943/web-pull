@@ -3,6 +3,7 @@ import Link from "next/link";
 import CategoryImg from "../../assets/img/category-img/banner-de 2-react_Mesa-de-trabajo-1-copia-2.jpg";
 import CategoryImg2 from "../../assets/img/category-img/banner-deportes.jpg";
 import "./Finding.css";
+import CategoryImg3 from "../../assets/img/category-img/category-edit.jpg";
 
 class Finding extends Component {
 
@@ -19,6 +20,10 @@ class Finding extends Component {
         <h2 className="home-section-title">Encuentra los mejores productos de Electrónica <Link href="/categoria/Electrónica"><a>Ver todos</a></Link></h2>
         <div className="content-finding">
           <div className="finding">
+            <Link href="#"><a className="no-finding">
+              <img src={CategoryImg3} />
+            {/*NEED THIS FIX SHIT*/}
+            </a></Link>
             <div className="wrap-img">
               <img src={CategoryImg} />
             </div>
@@ -29,6 +34,10 @@ class Finding extends Component {
             </div>
           </div>
           <div className="finding">
+            <Link href="#"><a className="no-finding">
+              <img src={CategoryImg3} />
+              {/*NEED THIS FIX SHIT*/}
+            </a></Link>
             <div className="wrap-img">
               <img src={CategoryImg2} />
             </div>

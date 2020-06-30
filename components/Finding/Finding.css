@@ -23,6 +23,14 @@
           box-sizing: border-box;
 }
 
+.finding .no-finding {
+  display: none;
+}
+
+.finding .no-finding img {
+  width: 100%;
+}
+
 .wrap-img {
   width: 100%;
   display: -webkit-box;
