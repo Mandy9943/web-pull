@@ -23,7 +23,7 @@ class ListCategory extends Component {
           <div className={Class}>
             {this.props.products && this.props.products.products && this.props.products.products.length > 0 ? (
                 this.props.format == "grid" ? (
-                    this.props.products.products.slice(0, 50).map((product, i) => (
+                    this.props.products.products.slice(0, 15).map((product, i) => (
                       
                         <Link href={"/detalle/"+product.product_id+"_"+product.title.split(" ").join("-")} key={i}>
                           <a>
@@ -50,7 +50,7 @@ class ListCategory extends Component {
                         </Link>
                     ))
                 ) : (
-                    this.props.products.products.slice(0, 50).map((product, i) => (
+                    this.props.products.products.slice(0, 15).map((product, i) => (
                         <Link href={"/detalle/"+product.product_id+"_"+product.title.split(" ").join("-")} key={i}>
                           <a>
                             <div className="temp-list">
