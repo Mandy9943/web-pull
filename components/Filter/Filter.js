@@ -14,6 +14,7 @@ class Filter extends Component {
     this.state = {
       menuOrder: false,
       menuFilter: false,
+      categorySize: 10,
     };
 
     this.toggleMenuOrder = this.toggleMenuOrder.bind(this);
@@ -33,11 +34,16 @@ class Filter extends Component {
       : this.setState({ menuFilter: false });
   }
 
+  ShowAllCategories() {
+    this.setState({ categorySize: this.state.categorySize+10});
+  }
+
+
 
   render() {
     let res_categories = [];
-
     if (this.props.data && this.props.data.categories) {
+      console.log(this.props.data.categories)
       for (var cat in this.props.data.categories) {
         if (this.props.filters.indexOf("category|" + cat + " (" + this.props.data.categories[cat] + ")") === -1)
           res_categories.push([cat + " (" + this.props.data.categories[cat] + ")",
@@ -116,6 +122,8 @@ class Filter extends Component {
     const buttonState = this.props.format;
     const responsiveButton = buttonState == "grid" ? faTh : faList;
     const text = buttonState == "grid" ? "Mosaico" : "Lista";
+
+    console.log(res_categories)
     return (
       <>
         <div className="wrap-filter">
@@ -207,8 +215,8 @@ class Filter extends Component {
           <div className="filter-group">
             <h4>Categorias</h4>
             <div>
-              {res_categories.map((item, index) => (
-                <div key={index} className="item-filter-group"
+              {res_categories.slice(0, this.state.categorySize).map((item, index) => (
+                <div key={index} className="item-filter-group show"
                   onClick={() => {
                     this.props.applyFilter("category", item[0]);
                   }}>
@@ -216,7 +224,7 @@ class Filter extends Component {
                 </div>
               ))}
             </div>
-            <Link href="#"><a className="view-all">ver todos</a></Link>
+            <a className="view-all" onClick={() => this.ShowAllCategories()}>Ver Mas</a>
           </div>
         </div>
         <div className="responsive-filter">
