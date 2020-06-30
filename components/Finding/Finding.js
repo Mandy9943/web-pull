@@ -3,7 +3,6 @@ import Link from "next/link";
 import CategoryImg from "../../assets/img/category-img/banner-de 2-react_Mesa-de-trabajo-1-copia-2.jpg";
 import CategoryImg2 from "../../assets/img/category-img/banner-deportes.jpg";
 import "./Finding.css";
-import CategoryImg3 from "../../assets/img/category-img/category-edit.jpg";
 
 class Finding extends Component {
 
@@ -15,6 +14,8 @@ class Finding extends Component {
   }
 
   render() {
+    let CategoryImg3 = "//kiero.co/images/resources/deportes%20y%20fitness/2.jpg";
+    let CategoryImg4 = "//kiero.co/images/resources/deportes%20y%20fitness/3.jpg";
     return (
       <div className="wrap-finding">
         <h2 className="home-section-title">Encuentra los mejores productos de Electrónica <Link href="/categoria/Electrónica"><a>Ver todos</a></Link></h2>
@@ -35,7 +36,7 @@ class Finding extends Component {
           </div>
           <div className="finding">
             <Link href="#"><a className="no-finding">
-              <img src={CategoryImg3} />
+              <img src={CategoryImg4} />
               {/*NEED THIS FIX SHIT*/}
             </a></Link>
             <div className="wrap-img">

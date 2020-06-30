@@ -3,23 +3,11 @@ import Footer from "../Common/Footer";
 import Link from "next/link"
 import "./CategoryList.css";
 import Nav from "../Common/Nav/Nav";
-import PrincipalSlider from "./../PrincipalSlider";
-import Payment from "./../PaymentBar";
-import ProductsSlider from "./../ProductsSlider";
 import Finding from "./../Finding";
-import Explorer from "./../Common/Explorer";
-import CategoriesImgMenu from "./../CategoriesImgMenu";
 import Tickets from "./../Tickets";
-import News from "./../News";
-import Info from "./../Info";
-import Social from "./../SocialBar";
-import ProductCardFinding from "../Common/ProductCardFinding/ProductCardFinding";
-import ListProductMovil from "./../listProductMovil/listProductMovil"
 import Logo1 from "../../assets/img/logo-social.png";
 import Logo2 from "../../assets/img/logo-social1.png";
-import SecundarySlider from "./../SecundarySlider";
-
-
+import CategoryImg3 from "../../assets/img/category-img/category-edit.jpg";
 
 export default class CategoryList extends Component {
   render() {
@@ -27,12 +15,13 @@ export default class CategoryList extends Component {
     let authenticated = this.props.authenticated
     let url = "//www.sic.gov.co";
 
+    let urlBanner = "//kiero.co/images/resources/deportes%20y%20fitness/1.jpg";
 
     return (
       <div className="container category-list">
         <Nav user={u_data.user} home={true} authenticated={u_data.authenticated} />
         <section className="content">
-          <PrincipalSlider />
+          <img className="banner-principal" src={urlBanner}/>
           <Finding />
           <Tickets />
           <Finding />
