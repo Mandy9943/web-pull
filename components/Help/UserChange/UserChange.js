@@ -25,7 +25,7 @@ export default function UserChange() {
                     </Link>
                 </div>
                 <div className="user-change-content">
-                    <h2>Modificar</h2>
+                    <h1>Modificar</h1>
                     <div className="user-change-box">
                         <p>Nombre de usuario</p>
                         <input placeholder="Nombres" />

@@ -25,7 +25,7 @@ export default class CategoriesImgMenu extends Component {
     render() {
         return (
             <div className="categories-img-menu">
-                <h2 className="home-section-title">Categorías populares</h2>
+                <h3 className="home-section-title">Categorías populares</h3>
                 <div className="content-categories-img-menu">
                     <Link href="/categoria/Animales y Mascotas">
                         <a className="categories-img">

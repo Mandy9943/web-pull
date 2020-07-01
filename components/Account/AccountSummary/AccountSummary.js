@@ -30,7 +30,7 @@ class AccountSummary extends Component {
 
     return (
       <div className="account-summary-wrap">
-        <h2 className="account-summary-title">Resumen</h2>
+        <h1 className="account-summary-title">Resumen</h1>
         <div className="account-summary-wrap-items">
           <div className="account-summary-item-title">
             <FontAwesomeIcon icon={faComment} /> Preguntas

@@ -18,7 +18,7 @@ class Finding extends Component {
     let CategoryImg4 = "//kiero.co/images/resources/deportes%20y%20fitness/3.jpg";
     return (
       <div className="wrap-finding">
-        <h2 className="home-section-title">Encuentra los mejores productos de Electrónica <Link href="/categoria/Electrónica"><a>Ver todos</a></Link></h2>
+        <h3 className="home-section-title">Encuentra los mejores productos de Electrónica <Link href="/categoria/Electrónica"><a>Ver todos</a></Link></h3>
         <div className="content-finding">
           <div className="finding">
             <Link href="#"><a className="no-finding">

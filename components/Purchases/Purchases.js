@@ -38,7 +38,7 @@ export default class Purchases extends Component {
 
         return (
             <div className="purchase-list">
-                <h2 className="status-title">{this.props.mode === "sell" ? "Mis ventas" : "Mis Compras"}</h2>
+                <h1 className="status-title">{this.props.mode === "sell" ? "Mis ventas" : "Mis Compras"}</h1>
                 {this.props.mode === "sell" ? <>
                     <AccountStoreSales />
                     <div className="account-store-sales-wrap-search">

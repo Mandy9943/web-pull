@@ -122,7 +122,7 @@ class AccountQuestions extends Component {
 
         <div className="account-questions-wrap-title">
           <div>
-            <h3>Preguntas</h3>
+            <h1>Preguntas</h1>
           </div>
           <div>
             <Select>

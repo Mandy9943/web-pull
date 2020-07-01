@@ -25,7 +25,7 @@ export default function PaymentProblem() {
                     </Link>
                 </div>
                 <div className="payment-problem-content">
-                    <h2>Presento inconveniente con el paso</h2>
+                    <h1>Presento inconveniente con el paso</h1>
                     <div className="payment-problem-box">
                         <div className="payment-problem-status">
                             <p className="payment-problem-icon">

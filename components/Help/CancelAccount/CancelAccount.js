@@ -42,7 +42,7 @@ export default class CancelAccount extends Component {
                                     </a>
                                 </Link>
                             </div>
-                            <h2>Anular cuenta</h2>
+                            <h1>Anular cuenta</h1>
                         </div>
                     </div>
                     <div className="cancel-account-content">

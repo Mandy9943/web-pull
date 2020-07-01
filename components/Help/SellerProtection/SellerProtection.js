@@ -25,7 +25,7 @@ export default function SellerProtection() {
                     </Link>
                 </div>
                 <div className="seller-protection-content">
-                    <h2>Seguridad proporcionada para los vendedores</h2>
+                    <h1>Seguridad proporcionada para los vendedores</h1>
                     <div className="seller-protection-box">
                         <p><FontAwesomeIcon icon={faCheck} /> En caso de existir un problema con una compra, es posible que una persona te genere un reclamo.
                         Por lo general son simples malos entendidos, que pueden resolverse con facilidad. Una vez se genere un reclamo,

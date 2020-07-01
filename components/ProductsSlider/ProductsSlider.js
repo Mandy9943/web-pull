@@ -43,7 +43,7 @@ export default class ProductsSlider extends Component {
         return (
 
             <div className="products-slider">
-                {!this.props.notitle && <h2 className="home-section-title">Encuentra los mejores productos en {this.props.category && this.props.category}<Link href={this.props.category && "/categoria/"+this.props.category}><a>Ver todos</a></Link></h2>}
+                {!this.props.notitle && <h3 className="home-section-title">Encuentra los mejores productos en {this.props.category && this.props.category}<Link href={this.props.category && "/categoria/"+this.props.category}><a>Ver todos</a></Link></h3>}
                 <div className="slider-movil">
                     <div className="content-products-slider">
                         {productList}

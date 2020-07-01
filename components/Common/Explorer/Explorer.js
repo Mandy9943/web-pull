@@ -91,7 +91,7 @@ class Explorer extends Component {
   render() {
         return (
         <div className="explorer">
-        <h2 className="home-section-title">Encuentra los mejores productos de {this.state.categoryName} <Link href={"/categoria/"+this.state.categoryName}><a>Ver todos</a></Link></h2>
+        <h3 className="home-section-title">Encuentra los mejores productos de {this.state.categoryName} <Link href={"/categoria/"+this.state.categoryName}><a>Ver todos</a></Link></h3>
         <div className="content-explorer">
           <div className="main-img">
             <img src={this.state.exploreImage} />

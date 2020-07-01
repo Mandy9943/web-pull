@@ -28,7 +28,7 @@ export default function HowToPay() {
                     </Link>
                 </div>
                 <div className="how-to-pay-content">
-                    <h2>Como pagar tu compra</h2>
+                    <h1>Como pagar tu compra</h1>
                     <div className="how-to-pay-box">
                         <div className="how-to-pay-box-content">
                             <p><span>Puedes pagar con confianza,</span>ee devolveremos el dinero si el producto no es lo que esperabas.</p>

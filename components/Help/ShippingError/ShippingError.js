@@ -25,7 +25,7 @@ export default function ShippingError() {
                                 </a>
                             </Link>
                         </div>
-                        <h2>No llegó el envío</h2>
+                        <h1>No llegó el envío</h1>
                     </div>
                 </div>
                 <div className="shipping-error-content">

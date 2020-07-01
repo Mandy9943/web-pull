@@ -15,7 +15,7 @@ export default function EmailChange() {
             <Header />
             <div className="email-change-container">
                 <div className="email-change-content">
-                    <h2>Modificar correo</h2>
+                    <h1>Modificar correo</h1>
                     <div className="email-change-box">
                         <p>Escribe tu nuevo correo</p>
                         <input />

@@ -31,7 +31,7 @@
   width: 70%;
 }
 
-.help .help-top .content-help-top h3 {
+.help .help-top .content-help-top h1 {
   color: #4E4E4E;
   font-size: 26px;
   font-weight: lighter;
@@ -186,7 +186,7 @@
         grid-template-columns: auto;
     grid-gap: 0;
   }
-  .help .help-top .content-help-top h3 {
+  .help .help-top .content-help-top h1 {
     font-size: 20px;
   }
   .help .content-help {

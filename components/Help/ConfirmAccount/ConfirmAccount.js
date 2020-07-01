@@ -25,7 +25,7 @@ export default function ConfirmAccount() {
                     </Link>
                 </div>
                 <div className="comfirm-account-content">
-                    <h2>Seguridad proporcionada para los vendedores</h2>
+                    <h1>Seguridad proporcionada para los vendedores</h1>
                     <div className="comfirm-account-box">
                         <p>Es necesario validar tu identidad para proceder con la cancelación de la cuenta</p>
                         <p>Por favor ingresa el código que enviamos a tu e-mail ***********@gmail.com</p>

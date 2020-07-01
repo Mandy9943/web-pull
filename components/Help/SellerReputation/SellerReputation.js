@@ -25,7 +25,7 @@ export default function SellerReputation() {
                         </Link>
                     </div>
                     <div className="seller-reputation-content">
-                        <h2>Comprobar la reputación del vendedor</h2>
+                        <h1>Comprobar la reputación del vendedor</h1>
                         <div className="seller-reputation-box">
                             <p>Si te gustó un producto y tienes dudas sobre el vendedor, te damos algunos consejos para que tengas en cuenta:</p>
                             <div className="seller-reputations-qualification">

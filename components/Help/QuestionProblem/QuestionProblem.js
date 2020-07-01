@@ -31,7 +31,7 @@ export default class QuestionProblem extends Component {
                                 </a>
                             </Link>
                         </div>
-                        <h2>No puedo efectuar una pregunta</h2>
+                        <h1>No puedo efectuar una pregunta</h1>
                     </div>
                 </div>
                 <div className="question-problem-content">

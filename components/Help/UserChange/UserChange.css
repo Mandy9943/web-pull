@@ -30,7 +30,7 @@
   width: 70%;
 }
 
-.user-change .user-change-container .user-change-content h2 {
+.user-change .user-change-container .user-change-content h1 {
   margin-bottom: 20px;
   color: #4E4E4E;
   font-size: 26px;
@@ -121,7 +121,7 @@
     padding: 0;
     width: auto;
   }
-  .user-change .user-change-container .user-change-content h2 {
+  .user-change .user-change-container .user-change-content h1 {
     margin: 15px auto 15px 20px;
   }
   .user-change .user-change-container .user-change-content .user-change-box {

@@ -28,7 +28,7 @@ export default class HowCanHelp extends Component {
                                 </a>
                             </Link>
                         </div>
-                        <h2>¿Como podemos ayudarte?</h2>
+                        <h1>¿Como podemos ayudarte?</h1>
                     </div>
                 </div>
                 <div className="how-can-help-content">

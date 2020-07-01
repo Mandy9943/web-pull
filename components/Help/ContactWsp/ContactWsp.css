@@ -31,7 +31,7 @@
   color: #CF0A2C;
 }
 
-.contact-wsp .contact-wsp-top .contact-wsp-bar h2 {
+.contact-wsp .contact-wsp-top .contact-wsp-bar h1 {
   margin: 0 auto 0px auto;
   width: 70%;
   font-size: 26px;
@@ -86,7 +86,7 @@
   .contact-wsp .contact-wsp-top .contact-wsp-bar {
     width: auto;
   }
-  .contact-wsp .contact-wsp-top .contact-wsp-bar h2 {
+  .contact-wsp .contact-wsp-top .contact-wsp-bar h1 {
     margin: 15px auto 0px 27px;
     width: auto;
   }

@@ -186,7 +186,7 @@ class AccountStoreProduct extends Component {
             </Link>
           </div>
           <div className="account-store-product-header">
-            <h2>{this.state.title ? this.state.title : "Producto"}</h2>
+            <h1>{this.state.title ? this.state.title : "Producto"}</h1>
           </div>
           <div className="account-store-product-info-1">
             <label>Titulo del producto</label>

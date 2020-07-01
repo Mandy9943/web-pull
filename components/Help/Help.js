@@ -121,7 +121,7 @@ export default class Help extends Component {
                 <Header />
                 <div className="help-top">
                     <div className="content-help-top">
-                        {this.state.accordionAskInPostTitle ? <h3>{this.state.accordionTip ? "En qué podemos ayudarte?" : "¿Cuándo opinar sobre el vendedor?"}</h3> : <h3>Te asesoramos para realizar tus preguntas</h3>}
+                        {this.state.accordionAskInPostTitle ? <h1>{this.state.accordionTip ? "En qué podemos ayudarte?" : "¿Cuándo opinar sobre el vendedor?"}</h1> : <h1>Te asesoramos para realizar tus preguntas</h1>}
                         <div className="help-search">
                             <p className="help-search-icon">
                                 <FontAwesomeIcon icon={faSearch} />

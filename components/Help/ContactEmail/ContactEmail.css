@@ -31,7 +31,7 @@
   color: #CF0A2C;
 }
 
-.contact-email .contact-email-top .contact-email-bar h2 {
+.contact-email .contact-email-top .contact-email-bar h1 {
   margin: 0 auto 0px auto;
   width: 70%;
   font-size: 26px;
@@ -78,7 +78,7 @@
   .contact-email .contact-email-top .contact-email-bar {
     width: auto;
   }
-  .contact-email .contact-email-top .contact-email-bar h2 {
+  .contact-email .contact-email-top .contact-email-bar h1 {
     margin: 15px auto 0px 27px;
     width: auto;
   }

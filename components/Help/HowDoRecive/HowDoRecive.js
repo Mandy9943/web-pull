@@ -25,7 +25,7 @@ export default function HowDoRecive() {
                             </Link>
                         </div>
                     <div className="how-do-recive-content">
-                        <h2>Como recibo mi compra</h2>
+                        <h1>Como recibo mi compra</h1>
                         <div className="how-do-recive-box">
                             <h4>Envíos gratis a través de Kiero envíos</h4>
                             <p>Cada publicacíon especifica la forma de envío y el costo del producto. Alquilarás este beneficio de envíos gratis cuando veas el clásico camión rojo de Kiero Envíos cuando aparezca en la publicación.</p>

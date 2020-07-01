@@ -31,7 +31,7 @@
   color: #CF0A2C;
 }
 
-.security-account .security-account-top .security-account-bar h2 {
+.security-account .security-account-top .security-account-bar h1 {
   margin: 0 auto 0px auto;
   width: 70%;
   font-size: 26px;
@@ -92,7 +92,7 @@
   .security-account .security-account-top .security-account-bar {
     width: auto;
   }
-  .security-account .security-account-top .security-account-bar h2 {
+  .security-account .security-account-top .security-account-bar h1 {
     margin: 15px auto 0px 27px;
     width: auto;
   }

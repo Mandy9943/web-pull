@@ -31,7 +31,7 @@
   color: #CF0A2C;
 }
 
-.how-can-help .how-can-help-top .how-can-help-bar h2 {
+.how-can-help .how-can-help-top .how-can-help-bar h1 {
   margin: 0 auto 0px auto;
   width: 70%;
   font-size: 26px;
@@ -74,7 +74,7 @@
   .how-can-help .how-can-help-top .how-can-help-bar {
     width: auto;
   }
-  .how-can-help .how-can-help-top .how-can-help-bar h2 {
+  .how-can-help .how-can-help-top .how-can-help-bar h1 {
     margin: 15px auto 0px 27px;
     width: auto;
   }

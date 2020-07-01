@@ -23,6 +23,10 @@
   margin-bottom: 20px;
 }
 
+.account-store-product-header h1 {
+  font-size: 25px;
+}
+
 .account-store-product-header p {
   font-size: .8rem;
 }

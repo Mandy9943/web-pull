@@ -23,7 +23,7 @@
   color: #CF0A2C;
 }
 
-.shipping-error-top .shipping-error-bar h2 {
+.shipping-error-top .shipping-error-bar h1 {
   margin: 40px auto 0px auto;
   width: 70%;
 }
@@ -97,7 +97,7 @@
     width: fit-content;
     color: #CF0A2C;
   }
-  .shipping-error-top .shipping-error-bar h2 {
+  .shipping-error-top .shipping-error-bar h1 {
     margin: 15px auto 0px 27px;
   }
   .shipping-error-content {

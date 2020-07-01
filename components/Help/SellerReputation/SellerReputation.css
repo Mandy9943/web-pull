@@ -22,7 +22,7 @@
   width: 70%;
 }
 
-.seller-reputation-container .seller-reputation-content h2 {
+.seller-reputation-container .seller-reputation-content h1 {
   margin-bottom: 20px;
   color: #4E4E4E;
   font-size: 26px;
@@ -83,7 +83,7 @@
     padding: 0;
     width: auto;
   }
-  .seller-reputation-container .seller-reputation-content h2 {
+  .seller-reputation-container .seller-reputation-content h1 {
     margin: 15px auto 15px 20px;
   }
   .seller-reputation-container .seller-reputation-content .seller-reputation-box {

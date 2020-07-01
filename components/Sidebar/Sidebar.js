@@ -160,7 +160,7 @@ export default class Sidebar extends Component {
                         <p className="user-account-menu-text">Mis datos</p>
                         <div className="user-account-accordion">
                             <p onClick={(e)=>this.props.cb("myData", e)} >Mis datos</p>
-                            <p onClick={(e)=>this.props.cb("security", e)}>Seguridad</p>
+                            {/*<p onClick={(e)=>this.props.cb("security", e)}>Seguridad</p>*/}
                         </div>
                     </div>
                     <p className="user-account-menu-icon">

@@ -23,7 +23,7 @@
   width: 70%;
 }
 
-.how-to-pay-container .how-to-pay-content h2 {
+.how-to-pay-container .how-to-pay-content h1 {
   margin-bottom: 20px;
   color: #4E4E4E;
   font-size: 26px;
@@ -118,7 +118,7 @@
     width: auto;
     padding: 0;
   }
-  .how-to-pay-container .how-to-pay-content h2 {
+  .how-to-pay-container .how-to-pay-content h1 {
     margin-left: 23px;
   }
   .how-to-pay-container .how-to-pay-content .how-to-pay-box {

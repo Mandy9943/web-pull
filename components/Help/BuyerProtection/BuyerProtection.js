@@ -25,7 +25,7 @@ export default function BuyerProtection() {
                     </Link>
                 </div>
                 <div className="buyer-protection-content">
-                    <h2>Proteccion al comprador </h2>
+                    <h1>Proteccion al comprador </h1>
                     <div className="buyer-protection-box">
                         <p> En Kiero puedes comprar tranquilo, te ofrecemos los siguientes beneficios:</p>
                         <p> <FontAwesomeIcon icon={faCheck} />Puedes contar con nuestro respaldo</p>

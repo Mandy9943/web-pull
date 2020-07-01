@@ -28,7 +28,7 @@ export default class ContactWsp extends Component {
                                     </a>
                                 </Link>
                             </div>
-                        <h2>Contáctanos por Whatsapp</h2>
+                        <h1>Contáctanos por Whatsapp</h1>
                         </div>
                     </div>
                     <div className="contact-wsp-content">
