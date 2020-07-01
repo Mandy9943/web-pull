@@ -41,72 +41,73 @@ export default class Pagination extends Component {
             let contentNumber;
 
             return (
-                <ul className="pagination">
-                    {active > 1 ? (
-                        <li
-                            className="page-item prev arrow-icon"
-                            onClick={() => onClickHandler(active - 1)}
-                        >
-                            &#x2039;
-                        </li>
-                    ) : (
-                            <li className="page-item prev arrow-icon disabled">&#x2039;</li>
-                        )}
-                    {size > showingNumbers + startNumber ? (
-                        <React.Fragment>
+                <section className="pagination-component">
+                    <ul className="pagination">
+                        {active > 1 ? (
                             <li
-                                onClick={(e) => onClickHandler(e.currentTarget.textContent)}
-                                className={`page-item ${active === 1 && "active"}`}
-                            >
-                                1
+                                className="page-item prev arrow-icon"
+                                onClick={() => onClickHandler(active - 1)}>
+                                <span className="icon">&#x2039;</span>
+                            </li>
+                        ) : (
+                                <li className="page-item prev arrow-icon disabled"><span className="icon">&#x2039;</span></li>
+                            )}
+                        {size > showingNumbers + startNumber ? (
+                            <React.Fragment>
+                                <li
+                                    onClick={(e) => onClickHandler(e.currentTarget.textContent)}
+                                    className={`page-item ${active === 1 && "active"}`}
+                                >
+                                    1
           </li>
 
-                            {needStartDots && <span>...</span>}
-                            {_.times(showingNumbers, (i) => (
-                                <li
-                                    key={i++}
-                                    {...(contentNumber = needStartDots
-                                        ? startArrayNumber
-                                        : startNumber)}
-                                    {...startNumber++}
-                                    {...startArrayNumber++}
-                                    className={`page-item ${active === contentNumber && "active"}`}
-                                    onClick={(e) => onClickHandler(e.currentTarget.textContent)}
-                                >
-                                    {contentNumber}
-                                </li>
-                            ))}
-                            {needEndDots && <span>...</span>}
-                            <li
-                                className={`page-item ${active === size && "active"}`}
-                                onClick={(e) => onClickHandler(e.currentTarget.textContent)}
-                            >
-                                {size}
-                            </li>
-                        </React.Fragment>
-                    ) : (
-                            ((startArrayNumber = 1),
-                                _.times(size, (i) => (
+                                {needStartDots && <span>...</span>}
+                                {_.times(showingNumbers, (i) => (
                                     <li
                                         key={i++}
-                                        className={`page-item ${active === startArrayNumber && "active"}`}
+                                        {...(contentNumber = needStartDots
+                                            ? startArrayNumber
+                                            : startNumber)}
+                                        {...startNumber++}
+                                        {...startArrayNumber++}
+                                        className={`page-item ${active === contentNumber && "active"}`}
                                         onClick={(e) => onClickHandler(e.currentTarget.textContent)}
                                     >
-                                        {startArrayNumber++}
+                                        {contentNumber}
                                     </li>
-                                )))
-                        )}
-                    {active < size ? (
-                        <li
-                            className="page-item next arrow-icon"
-                            onClick={() => onClickHandler(active + 1)}
-                        >
-                            &#8250;
-                        </li>
-                    ) : (
-                            <li className="page-item next arrow-icon disabled">&#8250;</li>
-                        )}
-                </ul>
+                                ))}
+                                {needEndDots && <span>...</span>}
+                                <li
+                                    className={`page-item ${active === size && "active"}`}
+                                    onClick={(e) => onClickHandler(e.currentTarget.textContent)}
+                                >
+                                    {size}
+                                </li>
+                            </React.Fragment>
+                        ) : (
+                                ((startArrayNumber = 1),
+                                    _.times(size, (i) => (
+                                        <li
+                                            key={i++}
+                                            className={`page-item ${active === startArrayNumber && "active"}`}
+                                            onClick={(e) => onClickHandler(e.currentTarget.textContent)}
+                                        >
+                                            {startArrayNumber++}
+                                        </li>
+                                    )))
+                            )}
+                        {active < size ? (
+                            <li
+                                className="page-item next arrow-icon"
+                                onClick={() => onClickHandler(active + 1)}>
+                                <span className="next-step">Siguiente</span>
+                                <span className="icon"> &#8250;</span>
+                            </li>
+                        ) : (
+                                <li className="page-item next arrow-icon disabled">&#8250;</li>
+                            )}
+                    </ul>
+                </section>
             );
         };
 

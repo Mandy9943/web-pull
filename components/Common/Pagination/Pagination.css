@@ -1,3 +1,15 @@
+.pagination-component {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .pagination-component .pagination {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5,7 +17,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-top: 40px;
+  margin-bottom: 20px;
   padding: 0;
   font-size: 18px;
   font-weight: 700;
@@ -14,14 +26,19 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  position: absolute;
-  top: 3%;
-  right: 2%;
-  color: #5A5A5A;
-  font-size: 38px;
-  cursor: pointer;
-  -webkit-transition: all 0.1s;
-  transition: all 0.1s;
+}
+
+.pagination-component .pagination span {
+  color: #818181;
+}
+
+.pagination-component .pagination .next-step {
+  font-size: 15px;
+}
+
+.pagination-component .pagination .icon {
+  font-size: 24px;
+  margin-left: 4px;
 }
 
 .pagination-component .pagination .page-item {
@@ -39,18 +56,26 @@
   margin: 0 2px;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  color: #818181;
+  font-size: 15px;
+}
+
+.pagination-component .pagination .page-item.active {
   padding: 0;
-  color: #5A5A5A;
   background: #D4D4D4;
+}
+
+.pagination-component .pagination .page-item.arrow-icon {
   position: relative;
   z-index: 1;
   font-size: 35px;
   -webkit-transform: translateY(-2px);
           transform: translateY(-2px);
+  -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 
-.pagination-component .pagination .page-item:after {
+.pagination-component .pagination .page-item.arrow-icon:after {
   content: "";
   width: 25px;
   height: 25px;
@@ -62,32 +87,11 @@
           transform: translate(-50%, -50%);
 }
 
-.pagination-component .pagination .page-item:after.disabled {
+.pagination-component .pagination .page-item.disabled {
   display: none;
 }
 
-.pagination-component .pagination .page-item:after:hover {
+.pagination-component .pagination .page-item:hover {
   background: transparent;
-}
-
-.pagination-component .pagination .card {
-  width: 400px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding-top: 20px;
-  padding-bottom: 40px;
-  background: #5A5A5A;
-}
-
-.pagination-component .pagination:hover {
-  font-size: 42px;
 }
 /*# sourceMappingURL=Pagination.css.map */

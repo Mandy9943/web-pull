@@ -4,6 +4,7 @@ import Filter from "./../Filter";
 import ListCategory from "./../ListCategory";
 import Footer from "../Common/Footer";
 import Nav from "../Common/Nav/Nav";
+import Pagination from "../Common/Pagination/Pagination";
 
 import { searchProduct, getProductsBasic } from "../../services/productsApi"
 
@@ -120,6 +121,7 @@ class  Category extends Component {
             products={this.state.products}
           />
         </div>
+        <Pagination />
         <Footer />
       </div>
     );

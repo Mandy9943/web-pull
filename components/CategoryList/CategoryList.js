@@ -30,7 +30,7 @@ export default class CategoryList extends Component {
           <Tickets />
           <Finding />
         </section>
-        <Pagination />
+        
         <Footer />
         <div className="footer-social">
           <Link href={url}><a><img src={Logo1} /></a></Link>
