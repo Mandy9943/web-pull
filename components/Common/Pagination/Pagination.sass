@@ -16,11 +16,6 @@ $base: #D4D4D4;
         user-select: none
         span
             color: $light
-        .next-step
-            font-size: 15px
-        .icon
-            font-size: 24px
-            margin-left: 4px
         .page-item 
             min-width: 25px
             min-height: 25px
@@ -49,6 +44,16 @@ $base: #D4D4D4;
                     top: 56%
                     left: 50%
                     transform: translate(-50%, -50%)
+                .next-step
+                    font-size: 15px
+                    margin-right: 10px
+                .icon
+                    font-size: 24px
+                &:last-child
+                    .icon
+                        position: relative
+                        top: -2px
+                        margin-left: 7px
             &.disabled 
                 display: none
             &:hover 
