@@ -7,9 +7,6 @@ import Finding from "./../Finding";
 import Tickets from "./../Tickets";
 import Logo1 from "../../assets/img/logo-social.png";
 import Logo2 from "../../assets/img/logo-social1.png";
-import CategoryImg3 from "../../assets/img/category-img/category-edit.jpg";
-import Pagination from "../Common/Pagination/Pagination";
-
 
 export default class CategoryList extends Component {
   render() {
