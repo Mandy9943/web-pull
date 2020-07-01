@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faBars
 } from "@fortawesome/free-solid-svg-icons";
+import _ from "lodash"
 
 import "./Pagination.css";
 
@@ -125,8 +126,8 @@ export default class Pagination extends Component {
                 />
             );
         };
-        
+
+        return <PayOrder />
     }
 }
 
-ReactDOM.render(<PayOrder />, document.getElementById("root"));
