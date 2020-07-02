@@ -43,7 +43,6 @@ class Filter extends Component {
   render() {
     let res_categories = [];
     if (this.props.data && this.props.data.categories) {
-      console.log(this.props.data.categories)
       for (var cat in this.props.data.categories) {
         if (this.props.filters.indexOf("category|" + cat + " (" + this.props.data.categories[cat] + ")") === -1)
           res_categories.push([cat + " (" + this.props.data.categories[cat] + ")",
@@ -123,7 +122,6 @@ class Filter extends Component {
     const responsiveButton = buttonState == "grid" ? faTh : faList;
     const text = buttonState == "grid" ? "Mosaico" : "Lista";
 
-    console.log(res_categories)
     return (
       <>
         <div className="wrap-filter">

@@ -31,7 +31,6 @@ class  Category extends Component {
   }
 
   changePage = (p) => {
-    console.log("Changed to:"+p);
     this.setState({page: p})
   }
 
@@ -97,8 +96,6 @@ class  Category extends Component {
     }
 
     res.then((r) => r.data).then( (r) => {
-      console.log(r.products.length)
-      console.log(this.props.data.params.items_per_page)
       this.setState({
         products: r,
         totalPages: Math.ceil(r.products.length/this.props.data.params.items_per_page)

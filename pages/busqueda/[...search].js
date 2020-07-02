@@ -31,8 +31,6 @@ export async function getServerSideProps(context) {
         user: (usr !== undefined ? usr  : null),
         authenticated: isAuthenticated(context)
     }
-    console.log("gSSP")
-    console.log(data)
     return { props: { data, session } }
 }
 
