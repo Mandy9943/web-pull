@@ -61,6 +61,9 @@
             flex: 1;
     margin: 0px;
   }
+  .explorer .content-explorer .main-img img {
+    max-height: inherit;
+  }
   .explorer .content-explorer .group-img {
     display: -ms-grid;
     display: grid;
@@ -68,6 +71,9 @@
         grid-template-columns: repeat(2, 1fr);
     -ms-grid-rows: (1fr)[2];
         grid-template-rows: repeat(2, 1fr);
+  }
+  .explorer .content-explorer .group-img .wrapImgExplorer img {
+    max-height: inherit;
   }
   .wrapImgExplorer:nth-child(n+5) {
     display: none;

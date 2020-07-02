@@ -6,12 +6,12 @@
       justify-content: space-around;
   background: white;
   width: 100%;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   padding: 25px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   height: 110px;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .payment .modal {

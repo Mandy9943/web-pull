@@ -29,7 +29,7 @@
 }
 
 .add-addess .add-adress-container .add-address-box label {
-  color: #4E4E4E;
+  color: #5A5A5A;
   font-size: 14px;
 }
 
@@ -70,6 +70,7 @@
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
+  height: 18.1px;
 }
 
 @media (max-width: 700px) {

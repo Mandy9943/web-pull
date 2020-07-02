@@ -7,7 +7,7 @@
 }
 
 .summary-content p {
-  color: #4E4E4E;
+  color: #5A5A5A;
 }
 
 .summary-content .user-account-container {
@@ -26,20 +26,21 @@
 }
 
 .summary-content .user-account-container .user-account-menu h3 {
-  color: #4E4E4E;
+  color: #5A5A5A;
   font-size: 17px;
 }
 
 .summary-content .user-account-container .user-account-menu .user-account-menu-text {
-  color: #4E4E4E;
+  color: #5A5A5A;
   font-size: 14px;
 }
 
 .summary-content .user-account-container .user-account-menu .user-account-menu-item {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: auto auto auto;
-      grid-template-columns: auto auto auto;
+  -ms-grid-columns: min-content auto auto;
+      grid-template-columns: -webkit-min-content auto auto;
+      grid-template-columns: min-content auto auto;
   grid-gap: 10px;
   margin-bottom: 40px;
   cursor: pointer;

@@ -16,7 +16,7 @@
 
 .categories-img-menu .content-categories-img-menu a.categories-img {
   padding: 40px 20px;
-  color: #4E4E4E;
+  color: #5A5A5A;
   border-right: 1px solid #F2F2F2;
   border-bottom: 1px solid #F2F2F2;
 }
@@ -61,14 +61,14 @@
   .categories-img-menu .main-button {
     background: white !important;
     color: red !important;
+    display: block;
+    margin-top: 20px;
+    width: auto;
     -webkit-box-shadow: 0px 3px 6px #00000029;
             box-shadow: 0px 3px 6px #00000029;
-    margin-top: 20px !important;
-    padding: 10px 91px !important;
-    display: block !important;
-    width: 100% !important;
   }
   .categories-img-menu .main-button p {
+    margin: 0;
     padding: 0;
   }
 }

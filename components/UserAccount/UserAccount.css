@@ -3,7 +3,7 @@
 }
 
 .user-account p {
-  color: #4E4E4E;
+  color: #5A5A5A;
 }
 
 .user-account .user-container {
@@ -19,14 +19,15 @@
 }
 
 .user-account .user-container .user-account-menu h3 {
-  color: #4E4E4E;
+  color: #5A5A5A;
 }
 
 .user-account .user-container .user-account-menu .user-account-menu-item {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: auto auto auto;
-      grid-template-columns: auto auto auto;
+  -ms-grid-columns: min-content auto auto;
+      grid-template-columns: -webkit-min-content auto auto;
+      grid-template-columns: min-content auto auto;
   grid-gap: 10px;
   margin-bottom: 40px;
   cursor: pointer;
@@ -53,7 +54,7 @@
 .user-account .user-container .user-account-content h2 {
   margin-bottom: 30px;
   font-size: 28px;
-  color: #4E4E4E;
+  color: #5A5A5A;
 }
 
 .user-account .user-container .user-account-content .user-acount-info {
@@ -71,7 +72,7 @@
 
 .user-account .user-container .user-account-content .user-acount-info-title h3 {
   font-size: 18px;
-  color: #4E4E4E;
+  color: #5A5A5A;
   font-weight: 500;
 }
 
@@ -99,7 +100,7 @@
 }
 
 .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab p {
-  color: #4E4E4E;
+  color: #5A5A5A;
   font-size: 14px;
 }
 
@@ -213,7 +214,7 @@
 .user-account .user-container .user-account-content .user-accunt-info-box .with-addres h5 .strong {
   font-weight: bold;
   margin-left: 5px;
-  color: #4E4E4E;
+  color: #5A5A5A;
 }
 
 .user-account .user-container .user-account-content .user-accunt-info-box .with-addres h5 .button-delete {

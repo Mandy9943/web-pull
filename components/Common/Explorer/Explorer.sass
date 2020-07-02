@@ -48,10 +48,15 @@
             .main-img
                 flex: 1
                 margin: 0px
+                img
+                    max-height: inherit;
             .group-img
                 display: grid
                 grid-template-columns: repeat(2,1fr)
                 grid-template-rows: repeat(2,1fr)
+                .wrapImgExplorer
+                    img
+                        max-height: inherit;
     .wrapImgExplorer:nth-child(n+5)
         display: none
 

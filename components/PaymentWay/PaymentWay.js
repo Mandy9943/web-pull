@@ -21,10 +21,10 @@ export default class PaymentWay extends Component {
             closeTransfer: true,
             banks: [],
             addresses: [],
-            modal:  false,
+            modal: false,
             modalAddr: false,
             selectedAddr: -1,
-            auxAddr:0,
+            auxAddr: 0,
             addrLoaded: false,
             error: null
 
@@ -32,27 +32,27 @@ export default class PaymentWay extends Component {
         this.addrRef = React.createRef();
 
     }
-    
+
     componentDidMount() {
         this.loadBanks();
         this.loadAddresses();
     }
 
-    
-    loadBanks(){
+
+    loadBanks() {
         getData("/getPseBanks")
             .then((response) => {
                 this.setState({ banks: (response.data.banks ? response.data.banks : []) });
-        });
+            });
     }
 
 
-    loadAddresses(){
+    loadAddresses() {
         getData("/getAddresses", this.props.user.jwt)
             .then((response) => {
                 this.setState({ addresses: response.data, addrLoaded: true });
-                
-        });
+
+            });
     }
 
 
@@ -81,14 +81,14 @@ export default class PaymentWay extends Component {
 
 
     setAddr = () => {
-        const x = this.state.auxAddr; 
-        this.setState( { modalAddr:false } );
-        this.setState( { selectedAddr: x } );
+        const x = this.state.auxAddr;
+        this.setState({ modalAddr: false });
+        this.setState({ selectedAddr: x });
     }
 
 
     tmpChangeAddr = (e) => {
-        this.setState({auxAddr:e.target.value});
+        this.setState({ auxAddr: e.target.value });
     }
 
 
@@ -96,7 +96,7 @@ export default class PaymentWay extends Component {
     payPSE = async e => {
         e.preventDefault();
 
-        if(this.state.selectedAddr==-1){
+        if (this.state.selectedAddr == -1) {
             this.setState({ modalAddr: true });
             return false;
         }
@@ -121,7 +121,7 @@ export default class PaymentWay extends Component {
         console.log(result);
         if (result.data) {
             window.location = result.data.URL;
-        }else{
+        } else {
             this.setState({
                 error: result.error
             });
@@ -133,16 +133,16 @@ export default class PaymentWay extends Component {
 
     render() {
 
-        const addAddressContent = <AddAddress save={this.loadAddresses} cancel={()=>this.setState({modal: false})} noheader="1" />;
-        
+        const addAddressContent = <AddAddress save={this.loadAddresses} cancel={() => this.setState({ modal: false })} noheader="1" />;
+
         const addressListContent = <>
             <Select onChange={this.tmpChangeAddr} >
                 <option value="-1">Seleccione una dirección</option>
-                {this.state.addresses.map((addr, i)=>{
+                {this.state.addresses.map((addr, i) => {
                     return <option key={i} value={i}>{addr.address}</option>
                 })}
             </Select>
-            <Button onClick={this.setAddr} text={"Cambiar"}/>
+            <Button onClick={this.setAddr} text={"Cambiar"} />
         </>;
 
 
@@ -150,31 +150,31 @@ export default class PaymentWay extends Component {
             <div className="payment-way">
 
                 {this.state.modal ? (
-                        <Modal toggle={() => this.setState({modal: false})} content={addAddressContent} button />
-                        ) : null}
+                    <Modal toggle={() => this.setState({ modal: false })} content={addAddressContent} button />
+                ) : null}
 
                 {this.state.modalAddr ? (
-                        <Modal toggle={() => this.setState({modalAddr: false})} content={addressListContent} button />
-                        ) : null}
+                    <Modal toggle={() => this.setState({ modalAddr: false })} content={addressListContent} button />
+                ) : null}
 
                 <Header />
 
-                
+
 
                 <div className="container-payment-way">
                     <div className="product-description payment-way-box only-movil">
-                        <img src={ this.props.data.images.length > 0 ? this.props.data.images[0].url : 'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png'} />
-                            <div className="content-product-description">
-                                <p>{this.props.data.title}</p>
-                                <p className="quantity">Cantidad: {this.state.productQuantity}</p>
-                                <h3>Total: {this.props.data.price}</h3>
-                            </div>
+                        <img src={this.props.data.images.length > 0 ? this.props.data.images[0].url : 'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png'} />
+                        <div className="content-product-description">
+                            <p>{this.props.data.title}</p>
+                            <p className="quantity">Cantidad: {this.state.productQuantity}</p>
+                            <h3>Total: {this.props.data.price}</h3>
+                        </div>
                     </div>
                     <h2>Elige la forma de pago</h2>
-                    
-                    
-                    
-                    
+
+
+
+
                     <div className="content-payment-way">
                         <div className="way-to-pay">
                             <div className="credit payment-way-box" onClick={() => this.accordionCredit()}>
@@ -198,42 +198,42 @@ export default class PaymentWay extends Component {
                                     </form>
                                     <div className="cardImg">
                                         <img src={CardImg} />
-                                        <Button text={"Continuar"}/>
+                                        <Button text={"Continuar"} />
                                     </div>
                                 </div>
 
                             </div>
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
+
+
+
+
+
+
+
+
                             <div className="cash payment-way-box" onClick={() => this.accordionCash()}>
-                                    <p>Efectivo</p>
+                                <p>Efectivo</p>
                             </div>
                             <div className={this.state.closeCash ? "accordion-payment-way" : "accordion-payment-way active"}>
                                 <img src={PayOnline} />
                             </div>
-                            
-                            
-                            
-                            
-                            
-                            
+
+
+
+
+
+
                             <div className="transfer payment-way-box" onClick={() => this.accordionTransfer()}>
-                                    <p>Transferencia desde PSE</p>
+                                <p>Transferencia desde PSE</p>
                             </div>
 
                             <form onSubmit={this.payPSE}>
 
-                            <div className={this.state.closeTransfer ? "accordion-payment-way" : "accordion-payment-way active"}>
-                                <div className="content-accordion">
-                                    
-                                       <div className="content-accordion-form">
-                                        
+                                <div className={this.state.closeTransfer ? "accordion-payment-way" : "accordion-payment-way active"}>
+                                    <div className="content-accordion">
+
+                                        <div className="content-accordion-form">
+
                                             <label>
                                                 <p>Datos de titular</p>
                                                 <input name={"names"} placeholder="Nombre completo *" />
@@ -243,16 +243,16 @@ export default class PaymentWay extends Component {
                                             <label>
                                                 <p>Banco</p>
                                                 <Select name={"bank_id"}>
-                                                    
-                                                {this.state.banks.map( (bank,i) => {
-                                                    return <option value={bank.pseCode}> {bank.description} </option> 
-                                                })} 
+
+                                                    {this.state.banks.map((bank, i) => {
+                                                        return <option value={bank.pseCode}> {bank.description} </option>
+                                                    })}
 
                                                 </Select>
                                             </label>
                                             <label>
                                                 <p>Tipo de persona</p>
-                                                
+
                                                 <Select name={"person_type"}>
 
                                                     <option value={"N"}>Natural</option>
@@ -260,13 +260,13 @@ export default class PaymentWay extends Component {
 
                                                 </Select>
                                             </label>
-                                        
-                                    </div>
-                                    <div className="content-accordion-form">
-                                        
+
+                                        </div>
+                                        <div className="content-accordion-form">
+
                                             <label>
                                                 <p>Documento de identificación</p>
-                                                
+
                                                 <Select name={"document_type"}>
                                                     <option value={"CC"}>Cédula de ciudadanía </option>
                                                     <option value={"CE"}>Cédula de extranjería </option>
@@ -278,20 +278,20 @@ export default class PaymentWay extends Component {
 
                                                 <input name={"document_number"} placeholder="Número documento" />
                                             </label>
-                                        
+
                                             <button type="submit" className="button-continue main-button">
                                                 <p>Continuar con la compra</p>
                                             </button>
 
+                                        </div>
+
                                     </div>
-                                    
                                 </div>
-                            </div>
                             </form>
                         </div>
                         <div className="payment-data">
                             <div className="product-description payment-way-box only-desktop">
-                            <img src={ this.props.data.images.length > 0 ? this.props.data.images[0].url : 'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png'} />
+                                <img src={this.props.data.images.length > 0 ? this.props.data.images[0].url : 'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png'} />
                                 <div className="content-product-description">
                                     <p>{this.props.data.title}</p>
                                     <p className="quantity">Cantidad: {this.state.productQuantity}</p>
@@ -299,38 +299,32 @@ export default class PaymentWay extends Component {
                                 </div>
                             </div>
 
-
-
-
                             <div className="shipping-address payment-way-box">
-                                
 
-                            {
-                                (this.state.addrLoaded && this.state.addresses.length==0) && 
-                                <>
-                                    <h3>No tienes direcciones registradas.</h3>
-                                    <   Button onClick={() => this.setState({modal:1})} text={"Agregar dirección"} />
-                                </>
-                            }
+                                {
+                                    (this.state.addrLoaded && this.state.addresses.length == 0) &&
+                                    <>
+                                        <h3>No tienes direcciones registradas.</h3>
+                                        <   Button onClick={() => this.setState({ modal: 1 })} text={"Agregar dirección"} />
+                                    </>
+                                }
 
-                            {
-                                 this.state.selectedAddr > -1 ?   
-                                <>
-                                    <p>{this.state.addresses[this.state.selectedAddr].description}</p>
-                                    <h3>Dirección de envío</h3>
-                                    <p>Dirección: {this.state.addresses[this.state.selectedAddr].address}</p>
-                                    <p>Barrio:{this.state.addresses[this.state.selectedAddr].neighborhood}</p>
-                                    <p>Departamento:{this.state.addresses[this.state.selectedAddr].department}</p>
-                                    <p>Ciudad:{this.state.addresses[this.state.selectedAddr].city}</p>
-                                    
-                                
-                                    <Button onClick={this.openAddrsModal} text={"Cambiar dirección"}/>
-                                </>
-                                :
-                                <>
-                                    <Button onClick={this.openAddrsModal} text={"Selecciona tu dirección"}/>
-                                </>
-                            }
+                                {this.state.selectedAddr > -1 ?
+
+                                        <>
+                                            <p>{this.state.addresses[this.state.selectedAddr].description}</p>
+                                            <h3>Dirección de envío</h3>
+                                            <p>Dirección: {this.state.addresses[this.state.selectedAddr].address}</p>
+                                            <p>Barrio:{this.state.addresses[this.state.selectedAddr].neighborhood}</p>
+                                            <p>Departamento:{this.state.addresses[this.state.selectedAddr].department}</p>
+                                            <p>Ciudad:{this.state.addresses[this.state.selectedAddr].city}</p>
+
+
+                                            <Button onClick={this.openAddrsModal} text={"Cambiar dirección"} />
+                                        </>
+                                        :
+                                        null
+                                }
 
                             </div>
 

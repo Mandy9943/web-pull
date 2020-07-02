@@ -11,8 +11,9 @@
 
 .listProductMovil h3 {
   padding: 15px;
-  color: #4E4E4E;
+  color: #5A5A5A;
   font-size: 16px;
+  font-weight: 600;
 }
 
 .listProductMovil a.send {
@@ -63,7 +64,7 @@
 .product-item-edit .product .description h3 {
   padding: 0 0 0 15px;
   font-size: 13px;
-  color: #4E4E4E;
+  color: #5A5A5A;
 }
 
 .product-item-edit .product .description h3.price {

@@ -169,7 +169,7 @@ export default class CategoriesImgMenu extends Component {
                         </a>
                     </Link>
                 </div>
-                <Button className="show-more" text={"ver mas"}/>
+                <Link href="category_list"><a className="main-button"><p>Ver mas</p></a></Link>
             </div>
         )
     }

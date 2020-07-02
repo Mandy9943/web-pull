@@ -59,6 +59,7 @@ export default class Purchases extends Component {
                     </div>
                 </>
                     : <>
+                        {/*NEED FIX THIS SHIT*/}
                         {1 === 1 ?
                             <section className="empty-text">
                                 <span>No tiene Compras anteriores</span>
