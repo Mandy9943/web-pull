@@ -62,7 +62,7 @@
 }
 
 .breadcrumb a {
-  color: #4E4E4E;
+  color: #5A5A5A;
   font-size: 15px;
 }
 
@@ -79,17 +79,22 @@
 
 .wrap-slider-product-detail .products-slider {
   margin: 0;
+  width: 100%;
 }
 
 .wrap-slider-product-detail .products-slider .slider-movil {
-  height: 300px;
+  height: auto;
+  padding-bottom: 40%;
   position: relative;
 }
 
 .wrap-slider-product-detail .products-slider .slider-movil .content-products-slider {
   -ms-grid-columns: (1fr)[4];
       grid-template-columns: repeat(4, 1fr);
+  display: -ms-grid;
+  display: grid;
   overflow: auto;
+  grid-gap: 15px;
   position: absolute;
   left: 0;
   right: 0;

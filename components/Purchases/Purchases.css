@@ -4,8 +4,14 @@
 }
 
 .purchase-list .status-title {
-  color: #4E4E4E;
+  color: #5A5A5A;
   font-size: 27px;
+}
+
+.purchase-list .empty-text {
+  padding: 40px 15px;
+  font-size: 20px;
+  color: #5A5A5A;
 }
 
 .account-store-sales-wrap-search, .account-store-sales-wrap-filter {
@@ -45,7 +51,7 @@
 
 .account-store-sales-input-search {
   border: 0px;
-  border-bottom: 0.5px solid #4E4E4E;
+  border-bottom: 0.5px solid #5A5A5A;
   border-radius: 0px;
   background: transparent;
   padding-left: 22px;

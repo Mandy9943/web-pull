@@ -13,7 +13,7 @@
   padding: 0px 10px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  color: #4E4E4E;
+  color: #5A5A5A;
 }
 
 .wrap-filter .categories-finder {
@@ -30,7 +30,7 @@
 }
 
 .wrap-filter .categories-finder a {
-  color: #4E4E4E;
+  color: #5A5A5A;
   font-size: .8rem;
 }
 
@@ -48,7 +48,7 @@
 }
 
 .wrap-filter-button select, .wrap-filter-button option {
-  color: #4E4E4E;
+  color: #5A5A5A;
   font-size: .8rem;
 }
 
@@ -89,18 +89,28 @@
   margin-bottom: 40px;
 }
 
-.filter-group h3 {
+.filter-group h1 {
   margin-bottom: 10px;
-  font-size: 24px;
+  font-size: 25px;
+  font-weight: 600;
+  color: #5A5A5A;
 }
 
-.filter-group h4 {
+.filter-group h2 {
   margin-bottom: 10px;
   font-size: 20px;
 }
 
-.filter-group span {
-  font-size: 12px;
+.filter-group a {
+  color: #5A5A5A;
+}
+
+.filter-group a:hover {
+  cursor: pointer;
+}
+
+.filter-group span, .filter-group p {
+  font-size: 15px;
 }
 
 .item-filter-group {
@@ -117,13 +127,13 @@
   margin-bottom: 40px;
 }
 
-.send-free h5 {
+.send-free h4 {
   font-size: 20px;
-  color: #4E4E4E;
+  color: #5A5A5A;
 }
 
 .send-free span {
-  color: #4E4E4E;
+  color: #5A5A5A;
   font-size: 12px;
 }
 
@@ -177,7 +187,7 @@
 }
 
 .responsive-filter-item svg {
-  color: #4E4E4E;
+  color: #5A5A5A;
 }
 
 .border-none {
@@ -231,6 +241,10 @@
   text-align: left;
   margin-top: 7px;
   color: #CF0A2C;
+}
+
+.result:hover {
+  cursor: pointer;
 }
 
 .show {

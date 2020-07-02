@@ -1,39 +1,53 @@
-.products-slider {
-  margin-bottom: 50px;
+.home-content .products-slider {
+  padding: 0;
+  width: auto;
+}
+
+.home-content .products-slider .slider-movil {
+  position: relative;
+  padding-bottom: 34%;
   width: 100%;
 }
 
-.products-slider .content-products-slider {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[5];
-      grid-template-columns: repeat(5, 1fr);
-  grid-gap: 20px;
-  overflow: auto;
+.home-content .products-slider .slider-movil .content-products-slider {
+  -ms-grid-columns: auto;
+      grid-template-columns: auto;
+  display: -webkit-inline-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  padding: 5px 0;
+  overflow-x: auto;
 }
 
-.products-slider .content-products-slider .producto-card {
-  padding: 20px 0px 0;
-  width: 100%;
-  display: none;
-}
-
-.products-slider .content-products-slider .producto-card:nth-child(-n+5) {
+.home-content .products-slider .slider-movil .content-products-slider .producto-card {
+  width: 18%;
   display: block;
+  margin: 0% 1%;
+  padding: 10px 0px 0;
+}
+
+.home-content .products-slider .slider-movil .content-products-slider .producto-card:nth-child(-n+1) {
+  margin: 0 !important;
 }
 
 @media (max-width: 700px) {
-  .products-slider {
+  .home-content .products-slider {
     padding: 0 15px;
     margin-bottom: 15px;
     width: auto;
   }
-  .products-slider .slider-movil {
+  .home-content .products-slider .slider-movil {
     position: relative;
-    min-height: 280px;
+    padding-bottom: 65%;
     width: 100%;
   }
-  .products-slider .slider-movil .content-products-slider {
+  .home-content .products-slider .slider-movil .content-products-slider {
     -ms-grid-columns: auto;
         grid-template-columns: auto;
     display: -webkit-inline-box;
@@ -47,7 +61,7 @@
     height: min-content;
     padding: 5px 0;
   }
-  .products-slider .slider-movil .content-products-slider .producto-card {
+  .home-content .products-slider .slider-movil .content-products-slider .producto-card {
     width: 33%;
     display: block;
     margin: 0% 1%;

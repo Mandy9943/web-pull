@@ -36,6 +36,8 @@ export default class Purchases extends Component {
             return <ProductItem key={i} order={order} mode={mde} />;
         });
 
+        console.log(this.state.orders)
+
         return (
             <div className="purchase-list">
                 <h1 className="status-title">{this.props.mode === "sell" ? "Mis ventas" : "Mis Compras"}</h1>
@@ -56,8 +58,16 @@ export default class Purchases extends Component {
                         <span className="sub-title"> {/*NEED FIX THIS SHIT*/}13 ventas</span>
                     </div>
                 </>
-                    : null}
-                {orderList}
+                    : <>
+                        {1 === 1 ?
+                            <section className="empty-text">
+                                <span>No tiene Compras anteriores</span>
+                            </section>
+                            : null
+                        }
+                        {orderList}
+                    </>
+                }
             </div>
         )
     }

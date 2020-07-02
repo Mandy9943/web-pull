@@ -48,7 +48,7 @@ export default class Footer extends Component {
                             <Link href="#"><a>Políticas de privacidad</a></Link>
                             <Link href="#"><a>Términos y condiciones</a></Link>
                             <Link href="#"><a>Contáctanos</a></Link>
-                            <Link href="www.sic.gov.co"><a>www.sic.gov.co</a></Link>
+                            <Link href="www.sic.gov.co"><a target="_blank">www.sic.gov.co</a></Link>
                         </ul>
                         <p>{this.getYear()} Kiero. Todos los derechos reservados.</p>
                     </div>

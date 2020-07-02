@@ -137,13 +137,13 @@ class Filter extends Component {
           */}
 
           <div className="filter-group">
-            <h3>{this.props.search}</h3>
+            <h1>{this.props.search}</h1>
             <span>{this.props.data && this.props.data.rows && this.props.data.rows} Resultados
               {filters}
             </span>
           </div>
           <div className="filter-group">
-            <h4>Ordenar resultados</h4>
+            <h3>Ordenar resultados</h3>
             <div className="wrap-filter-button">
               <select className="select-filter">
                 <option value="0">Más relevantes</option>
@@ -189,11 +189,10 @@ class Filter extends Component {
             <h4>Rango de precios</h4>
             <div>
               {prices.map((item, index) => (
-                <div key={index}
-                  onClick={() => {
+                <div key={index}>
+                  <a onClick={() => {
                     this.props.applyFilter("price", item);
-                  }}>
-                  <p className="item-filter-group show">{item}</p>
+                  }}><p className="item-filter-group show">{item}</p></a>
                 </div>
 
               ))}
@@ -207,18 +206,17 @@ class Filter extends Component {
             </div>
           </div>
             <div className="send-free">
-              <h5>Envio</h5>
+              <h4>Envio</h4>
               <span>Envío gratis <FontAwesomeIcon icon={faTruck} /></span>
             </div> 
           <div className="filter-group">
             <h4>Categorias</h4>
             <div>
               {res_categories.slice(0, this.state.categorySize).map((item, index) => (
-                <div key={index} className="item-filter-group show"
-                  onClick={() => {
+                <div key={index} className="item-filter-group show">
+                  <a onClick={() => {
                     this.props.applyFilter("category", item[0]);
-                  }}>
-                  {item[0]}
+                  }}><p>{item[0]}</p></a>
                 </div>
               ))}
             </div>

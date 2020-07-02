@@ -82,6 +82,14 @@
   outline: none !important;
 }
 
+.pay-item .select-icon select option {
+  margin: 10px 0 !important;
+}
+
+.pay-item .select-icon select:focus {
+  outline: none;
+}
+
 .title-pay-product-detail {
   font-size: 20px;
   font-weight: 600;

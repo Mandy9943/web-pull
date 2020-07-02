@@ -32,7 +32,7 @@
 .breadcrumb
     margin: 40px 0px
     a
-        color: #4E4E4E
+        color: #5A5A5A
         font-size: 15px
     svg
         margin: 0px 5px
@@ -42,17 +42,21 @@
     padding: 20px
     border-top: 0.5px solid #C6C6C6
     .products-slider
-        margin: 0 
+        margin: 0
+        width: 100%
         .slider-movil
-            height: 300px
+            height: auto
+            padding-bottom: 40%
             position: relative
             .content-products-slider
                 grid-template-columns: repeat(4, 1fr);
-                overflow: auto;
+                display: grid
+                overflow: auto
+                grid-gap: 15px
                 position: absolute;
-                left: 0;
-                right: 0;
-                top: 0;
+                left: 0
+                right: 0
+                top: 0
                 .producto-card
                     padding: 0
                     width: 100%

@@ -48,7 +48,7 @@ class SellerInfo extends Component {
             <p>Vendedor Lider</p>
           </div>
           <div className="info-shops">
-            <Link href="#">
+            <Link href="/ayuda">
               <a>
                 <p>Información sobre la reputación de las tiendas</p>
               </a>

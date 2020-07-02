@@ -93,11 +93,11 @@
 
 @media (min-width: 1100px) {
   .News .content .title .logo {
-    height: 75px;
+    height: 65px;
   }
   .News .content .icons img {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
   }
 }
 
@@ -106,7 +106,7 @@
     margin: auto;
   }
   .News .content .title .logo {
-    height: 75px;
+    height: 65px;
     margin: auto;
   }
   .News .content .icons {
@@ -114,8 +114,8 @@
     margin-top: 10px;
   }
   .News .content .icons img {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
   }
 }
 /*# sourceMappingURL=News.css.map */

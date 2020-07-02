@@ -1,5 +1,6 @@
 .secundary-slider .slider {
-  height: 300px;
+  height: auto;
+  padding-bottom: 25%;
   margin: auto;
 }
 
