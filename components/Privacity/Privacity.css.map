@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,uBAAuB,CAAC;EACpB,MAAM,EAAE,SAAS;CAAG;;AACxB,AAAA,CAAC,EAAE,EAAE,EAAE,EAAE,CAAC;EACN,UAAU,EAAE,OAAO;EACnB,aAAa,EAAE,IAAI;CAAG",
+    "sources": [
+        "Privacity.sass"
+    ],
+    "names": [],
+    "file": "Privacity.css"
+}

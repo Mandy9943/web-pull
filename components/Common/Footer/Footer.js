@@ -45,8 +45,8 @@ export default class Footer extends Component {
                     <div className="footer-tex">
                         <ul>
                             <Link href="/ayuda"><a>Ayuda / PQR</a></Link>
-                            <Link href="#"><a>Políticas de privacidad</a></Link>
-                            <Link href="#"><a>Términos y condiciones</a></Link>
+                            <Link href="/privacidad"><a>Políticas de privacidad</a></Link>
+                            <Link href="/terminos"><a>Términos y condiciones</a></Link>
                             <Link href="#"><a>Contáctanos</a></Link>
                             <Link href="www.sic.gov.co"><a target="_blank">www.sic.gov.co</a></Link>
                         </ul>
