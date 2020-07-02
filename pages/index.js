@@ -25,8 +25,29 @@ export default class Index extends Component {
                 <Head>
                     <title>Kiero | Home</title>
                     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+                    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+                    <meta name="robots" content="index,follow" />
+                    <meta name="robots" content="noodp" />
+                    <meta name="robots" content="noydir" />
+                    <meta name="description" content="Descubre miles de productos al mejor precio. Envios gratis a todo el pais, encuentra lo que buscas en Kiero.co" />
+                    <meta name="Keywords" content="Tienda en Línea" />
+                    <meta name="Title" content="Compra en Kiero.co - Marketplace" />
+                    <meta name="apple-mobile-web-app-capable" content="yes" />
+                    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+                    <meta name="google" content="notranslate" />
+                    <meta name="twitter: card" content="https://kiero.co/_next/static/images/logo-kiero-8bcc295b260198657f0395231376ca1a.png" />
+                    <meta name="twitter: site" content="@kierogroup1" />
+                    <meta name="twitter: title" content=" Compra en Kiero todo lo encuentras en nuestra Tienda Online" />
+                    <meta name="twitter: description" contenido=" Envíos gratis en Colombia, productos para Bebés, Belleza, Cámaras y accesorios, Electrodomésticos, Electrónica, Hogar y muebles y mucho más." />
+                    <meta name="twitter: image" content="https://kiero.co/_next/static/images/banners-apk-911388a7cee05467bbd92b4b573820ab.jpg" />
+                    <meta property="og:type" content="sitio web" />
+                    <meta property="og:title" content="Compra en kiero.co todo lo encuentras en nuestra tienda online " />
+                    <meta property="og:description" content="Envíos gratis en Colombia, productos para Bebés, Belleza, Cámaras y accesorios, Electrodomésticos, Electrónica, Hogar y muebles y mucho más. " />
+                    <meta property="og:url" content="https://www.kiero.co/" />
+                    <meta property="og:image" content="https://kiero.co/_next/static/images/banners-apk-911388a7cee05467bbd92b4b573820ab.jpg" />
+                    
                 </Head>
-                <Home user_data={this.props}/>
+                        <Home user_data={this.props} />
             </div>
         );
     }
