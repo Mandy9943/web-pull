@@ -20,7 +20,7 @@ export async function getServerSideProps(context) {
         "type":"search",
         "search": String(context.params.search),
         "params": {
-            "items_per_page": 0,
+            "items_per_page": 15,
             "price_range": "",
             "order": "desc"
         }
@@ -31,7 +31,8 @@ export async function getServerSideProps(context) {
         user: (usr !== undefined ? usr  : null),
         authenticated: isAuthenticated(context)
     }
-
+    console.log("gSSP")
+    console.log(data)
     return { props: { data, session } }
 }
 

@@ -12,7 +12,13 @@ class  Category extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { format: "list", data: null, filters: [], products:null };
+    this.state = { format: "list",
+      data: null,
+      filters: [],
+      products:null,
+      page: 1,
+      totalPages: 1
+    };
     this.toggleFormat = this.toggleFormat.bind(this);
   }
 
@@ -23,6 +29,12 @@ class  Category extends Component {
   sendToFilters = (data) => {
     this.setState({data: data})
   }
+
+  changePage = (p) => {
+    console.log("Changed to:"+p);
+    this.setState({page: p})
+  }
+
 
   applyFilter = (type, value) => {
     let tmp_filters = this.state.filters; 
@@ -49,9 +61,9 @@ class  Category extends Component {
   getProducts(){
     let res;
 
-    const ipp = this.props.data.params.items_per_page;
-    this.setState({products:null})
+    const ipp = 0; //;
 
+    this.setState({products:null})
 
     let c = [];
     for (let index = 0; index < this.state.filters.length; index++) {
@@ -85,7 +97,12 @@ class  Category extends Component {
     }
 
     res.then((r) => r.data).then( (r) => {
-      this.setState({ products: r });
+      console.log(r.products.length)
+      console.log(this.props.data.params.items_per_page)
+      this.setState({
+        products: r,
+        totalPages: Math.ceil(r.products.length/this.props.data.params.items_per_page)
+      });
       let mr = {
         "brands": r.brands,
         "rows": (r.products ? r.products.length : 0),
@@ -119,9 +136,12 @@ class  Category extends Component {
             sendToFilters={this.sendToFilters} 
             format={this.state.format} 
             products={this.state.products}
+            page={this.state.page}
+            item_per_page={this.props.data.params.items_per_page}
           />
+
         </div>
-        <Pagination />
+        <Pagination actual={this.state.page} totalPages={this.state.totalPages} cb={this.changePage}/>
         <Footer />
       </div>
     );

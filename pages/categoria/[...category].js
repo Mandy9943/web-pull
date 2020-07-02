@@ -20,7 +20,7 @@ export async function getServerSideProps(context) {
         "type":"category",
         "search": String(context.params.category),
         "params": {
-            "items_per_page": 0,
+            "items_per_page": 15,
             "price_range": "",
             "order": "desc"
         }

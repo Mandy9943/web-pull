@@ -18,12 +18,15 @@ class ListCategory extends Component {
 
   render() {
     const Class = this.props.format == "grid" ? "grid" : "list";
+      const page_first=(this.props.page-1)*this.props.item_per_page;
+      const page_last=((this.props.page-1)*this.props.item_per_page)+this.props.item_per_page;
+
     return (
         <div className="wrap-list-category">
           <div className={Class}>
             {this.props.products && this.props.products.products && this.props.products.products.length > 0 ? (
                 this.props.format == "grid" ? (
-                    this.props.products.products.slice(0, 15).map((product, i) => (
+                    this.props.products.products.slice(page_first, page_last).map((product, i) => (
                       
                         <Link href={"/detalle/"+product.product_id+"_"+product.title.split(" ").join("-")} key={i}>
                           <a>
@@ -50,7 +53,7 @@ class ListCategory extends Component {
                         </Link>
                     ))
                 ) : (
-                    this.props.products.products.slice(0, 15).map((product, i) => (
+                    this.props.products.products.slice(page_first, page_last).map((product, i) => (
                         <Link href={"/detalle/"+product.product_id+"_"+product.title.split(" ").join("-")} key={i}>
                           <a>
                             <div className="temp-list">
@@ -65,7 +68,7 @@ class ListCategory extends Component {
                                   <p className="kiero-envios-card-icon">
                                     <FontAwesomeIcon icon={faTruck} />
                                   </p>
-                                  <p>envío gratis</p>
+                                  <p>Envío gratis</p>
                                 </div>
                               </div>
                             </div>
