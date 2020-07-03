@@ -4,7 +4,6 @@
         width: auto;
         .slider-movil
             position: relative
-            padding-bottom: 34%
             width: 100%
             .content-products-slider
                 grid-template-columns: auto
@@ -17,13 +16,36 @@
                 height: min-content;
                 padding: 5px 0
                 overflow-x: auto
-                .producto-card
-                    width: 18%
-                    display: block
-                    margin: 0% 1%;
-                    padding: 10px 0px 0
-                    &:nth-child(-n+1)
-                        margin: 0 !important
+            .slider
+                height: auto
+                padding-bottom: 34%
+                .nextButton, .previousButton
+                    display: none !important   
+                .test
+                    grid-template-columns: auto
+                    display: -webkit-inline-box
+                    height: min-content;
+                    padding: 5px 0
+                    .producto-card
+                        width: 18%
+                        display: block
+                        margin: 0% 1%;
+                        padding: 10px 0px 0
+                .test:nth-child(2)
+                    .producto-card
+                        &:nth-child(-n+5)
+                            display: none !important 
+                .test:nth-child(3)
+                    .producto-card
+                        &:nth-child(-n+10)
+                            display: none !important 
+                .test:nth-child(4)
+                    .producto-card
+                        &:nth-child(-n+15)
+                            display: none !important 
+                .test:nth-child(5)
+                    .producto-card:nth-child(-n+20)
+                        display: none !important  
 
 
 @media(max-width:700px)

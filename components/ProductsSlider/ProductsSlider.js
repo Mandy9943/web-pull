@@ -5,6 +5,8 @@ import "./ProductsSlider.css";
 import { getProductsBasic } from "../../services/productsApi"
 import Success from "../Login/Success";
 import { getImgUrl } from "../../lib/config"
+import Slider from 'react-animated-slider';
+
 
 export default class ProductsSlider extends Component {
 
@@ -20,8 +22,8 @@ export default class ProductsSlider extends Component {
             .then((response) => {
                 let data = [];
                 let product;
-                let i=1;
-                
+                let i = 1;
+
                 for (product in response.data.products) {
                     data.push(response.data.products[product]);
                 }
@@ -30,11 +32,11 @@ export default class ProductsSlider extends Component {
     }
 
     render() {
-        let productList = this.state.data.map(function(product, i) {
+        let productList = this.state.data.map(function (product, i) {
             let url = "";
-            if(product.image){
+            if (product.image) {
                 url = getImgUrl(product.image);
-            }else{
+            } else {
                 url = "https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png";
             }
             return <ProductCard key={i} price={product.price} url={url} product_id={product.product_id} title={product.title} />;
@@ -43,11 +45,25 @@ export default class ProductsSlider extends Component {
         return (
 
             <div className="products-slider">
-                {!this.props.notitle && <h3 className="home-section-title">Encuentra los mejores productos en {this.props.category && this.props.category}<Link href={this.props.category && "/categoria/"+this.props.category}><a>Ver todos</a></Link></h3>}
+                {!this.props.notitle && <h3 className="home-section-title">Encuentra los mejores productos en {this.props.category && this.props.category}<Link href={this.props.category && "/categoria/" + this.props.category}><a>Ver todos</a></Link></h3>}
                 <div className="slider-movil">
-                    <div className="content-products-slider">
-                        {productList}
-                    </div>
+                    <Slider autoplay={1000}>
+                        <section className="test">
+                            {productList}
+                        </section>
+                        <section className="test">
+                            {productList}
+                        </section>
+                        <section className="test">
+                            {productList}
+                        </section>
+                        <section className="test">
+                            {productList}
+                        </section>
+                        <section className="test">
+                            {productList}
+                        </section>
+                    </Slider>
                 </div>
 
             </div>
