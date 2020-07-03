@@ -95,12 +95,13 @@ class Explorer extends Component {
         <div className="content-explorer">
           <div className="main-img">
             <img src={this.state.exploreImage} />
-            {/*<div>texto de prueba</div>*/}
           </div>
           <div className="group-img">
             {this.state.data.map((item, i) => (
               <div className="wrapImgExplorer" key={i}>
-                <img src={ getImgUrl(item.image) } />
+                <Link href={"/detalle/"+item.product_id+"_"+item.title.split(" ").join("-")} ><a>
+                    <img src={ getImgUrl(item.image) } /></a>
+                </Link>
               </div>
             ))}
           </div>
