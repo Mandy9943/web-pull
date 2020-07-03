@@ -32,37 +32,42 @@ export default class ProductsSlider extends Component {
     }
 
     render() {
-        let productList = this.state.data.map(function (product, i) {
+
+
+        let productList = [];
+        let tmpList = [];
+        for (let i = 0; i < this.state.data.length; i++) {
             let url = "";
-            if (product.image) {
-                url = getImgUrl(product.image);
+            if (this.state.data[i].image) {
+                url = getImgUrl(this.state.data[i].image);
             } else {
                 url = "https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png";
             }
-            return <ProductCard key={i} price={product.price} url={url} product_id={product.product_id} title={product.title} />;
-        });
+            tmpList.push(<><ProductCard
+                key={tmpList.length+1}
+                price={this.state.data[i].price}
+                url={url}
+                product_id={this.state.data[i].product_id}
+                title={this.state.data[i].title} /></>)
+            if(i%5===0 && i>0){
+                productList.push(<section key={i} className="test">{tmpList}</section>);
+                tmpList = []
+            }
+        }
+        if(tmpList.length>0){
+            productList.push(<section key={productList.length+1} className="test">{tmpList}</section>)
+        }
+
+        console.log(productList);
 
         return (
 
             <div className="products-slider">
                 {!this.props.notitle && <h3 className="home-section-title">Encuentra los mejores productos en {this.props.category && this.props.category}<Link href={this.props.category && "/categoria/" + this.props.category}><a>Ver todos</a></Link></h3>}
                 <div className="slider-movil">
-                    <Slider autoplay={1000}>
-                        <section className="test">
-                            {productList}
-                        </section>
-                        <section className="test">
-                            {productList}
-                        </section>
-                        <section className="test">
-                            {productList}
-                        </section>
-                        <section className="test">
-                            {productList}
-                        </section>
-                        <section className="test">
-                            {productList}
-                        </section>
+
+                    <Slider autoplay={100}>
+                        {productList}
                     </Slider>
                 </div>
 
