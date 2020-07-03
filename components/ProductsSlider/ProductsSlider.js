@@ -16,7 +16,7 @@ export default class ProductsSlider extends Component {
     }
 
     componentDidMount() {
-        getProductsBasic(this.props.category, 7)
+        getProductsBasic(this.props.category, 25)
             .then((response) => {
                 let data = [];
                 let product;

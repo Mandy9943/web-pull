@@ -31,29 +31,33 @@ class AccountSummary extends Component {
     return (
       <div className="account-summary-wrap">
         <h1 className="account-summary-title">Resumen</h1>
-        <div className="account-summary-wrap-items">
-          <div className="account-summary-item-title">
-            <FontAwesomeIcon icon={faComment} /> Preguntas
+
+          {this.props.user.type === 2 &&
+          <div className="account-summary-wrap-items">
+              <div className="account-summary-item-title">
+                  <FontAwesomeIcon icon={faComment}/> Preguntas
+              </div>
+              {this.state.answers.length > 0 ?
+
+                  this.state.answers.map((answer, i) => {
+                      <div key={i} className="question">
+                          <h5>{answer.user.name + " " + answer.user.last_name} Te hizo una pregunta en:</h5>
+                          <div className='item-question'>
+                              <img src={answer.product.images.length > 0 && getImgUrl(answer.product.images[0].url)}/>
+                              <section className="text">
+                                  <p className="title">{answer.product.title}</p>
+                                  <Link
+                                      href={"/detalle/" + answer.product.product_id + "_" + answer.product.title.split(" ").join("-")}><a
+                                      className="responses">Ver respuesta</a></Link>
+                              </section>
+                          </div>
+                      </div>
+                  })
+                  : <div className="account-summary-item"><span className="Count">0</span> Sin pregúntas</div>
+              }
+
           </div>
-          {this.state.answers.length > 0 ? 
-          
-          this.state.answers.map( (answer,i) => {
-            <div key={i} className="question">
-            <h5>{answer.user.name+" "+answer.user.last_name} Te hizo una pregunta en:</h5>
-            <div className='item-question'>
-              <img src={answer.product.images.length>0 && getImgUrl(answer.product.images[0].url)}/>
-              <section className="text">
-              <p className="title">{answer.product.title}</p>
-              <Link href={"/detalle/"+answer.product.product_id+"_"+answer.product.title.split(" ").join("-")}><a className="responses">Ver respuesta</a></Link>
-              </section>
-            </div>
-          </div>
-          }) 
-          :<div className="account-summary-item"><span className="Count">0</span> Sin pregúntas</div>
           }
-
-        </div>
-
 
         <div className="account-summary-wrap-items">
           <div className="account-summary-item-title">

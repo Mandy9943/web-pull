@@ -36,8 +36,6 @@ export default class Purchases extends Component {
             return <ProductItem key={i} order={order} mode={mde} />;
         });
 
-        console.log(this.state.orders)
-
         return (
             <div className="purchase-list">
                 <h1 className="status-title">{this.props.mode === "sell" ? "Mis ventas" : "Mis Compras"}</h1>
@@ -46,7 +44,7 @@ export default class Purchases extends Component {
                     <div className="account-store-sales-wrap-search">
                         <div className="account-store-sales-wrap-filter">
                             <p>
-                                <FontAwesomeIcon icon={faThList} /> filtrar y ordenar
+                                <FontAwesomeIcon icon={faThList} /> Filtrar y ordenar
                         </p>
                             <div className="account-store-sales-wrap-input-search">
                                 <span>
@@ -55,18 +53,24 @@ export default class Purchases extends Component {
                                 <input className="account-store-sales-input-search" placeholder='buscar por # o titulo' />
                             </div>
                         </div>
-                        <span className="sub-title"> {/*NEED FIX THIS SHIT*/}13 ventas</span>
+                        <span className="sub-title"> {this.state.orders.length} ventas</span>
                     </div>
+
+                        {this.state.orders.length===0 ?
+                            <section className="empty-text">
+                                <span>No tiene ninguna venta</span>
+                            </section>
+                            : orderList
+                        }
                 </>
                     : <>
-                        {/*NEED FIX THIS SHIT*/}
-                        {1 === 1 ?
+
+                        {this.state.orders.length===0 ?
                             <section className="empty-text">
                                 <span>No tiene Compras anteriores</span>
                             </section>
-                            : null
+                            : orderList
                         }
-                        {orderList}
                     </>
                 }
             </div>

@@ -9,6 +9,7 @@ import {
     getLastName,
     getName,
     getUser,
+    getUserType,
     getUserId,
     isAuthenticated,
     redirectIfNotAuthenticated
@@ -30,6 +31,7 @@ export default class cuenta extends React.Component {
         return {
             jwt: getJwt(ctx),
             user: getUser(ctx),
+            type: getUserType(ctx),
             name: getName(ctx),
             last_name: getLastName(ctx),
             full_name: getFullName(ctx),

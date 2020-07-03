@@ -38,14 +38,14 @@ export default class Nav extends Component {
         }
     }
     mostrar = () => {
-        document.getElementById("sidebar").style.width = "auto";
-        document.getElementById("sidebar").style.padding = "30px";
+        //document.getElementById("sidebar").style.width = "auto";
+        //document.getElementById("sidebar").style.padding = "30px";
         document.getElementById("abrir").style.display = "none";
         document.getElementById("cerrar").style.display = "inline";
     }
     ocultar = () => {
-        document.getElementById("sidebar").style.width = "0";
-        document.getElementById("sidebar").style.padding = "0";
+        //document.getElementById("sidebar").style.width = "0";
+        //document.getElementById("sidebar").style.padding = "0";
         document.getElementById("abrir").style.display = "inline";
         document.getElementById("cerrar").style.display = "none";
     }
@@ -157,7 +157,7 @@ export default class Nav extends Component {
                             <div className="user-menu" onBlur={this.menuBlur} >
                                 <ul>
                                     <Link href="/ayuda"><a className="bell">Ayuda / PQR <FontAwesomeIcon icon={faBell} /></a></Link>
-                                    <Link href="#"><a onClick={() => this.showHideMenu()} className="user-icon"><FontAwesomeIcon icon={faUser} /> Usuario <FontAwesomeIcon icon={faAngleDown} /></a></Link>
+                                    <Link href="#"><a onClick={() => this.showHideMenu()} className="user-icon"><FontAwesomeIcon icon={faUser} /> {user} <FontAwesomeIcon icon={faAngleDown} /></a></Link>
                                     {/*
                                     <span style={{ color: '#FFFFFF' }}>Hola, <b>{user}</b></span>
                                     <Link href="/cuenta"><a>Ir a mi cuenta</a></Link>

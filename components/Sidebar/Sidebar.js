@@ -103,7 +103,10 @@ export default class Sidebar extends Component {
     }
 
     render() {
+
+        console.log(this.props)
         console.log(this.state)
+
         return (
             <div id="sidebar" className="user-account-menu">
                 <div className="user-account-menu-item">
@@ -121,6 +124,8 @@ export default class Sidebar extends Component {
                     </p>
                     <p onClick={(e)=>this.props.cb("resume", e)} className="user-account-menu-text">Resumen</p>
                 </div>
+
+                { this.props.user_data.type === 2 &&
                 <div className={this.state.closeBill ? "user-account-menu-item" : "user-account-menu-item active"} onClick={() => this.accordionBill()}>
                     <p className="user-account-menu-icon">
                     <FontAwesomeIcon icon={faMoneyBillWave} />
@@ -138,6 +143,8 @@ export default class Sidebar extends Component {
                         <FontAwesomeIcon icon={this.state.userAccountIconBill}/>
                     </p>
                 </div>
+                }
+
                 <div className={this.state.closeShop ? "user-account-menu-item" : "user-account-menu-item active"} onClick={() => this.accordionShop()}>
                     <p className="user-account-menu-icon">
                     <FontAwesomeIcon icon={faShoppingBag} />

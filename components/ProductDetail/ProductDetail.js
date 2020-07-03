@@ -57,7 +57,7 @@ class ProductDetail extends Component {
 
     return (
       <div>
-        <Nav user={u_data.user} authenticated={u_data.authenticated} />
+        <Nav user={u_data.user} home={true} authenticated={u_data.authenticated} />
         <div className="detail-content">
           <div className="breadcrumb">
             <Link href="/">
