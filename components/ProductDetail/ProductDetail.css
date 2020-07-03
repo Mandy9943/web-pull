@@ -77,6 +77,10 @@
   border-top: 0.5px solid #C6C6C6;
 }
 
+.wrap-slider-product-detail .slider {
+  display: none !important;
+}
+
 .wrap-slider-product-detail .products-slider {
   margin: 0;
   width: 100%;

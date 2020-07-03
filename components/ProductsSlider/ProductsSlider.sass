@@ -4,7 +4,10 @@
         width: auto;
         .slider-movil
             position: relative
+            padding-bottom: 34%
             width: 100%
+            @media (min-width: 700px)
+                display: none !important
             .content-products-slider
                 grid-template-columns: auto
                 display: -webkit-inline-box
@@ -15,22 +18,36 @@
                 bottom: 0
                 height: min-content;
                 padding: 5px 0
-                overflow-x: auto
-            .slider
-                height: auto
-                padding-bottom: 34%
-                .nextButton, .previousButton
-                    display: none !important   
-                .test
-                    grid-template-columns: auto
-                    display: -webkit-inline-box
-                    height: min-content;
-                    padding: 5px 0
-                    .producto-card
-                        width: 18%
-                        display: block
-                        margin: 0% 1%;
-                        padding: 10px 0px 0
+                overflow-x: auto;
+                .producto-card
+                    width: 18%
+                    display: block
+                    margin: 0% 1%;
+                    padding: 10px 0px 0
+                    &:nth-child(-n+1)
+                        margin: 0 !important
+        .slider
+            height: auto
+            padding-bottom: 34%
+            @media (max-width: 700px)
+                display: none !important
+            .nextButton
+                right: 0
+                top: 40%
+                transform: translateY(-40%)
+            .previousButton
+                left: 0
+                top: 40%
+            .test
+                grid-template-columns: auto
+                display: -webkit-inline-box
+                height: min-content;
+                padding: 5px 0
+                .producto-card
+                    width: 18%
+                    display: block
+                    margin: 0% 1%;
+                    padding: 10px 0px 0
 
 
 @media(max-width:700px)
