@@ -14,12 +14,12 @@
   font-weight: bold;
   margin-bottom: 5px;
   font-size: 15px;
-  color: #4E4E4E;
+  color: #5A5A5A;
 }
 
 .product-item .detail-status, .product-item .detail-date {
   font-size: 12px;
-  color: #4E4E4E;
+  color: #5A5A5A;
 }
 
 .product-item .detail-date {
@@ -60,7 +60,7 @@
 .product-item .product .description h3 {
   padding: 0 0 0 15px;
   font-size: 14px;
-  color: #4E4E4E;
+  color: #5A5A5A;
 }
 
 .product-item .product .description .product-stock {
@@ -73,7 +73,7 @@
 }
 
 .product-item .info p {
-  color: #4E4E4E;
+  color: #5A5A5A;
   font-size: 14px;
 }
 

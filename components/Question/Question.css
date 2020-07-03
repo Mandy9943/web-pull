@@ -40,10 +40,10 @@
 }
 
 .button-question-product-detail {
-  color: #4E4E4E;
+  color: #5A5A5A;
   font-size: 18px;
   background-color: #fff;
-  border: 0.5px solid #4E4E4E;
+  border: 0.5px solid #5A5A5A;
 }
 
 @media (max-width: 768px) {
