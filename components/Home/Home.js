@@ -60,8 +60,8 @@ export default class Home extends Component {
         {/*<Social />*/}
         <Footer />
         <div className="footer-social">
-          <Link href={url}><a><img src={Logo1} /></a></Link>
-          <Link href={url}><a><img src={Logo2} /></a></Link>
+          <a href="www.sic.gov.co" target="_blank"><img src={Logo1} /></a>
+          <a href="www.sic.gov.co" target="_blank"><img src={Logo2} /></a>
         </div>
       </div>
     );
