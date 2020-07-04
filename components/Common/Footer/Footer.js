@@ -8,13 +8,14 @@ export default class Footer extends Component {
         return new Date().getFullYear();
     }
     render() {
+        let url = "//www.sic.gov.co";
         return (
             <div className="footer">
                 <div className="footer-content">
                     <div className="footer-tex">
                         <p>{this.getYear()} Kiero. Todos los derechos reservados.</p>
                         <ul>
-                            <a href="www.sic.gov.co" target="_blank">www.sic.gov.co</a>
+                            <Link href={url}><a target="_blank">www.sic.gov.co</a></Link>
                             <Link href="/terminos"><a>Términos y condiciones</a></Link>
                             <Link href="/privacidad"><a>Políticas de privacidad</a></Link>
                             <Link href="/contactanos_email"><a>Contáctanos</a></Link>
@@ -48,7 +49,7 @@ export default class Footer extends Component {
                             <Link href="/privacidad"><a>Políticas de privacidad</a></Link>
                             <Link href="/terminos"><a>Términos y condiciones</a></Link>
                             <Link href="/contactanos_email"><a>Contáctanos</a></Link>
-                            <a href="www.sic.gov.co" target="_blank">www.sic.gov.co</a>
+                            <Link href={url}><a target="_blank">www.sic.gov.co</a></Link>
                         </ul>
                         <p>{this.getYear()} Kiero. Todos los derechos reservados.</p>
                     </div>
