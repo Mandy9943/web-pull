@@ -11,9 +11,9 @@ class Privacity extends Component {
         <div className="privacity-wrap-content">
           <div className="privacy_container">
             <div>
-              <h3 className="privacy_title">
+              <h1 className="privacy_title">
                 Política de privacidad, manejo de información y datos personales
-              </h3>
+              </h1>
             </div>
             <div className="privacy_information">
               <p>
