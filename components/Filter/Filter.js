@@ -183,7 +183,7 @@ class Filter extends Component {
                 ))
               }
             </div>
-            <Link href="#"><a className="view-all">ver todos</a></Link>
+            <a className="view-all" onClick={() => this.ShowAllCategories()}>Ver Todos</a>
           </div>
           <div className="filter-group show">
             <h4>Rango de precios</h4>

@@ -20,18 +20,17 @@ export default class CategoryList extends Component {
       <div className="container category-list">
         <Nav user={u_data.user} home={true} authenticated={u_data.authenticated} />
         <section className="content">
-          <img className="banner-principal" src={urlBanner}/>
+          <img className="banner-principal" src={urlBanner} />
           <Finding />
           <Tickets />
           <Finding />
           <Tickets />
           <Finding />
         </section>
-        
         <Footer />
         <div className="footer-social">
-          <Link href={url}><a><img src={Logo1} /></a></Link>
-          <Link href={url}><a><img src={Logo2} /></a></Link>
+          <Link href={url}><a target="_blank"><img src={Logo1} /></a></Link>
+          <Link href={url}><a target="_blank"><img src={Logo2} /></a></Link>
         </div>
       </div>
     );

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Privacity.css";
 import Header from "./../Common/Header";
 import Footer from "./../Common/Footer";
+import Link from "next/link";
 class Privacity extends Component {
   render() {
     return (
@@ -360,12 +361,11 @@ class Privacity extends Component {
                 los Titulares de la Información pueden ejercer sus derechos de
                 conocer, actualizar, rectificar y suprimir sus Datos Personales,
                 enviando comunicaciones a (574) 604 64 58 ext 1103 – Medellín o{" "}
-                <a
-                  href="mailto:soporte@kiero.co?Subject=Contacto"
-                  target="_top"
-                >
+                
+                <a href="mailto:soporte@kiero.co?Subject=Contacto" target="_blank">
                   soporte@kiero.co
                 </a>
+
               </p>
               <p>
                 <h3 className="pregunta">

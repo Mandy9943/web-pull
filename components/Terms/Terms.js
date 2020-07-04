@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Terms.css";
 import Header from "./../Common/Header";
 import Footer from "./../Common/Footer";
+import Link from "next/link";
 
 class Terms extends Component {
   render() {
@@ -246,9 +247,11 @@ class Terms extends Component {
             </p>
             <h3 className="terms-title">Anexos</h3>
             <p className="terms-paragraph">
-              <a href="https://kiero.co/market">
+              <Link href="#">
+              <a>
                 Términos y condiciones de uso de marketplace
               </a>
+              </Link>
             </p>
           </div>
         </div>

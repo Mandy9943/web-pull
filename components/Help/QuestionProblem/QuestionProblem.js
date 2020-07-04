@@ -39,11 +39,10 @@ export default class QuestionProblem extends Component {
                         <p>¿Cómo solucionar un inconveniente para hacer preguntas en una publicación?</p>
                         <p>Es posible que el vendedor te haya bloqueado. Puedes comunicarte con nuestro equipo de atención al cliente a través de nuestro correo</p>
 
-                        <Link href="/mailto:soporte@kiero.co?Subject=Problema%20el%20preguntas%20">
-                            <a target="_blank" className="accent">
-                                <p>soporte@kiero.co</p>
+                        
+                            <a href="mailto:soporte@kiero.co?Subject=Problema%20el%20preguntas%20" target="_blank" className="accent">
+                                soporte@kiero.co
                             </a>
-                        </Link>
                     </div>
                     <Link href="/ayuda">
                         <a className="button-b">
