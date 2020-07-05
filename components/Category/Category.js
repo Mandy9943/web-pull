@@ -17,7 +17,8 @@ class  Category extends Component {
       filters: [],
       products:null,
       page: 1,
-      totalPages: 1
+      totalPages: 1,
+      sort: 0
     };
     this.toggleFormat = this.toggleFormat.bind(this);
   }
@@ -36,7 +37,17 @@ class  Category extends Component {
 
 
   applyFilter = (type, value) => {
-    let tmp_filters = this.state.filters; 
+    let tmp_filters = this.state.filters;
+
+    /* REMOVE OTHER PRICES FILTER */
+    for (let index = 0; index < tmp_filters.length; index++) {
+      const element = this.state.filters[index].split("|");
+      if(element[0]=="price"){
+        tmp_filters.splice(index, 1);
+      }
+    }
+    /* END */
+
     const new_val = type+"|"+value;
     if (tmp_filters.indexOf(new_val) == -1) {
       tmp_filters.push(new_val);
@@ -100,6 +111,7 @@ class  Category extends Component {
         products: r,
         totalPages: Math.ceil(r.products.length/this.props.data.params.items_per_page)
       });
+      this.sortProducts(this.state.sort)
       let mr = {
         "brands": r.brands,
         "rows": (r.products ? r.products.length : 0),
@@ -112,8 +124,39 @@ class  Category extends Component {
 
   }
 
+  sortProducts = (sortType) => {
+    let items = this.state.products;
+
+    if (items === null){
+      return;
+    }
+    let func = undefined;
+    switch (sortType) {
+      case "0":
+        func = function(a, b) {
+          if (a.product_id > b.product_id) {return 1;}
+          if (a.product_id < b.product_id) {return -1;}
+          return 0;
+        };
+        break;
+      case "1":
+        func = function(a, b) {return parseInt(b.price.replace("$ ","").split(".").join("").split(",")[0]) - parseInt(a.price.replace("$ ","").split(".").join("").split(",")[0]);};
+        break;
+      case "2":
+        func = function(a, b) {return parseInt(a.price.replace("$ ","").split(".").join("").split(",")[0]) - parseInt(b.price.replace("$ ","").split(".").join("").split(",")[0]);};
+        break;
+    }
+    let itmtoSort = items.products;
+    itmtoSort.sort(func);
+    items.products = itmtoSort;
+    this.setState({products: items});
+
+  }
+
+
+
   render() {
-    
+
     return (
       <div className="search">
           <Nav user={this.props.user_data.user} actualSearch={this.props.data.search} authenticated={this.props.user_data.authenticated} />
@@ -126,7 +169,8 @@ class  Category extends Component {
               search={this.props.data.search} 
               data={this.state.data} 
               toggle={this.toggleFormat} 
-              format={this.state.format} 
+              format={this.state.format}
+              sortProducts={this.sortProducts}
           />
 
           <ListCategory  

@@ -38,6 +38,38 @@ class Filter extends Component {
     this.setState({ categorySize: this.state.categorySize+10});
   }
 
+  setSort(event){
+    console.log(event.target.value);
+    this.props.sortProducts(event.target.value);
+  }
+
+  handlePrice = (e) => {
+
+    e.preventDefault();
+
+    const from_price = parseInt(e.target.elements.from_price.value);
+    const to_price = parseInt(e.target.elements.to_price.value);
+
+
+    console.log(from_price + ":" + to_price);
+
+    if(!Number.isInteger((from_price)) && Number.isInteger((to_price))){
+      console.log("First")
+      this.props.applyFilter("price", "Desde " + 0 + " Hasta " + to_price.toLocaleString());
+    }
+
+    if(Number.isInteger((from_price)) && !Number.isInteger((to_price))){
+      console.log("Second")
+      this.props.applyFilter("price", "Más de " + from_price.toLocaleString());
+    }
+
+    if(Number.isInteger((from_price)) && Number.isInteger((to_price))){
+      console.log("Third")
+      this.props.applyFilter("price", "Desde " + from_price.toLocaleString() + " Hasta " + to_price.toLocaleString());
+    }
+
+  }
+
 
 
   render() {
@@ -145,7 +177,7 @@ class Filter extends Component {
           <div className="filter-group">
             <h3>Ordenar resultados</h3>
             <div className="wrap-filter-button">
-              <select className="select-filter">
+              <select onChange={(e) => this.setSort(e)} className="select-filter">
                 <option value="0">Más relevantes</option>
                 <option value="1">Mayor precio</option>
                 <option value="2">Menor precio</option>
@@ -197,13 +229,18 @@ class Filter extends Component {
 
               ))}
             </div>
-            <div className="wrap-filter-price">
-              <input placeholder="Minimo" type="number" size="mini" />
-              <p>-</p>
-              <input placeholder="Maximo" type-="number" size="mini" />
-              <FontAwesomeIcon icon={faChevronCircleRight} />
-              <button>Filtrar</button>
-            </div>
+            <form onSubmit={this.handlePrice}>
+              <div className="wrap-filter-price">
+
+                  <input placeholder="Minimo" name={"from_price"} type="number" size="mini" />
+                  <p>-</p>
+                  <input placeholder="Maximo" name={"to_price"} type-="number" size="mini" />
+                  <FontAwesomeIcon icon={faChevronCircleRight} />
+                  <button type="submit">Filtrar</button>
+
+
+              </div>
+            </form>
           </div>
             <div className="send-free">
               <h4>Envio</h4>
