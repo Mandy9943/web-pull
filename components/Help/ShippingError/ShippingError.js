@@ -31,9 +31,9 @@ export default function ShippingError() {
                 <div className="shipping-error-content">
                     <div className="shipping-error-box">
                         <div  className="shipping-error-box-text">
-                            <p>Si el producto que compraste aparece como "producto entregado" pero aún no lo recibes <Link href="#"><a>comunicate con el vendedor</a></Link>.</p>
-                            <p>Tambien puedes validar el <Link href="#"><a>estado del envío</a></Link>.</p>
-                            <p>Te sugerimos validar la dirección indicada en la compra, en caso de encontras un error <Link href="#"><a>comunicate con el vendedor</a></Link>.</p>
+                        <p>Si el producto que compraste aparece como "producto entregado" pero aún no lo recibes {/*NEED ACTION*/}<a>comunicate con el vendedor</a>.</p>
+                        <p>Tambien puedes validar el <a>estado del envío</a> {/*NEED ACTION*/} .</p>
+                        <p>Te sugerimos validar la dirección indicada en la compra, en caso de encontras un error{/*NEED ACTION*/}<a>comunicate con el vendedor</a>.</p>
                         </div>
                         <div className="shipping-error-box-btns">
                             <Button text={"Comunicate con el vendedor"} />

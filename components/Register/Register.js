@@ -39,8 +39,8 @@ export default class Register extends Component {
                         <input className="input" type="email" name="email" placeholder="Correo lectrónico" />
                         <input className="input" type="password" name="password" placeholder="Contraseña" />
                     <p className="terms">Creando una cuenta, usted ha aceptado los
-                     <Link href="#"><a>Terminos y condiciones</a>
-                     </Link> y las <Link href="#"><a>Políticas de privacidad de Kiero.</a></Link></p>
+                     <Link href="/terminos"><a>Terminos y condiciones</a>
+                     </Link> y las <Link href="/privacidad"><a>Políticas de privacidad de Kiero.</a></Link></p>
                         <Button text={"Crea tu cuenta en Kiero"}/>
                         {error && <Error message={error} />}
                     </form>

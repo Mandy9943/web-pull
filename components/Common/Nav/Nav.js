@@ -116,7 +116,6 @@ export default class Nav extends Component {
             </>
         );
 
-
         return (
             <div className="nav">
                 <div className="nav-content desktop-nav">
@@ -157,7 +156,7 @@ export default class Nav extends Component {
                             <div className="user-menu" onBlur={this.menuBlur} >
                                 <ul>
                                     <Link href="/ayuda"><a className="bell">Ayuda / PQR <FontAwesomeIcon icon={faBell} /></a></Link>
-                                    <Link href="#"><a onClick={() => this.showHideMenu()} className="user-icon"><FontAwesomeIcon icon={faUser} /> {user} <FontAwesomeIcon icon={faAngleDown} /></a></Link>
+                                    <a onClick={() => this.showHideMenu()} className="user-icon"><FontAwesomeIcon icon={faUser} /> {user} <FontAwesomeIcon icon={faAngleDown} /></a>
                                     {/*
                                     <span style={{ color: '#FFFFFF' }}>Hola, <b>{user}</b></span>
                                     <Link href="/cuenta"><a>Ir a mi cuenta</a></Link>
@@ -237,12 +236,8 @@ export default class Nav extends Component {
                         </div>
                         :
                         <div className="nav-botton">
-                            <Link href="">
-                                <a id="abrir" className="abrir-cerrar" onClick={() => this.mostrar()}><FontAwesomeIcon icon={faBars} /></a>
-                            </Link>
-                            <Link href="">
-                                <a id="cerrar" className="abrir-cerrar" href="#" onClick={() => this.ocultar()}><FontAwesomeIcon icon={faBars} /> </a>
-                            </Link>
+                            <a id="abrir" className="abrir-cerrar" onClick={() => this.mostrar()}><FontAwesomeIcon icon={faBars} /></a>
+                            <a id="cerrar" className="abrir-cerrar" onClick={() => this.ocultar()}><FontAwesomeIcon icon={faBars} /> </a>
                         </div>
                     }
                 </div>

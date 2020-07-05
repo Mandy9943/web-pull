@@ -48,7 +48,8 @@ class Detail extends Component {
           </div>
         </div>
         <div className="gallery-responsive">
-          <Link href="#"><a className="back-button"><FontAwesomeIcon icon={faAngleLeft} /> Ir al listado</a></Link>
+          <a className="back-button"><FontAwesomeIcon icon={faAngleLeft} /> Ir al listado</a>
+          {/*NEED ACTION*/}
           <SliderDetail img={this.props.images} />
         </div>
       </>

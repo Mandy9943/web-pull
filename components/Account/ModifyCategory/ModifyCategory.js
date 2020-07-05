@@ -49,13 +49,12 @@ export default class ModifyCategory extends Component {
                     <div className="modify-category-btn">
                         <Button text={"Confirmar"} />
                         <div className="modify-category-cancel-btn">
-                            <Link href="#">
+                            {/*NEED ACTION*/}
                                 <a>
                                     <p>
                                         Cancelar
                                     </p>
                                 </a>
-                            </Link>
                         </div>
                     </div>
                 </div>

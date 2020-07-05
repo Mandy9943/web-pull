@@ -68,8 +68,8 @@ class MenuCategories extends Component {
 
               {this.props.categories[this.state.selectecCategory].childs.length > 20 ? 
                 <span onClick={this.showAll} className="load-more">
-                  <Link href="#"><a className="accent">{!this.state.moreAll ? "Ver mas" : 'Ver menos'}</a>
-                  </Link>
+                  <a className="accent">{!this.state.moreAll ? "Ver mas" : 'Ver menos'}</a>
+                  {/*NEED ACTION*/}
                 </span> 
                 : 
                 null

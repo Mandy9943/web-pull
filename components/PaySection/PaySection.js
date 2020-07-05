@@ -42,7 +42,7 @@ class PaySection extends Component {
         <div className="pay-item pay-img no-movil">
           <img src={iconCredit} className="icon-credit" />
           <img src={PayCredit} className="pay-section-img" />
-          <Link href="#">
+          <Link href="/ayuda">
             <a>
               <p>Más informacion</p>
             </a>
@@ -51,7 +51,7 @@ class PaySection extends Component {
         <div className="pay-item info-pay-product-detail">
           <h3><span className="no-movil">Kiero</span> envíos <span className='no-web'>gratis</span> <FontAwesomeIcon icon={faTruck} /> <FontAwesomeIcon className="no-web icon-right" icon={faAngleRight} /></h3>
           <p>Nuestros productos son importados</p>
-          <Link href="#">
+          <Link href="/ayuda">
             <a>
               <p>Conoce más</p>
             </a>

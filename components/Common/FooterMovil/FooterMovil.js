@@ -12,7 +12,8 @@ export default class FooterMovil extends Component {
                     <img src={LogoKiero} /><span> ¡Compra y vende con la app!</span>
                 </section>
                 <section className="menu-items">
-                    <Link href="#"><a>Mi cuenta</a></Link>
+                    {/*NEED ACTION*/}
+                    <Link href="/cuenta"><a>Mi cuenta</a></Link>
                     <Link href="#"><a>Mis compras</a></Link>
                     <Link href="#"><a>Histotial</a></Link>
                     <Link href="#"><a>ofertas de la semana</a></Link>
@@ -20,13 +21,13 @@ export default class FooterMovil extends Component {
                     <Link href="#"><a>Tiendas oficiales</a></Link>
                     <Link href="#"><a>Categorìas</a></Link>
                     <Link href="#"><a>Mercado puntos</a></Link>
-                    <Link href="#"><a>Ayuda / PQR</a></Link>
+                    <Link href="/ayuda"><a>Ayuda / PQR</a></Link>
                     <Link href="#"><a>vender</a></Link>
                 </section>
                 {/*NEED FIX THIS SHIT*/}
                 <section className="menu-items login-menu">
-                    <Link href="#"><a className="main-button"><p>Iniciar sesion</p></a></Link>
-                    <Link href="#"><a className="main-button"><p>Registrate</p></a></Link>
+                    <Link href="/login"><a className="main-button"><p>Iniciar sesion</p></a></Link>
+                    <Link href="/registro"><a className="main-button"><p>Registrate</p></a></Link>
                    <span>2019 Kiero. Todos los derechos reservados.</span>
                 </section>
             </div>

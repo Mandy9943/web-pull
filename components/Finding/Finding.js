@@ -21,10 +21,10 @@ class Finding extends Component {
         <h3 className="home-section-title">Encuentra los mejores productos de Electrónica <Link href="/categoria/Electrónica"><a className='accent'>Ver todos</a></Link></h3>
         <div className="content-finding">
           <div className="finding">
-            <Link href="#"><a className="no-finding">
+            <a className="no-finding">
               <img src={CategoryImg3} />
-            {/*NEED THIS FIX SHIT*/}
-            </a></Link>
+              {/*NEED ACTION*/}
+            </a>
             <div className="wrap-img">
               <img src={CategoryImg} />
             </div>
@@ -35,10 +35,10 @@ class Finding extends Component {
             </div>
           </div>
           <div className="finding">
-            <Link href="#"><a className="no-finding">
+            <a className="no-finding">
               <img src={CategoryImg4} />
-              {/*NEED THIS FIX SHIT*/}
-            </a></Link>
+            </a>
+            {/*NEED ACTION*/}
             <div className="wrap-img">
               <img src={CategoryImg2} />
             </div>

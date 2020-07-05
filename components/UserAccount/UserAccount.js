@@ -226,7 +226,7 @@ export default class UserAccount extends Component {
                             <div className="user-acount-info-title">
                                 <h3>Cuenta</h3>
                                 <div className="">
-                                    <Link href="#">
+                                    <Link href="/ayuda">
                                         <a>
                                             <p>Ayuda</p>
                                         </a>
@@ -254,7 +254,7 @@ export default class UserAccount extends Component {
                             <div className="user-acount-info-title">
                                 <h3>Datos personales</h3>
                                 <div className="">
-                                    <Link href="#">
+                                    <Link href="/ayuda">
                                         <a>
                                             <p>Ayuda</p>
                                         </a>
@@ -323,7 +323,7 @@ export default class UserAccount extends Component {
                             <div className="user-acount-info-title">
                                 <h3>Domicilios</h3>
                                 <div className="">
-                                    <Link href="#">
+                                    <Link href="/ayuda">
                                         <a>
                                             <p>Ayuda</p>
                                         </a>

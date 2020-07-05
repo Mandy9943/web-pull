@@ -35,11 +35,10 @@ export default function UserChange() {
                         <p><FontAwesomeIcon icon={faCheck} />Debe de tener máximo 30 caracteres</p>
 
                     <section className='actions'>
-                        <Link href="#">
+                            {/*NEED ACTION*/}
                             <a className="button-a">
                                 <p>Modificar</p>
                             </a>
-                        </Link>
                         <Link href="/ayuda">
                             <a className="button-a cancel-btn">
                                 <p>cancelar</p>

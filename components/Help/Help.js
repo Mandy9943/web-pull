@@ -179,30 +179,26 @@ export default class Help extends Component {
                                         <p>Vende en kiero</p>
                                     </a>
                                 </Link>*/}
-                                <Link href="#">
+                                
                                     <a className="help-button" onClick={() => this.accordionBuy()}>
                                         <p className="help-icon" >
                                             <FontAwesomeIcon icon={faShoppingBag} />
                                         </p>
                                         <p>Compras</p>
                                     </a>
-                                </Link>
-                                <Link href="#">
                                     <a className="help-button" onClick={() => this.accordionAccount()}>
                                         <p className="help-icon">
                                             <FontAwesomeIcon icon={faCog} />
                                         </p>
                                         <p>Mi cuenta</p>
                                     </a>
-                                </Link>
-                                <Link href="#">
                                     <a className="help-button" onClick={() => this.accordionSecurity()}>
                                         <p className="help-icon">
                                             <FontAwesomeIcon icon={faLock} />
                                         </p>
                                         <p>Seguridad</p>
                                     </a>
-                                </Link>
+                                
                             </div>
                             : null} </> :
                         <div className="help-left active">
@@ -283,17 +279,15 @@ export default class Help extends Component {
                             </p>
                         </div>
                         <div className={this.state.closeAccount ? "help-accordion" : "help-accordion active"}>
-                            <Link href="#">
                                 <a onClick={() => this.accordionTip2()}>
                                     <p>Crear una cuenta como empresa</p>
                                 </a>
-                            </Link>
+                            
                             <Link href="/recuperar">
                                 <a>
                                     <p>¿Cómo recuperar mis datos?</p>
                                 </a>
                             </Link>
-
                             {/* <p>Eliminar o modificar los datos adicionales del código de seguridad</p>*/}
                             <Link href="/cuenta">
                                 <a>
