@@ -60,18 +60,21 @@ class ProductDetail extends Component {
         <Nav user={u_data.user} home={true} authenticated={u_data.authenticated} />
         <div className="detail-content">
           <div className="breadcrumb">
+
+
             <Link href="/">
               <a>
                 Home
               </a>
             </Link>
-
             <FontAwesomeIcon icon={faAngleRight} />
-            <Link href={"/categoria/" + mdata.category.name}>
+            <Link href="/categoria/[category]" as={"/categoria/" + mdata.category.name}>
               <a>
                 {mdata.category.name}
               </a>
             </Link>
+
+
           </div>
           <div className="wrap-section-1">
             <div className="wrap-product">

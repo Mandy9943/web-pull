@@ -66,7 +66,7 @@ export default class MyProducts extends Component {
             return ( <div key={i} className={clsItem}>
                     <div className="content">
 
-                        <Link href={detail_link}>
+                        <Link href={"/detalle/[product]"} as={detail_link}>
                             <a>
                                 <section className="product">
                                     <div className="product-card-img">
@@ -78,20 +78,19 @@ export default class MyProducts extends Component {
                                         <p>Estado: 
                                             <strong>
                                             {product.status == "1" ? "Activo" : "Inactivo"}
-                                        </strong>
-                                    </p>
-                                    <p>
-                                        Stock: <b>{product.stock}</b>
-                                    </p>
-
+                                            </strong>
+                                        </p>
+                                        <p>
+                                            Stock: <b>{product.stock}</b>
+                                        </p>
+                                    </section>
                                 </section>
-                            </section>
-                        </a>
-                    </Link>
+                            </a>
+                        </Link>
 
                     <section className="actions">
 
-                        <Link href={"publicacion/" + product.product_id}>
+                        <Link href={"publicacion/[product]"} as={"publicacion/" + product.product_id}>
                             <a className="cancel-btn edit">Editar</a>
                         </Link>
 

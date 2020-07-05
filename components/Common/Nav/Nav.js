@@ -189,13 +189,13 @@ export default class Nav extends Component {
                                         </li>
                                     </ul>
                                 </section>
-                                <Link href="/categoria/Bebés"><a>Bebés</a></Link>
-                                <Link href="/categoria/Belleza"><a>Belleza</a></Link>
-                                <Link href="/categoria/Cámaras y accesorios"><a>Cámaras y accesorios</a></Link>
-                                <Link href="/categoria/Electrodomésticos"><a>Electrodomésticos</a></Link>
-                                <Link href="/categoria/Electrónica"><a>Electrónica</a></Link>
-                                <Link href="/categoria/Hogar y muebles"><a>Hogar y muebles</a></Link>
-                                <Link href="/categoria/Juegos y juguetes"><a>Juegos y juguetes</a></Link>
+                                <Link href="/categoria/[category]" as="/categoria/Bebés"><a>Bebés</a></Link>
+                                <Link href="/categoria/[category]" as="/categoria/Belleza"><a>Belleza</a></Link>
+                                <Link href="/categoria/[category]" as="/categoria/Cámaras y accesorios"><a>Cámaras y accesorios</a></Link>
+                                <Link href="/categoria/[category]" as="/categoria/Electrodomésticos"><a>Electrodomésticos</a></Link>
+                                <Link href="/categoria/[category]" as="/categoria/Electrónica"><a>Electrónica</a></Link>
+                                <Link href="/categoria/[category]" as="/categoria/Hogar y muebles"><a>Hogar y muebles</a></Link>
+                                <Link href="/categoria/[category]" as="/categoria/Juegos y juguetes"><a>Juegos y juguetes</a></Link>
                             </ul>
                         </div>
                     </div>
