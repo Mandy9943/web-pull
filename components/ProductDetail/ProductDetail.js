@@ -138,7 +138,7 @@ class ProductDetail extends Component {
           </div>
           <section className="questions-movil no-web">
             <div className="section-pay-wrap-seller">
-              <Seller seller={this.props.seller} />
+              <Seller seller={mdata.user} />
             </div>
             <QuestionItem questions={this.state.questions} />
             <ProductsSlider images={mdata.images} category={mdata.category.name} />
