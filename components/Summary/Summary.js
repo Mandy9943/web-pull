@@ -109,8 +109,8 @@ export default class Summary extends Component {
                 </div>
                 <Footer />
                 <div className="footer-social">
-                    <Link href={url}><a><img src={Logo1} /></a></Link>
-                    <Link href={url}><a><img src={Logo2} /></a></Link>
+                    <Link href={url}><a target="_blank"><img src={Logo1} /></a></Link>
+                    <Link href={url}><a target="_blank"><img src={Logo2} /></a></Link>
                 </div>
             </div>
         )

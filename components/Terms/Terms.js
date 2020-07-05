@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Terms.css";
 import Header from "./../Common/Header";
 import Footer from "./../Common/Footer";
+import Link from "next/link";
 
 class Terms extends Component {
   render() {
@@ -10,9 +11,9 @@ class Terms extends Component {
         <Header />
         <div className="terms-wrap-content">
           <div>
-            <h3 className="terms-title">
+            <h1 className="terms-title">
               Términos y Condiciones de uso del Sitio
-            </h3>
+            </h1>
           </div>
           <div>
             <p className="terms-paragraph">Versión 22 de Mayo de 2013</p>
@@ -246,9 +247,11 @@ class Terms extends Component {
             </p>
             <h3 className="terms-title">Anexos</h3>
             <p className="terms-paragraph">
-              <a href="https://kiero.co/market">
-                Términos y condiciones de uso de marketplace
+              <Link href="/uso_market">
+                <a>
+                  Términos y condiciones de uso de marketplace
               </a>
+              </Link>
             </p>
           </div>
         </div>
