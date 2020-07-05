@@ -110,7 +110,7 @@ class PaySection extends Component {
             </p>
           </div>
         </div>
-        <div className="section-pay-wrap-seller">
+        <div className="section-pay-wrap-seller no-movil">
           <Seller seller={this.props.seller} />
         </div>
       </div>

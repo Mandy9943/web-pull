@@ -21,10 +21,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTruck, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import Logo1 from "../../assets/img/logo-social.png";
 import Logo2 from "../../assets/img/logo-social1.png";
-
-
-
-
+import Seller from "./../SellerInfo";
 
 class ProductDetail extends Component {
 
@@ -140,11 +137,14 @@ class ProductDetail extends Component {
             </div>
           </div>
           <section className="questions-movil no-web">
+            <div className="section-pay-wrap-seller">
+              <Seller seller={this.props.seller} />
+            </div>
             <QuestionItem questions={this.state.questions} />
             <ProductsSlider images={mdata.images} category={mdata.category.name} />
             <ProductsSlider images={mdata.images} category={mdata.category.name} />
             <Explorer />
-            </section>
+          </section>
             
           <section className='no-movil'>
             <Explorer />
