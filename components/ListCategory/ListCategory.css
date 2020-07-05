@@ -123,7 +123,7 @@
         grid-template-columns: repeat(2, 1fr);
     width: auto;
     margin: auto 7px;
-    grid-column-gap: 10px;
+    grid-gap: 10px;
   }
   .list {
     padding: 0px 15px;
@@ -131,7 +131,8 @@
   .temp-list {
     -ms-grid-columns: 1fr 2fr;
         grid-template-columns: 1fr 2fr;
-    grid-gap: 15px;
+    grid-gap: 10px;
+    margin-bottom: 10px;
   }
   .temp-list .product-list-description-box {
     margin-bottom: 15px;
