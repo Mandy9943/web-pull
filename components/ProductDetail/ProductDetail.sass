@@ -25,6 +25,8 @@
     margin-bottom: 50px
 .wrap-product
     border: 0.5px solid #C6C6C6
+    @media (max-width: 700px)
+        border: none !important
     background: white
     flex: 2
 .pay-section-pc
@@ -46,6 +48,7 @@
     .products-slider
         margin: 0
         width: 100%
+        padding: 15px !important
         .slider-movil
             height: auto
             padding-bottom: 40%
@@ -104,14 +107,17 @@
                 h4
                     font-size: 17px
         .questions-movil
-            background: white
-            padding-bottom: 1px
+            background: #F3F3F3
+            padding-bottom: 30px
             margin-bottom: 15px
+            .slider
+                display: none !important
             .QuestionItem-list
                 border: none !important
+                background: white
+                padding: 15px
                 .title 
-                    margin: 0 30px 15px 15px
-                    padding-top: 15px
+                    margin: 15px 0
             .product-card-finding .slider-movil .content-product-card-finding
                 grid-template-columns: 1fr 1fr
                 display: grid

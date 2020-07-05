@@ -94,7 +94,7 @@
 
 @media (max-width: 700px) {
   .home-content .products-slider, .detail-content .products-slider {
-    padding: 0 15px;
+    padding: 15px;
     margin-bottom: 15px;
     width: auto;
   }

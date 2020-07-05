@@ -5,12 +5,18 @@
 .QuestionItem-list .title {
   color: #5A5A5A;
   font-size: 20px;
-  margin: 15px 30px;
+  margin: 15px;
   font-weight: 600;
 }
 
+.QuestionItem-list .empty-question {
+  color: #4E4E4E;
+  font-size: 17px;
+  padding-bottom: 20px;
+}
+
 .QuestionItem-list .question-item {
-  padding: 0 30px;
+  padding: 0 15px;
   font-size: 17px;
   padding-bottom: 20px;
 }
@@ -23,5 +29,28 @@
   color: #5A5A5A;
   margin-left: 15px;
   margin-top: 10px;
+}
+
+.QuestionItem-list h5.accent {
+  color: #CF0A2C;
+  margin-top: 10px;
+}
+
+.QuestionItem-list .footer-question {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  margin-top: 40px;
+}
+
+.QuestionItem-list .footer-question span {
+  color: #BEBEBE;
+  font-size: 12px;
+}
+
+.QuestionItem-list .footer-question a {
+  color: #4E8EFE;
+  font-size: 12px;
 }
 /*# sourceMappingURL=QuestionItem.css.map */
