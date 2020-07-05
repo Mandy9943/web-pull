@@ -10,6 +10,7 @@ import Finding from "./../Finding";
 import Explorer from "./../Common/Explorer";
 import CategoriesImgMenu from "./../CategoriesImgMenu";
 import Tickets from "./../Tickets";
+import LoginMovil from "./../LoginMovil";
 import News from "./../News";
 import Info from "./../Info";
 import Social from "./../SocialBar";
@@ -36,15 +37,7 @@ export default class Home extends Component {
           <ProductsSlider category={"Computación"} />
           <ProductsSlider category={"Belleza y Cuidado Personal"} />
           <SecundarySlider />
-          {!authenticated ?
-            <section className="login-home-movil">
-              <h5>Crea tu cuenta y descrubre los mejores productos</h5>
-              <Link href="/registro"><a className="main-button"><p>Registrarse</p></a></Link>
-              <Link href="/login"><a>Ya tienes cuenta? <span>Iniciar sesión</span></a></Link>
-            </section>
-            :
-            null
-          }
+          <LoginMovil />
           <Finding />
           <ProductsSlider category={"Juegos y Juguetes"} />
           <Explorer />

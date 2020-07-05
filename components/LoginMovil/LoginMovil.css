@@ -1,0 +1,31 @@
+.login-home-movil {
+  display: block;
+  background: white;
+  padding: 15px;
+  margin: 15px;
+  border: 0.5px solid #BEBEBE;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.login-home-movil a {
+  color: #5A5A5A;
+}
+
+.login-home-movil h5 {
+  color: #5A5A5A;
+  font-size: 15px;
+}
+
+.login-home-movil .main-button {
+  border-radius: 5px;
+  color: white !important;
+  width: 180px !important;
+  margin: 15px auto;
+  padding: 7px;
+}
+
+.login-home-movil span {
+  color: #CF0A2C !important;
+}
+/*# sourceMappingURL=LoginMovil.css.map */
