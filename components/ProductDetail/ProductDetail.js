@@ -61,18 +61,20 @@ class ProductDetail extends Component {
         <div className="detail-content">
           <div className="breadcrumb">
 
-
             <Link href="/">
               <a>
-                Home
+                Inicio
               </a>
             </Link>
-            <FontAwesomeIcon icon={faAngleRight} />
-            <Link href="/categoria/[category]" as={"/categoria/" + mdata.category.name}>
-              <a>
-                {mdata.category.name}
-              </a>
-            </Link>
+
+            {mdata.breadcum.map((item, i) => (
+                <><FontAwesomeIcon icon={faAngleRight} />
+                  <Link key={i} href="/categoria/[category]" as={"/categoria/" + item.name}>
+                    <a>
+                      {item.name}
+                    </a>
+                  </Link></>
+            ))}
 
 
           </div>
