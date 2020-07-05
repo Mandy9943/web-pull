@@ -16,6 +16,25 @@ export default class CategoryList extends Component {
 
     let urlBanner = "//kiero.co/images/resources/deportes%20y%20fitness/1.jpg";
 
+    var complete = {
+      "deporte y fitness": [1, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3],
+      "animales y mascotas": [1, 3, 2, 3, 1],
+      "bebes": [1, 2, 3, 2, 3, 2, 1],
+      "belleza y cuidado personal": [1, 2, 3, 2, 3, 2],
+      "camaras y accesorios":  [1, 2, 3, 2],
+      "celulares":[1, 2, 3, 2],
+      "consolas y videojuegos": [1, 2, 3, 2, 3, 2, 2],
+      "electronica audio y video": [1, 2, 3, 2, 3, 2, 3, 2, 1],
+      "herramientas": [1, 2, 3, 2],
+      "hogar": [1, 2, 3, 2, 1],
+      "industrias y oficinas": [1, 2, 3, 2],
+      "instrumentos musicalies": [1, 2, 3, 2],
+      "juegos y juguetes": [1, 2, 3, 2, 3, 2, 3, 2, 3, 3],
+      "relojes y joyas": [1, 3, 2, 3, 2, 3, 1],
+      "ropa zapatos y accesorios": [1, 2, 2],
+      "vehiculos y accesorios": [1, 2, 3, 2, 3, 2]
+    }
+
     return (
       <div className="container category-list">
         <Nav user={u_data.user} home={true} authenticated={u_data.authenticated} />
