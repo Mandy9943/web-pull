@@ -29,6 +29,7 @@
 
 .category-list .content .wrap-finding .finding .no-finding {
   display: block;
+  width: 100%;
 }
 
 .category-list .content .wrap-finding .finding .wrap-img, .category-list .content .wrap-finding .finding .wrap-info {
