@@ -11,12 +11,12 @@
     display: block !important;
   }
   .SliderDetail .mobil .slider {
-    height: 300px;
+    height: auto;
+    padding-botton: 100%;
     display: block !important;
   }
   .SliderDetail .mobil .slider img {
     width: 100% !important;
-    height: 100% !important;
   }
   .SliderDetail .mobil .slider .previousButton, .SliderDetail .mobil .slider .nextButton {
     display: none;
