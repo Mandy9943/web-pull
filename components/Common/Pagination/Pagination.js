@@ -117,6 +117,7 @@ export default class Pagination extends Component {
             const activeHandler = (clickedActive) => {
                 setActive(parseInt(clickedActive));
                 this.props.cb(parseInt(clickedActive))
+                window.scrollTo({top: 0, behavior: 'smooth',});
             };
 
             return (
