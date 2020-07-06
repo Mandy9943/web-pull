@@ -41,7 +41,7 @@ class ListCategory extends Component {
                           <p className="kiero-envios-card-icon">
                             <FontAwesomeIcon icon={faTruck} />
                           </p>
-                          <p>envío gratis</p>
+                          <p>Envío gratis</p>
                         </div>
                         <div className="product-card-description">
                           <p title={product.title}>{product.title.substr(0, 65) + (product.title.length > 65 ? "..." : ".")}</p>
