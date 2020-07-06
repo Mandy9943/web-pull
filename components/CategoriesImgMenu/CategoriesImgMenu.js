@@ -77,7 +77,7 @@ export default class CategoriesImgMenu extends Component {
                             </div>
                         </a>
                     </Link>
-                    <Link href="/categoria/Industrias y Ofocinas">
+                    <Link href="/categoria/Industrias y Oficinas">
                         <a className="categories-img no-movil">
                         <div className="item">
                                 <p className="categories-menu-icon">

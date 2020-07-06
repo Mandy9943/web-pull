@@ -6,6 +6,7 @@ import "./Finding.css";
 
 class Finding extends Component {
 
+
   go(){
     window.location="/categoria/Electrónica, Audio y Video";
   }
@@ -13,39 +14,43 @@ class Finding extends Component {
     window.location="/categoria/Deportes y Fitness";
   }
 
+
   render() {
-    let CategoryImg3 = "//kiero.co/images/resources/deportes%20y%20fitness/2.jpg";
-    let CategoryImg4 = "//kiero.co/images/resources/deportes%20y%20fitness/3.jpg";
     return (
       <div className="wrap-finding">
-        <h3 className="home-section-title">Encuentra los mejores productos de Electrónica <Link href="/categoria/Electrónica"><a className='accent'>Ver todos</a></Link></h3>
+        <h3 className="home-section-title">Encuentra los mejores productos de Electrónica <Link href={"/categoria/[category]"} as="/categoria/Electrónica"><a className='accent'>Ver todos</a></Link></h3>
         <div className="content-finding">
           <div className="finding">
-            <a className="no-finding">
-              <img src={CategoryImg3} />
-              {/*NEED ACTION*/}
-            </a>
+
+            <Link href={"/categoria/[category]"} as={"/categoria/"+this.props.link_left}>
+              <a className="no-finding">
+                <img src={this.props.img_left} />
+              </a>
+            </Link>
+
             <div className="wrap-img">
               <img src={CategoryImg} />
             </div>
             <div className="wrap-info">
               <p className="category-text">Electrónica</p>
               <h3 className="finding-title"> Audio y Video</h3>
-              <button onClick={this.go}>ver mas</button>
+              <button onClick={this.go}>Ver mas</button>
             </div>
           </div>
           <div className="finding">
-            <a className="no-finding">
-              <img src={CategoryImg4} />
-            </a>
-            {/*NEED ACTION*/}
+            <Link href={"/categoria/[category]"} as={"/categoria/"+this.props.link_right}>
+              <a className="no-finding">
+                <img src={this.props.img_right} />
+              </a>
+            </Link>
+
             <div className="wrap-img">
               <img src={CategoryImg2} />
             </div>
             <div className="wrap-info">
               <p className="category-text">Deportes</p>
               <h3 className="finding-title">Bicicletas, Ciclismo y  más</h3>
-              <button onClick={this.go2}>ver mas</button>
+              <button onClick={this.go2}>Ver mas</button>
             </div>
           </div>
         </div>
