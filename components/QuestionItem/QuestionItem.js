@@ -21,6 +21,7 @@ class QuestionItem extends Component {
         <a><h5 className="no-web accent">Hacer una pregunta al vendedor</h5></a>
         <fotoer className="footer-question no-web">
           <span>Publicacion #324234</span> <Link href="/ayuda"><a>Necesitas ayuda?</a></Link>
+          {/*NEED FIX THIS SHIT*/}
         </fotoer>
       </div>
     );
