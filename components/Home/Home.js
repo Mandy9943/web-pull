@@ -21,6 +21,7 @@ import Logo2 from "../../assets/img/logo-social1.png";
 import SecundarySlider from "./../SecundarySlider";
 
 
+
 export default class Home extends Component {
   render() {
     let u_data = this.props.user_data

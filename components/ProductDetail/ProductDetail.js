@@ -57,7 +57,6 @@ class ProductDetail extends Component {
         <Nav user={u_data.user} home={true} authenticated={u_data.authenticated} />
         <div className="detail-content">
           <div className="breadcrumb">
-
             <Link href="/">
               <a>
                 Inicio
@@ -72,8 +71,6 @@ class ProductDetail extends Component {
                     </a>
                   </Link></>
             ))}
-
-
           </div>
           <div className="wrap-section-1">
             <div className="wrap-product">

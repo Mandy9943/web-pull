@@ -6,6 +6,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "./ListCategory.css";
 import { getImgUrl } from "../../lib/config"
+import Spinner from "../Common/Spinner";
 
 
 class ListCategory extends Component {
@@ -18,69 +19,69 @@ class ListCategory extends Component {
 
   render() {
     const Class = this.props.format == "grid" ? "grid" : "list";
-      const page_first=(this.props.page-1)*this.props.item_per_page;
-      const page_last=((this.props.page-1)*this.props.item_per_page)+this.props.item_per_page;
+    const page_first = (this.props.page - 1) * this.props.item_per_page;
+    const page_last = ((this.props.page - 1) * this.props.item_per_page) + this.props.item_per_page;
 
     return (
-        <div className="wrap-list-category">
-          <div className={Class}>
-            {this.props.products && this.props.products.products && this.props.products.products.length > 0 ? (
-                this.props.format == "grid" ? (
-                    this.props.products.products.slice(page_first, page_last).map((product, i) => (
-                      
-                        <Link href={"/detalle/"+product.product_id+"_"+product.title.split(" ").join("-")} key={i}>
-                          <a>
-                            <div className="temp-card">
-                              <div className="product-card-img">
-                                <img src={getImgUrl(product.image)} className="img" />
-                              </div>
-                              <div className="product-card-description-box">
-                                <h3>{product.user} </h3>
-                                <div className="kiero-envios-card">
-                                  <p className="kiero-envios-card-icon">
-                                    <FontAwesomeIcon icon={faTruck} />
-                                  </p>
-                                  <p>envío gratis</p>
-                                </div>
-                                <div className="product-card-description">
-                                  <p title={product.title}>{product.title.substr(0,65)+(product.title.length>65?"...":".")}</p>
-                                  <p>Nuevo</p>
-                                  <p>{product.price}</p>
-                                </div>
-                              </div>
-                            </div>
-                          </a>
-                        </Link>
-                    ))
-                ) : (
-                    this.props.products.products.slice(page_first, page_last).map((product, i) => (
-                        <Link href={"/detalle/"+product.product_id+"_"+product.title.split(" ").join("-")} key={i}>
-                          <a>
-                            <div className="temp-list">
-                              <div className="product-list-img">
-                                <img src={getImgUrl(product.image)} className="img" />
-                              </div>
-                              <div className="product-list-description-box">
-                                <h3 className="product-list-title">{product.title.substr(0,65)+(product.title.length>65?"...":".")}</h3>
-                                <h3 className="product-list-title">{product.user} </h3>
-                                <h3>{product.price} </h3>
-                                <div className="kiero-envios-card">
-                                  <p className="kiero-envios-card-icon">
-                                    <FontAwesomeIcon icon={faTruck} />
-                                  </p>
-                                  <p>Envío gratis</p>
-                                </div>
-                              </div>
-                            </div>
-                          </a>
-                        </Link>
-                    ))
-                )
+      <div className="wrap-list-category">
+        <div className={Class}>
+          {this.props.products && this.props.products.products && this.props.products.products.length > 0 ? (
+            this.props.format == "grid" ? (
+              this.props.products.products.slice(page_first, page_last).map((product, i) => (
+
+                <Link href={"/detalle/" + product.product_id + "_" + product.title.split(" ").join("-")} key={i}>
+                  <a>
+                    <div className="temp-card">
+                      <div className="product-card-img">
+                        <img src={getImgUrl(product.image)} className="img" />
+                      </div>
+                      <div className="product-card-description-box">
+                        <h3>{product.user} </h3>
+                        <div className="kiero-envios-card">
+                          <p className="kiero-envios-card-icon">
+                            <FontAwesomeIcon icon={faTruck} />
+                          </p>
+                          <p>envío gratis</p>
+                        </div>
+                        <div className="product-card-description">
+                          <p title={product.title}>{product.title.substr(0, 65) + (product.title.length > 65 ? "..." : ".")}</p>
+                          <p>Nuevo</p>
+                          <p>{product.price}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </Link>
+              ))
             ) : (
-                <div>{this.props.products ? "Lo sentimos, no logramos encontrar lo que buscas.":"Cargando resultados..."}</div>
+                this.props.products.products.slice(page_first, page_last).map((product, i) => (
+                  <Link href={"/detalle/" + product.product_id + "_" + product.title.split(" ").join("-")} key={i}>
+                    <a>
+                      <div className="temp-list">
+                        <div className="product-list-img">
+                            <img src={getImgUrl(product.image)} className="img" />
+                        </div>
+                        <div className="product-list-description-box">
+                          <h3 className="product-list-title">{product.title.substr(0, 65) + (product.title.length > 65 ? "..." : ".")}</h3>
+                          <h3 className="product-list-title">{product.user} </h3>
+                          <h3>{product.price} </h3>
+                          <div className="kiero-envios-card">
+                            <p className="kiero-envios-card-icon">
+                              <FontAwesomeIcon icon={faTruck} />
+                            </p>
+                            <p>Envío gratis</p>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </Link>
+                ))
+              )
+          ) : (
+              <div className="fetching-empty">{this.props.products ? "Lo sentimos, no logramos encontrar lo que buscas." : <Spinner />}</div>
             )}
-          </div>
         </div>
+      </div>
     );
   }
 }

@@ -5,6 +5,8 @@ import { getImgUrl } from "../../lib/config"
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
+import Spinner from "./../Common/Spinner";
+
 
 
 
@@ -40,7 +42,7 @@ class Detail extends Component {
                 ) : null
               )
             ) : (
-              <div>cargando...</div>
+              <Spinner />
             )}
           </div>
           <div className="main-image">

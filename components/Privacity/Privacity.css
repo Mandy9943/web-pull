@@ -3,7 +3,7 @@
   color: #5A5A5A;
 }
 
-p, li, h3 {
+.privacity-wrap-content p, .privacity-wrap-content li, .privacity-wrap-content h3 {
   text-align: justify;
   margin-bottom: 20px;
 }
