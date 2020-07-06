@@ -33,11 +33,13 @@ export default class ProductsSlider extends Component {
 
     render() {
 
-
         let productList = [];
-        let productLista = [];
+        let productListMobile = [];
         let tmpList = [];
-        for (let i = 0; i < this.state.data.length; i++) {
+        let kid = 0;
+        let skid = 0;
+        for (let i=0; i < this.state.data.length; i++) {
+            ;
             let url = "";
             if (this.state.data[i].image) {
                 url = getImgUrl(this.state.data[i].image);
@@ -45,18 +47,22 @@ export default class ProductsSlider extends Component {
                 url = "https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png";
             }
             tmpList.push(<><ProductCard
-                key={tmpList.length+1}
+                key={skid++}
                 price={this.state.data[i].price}
                 url={url}
                 product_id={this.state.data[i].product_id}
                 title={this.state.data[i].title} /></>)
-            if(i%5===0 && i>0){
-                productList.push(<section key={i} className="test">{tmpList}</section>);
+
+            if((i+1)%5===0 && i>0){
+                productList.push(<section key={kid++} className="test">{tmpList}</section>);
                 tmpList = []
             }
+
         }
+
         if(tmpList.length>0){
-            productList.push(<section key={productList.length+1} className="test">{tmpList}</section>)
+            console.log(tmpList);
+            productList.push(<section key={kid++} className="test">{tmpList}</section>)
         }
 
 
@@ -68,14 +74,14 @@ export default class ProductsSlider extends Component {
             } else {
                 url = "https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png";
             }
-            productLista.push(<ProductCard
-                key={tmpList.length + 1}
+            productListMobile.push(<ProductCard
+                key={skid++}
                 price={this.state.data[i].price}
                 url={url}
                 product_id={this.state.data[i].product_id}
                 title={this.state.data[i].title} />)
         }
-        console.log(productList);
+
 
         return (
 
@@ -86,7 +92,7 @@ export default class ProductsSlider extends Component {
                 }
                 <div className="slider-movil">
                     <section className="content-products-slider">
-                        {productLista}
+                        {productListMobile}
                     </section>
                 </div>
                 <Slider autoplay={13000}>

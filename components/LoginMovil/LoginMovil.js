@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./loginMovil.css";
+import "./LoginMovil.css";
 import Header from "./../Common/Header";
 import Footer from "./../Common/Footer";
 import Link from "next/link";
