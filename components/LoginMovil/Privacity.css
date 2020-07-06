@@ -1,0 +1,16 @@
+.privacity-wrap-content {
+  margin: 100px 20%;
+  color: #5A5A5A;
+}
+
+p, li, h3 {
+  text-align: justify;
+  margin-bottom: 20px;
+}
+
+.privacy_title {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+/*# sourceMappingURL=Privacity.css.map */
