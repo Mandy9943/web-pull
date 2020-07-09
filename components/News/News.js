@@ -21,7 +21,7 @@ class News extends Component {
     let fb = "//www.facebook.com/KieroGroup/";
     let ig = "//www.instagram.com/kierogroup";
     let tw = "//twitter.com/KIEROGROUP1";
-    let lk = "//https://www.linkedin.com/in/kiero-group-15a6a7190/";
+    let lk = "//www.linkedin.com/in/kiero-group-15a6a7190/";
     let pt = "//co.pinterest.com/novedadeskiero/pins";
     let yt = "//www.youtube.com/user/KieroGroup";
     let ws = "//api.whatsapp.com/send?phone=5715800817&data=Abtjl_JlVp4Y7IoFRWKf-hlWAs-VGJ3oAFmXn4IGwwa3ocqSHrFkuqFrQCSStHVIt7TzEC6yGVjy6TA3FT5FYdPlrLxnmJ5kcvdfZ3tIaO0LElI4BnU3BkZT5O1suCVDqlk&source=FB_Ads&fbclid=IwAR1yaqUnrxYjWvfQ7Ggvz6jWEhP2R0ApqB2GIJcMq7Y52REAaoJCSkBjx00";

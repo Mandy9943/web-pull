@@ -106,6 +106,7 @@ export default class Sidebar extends Component {
 
         console.log(this.props)
         console.log(this.state)
+        console.error(this.props.user_data.type)
 
         return (
             <div id="sidebar" className="user-account-menu">
@@ -125,7 +126,7 @@ export default class Sidebar extends Component {
                     <p onClick={(e)=>this.props.cb("resume", e)} className="user-account-menu-text">Resumen</p>
                 </div>
 
-                { this.props.user_data.type === 2 &&
+                {this.props.user_data.type === "2" &&
                 <div className={this.state.closeBill ? "user-account-menu-item" : "user-account-menu-item active"} onClick={() => this.accordionBill()}>
                     <p className="user-account-menu-icon">
                     <FontAwesomeIcon icon={faMoneyBillWave} />
