@@ -51,6 +51,7 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 18px;
 }
 
 h1, h2, h3, h4, h5 {
