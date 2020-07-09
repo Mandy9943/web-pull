@@ -58,6 +58,8 @@
                     grid-gap: 15px
                     padding: 20px
                     border-bottom: 0.5px solid #EBEBEB
+                    .inline
+                        display: inline-block
                     p
                         color: #5A5A5A
                         font-size: 14px
@@ -69,6 +71,22 @@
                     .user-accunt-info-box-icon
                         text-align: right
                     .user-accunt-document, .user-accunt-phone
+                        .modal-dni
+                            .wrap-select::before, .wrap-select::after 
+                                top: 15px
+                            .wrap-select::before
+                                right: 10px
+                            .wrap-select::after
+                                right: 15px 
+                            .wrap-select
+                                width: 200px
+                                margin-bottom: 15px
+                                select
+                                    border: 1px solid
+                                    padding: 8px
+                                    border-radius: 5px
+                            input
+                                width: 184px
                         .modal
                             padding: 20px 50px
                             border-radius: 15px 
@@ -96,7 +114,8 @@
                                             color: #fff
                                 .cancel-btn
                                     align-self: center
-                                    width: 100% !important    
+                                    width: 100% !important
+                                    padding: 9px 0;    
                                     p
                                         text-align: center
                                         color: #CF0A2C
