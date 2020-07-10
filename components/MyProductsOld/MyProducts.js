@@ -7,9 +7,8 @@ import { getData } from "../../services/userApi";
 import { updateProduct } from "../../services/productsApi"
 import { getImgUrl } from "../../lib/config"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faThList, faEllipsisV } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faThList } from "@fortawesome/free-solid-svg-icons";
 import Pagination from "../Common/Pagination/Pagination";
-import Spinner from "../Common/Spinner";
 
 
 
@@ -21,13 +20,8 @@ export default class MyProducts extends Component {
             data: [],
             products: [],
             page: 1,
-            totalPages: 1,
-            closeAccount: true,
+            totalPages: 2,
         }
-    }
-
-    getYear() {
-        return new Date().getFullYear();
     }
 
     componentDidMount() {
@@ -61,12 +55,7 @@ export default class MyProducts extends Component {
 
     }
 
-    accordionAccount = () => {
-        this.setState({
-            closeAccount: !this.state.closeAccount,
-        });
-    }
-        
+
     render() {
 
         let productList = this.state.products.map((product, i) => {
@@ -81,61 +70,62 @@ export default class MyProducts extends Component {
 
             const detail_link = "/detalle/" + product.product_id + "_" + product.title.split(" ").join("-");
 
-            
+            return (<div key={i} className={clsItem}>
+                <div className="content">
 
-            return (
-                <div key={i} className="option-list">
-                    <h5>Producto</h5> <h5>Categoria</h5> <h5>Fecha</h5> <h5>Id product</h5>
-                    <div className="option product">
-                        <div className="product-card-img">
-                            <img src={image_url} /> </div>
-                        <h3>{product.title}</h3>
-                    </div>
-                    <div className="option category">
-                        categoria del producto
-                </div>
-                    <div className="option date">
-                        {this.getYear()}
-                    </div>
-                    <div className="option id">{product.product_id} 
-                        <a className="icon-action" onClick={() => this.accordionAccount()}>
-                            <FontAwesomeIcon icon={faEllipsisV} />
+                    <Link href={"/detalle/[product]"} as={detail_link}>
+                        <a>
+                            <section className="product">
+                                <div className="product-card-img">
+                                    <img src={image_url} />
+                                </div>
+                                <section className='description'>
+                                    <h3>{product.title}</h3>
+                                    <h3>{product.price}</h3>
+                                    <p>Estado:
+                                            <strong>
+                                            {product.status == "1" ? "Activo" : "Inactivo"}
+                                        </strong>
+                                    </p>
+                                    <p>
+                                        Stock: <b>{product.stock}</b>
+                                    </p>
+                                </section>
+                            </section>
                         </a>
-                        <section className={this.state.closeAccount ? "actions" : "actions active"}>
-                            <Link href={"publicacion/[product]"} as={"publicacion/" + product.product_id}>
-                                <a>Modificar</a>
-                            </Link>
-                            <Link href={"/detalle/[product]"} as={detail_link}>
-                                <a>Ver publicación</a>
-                            </Link>
-                            <a
-                                style={{ cursor: 'pointer' }}
-                                onClick={(e) => this.changePState(product.product_id,
-                                    (product.status == "1" ? 0 : 1)
-                                    , e)}>
-                                {product.status == "1" ? "Pausar" : "Activar"}
-                            </a>
-                            <Link href={"/detalle/[product]"} as={detail_link}>
-                                <a>Ayuda</a>
-                            </Link>
-                        </section>
-                    </div>
+                    </Link>
+
+                    <section className="actions">
+                        <Link href={"publicacion/[product]"} as={"publicacion/" + product.product_id}>
+                            <a className="cancel-btn edit">Editar</a>
+                        </Link>
+                        <a
+                            style={{ cursor: 'pointer' }}
+                            onClick={(e) => this.changePState(product.product_id,
+                                (product.status == "1" ? 0 : 1)
+                                , e)}
+                            className={statusI}>
+                            {product.status == "1" ? "Desactivar" : "Activar"}
+                        </a>
+                    </section>
                 </div>
-                )
-            });
+            </div>)
+        });
 
         return (
             <div className="purchase-list">
-                <h1 className="status-title" style={{ margin: '0 0 15px 0' }}>Publicaciones</h1>
-                <h5 className="accent">Gestion</h5>
-                {productList.length == 0 ?
+                <h1 className="status-title" style={{ margin: '0 0 15px 0' }}>Mis Productos</h1>
+                {productList.length === 0 ?
                     <section className="empty-text">
-                        {productList.length == 0 ? <span>No tienes Publicaciones</span> :  <Spinner /> }
+                        <span>No tienes productos</span>
                     </section>
                     :
                     <>
                         <div className="account-store-sales-wrap-search">
                             <div className="account-store-sales-wrap-filter">
+                                <p>
+                                    <FontAwesomeIcon icon={faThList} /> Filtrar y ordenar
+                                </p>
                                 <div className="account-store-sales-wrap-input-search">
                                     <span>
                                         <FontAwesomeIcon icon={faSearch} />
@@ -143,11 +133,10 @@ export default class MyProducts extends Component {
                                     <input className="account-store-sales-input-search" placeholder='buscar por # o titulo' />
                                 </div>
                             </div>
-                        </div>
-                        <section className="list-publications">
-                            {productList}
-                        </section>
-                        <Pagination actual={this.state.page} totalPages={this.state.totalPages} cb={this.changePage} />
+                            <span className="sub-title"> {productList.length} Mis productos</span>
+                        </div> 
+                    {productList}
+                    <Pagination actual={this.state.page} totalPages={this.state.totalPages} cb={this.changePage} />
                     </>
                 }
             </div>

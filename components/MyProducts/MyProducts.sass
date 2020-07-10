@@ -1,81 +1,95 @@
-.product-item-edit
-    padding: 20px
-    width: auto
-    background-color: #FFFFFF
-    box-shadow: 0px 3px 3px #00000029
-    border-radius: 6px
-    height: fit-content;
-    margin: 20px 
-    &.off
-        background: transparent !important
-        box-shadow: 0px 3px 3px #00000087
-    .content
-        display: grid
-        grid-template-columns: 80% 1fr
-        grid-gap: 15px
-    .actions
-        display: grid    
-        .edit
-            margin: 0
-        .delete
-            margin: 0
-        .main-button
-            color: white !important
+.list-publications
+    margin: 15px 0
+
+.option-list
+    display: grid
+    grid-template-columns: 4fr 2fr 1fr 2fr
+    box-shadow: 0px 3px 6px #00000029
+    background: white
+    border: 0.5px solid #00000029
+    border-bottom: 0
+    color : #5A5A5A
+    font-size: 13px
+    color : #5A5A5A
+    font-weight: normal;
+    h5
+        display: none
+        text-align: center
+        padding: 7.5px 0
+        border: 0.5px solid #00000029
+        border-top: 0
+        &:nth-child(1)
+            border-left: 0
+        &:nth-child(2)
+            border-left: 0
+        &:nth-child(3)
+            border-right: 0
+            border-left: 0
+        &:nth-child(4)
+            border-right: 0
+    .option
+        border: 0.5px solid #00000029
+        border-top: 0
+        border-left: 0
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &:nth-last-child(-n+4)
+            border-bottom: 0 !important
+    .id
+        border-right: 0
+        position: relative
+        .icon-action
+            position: absolute
+            top: auto
+            right: 15px
+            color: #CF0A2C
+        .actions
+            background: white
+            border: 0.5px solid #00000029
             border-radius: 5px
-        a
-            color:  #CF0A2C
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%
-            height: 20px
-    .product
+            position: absolute
+            right: -35px
+            top: 60%
+            width: 163px;
+            display: grid;
+            text-align: left;
+            z-index: 10
+            display: none
+            a
+                border-bottom: 0.5px solid #00000029
+                padding: 10px 0
+                color: #5A5A5A
+                padding-left: 15px
+                &:last-child
+                    border: none
+        .active
+            display: grid
+.option-list:firt-child
+    border-radius: 5px 5px 0 0
+    h5
         display: grid
-        grid-template-columns: auto 1fr
-        .product-card-img
+.option-list:nth-child(0n+1)
+    border-radius: 5px 5px 0 0
+    h5
+        display: grid
+.option-list:nth-last-child(-n+1)
+    border-bottom: 0.5px solid #00000029 
+    border-radius: 0 0 5px 5px
+.option-list:last-child
+    border-bottom: 0.5px solid #00000029 
+    border-radius: 0 0 5px 5px
+
+.product
+    padding: 5px 15px
+    .product-card-img
+        margin-right: 15px;
         img
-            max-width: 150px
-            height: auto
-            max-height: 84px
-        .description
-            align-self: end;
-            h3
-                padding: 0 0 0 15px
-                font-weight: bold
-                font-size: 15px
-                color:  #5A5A5A
-            p
-                padding: 0 15px
-                strong
-                    color:  #CF0A2C
-                    text-transform: capitalize;
-                    margin-left: 5px;
-    .info
-        text-align: right;
-
-    
-@media (max-width:700px)
-    .product-item-edit 
-        width: auto
-        padding: 15px
-        .content
-            padding: 0
-            grid-template-columns: auto;
-            .description
-                h3
-                    white-space: initial !important;
-            .actions
-                a
-                    width: 80% !important
-                    margin:  7.5px auto!important
-                   
+            width: 52px;
+            height: 45px
+        
 
 
-@media (max-width:375px)
-    .product-item-edit 
-        width: 80%;
-        padding: 15px;
-        margin: 15px auto;
-        .content
-            padding: 0 
-                
+@media (max-width: 700px)
+    .option-list
+        padding: 0

@@ -80,7 +80,8 @@ export default class Summary extends Component {
                 bill: section === "bill",
                 orders: section === "orders",
                 questions: section === "questions",
-                items: section === "items"
+                items: section === "items",
+                purchases: section === "purchases"
             }
         })
     }
@@ -99,13 +100,15 @@ export default class Summary extends Component {
                     <Sidebar user_data={u_data} cb={this.showSection} />
                     {this.state.display.resume && <AccountSummary user={u_data} />}
                     {this.state.display.orders && <Purchases mode={"buy"} user={u_data} />}
+                    {this.state.display.bill && <AccountBilling user={u_data} />}
+                    
 
                     {this.state.display.myData && <UserAccount user={u_data} />}
                     {this.state.display.mySales && <Purchases mode={"sell"} user={u_data} />}
 
                     {this.state.display.myProducts && <MyProducts jwt={u_data.jwt} />}
                     {this.state.display.questions && <AccountQuestions user={u_data} />}
-                    {this.state.display.bill && <AccountPurchase user={u_data} />}
+                    {this.state.display.purchases && <AccountPurchase user={u_data} />}
                 </div>
                 <Footer />
                 <div className="footer-social">

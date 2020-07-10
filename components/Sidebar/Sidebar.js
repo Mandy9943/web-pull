@@ -11,7 +11,8 @@ import {
     faCog,
     faAngleRight,
     faAngleDown,
-    faAngleUp
+    faAngleUp,
+    faMoneyBill
 } from "@fortawesome/free-solid-svg-icons";
 import "./Sidebar.css";
 import redirect from "../../lib/redirect";
@@ -124,6 +125,12 @@ export default class Sidebar extends Component {
                         <FontAwesomeIcon icon={faListUl} />
                     </p>
                     <p onClick={(e)=>this.props.cb("resume", e)} className="user-account-menu-text">Resumen</p>
+                </div>
+                <div className="user-account-menu-item" >
+                    <p className="user-account-menu-icon">
+                        <FontAwesomeIcon icon={faMoneyBill} />
+                    </p>
+                    <p onClick={(e) => this.props.cb("bill", e)} className="user-account-menu-text">Facturacion</p>
                 </div>
 
                 {this.props.user_data.type === "2" &&
