@@ -31,29 +31,13 @@ export default class Nav extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            mostrar: true,
-            ocultar: true,
-            modal1: false,
             modal2: false,
             showCategories: false,
             categories: [],
             showMenu: false,
         }
     }
-    mostrar = () => {
-        //document.getElementById("sidebar").style.width = "auto";
-        //document.getElementById("sidebar").style.padding = "30px";
-        document.getElementById("abrir").style.display = "none";
-        document.getElementById("cerrar").style.display = "inline";
-    }
-    ocultar = () => {
-        //document.getElementById("sidebar").style.width = "0";
-        //document.getElementById("sidebar").style.padding = "0";
-        document.getElementById("abrir").style.display = "inline";
-        document.getElementById("cerrar").style.display = "none";
-    }
-
-
+   
     changeSearcherValue = (event) => {
         this.setState({ query: event.target.value })
     }
@@ -245,7 +229,7 @@ export default class Nav extends Component {
                         </div>
                         :
                         <div className="nav-botton">
-                            {this.state.modal2 ? (<section className="modal-account"><Modal toggle={this.toggleModal} num="1" content={content1} button /></section>) : null}
+                            {this.state.modal2 ? (<section className="modal-account"><Modal toggle={this.toggleModal} num="2" content={content1} button /></section>) : null}
                             <div onClick={() => { this.toggleModal(2); }}>
                                 <FontAwesomeIcon icon={faBars} />
                             </div>
