@@ -142,7 +142,7 @@ export default class Sidebar extends Component {
                         <p className="user-account-menu-text">Ventas</p>
                         <div className="user-account-accordion">
                             <p onClick={this.newProduct} >Agregar nuevo producto</p>
-                            <p onClick={(e)=>this.props.cb("myProducts", e)} >Mis Productos</p>
+                            <p onClick={(e) => this.props.cb("myProducts", e)} >Mis publicacioness</p>
                             <p onClick={(e)=>this.props.cb("mySales", e)} >Mis ventas</p>
                             <p onClick={(e)=>this.props.cb("questions", e)} >Pregúntas</p>
                         </div>

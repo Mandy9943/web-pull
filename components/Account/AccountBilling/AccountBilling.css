@@ -1,5 +1,7 @@
 .account-billing-title {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  font-size: 28px;
+  color: #5A5A5A;
 }
 
 .account-billing-content {
@@ -18,15 +20,27 @@
           flex-direction: column;
   background: #F2F2F2;
   height: 55vh;
-  -webkit-box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.75);
-          box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 3px 6px #00000029;
+          box-shadow: 0px 3px 6px #00000029;
+  background: white;
+  color: #5A5A5A;
+}
+
+.account-billing-content h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
 }
 
 .account-billing-content p {
-  font-size: 1.2rem;
+  font-size: 16px;
 }
 
-.account-billing-content p > span {
-  color: red;
+.account-billing-content span {
+  color: #CF0A2C;
+  margin-left: 5px;
+}
+
+.account-billing-content span:hover {
+  cursor: pointer;
 }
 /*# sourceMappingURL=AccountBilling.css.map */

@@ -4,13 +4,14 @@ import "./AccountBilling.css";
 class AccountBilling extends Component {
   render() {
     return (
-      <div>
-        <h2 className="account-billing-title">Facturacion</h2>
+      <div className="account-summary-wrap">
+        <h1 className="account-billing-title">Facturacion</h1>
         <div className="account-billing-content">
-          <p>¿Buscas tu factura de compras?</p>
+          <h2>¿Buscas tu factura de compras?</h2>
           <p>
-            Debes pedirla a tu vendedor desde la mensajeria que esta en{" "}
-            <span>listado de compras</span>
+            Debes pedírsela a tu vendedor desde la mensajería que <br /> está en el
+            <span onClick={(e) => this.props.cb("orders", e)}>listado de compras</span>
+      
           </p>
         </div>
       </div>

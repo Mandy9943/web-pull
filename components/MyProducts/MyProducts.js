@@ -131,6 +131,7 @@ export default class MyProducts extends Component {
                 {productList.length == 0 ?
                     <section className="empty-text">
                         {productList.length == 0 ? <span>No tienes Publicaciones</span> :  <Spinner /> }
+                        {/*NEED SPIINER*/}
                     </section>
                     :
                     <>
