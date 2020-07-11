@@ -38,7 +38,7 @@ export default class Home extends Component {
           <ProductsSlider category={"Computación"} />
           <ProductsSlider category={"Belleza y Cuidado Personal"} />
           <SecundarySlider />
-          <LoginMovil />
+          <LoginMovil user={u_data.user} authenticated={u_data.authenticated}/>
           <Finding />
           <ProductsSlider category={"Juegos y Juguetes"} />
           <Explorer />

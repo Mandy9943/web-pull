@@ -25,8 +25,6 @@ import {
 import Sidebar from '../../Sidebar/Sidebar';
 
 
-
-
 export default class Nav extends Component {
     constructor(props) {
         super(props);
@@ -78,10 +76,9 @@ export default class Nav extends Component {
 
 
     render() {
-
         let authenticated = this.props.authenticated
         let home = this.props.home
-
+    
         const content2 = (
             <>
                 <div className="header-modal">
