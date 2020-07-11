@@ -47,7 +47,7 @@ class AccountSummary extends Component {
                               <section className="text">
                                   <p className="title">{answer.product.title}</p>
                                   <Link
-                                      href={"/detalle/" + answer.product.product_id + "_" + answer.product.title.split(" ").join("-")}><a
+                                      href={"/detalle/" + answer.product.product_id + "_" + answer.product.title.replace(/[^\w\s]/gi, '').split(" ").join("-")}><a
                                       className="responses">Ver respuesta</a></Link>
                               </section>
                           </div>
@@ -72,7 +72,7 @@ class AccountSummary extends Component {
                 <img src={question.product.images.length>0 && getImgUrl(question.product.images[0].url)}/>
                 <section className="text">
                 <p className="title">{question.product.title}</p>
-                <Link href={"/detalle/"+question.product.product_id+"_"+question.product.title.split(" ").join("-")}><a className="responses">Ver respuesta</a></Link>
+                <Link href={"/detalle/"+question.product.product_id+"_"+question.product.title.replace(/[^\w\s]/gi, '').split(" ").join("-")}><a className="responses">Ver respuesta</a></Link>
                 </section>
               </div>
             </div>

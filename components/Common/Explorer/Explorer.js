@@ -99,7 +99,7 @@ class Explorer extends Component {
           <div className="group-img">
             {this.state.data.map((item, i) => (
               <div className="wrapImgExplorer" key={i}>
-                <Link href={"/detalle/"+item.product_id+"_"+item.title.split(" ").join("-")} ><a>
+                <Link href={"/detalle/"+item.product_id+"_"+item.title.replace(/[^\w\s]/gi, '').split(" ").join("-")} ><a>
                     <img src={ getImgUrl(item.image) } /></a>
                 </Link>
               </div>

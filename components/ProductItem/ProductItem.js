@@ -14,7 +14,7 @@ export default class ProductItem extends Component {
 
         const product = this.props.order.product;
         console.log(product.user.name)
-        const detail_link = "/detalle/" + product.product_id + "_" + product.title.split(" ").join("-");
+        const detail_link = "/detalle/" + product.product_id + "_" + product.title.replace(/[^\w\s]/gi, '').split(" ").join("-");
         let image_url = (product.images[0] && product.images[0].url !== "") ?
             getImgUrl(product.images[0].url) :
             "https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png"

@@ -34,7 +34,7 @@ export default class listProductMovil extends Component {
                 getImgUrl(product.image) :
                 "https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png"
 
-            const detail_link = "/detalle/" + product.product_id + "_" + product.title.split(" ").join("-");
+            const detail_link = "/detalle/" + product.product_id + "_" + product.title.replace(/[^\w\s]/gi, '').split(" ").join("-");
 
             return (<div key={i} className="product-item-edit">
                 <div className="content">
