@@ -14,7 +14,7 @@
       -ms-flex-pack: center;
           justify-content: center;
   z-index: 100;
-  color: #6D6D6D;
+  color: #5A5A5A !important;
   background: rgba(0, 0, 0, 0.68);
 }
 
@@ -34,6 +34,33 @@
   margin: 0 15px 15px;
   border-radius: 5px;
   font-size: 15px;
+}
+
+.nav-botton .modal-home .wrap-modal .modal .header-modal h5, .nav-botton .modal-home .wrap-modal .modal .footer-modal h5 {
+  font-size: 20px;
+}
+
+.nav-botton .modal-home .wrap-modal .modal .header-modal .user-icon-name, .nav-botton .modal-home .wrap-modal .modal .footer-modal .user-icon-name {
+  color: #5A5A5A !important;
+  margin-top: 15px;
+  display: block;
+  position: relative;
+}
+
+.nav-botton .modal-home .wrap-modal .modal .header-modal .user-icon-name p, .nav-botton .modal-home .wrap-modal .modal .footer-modal .user-icon-name p {
+  display: inline-block;
+  position: absolute;
+  top: 4px;
+  left: 30px;
+}
+
+.nav-botton .modal-home .wrap-modal .modal .header-modal .user-icon-name svg, .nav-botton .modal-home .wrap-modal .modal .footer-modal .user-icon-name svg {
+  background: #5A5A5A;
+  border-radius: 50%;
+  padding: 4px;
+  width: 14px;
+  height: 14px;
+  color: white;
 }
 
 .nav-botton .modal-home .wrap-modal .modal .header-modal .actions, .nav-botton .modal-home .wrap-modal .modal .footer-modal .actions {

@@ -83,16 +83,21 @@ export default class Nav extends Component {
             <>
                 <div className="header-modal">
                     <h5>Bienvenido</h5>
-                    <p>Crea tu cuenta o inicia sesion</p>
+                    {!authenticated ?
+                    <>
+                        <p>Crea tu cuenta o inicia sesion</p>
                     <section className="actions">
-                        <Link href="/login"><a className="main-button">Iniciar sesión</a></Link>
+                        <Link href="/login"><a className="main-button">Mi cuenta</a></Link>
                         <Link href="/registro"><a className="main-button">Registrarse</a></Link>
-                    </section>
+                        </section> 
+                    </>
+                        : <span className="user-icon-name"><FontAwesomeIcon icon={faUser} /><p>{this.props.user}</p></span>
+                    }
                 </div>
                 <div className="footer-modal">
                     <Link href="/cuenta"><a><FontAwesomeIcon icon={faHome} /> <p>Inicio </p></a></Link>
                     <Link href="/categorias"><a><FontAwesomeIcon icon={faAlignLeft} /> <p>Categorias</p></a></Link>
-                    <Link href="#"><a><FontAwesomeIcon icon={faArrowDown} /> <p>Descarga la app</p></a></Link>
+                    {/*<Link href="#"><a><FontAwesomeIcon icon={faArrowDown} /> <p>Descarga la app</p></a></Link>*/}
                     <hr />
                     <Link href="/ayuda"><a><FontAwesomeIcon icon={faQuestion} /> <p>Ayuda / PQR</p></a></Link>
                 </div>
