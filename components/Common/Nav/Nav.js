@@ -80,9 +80,7 @@ export default class Nav extends Component {
     render() {
 
         let authenticated = this.props.authenticated
-        let user = this.props.user
         let home = this.props.home
-        let u_data = this.props.user_data;
 
         const content2 = (
             <>
@@ -105,7 +103,7 @@ export default class Nav extends Component {
         );
         const content1 = (
             <>
-            <Sidebar user_data={user} cb={this.props.cb} />
+            <Sidebar user_data={this.props.user_data} cb={this.props.cb} />
             </>
         );
 
@@ -149,14 +147,14 @@ export default class Nav extends Component {
                             <div className="user-menu" onBlur={this.menuBlur} >
                                 <ul>
                                     <Link href="/ayuda"><a className="bell">Ayuda / PQR <FontAwesomeIcon icon={faBell} /></a></Link>
-                                    <a onClick={() => this.showHideMenu()} className="user-icon"><FontAwesomeIcon icon={faUser} /> {user} <FontAwesomeIcon icon={faAngleDown} /></a>
+                                    <a onClick={() => this.showHideMenu()} className="user-icon"><FontAwesomeIcon icon={faUser} /> {this.props.user} <FontAwesomeIcon icon={faAngleDown} /></a>
                                     {/*
-                                    <span style={{ color: '#FFFFFF' }}>Hola, <b>{user}</b></span>
+                                    <span style={{ color: '#FFFFFF' }}>Hola, <b>{this.props.user}</b></span>
                                     <Link href="/cuenta"><a>Ir a mi cuenta</a></Link>
                                     <Link href="/logout"><a>Salir</a></Link>
                                     */}
                                     <section className={this.state.showMenu ? "menu-off menu-on" : "menu-off"}>
-                                        <h5><FontAwesomeIcon className="icon" icon={faUser} /> Bienvenido <b className="name">Hola, {user}</b></h5>
+                                        <h5><FontAwesomeIcon className="icon" icon={faUser} /> Bienvenido <b className="name">Hola, {this.props.user}</b></h5>
                                         <Link href="/cuenta"><a className="main-button"><p>Mi cuenta</p></a></Link>
                                         <section className="options">
                                             <hr />
