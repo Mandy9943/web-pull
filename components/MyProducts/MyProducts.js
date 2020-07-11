@@ -34,7 +34,6 @@ export default class MyProducts extends Component {
     componentDidMount() {
         getData("/getMyProducts", this.props.jwt)
             .then((response) => {
-
                 let tmp = [];
                 for (let i=0; i < response.data.length; i++){
                     tmp.push(false);
@@ -42,7 +41,6 @@ export default class MyProducts extends Component {
                 this.setState(
                     { products: response.data,  optionPanel:tmp}
                 );
-
             });
     }
 

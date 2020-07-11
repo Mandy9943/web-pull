@@ -95,7 +95,7 @@ export default class Summary extends Component {
 
         return (
             <div className="summary-content">
-                <Nav user={u_data.user} home={false} authenticated={u_data.authenticated} />
+                <Nav cb={this.showSection} user={u_data.user} home={false} authenticated={u_data.authenticated} />
                 <div className="user-account-container" >
                     <Sidebar user_data={u_data} cb={this.showSection} />
                     {this.state.display.resume && <AccountSummary user={u_data} />}

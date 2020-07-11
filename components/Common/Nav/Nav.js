@@ -105,7 +105,7 @@ export default class Nav extends Component {
         );
         const content1 = (
             <>
-            <Sidebar user_data={user} cb={this.showSection} />
+            <Sidebar user_data={user} cb={this.props.cb} />
             </>
         );
 
