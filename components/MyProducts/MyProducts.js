@@ -135,7 +135,7 @@ export default class MyProducts extends Component {
                         {product.category.name}
                 </div>
                     <div className="option date">
-                        {this.getYear()}
+                        {product.created_since.split(" ")[0]}
                     </div>
                     <div className="option id">{product.product_id} 
                         <a className="icon-action" onClick={() => this.openOption(i)}>
