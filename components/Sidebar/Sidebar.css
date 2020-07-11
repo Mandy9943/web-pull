@@ -45,8 +45,8 @@
   font-size: 14px;
 }
 
-.user-account-menu .user-account-menu-item .user-account-accordion.active .user-account-accordion {
-  display: block;
+.user-account-menu .user-account-menu-item.active .user-account-accordion {
+  display: block !important;
 }
 
 @media (min-width: 700px) {
