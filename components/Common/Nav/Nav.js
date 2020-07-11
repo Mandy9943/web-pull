@@ -3,6 +3,7 @@ import Link from "next/link";
 import Logo from "../Logo/Logo";
 import "./Nav.css";
 import "./modal-home.css";
+import "./modal-account.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getData } from "../../../services/userApi";
 import Modal from "../Modal/Modal";
@@ -21,6 +22,8 @@ import {
     faShoppingBag,
     faCog
 } from "@fortawesome/free-solid-svg-icons";
+import Sidebar from '../../Sidebar/Sidebar';
+
 
 
 
@@ -95,8 +98,9 @@ export default class Nav extends Component {
         let authenticated = this.props.authenticated
         let user = this.props.user
         let home = this.props.home
+        let u_data = this.props.user_data;
 
-        const content1 = (
+        const content2 = (
             <>
                 <div className="header-modal">
                     <h5>Bienvenido</h5>
@@ -113,6 +117,11 @@ export default class Nav extends Component {
                     <hr />
                     <Link href="/ayuda"><a><FontAwesomeIcon icon={faQuestion} /> <p>Ayuda / PQR</p></a></Link>
                 </div>
+            </>
+        );
+        const content1 = (
+            <>
+            <Sidebar user_data={user} cb={this.showSection} />
             </>
         );
 
@@ -229,15 +238,17 @@ export default class Nav extends Component {
                     </div>
                     {home ?
                         <div className="nav-botton">
-                            {this.state.modal2 ? (<Modal toggle={this.toggleModal} num="1" content={content1} button />) : null}
+                            {this.state.modal2 ? (<section className="modal-home"><Modal toggle={this.toggleModal} num="2" content={content2} button /></section>) : null}
                             <div onClick={() => { this.toggleModal(2); }}>
                                 <FontAwesomeIcon icon={faBars} />
                             </div>
                         </div>
                         :
                         <div className="nav-botton">
-                            <a id="abrir" className="abrir-cerrar" onClick={() => this.mostrar()}><FontAwesomeIcon icon={faBars} /></a>
-                            <a id="cerrar" className="abrir-cerrar" onClick={() => this.ocultar()}><FontAwesomeIcon icon={faBars} /> </a>
+                            {this.state.modal2 ? (<section className="modal-account"><Modal toggle={this.toggleModal} num="1" content={content1} button /></section>) : null}
+                            <div onClick={() => { this.toggleModal(2); }}>
+                                <FontAwesomeIcon icon={faBars} />
+                            </div>
                         </div>
                     }
                 </div>

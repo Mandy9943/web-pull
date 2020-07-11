@@ -67,7 +67,8 @@
     overflow-x: hidden;
     -webkit-transition: 0.4s;
     transition: 0.4s;
-    padding: 0;
+    width: auto;
+    padding: 30px;
   }
 }
 /*# sourceMappingURL=Sidebar.css.map */
