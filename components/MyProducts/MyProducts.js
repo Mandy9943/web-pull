@@ -101,6 +101,7 @@ export default class MyProducts extends Component {
                         <a className="icon-action" onClick={() => this.accordionAccount()}>
                             <FontAwesomeIcon icon={faEllipsisV} />
                         </a>
+                        {/*NEED FIX THIS SHIT*/}
                         <section className={this.state.closeAccount ? "actions" : "actions active"}>
                             <Link href={"publicacion/[product]"} as={"publicacion/" + product.product_id}>
                                 <a>Modificar</a>
@@ -128,7 +129,7 @@ export default class MyProducts extends Component {
             <div className="purchase-list">
                 <h1 className="status-title" style={{ margin: '0 0 15px 0' }}>Publicaciones</h1>
                 <h5 className="accent">Gestion</h5>
-                {productList.length == 0 ?
+                {2 == 0 ?
                     <section className="empty-text">
                         {productList.length == 0 ? <span>No tienes Publicaciones</span> :  <Spinner /> }
                         {/*NEED SPIINER*/}
