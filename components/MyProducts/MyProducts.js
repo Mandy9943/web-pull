@@ -22,7 +22,8 @@ export default class MyProducts extends Component {
             products: [],
             page: 1,
             totalPages: 1,
-            closeAccount: true,
+            optionPanel: [],
+            keepOpen : false,
         }
     }
 
@@ -33,9 +34,15 @@ export default class MyProducts extends Component {
     componentDidMount() {
         getData("/getMyProducts", this.props.jwt)
             .then((response) => {
+
+                let tmp = [];
+                for (let i=0; i < response.data.length; i++){
+                    tmp.push(false);
+                }
                 this.setState(
-                    { products: response.data }
+                    { products: response.data,  optionPanel:tmp}
                 );
+
             });
     }
 
@@ -51,8 +58,12 @@ export default class MyProducts extends Component {
         if (error && error.status === 200) {
             getData("/getMyProducts", this.props.jwt)
                 .then((response) => {
+                    let tmp = [];
+                    for (let i=0; i < response.data.length; i++){
+                        tmp.push(false);
+                    }
                     this.setState(
-                        { products: response.data }
+                        { products: response.data,  optionPanel:tmp}
                     );
                 });
         } else {
@@ -61,14 +72,45 @@ export default class MyProducts extends Component {
 
     }
 
-    accordionAccount = () => {
-        this.setState({
-            closeAccount: !this.state.closeAccount,
-        });
+    clsall = () => {
+        if(!this.state.keepOpen){
+            let tmp = []
+            for (let i=0; i < this.state.optionPanel.length; i++){
+                tmp.push(false);
+            }
+            this.setState({optionPanel: tmp});
+        }
+        this.setState({keepOpen: false});
+    }
+
+    closeOptions = () => {
+        console.log("CLOSE");
+        setTimeout(this.clsall,100);
+    }
+
+    mEnter = () => {
+        clearTimeout(this.state.timeClose);
+    }
+
+    mLeave = () => {
+        this.state.timeClose = setTimeout(this.closeOptions, 1000);
+    }
+
+
+    openOption = (item) => {
+        this.setState({keepOpen: true});
+        console.log("OPEN: " + item)
+        let tmp = []
+        console.log(this.state.optionPanel);
+        for (let i=0; i < this.state.optionPanel.length; i++){
+            console.log(i + " " + item)
+            tmp.push(item === i);
+        }
+        this.setState({optionPanel: tmp});
     }
         
     render() {
-
+        let tmp = []
         let productList = this.state.products.map((product, i) => {
 
             let statusI = product.status == "1" ? "cancel-btn delete" : "main-button"
@@ -79,9 +121,7 @@ export default class MyProducts extends Component {
                 getImgUrl(product.images[0].url) :
                 "https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png"
 
-            const detail_link = "/detalle/" + product.product_id + "_" + product.title.split(" ").join("-");
-
-            
+            const detail_link = "/detalle/" + product.product_id + "_" + product.title.replace(/[^\w\s]/gi, '').split(" ").join("-");
 
             return (
                 <div key={i} className="option-list">
@@ -92,17 +132,16 @@ export default class MyProducts extends Component {
                         <h3>{product.title}</h3>
                     </div>
                     <div className="option category">
-                        categoria del producto
+                        {product.category.name}
                 </div>
                     <div className="option date">
                         {this.getYear()}
                     </div>
                     <div className="option id">{product.product_id} 
-                        <a className="icon-action" onClick={() => this.accordionAccount()}>
+                        <a className="icon-action" onClick={() => this.openOption(i)}>
                             <FontAwesomeIcon icon={faEllipsisV} />
                         </a>
-                        {/*NEED FIX THIS SHIT*/}
-                        <section className={this.state.closeAccount ? "actions" : "actions active"}>
+                        <section onMouseEnter={() => this.mEnter(i)} onMouseLeave={() => this.mLeave(i)} className={this.state.optionPanel[i] === true ? "actions active" : "actions"}>
                             <Link href={"publicacion/[product]"} as={"publicacion/" + product.product_id}>
                                 <a>Modificar</a>
                             </Link>
@@ -126,7 +165,7 @@ export default class MyProducts extends Component {
             });
 
         return (
-            <div className="purchase-list">
+            <div className="purchase-list" onClick={this.closeOptions}>
                 <h1 className="status-title" style={{ margin: '0 0 15px 0' }}>Publicaciones</h1>
                 <h5 className="accent">Gestion</h5>
                 {2 == 0 ?
