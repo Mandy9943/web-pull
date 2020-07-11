@@ -105,6 +105,7 @@ export default class Sidebar extends Component {
 
     render() {
 
+        console.log("SIDEBAR PROPS:")
         console.log(this.props)
         console.log(this.state)
         console.error(this.props.user_data.type)
