@@ -58,6 +58,12 @@
                     grid-gap: 15px
                     padding: 20px
                     border-bottom: 0.5px solid #EBEBEB
+                    &.edit
+                        grid-template-columns: 1fr 1fr
+                        a
+                            grid-template-columns: 1fr auto
+                            display: grid
+                            cursor: pointer
                     .inline
                         display: inline-block
                     p
@@ -70,7 +76,7 @@
                         cursor: pointer
                     .user-accunt-info-box-icon
                         text-align: right
-                    .user-accunt-document, .user-accunt-phone
+                    .user-accunt-document, .user-accunt-phone, .user-accunt-name
                         .modal-dni
                             .wrap-select::before, .wrap-select::after 
                                 top: 15px

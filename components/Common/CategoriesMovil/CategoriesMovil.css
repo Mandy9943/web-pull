@@ -1,0 +1,86 @@
+.menu-categorias {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #CF0A2C;
+}
+
+.menu-categorias .tite-categories {
+  position: absolute;
+  top: 20px;
+  left: 0px;
+  right: 0px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 2fr 4fr 2fr;
+      grid-template-columns: 2fr 4fr 2fr;
+  font-size: 26px;
+  font-weight: normal;
+  color: white;
+}
+
+.menu-categorias .tite-categories span {
+  font-size: 26px;
+  font-weight: normal;
+  color: white;
+  margin: auto;
+}
+
+.menu-categorias .tite-categories a {
+  color: white;
+  margin: auto;
+  margin-right: 30px;
+  font-size: 18px;
+}
+
+.menu-categorias .tite-categories .logo {
+  margin: auto;
+  margin-left: 30px;
+}
+
+.menu-categorias .menu-list {
+  TEXT-ALIGN: left;
+  position: absolute;
+  top: 65px;
+  left: 30px;
+  right: 30px;
+  bottom: 30px;
+  overflow: scroll;
+}
+
+.menu-categorias .menu-list .item {
+  background: white;
+  -webkit-box-shadow: 0px 3px 6px #00000029;
+          box-shadow: 0px 3px 6px #00000029;
+  padding: 15px 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-width: 230px;
+  margin: auto;
+  text-align: center;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  color: #CF0A2C;
+}
+
+.menu-categorias .menu-list .item:first-child {
+  margin-top: 0px;
+}
+
+.menu-categorias .menu-list .item a {
+  color: #CF0A2C;
+  width: 100%;
+}
+/*# sourceMappingURL=CategoriesMovil.css.map */

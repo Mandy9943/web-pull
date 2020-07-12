@@ -99,6 +99,19 @@
   border-bottom: 0.5px solid #EBEBEB;
 }
 
+.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab.edit {
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+
+.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab.edit a {
+  -ms-grid-columns: 1fr auto;
+      grid-template-columns: 1fr auto;
+  display: -ms-grid;
+  display: grid;
+  cursor: pointer;
+}
+
 .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .inline {
   display: inline-block;
 }
@@ -119,58 +132,58 @@
   text-align: right;
 }
 
-.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal-dni .wrap-select::before, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal-dni .wrap-select::after, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal-dni .wrap-select::before, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal-dni .wrap-select::after {
+.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal-dni .wrap-select::before, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal-dni .wrap-select::after, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal-dni .wrap-select::before, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal-dni .wrap-select::after, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-name .modal-dni .wrap-select::before, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-name .modal-dni .wrap-select::after {
   top: 15px;
 }
 
-.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal-dni .wrap-select::before, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal-dni .wrap-select::before {
+.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal-dni .wrap-select::before, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal-dni .wrap-select::before, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-name .modal-dni .wrap-select::before {
   right: 10px;
 }
 
-.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal-dni .wrap-select::after, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal-dni .wrap-select::after {
+.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal-dni .wrap-select::after, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal-dni .wrap-select::after, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-name .modal-dni .wrap-select::after {
   right: 15px;
 }
 
-.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal-dni .wrap-select, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal-dni .wrap-select {
+.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal-dni .wrap-select, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal-dni .wrap-select, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-name .modal-dni .wrap-select {
   width: 200px;
   margin-bottom: 15px;
 }
 
-.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal-dni .wrap-select select, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal-dni .wrap-select select {
+.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal-dni .wrap-select select, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal-dni .wrap-select select, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-name .modal-dni .wrap-select select {
   border: 1px solid;
   padding: 8px;
   border-radius: 5px;
 }
 
-.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal-dni input, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal-dni input {
+.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal-dni input, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal-dni input, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-name .modal-dni input {
   width: 184px;
 }
 
-.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal {
+.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-name .modal {
   padding: 20px 50px;
   border-radius: 15px;
 }
 
-.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal h3, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal h3 {
+.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal h3, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal h3, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-name .modal h3 {
   margin-bottom: 20px;
 }
 
-.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal .header-modal, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal .header-modal {
+.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal .header-modal, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal .header-modal, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-name .modal .header-modal {
   padding-bottom: 0px;
   margin-bottom: 0px;
   border-bottom: none;
 }
 
-.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal label p, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal label p {
+.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal label p, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal label p, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-name .modal label p {
   margin-bottom: 10px;
   font-size: 14px;
 }
 
-.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal label input, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal label input {
+.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal label input, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal label input, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-name .modal label input {
   margin-bottom: 20px;
 }
 
-.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal .modal-actions, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal .modal-actions {
+.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal .modal-actions, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal .modal-actions, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-name .modal .modal-actions {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[2];
@@ -179,15 +192,15 @@
   margin-top: 20px;
 }
 
-.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal .modal-actions .main-button, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal .modal-actions .main-button {
+.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal .modal-actions .main-button, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal .modal-actions .main-button, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-name .modal .modal-actions .main-button {
   width: 100% !important;
 }
 
-.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal .modal-actions .save-btn p, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal .modal-actions .save-btn p {
+.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal .modal-actions .save-btn p, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal .modal-actions .save-btn p, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-name .modal .modal-actions .save-btn p {
   color: #fff;
 }
 
-.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal .modal-actions .cancel-btn, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal .modal-actions .cancel-btn {
+.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal .modal-actions .cancel-btn, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal .modal-actions .cancel-btn, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-name .modal .modal-actions .cancel-btn {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
@@ -195,13 +208,13 @@
   padding: 9px 0;
 }
 
-.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal .modal-actions .cancel-btn p, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal .modal-actions .cancel-btn p {
+.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal .modal-actions .cancel-btn p, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal .modal-actions .cancel-btn p, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-name .modal .modal-actions .cancel-btn p {
   text-align: center;
   color: #CF0A2C;
   cursor: pointer;
 }
 
-.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal .action-modal, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal .action-modal {
+.user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-document .modal .action-modal, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-phone .modal .action-modal, .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab .user-accunt-name .modal .action-modal {
   display: none;
 }
 

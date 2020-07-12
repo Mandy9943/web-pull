@@ -105,6 +105,26 @@ export default class UserAccount extends Component {
         }
     };
 
+    saveName = async e => {
+        e.preventDefault();
+        let name = e.target.elements.name.value;
+        let last_name = e.target.elements.last_name.value;
+        const error = await completeData({
+            name: name,
+            last_name: last_name
+        }, this.props.user.jwt);
+        if (error) {
+            this.setState({
+                error: error
+            });
+            return false;
+        } else {
+            this.setState({ userData: { ...this.state.userData, name: name } });
+            this.setState({ userData: { ...this.state.userData, last_name: last_name } });
+            this.toggleModal(3);
+        }
+    };
+
     saveDocument = async e => {
         e.preventDefault();
         let idn = e.target.elements.id_number.value;
@@ -119,7 +139,6 @@ export default class UserAccount extends Component {
             });
             return false;
         } else {
-
             this.setState({ userData: { ...this.state.userData, id_number: idn } })
             this.setState({ userData: { ...this.state.userData, document_type: dt } })
             this.toggleModal(1);
@@ -173,7 +192,7 @@ export default class UserAccount extends Component {
                         </label>
                         <label>
                             <p>Número de documento</p>
-                            <input name="id_number" placeholder="Número"/>
+                            <input name="id_number" placeholder="Número" />
                         </label>
                         <div className="modal-actions">
                             <div className="save-btn">
@@ -218,6 +237,36 @@ export default class UserAccount extends Component {
                 </form>
             </>
         );
+        const content3 = (
+            <>
+                <form className="form" onSubmit={this.saveName}>
+                    <div className="header-modal">
+                        <h3>Modificar nombre y apellido</h3>
+                        <label>
+                            <span>Nombre</span>
+                            <input name="nombre" placeholder={this.state.userData.name} />
+                        </label>
+                        <label>
+                            <span>Apellido</span>
+                            <input name="nombre" placeholder={this.state.userData.last_name} />
+                        </label>
+                        <div className="modal-actions">
+                            <div className="save-btn">
+                                <button type="submit" className="main-button">
+                                    <p>Modificar</p>
+                                </button>
+                            </div>
+                            <div className="cancel-btn" onClick={() => { this.toggleModal(3); }}>
+                                <p>
+                                    Cancelar
+                                </p>
+                            </div>
+                        </div>
+                        {error && error !== "" && <Error message={error} />}
+                    </div>
+                </form>
+            </>
+        );
         return (
             <div className="user-account">
                 <div className="user-container" >
@@ -235,19 +284,28 @@ export default class UserAccount extends Component {
                                 </div>
                             </div>
                             <div className="user-accunt-info-box">
-                                <div className="user-accunt-info-tab">
+                                <div className="user-accunt-info-tab edit">
                                     <p>Usuario</p>
-                                    <p>{this.state.userData.email}</p>
-                                    <p className="user-accunt-info-box-icon">
-                                        <FontAwesomeIcon icon={faAngleRight} />
-                                    </p>
+                                    <Link href="/cambio_usuario">
+                                        <a>
+                                            <p>{this.state.userData.email}</p>
+                                            <p className="user-accunt-info-box-icon">
+                                                <FontAwesomeIcon icon={faAngleRight} />
+                                            </p>
+                                        </a>
+                                    </Link>
+
                                 </div>
-                                <div className="user-accunt-info-tab">
+                                <div className="user-accunt-info-tab edit">
                                     <p>Correo</p>
-                                    <p className="inline">{this.state.userData.email}</p>
-                                    <p className="user-accunt-info-box-icon">
-                                        <FontAwesomeIcon icon={faAngleRight} />
-                                    </p>
+                                    <Link href="/cambio_correo">
+                                        <a>
+                                            <p className="inline">{this.state.userData.email}</p>
+                                            <p className="user-accunt-info-box-icon">
+                                                <FontAwesomeIcon icon={faAngleRight} />
+                                            </p>
+                                        </a>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -263,12 +321,17 @@ export default class UserAccount extends Component {
                                 </div>
                             </div>
                             <div className="user-accunt-info-box">
-                                <div className="user-accunt-info-tab">
+                                <div className="user-accunt-info-tab edit">
                                     <p>Nombre y apellido</p>
-                                    <p className="inline">{this.state.userData.name + " " + this.state.userData.last_name}</p>
-                                    <p className="user-accunt-info-box-icon">
-                                        <FontAwesomeIcon icon={faAngleRight} />
-                                    </p>
+                                    <div className="user-accunt-name">
+                                    {this.state.modal3 && (<Modal toggle={this.toggleModal} num="3" content={content3} button />)}
+                                    <a onClick={() => { this.toggleModal(3); }}>
+                                        <p className="inline">{this.state.userData.name + " " + this.state.userData.last_name}</p>
+                                        <p className="user-accunt-info-box-icon">
+                                            <FontAwesomeIcon icon={faAngleRight} />
+                                        </p>
+                                    </a>
+                                    </div>
                                 </div>
                                 <div className="user-accunt-info-tab">
                                     <p>Documento</p>
@@ -291,7 +354,6 @@ export default class UserAccount extends Component {
                                     <p>Teléfono</p>
                                     <div className="user-accunt-phone">
                                         {this.state.modal2 ? (<Modal toggle={this.toggleModal} num="2" content={content2} button />) : null}
-
                                         {
                                             this.state.userData.phone ?
                                                 <div onClick={() => { this.toggleModal(2); }}>
@@ -313,7 +375,7 @@ export default class UserAccount extends Component {
                             <div className="user-accunt-info-box">
                                 <div className="user-accunt-info-tab">
                                     <p>Aún no tienen ninguna tarjeta de crédito.</p>
-                                    <div onClick={() => { this.toggleModal(3); }}>
+                                    <div>
                                         <p className="modal-btn">Agregar</p>
                                     </div>
                                 </div>
