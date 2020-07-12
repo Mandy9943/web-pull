@@ -244,11 +244,11 @@ export default class UserAccount extends Component {
                         <h3>Modificar nombre y apellido</h3>
                         <label>
                             <span>Nombre</span>
-                            <input name="nombre" placeholder={this.state.userData.name} />
+                            <input name="name" placeholder={this.state.userData.name} />
                         </label>
                         <label>
                             <span>Apellido</span>
-                            <input name="nombre" placeholder={this.state.userData.last_name} />
+                            <input name="last_name" placeholder={this.state.userData.last_name} />
                         </label>
                         <div className="modal-actions">
                             <div className="save-btn">
