@@ -298,7 +298,7 @@ export default class UserAccount extends Component {
                                 </div>
                                 <div className="user-accunt-info-tab edit">
                                     <p>Correo</p>
-                                    <Link href="/cambio_correo">
+                                    <Link href="/cambiar_correo">
                                         <a>
                                             <p className="inline">{this.state.userData.email}</p>
                                             <p className="user-accunt-info-box-icon">
