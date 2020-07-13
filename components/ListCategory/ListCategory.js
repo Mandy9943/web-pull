@@ -33,7 +33,7 @@ class ListCategory extends Component {
                   <a>
                     <div className="temp-card">
                       <div className="product-card-img">
-                        <img src={getImgUrl(product.image)} className="img" />
+                        <img alt={product.title} src={getImgUrl(product.image)} className="img" />
                       </div>
                       <div className="product-card-description-box">
                         <h3>{product.user} </h3>
@@ -44,7 +44,7 @@ class ListCategory extends Component {
                           <p>Envío gratis</p>
                         </div>
                         <div className="product-card-description">
-                          <p title={product.title}>{product.title.substr(0, 65) + (product.title.length > 65 ? "..." : ".")}</p>
+                          <p title={product.title}>{product.title.substr(0, 60) + (product.title.length > 60 ? "..." : ".")}</p>
                           <p>Nuevo</p>
                           <p>{product.price}</p>
                         </div>
@@ -59,7 +59,7 @@ class ListCategory extends Component {
                     <a>
                       <div className="temp-list">
                         <div className="product-list-img">
-                            <img src={getImgUrl(product.image)} className="img" />
+                          <img alt={product.title} src={getImgUrl(product.image)} className="img" />
                         </div>
                         <div className="product-list-description-box">
                           <h3 className="product-list-title">{product.title.substr(0, 65) + (product.title.length > 65 ? "..." : ".")}</h3>

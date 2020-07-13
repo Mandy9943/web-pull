@@ -167,8 +167,7 @@ class AccountStoreProduct extends Component {
       return <div className="img-uploaded">
 
         <a onClick={(e) => { this.removeImg(i, e); }}><FontAwesomeIcon icon={faTimes} /></a>
-
-        <img src={getImgUrl(img.url)} />
+        <img alt={this.state.title} src={getImgUrl(img.url)} />
       </div>
     });
 

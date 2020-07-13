@@ -42,7 +42,7 @@ class AccountSummary extends Component {
                       <div key={i} className="question">
                           <h5>{answer.user.name + " " + answer.user.last_name} Te hizo una pregunta en:</h5>
                           <div className='item-question'>
-                              <img src={answer.product.images.length > 0 && getImgUrl(answer.product.images[0].url)}/>
+                          <img alt={answer.product.title} src={answer.product.images.length > 0 && getImgUrl(answer.product.images[0].url)}/>
                               <section className="text">
                                   <p className="title">{answer.product.title}</p>
                                   <Link
@@ -68,7 +68,7 @@ class AccountSummary extends Component {
               return <div key={i} className="question">
               <h5>{question.user.name+" "+question.user.last_name} Te respondió una pregunta en:</h5>
               <div className='item-question'>
-                <img src={question.product.images.length>0 && getImgUrl(question.product.images[0].url)}/>
+                  <img alt={question.product.title} src={question.product.images.length>0 && getImgUrl(question.product.images[0].url)}/>
                 <section className="text">
                 <p className="title">{question.product.title}</p>
                 <Link href={"/detalle/"+question.product.product_id+"_"+question.product.title.replace(/[^\w\s]/gi, '').split(" ").join("-")}><a className="responses">Ver respuesta</a></Link>
@@ -87,7 +87,7 @@ class AccountSummary extends Component {
         <div className="account-summary-wrap-items">
           <div className="account-summary-item-title">
             <FontAwesomeIcon icon={faBell} /> Notificaciones
-          </div>
+          </div>{/*NEED FIX THIS SHIT*/}
           <div className="account-summary-item"><span className="Count">0</span> Sin Notificaciones</div>
         </div>
       </div>

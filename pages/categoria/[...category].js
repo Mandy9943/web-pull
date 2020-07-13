@@ -134,7 +134,7 @@ function Results({ data, session }) {
         for (let i = 0; i < e.estructure.length; i++) {
 
             if (e.estructure[i] === 1) {
-                structure.push(<img key={i} className="banner-principal" src={e.image_path + (bannerNo++) + ".jpg"} />)
+                structure.push(<img alt={category_name} key={i} className="banner-principal" src={e.image_path + (bannerNo++) + ".jpg"} />)
             } else if (e.estructure[i] === 2) {
                 structure.push(<Finding key={i} img_left={e.image_path + (bannerNo++) + ".jpg"} link_left={e.links[bannerNo - 2]}
                     img_right={e.image_path + (bannerNo++) + ".jpg"} link_right={e.links[bannerNo - 2]} />);
@@ -201,8 +201,8 @@ function Results({ data, session }) {
                     </section>
                     <Footer />
                     <div className="footer-social">
-                        <Link href={url}><a target="_blank"><img src={Logo1} /></a></Link>
-                        <Link href={url}><a target="_blank"><img src={Logo2} /></a></Link>
+                        <Link  href={url}><a target="_blank"><img alt={url} src={Logo1} /></a></Link>
+                        <Link href={url}><a target="_blank"><img alt={url} src={Logo2} /></a></Link>
                     </div>
                 </div>
             </>

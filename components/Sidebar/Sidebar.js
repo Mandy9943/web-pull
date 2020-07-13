@@ -110,7 +110,7 @@ export default class Sidebar extends Component {
             <div id="sidebar" className="user-account-menu">
                 <div className="user-account-menu-item">
                     <p className="user-account-menu-icon">
-                    <img src="https://recap-project.eu/wp-content/uploads/2017/02/default-user.jpg" />
+                    <img alt="perfil user" src="https://recap-project.eu/wp-content/uploads/2017/02/default-user.jpg" />
                     </p>
                     <div className="user-name">
                         <h3>Mi cuenta</h3>

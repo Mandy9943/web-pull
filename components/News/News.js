@@ -31,17 +31,17 @@ class News extends Component {
       <div className="News">
         <section className="content">
           <section className="title">
-            <Link href={news}><a  target="_blank"><img src={logo} className="logo" /></a>
+            <Link href={news}><a  target="_blank"><img alt="Kiero.co" src={logo} className="logo" /></a>
             </Link>
           </section>
           <sections className="icons">
-            <Link href={fb}><a  target="_blank"><img src={src} /></a></Link>
-            <Link href={ig}><a  target="_blank"><img src={src1} /></a></Link>
-            <Link href={lk}><a  target="_blank"><img src={src3} /></a></Link>
-            <Link href={ws}><a  target="_blank"><img src={src7} /></a></Link>
-            <Link href={tw}><a  target="_blank"><img src={src2} /></a></Link>
-            <Link href={yt}><a  target="_blank"><img src={src5} /></a></Link>
-            <Link href={pt}><a  target="_blank"><img src={src4} /></a></Link>
+            <Link href={fb}><a  target="_blank"><img alt={fb} src={src} /></a></Link>
+            <Link href={ig}><a target="_blank"><img alt={ig} src={src1} /></a></Link>
+            <Link href={lk}><a target="_blank"><img alt={lk} src={src3} /></a></Link>
+            <Link href={ws}><a target="_blank"><img alt={ws} src={src7} /></a></Link>
+            <Link href={tw}><a target="_blank"><img alt={tw} src={src2} /></a></Link>
+            <Link href={yt}><a target="_blank"><img alt={yt} src={src5} /></a></Link>
+            <Link href={pt}><a target="_blank"><img alt={pt} src={src4} /></a></Link>
           </sections>
         </section>
       </div>

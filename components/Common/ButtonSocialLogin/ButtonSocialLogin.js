@@ -8,7 +8,7 @@ class ButtonGoogle extends Component {
     render() {
         return (
             <button className="button buttonGoogle">
-              <img src={gg}/>  <p>Registrate con Google</p>
+              <img alt="Google" src={gg}/>  <p>Registrate con Google</p>
             </button>
         )
     }
@@ -18,7 +18,7 @@ class ButtonFacebook extends Component {
     render() {
         return (
             <button className="button buttonFacebook">
-               <img src={fb}/> <p>Registrate con Facebook</p>
+               <img alt="Facebook" src={fb}/> <p>Registrate con Facebook</p>
             </button>
         )
     }

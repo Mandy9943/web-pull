@@ -8,7 +8,7 @@ export default function Logo() {
         <div className="logo">
             <Link href="/">
                 <a>
-                    <img className="logo-img" src={LogoImg} />
+                    <img alt="Kiero.co" className="logo-img" src={LogoImg} />
                 </a>
             </Link>
         </div>

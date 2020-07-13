@@ -135,7 +135,7 @@ export default class MyProducts extends Component {
                     <h5>Producto</h5> <h5>Categoria</h5> <h5>Fecha</h5> <h5>Id product</h5>
                     <div className="option product">
                         <div className="product-card-img">
-                            <img src={image_url} /> </div>
+                            <img alt={product.title} src={image_url} /> </div>
                         <h3>{product.title}</h3>
                     </div>
                     <div className="option category">

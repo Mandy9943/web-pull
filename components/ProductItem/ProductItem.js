@@ -77,7 +77,7 @@ export default class ProductItem extends Component {
                         <a>
                             <section className="product">
                                 <div className="product-card-img">
-                                    <img src={image_url} />
+                                    <img alt={product.title} src={image_url} />
                                 </div>
                                 <section className='description'>
                                     <h3>{product.title ? product.title : " - "}</h3>

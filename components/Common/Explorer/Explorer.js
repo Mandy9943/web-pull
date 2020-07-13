@@ -94,13 +94,13 @@ class Explorer extends Component {
         <h3 className="home-section-title">Encuentra los mejores productos de {this.state.categoryName} <Link href={"/categoria/"+this.state.categoryName}><a className="accent">Ver todos</a></Link></h3>
         <div className="content-explorer">
           <div className="main-img">
-            <img src={this.state.exploreImage} />
+                <img alt={this.state.categoryName} src={this.state.exploreImage} />
           </div>
           <div className="group-img">
             {this.state.data.map((item, i) => (
               <div className="wrapImgExplorer" key={i}>
                 <Link href={"/detalle/"+item.product_id+"_"+item.title.replace(/[^\w\s]/gi, '').split(" ").join("-")} ><a>
-                    <img src={ getImgUrl(item.image) } /></a>
+                  <img alt={item.title} src={ getImgUrl(item.image) } /></a>
                 </Link>
               </div>
             ))}

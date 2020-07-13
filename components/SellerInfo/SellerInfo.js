@@ -30,7 +30,7 @@ class SellerInfo extends Component {
         </div>
           <div className="profile-seller">
             <div className="wrap-img-profile-seller">
-              <img src={!this.props.seller.photo ? "https://recap-project.eu/wp-content/uploads/2017/02/default-user.jpg" : this.props.seller.photo  } />
+            <img alt={this.props.seller.name} src={!this.props.seller.photo ? "https://recap-project.eu/wp-content/uploads/2017/02/default-user.jpg" : this.props.seller.photo  } />
             </div>
             <div className="info-profile-seller">
               <p>{this.props.seller.name} {this.props.seller.last_name}</p>

@@ -197,31 +197,19 @@ export default class PaymentWay extends Component {
                                         <input placeholder="Número documento" />
                                     </form>
                                     <div className="cardImg">
-                                        <img src={CardImg} />
+                                        <img alt="tarjeta credito" src={CardImg} />
                                         <Button text={"Continuar"} />
                                     </div>
                                 </div>
 
                             </div>
 
-
-
-
-
-
-
-
                             <div className="cash payment-way-box" onClick={() => this.accordionCash()}>
                                 <p>Efectivo</p>
                             </div>
                             <div className={this.state.closeCash ? "accordion-payment-way" : "accordion-payment-way active"}>
-                                <img src={PayOnline} />
+                                <img alt="pago en linea" src={PayOnline} />
                             </div>
-
-
-
-
-
 
                             <div className="transfer payment-way-box" onClick={() => this.accordionTransfer()}>
                                 <p>Transferencia desde PSE</p>
