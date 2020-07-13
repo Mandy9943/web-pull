@@ -380,7 +380,7 @@ export default class UserAccount extends Component {
                                     </div>
                                 </div>
                             </div>
-                                    </div>*/]
+                                    </div>*/}
                         <div className="user-acount-info" >
                             <div className="user-acount-info-title">
                                 <h3>Domicilios</h3>
