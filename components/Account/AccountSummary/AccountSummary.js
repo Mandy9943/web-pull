@@ -21,7 +21,6 @@ class AccountSummary extends Component {
   componentDidMount() {
     getData("/getAQ", this.props.user.jwt)
         .then((response) => {
-            console.log(response.data);
             this.setState({ answers: response.data.answers, questions: response.data.questions });
         });
   }
