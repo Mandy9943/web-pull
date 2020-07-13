@@ -14,7 +14,6 @@
   background: white;
   -webkit-box-shadow: 0px 3px 6px #00000029;
           box-shadow: 0px 3px 6px #00000029;
-  z-index: -1;
 }
 
 .principal-slider .desktop .slider .previousButton svg {
@@ -31,7 +30,6 @@
   background: white;
   -webkit-box-shadow: 0px 3px 6px #00000029;
           box-shadow: 0px 3px 6px #00000029;
-  z-index: -1;
 }
 
 .principal-slider .desktop .slider .nextButton svg {

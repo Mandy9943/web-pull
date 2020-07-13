@@ -80,7 +80,7 @@ export default class CategoryList extends Component {
 
       "vehiculos y accesorios": {
         "estructure": [1, 2, 3, 2, 3, 2],
-        "links": ["", "Repuestos%20para%20Carro", "audio%20para%20carro", "accesorios%20para%20aviones", "Afinación%20y%20Rendimiento%20para%20Carro", "accesorios%20para%20carro", "herramientas%20para%20carro", "Repuestos%20para%20Carro", "accesorios%20de%20exterior%20para%20carro", "accesorios%20de%20interior%20para%20carro", "accesorios%20para%20moto", "llantas", "Repuestos%20para%20Moto"],
+        "links": ["https://kiero.co/categoria/Accesorios%20para%20Vehículos", "Repuestos%20para%20Carro", "audio%20para%20carro", "accesorios%20para%20aviones", "Afinación%20y%20Rendimiento%20para%20Carro", "accesorios%20para%20carro", "herramientas%20para%20carro", "Repuestos%20para%20Carro", "accesorios%20de%20exterior%20para%20carro", "accesorios%20de%20interior%20para%20carro", "accesorios%20para%20moto", "llantas", "Repuestos%20para%20Moto"],
         "image_path": encodeURI("//kiero.co/images/resources/vehiculos y accesorios/"),"enable": true}
     }
 
