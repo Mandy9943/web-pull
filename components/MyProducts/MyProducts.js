@@ -31,8 +31,9 @@ export default class MyProducts extends Component {
         return new Date().getFullYear();
     }
 
-    componentDidMount() {
-        getData("/getMyProducts", this.props.jwt)
+    loadData = (page) => {
+        this.setState({page:page});
+        getData("/getMyProducts/"+(page-1), this.props.jwt)
             .then((response) => {
                 let tmp = [];
                 for (let i=0; i < response.data.length; i++){
@@ -44,6 +45,19 @@ export default class MyProducts extends Component {
             });
     }
 
+    componentDidMount() {
+        this.loadData(1);
+
+        getData("/countMyProducts", this.props.jwt)
+            .then((response) => {
+                this.setState(
+                    { totalProducts: response.data.total, totalPages: Math.ceil(response.data.total/50)  }
+                );
+            });
+
+    }
+
+
     changePState = async (id, newState, e) => {
 
         let formData = new FormData();
@@ -52,7 +66,6 @@ export default class MyProducts extends Component {
         let error;
 
         error = await updateProduct(formData, this.props.jwt);
-        console.log(error);
         if (error && error.status === 200) {
             getData("/getMyProducts", this.props.jwt)
                 .then((response) => {
@@ -82,7 +95,6 @@ export default class MyProducts extends Component {
     }
 
     closeOptions = () => {
-        console.log("CLOSE");
         setTimeout(this.clsall,100);
     }
 
@@ -97,11 +109,8 @@ export default class MyProducts extends Component {
 
     openOption = (item) => {
         this.setState({keepOpen: true});
-        console.log("OPEN: " + item)
         let tmp = []
-        console.log(this.state.optionPanel);
         for (let i=0; i < this.state.optionPanel.length; i++){
-            console.log(i + " " + item)
             tmp.push(item === i);
         }
         this.setState({optionPanel: tmp});
@@ -111,9 +120,9 @@ export default class MyProducts extends Component {
         let tmp = []
         let productList = this.state.products.map((product, i) => {
 
-            let statusI = product.status == "1" ? "cancel-btn delete" : "main-button"
+            let statusI = product.status === 1 ? "cancel-btn delete" : "main-button"
 
-            let clsItem = product.status == "1" ? "product-item-edit" : "product-item-edit off"
+            let clsItem = product.status === 1 ? "product-item-edit" : "product-item-edit off"
 
             let image_url = product.images ?
                 getImgUrl(product.images[0].url) :
@@ -149,9 +158,9 @@ export default class MyProducts extends Component {
                             <a
                                 style={{ cursor: 'pointer' }}
                                 onClick={(e) => this.changePState(product.product_id,
-                                    (product.status == "1" ? 0 : 1)
+                                    (product.status === 1 ? 0 : 1)
                                     , e)}>
-                                {product.status == "1" ? "Pausar" : "Activar"}
+                                {product.status === 1 ? "Pausar" : "Activar"}
                             </a>
                             <Link href={"/detalle/[product]"} as={detail_link}>
                                 <a>Ayuda</a>
@@ -186,7 +195,7 @@ export default class MyProducts extends Component {
                         <section className="list-publications">
                             {productList}
                         </section>
-                        <Pagination actual={this.state.page} totalPages={this.state.totalPages} cb={this.changePage} />
+                        <Pagination actual={this.state.page} totalPages={this.state.totalPages} cb={this.loadData} />
                     </>
                 }
             </div>
