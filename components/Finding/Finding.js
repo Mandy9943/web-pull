@@ -24,12 +24,12 @@ class Finding extends Component {
 
             <Link href={"/categoria/[category]"} as={"/categoria/"+this.props.link_left}>
               <a className="no-finding">
-                <img src={this.props.img_left} />
+                <img src={this.props.img_left} alt={this.props.link_left} />
               </a>
             </Link>
 
             <div className="wrap-img">
-              <img src={CategoryImg} />
+              <img src={CategoryImg} alt={"Electrónica audio y video"} />
             </div>
             <div className="wrap-info">
               <p className="category-text">Electrónica</p>
@@ -40,12 +40,12 @@ class Finding extends Component {
           <div className="finding">
             <Link href={"/categoria/[category]"} as={"/categoria/"+this.props.link_right}>
               <a className="no-finding">
-                <img src={this.props.img_right} />
+                <img src={this.props.img_right} alt={this.props.link_right} />
               </a>
             </Link>
 
             <div className="wrap-img">
-              <img src={CategoryImg2} />
+              <img src={CategoryImg2} alt={"Deportes"} />
             </div>
             <div className="wrap-info">
               <p className="category-text">Deportes</p>

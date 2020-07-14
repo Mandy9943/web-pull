@@ -34,10 +34,10 @@ class PaySection extends Component {
     return (
       <div className="pay">
         <div className="pay-item">
-          <h1 className="title-pay-product-detail">{this.props.title}</h1>
+          <h1 className="title-pay-product-detail">{this.props.title.substr(0,60)}</h1>
         </div>
         <div className="pay-item">
-          <h2 className="price-pay-product-detail">{this.props.price}</h2>
+          <h2 className="price-pay-product-detail">{this.props.price.split(",")[0]}</h2>
         </div>
         <div className="pay-item pay-img no-movil">
           <img src={iconCredit} className="icon-credit" />

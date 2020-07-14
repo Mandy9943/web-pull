@@ -74,7 +74,7 @@ class ProductDetail extends Component {
           </div>
           <div className="wrap-section-1">
             <div className="wrap-product">
-              <DetailImg images={mdata.images} />
+              <DetailImg images={mdata.images} product_name={mdata.title} />
               <div className="wrap-slider-product-detail">
                 <ProductsSlider images={mdata.images} category={mdata.category.name} />
               </div>

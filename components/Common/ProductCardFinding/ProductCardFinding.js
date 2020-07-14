@@ -35,7 +35,7 @@ export default class ProductCardFinding extends React.Component {
             }else{
                 url = "https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png";
             }
-            return <ProductCard key={i} price={product.price} product_id={product.product_id} url={url} title={product.title}/>;
+            return <ProductCard key={i} price={product.price.split(",")[0]} product_id={product.product_id} url={url} title={product.title}/>;
         });
 
         return (

@@ -47,7 +47,7 @@ export default class Index extends Component {
                     <meta property="og:image" content="https://kiero.co/_next/static/images/banners-apk-911388a7cee05467bbd92b4b573820ab.jpg" />
                     
                 </Head>
-                        <Home user_data={this.props} />
+                <Home user_data={this.props} />
             </div>
         );
     }

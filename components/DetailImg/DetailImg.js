@@ -32,6 +32,7 @@ class Detail extends Component {
                 i < 5 ? (
                   <img
                     src={getImgUrl(img.url)}
+                    alt={this.props.product_name+" "+i}
                     className="size-img-list"
                     onMouseEnter={() => {
                       this.showImage(img.url);

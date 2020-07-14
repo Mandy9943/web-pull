@@ -81,7 +81,7 @@ export default class MyProducts extends Component {
                                 </div>
                                 <section className='description'>
                                     <h3>{product.title}</h3>
-                                    <h3>{product.price}</h3>
+                                    <h3>{product.price.split(",")[0]}</h3>
                                     <p>Estado:
                                             <strong>
                                             {product.status == "1" ? "Activo" : "Inactivo"}
