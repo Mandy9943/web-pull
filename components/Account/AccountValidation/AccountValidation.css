@@ -38,7 +38,7 @@
 }
 
 .account-validate-pass p {
-  font-size: .8rem;
+  font-size: 16px;
 }
 
 .account-validate-pass p > span {
@@ -55,6 +55,6 @@
 }
 
 .account-validate-pass-form p {
-  font-size: .7rem;
+  font-size: 16px;
 }
 /*# sourceMappingURL=AccountValidation.css.map */

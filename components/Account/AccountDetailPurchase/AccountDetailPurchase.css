@@ -58,7 +58,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 3rem;
+  font-size: 20px;
   -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
           box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
   color: #CF0A2C;
@@ -100,7 +100,7 @@
 }
 
 .account-detail-purchase-header p {
-  font-size: .8rem;
+  font-size: 16px;
 }
 
 .account-detail-purchase-header h3 {

@@ -31,7 +31,7 @@
 
 .wrap-filter .categories-finder a {
   color: #5A5A5A;
-  font-size: .8rem;
+  font-size: 16px;
 }
 
 .wrap-filter-button {
@@ -49,7 +49,7 @@
 
 .wrap-filter-button select, .wrap-filter-button option {
   color: #5A5A5A;
-  font-size: .8rem;
+  font-size: 16px;
 }
 
 .wrap-filter-button select, .wrap-filter-button select:active, .wrap-filter-button select:hover {
@@ -114,7 +114,7 @@
 }
 
 .item-filter-group {
-  font-size: .8rem;
+  font-size: 16px;
   margin: 5px 0px;
   display: none;
 }
@@ -162,7 +162,7 @@
 
 .wrap-filter-price input {
   margin: 5px 0px;
-  font-size: 0.75rem;
+  font-size: 16px;
 }
 
 .wrap-filter-price button {

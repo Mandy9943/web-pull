@@ -23,7 +23,7 @@
   position: absolute;
   bottom: 8px;
   left: 4px;
-  font-size: .8rem;
+  font-size: 16px;
   color: #6F6F6F;
 }
 
@@ -40,7 +40,7 @@
 }
 
 .account-store-questions-wrap-title h3 {
-  font-size: 1.7rem;
+  font-size: 26px;
 }
 
 .account-store-questions-button-table {
@@ -101,12 +101,12 @@
 }
 
 .response-modal-wrap-info-client {
-  font-size: .7rem;
+  font-size: 16px;
   margin-top: 5px;
 }
 
 .response-modal-title-product {
-  font-size: .8rem;
+  font-size: 20px;
   margin-bottom: 10px;
 }
 
