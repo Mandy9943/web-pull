@@ -43,6 +43,8 @@ class MenuCategories extends Component {
 
     let menu = this.state.moreAll ? " show-all" : '  '
 
+    let url = "https://picsum.photos/100"
+
     return (
       <div className="wrap-menu-categories">
         <div
@@ -65,7 +67,13 @@ class MenuCategories extends Component {
           </section>
           {this.state.showMenu ?
             <section onMouseEnter={this.subMenuMouseEnter} className={`${menu} sub-categories`}>
-
+              <section className="title-sub">
+                <span>Categorias cableada</span>
+                <img src={url}/>
+                <img src={url} />
+                <img src={url} />
+                <img src={url} />
+              </section>
               {this.props.categories[this.state.selectecCategory].childs.length > 20 ? 
                 <span onClick={this.showAll} className="load-more">
                   <a className="accent">{!this.state.moreAll ? "Ver mas" : 'Ver menos'}</a>
@@ -75,7 +83,9 @@ class MenuCategories extends Component {
                 null
               }
               {this.props.categories[this.state.selectecCategory].childs.map((ccat, i) => {
-                return <span key={i}><Link href={"/categoria/" + ccat.name}><a>{ccat.name}</a></Link></span>
+                return <section className={!this.state.moreAll ? "sub-cat less" : 'sub-cat more'}key={i}> <h5>categoria nivel 2</h5>
+                  <span><Link href={"/categoria/" + ccat.name}><a>{ccat.name}</a></Link></span>
+                  </section>
               })}
             </section>
             : null}

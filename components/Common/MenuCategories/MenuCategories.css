@@ -2,15 +2,14 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  position: absolute;
-  top: 32px;
-  left: -12px;
-  right: 0;
+  position: fixed;
+  top: 0px;
+  left: 0px;
   width: 100%;
-  height: calc(100vh - 90px);
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  height: 100vh;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -23,7 +22,7 @@
   background: white;
   width: auto;
   position: absolute;
-  top: 0;
+  top: 90px;
   left: 10%;
   display: -ms-grid;
   display: grid;
@@ -90,6 +89,8 @@
   bottom: 0;
   left: 300px;
   border-left: 1px solid  #F3F3F3;
+  padding-top: 130px;
+  grid-row-gap: 20px;
 }
 
 @media (max-width: 1024px) {
@@ -98,37 +99,79 @@
   }
 }
 
+.sub-categories h5 {
+  color: #5A5A5A;
+  font-weight: bold;
+}
+
+.sub-categories .title-sub {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 30px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 4fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 4fr 1fr 1fr 1fr 1fr;
+  padding-bottom: 30px;
+  margin-right: 30px;
+  margin-left: 15px;
+  grid-gap: 5px;
+  border-bottom: 1px solid  #F3F3F3;
+}
+
+.sub-categories .title-sub span {
+  color: #CF0A2C;
+  font-size: 26px;
+  margin: auto;
+  margin-left: 0;
+  font-weight: bold;
+}
+
+.sub-categories .title-sub img {
+  width: 100%;
+  height: 100%;
+}
+
 .sub-categories.show-all span {
   display: -ms-grid !important;
   display: grid !important;
 }
 
-.sub-categories span {
+.sub-categories .sub-cat {
+  display: none;
+}
+
+.sub-categories .sub-cat span {
   display: -ms-grid;
   display: grid;
   margin: auto;
   margin-left: 0;
   margin-top: 0;
   margin-right: 5px;
-  display: none;
 }
 
-.sub-categories span .accent {
+.sub-categories .sub-cat span .accent {
   color: #CF0A2C !important;
 }
 
-.sub-categories span:nth-child(-n+15) {
-  display: -ms-grid;
-  display: grid;
-}
-
-.sub-categories span a {
+.sub-categories .sub-cat span a {
   display: -ms-grid;
   display: grid;
   font-size: 12px;
   margin: auto;
   margin-left: 0;
   padding: 0 !important;
+}
+
+.sub-categories .less:nth-child(-n+15) {
+  display: -ms-grid;
+  display: grid;
+}
+
+.sub-categories .more {
+  display: -ms-grid !important;
+  display: grid !important;
 }
 
 .sub-categories .load-more {
