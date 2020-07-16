@@ -3,6 +3,7 @@ import Head from "next/head";
 import Account from "../../components/AccountStore";
 import {getJwt, getUser, redirectIfNotAuthenticated} from "../../lib/auth";
 import { getProductDetail } from "../../services/productsApi";
+import favicon from "../../assets/img/favicon.svg";
 
 function Product(precomp) {
     return (
@@ -16,6 +17,7 @@ function Product(precomp) {
                 <meta name="robots" content="noydir" />
                 <meta name="description" content="Descubre miles de productos al mejor precio. Envios gratis a todo el pais, encuentra lo que buscas en Kiero.co" />
                 <meta name="Keywords" content="Tienda en Línea" />
+                <link rel="icon" href={favicon} type="image/png" />
             </Head>
             <Account data={precomp.data} jwt={precomp.jwt}/>
         </div>

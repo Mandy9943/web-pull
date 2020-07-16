@@ -1,6 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
 import SellerReputation from '../components/Help/SellerReputation/SellerReputation';
+import favicon from "../assets/img/favicon.svg";
+
 
 export default function reputacion_de_vendedor() {
     return (
@@ -14,6 +16,7 @@ export default function reputacion_de_vendedor() {
                 <meta name="robots" content="noydir" />
                 <meta name="description" content="Descubre miles de productos al mejor precio. Envios gratis
                     a todo el pais, encuentra lo que buscas en Kiero.co" />
+                <link rel="icon" href={favicon} type="image/png" />
             </Head>
             <SellerReputation />
         </div>

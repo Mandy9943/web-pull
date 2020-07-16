@@ -28,7 +28,7 @@ export default class ContactEmail extends Component {
                                 </a>
                             </Link>
                         </div>
-                        <h1>Contáctanos por Whatsapp</h1>
+                        <h1>Contáctanos por Correo</h1>
                     </div>
                 </div>
                 <div className="contact-email-content">

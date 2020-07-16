@@ -3,11 +3,14 @@ import Head from "next/head";
 import Detail from "../../components/ProductDetail";
 import { getProductDetail } from "../../services/productsApi";
 import { getUser, isAuthenticated, getJwt } from "../../lib/auth";
+import favicon from "../../assets/img/favicon.svg";
+
 
 function Product({ data, u_data }) {
   return (
     <div>
       <Head>
+        {/*NEED FIX THIS SHIT colocar nombre del producto y precio y categoria mostrar*/}
         <title>Kiero | Producto </title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="Description" content="KIERO.CO MARKETPLACE | Compralo en Kiero a precio - Envio gratis - Encuentra mas productos de CatPadre, CatHijo, CatNieto" />
@@ -32,6 +35,7 @@ function Product({ data, u_data }) {
         <meta name="robots" content="index,follow" />
         <meta name="robots" content="noodp" />
         <meta name="robots" content="noydir" />
+        <link rel="icon" href={favicon} type="image/png" />
       </Head>
       <Detail user_data={u_data} data={data} />
     </div>

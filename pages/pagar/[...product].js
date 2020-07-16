@@ -4,6 +4,8 @@ import PaymentWay from '../../components/PaymentWay/PaymentWay';
 import { getProductDetail } from "../../services/productsApi";
 import {getUser, isAuthenticated, getJwt, redirectIfNotAuthenticated } from "../../lib/auth";
 import {authenticate} from "../../services/authApi";
+import favicon from "../../assets/img/favicon.svg";
+
 
 
 function plataforma_de_pago({data, u_data}) {
@@ -18,6 +20,7 @@ function plataforma_de_pago({data, u_data}) {
                 <meta name="robots" content="noydir" />
                 <meta name="description" content="Descubre miles de productos al mejor precio. Envios gratis a todo el pais, encuentra lo que buscas en Kiero.co" />
                 <meta name="Keywords" content="Tienda en Línea" />
+                <link rel="icon" href={favicon} type="image/png" />
             </Head>
             <PaymentWay data={data} user={u_data} />
         </div>

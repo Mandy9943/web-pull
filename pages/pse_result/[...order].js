@@ -6,6 +6,8 @@ import { getUser, isAuthenticated, getJwt } from "../../lib/auth";
 import Header from "./../../components/Common/Header/Header";
 import Footer from "./../../components/Common/Footer/Footer";
 import '../sass/order.css';
+import favicon from "../../assets/img/favicon.svg";
+
 
 
 
@@ -21,6 +23,7 @@ function Product({ data, u_data }) {
         <meta name="robots" content="noydir" />
         <meta name="description" content="Descubre miles de productos al mejor precio. Envios gratis a todo el pais, encuentra lo que buscas en Kiero.co" />
         <meta name="Keywords" content="Tienda en Línea" />
+        <link rel="icon" href={favicon} type="image/png" />
       </Head>
       <Header />
 

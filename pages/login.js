@@ -4,6 +4,7 @@ import Head from 'next/head';
 import Login from "../components/Login";
 import {redirectIfAuthenticated} from "../lib/auth";
 import {getCookie, removeCookie} from "../lib/session";
+import favicon from "../assets/img/favicon.svg";
 
 
 export default class login extends Component {
@@ -35,6 +36,7 @@ export default class login extends Component {
                     <meta name="robots" content="noydir" />
                     <meta name="description" content="Descubre miles de productos al mejor precio. Envios gratis
                     a todo el pais, encuentra lo que buscas en Kiero.co" />
+                    <link rel="icon" href={favicon} type="image/png" />
                 </Head>
                 <Login success={success}/>
             </div>

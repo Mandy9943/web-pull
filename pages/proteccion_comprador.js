@@ -1,6 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
 import BuyerProtection from '../components/Help/BuyerProtection/BuyerProtection';
+import favicon from "../assets/img/favicon.svg";
+
 
 export default function proteccion_comprador() {
     return (
@@ -14,6 +16,8 @@ export default function proteccion_comprador() {
                 <meta name="robots" content="noydir" />
                 <meta name="description" content="Descubre miles de productos al mejor precio. Envios gratis
                     a todo el pais, encuentra lo que buscas en Kiero.co" />
+                <link rel="icon" href={favicon} type="image/png" />
+
             </Head>
             <BuyerProtection />
         </div>

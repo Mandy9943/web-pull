@@ -4,6 +4,8 @@ import Home from "../components/Home";
 import { Component } from "react";
 import PropTypes from "prop-types";
 import { isAuthenticated, getUser } from "../lib/auth";
+import favicon from "../assets/img/favicon.svg";
+
 
 export default class Index extends Component {
 
@@ -45,7 +47,8 @@ export default class Index extends Component {
                     <meta property="og:description" content="Envíos gratis en Colombia, productos para Bebés, Belleza, Cámaras y accesorios, Electrodomésticos, Electrónica, Hogar y muebles y mucho más. " />
                     <meta property="og:url" content="https://www.kiero.co/" />
                     <meta property="og:image" content="https://kiero.co/_next/static/images/banners-apk-911388a7cee05467bbd92b4b573820ab.jpg" />
-                    
+
+                    <link rel="icon" href={favicon} type="image/png" />
                 </Head>
                 <Home user_data={this.props} />
             </div>

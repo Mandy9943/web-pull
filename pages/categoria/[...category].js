@@ -12,6 +12,8 @@ import Logo2 from "../../assets/img/logo-social1.png";
 import "../../components/CategoryList/CategoryList.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTruck, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import favicon from "../../assets/img/favicon.svg";
+
 
 
 function Results({ data, session }) {
@@ -186,6 +188,7 @@ function Results({ data, session }) {
                     <meta property='og:site_name' content='Kiero.co' />
                     <meta property="og:image" content="https://kiero.co/_next/static/images/banners-apk-911388a7cee05467b
                     bd92b4b573820ab.jpg"/>
+                    <link rel="icon" href={favicon} type="image/png" />
                 </Head>
 
                 <div className="container category-list">
@@ -248,6 +251,7 @@ function Results({ data, session }) {
                     <meta property='og:site_name' content='Kiero.co' />
                     <meta property="og:image" content="https://kiero.co/_next/static/images/banners-apk-911388a7cee05467b
                     bd92b4b573820ab.jpg"/>
+                    <link rel="icon" href={favicon} type="image/png" />
                 </Head>
                 <Category data={data} user_data={session} />
             </div>

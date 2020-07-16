@@ -2,6 +2,8 @@ import React from 'react';
 import Head from 'next/head';
 import Category from '../components/Category/Category';
 import {getUser, isAuthenticated } from "../lib/auth";
+import favicon from "../assets/img/favicon.svg";
+
 
 function Results({data, session}) {
     return (
@@ -15,6 +17,7 @@ function Results({data, session}) {
                 <meta name="robots" content="noydir" />
                 <meta name="description" content="Descubre miles de productos al mejor precio. Envios gratis
                     a todo el pais, encuentra lo que buscas en Kiero.co" />
+                <link rel="icon" href={favicon} type="image/png" />
             </Head>
             <Category />
         </div>

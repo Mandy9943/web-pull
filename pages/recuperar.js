@@ -4,6 +4,8 @@ import ForgotPass from "../components/ForgotPass";
 import './sass/ForgotPass.css';
 import {redirectIfAuthenticated} from "../lib/auth";
 import {getCookie, removeCookie} from "../lib/session";
+import favicon from "../assets/img/favicon.svg";
+
 
 export default class recuperar extends React.Component {
     static getInitialProps(ctx) {
@@ -35,6 +37,7 @@ export default class recuperar extends React.Component {
                     <meta name="robots" content="noydir" />
                     <meta name="description" content="Descubre miles de productos al mejor precio. Envios gratis
                     a todo el pais, encuentra lo que buscas en Kiero.co" />
+                    <link rel="icon" href={favicon} type="image/png" />
                 </Head>
                 <ForgotPass success={success}/>
             </div>
