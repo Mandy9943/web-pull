@@ -21,6 +21,21 @@ svg {
     display: inline !important;
 }
 
+svg:not(:root).svg-inline--fa {
+    overflow: visible;
+}
+
+.svg-inline--fa.fa-w-10 {
+    width: 0.625em;
+}
+.svg-inline--fa {
+    display: inline-block;
+    font-size: inherit;
+    height: 1em;
+    overflow: visible;
+    vertical-align: -0.125em;
+}
+
 #__next {
     display: grid;
 }
