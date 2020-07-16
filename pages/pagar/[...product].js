@@ -2,7 +2,8 @@ import React from 'react';
 import Head from 'next/head';
 import PaymentWay from '../../components/PaymentWay/PaymentWay';
 import { getProductDetail } from "../../services/productsApi";
-import {getUser, isAuthenticated, getJwt } from "../../lib/auth";
+import {getUser, isAuthenticated, getJwt, redirectIfNotAuthenticated } from "../../lib/auth";
+import {authenticate} from "../../services/authApi";
 
 
 function plataforma_de_pago({data, u_data}) {
@@ -39,6 +40,8 @@ export async function getServerSideProps(context) {
         authenticated: isAuthenticated(context),
         jwt: jwt ? jwt : '' 
     }
+
+    redirectIfNotAuthenticated(context);
 
     return { props: { data, u_data } }
 }
