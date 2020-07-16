@@ -145,7 +145,7 @@ export default class MyProducts extends Component {
                         {product.created_since.split(" ")[0]}
                     </div>
                     <div className="option id">{product.product_id} 
-                        <a className="icon-action" onClick={() => this.openOption(i)}>
+                        <a style={{ padding: "10px", cursor: "pointer"}} className="icon-action" onClick={() => this.openOption(i)}>
                             <FontAwesomeIcon icon={faEllipsisV} />
                         </a>
                         <section onMouseEnter={() => this.mEnter(i)} onMouseLeave={() => this.mLeave(i)} className={this.state.optionPanel[i] === true ? "actions active" : "actions"}>

@@ -37,7 +37,7 @@ class ProductDetail extends Component {
     this.loadQuestions();
   }
 
-  loadQuestions() {
+  loadQuestions = () => {
     getData("/getQuestions/" + this.props.data.product_id)
       .then((response) => {
         this.setState({ questions: response.data });
@@ -84,7 +84,7 @@ class ProductDetail extends Component {
               <Detail desciption={mdata.description} />
               <Question user_data={this.props.user_data} product_id={mdata.product_id} cb={this.loadQuestions} />
               <section className="no-movil">
-                <QuestionItem questions={this.state.questions} />
+                <QuestionItem product_id={mdata.product_id} questions={this.state.questions} />
               </section>
               <div className="section-pay-type pay-movil no-web">
                 <div className="section-pay-type-title">
@@ -137,7 +137,7 @@ class ProductDetail extends Component {
             <div className="section-pay-wrap-seller">
               <Seller seller={mdata.user} />
             </div>
-            <QuestionItem questions={this.state.questions} />
+            <QuestionItem product_id={mdata.product_id} q questions={this.state.questions} />
             <ProductsSlider images={mdata.images} category={mdata.category.name} />
             <ProductsSlider images={mdata.images} category={mdata.category.name} />
             <Explorer />

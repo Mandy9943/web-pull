@@ -48,10 +48,11 @@ export default class PaymentWay extends Component {
 
 
     loadAddresses() {
+        console.log("load addresses");
+        console.log(this.props);
         getData("/getAddresses", this.props.user.jwt)
             .then((response) => {
                 this.setState({ addresses: response.data, addrLoaded: true });
-
             });
     }
 
@@ -311,7 +312,7 @@ export default class PaymentWay extends Component {
                                             <Button onClick={this.openAddrsModal} text={"Cambiar dirección"} />
                                         </>
                                         :
-                                        null
+                                        <><Button onClick={this.openAddrsModal} text={"Seleccione una dirección"} /></>
                                 }
 
                             </div>
