@@ -165,10 +165,10 @@ export default class UserAccount extends Component {
                 dt_text = "CE.";
                 break;
             case "3":
-                dt_text = "PS.";
+                dt_text = "TI.";
                 break;
             case "4":
-                dt_text = "TI.";
+                dt_text = "PS.";
                 break;
             case "9":
                 dt_text = "OTRO.";
@@ -284,6 +284,7 @@ export default class UserAccount extends Component {
                                 </div>
                             </div>
                             <div className="user-accunt-info-box">
+                                
                                 <div className="user-accunt-info-tab edit">
                                     <p>Usuario</p>
                                     <Link href="/cambio_usuario">
@@ -296,6 +297,7 @@ export default class UserAccount extends Component {
                                     </Link>
 
                                 </div>
+
                                 <div className="user-accunt-info-tab edit">
                                     <p>Correo</p>
                                     <Link href="/cambiar_correo">

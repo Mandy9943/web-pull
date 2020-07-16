@@ -39,7 +39,7 @@ export default function UserChange() {
                             <a className="button-a">
                                 <p>Modificar</p>
                             </a>
-                        <Link href="/ayuda">
+                        <Link href="/cuenta">
                             <a className="button-a cancel-btn">
                                 <p>cancelar</p>
                             </a>
