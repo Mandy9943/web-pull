@@ -4,7 +4,6 @@ import Link from "next/link";
 
 class QuestionItem extends Component {
   render() {
-
     let responses = true;
     return (
       <div className="QuestionItem-list">
@@ -12,16 +11,15 @@ class QuestionItem extends Component {
         {this.props.questions.map((question, i) => (
             <section key={i} className="question-item">
             <h5 className="question-title">
-              {question.content}
+                {question.content} &nbsp;&nbsp;<small style={{color: "rgb(134, 134, 134)", "font-size": "smaller"}}>{question.created_since.split(" ")[0]}</small>
             </h5>
             {responses && <h5 className="responses-title">{question.answer}</h5>}
             </section>
         ))}
-        {this.props.questions ? <span className="empty-question">Se el primero en preguntar.</span> : null}
+        {this.props.questions.length===0 ? <span className="empty-question">Se el primero en preguntar.</span> : null}
         <a><h5 className="no-web accent">Hacer una pregunta al vendedor</h5></a>
         <fotoer className="footer-question no-web">
-          <span>Publicacion #324234</span> <Link href="/ayuda"><a>Necesitas ayuda?</a></Link>
-          {/*NEED FIX THIS SHIT*/}
+          <span>Publicacion #{this.props.product_id}</span> <Link href="/ayuda"><a>Necesitas ayuda?</a></Link>
         </fotoer>
       </div>
     );

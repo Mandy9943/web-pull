@@ -4,18 +4,32 @@ import { sendQuestion } from "../../services/productsApi"
 
 class Question extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      question: "",
+    };
+  }
+
   newQuestion = async e => {
-
     e.preventDefault();
-
     const question = e.target.elements.question.value;
-    const r = sendQuestion(question, this.props.product_id, this.props.user_data.jwt);
-    if(r.msg=="ok"){
+    const r = await sendQuestion(question, this.props.product_id, this.props.user_data.jwt);
+    console.log(r);
+    if(r.data.result==="ok"){
+      this.cngQuestion("");
       this.props.cb();
+      alert("Pregúnta enviada");
     }else{
-
+      alert("No se ha podido enviar la pregútna, intentelo nuevamente.")
     }
+
   };
+
+  cngQuestion = (nval) => {
+    this.setState({question: nval});
+  }
+
 
   render() {
     return (
@@ -34,6 +48,7 @@ class Question extends Component {
               <input type="text" name={"question"} placeholder="Pregunta al vendedor" />
               <button type="submit" className="button-question-product-detail">Preguntar</button>
             </form>
+
           </div>
 
         }
@@ -41,6 +56,7 @@ class Question extends Component {
         { !this.props.user_data.authenticated && 
             <div className="">
               <form className="wrap-question-input">
+
                 Inicia sesión o registrate para realizar una pregúnta al vendedor.
               </form>
             </div>
