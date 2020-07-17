@@ -15,7 +15,7 @@ export default function UserChange() {
             <Header />
             <div className="user-change-container">
                 <div className="back-btn">
-                    <Link href="/ayuda">
+                    <Link href="/cuenta">
                         <a>
                             <p className="user-change-icon">
                                 <FontAwesomeIcon icon={faAngleLeft} />

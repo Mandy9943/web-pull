@@ -90,10 +90,9 @@ class ProductDetail extends Component {
                 <div className="section-pay-type-title">
                   <h4>Medios de pago</h4>
                 </div>
-                {1 > 0 ?
+                {/*{1 > 0 ?
                   <button className="main-button" onClick={() => this.go(this.props.pid)}><p>Comprar</p></button>
-                  : null}
-                {/*NEED FIX this shit*/}
+                : null} */}
                 <div className="section-pay-type-items">
                   <p>Tarjetas de crédito</p>
                   <div>

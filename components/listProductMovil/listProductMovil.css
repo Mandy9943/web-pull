@@ -103,6 +103,9 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+  .listProductMovil .product-item-edit .content .description span svg {
+    margin-right: 5px;
+  }
   .listProductMovil .product-item-edit .content .actions a {
     width: 80% !important;
     margin: 7.5px auto !important;

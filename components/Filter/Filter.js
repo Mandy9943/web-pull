@@ -231,14 +231,11 @@ class Filter extends Component {
             </div>
             <form onSubmit={this.handlePrice}>
               <div className="wrap-filter-price">
-
                   <input placeholder="Minimo" name={"from_price"} type="number" size="mini" />
                   <p>-</p>
                   <input placeholder="Maximo" name={"to_price"} type-="number" size="mini" />
                   <FontAwesomeIcon icon={faChevronCircleRight} />
                   <button type="submit">Filtrar</button>
-
-
               </div>
             </form>
           </div>
@@ -263,10 +260,9 @@ class Filter extends Component {
         <div className="responsive-filter">
           <div
             className="responsive-filter-item"
-            onClick={this.toggleMenuOrder}
-          >
-            Ordenes
-          </div>
+            onClick={this.toggleMenuOrder}>
+            Ordenar
+        </div>
           <div
             className="responsive-filter-item"
             onClick={() => {
@@ -295,10 +291,10 @@ class Filter extends Component {
                   onClick={this.toggleMenuOrder}
                 />
               </li>
-              <li>ordenar</li>
-              <li className="responsive-dropdown-item">Menor precio</li>
-              <li className="responsive-dropdown-item">Mayor precio</li>
-              <li className="responsive-dropdown-item">Mas relevante</li>
+              <li>Ordenar</li>
+              <li onClick={(e) => this.setSort(e)} value="2" className="responsive-dropdown-item">Menor precio</li>
+              <li onClick={(e) => this.setSort(e)} value="1" className="responsive-dropdown-item">Mayor precio</li>
+              <li onClick={(e) => this.setSort(e)} value="0" className="responsive-dropdown-item">Mas relevante</li>
             </ul>
           </div>
           <div
