@@ -67,6 +67,7 @@ button {
     border-radius: 5px;
     cursor: pointer;
     font-size: 18px;
+    font: 400 13.3333px sans-serif !important;
 }
 
 h1, h2, h3, h4, h5 {
