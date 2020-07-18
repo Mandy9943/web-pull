@@ -18,6 +18,8 @@ class ListCategory extends Component {
 
 
   render() {
+    console.log("loaded list category");
+
     const Class = this.props.format == "grid" ? "grid" : "list";
     const page_first = (this.props.page - 1) * this.props.item_per_page;
     const page_last = ((this.props.page - 1) * this.props.item_per_page) + this.props.item_per_page;

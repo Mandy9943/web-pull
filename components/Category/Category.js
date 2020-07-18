@@ -125,11 +125,13 @@ class  Category extends Component {
   }
 
   sortProducts = (sortType) => {
+    console.log("SORT MY PRODUCTS."+sortType);
     let items = this.state.products;
 
     if (items === null){
       return;
     }
+
     let func = undefined;
     switch (sortType) {
       case "0":
@@ -156,7 +158,7 @@ class  Category extends Component {
 
 
   render() {
-
+    console.log("Try to render.");
     return (
       <div className="search">
           <Nav user={this.props.user_data.user} actualSearch={this.props.data.search} authenticated={this.props.user_data.authenticated} />

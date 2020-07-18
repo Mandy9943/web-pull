@@ -23,15 +23,11 @@ class Filter extends Component {
   }
 
   toggleMenuOrder() {
-    !this.state.menuOrder
-      ? this.setState({ menuOrder: true })
-      : this.setState({ menuOrder: false });
+    this.setState({ menuOrder: !this.state.menuOrder });
   }
 
   toggleMenuFilter() {
-    !this.state.menuFilter
-      ? this.setState({ menuFilter: true })
-      : this.setState({ menuFilter: false });
+    this.setState({ menuFilter: !this.state.menuFilter })
   }
 
   ShowAllCategories() {
@@ -39,8 +35,8 @@ class Filter extends Component {
   }
 
   setSort(event){
-    console.log(event.target.value);
-    this.props.sortProducts(event.target.value);
+    this.setState({ menuOrder: false });
+    this.props.sortProducts(""+event.target.value);
   }
 
   handlePrice = (e) => {
@@ -49,9 +45,6 @@ class Filter extends Component {
 
     const from_price = parseInt(e.target.elements.from_price.value);
     const to_price = parseInt(e.target.elements.to_price.value);
-
-
-    console.log(from_price + ":" + to_price);
 
     if(!Number.isInteger((from_price)) && Number.isInteger((to_price))){
       console.log("First")
@@ -310,7 +303,9 @@ class Filter extends Component {
                 />
               </li>
               <li>Filtrar</li>
+              {filters}
               <li>
+
                 <details className="responsive-dropdown">
                   <summary>Categoria</summary>
                   {res_categories.map((item, index) => (
@@ -339,9 +334,28 @@ class Filter extends Component {
               <li>
                 <details className="responsive-dropdown">
                   <summary>Precio</summary>
-                  <p className="responsive-dropdown-item">Menor precio</p>
-                  <p className="responsive-dropdown-item">Mayor precio</p>
-                  <p className="responsive-dropdown-item">Mas relevante</p>
+                  <div className="filter-group show">
+                    <h4>Rango de precios</h4>
+                    <div>
+                      {prices.map((item, index) => (
+                          <div key={index}>
+                            <a onClick={() => {
+                              this.props.applyFilter("price", item);
+                            }}><p className="item-filter-group show">{item}</p></a>
+                          </div>
+
+                      ))}
+                    </div>
+                    <form onSubmit={this.handlePrice}>
+                      <div className="wrap-filter-price">
+                        <input placeholder="Minimo" name={"from_price"} type="number" size="mini" />
+                        <p>-</p>
+                        <input placeholder="Maximo" name={"to_price"} type-="number" size="mini" />
+                        <FontAwesomeIcon icon={faChevronCircleRight} />
+                        <button type="submit">Filtrar</button>
+                      </div>
+                    </form>
+                  </div>
                 </details>
               </li>
             </ul>
