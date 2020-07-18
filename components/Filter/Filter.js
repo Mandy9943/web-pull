@@ -334,7 +334,7 @@ class Filter extends Component {
               <li>
                 <details className="responsive-dropdown">
                   <summary>Precio</summary>
-                  <div className="filter-group show">
+                  <div className="filter-group filter-responsive show">
                     <h4>Rango de precios</h4>
                     <div>
                       {prices.map((item, index) => (

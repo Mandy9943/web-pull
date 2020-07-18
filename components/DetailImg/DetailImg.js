@@ -8,8 +8,6 @@ import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import Spinner from "./../Common/Spinner";
 
 
-
-
 class Detail extends Component {
   constructor(props) {
     super(props);
@@ -22,7 +20,10 @@ class Detail extends Component {
   }
 
 
+
   render() {
+    let url = "/categoria/" + this.props.category;
+
     return (
       <>
         <div className="wrap-gallery">
@@ -50,7 +51,7 @@ class Detail extends Component {
           </div>
         </div>
         <div className="gallery-responsive">
-          <a className="back-button"><FontAwesomeIcon icon={faAngleLeft} /> Ir al listado</a>
+          <Link href={url}><a className="back-button"><FontAwesomeIcon icon={faAngleLeft} /> Ir al listado</a></Link>
           {/*NEED FIX THIS SHIT*/}
           <SliderDetail img={this.props.images} />
         </div>

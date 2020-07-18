@@ -243,6 +243,7 @@
   text-align: left;
   margin-top: 7px;
   color: #CF0A2C;
+  padding: 0 15px;
 }
 
 .result:hover {
@@ -286,6 +287,14 @@ details > summary:first-of-type {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+  }
+  .filter-responsive {
+    padding: 0 15px;
+    padding-top: 15px;
+    margin-bottom: 15px;
+  }
+  summary {
+    font-size: 18px;
   }
 }
 /*# sourceMappingURL=Filter.css.map */
