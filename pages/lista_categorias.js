@@ -8,7 +8,7 @@ import favicon from "../assets/img/favicon.svg";
 
 
 
-export default class menu_categorias extends Component {
+export default class lista_categorias extends Component {
 
     constructor(props) {
         super(props);
