@@ -48,7 +48,6 @@ export default class Home extends Component {
           <CategoriesImgMenu />
           <Tickets />
         </div>
-
         <Info />
         <News />
         {/*<Social />*/}
