@@ -28,42 +28,44 @@
   width: 100%;
 }
 
-.nav-botton .modal-home .wrap-modal .modal .header-modal, .nav-botton .modal-home .wrap-modal .modal .footer-modal {
+.nav-botton .modal-home .wrap-modal .modal .header-modal {
   padding: 15px;
   background: white;
   margin: 0 15px 15px;
+  margin-bottom: 0;
   border-radius: 5px;
   font-size: 15px;
 }
 
-.nav-botton .modal-home .wrap-modal .modal .header-modal h5, .nav-botton .modal-home .wrap-modal .modal .footer-modal h5 {
+.nav-botton .modal-home .wrap-modal .modal .header-modal h5 {
   font-size: 20px;
 }
 
-.nav-botton .modal-home .wrap-modal .modal .header-modal .user-icon-name, .nav-botton .modal-home .wrap-modal .modal .footer-modal .user-icon-name {
+.nav-botton .modal-home .wrap-modal .modal .header-modal .user-perfil {
   color: #5A5A5A !important;
-  margin-top: 15px;
   display: block;
   position: relative;
 }
 
-.nav-botton .modal-home .wrap-modal .modal .header-modal .user-icon-name p, .nav-botton .modal-home .wrap-modal .modal .footer-modal .user-icon-name p {
+.nav-botton .modal-home .wrap-modal .modal .header-modal .user-perfil .user-name {
   display: inline-block;
   position: absolute;
-  top: 4px;
-  left: 30px;
+  top: 8px;
+  left: 75px;
 }
 
-.nav-botton .modal-home .wrap-modal .modal .header-modal .user-icon-name svg, .nav-botton .modal-home .wrap-modal .modal .footer-modal .user-icon-name svg {
-  background: #5A5A5A;
-  border-radius: 50%;
-  padding: 4px;
-  width: 14px;
-  height: 14px;
-  color: white;
+.nav-botton .modal-home .wrap-modal .modal .header-modal .user-perfil .user-name p {
+  font-weight: bolder;
 }
 
-.nav-botton .modal-home .wrap-modal .modal .header-modal .actions, .nav-botton .modal-home .wrap-modal .modal .footer-modal .actions {
+.nav-botton .modal-home .wrap-modal .modal .header-modal .user-perfil img {
+  border-radius: 100%;
+  width: 70px;
+  height: 70px;
+  display: block;
+}
+
+.nav-botton .modal-home .wrap-modal .modal .header-modal .actions {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr;
@@ -72,7 +74,7 @@
   grid-gap: 5px;
 }
 
-.nav-botton .modal-home .wrap-modal .modal .header-modal .actions .main-button, .nav-botton .modal-home .wrap-modal .modal .footer-modal .actions .main-button {
+.nav-botton .modal-home .wrap-modal .modal .header-modal .actions .main-button {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -81,27 +83,28 @@
           align-items: center;
   border-radius: 5px;
   width: 100%;
+  color: white !important;
 }
 
-.nav-botton .modal-home .wrap-modal .modal .footer-modal {
-  padding-top: 1px;
+.nav-botton .modal-home .wrap-modal .modal .header-modal .actions a {
+  color: white !important;
 }
 
-.nav-botton .modal-home .wrap-modal .modal .footer-modal a {
-  color: #5A5A5A !important;
+.nav-botton .modal-home .wrap-modal .modal .header-modal a {
   margin-top: 15px;
   display: block;
   position: relative;
 }
 
-.nav-botton .modal-home .wrap-modal .modal .footer-modal a p {
+.nav-botton .modal-home .wrap-modal .modal .header-modal a p {
   display: inline-block;
   position: absolute;
   top: 4px;
   left: 30px;
+  color: #5A5A5A !important;
 }
 
-.nav-botton .modal-home .wrap-modal .modal .footer-modal a svg {
+.nav-botton .modal-home .wrap-modal .modal .header-modal a svg {
   background: #5A5A5A;
   border-radius: 50%;
   padding: 4px;
@@ -110,15 +113,21 @@
   color: white;
 }
 
-.nav-botton .modal-home .wrap-modal .modal .footer-modal hr {
+.nav-botton .modal-home .wrap-modal .modal .header-modal hr {
   margin-top: 15px;
   border-bottom: none;
+  margin-left: -15px;
+  margin-right: -15px;
 }
 
-.nav-botton .modal-home .wrap-modal .modal .footer-modal .number-accent {
+.nav-botton .modal-home .wrap-modal .modal .header-modal .number-accent {
   padding: 2px 5px;
   background: #CF0A2C;
   color: white;
+}
+
+.nav-botton .modal-home .wrap-modal .modal .header-modal .logout {
+  margin-left: 30px;
 }
 
 @media (max-width: 370px) {

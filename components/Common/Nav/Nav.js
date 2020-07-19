@@ -86,32 +86,42 @@ export default class Nav extends Component {
     render() {
         let authenticated = this.props.authenticated
         let home = this.props.home
+        
     
         const content2 = (
             <>
                 <div className="header-modal">
-                    <h5>Bienvenido</h5>
                     {!authenticated ?
                     <>
+                        <h5>Bienvenido</h5>
                         <p>Crea tu cuenta o inicia sesion</p>
                     <section className="actions">
-                        <Link href="/login"><a className="main-button">Mi cuenta</a></Link>
+                                <Link href="/login"><a className="main-button">iniciar sesion</a></Link>
                         <Link href="/registro"><a className="main-button">Registrarse</a></Link>
                         </section> 
                     </>
-                        : <span className="user-icon-name"><FontAwesomeIcon icon={faUser} /><p>{this.props.user}</p></span>
+                        :   
+                        <section className="user-perfil">
+                            <img src="https://recap-project.eu/wp-content/uploads/2017/02/default-user.jpg"/>
+                            <span className="user-name">
+                                <h5>Bienvenido</h5>
+                                <p>{this.props.user}</p>
+                            </span>
+                        </section>
                     }
-                </div>
-                <div className="footer-modal">
+                    <hr />
                     <Link href="/cuenta"><a><FontAwesomeIcon icon={faHome} /> <p>Inicio </p></a></Link>
+                    {authenticated ?
                     <Link href="/notificaciones"><a><FontAwesomeIcon icon={faBell} /> 
                         <p>Notificaciones <span className="number-accent">3</span>{/*NEED FIX THIS SHIT*/}
-                    </p></a></Link>
+                    </p></a></Link> : null}
                     <Link href="/lista_categorias"><a><FontAwesomeIcon icon={faAlignLeft} /> <p>Categorias</p></a></Link>
                     {/*<Link href="#"><a><FontAwesomeIcon icon={faArrowDown} /> <p>Descarga la app</p></a></Link>*/}
                     <hr />
                     <Link href="/ayuda"><a><FontAwesomeIcon icon={faQuestion} /> <p>Ayuda / PQR</p></a></Link>
-                    <Link href="/logout"><a className="items">Cerrar sesion</a></Link>
+                    {authenticated ?
+                    <Link href="/logout"><a className="logout">Cerrar sesion</a></Link> : null
+                    }
                 </div>
             </>
         );
