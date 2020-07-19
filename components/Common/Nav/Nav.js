@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import Link from "next/link";
 import Logo from "../Logo/Logo";
 import "./Nav.css";
+import "./notification.css";
 import "./modal-home.css";
 import "./modal-account.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getData } from "../../../services/userApi";
 import Modal from "../Modal/Modal";
+import NotificationItem from "../NotificationItem";
 import MenuCategories from "../MenuCategories";
 import {
     faBars,
@@ -33,6 +35,7 @@ export default class Nav extends Component {
             showCategories: false,
             categories: [],
             showMenu: false,
+            showNotification: false
         }
     }
    
@@ -55,9 +58,14 @@ export default class Nav extends Component {
         this.setState({ showMenu: !this.state.showMenu })
     }
 
+    showHideNotification = () => {
+        this.setState({ showNotification: !this.state.showNotification })
+    }
+
     menuBlur = () => {
         setTimeout(() => this.setState({ showMenu: false }), 200);
     }
+    
 
     componentDidMount() {
         getData("/getMenuCategories")
@@ -96,10 +104,14 @@ export default class Nav extends Component {
                 </div>
                 <div className="footer-modal">
                     <Link href="/cuenta"><a><FontAwesomeIcon icon={faHome} /> <p>Inicio </p></a></Link>
-                    <Link href="/categorias"><a><FontAwesomeIcon icon={faAlignLeft} /> <p>Categorias</p></a></Link>
+                    <Link href="/notificaciones"><a><FontAwesomeIcon icon={faBell} /> 
+                        <p>Notificaciones <span className="number-accent">3</span>{/*NEED FIX THIS SHIT*/}
+                    </p></a></Link>
+                    <Link href="/lista_categorias"><a><FontAwesomeIcon icon={faAlignLeft} /> <p>Categorias</p></a></Link>
                     {/*<Link href="#"><a><FontAwesomeIcon icon={faArrowDown} /> <p>Descarga la app</p></a></Link>*/}
                     <hr />
                     <Link href="/ayuda"><a><FontAwesomeIcon icon={faQuestion} /> <p>Ayuda / PQR</p></a></Link>
+                    <Link href="/logout"><a className="items">Cerrar sesion</a></Link>
                 </div>
             </>
         );
@@ -148,13 +160,11 @@ export default class Nav extends Component {
                         {authenticated &&
                             <div className="user-menu" onBlur={this.menuBlur} >
                                 <ul>
-                                    <Link href="/ayuda"><a className="bell">Ayuda / PQR <FontAwesomeIcon icon={faBell} /></a></Link>
+                                <span> 
+                                    <Link href="/ayuda"><a className="bell">Ayuda / PQR</a></Link>
+                                    <a onClick={() => this.showHideNotification()} ><FontAwesomeIcon icon={faBell} /></a>
+                                </span>
                                     <a onClick={() => this.showHideMenu()} className="user-icon"><FontAwesomeIcon icon={faUser} /> {this.props.user} <FontAwesomeIcon icon={faAngleDown} /></a>
-                                    {/*
-                                    <span style={{ color: '#FFFFFF' }}>Hola, <b>{this.props.user}</b></span>
-                                    <Link href="/cuenta"><a>Ir a mi cuenta</a></Link>
-                                    <Link href="/logout"><a>Salir</a></Link>
-                                    */}
                                     <section className={this.state.showMenu ? "menu-off menu-on" : "menu-off"}>
                                         <h5><FontAwesomeIcon className="icon" icon={faUser} /> Bienvenido <b className="name">Hola, {this.props.user}</b></h5>
                                         <Link href="/cuenta"><a className="main-button"><p>Mi cuenta</p></a></Link>
@@ -167,6 +177,13 @@ export default class Nav extends Component {
                                             <Link href="/logout"><a className="items">Cerrar sesion</a></Link>
                                         </section>
                                     </section>
+                                <section className={this.state.showNotification ? "notification-off notification-on" : "notification-off"}>
+                                    <div class="triangle-up"/>
+                                    <h3 className="title">Notificaciones</h3>
+                                    <NotificationItem />
+                                    <NotificationItem />
+                                    <NotificationItem />
+                                </section>
                                 </ul>
                             </div>}
                     </div>
@@ -216,7 +233,6 @@ export default class Nav extends Component {
                                 }}>
                                     <FontAwesomeIcon icon={faSearch} />
                                 </a>
-
                             </section>
                         </div>
                     </div>

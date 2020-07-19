@@ -1,0 +1,51 @@
+.notifications-movil {
+  padding-bottom: 30px;
+}
+
+.notifications-movil .search-bar {
+  display: none !important;
+}
+
+.notifications-movil h1 {
+  color: #5A5A5A;
+  font-size: 26px;
+  margin: 30px 15px 15px;
+}
+
+.notifications-movil .notification-item {
+  margin: 0 15px;
+  background: white;
+  padding: 15px;
+  -webkit-box-shadow: 0px 3px 3px #00000029;
+          box-shadow: 0px 3px 3px #00000029;
+}
+
+.notifications-movil .more .notification-item {
+  border-radius: 0;
+}
+
+.notifications-movil .more .notification-item:first-child {
+  border-radius: 5px 5px 0 0;
+}
+
+.notifications-movil .more .notification-item:last-child {
+  border-radius: 0 0 5px 5px;
+}
+
+.notifications-movil .less .notification-item {
+  border-radius: 5px;
+}
+
+@media (max-width: 390px) {
+  .notifications-movil .notification-item {
+    margin: 0 15px;
+    padding: 7px;
+  }
+}
+
+@media (max-width: 700px) {
+  .notifications-movil .search-bar {
+    display: none !important;
+  }
+}
+/*# sourceMappingURL=NotificationsMovil.css.map */

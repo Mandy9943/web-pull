@@ -1,0 +1,36 @@
+.notifications-movil
+    padding-bottom: 30px;
+    .search-bar
+        display: none !important
+    h1
+        color: #5A5A5A;
+        font-size: 26px
+        margin: 30px 15px 15px
+    .notification-item
+        margin: 0 15px
+        background: white
+        padding: 15px
+        box-shadow: 0px 3px 3px #00000029;
+    .more
+        .notification-item
+            border-radius: 0
+            &:first-child
+                border-radius: 5px 5px 0 0;
+            &:last-child
+                border-radius: 0 0 5px 5px;
+    .less
+        .notification-item
+            border-radius: 5px
+        
+@media (max-width:390px)
+    .notifications-movil
+        .notification-item
+            margin: 0 15px
+            padding: 7px 
+
+
+@media (max-width:700px)
+    .notifications-movil
+        .search-bar
+            display: none !important
+        

@@ -99,7 +99,7 @@
   -ms-flex-item-align: start;
       -ms-grid-row-align: start;
       align-self: start;
-  margin-top: 8px;
+  margin-top: 12px;
   position: relative;
 }
 
@@ -110,6 +110,10 @@
 .nav-top .user-menu .user-icon {
   position: relative;
   top: 4px;
+}
+
+.nav-top .user-menu .user-icon:hover {
+  cursor: pointer;
 }
 
 .nav-top .user-menu .user-icon svg {
