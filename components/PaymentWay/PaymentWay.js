@@ -232,11 +232,11 @@ export default class PaymentWay extends Component {
                             <div className={this.state.closeCredit ? "accordion-payment-way" : "accordion-payment-way active"}>
                                 <div className="content-accordion">
                                     <form onSubmit={this.payCC}>
-                                        <input name={"card_number"} defaultValue={"4097440000000004"} placeholder="Número de tarjeta *" />
-                                        <input name={"card_holder"} defaultValue={"REJECTED"} placeholder="Nombre y apellido impreso *" />
+                                        <input name={"card_number"} placeholder="Número de tarjeta *" />
+                                        <input name={"card_holder"}  placeholder="Nombre y apellido impreso *" />
                                         <div className="input-form">
-                                            <input  defaultValue={"2021/01"} name={"expiration_date"} placeholder="YYYY/MM *" />
-                                            <input  defaultValue={"321"} name={"ccv"} placeholder="CVV *" />
+                                            <input  name={"expiration_date"} placeholder="YYYY/MM *" />
+                                            <input  name={"ccv"} placeholder="CVV *" />
                                         </div>
                                         <div className="input-form">
                                             <div className={"content-accordion-form"}>
@@ -249,7 +249,7 @@ export default class PaymentWay extends Component {
                                         <Select name={"document_type"}>
                                             {docType}
                                         </Select></div>
-                                        <input defaultValue={"123321123"}  name={"document_number"} placeholder="Número documento" />
+                                        <input name={"document_number"} placeholder="Número documento" />
                                         <button type="submit" className="button-continue main-button">
                                             <p>Continuar</p>
                                         </button>
