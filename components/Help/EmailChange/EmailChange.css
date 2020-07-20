@@ -79,6 +79,8 @@
 .email-change .email-change-container .email-change-content .email-change-box .actions .cancel-btn {
   background: 000 !important;
   border: none;
+  margin-bottom: 0;
+  padding: 0;
 }
 
 .email-change .email-change-container .email-change-content .email-change-box .actions .cancel-btn p {
