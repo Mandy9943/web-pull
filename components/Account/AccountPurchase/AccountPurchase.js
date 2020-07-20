@@ -1,7 +1,26 @@
 import React, { Component } from "react";
 import "./AccountPurchase.css";
+import {getData} from "../../../services/userApi";
 
 class AccountPurchase extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      orders: [],
+      error: null
+    }
+  }
+
+  componentDidMount() {
+    const endp = "/getOrders"
+    getData(endp, this.props.user.jwt)
+        .then((response) => {
+          this.setState({ orders: response.data });
+        });
+  }
+
+
   render() {
     return (
       <div className="billing-page">

@@ -65,13 +65,14 @@ export default class ProductItem extends Component {
                 break;
         }
 
+        console.log(this.props);
 
         return (
             <div className="product-item">
                 <h5 className="status">{status}</h5>
                 <p className="detail-status">{status_text}</p>
                 <p className="detail-date">12 junio 2015</p>
-                {/*NEED FIX THIS SHIT*/}
+                {/*NEED FIX*/}
                 <div className="content">
                     <Link href={detail_link}>
                         <a>
@@ -91,8 +92,7 @@ export default class ProductItem extends Component {
                     {this.props.mode == "sell" ? <section className="info">
                         <p>Cliente</p>
                         <p>{this.props.order.user.name ? this.props.order.user.name + " " + this.props.order.user.last_name : " - "}</p>
-                        <p className="phone-client"> 364 777 7777</p>
-                        {/*NEED FIX THIS SHIT*/}
+                        <p className="phone-client"> {this.props.order.user.phone}</p>
                         <Link href={"/chat/" + this.props.order.order_id}>
                             <a> Enviar mensaje </a>
                         </Link>

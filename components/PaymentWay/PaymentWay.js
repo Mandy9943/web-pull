@@ -7,7 +7,7 @@ import Footer from "../Common/Footer";
 import Select from "../Common/Select";
 import "./PaymentWay.css";
 import "./PaymentWayMovil.css";
-import { getData, makePayment } from "../../services/userApi"
+import { getData, makePayment, makePaymentCC } from "../../services/userApi"
 import Modal from "../Common/Modal";
 import AddAddress from "../UserAccount/AddAddress"
 
@@ -93,7 +93,6 @@ export default class PaymentWay extends Component {
     }
 
 
-
     payPSE = async e => {
         e.preventDefault();
 
@@ -102,12 +101,9 @@ export default class PaymentWay extends Component {
             return false;
         }
 
-
         const result = await makePayment({
-
             product_id: this.props.data.product_id,
-            address_id: this.state.selectedAddr,
-
+            address_id: this.state.addresses[this.state.selectedAddr].address_id,
             names: e.target.elements.names.value,
             email: e.target.elements.email.value,
             phone: e.target.elements.phone.value,
@@ -118,8 +114,6 @@ export default class PaymentWay extends Component {
 
 
         }, this.props.user.jwt);
-
-        console.log(result);
         if (result.data) {
             window.location = result.data.URL;
         } else {
@@ -131,9 +125,41 @@ export default class PaymentWay extends Component {
     };
 
 
+    payCC = async e => {
+        e.preventDefault();
+
+        if (this.state.selectedAddr == -1) {
+            this.setState({ modalAddr: true });
+            return false;
+        }
+
+        const ccPayload = {
+            product_id: this.props.data.product_id,
+            address_id: this.state.addresses[this.state.selectedAddr].address_id,
+            device_session_id: this.props.user.dsi.dsi,
+            document_type: e.target.elements.document_type.value,
+            document_number: e.target.elements.document_number.value,
+            card_type: e.target.elements.card_type.value,
+            card_number: e.target.elements.card_number.value,
+            ccv: e.target.elements.ccv.value,
+            expiration_date: e.target.elements.expiration_date.value,
+            card_holder: e.target.elements.card_holder.value,
+            monthly_fees: e.target.elements.monthly_fees.value
+        };
+        const rs = await makePaymentCC(ccPayload, this.props.user.jwt);
+        if (rs.data) {
+            window.location = "/pay_result/"+rs.data.id;
+        } else {
+            this.setState({
+                error: rs.error
+            });
+        }
+    };
+
+
+
 
     render() {
-
         const addAddressContent = <AddAddress save={this.loadAddresses} cancel={() => this.setState({ modal: false })} noheader="1" />;
 
         const addressListContent = <>
@@ -146,9 +172,31 @@ export default class PaymentWay extends Component {
             <Button onClick={this.setAddr} text={"Cambiar"} />
         </>;
 
+        const docType = <> <option value={"CC"}>Cédula de ciudadanía </option>
+            <option value={"CE"}>Cédula de extranjería </option>
+            <option value={"NIT"}> NIT </option>
+            <option value={"TI"}>Tarjeta de Identidad </option>
+            <option value={"PP"}>Pasaporte </option>
+            <option value={"DE"}>Documento de identificación extranjero </option>
+        </>
+
+        const cardType = <>
+            <option value={"MASTERCARD"}>Master Card</option>
+            <option value={"VISA"}>Visa</option>
+            <option value={"VISA_DEBIT"}>Visa Debito</option>
+            <option value={"DINERS"}>Dinners</option>
+            <option value={"AMEX"}>American Express</option>
+            <option value={"CODENSA"}>Codensa</option>
+        </>
+
 
         return (
             <div className="payment-way">
+
+                <script type="text/javascript" src={"https://maf.pagosonline.net/ws/fp/tags.js?id="+this.props.user.dsi.dsi+this.props.user.dsi.ui}></script>
+                <noscript>
+                    <iframe style={{"width": "100px", "height": "100px", "border": "0", "position": "absolute", "top": "-5000px"}} src={"https://maf.pagosonline.net/ws/fp/tags.js?id="+this.props.user.dsi.dsi+this.props.user.dsi.ui}></iframe>
+                </noscript>
 
                 {this.state.modal ? (
                     <Modal toggle={() => this.setState({ modal: false })} content={addAddressContent} button />
@@ -183,23 +231,31 @@ export default class PaymentWay extends Component {
                             </div>
                             <div className={this.state.closeCredit ? "accordion-payment-way" : "accordion-payment-way active"}>
                                 <div className="content-accordion">
-                                    <form>
-                                        <input placeholder="Número de tarjeta *" />
-                                        <input placeholder="Nombre y apellido impreso *" />
+                                    <form onSubmit={this.payCC}>
+                                        <input name={"card_number"} defaultValue={"4097440000000004"} placeholder="Número de tarjeta *" />
+                                        <input name={"card_holder"} defaultValue={"REJECTED"} placeholder="Nombre y apellido impreso *" />
                                         <div className="input-form">
-                                            <input placeholder="YYYY/MM *" />
-                                            <input placeholder="CVV *" />
+                                            <input  defaultValue={"2021/01"} name={"expiration_date"} placeholder="YYYY/MM *" />
+                                            <input  defaultValue={"321"} name={"ccv"} placeholder="CVV *" />
                                         </div>
                                         <div className="input-form">
-                                            <input placeholder="Tipo de tarjeta *" />
-                                            <input placeholder="Cuotas" />
+                                            <div className={"content-accordion-form"}>
+                                                <Select name={"card_type"}>
+                                                    {cardType}
+                                                </Select></div>
+                                            <input defaultValue={"1"}  name={"monthly_fees"} placeholder="Cuotas" />
                                         </div>
-                                        <input placeholder="Tipo de documento" />
-                                        <input placeholder="Número documento" />
+                                        <div className={"content-accordion-form"}>
+                                        <Select name={"document_type"}>
+                                            {docType}
+                                        </Select></div>
+                                        <input defaultValue={"123321123"}  name={"document_number"} placeholder="Número documento" />
+                                        <button type="submit" className="button-continue main-button">
+                                            <p>Continuar</p>
+                                        </button>
                                     </form>
                                     <div className="cardImg">
                                         <img alt="tarjeta credito" src={CardImg} />
-                                        <Button text={"Continuar"} />
                                     </div>
                                 </div>
 
@@ -234,7 +290,7 @@ export default class PaymentWay extends Component {
                                                 <Select name={"bank_id"}>
 
                                                     {this.state.banks.map((bank, i) => {
-                                                        return <option value={bank.pseCode}> {bank.description} </option>
+                                                        return <option key={i} value={bank.pseCode}> {bank.description} </option>
                                                     })}
 
                                                 </Select>
@@ -257,12 +313,7 @@ export default class PaymentWay extends Component {
                                                 <p>Documento de identificación</p>
 
                                                 <Select name={"document_type"}>
-                                                    <option value={"CC"}>Cédula de ciudadanía </option>
-                                                    <option value={"CE"}>Cédula de extranjería </option>
-                                                    <option value={"NIT"}> NIT </option>
-                                                    <option value={"TI"}>Tarjeta de Identidad </option>
-                                                    <option value={"PP"}>Pasaporte </option>
-                                                    <option value={"DE"}>Documento de identificación extranjero </option>
+                                                    {docType}
                                                 </Select>
 
                                                 <input name={"document_number"} placeholder="Número documento" />
@@ -322,6 +373,7 @@ export default class PaymentWay extends Component {
                         </div>
                     </div>
                 </div>
+
                 <Footer />
             </div>
         )
