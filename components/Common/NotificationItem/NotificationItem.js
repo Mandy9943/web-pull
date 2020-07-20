@@ -16,7 +16,7 @@ export default class NotificationItem extends Component {
     let button2;
     let producto= "producto generico bicicleta con motor atomico";
 
-        switch (0) {
+        switch (3) {
             case 0:
                 condition = "ha respondido tu pregunta sobre";
                 question= <h4 className="question">Buenos dias el producto esta disponible?</h4>
@@ -28,18 +28,15 @@ export default class NotificationItem extends Component {
                 condition = "ha realizado una pregunta en tu publicacion";
                 question = <h4 className="question">Buenos dias el producto esta disponible?</h4>
                 button1 = <a>Responder</a>
-                button2= null
                 break;
             case 2:
                 condition = "hemos registrado una compra de";
                 message = <h4 className="question">Comunicate con tu vendedor</h4>
                 button1 = <a>Enviar mensaje al vendedor</a>
-                button2 = null
                 break;
             case 3:
                 condition = "ha realizado la compra de tu producto";
                 button1 = <a>Enviar mensaje al comprador</a>
-                button2 = null
                 break;
         }
 
