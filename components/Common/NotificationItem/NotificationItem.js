@@ -44,7 +44,7 @@ export default class NotificationItem extends Component {
         }
 
         return (
-            <div className="notification-item sell">
+            <div className="notification-item">
                 <img src="https://picsum.photos/100" />
                 <section className="description">
                     <span className="small-text">{name}{condition}</span>
@@ -55,7 +55,6 @@ export default class NotificationItem extends Component {
                     <section className="actions">
                         {button1} {button2}
                     </section>
-
                 </section>
             </div>
         )
