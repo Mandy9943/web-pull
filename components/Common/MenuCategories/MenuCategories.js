@@ -68,11 +68,16 @@ class MenuCategories extends Component {
           {this.state.showMenu ?
             <section onMouseEnter={this.subMenuMouseEnter} className={`${menu} sub-categories`}>
               <section className="title-sub">
-                <span>Categorias cableada</span>
+                <span>{this.props.categories[this.state.selectecCategory].name}</span>
+                {
+                  /*
                 <img src={url}/>
                 <img src={url} />
                 <img src={url} />
                 <img src={url} />
+                 */
+                }
+
               </section>
               {this.props.categories[this.state.selectecCategory].childs.length > 20 ? 
                 <span onClick={this.showAll} className="load-more">
@@ -83,7 +88,7 @@ class MenuCategories extends Component {
                 null
               }
               {this.props.categories[this.state.selectecCategory].childs.map((ccat, i) => {
-                return <section className={!this.state.moreAll ? "sub-cat less" : 'sub-cat more'}key={i}> <h5>categoria nivel 2</h5>
+                return <section className={!this.state.moreAll ? "sub-cat less" : 'sub-cat more'}key={i}> {/*<h5>categoria nivel 2</h5>*/}
                   <span><Link href={"/categoria/" + ccat.name}><a>{ccat.name}</a></Link></span>
                   </section>
               })}

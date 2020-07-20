@@ -71,7 +71,7 @@ export default class ProductItem extends Component {
             <div className="product-item">
                 <h5 className="status">{status}</h5>
                 <p className="detail-status">{status_text}</p>
-                <p className="detail-date">12 junio 2015</p>
+                <p className="detail-date">{product.created_since.split(".")[0]}</p>
                 {/*NEED FIX*/}
                 <div className="content">
                     <Link href={detail_link}>
@@ -104,7 +104,7 @@ export default class ProductItem extends Component {
                             </Link>
                             <p>Vendedor:</p>
                             <p>{product.user.name ? product.user.name + " " + product.user.last_name : " - "}</p>
-                            <p className="phone-client"> 364 777 7777</p>
+                            <p className="phone-client"> {product.user.phone}</p>
                             <Link href={"/chat/" + this.props.order.order_id}>
                                 <a> Enviar mensaje</a>
                             </Link>
