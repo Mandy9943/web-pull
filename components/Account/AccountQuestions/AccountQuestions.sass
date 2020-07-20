@@ -1,13 +1,66 @@
 .question-component
     padding: 40px
     padding-top: 42px
-    .modal-question
-        .button-question-product-detail
-            background: #CF0A2C !important;
-            color: white !important
-            border: none !important
-        .cancel-btn
-            margin-top: 15px
+    .modal
+        background: #F3F3F3
+        .modal-question
+            position: relative
+            .cancel-modal
+                position: absolute
+                top: -30px
+                right: -20px
+                &:hover
+                    cursor: pointer
+            .header-modal
+                padding-bottom: 0
+                .question
+                    font-size: 18px
+                    display: inline-block
+                .question-product
+                    background: white
+                    border-radius: 5px
+                    box-shadow: -5px 5px 6px #00000029
+                    padding: 15px
+                    display: grid;
+                    grid-template-columns: auto 1fr;
+                    grid-gap: 15px;
+                    width: 40%;
+                    float: right;
+                    p
+                        font-size: 14px
+                        display: -webkit-box;
+                        -webkit-line-clamp: 3
+                        -webkit-box-orient: vertical  
+                        overflow: hidden
+                    span
+                        font-size: 18px
+                        font-weight: bolder
+                    img
+                        width: 40px
+                        height: 40px
+                        border-radius: 100%
+                        box-shadow: -5px 5px 6px #00000029
+            .name-user-question
+                font-size: 13px
+                font-weight: bolder
+                svg
+                    color: #CF0A2C
+                    font-size: 18px
+                    margin-right: 5px
+                span
+                    display: block
+            .wrap-question-input
+                padding: 0
+                input
+                    border: none
+                    padding-bottom: 50px
+            .button-question-product-detail
+                background: #CF0A2C !important;
+                color: white !important
+                border: none !important
+                width: 180px
+                float: right
+                margin-top: 10px
 .account-questions-wrap-title
     display: flex
     justify-content: space-between
@@ -63,9 +116,33 @@
     width: 100px
     text-align: center
     border-right: 0.5px solid #5A5A5A
-    padding: 5px 0;
+    padding: 7.5px 0;
 .name-user
-    padding-left: 7px;     
+    padding-left: 7px;
+    position: relative
+    .icon-action
+        position: absolute
+        top: auto
+        right: 0px
+        color: #CF0A2C
+    .actions
+        background: white
+        border: 0.5px solid #00000029
+        border-radius: 5px
+        position: absolute
+        right: -100px
+        top: 60%
+        width: 130px;
+        display: grid;
+        text-align: left;
+        z-index: 10
+        display: none
+        a
+            padding: 10px 0
+            color: #5A5A5A
+            padding-left: 15px
+        .active
+            display: grid     
 .title, .name-user
     display: flex;
     align-items: center;
@@ -73,21 +150,21 @@
     
 
 @media (max-width: 700px)
-    .title
-        padding-left: 7px;
-    .title-head
-        grid-template-columns: 2fr 70px 1fr
-    .question-item
-        grid-template-columns: 2fr 70px 1fr
-        .title
-            white-space: nowrap
-            text-overflow: ellipsis
-            overflow: hidden
+    .account-questions-wrap-questions .question-table
+        .title-head, .question-item
+            grid-template-columns: 2fr 70px 1fr !important
+            .title
+                padding-left: 7px !important
+            .name-user .actions
+                right: 0
     .fetch
         width: auto
     .account-questions-wrap-title
         margin: 0px 30px 30px 0
     .question-component
         padding: 7px
+    .question-component .modal .modal-question .cancel-modal
+        top: -10px
+        right: -10px
 
 

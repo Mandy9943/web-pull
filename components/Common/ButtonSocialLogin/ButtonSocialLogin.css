@@ -14,24 +14,28 @@ button {
   position: relative;
 }
 
+.buttonGoogle p, .buttonFacebook p {
+  font-size: 18px;
+}
+
 .buttonGoogle img, .buttonFacebook img {
   position: absolute;
   left: 15px;
   height: 20px;
   width: 20px;
-  top: 8px;
+  top: auto;
 }
 
 @media (max-width: 700px) {
-  .buttonGoogle, .buttonFacebook {
+  .buttonGoogle p, .buttonFacebook p {
     font-size: 16px;
   }
   .buttonGoogle img, .buttonFacebook img {
     position: absolute;
     left: 10px;
-    height: 17px;
+    height: 18px;
     width: 17px;
-    top: 10px;
+    top: auto;
   }
 }
 /*# sourceMappingURL=ButtonSocialLogin.css.map */

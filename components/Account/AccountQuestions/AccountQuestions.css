@@ -3,14 +3,100 @@
   padding-top: 42px;
 }
 
-.question-component .modal-question .button-question-product-detail {
+.question-component .modal {
+  background: #F3F3F3;
+}
+
+.question-component .modal .modal-question {
+  position: relative;
+}
+
+.question-component .modal .modal-question .cancel-modal {
+  position: absolute;
+  top: -30px;
+  right: -20px;
+}
+
+.question-component .modal .modal-question .cancel-modal:hover {
+  cursor: pointer;
+}
+
+.question-component .modal .modal-question .header-modal {
+  padding-bottom: 0;
+}
+
+.question-component .modal .modal-question .header-modal .question {
+  font-size: 18px;
+  display: inline-block;
+}
+
+.question-component .modal .modal-question .header-modal .question-product {
+  background: white;
+  border-radius: 5px;
+  -webkit-box-shadow: -5px 5px 6px #00000029;
+          box-shadow: -5px 5px 6px #00000029;
+  padding: 15px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto 1fr;
+      grid-template-columns: auto 1fr;
+  grid-gap: 15px;
+  width: 40%;
+  float: right;
+}
+
+.question-component .modal .modal-question .header-modal .question-product p {
+  font-size: 14px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.question-component .modal .modal-question .header-modal .question-product span {
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+.question-component .modal .modal-question .header-modal .question-product img {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  -webkit-box-shadow: -5px 5px 6px #00000029;
+          box-shadow: -5px 5px 6px #00000029;
+}
+
+.question-component .modal .modal-question .name-user-question {
+  font-size: 13px;
+  font-weight: bolder;
+}
+
+.question-component .modal .modal-question .name-user-question svg {
+  color: #CF0A2C;
+  font-size: 18px;
+  margin-right: 5px;
+}
+
+.question-component .modal .modal-question .name-user-question span {
+  display: block;
+}
+
+.question-component .modal .modal-question .wrap-question-input {
+  padding: 0;
+}
+
+.question-component .modal .modal-question .wrap-question-input input {
+  border: none;
+  padding-bottom: 50px;
+}
+
+.question-component .modal .modal-question .button-question-product-detail {
   background: #CF0A2C !important;
   color: white !important;
   border: none !important;
-}
-
-.question-component .modal-question .cancel-btn {
-  margin-top: 15px;
+  width: 180px;
+  float: right;
+  margin-top: 10px;
 }
 
 .account-questions-wrap-title {
@@ -103,11 +189,45 @@
   width: 100px;
   text-align: center;
   border-right: 0.5px solid #5A5A5A;
-  padding: 5px 0;
+  padding: 7.5px 0;
 }
 
 .name-user {
   padding-left: 7px;
+  position: relative;
+}
+
+.name-user .icon-action {
+  position: absolute;
+  top: auto;
+  right: 0px;
+  color: #CF0A2C;
+}
+
+.name-user .actions {
+  background: white;
+  border: 0.5px solid #00000029;
+  border-radius: 5px;
+  position: absolute;
+  right: -100px;
+  top: 60%;
+  width: 130px;
+  display: -ms-grid;
+  display: grid;
+  text-align: left;
+  z-index: 10;
+  display: none;
+}
+
+.name-user .actions a {
+  padding: 10px 0;
+  color: #5A5A5A;
+  padding-left: 15px;
+}
+
+.name-user .actions .active {
+  display: -ms-grid;
+  display: grid;
 }
 
 .title, .name-user {
@@ -120,21 +240,15 @@
 }
 
 @media (max-width: 700px) {
-  .title {
-    padding-left: 7px;
+  .account-questions-wrap-questions .question-table .title-head, .account-questions-wrap-questions .question-table .question-item {
+    -ms-grid-columns: 2fr 70px 1fr !important;
+        grid-template-columns: 2fr 70px 1fr !important;
   }
-  .title-head {
-    -ms-grid-columns: 2fr 70px 1fr;
-        grid-template-columns: 2fr 70px 1fr;
+  .account-questions-wrap-questions .question-table .title-head .title, .account-questions-wrap-questions .question-table .question-item .title {
+    padding-left: 7px !important;
   }
-  .question-item {
-    -ms-grid-columns: 2fr 70px 1fr;
-        grid-template-columns: 2fr 70px 1fr;
-  }
-  .question-item .title {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
+  .account-questions-wrap-questions .question-table .title-head .name-user .actions, .account-questions-wrap-questions .question-table .question-item .name-user .actions {
+    right: 0;
   }
   .fetch {
     width: auto;
@@ -144,6 +258,10 @@
   }
   .question-component {
     padding: 7px;
+  }
+  .question-component .modal .modal-question .cancel-modal {
+    top: -10px;
+    right: -10px;
   }
 }
 /*# sourceMappingURL=AccountQuestions.css.map */

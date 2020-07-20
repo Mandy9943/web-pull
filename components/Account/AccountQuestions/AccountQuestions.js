@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./AccountQuestions.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faQuestionCircle, faClock, faCheckCircle, faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import { faQuestionCircle, faClock, faCheckCircle, faAngleDown, faUser, faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 import Select from "./../../Common/Select";
 import Table from "../../Common/Table/Table";
 import { getData } from "../../../services/userApi"
@@ -15,7 +15,9 @@ class AccountQuestions extends Component {
     super(props);
     this.state = {
       questions: [],
-      modal: -1
+      modal: -1,
+      optionPanel: [],
+      keepOpen: false,
     }
   }
 
@@ -47,44 +49,79 @@ class AccountQuestions extends Component {
     sendAnswer(answer, this.state.questions[this.state.modal].question_id, this.props.user.jwt)
       .then((result) => {
         console.log(result);
-
         if (result.data.result == "ok") {
-
           this.loadData();
           this.setState({ modal: -1 });
-
         } else {
           alert("Error al responder.");
         }
-
       });
 
   };
 
-  render() {
+  clsall = () => {
+    if (!this.state.keepOpen) {
+      let tmp = []
+      for (let i = 0; i < this.state.optionPanel.length; i++) {
+        tmp.push(false);
+      }
+      this.setState({ optionPanel: tmp });
+    }
+    this.setState({ keepOpen: false });
+  }
 
-    console.log(this.state.questions)
+  closeOptions = () => {
+    setTimeout(this.clsall, 100);
+  }
+
+  mEnter = () => {
+    clearTimeout(this.state.timeClose);
+  }
+
+  mLeave = () => {
+    this.state.timeClose = setTimeout(this.closeOptions, 1000);
+  }
+
+  openOption = (item) => {
+    this.setState({ keepOpen: true });
+    let tmp = []
+    for (let i = 0; i < this.state.optionPanel.length; i++) {
+      tmp.push(item === i);
+    }
+    this.setState({ optionPanel: tmp });
+  }
+
+  render() {
 
     const mid = this.state.modal;
 
-
     const content1 = this.state.modal >= 0 ? (
       <div className="modal-question">
+        <a className="cancel-modal"
+          onClick={() => {
+            this.setState({ modal: -1 });
+          }}>
+          <p>X</p>
+        </a>
         <div className="header-modal">
-          <h3>Responder pregúnta:</h3>
+          <h3 className="question">
+            {this.state.questions[mid].content}
+          </h3>
+          <section className="question-product">
+            <img src="https://picsum.photos/100" />
+            <div className="description-item">
+              <p>Nombre producto generico</p>
+              <span className="accent">23.412,00</span>
+            </div>
+          </section>
         </div>
         <div>
-          <b className="account-questions-wrap-item">Usuario:</b>
-          <p>
+          <p className="name-user-question">
+            <FontAwesomeIcon icon={faUser} />
             {this.state.questions[mid].user.name + " " + this.state.questions[mid].user.last_name}
+            <span>10/20/2002 14:20</span>
           </p>
-          <b className="account-questions-wrap-item">Pregúnta:</b>
-          <p>
-            {this.state.questions[mid].content}
-          </p>
-
           <br /><h4><div className="">
-
             {
               this.state.questions[mid].answer === "" ?
                 <form className="wrap-question-input" onSubmit={this.replyQuestion}>
@@ -94,25 +131,11 @@ class AccountQuestions extends Component {
                 :
                 <><b>Respondiste: </b>{this.state.questions[mid].answer}</>
             }
-
-
-          </div></h4>
-          <p>
-            <div className="account-data-form-wrap-button">
-              <button className="cancel-btn"
-                onClick={() => {
-                  this.setState({ modal: -1 });
-                }}
-              >
-                <p>Cancelar</p>
-              </button>
-            </div>
-          </p>
+          </div>
+          </h4>
         </div>
       </div>
     ) : (<></>);
-
-
 
     return (
       <div className="question-component">
@@ -148,8 +171,8 @@ class AccountQuestions extends Component {
               </section>
               <section className="body">
                 {this.state.questions.map((question, i) => {
-                  return <div className="question-item" key={i} onClick={() => this.reply(question.question_id, i)}>
-                    <span className="title">
+                  return <div className="question-item" key={i}>
+                    <span className="title" onClick={() => this.reply(question.question_id, i)}>
                       <span>
                         <FontAwesomeIcon icon={faAngleDown} />
                       </span>
@@ -157,7 +180,17 @@ class AccountQuestions extends Component {
                     {question.content}
                     </span>
                     <span className="fetch">{question.created_since.split(":").slice(0, -1).join(":")}</span>
-                    <span className='name-user'>{question.user.name + " " + question.user.last_name}</span>
+                    <span className='name-user'>{question.user.name + " " + question.user.last_name} 
+                      <a style={{ padding: "10px", cursor: "pointer" }} className="icon-action" onClick={() => this.openOption(i)}>
+                        <FontAwesomeIcon icon={faEllipsisV} />
+                      </a>
+                      <section onMouseEnter={() => this.mEnter(i)} onMouseLeave={() => this.mLeave(i)} className={this.state.optionPanel[i] === true ? "actions active" : "actions"}>
+                        <a
+                          style={{ cursor: 'pointer' }}>
+                          Eliminar
+                        </a>
+                      </section>
+                    </span>
                   </div>
                 })}
               </section>
