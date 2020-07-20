@@ -4,6 +4,7 @@ import PaymentWay from '../../components/PaymentWay/PaymentWay';
 import { getProductDetail } from "../../services/productsApi";
 import {getUser, isAuthenticated, getJwt, redirectIfNotAuthenticated } from "../../lib/auth";
 import {authenticate} from "../../services/authApi";
+import {getDSI} from "../../services/userApi";
 import favicon from "../../assets/img/favicon.svg";
 
 
@@ -30,18 +31,18 @@ function plataforma_de_pago({data, u_data}) {
 
 export async function getServerSideProps(context) {
 
-    // Fetch data from external API
     let id_product = String(context.params.product);
     const res = await getProductDetail(id_product)
     const data = await res.data
-
     let usr = getUser(context);
     let jwt = getJwt(context);
 
+    const dsi = await getDSI(jwt)
     const u_data = {
         user: (usr !== undefined ? usr  : null),
         authenticated: isAuthenticated(context),
-        jwt: jwt ? jwt : '' 
+        dsi: dsi.data,
+        jwt: jwt ? jwt : ''
     }
 
     redirectIfNotAuthenticated(context);

@@ -98,9 +98,27 @@ export const makePayment = async (data, jwt) => {
     }
 };
 
+
+export const makePaymentCC = async (data, jwt) => {
+
+        const response = await post("/ccPayment", data, jwt);
+
+        return response.data ? response : {"error": "E000000142 : No se pudo guardar la información, intentelo nuevamente."};
+
+};
+
 export const getUserData = async (jwt) => {
     try {
         const response = await get("/getUserData", jwt);
+        return response;
+    } catch (error) {
+        return error.response && "No se pudo obtener la información del usuario.";
+    }
+};
+
+export const getDSI = async (jwt) => {
+    try {
+        const response = await get("/getDSI", jwt);
         return response;
     } catch (error) {
         return error.response && "No se pudo obtener la información del usuario.";

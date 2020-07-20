@@ -109,6 +109,7 @@ export default class Summary extends Component {
                     {this.state.display.myProducts && <MyProducts jwt={u_data.jwt} />}
                     {this.state.display.questions && <AccountQuestions user={u_data} />}
                     {this.state.display.purchases && <AccountPurchase user={u_data} />}
+
                 </div>
                 <Footer />
                 <div className="footer-social">
