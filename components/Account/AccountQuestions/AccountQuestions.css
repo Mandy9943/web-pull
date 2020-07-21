@@ -5,6 +5,9 @@
 
 .question-component .modal {
   background: #F3F3F3;
+  -webkit-box-shadow: 0px 0px 5px 1000px rgba(0, 0, 0, 0.27);
+          box-shadow: 0px 0px 5px 1000px rgba(0, 0, 0, 0.27);
+  padding: 30px 15px;
 }
 
 .question-component .modal .modal-question {
@@ -13,8 +16,13 @@
 
 .question-component .modal .modal-question .cancel-modal {
   position: absolute;
-  top: -30px;
-  right: -20px;
+  top: -23px;
+  right: 0;
+}
+
+.question-component .modal .modal-question .cancel-modal p {
+  font-size: 14px;
+  font-weight: bold;
 }
 
 .question-component .modal .modal-question .cancel-modal:hover {
@@ -79,6 +87,7 @@
 
 .question-component .modal .modal-question .name-user-question span {
   display: block;
+  font-size: 10px;
 }
 
 .question-component .modal .modal-question .wrap-question-input {
@@ -144,8 +153,8 @@
 .account-questions-wrap-questions .question-table .title-head {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 4fr 100px 1fr;
-      grid-template-columns: 4fr 100px 1fr;
+  -ms-grid-columns: 5fr 130px 20%;
+      grid-template-columns: 5fr 130px 20%;
   border-radius: 5px 5px 0px 0;
   font-size: 14px;
   background: #EEEEEE;
@@ -157,6 +166,10 @@
   border-right: 0.5px solid #5A5A5A;
 }
 
+.account-questions-wrap-questions .question-table .title-head .title:hover {
+  cursor: pointer;
+}
+
 .account-questions-wrap-questions .question-table .title-head .fetch {
   padding: 7px 0 !important;
 }
@@ -164,8 +177,8 @@
 .account-questions-wrap-questions .question-table .question-item {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 4fr 100px 1fr;
-      grid-template-columns: 4fr 100px 1fr;
+  -ms-grid-columns: 5fr 130px 20%;
+      grid-template-columns: 5fr 130px 20%;
   font-size: 13px;
   background: white;
   border-bottom: 0.5px solid #5A5A5A;

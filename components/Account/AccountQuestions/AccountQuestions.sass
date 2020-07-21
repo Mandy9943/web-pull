@@ -3,12 +3,17 @@
     padding-top: 42px
     .modal
         background: #F3F3F3
+        box-shadow: 0px 0px 5px 1000px rgba(0, 0, 0, 0.27)
+        padding: 30px 15px;
         .modal-question
             position: relative
             .cancel-modal
                 position: absolute
-                top: -30px
-                right: -20px
+                top: -23px
+                right: 0
+                p
+                    font-size: 14px;
+                    font-weight: bold;
                 &:hover
                     cursor: pointer
             .header-modal
@@ -49,6 +54,7 @@
                     margin-right: 5px
                 span
                     display: block
+                    font-size: 10px;
             .wrap-question-input
                 padding: 0
                 input
@@ -88,7 +94,7 @@
         color: #5A5A5A
         .title-head
             display: grid
-            grid-template-columns: 4fr 100px 1fr
+            grid-template-columns: 5fr 130px 20%
             border-radius: 5px 5px 0px 0;
             font-size: 14px
             background: #EEEEEE
@@ -96,11 +102,13 @@
             .title
                 padding: 7px 30px 7px !important;
                 border-right: 0.5px solid #5A5A5A
+                &:hover
+                    cursor: pointer
             .fetch
                 padding: 7px 0 !important;
         .question-item
             display: grid
-            grid-template-columns: 4fr 100px 1fr
+            grid-template-columns: 5fr 130px 20%
             font-size: 13px
             background: white
             border-bottom: 0.5px solid #5A5A5A
