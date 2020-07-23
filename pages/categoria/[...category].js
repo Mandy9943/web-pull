@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Category from '../../components/Category/Category';
-import { getUser, isAuthenticated } from "../../lib/auth";
+import {getJwt, getUser, isAuthenticated} from "../../lib/auth";
 import Finding from "../../components/Finding";
 import Tickets from "../../components/Tickets";
 import Nav from "../../components/Common/Nav";
@@ -192,7 +192,7 @@ function Results({ data, session }) {
                 </Head>
 
                 <div className="container category-list">
-                    <Nav user={session.user} home={true} authenticated={session.authenticated} />
+                    <Nav jwt={session.jwt} user={session.user} home={true} authenticated={session.authenticated} />
                     <section className="content">
                         <div className="breadcrumb">
                             <Link href="/">
@@ -273,9 +273,12 @@ export async function getServerSideProps(context) {
     }
 
     let usr = getUser(context);
+    let jwt = getJwt(context);
+
     const session = {
         user: (usr !== undefined ? usr : null),
-        authenticated: isAuthenticated(context)
+        authenticated: isAuthenticated(context),
+        jwt: (jwt !== undefined ? jwt : null),
     }
 
     return { props: { data, session } }

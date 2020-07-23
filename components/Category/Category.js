@@ -161,7 +161,7 @@ class  Category extends Component {
     console.log("Try to render.");
     return (
       <div className="search">
-          <Nav user={this.props.user_data.user} actualSearch={this.props.data.search} authenticated={this.props.user_data.authenticated} />
+          <Nav user={this.props.user_data.user} jwt={this.props.user_data.jwt} actualSearch={this.props.data.search} authenticated={this.props.user_data.authenticated} />
         <div className="search-content">
           
           <Filter 

@@ -8,7 +8,7 @@ class AccountStore extends Component {
   render() {
     return (
       <div className="account-page">
-        <Nav />
+        <Nav jwt={this.props.jwt} />
         <div className="wrap-account-content">
           <div className="wrap-account-module">
             <Data data={this.props.data} jwt={this.props.jwt} />

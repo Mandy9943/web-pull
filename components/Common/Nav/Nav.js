@@ -35,10 +35,51 @@ export default class Nav extends Component {
             showCategories: false,
             categories: [],
             showMenu: false,
-            showNotification: false
+            showNotification: false,
+            notifications : [],
+            timeClose : undefined
         }
     }
-   
+
+
+    /********************* START NOTIFICATIONS ******************************/
+    loadNotifications = () => {
+        const endp = "/getNotifications"
+        console.log("LoadNotifications")
+        console.log(this.props)
+        getData(endp, this.props.jwt)
+            .then((response) => {
+                this.setState({ notifications: response.data });
+                console.log(response.data);
+                setTimeout(this.loadNotifications,60000);
+            });
+    }
+
+    mEnter = () => {
+        clearTimeout(this.state.timeClose);
+    }
+    mLeave = () => {
+        this.state.timeClose = setTimeout(() => {this.setState({showNotification: false})}, 1000);
+    }
+
+
+    readNotifications = (id) => {
+
+    }
+
+
+    /********************* END NOTIFICATIONS ******************************/
+
+
+
+    mEnterMenu = () => {
+        clearTimeout(this.state.timeClose);
+    }
+    mLeaveMenu = () => {
+        this.state.timeClose = setTimeout(() => {this.setState({showMenu: false})}, 1000);
+    }
+
+
     changeSearcherValue = (event) => {
         this.setState({ query: event.target.value })
     }
@@ -55,7 +96,8 @@ export default class Nav extends Component {
     }
 
     showHideMenu = () => {
-        this.setState({ showMenu: !this.state.showMenu })
+        this.setState({ showMenu: !this.state.showMenu });
+        this.state.timeClose = setTimeout(() => {this.setState({showMenu: false})}, 3000);
     }
 
     showHideNotification = () => {
@@ -67,11 +109,16 @@ export default class Nav extends Component {
     }
     
 
+
     componentDidMount() {
         getData("/getMenuCategories")
             .then((response) => {
                 this.setState({ categories: response.data });
             });
+        if(this.props.authenticated){
+            this.loadNotifications();
+        }
+
     }
 
     mouseEnter = () => {
@@ -175,7 +222,7 @@ export default class Nav extends Component {
                                     <a onClick={() => this.showHideNotification()} ><FontAwesomeIcon icon={faBell} /></a>
                                 </span>
                                     <a onClick={() => this.showHideMenu()} className="user-icon"><FontAwesomeIcon icon={faUser} /> {this.props.user} <FontAwesomeIcon icon={faAngleDown} /></a>
-                                    <section className={this.state.showMenu ? "menu-off menu-on" : "menu-off"}>
+                                    <section onMouseEnter={() => this.mEnterMenu()} onMouseLeave={() => this.mLeaveMenu()} className={this.state.showMenu ? "menu-off menu-on" : "menu-off"}>
                                         <h5><FontAwesomeIcon className="icon" icon={faUser} /> Bienvenido <b className="name">Hola, {this.props.user}</b></h5>
                                         <Link href="/cuenta"><a className="main-button"><p>Mi cuenta</p></a></Link>
                                         <section className="options">
@@ -187,12 +234,18 @@ export default class Nav extends Component {
                                             <Link href="/logout"><a className="items">Cerrar sesion</a></Link>
                                         </section>
                                     </section>
-                                <section className={this.state.showNotification ? "notification-off notification-on" : "notification-off"}>
-                                    <div class="triangle-up"/>
+                                <section  onMouseEnter={() => this.mEnter()} onMouseLeave={() => this.mLeave()}  className={this.state.showNotification ? "notification-off notification-on" : "notification-off"}>
+                                    <div className="triangle-up"/>
                                     <h3 className="title">Notificaciones</h3>
-                                    <NotificationItem />
-                                    <NotificationItem />
-                                    <NotificationItem />
+                                    {
+                                        this.state.notifications.length > 0 ?
+                                        this.state.notifications.map(function (notification, i) {
+                                            return <NotificationItem key={i} data={notification}/>
+                                        })
+                                        :
+                                            <b><br />No tienes notificaciones.<br /><br /></b>
+
+                                    }
                                 </section>
                                 </ul>
                             </div>}

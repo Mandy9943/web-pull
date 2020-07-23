@@ -1,59 +1,54 @@
 import React, { Component } from 'react';
 import Link from "next/link";
 import "./NotificationItem.css";
+import {getData} from "../../../services/userApi";
 
 
 export default class NotificationItem extends Component {
+    constructor(props) {
+        super(props);
+    }
 
     render() {
+    let title=this.props.data.title;
+    let button;
+    let producto= this.props.data.text;
 
-    let name="vendedor@gmail.com "
-    let condition;
-    let question;
-    let response;
-    let message;
-    let button1;
-    let button2;
-    let producto= "producto generico bicicleta con motor atomico";
-
-        switch (3) {
+        switch (this.props.data.type) {
             case 0:
-                condition = "ha respondido tu pregunta sobre";
-                question= <h4 className="question">Buenos dias el producto esta disponible?</h4>
-                response = <h4 className="response">Buenos dias el producto si lo tenemos en stock</h4>
-                button1 = <a>Ver producto</a>
-                button2 = <a className="last-bottom">Comprar</a>
+                button = <a className="last-bottom">Comprar</a>
                 break;
             case 1:
-                condition = "ha realizado una pregunta en tu publicacion";
-                question = <h4 className="question">Buenos dias el producto esta disponible?</h4>
-                button1 = <a>Responder</a>
+                button = <a>Responder</a>
                 break;
             case 2:
-                condition = "hemos registrado una compra de";
-                message = <h4 className="question">Comunicate con tu vendedor</h4>
-                button1 = <a>Enviar mensaje al vendedor</a>
+                button = <a>Ver respuesta</a>
                 break;
             case 3:
-                condition = "ha realizado la compra de tu producto";
-                button1 = <a>Enviar mensaje al comprador</a>
+                button = <a>Enviar mensaje al vendedor</a>
+                break;
+            case 4:
+                button = <a>Enviar mensaje al comprador</a>
                 break;
         }
 
         return (
-            <div className="notification-item">
-                <img src="https://picsum.photos/100" />
-                <section className="description">
-                    <span className="small-text">{name}{condition}</span>
-                    <h3 className="product-title">{producto}</h3>
-                    {question}
-                    {response}
-                    {message}
-                    <section className="actions">
-                        {button1} {button2}
+            <Link href={this.props.data.link}>
+                <a>
+
+                <div className="notification-item">
+                    <img src={this.props.data.image} />
+                    <section className="description">
+                        <span className="small-text">{title}</span>
+                        <h3 className="product-title">{producto}</h3>
+                        <section className="actions">
+                            {button}
+                        </section>
                     </section>
-                </section>
-            </div>
+                </div>
+                </a>
+
+            </Link>
         )
     }
 }

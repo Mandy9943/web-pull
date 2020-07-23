@@ -31,7 +31,7 @@ export default class Home extends Component {
 
     return (
       <div className="container">
-        <Nav user={u_data.user} home={true} authenticated={u_data.authenticated} />
+        <Nav user={u_data.user} jwt={u_data.jwt} home={true} authenticated={u_data.authenticated} />
         <PrincipalSlider />
         <div className="home-content">
           <Payment />

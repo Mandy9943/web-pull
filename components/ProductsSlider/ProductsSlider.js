@@ -46,12 +46,12 @@ export default class ProductsSlider extends Component {
             } else {
                 url = "https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png";
             }
-            tmpList.push(<><ProductCard
+            tmpList.push(<ProductCard
                 key={skid++}
                 price={this.state.data[i].price}
                 url={url}
                 product_id={this.state.data[i].product_id}
-                title={this.state.data[i].title} /></>)
+                title={this.state.data[i].title} />)
 
             if((i+1)%5===0 && i>0){
                 productList.push(<section key={kid++} className="test">{tmpList}</section>);
