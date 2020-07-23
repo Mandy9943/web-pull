@@ -132,8 +132,7 @@ export default class Nav extends Component {
 
     render() {
         let authenticated = this.props.authenticated
-        let home = this.props.home
-        
+        let home = this.props.home    
     
         const content2 = (
             <>
@@ -160,7 +159,10 @@ export default class Nav extends Component {
                     <Link href="/cuenta"><a><FontAwesomeIcon icon={faHome} /> <p>Inicio </p></a></Link>
                     {authenticated ?
                     <Link href="/notificaciones"><a><FontAwesomeIcon icon={faBell} /> 
-                        <p>Notificaciones <span className="number-accent">3</span>{/*NEED FIX THIS SHIT*/}
+                            <p className="noti">Notificaciones 
+                                {this.state.notifications.length > 0 ?
+                                <span className="number-accent">{this.state.notifications.length}</span>
+                            : null }
                     </p></a></Link> : null}
                     <Link href="/lista_categorias"><a><FontAwesomeIcon icon={faAlignLeft} /> <p>Categorias</p></a></Link>
                     {/*<Link href="#"><a><FontAwesomeIcon icon={faArrowDown} /> <p>Descarga la app</p></a></Link>*/}
@@ -219,7 +221,10 @@ export default class Nav extends Component {
                                 <ul>
                                 <span> 
                                     <Link href="/ayuda"><a className="bell">Ayuda / PQR</a></Link>
-                                    <a onClick={() => this.showHideNotification()} ><FontAwesomeIcon icon={faBell} /></a>
+                                    <a className="bell" onClick={() => this.showHideNotification()} ><FontAwesomeIcon icon={faBell} />                                 
+                                    {this.state.notifications.length > 0 ?
+                                            <span className="accent-background">{this.state.notifications.length}</span>
+                                        : null}</a>
                                 </span>
                                     <a onClick={() => this.showHideMenu()} className="user-icon"><FontAwesomeIcon icon={faUser} /> {this.props.user} <FontAwesomeIcon icon={faAngleDown} /></a>
                                     <section onMouseEnter={() => this.mEnterMenu()} onMouseLeave={() => this.mLeaveMenu()} className={this.state.showMenu ? "menu-off menu-on" : "menu-off"}>
@@ -244,7 +249,6 @@ export default class Nav extends Component {
                                         })
                                         :
                                             <b><br />No tienes notificaciones.<br /><br /></b>
-
                                     }
                                 </section>
                                 </ul>

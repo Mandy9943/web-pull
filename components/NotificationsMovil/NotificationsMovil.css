@@ -1,5 +1,12 @@
 .notifications-movil {
   padding-bottom: 30px;
+  height: calc(100vh - 30px);
+}
+
+.notifications-movil .empty {
+  color: #5A5A5A;
+  padding: 15px;
+  display: block;
 }
 
 .notifications-movil .search-bar {

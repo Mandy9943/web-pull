@@ -97,7 +97,9 @@
 }
 
 .nav-botton .modal-home .wrap-modal .modal .header-modal a p {
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   position: absolute;
   top: 4px;
   left: 30px;
@@ -121,9 +123,25 @@
 }
 
 .nav-botton .modal-home .wrap-modal .modal .header-modal .number-accent {
-  padding: 2px 5px;
   background: #CF0A2C;
   color: white;
+  margin-left: 10px;
+  border-radius: 50%;
+  height: 17px;
+  width: 17px;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 2px;
+  top: -2px;
+  position: relative;
 }
 
 .nav-botton .modal-home .wrap-modal .modal .header-modal .logout {

@@ -9,6 +9,12 @@ import favicon from "../assets/img/favicon.svg";
 
 export default class Index extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+        }
+    }
+
     static propTypes = {
         user: PropTypes.string,
         authenticated: PropTypes.bool
@@ -20,8 +26,10 @@ export default class Index extends Component {
             authenticated: isAuthenticated(ctx)
         };
     }
+    
 
     render() {
+
         return (
             <div>
                 <Head>
@@ -36,7 +44,7 @@ export default class Index extends Component {
                     <meta name="Title" content="Compra en Kiero.co - Marketplace" />
                     <link rel="icon" href={favicon} type="image/png" />
                 </Head>
-                <NotificationsMovil user_data={this.props} />
+                <NotificationsMovil state={this.state} user_data={this.props} />
             </div>
         );
     }

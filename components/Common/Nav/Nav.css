@@ -104,7 +104,9 @@
 }
 
 .nav-top .user-menu .bell svg {
-  margin-left: 15px;
+  margin-right: 5px;
+  position: relative;
+  top: 1px;
 }
 
 .nav-top .user-menu .user-icon {
@@ -144,7 +146,7 @@
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  margin-left: 40px;
+  margin-left: 20px;
   color: #fff;
   font-size: 14px;
 }
