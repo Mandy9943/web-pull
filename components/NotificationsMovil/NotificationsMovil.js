@@ -28,7 +28,6 @@ export default class NotificationsMovil extends Component {
         getData(endp, this.props.jwt)
             .then((response) => {
                 this.setState({ notifications: response.data });
-                console.log(response.data);
                 setTimeout(this.loadNotifications, 60000);
             });
     }

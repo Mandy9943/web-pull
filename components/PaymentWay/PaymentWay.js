@@ -10,6 +10,9 @@ import "./PaymentWayMovil.css";
 import { getData, makePayment, makePaymentCC } from "../../services/userApi"
 import Modal from "../Common/Modal";
 import AddAddress from "../UserAccount/AddAddress"
+import { validatePayCC, validatePaymentPSE } from "../../lib/validation"
+import Error from "../Login/Error";
+
 
 export default class PaymentWay extends Component {
     constructor(props) {
@@ -26,7 +29,9 @@ export default class PaymentWay extends Component {
             selectedAddr: -1,
             auxAddr: 0,
             addrLoaded: false,
-            error: null
+            error: null,
+            cc_error: null,
+            pse_error: null,
 
         }
         this.addrRef = React.createRef();
@@ -111,8 +116,6 @@ export default class PaymentWay extends Component {
             document_type: e.target.elements.document_type.value,
             document_number: e.target.elements.document_number.value,
             bank_id: e.target.elements.bank_id.value,
-
-
         }, this.props.user.jwt);
         if (result.data) {
             window.location = result.data.URL;
@@ -128,32 +131,45 @@ export default class PaymentWay extends Component {
     payCC = async e => {
         e.preventDefault();
 
-        if (this.state.selectedAddr == -1) {
-            this.setState({ modalAddr: true });
-            return false;
-        }
+        this.setState({cc_error: null});
 
         const ccPayload = {
             product_id: this.props.data.product_id,
-            address_id: this.state.addresses[this.state.selectedAddr].address_id,
+
             device_session_id: this.props.user.dsi.dsi,
             document_type: e.target.elements.document_type.value,
-            document_number: e.target.elements.document_number.value,
+            document_number: e.target.elements.document_number.value.split(" ").join("").split(".").join(""),
             card_type: e.target.elements.card_type.value,
-            card_number: e.target.elements.card_number.value,
+            card_number: e.target.elements.card_number.value.split(" ").join(""),
             ccv: e.target.elements.ccv.value,
-            expiration_date: e.target.elements.expiration_date.value,
+            expiration_date: "20"+e.target.elements.expiration_date.value,
             card_holder: e.target.elements.card_holder.value,
             monthly_fees: e.target.elements.monthly_fees.value
         };
-        const rs = await makePaymentCC(ccPayload, this.props.user.jwt);
-        if (rs.data) {
-            window.location = "/pay_result/"+rs.data.id;
-        } else {
+
+        const validated = validatePayCC(ccPayload);
+        if(validated===true){
+            ccPayload.address_id = this.state.addresses[this.state.selectedAddr].address_id;
+            if (this.state.selectedAddr == -1) {
+                this.setState({ modalAddr: true });
+                return false;
+            }
+
+            const rs = await makePaymentCC(ccPayload, this.props.user.jwt);
+            if (rs.data) {
+                window.location = "/pay_result/"+rs.data.id;
+            } else {
+                this.setState({
+                    error: rs.error
+                });
+            }
+        }else{
+
             this.setState({
-                error: rs.error
+                cc_error: validated
             });
         }
+
     };
 
 
@@ -181,6 +197,7 @@ export default class PaymentWay extends Component {
         </>
 
         const cardType = <>
+            <option value={"0"}>- Seleccione - </option>
             <option value={"MASTERCARD"}>Master Card</option>
             <option value={"VISA"}>Visa</option>
             <option value={"VISA_DEBIT"}>Visa Debito</option>
@@ -232,11 +249,11 @@ export default class PaymentWay extends Component {
                             <div className={this.state.closeCredit ? "accordion-payment-way" : "accordion-payment-way active"}>
                                 <div className="content-accordion">
                                     <form onSubmit={this.payCC}>
-                                        <input name={"card_number"} placeholder="Número de tarjeta *" />
-                                        <input name={"card_holder"}  placeholder="Nombre y apellido impreso *" />
+                                        <input maxLength={16} name={"card_number"} placeholder="Número de tarjeta *" />
+                                        <input maxLength={64} name={"card_holder"}  placeholder="Nombre y apellido impreso *" />
                                         <div className="input-form">
-                                            <input  name={"expiration_date"} placeholder="YYYY/MM *" />
-                                            <input  name={"ccv"} placeholder="CVV *" />
+                                            <input  maxLength={5} name={"expiration_date"} placeholder="AA/MM" />
+                                            <input  maxLength={4} name={"ccv"} placeholder="CVV" />
                                         </div>
                                         <div className="input-form">
                                             <div className={"content-accordion-form"}>
@@ -258,6 +275,8 @@ export default class PaymentWay extends Component {
                                         <img alt="tarjeta credito" src={CardImg} />
                                     </div>
                                 </div>
+
+                                {this.state.cc_error && <Error message={this.state.cc_error} />}
 
                             </div>
 
