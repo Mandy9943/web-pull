@@ -135,7 +135,6 @@ export default class PaymentWay extends Component {
 
         const ccPayload = {
             product_id: this.props.data.product_id,
-
             device_session_id: this.props.user.dsi.dsi,
             document_type: e.target.elements.document_type.value,
             document_number: e.target.elements.document_number.value.split(" ").join("").split(".").join(""),
@@ -149,11 +148,13 @@ export default class PaymentWay extends Component {
 
         const validated = validatePayCC(ccPayload);
         if(validated===true){
-            ccPayload.address_id = this.state.addresses[this.state.selectedAddr].address_id;
+
             if (this.state.selectedAddr == -1) {
                 this.setState({ modalAddr: true });
                 return false;
             }
+
+            ccPayload.address_id = this.state.addresses[this.state.selectedAddr].address_id;
 
             const rs = await makePaymentCC(ccPayload, this.props.user.jwt);
             if (rs.data) {
