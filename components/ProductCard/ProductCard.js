@@ -14,6 +14,9 @@ export default class ProductCard extends Component {
                         </div>
                         <button>Envío gratis</button>
                         <h3>{this.props.price ? this.props.price.split(",")[0] : "$ ... "}</h3>
+                        <h4 className="title">
+                            {this.props.title}
+                        </h4>
                     </a>
                 </Link>
             </div>
