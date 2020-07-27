@@ -92,6 +92,9 @@
         -ms-flex-direction: column;
             flex-direction: column;
   }
+  .wrap-finding .home-section-title {
+    display: none;
+  }
   .wrap-finding .content-finding {
     -ms-grid-columns: (1fr)[1];
         grid-template-columns: repeat(1, 1fr);

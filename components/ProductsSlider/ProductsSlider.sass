@@ -9,6 +9,7 @@
             @media (min-width: 700px)
                 display: none !important
             .content-products-slider
+                overflow-y: hidden
                 grid-template-columns: auto
                 display: -webkit-inline-box
                 position: absolute
@@ -60,14 +61,16 @@
     .home-content , .detail-content
         .products-slider
             padding: 15px;
-            margin-bottom: 15px
             width: auto;
             .home-section-title
-                font-size: 15px !important
+                font-size: 16px !important
                 color: #5A5A5A
+                margin-bottom: 15px
+                font-weight: normal
                 .accent
-                    margin-left: 5px;
+                    margin-left: 10px;
                     white-space: nowrap;
+                    font-size: 13px !important
             .slider-movil
                 position: relative
                 padding-bottom: 65%
@@ -91,6 +94,47 @@
     .detail-content
         .producto-card
             width: 37% !important
+                            
+@media(max-width:325px)
+    .home-content , .detail-content
+        .products-slider
+            padding: 15px 7px;
+            width: auto;
+            .home-section-title
+                font-size: 16px !important
+                color: #5A5A5A
+                margin-bottom: 15px
+                font-weight: normal
+                .accent
+                    margin-left: 10px;
+                    white-space: nowrap;
+                    font-size: 13px !important
+            .slider-movil
+                position: relative
+                padding-bottom: 82%
+                width: 100%
+                .content-products-slider
+                    grid-template-columns: auto
+                    display: -webkit-inline-box
+                    position: absolute
+                    top: 0
+                    left: 0
+                    right: 0
+                    bottom: 0
+                    height: min-content;
+                    padding: 5px 0
+                    overflow-x: auto;
+                    .producto-card
+                        width: 33%
+                        display: block
+                        margin: 0% 1%;
+                        padding: 10px 0px 0
+                        button
+                            padding: 5px
+    .detail-content
+        .producto-card
+            width: 37% !important
+                    
                             
 
     

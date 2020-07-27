@@ -77,6 +77,12 @@
   .categories-img-menu {
     margin: 15px;
   }
+  .categories-img-menu .home-section-title {
+    font-size: 18ox !important;
+    color: #5A5A5A;
+    margin-bottom: 15px;
+    font-weight: normal;
+  }
   .categories-img-menu .content-categories-img-menu {
     -ms-grid-columns: (1fr)[2];
         grid-template-columns: repeat(2, 1fr);

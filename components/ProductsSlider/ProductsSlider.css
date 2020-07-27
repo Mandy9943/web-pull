@@ -16,6 +16,7 @@
 }
 
 .home-content .products-slider .slider-movil .content-products-slider {
+  overflow-y: hidden;
   -ms-grid-columns: auto;
       grid-template-columns: auto;
   display: -webkit-inline-box;
@@ -95,16 +96,18 @@
 @media (max-width: 700px) {
   .home-content .products-slider, .detail-content .products-slider {
     padding: 15px;
-    margin-bottom: 15px;
     width: auto;
   }
   .home-content .products-slider .home-section-title, .detail-content .products-slider .home-section-title {
-    font-size: 15px !important;
+    font-size: 16px !important;
     color: #5A5A5A;
+    margin-bottom: 15px;
+    font-weight: normal;
   }
   .home-content .products-slider .home-section-title .accent, .detail-content .products-slider .home-section-title .accent {
-    margin-left: 5px;
+    margin-left: 10px;
     white-space: nowrap;
+    font-size: 13px !important;
   }
   .home-content .products-slider .slider-movil, .detail-content .products-slider .slider-movil {
     position: relative;
@@ -131,6 +134,56 @@
     display: block;
     margin: 0% 1%;
     padding: 10px 0px 0;
+  }
+  .detail-content .producto-card {
+    width: 37% !important;
+  }
+}
+
+@media (max-width: 325px) {
+  .home-content .products-slider, .detail-content .products-slider {
+    padding: 15px 7px;
+    width: auto;
+  }
+  .home-content .products-slider .home-section-title, .detail-content .products-slider .home-section-title {
+    font-size: 16px !important;
+    color: #5A5A5A;
+    margin-bottom: 15px;
+    font-weight: normal;
+  }
+  .home-content .products-slider .home-section-title .accent, .detail-content .products-slider .home-section-title .accent {
+    margin-left: 10px;
+    white-space: nowrap;
+    font-size: 13px !important;
+  }
+  .home-content .products-slider .slider-movil, .detail-content .products-slider .slider-movil {
+    position: relative;
+    padding-bottom: 82%;
+    width: 100%;
+  }
+  .home-content .products-slider .slider-movil .content-products-slider, .detail-content .products-slider .slider-movil .content-products-slider {
+    -ms-grid-columns: auto;
+        grid-template-columns: auto;
+    display: -webkit-inline-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: -webkit-min-content;
+    height: -moz-min-content;
+    height: min-content;
+    padding: 5px 0;
+    overflow-x: auto;
+  }
+  .home-content .products-slider .slider-movil .content-products-slider .producto-card, .detail-content .products-slider .slider-movil .content-products-slider .producto-card {
+    width: 33%;
+    display: block;
+    margin: 0% 1%;
+    padding: 10px 0px 0;
+  }
+  .home-content .products-slider .slider-movil .content-products-slider .producto-card button, .detail-content .products-slider .slider-movil .content-products-slider .producto-card button {
+    padding: 5px;
   }
   .detail-content .producto-card {
     width: 37% !important;
