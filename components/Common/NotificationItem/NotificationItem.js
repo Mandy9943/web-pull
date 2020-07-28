@@ -17,12 +17,12 @@ export default class NotificationItem extends Component {
         switch (this.props.data.type) {
             case 0:
                 button = <a className="last-bottom">Comprar</a>
-                break;
+                break; 
             case 1:
-                button = <a>Responder</a>
+                button = <Link href={"/cuenta"}><a>Responder</a></Link>
                 break;
             case 2:
-                button = <a>Ver respuesta</a>
+                button = <Link href={"/cuenta"}><a>Ver respuesta</a></Link>
                 break;
             case 3:
                 button = <a>Enviar mensaje al vendedor</a>

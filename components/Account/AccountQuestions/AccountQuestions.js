@@ -108,10 +108,10 @@ class AccountQuestions extends Component {
             {this.state.questions[mid].content}
           </h3>
           <section className="question-product">
-            <img src="https://picsum.photos/100" />
+            <img src={this.state.questions[mid].product.images[0].url} />
             <div className="description-item">
-              <p>Nombre producto generico</p>
-              <span className="accent">23.412,00</span>
+              <p>{this.state.questions[mid].product.title}</p>
+              <span className="accent">{this.state.questions[mid].product.price}</span>
             </div>
           </section>
         </div>
@@ -119,7 +119,7 @@ class AccountQuestions extends Component {
           <p className="name-user-question">
             <FontAwesomeIcon icon={faUser} />
             {this.state.questions[mid].user.name + " " + this.state.questions[mid].user.last_name}
-            <span>10/20/2002 14:20</span>
+            <span>{this.state.questions[mid].product.created_since.split(".")[0]}</span>
           </p>
           <br /><h4><div className="">
             {
