@@ -204,6 +204,8 @@
 
 .section-pay-send .section-pay-send-title svg {
   color: #CF0A2C;
+  position: relative;
+  top: 2px;
 }
 
 .section-pay-send .section-pay-send-subtitle {

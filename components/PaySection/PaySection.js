@@ -29,8 +29,7 @@ class PaySection extends Component {
       qty_options[i - 1] = (<option key={"d" + i} value={i}>Cantidad:{i} disponibles({this.props.stock})</option>);
     }
 
-    console.log("PAYMENT SECTION");
-    console.log(this.props);
+    
     return (
       <div className="pay">
         <div className="pay-item">
