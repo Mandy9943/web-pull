@@ -35,23 +35,23 @@
           transition-timing-function: linear;
 }
 
-.producto-card:hover {
-  -webkit-box-shadow: 0px 3px 3px #0000005e;
-          box-shadow: 0px 3px 3px #0000005e;
-}
-
-.producto-card:hover .title {
-  display: -webkit-box;
-  margin-bottom: 15px;
-  opacity: 1;
-  visibility: visible;
-  -webkit-transition: visibility .1s .1s;
-  transition: visibility .1s .1s;
-  position: static;
-}
-
-.producto-card:hover h3 {
-  padding: 15px 15px 0;
+@media (min-width: 700px) {
+  .producto-card:hover {
+    -webkit-box-shadow: 0px 3px 3px #0000005e;
+            box-shadow: 0px 3px 3px #0000005e;
+  }
+  .producto-card:hover .title {
+    display: -webkit-box;
+    margin-bottom: 15px;
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: visibility .1s .1s;
+    transition: visibility .1s .1s;
+    position: static;
+  }
+  .producto-card:hover h3 {
+    padding: 15px 15px 0;
+  }
 }
 
 .producto-card .product-card-img {

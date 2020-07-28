@@ -1,17 +1,17 @@
 .product-card-finding
-    margin-bottom: 50px
-    .content-product-card-finding
-        display: grid
-        grid-template-columns: repeat(5,1fr)
-        grid-gap: 20px
-
-@media(min-width:1100px)
-    .product-card-finding
+    .slider-movil
+        padding-bottom: 33%
+        height: 0
+        @media(min-width:700px) and (max-width: 1200px)
+            padding-bottom: 35%
         .content-product-card-finding
-            grid-template-columns: repeat(6,1fr)
-            
-
-
+            display: grid
+            grid-template-columns: repeat(6, 1fr)
+            grid-gap: 20px
+            padding-bottom: 15px;
+            .producto-card
+                position: relative
+                
 @media(max-width:700px)
     .product-card-finding
         padding: 0 15px;
