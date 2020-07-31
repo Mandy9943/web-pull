@@ -23,13 +23,13 @@
   -ms-grid-columns: 2fr 4fr 2fr;
       grid-template-columns: 2fr 4fr 2fr;
   font-size: 26px;
-  font-weight: normal;
+  font-weight: 400;
   color: white;
 }
 
 .menu-categorias .tite-categories span {
   font-size: 26px;
-  font-weight: normal;
+  font-weight: 400;
   color: white;
   margin: auto;
 }

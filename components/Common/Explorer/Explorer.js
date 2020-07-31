@@ -94,7 +94,9 @@ class Explorer extends Component {
         <h3 className="home-section-title">Encuentra los mejores productos de {this.state.categoryName} <Link href={"/categoria/"+this.state.categoryName}><a className="accent">Ver todos</a></Link></h3>
         <div className="content-explorer">
           <div className="main-img">
-                <img alt={this.state.categoryName} src={this.state.exploreImage} />
+                <Link href={"/categoria/"+this.state.categoryName}>
+                  <img alt={this.state.categoryName} src={this.state.exploreImage} />
+                </Link>
           </div>
           <div className="group-img">
             {this.state.data.map((item, i) => (

@@ -158,8 +158,31 @@
   .temp-list .product-list-description-box {
     margin-bottom: 15px;
   }
+  .temp-list .product-list-description-box .product-list-title {
+    font-weight: 400 !important;
+  }
   .temp-list .product-list-description-box h3 {
     margin-bottom: 5px;
+    font-weight: 600;
+  }
+  .temp-card .product-card-description-box {
+    padding: 0 15px;
+  }
+  .temp-card .product-card-description-box .product-card-description {
+    font-size: 13px;
+    font-weight: 400;
+    margin-top: 5px;
+  }
+  .temp-card .product-card-description-box .product-card-description p {
+    font-size: 13px;
+    font-weight: 400;
+  }
+  .temp-card .product-card-description-box .product-card-description .price {
+    font-weight: 600;
+  }
+  .kiero-envios-card {
+    font-size: 14px;
+    font-weight: 400;
   }
 }
 /*# sourceMappingURL=ListCategory.css.map */

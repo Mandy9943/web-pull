@@ -81,6 +81,13 @@
   line-height: 40px;
 }
 
+.payment-movil {
+  font-size: 14px;
+  font-weight: regular;
+  font-size: 14px !important;
+  font-weight: regular !important;
+}
+
 .payment-movil .slider {
   height: auto !important;
 }

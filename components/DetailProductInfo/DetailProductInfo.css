@@ -114,5 +114,21 @@
     display: -ms-grid;
     display: grid;
   }
+  .guarantee h5 {
+    margin-bottom: 10px;
+    font-size: 17px;
+    color: #5A5A5A;
+  }
+  .guarantee .title {
+    display: block;
+    color: #5A5A5A;
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .guarantee .sub-title {
+    display: block;
+    color: #5A5A5A;
+    font-size: 14px;
+  }
 }
 /*# sourceMappingURL=DetailProductInfo.css.map */

@@ -48,7 +48,7 @@ class ListCategory extends Component {
                         <div className="product-card-description">
                           <p title={product.title}>{product.title.substr(0, 60) + (product.title.length > 60 ? "..." : ".")}</p>
                           <p>Nuevo</p>
-                          <p>{product.price.split(",")[0]}</p>
+                          <p className="price">{product.price.split(",")[0]}</p>
                         </div>
                       </div>
                     </div>

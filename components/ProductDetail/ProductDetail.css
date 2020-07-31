@@ -176,8 +176,13 @@
   .detail-content .wrap-product .wrap-detail-info {
     background: white;
   }
-  .detail-content .wrap-product .wrap-detail-info h4 {
-    font-size: 17px;
+  .detail-content .wrap-product .wrap-detail-info h4, .detail-content .wrap-product .wrap-detail-info .item-detail-info {
+    font-size: 15px;
+    font-weight: 400;
+  }
+  .detail-content .wrap-product .wrap-detail-info .item-detail-info p {
+    font-size: 15px;
+    font-weight: 400;
   }
   .detail-content .questions-movil {
     background: #F3F3F3;

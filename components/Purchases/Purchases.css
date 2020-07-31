@@ -65,6 +65,10 @@
   .purchase-list {
     padding: 15px;
   }
+  .purchase-list .status-title {
+    font-size: 28px;
+    font-weight: 600;
+  }
   .purchase-list .account-store-sales-wrap-search {
     padding: 0;
   }

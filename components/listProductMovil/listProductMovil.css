@@ -88,10 +88,8 @@
     margin: 15px;
   }
   .listProductMovil h3 {
-    font-size: 16px !important;
     color: #5A5A5A;
     margin-bottom: 15px;
-    font-weight: normal;
   }
   .listProductMovil .product-item-edit {
     width: auto;
@@ -108,6 +106,16 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    font-size: 13px;
+    font-weight: 400;
+  }
+  .listProductMovil .product-item-edit .content .description .price {
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .listProductMovil .product-item-edit .content .description span {
+    font-size: 13px;
+    font-weight: 400;
   }
   .listProductMovil .product-item-edit .content .description span svg {
     margin-right: 10px;

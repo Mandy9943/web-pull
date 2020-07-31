@@ -24,7 +24,7 @@
 .info-item h3 {
   margin: 10px 0px;
   font-size: 18px;
-  font-weight: lighter;
+  font-weight: 400;
 }
 
 .info-item p {
@@ -46,6 +46,13 @@
   }
   .info-item {
     margin: 0px 5px;
+  }
+  .info-item h3 {
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .info-item p {
+    font-size: 13px;
   }
   .only-desktop {
     display: none;

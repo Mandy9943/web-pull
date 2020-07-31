@@ -101,6 +101,7 @@
   }
   .summary-content .user-account-container .user-account-content h2 {
     margin: 15px 15px 30px;
+    font-weight: 600;
   }
   .summary-content .user-account-container .user-account-content .user-acount-info {
     width: 90%;

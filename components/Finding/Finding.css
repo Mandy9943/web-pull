@@ -77,6 +77,16 @@
   color: #5A5A5A;
 }
 
+@media (max-width: 600px) {
+  .wrap-info .category-text {
+    font-size: 14px;
+  }
+  .wrap-info .finding-title {
+    font-size: 18px;
+    font-weight: 500;
+  }
+}
+
 .wrap-info button {
   width: auto;
   background: #CF0A2C;

@@ -42,6 +42,8 @@
 .QuestionItem-list h5.accent {
   color: #CF0A2C;
   margin-top: 10px;
+  font-size: 15px;
+  font-weight: regular;
 }
 
 .QuestionItem-list .footer-question {

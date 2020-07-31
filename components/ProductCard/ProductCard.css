@@ -108,6 +108,12 @@
   min-width: initial !important;
 }
 
+@media (max-width: 600px) {
+  .producto-card button {
+    font-size: 9px;
+  }
+}
+
 .producto-card h3 {
   padding: 15px;
   white-space: nowrap;
