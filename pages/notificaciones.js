@@ -3,7 +3,7 @@ import Head from 'next/head';
 import NotificationsMovil from "../components/NotificationsMovil";
 import { Component } from "react";
 import PropTypes from "prop-types";
-import { isAuthenticated, getUser } from "../lib/auth";
+import { isAuthenticated, getUser, getJwt } from "../lib/auth";
 import favicon from "../assets/img/favicon.svg";
 
 
@@ -23,7 +23,8 @@ export default class Index extends Component {
     static async getInitialProps(ctx) {
         return {
             user: getUser(ctx),
-            authenticated: isAuthenticated(ctx)
+            authenticated: isAuthenticated(ctx),
+            jwt: getJwt(ctx),
         };
     }
     
@@ -44,7 +45,7 @@ export default class Index extends Component {
                     <meta name="Title" content="Compra en Kiero.co - Marketplace" />
                     <link rel="icon" href={favicon} type="image/png" />
                 </Head>
-                <NotificationsMovil state={this.state} user_data={this.props} />
+                <NotificationsMovil state={this.state} user_data={this.props} authenticated={this.props.authenticated} jwt={this.props.jwt} />
             </div>
         );
     }
