@@ -9,7 +9,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
 
     faAngleRight,
-    faAngleDown
+    faAngleDown,
+    faBars
 } from "@fortawesome/free-solid-svg-icons";
 import "./Summary.css";
 import Sidebar from '../Sidebar/Sidebar';
@@ -34,6 +35,7 @@ export default class Summary extends Component {
             closeMyData: true,
             iconMyData: true,
             userAccountIconMyData: faAngleRight,
+            closeSidebar: true,
             display: {
                 resume: true,
                 myData: false,
@@ -44,8 +46,6 @@ export default class Summary extends Component {
             }
         }
     }
-
-    
 
     accordionMyData = () => {
         this.setState({
@@ -87,6 +87,14 @@ export default class Summary extends Component {
     }
 
 
+    CloseSidebar = () => {
+        this.setState({
+            closeSidebar: !this.state.closeSidebar,
+        });
+        console.info("si ejecuta y cambia el estado " + this.state.closeSidebar)
+    }
+
+
     render() {
 
         let u_data = this.props.user_data;
@@ -95,8 +103,12 @@ export default class Summary extends Component {
 
         return (
             <div className="summary-content">
+                <div className="summary-botton" onClick={() => this.CloseSidebar()}>
+                    <FontAwesomeIcon icon={faBars} />
+                </div>
+                
                 <Nav jwt={u_data.jwt} cb={this.showSection} user_data={u_data} user={u_data.user} home={false} authenticated={u_data.authenticated} />
-                <div className="user-account-container" >
+                <div className={this.state.closeSidebar ? "user-account-container" : " user-account-container show-sidebar" }>
                     <Sidebar user_data={u_data} cb={this.showSection} />
                     {this.state.display.resume && <AccountSummary user={u_data} />}
                     {this.state.display.orders && <Purchases mode={"buy"} user={u_data} />}

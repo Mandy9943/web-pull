@@ -53,12 +53,40 @@
 
 
 
-@media(min-width:700px)
-    .user-account-menu
-        padding: 40px 20px !important
-
 @media(max-width:700px)
     .summary-content
+        .user-account-menu
+            display: none
+        .mobil-nav .nav-botton
+            opacity: 0 !important
+        .summary-botton
+            position: absolute;
+            top: 15px;
+            right: 14px;
+            height: 30px;
+            width: 30px;
+            display: block;
+            left: auto;
+            bottom: auto;
+            z-index: 10000000;
+            svg
+                font-size: 25px;
+                color: white
+        .show-sidebar
+            grid-template-rows: auto auto
+            grid-gap: 0
+            .user-account-menu
+                background: white
+                padding: 0
+                border: 0.5px solid #BEBEBE
+                border-radius: 0 0 5px 5px
+                grid-gap: 0
+                display: block
+                .user-account-menu-item
+                    padding: 15px
+                    margin-bottom: 0
+                .border-bottom
+                    border-bottom: 0.5px solid #BEBEBE
         .user-account-container
             width: 100%
             position: relative
@@ -74,18 +102,6 @@
                 .user-accunt-info-box .user-accunt-info-tab.user-accunt-info-address 
                     p:first-child
                         padding: 30px
-            .user-account-menu
-                background: #F2F2F2
-                position: fixed
-                width: 0
-                top: 0
-                left: 0
-                bottom: 0
-                z-index: 1
-                overflow-x: hidden
-                transition: 0.4s
-                box-sizing:border-box
-                padding: 0
     .modal-actions
         grid-gap: 15px !important
     .footer-social

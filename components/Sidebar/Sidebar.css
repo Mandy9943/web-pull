@@ -36,6 +36,28 @@
           box-shadow: 0px 3px 6px #00000029;
 }
 
+.user-account-menu .user-account-menu-item .icon-profile {
+  background: #CF0A2C;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.user-account-menu .user-account-menu-item .icon-profile svg {
+  width: 16px;
+  height: 16px;
+  color: white;
+}
+
 .user-account-menu .user-account-menu-item .user-account-accordion {
   display: none;
 }
@@ -47,28 +69,5 @@
 
 .user-account-menu .user-account-menu-item.active .user-account-accordion {
   display: block !important;
-}
-
-@media (min-width: 700px) {
-  .user-account-menu {
-    padding: 40px 20px !important;
-  }
-}
-
-@media (max-width: 700px) {
-  .user-account-menu {
-    background: #F2F2F2;
-    position: fixed;
-    width: 0;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    z-index: 1;
-    overflow-x: hidden;
-    -webkit-transition: 0.4s;
-    transition: 0.4s;
-    width: auto;
-    padding: 30px;
-  }
 }
 /*# sourceMappingURL=Sidebar.css.map */

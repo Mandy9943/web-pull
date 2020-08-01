@@ -12,7 +12,10 @@ import {
     faAngleRight,
     faAngleDown,
     faAngleUp,
-    faMoneyBill
+    faMoneyBill,
+    faAlignLeft,
+    faQuestion,
+    faUser
 } from "@fortawesome/free-solid-svg-icons";
 import "./Sidebar.css";
 import redirect from "../../lib/redirect";
@@ -98,9 +101,9 @@ export default class Sidebar extends Component {
     }
 
     toggleModal = (modal) => {
-      const newState = { ...this.state };
-      newState[`modal${modal}`] = !newState[`modal${modal}`] ? true : false;
-      this.setState(newState);
+        const newState = { ...this.state };
+        newState[`modal${modal}`] = !newState[`modal${modal}`] ? true : false;
+        this.setState(newState);
     }
 
     render() {
@@ -108,20 +111,20 @@ export default class Sidebar extends Component {
 
         return (
             <div id="sidebar" className="user-account-menu">
-                <div className="user-account-menu-item">
-                    <p className="user-account-menu-icon">
-                    <img alt="perfil user" src="https://recap-project.eu/wp-content/uploads/2017/02/default-user.jpg" />
+                <div className="user-account-menu-item border-bottom">
+                    <p className="user-account-menu-icon icon-profile">
+                        <FontAwesomeIcon icon={faUser} />
                     </p>
                     <div className="user-name">
                         <h3>Mi cuenta</h3>
-                        <p onClick={(e)=>this.props.cb("home", e)} className="user-account-menu-text">¡Hola {this.state.userName}!</p>
+                        <p onClick={(e) => this.props.cb("home", e)} className="user-account-menu-text">¡Hola {this.state.userName}!</p>
                     </div>
                 </div>
                 <div className="user-account-menu-item" >
                     <p className="user-account-menu-icon">
                         <FontAwesomeIcon icon={faListUl} />
                     </p>
-                    <p onClick={(e)=>this.props.cb("resume", e)} className="user-account-menu-text">Resumen</p>
+                    <p onClick={(e) => this.props.cb("resume", e)} className="user-account-menu-text">Resumen</p>
                 </div>
                 <div className="user-account-menu-item" >
                     <p className="user-account-menu-icon">
@@ -131,47 +134,47 @@ export default class Sidebar extends Component {
                 </div>
 
                 {this.props.user_data.type === "2" &&
-                <div className={this.state.closeBill ? "user-account-menu-item" : "user-account-menu-item active"} onClick={() => this.accordionBill()}>
-                    <p className="user-account-menu-icon">
-                    <FontAwesomeIcon icon={faMoneyBillWave} />
-                    </p>
-                    <div className="user-account-menu-accordion">
-                        <p className="user-account-menu-text">Ventas</p>
-                        <div className="user-account-accordion">
-                            <p onClick={this.newProduct} >Agregar nuevo producto</p>
-                            <p onClick={(e) => this.props.cb("myProducts", e)} >Mis publicacioness</p>
-                            <p onClick={(e)=>this.props.cb("mySales", e)} >Mis ventas</p>
-                            <p onClick={(e)=>this.props.cb("questions", e)} >Pregúntas</p>
+                    <div className={this.state.closeBill ? "user-account-menu-item" : "user-account-menu-item active"} onClick={() => this.accordionBill()}>
+                        <p className="user-account-menu-icon">
+                            <FontAwesomeIcon icon={faMoneyBillWave} />
+                        </p>
+                        <div className="user-account-menu-accordion">
+                            <p className="user-account-menu-text">Ventas</p>
+                            <div className="user-account-accordion">
+                                <p onClick={this.newProduct} >Agregar nuevo producto</p>
+                                <p onClick={(e) => this.props.cb("myProducts", e)} >Mis publicacioness</p>
+                                <p onClick={(e) => this.props.cb("mySales", e)} >Mis ventas</p>
+                                <p onClick={(e) => this.props.cb("questions", e)} >Pregúntas</p>
+                            </div>
                         </div>
+                        <p className="user-account-menu-icon">
+                            <FontAwesomeIcon icon={this.state.userAccountIconBill} />
+                        </p>
                     </div>
-                    <p className="user-account-menu-icon">
-                        <FontAwesomeIcon icon={this.state.userAccountIconBill}/>
-                    </p>
-                </div>
                 }
 
                 <div className={this.state.closeShop ? "user-account-menu-item" : "user-account-menu-item active"} onClick={() => this.accordionShop()}>
                     <p className="user-account-menu-icon">
-                    <FontAwesomeIcon icon={faShoppingBag} />
+                        <FontAwesomeIcon icon={faShoppingBag} />
                     </p>
                     <div className="user-account-menu-accordion">
                         <p className="user-account-menu-text">Compras</p>
                         <div className="user-account-accordion">
-                            <p onClick={(e)=>this.props.cb("orders", e)}>Mis Ordenes</p>
+                            <p onClick={(e) => this.props.cb("orders", e)}>Mis Ordenes</p>
                         </div>
                     </div>
                     <p className="user-account-menu-icon">
                         <FontAwesomeIcon icon={this.state.userAccountIconShop} />
                     </p>
                 </div>
-                <div className={this.state.closeMyData ? "user-account-menu-item" : "user-account-menu-item active"} onClick={() => this.accordionMyData()}>
+                <div className={this.state.closeMyData ? "user-account-menu-item border-bottom" : "user-account-menu-item border-bottom active"} onClick={() => this.accordionMyData()}>
                     <p className="user-account-menu-icon">
                         <FontAwesomeIcon icon={faCog} />
                     </p>
                     <div className="user-account-menu-accordion">
                         <p className="user-account-menu-text">Mis datos</p>
                         <div className="user-account-accordion">
-                            <p onClick={(e)=>this.props.cb("myData", e)} >Mis datos</p>
+                            <p onClick={(e) => this.props.cb("myData", e)} >Mis datos</p>
                             {/*<p onClick={(e)=>this.props.cb("security", e)}>Seguridad</p>*/}
                         </div>
                     </div>
@@ -179,6 +182,24 @@ export default class Sidebar extends Component {
                         <FontAwesomeIcon icon={this.state.userAccountIconMyData} />
                     </p>
                 </div>
+                <Link href="/lista_categorias"><a className="no-web">
+                    <div className="user-account-menu-item border-bottom">
+                        <p className="user-account-menu-icon">
+                            <FontAwesomeIcon icon={faAlignLeft} />
+                        </p>
+                        <p className="user-account-menu-text">Categorias</p>
+                    </div>
+                </a>
+                </Link>
+                <Link href="/ayuda"><a className="no-web">
+                    <div className="user-account-menu-item">
+                        <p className="user-account-menu-icon">
+                            <FontAwesomeIcon icon={faQuestion} />
+                        </p>
+                        <p className="user-account-menu-text">Ayuda / PQR</p>
+                    </div>
+                </a>
+                </Link>
             </div>
         )
     }
