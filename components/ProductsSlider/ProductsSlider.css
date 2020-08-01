@@ -140,7 +140,7 @@
   }
 }
 
-@media (max-width: 325px) {
+@media (max-width: 365px) {
   .home-content .products-slider, .detail-content .products-slider {
     padding: 15px 7px;
     width: auto;
