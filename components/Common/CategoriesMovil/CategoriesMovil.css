@@ -10,12 +10,12 @@
   right: 0;
   top: 0;
   bottom: 0;
-  background: #CF0A2C;
+  background: #CF0A2C #F3F3F3;
 }
 
 .menu-categorias .tite-categories {
   position: absolute;
-  top: 20px;
+  top: 0;
   left: 0px;
   right: 0px;
   display: -ms-grid;
@@ -25,6 +25,8 @@
   font-size: 26px;
   font-weight: 400;
   color: white;
+  background: #CF0A2C;
+  height: 62px !important;
 }
 
 .menu-categorias .tite-categories span {
@@ -49,7 +51,7 @@
 .menu-categorias .menu-list {
   TEXT-ALIGN: left;
   position: absolute;
-  top: 65px;
+  top: 75px;
   left: 30px;
   right: 30px;
   bottom: 30px;
@@ -82,5 +84,24 @@
 .menu-categorias .menu-list .item a {
   color: #CF0A2C;
   width: 100%;
+}
+
+@media (min-width: 700px) {
+  .menu-categorias .menu-list {
+    left: 0;
+    right: 0;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: auto auto auto;
+        grid-template-columns: auto auto auto;
+  }
+  .menu-categorias .menu-list .item {
+    width: 90%;
+    margin: auto;
+    grid-gap: 30px;
+  }
+  .menu-categorias .menu-list .item:first-child {
+    margin-top: auto;
+  }
 }
 /*# sourceMappingURL=CategoriesMovil.css.map */

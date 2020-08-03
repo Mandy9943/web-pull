@@ -37,7 +37,8 @@ export default class Nav extends Component {
             showMenu: false,
             showNotification: false,
             notifications : [],
-            timeClose : undefined
+            timeClose : undefined,
+            closeSidebar : true
         }
     }
 
@@ -130,6 +131,13 @@ export default class Nav extends Component {
     }
 
 
+    CloseSidebar = () => {
+        this.setState({
+            closeSidebar: !this.state.closeSidebar,
+        });
+        console.info("si ejecuta y cambia el estado " + this.state.closeSidebar)
+    }
+
     render() {
         let authenticated = this.props.authenticated
         let home = this.props.home    
@@ -172,11 +180,6 @@ export default class Nav extends Component {
                     <Link href="/logout"><a className="logout">Cerrar sesion</a></Link> : null
                     }
                 </div>
-            </>
-        );
-        const content1 = (
-            <>
-            <Sidebar user_data={this.props.user_data} cb={this.props.cb} />
             </>
         );
 
@@ -312,8 +315,7 @@ export default class Nav extends Component {
                         </div>
                         :
                         <div className="nav-botton">
-                            {this.state.modal2 ? (<section className="modal-account"><Modal toggle={this.toggleModal} num="2" content={content1} button /></section>) : null}
-                            <div onClick={() => { this.toggleModal(2); }}>
+                            <div onClick={() => this.CloseSidebar()}>
                                 <FontAwesomeIcon icon={faBars} />
                             </div>
                         </div>
