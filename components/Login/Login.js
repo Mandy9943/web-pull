@@ -24,11 +24,13 @@ export default class Login extends Component {
         const { error } = this.state;
         return (
             <div className="container login-component">
-                <Header/>
+
+                <Header />
                 <div className="login">
                     <h1>Iniciar sesión</h1>
                     <p className="login-text">Eres nuevo en este sitio? <Link href="/registro"><a className="link">Regístrate</a></Link></p>
                     <div className="social-buttons">
+                        
                         <ButtonGoogle />
                         <ButtonFacebook />
                     </div>
