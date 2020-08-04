@@ -1,5 +1,13 @@
 .categories-img-menu
     margin-bottom: 50px
+    .slider
+        .previousButton, .nextButton
+            svg polygon
+                fill: #D11E36 !important;
+        .nextButton
+            right: 0
+        .previousButton
+            left: 0
     .content-categories-img-menu
         display: grid
         grid-template-columns: repeat(7,1fr)
@@ -16,7 +24,7 @@
                 margin-bottom: 20px
                 color: #CF0A2C
                 font-size: 50px
-                svg
+                svg, img
                     width: 45px !important
                     max-width: 45px !important
                     height: 45px !important
@@ -55,6 +63,8 @@
 @media (max-width: 777px)
     .categories-img-menu
         margin: 15px
+        .slider
+            display: none !important
         .home-section-title
             font-size: 18ox !important
             color: #5A5A5A
