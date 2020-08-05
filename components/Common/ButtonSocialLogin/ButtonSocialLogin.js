@@ -39,7 +39,7 @@ class ButtonGoogle extends Component {
         window['googleSDKLoaded'] = () => {
           window['gapi'].load('auth2', () => {
             this.auth2 = window['gapi'].auth2.init({
-              client_id: '764194037935-hkai71dhmgitqvsmv7alnj7ivcab3fvt.apps.googleusercontent.com',
+              client_id: '977782751155-vu2trn0dcrucm52ibf00br81ap7jcnme.apps.googleusercontent.com',
               cookiepolicy: 'single_host_origin',
               scope: 'profile email'
             });
@@ -65,6 +65,23 @@ class ButtonGoogle extends Component {
         )
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -117,7 +134,7 @@ class ButtonFacebook extends Component {
         if (response.status === 'connected') {
           this.testAPI();
         } else if (response.status === 'not_authorized') {
-          dconsole.log('Please log into this app.');
+          console.log('Please log into this app.');
         } else {
          console.log('Please log into Facebook.');
         }
