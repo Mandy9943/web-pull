@@ -6,6 +6,26 @@
   height: 100vh;
 }
 
+.login-component .main-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 5px auto;
+  width: auto;
+  padding: 10px 0;
+  background-color: #CF0A2C;
+  color: white;
+  text-align: center;
+  width: 80%;
+  font-size: 18px;
+}
+
+.login-component .main-button p {
+  font-size: 18px;
+  width: 100%;
+  padding: 0px 15px;
+}
+
 .login {
   margin: auto;
   padding: 6vh 5vw;
