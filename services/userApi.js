@@ -25,6 +25,24 @@ export const createUser = async (
   }
 };
 
+export const socialLogin = async (name, last_name, email, red, id, token) => {
+    try {
+      const response = await post("/social", {
+          name: name,
+          last_name: last_name,
+          email: email,
+          username: email,
+          red: red,
+          id: id, 
+          token: token
+      });
+      return response;
+    } catch (error) {
+      return "Error desconocido, intente nuevamente.";
+    }
+  };
+
+  
 export const getData = (endpoint, jwt) => {
     try {
         return get(endpoint, jwt);

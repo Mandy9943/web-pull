@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "./ButtonSocialLogin.css";
 import gg from "../../../assets/img/iconos/google.svg";
 import fb from "../../../assets/img/iconos/facebook.svg";
+import { social } from "../../../lib/auth"
 
 
 class ButtonGoogle extends Component {
@@ -18,16 +19,35 @@ class ButtonGoogle extends Component {
     this.auth2.attachClickHandler(this.refs.googleLoginBtn, {},
         (googleUser) => {
  
-        let profile = googleUser.getBasicProfile();
-        console.log('Token || ' + googleUser.getAuthResponse().id_token);
-        console.log('ID: ' + profile.getId());
-        console.log('Name: ' + profile.getName());
-        console.log('Image URL: ' + profile.getImageUrl());
-        console.log('Email: ' + profile.getEmail());
+          let profile = googleUser.getBasicProfile();
+          
+          console.log('Token || ' + googleUser.getAuthResponse().id_token);
+          console.log('ID: ' + profile.getId());
+          console.log('Name: ' + profile.getName());
+          console.log('Image URL: ' + profile.getImageUrl());
+          console.log('Email: ' + profile.getEmail());
 
-        //CALL TO API HERE.
- 
- 
+          const error = social (
+            profile.getName().split(" ")[0], 
+            profile.getName().split(" ")[1], 
+            profile.getEmail(), 2, 
+            profile.getId(), 
+            googleUser.getAuthResponse().id_token
+          )
+          console.log("TEST ERROR:");
+          console.log(error);
+          error.then(value => {
+            console.log("TEST VALUE:");
+            console.log(value);
+          });
+
+
+          if (error) {
+              this.setState({
+                  error
+              });
+              return false;
+          }
         }, (error) => {
             console.log(JSON.stringify(error, undefined, 2));
         });
@@ -60,7 +80,7 @@ class ButtonGoogle extends Component {
     render() {
         return (
             <button className="button buttonGoogle loginBtn loginBtn--google" ref="googleLoginBtn" data-onsuccess={this.onSignIn}>
-              <img alt="Google" src={gg}/>  <p>Registrate con Google</p>
+              <img alt="Google" src={gg}/>  <p>Continua con Google</p>
             </button>
         )
     }
@@ -155,7 +175,7 @@ class ButtonFacebook extends Component {
 
         return (<>
             <button className="button buttonFacebook" onClick={this.handleClick}>
-               <img alt="Facebook" src={fb}/> <p>Registrate con Facebook</p>
+               <img alt="Facebook" src={fb}/> <p>Continua con Facebook</p>
             </button>
             </>
         )
