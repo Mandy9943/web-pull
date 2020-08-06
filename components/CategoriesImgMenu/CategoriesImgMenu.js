@@ -97,7 +97,7 @@ export default class CategoriesImgMenu extends Component {
                             </div>
                         </a>
                     </Link>
-                    <Link href="/categoria/Coleccionables%20y%20Hobbies">
+                    <Link href="/categoria/Coleccionables y Hobbies">
                         <a className="categories-img no-movil">
                             <div className="item">
                                 <p className="categories-menu-icon">
@@ -157,7 +157,7 @@ export default class CategoriesImgMenu extends Component {
                             </div>
                         </a>
                     </Link>
-                    <Link href="/categoria/Herramientas%20y%20Construcción">
+                    <Link href="/categoria/Herramientas y Construcción">
                         <a className="categories-img no-movil">
                             <div className="item">
                                 <p className="categories-menu-icon">
@@ -209,7 +209,7 @@ export default class CategoriesImgMenu extends Component {
                                 </div>
                             </a>
                         </Link>
-                        <Link href="/categoria/Herramientas%20y%20Construcción">
+                        <Link href="categoria/Libros, Revistas y Comics">
                             <a className="categories-img no-movil">
                                 <div className="item">
                                     <p className="categories-menu-icon">
@@ -229,7 +229,7 @@ export default class CategoriesImgMenu extends Component {
                                 </div>
                             </a>
                         </Link>
-                        <Link href="/categoria/Relojes%20y%20Joyas">
+                        <Link href="/categoria/Relojes y Joyas">
                             <a className="categories-img no-movil">
                                 <div className="item">
                                     <p className="categories-menu-icon">
@@ -239,7 +239,7 @@ export default class CategoriesImgMenu extends Component {
                                 </div>
                             </a>
                         </Link>
-                        <Link href="/categoria/Ropa,%20Zapatos%20y%20Accesorios">
+                        <Link href="/categoria/Ropa, Zapatos y Accesorios">
                             <a className="categories-img no-movil">
                                 <div className="item">
                                     <p className="categories-menu-icon">
