@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Category from '../../components/Category/Category';
-import {getJwt, getUser, isAuthenticated} from "../../lib/auth";
+import { getJwt, getUser, isAuthenticated } from "../../lib/auth";
 import Finding from "../../components/Finding";
 import Tickets from "../../components/Tickets";
 import Nav from "../../components/Common/Nav";
@@ -67,6 +67,12 @@ function Results({ data, session }) {
             "image_path": encodeURI("//kiero.co/images/resources/electronica audio y video/"), "enable": true
         },
 
+        /*"Electrodomésticos": {
+            "estructure": [1,2,3,2,3,2,3],
+            "links": ["Bodegas%20de%20vino","Climatización","Cocción","Cocinas,%20hornos%20y%20placas%20de%20cocina","Cuidado%20de%20la%20lavandería","Electrodomésticos%20de%20cocina","Lavandería","Industriales",Desechadores%20de%20basura%20y%20compactadores","Refrigeradores,%20congeladores%20y%20fabricadores%20de%20hielo","Dispensadores%20y%20Purificadores","Preparación%20de%20Alimentos","Campanas%20extractoras","Artefactos%20del%20Hogar","Partes%20y%20Accesorios"],
+            "image_path": encodeURI("//kiero.co/images/resources/Electrodomésticos"), "enable": true
+        },*/
+
         "herramientas": {
             "estructure": [1, 2, 3, 2],
             "links": ["Herramientas%20y%20Construcción", "construcci%C3%B3n", "herramientas", "herramientas%20manuales", "herramientas%20el%C3%A9ctricas", "Pisos,%20Paredes%20y%20Aberturas", "mobiliario%20para%20cocinas", "mobiliario%20para%20ba%C3%B1os"],
@@ -84,6 +90,7 @@ function Results({ data, session }) {
             "links": ["Industrias%20y%20Oficinas%20", "equipamiento%20para%20oficinas", "industria%20gastron%C3%B3mica", "m%C3%A1quinas%20para%20industrias", "Embalajes", "equipo%20hidr%C3%A1ulico", "industria%20textil", "seguridad%20para%20industrias"],
             "image_path": encodeURI("//kiero.co/images/resources/industrias y oficinas/"), "enable": true
         },
+        
 
         "instrumentos musicales": {
             "estructure": [1, 2, 3, 2],
@@ -103,10 +110,10 @@ function Results({ data, session }) {
             "image_path": encodeURI("//kiero.co/images/resources/relojes y joyas/"), "enable": true
         },
 
-        "ropa zapatos y accesorios": {
+        "ropa, zapatos y accesorios": {
             "estructure": [1, 2, 2],
             "links": ["Ropa,%20Zapatos%20y%20Accesorios%20", "ropa%20y%20accesorios%20para%20ni%C3%B1os", "ropa%20y%20accesorios%20para%20ni%C3%B1as", "ropa%20y%20accesorios%20para%20mujeres", "ropa%20y%20accesorios%20para%20hombres"],
-            "image_path": encodeURI("//kiero.co/images/resources/ropa,zapatos y accesorios/"), "enable": true
+            "image_path": encodeURI("//kiero.co/images/resources/ropa, zapatos y accesorios/"), "enable": true
         },
 
         "accesorios para vehiculos": {
@@ -115,15 +122,32 @@ function Results({ data, session }) {
             "image_path": encodeURI("//kiero.co/images/resources/vehiculos y accesorios/"), "enable": true
         },
         "computación": {
-            "estructure": [1,2,3,2,3,2,3,2,3,1],
-            "links": ["Computación%20","Tablets%20y%20accesorios", "Apple", "Discos%20Duros%20y%20Externos", "Fuentes,%20UPS%20y%20Estabilizadores", "Memorias%20Portátiles%20USB", "Monitores", "Servidores", "Software%20y%20complementos%20de%20audio%20para%20computadora", "Aspiradoras%20para%20computadoras", "Productos%20de%20red", "Componentes%20de%20computadora", "Accesorios%20para%20Portátiles", "Software", "All%20In%20One", "Medios%20en%20blanco", "Repuestos%20de%20tableta", "Periféricos%20y%20Accesorios%20de%20PC", "Impresoras%20y%20Repuestos", "Computadoras", "Almacenamiento%20de%20datos", "Accesorios%20para%20tableta"],
+            "estructure": [1, 2, 3, 2, 3, 2, 3, 2, 3, 1],
+            "links": ["Computación%20", "Tablets%20y%20accesorios", "Apple", "Discos%20Duros%20y%20Externos", "Fuentes,%20UPS%20y%20Estabilizadores", "Memorias%20Portátiles%20USB", "Monitores", "Servidores", "Software%20y%20complementos%20de%20audio%20para%20computadora", "Aspiradoras%20para%20computadoras", "Productos%20de%20red", "Componentes%20de%20computadora", "Accesorios%20para%20Portátiles", "Software", "All%20In%20One", "Medios%20en%20blanco", "Repuestos%20de%20tableta", "Periféricos%20y%20Accesorios%20de%20PC", "Impresoras%20y%20Repuestos", "Computadoras", "Almacenamiento%20de%20datos", "Accesorios%20para%20tableta"],
             "image_path": encodeURI("//kiero.co/images/resources/computacion/"), "enable": true
         },
-        "salud": {
-            "estructure": [1,2,3,2,3,2,3,2,3,2],
-            "links": ["Salud%20y%20Equipamiento%20Medico","Cuidado%20de%20la%20Salud", "Equipamiento%20Odontologico", "Lupas", "Utensilios%20y%20Accesorias%20para%20Camas", "Camillas%20Hospitalarias", "Material%20de%20Laboratorio", "Ortopedia", "Pruebas%20caseras", "Barandales%20para%20camas", "Duchas%20Hospitalarias", "Instrumental%20Medico", "Equipos%20de%20Monitoreo", "Fajas%20Y%20Cinturillas", "Indumentaria", "Masajes", "Suplementos%20Alimenticios", "Suministros%20y%20equipo%20médico", "Vitaminas%20y%20suplementos%20dietéticos", "Cupulas", "Test%20Medicos", "Terapias", "Tanques%20de%20Oxigeno"],
+        "salud y equipamiento medico": {
+            "estructure": [1, 2, 3, 2, 3, 2, 3, 2, 3, 2],
+            "links": ["Salud%20y%20Equipamiento%20Medico", "Cuidado%20de%20la%20Salud", "Equipamiento%20Odontologico", "Lupas", "Utensilios%20y%20Accesorias%20para%20Camas", "Camillas%20Hospitalarias", "Material%20de%20Laboratorio", "Ortopedia", "Pruebas%20caseras", "Barandales%20para%20camas", "Duchas%20Hospitalarias", "Instrumental%20Medico", "Equipos%20de%20Monitoreo", "Fajas%20Y%20Cinturillas", "Indumentaria", "Masajes", "Suplementos%20Alimenticios", "Suministros%20y%20equipo%20médico", "Vitaminas%20y%20suplementos%20dietéticos", "Cupulas", "Test%20Medicos", "Terapias", "Tanques%20de%20Oxigeno"],
             "image_path": encodeURI("//kiero.co/images/resources/salud y equipo medico/"), "enable": true
-        }
+        },
+        /*"coleccionables y hobbies": {
+            "estructure": [1,3,3,2],
+            "links": ["Coleccionables%20y%20Hobbies", "Modelismo", "Posters", "R.P.G%20-%20Cartas", "Vehiculos%20en%20Miniatura", "Billetes%20y%20Monedas", "Colecciones%20Diversas", "Comics","Filatelia"],
+            "image_path": encodeURI("//kiero.co/images/resources/Coleccionables y Hobbies"), "enable": true
+        }*/
+
+        /*"Libros, revistas, comics": {
+        "estructure": [1,2],
+        "links": ["Libros,%20Revistas%20y%20Comics","Temas","Comics"],
+        "image_path": encodeURI("//kiero.co/images/resources/Libros, revistas, comics"), "enable": true
+        }*/
+
+        /*"Música": {
+        "estructure": [1,2],
+        "links": ["Música","CD%20y%20vinilo","Películas%20y%20Tv"],
+        "image_path": encodeURI("//kiero.co/images/Música"), "enable": true
+        }*/
     }
 
     let category_name = data.search.toLowerCase();
@@ -136,15 +160,15 @@ function Results({ data, session }) {
         for (let i = 0; i < e.estructure.length; i++) {
 
             if (e.estructure[i] === 1) {
-                if(e.links[bannerNo - 1] !== ""){
+                if (e.links[bannerNo - 1] !== "") {
                     structure.push(
-                        <Link href={"/categoria/[category]"} as={"/categoria/"+e.links[bannerNo - 1]} >
+                        <Link href={"/categoria/[category]"} as={"/categoria/" + e.links[bannerNo - 1]} >
                             <a className="tickets">
                                 <img alt={category_name} key={i} className="banner-principal" src={e.image_path + (bannerNo++) + ".jpg"} />
                             </a>
                         </Link>
                     )
-                }else{
+                } else {
                     structure.push(<img alt={category_name} key={i} className="banner-principal" src={e.image_path + (bannerNo++) + ".jpg"} />)
                 }
             } else if (e.estructure[i] === 2) {
@@ -214,7 +238,7 @@ function Results({ data, session }) {
                     </section>
                     <Footer />
                     <div className="footer-social">
-                        <Link  href={url}><a target="_blank"><img alt={url} src={Logo1} /></a></Link>
+                        <Link href={url}><a target="_blank"><img alt={url} src={Logo1} /></a></Link>
                         <Link href={url}><a target="_blank"><img alt={url} src={Logo2} /></a></Link>
                     </div>
                 </div>
