@@ -37,7 +37,7 @@ export default class CategoriesImgMenu extends Component {
             <div className="categories-img-menu">
                 <h3 className="home-section-title">Categorías populares</h3>
                 <Slider autoplay={0}>
-                <div className="content-categories-img-menu no-movil">
+                    <div className="content-categories-img-menu no-movil">
                     <Link href="/categoria/Accesorios para Vehiculos">
                         <a className="categories-img no-movil">
                             <div className="item">
@@ -178,7 +178,7 @@ export default class CategoriesImgMenu extends Component {
                         </a>
                     </Link>
                 </div>
-                    <div className="content-categories-img-menu no-movil">
+                    <div className="content-categories-img-menu diferent-numbers no-movil">
                         <Link href="/categoria/Industrias y Oficinas">
                             <a className="categories-img no-movil">
                                 <div className="item">
