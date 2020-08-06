@@ -1,0 +1,36 @@
+.activate-page {
+  background-color: transparent;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.activate-page .msg {
+  padding: 15px;
+  font-size: 20px;
+  color: white;
+  background-color: #db291c;
+  text-align: center;
+  border-radius: 6px;
+  opacity: 0.7;
+  margin: 15px 0;
+  font-weight: 500;
+}
+
+.activate-page .msg span {
+  display: block;
+  font-size: 24px;
+}
+
+@media (max-width: 700px) {
+  .activate-page {
+    background-color: transparent;
+  }
+}
+/*# sourceMappingURL=activate.css.map */
