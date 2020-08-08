@@ -25,16 +25,16 @@ class DetailProductInfo extends Component {
           </div>
           <div className="info">
             <div className="item">
-              <span className="title">Alto (length)</span>
-              <span className="sub-title">{this.props.length}</span>
+              <span className="title">Alto</span>
+              <span className="sub-title">{this.props.length}"</span>
             </div>
             <div className="item">
-              <span className="title">Ancho(width)</span>
-              <span className="sub-title">{this.props.width}</span>
+              <span className="title">Ancho</span>
+              <span className="sub-title">{this.props.width}"</span>
             </div>
             <div className="item">
-              <span className="title">Peso(weight) </span>
-              <span className="sub-title">{this.props.weight}</span>
+              <span className="title">Peso </span>
+              <span className="sub-title">{this.props.weight} Lb</span>
             </div>
           </div>
         </section>
@@ -56,15 +56,15 @@ class DetailProductInfo extends Component {
             </div>
             <div className="info">
               <div className="item">
-                <span className="title">Alto (length): {this.props.length}</span>
+                <span className="title">Alto: {this.props.length}"</span>
                 
               </div>
               <div className="item">
-                <span className="title">Ancho(width): {this.props.width}</span>
+                <span className="title">Ancho: {this.props.width}"</span>
                 
               </div>
               <div className="item">
-                <span className="title">Peso(weight) {this.props.weight}</span>
+                <span className="title">Peso: {this.props.weight} Lb</span>
               </div>
             </div>
             <br />
