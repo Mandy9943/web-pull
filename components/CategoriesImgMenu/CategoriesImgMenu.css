@@ -46,6 +46,11 @@
   max-height: 45px !important;
 }
 
+.categories-img-menu .diferent-numbers {
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+}
+
 .categories-img-menu .main-button {
   display: none;
 }

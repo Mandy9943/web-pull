@@ -83,6 +83,10 @@
   margin-left: 30px;
 }
 
+.summary-botton {
+  display: none;
+}
+
 @media (max-width: 700px) {
   .summary-content .user-account-menu {
     display: none;
