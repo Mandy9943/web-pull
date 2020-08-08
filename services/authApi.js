@@ -8,8 +8,13 @@ export const authenticate = async (username, password) => {
     );
     return res.data;
   } catch (error) {
+    console.log(error.response + error.response.status);
+    
     return error.response && error.response.status === 401
         ? "Usuario o contraseña inválido"
-        : "Error desconocido. por favor intente nuevamente.";
+        : (error.response && error.response.status === 402 ? 
+          "Por favor, active su cuenta para continuar."
+          : "Error desconocido. por favor intente nuevamente."
+          );
   }
 };
