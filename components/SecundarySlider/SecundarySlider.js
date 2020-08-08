@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Slider from 'react-animated-slider';
+import Link from "next/link";
 import 'react-animated-slider/build/horizontal.css';
 import BannerImg1 from "../../assets/img/banners/news/2 (1).jpg";
 import BannerImg2 from "../../assets/img/banners/news/2 (2).jpg";
@@ -22,6 +23,26 @@ import BannerImg18 from "../../assets/img/banners/news/2 (18).jpg";
 import BannerImg19 from "../../assets/img/banners/news/2 (19).jpg";
 import "./SecundarySlider.css";
 
+let link1 = "/categoria/Hogar%20y%20Muebles";
+let link2 = "/busqueda/articulos%20para%20bebes";
+let link3 = "/categoria/Bebés";
+let link4 = "/categoria/Belleza%20y%20Cuidado%20Personal";
+let link5 = "/categoria/Cámaras%20y%20accesorios";
+let link6 = "/categoria/Celulares%20y%20Teléfonos";
+let link7 = "/categoria/Consolas%20y%20Videojuegos";
+let link8 = "/categoria/Deportes%20y%20Fitness";
+let link9 = "/categoria/Herramientas%20y%20Construcción";
+let link10 = "/categoria/Hogar%20y%20Muebles";
+let link11 = "/categoria/Industrias%20y%20Oficinas";
+let link12 = "/categoria/Música";
+let link13 = "/categoria/Juegos%20y%20Juguetes";
+let link14 = "/categoria/Relojes%20y%20Joyas";
+let link15 = "/categoria/Ropa,%20Zapatos%20y%20Accesorios";
+let link16 = "/categoria/Accesorios%20para%20Vehiculos";
+let link17 = "/categoria/Electrónica";
+let link18 = "/categoria/Salud"
+let link19 = "/categoria/Animales%20y%20Mascotas"
+
 
 let slides = [
     { url: BannerImg1 },
@@ -42,8 +63,27 @@ let slides = [
     { url: BannerImg16 },
     { url: BannerImg17 },
     { url: BannerImg18 },
+    { url: BannerImg19 },
+    { enlace: link1 },
+    { enlace: link2 },
+    { enlace: link3 },
+    { enlace: link4 },
+    { enlace: link5 },
+    { enlace: link6 },
+    { enlace: link7 },
+    { enlace: link8 },
+    { enlace: link9 },
+    { enlace: link10 },
+    { enlace: link11 },
+    { enlace: link12 },
+    { enlace: link13 },
+    { enlace: link14 },
+    { enlace: link15 },
+    { enlace: link16 },
+    { enlace: link17 },
+    { enlace: link18 },
     {
-        url: BannerImg19,
+        enlace: link19,
         slider: 'slider',
         previousButton: 'previousButton',
         nextButton: 'nextButton',
@@ -67,8 +107,13 @@ export default class SecundarySlider extends Component {
                 <Slider autoplay={4500}>
                     {slides.map((slide, index) =>
                         <div key={index}>
-                            <img src={slide.url} />
-                        </div>)}
+                            <Link hrf={slide.enlace}>
+                                <a>
+                                    <img src={slide.url} />
+                                </a>
+                            </Link>
+                        </div>
+                    )}
                 </Slider>
             </div>
         )

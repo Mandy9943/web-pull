@@ -43,7 +43,7 @@ export default class Home extends Component {
           <ProductsSlider category={"Juegos y Juguetes"} />
           <Explorer />
           <Finding />
-          <ProductsSlider category={"Computación"} />
+          <ProductsSlider category={"Animales y Mascotas"} />
           <ListProductMovil jwt={u_data.jwt} />
           <CategoriesImgMenu />
           <Tickets />
