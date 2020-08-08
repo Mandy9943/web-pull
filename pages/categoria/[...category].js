@@ -27,7 +27,7 @@ function Results({ data, session }) {
 
         "animales y mascotas": {
             "estructure": [1, 3, 2, 3, 1],
-            "links": ["Animales%20y%20Mascotas", "Comida%20para%20animales%20", "Estetica%20y%20cuidado%20para%20animales%20", "Aves", "Roedores", "Gatos", "Reptiles%20y%20anfibios", "Caballos", "Peces", "Perros"],
+            "links": ["Animales%20y%20Mascotas%20", "Comida%20para%20animales%20", "Estetica%20y%20cuidado%20para%20animales%20", "Aves", "Roedores", "Gatos", "Reptiles%20y%20anfibios", "Caballos", "Peces", "Perros"],
             "image_path": encodeURI("//kiero.co/images/resources/animales y mascotas/"), "enable": true
         },
 

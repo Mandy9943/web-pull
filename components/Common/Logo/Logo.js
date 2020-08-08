@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from "next/link";
-import LogoImg from "../../../assets/img/logo-kiero.png";
+import LogoMovil from "../../../assets/img/logo-kiero.png";
+import LogoWeb from "../../../assets/img/kieroweb.svg";
 import "./Logo.css";
 
 export default function Logo() {
@@ -8,7 +9,8 @@ export default function Logo() {
         <div className="logo">
             <Link href="/">
                 <a>
-                    <img alt="Kiero.co" className="logo-img" src={LogoImg} />
+                    <img alt="Kiero.co" className="logo-img no-web" src={LogoMovil} />
+                    <img alt="Kiero.co" className="logo-img no-movil" src={LogoWeb} />
                 </a>
             </Link>
         </div>
