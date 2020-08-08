@@ -34,13 +34,6 @@ class ButtonGoogle extends Component {
             profile.getId(), 
             googleUser.getAuthResponse().id_token
           )
-          console.log("TEST ERROR:");
-          console.log(error);
-          error.then(value => {
-            console.log("TEST VALUE:");
-            console.log(value);
-          });
-
 
           if (error) {
               this.setState({
@@ -48,6 +41,7 @@ class ButtonGoogle extends Component {
               });
               return false;
           }
+          
         }, (error) => {
             console.log(JSON.stringify(error, undefined, 2));
         });
@@ -118,7 +112,7 @@ class ButtonFacebook extends Component {
     componentDidMount() {
         window.fbAsyncInit = function() {
           FB.init({
-            appId      : 'APP_ID_HERE.',
+            appId      : '311507753333551.',
             cookie     : true,
             xfbml      : true,
             version    : 'v2.1'
