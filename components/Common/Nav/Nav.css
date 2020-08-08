@@ -103,6 +103,10 @@
   position: relative;
 }
 
+.nav-top .user-menu .bell:hover {
+  cursor: pointer;
+}
+
 .nav-top .user-menu .bell svg {
   margin-right: 5px;
   position: relative;
