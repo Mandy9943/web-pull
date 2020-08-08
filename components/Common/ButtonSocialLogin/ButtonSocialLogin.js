@@ -3,7 +3,7 @@ import "./ButtonSocialLogin.css";
 import gg from "../../../assets/img/iconos/google.svg";
 import fb from "../../../assets/img/iconos/facebook.svg";
 import { social } from "../../../lib/auth"
-
+import FacebookLogin from 'react-facebook-login'
 
 class ButtonGoogle extends Component {
 
@@ -34,13 +34,6 @@ class ButtonGoogle extends Component {
             profile.getId(), 
             googleUser.getAuthResponse().id_token
           )
-          console.log("TEST ERROR:");
-          console.log(error);
-          error.then(value => {
-            console.log("TEST VALUE:");
-            console.log(value);
-          });
-
 
           if (error) {
               this.setState({
@@ -48,6 +41,7 @@ class ButtonGoogle extends Component {
               });
               return false;
           }
+          
         }, (error) => {
             console.log(JSON.stringify(error, undefined, 2));
         });
@@ -109,72 +103,51 @@ class ButtonGoogle extends Component {
 
 
 class ButtonFacebook extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            facebook_error: ""
-        }
-    }
-    componentDidMount() {
-        window.fbAsyncInit = function() {
-          FB.init({
-            appId      : 'APP_ID_HERE.',
-            cookie     : true,
-            xfbml      : true,
-            version    : 'v2.1'
-          });
-          
-          FB.getLoginStatus(function(response) {
-            this.statusChangeCallback(response);
-          }.bind(this));
-        }.bind(this);
-        
-        (function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_US/sdk.js";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-      }
-      
-      testAPI() {
-        console.log('Welcome!  Fetching your information.... ');
-        FB.api('/me', function(response) {
-        console.log('Successful login for: ' + response.name);
-        document.getElementById('status').innerHTML =
-          'Thanks for logging in, ' + response.name + '!';
-        });
-      }
-      
+  constructor(props) {  
+    super(props);  
+    this.state = {  
+  
+    };  
+  }  
+  signup(res) {  
+    const responseFacebook = {  
+      Name: res.name,  
+      email: res.email,  
+      token: res.accessToken,  
+      Image: res.picture.data.url,  
+      ProviderId: 'Facebook'  
+    }  
 
-      statusChangeCallback(response) {
-        console.log('statusChangeCallback');
-        console.log(response);
-        if (response.status === 'connected') {
-          this.testAPI();
-        } else if (response.status === 'not_authorized') {
-          console.log('Please log into this app.');
-        } else {
-         console.log('Please log into Facebook.');
-        }
-      }
+    console.log(responseFacebook);
+    /* 
+    debugger;  
+    axios.post('http://localhost:60200/Api/Login/SocialmediaData', responseFacebook)  
+      .then((result) => {  
+        let responseJson = result;  
+        console.log(result.data.name);  
+        alert("data");  
+        sessionStorage.setItem("userData", JSON.stringify(result));  
+        this.props.history.push('/Dashboard')  
+      }); 
       
-      checkLoginState() {
-        FB.getLoginStatus(function(response) {
-          this.statusChangeCallback(response);
-        }.bind(this));
-      }
-      
-      handleClick = () => {
-        FB.login(this.checkLoginState());
-      }
+      */
+  };  
 
 
     render() {
-
+               const responseFacebook = (response) => {  
+                        console.log(response);  
+                        var res = response.profileObj;  
+                        console.log(res);  
+                        debugger;  
+                        this.signup(response);  
+                      }  
         return (<>
-            <button className="button buttonFacebook" onClick={this.handleClick}>
+            <button className="button buttonFacebook" appId="311507753333551"  
+                             autoLoad={false}  
+                             fields="name,email,picture"  
+                             callback={responseFacebook}>
+
                <img alt="Facebook" src={fb}/> <p>Continua con Facebook</p>
             </button>
             </>
