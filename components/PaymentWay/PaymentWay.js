@@ -52,7 +52,7 @@ export default class PaymentWay extends Component {
     }
 
 
-    loadAddresses() {
+    loadAddresses = () => {
         console.log("load addresses");
         console.log(this.props);
         getData("/getAddresses", this.props.user.jwt)
@@ -177,7 +177,7 @@ export default class PaymentWay extends Component {
 
 
     render() {
-        const addAddressContent = <AddAddress save={this.loadAddresses} cancel={() => this.setState({ modal: false })} noheader="1" />;
+        const addAddressContent = <AddAddress jwt={this.props.user.jwt} save={this.loadAddresses} cancel={() => this.setState({ modal: false })} noheader="1" />;
 
         const addressListContent = <>
             <Select onChange={this.tmpChangeAddr} >
@@ -187,6 +187,9 @@ export default class PaymentWay extends Component {
                 })}
             </Select>
             <Button onClick={this.setAddr} text={"Cambiar"} />
+
+            <Button onClick={() => this.setState({ modal: 1, modalAddr: false })} text={"Agregar dirección"} />
+            
         </>;
 
         const docType = <> <option value={"CC"}>Cédula de ciudadanía </option>
@@ -365,7 +368,7 @@ export default class PaymentWay extends Component {
                                     (this.state.addrLoaded && this.state.addresses.length == 0) &&
                                     <>
                                         <h3>No tienes direcciones registradas.</h3>
-                                        <   Button onClick={() => this.setState({ modal: 1 })} text={"Agregar dirección"} />
+                                        <Button onClick={() => this.setState({ modal: 1 })} text={"Agregar dirección"} />
                                     </>
                                 }
 
