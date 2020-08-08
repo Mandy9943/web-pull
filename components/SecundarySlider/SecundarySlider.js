@@ -89,7 +89,7 @@ export default class SecundarySlider extends Component {
                 <Slider autoplay={4500}>
                     {slides.map((slide, index) =>
                         <div key={index}>
-                            <Link hrf={slide.enlace}>
+                            <Link href={slide.enlace}>
                                 <a>
                                     <img src={slide.url} />
                                 </a>

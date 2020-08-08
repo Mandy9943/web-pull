@@ -14,19 +14,10 @@ class ButtonGoogle extends Component {
  
     prepareLoginButton = () => {
  
-    console.log(this.refs.googleLoginBtn);
- 
     this.auth2.attachClickHandler(this.refs.googleLoginBtn, {},
         (googleUser) => {
  
           let profile = googleUser.getBasicProfile();
-          
-          console.log('Token || ' + googleUser.getAuthResponse().id_token);
-          console.log('ID: ' + profile.getId());
-          console.log('Name: ' + profile.getName());
-          console.log('Image URL: ' + profile.getImageUrl());
-          console.log('Email: ' + profile.getEmail());
-
           const error = social (
             profile.getName().split(" ")[0], 
             profile.getName().split(" ")[1], 
@@ -117,39 +108,42 @@ class ButtonFacebook extends Component {
       Image: res.picture.data.url,  
       ProviderId: 'Facebook'  
     }  
+                  
+    const error = social (
+      res.name.split(" ")[0], 
+      res.name.split(" ")[1], 
+      res.email, 3, 
+      res.id, 
+      res.accessToken
+    )
 
-    console.log(responseFacebook);
-    /* 
-    debugger;  
-    axios.post('http://localhost:60200/Api/Login/SocialmediaData', responseFacebook)  
-      .then((result) => {  
-        let responseJson = result;  
-        console.log(result.data.name);  
-        alert("data");  
-        sessionStorage.setItem("userData", JSON.stringify(result));  
-        this.props.history.push('/Dashboard')  
-      }); 
-      
-      */
+
+      if (error) {
+        this.setState({
+            error
+        });
+        return false;
+      }
+  
   };  
-
 
     render() {
                const responseFacebook = (response) => {  
-                        console.log(response);  
                         var res = response.profileObj;  
-                        console.log(res);  
-                        debugger;  
                         this.signup(response);  
+
                       }  
         return (<>
-            <button className="button buttonFacebook" appId="311507753333551"  
-                             autoLoad={false}  
-                             fields="name,email,picture"  
-                             callback={responseFacebook}>
+            <FacebookLogin className="button buttonFacebook" 
+                          cssClass="button buttonFacebook"
+                          appId="311507753333551"  
+                          autoLoad={false}  
+                          fields="name,email,picture"  
+                          callback={responseFacebook}
+                          >
 
                <img alt="Facebook" src={fb}/> <p>Continua con Facebook</p>
-            </button>
+            </FacebookLogin>
             </>
         )
     }
