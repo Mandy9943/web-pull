@@ -39,10 +39,14 @@ export default class Home extends Component {
           <ProductsSlider category={"Belleza y Cuidado Personal"} />
           <SecundarySlider />
           <LoginMovil user={u_data.user} authenticated={u_data.authenticated}/>
-          <Finding />
+          <Finding category={{ father: "Accesorios para Vehiculos", urlFather: "/categoria/Accesorios%20para%20Vehiculos", 
+            sub1: "Repuestos para Carro", url1: "categoria/Repuestos%20para%20Carro", sub2: "Audio para carro", url2: "categoria/audio%20para%20carro" }} 
+           />
           <ProductsSlider category={"Juegos y Juguetes"} />
           <Explorer />
-          <Finding />
+          <Finding category={{ father: "Hogar y Muebles", urlFather: "categoria/Hogar%20y%20Muebles",
+            sub1: "Muebles", url1: "categoria/muebles", sub2: "Cocina y comedor", url2:"cocina%20y%20comedor" }}
+          />
           <ProductsSlider category={"Animales y Mascotas"} />
           <ListProductMovil jwt={u_data.jwt} />
           <CategoriesImgMenu />

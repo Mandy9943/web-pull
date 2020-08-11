@@ -6,27 +6,32 @@ import "./Finding.css";
 
 class Finding extends Component {
 
+    constructor(props) {
+        super(props);
+    }
+
 
   go() {
-    window.location = "/categoria/Electrónica, Audio y Video";
+    window.location = this.props.category.url1 ;
   }
   go2() {
-    window.location = "/categoria/Deportes y Fitness";
+    window.location = this.props.category.url2;
   }
 
 
   render() {
+    
     return (
       <div className="wrap-finding">
-        <h3 className="home-section-title">Encuentra los mejores productos de Electrónica <Link href={"/categoria/[category]"} as="/categoria/Electrónica"><a className='accent'>Ver todos</a></Link></h3>
+        <h3 className="home-section-title">Encuentra los mejores productos de {this.props.category.father}<Link href={this.props.category.urlFather}><a className='accent'>Ver todos</a></Link></h3>
         <div className="content-finding">
           <div className="finding">
             <div className="wrap-img">
               <img src={CategoryImg} alt={"Electrónica audio y video"} />
             </div>
             <div className="wrap-info">
-              <p className="category-text">Electrónica</p>
-              <h3 className="finding-title"> Audio y Video</h3>
+              <p className="category-text">{this.props.category.father}</p>
+              <h3 className="finding-title"> {this.props.category.sub1}</h3>
               <button onClick={this.go}>Ver mas</button>
             </div>
           </div>
@@ -35,8 +40,8 @@ class Finding extends Component {
               <img src={CategoryImg2} alt={"Deportes"} />
             </div>
             <div className="wrap-info">
-              <p className="category-text">Deportes</p>
-              <h3 className="finding-title">Bicicletas, Ciclismo y  más</h3>
+              <p className="category-text">{this.props.category.father}</p>
+              <h3 className="finding-title">{this.props.category.sub2}</h3>
               <button onClick={this.go2}>Ver mas</button>
             </div>
           </div>
