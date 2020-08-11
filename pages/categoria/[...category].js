@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Category from '../../components/Category/Category';
 import { getJwt, getUser, isAuthenticated } from "../../lib/auth";
-import Finding from "../../components/Finding";
+import CategoryFinding from "../../components/CategoryFinding";
 import Tickets from "../../components/Tickets";
 import Nav from "../../components/Common/Nav";
 import Footer from "../../components/Common/Footer";
@@ -172,7 +172,7 @@ function Results({ data, session }) {
                     structure.push(<img alt={category_name} key={i} className="banner-principal" src={e.image_path + (bannerNo++) + ".jpg"} />)
                 }
             } else if (e.estructure[i] === 2) {
-                structure.push(<Finding key={i} img_left={e.image_path + (bannerNo++) + ".jpg"} link_left={e.links[bannerNo - 2]}
+                structure.push(<CategoryFinding key={i} img_left={e.image_path + (bannerNo++) + ".jpg"} link_left={e.links[bannerNo - 2]}
                     img_right={e.image_path + (bannerNo++) + ".jpg"} link_right={e.links[bannerNo - 2]} />);
             } else if (e.estructure[i] === 3) {
                 structure.push(<Tickets key={i}

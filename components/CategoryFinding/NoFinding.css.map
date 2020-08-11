@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,iBAAiB,CAAC;EACd,OAAO,EAAE,IAAI;EACb,qBAAqB,EAAE,cAAa;EACpC,QAAQ,EAAE,IAAI;CAEM;;AALxB,AAII,iBAJa,CAIb,GAAG,CAAC;EACA,KAAK,EAAE,IAAI;CAAG;;AAEtB,MAAM,EAAE,SAAS,EAAE,KAAK;EACpB,AAAA,iBAAiB,CAAC;IACd,MAAM,EAAE,IAAI;IACZ,cAAc,EAAE,MAAM;GAGoB;EAL9C,AAGI,iBAHa,CAGb,gBAAgB,CAAC;IACb,qBAAqB,EAAE,cAAc;IACrC,kBAAkB,EAAE,cAAa;GAAG",
+    "sources": [
+        "NoFinding.sass"
+    ],
+    "names": [],
+    "file": "NoFinding.css"
+}

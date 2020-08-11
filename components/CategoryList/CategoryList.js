@@ -3,7 +3,7 @@ import Footer from "../Common/Footer";
 import Link from "next/link"
 import "./CategoryList.css";
 import Nav from "../Common/Nav/Nav";
-import Finding from "./../Finding";
+import NoFinding from "./../NoFinding";
 import Tickets from "./../Tickets";
 import Logo1 from "../../assets/img/logo-social.png";
 import Logo2 from "../../assets/img/logo-social1.png";

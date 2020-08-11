@@ -7,11 +7,11 @@ import "./Finding.css";
 class Finding extends Component {
 
 
-  go(){
-    window.location="/categoria/Electrónica, Audio y Video";
+  go() {
+    window.location = "/categoria/Electrónica, Audio y Video";
   }
-  go2(){
-    window.location="/categoria/Deportes y Fitness";
+  go2() {
+    window.location = "/categoria/Deportes y Fitness";
   }
 
 
@@ -21,13 +21,6 @@ class Finding extends Component {
         <h3 className="home-section-title">Encuentra los mejores productos de Electrónica <Link href={"/categoria/[category]"} as="/categoria/Electrónica"><a className='accent'>Ver todos</a></Link></h3>
         <div className="content-finding">
           <div className="finding">
-
-            <Link href={"/categoria/[category]"} as={"/categoria/"+this.props.link_left}>
-              <a className="no-finding">
-                <img src={this.props.img_left} alt={this.props.link_left} />
-              </a>
-            </Link>
-
             <div className="wrap-img">
               <img src={CategoryImg} alt={"Electrónica audio y video"} />
             </div>
@@ -38,12 +31,6 @@ class Finding extends Component {
             </div>
           </div>
           <div className="finding">
-            <Link href={"/categoria/[category]"} as={"/categoria/"+this.props.link_right}>
-              <a className="no-finding">
-                <img src={this.props.img_right} alt={this.props.link_right} />
-              </a>
-            </Link>
-
             <div className="wrap-img">
               <img src={CategoryImg2} alt={"Deportes"} />
             </div>
