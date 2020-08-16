@@ -82,13 +82,6 @@ class MenuCategories extends Component {
                 }
 
               </section>
-              {this.props.categories[this.state.selectedCategory].childs.length > 20 ?
-                <span onClick={this.showAll} className="load-more">
-                  <a className="accent">{!this.state.moreAll ? "Ver mas" : 'Ver menos'}</a>
-                </span>
-                :
-                null
-              }
               {this.props.categories[this.state.selectedCategory].childs.map((sl_cat, i) => {
                 return <section className={!this.state.moreAll ? "sub-cat less" : 'sub-cat more'} key={i}> 
                 {<h5><Link href={"/categoria/" + sl_cat.name}><a>{sl_cat.name}</a></Link></h5>}
