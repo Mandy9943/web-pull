@@ -72,7 +72,7 @@ class MenuCategories extends Component {
                 <span>{this.props.categories[this.state.selectedCategory].name}</span>
                 {
                 /*
-                
+
                 <img src={url}/>
                 <img src={url} />
                 <img src={url} />
@@ -89,9 +89,14 @@ class MenuCategories extends Component {
                 :
                 null
               }
-              {this.props.categories[this.state.selectedCategory].childs.map((ccat, i) => {
-                return <section className={!this.state.moreAll ? "sub-cat less" : 'sub-cat more'} key={i}> {/*<h5>categoria nivel 2</h5>*/}
-                  <span><Link href={"/categoria/" + ccat.name}><a>{ccat.name}</a></Link></span>
+              {this.props.categories[this.state.selectedCategory].childs.map((sl_cat, i) => {
+                return <section className={!this.state.moreAll ? "sub-cat less" : 'sub-cat more'} key={i}> 
+                {<h5><Link href={"/categoria/" + sl_cat.name}><a>{sl_cat.name}</a></Link></h5>}
+                    {sl_cat.childs.map((tl_cat, i) => {
+                        return <span><Link href={"/categoria/" + tl_cat.name}><a>{tl_cat.name}</a></Link></span>
+                      })
+                    }
+
                 </section>
               })}
             </section>
