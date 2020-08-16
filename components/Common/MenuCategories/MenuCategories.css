@@ -131,8 +131,8 @@
   top: 15px;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 4fr 80px 80px 80px 80px;
-      grid-template-columns: 4fr 80px 80px 80px 80px;
+  -ms-grid-columns: 4fr 70px 70px 70px 70px 70px;
+      grid-template-columns: 4fr 70px 70px 70px 70px 70px;
   padding-bottom: 15px;
   padding-right: 15px;
   padding-left: 15px;

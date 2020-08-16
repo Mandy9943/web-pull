@@ -74,10 +74,6 @@ class MenuCategories extends Component {
                 /*
 
                 <img src={url}/>
-                <img src={url} />
-                <img src={url} />
-                <img src={url} />
-
                 */
                 }
 
