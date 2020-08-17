@@ -108,7 +108,6 @@ export default class Sidebar extends Component {
 
     render() {
 
-
         return (
             <div id="sidebar" className="user-account-menu">
                 <div className="user-account-menu-item border-bottom">

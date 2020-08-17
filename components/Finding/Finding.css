@@ -87,11 +87,15 @@
   }
 }
 
-.wrap-info button {
+.wrap-info a {
   width: auto;
   background: #CF0A2C;
   color: white;
   border-radius: 2px;
+  margin: 5px 0px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 18px;
 }
 
 @media (max-width: 800px) {

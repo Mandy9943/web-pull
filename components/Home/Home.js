@@ -39,13 +39,17 @@ export default class Home extends Component {
           <ProductsSlider category={"Belleza y Cuidado Personal"} />
           <SecundarySlider />
           <LoginMovil user={u_data.user} authenticated={u_data.authenticated}/>
-          <Finding category={{ father: "Accesorios para Vehiculos", urlFather: "/categoria/Accesorios%20para%20Vehiculos", 
-            sub1: "Repuestos para Carro", url1: "categoria/Repuestos%20para%20Carro", sub2: "Audio para carro", url2: "categoria/audio%20para%20carro" }} 
+          <Finding category={{
+            father0: "Electrodomésticos", father1: "Computacion",
+            img0: "banner-electrodomesticos.jpg", img1: "banner-computacion.jpg",
+            sub1: "Aspiradoras", url1: "categoria/Aspiradoras", sub2: "Monitores", url2: "categoria/Monitores" }} 
            />
           <ProductsSlider category={"Juegos y Juguetes"} />
           <Explorer />
-          <Finding category={{ father: "Hogar y Muebles", urlFather: "categoria/Hogar%20y%20Muebles",
-            sub1: "Muebles", url1: "categoria/muebles", sub2: "Cocina y comedor", url2:"cocina%20y%20comedor" }}
+          <Finding category={{
+            father0: "Deportes", father1: "Electronica",
+            img0: "banner-deportes.jpg", img1: "banner-drones.jpg",
+            sub1: "Bicicletas de carretera", url1: "categoria/Bicicle-tas%20de%20carretera", sub2: "Drones", url2:"categoria/Drones" }}
           />
           <ProductsSlider category={"Animales y Mascotas"} />
           <ListProductMovil jwt={u_data.jwt} />
