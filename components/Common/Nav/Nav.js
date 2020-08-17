@@ -183,7 +183,7 @@ export default class Nav extends Component {
             </>
         );
 
-        return (
+        return (<>
             <div className="nav">
                 <div className="nav-content desktop-nav">
                     <div className="nav-top">
@@ -263,7 +263,6 @@ export default class Nav extends Component {
                                 <section className="menu">
                                     <ul>
                                         <li onMouseEnter={this.mouseEnter}>
-                                            {this.state.showCategories ? (<MenuCategories toggle={this.mouseLeave} num="2" categories={this.state.categories} />) : null}
                                             Categorías <FontAwesomeIcon icon={faAngleDown} />
                                         </li>
                                     </ul>
@@ -322,6 +321,8 @@ export default class Nav extends Component {
                     }
                 </div>
             </div>
+            {this.state.showCategories ? (<MenuCategories toggle={this.mouseLeave} num="2" categories={this.state.categories} />) : null}
+            </>
         )
     }
 

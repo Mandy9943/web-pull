@@ -25,6 +25,9 @@ svg {
     display: inline !important;
 }
 
+.container{
+    position: relative;
+}
 
 .main-button {
     display: flex;
