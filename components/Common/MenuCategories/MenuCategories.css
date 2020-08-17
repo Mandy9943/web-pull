@@ -77,7 +77,7 @@
   border-radius: 0  0 5px 0;
   width: 100%;
   padding-top: 120px;
-  grid-row-gap: 20px;
+  grid-row-gap: 10px;
   grid-column-gap: 5px;
   overflow-y: auto;
 }
@@ -141,10 +141,6 @@
 .sub-categories.show-all span {
   display: -ms-grid !important;
   display: grid !important;
-}
-
-.sub-categories .sub-cat {
-  margin: auto 0;
 }
 
 .sub-categories .sub-cat h5 a {
