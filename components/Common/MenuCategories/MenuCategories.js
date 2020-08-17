@@ -41,51 +41,46 @@ class MenuCategories extends Component {
 
   render() {
 
-    let menu = this.state.moreAll ? " show-all" : '  '
-    console.log("this.props.categories");
-    console.log(this.props.categories);
+    let urlBanner = "//kiero.co/images/resources/categorias-menu/";
+    let categoriBanner = ['0/', '1/', '2/', '3/', '4/'];
+    
+  
     return (
       <div className="wrap-menu-categories">
         <div
-          className="close"
-          onClick={() => {
-            this.props.toggle(this.props.num);
-          }}
+          className="close" onClick={() => { this.props.toggle(this.props.num); }}
         />
-        <div className="menu-categories"
-          onMouseLeave={() => {
-            this.props.toggle(this.props.num);
-          }}>
+        <div className="menu-categories" onMouseLeave={() => { this.props.toggle(this.props.num); }}>
 
           <section className="title-categories">
-          {this.props.categories.map((ccat, i) => {
-            return <span className="active-link" onMouseEnter={() => this.menuMouseEnter(i)} onMouseLeave={this.menuMouseLeave}>
-            <Link href={"/categoria/"+ccat.name}><a>{ccat.name}<FontAwesomeIcon icon={faAngleRight} />
-            </a></Link></span>
+            {this.props.categories.map((ccat, i) => {
+              return <span className="active-link" onMouseEnter={() => this.menuMouseEnter(i)} onMouseLeave={this.menuMouseLeave}>
+                <Link href={"/categoria/" + ccat.name}><a>{ccat.name}<FontAwesomeIcon icon={faAngleRight} />
+                </a></Link></span>
             })
-          }
+            }
 
           </section>
           {this.state.showMenu ?
-            <section onMouseEnter={this.subMenuMouseEnter} className={`${menu} sub-categories`}>
+            <section onMouseEnter={this.subMenuMouseEnter} className="sub-categories">
               <section className="title-sub">
                 <span>{this.props.categories[this.state.selectedCategory].name}</span>
-                {
-                /*
 
-                <img src={url}/>
-                */
+                {categoriBanner.map((i) => {
+                  return(
+                    <img key={i} src={urlBanner + i + "1.jpg"} />
+                  )
+                })
                 }
 
               </section>
               {this.props.categories[this.state.selectedCategory].childs.map((sl_cat, i) => {
-                return <section className={!this.state.moreAll ? "sub-cat less" : 'sub-cat more'} key={i}> 
-                {<h5><Link href={"/categoria/" + sl_cat.name}><a>{sl_cat.name}</a></Link></h5>}
-                    {sl_cat.childs.map((tl_cat, i) => {
-                        return <span><Link href={"/categoria/" + tl_cat.name}><a>{tl_cat.name}</a></Link></span>
-                      })
-                    }
-
+                return<section className="sub-cat" key={i}>
+                  {<h5><Link href={"/categoria/" + sl_cat.name}><a>{sl_cat.name}</a></Link></h5>}
+                  {sl_cat.childs.map((tl_cat, i) => {
+                    return <span><Link href={"/categoria/" + tl_cat.name}><a>{tl_cat.name}</a></Link></span>
+                  })
+                  }
                 </section>
               })}
             </section>

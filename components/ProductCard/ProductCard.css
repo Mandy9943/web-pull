@@ -88,12 +88,6 @@
   }
 }
 
-@media (max-width: 360px) {
-  .producto-card .product-card-img img {
-    min-height: 43vw;
-  }
-}
-
 .producto-card button {
   position: relative;
   top: -20px;
