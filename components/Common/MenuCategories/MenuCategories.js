@@ -42,9 +42,8 @@ class MenuCategories extends Component {
   render() {
 
     let urlBanner = "//kiero.co/images/resources/categorias-menu/";
-    let categoriBanner = ['0/', '1/', '2/', '3/', '4/'];
-    
-  
+
+
     return (
       <div className="wrap-menu-categories">
         <div
@@ -66,16 +65,15 @@ class MenuCategories extends Component {
               <section className="title-sub">
                 <span>{this.props.categories[this.state.selectedCategory].name}</span>
 
-                {categoriBanner.map((i) => {
-                  return(
-                    <img key={i} src={urlBanner + i + "1.jpg"} />
-                  )
-                })
-                }
+                <img src={urlBanner + this.state.selectedCategory + "/1.jpg"} />
+                <img src={urlBanner + this.state.selectedCategory + "/2.jpg"} />
+                <img src={urlBanner + this.state.selectedCategory + "/3.jpg"} />
+                <img src={urlBanner + this.state.selectedCategory + "/4.jpg"} />
+                <img src={urlBanner + this.state.selectedCategory + "/5.jpg"} />
 
               </section>
               {this.props.categories[this.state.selectedCategory].childs.map((sl_cat, i) => {
-                return<section className="sub-cat" key={i}>
+                return <section className="sub-cat" key={i}>
                   {<h5><Link href={"/categoria/" + sl_cat.name}><a>{sl_cat.name}</a></Link></h5>}
                   {sl_cat.childs.map((tl_cat, i) => {
                     return <span><Link href={"/categoria/" + tl_cat.name}><a>{tl_cat.name}</a></Link></span>
