@@ -321,7 +321,7 @@ export default class Nav extends Component {
                     }
                 </div>
             </div>
-            {1===1 ? (<MenuCategories toggle={this.mouseLeave} num="2" categories={this.state.categories} />) : null}
+            {this.state.showCategories ? (<MenuCategories toggle={this.mouseLeave} num="2" categories={this.state.categories} />) : null}
             </>
         )
     }
