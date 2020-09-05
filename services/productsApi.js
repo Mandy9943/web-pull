@@ -1,4 +1,4 @@
-import {get, post, postForm, putForm, sget} from "../lib/request";
+import {get, post, postForm, putForm, sget, apiget} from "../lib/request";
 
 const getDataJWT = (endpoint, jwt) => {
     try {
@@ -40,8 +40,9 @@ export const getProductDetail = (id_product) => {
 
 export const searchProduct = (string, limit) => {
     try {
-        let endpoint = ("/search/"+limit+"/"+string);
-        let data = sget(endpoint)
+                
+        let endpoint = ("https://kieroapi.net/api/v1.0/search?keyword="+string);
+        let data = apiget(endpoint)
         return data;
     } catch (error) {
         return error;

@@ -87,7 +87,7 @@ class AccountSummary extends Component {
         <div className="account-summary-wrap-items">
           <div className="account-summary-item-title">
             <FontAwesomeIcon icon={faBell} /> Notificaciones
-          </div>{/*NEED FIX THIS SHIT*/}
+          </div>
           <div className="account-summary-item"><span className="Count">0</span> Sin Notificaciones</div>
         </div>
       </div>

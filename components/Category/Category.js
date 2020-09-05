@@ -76,8 +76,15 @@ class  Category extends Component {
     this.setState({products:null})
 
     let c = [];
+
+    let f_brands = []
+    let f_categories = []
+    let f_colors = [] 
+    let f_models = []
+
     for (let index = 0; index < this.state.filters.length; index++) {
       const element = this.state.filters[index].split("|");
+
       if(element[0]=="price"){
         if(element[1].indexOf("Más de ")==0){
           c.push(element[0]+"|"+element[1].replace("Más de ","").split(",").join("")+"_"+"-1");
@@ -86,10 +93,32 @@ class  Category extends Component {
         }
       
       }else if(element[0]=="category"){
-        c.push(element[0]+"|"+element[1].split(" (").slice(0,-1).join(" ("));
+        f_categories.push(element[1].split(" (").slice(0,-1).join(" ("));
+        //c.push(element[0]+"|"+element[1].split(" (").slice(0,-1).join(" ("));
       }else if(element[0]=="brand"){
-        c.push(element[0]+"|"+element[1].split(" (").slice(0,-1).join(" ("));
+        f_brands.push(element[1].split(" (").slice(0,-1).join(" ("));
+        //c.push(element[0]+"|"+element[1].split(" (").slice(0,-1).join(" ("));
+      }else if(element[0]=="color"){
+        f_colors.push(element[1].split(" (").slice(0,-1).join(" ("));
+        //c.push(element[0]+"|"+element[1].split(" (").slice(0,-1).join(" ("));
+      }else if(element[0]=="model"){
+        f_models.push(element[1].split(" (").slice(0,-1).join(" ("));
+        //c.push(element[0]+"|"+element[1].split(" (").slice(0,-1).join(" ("));
       }
+    }
+
+    let str_filter = "";
+
+    if(f_colors.length > 0 ){
+      str_filter += "&colors="+f_colors.join(",");
+    }
+
+    if(f_models.length > 0 ){
+      str_filter += "&models="+f_models.join(",");
+    }
+    
+    if(f_brands.length > 0 ){
+      str_filter += "&brands="+f_brands.join(",");
     }
 
     if(this.props.data.type==="category"){
@@ -100,12 +129,14 @@ class  Category extends Component {
       }
     }else{
       if(c.join("||")!=""){
-        res = searchProduct(this.props.data.search+"||"+c.join("||"), ipp);
+      //  res = searchProduct(this.props.data.search+"||"+c.join("||"), ipp);
+        res = searchProduct(this.props.data.search+str_filter, ipp);
       }else{
-        res = searchProduct(this.props.data.search, ipp);
+      //  res = searchProduct(this.props.data.search, ipp);
+        res = searchProduct(this.props.data.search+str_filter, ipp);
       }
-    }
-
+    } 
+    
     res.then((r) => r.data).then( (r) => {
       this.setState({
         products: r,
@@ -125,7 +156,6 @@ class  Category extends Component {
   }
 
   sortProducts = (sortType) => {
-    console.log("SORT MY PRODUCTS."+sortType);
     let items = this.state.products;
 
     if (items === null){
@@ -158,7 +188,6 @@ class  Category extends Component {
 
 
   render() {
-    console.log("Try to render.");
     return (
       <div className="search">
           <Nav user={this.props.user_data.user} home={true} jwt={this.props.user_data.jwt} actualSearch={this.props.data.search} authenticated={this.props.user_data.authenticated} />
