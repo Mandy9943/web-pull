@@ -186,7 +186,7 @@ export default class PaymentWay extends Component {
                     return <option key={i} value={i}>{addr.address}</option>
                 })}
             </Select>
-            <Button onClick={this.setAddr} text={"Cambiar"} />
+            <Button onClick={this.setAddr} text={"Aceptar"} />
 
             <Button onClick={() => this.setState({ modal: 1, modalAddr: false })} text={"Agregar dirección"} />
             
