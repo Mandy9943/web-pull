@@ -7,6 +7,8 @@ import {
 import "./ListCategory.css";
 import { getImgUrl } from "../../lib/config"
 import Spinner from "../Common/Spinner";
+import CategoryBanners from "../Common/CategoryBanners/CategoryBanners";
+
 
 
 class ListCategory extends Component {
@@ -26,6 +28,7 @@ class ListCategory extends Component {
 
     return (
       <div className="wrap-list-category">
+        <CategoryBanners/>
         <div className={Class}>
           {this.props.products && this.props.products.products && this.props.products.products.length > 0 ? (
             this.props.format == "grid" ? (
