@@ -22,6 +22,8 @@ import { faTruck, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import Logo1 from "../../assets/img/logo-social.png";
 import Logo2 from "../../assets/img/logo-social1.png";
 import Seller from "./../SellerInfo";
+import RankProduct from "../Common/RankProduct";
+import CommentsProduct from "../Common/CommentsProduct";
 
 class ProductDetail extends Component {
 
@@ -77,10 +79,12 @@ class ProductDetail extends Component {
           <div className="wrap-section-1">
             <div className="wrap-product">
               <DetailImg images={mdata.images} category={mdata.category.name} product_name={mdata.title} />
+              <RankProduct/>
               <div className="pay-section-responsive">
                 <Pay pid={mdata.product_id} seller={mdata.user} price={mdata.price} title={mdata.title} stock={mdata.stock} />
               </div>
               <Detail width={mdata.width} length={mdata.length} weight={mdata.weight} title={mdata.title} product_name={mdata.title} desciption={mdata.description} />
+              <CommentsProduct/>
               <Question user_data={this.props.user_data} product_id={mdata.product_id} cb={this.loadQuestions} />
               <section className="no-movil">
                 <QuestionItem product_id={mdata.product_id} questions={this.state.questions} />

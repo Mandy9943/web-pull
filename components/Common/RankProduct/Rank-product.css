@@ -1,0 +1,40 @@
+.rank-product {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto 1fr;
+      grid-template-columns: auto 1fr;
+  grid-gap: 15px;
+  margin-bottom: 8px;
+}
+
+.rank-product .stars {
+  display: inline;
+}
+
+.rank-product .stars svg {
+  margin-left: 7.5px;
+  width: 30px;
+  height: 30px;
+  color: #3F7FE1;
+}
+
+.rank-product .values {
+  color: #CF0A2C;
+  font-size: 16px;
+  margin-top: 5px;
+  text-align: right;
+  margin-right: 7.5px;
+}
+
+.rank-product .values .down-icon {
+  color: #707070;
+  font-size: 18px;
+  margin: 0 7px;
+  top: 2px;
+  position: relative;
+}
+
+.rank-product .values .sell {
+  margin-left: 10px;
+}
+/*# sourceMappingURL=Rank-product.css.map */
