@@ -15,6 +15,7 @@ import {
 import "./Summary.css";
 import Sidebar from '../Sidebar/Sidebar';
 import Purchases from '../Purchases/Purchases';
+import PurchasesDetail from '../PurchasesDetail/PurchasesDetail';
 import AccountData from '../Account/AccountData';
 import AccountPurchase from '../Account/AccountPurchase';
 import AccountBilling from '../Account/AccountBilling';
@@ -42,7 +43,8 @@ export default class Summary extends Component {
                 bill: false,
                 orders: false,
                 questions: false,
-                items: false
+                items: false,
+                detail: false
             }
         }
     }
@@ -81,7 +83,8 @@ export default class Summary extends Component {
                 orders: section === "orders",
                 questions: section === "questions",
                 items: section === "items",
-                purchases: section === "purchases"
+                purchases: section === "purchases",
+                detail: section === "detail",
             }
         })
     }
@@ -112,6 +115,7 @@ export default class Summary extends Component {
                     <Sidebar user_data={u_data} cb={this.showSection} />
                     {this.state.display.resume && <AccountSummary user={u_data} />}
                     {this.state.display.orders && <Purchases mode={"buy"} user={u_data} />}
+                    {this.state.display.detail && <PurchasesDetail mode={"buy"} user={u_data} />}
                     {this.state.display.bill && <AccountBilling user={u_data} cb={this.showSection} />}
                     
 
