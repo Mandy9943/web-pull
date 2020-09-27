@@ -34,7 +34,28 @@
   position: relative;
 }
 
-.rank-product .values .sell {
-  margin-left: 10px;
+@media (max-width: 720px) {
+  .rank-product {
+    background: white;
+    padding: 15px 0;
+    border-top: 0.5px solid #81818170;
+    margin-bottom: 0;
+  }
+  .rank-product .stars {
+    margin-left: 5px;
+  }
+  .rank-product .stars svg {
+    margin-left: 0;
+    width: 17px;
+    height: 17px;
+    margin-right: 5px;
+  }
+  .rank-product .values {
+    margin-top: 0;
+    font-size: 13px;
+  }
+  .rank-product .values .sell {
+    margin-left: 5px;
+  }
 }
 /*# sourceMappingURL=Rank-product.css.map */
