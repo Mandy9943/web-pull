@@ -69,4 +69,9 @@
   border-radius: 5px;
   max-width: 300px;
 }
+
+.evaluation .component-product .main-button p {
+  text-align: center;
+  margin: auto;
+}
 /*# sourceMappingURL=Evaluation.css.map */
