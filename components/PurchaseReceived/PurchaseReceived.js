@@ -15,7 +15,7 @@ import {
 import "./PurchaseReceived.css";
 
 
-export default class Evaluation extends Component {
+export default class PurchaseReceived extends Component {
     constructor(props) {
         super(props);
         this.state = {

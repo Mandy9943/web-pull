@@ -76,7 +76,7 @@ export default class PurchasesDetail extends Component {
                                 <FontAwesomeIcon icon={faStar} />
                                 <FontAwesomeIcon icon={faStar} />
                                 <FontAwesomeIcon icon={faStar} />
-                                <FontAwesomeIcon icon={faCheck} />
+                                <FontAwesomeIcon icon={faStar} />
                             </p>
                             <h4 className="sub">Excelente vendedor!</h4>
                         </section>
