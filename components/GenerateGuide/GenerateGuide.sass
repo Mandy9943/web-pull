@@ -1,0 +1,95 @@
+.generate-guide
+    position: relative
+    display: grid
+    grid-template-rows: auto 1fr auto
+    height: 100vh
+    .component-product
+        margin: auto
+        min-height: 50vh
+        background: #FFFFFF
+        border-radius: 10px
+        max-width: 800px
+        position: relative
+        text-align: center;
+        display: grid;
+        grid-template-rows: auto 1fr;
+        box-shadow: 0px 3px 6px #00000029;
+        .top
+            background: #D9D8D8
+            border-radius: 5px 5px 0 0;
+            display: grid
+            padding: 30px
+            img
+                margin: auto;
+                display: grid;
+                width: 80%
+                max-width: 130px
+                box-shadow: 0px 3px 6px #00000029;
+        .bottom
+            padding: 30px
+            text-align: left
+            color: #5A5A5A
+            display: grid;
+            text-align: center
+            img
+                border-radius: 50%;
+                margin: auto;
+                display: grid;
+                width: 80%
+                max-width: 200px
+                box-shadow: 0px 3px 6px #00000029;
+                margin-left: 0
+            p.title
+                font-size: 20px
+                font-weight: normal
+                margin-top: 15px
+        .main-button
+            border-radius: 5px
+            max-width: 250px
+            height: min-content;
+            p
+                text-align: center;
+                margin: auto;
+
+
+@media (max-width: 720px)
+    .generate-guide
+        position: relative
+        display: grid
+        grid-template-rows: auto 1fr auto
+        height: 100vh
+        .component-product
+            margin: auto
+            width: 90%
+            background: #FFFFFF
+            border-radius: 10px
+            padding: 0
+            position: relative
+            text-align: center;
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            min-height: auto
+            .top
+                border-radius: 5px;
+                display: grid
+                padding: 15px
+                grid-gap: 15px
+                img
+                    max-width: 80px
+            .bottom
+                padding: 15px
+                color: #5A5A5A
+                grid-template-columns: none;
+                p.title
+                    font-size: 13px
+                    font-weight: 500
+                    margin-top: 15px
+                    margin-bottom: 30px
+        
+                
+
+
+
+
+
+    
