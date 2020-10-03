@@ -163,6 +163,11 @@
   cursor: pointer;
 }
 
+.align-center {
+  display: flex;
+  align-items: center;
+}
+
 .wrap-filter-price {
   display: -ms-grid;
   display: grid;

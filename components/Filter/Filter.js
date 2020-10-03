@@ -196,7 +196,7 @@ class Filter extends Component {
             <form onSubmit={this.handlePrice}>
               <div className="wrap-filter-price">
                 <input placeholder="Mínimo" name={"from_price"} type="number" />
-                <p>-</p>
+                <div className="align-center">-</div>
                 <input placeholder="Máximo" name={"to_price"} type="number" />
                 <button type="submit">
                   <FontAwesomeIcon color={'#fff'} icon={faChevronRight}/>
