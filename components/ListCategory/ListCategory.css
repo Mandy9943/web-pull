@@ -30,6 +30,10 @@
   top: 0;
 }
 
+.wrap-list-category .fetching-empty .text {
+  margin-top: 50%;
+}
+
 .temp-card {
   background: white;
   -webkit-box-shadow: 0px 3px 6px #00000029;

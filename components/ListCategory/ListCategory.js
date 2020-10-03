@@ -75,7 +75,7 @@ class ListCategory extends Component {
                 ))
               )
           ) : (
-              <div className="fetching-empty">{this.props.products ? "Lo sentimos, no logramos encontrar lo que buscas." : <Spinner />}</div>
+              <div className="fetching-empty">{this.props.products ? <div className="text">Lo sentimos, no logramos encontrar lo que buscas.</div> : <Spinner />}</div>
             )}
         </div>
       </div>
