@@ -15,7 +15,6 @@
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
-  height: 100%;
 }
 
 .wrap-list-category {
@@ -26,6 +25,9 @@
 
 .wrap-list-category .fetching-empty {
   height: 100%;
+  position: absolute;
+  left: 50%;
+  top: 0;
 }
 
 .temp-card {
@@ -34,7 +36,10 @@
           box-shadow: 0px 3px 6px #00000029;
   border-radius: 5px;
   overflow: hidden;
-  height: 100%;
+}
+
+.temp-card:hover {
+  box-shadow: 0 25px 20px 0 rgba(0,0,0,.16), 0 -1px 2px 0 rgba(0,0,0,.1);
 }
 
 .temp-card .product-card-img {
@@ -57,23 +62,38 @@
 .temp-card .product-card-description-box {
   z-index: 100;
   position: relative;
-  padding: 15px;
+  padding: 20px;
   background-color: #fff;
 }
 
-.temp-card .product-card-description-box h3 {
-  margin-bottom: 15px;
+.temp-card .product-card-description-box h2 {
+  margin-bottom: 10px;
   color: #000;
 }
 
+.temp-card .product-card-description-box h3 {
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.temp-card .product-card-description-box h4 {
+  color: #5A5A5A;
+  font-weight: 600;
+}
+
 .temp-card .product-card-description-box .product-card-description {
-  margin-top: 15px;
+  margin-top: 10px;
   color: #5A5A5A;
   font-size: 14px;
 }
 
 .temp-card .product-card-description-box .product-card-description p {
-  margin-bottom: 5px;
+  margin-bottom: 15px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .temp-list {
@@ -111,15 +131,30 @@
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
-  margin: 10px 0;
+  margin-left: 10px;
+  margin-right: 20px;
 }
 
-.temp-list .product-list-description-box h3 {
+.temp-list .product-list-description-box h2 {
+  color: #000;
   margin-bottom: 10px;
+}
+
+.temp-list .product-list-description-box h4 {
   color: #5A5A5A;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: bold;
-  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.temp-list .product-list-description-box p {
+  color: #5A5A5A;
+  font-size: 14px;
+  margin-bottom: 15px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .temp-list .product-list-description-box .product-list-title {
@@ -135,7 +170,7 @@
       grid-template-columns: auto 1fr;
   grid-gap: 5px;
   color: #CF0A2C;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 @media (max-width: 768px) {
@@ -184,5 +219,8 @@
     font-size: 14px;
     font-weight: 400;
   }
+}
+.d-flex{
+  display: flex;
 }
 /*# sourceMappingURL=ListCategory.css.map */

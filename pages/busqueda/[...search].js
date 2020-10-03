@@ -26,7 +26,7 @@ function Results({data, session}) {
 
 export async function getServerSideProps(context) {
     const data = {
-        "type":"search",
+        "type": "search",
         "search": String(context.params.search),
         "params": {
             "items_per_page": 15,

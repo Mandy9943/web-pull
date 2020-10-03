@@ -6,24 +6,29 @@ import Footer from "../Common/Footer";
 import Nav from "../Common/Nav/Nav";
 import Pagination from "../Common/Pagination/Pagination";
 
-import { searchProduct, getProductsBasic } from "../../services/productsApi"
+import {searchProduct, getProductsBasic, searchProducts} from "../../services/productsApi"
 
 class  Category extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { format: "list",
-      data: null,
+    this.state = {
+      format: "grid",
+      data: [],
       filters: [],
-      products:null,
+      products: null,
       page: 1,
       totalPages: 1,
-      sort: 0
+      filterSort: '',
+      filterOrder: '',
     };
-    this.toggleFormat = this.toggleFormat.bind(this);
   }
 
-  toggleFormat(format) {
+  componentDidMount(){
+    this.loadProducts()
+  }
+
+  toggleFormat = (format) => {
     this.setState(format);
   }
 
@@ -33,159 +38,97 @@ class  Category extends Component {
 
   changePage = (p) => {
     this.setState({page: p})
-  }
 
+    this.loadProducts()
+  }
 
   applyFilter = (type, value) => {
     let tmp_filters = this.state.filters;
+    const new_val = type + "|" + value;
 
-    /* REMOVE OTHER PRICES FILTER */
-    for (let index = 0; index < tmp_filters.length; index++) {
-      const element = this.state.filters[index].split("|");
-      if(element[0]=="price"){
+    // Remove previous filter by type
+    tmp_filters.forEach((value, index) => {
+      const item = value.split('|');
+
+      if (item[0] === type) {
         tmp_filters.splice(index, 1);
       }
-    }
-    /* END */
+    })
 
-    const new_val = type+"|"+value;
     if (tmp_filters.indexOf(new_val) == -1) {
       tmp_filters.push(new_val);
     }
+
     this.setState( { filters: tmp_filters } );
-    this.getProducts();
+
+    this.loadProducts()
   }
 
-  removeFilter = (id) => {
+  removeFilter = (index) => {
     let tmp_filters = this.state.filters; 
-    tmp_filters.splice(id, 1);
+    tmp_filters.splice(index, 1);
     this.setState( { filters: tmp_filters } );
 
-    this.getProducts();
-  }
-
-  componentDidMount(){
-    this.getProducts();
-  }
-
-  getProducts(){
-    let res;
-
-    const ipp = 0; //;
-
-    this.setState({products:null})
-
-    let c = [];
-
-    let f_brands = []
-    let f_categories = []
-    let f_colors = [] 
-    let f_models = []
-
-    for (let index = 0; index < this.state.filters.length; index++) {
-      const element = this.state.filters[index].split("|");
-
-      if(element[0]=="price"){
-        if(element[1].indexOf("Más de ")==0){
-          c.push(element[0]+"|"+element[1].replace("Más de ","").split(",").join("")+"_"+"-1");
-        }else{
-          c.push(element[0]+"|"+element[1].replace("Desde ","").replace(" Hasta ","_").split(",").join(""));
-        }
-      
-      }else if(element[0]=="category"){
-        f_categories.push(element[1].split(" (").slice(0,-1).join(" ("));
-        //c.push(element[0]+"|"+element[1].split(" (").slice(0,-1).join(" ("));
-      }else if(element[0]=="brand"){
-        f_brands.push(element[1].split(" (").slice(0,-1).join(" ("));
-        //c.push(element[0]+"|"+element[1].split(" (").slice(0,-1).join(" ("));
-      }else if(element[0]=="color"){
-        f_colors.push(element[1].split(" (").slice(0,-1).join(" ("));
-        //c.push(element[0]+"|"+element[1].split(" (").slice(0,-1).join(" ("));
-      }else if(element[0]=="model"){
-        f_models.push(element[1].split(" (").slice(0,-1).join(" ("));
-        //c.push(element[0]+"|"+element[1].split(" (").slice(0,-1).join(" ("));
-      }
-    }
-
-    let str_filter = "";
-
-    if(f_colors.length > 0 ){
-      str_filter += "&colors="+f_colors.join(",");
-    }
-
-    if(f_models.length > 0 ){
-      str_filter += "&models="+f_models.join(",");
-    }
-    
-    if(f_brands.length > 0 ){
-      str_filter += "&brands="+f_brands.join(",");
-    }
-
-    if(this.props.data.type==="category"){
-      if(c.join("||")!=""){
-        res = getProductsBasic(this.props.data.search+"||"+c.join("||"), ipp);
-      }else{
-        res = getProductsBasic(this.props.data.search, ipp);
-      }
-    }else{
-      if(c.join("||")!=""){
-      //  res = searchProduct(this.props.data.search+"||"+c.join("||"), ipp);
-        res = searchProduct(this.props.data.search+str_filter, ipp);
-      }else{
-      //  res = searchProduct(this.props.data.search, ipp);
-        res = searchProduct(this.props.data.search+str_filter, ipp);
-      }
-    } 
-    
-    res.then((r) => r.data).then( (r) => {
-      this.setState({
-        products: r,
-        totalPages: Math.ceil(r.products.length/this.props.data.params.items_per_page)
-      });
-      this.sortProducts(this.state.sort)
-      let mr = {
-        "brands": r.brands,
-        "rows": (r.products ? r.products.length : 0),
-        "categories": r.categories,
-        "max_price": r.max_price,
-        "min_price": r.min_price,
-      };
-      this.sendToFilters(mr)
-    } );
-
+    this.loadProducts()
   }
 
   sortProducts = (sortType) => {
-    let items = this.state.products;
-
-    if (items === null){
-      return;
-    }
-
-    let func = undefined;
     switch (sortType) {
-      case "0":
-        func = function(a, b) {
-          if (a.product_id > b.product_id) {return 1;}
-          if (a.product_id < b.product_id) {return -1;}
-          return 0;
-        };
+      case '1':
+        this.loadProducts('price_','desc')
         break;
-      case "1":
-        func = function(a, b) {return parseInt(b.price.replace("$ ","").split(".").join("").split(",")[0]) - parseInt(a.price.replace("$ ","").split(".").join("").split(",")[0]);};
+      case '2':
+        this.loadProducts('price_','asc')
         break;
-      case "2":
-        func = function(a, b) {return parseInt(a.price.replace("$ ","").split(".").join("").split(",")[0]) - parseInt(b.price.replace("$ ","").split(".").join("").split(",")[0]);};
-        break;
+      default:
+        this.loadProducts()
     }
-    let itmtoSort = items.products;
-    itmtoSort.sort(func);
-    items.products = itmtoSort;
-    this.setState({products: items});
-
   }
 
+  loadProducts(sortBy='', orderBy='') {
+    this.setState({
+      products: null,
+    })
+    let price = '';
+    let brand = '';
+    let category = '';
 
+    // Filters
+    this.state.filters.forEach(value => {
+      const item = value.split('|');
+
+      switch (item[0]) {
+        case 'price':
+          let valueArray = value.split('|')[1].split(' ');
+
+          valueArray[0] === 'Desde' ? price = parseFloat(valueArray[1])  + '-' + parseFloat(valueArray[3]) :
+              price = parseFloat(valueArray[2])  + '-' + this.state.data.max_price;
+          break
+        case 'brand':
+          brand = value.split('|')[1];
+          break
+        case 'category':
+          category = value.split('|')[1];
+      }
+    })
+
+    let products = searchProducts(this.props.data.params.items_per_page, this.state.page, this.props.data.search, brand, price, category, sortBy, orderBy)
+
+    products.then((response) => {
+      this.setState({
+        products: response.data.results,
+        totalPages: Math.ceil(response.data.total/this.props.data.params.items_per_page),
+      })
+
+      this.sendToFilters({
+        'brands': response.data.catalog_brand.map(item => item.key).sort(),
+        'categories': response.data.catalog_category.map(item => item.key).sort(),
+        'max_price': response.data.catalog_price.max,
+        'min_price': response.data.catalog_price.min,
+        'total': response.data.total
+      })
+    })
+  }
 
   render() {
     return (

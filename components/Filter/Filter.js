@@ -4,7 +4,7 @@ import "./Filter.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faList, faTh, faTimes, faAngleRight, faChevronCircleRight,
-  faWindowClose, faTruck
+  faWindowClose, faTruck, faChevronRight
 } from "@fortawesome/free-solid-svg-icons";
 
 class Filter extends Component {
@@ -16,6 +16,9 @@ class Filter extends Component {
       menuFilter: false,
       categorySize: 10,
     };
+
+    this.brands = React.createRef();
+    this.categories = React.createRef();
 
     this.toggleMenuOrder = this.toggleMenuOrder.bind(this);
     this.toggleMenuFilter = this.toggleMenuFilter.bind(this);
@@ -39,65 +42,46 @@ class Filter extends Component {
     this.props.sortProducts(""+event.target.value);
   }
 
-  handlePrice = (e) => {
+  viewAll = (ele, ref) => {
+    ele.classList.add('display-none')
+    if (ref === 'brands')
+      this.brands.current.classList.remove('filter-height-overflow')
 
+    if (ref === 'categories')
+      this.brands.current.classList.remove('filter-height-overflow')
+  }
+
+  handlePrice = (e) => {
     e.preventDefault();
 
     const from_price = parseInt(e.target.elements.from_price.value);
     const to_price = parseInt(e.target.elements.to_price.value);
 
     if(!Number.isInteger((from_price)) && Number.isInteger((to_price))){
-      console.log("First")
-      this.props.applyFilter("price", "Desde " + 0 + " Hasta " + to_price.toLocaleString());
+      this.props.applyFilter("price", "Desde " + 0 + " Hasta " + to_price);
     }
 
     if(Number.isInteger((from_price)) && !Number.isInteger((to_price))){
-      console.log("Second")
-      this.props.applyFilter("price", "Más de " + from_price.toLocaleString());
+      this.props.applyFilter("price", "Más de " + from_price);
     }
 
     if(Number.isInteger((from_price)) && Number.isInteger((to_price))){
-      console.log("Third")
-      this.props.applyFilter("price", "Desde " + from_price.toLocaleString() + " Hasta " + to_price.toLocaleString());
+      this.props.applyFilter("price", "Desde " + from_price + " Hasta " + to_price);
     }
-
   }
-
-
 
   render() {
     let res_categories = [];
-    if (this.props.data && this.props.data.categories) {
-      for (var cat in this.props.data.categories) {
-        if (this.props.filters.indexOf("category|" + cat + " (" + this.props.data.categories[cat] + ")") === -1)
-          res_categories.push([cat + " (" + this.props.data.categories[cat] + ")",
-          this.props.data.categories[cat]]);
-      }
-      res_categories.sort(function (a, b) {
-        return b[1] - a[1];
-      });
-
-    }
-
     let res_brands = [];
+    let prices = [];
+
+    if (this.props.data && this.props.data.categories) {
+      res_categories = this.props.data.categories
+    }
 
     if (this.props.data && this.props.data.brands) {
-
-      for (var brand in this.props.data.brands) {
-
-        if (this.props.filters.indexOf("brand|" + brand + " (" + this.props.data.brands[brand] + ")") === -1)
-          res_brands.push([brand + " (" + this.props.data.brands[brand] + ")",
-          this.props.data.brands[brand]]);
-      }
-
-      res_brands.sort(function (a, b) {
-        return b[1] - a[1];
-      });
-
-
+      res_brands = this.props.data.brands;
     }
-
-    let prices = [];
 
     if (this.props.data && this.props.data.max_price) {
       var max_price = this.props.data.max_price;
@@ -128,16 +112,15 @@ class Filter extends Component {
       }
 
       let div = top / 4;
-      prices.push("Más de " + (top).toLocaleString())
+      prices.push("Más de " + (top))
       for (let it = 0; it < 4; it++) {
-        if (this.props.filters.indexOf("price|" + "Desde " + (top - (div * (it + 1)) + 1).toLocaleString() + " Hasta " + (top - (div * it)).toLocaleString()) === -1)
-          prices.push("Desde " + (top - (div * (it + 1)) + 1).toLocaleString() + " Hasta " + (top - (div * it)).toLocaleString())
+        if (this.props.filters.indexOf("price|" + "Desde " + (top - (div * (it + 1)) + 1) + " Hasta " + (top - (div * it))) === -1)
+          prices.push("Desde " + (top - (div * (it + 1)) + 1) + " Hasta " + (top - (div * it)))
       }
     }
 
-
     const filters = this.props.filters.map((item, index) => {
-      return <p className="result" onClick={() => {
+      return <p key={index} className="result" onClick={() => {
         this.props.removeFilter(index);
       }}>
         {item.split("|")[1]} <FontAwesomeIcon icon={faWindowClose} /> </p>
@@ -150,20 +133,8 @@ class Filter extends Component {
     return (
       <>
         <div className="wrap-filter">
-
-          {/*
-            <div className="categories-finder">
-            <Link href="#"><a><p>Belleza y cuidado personal</p></a></Link>
-            <p className="categories-finder-icon">
-              <FontAwesomeIcon icon={faAngleRight} />
-            </p>
-            <Link href="#"><a><p>Electrodomésticos de Belleza</p></a></Link>
-          </div>
-          */}
-
           <div className="filter-group">
-            <h1>{this.props.search}</h1>
-            <span>{this.props.data && this.props.data.rows && this.props.data.rows} Resultados
+            <span>{this.props.data && this.props.data.total} Resultados
               {filters}
             </span>
           </div>
@@ -196,19 +167,19 @@ class Filter extends Component {
           </div>
           <div className="filter-group">
             <h4>Marca</h4>
-            <div>
+            <div ref={this.brands} className="filter-height-overflow">
               {
                 res_brands.map((item, index) => (
-                  <div key={index} className="item-filter-group show"
+                  <p key={index} className="item-filter-group show"
                     onClick={() => {
-                      this.props.applyFilter("brand", item[0]);
+                      this.props.applyFilter("brand", item);
                     }}>
-                    {item[0]}
-                  </div>
+                    {item}
+                  </p>
                 ))
               }
             </div>
-            <a className="view-all" onClick={() => this.ShowAllCategories()}>Ver Todos</a>
+            <div className="view-all" onClick={e => this.viewAll(e.target, 'brands')}>Ver Todos</div>
           </div>
           <div className="filter-group show">
             <h4>Rango de precios</h4>
@@ -224,30 +195,31 @@ class Filter extends Component {
             </div>
             <form onSubmit={this.handlePrice}>
               <div className="wrap-filter-price">
-                  <input placeholder="Minimo" name={"from_price"} type="number" size="mini" />
-                  <p>-</p>
-                  <input placeholder="Maximo" name={"to_price"} type-="number" size="mini" />
-                  <FontAwesomeIcon icon={faChevronCircleRight} />
-                  <button type="submit">Filtrar</button>
+                <input placeholder="Mínimo" name={"from_price"} type="number" />
+                <p>-</p>
+                <input placeholder="Máximo" name={"to_price"} type="number" />
+                <button type="submit">
+                  <FontAwesomeIcon color={'#fff'} icon={faChevronRight}/>
+                </button>
               </div>
             </form>
           </div>
-            <div className="send-free">
-              <h4>Envio</h4>
-              <span>Envío gratis <FontAwesomeIcon icon={faTruck} /></span>
-            </div> 
+          {/*<div className="send-free">*/}
+          {/*  <h4>Envio</h4>*/}
+          {/*  <span>Envío gratis <FontAwesomeIcon icon={faTruck} /></span>*/}
+          {/*</div> */}
           <div className="filter-group">
-            <h4>Categorias</h4>
-            <div>
-              {res_categories.slice(0, this.state.categorySize).map((item, index) => (
+            <h4>Categorías</h4>
+            <div ref={this.categories} className="filter-height-overflow">
+              {res_categories.map((item, index) => (
                 <div key={index} className="item-filter-group show">
                   <a onClick={() => {
-                    this.props.applyFilter("category", item[0]);
-                  }}><p>{item[0]}</p></a>
+                    this.props.applyFilter("category", item);
+                  }}><p>{item}</p></a>
                 </div>
               ))}
             </div>
-            <a className="view-all" onClick={() => this.ShowAllCategories()}>Ver Mas</a>
+            <div className="view-all" onClick={e => this.viewAll(e.target, 'categories')}>Ver Todos</div>
           </div>
         </div>
         <div className="responsive-filter">

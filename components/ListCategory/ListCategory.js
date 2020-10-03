@@ -5,50 +5,43 @@ import {
   faTruck
 } from "@fortawesome/free-solid-svg-icons";
 import "./ListCategory.css";
-import { getImgUrl } from "../../lib/config"
 import Spinner from "../Common/Spinner";
 
 
 class ListCategory extends Component {
   constructor(props) {
     super(props);
-    this.state = { data: null };
   }
 
-
-
   render() {
-    console.log("loaded list category");
-
     const Class = this.props.format == "grid" ? "grid" : "list";
-    const page_first = (this.props.page - 1) * this.props.item_per_page;
-    const page_last = ((this.props.page - 1) * this.props.item_per_page) + this.props.item_per_page;
 
     return (
       <div className="wrap-list-category">
         <div className={Class}>
-          {this.props.products && this.props.products.products && this.props.products.products.length > 0 ? (
+          {this.props.products && this.props.products.length > 0 ? (
             this.props.format == "grid" ? (
-              this.props.products.products.slice(page_first, page_last).map((product, i) => (
+              this.props.products.map((product, i) => (
 
                 <Link href={"/detalle/" + product.product_id + "_" + product.title.split(" ").join("-")} key={i}>
-                  <a>
+                  <a className="d-flex">
                     <div className="temp-card">
                       <div className="product-card-img">
-                        <img alt={product.title} src={getImgUrl(product.image)} className="img" />
+                        <img alt={product.title} src={product.image} className="img" />
                       </div>
                       <div className="product-card-description-box">
-                        <h3>{product.user} </h3>
-                        <div className="kiero-envios-card">
-                          <p className="kiero-envios-card-icon">
-                            <FontAwesomeIcon icon={faTruck} />
-                          </p>
-                          <p>Envío gratis</p>
-                        </div>
+                        <h2>${(Math.round(parseFloat(product.price) * 100) / 100).toFixed(2)} </h2>
+                        <h4>{product.brand} </h4>
                         <div className="product-card-description">
-                          <p title={product.title}>{product.title.substr(0, 60) + (product.title.length > 60 ? "..." : ".")}</p>
-                          <p>Nuevo</p>
-                          <p className="price">{product.price.split(",")[0]}</p>
+                          <p>{product.title}</p>
+                          {parseInt(product.is_prime) ? (
+                              <div className="kiero-envios-card">
+                                <div className="kiero-envios-card-icon">
+                                  <FontAwesomeIcon icon={faTruck} />
+                                </div>
+                                <div>Envío gratis</div>
+                              </div>
+                          ) : ''}
                         </div>
                       </div>
                     </div>
@@ -56,23 +49,25 @@ class ListCategory extends Component {
                 </Link>
               ))
             ) : (
-                this.props.products.products.slice(page_first, page_last).map((product, i) => (
-                  <Link href={"/detalle/" + product.product_id + "_" + product.title.split(" ").join("-")} key={i}>
+                this.props.products.map((product, i) => (
+                    <Link href={"/detalle/" + product.product_id + "_" + product.title.split(" ").join("-")} key={i}>
                     <a>
                       <div className="temp-list">
                         <div className="product-list-img">
-                          <img alt={product.title} src={getImgUrl(product.image)} className="img" />
+                          <img alt={product.title} src={product.image} className="img" />
                         </div>
                         <div className="product-list-description-box">
-                          <h3 className="product-list-title">{product.title.substr(0, 65) + (product.title.length > 65 ? "..." : ".")}</h3>
-                          <h3 className="product-list-title">{product.user} </h3>
-                          <h3>{product.price.split(",")[0]} </h3>
-                          <div className="kiero-envios-card">
-                            <p className="kiero-envios-card-icon">
-                              <FontAwesomeIcon icon={faTruck} />
-                            </p>
-                            <p>Envío gratis</p>
-                          </div>
+                          <h2>${(Math.round(parseFloat(product.price) * 100) / 100).toFixed(2)} </h2>
+                          <h4>{product.brand}</h4>
+                          <p>{product.title}</p>
+                          {parseInt(product.is_prime) ? (
+                              <div className="kiero-envios-card">
+                                <div className="kiero-envios-card-icon">
+                                  <FontAwesomeIcon icon={faTruck} />
+                                </div>
+                                <div>Envío gratis</div>
+                              </div>
+                          ) : ''}
                         </div>
                       </div>
                     </a>
