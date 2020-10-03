@@ -25,7 +25,7 @@ class  Category extends Component {
   }
 
   componentDidMount(){
-    this.loadProducts()
+    this.loadProducts(1)
   }
 
   toggleFormat = (format) => {
@@ -39,7 +39,7 @@ class  Category extends Component {
   changePage = (p) => {
     this.setState({page: p})
 
-    this.loadProducts()
+    this.loadProducts(p)
   }
 
   applyFilter = (type, value) => {
@@ -59,33 +59,41 @@ class  Category extends Component {
       tmp_filters.push(new_val);
     }
 
-    this.setState( { filters: tmp_filters } );
+    this.setState( {
+      filters: tmp_filters,
+      page: 1,
+    });
 
-    this.loadProducts()
+    this.loadProducts(1)
   }
 
   removeFilter = (index) => {
     let tmp_filters = this.state.filters; 
     tmp_filters.splice(index, 1);
-    this.setState( { filters: tmp_filters } );
+    this.setState( {
+      filters: tmp_filters,
+      page: 1,
+    });
 
-    this.loadProducts()
+    this.loadProducts(1)
   }
 
   sortProducts = (sortType) => {
     switch (sortType) {
       case '1':
-        this.loadProducts('price_','desc')
+        this.loadProducts(1,'price_','desc')
         break;
       case '2':
-        this.loadProducts('price_','asc')
+        this.loadProducts(1, 'price_','asc')
         break;
       default:
-        this.loadProducts()
+        this.loadProducts(1)
     }
+
+    this.setState({page: 1})
   }
 
-  loadProducts(sortBy='', orderBy='') {
+  loadProducts(page, sortBy='', orderBy='') {
     this.setState({
       products: null,
     })
@@ -112,7 +120,7 @@ class  Category extends Component {
       }
     })
 
-    let products = searchProducts(this.props.data.params.items_per_page, this.state.page, this.props.data.search, brand, price, category, sortBy, orderBy)
+    let products = searchProducts(this.props.data.params.items_per_page, page, this.props.data.search, brand, price, category, sortBy, orderBy)
 
     products.then((response) => {
       this.setState({
