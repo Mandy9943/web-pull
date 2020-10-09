@@ -48,7 +48,7 @@ class Filter extends Component {
       this.brands.current.classList.remove('filter-height-overflow')
 
     if (ref === 'categories')
-      this.brands.current.classList.remove('filter-height-overflow')
+      this.categories.current.classList.remove('filter-height-overflow')
   }
 
   handlePrice = (e) => {
@@ -166,6 +166,19 @@ class Filter extends Component {
             </div>
           </div>
           <div className="filter-group">
+            <h4>Categorías</h4>
+            <div ref={this.categories} className="filter-height-overflow">
+              {res_categories.map((item, index) => (
+                <div key={index} className="item-filter-group show">
+                  <a onClick={() => {
+                    this.props.applyFilter("category", item);
+                  }}><p>{item}</p></a>
+                </div>
+              ))}
+            </div>
+            <div className="view-all" onClick={e => this.viewAll(e.target, 'categories')}>Ver Todos</div>
+          </div>
+          <div className="filter-group">
             <h4>Marca</h4>
             <div ref={this.brands} className="filter-height-overflow">
               {
@@ -208,19 +221,6 @@ class Filter extends Component {
           {/*  <h4>Envio</h4>*/}
           {/*  <span>Envío gratis <FontAwesomeIcon icon={faTruck} /></span>*/}
           {/*</div> */}
-          <div className="filter-group">
-            <h4>Categorías</h4>
-            <div ref={this.categories} className="filter-height-overflow">
-              {res_categories.map((item, index) => (
-                <div key={index} className="item-filter-group show">
-                  <a onClick={() => {
-                    this.props.applyFilter("category", item);
-                  }}><p>{item}</p></a>
-                </div>
-              ))}
-            </div>
-            <div className="view-all" onClick={e => this.viewAll(e.target, 'categories')}>Ver Todos</div>
-          </div>
         </div>
         <div className="responsive-filter">
           <div

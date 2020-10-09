@@ -24,8 +24,8 @@ import {
     faShoppingBag,
     faCog
 } from "@fortawesome/free-solid-svg-icons";
-import Sidebar from '../../Sidebar/Sidebar';
-
+import Autosuggest from 'react-autosuggest';
+import {searchSuggestions} from "../../../services/productsApi";
 
 export default class Nav extends Component {
     constructor(props) {
@@ -38,7 +38,9 @@ export default class Nav extends Component {
             showNotification: false,
             notifications : [],
             timeClose : undefined,
-            closeSidebar : true
+            closeSidebar : true,
+            value: this.props.actualSearch,
+            suggestions: []
         }
     }
 
@@ -80,16 +82,6 @@ export default class Nav extends Component {
         this.state.timeClose = setTimeout(() => {this.setState({showMenu: false})}, 1000);
     }
 
-
-    changeSearcherValue = (event) => {
-        this.setState({ query: event.target.value })
-    }
-
-
-    handleChange = (e) => {
-        this.setState({ query: e.target.value })
-    }
-
     toggleModal = (modal) => {
         const newState = { ...this.state };
         newState[`modal${modal}`] = !newState[`modal${modal}`] ? true : false;
@@ -108,8 +100,51 @@ export default class Nav extends Component {
     menuBlur = () => {
         setTimeout(() => this.setState({ showMenu: false }), 200);
     }
-    
 
+    onChange = (event, { newValue }) => {
+        this.setState({
+            value: newValue !== 'undefined' ? newValue : ''
+        })
+    };
+
+    onKeyPress = event => {
+         if (event.key === 'Enter') {
+             this.search()
+         }
+    };
+
+    renderSuggestion = suggestion => (
+        <div>
+            {suggestion.text}
+        </div>
+    );
+
+    onSuggestionsFetchRequested = ({ value, reason }) => {
+        let suggestions = searchSuggestions(6, value)
+
+        suggestions.then((response) => {
+            this.setState({
+                suggestions: response.data.results
+            });
+        })
+    };
+
+    onSuggestionsClearRequested = () => {
+        this.setState({
+            suggestions: []
+        });
+    };
+
+    getSuggestionValue = suggestion => {
+        suggestion.text
+    }
+
+    onSuggestionSelected = (event, { suggestion }) => {
+        this.setState({
+            value: suggestion.text
+        })
+        this.search(suggestion.text);
+    }
 
     componentDidMount() {
         getData("/getMenuCategories")
@@ -119,7 +154,6 @@ export default class Nav extends Component {
         if(this.props.authenticated){
             this.loadNotifications();
         }
-
     }
 
     mouseEnter = () => {
@@ -130,17 +164,24 @@ export default class Nav extends Component {
         this.setState({ showCategories: false });
     }
 
-
     CloseSidebar = () => {
         this.setState({
             closeSidebar: !this.state.closeSidebar,
         });
-        console.info("si ejecuta y cambia el estado " + this.state.closeSidebar)
     }
 
     render() {
         let authenticated = this.props.authenticated
-        let home = this.props.home    
+        let home = this.props.home
+        const { suggestions, value } = this.state;
+
+        // Autosuggest will pass through all these props to the input.
+        const inputProps = {
+            placeholder: 'Buscar productos...',
+            value,
+            onChange: this.onChange,
+            onKeyPress: this.onKeyPress
+        };
     
         const content2 = (
             <>
@@ -189,17 +230,14 @@ export default class Nav extends Component {
                     <div className="nav-top">
                         <Logo />
                         <div className="search-bar">
-                            <input
-                                type="text"
-                                name={"searchBar"}
-                                defaultValue={this.props.actualSearch}
-                                placeholder="Buscar productos..."
-                                onChange={this.handleChange}
-                                onKeyPress={(event) => {
-                                    if (event.key === 'Enter') {
-                                        this.search()
-                                    }
-                                }}
+                            <Autosuggest
+                                suggestions={suggestions}
+                                onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+                                onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+                                getSuggestionValue={this.getSuggestionValue}
+                                renderSuggestion={this.renderSuggestion}
+                                inputProps={inputProps}
+                                onSuggestionSelected={this.onSuggestionSelected}
                             />
                             <section onClick={(event) => {
                                 this.search()
@@ -282,17 +320,14 @@ export default class Nav extends Component {
                     <div className="nav-top">
                         <Logo />
                         <div className="search-bar">
-                            <input
-                                type="text"
-                                defaultValue={this.props.actualSearch}
-                                name={"searchBar"}
-                                placeholder="Buscar productos"
-                                onChange={this.handleChange}
-                                onKeyPress={(event) => {
-                                    if (event.key === 'Enter') {
-                                        this.search()
-                                    }
-                                }}
+                            <Autosuggest
+                                suggestions={suggestions}
+                                onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+                                onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+                                getSuggestionValue={this.getSuggestionValue}
+                                renderSuggestion={this.renderSuggestion}
+                                inputProps={inputProps}
+                                onSuggestionSelected={this.onSuggestionSelected}
                             />
                             <section onClick={(event) => {
                                 this.search()
@@ -326,8 +361,9 @@ export default class Nav extends Component {
         )
     }
 
-    search = e => {
-        if (this.state.query != undefined)
-            location.href = "/busqueda/" + this.state.query
+    search = (ots = '') => {
+        let url = '/busqueda/';
+        this.state.value !== undefined && ots === '' ? url = url + this.state.value :  url = url + ots;
+        location.href = url;
     };
 }

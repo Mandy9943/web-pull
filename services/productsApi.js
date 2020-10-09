@@ -1,5 +1,5 @@
 import {get, post, postForm, putForm, sget, apiget} from "../lib/request";
-import {newUrlApi} from "../lib/config";
+import {newUrlApi, suggestionsApi} from "../lib/config";
 
 const getDataJWT = (endpoint, jwt) => {
     try {
@@ -64,6 +64,16 @@ export const searchProducts = (size, page, ots='', brand='', price='', category=
         let endpoint = newUrlApi + `?size=${size}&page=${page}`
         if (params.toString().length)
             endpoint = endpoint + '&' + params.toString();
+
+        return  apiget(endpoint)
+    } catch (error) {
+        return error;
+    }
+};
+
+export const searchSuggestions = (size, ots) => {
+    try {
+        let endpoint = suggestionsApi + `?size=${size}&ots=${ots}`
 
         return  apiget(endpoint)
     } catch (error) {

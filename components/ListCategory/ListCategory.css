@@ -64,7 +64,6 @@
 }
 
 .temp-card .product-card-description-box {
-  z-index: 100;
   position: relative;
   padding: 20px;
   background-color: #fff;

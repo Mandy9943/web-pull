@@ -158,9 +158,10 @@
 }
 
 .view-all {
-  color: #3483fa;
+  color: #d00a2d;
   font-size: 12px;
   cursor: pointer;
+  font-weight: 600;
 }
 
 .align-center {
