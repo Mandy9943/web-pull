@@ -1,0 +1,61 @@
+.rank-product {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto 1fr;
+      grid-template-columns: auto 1fr;
+  grid-gap: 15px;
+  margin-bottom: 8px;
+}
+
+.rank-product .stars {
+  display: inline;
+}
+
+.rank-product .stars svg {
+  margin-left: 7.5px;
+  width: 30px;
+  height: 30px;
+  color: #3F7FE1;
+}
+
+.rank-product .values {
+  color: #CF0A2C;
+  font-size: 16px;
+  margin-top: 5px;
+  text-align: right;
+  margin-right: 7.5px;
+}
+
+.rank-product .values .down-icon {
+  color: #707070;
+  font-size: 18px;
+  margin: 0 7px;
+  top: 2px;
+  position: relative;
+}
+
+@media (max-width: 720px) {
+  .rank-product {
+    background: white;
+    padding: 15px 0;
+    border-top: 0.5px solid #81818170;
+    margin-bottom: 0;
+  }
+  .rank-product .stars {
+    margin-left: 5px;
+  }
+  .rank-product .stars svg {
+    margin-left: 0;
+    width: 17px;
+    height: 17px;
+    margin-right: 5px;
+  }
+  .rank-product .values {
+    margin-top: 0;
+    font-size: 13px;
+  }
+  .rank-product .values .sell {
+    margin-left: 5px;
+  }
+}
+/*# sourceMappingURL=Rank-product.css.map */

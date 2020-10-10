@@ -1,0 +1,50 @@
+.category-banners {
+  margin-bottom: 30px;
+}
+
+.category-banners h3.title {
+  margin-bottom: 10px;
+  font-size: 25px;
+  font-weight: 600;
+  color: #5A5A5A;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.category-banners .group-category {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto auto;
+      grid-template-columns: auto auto auto;
+  grid-gap: 25px;
+}
+
+.category-banners .group-category .item {
+  background: white;
+  -webkit-box-shadow: 0px 3px 6px #00000029;
+          box-shadow: 0px 3px 6px #00000029;
+  position: relative;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 3fr auto;
+      grid-template-rows: 3fr auto;
+  text-align: center;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.category-banners .group-category .item img {
+  background: blue;
+  width: 70%;
+  padding-bottom: 172px;
+  margin: 20px auto 10px;
+}
+
+.category-banners .group-category .item span.title {
+  margin-bottom: 15px;
+  display: block;
+  font-weight: 600;
+  color: #5A5A5A;
+  font-size: 14px;
+}
+/*# sourceMappingURL=CategoryBanners.css.map */

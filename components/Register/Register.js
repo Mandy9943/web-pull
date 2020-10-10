@@ -8,7 +8,8 @@ import './Register.css';
 import Success from "../../components/Login/Success";
 import Error from "../../components/Login/Error";
 import { signUp, redirectIfAuthenticated } from "../../lib/auth";
-import {getCookie, removeCookie} from "../../lib/session";
+import { getCookie, removeCookie } from "../../lib/session";
+
 
 
 export default class Register extends Component {
@@ -19,6 +20,16 @@ export default class Register extends Component {
             error: null
         };
     }
+
+    mostrarContrasena() {
+        let tipo = document.getElementById("password");
+        if (tipo.type == "password") {
+            tipo.type = "text";
+        } else {
+            tipo.type = "password";
+        }
+    }
+
 
     render() {
         const { success } = this.props;
@@ -37,7 +48,10 @@ export default class Register extends Component {
                         <input className="input" name="name" placeholder="Nombres" />
                         <input className="input" name="last_name" placeholder="Apellidos" />
                         <input className="input" type="email" name="email" placeholder="Correo lectrónico" />
-                        <input className="input" type="password" name="password" placeholder="Contraseña" />
+                        <div className="password">
+                            <input id="password" className="input" type="password" name="password" placeholder="Contraseña" />
+                            <a onClick={this.mostrarContrasena}>Mostrar</a> 
+                        </div>
                     <p className="terms">Creando una cuenta, usted ha aceptado los
                      <Link href="/terminos"><a>Terminos y condiciones</a>
                      </Link> y las <Link href="/privacidad"><a>Políticas de privacidad de Kiero.</a></Link></p>
