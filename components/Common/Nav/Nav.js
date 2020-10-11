@@ -65,13 +65,6 @@ export default class Nav extends Component {
     mLeave = () => {
         this.state.timeClose = setTimeout(() => {this.setState({showNotification: false})}, 1000);
     }
-
-
-    readNotifications = (id) => {
-
-    }
-
-
     /********************* END NOTIFICATIONS ******************************/
 
 
@@ -105,11 +98,12 @@ export default class Nav extends Component {
     onChange = event => {
         this.setState({ value: event.target.value });
 
-        let suggestions = searchSuggestions(suggestionQuantity, event.target.value)
-
-        suggestions.then((response) => {
-            this.setState({ suggestions: response.data.results });
-        })
+        if (event.target.value !== '') {
+            let suggestions = searchSuggestions(suggestionQuantity, event.target.value)
+            suggestions.then((response) => {
+                this.setState({ suggestions: response.data.results });
+            })
+        }
     };
 
     onKeyPress = event => {

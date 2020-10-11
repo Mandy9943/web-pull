@@ -134,7 +134,7 @@ class Filter extends Component {
       <>
         <div className="wrap-filter">
           <div className="filter-group">
-            <span>{this.props.data && this.props.data.total} Resultados
+            <span>{this.props.totalItems} Resultados
               {filters}
             </span>
           </div>
@@ -168,13 +168,16 @@ class Filter extends Component {
           <div className="filter-group">
             <h4>Categorías</h4>
             <div ref={this.categories} className="filter-height-overflow">
-              {res_categories.map((item, index) => (
-                <div key={index} className="item-filter-group show">
-                  <a onClick={() => {
-                    this.props.applyFilter("category", item);
-                  }}><p>{item}</p></a>
-                </div>
-              ))}
+              {
+                res_categories.map((item, index) => (
+                  <p key={index} className="item-filter-group show"
+                    onClick={() => {
+                      this.props.applyFilter("category", item.key);
+                    }}>
+                    {item.key} ({item.doc_count})
+                  </p>
+                ))
+              }
             </div>
             <div className="view-all" onClick={e => this.viewAll(e.target, 'categories')}>Ver Todos</div>
           </div>
@@ -185,9 +188,9 @@ class Filter extends Component {
                 res_brands.map((item, index) => (
                   <p key={index} className="item-filter-group show"
                     onClick={() => {
-                      this.props.applyFilter("brand", item);
+                      this.props.applyFilter("brand", item.key);
                     }}>
-                    {item}
+                    {item.key} ({item.doc_count})
                   </p>
                 ))
               }

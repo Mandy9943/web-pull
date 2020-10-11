@@ -6,7 +6,8 @@ import Footer from "../Common/Footer";
 import Nav from "../Common/Nav/Nav";
 import Pagination from "../Common/Pagination/Pagination";
 
-import {searchProduct, getProductsBasic, searchProducts} from "../../services/productsApi"
+import {searchProduct, getProductsBasic, searchProducts, searchFilters} from "../../services/productsApi"
+import {compareValues} from "../../lib/functions";
 
 class  Category extends Component {
 
@@ -21,11 +22,13 @@ class  Category extends Component {
       totalPages: 1,
       filterSort: '',
       filterOrder: '',
+      totalItems: '',
     };
   }
 
   componentDidMount(){
     this.loadProducts(1)
+    this.loadAllFilters()
   }
 
   toggleFormat = (format) => {
@@ -65,6 +68,7 @@ class  Category extends Component {
     });
 
     this.loadProducts(1)
+    this.loadAllFilters()
   }
 
   removeFilter = (index) => {
@@ -126,14 +130,20 @@ class  Category extends Component {
       this.setState({
         products: response.data.results,
         totalPages: Math.ceil(response.data.total/this.props.data.params.items_per_page),
+        totalItems: response.data.total,
       })
+    })
+  }
 
+  loadAllFilters(level = '', category = '') {
+    let filters = searchFilters(this.props.data.search, level, category)
+
+    filters.then(response => {
       this.sendToFilters({
-        'brands': response.data.catalog_brand.map(item => item.key).sort(),
-        'categories': response.data.catalog_category.map(item => item.key).sort(),
+        'brands': response.data.catalog_brand.sort(compareValues('key')),
+        'categories': response.data.catalog_category.sort(compareValues('key')),
         'max_price': response.data.catalog_price.max,
-        'min_price': response.data.catalog_price.min,
-        'total': response.data.total
+        'min_price': response.data.catalog_price.min
       })
     })
   }
@@ -153,6 +163,7 @@ class  Category extends Component {
               toggle={this.toggleFormat} 
               format={this.state.format}
               sortProducts={this.sortProducts}
+              totalItems={this.state.totalItems}
           />
 
           <ListCategory  
