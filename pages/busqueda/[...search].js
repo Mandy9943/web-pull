@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Category from '../../components/Category/Category';
 import {getUser, isAuthenticated } from "../../lib/auth";
 import favicon from "../../assets/img/favicon.svg";
+import {searchItemsPerPage} from "../../lib/config";
 
 
 function Results({data, session}) {
@@ -29,7 +30,7 @@ export async function getServerSideProps(context) {
         "type": "search",
         "search": String(context.params.search),
         "params": {
-            "items_per_page": 15,
+            "items_per_page": searchItemsPerPage,
             "price_range": "",
             "order": "desc"
         }
