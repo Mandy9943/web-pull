@@ -6,6 +6,7 @@ import {
   faList, faTh, faTimes, faAngleRight, faChevronCircleRight,
   faWindowClose, faTruck, faChevronRight
 } from "@fortawesome/free-solid-svg-icons";
+import Tree from '@naisutech/react-tree'
 
 class Filter extends Component {
 
@@ -120,15 +121,26 @@ class Filter extends Component {
     }
 
     const filters = this.props.filters.map((item, index) => {
-      return <p key={index} className="result" onClick={() => {
+      if (item.split("|")[1] !== 'category') {
+        return <p key={index} className="result" onClick={() => {
         this.props.removeFilter(index);
-      }}>
-        {item.split("|")[1]} <FontAwesomeIcon icon={faWindowClose} /> </p>
+        }}>
+          {item.split("|")[1]} <FontAwesomeIcon icon={faWindowClose} />
+        </p>
+      }
     });
 
     const buttonState = this.props.format;
     const responsiveButton = buttonState == "grid" ? faTh : faList;
     const text = buttonState == "grid" ? "Mosaico" : "Lista";
+
+    const kieroTheme = {
+    'kiero-theme': {
+      text: '#5A5A5A',
+      highlight: '#f3f3f3',
+      accent: '#f3f3f3',
+    }
+  }
 
     return (
       <>
@@ -168,16 +180,17 @@ class Filter extends Component {
           <div className="filter-group">
             <h4>Categorías</h4>
             <div ref={this.categories} className="filter-height-overflow">
-              {
-                res_categories.map((item, index) => (
-                  <p key={index} className="item-filter-group show"
-                    onClick={() => {
-                      this.props.applyFilter("category", item.key);
-                    }}>
-                    {item.key} ({item.doc_count})
-                  </p>
-                ))
-              }
+              {/*{*/}
+              {/*  res_categories.map((item, index) => (*/}
+              {/*    <p key={index} className="item-filter-group show"*/}
+              {/*      onClick={() => {*/}
+              {/*        this.props.applyFilter("category", item.key);*/}
+              {/*      }}>*/}
+              {/*      {item.key} ({item.doc_count})*/}
+              {/*    </p>*/}
+              {/*  ))*/}
+              {/*}*/}
+              <Tree nodes={res_categories} theme={"kiero-theme"} customTheme={kieroTheme} noIcons onSelect={this.props.onSelectCategory}/>
             </div>
             <div className="view-all" onClick={e => this.viewAll(e.target, 'categories')}>Ver Todos</div>
           </div>

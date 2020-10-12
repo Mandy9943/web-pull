@@ -7,7 +7,8 @@ import Nav from "../Common/Nav/Nav";
 import Pagination from "../Common/Pagination/Pagination";
 
 import {searchProduct, getProductsBasic, searchProducts, searchFilters} from "../../services/productsApi"
-import {compareValues} from "../../lib/functions";
+import {compareValues, } from "../../lib/functions";
+import {snakeCase} from "lodash";
 
 class  Category extends Component {
 
@@ -45,7 +46,7 @@ class  Category extends Component {
     this.loadProducts(p)
   }
 
-  applyFilter = (type, value) => {
+  applyFilter = (type, value, loadFilter = true) => {
     let tmp_filters = this.state.filters;
     const new_val = type + "|" + value;
 
@@ -68,7 +69,7 @@ class  Category extends Component {
     });
 
     this.loadProducts(1)
-    this.loadAllFilters()
+    if (loadFilter) this.loadAllFilters()
   }
 
   removeFilter = (index) => {
@@ -139,13 +140,33 @@ class  Category extends Component {
     let filters = searchFilters(this.props.data.search, level, category)
 
     filters.then(response => {
+      let oldCategories = []
+      if (response.data.level > 0)
+        oldCategories = this.state.data.categories
+
+      let newCategories = response.data.catalog_category.map(item => (
+          {
+            "id": snakeCase(item.key),
+            "key": item.key,
+            "parentId": response.data.level === 0 ? null : snakeCase(category),
+            "label": `${item.key} (${item.doc_count})` ,
+            "items": null,
+            "level": response.data.level,
+          }
+        )).sort(compareValues('label'))
+
       this.sendToFilters({
         'brands': response.data.catalog_brand.sort(compareValues('key')),
-        'categories': response.data.catalog_category.sort(compareValues('key')),
+        'categories': [...oldCategories, ...newCategories],
         'max_price': response.data.catalog_price.max,
         'min_price': response.data.catalog_price.min
       })
     })
+  }
+
+  onSelectCategory = node => {
+    this.applyFilter('category', node.key, false)
+    this.loadAllFilters((node.level + 1).toString(), node.key)
   }
 
   render() {
@@ -164,6 +185,7 @@ class  Category extends Component {
               format={this.state.format}
               sortProducts={this.sortProducts}
               totalItems={this.state.totalItems}
+              onSelectCategory={this.onSelectCategory}
           />
 
           <ListCategory  
