@@ -15,13 +15,25 @@ class CategoryBanners extends Component {
     this.state = { loadedBanners: false };
   }
 
+
+  formatFiles(arrFiles){
+
+    return arrFiles.map((file)=>{
+      
+      if (parseInt(file.substr(0,1)) == NaN){
+        
+      }
+
+    });
+
+  }
+
   componentDidMount() {
     getFront("/getBanners/" + this.props.category)
         .then((response) => {
-            console.log("im here.")
-            console.log(response)
             if(response.data.files.length>0){
               this.setState({loadedBanners: true, files: response.data.files})
+              
             }else{
               this.setState({loadedBanners: false, files: []})
             }
@@ -32,8 +44,6 @@ class CategoryBanners extends Component {
 
 
   render() {
-    console.log(this.state.files)
-    let urlBanner = "//kiero.co/images/resources/";
     return (
       <div className="category-banners">
         {this.state.loadedBanners &&
@@ -42,9 +52,22 @@ class CategoryBanners extends Component {
         <div className="group-category">
           {
               this.state.files.map((file, i) => {
-                return(<section key={i} className="item">
-                  <img src={baseUrl+file}/>
-                </section>)
+                let category = file.split("/")
+                category = category[category.length-1]
+                
+                if (category.substr(0,1) == NaN){
+                  category = category
+                }else{
+                  category = category.split(".")[1]
+                }
+
+                return(
+                  <section key={i} className="item">
+                    <a href={'/categoria/'+category}>
+                      <img src={baseUrl+file}/>
+                    </a>
+                  </section>
+                )
               })
           }
         </div>
