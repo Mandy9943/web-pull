@@ -204,12 +204,14 @@ class  Category extends Component {
               sortProducts={this.sortProducts}
           />
 
+
           <ListCategory  
             sendToFilters={this.sendToFilters} 
             format={this.state.format} 
             products={this.state.products}
             page={this.state.page}
             item_per_page={this.props.data.params.items_per_page}
+            category={this.props.data.search}
           />
 
         </div>

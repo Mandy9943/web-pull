@@ -20,15 +20,13 @@ class ListCategory extends Component {
 
 
   render() {
-    console.log("loaded list category");
-
     const Class = this.props.format == "grid" ? "grid" : "list";
     const page_first = (this.props.page - 1) * this.props.item_per_page;
     const page_last = ((this.props.page - 1) * this.props.item_per_page) + this.props.item_per_page;
 
     return (
       <div className="wrap-list-category">
-        <CategoryBanners/>
+        <CategoryBanners category={this.props.category}/>
         <div className={Class}>
           {this.props.products && this.props.products.products && this.props.products.products.length > 0 ? (
             this.props.format == "grid" ? (
