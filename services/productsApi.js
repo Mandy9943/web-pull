@@ -50,7 +50,7 @@ export const searchProduct = (string, limit) => {
     }
 };
 
-export const searchProducts = (size, page, ots='', brand='', price='', category='', sort_by='', order_by='') => {
+export const searchProducts = (size, page, ots='', brand='', price='', category='', sort_by='', order_by='', level='') => {
     try {
         const params = new URLSearchParams();
 
@@ -60,6 +60,7 @@ export const searchProducts = (size, page, ots='', brand='', price='', category=
         if (category !== '') params.append('category', category);
         if (sort_by !== '') params.append('sort_by', sort_by);
         if (order_by !== '') params.append('order_by', order_by);
+        if (level !== '') params.append('level', level);
 
         let endpoint = productsApi + `?size=${size}&page=${page}`
         if (params.toString().length)

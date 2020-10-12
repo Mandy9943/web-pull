@@ -46,7 +46,7 @@ class  Category extends Component {
     this.loadProducts(p)
   }
 
-  applyFilter = (type, value, loadFilter = true) => {
+  applyFilter = (type, value, categoryLevel='', loadFilter=true) => {
     let tmp_filters = this.state.filters;
     const new_val = type + "|" + value;
 
@@ -68,7 +68,7 @@ class  Category extends Component {
       page: 1,
     });
 
-    this.loadProducts(1)
+    this.loadProducts(1, '', '', categoryLevel)
     if (loadFilter) this.loadAllFilters()
   }
 
@@ -98,7 +98,7 @@ class  Category extends Component {
     this.setState({page: 1})
   }
 
-  loadProducts(page, sortBy='', orderBy='') {
+  loadProducts(page, sortBy='', orderBy='', categoryLevel='') {
     this.setState({
       products: null,
     })
@@ -125,7 +125,7 @@ class  Category extends Component {
       }
     })
 
-    let products = searchProducts(this.props.data.params.items_per_page, page, this.props.data.search, brand, price, category, sortBy, orderBy)
+    let products = searchProducts(this.props.data.params.items_per_page, page, this.props.data.search, brand, price, category, sortBy, orderBy, categoryLevel)
 
     products.then((response) => {
       this.setState({
@@ -165,8 +165,8 @@ class  Category extends Component {
   }
 
   onSelectCategory = node => {
-    this.applyFilter('category', node.key, false)
-    this.loadAllFilters((node.level + 1).toString(), node.key)
+    this.applyFilter('category', node.key, (node.level).toString(), false)
+    this.loadAllFilters((node.level+1).toString(), node.key)
   }
 
   render() {
