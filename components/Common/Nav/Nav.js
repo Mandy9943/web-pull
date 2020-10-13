@@ -123,8 +123,10 @@ export default class Nav extends Component {
     };
 
     onSuggestionSelected = suggestion => {
-        this.setState({ value: suggestion })
-        this.search(suggestion);
+        let text = suggestion.replace('<b>', '').replace('</b>', '')
+
+        this.setState({ value: text })
+        this.search(text);
     }
 
     componentDidMount() {
