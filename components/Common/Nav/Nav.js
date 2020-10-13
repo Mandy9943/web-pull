@@ -95,13 +95,23 @@ export default class Nav extends Component {
         setTimeout(() => this.setState({ showMenu: false }), 200);
     }
 
+    boldString = (str, find) => {
+        let re = new RegExp(find, 'g');
+        return str.replace(re, find.bold());
+    }
+
     onChange = event => {
         this.setState({ value: event.target.value });
 
         if (event.target.value !== '') {
             let suggestions = searchSuggestions(suggestionQuantity, event.target.value)
             suggestions.then((response) => {
-                this.setState({ suggestions: response.data.results });
+                let filterResponse = response.data.results.map(item => (
+                  {
+                    "text": this.boldString(item.text, this.state.value),
+                  }
+                ))
+                this.setState({ suggestions: filterResponse });
             })
         }
     };
@@ -198,8 +208,9 @@ export default class Nav extends Component {
                                 suggestionsMenuId="search-suggestions"
                                 items={suggestions}
                                 renderItem={(item, isHighlighted) =>
-                                    <div className="suggestion-item" style={{ background: 'white'}}>
-                                        {item.text}
+                                    <div className="suggestion-item" aria-selected={isHighlighted}
+                                      style={{ background: isHighlighted ? '#ddd' : 'white'}}>
+                                        <span dangerouslySetInnerHTML={{ __html: item.text }} />
                                     </div>
                                 }
                                 value={this.state.value}
@@ -209,6 +220,7 @@ export default class Nav extends Component {
                                     placeholder: 'Buscar productos...',
                                     onKeyPress: this.onKeyPress,
                                 }}
+                                autoHighlight={false}
                             />
                             <section onClick={(event) => {
                                 this.search()
