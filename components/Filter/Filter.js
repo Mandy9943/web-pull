@@ -136,9 +136,10 @@ class Filter extends Component {
 
     const kieroTheme = {
     'kiero-theme': {
-      text: '#5A5A5A',
+      text: '#575757',
       highlight: '#f3f3f3',
       accent: '#f3f3f3',
+      fontSize: '10px'
     }
   }
 
@@ -177,26 +178,16 @@ class Filter extends Component {
               </div>
             </div>
           </div>
-          <div className="filter-group">
-            <h4>Categorías</h4>
+          <div className="filter-group categories">
+            <div className="filter-title">Categorías</div>
             <div ref={this.categories} className="filter-height-overflow">
-              {/*{*/}
-              {/*  res_categories.map((item, index) => (*/}
-              {/*    <p key={index} className="item-filter-group show"*/}
-              {/*      onClick={() => {*/}
-              {/*        this.props.applyFilter("category", item.key);*/}
-              {/*      }}>*/}
-              {/*      {item.key} ({item.doc_count})*/}
-              {/*    </p>*/}
-              {/*  ))*/}
-              {/*}*/}
               <Tree nodes={res_categories} theme={"kiero-theme"} customTheme={kieroTheme} noIcons onSelect={this.props.onSelectCategory}/>
             </div>
-            <div className="view-all" onClick={e => this.viewAll(e.target, 'categories')}>Ver Todos</div>
+            <div style={{marginTop: 12}} className="view-all" onClick={e => this.viewAll(e.target, 'categories')}>Ver Todos</div>
           </div>
           <div className="filter-group">
-            <h4>Marca</h4>
-            <div ref={this.brands} className="filter-height-overflow">
+            <div className="filter-title">Marca</div>
+            <div ref={this.brands} className="filter-height-overflow" style={{paddingLeft: 4}}>
               {
                 res_brands.map((item, index) => (
                   <p key={index} className="item-filter-group show"
@@ -211,8 +202,8 @@ class Filter extends Component {
             <div className="view-all" onClick={e => this.viewAll(e.target, 'brands')}>Ver Todos</div>
           </div>
           <div className="filter-group show">
-            <h4>Rango de precios</h4>
-            <div>
+            <div className="filter-title">Precio</div>
+            <div style={{paddingLeft: 4}}>
               {prices.map((item, index) => (
                 <div key={index}>
                   <a onClick={() => {
@@ -223,7 +214,7 @@ class Filter extends Component {
               ))}
             </div>
             <form onSubmit={this.handlePrice}>
-              <div className="wrap-filter-price">
+              <div className="wrap-filter-price" style={{paddingLeft: 4}}>
                 <input placeholder="Mínimo" name={"from_price"} type="number" />
                 <div className="align-center">-</div>
                 <input placeholder="Máximo" name={"to_price"} type="number" />
