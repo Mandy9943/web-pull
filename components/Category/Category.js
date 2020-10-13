@@ -86,10 +86,10 @@ class  Category extends Component {
   sortProducts = (sortType) => {
     switch (sortType) {
       case '1':
-        this.loadProducts(1,'price_','desc')
+        this.loadProducts(1,'price','desc')
         break;
       case '2':
-        this.loadProducts(1, 'price_','asc')
+        this.loadProducts(1, 'price','asc')
         break;
       default:
         this.loadProducts(1)
