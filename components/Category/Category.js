@@ -172,10 +172,10 @@ class  Category extends Component {
         };
         break;
       case "1":
-        func = function(a, b) {return parseInt(b.price.replace("$ ","").split(".").join("").split(",")[0]) - parseInt(a.price.replace("$ ","").split(".").join("").split(",")[0]);};
+        func = function(a, b) {return parseInt(b.price.split(".").join("").split(",")[0]) - parseInt(a.price.split(".").join("").split(",")[0]);};
         break;
       case "2":
-        func = function(a, b) {return parseInt(a.price.replace("$ ","").split(".").join("").split(",")[0]) - parseInt(b.price.replace("$ ","").split(".").join("").split(",")[0]);};
+        func = function(a, b) {return parseInt(a.price.split(".").join("").split(",")[0]) - parseInt(b.price.split(".").join("").split(",")[0]);};
         break;
     }
     let itmtoSort = items.products;

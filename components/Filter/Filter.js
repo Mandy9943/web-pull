@@ -66,6 +66,7 @@ class Filter extends Component {
 
 
   render() {
+    
     let res_categories = [];
     if (this.props.data && this.props.data.categories) {
       for (var cat in this.props.data.categories) {

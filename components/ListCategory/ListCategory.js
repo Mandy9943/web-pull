@@ -49,7 +49,7 @@ class ListCategory extends Component {
                         <div className="product-card-description">
                           <p title={product.title}>{product.title.substr(0, 60) + (product.title.length > 60 ? "..." : ".")}</p>
                           <p>Nuevo</p>
-                          <p className="price">{product.price.split(",")[0]}</p>
+                          <p className="price">{product.price.split(".")[0].replace(/(.)(?=(\d{3})+$)/g,'$1,')}</p>
                         </div>
                       </div>
                     </div>
@@ -67,7 +67,7 @@ class ListCategory extends Component {
                         <div className="product-list-description-box">
                           <h3 className="product-list-title">{product.title.substr(0, 65) + (product.title.length > 65 ? "..." : ".")}</h3>
                           <h3 className="product-list-title">{product.user} </h3>
-                          <h3>{product.price.split(",")[0]} </h3>
+                          <h3>{product.price.split(".")[0].replace(/(.)(?=(\d{3})+$)/g,'$1,')} </h3>
                           <div className="kiero-envios-card">
                             <p className="kiero-envios-card-icon">
                               <FontAwesomeIcon icon={faTruck} />
