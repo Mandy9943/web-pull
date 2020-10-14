@@ -82,8 +82,11 @@
 
 .select-filter {
   background: transparent;
-  border: 0px;
+  border: 0;
   width: 100%;
+  font-size: .8rem;
+  font-weight: 500;
+  color: #575757;
 }
 
 .filter-group {
@@ -328,7 +331,7 @@ details > summary:first-of-type {
 }
 .filter-title {
     font-weight: 600;
-    font-size: 1rem;
+    font-size: .9rem;
     color: black;
 }
 .categories > div > div > div > div > div > div, .categories > div > div > div > div > div > div div {
@@ -338,5 +341,37 @@ details > summary:first-of-type {
 }
 .categories > div > div {
   padding-left: 0;
+}
+.filter-top-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin: 30px auto 10px auto;
+}
+.filter-top-container .order {
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+}
+.filter-top-container .order .text {
+  font-size: .9rem;
+  font-weight: 600;
+  padding-left: 3px;
+}
+.filter-top-container .content-left {
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+}
+.filter-top-container .content-left .ots {
+  font-size: 1rem;
+  color: black;
+  font-weight: 600;
+}
+.filter-top-container .content-left .totals {
+  font-size: .7rem;
+  color: #575757;
+  font-weight: 500;
 }
 /*# sourceMappingURL=Filter.css.map */

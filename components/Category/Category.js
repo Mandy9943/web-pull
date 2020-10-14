@@ -9,6 +9,7 @@ import Pagination from "../Common/Pagination/Pagination";
 import {searchProduct, getProductsBasic, searchProducts, searchFilters} from "../../services/productsApi"
 import {compareValues, } from "../../lib/functions";
 import {snakeCase} from "lodash";
+import FilterTop from "../Filter/FilterTop";
 
 class  Category extends Component {
 
@@ -172,10 +173,19 @@ class  Category extends Component {
   render() {
     return (
       <div className="search">
-          <Nav user={this.props.user_data.user} home={true} jwt={this.props.user_data.jwt} actualSearch={this.props.data.search} authenticated={this.props.user_data.authenticated} />
+        <Nav user={this.props.user_data.user} home={true} jwt={this.props.user_data.jwt} actualSearch={this.props.data.search} authenticated={this.props.user_data.authenticated} />
+
+        <FilterTop
+               sortProducts={this.sortProducts}
+               removeFilter={this.removeFilter}
+               totalItems={this.state.totalItems}
+               filters={this.state.filters}
+               search={this.props.data.search}
+               format={this.state.format}
+               toggle={this.toggleFormat}
+        />
         <div className="search-content">
-          
-          <Filter 
+          <Filter
               applyFilter={this.applyFilter} 
               removeFilter={this.removeFilter} 
               filters={this.state.filters} 
@@ -195,7 +205,6 @@ class  Category extends Component {
             page={this.state.page}
             item_per_page={this.props.data.params.items_per_page}
           />
-
         </div>
         <Pagination actual={this.state.page} totalPages={this.state.totalPages} cb={this.changePage}/>
         <Footer />

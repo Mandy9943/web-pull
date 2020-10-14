@@ -146,61 +146,34 @@ class Filter extends Component {
     return (
       <>
         <div className="wrap-filter">
-          <div className="filter-group">
-            <span>{this.props.totalItems} Resultados
-              {filters}
-            </span>
-          </div>
-          <div className="filter-group">
-            <h3>Ordenar resultados</h3>
-            <div className="wrap-filter-button">
-              <select onChange={(e) => this.setSort(e)} className="select-filter">
-                <option value="0">Más relevantes</option>
-                <option value="1">Mayor precio</option>
-                <option value="2">Menor precio</option>
-              </select>
-              <p>|</p>
-              <div className="wrap-filter-format">
-                <div
-                  onClick={() => {
-                    this.props.toggle({ format: "list" });
-                  }}
-                  className={buttonState == "list" ? "active" : null}>
-                  <FontAwesomeIcon icon={faList} />
-                </div>
-                <div
-                  onClick={() => {
-                    this.props.toggle({ format: "grid" });
-                  }}
-                  className={buttonState == "grid" ? "active" : null}>
-                  <FontAwesomeIcon icon={faTh} />
-                </div>
-              </div>
-            </div>
-          </div>
           <div className="filter-group categories">
             <div className="filter-title">Categorías</div>
-            <div ref={this.categories} className="filter-height-overflow">
-              <Tree nodes={res_categories} theme={"kiero-theme"} customTheme={kieroTheme} noIcons onSelect={this.props.onSelectCategory}/>
-            </div>
-            <div style={{marginTop: 12}} className="view-all" onClick={e => this.viewAll(e.target, 'categories')}>Ver Todos</div>
+            {res_brands.length > 0 && <>
+              <div ref={this.categories} className="filter-height-overflow">
+                <Tree nodes={res_categories} theme={"kiero-theme"} customTheme={kieroTheme} noIcons onSelect={this.props.onSelectCategory}/>
+              </div>
+              <div style={{marginTop: 12}} className="view-all" onClick={e => this.viewAll(e.target, 'categories')}>Ver Todos</div>
+            </>}
           </div>
           <div className="filter-group">
             <div className="filter-title">Marca</div>
-            <div ref={this.brands} className="filter-height-overflow" style={{paddingLeft: 4}}>
-              {
-                res_brands.map((item, index) => (
-                  <p key={index} className="item-filter-group show"
-                    onClick={() => {
-                      this.props.applyFilter("brand", item.key);
-                    }}>
-                    {item.key} ({item.doc_count})
-                  </p>
-                ))
-              }
-            </div>
-            <div className="view-all" onClick={e => this.viewAll(e.target, 'brands')}>Ver Todos</div>
+            {res_brands.length > 0 && <>
+              <div ref={this.brands} className="filter-height-overflow" style={{paddingLeft: 4}}>
+                {
+                  res_brands.map((item, index) => (
+                    <p key={index} className="item-filter-group show"
+                      onClick={() => {
+                        this.props.applyFilter("brand", item.key);
+                      }}>
+                      {item.key} ({item.doc_count})
+                    </p>
+                  ))
+                }
+              </div>
+              <div className="view-all" onClick={e => this.viewAll(e.target, 'brands')}>Ver Todos</div>
+            </>}
           </div>
+
           <div className="filter-group show">
             <div className="filter-title">Precio</div>
             <div style={{paddingLeft: 4}}>
@@ -210,19 +183,20 @@ class Filter extends Component {
                     this.props.applyFilter("price", item);
                   }}><p className="item-filter-group show">{item}</p></a>
                 </div>
-
               ))}
             </div>
-            <form onSubmit={this.handlePrice}>
-              <div className="wrap-filter-price" style={{paddingLeft: 4}}>
-                <input placeholder="Mínimo" name={"from_price"} type="number" />
-                <div className="align-center">-</div>
-                <input placeholder="Máximo" name={"to_price"} type="number" />
-                <button type="submit">
-                  <FontAwesomeIcon color={'#fff'} icon={faChevronRight}/>
-                </button>
-              </div>
-            </form>
+            {prices.length > 0 &&
+              <form onSubmit={this.handlePrice}>
+                <div className="wrap-filter-price" style={{paddingLeft: 4}}>
+                  <input placeholder="Mínimo" name={"from_price"} type="number"/>
+                  <div className="align-center">-</div>
+                  <input placeholder="Máximo" name={"to_price"} type="number"/>
+                  <button type="submit">
+                    <FontAwesomeIcon color={'#fff'} icon={faChevronRight}/>
+                  </button>
+                </div>
+              </form>
+            }
           </div>
           {/*<div className="send-free">*/}
           {/*  <h4>Envio</h4>*/}

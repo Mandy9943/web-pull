@@ -23,15 +23,17 @@
           flex: 7;
 }
 
-.wrap-list-category .fetching-empty {
-  height: 100%;
-  position: absolute;
-  left: 50%;
-  top: 0;
+.fetching-empty {
+  display: flex;
+  justify-content: center;
 }
 
 .wrap-list-category .fetching-empty .text {
-  margin-top: 50%;
+  margin-top: 10%;
+}
+
+.wrap-list-category .fetching-empty .spinner {
+  margin-top: 30%;
 }
 
 .temp-card {
