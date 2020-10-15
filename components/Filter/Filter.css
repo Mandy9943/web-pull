@@ -268,14 +268,9 @@
 
 .result {
   display: block;
-  margin: 0;
-  padding: 0;
-  font-size: 14px;
-  height: auto !important;
-  text-align: left;
-  margin-top: 7px;
+  font-size: .8rem;
+  margin-bottom: 7px;
   color: #CF0A2C;
-  padding: 0 15px;
 }
 
 .result:hover {
@@ -365,7 +360,7 @@ details > summary:first-of-type {
   flex-direction: column;
 }
 .filter-top-container .content-left .ots {
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: black;
   font-weight: 600;
 }

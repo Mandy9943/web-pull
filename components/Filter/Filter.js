@@ -121,10 +121,8 @@ class Filter extends Component {
     }
 
     const filters = this.props.filters.map((item, index) => {
-      if (item.split("|")[1] !== 'category') {
-        return <p key={index} className="result" onClick={() => {
-        this.props.removeFilter(index);
-        }}>
+      if (item.split("|")[0] !== 'category') {
+        return <p key={index} className="result" onClick={() => { this.props.removeFilter(index) }}>
           {item.split("|")[1]} <FontAwesomeIcon icon={faWindowClose} />
         </p>
       }
@@ -146,6 +144,9 @@ class Filter extends Component {
     return (
       <>
         <div className="wrap-filter">
+          <div style={{
+            marginBottom: this.props.filters.length > 0 ? 12 : 0
+          }}>{filters}</div>
           <div className="filter-group categories">
             <div className="filter-title">Categorías</div>
             {res_brands.length > 0 && <>
