@@ -6,7 +6,6 @@ import {
   faList, faTh, faTimes, faAngleRight, faChevronCircleRight,
   faWindowClose, faTruck, faChevronRight
 } from "@fortawesome/free-solid-svg-icons";
-import Tree from '@naisutech/react-tree'
 
 class Filter extends Component {
 
@@ -132,15 +131,6 @@ class Filter extends Component {
     const responsiveButton = buttonState == "grid" ? faTh : faList;
     const text = buttonState == "grid" ? "Mosaico" : "Lista";
 
-    const kieroTheme = {
-    'kiero-theme': {
-      text: '#575757',
-      highlight: '#f3f3f3',
-      accent: '#f3f3f3',
-      fontSize: '10px'
-    }
-  }
-
     return (
       <>
         <div className="wrap-filter">
@@ -149,9 +139,60 @@ class Filter extends Component {
           }}>{filters}</div>
           <div className="filter-group categories">
             <div className="filter-title">Categorías</div>
-            {res_brands.length > 0 && <>
+            {res_categories.length > 0 && <>
               <div ref={this.categories} className="filter-height-overflow">
-                <Tree nodes={res_categories} theme={"kiero-theme"} customTheme={kieroTheme} noIcons onSelect={this.props.onSelectCategory}/>
+                {res_categories.map((node, i) => {
+                  return (
+                    <div className="tree-view" key={node.label} >
+                      <div className="tree-view_item">
+                        <span className="node" onClick={() =>this.props.onSelectCategory(node, i)}
+                              style={node.selected ? {color: '#d00a2d', fontWeight: '600'} : {}}>
+                          {node.label}
+                        </span>
+                      </div>
+                      {node.items && node.items.length > 0 && node.items.map((node1, i1) => {
+                        return (
+                          <div className="tree-view_children" key={node1.label}>
+                            <span className="node" onClick={() =>this.props.onSelectCategory(node1, i1)}
+                                  style={node1.selected ? {color: '#d00a2d', fontWeight: '600'} : {}}>
+                              {node1.label}
+                            </span>
+                            {node1.items && node1.items.length > 0 && node1.items.map((node2, i2) => {
+                              return (
+                                <div className="tree-view_children" key={node2.label}>
+                                  <span className="node" onClick={() =>this.props.onSelectCategory(node2, i2)}
+                                        style={node2.selected ? {color: '#d00a2d', fontWeight: '600'} : {}}>
+                                    {node2.label}
+                                  </span>
+                                  {node2.items && node2.items.length > 0 && node2.items.map((node3, i3) => {
+                                    return (
+                                      <div className="tree-view_children" key={node3.label}>
+                                        <span className="node" onClick={() =>this.props.onSelectCategory(node3, i3)}
+                                              style={node3.selected ? {color: '#d00a2d', fontWeight: '600'} : {}}>
+                                          {node3.label}
+                                        </span>
+                                        {node3.items && node3.items.length > 0 && node3.items.map((node4, i4) => {
+                                          return (
+                                            <div className="tree-view_children" key={node4.label}>
+                                              <span className="node" onClick={() =>this.props.onSelectCategory(node4, i4)}
+                                                    style={node4.selected ? {color: '#d00a2d', fontWeight: '600'} : {}}>
+                                                {node4.label}
+                                              </span>
+                                            </div>
+                                          )
+                                        })}
+                                      </div>
+                                    )
+                                  })}
+                                </div>
+                              )
+                            })}
+                          </div>
+                        )
+                      })}
+                    </div>
+                  )
+                })}
               </div>
               <div style={{marginTop: 12}} className="view-all" onClick={e => this.viewAll(e.target, 'categories')}>Ver Todos</div>
             </>}

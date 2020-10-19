@@ -2,7 +2,8 @@ import React, {Component} from "react";
 import "./Filter.css";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
-    faList, faTh, faWindowClose
+    faAngleRight,
+    faList, faTh
 } from "@fortawesome/free-solid-svg-icons";
 
 class FilterTop extends Component {
@@ -17,25 +18,19 @@ class FilterTop extends Component {
     }
 
     render() {
-        const filters = this.props.filters.map((item, index) => {
-            if (item.split("|")[1] !== 'category') {
-                return <p key={index} className="result" onClick={() => {
-                    this.props.removeFilter(index);
-                }}>
-                    {item.split("|")[1]} <FontAwesomeIcon icon={faWindowClose}/>
-                </p>
-            }
-        });
-
         const buttonState = this.props.format;
-        const responsiveButton = buttonState == "grid" ? faTh : faList;
-        const text = buttonState == "grid" ? "Mosaico" : "Lista";
-
         return (
             <div className="filter-top-container">
                 <div className="content-left">
                     <span className="ots">
                         {this.props.search}
+                    </span>
+                    <span className="breadcrumb">
+                        {this.props.treeSelectedCategory.map((item, i) => (
+                            <><span key={item.key} onClick={() =>this.props.onSelectCategory(item, item.index)}>{item.key}</span>
+                            <FontAwesomeIcon icon={faAngleRight}/></>
+                        ))}
+                        {this.props.treeSelectedCategory.length > 0 && this.props.search}
                     </span>
                     <span className="totals">
                         {this.props.totalItems} resultados

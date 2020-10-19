@@ -25,6 +25,7 @@ class  Category extends Component {
       filterSort: '',
       filterOrder: '',
       totalItems: '',
+      treeSelectedCategory: []
     };
   }
 
@@ -141,31 +142,89 @@ class  Category extends Component {
     let filters = searchFilters(this.props.data.search, level, category)
 
     filters.then(response => {
-      let oldCategories = []
-      if (response.data.level > 0)
-        oldCategories = this.state.data.categories
+      let mergedCategories = []
 
       let newCategories = response.data.catalog_category.map(item => (
           {
-            "id": snakeCase(item.key),
             "key": item.key,
-            "parentId": response.data.level === 0 ? null : snakeCase(category),
             "label": `${item.key} (${item.doc_count})` ,
             "items": null,
             "level": response.data.level,
           }
         )).sort(compareValues('label'))
 
+      if (this.state.treeSelectedCategory.length === 0) {
+        mergedCategories = newCategories
+      } else {
+        mergedCategories = this.state.data.categories
+
+        switch (this.state.treeSelectedCategory.length) {
+          case 1:
+            mergedCategories.forEach((value, index) => {
+              if (index !== this.state.treeSelectedCategory[0].index) {
+                value.items = null
+                value.selected = false
+              } else {
+                value.items = newCategories
+                value.selected = true
+              }
+            })
+            break
+          case 2:
+            mergedCategories[this.state.treeSelectedCategory[0].index].items.forEach((value, index) => {
+              if (index !== this.state.treeSelectedCategory[1].index) {
+                value.items = null
+                value.selected = false
+              } else {
+                value.items = newCategories
+                value.selected = true
+              }
+            })
+            break
+          case 3:
+            mergedCategories[this.state.treeSelectedCategory[0].index].
+                items[this.state.treeSelectedCategory[1].index].items.forEach((value, index) => {
+              if (index !== this.state.treeSelectedCategory[2].index) {
+                value.items = null
+                value.selected = false
+              } else {
+                value.items = newCategories
+                value.selected = true
+              }
+            })
+            break
+          case 4:
+            mergedCategories[this.state.treeSelectedCategory[0].index].
+                items[this.state.treeSelectedCategory[1].index].
+                items[this.state.treeSelectedCategory[2].index].items.forEach((value, index) => {
+              if (index !== this.state.treeSelectedCategory[3].index) {
+                value.items = null
+                value.selected = false
+              } else {
+                value.items = newCategories
+                value.selected = true
+              }
+            })
+        }
+      }
       this.sendToFilters({
         'brands': response.data.catalog_brand.sort(compareValues('key')),
-        'categories': [...oldCategories, ...newCategories],
+        'categories': mergedCategories,
         'max_price': response.data.catalog_price.max,
         'min_price': response.data.catalog_price.min
       })
     })
   }
 
-  onSelectCategory = node => {
+  onSelectCategory = (node, index) => {
+    if (node.level === 0) {
+      this.setState({treeSelectedCategory: [{"index": index, "key": node.key, "level": 0}]})
+    } else {
+      let tmpTreeSelectedCategory = this.state.treeSelectedCategory
+      tmpTreeSelectedCategory = tmpTreeSelectedCategory.slice(0, node.level)
+      tmpTreeSelectedCategory.push({"index": index, "key": node.key, "level": node.level})
+      this.setState({treeSelectedCategory: tmpTreeSelectedCategory})
+    }
     this.applyFilter('category', node.key, (node.level).toString(), false)
     this.loadAllFilters((node.level+1).toString(), node.key)
   }
@@ -183,6 +242,8 @@ class  Category extends Component {
                search={this.props.data.search}
                format={this.state.format}
                toggle={this.toggleFormat}
+               treeSelectedCategory={this.state.treeSelectedCategory}
+               onSelectCategory={this.onSelectCategory}
         />
         <div className="search-content">
           <Filter

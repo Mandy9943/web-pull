@@ -323,6 +323,9 @@ details > summary:first-of-type {
   summary {
     font-size: 18px;
   }
+  .filter-top-container {
+    display: none !important;
+  }
 }
 .filter-title {
     font-weight: 600;
@@ -365,8 +368,39 @@ details > summary:first-of-type {
   font-weight: 600;
 }
 .filter-top-container .content-left .totals {
-  font-size: .7rem;
+  font-size: .8rem;
   color: #575757;
   font-weight: 500;
+}
+.tree-view {
+  overflow-y: hidden;
+}
+.tree-view_item {
+  cursor: pointer;
+}
+.tree-view_children {
+  margin-left: 16px;
+  cursor: pointer;
+}
+.tree-view_children-collapsed {
+  height: 0;
+}
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  margin: 3px 0;
+  font-size: .8rem;
+}
+.breadcrumb a {
+  color: #575757;
+  font-size: 15px;
+}
+.breadcrumb svg {
+  margin: 0 5px;
+  color: #cc7d8a;
+  font-size: 15px;
+}
+.breadcrumb span {
+  cursor: pointer;
 }
 /*# sourceMappingURL=Filter.css.map */
