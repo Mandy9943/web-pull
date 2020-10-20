@@ -173,7 +173,7 @@ export default class PaymentWay extends Component {
 
             ccPayload.address_id = this.state.addresses[this.state.selectedAddr].address_id;
 
-            const rs = {}; // /await makePaymentCC(ccPayload, this.props.user.jwt);
+            const rs = await makePaymentCC(ccPayload, this.props.user.jwt);
             if (rs.data) {
                 window.location = "/pay_result/"+rs.data.id;
             } else {
