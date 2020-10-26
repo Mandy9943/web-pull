@@ -117,7 +117,7 @@ export default class addAddress extends React.Component {
                                 <p>
                                     Dirección
                                 </p>
-                                <div className="input-form content-accordion-form">
+                                <div className="input-form content-accordion-form add-direction">
 
                                     <Select name={"address0"} >
                                         <option>Calle</option>    
