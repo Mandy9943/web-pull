@@ -8,8 +8,10 @@ import Pagination from "../Common/Pagination/Pagination";
 
 import {searchProduct, getProductsBasic, searchProducts, searchFilters} from "../../services/productsApi"
 import {compareValues, } from "../../lib/functions";
-import {snakeCase} from "lodash";
 import FilterTop from "../Filter/FilterTop";
+import { getData } from "../../services/userApi";
+import redirect from "../../lib/redirect";
+import Error from "next/error";
 
 class  Category extends Component {
 
@@ -25,13 +27,45 @@ class  Category extends Component {
       filterSort: '',
       filterOrder: '',
       totalItems: '',
-      treeSelectedCategory: []
+      treeSelectedCategory: [],
+      existsCategoryMenu: true,
+      categoryLevel: '',
     };
   }
 
-  componentDidMount(){
-    this.loadProducts(1)
-    this.loadAllFilters()
+  componentDidMount() {
+    if (this.props.data.type === 'category') {
+      getData("/getMenuCategories")
+      .then((response) => {
+          response.data.forEach(value => {
+            this.findCategoryLevel(value)
+          })
+      }).then(() => {
+        if (this.state.categoryLevel == '') {
+          this.setState({existsCategoryMenu: false})
+        }
+      });
+    }
+
+    if (this.props.data.type !== 'category') {
+      this.loadProducts(1)
+      this.loadAllFilters()
+    }
+  }
+
+  findCategoryLevel = (target, level = 1) => {
+	if (target.name == this.props.data.search) {
+	  this.loadProducts(1, '', '', this.props.data.search)
+      this.loadAllFilters(level.toString(), this.props.data.search)
+      this.setState({categoryLevel: level})
+
+    } else if (target.childs && target.childs.length > 0) {
+      level++
+
+      for (const key in target.childs) {
+        this.findCategoryLevel(target.childs[key], level);
+      }
+    }
   }
 
   toggleFormat = (format) => {
@@ -153,7 +187,7 @@ class  Category extends Component {
           }
         )).sort(compareValues('label'))
 
-      if (this.state.treeSelectedCategory.length === 0) {
+      if (this.state.treeSelectedCategory.length === 0 || this.props.data.type === 'category') {
         mergedCategories = newCategories
       } else {
         mergedCategories = this.state.data.categories
@@ -217,6 +251,10 @@ class  Category extends Component {
   }
 
   onSelectCategory = (node, index) => {
+    if (this.props.data.type === 'category') {
+      redirect("/categoria/" + node.key);
+    }
+
     if (node.level === 0) {
       this.setState({treeSelectedCategory: [{"index": index, "key": node.key, "level": 0}]})
     } else {
@@ -230,7 +268,7 @@ class  Category extends Component {
   }
 
   render() {
-    return (
+    return this.state.existsCategoryMenu ? (
       <div className="search">
         <Nav user={this.props.user_data.user} home={true} jwt={this.props.user_data.jwt} actualSearch={this.props.data.search} authenticated={this.props.user_data.authenticated} />
 
@@ -244,13 +282,14 @@ class  Category extends Component {
                toggle={this.toggleFormat}
                treeSelectedCategory={this.state.treeSelectedCategory}
                onSelectCategory={this.onSelectCategory}
+               isSearch={this.props.data.type === 'search'}
         />
         <div className="search-content">
           <Filter
               applyFilter={this.applyFilter} 
               removeFilter={this.removeFilter} 
               filters={this.state.filters} 
-              search={this.props.data.search} 
+              search={this.props.data.search}
               data={this.state.data} 
               toggle={this.toggleFormat} 
               format={this.state.format}
@@ -270,7 +309,9 @@ class  Category extends Component {
         <Pagination actual={this.state.page} totalPages={this.state.totalPages} cb={this.changePage}/>
         <Footer />
       </div>
-    );
+    ) : (
+        <Error statusCode={404} />
+    )
   }
 }
 

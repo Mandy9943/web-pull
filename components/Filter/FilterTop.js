@@ -25,13 +25,15 @@ class FilterTop extends Component {
                     <span className="ots">
                         {this.props.search}
                     </span>
-                    <span className="breadcrumb">
-                        {this.props.treeSelectedCategory.map((item, i) => (
-                            <><span key={item.key} onClick={() =>this.props.onSelectCategory(item, item.index)}>{item.key}</span>
-                            <FontAwesomeIcon icon={faAngleRight}/></>
-                        ))}
-                        {this.props.treeSelectedCategory.length > 0 && this.props.search}
-                    </span>
+                    { this.props.isSearch &&
+                        <span className="breadcrumb">
+                            {this.props.treeSelectedCategory.map((item, i) => (
+                                <><span key={item.key} onClick={() =>this.props.onSelectCategory(item, item.index)}>{item.key}</span>
+                                <FontAwesomeIcon icon={faAngleRight}/></>
+                            ))}
+                            {this.props.treeSelectedCategory.length > 0 && this.props.search}
+                        </span>
+                    }
                     <span className="totals">
                         {this.props.totalItems} resultados
                     </span>
