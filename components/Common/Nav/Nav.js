@@ -108,7 +108,7 @@ export default class Nav extends Component {
             suggestions.then((response) => {
                 let filterResponse = response.data.results.map(item => (
                   {
-                    "text": this.boldString(item.text, this.state.value),
+                    "text": this.boldString(item.alias, this.state.value),
                   }
                 ))
                 this.setState({ suggestions: filterResponse });
