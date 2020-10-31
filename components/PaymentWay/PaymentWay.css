@@ -137,6 +137,19 @@
   float: right;
 }
 
+.add-direction {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 50% 1fr 1fr 1fr;
+      grid-template-columns: 50% 1fr 1fr 1fr;
+  grid-gap: 5px;
+}
+
+.add-direction input {
+  height: auto;
+  margin: auto;
+}
+
 .content-accordion-form {
   display: -ms-grid;
   display: grid;

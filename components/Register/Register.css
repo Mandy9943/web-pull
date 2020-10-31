@@ -37,6 +37,23 @@
   width: auto;
 }
 
+.password {
+  position: relative;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr auto;
+      grid-template-columns: 1fr auto;
+  grid-gap: 10px;
+}
+
+.password a {
+  margin: auto;
+}
+
+.password a:hover {
+  cursor: pointer;
+}
+
 .register-text {
   font-size: 14px;
   text-align: center;

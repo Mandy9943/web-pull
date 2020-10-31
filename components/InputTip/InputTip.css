@@ -1,0 +1,76 @@
+.purchase-list {
+  padding: 40px;
+  padding-top: 42px;
+}
+
+.purchase-list .status-title {
+  color: #5A5A5A;
+  font-size: 27px;
+}
+
+.purchase-list .empty-text {
+  padding: 40px 15px;
+  font-size: 20px;
+  color: #5A5A5A;
+}
+
+.account-store-sales-wrap-search, .account-store-sales-wrap-filter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.account-store-sales-wrap-search .sub-title, .account-store-sales-wrap-filter .sub-title {
+  color: #444444;
+  font-size: 13px;
+}
+
+.account-store-sales-wrap-filter p {
+  border-right: 0.5px solid;
+  padding-right: 7px;
+}
+
+.account-store-sales-wrap-input-search {
+  position: relative;
+  margin-left: 7px;
+}
+
+.account-store-sales-wrap-input-search span {
+  position: absolute;
+  bottom: 8px;
+  left: 4px;
+  font-size: 16px;
+  color: #6F6F6F;
+}
+
+.account-store-sales-input-search {
+  border: 0px;
+  border-bottom: 0.5px solid #5A5A5A;
+  border-radius: 0px;
+  background: transparent;
+  padding-left: 22px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0px;
+}
+
+@media (max-width: 700px) {
+  .purchase-list {
+    padding: 15px;
+  }
+  .purchase-list .status-title {
+    font-size: 28px;
+    font-weight: 600;
+  }
+  .purchase-list .account-store-sales-wrap-search {
+    padding: 0;
+  }
+}
+/*# sourceMappingURL=InputTip.css.map */

@@ -12,6 +12,10 @@ import Modal from "../Common/Modal";
 import AddAddress from "../UserAccount/AddAddress"
 import { validatePayCC, validatePaymentPSE } from "../../lib/validation"
 import Error from "../Login/Error";
+import InputTip from "../InputTip"
+
+import Cards from 'react-credit-cards';
+import 'react-credit-cards/es/styles-compiled.css'
 
 
 export default class PaymentWay extends Component {
@@ -32,6 +36,14 @@ export default class PaymentWay extends Component {
             error: null,
             cc_error: null,
             pse_error: null,
+            tips: {},
+            ccv: '',
+            expiration_date: '',
+            focus: '',
+            card_holder: '',
+            card_number: '',
+            card_max_length: 16,
+            card_type: 'invalid',
 
         }
         this.addrRef = React.createRef();
@@ -132,13 +144,18 @@ export default class PaymentWay extends Component {
         e.preventDefault();
 
         this.setState({cc_error: null});
-
+	const actualSize = e.target.elements.card_number.value.length;
+	var tips = {};
+	if(this.state.card_type == "invalid"){
+		tips.card_number == "El numero de tarjeta ingresado no es valido";
+	}
         const ccPayload = {
+
             product_id: this.props.data.product_id,
             device_session_id: this.props.user.dsi.dsi,
             document_type: e.target.elements.document_type.value,
             document_number: e.target.elements.document_number.value.split(" ").join("").split(".").join(""),
-            card_type: e.target.elements.card_type.value,
+            card_type: this.state.card_type,
             card_number: e.target.elements.card_number.value.split(" ").join(""),
             ccv: e.target.elements.ccv.value,
             expiration_date: "20"+e.target.elements.expiration_date.value,
@@ -146,8 +163,8 @@ export default class PaymentWay extends Component {
             monthly_fees: e.target.elements.monthly_fees.value
         };
 
-        const validated = validatePayCC(ccPayload);
-        if(validated===true){
+        const validated = Object.assign(tips, validatePayCC(ccPayload));
+        if(Object.values(validated).length == 0){
 
             if (this.state.selectedAddr == -1) {
                 this.setState({ modalAddr: true });
@@ -167,13 +184,39 @@ export default class PaymentWay extends Component {
         }else{
 
             this.setState({
-                cc_error: validated
+                tips: validated
             });
         }
 
     };
 
+    exitccv = (e) => {
+        this.setState({ focus: "" });
+    }
+    
+    handleInputFocus = (e) => {
+        let name = "";
+        if (e.target.name != 'ccv'){
+            name = e.target.name;
+        }else{
+            name = 'cvc';
+        }
+        this.setState({ focus: name });
+    }
+      
+      handleInputChange = (e) => {
+        let { name, value } = e.target;
+        this.setState({ [name]: value });
+      }
 
+      card_change = (type, valid) => {
+
+        this.setState({card_max_length: type.maxLength});
+        if(!valid){
+            this.setState({card_type: "invalid"});
+        }
+
+      }
 
 
     render() {
@@ -186,7 +229,7 @@ export default class PaymentWay extends Component {
                     return <option key={i} value={i}>{addr.address}</option>
                 })}
             </Select>
-            <Button onClick={this.setAddr} text={"Cambiar"} />
+            <Button onClick={this.setAddr} text={"Aceptar"} />
 
             <Button onClick={() => this.setState({ modal: 1, modalAddr: false })} text={"Agregar dirección"} />
             
@@ -200,16 +243,11 @@ export default class PaymentWay extends Component {
             <option value={"DE"}>Documento de identificación extranjero </option>
         </>
 
-        const cardType = <>
-            <option value={"0"}>- Seleccione - </option>
-            <option value={"MASTERCARD"}>Master Card</option>
-            <option value={"VISA"}>Visa</option>
-            <option value={"VISA_DEBIT"}>Visa Debito</option>
-            <option value={"DINERS"}>Dinners</option>
-            <option value={"AMEX"}>American Express</option>
-            <option value={"CODENSA"}>Codensa</option>
-        </>
-
+        let months_fees = []
+	let i = 0;
+        for (i=1; i<32; i++){
+            months_fees.push(<option value={i}>{i}</option>)
+        }
 
         return (
             <div className="payment-way">
@@ -253,31 +291,68 @@ export default class PaymentWay extends Component {
                             <div className={this.state.closeCredit ? "accordion-payment-way" : "accordion-payment-way active"}>
                                 <div className="content-accordion">
                                     <form onSubmit={this.payCC}>
-                                        <input maxLength={16} name={"card_number"} placeholder="Número de tarjeta *" />
-                                        <input maxLength={64} name={"card_holder"}  placeholder="Nombre y apellido impreso *" />
+
+                                        <input
+                                            type="tel"
+                                            name="card_number"
+                                            placeholder="Numero de tarjeta."
+                                            onChange={this.handleInputChange}
+                                            onFocus={this.handleInputFocus}
+                                            maxLength={this.state.card_max_length}
+                                            
+                                        />
+
+                                        <InputTip msg={this.state.tips.card_number}/>
+
+                                        <input maxLength={64} name={"card_holder"} onChange={this.handleInputChange} onFocus={this.handleInputFocus}  placeholder="Nombre y apellido impreso *" />
+                                        <InputTip msg={this.state.tips.card_holder}/>
                                         <div className="input-form">
-                                            <input  maxLength={5} name={"expiration_date"} placeholder="AA/MM" />
-                                            <input  maxLength={4} name={"ccv"} placeholder="CVV" />
+                                            <input  maxLength={5} onChange={this.handleInputChange} onFocus={this.handleInputFocus} name={"expiration_date"} placeholder="AA/MM" />
+                                            <input  maxLength={4} onChange={this.handleInputChange} onFocus={this.handleInputFocus} onBlur={this.exitccv} name={"ccv"} placeholder="CVV" />
                                         </div>
+
                                         <div className="input-form">
-                                            <div className={"content-accordion-form"}>
-                                                <Select name={"card_type"}>
-                                                    {cardType}
-                                                </Select></div>
-                                            <input defaultValue={"1"}  name={"monthly_fees"} placeholder="Cuotas" />
+                                            <InputTip msg={this.state.tips.expiration_date}/>
+                                            <InputTip msg={this.state.tips.ccv}/>
                                         </div>
+
+                                        
+                                            Coutas:  
+                                            <div className={"content-accordion-form"}>                                           
+                                                <Select name={"monthly_fees"}>
+                                                    {months_fees}
+                                                </Select>
+                                            </div>   
+                                        
+
+                                        <div className="input-form">
+                                            <InputTip msg={this.state.tips.monthly_fees}/>
+                                        </div>
+
+
+
                                         <div className={"content-accordion-form"}>
                                         <Select name={"document_type"}>
                                             {docType}
-                                        </Select></div>
+                                        </Select>
+                                            <InputTip msg={this.state.tips.document_type}/></div>
                                         <input name={"document_number"} placeholder="Número documento" />
+                                        <InputTip msg={this.state.tips.document_number}/>
                                         <button type="submit" className="button-continue main-button">
                                             <p>Continuar</p>
                                         </button>
                                     </form>
-                                    <div className="cardImg">
-                                        <img alt="tarjeta credito" src={CardImg} />
-                                    </div>
+                                    <Cards
+                                        cvc={this.state.ccv}
+                                        expiry={this.state.expiration_date}
+                                        focused={this.state.focus}
+                                        name={this.state.card_holder}
+                                        number={this.state.card_number}
+
+                                        callback={this.card_change}
+                                        placeholders="TU NOMBRE"
+                                        
+                                        />
                                 </div>
 
                                 {this.state.cc_error && <Error message={this.state.cc_error} />}

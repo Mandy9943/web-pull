@@ -2,9 +2,18 @@
   position: relative;
 }
 
+.add-addess .add-direction {
+  display: -ms-grid !important;
+  display: grid !important;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr !important;
+      grid-template-columns: 1fr 1fr 1fr 1fr !important;
+  grid-gap: 5px !important;
+}
+
 .add-addess .add-adress-container {
   margin: 80px auto 0px auto;
   width: 50%;
+  background: red;
 }
 
 .add-addess .add-adress-container h2 {
