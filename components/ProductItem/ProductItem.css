@@ -1,8 +1,8 @@
 .product-item {
   padding: 20px;
   background-color: #FFFFFF;
-  -webkit-box-shadow: 0px 3px 3px #00000029;
-          box-shadow: 0px 3px 3px #00000029;
+  -webkit-box-shadow: 0px 3px 3px #11111129;
+          box-shadow: 0px 3px 3px #11111129;
   border-radius: 6px;
   height: -webkit-fit-content;
   height: -moz-fit-content;
@@ -14,12 +14,12 @@
   font-weight: bold;
   margin-bottom: 5px;
   font-size: 15px;
-  color: #5A5A5A;
+  color: #111111;
 }
 
 .product-item .detail-status, .product-item .detail-date {
   font-size: 12px;
-  color: #5A5A5A;
+  color: #111111;
 }
 
 .product-item .detail-date {
@@ -36,7 +36,7 @@
 }
 
 .product-item a {
-  color: #D11E36;
+  color: #CF0A2C;
 }
 
 .product-item .product {
@@ -60,7 +60,7 @@
 .product-item .product .description h3 {
   padding: 0 0 0 15px;
   font-size: 14px;
-  color: #5A5A5A;
+  color: #111111;
 }
 
 .product-item .product .description .product-stock {
@@ -73,7 +73,7 @@
 }
 
 .product-item .info p {
-  color: #5A5A5A;
+  color: #111111;
   font-size: 14px;
 }
 

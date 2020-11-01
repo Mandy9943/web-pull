@@ -4,7 +4,7 @@
 }
 
 .purchases-detail h1 {
-  color: #5A5A5A;
+  color: #111111;
   font-size: 22px;
 }
 
@@ -13,11 +13,11 @@
 }
 
 .purchases-detail .item-product, .purchases-detail .detail-info, .purchases-detail .vendor-reputation, .purchases-detail .payment-status, .purchases-detail .vendor-info, .purchases-detail .product-valoration {
-  -webkit-box-shadow: 0px 3px 6px #00000029;
-          box-shadow: 0px 3px 6px #00000029;
+  -webkit-box-shadow: 0px 3px 6px #11111129;
+          box-shadow: 0px 3px 6px #11111129;
   border-radius: 5px;
   background: white;
-  color: #5A5A5A;
+  color: #111111;
 }
 
 .purchases-detail .twins {
@@ -151,8 +151,8 @@
   color: #CF0A2C;
   height: 30px;
   width: 30px;
-  -webkit-box-shadow: 0px 3px 6px #00000029;
-          box-shadow: 0px 3px 6px #00000029;
+  -webkit-box-shadow: 0px 3px 6px #11111129;
+          box-shadow: 0px 3px 6px #11111129;
   padding: 15px;
   border-radius: 50%;
   margin: auto;
@@ -180,8 +180,8 @@
   width: 100%;
   border-radius: 100%;
   max-width: 125px;
-  -webkit-box-shadow: 0px 3px 6px #00000029;
-          box-shadow: 0px 3px 6px #00000029;
+  -webkit-box-shadow: 0px 3px 6px #11111129;
+          box-shadow: 0px 3px 6px #11111129;
 }
 
 .purchases-detail .vendor-info .info-text .title {
@@ -239,8 +239,8 @@
   width: 100%;
   border-radius: 100%;
   max-width: 125px;
-  -webkit-box-shadow: 0px 3px 6px #00000029;
-          box-shadow: 0px 3px 6px #00000029;
+  -webkit-box-shadow: 0px 3px 6px #11111129;
+          box-shadow: 0px 3px 6px #11111129;
 }
 
 .purchases-detail .product-valoration .info-text .title {
@@ -279,7 +279,7 @@
     padding-top: 15px;
   }
   .purchases-detail h1 {
-    color: #5A5A5A;
+    color: #111111;
     font-size: 15px;
   }
   .purchases-detail .status {
@@ -389,8 +389,8 @@
     color: #CF0A2C;
     height: 30px;
     width: 30px;
-    -webkit-box-shadow: 0px 3px 6px #00000029;
-            box-shadow: 0px 3px 6px #00000029;
+    -webkit-box-shadow: 0px 3px 6px #11111129;
+            box-shadow: 0px 3px 6px #11111129;
     padding: 15px;
     border-radius: 50%;
     margin: auto;

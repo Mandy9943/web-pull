@@ -26,7 +26,7 @@ class PaySection extends Component {
     let u_data = this.props.user_data
     let qty_options = [];
     for (let i = 1; i <= this.props.stock; i++) {
-      qty_options[i - 1] = (<option key={"d" + i} value={i}>Cantidad:{i} disponibles({this.props.stock})</option>);
+      qty_options[i - 1] = (<option key={"d" + i} value={i}>Cantidad: {i} (stock disponible {this.props.stock})</option>);
     }
 
     
@@ -36,7 +36,7 @@ class PaySection extends Component {
           <h1 className="title-pay-product-detail">{this.props.title.substr(0,60)}</h1>
         </div>
         <div className="pay-item">
-          <h2 className="price-pay-product-detail">{this.props.price.split(",")[0]}</h2>
+          <h2 className="price-pay-product-detail">$ {this.props.price.split(",")[0].replace(/(.)(?=(\d{3})+$)/g,'$1,')}</h2>
         </div>
         <div className="pay-item pay-img no-movil">
           <img src={iconCredit} className="icon-credit" />
@@ -91,7 +91,7 @@ class PaySection extends Component {
         </div>
         <div className="section-pay-send no-movil">
           <div className="section-pay-send-title">
-            <h4>Formas de envio</h4>
+            <h4>Formas de envío</h4>
             <FontAwesomeIcon icon={faAngleRight} />
           </div>
           <div className="section-pay-send-subtitle">

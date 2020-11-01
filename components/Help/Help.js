@@ -136,7 +136,7 @@ export default class Help extends Component {
                         <p>En el momento que tengas el producto, puedes dejar un comentario al vendedor, este se mostrara en su perfil.
                         La forma de realizar este comentario depende como hayas recibido el producto.
                             </p>
-                        <h5>A traves de Kiero Envios</h5>
+                        <h5>A traves de Kiero Envíos</h5>
                         <p>En esta opicion encontraras en el menu de listado de compras alli podras opinar sobre el vendedor</p>
                         <h5>Entrega acordada</h5>
                         <p>Si acordaste la entrega perosnalemente con el vendor, o en su defecto uso una forma propia de envio te haremos llegar

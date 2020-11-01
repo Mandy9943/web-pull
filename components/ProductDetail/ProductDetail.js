@@ -79,12 +79,12 @@ class ProductDetail extends Component {
           <div className="wrap-section-1">
             <div className="wrap-product">
               <DetailImg images={mdata.images} category={mdata.category.name} product_name={mdata.title} />
-              <RankProduct/>
+              {/* <RankProduct/> */}
               <div className="pay-section-responsive">
                 <Pay pid={mdata.product_id} seller={mdata.user} price={mdata.price} title={mdata.title} stock={mdata.stock} />
               </div>
               <Detail width={mdata.width} length={mdata.length} weight={mdata.weight} title={mdata.title} product_name={mdata.title} desciption={mdata.description} />
-              <CommentsProduct/>
+              {/* <CommentsProduct/> */}
               <Question user_data={this.props.user_data} product_id={mdata.product_id} cb={this.loadQuestions} />
               <section className="no-movil">
                 <QuestionItem product_id={mdata.product_id} questions={this.state.questions} />
@@ -113,7 +113,7 @@ class ProductDetail extends Component {
               </div>
               <div className="section-pay-send no-web">
                 <div className="section-pay-send-title">
-                  <h4>Formas de envio</h4>
+                  <h4>Formas de envío</h4>
                 </div>
                 <div className="section-pay-send-subtitle">
                   <span>

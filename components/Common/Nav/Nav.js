@@ -148,10 +148,10 @@ export default class Nav extends Component {
                     {!authenticated ?
                     <>
                         <h5>Bienvenido</h5>
-                        <p>Crea tu cuenta o inicia sesion</p>
+                        <p>Crea tu cuenta o inicia sesión</p>
                     <section className="actions">
-                                <Link href="/login"><a className="main-button">iniciar sesion</a></Link>
-                        <Link href="/registro"><a className="main-button">Registrarse</a></Link>
+                                <Link href="/login"><a className="main-button">Iniciar sesión</a></Link>
+                        <Link href="/registro"><a className="main-button">Regístrate</a></Link>
                         </section> 
                     </>
                         :   
@@ -172,12 +172,12 @@ export default class Nav extends Component {
                                 <span className="number-accent">{this.state.notifications.length}</span>
                             : null }
                     </p></a></Link> : null}
-                    <Link href="/lista_categorias"><a><FontAwesomeIcon icon={faAlignLeft} /> <p>Categorias</p></a></Link>
+                    <Link href="/lista_categorias"><a><FontAwesomeIcon icon={faAlignLeft} /> <p>Categorías</p></a></Link>
                     {/*<Link href="#"><a><FontAwesomeIcon icon={faArrowDown} /> <p>Descarga la app</p></a></Link>*/}
                     <hr />
                     <Link href="/ayuda"><a><FontAwesomeIcon icon={faQuestion} /> <p>Ayuda / PQR</p></a></Link>
                     {authenticated ?
-                    <Link href="/logout"><a className="logout">Cerrar sesion</a></Link> : null
+                    <Link href="/logout"><a className="logout">Cerrar sesión</a></Link> : null
                     }
                 </div>
             </>
@@ -239,7 +239,7 @@ export default class Nav extends Component {
                                             <Link href="/cuenta#compras"><a className="items"> <FontAwesomeIcon icon={faShoppingBag} />Compras</a></Link>
                                             <Link href="/cuenta#opciones"><a className="items"> <FontAwesomeIcon icon={faCog} />Opciones</a></Link>
                                             <hr />
-                                            <Link href="/logout"><a className="items">Cerrar sesion</a></Link>
+                                            <Link href="/logout"><a className="items">Cerrar sesión</a></Link>
                                         </section>
                                     </section>
                                 <section  onMouseEnter={() => this.mEnter()} onMouseLeave={() => this.mLeave()}  className={this.state.showNotification ? "notification-off notification-on" : "notification-off"}>
@@ -269,11 +269,13 @@ export default class Nav extends Component {
                                 </section>
                                 <Link href="/categoria/[category]" as="/categoria/Bebés"><a>Bebés</a></Link>
                                 <Link href="/categoria/[category]" as="/categoria/Belleza"><a>Belleza</a></Link>
-                                <Link href="/categoria/[category]" as="/categoria/Cámaras y accesorios"><a>Cámaras y accesorios</a></Link>
+                                <Link href="/categoria/[category]" as="/categoria/Cámaras y accesorios"><a>Cámaras</a></Link>
                                 <Link href="/categoria/[category]" as="/categoria/Electrodomésticos"><a>Electrodomésticos</a></Link>
                                 <Link href="/categoria/[category]" as="/categoria/Electrónica"><a>Electrónica</a></Link>
-                                <Link href="/categoria/[category]" as="/categoria/Hogar y muebles"><a>Hogar y muebles</a></Link>
-                                <Link href="/categoria/[category]" as="/categoria/Juegos y juguetes"><a>Juegos y juguetes</a></Link>
+                                <Link href="/categoria/[category]" as="/categoria/Hogar y muebles"><a>Hogar</a></Link>
+                                <Link href="/categoria/[category]" as="/categoria/Juegos y juguetes"><a>Juguetes</a></Link>
+                                <Link href="/categoria/[category]" as="/categoria/Hogar y muebles"><a>Videojuegos</a></Link>
+                                <Link href="/categoria/[category]" as="/categoria/Juegos y juguetes"><a>Salud</a></Link>
                             </ul>
                         </div>
                     </div>

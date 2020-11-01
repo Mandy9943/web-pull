@@ -7,7 +7,7 @@
 }
 
 .summary-content p {
-  color: #5A5A5A;
+  color: #111111;
 }
 
 .summary-content .user-account-container {
@@ -26,12 +26,12 @@
 }
 
 .summary-content .user-account-container .user-account-menu h3 {
-  color: #5A5A5A;
+  color: #111111;
   font-size: 17px;
 }
 
 .summary-content .user-account-container .user-account-menu .user-account-menu-text {
-  color: #5A5A5A;
+  color: #111111;
   font-size: 14px;
 }
 

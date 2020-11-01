@@ -1,13 +1,13 @@
 .category-banners {
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .category-banners h3.title {
   margin-bottom: 10px;
   font-size: 25px;
   font-weight: 600;
-  color: #5A5A5A;
-  text-align: center;
+  color: #111111;
+  text-align: left;
   margin-bottom: 30px;
 }
 
@@ -16,13 +16,14 @@
   display: grid;
   -ms-grid-columns: auto auto auto;
       grid-template-columns: auto auto auto;
-  grid-gap: 25px;
+  grid-gap: 10px;
+  padding: 15px;
 }
 
 .category-banners .group-category .item {
   background: white;
-  -webkit-box-shadow: 0px 3px 6px #00000029;
-          box-shadow: 0px 3px 6px #00000029;
+  -webkit-box-shadow: 0px 3px 6px #11111129;
+          box-shadow: 0px 3px 6px #11111129;
   position: relative;
   display: -ms-grid;
   display: grid;
@@ -35,14 +36,36 @@
 
 .category-banners .group-category .item img {
   width: 70%;
-  margin: 20px auto 10px;
+  margin: 10px auto 5px;
 }
 
 .category-banners .group-category .item span.title {
   margin-bottom: 15px;
   display: block;
   font-weight: 600;
-  color: #5A5A5A;
+  color: #111111;
   font-size: 14px;
+}
+@media (max-width: 768px) {
+  .category-banners .group-category {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: auto auto ;
+        grid-template-columns: auto auto ;
+    grid-gap: 10px;
+  }
+  .category-banners .group-category .item img {
+    width: 100%;
+    margin: 5px auto 5px;
+  }
+  .category-banners h3.title {
+    margin-bottom: 1px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #111111;
+    text-align: left;
+    margin-bottom: 0px;
+    padding-left: 15px;
+  }
 }
 /*# sourceMappingURL=CategoryBanners.css.map */

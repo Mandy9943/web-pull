@@ -2,6 +2,7 @@
   color: white;
   font-size: 16px;
   margin-top: -3px;
+  font-weight: 500;
 }
 
 .menu ul {
@@ -91,7 +92,7 @@
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 3fr 2fr;
-      grid-template-columns: 1fr 3fr 2fr;
+      grid-template-columns: 1fr 4fr 2fr;
 }
 
 .nav-top .user-menu {
@@ -99,7 +100,7 @@
   -ms-flex-item-align: start;
       -ms-grid-row-align: start;
       align-self: start;
-  margin-top: 12px;
+  margin-top: 15px;
   position: relative;
 }
 
@@ -166,7 +167,7 @@
   right: -5px;
   padding: 30px 0 0;
   text-align: center;
-  color: #5A5A5A;
+  color: #111111;
   display: none;
 }
 
@@ -205,7 +206,7 @@
 }
 
 .nav-top .user-menu .menu-off .options a {
-  color: #5A5A5A;
+  color: #111111;
   margin: 15px;
   display: block;
 }
@@ -246,7 +247,7 @@
 }
 
 .nav-botton .main-menu a {
-  color: #FFCCCC;
+  color: #ffffff;
   font-size: 14px;
   padding: 1px 7px;
 }
@@ -261,12 +262,13 @@
 
 .search-bar {
   position: relative;
+  margin-top: 5px;
 }
 
 .search-bar input {
   border: none  !important;
-  -webkit-box-shadow: 0px 3px 6px #00000029;
-          box-shadow: 0px 3px 6px #00000029;
+  -webkit-box-shadow: 0px 3px 6px #11111129;
+          box-shadow: 0px 3px 6px #11111129;
 }
 
 .search-bar .icon {
@@ -315,6 +317,10 @@
   }
   .mobil-nav .nav-botton a {
     color: white;
+  }
+  .search-bar {
+
+    margin-top: 0px;
   }
   .search-bar .icon {
     top: 0;

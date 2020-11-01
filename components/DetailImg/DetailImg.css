@@ -95,9 +95,9 @@
     left: 0;
     right: 0;
     z-index: 10;
-    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.28)), color-stop(77%, rgba(0, 0, 0, 0)), color-stop(81%, rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0)));
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.28) 0%, rgba(0, 0, 0, 0) 77%, rgba(0, 0, 0, 0) 81%, rgba(0, 0, 0, 0) 100%);
-    padding: 10px 10px 30px;
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.158)), color-stop(77%, rgba(0, 0, 0, 0)), color-stop(81%, rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0)));
+    background: linear-gradient(to bottom, rgba(44, 44, 44, 0.726) 0%, rgba(44, 44, 44, 0.212) 47%, rgba(44, 44, 44, 0.055) 81%, rgba(44, 44, 44, 0) 100%);
+    padding: 10px 10px 40px;
     color: white;
   }
   .gallery-responsive .back-button svg {

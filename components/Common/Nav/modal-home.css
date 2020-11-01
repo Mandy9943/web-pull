@@ -14,7 +14,7 @@
       -ms-flex-pack: center;
           justify-content: center;
   z-index: 100;
-  color: #5A5A5A !important;
+  color: #111111 !important;
   background: rgba(0, 0, 0, 0.48);
 }
 
@@ -42,7 +42,7 @@
 }
 
 .nav-botton .modal-home .wrap-modal .modal .header-modal .user-perfil {
-  color: #5A5A5A !important;
+  color: #111111 !important;
   display: block;
   position: relative;
 }
@@ -103,11 +103,11 @@
   position: absolute;
   top: 4px;
   left: 30px;
-  color: #5A5A5A !important;
+  color: #111111 !important;
 }
 
 .nav-botton .modal-home .wrap-modal .modal .header-modal a svg {
-  background: #5A5A5A;
+  background: #111111;
   border-radius: 50%;
   padding: 4px;
   width: 14px;
@@ -146,7 +146,7 @@
 
 .nav-botton .modal-home .wrap-modal .modal .header-modal .logout {
   margin-left: 30px;
-  color: #5A5A5A;
+  color: #111111;
 }
 
 @media (max-width: 370px) {

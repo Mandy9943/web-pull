@@ -5,13 +5,13 @@
   border-bottom: 0.5px solid #BEBEBE;
   border-radius: 5px;
   display: none;
-  -webkit-box-shadow: 0px 3px 3px #00000029;
-          box-shadow: 0px 3px 3px #00000029;
+  -webkit-box-shadow: 0px 3px 3px #11111129;
+          box-shadow: 0px 3px 3px #11111129;
 }
 
 .listProductMovil h3 {
   padding: 15px;
-  color: #5A5A5A;
+  color: #111111;
   font-size: 16px;
   font-weight: 600;
 }
@@ -53,6 +53,7 @@
   max-width: 150px;
   height: auto;
   max-height: 84px;
+  padding-left: 10px;
 }
 
 .product-item-edit .product .description {
@@ -64,11 +65,11 @@
 .product-item-edit .product .description h3 {
   padding: 0 0 0 15px;
   font-size: 13px;
-  color: #5A5A5A;
+  color: #111111;
 }
 
 .product-item-edit .product .description h3.price {
-  color: #3B3B3B;
+  color: #111111;
   font-size: 18px;
 }
 
@@ -88,7 +89,7 @@
     margin: 15px;
   }
   .listProductMovil h3 {
-    color: #5A5A5A;
+    color: #111111;
     margin-bottom: 15px;
   }
   .listProductMovil .product-item-edit {
@@ -110,7 +111,7 @@
     font-weight: 400;
   }
   .listProductMovil .product-item-edit .content .description .price {
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 700;
   }
   .listProductMovil .product-item-edit .content .description span {

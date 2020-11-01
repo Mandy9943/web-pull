@@ -234,7 +234,7 @@ class Filter extends Component {
             </form>
           </div>
             <div className="send-free">
-              <h4>Envio</h4>
+              <h4>Envío</h4>
               <span>Envío gratis <FontAwesomeIcon icon={faTruck} /></span>
             </div> 
           <div className="filter-group">
@@ -288,7 +288,7 @@ class Filter extends Component {
               <li>Ordenar</li>
               <li onClick={(e) => this.setSort(e)} value="2" className="responsive-dropdown-item">Menor precio</li>
               <li onClick={(e) => this.setSort(e)} value="1" className="responsive-dropdown-item">Mayor precio</li>
-              <li onClick={(e) => this.setSort(e)} value="0" className="responsive-dropdown-item">Mas relevante</li>
+              <li onClick={(e) => this.setSort(e)} value="0" className="responsive-dropdown-item">Más relevante</li>
             </ul>
           </div>
           <div

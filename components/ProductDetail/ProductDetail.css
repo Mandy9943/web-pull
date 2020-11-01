@@ -68,7 +68,7 @@
 }
 
 .breadcrumb a {
-  color: #5A5A5A;
+  color: #111111;
   font-size: 15px;
 }
 
@@ -185,7 +185,7 @@
     font-weight: 400;
   }
   .detail-content .questions-movil {
-    background: #F3F3F3;
+    background: #ffffff;
     padding-bottom: 30px;
     margin-bottom: 15px;
   }

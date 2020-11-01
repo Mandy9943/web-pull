@@ -20,15 +20,15 @@
 
 .email-change .email-change-container .email-change-content h1 {
   margin-bottom: 20px;
-  color: #5A5A5A;
+  color: #111111;
 }
 
 .email-change .email-change-container .email-change-content .email-change-box {
   padding: 20px 40px;
-  color: #5A5A5A;
+  color: #111111;
   background: #FBFBFB;
-  -webkit-box-shadow: 0px 3px 6px #00000029;
-          box-shadow: 0px 3px 6px #00000029;
+  -webkit-box-shadow: 0px 3px 6px #11111129;
+          box-shadow: 0px 3px 6px #11111129;
   border-radius: 5px;
 }
 
@@ -63,8 +63,8 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #D11E36;
-  border: 1px solid #D11E36;
+  background: #CF0A2C;
+  border: 1px solid #CF0A2C;
   width: 178px;
   height: 35px;
   color: white;
@@ -84,7 +84,7 @@
 }
 
 .email-change .email-change-container .email-change-content .email-change-box .actions .cancel-btn p {
-  color: #D11E36 !important;
+  color: #CF0A2C !important;
 }
 
 @media (max-width: 700px) {

@@ -6,12 +6,12 @@
       justify-content: space-around;
   background: white;
   width: 100%;
-  margin-bottom: 30px;
-  padding: 25px;
+  margin-bottom: 20px;
+  padding: 15px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  height: 110px;
-  margin-top: 20px;
+  height: 90px;
+  margin-top: -5px;
 }
 
 .payment .modal {
@@ -19,7 +19,7 @@
 }
 
 .payment .modal .header-modal h3 {
-  font-size: 26px;
+  font-size: 22px;
   font-weight: 500;
 }
 
@@ -28,7 +28,7 @@
 }
 
 .payments-item-block {
-  color: #606060;
+  color: #111111;
   text-align: center;
 }
 

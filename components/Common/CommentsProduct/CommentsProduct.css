@@ -1,14 +1,17 @@
 .comments-product {
   margin-bottom: 15px;
-  padding: 30px;
-  border-top: 0.5px solid #C6C6C6;
-  font-size: 22px;
+
+  padding: 40px;
+  background-color: rgb(255, 255, 255);
+  font-size: 18px;
   padding-bottom: 15px;
 }
 
 .comments-product h3 {
-  color: #707070;
+  color: #111111;
   font-weight: 500;
+  font-size: 17px;
+  padding-bottom: 5px;
 }
 
 .comments-product .valoration {
@@ -19,7 +22,7 @@
       grid-template-columns: auto 1fr;
   grid-gap: 15px;
   margin-bottom: 15px;
-  color: #707070;
+  color: #4b4b4b;
 }
 
 .comments-product .valoration .stars {
@@ -43,15 +46,15 @@
 }
 
 .comments-product .item .comment {
-  font-size: 20px;
-  color: #707070;
+  font-size: 15PX;
+  color: #4d4d4d;
 }
 
 @media (max-width: 720px) {
   .comments-product {
     margin-bottom: 0px;
-    padding: 15px;
-    padding-bottom: 0px;
+    padding: 20px;
+    padding-bottom: 10px;
   }
 }
 /*# sourceMappingURL=CommentsProduct.css.map */

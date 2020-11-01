@@ -3,7 +3,7 @@
 }
 
 .categories-img-menu .slider .previousButton svg polygon, .categories-img-menu .slider .nextButton svg polygon {
-  fill: #D11E36 !important;
+  fill: #CF0A2C !important;
 }
 
 .categories-img-menu .slider .nextButton {
@@ -27,8 +27,8 @@
 }
 
 .categories-img-menu .content-categories-img-menu a.categories-img {
-  padding: 40px 20px;
-  color: #5A5A5A;
+  padding: 30px 14px;
+  color: #111111;
   border-right: 1px solid #F2F2F2;
   border-bottom: 1px solid #F2F2F2;
 }
@@ -64,25 +64,26 @@
         grid-template-columns: repeat(2, 1fr);
     -ms-grid-rows: (1fr)[7];
         grid-template-rows: repeat(7, 1fr);
-    grid-gap: 20px;
+    grid-gap: 10px;
     background: #EAF0F0 0% 0%;
   }
   .categories-img-menu .content-categories-img-menu a.categories-img {
-    -webkit-box-shadow: 0px 3px 6px #00000029;
-            box-shadow: 0px 3px 6px #00000029;
+    -webkit-box-shadow: 0px 3px 6px #11111129;
+            box-shadow: 0px 3px 6px #11111129;
     background: white;
   }
   .categories-img-menu .content-categories-img-menu a.categories-img p {
-    font-size: 20px;
+    font-size: 16px;
   }
   .categories-img-menu .main-button {
     background: white !important;
     color: #CF0A2C !important;
     display: block;
-    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-top: 10px;
     width: auto;
-    -webkit-box-shadow: 0px 3px 6px #00000029;
-            box-shadow: 0px 3px 6px #00000029;
+    -webkit-box-shadow: 0px 3px 6px #11111129;
+            box-shadow: 0px 3px 6px #11111129;
     font-size: 15px;
   }
   .categories-img-menu .main-button p {
@@ -100,8 +101,8 @@
     display: none !important;
   }
   .categories-img-menu .home-section-title {
-    font-size: 18ox !important;
-    color: #5A5A5A;
+    font-size: 18px !important;
+    color: #111111;
     margin-bottom: 15px;
     font-weight: 400;
   }
@@ -115,10 +116,10 @@
     display: none;
   }
   .categories-menu-icon svg {
-    width: 75px !important;
-    max-width: 75px !important;
-    height: 75px !important;
-    max-height: 75px !important;
+    width: 65px !important;
+    max-width: 65px !important;
+    height: 65px !important;
+    max-height: 65px !important;
   }
 }
 

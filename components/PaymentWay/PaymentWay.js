@@ -275,7 +275,7 @@ export default class PaymentWay extends Component {
                         <div className="content-product-description">
                             <p>{this.props.data.title}</p>
                             <p className="quantity">Cantidad: {this.state.productQuantity}</p>
-                            <h3>Total: {this.props.data.price.split(",")[0]}</h3>
+                            <h3>Total: $ {this.props.data.price.split(",")[0]}</h3>
                         </div>
                     </div>
                     <h2>Elige la forma de pago</h2>
@@ -338,9 +338,6 @@ export default class PaymentWay extends Component {
                                             <InputTip msg={this.state.tips.document_type}/></div>
                                         <input name={"document_number"} placeholder="Número documento" />
                                         <InputTip msg={this.state.tips.document_number}/>
-                                        <button type="submit" className="button-continue main-button">
-                                            <p>Continuar</p>
-                                        </button>
                                     </form>
                                     <Cards
                                         cvc={this.state.ccv}
@@ -354,6 +351,9 @@ export default class PaymentWay extends Component {
                                         
                                         />
                                 </div>
+                                        <button type="submit" className="button-continue main-button">
+                                            <p>Continuar</p>
+                                        </button>
 
                                 {this.state.cc_error && <Error message={this.state.cc_error} />}
 

@@ -2,13 +2,13 @@
   border-top: 0.5px solid #C6C6C6;
   font-family: 'Montserrat', sans-serif;
   padding: 40px;
-  color: #5A5A5A;
+  color: #111111;
 }
 
 .wrap-detail-info h4 {
   font-size: 20px;
   font-weight: 600;
-  color: #5A5A5A;
+  color: #111111;
 }
 
 .item-detail-info {
@@ -26,8 +26,8 @@
 
 .item-detail-info p {
   margin-bottom: 10px;
-  font-size: 20px;
-  color: #5A5A5A;
+  font-size: 17px;
+  color: #111111;
 }
 
 .characteristics, .guarantee, .characteristics-web {
@@ -58,19 +58,19 @@
 
 .characteristics .info .item .title, .guarantee .info .item .title, .characteristics-web .info .item .title {
   font-size: 12px;
-  color: #5A5A5A;
+  color: #111111;
 }
 
 .characteristics .info .item .sub-title, .guarantee .info .item .sub-title, .characteristics-web .info .item .sub-title {
   font-size: 14px;
   font-weight: 400;
-  color: #5A5A5A;
+  color: #111111;
   margin-top: 5px;
 }
 
 .characteristics-web {
   padding: 0;
-  font-size: 20px;
+  font-size: 17px;
   border: none;
 }
 
@@ -79,7 +79,7 @@
 }
 
 .characteristics-web .info .item .title {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .guarantee {
@@ -90,19 +90,19 @@
 .guarantee h5 {
   margin-bottom: 10px;
   font-size: 17px;
-  color: #5A5A5A;
+  color: #111111;
 }
 
 .guarantee .title {
   display: block;
-  color: #5A5A5A;
+  color: #111111;
   font-size: 16px;
   font-weight: bold;
 }
 
 .guarantee .sub-title {
   display: block;
-  color: #5A5A5A;
+  color: #111111;
   font-size: 14px;
 }
 
@@ -117,17 +117,17 @@
   .guarantee h5 {
     margin-bottom: 10px;
     font-size: 17px;
-    color: #5A5A5A;
+    color: #111111;
   }
   .guarantee .title {
     display: block;
-    color: #5A5A5A;
+    color: #111111;
     font-size: 16px;
     font-weight: 400;
   }
   .guarantee .sub-title {
     display: block;
-    color: #5A5A5A;
+    color: #111111;
     font-size: 14px;
   }
 }
