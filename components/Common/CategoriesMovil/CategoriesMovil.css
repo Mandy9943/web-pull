@@ -10,7 +10,7 @@
   right: 0;
   top: 0;
   bottom: 0;
-  background: #D9D8D8;
+  background: #ebebeb;
 }
 
 .menu-categorias .tite-categories {
@@ -48,13 +48,13 @@
 }
 
 .menu-categorias .menu-list {
-  TEXT-ALIGN: left;
+  TEXT-ALIGN: center;
   position: absolute;
   top: 75px;
   left: 30px;
   right: 30px;
-  bottom: 30px;
-  overflow: scroll;
+  bottom: 0px;
+  height: 100%;
 }
 
 .menu-categorias .menu-list .item {
@@ -72,8 +72,9 @@
   margin: auto;
   text-align: center;
   border-radius: 6px;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   color: black;
+
 }
 
 .menu-categorias .menu-list .item:first-child {

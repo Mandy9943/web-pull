@@ -16,11 +16,10 @@ export default class FooterMovil extends Component {
                     <Link href="/cuenta"><a>Mi cuenta</a></Link>
                     <Link href="#"><a>Mis compras</a></Link>
                     <Link href="#"><a>Histotial</a></Link>
-                    <Link href="#"><a>ofertas de la semana</a></Link>
                     <Link href="#"><a>Favoritos</a></Link>
                     <Link href="#"><a>Tiendas oficiales</a></Link>
                     <Link href="#"><a>Categorìas</a></Link>
-                    <Link href="#"><a>Mercado puntos</a></Link>
+                    <Link href="https://shops.kiero.co/"><a>KieroShops</a></Link>
                     <Link href="/ayuda"><a>Ayuda / PQR</a></Link>
                     <Link href="#"><a>vender</a></Link>
                 </section>

@@ -4,19 +4,28 @@
   -ms-grid-columns: (1fr)[2];
       grid-template-columns: repeat(2, 1fr);
   grid-gap: 20px;
+
+
 }
 
 .finding-category img {
   width: 100%;
+  -webkit-box-shadow: 0px 3px 6px #11111129 !important;
+  box-shadow: 0px 3px 6px #11111129 !important;
 }
 
 @media (max-width: 800px) {
   .finding-category {
-    margin: 15px;
+margin-top: 5px;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+            display: grid;
+            -ms-grid-columns: (1fr)[2];
+            grid-template-columns: repeat(1, 1fr);
+            grid-gap: 0px;
+            width: 100%;
   }
   .finding-category .content-finding {
     -ms-grid-columns: (1fr)[1];

@@ -94,7 +94,7 @@ export default class PrincipalSlider extends Component {
         return (
             <div className="principal-slider">
                 <section className="desktop">
-                    <Slider autoplay={3000}>
+                    <Slider autoplay={4000}>
                         {slides.map((slide, index) =>
                         <div key={index}>
                             <img src={slide.url} />
@@ -102,7 +102,7 @@ export default class PrincipalSlider extends Component {
                     </Slider>
                 </section>
                 <section className="mobil">
-                    <Slider autoplay={3000}>
+                    <Slider autoplay={4000}>
                         {slidesMobil.map((slide, index) =>
                         <div key={index}>
                             <img src={slide.url} />

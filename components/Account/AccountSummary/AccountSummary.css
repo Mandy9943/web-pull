@@ -1,7 +1,7 @@
 .account-summary-title {
   margin-bottom: 30px;
   color: #111111;
-  font-size: 28px;
+  font-size: 24px;
 }
 
 .account-summary-wrap-items {
@@ -98,12 +98,12 @@
     font-weight: 600;
   }
   .account-summary-wrap-items .question h5 {
-    font-weight: 400;
+    font-weight: 500;
     font-size: 14px;
   }
   .account-summary-wrap-items .item-question .text {
     font-size: 17px !important;
-    font-weight: 400;
+    font-weight: 500;
   }
   .account-summary-wrap {
     padding: 15px;

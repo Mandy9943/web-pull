@@ -49,7 +49,7 @@
   }
   .container-payment-way .content-payment-way .accordion-payment-way .content-accordion {
     -ms-grid-columns: auto;
-        grid-template-columns: auto;
+        grid-template-columns: ;
   }
   .container-payment-way .content-payment-way .only-desktop {
     display: none !important;

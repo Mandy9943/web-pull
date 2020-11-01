@@ -275,7 +275,7 @@ export default class PaymentWay extends Component {
                         <div className="content-product-description">
                             <p>{this.props.data.title}</p>
                             <p className="quantity">Cantidad: {this.state.productQuantity}</p>
-                            <h3>Total: $ {this.props.data.price.split(",")[0]}</h3>
+                            <h3>Total: $ {this.props.data.price ? this.props.data.price.split(".")[0].replace(/(.)(?=(\d{3})+$)/g,'$1,') : "$ ... "}</h3>
                         </div>
                     </div>
                     <h2>Elige la forma de pago</h2>
@@ -290,6 +290,17 @@ export default class PaymentWay extends Component {
                             </div>
                             <div className={this.state.closeCredit ? "accordion-payment-way" : "accordion-payment-way active"}>
                                 <div className="content-accordion">
+                                <Cards
+                                        cvc={this.state.ccv}
+                                        expiry={this.state.expiration_date}
+                                        focused={this.state.focus}
+                                        name={this.state.card_holder}
+                                        number={this.state.card_number}
+
+                                        callback={this.card_change}
+                                        placeholders="TU NOMBRE"
+                                        
+                                        />
                                     <form onSubmit={this.payCC}>
 
                                         <input
@@ -339,17 +350,7 @@ export default class PaymentWay extends Component {
                                         <input name={"document_number"} placeholder="Número documento" />
                                         <InputTip msg={this.state.tips.document_number}/>
                                     </form>
-                                    <Cards
-                                        cvc={this.state.ccv}
-                                        expiry={this.state.expiration_date}
-                                        focused={this.state.focus}
-                                        name={this.state.card_holder}
-                                        number={this.state.card_number}
 
-                                        callback={this.card_change}
-                                        placeholders="TU NOMBRE"
-                                        
-                                        />
                                 </div>
                                         <button type="submit" className="button-continue main-button">
                                             <p>Continuar</p>
@@ -433,7 +434,7 @@ export default class PaymentWay extends Component {
                                 <div className="content-product-description">
                                     <p>{this.props.data.title}</p>
                                     <p className="quantity">Cantidad: {this.state.productQuantity}</p>
-                                    <h3>Total: {this.props.data.price.split(",")[0]}</h3>
+                                    <h3>$ {this.props.data.price ? this.props.data.price.split(".")[0].replace(/(.)(?=(\d{3})+$)/g,'$1,') : "$ ... "}</h3>
                                 </div>
                             </div>
 

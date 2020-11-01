@@ -19,7 +19,7 @@
 }
 
 .payment .modal .header-modal h3 {
-  font-size: 22px;
+  font-size: 19px;
   font-weight: 500;
 }
 
@@ -38,7 +38,7 @@
 }
 
 .payments-icon svg {
-  font-size: 25px;
+  font-size: 20px;
   color: #CF0A2C;
 }
 
@@ -48,21 +48,21 @@
 
 .payment-way-content h4 {
   margin-top: 20px;
-  font-size: 24px;
+  font-size: 19px;
 }
 
 .payment-way-content .sub-title {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .payment-way-content .payment-way-img {
-  width: 60%;
-  margin-bottom: 20px;
+  width: 80%;
+  margin-bottom: 15px;
 }
 
 .bank-transfer-content h4 {
   margin-bottom: 20px;
-  font-size: 20px;
+  font-size: 18px;
   text-align: center;
 }
 
@@ -72,7 +72,7 @@
 
 .cash-transfer-content h4 {
   margin-bottom: 20px;
-  font-size: 20px;
+  font-size: 18px;
   text-align: center;
 }
 

@@ -46,7 +46,7 @@ export default class listProductMovil extends Component {
                                 </div>
                                 <section className='description'>
                                     <h3>{product.title}</h3>
-                                    <h3 className="price">$ {product.price.split(",")[0]}</h3>
+                                    <h3 className="price">$ {product.price ? product.price.split(".")[0].replace(/(.)(?=(\d{3})+$)/g,'$1,') : "$ ... "}</h3>
                                     <span><FontAwesomeIcon icon={faTruck} />Envío gratis</span>
                                 </section>
                             </section>
@@ -60,7 +60,7 @@ export default class listProductMovil extends Component {
 
         return (
             <div className="listProductMovil">
-                <h3>Descrube productos de Electronica</h3>
+                <h3>Descrube productos de Electrónica</h3>
                 {productList}
                 <Link href={"/categoria/Computación"}><a className="send">Ver todos</a></Link>
             </div>

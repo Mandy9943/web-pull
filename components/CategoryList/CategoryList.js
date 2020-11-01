@@ -17,12 +17,12 @@ export default class CategoryList extends Component {
     let urlBanner = "//kiero.co/images/resources/deportes%20y%20fitness/1.jpg";
 
     var complete = {
-      "deporte y fitness": {
+      "Deporte y fitness": {
         "estucture":[1, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3],
         "links": ["","Gafas%20de%20Sol", "Ropa%20deportiva", "Rugby", "Tenis%20y%20raquetas", "Yoga", "Suministros%20y%20equipo%20médico", "Snowboard", "Voleibol", "Airsoft%20y%20Paintball", "Fútbol", "Artes%20Marciales", "Béisbol%20y%20softball", "Bocce", "Ciclismo", "Camping", "Buceo%20y%20snorkel", "Canotaje", "Cricket", "Correr", "Natación", "Deportes%20ecuestres", "Navegación", "Nutrición%20deportiva", "Canotaje", "Entrenamiento%20cardiovascular%20y%20de%20fuerza", "Hockey", "Juegos%20al%20aire%20libre", "Juegos%20de%20lanzamiento", "Accesorios%20deportivos", "Escalada", "Equipo%20de%20casino", "Esgrima", "Fan%20Shop", "Gimnasia", "Golf", "Arcade%20y%20juegos%20de%20mesa", "Baile", "Bebidas%20en%20botella", "Baloncesto", "Boxeo", "Bolos", "Brújulas%20y%20odómetros", "Danza", "Juegos%20de%20sala", "Caza%20y%20pesca", "Esquí", "Ropa%20al%20aire%20libre", "Waterpolo", "Surf", "Billar", "Dardos", "Entrenadoresy%20árbitros", "Lacrosse", "Lucha%20deportiva", "Medicina%20deportiva", "Tienda%20para%20fanáticos", "Equipo%20de%20campo,%20cancha%20y%20pista", "Salud%20y%20bienestar"],
         "image_path":encodeURI("//kiero.co/images/resources/deportes y fitness/"),"enable":true},
 
-      "animales y mascotas": {"estructure":[1, 3, 2, 3, 1],
+      "Animales y mascotas": {"estructure":[1, 3, 2, 3, 1],
         "links": ["","Comida%20para%20animales%20", "Estetica%20y%20cuidado%20para%20animales%20", "Aves", "Roedores", "Gatos", "Reptiles%20y%20anfibios", "Caballos", "Peces", "Perros"],
         "image_path": encodeURI("//kiero.co/images/resources/animales y mascotas/"),"enable": true},
 
@@ -30,7 +30,7 @@ export default class CategoryList extends Component {
         "links": ["","Ropa%20para%20Bebés", "Caminadores%20y%20Correpasillos", "Cuarto%20del%20Bebé", "Higiene%20y%20cuidado%20del%20bebé", "Lactancia%20y%20Alimentación", "Entretenimiento%20para%20Bebés", "Paseo%20del%20Bebé", "Salud%20del%20bebé%20", "Seguridad%20para%20bebés", "Artículos%20de%20maternidad", "Corrales%20para%20bebés", "Chupetes%20y%20mordedores", "Art%C3%ADculos%20para%20Beb%C3%A9s"],
         "image_path": encodeURI("//kiero.co/images/resources/bebes/"),"enable": true},
 
-      "belleza y cuidado personal": {"estructure":[1, 2, 3, 2, 3, 2],
+      "Belleza y cuidado personal": {"estructure":[1, 2, 3, 2, 3, 2],
         "links": ["","electrodomesticos%20de%20belleza", "extensiones%20y%20pelucas", "higiene%20personal", "Articulos%20de%20peluqueria", "cuidado%20del%20cuerpo", "maquillaje", "depilación", "perfumes%20y%20fragancias", "cuidado%20del%20cabello", "cuidado%20de%20la%20piel", "barbería", "manicure%20y%20pedicure"],
         "image_path": encodeURI("//kiero.co/images/resources/Belleza y cuidado personal/"),"enable": true},
 

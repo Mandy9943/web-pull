@@ -22,12 +22,13 @@
 }
 
 .summary-content .user-account-container .user-account-menu {
-  padding: 40px 20px;
+  padding: 40px 0px;
 }
 
 .summary-content .user-account-container .user-account-menu h3 {
   color: #111111;
   font-size: 17px;
+  font-weight: 600;
 }
 
 .summary-content .user-account-container .user-account-menu .user-account-menu-text {

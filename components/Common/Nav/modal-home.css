@@ -56,6 +56,7 @@
 
 .nav-botton .modal-home .wrap-modal .modal .header-modal .user-perfil .user-name p {
   font-weight: bolder;
+  text-transform: capitalize;
 }
 
 .nav-botton .modal-home .wrap-modal .modal .header-modal .user-perfil img {
@@ -107,7 +108,7 @@
 }
 
 .nav-botton .modal-home .wrap-modal .modal .header-modal a svg {
-  background: #111111;
+  background: #3f3f3f;
   border-radius: 50%;
   padding: 4px;
   width: 14px;

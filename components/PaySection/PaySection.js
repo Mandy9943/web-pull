@@ -36,7 +36,7 @@ class PaySection extends Component {
           <h1 className="title-pay-product-detail">{this.props.title.substr(0,60)}</h1>
         </div>
         <div className="pay-item">
-          <h2 className="price-pay-product-detail">$ {this.props.price.split(",")[0].replace(/(.)(?=(\d{3})+$)/g,'$1,')}</h2>
+          <h3 className="price-pay-product-detail">$ {this.props.price ? this.props.price.split(".")[0].replace(/(.)(?=(\d{3})+$)/g,'$1,') : "$ ... "}</h3>
         </div>
         <div className="pay-item pay-img no-movil">
           <img src={iconCredit} className="icon-credit" />

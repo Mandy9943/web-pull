@@ -91,12 +91,13 @@
 .producto-card button {
   position: relative;
   top: -20px;
-  right: 10px;
+  right: 6px;
   float: right;
   width: auto !important;
   height: auto !important;
   color: #CF0A2C;
   font-size: 11px;
+  font-weight: 600;
   background-color: #fff;
   border: 1px solid #F2F2F2;
   min-width: initial !important;
