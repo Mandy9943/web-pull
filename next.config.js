@@ -27,3 +27,21 @@ module.exports = withCSS( withSass( withImages({
         ],
     },
 })));
+
+
+module.exports = {
+    webpack: (config, { isServer }) => {
+      if (isServer) {
+        require('./scripts/generate-sitemap');
+      }
+  
+      return config;
+    }
+  };
+
+
+module.exports = withCSS({
+    cssLoaderOptions: {
+      url: false
+    }
+  });
