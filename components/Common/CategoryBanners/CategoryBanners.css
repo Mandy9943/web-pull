@@ -1,14 +1,14 @@
 .category-banners {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .category-banners h3.title {
   margin-bottom: 10px;
-  font-size: 25px;
+  font-size: 21px;
   font-weight: 600;
   color: #111111;
   text-align: left;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .category-banners .group-category {
@@ -17,7 +17,7 @@
   -ms-grid-columns: auto auto auto;
       grid-template-columns: auto auto auto;
   grid-gap: 10px;
-  padding: 15px;
+
 }
 
 .category-banners .group-category .item {
@@ -35,8 +35,8 @@
 }
 
 .category-banners .group-category .item img {
-  width: 70%;
-  margin: 10px auto 5px;
+  width: 80%;
+ 
 }
 
 .category-banners .group-category .item span.title {
@@ -53,6 +53,7 @@
     -ms-grid-columns: auto auto ;
         grid-template-columns: auto auto ;
     grid-gap: 10px;
+    padding: 5px;
   }
   .category-banners .group-category .item img {
     width: 100%;
@@ -60,11 +61,11 @@
   }
   .category-banners h3.title {
     margin-bottom: 1px;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     color: #111111;
     text-align: left;
-    margin-bottom: 0px;
+    margin-bottom: 5px;
     padding-left: 15px;
   }
 }

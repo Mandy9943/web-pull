@@ -41,6 +41,7 @@
       grid-template-columns: 1fr auto auto;
   grid-gap: 15px;
   width: 200px;
+  margin-top: 5px;
 }
 
 .wrap-filter-button p {
@@ -81,12 +82,15 @@
 
 .select-filter {
   background: transparent;
-  border: 0px;
+  border: 0;
   width: 100%;
+  font-size: .8rem;
+  font-weight: 500;
+  color: #575757;
 }
 
 .filter-group {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .filter-group h1 {
@@ -110,12 +114,28 @@
 }
 
 .filter-group span, .filter-group p {
-  font-size: 15px;
+  font-size: .8rem;
+  font-weight: 500;
+  color: #575757;
+}
+
+.filter-group form {
+  padding-left: 0;
 }
 
 .item-filter-group {
   font-size: 16px;
   margin: 5px 0px;
+  display: none;
+  cursor: pointer;
+}
+
+.filter-height-overflow {
+  max-height: 191px;
+  overflow: hidden;
+}
+
+.display-none{
   display: none;
 }
 
@@ -142,8 +162,16 @@
 }
 
 .view-all {
-  color: #CF0A2C;
-  font-size: 15px;
+  color: #ae5f6c;
+  font-size: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+.align-center {
+  display: flex;
+  align-items: center;
 }
 
 .wrap-filter-price {
@@ -161,13 +189,17 @@
 }
 
 .wrap-filter-price input {
-  margin: 5px 0px;
-  font-size: 16px;
+  margin: 0px;
+  font-size: 12px;
+  max-height: 12px;
 }
 
 .wrap-filter-price button {
   background: #CF0A2C;
   color: white;
+  margin: 0;
+  height: 30px;
+  padding-top: 5px;
 }
 
 .responsive-filter {
@@ -238,14 +270,9 @@
 
 .result {
   display: block;
-  margin: 0;
-  padding: 0;
-  font-size: 14px;
-  height: auto !important;
-  text-align: left;
-  margin-top: 7px;
+  font-size: .8rem;
+  margin-bottom: 7px;
   color: #CF0A2C;
-  padding: 0 15px;
 }
 
 .result:hover {
@@ -298,5 +325,84 @@ details > summary:first-of-type {
   summary {
     font-size: 18px;
   }
+  .filter-top-container {
+    display: none !important;
+  }
+}
+.filter-title {
+    font-weight: 600;
+    font-size: .9rem;
+    color: black;
+}
+.categories > div > div > div > div > div > div, .categories > div > div > div > div > div > div div {
+  padding-top: 0;
+  padding-bottom: 0;
+  border-left-width: 0;
+}
+.categories > div > div {
+  padding-left: 0;
+}
+.filter-top-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin: 30px auto 10px auto;
+}
+.filter-top-container .order {
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+}
+.filter-top-container .order .text {
+  font-size: .9rem;
+  font-weight: 600;
+  padding-left: 3px;
+}
+.filter-top-container .content-left {
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+}
+.filter-top-container .content-left .ots {
+  font-size: 1.2rem;
+  color: black;
+  font-weight: 600;
+}
+.filter-top-container .content-left .totals {
+  font-size: .8rem;
+  color: #575757;
+  font-weight: 500;
+}
+.tree-view {
+  overflow-y: hidden;
+}
+.tree-view_item {
+  cursor: pointer;
+}
+.tree-view_children {
+  margin-left: 16px;
+  cursor: pointer;
+}
+.tree-view_children-collapsed {
+  height: 0;
+}
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  margin: 3px 0;
+  font-size: .8rem;
+}
+.breadcrumb a {
+  color: #575757;
+  font-size: 15px;
+}
+.breadcrumb svg {
+  margin: 0 5px;
+  color: #cc7d8a;
+  font-size: 15px;
+}
+.breadcrumb span {
+  cursor: pointer;
 }
 /*# sourceMappingURL=Filter.css.map */

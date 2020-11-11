@@ -24,8 +24,9 @@ import {
     faShoppingBag,
     faCog
 } from "@fortawesome/free-solid-svg-icons";
-import Sidebar from '../../Sidebar/Sidebar';
-
+import Autocomplete from 'react-autocomplete-2';
+import {searchSuggestions} from "../../../services/productsApi";
+import {suggestionQuantity} from "../../../lib/config";
 
 export default class Nav extends Component {
     constructor(props) {
@@ -38,7 +39,9 @@ export default class Nav extends Component {
             showNotification: false,
             notifications : [],
             timeClose : undefined,
-            closeSidebar : true
+            closeSidebar : true,
+            value: this.props.actualSearch,
+            suggestions: []
         }
     }
 
@@ -62,13 +65,6 @@ export default class Nav extends Component {
     mLeave = () => {
         this.state.timeClose = setTimeout(() => {this.setState({showNotification: false})}, 1000);
     }
-
-
-    readNotifications = (id) => {
-
-    }
-
-
     /********************* END NOTIFICATIONS ******************************/
 
 
@@ -78,16 +74,6 @@ export default class Nav extends Component {
     }
     mLeaveMenu = () => {
         this.state.timeClose = setTimeout(() => {this.setState({showMenu: false})}, 1000);
-    }
-
-
-    changeSearcherValue = (event) => {
-        this.setState({ query: event.target.value })
-    }
-
-
-    handleChange = (e) => {
-        this.setState({ query: e.target.value })
     }
 
     toggleModal = (modal) => {
@@ -108,8 +94,40 @@ export default class Nav extends Component {
     menuBlur = () => {
         setTimeout(() => this.setState({ showMenu: false }), 200);
     }
-    
 
+    boldString = (str, find) => {
+        let re = new RegExp(find, 'g');
+        return str.replace(re, find.bold());
+    }
+
+    onChange = event => {
+        this.setState({ value: event.target.value });
+
+        if (event.target.value !== '') {
+            let suggestions = searchSuggestions(suggestionQuantity, event.target.value)
+            suggestions.then((response) => {
+                let filterResponse = response.data.results.map(item => (
+                  {
+                    "text": this.boldString(item.alias, this.state.value),
+                  }
+                ))
+                this.setState({ suggestions: filterResponse });
+            })
+        }
+    };
+
+    onKeyPress = event => {
+         if (event.key === 'Enter') {
+             this.search()
+         }
+    };
+
+    onSuggestionSelected = suggestion => {
+        let text = suggestion.replace('<b>', '').replace('</b>', '')
+
+        this.setState({ value: text })
+        this.search(text);
+    }
 
     componentDidMount() {
         getData("/getMenuCategories")
@@ -119,7 +137,6 @@ export default class Nav extends Component {
         if(this.props.authenticated){
             this.loadNotifications();
         }
-
     }
 
     mouseEnter = () => {
@@ -130,18 +147,17 @@ export default class Nav extends Component {
         this.setState({ showCategories: false });
     }
 
-
     CloseSidebar = () => {
         this.setState({
             closeSidebar: !this.state.closeSidebar,
         });
-        console.info("si ejecuta y cambia el estado " + this.state.closeSidebar)
     }
 
     render() {
         let authenticated = this.props.authenticated
-        let home = this.props.home    
-    
+        let home = this.props.home
+        const { suggestions, value } = this.state;
+
         const content2 = (
             <>
                 <div className="header-modal">
@@ -150,11 +166,11 @@ export default class Nav extends Component {
                         <h5>Bienvenido</h5>
                         <p>Crea tu cuenta o inicia sesión</p>
                     <section className="actions">
-                                <Link href="/login"><a className="main-button">Iniciar sesión</a></Link>
-                        <Link href="/registro"><a className="main-button">Regístrate</a></Link>
-                        </section> 
+                                <Link href="/login"><a className="main-button">iniciar sesion</a></Link>
+                        <Link href="/registro"><a className="main-button">Registrarse</a></Link>
+                        </section>
                     </>
-                        :   
+                        :
                         <section className="user-perfil">
                             <img src="https://recap-project.eu/wp-content/uploads/2017/02/default-user.jpg"/>
                             <span className="user-name">
@@ -166,8 +182,8 @@ export default class Nav extends Component {
                     <hr />
                     <Link href="/cuenta"><a><FontAwesomeIcon icon={faHome} /> <p>Inicio </p></a></Link>
                     {authenticated ?
-                    <Link href="/notificaciones"><a><FontAwesomeIcon icon={faBell} /> 
-                            <p className="noti">Notificaciones 
+                    <Link href="/notificaciones"><a><FontAwesomeIcon icon={faBell} />
+                            <p className="noti">Notificaciones
                                 {this.state.notifications.length > 0 ?
                                 <span className="number-accent">{this.state.notifications.length}</span>
                             : null }
@@ -189,17 +205,24 @@ export default class Nav extends Component {
                     <div className="nav-top">
                         <Logo />
                         <div className="search-bar">
-                            <input
-                                type="text"
-                                name={"searchBar"}
-                                defaultValue={this.props.actualSearch}
-                                placeholder="Buscar productos..."
-                                onChange={this.handleChange}
-                                onKeyPress={(event) => {
-                                    if (event.key === 'Enter') {
-                                        this.search()
-                                    }
+                            <Autocomplete
+                                getItemValue={(item) => item.text}
+                                suggestionsMenuId="search-suggestions"
+                                items={suggestions}
+                                renderItem={(item, isHighlighted) =>
+                                    <div className="suggestion-item" aria-selected={isHighlighted}
+                                      style={{ background: isHighlighted ? '#ddd' : 'white'}}>
+                                        <span dangerouslySetInnerHTML={{ __html: item.text }} />
+                                    </div>
+                                }
+                                value={this.state.value}
+                                onChange={this.onChange}
+                                onSelect={this.onSuggestionSelected}
+                                inputProps={{
+                                    placeholder: 'Buscar productos...',
+                                    onKeyPress: this.onKeyPress,
                                 }}
+                                autoHighlight={false}
                             />
                             <section onClick={(event) => {
                                 this.search()
@@ -222,9 +245,9 @@ export default class Nav extends Component {
                         {authenticated &&
                             <div className="user-menu" onBlur={this.menuBlur} >
                                 <ul>
-                                <span> 
+                                <span>
                                     <Link href="/ayuda"><a className="bell">Ayuda / PQR</a></Link>
-                                    <a className="bell" onClick={() => this.showHideNotification()} ><FontAwesomeIcon icon={faBell} />                                 
+                                    <a className="bell" onClick={() => this.showHideNotification()} ><FontAwesomeIcon icon={faBell} />
                                     {this.state.notifications.length > 0 ?
                                             <span className="accent-background">{this.state.notifications.length}</span>
                                         : null}</a>
@@ -262,7 +285,7 @@ export default class Nav extends Component {
                             <ul>
                                 <section className="menu">
                                     <ul>
-                                        <li onMouseEnter={this.mouseEnter}>
+                                        <li onClick={this.mouseEnter} style={{cursor: 'pointer'}}>
                                             Categorías <FontAwesomeIcon icon={faAngleDown} />
                                         </li>
                                     </ul>
@@ -284,16 +307,21 @@ export default class Nav extends Component {
                     <div className="nav-top">
                         <Logo />
                         <div className="search-bar">
-                            <input
-                                type="text"
-                                defaultValue={this.props.actualSearch}
-                                name={"searchBar"}
-                                placeholder="Buscar productos"
-                                onChange={this.handleChange}
-                                onKeyPress={(event) => {
-                                    if (event.key === 'Enter') {
-                                        this.search()
-                                    }
+                            <Autocomplete
+                                getItemValue={(item) => item.text}
+                                suggestionsMenuId="search-suggestions"
+                                items={suggestions}
+                                renderItem={(item, isHighlighted) =>
+                                    <div className="suggestion-item" style={{ background: 'white'}}>
+                                        {item.text}
+                                    </div>
+                                }
+                                value={this.state.value}
+                                onChange={this.onChange}
+                                onSelect={this.onSuggestionSelected}
+                                inputProps={{
+                                    placeholder: 'Buscar productos...',
+                                    onKeyPress: this.onKeyPress,
                                 }}
                             />
                             <section onClick={(event) => {
@@ -328,8 +356,9 @@ export default class Nav extends Component {
         )
     }
 
-    search = e => {
-        if (this.state.query != undefined)
-            location.href = "/busqueda/" + this.state.query
+    search = (ots = '') => {
+        let url = '/busqueda/';
+        this.state.value !== undefined && ots === '' ? url = url + this.state.value :  url = url + ots;
+        location.href = url;
     };
 }

@@ -71,6 +71,7 @@ class CategoryBanners extends Component {
               })
           }
         </div>
+        
         </>}
       </div>
     

@@ -13,6 +13,7 @@ import "../../components/CategoryList/CategoryList.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTruck, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import favicon from "../../assets/img/favicon.svg";
+import {searchItemsPerPage} from "../../lib/config";
 
 
 
@@ -290,7 +291,7 @@ export async function getServerSideProps(context) {
         "type": "category",
         "search": String(context.params.category),
         "params": {
-            "items_per_page": 15,
+            "items_per_page": searchItemsPerPage,
             "price_range": "",
             "order": "desc"
         }
