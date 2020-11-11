@@ -1,12 +1,12 @@
 module.exports = {
-    exportTrailingslash: true,
-    exportPathMap: function() {
-        const paths = {
-            "/": { page: "/" },
-        };
+  exportTrailingslash: true,
+  exportPathMap: function() {
+      const paths = {
+          "/": { page: "/" },
+      };
 
-        return paths;
-    }
+      return paths;
+  }
 }
 
 const withCSS = require('@zeit/next-css');
@@ -14,34 +14,16 @@ const withSass = require('@zeit/next-sass');
 const withImages = require('next-images');
 
 module.exports = withCSS( withSass( withImages({
-    module: {
-        rules: [
-            {
-                test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/i,
-                use: [
-                    {
-                        loader: 'file-loader',
-                    },
-                ],
-            },
-        ],
-    },
+  module: {
+      rules: [
+          {
+              test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/i,
+              use: [
+                  {
+                      loader: 'file-loader',
+                  },
+              ],
+          },
+      ],
+  },
 })));
-
-
-module.exports = {
-    webpack: (config, { isServer }) => {
-      if (isServer) {
-        require('./scripts/generate-sitemap');
-      }
-  
-      return config;
-    }
-  };
-
-
-module.exports = withCSS({
-    cssLoaderOptions: {
-      url: false
-    }
-  });
