@@ -10,7 +10,6 @@ function Product({ data, u_data }) {
   return (
     <div>
       <Head>
-        {/*NEED FIX THIS SHIT colocar nombre del producto y precio y categoria mostrar*/}
         <title>Kiero | Producto </title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="Description" content="KIERO.CO MARKETPLACE | Compralo en Kiero a precio - Envio gratis - Encuentra mas productos de CatPadre, CatHijo, CatNieto" />

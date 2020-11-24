@@ -11,6 +11,7 @@ import { getData, makePayment, makePaymentCC } from "../../services/userApi"
 import Modal from "../Common/Modal";
 import AddAddress from "../UserAccount/AddAddress"
 import { validatePayCC, validatePaymentPSE } from "../../lib/validation"
+import { priceFormat } from "../../lib/config"
 import Error from "../Login/Error";
 import InputTip from "../InputTip"
 
@@ -22,7 +23,7 @@ export default class PaymentWay extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            productQuantity: 1,
+            productQuantity: this.props.cantidad,
             closeCredit: true,
             closeCash: true,
             closeTransfer: true,
@@ -73,21 +74,26 @@ export default class PaymentWay extends Component {
             });
     }
 
-
     accordionCredit = () => {
         this.setState({
             closeCredit: !this.state.closeCredit,
+            closeCash: true,
+            closeTransfer: true,
         });
     }
 
     accordionCash = () => {
         this.setState({
             closeCash: !this.state.closeCash,
+            closeCredit: true,
+            closeTransfer: true,
         });
     }
     accordionTransfer = () => {
         this.setState({
             closeTransfer: !this.state.closeTransfer,
+            closeCash: true,
+            closeCredit: true,            
         });
     }
 
@@ -249,6 +255,8 @@ export default class PaymentWay extends Component {
             months_fees.push(<option value={i}>{i}</option>)
         }
 
+        const totalPrice = priceFormat(parseFloat(this.props.data.price) * this.state.productQuantity);
+
         return (
             <div className="payment-way">
 
@@ -275,7 +283,7 @@ export default class PaymentWay extends Component {
                         <div className="content-product-description">
                             <p>{this.props.data.title}</p>
                             <p className="quantity">Cantidad: {this.state.productQuantity}</p>
-                            <h3>Total: $ {this.props.data.price ? this.props.data.price.split(".")[0].replace(/(.)(?=(\d{3})+$)/g,'$1,') : "$ ... "}</h3>
+                            <h3>Total: $ {totalPrice}</h3>
                         </div>
                     </div>
                     <h2>Elige la forma de pago</h2>
@@ -434,7 +442,7 @@ export default class PaymentWay extends Component {
                                 <div className="content-product-description">
                                     <p>{this.props.data.title}</p>
                                     <p className="quantity">Cantidad: {this.state.productQuantity}</p>
-                                    <h3>$ {this.props.data.price ? this.props.data.price.split(".")[0].replace(/(.)(?=(\d{3})+$)/g,'$1,') : "$ ... "}</h3>
+                                    <h3>$ {totalPrice}</h3>
                                 </div>
                             </div>
 

@@ -134,6 +134,15 @@ export const getUserData = async (jwt) => {
     }
 };
 
+export const contact = async (data) => {
+    try {
+        const response = await post("/contact", data);
+        return response;
+    } catch (error) {
+        return error.response && "No se pudo realizar la solicitud.";
+    }
+};
+
 export const getDSI = async (jwt) => {
     try {
         const response = await get("/getDSI", jwt);

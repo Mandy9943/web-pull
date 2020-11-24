@@ -22,8 +22,6 @@ import { faTruck, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import Logo1 from "../../assets/img/logo-social.png";
 import Logo2 from "../../assets/img/logo-social1.png";
 import Seller from "./../SellerInfo";
-import RankProduct from "../Common/RankProduct";
-import CommentsProduct from "../Common/CommentsProduct";
 
 class ProductDetail extends Component {
 
@@ -54,8 +52,6 @@ class ProductDetail extends Component {
     const u_data = this.props.user_data;
     let url = "//www.sic.gov.co";
 
-    console.error(mdata.width+"test de la data")
-
     return (
       <div>
         <Nav user={u_data.user} jwt={u_data.jwt} home={true} authenticated={u_data.authenticated} />
@@ -79,12 +75,10 @@ class ProductDetail extends Component {
           <div className="wrap-section-1">
             <div className="wrap-product">
               <DetailImg images={mdata.images} category={mdata.category.name} product_name={mdata.title} />
-              {/* <RankProduct/> */}
               <div className="pay-section-responsive">
                 <Pay pid={mdata.product_id} seller={mdata.user} price={mdata.price} title={mdata.title} stock={mdata.stock} />
               </div>
               <Detail width={mdata.width} length={mdata.length} weight={mdata.weight} title={mdata.title} product_name={mdata.title} desciption={mdata.description} />
-              {/* <CommentsProduct/> */}
               <Question user_data={this.props.user_data} product_id={mdata.product_id} cb={this.loadQuestions} />
               <section className="no-movil">
                 <QuestionItem product_id={mdata.product_id} questions={this.state.questions} />
@@ -113,7 +107,7 @@ class ProductDetail extends Component {
               </div>
               <div className="section-pay-send no-web">
                 <div className="section-pay-send-title">
-                  <h4>Formas de envío</h4>
+                  <h4>Formas de envio</h4>
                 </div>
                 <div className="section-pay-send-subtitle">
                   <span>

@@ -15,10 +15,17 @@ import ListProductMovil from "./../listProductMovil/listProductMovil"
 class PaySection extends Component {
 
   go = (id) => {
-    window.location = "/pagar/" + id;
+    window.location = "/pagar/" + id + "/" + this.state.cantidad;
   }
   constructor(props) {
     super(props);
+    this.state = {
+      cantidad: 1,
+    }
+  }
+  
+  handleChangeCantidad = (event) => {
+    this.setState({cantidad: event.target.value});
   }
 
   render() {
@@ -36,7 +43,7 @@ class PaySection extends Component {
           <h1 className="title-pay-product-detail">{this.props.title.substr(0,60)}</h1>
         </div>
         <div className="pay-item">
-          <h3 className="price-pay-product-detail">$ {this.props.price ? this.props.price.split(".")[0].replace(/(.)(?=(\d{3})+$)/g,'$1,') : "$ ... "}</h3>
+          <h3 className="price-pay-product-detail">$ {this.props.price ? this.props.price.split(".")[0].replace(/(.)(?=(\d{3})+$)/g,'$1,') : " ... "}</h3>
         </div>
         <div className="pay-item pay-img no-movil">
           <img src={iconCredit} className="icon-credit" />
@@ -59,7 +66,7 @@ class PaySection extends Component {
         {this.props.stock > 0 ? <div className="pay-item">
           <section className="select-icon">
 
-            <select defaultValue={1}>
+          <select defaultValue={1} value={this.state.cantidad} onChange={this.handleChangeCantidad}>
               {qty_options}
             </select>
           </section>

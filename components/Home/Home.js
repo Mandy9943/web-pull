@@ -26,8 +26,6 @@ export default class Home extends Component {
   render() {
     let u_data = this.props.user_data
     let authenticated = this.props.authenticated
-    let url = "//www.sic.gov.co";
-
 
     return (
       <div className="container">
@@ -61,8 +59,8 @@ export default class Home extends Component {
         {/*<Social />*/}
         <Footer />
         <div className="footer-social">
-          <Link href={url}><a target="_blank"><img alt="sic.gov.co" src={Logo1} /></a></Link>
-          <Link href={url}><a target="_blank"><img alt="sic.gov.co" src={Logo2} /></a></Link>
+          <Link href={"//sic.gov.co"}><a target="_blank"><img alt="sic.gov.co" src={Logo1} /></a></Link>
+          <Link href={"//sic.gov.co"}><a target="_blank"><img alt="sic.gov.co" src={Logo2} /></a></Link>
         </div>
       </div>
     );
