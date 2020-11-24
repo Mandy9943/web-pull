@@ -36,9 +36,9 @@ export default class addAddress extends React.Component {
     newAddress = async e => {
         e.preventDefault();
 
-        const address = e.target.elements.address0 + " " + e.target.elements.address1 + " - " + e.target.elements.address2 + " # " + e.target.elements.address3;
+        const address = e.target.elements.address0.value + " " + e.target.elements.address1.value + " - " + e.target.elements.address2.value + " # " + e.target.elements.address3.value;
         
-        const error = await savePrivateData("/newAddress",{
+        let xpayload = {
             names: e.target.elements.names.value,
             department: e.target.elements.department.value,
             city: e.target.elements.city.value,
@@ -46,7 +46,9 @@ export default class addAddress extends React.Component {
             address: address,
             phone: e.target.elements.phone.value,
             description: e.target.elements.description.value,
-        }, this.props.jwt);
+        }
+        
+        const error = await savePrivateData("/newAddress", xpayload, this.props.jwt);
 
         if (error) {
             this.setState({
@@ -124,9 +126,9 @@ export default class addAddress extends React.Component {
                                         <option>Carrera</option>    
                                         <option>Avenida</option>        
                                     </Select>
-                                    <input name={"address0"}/>
                                     <input name={"address1"}/>
                                     <input name={"address2"}/>
+                                    <input name={"address3"}/>
                                 </div>
 
                             </label>

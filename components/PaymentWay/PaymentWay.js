@@ -54,6 +54,7 @@ export default class PaymentWay extends Component {
     componentDidMount() {
         this.loadBanks();
         this.loadAddresses();
+        
     }
 
 
@@ -70,8 +71,9 @@ export default class PaymentWay extends Component {
         console.log(this.props);
         getData("/getAddresses", this.props.user.jwt)
             .then((response) => {
-                this.setState({ addresses: response.data, addrLoaded: true });
+                this.setState({ addresses: response.data, addrLoaded: true,modalAddr: false, modal: false });
             });
+        
     }
 
     accordionCredit = () => {
@@ -226,7 +228,7 @@ export default class PaymentWay extends Component {
 
 
     render() {
-        const addAddressContent = <AddAddress jwt={this.props.user.jwt} save={this.loadAddresses} cancel={() => this.setState({ modal: false })} noheader="1" />;
+        const addAddressContent = <AddAddress jwt={this.props.user.jwt} save={this.loadAddresses} cancel={() => this.setState({ modal: false, modalAddr: false })} noheader="1" />;
 
         const addressListContent = <>
             <Select onChange={this.tmpChangeAddr} >
