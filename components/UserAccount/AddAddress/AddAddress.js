@@ -47,7 +47,7 @@ export default class addAddress extends React.Component {
             phone: e.target.elements.phone.value,
             description: e.target.elements.description.value,
         }
-        
+      
         const error = await savePrivateData("/newAddress", xpayload, this.props.jwt);
 
         if (error) {
@@ -122,9 +122,13 @@ export default class addAddress extends React.Component {
                                 <div className="input-form content-accordion-form add-direction">
 
                                     <Select name={"address0"} >
-                                        <option>Calle</option>    
-                                        <option>Carrera</option>    
-                                        <option>Avenida</option>        
+                                        <option>{'Calle'}</option>    
+                                        <option>{'Carrera'}</option>    
+                                        <option>{'Diagonal'}</option> 
+                                        <option>{'Transversal'}</option>    
+                                        <option>{'Autopista sur'}</option>    
+                                        <option>{'Autopista norte'}</option> 
+                                        <option>{'Avenida'}</option>         
                                     </Select>
                                     <input name={"address1"}/>
                                     <input name={"address2"}/>
