@@ -14,22 +14,24 @@ class Question extends Component {
   newQuestion = async e => {
     e.preventDefault();
     const question = e.target.elements.question.value;
-    const r = await sendQuestion(question, this.props.product_id, this.props.user_data.jwt);
-    console.log(r);
-    if(r.data.result==="ok"){
-      this.cngQuestion("");
-      this.props.cb();
-      alert("Pregúnta enviada");
-    }else{
-      alert("No se ha podido enviar la pregútna, intentelo nuevamente.")
+    if (question !== "") {
+      const r = await sendQuestion(question, this.props.product_id, this.props.user_data.jwt);
+      console.log(r);
+      if (r.data.result === "ok") {
+        this.cngQuestion("");
+        this.props.cb();
+        alert("Pregúnta enviada");
+      } else {
+        alert("No se ha podido enviar la pregútna, intentelo nuevamente.")
+      }
+    } else {
+      alert("Escriba una pregunta.")
     }
-
   };
 
   cngQuestion = (nval) => {
     this.setState({question: nval});
   }
-
 
   render() {
     return (
