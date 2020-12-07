@@ -43,21 +43,24 @@ export default class ContactEmail extends Component {
         }
     };
 
+    goBack = () => {
+        window.history.back();
+    };
+
     render() {
+
         return (
             <div className="contact-email">
                 <Header />
                 <div className="contact-email-top">
                     <div className="contact-email-bar">
-                        <div className="back-btn">
-                            <Link href="/ayuda">
-                                <a>
+                        <div className="back-btn">            
+                                <a onClick={this.goBack} style={{cursor:'pointer'}}>
                                     <p className="back-btn-icon">
                                         <FontAwesomeIcon icon={faAngleLeft} />
                                     </p>
                                     <p>Volver</p>
                                 </a>
-                            </Link>
                         </div>
                         <h1>Contáctanos por Correo</h1>
                     </div>

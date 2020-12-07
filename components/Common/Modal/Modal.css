@@ -26,6 +26,14 @@
   width: 50%;
   max-width: 600px !important;
 }
+.modal-close {
+  position: relative;
+  top: -20px;
+  float: right;
+}
+.modal-close span {
+ cursor: pointer;
+}
 
 .close {
   position: fixed;

@@ -12,6 +12,10 @@ import "./SecurityAccount.css";
 
 export default class SecurityAccount extends Component {
 
+    goBack = () => {
+        window.history.back();
+    };
+    
     render() {
         return (
             <div className="security-account">
@@ -19,14 +23,12 @@ export default class SecurityAccount extends Component {
                 <div className="security-account-top">
                     <div className="security-account-bar">
                         <div className="back-btn">
-                            <Link href="/ayuda">
-                                <a>
+                        <a onClick={this.goBack} style={{cursor:'pointer'}}>
                                     <p className="back-btn-icon">
                                         <FontAwesomeIcon icon={faAngleLeft} />
                                     </p>
                                     <p>Volver</p>
                                 </a>
-                            </Link>
                         </div>
                         <h1>Anular cuenta</h1>
                     </div>
