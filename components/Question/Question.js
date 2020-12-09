@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import "./Question.css";
 import { sendQuestion } from "../../services/productsApi"
+import Modal from "./../Common/Modal";
+import PaymentDetail from './PaymentDetail';
+import WarrantyDetail from './WarrantyDetail';
+import SendDetail from './SendDetail';
 
 class Question extends Component {
 
@@ -8,7 +12,11 @@ class Question extends Component {
     super(props);
     this.state = {
       question: "",
+      modal1: false,
+      modal2: false,
+      modal3: false,
     };
+    this.toggleModal = this.toggleModal.bind(this);
   }
 
   newQuestion = async e => {
@@ -33,15 +41,28 @@ class Question extends Component {
     this.setState({question: nval});
   }
 
+  toggleModal(modal) {
+    const newState = { ...this.state };
+    newState[`modal${modal}`] = !newState[`modal${modal}`] ? true : false;
+    this.setState(newState);
+  }
+
   render() {
+
     return (
       <div className="wrap-question">
         <h3>Preguntas y respuestas</h3>
         <div className="wrap-question-buttons">
 
-          <button className="button-question-product-detail">Envíos</button>
-          <button className="button-question-product-detail">Medios de pago</button>
-          <button className="button-question-product-detail">Garantía</button>
+          <button onClick={() => {
+              this.toggleModal(1);
+            }} className="button-question-product-detail">Envíos</button>
+          <button onClick={() => {
+              this.toggleModal(2);
+            }} className="button-question-product-detail">Medios de pago</button>
+          <button onClick={() => {
+              this.toggleModal(3);
+            }} className="button-question-product-detail">Garantía</button>
 
         </div>
         { this.props.user_data.authenticated &&
@@ -63,6 +84,16 @@ class Question extends Component {
               </form>
             </div>
         }
+
+      {this.state.modal1 ? (
+        <Modal toggle={this.toggleModal} num="1" content={<SendDetail/>} button />
+      ) : null}
+      {this.state.modal2 ? (
+        <Modal toggle={this.toggleModal} num="2" content={<PaymentDetail />} button />
+      ) : null}
+      {this.state.modal3 ? (
+        <Modal toggle={this.toggleModal} num="3" content={<WarrantyDetail />} button />
+      ) : null}
 
       </div>
       
