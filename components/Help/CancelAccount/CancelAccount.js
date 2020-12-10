@@ -26,6 +26,11 @@ export default class CancelAccount extends Component {
             checkePrice: event.target.checkePrice,
         })
     }
+
+    goBack = () => {
+        window.history.back();
+    };
+
     render() {
         return (
             <div className="cancel-account">
@@ -33,14 +38,12 @@ export default class CancelAccount extends Component {
                     <div className="cancel-account-top">
                         <div className="cancel-account-bar">
                             <div className="back-btn">
-                                <Link href="/ayuda">
-                                    <a>
+                                  <a onClick={this.goBack} style={{cursor:'pointer'}}>
                                         <p className="back-btn-icon">
                                             <FontAwesomeIcon icon={faAngleLeft} />
                                         </p>
                                         <p>Volver</p>
                                     </a>
-                                </Link>
                             </div>
                             <h1>Anular cuenta</h1>
                         </div>

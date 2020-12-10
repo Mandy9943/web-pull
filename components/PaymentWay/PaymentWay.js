@@ -311,7 +311,7 @@ export default class PaymentWay extends Component {
                                         placeholders="TU NOMBRE"
                                         
                                         />
-                                    <form onSubmit={this.payCC}>
+                                    <form id="form-credit" onSubmit={this.payCC}>
 
                                         <input
                                             type="tel"
@@ -362,7 +362,7 @@ export default class PaymentWay extends Component {
                                     </form>
 
                                 </div>
-                                        <button type="submit" className="button-continue main-button">
+                                        <button type="submit" form="form-credit" className="button-continue main-button">
                                             <p>Continuar</p>
                                         </button>
 
@@ -433,7 +433,7 @@ export default class PaymentWay extends Component {
                                             </button>
 
                                         </div>
-
+                                        {this.state.error && <Error message={this.state.error} />}
                                     </div>
                                 </div>
                             </form>

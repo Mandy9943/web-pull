@@ -12,6 +12,9 @@ class Modal extends Component {
           }}
         />
         <div className="modal">
+          <div className="modal-close">
+            <span title="CERRAR" onClick={() => {this.props.toggle(this.props.num)}}>{'X'}</span>
+          </div>
           {this.props.content}
         </div>
       </div>

@@ -5,6 +5,7 @@ import favicon from "../assets/img/favicon.svg";
 
 
 export default function reputacion_de_vendedor() {
+
     return (
         <div>
             <Head>
