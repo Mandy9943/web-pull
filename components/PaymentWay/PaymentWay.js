@@ -1,23 +1,24 @@
 import React, { Component } from "react";
 import CardImg from "../../assets/img/default.webp";
-import PayOnline from "../../assets/img/pay-online.png";
+import PayEfecty from "../../assets/img/pay-cash-efecty.png";
+import PayBaloto from "../../assets/img/pay-cash-baloto.png";
 import Button from "../Common/Button/Button";
 import Header from "../Common/Header/Header";
 import Footer from "../Common/Footer";
 import Select from "../Common/Select";
 import "./PaymentWay.css";
 import "./PaymentWayMovil.css";
-import { getData, makePayment, makePaymentCC } from "../../services/userApi"
+import { getData, makePayment, makePaymentCC, makePaymentCash } from "../../services/userApi"
 import Modal from "../Common/Modal";
 import AddAddress from "../UserAccount/AddAddress"
 import { validatePayCC, validatePaymentPSE } from "../../lib/validation"
 import { priceFormat } from "../../lib/config"
 import Error from "../Login/Error";
 import InputTip from "../InputTip"
-
+import PaymentLoading from '../PaymentLoading';
 import Cards from 'react-credit-cards';
 import 'react-credit-cards/es/styles-compiled.css'
-
+import PaymentCash from '../PaymentCash';
 
 export default class PaymentWay extends Component {
     constructor(props) {
@@ -45,7 +46,10 @@ export default class PaymentWay extends Component {
             card_number: '',
             card_max_length: 16,
             card_type: 'invalid',
-
+            paymentLoading: false,
+            paymentError: false,
+            paymentCash: false,
+            paymentCashType: 1,
         }
         this.addrRef = React.createRef();
 
@@ -180,13 +184,16 @@ export default class PaymentWay extends Component {
             }
 
             ccPayload.address_id = this.state.addresses[this.state.selectedAddr].address_id;
-
-            const rs = await makePaymentCC(ccPayload, this.props.user.jwt);
+            this.setState({paymentLoading:true});
+           const rs = await makePaymentCC(ccPayload, this.props.user.jwt);
+            
             if (rs.data) {
                 window.location = "/pay_result/"+rs.data.id;
             } else {
                 this.setState({
-                    error: rs.error
+                    paymentLoading: false,
+                    error: rs.error,
+                    paymentError: true
                 });
             }
         }else{
@@ -196,6 +203,43 @@ export default class PaymentWay extends Component {
             });
         }
 
+    };
+
+    payCash = async e => {
+        e.preventDefault();
+        const cashPayload = {
+            product_id: this.props.data.product_id,
+            full_name: e.target.elements.cash_form_name.value,
+            email: e.target.elements.cash_form_email.value,
+            phone_number: e.target.elements.cash_form_number.value,
+            // cash_type: this.state.paymentCashType
+            paymentMethod: 'EFECTY'
+        }
+        if(cashPayload.email && cashPayload.full_name && cashPayload.phone_number){
+            cashPayload.address_id = this.state.addresses[this.state.selectedAddr].address_id;     
+           
+            const rs = await makePaymentCash(cashPayload, this.props.user.jwt);
+            if (rs.data) {
+                console.log(rs.data);
+            } else {
+                console.log(rs);
+            }
+        }
+        else
+        {
+            alert('Complete todos los campos');
+        }
+   //
+    }
+
+    openPaymentCash = (type) => {
+        if (this.state.selectedAddr == -1) {
+            this.setState({ modalAddr: true });
+            return false;
+        }
+        else{
+            this.setState({paymentCash: true, paymentCashType: type})
+        }
     };
 
     exitccv = (e) => {
@@ -232,7 +276,7 @@ export default class PaymentWay extends Component {
 
         const addressListContent = <>
             <Select onChange={this.tmpChangeAddr} >
-                <option value="-1">Seleccione una dirección</option>
+                <option value="-1">Seleccione una dirección existente</option>
                 {this.state.addresses.map((addr, i) => {
                     return <option key={i} value={i}>{addr.address}</option>
                 })}
@@ -275,11 +319,15 @@ export default class PaymentWay extends Component {
                     <Modal toggle={() => this.setState({ modalAddr: false })} content={addressListContent} button />
                 ) : null}
 
+                {this.state.paymentCash ? (
+                    <Modal toggle={() => this.setState({ paymentCash: false })} content={<PaymentCash onSubmit={this.payCash} />} button />
+                ) : null}
+
                 <Header />
 
-
-
-                <div className="container-payment-way">
+                {
+                    this.state.paymentLoading ? <PaymentLoading error={this.state.paymentError} back={()=>this.setState({paymentLoading: false})} /> :
+                    <div className="container-payment-way">
                     <div className="product-description payment-way-box only-movil">
                         <img src={this.props.data.images.length > 0 ? this.props.data.images[0].url : 'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png'} />
                         <div className="content-product-description">
@@ -363,7 +411,7 @@ export default class PaymentWay extends Component {
 
                                 </div>
                                         <button type="submit" form="form-credit" className="button-continue main-button">
-                                            <p>Continuar</p>
+                                            <p>Pagar</p>
                                         </button>
 
                                 {this.state.cc_error && <Error message={this.state.cc_error} />}
@@ -374,7 +422,12 @@ export default class PaymentWay extends Component {
                                 <p>Efectivo</p>
                             </div>
                             <div className={this.state.closeCash ? "accordion-payment-way" : "accordion-payment-way active"}>
-                                <img alt="pago en linea" src={PayOnline} />
+                                <div className="payment-cash-logos">
+                                    <div>
+                                        <img alt="pago en linea" src={PayEfecty} onClick={()=>this.openPaymentCash(1)} />
+                                        <img alt="pago en linea" src={PayBaloto} onClick={()=>this.openPaymentCash(2)} />
+                                    </div>
+                                </div>
                             </div>
 
                             <div className="transfer payment-way-box" onClick={() => this.accordionTransfer()}>
@@ -483,6 +536,9 @@ export default class PaymentWay extends Component {
                     </div>
                 </div>
 
+                }
+
+               
                 <Footer />
             </div>
         )

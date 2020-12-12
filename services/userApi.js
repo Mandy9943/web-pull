@@ -125,6 +125,14 @@ export const makePaymentCC = async (data, jwt) => {
 
 };
 
+export const makePaymentCash = async (data, jwt) => {
+
+    const response = await post("/cashPayment", data, jwt);
+
+    return response.data ? response : {"error": "E000000152 : No se pudo guardar la información, intentelo nuevamente."};
+
+};
+
 export const getUserData = async (jwt) => {
     try {
         const response = await get("/getUserData", jwt);
