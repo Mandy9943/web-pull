@@ -213,6 +213,13 @@ button.main-button p {
   color: #fff;
   font-size: 16px;
 }
+
+.payment-cash-logos img{
+  width: 180px;
+  float: left;
+  cursor: pointer;
+}
+
 @media (max-width: 700px) {
   .accordion-payment-way .content-accordion {
     display: block;

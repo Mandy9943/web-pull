@@ -1,0 +1,13 @@
+.payment-loading{
+    width: 100%;
+    text-align: center;
+}
+
+.payment-loading .payment-loading-message{
+    padding-top: 215px;
+    padding-bottom: 215px;
+}
+
+.payment-loading .payment-loading-message span{
+    color: #0384f3;
+}
