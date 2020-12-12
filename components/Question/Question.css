@@ -56,6 +56,22 @@
   text-align: center;
 }
 
+.payment-questions .pay-online-question{
+  width: 250px;
+  position: relative;
+  left: -40px;
+}
+.payment-questions .pay-transfer-question{
+  width: 250px;
+  position: relative;
+  left: -30px;
+}
+.payment-questions .pay-credit-question{
+  width: 250px;
+  position: relative;
+  left: -28px;
+}
+
 /* .button-question-product-detail {
   color: #111111;
   font-size: 16px;
