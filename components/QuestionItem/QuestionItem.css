@@ -1,5 +1,5 @@
 .QuestionItem-list {
-  border-top: 0.5px solid #C6C6C6;
+  border-top: 0.5px solid #e2e2e2;
 }
 
 @media (min-width: 700px) {
@@ -10,14 +10,14 @@
 
 .QuestionItem-list .title {
   color: #111111;
-  font-size: 20px;
+  font-size: 18px;
   margin: 15px;
   font-weight: 600;
 }
 
 .QuestionItem-list .empty-question {
   color: #4E4E4E;
-  font-size: 17px;
+  font-size: 16px;
   padding-bottom: 20px;
   padding-left: 15px;
   display: block;
@@ -25,7 +25,7 @@
 
 .QuestionItem-list .question-item {
   padding: 0 15px;
-  font-size: 17px;
+  font-size: 16px;
   padding-bottom: 20px;
 }
 

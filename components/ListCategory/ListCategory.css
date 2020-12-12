@@ -118,7 +118,7 @@
 }
 
 .temp-card .product-card-description-box .product-card-description p {
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   font-weight: 500;
@@ -211,6 +211,7 @@
   grid-gap: 5px;
   color: #CF0A2C;
   font-size: 12px;
+  margin-bottom:7px;
 }
 
 @media (max-width: 768px) {

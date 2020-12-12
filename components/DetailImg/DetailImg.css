@@ -39,9 +39,9 @@
 .size-img-list {
   width: 70px;
   max-height: 70px;
-  border-right: 0.5px solid #C6C6C6;
-  border-left: 0.5px solid #C6C6C6;
-  border-bottom: 0.5px solid #C6C6C6;
+  border-right: 0.5px solid #e2e2e2;
+  border-left: 0.5px solid #e2e2e2;
+  border-bottom: 0.5px solid #e2e2e2;
 }
 
 .size-img-main {

@@ -10,7 +10,7 @@ import {searchProduct, getProductsBasic, searchProducts, searchFilters} from "..
 import {categoryApi} from "../../lib/config";
 
 import {compareValues,} from "../../lib/functions";
-import FilterTop from "../Filter/FilterTop";
+
 import {getData} from "../../services/userApi";
 import redirect from "../../lib/redirect";
 import Error from "next/error";
@@ -286,18 +286,6 @@ class Category extends Component {
                 <Nav user={this.props.user_data.user} home={true} jwt={this.props.user_data.jwt}
                      actualSearch={this.props.data.search} authenticated={this.props.user_data.authenticated}/>
 
-                <FilterTop
-                    sortProducts={this.sortProducts}
-                    removeFilter={this.removeFilter}
-                    totalItems={this.state.totalItems}
-                    filters={this.state.filters}
-                    search={this.props.data.search}
-                    format={this.state.format}
-                    toggle={this.toggleFormat}
-                    treeSelectedCategory={this.state.treeSelectedCategory}
-                    onSelectCategory={this.onSelectCategory}
-                    isSearch={this.props.data.type === 'search'}
-                />
                 <div className="search-content">
                     <Filter
                         applyFilter={this.applyFilter}

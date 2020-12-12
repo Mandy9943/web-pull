@@ -1,5 +1,5 @@
 .wrap-detail-info {
-  border-top: 0.5px solid #C6C6C6;
+  border-top: 0.5px solid #e2e2e2;
   font-family: 'Montserrat', sans-serif;
   padding: 40px;
   color: #111111;
@@ -26,21 +26,21 @@
 
 .item-detail-info p {
   margin-bottom: 10px;
-  font-size: 17px;
+  font-size: 16px;
   color: #111111;
 }
 
 .characteristics, .guarantee, .characteristics-web {
   font-family: 'Montserrat', sans-serif;
   padding: 20px;
-  border-bottom: 0.5px solid #C6C6C6;
+  border-bottom: 0.5px solid #e2e2e2;
   background: white;
 }
 
 .characteristics .edit, .guarantee .edit, .characteristics-web .edit {
   -ms-grid-columns: 1fr auto;
       grid-template-columns: 1fr auto;
-  font-size: 17px;
+  font-size: 16px;
 }
 
 .characteristics .info, .guarantee .info, .characteristics-web .info {
@@ -70,7 +70,7 @@
 
 .characteristics-web {
   padding: 0;
-  font-size: 17px;
+  font-size: 16px;
   border: none;
 }
 
@@ -83,13 +83,13 @@
 }
 
 .guarantee {
-  border-top: 0.5px solid #C6C6C6;
+  border-top: 0.5px solid #e2e2e2;
   padding: 30px 20px;
 }
 
 .guarantee h5 {
   margin-bottom: 10px;
-  font-size: 17px;
+  font-size: 16px;
   color: #111111;
 }
 

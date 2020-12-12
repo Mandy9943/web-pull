@@ -1,6 +1,6 @@
 .wrap-question {
   padding: 40px;
-  border-top: 0.5px solid #C6C6C6;
+  border-top: 0.5px solid #e2e2e2;
 }
 
 .wrap-question h3 {
@@ -20,8 +20,10 @@
 
 .wrap-question-buttons .button-question-product-detail {
   color: white;
-  font-size: 16px;
-  background-color: #ababab;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 5px;
+  background-color: #bdbdbd;
   border: none;
 }
 
@@ -42,15 +44,11 @@
 .warranty-questions h3{
   text-align: center;
 }
-.warranty-questions p, h4{
-  margin-top: 1em;
-}
+
 .send-questions h3 span {
   color: #CF0A2C;
 }
-.send-questions p, h4{
-  margin-top: 1em;
-}
+
 .send-questions .check{
   color: #CF0A2C;
 }

@@ -8,6 +8,7 @@
           justify-content: space-between;
   width: 100%;
   height: auto;
+  grid-gap: 10px;
 }
 
 .tickets {
@@ -22,7 +23,7 @@
 }
 
 .tickets:nth-child(2) {
-  margin: 0px 10px;
+  margin: 0px 0px;
 }
 
 .tickets img {

@@ -36,7 +36,7 @@ class ListCategory extends Component {
                                                 <img alt={product.title} src={getImgUrl(product.image)} className="img"/>
                                             </div>
                                             <div className="product-card-description-box">
-                                                <h2>${product.price}</h2>
+                                                <h2>$ {Intl.NumberFormat({style: 'currency' }).format(product.price)}</h2>
                                                 <h4>{product.brand} </h4>
                                                 <div className="product-card-description">
                                                     
@@ -65,7 +65,7 @@ class ListCategory extends Component {
                                                 <img alt={product.title} src={getImgUrl(product.image)} className="img"/>
                                             </div>
                                             <div className="product-list-description-box">
-                                            <h2>${product.price } </h2>
+                                            <h2>$ {Intl.NumberFormat({style: 'currency' }).format(product.price)}</h2>
                                                 <h4>{product.brand}</h4>
                                                 <p>{product.title}</p>
                                                 {parseInt(product.is_prime) ? (

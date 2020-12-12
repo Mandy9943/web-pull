@@ -30,7 +30,7 @@ export default class CategoryList extends Component {
         "links": ["","Ropa%20para%20Bebés", "Caminadores%20y%20Correpasillos", "Cuarto%20del%20Bebé", "Higiene%20y%20cuidado%20del%20bebé", "Lactancia%20y%20Alimentación", "Entretenimiento%20para%20Bebés", "Paseo%20del%20Bebé", "Salud%20del%20bebé%20", "Seguridad%20para%20bebés", "Artículos%20de%20maternidad", "Corrales%20para%20bebés", "Chupetes%20y%20mordedores", "Art%C3%ADculos%20para%20Beb%C3%A9s"],
         "image_path": encodeURI("//kiero.co/images/resources/bebes/"),"enable": true},
 
-      "Belleza y cuidado personal": {"estructure":[1, 2, 3, 2, 3, 2],
+      "belleza": {"estructure":[1, 2, 3, 2, 3, 2],
         "links": ["","electrodomesticos%20de%20belleza", "extensiones%20y%20pelucas", "higiene%20personal", "Articulos%20de%20peluqueria", "cuidado%20del%20cuerpo", "maquillaje", "depilación", "perfumes%20y%20fragancias", "cuidado%20del%20cabello", "cuidado%20de%20la%20piel", "barbería", "manicure%20y%20pedicure"],
         "image_path": encodeURI("//kiero.co/images/resources/Belleza y cuidado personal/"),"enable": true},
 

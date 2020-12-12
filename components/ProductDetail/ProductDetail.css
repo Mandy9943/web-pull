@@ -44,7 +44,7 @@
 }
 
 .wrap-product {
-  border: 0.5px solid #C6C6C6;
+  border: 0.5px solid #e2e2e2;
   background: white;
   -webkit-box-flex: 2;
       -ms-flex: 2;
@@ -81,7 +81,7 @@
 
 .wrap-slider-product-detail {
   padding: 20px;
-  border-top: 0.5px solid #C6C6C6;
+  border-top: 0.5px solid #e2e2e2;
 }
 
 .wrap-slider-product-detail .slider {

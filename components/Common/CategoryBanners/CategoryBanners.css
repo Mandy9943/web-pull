@@ -1,14 +1,15 @@
 .category-banners {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .category-banners h3.title {
   margin-bottom: 10px;
-  font-size: 21px;
+  font-size: 19px;
   font-weight: 600;
   color: #111111;
   text-align: left;
   margin-bottom: 20px;
+  padding-top: 15px;
 }
 
 .category-banners .group-category {
@@ -35,7 +36,7 @@
 }
 
 .category-banners .group-category .item img {
-  width: 80%;
+  width: 86%;
  
 }
 

@@ -141,6 +141,59 @@ class Filter extends Component {
                         marginBottom: this.props.filters.length > 0 ? 12 : 0
                     }}>{filters}</div>
                     <div className="filter-group categories">
+                    
+                    <div className="filter-container">
+                        
+                <div className="content-left">
+                    <span className="ots">
+                        {this.props.search}
+                    </span>
+                    { this.props.isSearch &&
+                        <span className="breadcrumb">
+                            {this.props.treeSelectedCategory.map((item, i) => (
+                                <><span key={item.key} onClick={() =>this.props.onSelectCategory(item, item.index)}>{item.key}</span>
+                                <FontAwesomeIcon icon={faAngleRight}/></>
+                            ))}
+                            {this.props.treeSelectedCategory.length > 0 && this.props.search}
+                        </span>
+                    }
+                    <span className="totals">
+                        {this.props.totalItems} resultados
+                    </span>
+                </div>
+                
+            </div>
+                        
+                <div className="filter-top-container-order">
+
+                <div className="order">
+                    <div className="text">Ordenar publicaciones</div>
+                    <div className="wrap-filter-button">
+                        <select onChange={(e) => this.setSort(e)} className="select-filter">
+                            <option value="0">Más relevantes</option>
+                            <option value="1">Mayor precio</option>
+                            <option value="2">Menor precio</option>
+                        </select>
+                        <p>|</p>
+                        <div className="wrap-filter-format">
+                            <div
+                                onClick={() => {
+                                    this.props.toggle({format: "list"});
+                                }}
+                                className={buttonState == "list" ? "active" : null}>
+                                <FontAwesomeIcon icon={faList}/>
+                            </div>
+                            <div
+                                onClick={() => {
+                                    this.props.toggle({format: "grid"});
+                                }}
+                                className={buttonState == "grid" ? "active" : null}>
+                                <FontAwesomeIcon icon={faTh}/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
                         <div className="filter-title">Categorías</div>
                         {res_categories.length > 0 && <>
                             <div ref={this.categories} className="filter-height-overflow">

@@ -39,7 +39,7 @@
   display: grid;
   -ms-grid-columns: 1fr auto auto;
       grid-template-columns: 1fr auto auto;
-  grid-gap: 15px;
+  grid-gap: 10px;
   width: 200px;
   margin-top: 5px;
 }
@@ -85,8 +85,9 @@
   border: 0;
   width: 100%;
   font-size: .8rem;
-  font-weight: 500;
+  font-weight: 400;
   color: #575757;
+  padding: 1px 1px 1px 1px !important;
 }
 
 .filter-group {
@@ -215,7 +216,7 @@
   padding: 20px 10px;
   width: 100%;
   text-align: center;
-  border-right: 0.5px solid #C6C6C6;
+  border-right: 0.5px solid #e2e2e2;
 }
 
 .responsive-filter-item svg {
@@ -332,7 +333,7 @@ details > summary:first-of-type {
 .filter-title {
     font-weight: 600;
     font-size: .9rem;
-    color: black;
+    color: #111111;
 }
 .categories > div > div > div > div > div > div, .categories > div > div > div > div > div > div div {
   padding-top: 0;
@@ -342,34 +343,41 @@ details > summary:first-of-type {
 .categories > div > div {
   padding-left: 0;
 }
-.filter-top-container {
+.filter-container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  width: 80%;
-  margin: 30px auto 10px auto;
+
 }
-.filter-top-container .order {
+  .filter-top-container-order {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom:10px;
+
+}
+.filter-top-container-order .order {
   display: flex;
   flex-direction: column;
-  padding: 0 10px;
+  padding-bottom: 10px;
 }
-.filter-top-container .order .text {
-  font-size: .9rem;
+.filter-top-container-order .order .text {
+  font-size: 14px;
   font-weight: 600;
-  padding-left: 3px;
+
 }
-.filter-top-container .content-left {
-  padding: 0 10px;
+.filter-container .content-left {
+  padding-bottom: 10px;
+  padding-top:15px;
   display: flex;
   flex-direction: column;
+
 }
-.filter-top-container .content-left .ots {
+.filter-container .content-left .ots {
   font-size: 1.2rem;
-  color: black;
+  color: #111111;
   font-weight: 600;
+  text-transform: capitalize;
 }
-.filter-top-container .content-left .totals {
+.filter-container .content-left .totals {
   font-size: .8rem;
   color: #575757;
   font-weight: 500;
