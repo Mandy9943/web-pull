@@ -11,3 +11,31 @@
 .payment-loading .payment-loading-message span{
     color: #0384f3;
 }
+
+.payment-loading .payment-error-message{
+ margin: 0 auto;
+ width: 40%;
+ padding-top: 75px;
+ padding-bottom: 125px;
+}
+.payment-loading .icon-close{
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    box-shadow: 0px 3px 6px #00000029;
+    opacity: 1;
+    margin: 0 auto;
+}
+.icon-close svg{
+    color:#CF0A2C;
+    font-size: larger;
+    margin: 15px;
+}
+.container-message-error{
+background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+background: #FFFFFF 0% 0% no-repeat padding-box;
+box-shadow: 0px 3px 6px #00000029;
+border-radius: 8px;
+opacity: 1;
+padding: 2em;
+}

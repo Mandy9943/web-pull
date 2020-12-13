@@ -9,7 +9,7 @@ function PaymentCash({onSubmit}) {
             <form onSubmit={onSubmit}>
             <input name={"cash_form_name"} placeholder="Nombre y apellido *" />
             <br/>
-            <input name={"cash_form_department"} placeholder="Departamento *" />
+            <input name={"cash_form_email"} placeholder="Email *" />
             <br />
             <input name={"cash_form_number"} placeholder="Número de contacto *" />
             <br />

@@ -8,7 +8,7 @@ import Footer from "../Common/Footer";
 import Select from "../Common/Select";
 import "./PaymentWay.css";
 import "./PaymentWayMovil.css";
-import { getData, makePayment, makePaymentCC } from "../../services/userApi"
+import { getData, makePayment, makePaymentCC, makePaymentCash } from "../../services/userApi"
 import Modal from "../Common/Modal";
 import AddAddress from "../UserAccount/AddAddress"
 import { validatePayCC, validatePaymentPSE } from "../../lib/validation"
@@ -47,6 +47,7 @@ export default class PaymentWay extends Component {
             card_max_length: 16,
             card_type: 'invalid',
             paymentLoading: false,
+            paymentError: false,
             paymentCash: false,
             paymentCashType: 1,
         }
@@ -191,7 +192,8 @@ export default class PaymentWay extends Component {
             } else {
                 this.setState({
                     paymentLoading: false,
-                    error: rs.error
+                    error: rs.error,
+                    paymentError: true
                 });
             }
         }else{
@@ -206,21 +208,39 @@ export default class PaymentWay extends Component {
     payCash = async e => {
         e.preventDefault();
         const cashPayload = {
-            cash_form_name: e.target.elements.cash_form_name.value,
-            cash_form_department: e.target.elements.cash_form_department.value,
-            cash_form_number: e.target.elements.cash_form_number.value,
-            cash_type: this.state.paymentCashType
+            product_id: this.props.data.product_id,
+            full_name: e.target.elements.cash_form_name.value,
+            email: e.target.elements.cash_form_email.value,
+            phone_number: e.target.elements.cash_form_number.value,
+            // cash_type: this.state.paymentCashType
+            paymentMethod: 'EFECTY'
         }
-        if(cashPayload.cash_form_department && cashPayload.cash_form_name && cashPayload.cash_form_number){
-            console.log(cashPayload);
+        if(cashPayload.email && cashPayload.full_name && cashPayload.phone_number){
+            cashPayload.address_id = this.state.addresses[this.state.selectedAddr].address_id;     
+           
+            const rs = await makePaymentCash(cashPayload, this.props.user.jwt);
+            if (rs.data) {
+                console.log(rs.data);
+            } else {
+                console.log(rs);
+            }
         }
         else
         {
             alert('Complete todos los campos');
         }
-   
+   //
     }
 
+    openPaymentCash = (type) => {
+        if (this.state.selectedAddr == -1) {
+            this.setState({ modalAddr: true });
+            return false;
+        }
+        else{
+            this.setState({paymentCash: true, paymentCashType: type})
+        }
+    };
 
     exitccv = (e) => {
         this.setState({ focus: "" });
@@ -306,7 +326,7 @@ export default class PaymentWay extends Component {
                 <Header />
 
                 {
-                    this.state.paymentLoading ? <PaymentLoading /> :
+                    this.state.paymentLoading ? <PaymentLoading error={this.state.paymentError} back={()=>this.setState({paymentLoading: false})} /> :
                     <div className="container-payment-way">
                     <div className="product-description payment-way-box only-movil">
                         <img src={this.props.data.images.length > 0 ? this.props.data.images[0].url : 'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png'} />
@@ -391,7 +411,7 @@ export default class PaymentWay extends Component {
 
                                 </div>
                                         <button type="submit" form="form-credit" className="button-continue main-button">
-                                            <p>Continuar</p>
+                                            <p>Pagar</p>
                                         </button>
 
                                 {this.state.cc_error && <Error message={this.state.cc_error} />}
@@ -404,8 +424,8 @@ export default class PaymentWay extends Component {
                             <div className={this.state.closeCash ? "accordion-payment-way" : "accordion-payment-way active"}>
                                 <div className="payment-cash-logos">
                                     <div>
-                                        <img alt="pago en linea" src={PayEfecty} onClick={()=>this.setState({paymentCash: true, paymentCashType: 1})} />
-                                        <img alt="pago en linea" src={PayBaloto} onClick={()=>this.setState({paymentCash: true, paymentCashType: 2})} />
+                                        <img alt="pago en linea" src={PayEfecty} onClick={()=>this.openPaymentCash(1)} />
+                                        <img alt="pago en linea" src={PayBaloto} onClick={()=>this.openPaymentCash(2)} />
                                     </div>
                                 </div>
                             </div>
