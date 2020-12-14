@@ -3,9 +3,11 @@ import Link from "next/link";
 import "./RecommendedProducts.css";
 import '../ProductsSlider/ProductsSlider.css'
 import Slider from 'react-animated-slider';
+import { getRecommendProducts } from '../../services/productsApi';
 
-function RecommendedProducts(props) {
+function RecommendedProducts({category}) {
 
+    // console.log(getRecommendProducts(category));
     const productList = [];
     const productListMobile = [];
 
