@@ -39,6 +39,16 @@ export const getProductDetail = (id_product) => {
     }
 };
 
+export const getRecommendProducts = (id_category) => {
+    try {
+        let endpoint = ("/get_product_recommended/"+id_category);
+        let data = sget(endpoint)
+        return data;
+    } catch (error) {
+        return error;
+    }
+};
+
 export const searchProduct = (string, limit) => {
     try {
                 
