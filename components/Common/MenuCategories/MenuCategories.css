@@ -146,6 +146,7 @@
 .sub-categories .sub-cat h5 a {
   margin: 0 !important;
   padding: 0 !important;
+  font-size: 14px
 }
 
 .sub-categories .sub-cat span {
@@ -164,7 +165,7 @@
 .sub-categories .sub-cat span a {
   display: -ms-grid;
   display: grid;
-  font-size: 12px;
+  font-size: 14px;
   margin: auto;
   margin-left: 0;
   padding: 0 !important;

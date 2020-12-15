@@ -7,7 +7,7 @@
   background: #F3F3F3;
   -webkit-box-shadow: 0px 0px 5px 1000px rgba(0, 0, 0, 0.27);
           box-shadow: 0px 0px 5px 1000px rgba(0, 0, 0, 0.27);
-  padding: 30px 15px;
+  padding: 30px 20px;
 }
 
 .question-component .modal .modal-question {
@@ -34,7 +34,7 @@
 }
 
 .question-component .modal .modal-question .header-modal .question {
-  font-size: 18px;
+  font-size: 16px;
   display: inline-block;
   padding-bottom: 10px;
 }
@@ -64,7 +64,7 @@
 }
 
 .question-component .modal .modal-question .header-modal .question-product span {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bolder;
 }
 
@@ -77,12 +77,24 @@
 }
 
 .question-component .modal .modal-question .name-user-question {
-  font-size: 15px;
+  font-size: 14px;
+  font-weight: 600;
+  padding-left: 10px;
+  text-transform: capitalize;
+}
+.question-component .modal .modal-question .name-user-question-respondida {
+  font-size: 14px;
   font-weight: 600;
   padding-left: 10px;
   text-transform: capitalize;
 }
 
+.question-component .modal .modal-question .name-user-question-respuesta {
+  font-size: 14px;
+  font-weight: 400;
+  padding-left: 10px;
+
+}
 .question-component .modal .modal-question .name-user-question svg {
   color: #CF0A2C;
   font-size: 18px;
@@ -100,6 +112,7 @@
 
 .question-component .modal .modal-question .wrap-question-input input {
   border: none;
+  margin: 24px 0px;
   padding-bottom: 50px;
 }
 
@@ -110,6 +123,7 @@
   width: 180px;
   float: right;
   margin-top: 15px;
+  font-weight: 600;
 }
 
 .account-questions-wrap-title {
@@ -119,7 +133,7 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin: 0px 30px;
+ 
   margin-bottom: 20px;
 }
 
@@ -140,7 +154,7 @@
   width: auto;
   margin: auto;
   border-radius: 5px;
-  border: 0.5px solid #111111;
+  border: 0.5px solid #b1b1b1;
   -webkit-box-shadow: -5px 5px 6px #11111129;
           box-shadow: -5px 5px 6px #11111129;
   border-radius: 5px;
@@ -162,12 +176,12 @@
   border-radius: 5px 5px 0px 0;
   font-size: 14px;
   background: #EEEEEE;
-  border-bottom: 0.5px solid #111111;
+  border-bottom: 0.5px solid #b1b1b1;
 }
 
 .account-questions-wrap-questions .question-table .title-head .title {
   padding: 7px 30px 7px !important;
-  border-right: 0.5px solid #111111;
+  border-right: 0.5px solid #b1b1b1;
 }
 
 .account-questions-wrap-questions .question-table .title-head .title:hover {
@@ -185,7 +199,7 @@
       grid-template-columns: 5fr 130px 20%;
   font-size: 13px;
   background: white;
-  border-bottom: 0.5px solid #111111;
+  border-bottom: 0.5px solid #b1b1b1;
 }
 
 .account-questions-wrap-questions .question-table .question-item:last-child {
@@ -195,7 +209,7 @@
 
 .account-questions-wrap-questions .question-table .question-item .title {
   padding-left: 30px;
-  border-right: 0.5px solid #111111;
+  border-right: 0.5px solid #b1b1b1;
 }
 
 .account-questions-wrap-questions .question-table .question-item .title svg {
@@ -205,7 +219,7 @@
 .fetch {
   width: 100px;
   text-align: center;
-  border-right: 0.5px solid #111111;
+  border-right: 0.5px solid #b1b1b1;
   padding: 7.5px 0;
 }
 
@@ -223,7 +237,7 @@
 
 .name-user .actions {
   background: white;
-  border: 0.5px solid #11111129;
+  border: 0.5px solid #b1b1b1;
   border-radius: 5px;
   position: absolute;
   right: -100px;
