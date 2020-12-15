@@ -19,6 +19,7 @@ import PaymentLoading from '../PaymentLoading';
 import Cards from 'react-credit-cards';
 import 'react-credit-cards/es/styles-compiled.css'
 import PaymentCash from '../PaymentCash';
+import PaymentCashResult from '../PaymentCashResult';
 
 export default class PaymentWay extends Component {
     constructor(props) {
@@ -50,6 +51,10 @@ export default class PaymentWay extends Component {
             paymentError: false,
             paymentCash: false,
             paymentCashType: 1,
+            paymentCashResult: false,
+            paymentCashAmount: 0,
+            paymentCashNoAgreement: 0,
+            paymentCashNoPay: ''
         }
         this.addrRef = React.createRef();
 
@@ -211,9 +216,8 @@ export default class PaymentWay extends Component {
             product_id: this.props.data.product_id,
             full_name: e.target.elements.cash_form_name.value,
             email: e.target.elements.cash_form_email.value,
-            phone_number: e.target.elements.cash_form_number.value,
-            // cash_type: this.state.paymentCashType
-            paymentMethod: 'EFECTY'
+            phone_number: e.target.elements.cash_form_number.value,     
+            paymentMethod: 'EFECTY' // this.state.paymentCashType
         }
         if(cashPayload.email && cashPayload.full_name && cashPayload.phone_number){
             cashPayload.address_id = this.state.addresses[this.state.selectedAddr].address_id;     
@@ -422,12 +426,15 @@ export default class PaymentWay extends Component {
                                 <p>Efectivo</p>
                             </div>
                             <div className={this.state.closeCash ? "accordion-payment-way" : "accordion-payment-way active"}>
-                                <div className="payment-cash-logos">
-                                    <div>
-                                        <img alt="pago en linea" src={PayEfecty} onClick={()=>this.openPaymentCash(1)} />
-                                        <img alt="pago en linea" src={PayBaloto} onClick={()=>this.openPaymentCash(2)} />
-                                    </div>
-                                </div>
+                               {
+                                   !this.state.paymentCashResult ?
+                                    <div className="payment-cash-logos">
+                                        <div>
+                                            <img alt="pago en linea" src={PayEfecty} onClick={()=>this.openPaymentCash(1)} />
+                                            <img alt="pago en linea" src={PayBaloto} onClick={()=>this.openPaymentCash(2)} />
+                                        </div>
+                                    </div>: <PaymentCashResult type={this.state.paymentCashType} amount={this.state.paymentCashAmount} agreement={this.state.paymentCashNoAgreement} pay={this.state.paymentCashNoPay} document={''} />
+                               } 
                             </div>
 
                             <div className="transfer payment-way-box" onClick={() => this.accordionTransfer()}>
