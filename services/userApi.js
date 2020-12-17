@@ -71,6 +71,19 @@ export const recoverPass = async (email) => {
     }
 };
 
+export const resetPassword = async (password, token) => {
+    try {
+        const response = await post("/resetPassword", {
+            token: token,
+            password: password
+        });
+        return 1;
+    } catch (error) {
+        return error.response &&
+        error.response.status === 400 ? "El usuario no existe o el token ha expirado." : "Error desconocido, intente nuevamente.";
+    }
+};
+
 
 
 export const savePhone = async (email) => {
