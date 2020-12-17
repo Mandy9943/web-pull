@@ -53,9 +53,7 @@ export default class PaymentWay extends Component {
             paymentCash: false,
             paymentCashType: 1,
             paymentCashResult: false,
-            paymentCashAmount: 0,
-            paymentCashNoAgreement: 0,
-            paymentCashNoPay: ''
+            paymentCashDocument: ''
         }
         this.addrRef = React.createRef();
 
@@ -226,7 +224,7 @@ export default class PaymentWay extends Component {
             const rs = await makePaymentCash(cashPayload, this.props.user.jwt);
             if (rs.data) {
                 console.log(rs.data);
-                this.setState({paymentCashResult: true, paymentCash: false});
+                this.setState({paymentCashResult: true, paymentCash: false, paymentCashDocument: rs.data.result.pdf});
             } else {
                 console.log(rs);
             }          
@@ -235,7 +233,6 @@ export default class PaymentWay extends Component {
         {
             alert('Complete todos los campos');
         }
-   //
     }
 
     openPaymentCash = (type) => {
@@ -319,7 +316,7 @@ export default class PaymentWay extends Component {
         }
 
         const totalPrice = priceFormat(parseFloat(this.props.data.price) * this.state.productQuantity);
-
+     
         return (
             <div className="payment-way">
 
@@ -447,7 +444,10 @@ export default class PaymentWay extends Component {
                                             <img alt="pago en linea" src={PayBaloto} onClick={()=>this.openPaymentCash(2)} />
                                             <img alt="pago en linea" src={PaySured} onClick={()=>this.openPaymentCash(3)} />
                                         </div>
-                                    </div>: <PaymentCashResult type={this.state.paymentCashType} amount={this.state.paymentCashAmount} agreement={this.state.paymentCashNoAgreement} pay={this.state.paymentCashNoPay} document={''} />
+                                    </div>: <PaymentCashResult 
+                                                type={this.state.paymentCashType} 
+                                                amount={totalPrice}
+                                                document={this.state.paymentCashDocument} />
                                } 
                             </div>
 
