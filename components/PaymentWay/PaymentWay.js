@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import CardImg from "../../assets/img/default.webp";
 import PayEfecty from "../../assets/img/pay-cash-efecty.png";
 import PayBaloto from "../../assets/img/pay-cash-baloto.png";
+import PaySured from "../../assets/img/pay-cash-sured.png";
 import Button from "../Common/Button/Button";
 import Header from "../Common/Header/Header";
 import Footer from "../Common/Footer";
@@ -217,7 +218,7 @@ export default class PaymentWay extends Component {
             full_name: e.target.elements.cash_form_name.value,
             email: e.target.elements.cash_form_email.value,
             phone_number: e.target.elements.cash_form_number.value,     
-            paymentMethod: 'EFECTY' // this.state.paymentCashType
+            paymentMethod: this.getPaymentType()
         }
         if(cashPayload.email && cashPayload.full_name && cashPayload.phone_number){
             cashPayload.address_id = this.state.addresses[this.state.selectedAddr].address_id;     
@@ -225,9 +226,10 @@ export default class PaymentWay extends Component {
             const rs = await makePaymentCash(cashPayload, this.props.user.jwt);
             if (rs.data) {
                 console.log(rs.data);
+                this.setState({paymentCashResult: true, paymentCash: false});
             } else {
                 console.log(rs);
-            }
+            }          
         }
         else
         {
@@ -274,6 +276,17 @@ export default class PaymentWay extends Component {
 
       }
 
+      getPaymentType = () => {
+        if(this.state.paymentCashType===1){
+            return 'EFECTY';
+        }
+        if(this.state.paymentCashType===2){
+            return 'BALOTO';
+        }
+        if(this.state.paymentCashType===3){
+            return 'SURED';
+        }
+      };
 
     render() {
         const addAddressContent = <AddAddress jwt={this.props.user.jwt} save={this.loadAddresses} cancel={() => this.setState({ modal: false, modalAddr: false })} noheader="1" />;
@@ -432,6 +445,7 @@ export default class PaymentWay extends Component {
                                         <div>
                                             <img alt="pago en linea" src={PayEfecty} onClick={()=>this.openPaymentCash(1)} />
                                             <img alt="pago en linea" src={PayBaloto} onClick={()=>this.openPaymentCash(2)} />
+                                            <img alt="pago en linea" src={PaySured} onClick={()=>this.openPaymentCash(3)} />
                                         </div>
                                     </div>: <PaymentCashResult type={this.state.paymentCashType} amount={this.state.paymentCashAmount} agreement={this.state.paymentCashNoAgreement} pay={this.state.paymentCashNoPay} document={''} />
                                } 

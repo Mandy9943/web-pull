@@ -60,6 +60,15 @@
   margin-bottom: 15px;
 }
 
+.payment-way-content .payment-way-img-cash{
+  width: 33%;
+  float: left;
+}
+.payment-way-content .payment-way-footer-p{
+  float: left;
+  text-align: center;
+}
+
 .bank-transfer-content h4 {
   margin-bottom: 20px;
   font-size: 18px;

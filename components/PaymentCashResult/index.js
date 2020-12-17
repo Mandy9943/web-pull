@@ -1,6 +1,7 @@
 import React from 'react';
 import PayEfecty from "../../assets/img/pay-cash-efecty.png";
 import PayBaloto from "../../assets/img/pay-cash-baloto.png";
+import PaySured from "../../assets/img/pay-cash-sured.png";
 import './PaymentCashResult.css';
 
 function PaymentCashResult({type, amount, agreement, pay}) {
@@ -10,7 +11,7 @@ function PaymentCashResult({type, amount, agreement, pay}) {
             <hr />
             <div className="payment-cash-result-container">   
                 <div className="payment-cash-result-logo">
-                    <img alt="logo" src={type===1?PayEfecty:PayBaloto} />
+                    <img alt="logo" src={type===1?PayEfecty:(type===2?PayBaloto:PaySured)} />
                 </div>
                 <div className="payment-cash-result-info">
                     <span className="info-title">{'Nº de convenio'}</span>
