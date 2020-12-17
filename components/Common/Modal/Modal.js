@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faTimes
+} from "@fortawesome/free-solid-svg-icons";
 import "./Modal.css";
 
 class Modal extends Component {
@@ -13,7 +17,7 @@ class Modal extends Component {
         />
         <div className="modal">
           <div className="modal-close">
-            <span title="CERRAR" onClick={() => {this.props.toggle(this.props.num)}}>{'X'}</span>
+            <span title="CERRAR" onClick={() => {this.props.toggle(this.props.num)}}><FontAwesomeIcon icon={faTimes} /></span>
           </div>
           {this.props.content}
         </div>
