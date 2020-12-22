@@ -89,6 +89,23 @@ export default class Summary extends Component {
         })
     }
 
+    componentDidMount(){
+        let tab = document.location.href.split('#');
+        if(tab[1]!==undefined){
+            this.setState({
+                display: {
+                resume: false,
+                myData: tab[1]==="opciones"?true:false,
+                bill: tab[1]==="facturacion"?true:false,
+                orders: tab[1]==="compras"?true:false,
+                questions: false,
+                items: false,
+                detail: false
+                }
+            })   
+        }
+    }
+
 
     CloseSidebar = () => {
         this.setState({
@@ -97,9 +114,8 @@ export default class Summary extends Component {
         console.info("si ejecuta y cambia el estado " + this.state.closeSidebar)
     }
 
-
     render() {
-
+        console.log(this.state.display.bill);
         let u_data = this.props.user_data;
 
         let url= "//www.sic.gov.co";
