@@ -7,6 +7,7 @@ import Tickets from "../../components/Tickets";
 import Nav from "../../components/Common/Nav";
 import Footer from "../../components/Common/Footer";
 import Link from "next/link";
+import { useRouter } from 'next/router'
 import Logo1 from "../../assets/img/logo-social.png";
 import Logo2 from "../../assets/img/logo-social1.png";
 import "../../components/CategoryList/CategoryList.css";
@@ -18,6 +19,10 @@ import {searchItemsPerPage} from "../../lib/config";
 
 
 function Results({ data, session }) {
+    const router = useRouter();
+    const {page} = router.query;
+    const currentPath = router.asPath;
+
     let url = "//www.sic.gov.co";
     var complete = {
         "deportes y fitness": {
@@ -278,7 +283,7 @@ function Results({ data, session }) {
                     bd92b4b573820ab.jpg"/>
                     <link rel="icon" href={favicon} type="image/png" />
                 </Head>
-                <Category data={data} user_data={session} />
+                <Category data={data} user_data={session} page={page} path={currentPath} />
             </div>
         )
     }
