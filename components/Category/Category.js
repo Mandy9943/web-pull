@@ -5,7 +5,6 @@ import ListCategory from "./../ListCategory";
 import Footer from "../Common/Footer";
 import Nav from "../Common/Nav/Nav";
 import Pagination from "../Common/Pagination/Pagination";
-
 import {searchProduct, getProductsBasic, searchProducts, searchFilters} from "../../services/productsApi"
 import {categoryApi} from "../../lib/config";
 
@@ -25,7 +24,7 @@ class Category extends Component {
             data: [],
             filters: [],
             products: null,
-            page: 1,
+            page: props.page!==undefined?props.page:1,
             totalPages: 1,
             filterSort: '',
             filterOrder: '',
@@ -44,7 +43,7 @@ class Category extends Component {
                 this.setState({
                     categoryLevel: response.data.results.length>0 ? response.data.results[0].level : ''
                 })
-                this.loadProducts(1, '', '', this.props.data.search)
+                this.loadProducts(this.state.page, '', '', this.props.data.search)
                 if (this.state.categoryLevel === '') {
                     this.setState({existsCategoryMenu: false})
                 }else{
@@ -54,11 +53,10 @@ class Category extends Component {
         }
 
         if (this.props.data.type !== 'category') {
-            this.loadProducts(1)
+            this.loadProducts(this.state.page)
             this.loadAllFilters()
         }
     }
-
     searchCategoryLevel = (name='') => {
         try {
             const params = new URLSearchParams();
@@ -80,7 +78,7 @@ class Category extends Component {
 
     changePage = (p) => {
         this.setState({page: p})
-
+        document.location=`${this.props.path.split('?')[0]}?page=${p}`;
         this.loadProducts(p)
     }
 
