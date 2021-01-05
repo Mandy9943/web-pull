@@ -69,9 +69,7 @@ class Question extends Component {
           <div className="">
             <form className="wrap-question-input" onSubmit={this.newQuestion}>
               <input type="text" name={"question"} placeholder="Pregunta al vendedor" />
-              
-              <button type="submit"><p className="button-question-product-question">Preguntar</p></button>
-              
+              <button type="submit" className="button-question-product-detail">Preguntar</button>
             </form>
 
           </div>

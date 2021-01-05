@@ -24,8 +24,8 @@ export default class ProductsSlider extends Component {
                 let product;
                 let i = 1;
 
-                for (product in response.data.products) {
-                    data.push(response.data.products[product]);
+                for (product in response.data.results) {
+                    data.push(response.data.results[product]);
                 }
                 this.setState({ data });
             });

@@ -129,7 +129,7 @@ class AccountQuestions extends Component {
                   <button type="submit" className="button-question-product-detail">Responder</button>
                 </form>
                 :
-                <><b className="name-user-question-respondida">Respondiste: </b> {this.state.questions[mid].answer}</>
+                <><b>Respondiste: </b>{this.state.questions[mid].answer}</>
             }
           </div>
           </h4>
@@ -147,11 +147,11 @@ class AccountQuestions extends Component {
           <div>
             <h1>Preguntas</h1>
           </div>
-          {/* <div>
+          <div>
             <Select>
-              <option>Todo</option> NEED FIX THIS SHIT
+              <option>Todo</option>
             </Select>
-          </div> */}
+          </div>
         </div>
         <div className="account-questions-wrap-questions">
           {this.state.questions.length == 0 &&
