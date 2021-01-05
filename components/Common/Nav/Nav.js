@@ -17,6 +17,7 @@ import {
     faHome,
     faAlignLeft,
     faArrowDown,
+    faServer,
     faQuestion,
     faBell,
     faUser,
@@ -27,6 +28,8 @@ import {
 import Autocomplete from 'react-autocomplete-2';
 import {searchSuggestions} from "../../../services/productsApi";
 import {suggestionQuantity} from "../../../lib/config";
+import { signOut } from "../../../lib/auth";
+
 
 export default class Nav extends Component {
     constructor(props) {
@@ -41,11 +44,20 @@ export default class Nav extends Component {
             timeClose : undefined,
             closeSidebar : true,
             value: this.props.actualSearch,
-            suggestions: []
+            suggestions: [],
+            modalLogout: false
         }
+        this.toggleModalLogout = this.toggleModalLogout.bind(this);
     }
 
+    toggleModalLogout() {
+        this.setState({modalLogout: !this.state.modalLogout});
+    }
 
+    logout() {
+        signOut();
+        document.location = "/";
+    }
     /********************* START NOTIFICATIONS ******************************/
     loadNotifications = () => {
         const endp = "/getNotifications"
@@ -158,6 +170,13 @@ export default class Nav extends Component {
         let home = this.props.home
         const { suggestions, value } = this.state;
 
+        const contentLogoutComp = (
+            <div className="modal-logout">
+                <p>{'¿Estás seguro que quieres cerrar sesión?'}</p> 
+                 <button onClick={this.logout} className="logout-button">Aceptar</button>
+                 <button onClick={this.toggleModalLogout} className="cancelar-button">Cancelar</button>
+            </div>
+        );
         const content2 = (
             <>
                 <div className="header-modal">
@@ -193,7 +212,7 @@ export default class Nav extends Component {
                     <hr />
                     <Link href="/ayuda"><a><FontAwesomeIcon icon={faQuestion} /> <p>Ayuda / PQR</p></a></Link>
                     {authenticated ?
-                    <Link href="/logout"><a className="logout">Cerrar sesión</a></Link> : null
+                    <a style={{cursor:'pointer'}} onClick={this.toggleModalLogout} className="logout">Cerrar sesión</a> : null
                     }
                 </div>
             </>
@@ -254,15 +273,16 @@ export default class Nav extends Component {
                                 </span>
                                     <a onClick={() => this.showHideMenu()} className="user-icon"><FontAwesomeIcon icon={faUser} /> {this.props.user} <FontAwesomeIcon icon={faAngleDown} /></a>
                                     <section onMouseEnter={() => this.mEnterMenu()} onMouseLeave={() => this.mLeaveMenu()} className={this.state.showMenu ? "menu-off menu-on" : "menu-off"}>
-                                        <h5><FontAwesomeIcon className="icon" icon={faUser} /> Bienvenido <b className="name">Hola, {this.props.user}</b></h5>
-                                        <Link href="/cuenta"><a className="main-button"><p>Mi cuenta</p></a></Link>
+                                        <h5><FontAwesomeIcon className="icon" icon={faUser} /><b className="name"> Hola, {this.props.user}</b> Bienvenido a Kiero Marketplace</h5>
                                         <section className="options">
                                             <hr />
-                                            <Link href="/cuenta#facturacion"><a className="items"> <FontAwesomeIcon icon={faMoneyBillWave} />Facturacion</a></Link>
+                                            <Link href="/cuenta"><a className="items"> <FontAwesomeIcon icon={faUser} />Mi cuenta</a></Link>
                                             <Link href="/cuenta#compras"><a className="items"> <FontAwesomeIcon icon={faShoppingBag} />Compras</a></Link>
-                                            <Link href="/cuenta#opciones"><a className="items"> <FontAwesomeIcon icon={faCog} />Opciones</a></Link>
+                                            <Link href="/cuenta"><a className="items"> <FontAwesomeIcon icon={faServer} />Resumen</a></Link>
+                                            <Link href="/cuenta#facturacion"><a className="items"> <FontAwesomeIcon icon={faMoneyBillWave} />Facturacion</a></Link>
+                                            <Link href="/cuenta#opciones"><a className="items"> <FontAwesomeIcon icon={faCog} />Mis datos</a></Link>                                            
                                             <hr />
-                                            <Link href="/logout"><a className="items">Cerrar sesión</a></Link>
+                                            <a style={{cursor:'pointer'}} onClick={this.toggleModalLogout} className="items">Cerrar sesión</a>
                                         </section>
                                     </section>
                                 <section  onMouseEnter={() => this.mEnter()} onMouseLeave={() => this.mLeave()}  className={this.state.showNotification ? "notification-off notification-on" : "notification-off"}>
@@ -352,6 +372,10 @@ export default class Nav extends Component {
                 </div>
             </div>
             {this.state.showCategories ? (<MenuCategories toggle={this.mouseLeave} num="2" categories={this.state.categories} />) : null}
+           
+            {this.state.modalLogout ? (
+            <Modal toggle={this.toggleModalLogout} content={contentLogoutComp} button />
+          ) : null}
             </>
         )
     }

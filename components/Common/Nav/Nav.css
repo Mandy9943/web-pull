@@ -160,7 +160,7 @@
   position: absolute;
   top: 30px;
   background: white;
-  width: 240px;
+  width: 290px;
   border-radius: 5px;
   border: 0.5px solid #BEBEBE;
   z-index: 20;
@@ -172,8 +172,10 @@
 }
 
 .nav-top .user-menu .menu-off h5 {
-  margin-left: 87px;
+  margin-left: 60px;
   text-align: left;
+  margin-top: -4px;
+  margin-bottom: 10px;
 }
 
 .nav-top .user-menu .menu-off .name {
@@ -186,8 +188,8 @@
   border: 0.5px solid;
   padding: 10px;
   position: absolute;
-  left: 50px;
-  top: 27px;
+  left: 15px;
+  top: 22px;
 }
 
 .nav-top .user-menu .menu-off .main-button {
@@ -287,6 +289,25 @@
   right: 13px;
   top: 8px;
   color: #6F6F6F;
+}
+
+.modal-logout{
+  text-align: center;
+}
+.modal-logout button{
+  width: 200px;
+  margin: 20px 10px 0 0;
+}
+.modal-logout button:hover{
+  opacity: 0.7;
+}
+
+.modal-logout .logout-button{
+  background-color: #CF0A2C;
+  color: white;
+}
+.modal-logout .cancelar-button{
+  color: #CF0A2C;
 }
 
 @media (max-width: 700px) {

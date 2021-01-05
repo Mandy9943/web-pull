@@ -111,7 +111,7 @@ export const searchFilters = (ots, level, category) => {
 
 export const getProductsBasic = (category, limit) => {
     try {
-        let endpoint = ("/getProductsCategory/"+limit+"/"+category);
+        let endpoint = ("/search/category/"+category+"?size="+limit);
         let data = sget(endpoint)
         return data;
     } catch (error) {

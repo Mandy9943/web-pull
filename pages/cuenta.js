@@ -38,13 +38,13 @@ export default class cuenta extends React.Component {
             full_name: getFullName(ctx),
             email: getEmail(ctx),
             user_id: getUserId(ctx),
-            authenticated: isAuthenticated(ctx)
+            authenticated: isAuthenticated(ctx),
         };
-
     }
 
 
     render() {
+       
         return (
             <div>
                 <Head>

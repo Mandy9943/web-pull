@@ -33,8 +33,8 @@ export default class Home extends Component {
         <PrincipalSlider />
         <div className="home-content">
           <Payment />
-          <ProductsSlider category={"Computación"} />
-          <ProductsSlider category={"Belleza y Cuidado Personal"} />
+         <ProductsSlider category={"Computación"} />
+           <ProductsSlider category={"Belleza y Cuidado Personal"} />
           <SecundarySlider />
           <LoginMovil user={u_data.user} authenticated={u_data.authenticated}/>
           <Finding category={{
@@ -42,7 +42,7 @@ export default class Home extends Component {
             img0: "banner-electrodomesticos.jpg", img1: "banner-computacion.jpg",
             sub1: "Aspiradoras", url1: "categoria/Aspiradoras", sub2: "Monitores", url2: "categoria/Monitores" }} 
            />
-          <ProductsSlider category={"Juegos y Juguetes"} />
+           <ProductsSlider category={"Juegos y Juguetes"} />
           <Explorer />
           <Finding category={{
             father0: "Deportes", father1: "Electronica",
@@ -50,9 +50,9 @@ export default class Home extends Component {
             sub1: "Bicicletas de carretera", url1: "categoria/Bicicle-tas%20de%20carretera", sub2: "Drones", url2:"categoria/Drones" }}
           />
           <ProductsSlider category={"Animales y Mascotas"} />
-          <ListProductMovil jwt={u_data.jwt} />
+         <ListProductMovil jwt={u_data.jwt} />
           <CategoriesImgMenu />
-          <Tickets />
+          <Tickets /> 
         </div>
         <Info />
         <News />
