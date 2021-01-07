@@ -59,9 +59,9 @@ class Category extends Component {
     }
     searchCategoryLevel = (name='') => {
         try {
-            const params = new URLSearchParams();
-            params.append('category', name !== '' ? name: 'xxxx');
-            let endpoint = categoryApi + '?'+ params.toString()
+            // const params = new URLSearchParams();
+            // params.append('category', name !== '' ? name: 'xxxx');
+            let endpoint = categoryApi + '/'+ name;
             return  apiget(endpoint)
         } catch (error) {
             return error;
