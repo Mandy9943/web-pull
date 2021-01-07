@@ -34,7 +34,7 @@ export default class Home extends Component {
         <div className="home-content">
           <Payment />
          <ProductsSlider category={"Computación"} />
-           <ProductsSlider category={"Belleza y Cuidado Personal"} />
+           <ProductsSlider category={"Belleza"} />
           <SecundarySlider />
           <LoginMovil user={u_data.user} authenticated={u_data.authenticated}/>
           <Finding category={{
@@ -42,7 +42,7 @@ export default class Home extends Component {
             img0: "banner-electrodomesticos.jpg", img1: "banner-computacion.jpg",
             sub1: "Aspiradoras", url1: "categoria/Aspiradoras", sub2: "Monitores", url2: "categoria/Monitores" }} 
            />
-           <ProductsSlider category={"Juegos y Juguetes"} />
+           <ProductsSlider category={"Juguetes"} />
           <Explorer />
           <Finding category={{
             father0: "Deportes", father1: "Electronica",
