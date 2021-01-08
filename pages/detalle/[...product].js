@@ -37,6 +37,7 @@ function Product({ data, u_data }) {
         <link rel="icon" href={favicon} type="image/png" />
       </Head>
       <Detail user_data={u_data} data={data} />
+    
     </div>
   );
 }

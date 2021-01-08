@@ -283,7 +283,7 @@ function Results({ data, session }) {
                     bd92b4b573820ab.jpg"/>
                     <link rel="icon" href={favicon} type="image/png" />
                 </Head>
-                <Category data={data} user_data={session} page={page} path={currentPath} />
+                <Category data={data} user_data={session} page={page} path={currentPath}/>
             </div>
         )
     }
