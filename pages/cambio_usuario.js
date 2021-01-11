@@ -2,8 +2,10 @@ import React from 'react';
 import Head from 'next/head';
 import UserChange from '../components/Help/UserChange/UserChange';
 import favicon from "../assets/img/favicon.svg";
+import {getUser, isAuthenticated, getJwt, redirectIfNotAuthenticated } from "../lib/auth";
 
-export default function cambio_usuario() {
+
+function cambio_usuario({u_data}) {
     return (
         <div>
             <Head>
@@ -17,7 +19,25 @@ export default function cambio_usuario() {
                 <meta name="Keywords" content="Tienda en Línea" />
                 <link rel="icon" href={favicon} type="image/png" />
             </Head>
-            <UserChange />
+            <UserChange u_data={u_data}/>
         </div>
     )
 }
+
+export async function getServerSideProps(context) {
+
+    let usr = getUser(context);
+    let jwt = getJwt(context);
+
+    const u_data = {
+        user: (usr !== undefined ? usr  : null),
+        authenticated: isAuthenticated(context),
+        jwt: jwt ? jwt : ''
+    }
+
+    redirectIfNotAuthenticated(context);
+
+    return { props: { u_data } }
+}
+
+export default cambio_usuario;
