@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Home from "../components/Home";
 import { Component } from "react";
 import PropTypes from "prop-types";
-import {isAuthenticated, getUser, getJwt} from "../lib/auth";
+import {isAuthenticated, getUser, getJwt, getRole} from "../lib/auth";
 import favicon from "../assets/img/favicon.svg";
 
 
@@ -17,6 +17,7 @@ export default class Index extends Component {
     static async getInitialProps(ctx) {
         return {
             user: getUser(ctx),
+            role: getRole(ctx),
             jwt: getJwt(ctx),
             authenticated: isAuthenticated(ctx)
         };
