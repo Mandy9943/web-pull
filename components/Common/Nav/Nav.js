@@ -315,8 +315,8 @@ export default class Nav extends Component {
                                 <Link href="/categoria/[category]" as="/categoria/Belleza"><a>Belleza</a></Link>
                                 <Link href="/categoria/[category]" as="/categoria/Cámaras y accesorios"><a>Cámaras</a></Link>
                                 <Link href="/categoria/[category]" as="/categoria/Electrodomésticos"><a>Electrodomésticos</a></Link>
-                                <Link href="/categoria/[category]" as="/categoria/Electrónica"><a>Electrónica</a></Link>
-                                <Link href="/categoria/[category]" as="/categoria/Hogar y muebles"><a>Hogar</a></Link>
+                                <Link href="/categoria/[category]" as="/categoria/Electrónica, Audio y Video"><a>Electrónica</a></Link>
+                                <Link href="/categoria/[category]" as="/categoria/Hogar"><a>Hogar</a></Link>
                                 <Link href="/categoria/[category]" as="/categoria/Juguetes"><a>Juguetes</a></Link>
                                 <Link href="/categoria/[category]" as="/categoria/Consolas y videojuegos"><a>Videojuegos</a></Link>
                                 <Link href="/categoria/[category]" as="/categoria/Salud"><a>Salud</a></Link>
