@@ -4,9 +4,14 @@ import Category from '../../components/Category/Category';
 import {getUser, isAuthenticated } from "../../lib/auth";
 import favicon from "../../assets/img/favicon.svg";
 import {searchItemsPerPage} from "../../lib/config";
-
+import { useRouter } from 'next/router'
 
 function Results({data, session}) {
+
+    const router = useRouter();
+    const {page} = router.query;
+    const currentPath = router.asPath;
+
     return (
         <div>
             <Head>
@@ -20,7 +25,7 @@ function Results({data, session}) {
                 <meta name="Keywords" content="Tienda en Línea" />
                 <link rel="icon" href={favicon} type="image/png" />
             </Head>
-            <Category data={data} user_data={session}/>
+            <Category data={data} user_data={session} page={page} path={currentPath}/>
         </div>
     )
 }
