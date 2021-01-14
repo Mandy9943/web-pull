@@ -23,7 +23,7 @@ function Product({ data, u_data }) {
         <meta name="twitter: title" content=" Compra en Kiero todo lo encuentras en nuestra Tienda Online" />
         <meta name="twitter: description" contenido=" Envíos gratis en Colombia, productos para Bebés, Belleza, Cámaras y accesorios, Electrodomésticos, Electrónica, Hogar y muebles y mucho más." />
         <meta name="twitter: image" content="https://kiero.co/_next/static/images/banners-apk-911388a7cee05467bbd92b4b573820ab.jpg" />
-        <meta property="og:title" content="Compra product_name en Kiero.co Compra Portatiles y accesorios en Kiero.co " />
+        <meta property="og:title" content={"Compra"  + category_name + "en Kiero.co Compra Portatiles y accesorios en Kiero.co " }/>
         <meta property="og:description" content="Encuentra product_name en Kiero.co - Descubre millones de productos online. Encuentra Portatiles y accesorios en Kiero.co " />
         <meta property="og:url" content="url de producto" />
         <meta property='og:locale' content='es_ES' />
