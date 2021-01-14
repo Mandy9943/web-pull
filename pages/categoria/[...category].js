@@ -46,7 +46,6 @@ function Results({ data, session }) {
 
 
 
-
         "belleza": {
             "estructure":  [1, 2, 3, 3, 1],
             "links": ["Belleza", "Artículos%20y%20accesorios%20de%20belleza", "Cosméticos%20y%20maquillaje", "Cuidado%20de%20Boca", "Cuidado%20de%20la%20Piel", "Mascarillas%20para%20pies", "Cuidado%20del%20Cabello", "Cuidado%20Personal", "Fragancia", "Productos%20de%20afeitado%20y%20depilación"],
