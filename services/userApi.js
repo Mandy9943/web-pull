@@ -172,3 +172,14 @@ export const getDSI = async (jwt) => {
         return error.response && "No se pudo obtener la información del usuario.";
     }
 };
+
+export const changeUsername = async (data, jwt) => {
+    try {
+        const response = await post("/changeUserName ", {
+            new_name: data,
+        }, jwt);
+        return true;
+    } catch (error) {
+        return false;
+    }
+};

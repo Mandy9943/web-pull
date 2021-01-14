@@ -24,12 +24,12 @@ import SecundarySlider from "./../SecundarySlider";
 
 export default class Home extends Component {
   render() {
-    let u_data = this.props.user_data
-    let authenticated = this.props.authenticated
+    let u_data = this.props.user_data;
+    let authenticated = this.props.authenticated;
 
     return (
       <div className="container">
-        <Nav user={u_data.user} jwt={u_data.jwt} home={true} authenticated={u_data.authenticated} />
+        <Nav user={u_data.user} role={u_data.role} jwt={u_data.jwt} home={true} authenticated={u_data.authenticated} />
         <PrincipalSlider />
         <div className="home-content">
           <Payment />

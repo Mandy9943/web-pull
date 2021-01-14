@@ -23,7 +23,8 @@ import {
     faUser,
     faMoneyBillWave,
     faShoppingBag,
-    faCog
+    faCog,
+    faTag
 } from "@fortawesome/free-solid-svg-icons";
 import Autocomplete from 'react-autocomplete-2';
 import {searchSuggestions} from "../../../services/productsApi";
@@ -169,7 +170,6 @@ export default class Nav extends Component {
         let authenticated = this.props.authenticated
         let home = this.props.home
         const { suggestions, value } = this.state;
-
         const contentLogoutComp = (
             <div className="modal-logout">
                 <p>{'¿Estás seguro que quieres cerrar sesión?'}</p> 
@@ -277,9 +277,10 @@ export default class Nav extends Component {
                                         <section className="options">
                                             <hr />
                                             <Link href="/cuenta"><a className="items"> <FontAwesomeIcon icon={faUser} />Mi cuenta</a></Link>
-                                            <Link href="/cuenta#compras"><a className="items"> <FontAwesomeIcon icon={faShoppingBag} />Compras</a></Link>
+                                           {this.props.role==="user" && <Link href="/cuenta#compras"><a className="items"> <FontAwesomeIcon icon={faShoppingBag} />Compras</a></Link>}
+                                           {this.props.role==="vendedor" && <Link href="/cuenta#ventas"><a className="items"> <FontAwesomeIcon icon={faTag} />Ventas</a></Link>}
                                             <Link href="/cuenta"><a className="items"> <FontAwesomeIcon icon={faServer} />Resumen</a></Link>
-                                            <Link href="/cuenta#facturacion"><a className="items"> <FontAwesomeIcon icon={faMoneyBillWave} />Facturacion</a></Link>
+                                            {this.props.role==="user" && <Link href="/cuenta#facturacion"><a className="items"> <FontAwesomeIcon icon={faMoneyBillWave} />Facturacion</a></Link>}
                                             <Link href="/cuenta#opciones"><a className="items"> <FontAwesomeIcon icon={faCog} />Mis datos</a></Link>                                            
                                             <hr />
                                             <a style={{cursor:'pointer'}} onClick={this.toggleModalLogout} className="items">Cerrar sesión</a>

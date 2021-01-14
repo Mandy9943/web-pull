@@ -304,7 +304,7 @@ export default class PaymentWay extends Component {
         const docType = <> <option value={"CC"}>Cédula de ciudadanía </option>
             <option value={"CE"}>Cédula de extranjería </option>
             <option value={"NIT"}> NIT </option>
-            <option value={"TI"}>Tarjeta de Identidad </option>
+            {/* <option value={"TI"}>Tarjeta de Identidad </option> */}
             <option value={"PP"}>Pasaporte </option>
             <option value={"DE"}>Documento de identificación extranjero </option>
         </>
