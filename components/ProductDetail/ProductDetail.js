@@ -24,6 +24,7 @@ import Logo2 from "../../assets/img/logo-social1.png";
 import Seller from "./../SellerInfo";
 import {RecommendedProducts} from '../RecommendedProducts';
 
+
 class ProductDetail extends Component {
 
   constructor(props) {
@@ -52,6 +53,8 @@ class ProductDetail extends Component {
     const mdata = this.props.data;
     const u_data = this.props.user_data;
     let url = "//www.sic.gov.co";
+
+    console.log(mdata)
     return (
       <div>
         <Nav user={u_data.user} jwt={u_data.jwt} home={true} authenticated={u_data.authenticated} />
@@ -78,7 +81,10 @@ class ProductDetail extends Component {
               <div className="pay-section-responsive">
                 <Pay pid={mdata.product_id} seller={mdata.user} price={mdata.price} title={mdata.title} stock={mdata.stock} />
               </div>
-              {/* <RecommendedProducts category={mdata.category_id} /> */}
+              {/* <RecommendedProducts category={mdata.category.name} /> */}
+              <div className="home-content">
+                <ProductsSlider category={mdata.category.name} />
+              </div>
               <Detail width={mdata.width} length={mdata.length} weight={mdata.weight} title={mdata.title} product_name={mdata.title} desciption={mdata.description} />
               <Question user_data={this.props.user_data} product_id={mdata.product_id} cb={this.loadQuestions} />
               <section className="no-movil">
