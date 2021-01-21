@@ -1,15 +1,30 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Link from "next/link";
 import "./RecommendedProducts.css";
 import '../ProductsSlider/ProductsSlider.css'
 import Slider from 'react-animated-slider';
-import { getRecommendProducts } from '../../services/productsApi';
+import {getRecommendProducts} from "../../services/productsApi"
+import ProductCard from '../ProductCard/ProductCard';
+import ProductsSlider from '../ProductsSlider/ProductsSlider';
 
 function RecommendedProducts({category}) {
 
-    // console.log(getRecommendProducts(category));
-    const productList = [];
+    const [productList, setProductList] = useState([]);
     const productListMobile = [];
+
+    useEffect(() => {
+        console.log(getProducts());
+        return () => {
+            setProductList([]);
+        };
+    }, [category]);
+
+    const getProducts = () => {
+        let products = getRecommendProducts(category.split('/')[0])
+        products.then((response) => {
+            setProductList(response.data.results);
+        })
+    };
 
     return (
         <>
@@ -24,10 +39,24 @@ function RecommendedProducts({category}) {
                         {productListMobile}
                     </section>
                 </div>
+                {/* {productList.length>0 &&
                 <Slider autoplay={13000}>
-                    {productList}
+                  {
+                       productList.map((item, index)=> 
+                       <ProductCard
+                       key={index}
+                       price={item.price}
+                       url={item.image}
+                       product_id={item.product_id}
+                       title={item.title} />
+                       )
+                  }          
                 </Slider>
-
+                } */}
+                {/* <div className="home-content">
+                <ProductsSlider category={category} />
+                </div> */}
+                
             </div>
             </section>
         </>
