@@ -82,7 +82,7 @@ class ProductDetail extends Component {
                 <Pay pid={mdata.product_id} seller={mdata.user} price={mdata.price} title={mdata.title} stock={mdata.stock} />
               </div>
               {/* <RecommendedProducts category={mdata.category.name} /> */}
-              <div className="home-content">
+              <div className="home-content slider-recommends">
                 <ProductsSlider category={mdata.category.name} />
               </div>
               <Detail width={mdata.width} length={mdata.length} weight={mdata.weight} title={mdata.title} product_name={mdata.title} desciption={mdata.description} />
