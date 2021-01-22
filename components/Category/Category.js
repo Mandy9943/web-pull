@@ -62,6 +62,7 @@ class Category extends Component {
             // const params = new URLSearchParams();
             // params.append('category', name !== '' ? name: 'xxxx');
             let endpoint = categoryApi + '/'+ name;
+            console.log(endpoint);
             return  apiget(endpoint)
         } catch (error) {
             return error;
@@ -259,7 +260,7 @@ class Category extends Component {
             this.setState({
                 categoryLevel: response.data.results.length>0 ? response.data.results[0].level : ''
             })
-
+            console.log(response.data);
         }).then(() => {
             if (this.state.categoryLevel === '') {
                 this.setState({existsCategoryMenu: false})
