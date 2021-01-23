@@ -5,7 +5,10 @@
 
 .slider-recommends{
   width: 100% !important;
-  height: 300px !important;
+  height: 340px !important;
+  border-top: 0.5px solid #e2e2e2;
+  padding-top: 10px;
+
 }
 
 .slider-recommends .products-slider{
@@ -16,11 +19,25 @@
   height: 300px !important;
 }
 .slider-recommends .product-card{
-  width: 180px !important;
+  width: 160px !important;
 }
 
 .slider-recommends .products-slider .slider .test .producto-card {
   width: 22% !important;
+}
+.home-section-title {
+  margin-bottom: 5px;
+  color: #111111;
+  font-size: 16px;
+  font-weight: 500;
+  padding-left: 10px;
+}
+
+.home-section-title .accent {
+  margin-left: 10px;
+  color: #CF0A2C;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 

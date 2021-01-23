@@ -40,18 +40,6 @@ function RecommendedProducts({category}) {
                     </section>
                 </div>
                 {/* {productList.length>0 &&
-                <Slider autoplay={13000}>
-                  {
-                       productList.map((item, index)=> 
-                       <ProductCard
-                       key={index}
-                       price={item.price}
-                       url={item.image}
-                       product_id={item.product_id}
-                       title={item.title} />
-                       )
-                  }          
-                </Slider>
                 } */}
                 {/* <div className="home-content">
                 <ProductsSlider category={category} />

@@ -112,6 +112,8 @@
   margin-right: 5px;
   position: relative;
   top: 1px;
+  left: 10px;
+  font-size: 16px;
 }
 
 .nav-top .user-menu .user-icon {
@@ -155,7 +157,15 @@
   color: #fff;
   font-size: 14px;
 }
-
+.nav-top .user-menu a svg {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  margin-left: 0px;
+  top: 12px;
+  color: #fff;
+  font-size: 14px;
+}
 .nav-top .user-menu .menu-off {
   position: absolute;
   top: 30px;
