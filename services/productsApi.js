@@ -72,7 +72,8 @@ export const searchProducts = (size, page, ots='', brand='', price='', category=
         if (order_by !== '') params.append('order_by', order_by);
         if (level !== '') params.append('level', level);
 
-        let endpoint = productsApi + `?size=${size}&page=${page}`
+        // let endpoint = productsApi + `?size=${size}&page=${page}`
+        let endpoint = categoryApi+`/${ots}?size=${size}&page=${page}`;
         if (params.toString().length)
             endpoint = endpoint + '&' + params.toString();
 
