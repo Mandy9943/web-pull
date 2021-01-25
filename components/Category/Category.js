@@ -41,7 +41,7 @@ class Category extends Component {
             let categoryLevel = this.searchCategoryLevel(this.props.data.search);
             categoryLevel.then((response) => {
                 this.setState({
-                    categoryLevel: response.data.results.length>0 ? response.data.results[0].level : ''
+                    categoryLevel: response.data.results.length>0 ? response.data.level : ''
                 })
                 this.loadProducts(this.state.page, '', '', this.props.data.search)
                 if (this.state.categoryLevel === '') {
