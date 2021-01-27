@@ -1,10 +1,13 @@
 .user-menu .accent-background {
-  background: white;
-  color: red;
+  background: rgb(0, 123, 238);
+  color: #ffffff;
   border-radius: 50%;
   height: 17px;
   width: 17px;
   text-align: center;
+  margin-top: -6px;
+  font-size: 12px;
+  font-weight: 600;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -14,6 +17,8 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+          z-index: 5;
+          box-shadow: -1px 2px 3px #11111164;
 }
 
 .user-menu .notification-off {
