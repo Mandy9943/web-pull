@@ -47,30 +47,30 @@ class Explorer extends Component {
   
   componentDidMount() {
 
-    const categoryRandom=(Math.floor((Math.random() * 21) + 1) )-1 
+    const categoryRandom=(Math.floor((Math.random() * 18) + 1) )-1 
     const category = [
         //{name:"Accesorios", image: accesorios},
-        {name:"Accesorios para Vehículos", image: accesoriosvehiculos},
+        {name:"Vehículos", image: accesoriosvehiculos},
         {name:"Bebés", image: bebes},
-        {name:"Belleza y Cuidado Personal", image: belleza},
-        {name:"Cámaras y Accesorios", image: camaras},
+        {name:"Belleza", image: belleza},
+        {name:"Cámaras y accesorios", image: camaras},
         {name:"Celulares y Teléfonos", image: celulares},
-        {name:"Coleccionables y Hobbies", image: coleccionables},
+        {name:"Coleccionables", image: coleccionables},
         {name:"Computación", image: computacion},
-        {name:"Deportes y Fitness", image: deportes},
+        {name:"Deporte", image: deportes},
         {name:"Electrodomésticos", image: electrodomesticos},
-        {name:"Electrónica, Audio y Video ", image: electronica},
-        {name:"Herramientas y Contrucción", image: herramientas},
-        {name:"Hogar y Muebles", image: hogar},
-        {name:"Instrumentos Musicales", image: instrumentos},
-        {name:"Juegos y Juguetes", image: juguetes},
-        {name:"Libros, Revistas y Comics", image: libros},
+        {name:"Electrónica, Audio y Video", image: electronica},
+        {name:"Herramientas", image: herramientas},
+        {name:"Hogar", image: hogar},
+        {name:"Instrumentos musicales", image: instrumentos},
+        {name:"Juguetes", image: juguetes},
+        //{name:"Libros, Revistas y Comics", image: libros},
         {name:"Animales y Mascotas", image: mascotas},
-        {name:"Música", image: musica},
-        {name:"Industrias y Oficinas", image: oficina},
-        {name:"Relojes y Joyas", image: relojesjoyas},
-        {name:"Salud y Equipamiento Medico", image: salud},
-        {name:"Consolas y Videojuegos", image: videojuegos}
+        //{name:"Música", image: musica},
+        {name:"Oficina", image: oficina},
+        {name:"Relojes Y Joyería", image: relojesjoyas},
+        {name:"Salud", image: salud},
+        {name:"Consolas y videojuegos", image: videojuegos}
     ]
 
 
@@ -108,7 +108,7 @@ class Explorer extends Component {
             ))}
           </div>
         </div>
-        </div>
+      </div>
     );
   }
 }
