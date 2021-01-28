@@ -59,6 +59,16 @@ export const getRatingByProduct = (product) => {
     }
 };
 
+export const getSellerByProduct = (product) => {
+    try {
+        let endpoint = ("/getSellerByIdProduct/"+product);
+        let data = sget(endpoint)
+        return data;
+    } catch (error) {
+        return error;
+    }
+};
+
 export const searchProduct = (string, limit) => {
     try {
                 
