@@ -1,5 +1,5 @@
 import {get, post, postForm, putForm, sget, apiget} from "../lib/request";
-import {filtersApi, productsApi, suggestionsApi} from "../lib/config";
+import {categoryApi, filtersApi, productsApi, suggestionsApi} from "../lib/config";
 
 const getDataJWT = (endpoint, jwt) => {
     try {
@@ -42,6 +42,26 @@ export const getProductDetail = (id_product) => {
 export const getRecommendProducts = (category) => {
     try {
         let endpoint = ("/search/category/"+category+"?size="+20);
+        let data = sget(endpoint)
+        return data;
+    } catch (error) {
+        return error;
+    }
+};
+
+export const getRatingByProduct = (product) => {
+    try {
+        let endpoint = ("/getRating/"+product);
+        let data = sget(endpoint)
+        return data;
+    } catch (error) {
+        return error;
+    }
+};
+
+export const getSellerByProduct = (product) => {
+    try {
+        let endpoint = ("/getSellerByIdProduct/"+product);
         let data = sget(endpoint)
         return data;
     } catch (error) {

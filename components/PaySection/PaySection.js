@@ -36,14 +36,14 @@ class PaySection extends Component {
       qty_options[i - 1] = (<option key={"d" + i} value={i}>Cantidad: {i} (stock disponible {this.props.stock})</option>);
     }
 
-    
+
     return (
       <div className="pay">
         <div className="pay-item">
           <h1 className="title-pay-product-detail">{this.props.title.substr(0,60)}</h1>
         </div>
         <div className="pay-item">
-          <Rating />
+          <Rating productId={this.props.pid}/>
         </div>
         <div className="pay-item">
           <h3 className="price-pay-product-detail">$ {this.props.price ? this.props.price.split(".")[0].replace(/(.)(?=(\d{3})+$)/g,'$1,') : " ... "}</h3>
@@ -120,7 +120,7 @@ class PaySection extends Component {
           </div>
         </div>
         <div className="section-pay-wrap-seller no-movil">
-          <Seller seller={this.props.seller} />
+          <Seller productId={this.props.pid} />
         </div>
       </div>
     );
