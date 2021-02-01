@@ -1,5 +1,5 @@
 import {get, post, postForm, putForm, sget, apiget} from "../lib/request";
-import {filtersApi, productsApi, suggestionsApi} from "../lib/config";
+import {categoryApi, filtersApi, productsApi, suggestionsApi} from "../lib/config";
 
 const getDataJWT = (endpoint, jwt) => {
     try {
@@ -49,6 +49,26 @@ export const getRecommendProducts = (category) => {
     }
 };
 
+export const getRatingByProduct = (product) => {
+    try {
+        let endpoint = ("/getRating/"+product);
+        let data = sget(endpoint)
+        return data;
+    } catch (error) {
+        return error;
+    }
+};
+
+export const getSellerByProduct = (product) => {
+    try {
+        let endpoint = ("/getSellerByIdProduct/"+product);
+        let data = sget(endpoint)
+        return data;
+    } catch (error) {
+        return error;
+    }
+};
+
 export const searchProduct = (string, limit) => {
     try {
                 
@@ -72,7 +92,8 @@ export const searchProducts = (size, page, ots='', brand='', price='', category=
         if (order_by !== '') params.append('order_by', order_by);
         if (level !== '') params.append('level', level);
 
-        let endpoint = productsApi + `?size=${size}&page=${page}`
+        // let endpoint = productsApi + `?size=${size}&page=${page}`
+        let endpoint = categoryApi+`/${ots}?size=${size}&page=${page}`;
         if (params.toString().length)
             endpoint = endpoint + '&' + params.toString();
 

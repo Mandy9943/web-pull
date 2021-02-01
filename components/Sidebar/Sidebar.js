@@ -125,6 +125,7 @@ export default class Sidebar extends Component {
                     </p>
                     <p onClick={(e) => this.props.cb("resume", e)} className="user-account-menu-text">Resumen</p>
                 </div>
+                {this.props.user_data.role === "user" &&
                 <div className="user-account-menu-item" >
                     <p className="user-account-menu-icon">
                         <FontAwesomeIcon icon={faMoneyBill} />
@@ -132,7 +133,7 @@ export default class Sidebar extends Component {
                     <p onClick={(e) => this.props.cb("bill", e)} className="user-account-menu-text">Facturación</p>
                 </div>
 
-                {this.props.user_data.type === "2" &&
+                {this.props.user_data.role === "vendedor" &&
                     <div className={this.state.closeBill ? "user-account-menu-item" : "user-account-menu-item active"} onClick={() => this.accordionBill()}>
                         <p className="user-account-menu-icon">
                             <FontAwesomeIcon icon={faMoneyBillWave} />
@@ -140,7 +141,7 @@ export default class Sidebar extends Component {
                         <div className="user-account-menu-accordion">
                             <p className="user-account-menu-text">Ventas</p>
                             <div className="user-account-accordion">
-                                <p onClick={this.newProduct} >Agregar nuevo producto</p>
+                                {/* <p onClick={this.newProduct} >Agregar nuevo producto</p> */}
                                 <p onClick={(e) => this.props.cb("myProducts", e)} >Mis publicacioness</p>
                                 <p onClick={(e) => this.props.cb("mySales", e)} >Mis ventas</p>
                                 <p onClick={(e) => this.props.cb("questions", e)} >Pregúntas</p>
@@ -151,7 +152,7 @@ export default class Sidebar extends Component {
                         </p>
                     </div>
                 }
-
+                {this.props.user_data.role === "user" &&
                 <div className={this.state.closeShop ? "user-account-menu-item" : "user-account-menu-item active"} onClick={() => this.accordionShop()}>
                     <p className="user-account-menu-icon">
                         <FontAwesomeIcon icon={faShoppingBag} />
@@ -168,7 +169,7 @@ export default class Sidebar extends Component {
                     <p className="user-account-menu-icon">
                         <FontAwesomeIcon icon={this.state.userAccountIconShop} />
                     </p>
-                </div>
+                </div>}
                 <div className={this.state.closeMyData ? "user-account-menu-item border-bottom" : "user-account-menu-item border-bottom active"} onClick={() => this.accordionMyData()}>
                     <p className="user-account-menu-icon">
                         <FontAwesomeIcon icon={faCog} />

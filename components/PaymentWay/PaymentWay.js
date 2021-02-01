@@ -21,6 +21,10 @@ import Cards from 'react-credit-cards';
 import 'react-credit-cards/es/styles-compiled.css'
 import PaymentCash from '../PaymentCash';
 import PaymentCashResult from '../PaymentCashResult';
+import Datetime from 'react-datetime';
+import "react-datetime/css/react-datetime.css";
+import moment from 'moment';
+
 
 export default class PaymentWay extends Component {
     constructor(props) {
@@ -264,6 +268,11 @@ export default class PaymentWay extends Component {
         this.setState({ [name]: value });
       }
 
+      handleDateTimeChange = (e) => {
+        let value = moment(e).format('YY/MM');
+        this.setState({ expiration_date: value });
+    };
+
       card_change = (type, valid) => {
 
         this.setState({card_max_length: type.maxLength});
@@ -390,7 +399,7 @@ export default class PaymentWay extends Component {
                                         <input maxLength={64} name={"card_holder"} onChange={this.handleInputChange} onFocus={this.handleInputFocus}  placeholder="Nombre y apellido impreso *" />
                                         <InputTip msg={this.state.tips.card_holder}/>
                                         <div className="input-form">
-                                            <input  maxLength={5} onChange={this.handleInputChange} onFocus={this.handleInputFocus} name={"expiration_date"} placeholder="AA/MM" />
+                                            <Datetime onChange={this.handleDateTimeChange} value={this.state.expiration_date} placeholder="AA/MM" dateFormat="YY/MM" timeFormat={false}/>
                                             <input  maxLength={4} onChange={this.handleInputChange} onFocus={this.handleInputFocus} onBlur={this.exitccv} name={"ccv"} placeholder="CVV" />
                                         </div>
 
