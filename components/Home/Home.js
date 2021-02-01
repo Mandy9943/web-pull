@@ -33,7 +33,7 @@ export default class Home extends Component {
         <PrincipalSlider />
         <div className="home-content">
           <Payment />
-         <ProductsSlider category={"Computadoras y Accesorios"} />
+         <ProductsSlider category={"Computadoras y tabletas"} />
            <ProductsSlider category={"Belleza"} />
           <SecundarySlider />
           <LoginMovil user={u_data.user} authenticated={u_data.authenticated}/>
