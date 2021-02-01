@@ -234,7 +234,7 @@ class Privacity extends Component {
                 <li>Sí se recopilan Datos Sensibles.</li>
                 <li>
                   Adicionalmente se le informará al Titular (i) que no se
-                  encuentra obligado a autorizar el tratamiento, y (ii) que es
+                  encuentra obligado a autorizar el tratamiento, y (i) que es
                   facultativo entregar este tipo de información
                 </li>
               </ol>
@@ -357,7 +357,7 @@ class Privacity extends Component {
               </p>
               <p>
                 El área de servicio al cliente estar a cargo de atender las
-                peticiones, quejas y consultas de los titulares de los dato y
+                peticiones, quejas y consultas de los titulares de los datos y
                 los Titulares de la Información pueden ejercer sus derechos de
                 conocer, actualizar, rectificar y suprimir sus Datos Personales,
                 enviando comunicaciones a (574) 604 64 58 ext 1103 – Medellín o{" "}

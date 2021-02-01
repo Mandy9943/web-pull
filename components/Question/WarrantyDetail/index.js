@@ -18,7 +18,7 @@ function WarrantyDetail() {
             comprado.</p>   
 
             <h4><strong>Garantía del vendedor</strong></h4>
-            <p>30 días de garantía hábiles por defectos de fabrica.</p>
+            <p>30 días de garantía hábiles por defectos de fábrica.</p>
         </div>
     );
 }

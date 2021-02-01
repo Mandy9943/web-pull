@@ -129,7 +129,7 @@ export default class Sidebar extends Component {
                     <p className="user-account-menu-icon">
                         <FontAwesomeIcon icon={faMoneyBill} />
                     </p>
-                    <p onClick={(e) => this.props.cb("bill", e)} className="user-account-menu-text">Facturacion</p>
+                    <p onClick={(e) => this.props.cb("bill", e)} className="user-account-menu-text">Facturación</p>
                 </div>
 
                 {this.props.user_data.type === "2" &&

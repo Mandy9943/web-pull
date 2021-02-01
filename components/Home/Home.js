@@ -33,19 +33,19 @@ export default class Home extends Component {
         <PrincipalSlider />
         <div className="home-content">
           <Payment />
-         <ProductsSlider category={"Computación"} />
+         <ProductsSlider category={"Computadoras y Accesorios"} />
            <ProductsSlider category={"Belleza"} />
           <SecundarySlider />
           <LoginMovil user={u_data.user} authenticated={u_data.authenticated}/>
           <Finding category={{
-            father0: "Electrodomésticos", father1: "Computacion",
+            father0: "Electrodomésticos", father1: "Computación",
             img0: "banner-electrodomesticos.jpg", img1: "banner-computacion.jpg",
             sub1: "Aspiradoras", url1: "categoria/Aspiradoras", sub2: "Monitores", url2: "categoria/Monitores" }} 
            />
            <ProductsSlider category={"Juguetes"} />
-          <Explorer />
+          {/* <Explorer /> */}
           <Finding category={{
-            father0: "Deportes", father1: "Electronica",
+            father0: "Deportes", father1: "Electrónica",
             img0: "banner-deportes.jpg", img1: "banner-drones.jpg",
             sub1: "Bicicletas de carretera", url1: "categoria/Bicicle-tas%20de%20carretera", sub2: "Drones", url2:"categoria/Drones" }}
           />

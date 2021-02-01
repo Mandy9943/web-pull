@@ -29,7 +29,7 @@ export default function SellerProtection() {
                     <div className="seller-protection-box">
                         <p><FontAwesomeIcon icon={faCheck} /> En caso de existir un problema con una compra, es posible que una persona te genere un reclamo.
                         Por lo general son simples malos entendidos, que pueden resolverse con facilidad. Una vez se genere un reclamo,
-                        te avisaremos y te diremos los pasos a seguir e incluso podemos ayudarte a resolver la situacion.</p>
+                        te avisaremos y te diremos los pasos a seguir e incluso podemos ayudarte a resolver la situación.</p>
 
                         <p> <FontAwesomeIcon icon={faCheck} />
                         En el caso de recibir un contracargo, te pediremos comprobar la entrega del producto. Este programa solo funciona con productos físicos.

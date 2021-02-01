@@ -56,7 +56,7 @@ class Explorer extends Component {
         {name:"Cámaras y accesorios", image: camaras},
         {name:"Celulares y Teléfonos", image: celulares},
         {name:"Coleccionables", image: coleccionables},
-        {name:"Computación", image: computacion},
+        {name:"Computadoras y Accesorios", image: computacion},
         {name:"Deporte", image: deportes},
         {name:"Electrodomésticos", image: electrodomesticos},
         {name:"Electrónica, Audio y Video", image: electronica},

@@ -400,7 +400,7 @@ export default class UserAccount extends Component {
                                         {addressList}
                                         <Link href="/agregar_direccion">
                                             <a className="button-add">
-                                                <p className="modal-btn">Agregar nueva direccion</p>
+                                                <p className="modal-btn">Agregar nueva dirección</p>
                                             </a>
                                         </Link>
                                     </div>

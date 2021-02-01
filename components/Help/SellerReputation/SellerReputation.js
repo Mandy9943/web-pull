@@ -55,7 +55,7 @@ export default function SellerReputation() {
                             <p>Debes leer detenidamente y con mucha atención la descripción y las fotos publicadas, 
                                 de esta forma estar seguro de las políticas de ventas expuestas por el vendedor.</p>
                             <h4>Confirma que el producto tenga garantía y que puedas devolverlo en caso de ser necesario.</h4>
-                            <p>Si aun depues de leer todas las opiniones y publicaciones sigues teniendo dudas en cuanto al producto, pregúntale al vendedor todo aquello de te genere dudas. 
+                            <p>Si aún despues de leer todas las opiniones y publicaciones sigues teniendo dudas en cuanto al producto, pregúntale al vendedor todo aquello que te genere dudas. 
                                 Ejemplo si requieres de un comprobante de pago, realiza todas las preguntas que sean necesaria en cuanto al tema.</p>
                         </div>
                     </div>

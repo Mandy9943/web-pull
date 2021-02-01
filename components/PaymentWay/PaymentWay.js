@@ -419,7 +419,7 @@ export default class PaymentWay extends Component {
                                             {docType}
                                         </Select>
                                             <InputTip msg={this.state.tips.document_type}/></div>
-                                        <input name={"document_number"} placeholder="Número documento" />
+                                        <input name={"document_number"} placeholder="Número de documento" />
                                         <InputTip msg={this.state.tips.document_number}/>
                                     </form>
 

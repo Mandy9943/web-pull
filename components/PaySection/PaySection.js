@@ -115,7 +115,7 @@ class PaySection extends Component {
           <div className="section-pay-send-description">
             <p>
               Es el servicio de kiero que permite recibir tus productos de forma
-              rapida y segura
+              rápida y segura
             </p>
           </div>
         </div>

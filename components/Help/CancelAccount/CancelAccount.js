@@ -50,8 +50,8 @@ export default class CancelAccount extends Component {
                     </div>
                     <div className="cancel-account-content">
                         <div className="cancel-account-box">
-                            <h3>¿Cual es el motivo?</h3>
-                            <p>Usaremos esta información para mejorar nuestro servício.</p>
+                            <h3>¿Cuál es el motivo?</h3>
+                            <p>Usaremos esta información para mejorar nuestro servicio.</p>
                             <div className="cancel-account-checkbox">
                                 <label>
                                     <Checkbox

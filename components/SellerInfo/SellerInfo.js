@@ -45,7 +45,7 @@ class SellerInfo extends Component {
               <FontAwesomeIcon icon={faStar} className="star" />
               <FontAwesomeIcon icon={faStar} className="star" />
             </p>
-            <p>Vendedor Lider</p>
+            <p>Vendedor Líder</p>
           </div>
           <div className="info-shops">
             <Link href="/reputacion_de_vendedor">

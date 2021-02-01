@@ -43,7 +43,7 @@ const Login = ({success}) => {
                     </div>
                     <p className="login-text">O inicia sesión con tu Kiero account</p>
                     <form className="form" onSubmit={handleSubmit}>
-                        <input className="input" type="text" name="mail" placeholder="Correo lectrónico" />
+                        <input className="input" type="text" name="mail" placeholder="Correo electrónico" />
                         <input className="input" type="password" name="password" placeholder="Contraseña" />
 
                     <p className="forgot-pass-link"><Link href="/recuperar"><a>¿Olvidaste tu contraseña?</a></Link></p>

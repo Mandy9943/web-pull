@@ -143,11 +143,11 @@ class ProductDetail extends Component {
             <QuestionItem product_id={mdata.product_id} q questions={this.state.questions} />
             <ProductsSlider images={mdata.images} category={mdata.category.name} />
             <ProductsSlider images={mdata.images} category={mdata.category.name} />
-            <Explorer />
+            {/* <Explorer />
           </section>
             
           <section className='no-movil'>
-            <Explorer />
+            <Explorer /> */}
             <ProductCardFinding notitle={"true"} category={mdata.category.name} />
           </section>
           <section className="advertising-movil no-movil no-web">

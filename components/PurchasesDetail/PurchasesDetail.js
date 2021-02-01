@@ -45,7 +45,7 @@ export default class PurchasesDetail extends Component {
                     <div className="info">
                         <p className="t1">Compraste</p>
                         <p className="title">Portátil Premium 2020 HP 15 15,6" HD pantalla táctil Premium...</p>
-                        <p className="description">Recibiras tu pedido en un periodo minimo de 48 horas</p>
+                        <p className="description">Recibirás tu pedido en un periodo mínimo de 48 horas</p>
                         <p className="price">$ 141.700</p>
                         <span className="Unit">1 unidad</span>
                     </div>
