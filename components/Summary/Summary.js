@@ -96,8 +96,9 @@ export default class Summary extends Component {
                 display: {
                 resume: false,
                 myData: tab[1]==="opciones"?true:false,
-                bill: tab[1]==="facturacion"?true:false,
+                bill: tab[1]==="facturación"?true:false,
                 orders: tab[1]==="compras"?true:false,
+                mySales: tab[1]==="ventas"?true:false,
                 questions: false,
                 items: false,
                 detail: false

@@ -31,7 +31,7 @@ export default function HowToPay() {
                     <h1>Como pagar tu compra</h1>
                     <div className="how-to-pay-box">
                         <div className="how-to-pay-box-content">
-                            <p><span>Puedes pagar con confianza,</span>ee devolveremos el dinero si el producto no es lo que esperabas.</p>
+                            <p><span>Puedes pagar con confianza,</span>te devolveremos el dinero si el producto no es lo que esperabas.</p>
                             <h4>Elige entre cualquiera de estos medios de pago:</h4>
                             <iv className="how-to-pay-ways">
                                 <img alt="Tarjetas de crédito" src={CreditCard} />

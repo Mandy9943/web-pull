@@ -7,7 +7,7 @@ class QuestionItem extends Component {
     let responses = true;
     return (
       <div className="QuestionItem-list">
-        <h5 className="title">Ultimas Preguntas</h5>
+        <h5 className="title">Últimas Preguntas</h5>
         {this.props.questions.map((question, i) => (
             <section key={i} className="question-item">
             <h5 className="question-title">

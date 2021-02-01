@@ -67,7 +67,7 @@ export default class Purchases extends Component {
 
                         {this.state.orders.length===0 ?
                             <section className="empty-text">
-                                <span>No tiene Compras anteriores</span>
+                                <span>No tiene compras anteriores</span>
                             </section>
                             : orderList
                         }

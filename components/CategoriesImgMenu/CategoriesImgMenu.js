@@ -185,7 +185,7 @@ export default class CategoriesImgMenu extends Component {
                                     <p className="categories-menu-icon">
                                         <FontAwesomeIcon icon={faBriefcase} />
                                     </p>
-                                    <p>Industria y cientifico </p>
+                                    <p>Industria y científico </p>
                                 </div>
                             </a>
                         </Link>

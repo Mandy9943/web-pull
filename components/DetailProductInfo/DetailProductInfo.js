@@ -73,10 +73,10 @@ class DetailProductInfo extends Component {
                 *(Entrega de 3 a 7 hábiles) *Envío gratis
             <br />
             <br />
-            <p className="accent">ME RETRACTÉ DE MI COMPRA!</p>
+            {/* <p className="accent">ME RETRACTÉ DE MI COMPRA!</p>
             <br />
               En caso de ya que no quieras el producto que recibiste puedes realizar la devolución de esté, en un periodo no mayor a 5 días calendario desde su fecha de entrega, por ende el cliente deberá
-              asumir el valor del retorno a una de las direcciones que se le indicará, el valor del envío varía según el peso y el tamaño del producto.
+              asumir el valor del retorno a una de las direcciones que se le indicará, el valor del envío varía según el peso y el tamaño del producto. */}
           </section>
         </div>
         <section className="guarantee no-web">

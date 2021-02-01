@@ -47,7 +47,7 @@ export default class Register extends Component {
                     <form className="form" onSubmit={this.handleSubmit}>
                         <input className="input" name="name" placeholder="Nombres" />
                         <input className="input" name="last_name" placeholder="Apellidos" />
-                        <input className="input" type="email" name="email" placeholder="Correo lectrónico" />
+                        <input className="input" type="email" name="email" placeholder="Correo electrónico" />
                         <div className="password">
                             <input id="password" className="input" type="password" name="password" placeholder="Contraseña" />
                             <a onClick={this.mostrarContrasena}>Mostrar</a> 

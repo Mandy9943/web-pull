@@ -4,6 +4,10 @@
   min-height: 60vh;
 }
 
+.rdtPicker{
+  left: -15px !important;
+}
+
 .container-payment-way h2 {
   margin-bottom: 50px;
   color: #111111;

@@ -20,7 +20,7 @@ class AccountMenu extends Component {
           <FontAwesomeIcon icon={faClipboardList} /> resumen
         </li>
         <li>
-          <FontAwesomeIcon icon={faMoneyBill} /> facturacion
+          <FontAwesomeIcon icon={faMoneyBill} /> facturación
         </li>
         <li>
           <FontAwesomeIcon icon={faShoppingBag} /> compras
