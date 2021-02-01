@@ -132,7 +132,7 @@ export default class Sidebar extends Component {
                     </p>
                     <p onClick={(e) => this.props.cb("bill", e)} className="user-account-menu-text">Facturación</p>
                 </div>
-
+                }
                 {this.props.user_data.role === "vendedor" &&
                     <div className={this.state.closeBill ? "user-account-menu-item" : "user-account-menu-item active"} onClick={() => this.accordionBill()}>
                         <p className="user-account-menu-icon">
