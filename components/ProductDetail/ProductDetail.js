@@ -151,13 +151,13 @@ class ProductDetail extends Component {
             <Explorer /> */}
             
           </section>
-          <div className="home-content  no-movil">
-            <ProductsSlider category={mdata.breadcum.[1].name} />
-            </div>
           <section className="advertising-movil no-movil no-web">
             <ProductCardFinding notitle={"true"} category={mdata.category.name} />
           </section>
         </div>      
+          <div className="home-content  no-movil">
+            <ProductsSlider category={mdata.breadcum.[1].name} />
+            </div>
           <Footer />
         <div className="footer-social">
           <Link href={url}><a target="_blank"><img src={Logo1} /></a></Link>
