@@ -30,7 +30,7 @@ class Question extends Component {
         this.props.cb();
         alert("Pregúnta enviada");
       } else {
-        alert("No se ha podido enviar la pregútna, intentelo nuevamente.")
+        alert("No se ha podido enviar la pregúnta, intentelo nuevamente.")
       }
     } else {
       alert("Escriba una pregunta.")

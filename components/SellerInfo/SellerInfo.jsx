@@ -72,7 +72,7 @@ function SellerInfo({productId}){
 
          
 
-          <Link href={'/'}><a className="link-more-products">{'Mira mas productos de este vendedor'}</a></Link>
+          <Link href={'/'}><a className="link-more-products">{'Mira más productos de este vendedor'}</a></Link>
       </>
     );
   }

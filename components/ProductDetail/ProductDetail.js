@@ -87,7 +87,7 @@ class ProductDetail extends Component {
               </div>
               <Detail width={mdata.width} length={mdata.length} weight={mdata.weight} title={mdata.title} product_name={mdata.title} desciption={mdata.description} />
               <Question user_data={this.props.user_data} product_id={mdata.product_id} cb={this.loadQuestions} />
-              <section className="no-movil">
+              <section>
                 <QuestionItem product_id={mdata.product_id} questions={this.state.questions} />
               </section>
               <div className="section-pay-type pay-movil no-web">
@@ -114,7 +114,7 @@ class ProductDetail extends Component {
               </div>
               <div className="section-pay-send no-web">
                 <div className="section-pay-send-title">
-                  <h4>Formas de envio</h4>
+                  <h4>Formas de envío</h4>
                 </div>
                 <div className="section-pay-send-subtitle">
                   <span>
@@ -140,7 +140,7 @@ class ProductDetail extends Component {
             <div className="section-pay-wrap-seller no-movil">
               <Seller productId={mdata.product_id} />
             </div>
-            <QuestionItem product_id={mdata.product_id} q questions={this.state.questions} />
+            {/* <QuestionItem product_id={mdata.product_id} q questions={this.state.questions} /> */}
             <ProductsSlider images={mdata.images} category={mdata.category.name} />
             
             

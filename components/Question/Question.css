@@ -92,7 +92,26 @@
 
 @media (max-width: 768px) {
   .wrap-question {
-    display: none;
+    padding: 30px 20px;
   }
+  .wrap-question-input {
+    display: inline-block;
+    width: 95%;
+  }
+  .wrap-question-buttons {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (auto)[3];
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 10px;
+  }
+  .wrap-question-input .button-question-product-detail {
+    background: #CF0A2C !important;
+    color: white !important;
+    font-weight: 600;
+    border: none !important;
+    width: 100%;
+    margin-top: 10px
+    }
 }
 /*# sourceMappingURL=Question.css.map */

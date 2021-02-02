@@ -52,7 +52,7 @@ class AccountSummary extends Component {
                           </div>
                       </div>
                   })
-                  : <div className="account-summary-item"><span className="Count">0</span> Sin pregúntas</div>
+                  : <div className="account-summary-item"><span className="Count">0</span> Sin preguntas</div>
               }
 
           </div>

@@ -48,7 +48,7 @@ function Product({ data, u_data }) {
           <h3 className="title">DATOS DE RESULTADO</h3>
           <span className="user-id"><strong>COMPRADOR: </strong>{data.user_id}</span>
           <span><strong>NOMBRE DE TIENDA: </strong>{data.seller_id}</span>
-          <span><strong>METODO DE PAGO:</strong> {data.method_id}</span>
+          <span><strong>MÉTODO DE PAGO:</strong> {data.method_id}</span>
           <span><strong>ESTADO DEL PAGO: </strong>{data.status == 2 ? "APROBADO" : data.status == 6 ? "RECHAZADO" : "PENDIENTE"} </span>
           <span><strong>TOTAL:</strong> {data.total} </span>
           <span className="name-product"><strong>NOMBRE DEL PRODUCTO: </strong>{data.product.title}</span>

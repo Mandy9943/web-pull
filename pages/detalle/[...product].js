@@ -12,7 +12,7 @@ function Product({ data, u_data }) {
       <Head>
         <title>Kiero | Producto </title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta name="Description" content="KIERO.CO MARKETPLACE | Compralo en Kiero a precio - Envio gratis - Encuentra mas productos de CatPadre, CatHijo, CatNieto" />
+        <meta name="Description" content="KIERO.CO MARKETPLACE | Compralo en Kiero a precio - Envío gratis - Encuentra más productos de CatPadre, CatHijo, CatNieto" />
         <meta name="Keywords" content="Titulo del producto" />
         <meta name="Title" content="Kiero.co -product_name a $product_price" />
         <meta name="apple-mobile-web-app-capable" content="yes" />

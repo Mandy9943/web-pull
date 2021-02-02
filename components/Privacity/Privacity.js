@@ -260,7 +260,7 @@ class Privacity extends Component {
               <p>
                 <h3 className="pregunta">
                   PROCEDIMIENTO PARA EL EJERCICIO DE LOS DERECHOS DE CONOCER,
-                  ACTUALIZAR, RECTIFICAR Y SUPRIMIR INFORMACION Y REVOCAR LA
+                  ACTUALIZAR, RECTIFICAR Y SUPRIMIR INFORMACIÓN Y REVOCAR LA
                   AUTORIZACIÓN
                 </h3>
                 Los usuarios que hayan proporcionado información podrán en

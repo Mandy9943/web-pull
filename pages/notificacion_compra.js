@@ -8,7 +8,7 @@ export default function notificacion_compra() {
     return (
         <div>
             <Head>
-                <title>Kiero | Notificacion de compra</title>
+                <title>Kiero | Notificación de compra</title>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
                 <meta name="robots" content="index,follow" />

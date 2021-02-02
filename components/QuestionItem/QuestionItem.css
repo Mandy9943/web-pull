@@ -1,17 +1,26 @@
 .QuestionItem-list {
   border-top: 0.5px solid #e2e2e2;
+  padding: 30px 20px;
 }
 
 @media (min-width: 700px) {
   .QuestionItem-list {
-    padding: 0 25px;
-  }
+    padding: 30px 20px;
+    }
 }
-
+.QuestionItem-list .button-question-product-detail {
+  color: #2e2e2e;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: #ededed;
+  border: none;
+  width: 100%;
+  align-items: center;
+}
 .QuestionItem-list .title {
   color: #111111;
   font-size: 18px;
-  margin: 15px;
+  padding-bottom: 20px;
   font-weight: 600;
 }
 
@@ -19,12 +28,10 @@
   color: #4E4E4E;
   font-size: 16px;
   padding-bottom: 20px;
-  padding-left: 15px;
   display: block;
 }
 
 .QuestionItem-list .question-item {
-  padding: 0 15px;
   font-size: 16px;
   padding-bottom: 20px;
 }
@@ -49,18 +56,20 @@
 .QuestionItem-list .footer-question {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
-  margin-top: 40px;
+  -ms-grid-columns: 1.5fr 1.2fr;
+    grid-template-columns: 1.5fr 1.2fr;
+  margin-top: 20px;
+
+  padding: 15px;
 }
 
 .QuestionItem-list .footer-question span {
   color: #BEBEBE;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .QuestionItem-list .footer-question a {
   color: #4E8EFE;
-  font-size: 12px;
+  font-size: 13px;
 }
 /*# sourceMappingURL=QuestionItem.css.map */

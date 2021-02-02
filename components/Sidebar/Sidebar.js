@@ -144,7 +144,7 @@ export default class Sidebar extends Component {
                                 {/* <p onClick={this.newProduct} >Agregar nuevo producto</p> */}
                                 <p onClick={(e) => this.props.cb("myProducts", e)} >Mis publicacioness</p>
                                 <p onClick={(e) => this.props.cb("mySales", e)} >Mis ventas</p>
-                                <p onClick={(e) => this.props.cb("questions", e)} >Pregúntas</p>
+                                <p onClick={(e) => this.props.cb("questions", e)} >Preguntas</p>
                             </div>
                         </div>
                         <p className="user-account-menu-icon">
