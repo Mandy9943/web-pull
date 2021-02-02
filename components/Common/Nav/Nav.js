@@ -115,7 +115,6 @@ export default class Nav extends Component {
 
     onChange = event => {
         this.setState({ value: event.target.value });
-
         if (event.target.value !== '') {
             let suggestions = searchSuggestions(suggestionQuantity, event.target.value)
             suggestions.then((response) => {
@@ -136,8 +135,7 @@ export default class Nav extends Component {
     };
 
     onSuggestionSelected = suggestion => {
-        let text = suggestion.replace('<b>', '').replace('</b>', '')
-
+        let text = suggestion.replace(/<\/?[^>]+(>|$)/g, "");
         this.setState({ value: text })
         this.search(text);
     }
@@ -383,7 +381,7 @@ export default class Nav extends Component {
 
     search = (ots = '') => {
         let url = '/busqueda/';
-        this.state.value !== undefined && ots === '' ? url = url + this.state.value :  url = url + ots;
+        this.state.value !== undefined && ots === '' ? url = url + this.state.value :  url = url + ots; 
         location.href = url;
     };
 }
