@@ -41,6 +41,16 @@
   grid-gap: 15px;
 }
 
+.wrap-question-input .button-question-product-detail {
+  background: #CF0A2C !important;
+  color: white !important;
+  font-weight: 500;
+  border: none !important;
+  width: 180px;
+  float: right;
+  
+}
+
 .warranty-questions h3{
   text-align: center;
 }

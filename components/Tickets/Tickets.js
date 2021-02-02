@@ -8,9 +8,9 @@ import Link from "next/link";
 class Tickets extends Component {
   render() {
 
-    let link0 = "Computación";
+    let link0 = "Computadoras%20y%20Accesorios";
     let link1 = "Bebés";
-    let link2 = "Hogar%20y%20Muebles";
+    let link2 = "Hogar";
 
     const dataTicket = [
       { url: (this.props.img_left ? this.props.img_left : TicketImg1) },

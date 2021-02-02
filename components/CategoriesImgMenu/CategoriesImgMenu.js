@@ -179,7 +179,7 @@ export default class CategoriesImgMenu extends Component {
                     </Link>
                 </div>
                     <div className="content-categories-img-menu diferent-numbers no-movil">
-                        <Link href="/categoria/Industria%20y%20cientifico">
+                        <Link href="/categoria/Industria%20y%20científico">
                             <a className="categories-img no-movil">
                                 <div className="item">
                                     <p className="categories-menu-icon">

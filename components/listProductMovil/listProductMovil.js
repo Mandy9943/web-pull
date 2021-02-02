@@ -61,10 +61,13 @@ export default class listProductMovil extends Component {
         console.log(productList)
 
         return (
-            <div className="listProductMovil">
+            <div>
+                {/* 
+                
+                <div className="listProductMovil">
                 <h3>Descrube productos de Electrónica</h3>
                 {productList}
-                <Link href={"/categoria/Computación"}><a className="send">Ver todos</a></Link>
+                <Link href={"/categoria/Computación"}><a className="send">Ver todos</a></Link> */}
             </div>
         )
     }

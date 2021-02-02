@@ -2,7 +2,17 @@
   margin: auto;
   width: 70%;
 }
+.slider-recommends{
+  width: 100% !important;
+  height: 340px !important;
+  border-top: 0.5px solid #e2e2e2;
+  padding-top: 10px;
 
+}
+
+.slider-recommends .products-slider{
+  height: 300px !important;
+}
 @media (max-width: 1500px) {
   .slider-recommends{
     width: 100% !important;
@@ -17,7 +27,7 @@
     height: 300px !important;
   }
   .slider-recommends .product-card{
-    width: 180px !important;
+    width: 160px !important;
   }
   
   .slider-recommends .products-slider .slider .test .producto-card {
@@ -28,15 +38,15 @@
 @media (min-width: 1501px) {
   .slider-recommends{
     width: 100% !important;
-    height: 480px !important;
+    height: 480px;
   }
   
   .slider-recommends .products-slider{
-    height: 480px !important;
+    height: 300px !important;
   }
   
   .slider-recommends .slider{
-    height: 480px !important;
+    height: 160px !important;
   }
   .slider-recommends .product-card{
     width: 280px !important;
@@ -45,7 +55,16 @@
   .slider-recommends .products-slider .slider .test .producto-card {
     width: 22% !important;
   }
-
+  .slider-recommends .products-slider .slider .test .producto-card {
+    width: 22% !important;
+  }
+  .home-section-title {
+    margin-bottom: 5px;
+    color: #111111;
+    font-size: 16px;
+    font-weight: 500;
+    padding-left: 10px;
+  }
   .producto-card:hover .title {
     display: -webkit-box !important;
     margin-bottom: 15px !important;
@@ -56,7 +75,6 @@
     position: static !important;
   }
 }
-
 
 
 .detail-content .advertising-movil {
@@ -228,7 +246,7 @@
 
 @media (max-width: 768px) {
   .detail-content .wrap-product {
-    background: transparent;
+    background: white;
   }
   .detail-content .wrap-product .wrap-detail-info {
     background: white;
@@ -242,7 +260,7 @@
     font-weight: 400;
   }
   .detail-content .questions-movil {
-    background: #f3f3f3;
+    background: #ffffff;
     padding-bottom: 30px;
     margin-bottom: 15px;
   }

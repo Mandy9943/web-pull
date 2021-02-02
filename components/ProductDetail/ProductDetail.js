@@ -137,19 +137,23 @@ class ProductDetail extends Component {
             </div>
           </div>
           <section className="questions-movil no-web">
-            <div className="section-pay-wrap-seller">
+            <div className="section-pay-wrap-seller no-movil">
               <Seller productId={mdata.product_id} />
             </div>
             <QuestionItem product_id={mdata.product_id} q questions={this.state.questions} />
             <ProductsSlider images={mdata.images} category={mdata.category.name} />
-            <ProductsSlider images={mdata.images} category={mdata.category.name} />
+            
+            
             {/* <Explorer />
           </section>
             
           <section className='no-movil'>
             <Explorer /> */}
-            <ProductCardFinding notitle={"true"} category={mdata.category.name} />
+            
           </section>
+          <div className="home-content  no-movil">
+            <ProductsSlider category={mdata.breadcum.[1].name} />
+            </div>
           <section className="advertising-movil no-movil no-web">
             <ProductCardFinding notitle={"true"} category={mdata.category.name} />
           </section>

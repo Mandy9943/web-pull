@@ -20,7 +20,7 @@ class DetailProductInfo extends Component {
         <section className="characteristics no-web">
           <div className="info-shops edit">
             <a>
-              <p>Caracterìsticas</p>
+              <p>Características</p>
             </a>
           </div>
           <div className="info">
@@ -44,9 +44,11 @@ class DetailProductInfo extends Component {
             <p>
               {this.props.product_name}
             </p>
+            <br />
             <p>
               {this.props.desciption}
             </p>
+            
           </div>
           <section className="characteristics-web no-movil">
             <div className="info-shops edit">
@@ -80,11 +82,11 @@ class DetailProductInfo extends Component {
           </section>
         </div>
         <section className="guarantee no-web">
-          <h5>Garantia</h5>
+          <h5>Garantía</h5>
           <span className="title">Compra protegida</span>
           <span className="sub-title">En caso de que surja algún problema o no recibas el producto tal como lo compraste, te devolveremos el dinero que pagaste.</span>
-          <span className="title">Garantìa del vendedor</span>
-          <span className="sub-title">Garantia por defecto de fabrica de (1) un mes.</span>
+          <span className="title">Garantía del vendedor</span>
+          <span className="sub-title">Garantía por defecto de fabrica de (1) un mes.</span>
         </section>
       </>
     );
