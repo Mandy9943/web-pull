@@ -162,7 +162,7 @@ class Category extends Component {
             }
         })
 
-        let products = searchProducts(this.props.data.params.items_per_page, page, this.props.data.search, brand, price, category, sortBy, orderBy, categoryLevel)
+        let products = searchProducts(this.props.data.type, this.props.data.params.items_per_page, page, this.props.data.search, brand, price, category, sortBy, orderBy, categoryLevel)
 
         products.then((response) => {
             this.setState({

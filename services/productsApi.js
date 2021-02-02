@@ -80,7 +80,7 @@ export const searchProduct = (string, limit) => {
     }
 };
 
-export const searchProducts = (size, page, ots='', brand='', price='', category='', sort_by='', order_by='', level='') => {
+export const searchProducts = (type, size, page, ots='', brand='', price='', category='', sort_by='', order_by='', level='') => {
     try {
         const params = new URLSearchParams();
 
@@ -91,9 +91,11 @@ export const searchProducts = (size, page, ots='', brand='', price='', category=
         if (sort_by !== '') params.append('sort_by', sort_by);
         if (order_by !== '') params.append('order_by', order_by);
         if (level !== '') params.append('level', level);
+        
 
-        // let endpoint = productsApi + `?size=${size}&page=${page}`
-        let endpoint = categoryApi+`/${ots}?size=${size}&page=${page}`;
+        let endpoint1 = productsApi + `?size=${size}&page=${page}`;
+        let endpoint2 = categoryApi+`/${ots}?size=${size}&page=${page}`;
+        let endpoint = type === "search" ? endpoint1 : endpoint2;
         if (params.toString().length)
             endpoint = endpoint + '&' + params.toString();
 
