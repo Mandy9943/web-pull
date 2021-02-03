@@ -183,3 +183,12 @@ export const changeUsername = async (data, jwt) => {
         return false;
     }
 };
+
+export const anulateAccount = async (data, jwt) => {
+    try {
+        const response = await rDelete("/anulate_account ", data, jwt);
+        return true;
+    } catch (error) {
+        return "Ha ocurrido un error en el servidor!";
+    }
+};
