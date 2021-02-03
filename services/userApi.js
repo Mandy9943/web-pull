@@ -71,6 +71,19 @@ export const recoverPass = async (email) => {
     }
 };
 
+export const resetPassword = async (password, token) => {
+    try {
+        const response = await post("/resetPassword", {
+            token: token,
+            password: password
+        });
+        return 1;
+    } catch (error) {
+        return error.response &&
+        error.response.status === 400 ? "El usuario no existe o el token ha expirado." : "Error desconocido, intente nuevamente.";
+    }
+};
+
 
 
 export const savePhone = async (email) => {
@@ -125,6 +138,14 @@ export const makePaymentCC = async (data, jwt) => {
 
 };
 
+export const makePaymentCash = async (data, jwt) => {
+
+    const response = await post("/cashPayment", data, jwt);
+
+    return response.data ? response : {"error": "E000000152 : No se pudo guardar la información, intentelo nuevamente."};
+
+};
+
 export const getUserData = async (jwt) => {
     try {
         const response = await get("/getUserData", jwt);
@@ -134,11 +155,31 @@ export const getUserData = async (jwt) => {
     }
 };
 
+export const contact = async (data) => {
+    try {
+        const response = await post("/contact", data);
+        return response;
+    } catch (error) {
+        return error.response && "No se pudo realizar la solicitud.";
+    }
+};
+
 export const getDSI = async (jwt) => {
     try {
         const response = await get("/getDSI", jwt);
         return response;
     } catch (error) {
         return error.response && "No se pudo obtener la información del usuario.";
+    }
+};
+
+export const changeUsername = async (data, jwt) => {
+    try {
+        const response = await post("/changeUserName ", {
+            new_name: data,
+        }, jwt);
+        return true;
+    } catch (error) {
+        return false;
     }
 };

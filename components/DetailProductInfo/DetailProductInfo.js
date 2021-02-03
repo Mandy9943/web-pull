@@ -20,7 +20,7 @@ class DetailProductInfo extends Component {
         <section className="characteristics no-web">
           <div className="info-shops edit">
             <a>
-              <p>Caracterìsticas</p>
+              <p>Características</p>
             </a>
           </div>
           <div className="info">
@@ -44,9 +44,11 @@ class DetailProductInfo extends Component {
             <p>
               {this.props.product_name}
             </p>
+            <br />
             <p>
               {this.props.desciption}
             </p>
+            
           </div>
           <section className="characteristics-web no-movil">
             <div className="info-shops edit">
@@ -73,18 +75,18 @@ class DetailProductInfo extends Component {
                 *(Entrega de 3 a 7 hábiles) *Envío gratis
             <br />
             <br />
-            <p className="accent">ME RETRACTÉ DE MI COMPRA!</p>
+            {/* <p className="accent">ME RETRACTÉ DE MI COMPRA!</p>
             <br />
               En caso de ya que no quieras el producto que recibiste puedes realizar la devolución de esté, en un periodo no mayor a 5 días calendario desde su fecha de entrega, por ende el cliente deberá
-              asumir el valor del retorno a una de las direcciones que se le indicará, el valor del envío varía según el peso y el tamaño del producto.
+              asumir el valor del retorno a una de las direcciones que se le indicará, el valor del envío varía según el peso y el tamaño del producto. */}
           </section>
         </div>
         <section className="guarantee no-web">
-          <h5>Garantia</h5>
+          <h5>Garantía</h5>
           <span className="title">Compra protegida</span>
           <span className="sub-title">En caso de que surja algún problema o no recibas el producto tal como lo compraste, te devolveremos el dinero que pagaste.</span>
-          <span className="title">Garantìa del vendedor</span>
-          <span className="sub-title">Garantia por defecto de fabrica de (1) un mes.</span>
+          <span className="title">Garantía del vendedor</span>
+          <span className="sub-title">Garantía por defecto de fabrica de (1) un mes.</span>
         </section>
       </>
     );

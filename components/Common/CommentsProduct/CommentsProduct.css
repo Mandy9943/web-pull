@@ -1,0 +1,60 @@
+.comments-product {
+  margin-bottom: 15px;
+
+  padding: 40px;
+  background-color: rgb(255, 255, 255);
+  font-size: 18px;
+  padding-bottom: 15px;
+}
+
+.comments-product h3 {
+  color: #111111;
+  font-weight: 500;
+  font-size: 17px;
+  padding-bottom: 5px;
+}
+
+.comments-product .valoration {
+  font-weight: 500;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto 1fr;
+      grid-template-columns: auto 1fr;
+  grid-gap: 15px;
+  margin-bottom: 15px;
+  color: #4b4b4b;
+}
+
+.comments-product .valoration .stars {
+  position: relative;
+  top: -4px;
+}
+
+.comments-product .stars {
+  display: block;
+}
+
+.comments-product .stars svg {
+  margin-right: 7.5px;
+  width: 15px;
+  height: 15px;
+  color: #3F7FE1;
+}
+
+.comments-product .item {
+  margin-bottom: 15px;
+}
+
+.comments-product .item .comment {
+  font-size: 15PX;
+  color: #4d4d4d;
+}
+
+@media (max-width: 720px) {
+  .comments-product {
+    margin-bottom: 0px;
+    padding: 20px;
+    padding-bottom: 10px;
+  }
+}
+/*# sourceMappingURL=CommentsProduct.css.map */

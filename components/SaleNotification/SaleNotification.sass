@@ -1,0 +1,151 @@
+.sale-notification
+    position: relative
+    display: grid
+    grid-template-rows: auto 1fr auto
+    height: 100vh
+    .component-product
+        margin: auto
+        min-height: 50vh
+        background: #FFFFFF
+        border-radius: 10px
+        max-width: 800px
+        position: relative
+        text-align: center;
+        display: grid;
+        grid-template-rows: auto 1fr;
+        box-shadow: 0px 3px 6px #11111129;
+        .top
+            background: #D9D8D8
+            border-radius: 5px 5px 0 0;
+            display: grid
+            grid-template-columns: 2fr 1fr
+            padding: 30px
+            .info
+                font-weight: 500
+                text-align: left
+                color: black
+                margin: auto;
+                margin-left: 15px;
+                h1
+                    font-size: 22px
+                    margin-top: 15px
+                    font-weight: 500
+                p
+                    font-size: 20px
+                    margin-top: 15px
+            img
+                margin: auto;
+                display: grid;
+                width: 80%
+                max-width: 130px
+                box-shadow: 0px 3px 6px #11111129;
+        .bottom
+            padding: 30px
+            text-align: left
+            color: #111111
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            img
+                border-radius: 50%;
+                margin: auto;
+                display: grid;
+                width: 80%
+                max-width: 200px
+                box-shadow: 0px 3px 6px #11111129;
+                margin-left: 0
+            p.title
+                font-size: 20px
+                font-weight: 500
+                margin-top: 15px
+            p.bold
+                font-size: 18px
+                font-weight: 600
+                margin-top: 15px
+            p.sub-title
+                font-size: 18px
+                margin-top: 15px
+        .buttons
+            display: grid 
+            grid-template-columns: 1fr 1fr
+            margin-top: 15px
+            .main-button
+                border-radius: 5px
+                max-width: 300px
+                p
+                    text-align: center;
+                    margin: auto;
+            .button
+                box-shadow: 0px 3px 6px #11111129;
+                border: 1px solid #707070
+                background: transparent !important
+                color: #818181 !important
+
+@media (max-width: 720px)
+    .sale-notification
+        position: relative
+        display: grid
+        grid-template-rows: auto 1fr auto
+        height: 100vh
+        .component-product
+            margin: auto
+            width: 90%
+            background: #FFFFFF
+            border-radius: 10px
+            padding: 0
+            position: relative
+            text-align: center;
+            display: grid;
+            grid-template-rows: auto 1fr;
+            min-height: auto
+            .top
+                border-radius: 5px;
+                display: grid
+                grid-template-columns: auto
+                grid-template-rows: auto 1fr
+                padding: 15px
+                grid-gap: 15px
+                .info
+                    color: #111111
+                    font-weight: 500
+                    text-align: center
+                    color: black
+                    margin: auto;
+                    h1
+                        font-size: 18px
+                        margin-top: 15px
+                        font-weight: 500
+                    p
+                        font-size: 16px
+                        margin-top: 15px
+                img
+                    max-width: 80px
+            .bottom
+                padding: 15px
+                text-align: left
+                color: #111111
+                grid-template-columns: none;
+                p.title
+                    font-size: 13px
+                    font-weight: 500
+                    margin-top: 15px
+                    width: 150%
+                p.bold
+                    font-size: 18px
+                    font-weight: 600
+                    margin-top: 15px
+                p.sub-title
+                    font-size: 18px
+                    margin-top: 15px
+            .movil-content
+                grid-template-columns: 2fr 1fr;
+                display: grid
+            .buttons
+                display: grid 
+                margin-top: 15px
+                
+
+
+
+
+
+    

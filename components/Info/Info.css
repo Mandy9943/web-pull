@@ -1,5 +1,5 @@
 .wrap-info-block {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   background: white;
 }
 
@@ -18,7 +18,7 @@
 .info-item {
   text-align: center;
   width: 100%;
-  color: #5A5A5A;
+  color: #111111;
 }
 
 .info-item h3 {

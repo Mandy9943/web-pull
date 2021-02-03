@@ -9,16 +9,23 @@ import { faTruck, faAngleRight, faAngleDown } from "@fortawesome/free-solid-svg-
 import Seller from "./../SellerInfo";
 import Link from "next/link";
 import ListProductMovil from "./../listProductMovil/listProductMovil"
-
+import Rating from '../RatingProduct/RatingProduct';
 
 
 class PaySection extends Component {
 
   go = (id) => {
-    window.location = "/pagar/" + id;
+    window.location = "/pagar/" + id + "/" + this.state.cantidad;
   }
   constructor(props) {
     super(props);
+    this.state = {
+      cantidad: 1,
+    }
+  }
+  
+  handleChangeCantidad = (event) => {
+    this.setState({cantidad: event.target.value});
   }
 
   render() {
@@ -26,17 +33,20 @@ class PaySection extends Component {
     let u_data = this.props.user_data
     let qty_options = [];
     for (let i = 1; i <= this.props.stock; i++) {
-      qty_options[i - 1] = (<option key={"d" + i} value={i}>Cantidad:{i} disponibles({this.props.stock})</option>);
+      qty_options[i - 1] = (<option key={"d" + i} value={i}>Cantidad: {i} (stock disponible {this.props.stock})</option>);
     }
 
-    
+
     return (
       <div className="pay">
         <div className="pay-item">
           <h1 className="title-pay-product-detail">{this.props.title.substr(0,60)}</h1>
         </div>
         <div className="pay-item">
-          <h2 className="price-pay-product-detail">{this.props.price.split(",")[0]}</h2>
+          <Rating productId={this.props.pid}/>
+        </div>
+        <div className="pay-item">
+          <h3 className="price-pay-product-detail">$ {this.props.price ? this.props.price.split(".")[0].replace(/(.)(?=(\d{3})+$)/g,'$1,') : " ... "}</h3>
         </div>
         <div className="pay-item pay-img no-movil">
           <img src={iconCredit} className="icon-credit" />
@@ -59,7 +69,7 @@ class PaySection extends Component {
         {this.props.stock > 0 ? <div className="pay-item">
           <section className="select-icon">
 
-            <select defaultValue={1}>
+          <select defaultValue={1} value={this.state.cantidad} onChange={this.handleChangeCantidad}>
               {qty_options}
             </select>
           </section>
@@ -91,7 +101,7 @@ class PaySection extends Component {
         </div>
         <div className="section-pay-send no-movil">
           <div className="section-pay-send-title">
-            <h4>Formas de envio</h4>
+            <h4>Formas de envío</h4>
             <FontAwesomeIcon icon={faAngleRight} />
           </div>
           <div className="section-pay-send-subtitle">
@@ -105,12 +115,12 @@ class PaySection extends Component {
           <div className="section-pay-send-description">
             <p>
               Es el servicio de kiero que permite recibir tus productos de forma
-              rapida y segura
+              rápida y segura
             </p>
           </div>
         </div>
         <div className="section-pay-wrap-seller no-movil">
-          <Seller seller={this.props.seller} />
+          <Seller productId={this.props.pid} />
         </div>
       </div>
     );

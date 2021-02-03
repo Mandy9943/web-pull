@@ -1,0 +1,311 @@
+.purchases-detail
+    padding: 40px
+    padding-top: 42px
+    h1
+        color: #111111
+        font-size: 22px
+    .status
+        margin-top: 30px
+    .item-product, .detail-info, .vendor-reputation, .payment-status, .vendor-info, .product-valoration
+        box-shadow: 0px 3px 6px #11111129;
+        border-radius: 5px
+        background: white
+        color: #111111
+    .twins
+        display: grid
+        grid-template-columns: 1fr 1fr
+        grid-gap: 30px
+    .item-product
+        display: grid
+        grid-template-columns: 1fr 2fr
+        padding: 15px
+        margin-top: 15px
+        img
+            height: 100%;
+            border-radius: 50%
+        .info   
+            .t1, .title
+                font-size: 18px
+                margin-bottom: 10px
+            .price, .unit
+                font-size: 20px
+            .title, .price
+                font-weight: 600
+            .description
+                font-weight: 15px
+                margin-bottom: 10px
+    .detail-info
+        padding: 30px
+        margin-top: 30px
+        font-size: 20px
+        .title
+            font-size: 20px
+            font-weight: 600
+            margin-bottom: 30px
+        .info-1, .info-2
+            display: grid
+            grid-template-columns: 3fr 1fr
+            padding: 0 30px
+            padding-bottom: 15px
+            .right
+                font-weight: 600
+        .info-2
+            border-top: 1px solid #707070
+            padding-top: 15px
+    .vendor-reputation
+        padding: 30px
+        margin-top: 30px
+        display: grid
+        grid-template-columns: 2fr 1fr
+        h4.title
+            font-size: 18px
+            font-weight: 500
+            margin-bottom: 30px
+        .sub
+            font-size: 15px
+            margin-top: 15px
+        .stars
+            display: block
+            svg
+                margin-right: 7.5px
+                width: 20px
+                height: 20px 
+                color: #3F7FE1
+        img
+            width: 100%
+            border-radius: 100%
+            max-width: 125px
+    .payment-status
+        padding: 30px
+        margin-top: 30px
+        display: grid
+        grid-template-columns: 1fr 4fr
+        grid-gap: 15px
+        .title
+            font-size: 18px
+            font-weight: 500
+            margin-bottom: 30px
+        .sub-1
+            font-size: 15px
+        svg
+            color: #CF0A2C
+            height: 30px
+            width: 30px
+            box-shadow: 0px 3px 6px #11111129;
+            padding: 15px;
+            border-radius: 50%;
+            margin: auto
+    .vendor-info
+        padding: 30px
+        margin-top: 30px
+        display: grid
+        grid-template-columns: 1fr 1fr
+        grid-gap: 30px
+        .info
+            display: grid
+            grid-template-columns: 1fr 1fr
+            grid-gap: 15px
+            img
+                width: 100%
+                border-radius: 100%
+                max-width: 125px
+                box-shadow: 0px 3px 6px #11111129;
+        .info-text
+            .title
+                font-size: 18px
+                font-weight: 600
+                margin-bottom: 15px
+            .sub-1
+                font-size: 15px
+                margin-bottom: 15px
+        .link-msg
+            position: relative
+            margin: auto;
+            margin-right: 30px;
+            a
+                color: #CF0A2C
+                font-size: 23px
+                font-weight: 500
+                &:hover
+                    cursor: pointer
+                .contador
+                    background: #CF0A2C
+                    padding: 5px 7px
+                    border-radius: 50%
+                    font-size: 12px
+                    color: white
+                    position: absolute;
+                    right: -20px;
+                    top: -20px;
+    .product-valoration
+        padding: 30px
+        margin-top: 30px
+        .info
+            display: grid
+            grid-template-columns: 1fr 4fr
+            grid-gap: 15px
+            img
+                width: 100%
+                border-radius: 100%
+                max-width: 125px
+                box-shadow: 0px 3px 6px #11111129;
+        .info-text
+            .title
+                font-size: 18px
+                font-weight: 600
+                margin-bottom: 15px
+            .sub-1
+                font-size: 15px
+                margin-bottom: 15px
+        p 
+            margin-top: 15px
+            font-size: 16px
+        .thumbnails
+            display: grid
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr
+            grid-gap: 15px
+            padding: 0 100px
+            margin-top: 15px
+            img
+                width: 100%
+                
+
+
+
+@media (max-width: 700px)
+    .purchases-detail
+        padding: 15px
+        padding-top: 15px
+        h1
+            color: #111111
+            font-size: 15px
+        .status
+            margin-top: 15px
+        .twins
+            display: grid
+            grid-template-columns: 1fr 1fr
+            grid-gap: 15px
+        .item-product
+            display: grid
+            grid-template-columns: 1fr 2fr
+            padding: 15px
+            margin-top: 15px
+            img
+                height: initial
+                width: 90%
+            .info   
+                .t1, .title
+                    font-size: 15px
+                    margin-bottom: 10px
+                .price, .unit
+                    font-size: 15px
+                .title, .price
+                    font-weight: 600
+                .description
+                    font-weight: 15px
+                    margin-bottom: 10px
+        .detail-info
+            padding: 15px
+            margin-top: 15px
+            font-size: 15px
+            .title
+                font-size: 15px
+                font-weight: 600
+                margin-bottom: 15px
+            .info-1, .info-2
+                display: grid
+                grid-template-columns: 3fr 1fr
+                padding: 0 15px
+                padding-bottom: 15px
+                .right
+                    font-weight: 600
+            .info-2
+                border-top: 1px solid #707070
+                padding-top: 15px
+        .vendor-reputation
+            padding: 15px
+            margin-top: 15px
+            display: grid
+            grid-template-columns: 2fr 1fr
+            h4.title
+                font-size: 15px
+            .sub
+                font-size: 10px
+            .stars
+                display: block
+                width: 150%
+                svg
+                    margin-right: 7.5px
+                    width: 20px
+                    height: 20px 
+                    color: #3F7FE1
+            img
+                max-width: 90px
+        .payment-status
+            padding: 15px
+            margin-top: 15px
+            display: grid
+            grid-template-columns: 1fr 4fr
+            grid-gap: 7px
+            .title
+                font-size: 15px
+            .sub-1
+                font-size: 12px
+            svg
+                color: #CF0A2C
+                height: 30px
+                width: 30px
+                box-shadow: 0px 3px 6px #11111129;
+                padding: 15px;
+                border-radius: 50%;
+                margin: auto
+        .vendor-info
+            padding: 15px
+            margin-top: 15px
+            grid-template-columns: 2fr 1fr
+            grid-gap: 7px
+            .info
+                grid-template-columns: 1fr 1fr
+                grid-gap: 10px
+                img
+                    max-width: 90px
+            .info-text
+                .title
+                    font-size: 15px
+                    margin-bottom: 15px
+                .sub-1
+                    font-size: 10px
+                    margin-bottom: 15px
+            .link-msg
+                position: relative
+                margin: auto;
+                margin-right: 15px;
+                a
+                    font-size: 12px
+                    .contador
+                        font-size: 7px
+                        position: absolute;
+                        right: -20px;
+                        top: -20px;
+        .product-valoration
+            padding: 15px
+            margin-top: 15px
+            .info
+                display: grid
+                grid-template-columns: 1fr 4fr
+                grid-gap: 15px
+                img
+                    max-width: 90px
+            .info-text
+                .title
+                    font-size: 15px
+                .sub-1
+                    font-size: 12px
+            p 
+                font-size: 12px
+            .thumbnails
+                grid-gap: 7px
+                padding: 0 40px
+                img
+                    width: 100%
+    

@@ -185,7 +185,7 @@ export default class UserAccount extends Component {
                             <Select name={"document_type"} >
                                 <option value={"1"}>Cedula de Cudadanía</option>
                                 <option value={"2"}>Cédula de extranjería</option>
-                                <option value={"3"}>Tarjeta de Identidad</option>
+                                {/* <option value={"3"}>Tarjeta de Identidad</option> */}
                                 <option value={"4"}>Pasaporte</option>
                                 <option value={"9"}>Otro</option>
                             </Select>
@@ -400,7 +400,7 @@ export default class UserAccount extends Component {
                                         {addressList}
                                         <Link href="/agregar_direccion">
                                             <a className="button-add">
-                                                <p className="modal-btn">Agregar nueva direccion</p>
+                                                <p className="modal-btn">Agregar nueva dirección</p>
                                             </a>
                                         </Link>
                                     </div>

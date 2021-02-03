@@ -1,9 +1,9 @@
 .pay {
   padding: 20px 0px;
   background: white;
-  border-bottom: 0.5px solid #C6C6C6;
-  border-top: 0.5px solid #C6C6C6;
-  border-right: 0.5px solid #C6C6C6;
+  border-bottom: 0.5px solid #e2e2e2;
+  border-top: 0.5px solid #e2e2e2;
+  border-right: 0.5px solid #e2e2e2;
 }
 
 .pay-img {
@@ -34,7 +34,7 @@
 
 .pay-item {
   padding: 10px 20px;
-  color: #565555;
+  color: #111111;
   font-size: 14px;
 }
 
@@ -71,11 +71,12 @@
 }
 
 .pay-item .select-icon select {
-  padding: 10px;
+  padding: 8px;
   border-radius: 5px;
   outline: none !important;
-  border: 0.3px solid #5A5A5A;
-  width: 195px !important;
+  border: 0.31px solid #acacac;
+  width: 260px !important;
+  background-color: #ffff;
 }
 
 .pay-item .select-icon select:focus {
@@ -93,17 +94,17 @@
 .title-pay-product-detail {
   font-size: 20px;
   font-weight: 600;
-  color: #565555;
+  color: #111111;
 }
 
 .price-pay-product-detail {
   font-size: 36px;
-  color: #565555;
+  color: #111111;
 }
 
 @media (max-width: 700px) {
   .price-pay-product-detail {
-    color: #5A5A5A;
+    color: #111111;
     font-weight: 600;
     font-family: 'Open Sans', sans-serif;
   }
@@ -118,7 +119,7 @@
 .info-pay-product-detail p {
   font-size: 15px;
   margin-bottom: 5px;
-  color: #5A5A5A;
+  color: #111111;
 }
 
 .info-pay-product-detail .no-web {
@@ -134,7 +135,7 @@
 }
 
 .section-pay-type {
-  border-top: 0.5px solid #C6C6C6;
+  border-top: 0.5px solid #e2e2e2;
   padding: 20px;
 }
 
@@ -144,7 +145,8 @@
 
 .section-pay-type img {
   width: auto;
-  height: 50px;
+  height: 44px;
+  padding-right: 10%;
 }
 
 .section-pay-type .section-pay-type-title {
@@ -158,7 +160,7 @@
 }
 
 .section-pay-type .section-pay-type-title h4 {
-  color: #5A5A5A;
+  color: #111111;
   font-size: 17px;
   font-weight: 600;
 }
@@ -178,8 +180,8 @@
 
 .section-pay-type p {
   margin: 10px 0px;
-  color: #5A5A5A;
-  font-size: 16px;
+  color: #111111;
+  font-size: 15px;
 }
 
 .section-pay-type .section-pay-type-items {
@@ -188,7 +190,7 @@
 
 .section-pay-send {
   padding: 20px;
-  border-top: 0.5px solid #C6C6C6;
+  border-top: 0.5px solid #e2e2e2;
 }
 
 .section-pay-send .section-pay-send-title {
@@ -198,7 +200,7 @@
       grid-template-columns: auto 1fr;
   grid-gap: 15px;
   margin: 20px 0px;
-  color: #5A5A5A;
+  color: #111111;
   font-size: 16px;
 }
 
@@ -230,12 +232,12 @@
 
 .section-pay-send .section-pay-send-description {
   margin: 20px 0px;
-  color: #5A5A5A;
+  color: #111111;
   font-size: 15px;
 }
 
 .section-pay-wrap-seller {
-  border-top: 0.5px solid #C6C6C6;
+  border-top: 0.5px solid #e2e2e2;
   padding: 20px;
 }
 
@@ -244,6 +246,7 @@
     border-right: 0px;
     border-bottom: 0px;
     margin-bottom: 30px;
+    padding: 0;
     border-top: 0;
   }
   .section-pay-send {

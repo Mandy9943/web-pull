@@ -1,0 +1,49 @@
+.payment-cash-result h3{
+    font-weight: 500;
+}
+
+.payment-cash-result hr{
+    margin: 10px 0 10px 0;
+}
+.payment-cash-result .payment-cash-result-logo{
+    width: 60%;
+    float:left;
+}
+.payment-cash-result .payment-cash-result-info{
+    width: 40%;
+    float: left;
+}
+.payment-cash-result .payment-cash-result-info .info-title{
+    font-weight: 600;
+}
+
+.payment-cash-result .payment-cash-result-logo img{
+    width: 80%;
+}
+
+.payment-cash-result button{
+    float: none !important;
+    width: auto !important;
+}
+.payment-cash-result-container{
+    width: 100%;
+    min-height: 100px;
+    margin-bottom: 15px;
+}
+.payment-cash-result .footer-info{
+    position: relative;
+    bottom: 0;
+    text-align: center;
+}
+.icon-check svg{
+    color:#2ba22f;
+    font-size: larger;
+    margin: 15px;
+  }
+  .container-success{
+    text-align: center;
+    margin-top: 30px;
+  }
+  .print{
+      float: none !important;
+  }

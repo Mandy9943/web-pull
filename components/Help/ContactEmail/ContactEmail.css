@@ -8,10 +8,10 @@
 
 .contact-email .contact-email-top {
   padding: 56px 0px;
-  color: #5A5A5A;
+  color: #111111;
   background: #FFFFFF;
-  -webkit-box-shadow: 0px 3px 6px #00000029;
-          box-shadow: 0px 3px 6px #00000029;
+  -webkit-box-shadow: 0px 3px 6px #11111129;
+          box-shadow: 0px 3px 6px #11111129;
 }
 
 .contact-email .contact-email-top .contact-email-bar {
@@ -46,9 +46,9 @@
 
 .contact-email-content .contact-email-box {
   padding: 20px 40px;
-  color: #5A5A5A;
+  color: #111111;
   background: #FBFBFB;
-  border: 1px solid #5A5A5A;
+  border: 1px solid #111111;
   border-radius: 5px;
 }
 

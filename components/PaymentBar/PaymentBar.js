@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import Modal from "./../Common/Modal";
 import CreditCard from "../../assets/img/pay-credit.png";
 import BankTransfer from "../../assets/img/pay-transfer.png";
-import OnlineTransfer from "../../assets/img/pay-online.png";
+import PayEfecty from "../../assets/img/pay-cash-efecty.png";
+import PayBaloto from "../../assets/img/pay-cash-baloto.png";
+import PaySured from "../../assets/img/pay-cash-sured.png";
 import "./PaymentBar.css";
 import Slider from 'react-animated-slider';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -31,7 +33,7 @@ class PaymentBar extends Component {
     const content1 = (
       <>
         <div className="header-modal">
-          <h3>Más Metodos de pagos</h3>
+          <h3>Más medios de pago</h3>
         </div>
         <div className="payment-way-content">
           <h4>Tarjetas de credito</h4>
@@ -43,8 +45,11 @@ class PaymentBar extends Component {
           <h4>Transferencia desde tu banco</h4>
           <img className="payment-way-img" src={BankTransfer} alt="TRansferencia bancaria" />
           <h4>Traspaso Online</h4>
-          <img className="payment-way-img" src={OnlineTransfer} alt="Pago online" />
-          <p>
+          <img className="payment-way-img-cash" src={PayEfecty} alt="Pago online con EFECTY" />
+          <img className="payment-way-img-cash" src={PayBaloto} alt="Pago online con BALOTO" />
+          <img className="payment-way-img-cash" src={PaySured} alt="Pago online con SURED" />
+        
+          <p className="payment-way-footer-p">
             Cuando termines tu compra, te daremos las instrucciones para que
             sepas cómo y dónde pagarla
           </p>
@@ -104,7 +109,7 @@ class PaymentBar extends Component {
             <p className="payments-icon payments-item-block">
               <FontAwesomeIcon icon={faPlusCircle} />
             </p>
-            <p className="payments-item-block">Más Metodos de pagos</p>
+            <p className="payments-item-block">Más medios de pago</p>
             <p className="payments-item-block sub">Ver más</p>
           </div>
           {this.state.modal2 ? (
@@ -156,7 +161,7 @@ class PaymentBar extends Component {
               <p className="payments-icon payments-item-block">
                 <FontAwesomeIcon icon={faPlusCircle} />
               </p>
-              <p className="payments-item-block">Más Metodos de pagos</p>
+              <p className="payments-item-block">Más medios de pago</p>
               <p className="payments-item-block sub">Ver más</p>
             </div>
             <div

@@ -1,4 +1,5 @@
 import {get, post, postForm, putForm, sget, apiget} from "../lib/request";
+import {categoryApi, filtersApi, productsApi, suggestionsApi} from "../lib/config";
 
 const getDataJWT = (endpoint, jwt) => {
     try {
@@ -38,10 +39,40 @@ export const getProductDetail = (id_product) => {
     }
 };
 
+export const getRecommendProducts = (category) => {
+    try {
+        let endpoint = ("/search/category/"+category+"?size="+20);
+        let data = sget(endpoint)
+        return data;
+    } catch (error) {
+        return error;
+    }
+};
+
+export const getRatingByProduct = (product) => {
+    try {
+        let endpoint = ("/getRating/"+product);
+        let data = sget(endpoint)
+        return data;
+    } catch (error) {
+        return error;
+    }
+};
+
+export const getSellerByProduct = (product) => {
+    try {
+        let endpoint = ("/getSellerByIdProduct/"+product);
+        let data = sget(endpoint)
+        return data;
+    } catch (error) {
+        return error;
+    }
+};
+
 export const searchProduct = (string, limit) => {
     try {
                 
-        let endpoint = ("https://kieroapi.net/api/v1.0/search?keyword="+string);
+        let endpoint = ("https://dev.kieroapi.net/api/v1.0/search?keyword="+string);
         let data = apiget(endpoint)
         return data;
     } catch (error) {
@@ -49,10 +80,61 @@ export const searchProduct = (string, limit) => {
     }
 };
 
+export const searchProducts = (type, size, page, ots='', brand='', price='', category='', sort_by='', order_by='', level='') => {
+    try {
+        const params = new URLSearchParams();
+
+        if (ots !== '') params.append('ots', ots);
+        if (brand !== '') params.append('brand', brand);
+        if (price !== '') params.append('price', price);
+        if (category !== '') params.append('category', category);
+        if (sort_by !== '') params.append('sort_by', sort_by);
+        if (order_by !== '') params.append('order_by', order_by);
+        if (level !== '') params.append('level', level);
+        
+
+        let endpoint1 = productsApi + `?size=${size}&page=${page}`;
+        let endpoint2 = categoryApi+`/${ots}?size=${size}&page=${page}`;
+        let endpoint = type === "search" ? endpoint1 : endpoint2;
+        if (params.toString().length)
+            endpoint = endpoint + '&' + params.toString();
+
+        return  apiget(endpoint)
+    } catch (error) {
+        return error;
+    }
+};
+
+export const searchSuggestions = (size, ots) => {
+    try {
+        let endpoint = suggestionsApi + `?size=${size}&ots=${ots}`
+
+        return  apiget(endpoint)
+    } catch (error) {
+        return error;
+    }
+};
+
+export const searchFilters = (ots, level, category) => {
+    try {
+        const params = new URLSearchParams();
+
+        if (level !== '') params.append('level', level);
+        if (category !== '') params.append('category', category);
+
+        let endpoint = filtersApi + `?ots=${ots}`
+        if (params.toString().length)
+            endpoint = endpoint + '&' + params.toString();
+
+        return  apiget(endpoint)
+    } catch (error) {
+        return error;
+    }
+};
 
 export const getProductsBasic = (category, limit) => {
     try {
-        let endpoint = ("/getProductsCategory/"+limit+"/"+category);
+        let endpoint = ("/search/category/"+category+"?size="+limit);
         let data = sget(endpoint)
         return data;
     } catch (error) {

@@ -21,7 +21,7 @@ class CategoriesMovil extends Component {
 
     return (
       <div className="menu-categorias">
-        <h1 className="tite-categories"><Logo /> <span>Categorias</span> <Link href="/ayuda"><a>Ayuda</a></Link> </h1>
+        <h1 className="tite-categories"><Logo /> <span>Categorías</span> <Link href="/ayuda"><a>Ayuda</a></Link> </h1>
         <div className="menu-list">
           {this.props.categories.map((cat, i) => {
               return <span className="item" key={i}>

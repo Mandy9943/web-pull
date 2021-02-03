@@ -25,7 +25,7 @@
 
 .payment-problem-container .payment-problem-content h1 {
   margin-bottom: 20px;
-  color: #5A5A5A;
+  color: #111111;
 }
 
 .payment-problem-container .payment-problem-content .payment-problem-box {
@@ -35,10 +35,10 @@
       grid-template-columns: 1fr 1fr;
   grid-gap: 15px;
   padding: 40px;
-  color: #5A5A5A;
+  color: #111111;
   background: #FBFBFB;
-  -webkit-box-shadow: 0px 3px 6px #00000029;
-          box-shadow: 0px 3px 6px #00000029;
+  -webkit-box-shadow: 0px 3px 6px #11111129;
+          box-shadow: 0px 3px 6px #11111129;
   border-radius: 5px;
 }
 
@@ -83,16 +83,16 @@
   grid-gap: 15px;
   padding: 20px;
   background: #FFFFFF;
-  -webkit-box-shadow: 0px 3px 6px #00000029;
-          box-shadow: 0px 3px 6px #00000029;
+  -webkit-box-shadow: 0px 3px 6px #11111129;
+          box-shadow: 0px 3px 6px #11111129;
   border-radius: 5px;
 }
 
 .payment-problem-container .payment-problem-content .payment-problem-box .payment-problem-orders .payment-problem-order-box .payment-problem-icon {
   padding: 13px 15px;
   background: #FFFFFF;
-  -webkit-box-shadow: 0px 3px 6px #00000029;
-          box-shadow: 0px 3px 6px #00000029;
+  -webkit-box-shadow: 0px 3px 6px #11111129;
+          box-shadow: 0px 3px 6px #11111129;
   border-radius: 50%;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;

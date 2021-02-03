@@ -30,7 +30,7 @@ class AccountDetailPurchase extends Component {
             <div className="account-detail-purchase-wrap-info">
               <h3>Pago aprobado</h3>
               <h4>Efecty</h4>
-              <p>transaccion: #426341346</p>
+              <p>transacción: #426341346</p>
               <p>20 de julio de 2020</p>
             </div>
           </div>

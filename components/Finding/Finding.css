@@ -68,13 +68,13 @@
 }
 
 .wrap-info .category-text {
-  color: #5A5A5A;
+  color: #111111;
   font-size: 18px;
 }
 
 .wrap-info .finding-title {
   font-size: 27px;
-  color: #5A5A5A;
+  color: #111111;
 }
 
 @media (max-width: 600px) {

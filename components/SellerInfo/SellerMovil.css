@@ -1,10 +1,77 @@
+.profile-seller {
+  display: inline-flex !important;
+}
+
+.profile-seller .info-profile-seller{
+  position: relative;
+  top: 10px;
+  left: -15px;
+}
+
+.profile-seller .seller-leader{
+  position: relative;
+  top: 10px;
+}
+
+
+.profile-seller .info-profile-seller,.seller-leader p{
+  font-size: 13px;
+}
+
+.seller-products{
+  width: 100%;
+  height: 80px;
+  margin-bottom: 8px;
+  padding-top: 1em;
+  border: 0.5px solid #f3f3f3 !important;
+  box-shadow: 0px 3px 3px #11111129 !important;
+}
+
+.seller-products img{
+  float: left;
+  width: 48px;
+  margin-right: 10px;
+}
+
+.seller-products p{
+  font-size: 13px;
+  width: 230px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.seller-products p span{
+  font-weight: 500;
+}
+
+.seller-delivery{
+  margin-left: 3em;
+  margin-top: 6px;
+  width: 100%;
+}
+.seller-delivery > span, .seller-delivery > p{
+  color: #CF0A2C;
+  float: left;
+  margin-right: 5px;
+}
+
+.link-more-products{
+  font-size: 14px;
+}
+.link-more-products:hover{
+  opacity: 0.7;
+}
+
+
+
+
 .seller-movil .info-shops {
   -ms-grid-columns: 1fr auto;
       grid-template-columns: 1fr auto;
 }
 
 .seller-movil .info-shops a p {
-  color: #5A5A5A;
+  color: #111111;
 }
 
 .seller-movil .ubication {
@@ -13,7 +80,7 @@
   -ms-grid-columns: 60px 1fr;
       grid-template-columns: 60px 1fr;
   margin-top: 15px;
-  color: #5A5A5A;
+  color: #111111;
 }
 
 .seller-movil .ubication img {

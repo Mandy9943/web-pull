@@ -3,7 +3,7 @@
     display: block;
     background: white;
     padding: 25px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
   }
   .News .content {
     -webkit-box-pack: center;
@@ -38,8 +38,8 @@
     margin: auto;
   }
   .News .content .icons img {
-    width: 35px;
-    height: 35px;
+    width: 45px;
+    height: 45px;
   }
 }
 

@@ -22,6 +22,8 @@ import { faTruck, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import Logo1 from "../../assets/img/logo-social.png";
 import Logo2 from "../../assets/img/logo-social1.png";
 import Seller from "./../SellerInfo";
+import {RecommendedProducts} from '../RecommendedProducts';
+
 
 class ProductDetail extends Component {
 
@@ -52,8 +54,7 @@ class ProductDetail extends Component {
     const u_data = this.props.user_data;
     let url = "//www.sic.gov.co";
 
-    console.error(mdata.width+"test de la data")
-
+    console.log(mdata)
     return (
       <div>
         <Nav user={u_data.user} jwt={u_data.jwt} home={true} authenticated={u_data.authenticated} />
@@ -80,9 +81,13 @@ class ProductDetail extends Component {
               <div className="pay-section-responsive">
                 <Pay pid={mdata.product_id} seller={mdata.user} price={mdata.price} title={mdata.title} stock={mdata.stock} />
               </div>
+              {/* <RecommendedProducts category={mdata.category.name} /> */}
+              <div className="home-content slider-recommends">
+                <ProductsSlider category={mdata.category.name} />
+              </div>
               <Detail width={mdata.width} length={mdata.length} weight={mdata.weight} title={mdata.title} product_name={mdata.title} desciption={mdata.description} />
               <Question user_data={this.props.user_data} product_id={mdata.product_id} cb={this.loadQuestions} />
-              <section className="no-movil">
+              <section>
                 <QuestionItem product_id={mdata.product_id} questions={this.state.questions} />
               </section>
               <div className="section-pay-type pay-movil no-web">
@@ -109,7 +114,7 @@ class ProductDetail extends Component {
               </div>
               <div className="section-pay-send no-web">
                 <div className="section-pay-send-title">
-                  <h4>Formas de envio</h4>
+                  <h4>Formas de envío</h4>
                 </div>
                 <div className="section-pay-send-subtitle">
                   <span>
@@ -132,23 +137,27 @@ class ProductDetail extends Component {
             </div>
           </div>
           <section className="questions-movil no-web">
-            <div className="section-pay-wrap-seller">
-              <Seller seller={mdata.user} />
+            <div className="section-pay-wrap-seller no-movil">
+              <Seller productId={mdata.product_id} />
             </div>
-            <QuestionItem product_id={mdata.product_id} q questions={this.state.questions} />
+            {/* <QuestionItem product_id={mdata.product_id} q questions={this.state.questions} /> */}
             <ProductsSlider images={mdata.images} category={mdata.category.name} />
-            <ProductsSlider images={mdata.images} category={mdata.category.name} />
-            <Explorer />
+            
+            
+            {/* <Explorer />
           </section>
             
           <section className='no-movil'>
-            <Explorer />
-            <ProductCardFinding notitle={"true"} category={mdata.category.name} />
+            <Explorer /> */}
+            
           </section>
           <section className="advertising-movil no-movil no-web">
             <ProductCardFinding notitle={"true"} category={mdata.category.name} />
           </section>
         </div>      
+          <div className="home-content  no-movil">
+            <ProductsSlider category={mdata.breadcum.[1].name} />
+            </div>
           <Footer />
         <div className="footer-social">
           <Link href={url}><a target="_blank"><img src={Logo1} /></a></Link>

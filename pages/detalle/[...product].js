@@ -7,37 +7,92 @@ import favicon from "../../assets/img/favicon.svg";
 
 
 function Product({ data, u_data }) {
+
   return (
     <div>
       <Head>
-        {/*NEED FIX THIS SHIT colocar nombre del producto y precio y categoria mostrar*/}
-        <title>Kiero | Producto </title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta name="Description" content="KIERO.CO MARKETPLACE | Compralo en Kiero a precio - Envio gratis - Encuentra mas productos de CatPadre, CatHijo, CatNieto" />
-        <meta name="Keywords" content="Titulo del producto" />
-        <meta name="Title" content="Kiero.co -product_name a $product_price" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="google" content="notranslate" />
-        <meta name="twitter: card" content="Envíos gratis en Colombia, productos para Bebés, Belleza, Cámaras y accesorios, Electrodomésticos, Electrónica, Hogar y muebles y mucho más." />
-        <meta name="twitter: site" content="@kierogroup1" />
-        <meta name="twitter: title" content=" Compra en Kiero todo lo encuentras en nuestra Tienda Online" />
-        <meta name="twitter: description" contenido=" Envíos gratis en Colombia, productos para Bebés, Belleza, Cámaras y accesorios, Electrodomésticos, Electrónica, Hogar y muebles y mucho más." />
-        <meta name="twitter: image" content="https://kiero.co/_next/static/images/banners-apk-911388a7cee05467bbd92b4b573820ab.jpg" />
-        <meta property="og:title" content="Compra product_name en Kiero.co Compra Portatiles y accesorios en Kiero.co " />
-        <meta property="og:description" content="Encuentra product_name en Kiero.co - Descubre millones de productos online. Encuentra Portatiles y accesorios en Kiero.co " />
-        <meta property="og:url" content="url de producto" />
-        <meta property='og:locale' content='es_ES' />
-        <meta property='og:type' content='website' />
-        <meta property='og:site_name' content='Kiero.co' />
-        <meta property="og:image" content="https://kiero.co/_next/static/images/banners-apk-911388a7cee05467bbd92b4b573820ab.jpg"/>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="robots" content="index,follow" />
-        <meta name="robots" content="noodp" />
-        <meta name="robots" content="noydir" />
-        <link rel="icon" href={favicon} type="image/png" />
+         {/* Google Tag Manager */}
+         <script
+            dangerouslySetInnerHTML={{
+                __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                    })(window,document,'script','dataLayer','GTM-TXNXPM7');`,
+            }}
+        />
+        {/* End Google Tag Manager */}
+      <title>Kiero.co | {data.title}</title>
+      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      <meta name="Description"
+      content="KIERO.CO MARKETPLACE | Compralo en Kiero {product.title} a {product.price}- Envío
+      gratis - Encuentra más productos de{product.category_name}" />
+      <meta name="Keywords" content="{product.title}" />
+      <meta name="Title" content="Kiero.co -{product.title} a {product.price}" />
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+      <meta name="google" content="notranslate" />
+      <meta name="twitter: card"
+      content="Envíos gratis en Colombia, productos para Bebés, Belleza, Cámaras y accesorios,
+      Electrodomésticos, Electrónica, Hogar y muebles y mucho más." />
+      <meta name="twitter: site" content="@kierogroup1" />
+      <meta name="twitter: title" content=" Compra en Kiero todo lo encuentras en nuestra Tienda
+      Online" />
+      <meta name="twitter: description"
+      contenido=" Envíos gratis en Colombia, productos para Bebés, Belleza, Cámaras y accesorios,
+      Electrodomésticos, Electrónica, Hogar y muebles y mucho más." />
+      <meta name="twitter: image" content="{product.image_url}" />
+      <meta property="og:title" content={"Compra en Kiero.co - Encuentra {product.category_name} en Kiero.co " }/>
+      <meta property=" og:description"
+      content="Encuentra {product.title} en Kiero.co - Descubre millones de productos online.
+      Encuentra {product.category_name} en Kiero.co " />
+      <meta property="og:url" content={`https://kiero.co/detalle/${data.product_id} ${data.title.replace(/[^\w\s]/gi, '' ).split(" ").join(" -")}`} />
+      <meta property='og:locale' content='es_ES' />
+      <meta property='og:type' content='WebSite' />
+      <meta property='og:site_name' content='Kiero.co' />
+      <meta property="og:image" content="{product.image_url}" />
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta name="robots" content="index,follow" />
+      <link rel="icon" href={favicon} type="image/png" />
+      <link rel="canonical" href={`https://kiero.co/detalle/${data.product_id} ${data.title.replace(/[^\w\s]/gi, '' ).split(" ").join(" -")}`} />
+      
+      <script type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "name": `${data.title}`,
+        "image": "{product.image}",
+        "description": "{product.description}",
+        "brand": "{product.brand}",
+        "sku": `${data.product_id}`,
+        "offers": {
+        "@type": "Offer","url": "{product.product_url}",
+        "priceCurrency": "COP",
+        "price": "3",
+        "priceValidUntil": "{product.created_since}",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition"
+        },
+        "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "{product.rating}",
+        "bestRating": "5",
+        "worstRating": "0",
+        "ratingCount": "{product.rating.count}"
+      } }}}>
+    </script>
+       
       </Head>
+        {/* Google Tag Manager (noscript) */}
+        <noscript
+          dangerouslySetInnerHTML={{
+              __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TXNXPM7" height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
+          }}
+        />
+        {/* End Google Tag Manager (noscript) */}
+      
       <Detail user_data={u_data} data={data} />
+    
     </div>
   );
 }

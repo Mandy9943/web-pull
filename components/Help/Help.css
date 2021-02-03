@@ -8,7 +8,7 @@
 }
 
 .help a {
-  color: #5A5A5A;
+  color: #111111;
   font-size: 14px;
 }
 
@@ -17,8 +17,8 @@
   position: relative;
   padding: 60px 0px;
   background: #FBFBFB;
-  -webkit-box-shadow: 0px 3px 6px #00000029;
-          box-shadow: 0px 3px 6px #00000029;
+  -webkit-box-shadow: 0px 3px 6px #11111129;
+          box-shadow: 0px 3px 6px #11111129;
 }
 
 .help .help-top .content-help-top {
@@ -32,7 +32,7 @@
 }
 
 .help .help-top .content-help-top h1 {
-  color: #5A5A5A;
+  color: #111111;
   font-size: 26px;
   font-weight: lighter;
 }
@@ -43,8 +43,8 @@
   -ms-grid-columns: auto 1fr;
       grid-template-columns: auto 1fr;
   background: #FFFFFF;
-  -webkit-box-shadow: 0px 3px 6px #00000029;
-          box-shadow: 0px 3px 6px #00000029;
+  -webkit-box-shadow: 0px 3px 6px #11111129;
+          box-shadow: 0px 3px 6px #11111129;
   border-radius: 5px;
   color: #A8A8A8;
 }
@@ -100,7 +100,7 @@
 
 .help .content-help .help-right h5 {
   margin-bottom: 20px;
-  color: #D11E36;
+  color: #CF0A2C;
 }
 
 .help .content-help .help-right p {
@@ -109,7 +109,7 @@
 
 .help .content-help .help-right svg {
   opacity: 0.50;
-  color: #5A5A5A;
+  color: #111111;
 }
 
 .help .content-help .help-right .help-accordion-title {
@@ -119,12 +119,12 @@
       grid-template-columns: 1fr auto;
   grid-gap: 10px;
   padding: 15px 10px;
-  border-top: 0.5px solid #5A5A5A;
+  border-top: 0.5px solid #111111;
   cursor: pointer;
 }
 
 .help .content-help .help-right .help-accordion-title.active p {
-  color: #D11E36;
+  color: #CF0A2C;
 }
 
 .help .content-help .help-right .help-accordion-title.active {
@@ -133,7 +133,7 @@
 }
 
 .help .content-help .help-right .help-accordion-title p {
-  color: #5A5A5A;
+  color: #111111;
   font-size: 12px;
 }
 
@@ -152,7 +152,7 @@
 
 .help .content-help .help-right .help-accordion p {
   margin-bottom: 10px;
-  color: #5A5A5A;
+  color: #111111;
   font-size: 12px;
 }
 

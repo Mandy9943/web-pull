@@ -24,45 +24,43 @@ import SecundarySlider from "./../SecundarySlider";
 
 export default class Home extends Component {
   render() {
-    let u_data = this.props.user_data
-    let authenticated = this.props.authenticated
-    let url = "//www.sic.gov.co";
-
+    let u_data = this.props.user_data;
+    let authenticated = this.props.authenticated;
 
     return (
       <div className="container">
-        <Nav user={u_data.user} jwt={u_data.jwt} home={true} authenticated={u_data.authenticated} />
+        <Nav user={u_data.user} role={u_data.role} jwt={u_data.jwt} home={true} authenticated={u_data.authenticated} />
         <PrincipalSlider />
         <div className="home-content">
           <Payment />
-          <ProductsSlider category={"Computación"} />
-          <ProductsSlider category={"Belleza y Cuidado Personal"} />
+         <ProductsSlider category={"Computadoras y tabletas"} />
+           <ProductsSlider category={"Belleza"} />
           <SecundarySlider />
           <LoginMovil user={u_data.user} authenticated={u_data.authenticated}/>
           <Finding category={{
-            father0: "Electrodomésticos", father1: "Computacion",
+            father0: "Electrodomésticos", father1: "Computación",
             img0: "banner-electrodomesticos.jpg", img1: "banner-computacion.jpg",
             sub1: "Aspiradoras", url1: "categoria/Aspiradoras", sub2: "Monitores", url2: "categoria/Monitores" }} 
            />
-          <ProductsSlider category={"Juegos y Juguetes"} />
-          <Explorer />
+           <ProductsSlider category={"Juguetes"} />
+          {/* <Explorer /> */}
           <Finding category={{
-            father0: "Deportes", father1: "Electronica",
+            father0: "Deportes", father1: "Electrónica",
             img0: "banner-deportes.jpg", img1: "banner-drones.jpg",
             sub1: "Bicicletas de carretera", url1: "categoria/Bicicle-tas%20de%20carretera", sub2: "Drones", url2:"categoria/Drones" }}
           />
           <ProductsSlider category={"Animales y Mascotas"} />
-          <ListProductMovil jwt={u_data.jwt} />
+         <ListProductMovil jwt={u_data.jwt} />
           <CategoriesImgMenu />
-          <Tickets />
+          <Tickets /> 
         </div>
         <Info />
         <News />
         {/*<Social />*/}
         <Footer />
         <div className="footer-social">
-          <Link href={url}><a target="_blank"><img alt="sic.gov.co" src={Logo1} /></a></Link>
-          <Link href={url}><a target="_blank"><img alt="sic.gov.co" src={Logo2} /></a></Link>
+          <Link href={"//sic.gov.co"}><a target="_blank"><img alt="sic.gov.co" src={Logo1} /></a></Link>
+          <Link href={"//sic.gov.co"}><a target="_blank"><img alt="sic.gov.co" src={Logo2} /></a></Link>
         </div>
       </div>
     );

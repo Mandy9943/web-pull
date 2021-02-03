@@ -1,0 +1,19 @@
+.payment-questions{
+    padding: 3% 3%;
+}
+
+.payment-questions .pay-online-question{
+    width: 100%;
+    position: relative;
+    left: 0px;
+  }
+  .payment-questions .pay-transfer-question{
+    position: relative;
+    width: 100%;
+    left: 0px;
+  }
+  .payment-questions .pay-credit-question{
+    position: relative;
+    width: 100%;
+    left: 8px;
+  }

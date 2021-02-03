@@ -1,24 +1,36 @@
 import React, { Component } from "react";
 import CardImg from "../../assets/img/default.webp";
-import PayOnline from "../../assets/img/pay-online.png";
+import PayEfecty from "../../assets/img/pay-cash-efecty.png";
+import PayBaloto from "../../assets/img/pay-cash-baloto.png";
+import PaySured from "../../assets/img/pay-cash-sured.png";
 import Button from "../Common/Button/Button";
 import Header from "../Common/Header/Header";
 import Footer from "../Common/Footer";
 import Select from "../Common/Select";
 import "./PaymentWay.css";
 import "./PaymentWayMovil.css";
-import { getData, makePayment, makePaymentCC } from "../../services/userApi"
+import { getData, makePayment, makePaymentCC, makePaymentCash } from "../../services/userApi"
 import Modal from "../Common/Modal";
 import AddAddress from "../UserAccount/AddAddress"
 import { validatePayCC, validatePaymentPSE } from "../../lib/validation"
+import { priceFormat } from "../../lib/config"
 import Error from "../Login/Error";
+import InputTip from "../InputTip"
+import PaymentLoading from '../PaymentLoading';
+import Cards from 'react-credit-cards';
+import 'react-credit-cards/es/styles-compiled.css'
+import PaymentCash from '../PaymentCash';
+import PaymentCashResult from '../PaymentCashResult';
+import Datetime from 'react-datetime';
+import "react-datetime/css/react-datetime.css";
+import moment from 'moment';
 
 
 export default class PaymentWay extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            productQuantity: 1,
+            productQuantity: this.props.cantidad,
             closeCredit: true,
             closeCash: true,
             closeTransfer: true,
@@ -32,7 +44,20 @@ export default class PaymentWay extends Component {
             error: null,
             cc_error: null,
             pse_error: null,
-
+            tips: {},
+            ccv: '',
+            expiration_date: '',
+            focus: '',
+            card_holder: '',
+            card_number: '',
+            card_max_length: 16,
+            card_type: 'invalid',
+            paymentLoading: false,
+            paymentError: false,
+            paymentCash: false,
+            paymentCashType: 1,
+            paymentCashResult: false,
+            paymentCashDocument: ''
         }
         this.addrRef = React.createRef();
 
@@ -41,6 +66,7 @@ export default class PaymentWay extends Component {
     componentDidMount() {
         this.loadBanks();
         this.loadAddresses();
+        
     }
 
 
@@ -57,25 +83,31 @@ export default class PaymentWay extends Component {
         console.log(this.props);
         getData("/getAddresses", this.props.user.jwt)
             .then((response) => {
-                this.setState({ addresses: response.data, addrLoaded: true });
+                this.setState({ addresses: response.data, addrLoaded: true,modalAddr: false, modal: false });
             });
+        
     }
-
 
     accordionCredit = () => {
         this.setState({
             closeCredit: !this.state.closeCredit,
+            closeCash: true,
+            closeTransfer: true,
         });
     }
 
     accordionCash = () => {
         this.setState({
             closeCash: !this.state.closeCash,
+            closeCredit: true,
+            closeTransfer: true,
         });
     }
     accordionTransfer = () => {
         this.setState({
             closeTransfer: !this.state.closeTransfer,
+            closeCash: true,
+            closeCredit: true,            
         });
     }
 
@@ -132,13 +164,18 @@ export default class PaymentWay extends Component {
         e.preventDefault();
 
         this.setState({cc_error: null});
-
+	const actualSize = e.target.elements.card_number.value.length;
+	var tips = {};
+	if(this.state.card_type == "invalid"){
+		tips.card_number == "El numero de tarjeta ingresado no es valido";
+	}
         const ccPayload = {
+
             product_id: this.props.data.product_id,
             device_session_id: this.props.user.dsi.dsi,
             document_type: e.target.elements.document_type.value,
             document_number: e.target.elements.document_number.value.split(" ").join("").split(".").join(""),
-            card_type: e.target.elements.card_type.value,
+            card_type: this.state.card_type,
             card_number: e.target.elements.card_number.value.split(" ").join(""),
             ccv: e.target.elements.ccv.value,
             expiration_date: "20"+e.target.elements.expiration_date.value,
@@ -146,8 +183,8 @@ export default class PaymentWay extends Component {
             monthly_fees: e.target.elements.monthly_fees.value
         };
 
-        const validated = validatePayCC(ccPayload);
-        if(validated===true){
+        const validated = Object.assign(tips, validatePayCC(ccPayload));
+        if(Object.values(validated).length == 0){
 
             if (this.state.selectedAddr == -1) {
                 this.setState({ modalAddr: true });
@@ -155,38 +192,119 @@ export default class PaymentWay extends Component {
             }
 
             ccPayload.address_id = this.state.addresses[this.state.selectedAddr].address_id;
-
-            const rs = await makePaymentCC(ccPayload, this.props.user.jwt);
+            this.setState({paymentLoading:true});
+           const rs = await makePaymentCC(ccPayload, this.props.user.jwt);
+            
             if (rs.data) {
                 window.location = "/pay_result/"+rs.data.id;
             } else {
                 this.setState({
-                    error: rs.error
+                    paymentLoading: false,
+                    error: rs.error,
+                    paymentError: true
                 });
             }
         }else{
 
             this.setState({
-                cc_error: validated
+                tips: validated
             });
         }
 
     };
 
+    payCash = async e => {
+        e.preventDefault();
+        const cashPayload = {
+            product_id: this.props.data.product_id,
+            full_name: e.target.elements.cash_form_name.value,
+            email: e.target.elements.cash_form_email.value,
+            phone_number: e.target.elements.cash_form_number.value,     
+            paymentMethod: this.getPaymentType()
+        }
+        if(cashPayload.email && cashPayload.full_name && cashPayload.phone_number){
+            cashPayload.address_id = this.state.addresses[this.state.selectedAddr].address_id;     
+           
+            const rs = await makePaymentCash(cashPayload, this.props.user.jwt);
+            if (rs.data) {
+                console.log(rs.data);
+                this.setState({paymentCashResult: true, paymentCash: false, paymentCashDocument: rs.data.result.pdf});
+            } else {
+                console.log(rs);
+            }          
+        }
+        else
+        {
+            alert('Complete todos los campos');
+        }
+    }
 
+    openPaymentCash = (type) => {
+        if (this.state.selectedAddr == -1) {
+            this.setState({ modalAddr: true });
+            return false;
+        }
+        else{
+            this.setState({paymentCash: true, paymentCashType: type})
+        }
+    };
 
+    exitccv = (e) => {
+        this.setState({ focus: "" });
+    }
+    
+    handleInputFocus = (e) => {
+        let name = "";
+        if (e.target.name != 'ccv'){
+            name = e.target.name;
+        }else{
+            name = 'cvc';
+        }
+        this.setState({ focus: name });
+    }
+      
+      handleInputChange = (e) => {
+        let { name, value } = e.target;
+        this.setState({ [name]: value });
+      }
+
+      handleDateTimeChange = (e) => {
+        let value = moment(e).format('YY/MM');
+        this.setState({ expiration_date: value });
+    };
+
+      card_change = (type, valid) => {
+
+        this.setState({card_max_length: type.maxLength});
+        if(!valid){
+            this.setState({card_type: "invalid"});
+        }
+
+      }
+
+      getPaymentType = () => {
+        if(this.state.paymentCashType===1){
+            return 'EFECTY';
+        }
+        if(this.state.paymentCashType===2){
+            return 'BALOTO';
+        }
+        if(this.state.paymentCashType===3){
+            return 'SURED';
+        }
+      };
 
     render() {
-        const addAddressContent = <AddAddress jwt={this.props.user.jwt} save={this.loadAddresses} cancel={() => this.setState({ modal: false })} noheader="1" />;
+        const addAddressContent = <AddAddress jwt={this.props.user.jwt} save={this.loadAddresses} cancel={() => this.setState({ modal: false, modalAddr: false })} noheader="1" />;
 
         const addressListContent = <>
             <Select onChange={this.tmpChangeAddr} >
-                <option value="-1">Seleccione una dirección</option>
+                <option value="-1">Seleccione una dirección existente</option>
                 {this.state.addresses.map((addr, i) => {
                     return <option key={i} value={i}>{addr.address}</option>
                 })}
             </Select>
-            <Button onClick={this.setAddr} text={"Cambiar"} />
+            <Button onClick={this.setAddr} text={"Aceptar"} />
 
             <Button onClick={() => this.setState({ modal: 1, modalAddr: false })} text={"Agregar dirección"} />
             
@@ -195,22 +313,19 @@ export default class PaymentWay extends Component {
         const docType = <> <option value={"CC"}>Cédula de ciudadanía </option>
             <option value={"CE"}>Cédula de extranjería </option>
             <option value={"NIT"}> NIT </option>
-            <option value={"TI"}>Tarjeta de Identidad </option>
+            {/* <option value={"TI"}>Tarjeta de Identidad </option> */}
             <option value={"PP"}>Pasaporte </option>
             <option value={"DE"}>Documento de identificación extranjero </option>
         </>
 
-        const cardType = <>
-            <option value={"0"}>- Seleccione - </option>
-            <option value={"MASTERCARD"}>Master Card</option>
-            <option value={"VISA"}>Visa</option>
-            <option value={"VISA_DEBIT"}>Visa Debito</option>
-            <option value={"DINERS"}>Dinners</option>
-            <option value={"AMEX"}>American Express</option>
-            <option value={"CODENSA"}>Codensa</option>
-        </>
+        let months_fees = []
+	let i = 0;
+        for (i=1; i<32; i++){
+            months_fees.push(<option value={i}>{i}</option>)
+        }
 
-
+        const totalPrice = priceFormat(parseFloat(this.props.data.price) * this.state.productQuantity);
+     
         return (
             <div className="payment-way">
 
@@ -227,17 +342,21 @@ export default class PaymentWay extends Component {
                     <Modal toggle={() => this.setState({ modalAddr: false })} content={addressListContent} button />
                 ) : null}
 
+                {this.state.paymentCash ? (
+                    <Modal toggle={() => this.setState({ paymentCash: false })} content={<PaymentCash onSubmit={this.payCash} />} button />
+                ) : null}
+
                 <Header />
 
-
-
-                <div className="container-payment-way">
+                {
+                    this.state.paymentLoading ? <PaymentLoading error={this.state.paymentError} back={()=>this.setState({paymentLoading: false})} /> :
+                    <div className="container-payment-way">
                     <div className="product-description payment-way-box only-movil">
                         <img src={this.props.data.images.length > 0 ? this.props.data.images[0].url : 'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png'} />
                         <div className="content-product-description">
                             <p>{this.props.data.title}</p>
                             <p className="quantity">Cantidad: {this.state.productQuantity}</p>
-                            <h3>Total: {this.props.data.price.split(",")[0]}</h3>
+                            <h3>Total: $ {totalPrice}</h3>
                         </div>
                     </div>
                     <h2>Elige la forma de pago</h2>
@@ -252,33 +371,71 @@ export default class PaymentWay extends Component {
                             </div>
                             <div className={this.state.closeCredit ? "accordion-payment-way" : "accordion-payment-way active"}>
                                 <div className="content-accordion">
-                                    <form onSubmit={this.payCC}>
-                                        <input maxLength={16} name={"card_number"} placeholder="Número de tarjeta *" />
-                                        <input maxLength={64} name={"card_holder"}  placeholder="Nombre y apellido impreso *" />
+                                <Cards
+                                        cvc={this.state.ccv}
+                                        expiry={this.state.expiration_date}
+                                        focused={this.state.focus}
+                                        name={this.state.card_holder}
+                                        number={this.state.card_number}
+
+                                        callback={this.card_change}
+                                        placeholders="TU NOMBRE"
+                                        
+                                        />
+                                    <form id="form-credit" onSubmit={this.payCC}>
+
+                                        <input
+                                            type="tel"
+                                            name="card_number"
+                                            placeholder="Numero de tarjeta."
+                                            onChange={this.handleInputChange}
+                                            onFocus={this.handleInputFocus}
+                                            maxLength={this.state.card_max_length}
+                                            
+                                        />
+
+                                        <InputTip msg={this.state.tips.card_number}/>
+
+                                        <input maxLength={64} name={"card_holder"} onChange={this.handleInputChange} onFocus={this.handleInputFocus}  placeholder="Nombre y apellido impreso *" />
+                                        <InputTip msg={this.state.tips.card_holder}/>
                                         <div className="input-form">
-                                            <input  maxLength={5} name={"expiration_date"} placeholder="AA/MM" />
-                                            <input  maxLength={4} name={"ccv"} placeholder="CVV" />
+                                            <Datetime onChange={this.handleDateTimeChange} value={this.state.expiration_date} placeholder="AA/MM" dateFormat="YY/MM" timeFormat={false}/>
+                                            <input  maxLength={4} onChange={this.handleInputChange} onFocus={this.handleInputFocus} onBlur={this.exitccv} name={"ccv"} placeholder="CVV" />
                                         </div>
+
                                         <div className="input-form">
-                                            <div className={"content-accordion-form"}>
-                                                <Select name={"card_type"}>
-                                                    {cardType}
-                                                </Select></div>
-                                            <input defaultValue={"1"}  name={"monthly_fees"} placeholder="Cuotas" />
+                                            <InputTip msg={this.state.tips.expiration_date}/>
+                                            <InputTip msg={this.state.tips.ccv}/>
                                         </div>
+
+                                        
+                                            Coutas:  
+                                            <div className={"content-accordion-form"}>                                           
+                                                <Select name={"monthly_fees"}>
+                                                    {months_fees}
+                                                </Select>
+                                            </div>   
+                                        
+
+                                        <div className="input-form">
+                                            <InputTip msg={this.state.tips.monthly_fees}/>
+                                        </div>
+
+
+
                                         <div className={"content-accordion-form"}>
                                         <Select name={"document_type"}>
                                             {docType}
-                                        </Select></div>
-                                        <input name={"document_number"} placeholder="Número documento" />
-                                        <button type="submit" className="button-continue main-button">
-                                            <p>Continuar</p>
-                                        </button>
+                                        </Select>
+                                            <InputTip msg={this.state.tips.document_type}/></div>
+                                        <input name={"document_number"} placeholder="Número de documento" />
+                                        <InputTip msg={this.state.tips.document_number}/>
                                     </form>
-                                    <div className="cardImg">
-                                        <img alt="tarjeta credito" src={CardImg} />
-                                    </div>
+
                                 </div>
+                                        <button type="submit" form="form-credit" className="button-continue main-button">
+                                            <p>Pagar</p>
+                                        </button>
 
                                 {this.state.cc_error && <Error message={this.state.cc_error} />}
 
@@ -288,7 +445,19 @@ export default class PaymentWay extends Component {
                                 <p>Efectivo</p>
                             </div>
                             <div className={this.state.closeCash ? "accordion-payment-way" : "accordion-payment-way active"}>
-                                <img alt="pago en linea" src={PayOnline} />
+                               {
+                                   !this.state.paymentCashResult ?
+                                    <div className="payment-cash-logos">
+                                        <div>
+                                            <img alt="pago en linea" src={PayEfecty} onClick={()=>this.openPaymentCash(1)} />
+                                            <img alt="pago en linea" src={PayBaloto} onClick={()=>this.openPaymentCash(2)} />
+                                            <img alt="pago en linea" src={PaySured} onClick={()=>this.openPaymentCash(3)} />
+                                        </div>
+                                    </div>: <PaymentCashResult 
+                                                type={this.state.paymentCashType} 
+                                                amount={totalPrice}
+                                                document={this.state.paymentCashDocument} />
+                               } 
                             </div>
 
                             <div className="transfer payment-way-box" onClick={() => this.accordionTransfer()}>
@@ -347,7 +516,7 @@ export default class PaymentWay extends Component {
                                             </button>
 
                                         </div>
-
+                                        {this.state.error && <Error message={this.state.error} />}
                                     </div>
                                 </div>
                             </form>
@@ -358,7 +527,7 @@ export default class PaymentWay extends Component {
                                 <div className="content-product-description">
                                     <p>{this.props.data.title}</p>
                                     <p className="quantity">Cantidad: {this.state.productQuantity}</p>
-                                    <h3>Total: {this.props.data.price.split(",")[0]}</h3>
+                                    <h3>$ {totalPrice}</h3>
                                 </div>
                             </div>
 
@@ -397,6 +566,9 @@ export default class PaymentWay extends Component {
                     </div>
                 </div>
 
+                }
+
+               
                 <Footer />
             </div>
         )

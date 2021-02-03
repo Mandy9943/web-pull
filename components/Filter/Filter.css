@@ -13,7 +13,7 @@
   padding: 0px 10px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  color: #5A5A5A;
+  color: #111111;
 }
 
 .wrap-filter .categories-finder {
@@ -30,7 +30,7 @@
 }
 
 .wrap-filter .categories-finder a {
-  color: #5A5A5A;
+  color: #111111;
   font-size: 16px;
 }
 
@@ -39,8 +39,9 @@
   display: grid;
   -ms-grid-columns: 1fr auto auto;
       grid-template-columns: 1fr auto auto;
-  grid-gap: 15px;
+  grid-gap: 10px;
   width: 200px;
+  margin-top: 5px;
 }
 
 .wrap-filter-button p {
@@ -48,7 +49,7 @@
 }
 
 .wrap-filter-button select, .wrap-filter-button option {
-  color: #5A5A5A;
+  color: #111111;
   font-size: 14px;
 }
 
@@ -81,19 +82,23 @@
 
 .select-filter {
   background: transparent;
-  border: 0px;
+  border: 0;
   width: 100%;
+  font-size: .8rem;
+  font-weight: 400;
+  color: #575757;
+  padding: 1px 1px 1px 1px !important;
 }
 
 .filter-group {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .filter-group h1 {
   margin-bottom: 10px;
   font-size: 25px;
   font-weight: 600;
-  color: #5A5A5A;
+  color: #111111;
 }
 
 .filter-group h2 {
@@ -102,7 +107,7 @@
 }
 
 .filter-group a {
-  color: #5A5A5A;
+  color: #111111;
 }
 
 .filter-group a:hover {
@@ -110,12 +115,28 @@
 }
 
 .filter-group span, .filter-group p {
-  font-size: 15px;
+  font-size: .8rem;
+  font-weight: 500;
+  color: #575757;
+}
+
+.filter-group form {
+  padding-left: 0;
 }
 
 .item-filter-group {
   font-size: 16px;
   margin: 5px 0px;
+  display: none;
+  cursor: pointer;
+}
+
+.filter-height-overflow {
+  max-height: 191px;
+  overflow: hidden;
+}
+
+.display-none{
   display: none;
 }
 
@@ -129,11 +150,11 @@
 
 .send-free h4 {
   font-size: 20px;
-  color: #5A5A5A;
+  color: #111111;
 }
 
 .send-free span {
-  color: #5A5A5A;
+  color: #111111;
   font-size: 12px;
 }
 
@@ -142,8 +163,16 @@
 }
 
 .view-all {
-  color: #CF0A2C;
-  font-size: 15px;
+  color: #ae5f6c;
+  font-size: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+.align-center {
+  display: flex;
+  align-items: center;
 }
 
 .wrap-filter-price {
@@ -161,18 +190,22 @@
 }
 
 .wrap-filter-price input {
-  margin: 5px 0px;
-  font-size: 16px;
+  margin: 0px;
+  font-size: 12px;
+  max-height: 12px;
 }
 
 .wrap-filter-price button {
   background: #CF0A2C;
   color: white;
+  margin: 0;
+  height: 30px;
+  padding-top: 5px;
 }
 
 .responsive-filter {
   display: none;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   background: white;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
@@ -183,11 +216,11 @@
   padding: 20px 10px;
   width: 100%;
   text-align: center;
-  border-right: 0.5px solid #C6C6C6;
+  border-right: 0.5px solid #e2e2e2;
 }
 
 .responsive-filter-item svg {
-  color: #5A5A5A;
+  color: #111111;
 }
 
 .border-none {
@@ -205,7 +238,7 @@
   -webkit-transition: .2s;
   transition: .2s;
   z-index: 100000;
-  color: #4E4E4E;
+  color: #111111;
 }
 
 .responsive-menu-filter ul {
@@ -214,36 +247,33 @@
 
 .responsive-menu-filter ul li:nth-child(1) {
   text-align: right;
-  padding: 20px;
+  padding-top: 20px;
+  padding-right: 20px;
   border: 0px;
 }
 
 .responsive-menu-filter ul li:nth-child(2) {
   border: 0px;
   font-size: 24px;
-  color: #4E4E4E;
-  padding: 40px 20px;
+  color: #111111;
+  padding: 10px 20px;
 }
 
 .responsive-menu-filter ul li {
   font-size: 16px;
-  border-top: 1px solid #BEBEBE;
+
+  border-top: 0.5px solid #bebebe81;
 }
 
 .responsive-menu-filter ul li:nth-last-child(1) {
-  border-bottom: 1px solid #BEBEBE;
+  border-bottom: 1px solid #bebebe81;
 }
 
 .result {
   display: block;
-  margin: 0;
-  padding: 0;
-  font-size: 14px;
-  height: auto !important;
-  text-align: left;
-  margin-top: 7px;
+  font-size: .8rem;
+  margin-bottom: 7px;
   color: #CF0A2C;
-  padding: 0 15px;
 }
 
 .result:hover {
@@ -296,5 +326,91 @@ details > summary:first-of-type {
   summary {
     font-size: 18px;
   }
+  .filter-top-container {
+    display: none !important;
+  }
+}
+.filter-title {
+    font-weight: 600;
+    font-size: .9rem;
+    color: #111111;
+}
+.categories > div > div > div > div > div > div, .categories > div > div > div > div > div > div div {
+  padding-top: 0;
+  padding-bottom: 0;
+  border-left-width: 0;
+}
+.categories > div > div {
+  padding-left: 0;
+}
+.filter-container {
+  display: flex;
+  justify-content: space-between;
+
+}
+  .filter-top-container-order {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom:10px;
+
+}
+.filter-top-container-order .order {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+}
+.filter-top-container-order .order .text {
+  font-size: 14px;
+  font-weight: 600;
+
+}
+.filter-container .content-left {
+  padding-bottom: 10px;
+  padding-top:15px;
+  display: flex;
+  flex-direction: column;
+
+}
+.filter-container .content-left .ots {
+  font-size: 1.2rem;
+  color: #111111;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.filter-container .content-left .totals {
+  font-size: .8rem;
+  color: #575757;
+  font-weight: 500;
+}
+.tree-view {
+  overflow-y: hidden;
+}
+.tree-view_item {
+  cursor: pointer;
+}
+.tree-view_children {
+  margin-left: 16px;
+  cursor: pointer;
+}
+.tree-view_children-collapsed {
+  height: 0;
+}
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  margin: 3px 0;
+  font-size: .8rem;
+}
+.breadcrumb a {
+  color: #575757;
+  font-size: 15px;
+}
+.breadcrumb svg {
+  margin: 0 5px;
+  color: #cc7d8a;
+  font-size: 15px;
+}
+.breadcrumb span {
+  cursor: pointer;
 }
 /*# sourceMappingURL=Filter.css.map */

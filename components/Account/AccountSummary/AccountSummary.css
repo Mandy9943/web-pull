@@ -1,7 +1,7 @@
 .account-summary-title {
   margin-bottom: 30px;
-  color: #5A5A5A;
-  font-size: 28px;
+  color: #111111;
+  font-size: 24px;
 }
 
 .account-summary-wrap-items {
@@ -11,7 +11,7 @@
 .account-summary-wrap-items .question {
   padding: 20px;
   font-size: 16px;
-  color: #5A5A5A;
+  color: #111111;
 }
 
 .account-summary-wrap-items .question .item-question {
@@ -35,7 +35,7 @@
 }
 
 .account-summary-wrap-items .question .item-question .text .title {
-  color: #5A5A5A;
+  color: #111111;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -47,7 +47,7 @@
 
 .account-summary-item-title {
   border-bottom: 0.5px dashed #999999;
-  color: #5A5A5A;
+  color: #111111;
   padding-bottom: 7px;
   margin-bottom: 7px;
   font-size: 17px;
@@ -63,7 +63,7 @@
 }
 
 .account-summary-item {
-  color: #5A5A5A;
+  color: #111111;
   font-size: 14px;
 }
 
@@ -98,12 +98,12 @@
     font-weight: 600;
   }
   .account-summary-wrap-items .question h5 {
-    font-weight: 400;
+    font-weight: 500;
     font-size: 14px;
   }
   .account-summary-wrap-items .item-question .text {
     font-size: 17px !important;
-    font-weight: 400;
+    font-weight: 500;
   }
   .account-summary-wrap {
     padding: 15px;

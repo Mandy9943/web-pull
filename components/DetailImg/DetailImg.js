@@ -11,7 +11,7 @@ import Spinner from "./../Common/Spinner";
 class Detail extends Component {
   constructor(props) {
     super(props);
-    this.state = { image: getImgUrl(this.props.images[0].url) };
+    this.state = { image: this.props.images[0].url };
     this.showImage = this.showImage.bind(this);
   }
 

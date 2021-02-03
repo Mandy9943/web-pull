@@ -16,8 +16,9 @@
 }
 
 .category-list .content .breadcrumb a {
-  color: #5A5A5A;
+  color: #111111;
   font-size: 15px;
+  text-transform: capitalize;
 }
 
 .category-list .content .breadcrumb svg {
@@ -28,8 +29,8 @@
   width: 100%;
   -o-object-fit: contain;
      object-fit: contain;
-  -webkit-box-shadow: 0px 3px 6px #00000029 !important;
-          box-shadow: 0px 3px 6px #00000029 !important;
+  -webkit-box-shadow: 0px 3px 6px #11111129 !important;
+          box-shadow: 0px 3px 6px #11111129 !important;
   display: block;
 }
 
@@ -39,8 +40,8 @@
 
 .category-list .content .wrap-finding .finding {
   padding: 0;
-  -webkit-box-shadow: 0px 3px 6px #00000029 !important;
-          box-shadow: 0px 3px 6px #00000029 !important;
+  -webkit-box-shadow: 0px 3px 6px #11111129 !important;
+          box-shadow: 0px 3px 6px #11111129 !important;
 }
 
 .category-list .content .wrap-finding .finding img {
@@ -64,12 +65,12 @@
   margin-bottom: 0;
 }
 
-.category-list .content .wrap-tickets .tickets {
-  -webkit-box-shadow: 0px 3px 6px #00000029 !important;
-          box-shadow: 0px 3px 6px #00000029 !important;
+.category-list .content .tickets {
+  -webkit-box-shadow: 0px 3px 6px #11111129 !important;
+          box-shadow: 0px 3px 6px #11111129 !important;
 }
 
-.category-list .content .wrap-tickets .tickets img {
+.category-list .content .tickets img {
   width: 100%;
 }
 
@@ -91,11 +92,11 @@
   .category-list .content {
     width: auto;
     margin: auto;
-    grid-gap: 10px;
+    grid-gap: 0px;
   }
   .category-list .content .breadcrumb {
     margin: 10px 0px;
-    margin-bottom: 0;
+    margin-top: 17px;
     display: block;
   }
   .category-list .footer-social {
@@ -132,6 +133,12 @@
   }
   .category-list .wrap-tickets .tickets img {
     width: 100%;
+  }
+  .category-list .content .tickets {
+
+    margin: 0px !important;
+    padding-top: 5px;
+
   }
 }
 /*# sourceMappingURL=CategoryList.css.map */

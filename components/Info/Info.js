@@ -27,7 +27,7 @@ class Info extends Component {
             </p>
             <h3>Envíos</h3>
             <p>
-              Envio gratis en todos nuestros productos con un tiempo de envio de 3
+              Envío gratis en todos nuestros productos con un tiempo de entrega de 3
               a 7 días hábiles.
             </p>
           </div>
@@ -37,7 +37,7 @@ class Info extends Component {
             </p>
             <h3>Seguridad</h3>
             <p>
-              No te gusta? ¡Devuélvelo! En Kiero, velamos por tu seguridad, compra
+            ¿No te gusta? ¡Devuélvelo! En Kiero, velamos por tu seguridad, compra
               con confianza estamos contigo en cada momento.
             </p>
           </div>

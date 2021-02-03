@@ -23,7 +23,7 @@
   font-weight: 500;
 }
 
-.activate-page .msg span {
+.activate-page .msg span, .activate-page .msg a {
   display: block;
   font-size: 24px;
 }

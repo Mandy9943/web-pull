@@ -7,7 +7,7 @@ class QuestionItem extends Component {
     let responses = true;
     return (
       <div className="QuestionItem-list">
-        <h5 className="title">Ultimas Preguntas</h5>
+        <h5 className="title">Últimas Preguntas</h5>
         {this.props.questions.map((question, i) => (
             <section key={i} className="question-item">
             <h5 className="question-title">
@@ -17,9 +17,12 @@ class QuestionItem extends Component {
             </section>
         ))}
         {this.props.questions.length===0 ? <span className="empty-question">Se el primero en preguntar.</span> : null}
-        <a><h5 className="no-web accent">Hacer una pregunta al vendedor</h5></a>
+
+        {this.props.questions.length > 2 ?<button onClick={() => {
+              this.toggleModal(1);
+            }} className="button-question-product-detail no-web">Ver todas las preguntas</button> : null}
         <fotoer className="footer-question no-web">
-          <span>Publicacion #{this.props.product_id}</span> <Link href="/ayuda"><a>Necesitas ayuda?</a></Link>
+          <span>Publicación #{this.props.product_id}</span> <Link href="/ayuda"><a>¿Necesitas ayuda?</a></Link>
         </fotoer>
       </div>
     );

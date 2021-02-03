@@ -1,18 +1,20 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Head from 'next/head';
 import '../sass/activate.css';
 import favicon from "../../assets/img/favicon.svg";
 import { getData } from "../../services/userApi";
+import Link from 'next/link';
+
 
 var result = false;
 
 
-function Activate({result}) {
+function Activate({ result }) {
     return (
         <div className="activate-page">
             <Head>
                 <title>Kiero | Activar mi cuenta</title>
-                <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
                 <meta name="robots" content="index,follow" />
                 <meta name="robots" content="noodp" />
@@ -22,21 +24,23 @@ function Activate({result}) {
                 <link rel="icon" href={favicon} type="image/png" />
             </Head>
 
-            
-                {
-                    result ? 
-                    <div className="msg"><span>Su cuenta ha sido activada exitosamente.</span> </div>
-                    : 
+
+            {
+                result ?
+                    <div className="msg">
+                        <Link href="/home"><a>ir al Marketplace</a></Link>
+                    </div>
+                    :
                     <div className="msg"><span>Se produjo un error al activar su cuenta.</span></div>
-                }
-                
-            
+            }
+
+
         </div>
     )
 }
 
 
-function setS(state){
+function setS(state) {
     result = state;
 }
 
@@ -45,10 +49,10 @@ export async function getServerSideProps(context) {
     const data = {
         "token": String(context.params.token),
     }
-    await getData("/activate/"+context.params.token)
-    .then(() => setS(true));
+    await getData("/activate/" + context.params.token)
+        .then(() => setS(true));
 
-    return { props: { result }}
+    return { props: { result } }
 }
 
 

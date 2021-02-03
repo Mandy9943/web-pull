@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faTruck,
 } from "@fortawesome/free-solid-svg-icons";
+import { parse } from '@fortawesome/fontawesome-svg-core';
 
 export default class listProductMovil extends Component {
 
@@ -22,13 +23,14 @@ export default class listProductMovil extends Component {
         getProductsBasic("Computación", 5)
             .then((response) => {
                 this.setState(
-                    { products: response.data.products }
+                    { products: response.data.results }
                 );
             });
     }
 
     render() {
 
+        
         const productList = this.state.products.map((product, i) => {
             let image_url = product.image ?
                 getImgUrl(product.image) :
@@ -46,8 +48,8 @@ export default class listProductMovil extends Component {
                                 </div>
                                 <section className='description'>
                                     <h3>{product.title}</h3>
-                                    <h3 className="price">{product.price.split(",")[0]}</h3>
-                                    <span><FontAwesomeIcon icon={faTruck} />Envio gratis</span>
+                                    <h3 className="price">$ {product.price ? String(product.price).split(".")[0].replace(/(.)(?=(\d{3})+$)/g,'$1,') : "$ ... "}</h3>
+                                    <span><FontAwesomeIcon icon={faTruck} />Envío gratis</span>
                                 </section>
                             </section>
                         </a>
@@ -59,10 +61,13 @@ export default class listProductMovil extends Component {
         console.log(productList)
 
         return (
-            <div className="listProductMovil">
-                <h3>Descrube productos de Electronica</h3>
+            <div>
+                {/* 
+                
+                <div className="listProductMovil">
+                <h3>Descrube productos de Electrónica</h3>
                 {productList}
-                <Link href={"/categoria/Computación"}><a className="send">Ver todos</a></Link>
+                <Link href={"/categoria/Computación"}><a className="send">Ver todos</a></Link> */}
             </div>
         )
     }

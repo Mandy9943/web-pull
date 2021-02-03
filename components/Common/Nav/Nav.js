@@ -17,14 +17,19 @@ import {
     faHome,
     faAlignLeft,
     faArrowDown,
+    faServer,
     faQuestion,
     faBell,
     faUser,
     faMoneyBillWave,
     faShoppingBag,
-    faCog
+    faCog,
+    faTag
 } from "@fortawesome/free-solid-svg-icons";
-import Sidebar from '../../Sidebar/Sidebar';
+import Autocomplete from 'react-autocomplete-2';
+import {searchSuggestions} from "../../../services/productsApi";
+import {suggestionQuantity} from "../../../lib/config";
+import { signOut } from "../../../lib/auth";
 
 
 export default class Nav extends Component {
@@ -38,11 +43,22 @@ export default class Nav extends Component {
             showNotification: false,
             notifications : [],
             timeClose : undefined,
-            closeSidebar : true
+            closeSidebar : true,
+            value: this.props.actualSearch,
+            suggestions: [],
+            modalLogout: false
         }
+        this.toggleModalLogout = this.toggleModalLogout.bind(this);
     }
 
+    toggleModalLogout() {
+        this.setState({modalLogout: !this.state.modalLogout});
+    }
 
+    logout() {
+        signOut();
+        document.location = "/";
+    }
     /********************* START NOTIFICATIONS ******************************/
     loadNotifications = () => {
         const endp = "/getNotifications"
@@ -62,13 +78,6 @@ export default class Nav extends Component {
     mLeave = () => {
         this.state.timeClose = setTimeout(() => {this.setState({showNotification: false})}, 1000);
     }
-
-
-    readNotifications = (id) => {
-
-    }
-
-
     /********************* END NOTIFICATIONS ******************************/
 
 
@@ -78,16 +87,6 @@ export default class Nav extends Component {
     }
     mLeaveMenu = () => {
         this.state.timeClose = setTimeout(() => {this.setState({showMenu: false})}, 1000);
-    }
-
-
-    changeSearcherValue = (event) => {
-        this.setState({ query: event.target.value })
-    }
-
-
-    handleChange = (e) => {
-        this.setState({ query: e.target.value })
     }
 
     toggleModal = (modal) => {
@@ -108,8 +107,38 @@ export default class Nav extends Component {
     menuBlur = () => {
         setTimeout(() => this.setState({ showMenu: false }), 200);
     }
-    
 
+    boldString = (str, find) => {
+        let re = new RegExp(find, 'g');
+        return str.replace(re, find.bold());
+    }
+
+    onChange = event => {
+        this.setState({ value: event.target.value });
+        if (event.target.value !== '') {
+            let suggestions = searchSuggestions(suggestionQuantity, event.target.value)
+            suggestions.then((response) => {
+                let filterResponse = response.data.results.map(item => (
+                  {
+                    "text": this.boldString(item.alias, this.state.value),
+                  }
+                ))
+                this.setState({ suggestions: filterResponse });
+            })
+        }
+    };
+
+    onKeyPress = event => {
+         if (event.key === 'Enter') {
+             this.search()
+         }
+    };
+
+    onSuggestionSelected = suggestion => {
+        let text = suggestion.replace(/<\/?[^>]+(>|$)/g, "");
+        this.setState({ value: text })
+        this.search(text);
+    }
 
     componentDidMount() {
         getData("/getMenuCategories")
@@ -119,7 +148,6 @@ export default class Nav extends Component {
         if(this.props.authenticated){
             this.loadNotifications();
         }
-
     }
 
     mouseEnter = () => {
@@ -130,31 +158,36 @@ export default class Nav extends Component {
         this.setState({ showCategories: false });
     }
 
-
     CloseSidebar = () => {
         this.setState({
             closeSidebar: !this.state.closeSidebar,
         });
-        console.info("si ejecuta y cambia el estado " + this.state.closeSidebar)
     }
 
     render() {
         let authenticated = this.props.authenticated
-        let home = this.props.home    
-    
+        let home = this.props.home
+        const { suggestions, value } = this.state;
+        const contentLogoutComp = (
+            <div className="modal-logout">
+                <p>{'¿Estás seguro que quieres cerrar sesión?'}</p> 
+                 <button onClick={this.logout} className="logout-button">Aceptar</button>
+                 <button onClick={this.toggleModalLogout} className="cancelar-button">Cancelar</button>
+            </div>
+        );
         const content2 = (
             <>
                 <div className="header-modal">
                     {!authenticated ?
                     <>
                         <h5>Bienvenido</h5>
-                        <p>Crea tu cuenta o inicia sesion</p>
+                        <p>Crea tu cuenta o inicia sesión</p>
                     <section className="actions">
                                 <Link href="/login"><a className="main-button">iniciar sesion</a></Link>
                         <Link href="/registro"><a className="main-button">Registrarse</a></Link>
-                        </section> 
+                        </section>
                     </>
-                        :   
+                        :
                         <section className="user-perfil">
                             <img src="https://recap-project.eu/wp-content/uploads/2017/02/default-user.jpg"/>
                             <span className="user-name">
@@ -166,18 +199,18 @@ export default class Nav extends Component {
                     <hr />
                     <Link href="/cuenta"><a><FontAwesomeIcon icon={faHome} /> <p>Inicio </p></a></Link>
                     {authenticated ?
-                    <Link href="/notificaciones"><a><FontAwesomeIcon icon={faBell} /> 
-                            <p className="noti">Notificaciones 
+                    <Link href="/notificaciones"><a><FontAwesomeIcon icon={faBell} />
+                            <p className="noti">Notificaciones
                                 {this.state.notifications.length > 0 ?
                                 <span className="number-accent">{this.state.notifications.length}</span>
                             : null }
                     </p></a></Link> : null}
-                    <Link href="/lista_categorias"><a><FontAwesomeIcon icon={faAlignLeft} /> <p>Categorias</p></a></Link>
+                    <Link href="/lista_categorias"><a><FontAwesomeIcon icon={faAlignLeft} /> <p>Categorías</p></a></Link>
                     {/*<Link href="#"><a><FontAwesomeIcon icon={faArrowDown} /> <p>Descarga la app</p></a></Link>*/}
                     <hr />
                     <Link href="/ayuda"><a><FontAwesomeIcon icon={faQuestion} /> <p>Ayuda / PQR</p></a></Link>
                     {authenticated ?
-                    <Link href="/logout"><a className="logout">Cerrar sesion</a></Link> : null
+                    <a style={{cursor:'pointer'}} onClick={this.toggleModalLogout} className="logout">Cerrar sesión</a> : null
                     }
                 </div>
             </>
@@ -189,17 +222,24 @@ export default class Nav extends Component {
                     <div className="nav-top">
                         <Logo />
                         <div className="search-bar">
-                            <input
-                                type="text"
-                                name={"searchBar"}
-                                defaultValue={this.props.actualSearch}
-                                placeholder="Buscar productos..."
-                                onChange={this.handleChange}
-                                onKeyPress={(event) => {
-                                    if (event.key === 'Enter') {
-                                        this.search()
-                                    }
+                            <Autocomplete
+                                getItemValue={(item) => item.text}
+                                suggestionsMenuId="search-suggestions"
+                                items={suggestions}
+                                renderItem={(item, isHighlighted) =>
+                                    <div className="suggestion-item" aria-selected={isHighlighted}
+                                      style={{ background: isHighlighted ? '#ddd' : 'white'}}>
+                                        <span dangerouslySetInnerHTML={{ __html: item.text }} />
+                                    </div>
+                                }
+                                value={this.state.value}
+                                onChange={this.onChange}
+                                onSelect={this.onSuggestionSelected}
+                                inputProps={{
+                                    placeholder: 'Buscar productos...',
+                                    onKeyPress: this.onKeyPress,
                                 }}
+                                autoHighlight={false}
                             />
                             <section onClick={(event) => {
                                 this.search()
@@ -222,24 +262,26 @@ export default class Nav extends Component {
                         {authenticated &&
                             <div className="user-menu" onBlur={this.menuBlur} >
                                 <ul>
-                                <span> 
+                                <span>
                                     <Link href="/ayuda"><a className="bell">Ayuda / PQR</a></Link>
-                                    <a className="bell" onClick={() => this.showHideNotification()} ><FontAwesomeIcon icon={faBell} />                                 
+                                    <a className="bell" onClick={() => this.showHideNotification()} ><FontAwesomeIcon icon={faBell} />
                                     {this.state.notifications.length > 0 ?
                                             <span className="accent-background">{this.state.notifications.length}</span>
                                         : null}</a>
                                 </span>
                                     <a onClick={() => this.showHideMenu()} className="user-icon"><FontAwesomeIcon icon={faUser} /> {this.props.user} <FontAwesomeIcon icon={faAngleDown} /></a>
                                     <section onMouseEnter={() => this.mEnterMenu()} onMouseLeave={() => this.mLeaveMenu()} className={this.state.showMenu ? "menu-off menu-on" : "menu-off"}>
-                                        <h5><FontAwesomeIcon className="icon" icon={faUser} /> Bienvenido <b className="name">Hola, {this.props.user}</b></h5>
-                                        <Link href="/cuenta"><a className="main-button"><p>Mi cuenta</p></a></Link>
+                                        <h5><FontAwesomeIcon className="icon" icon={faUser} /><b className="name"> Hola, {this.props.user}</b> Bienvenido a Kiero Marketplace</h5>
                                         <section className="options">
                                             <hr />
-                                            <Link href="/cuenta#facturacion"><a className="items"> <FontAwesomeIcon icon={faMoneyBillWave} />Facturacion</a></Link>
-                                            <Link href="/cuenta#compras"><a className="items"> <FontAwesomeIcon icon={faShoppingBag} />Compras</a></Link>
-                                            <Link href="/cuenta#opciones"><a className="items"> <FontAwesomeIcon icon={faCog} />Opciones</a></Link>
+                                            <Link href="/cuenta"><a className="items"> <FontAwesomeIcon icon={faUser} />Mi cuenta</a></Link>
+                                           {this.props.role==="user" && <Link href="/cuenta#compras"><a className="items"> <FontAwesomeIcon icon={faShoppingBag} />Compras</a></Link>}
+                                           {this.props.role==="vendedor" && <Link href="/cuenta#ventas"><a className="items"> <FontAwesomeIcon icon={faTag} />Ventas</a></Link>}
+                                            <Link href="/cuenta"><a className="items"> <FontAwesomeIcon icon={faServer} />Resumen</a></Link>
+                                            {this.props.role==="user" && <Link href="/cuenta#facturacion"><a className="items"> <FontAwesomeIcon icon={faMoneyBillWave} />Facturacion</a></Link>}
+                                            <Link href="/cuenta#opciones"><a className="items"> <FontAwesomeIcon icon={faCog} />Mis datos</a></Link>                                            
                                             <hr />
-                                            <Link href="/logout"><a className="items">Cerrar sesion</a></Link>
+                                            <a style={{cursor:'pointer'}} onClick={this.toggleModalLogout} className="items">Cerrar sesión</a>
                                         </section>
                                     </section>
                                 <section  onMouseEnter={() => this.mEnter()} onMouseLeave={() => this.mLeave()}  className={this.state.showNotification ? "notification-off notification-on" : "notification-off"}>
@@ -262,18 +304,20 @@ export default class Nav extends Component {
                             <ul>
                                 <section className="menu">
                                     <ul>
-                                        <li onMouseEnter={this.mouseEnter}>
+                                        <li onClick={this.mouseEnter} style={{cursor: 'pointer'}}>
                                             Categorías <FontAwesomeIcon icon={faAngleDown} />
                                         </li>
                                     </ul>
                                 </section>
                                 <Link href="/categoria/[category]" as="/categoria/Bebés"><a>Bebés</a></Link>
                                 <Link href="/categoria/[category]" as="/categoria/Belleza"><a>Belleza</a></Link>
-                                <Link href="/categoria/[category]" as="/categoria/Cámaras y accesorios"><a>Cámaras y accesorios</a></Link>
+                                <Link href="/categoria/[category]" as="/categoria/Cámaras y accesorios"><a>Cámaras</a></Link>
                                 <Link href="/categoria/[category]" as="/categoria/Electrodomésticos"><a>Electrodomésticos</a></Link>
-                                <Link href="/categoria/[category]" as="/categoria/Electrónica"><a>Electrónica</a></Link>
-                                <Link href="/categoria/[category]" as="/categoria/Hogar y muebles"><a>Hogar y muebles</a></Link>
-                                <Link href="/categoria/[category]" as="/categoria/Juegos y juguetes"><a>Juegos y juguetes</a></Link>
+                                <Link href="/categoria/[category]" as="/categoria/Electrónica, Audio y Video"><a>Electrónica</a></Link>
+                                <Link href="/categoria/[category]" as="/categoria/Hogar"><a>Hogar</a></Link>
+                                <Link href="/categoria/[category]" as="/categoria/Juguetes"><a>Juguetes</a></Link>
+                                <Link href="/categoria/[category]" as="/categoria/Consolas y videojuegos"><a>Videojuegos</a></Link>
+                                <Link href="/categoria/[category]" as="/categoria/Salud"><a>Salud</a></Link>
                             </ul>
                         </div>
                     </div>
@@ -282,16 +326,21 @@ export default class Nav extends Component {
                     <div className="nav-top">
                         <Logo />
                         <div className="search-bar">
-                            <input
-                                type="text"
-                                defaultValue={this.props.actualSearch}
-                                name={"searchBar"}
-                                placeholder="Buscar productos"
-                                onChange={this.handleChange}
-                                onKeyPress={(event) => {
-                                    if (event.key === 'Enter') {
-                                        this.search()
-                                    }
+                            <Autocomplete
+                                getItemValue={(item) => item.text}
+                                suggestionsMenuId="search-suggestions"
+                                items={suggestions}
+                                renderItem={(item, isHighlighted) =>
+                                    <div className="suggestion-item" style={{ background: 'white'}}>
+                                        {item.text}
+                                    </div>
+                                }
+                                value={this.state.value}
+                                onChange={this.onChange}
+                                onSelect={this.onSuggestionSelected}
+                                inputProps={{
+                                    placeholder: 'Buscar productos...',
+                                    onKeyPress: this.onKeyPress,
                                 }}
                             />
                             <section onClick={(event) => {
@@ -322,12 +371,17 @@ export default class Nav extends Component {
                 </div>
             </div>
             {this.state.showCategories ? (<MenuCategories toggle={this.mouseLeave} num="2" categories={this.state.categories} />) : null}
+           
+            {this.state.modalLogout ? (
+            <Modal toggle={this.toggleModalLogout} content={contentLogoutComp} button />
+          ) : null}
             </>
         )
     }
 
-    search = e => {
-        if (this.state.query != undefined)
-            location.href = "/busqueda/" + this.state.query
+    search = (ots = '') => {
+        let url = '/busqueda/';
+        this.state.value !== undefined && ots === '' ? url = url + this.state.value :  url = url + ots; 
+        location.href = url;
     };
 }

@@ -1,11 +1,11 @@
 .wrap-question {
   padding: 40px;
-  border-top: 0.5px solid #C6C6C6;
+  border-top: 0.5px solid #e2e2e2;
 }
 
 .wrap-question h3 {
-  color: #5A5A5A;
-  font-size: 20px;
+  color: #111111;
+  font-size: 18px;
   font-weight: 600;
 }
 
@@ -15,23 +15,25 @@
   -ms-grid-columns: (auto)[3];
       grid-template-columns: repeat(3, auto);
   grid-gap: 15px;
-  margin: 20px;
+  margin: 10px;
 }
 
 .wrap-question-buttons .button-question-product-detail {
-  color: #5A5A5A;
-  font-size: 18px;
-  background-color: #fff;
-  border: 1px solid #D11E36;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 5px;
+  background-color: #bdbdbd;
+  border: none;
 }
 
 .wrap-question-buttons .button-question-product-detail:hover {
-  background: #D11E36;
+  background: #CF0A2C;
   color: white;
 }
 
 .wrap-question-input {
-  color: #5A5A5A;
+  color: #111111;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 3fr 1fr;
@@ -39,16 +41,77 @@
   grid-gap: 15px;
 }
 
-.button-question-product-detail {
-  color: #5A5A5A;
-  font-size: 18px;
-  background-color: #fff;
-  border: 0.5px solid #5A5A5A;
+.wrap-question-input .button-question-product-detail {
+  background: #CF0A2C !important;
+  color: white !important;
+  font-weight: 500;
+  border: none !important;
+  width: 180px;
+  float: right;
+  
 }
+
+.warranty-questions h3{
+  text-align: center;
+}
+
+.send-questions h3 span {
+  color: #CF0A2C;
+}
+
+.send-questions .check{
+  color: #CF0A2C;
+}
+.payment-questions h3{
+  text-align: center;
+}
+
+.payment-questions .pay-online-question{
+  width: 250px;
+  position: relative;
+  left: -40px;
+}
+.payment-questions .pay-transfer-question{
+  width: 250px;
+  position: relative;
+  left: -30px;
+}
+.payment-questions .pay-credit-question{
+  width: 250px;
+  position: relative;
+  left: -28px;
+}
+
+/* .button-question-product-detail {
+  color: #111111;
+  font-size: 16px;
+  background-color: #fff;
+  border: 0.5px solid #111111;
+} */
+
 
 @media (max-width: 768px) {
   .wrap-question {
-    display: none;
+    padding: 30px 20px;
   }
+  .wrap-question-input {
+    display: inline-block;
+    width: 95%;
+  }
+  .wrap-question-buttons {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (auto)[3];
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 10px;
+  }
+  .wrap-question-input .button-question-product-detail {
+    background: #CF0A2C !important;
+    color: white !important;
+    font-weight: 600;
+    border: none !important;
+    width: 100%;
+    margin-top: 10px
+    }
 }
 /*# sourceMappingURL=Question.css.map */

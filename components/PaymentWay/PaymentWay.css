@@ -1,13 +1,17 @@
 .container-payment-way {
-  margin: 100px auto;
-  width: 70%;
+  margin: 60px auto;
+  width: 80%;
   min-height: 60vh;
+}
+
+.rdtPicker{
+  left: -15px !important;
 }
 
 .container-payment-way h2 {
   margin-bottom: 50px;
-  color: #4E4E4E;
-  font-size: 28px;
+  color: #111111;
+  font-size: 24px;
   font-weight: 600;
 }
 
@@ -41,36 +45,37 @@
 
 .product-description p {
   margin-bottom: 10px;
-  color: #4E4E4E;
-  font-size: 16px;
+  color: #111111;
+  font-size: 15px;
 }
 
 .product-description .quantity {
-  color: #4E4E4E;
+  color: #111111;
   font-size: 15px;
 }
 
 .product-description h3 {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .payment-way-box {
   margin-bottom: 40px;
   padding: 20px;
   background: #FBFBFB 0% 0% no-repeat padding-box;
-  -webkit-box-shadow: 0px 3px 6px #00000029;
-          box-shadow: 0px 3px 6px #00000029;
+  -webkit-box-shadow: 0px 3px 6px #11111129;
+          box-shadow: 0px 3px 6px #11111129;
   border-radius: 8px;
   cursor: pointer;
 }
 
 .payment-way-box p {
-  color: #4E4E4E;
-  font-size: 16px;
+  color: #111111;
+  font-size: 15px;
+  font-weight: 500;
 }
 
 .payment-way-box h3 {
-  color: #4E4E4E;
+  color: #111111;
   font-size: 20px;
   font-weight: 600;
 }
@@ -78,10 +83,11 @@
 .way-to-pay form {
   margin: 0px;
   padding: 0px;
+  padding-top: 20px;
 }
 
 .way-to-pay form label p {
-  color: #4E4E4E;
+  color: #111111;
   font-size: 15px;
 }
 
@@ -108,8 +114,8 @@
   margin-bottom: 20px;
   padding: 0px 20px;
   background: #FBFBFB 0% 0% no-repeat padding-box;
-  -webkit-box-shadow: 0px 3px 6px #00000029;
-          box-shadow: 0px 3px 6px #00000029;
+  -webkit-box-shadow: 0px 3px 6px #11111129;
+          box-shadow: 0px 3px 6px #11111129;
   border-radius: 8px;
   -webkit-transition: 0.25s ease-out;
   transition: 0.25s ease-out;
@@ -128,13 +134,26 @@
 .accordion-payment-way .content-accordion {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1fr;
+  -ms-grid-columns: 1.75fr 1.25fr;
       grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
+  grid-gap: 10px;
 }
 
 .accordion-payment-way button.main-button {
   float: right;
+}
+
+.add-direction {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 50% 1fr 1fr 1fr;
+      grid-template-columns: 50% 1fr 1fr 1fr;
+  grid-gap: 5px;
+}
+
+.add-direction input {
+  height: auto;
+  margin: auto;
 }
 
 .content-accordion-form {
@@ -158,7 +177,8 @@
 }
 
 .content-accordion-form .wrap-select select {
-  border: 0.5px solid #5A5A5A !important;
+  border: 0.5px solid #707070 !important;
+
   padding: 8px !important;
   border-radius: 5px;
 }
@@ -180,7 +200,7 @@
 
 .shipping-address p {
   margin-bottom: 10px;
-  color: #4E4E4E;
+  color: #111111;
   font-size: 16px;
 }
 
@@ -195,5 +215,22 @@ button.main-button {
 button.main-button p {
   margin: 0px;
   color: #fff;
+  font-size: 16px;
+}
+
+.payment-cash-logos img{
+  width: 180px;
+  float: left;
+  cursor: pointer;
+}
+
+@media (max-width: 700px) {
+  .accordion-payment-way .content-accordion {
+    display: block;
+  -ms-grid-columns: 1.75fr 1.25fr;
+      grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  padding-bottom: 20px;
+}
 }
 /*# sourceMappingURL=PaymentWay.css.map */

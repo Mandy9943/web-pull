@@ -2,46 +2,42 @@ import React, { Component } from 'react';
 import Slider from 'react-animated-slider';
 import Link from "next/link";
 import 'react-animated-slider/build/horizontal.css';
-import BannerImg1 from "../../assets/img/banners/news/2 (1).jpg";
-import BannerImg2 from "../../assets/img/banners/news/2 (2).jpg";
-import BannerImg3 from "../../assets/img/banners/news/2 (3).jpg";
-import BannerImg4 from "../../assets/img/banners/news/2 (4).jpg";
-import BannerImg5 from "../../assets/img/banners/news/2 (5).jpg";
-import BannerImg6 from "../../assets/img/banners/news/2 (6).jpg";
-import BannerImg7 from "../../assets/img/banners/news/2 (7).jpg";
-import BannerImg8 from "../../assets/img/banners/news/2 (8).jpg";
-import BannerImg9 from "../../assets/img/banners/news/2 (9).jpg";
-import BannerImg10 from "../../assets/img/banners/news/2 (10).jpg";
-import BannerImg11 from "../../assets/img/banners/news/2 (11).jpg";
-import BannerImg12 from "../../assets/img/banners/news/2 (12).jpg";
-import BannerImg13 from "../../assets/img/banners/news/2 (13).jpg";
-import BannerImg14 from "../../assets/img/banners/news/2 (14).jpg";
-import BannerImg15 from "../../assets/img/banners/news/2 (15).jpg";
-import BannerImg16 from "../../assets/img/banners/news/2 (16).jpg";
-import BannerImg17 from "../../assets/img/banners/news/2 (17).jpg";
-import BannerImg18 from "../../assets/img/banners/news/2 (18).jpg";
-import BannerImg19 from "../../assets/img/banners/news/2 (19).jpg";
+import BannerImg1 from "../../assets/img/banners/news/1.jpg";
+import BannerImg2 from "../../assets/img/banners/news/2.jpg";
+import BannerImg3 from "../../assets/img/banners/news/3.jpg";
+import BannerImg4 from "../../assets/img/banners/news/4.jpg";
+import BannerImg5 from "../../assets/img/banners/news/5.jpg";
+import BannerImg6 from "../../assets/img/banners/news/6.jpg";
+import BannerImg7 from "../../assets/img/banners/news/7.jpg";
+import BannerImg8 from "../../assets/img/banners/news/8.jpg";
+import BannerImg9 from "../../assets/img/banners/news/9.jpg";
+import BannerImg10 from "../../assets/img/banners/news/10.jpg";
+import BannerImg11 from "../../assets/img/banners/news/11.jpg";
+import BannerImg12 from "../../assets/img/banners/news/12.jpg";
+import BannerImg13 from "../../assets/img/banners/news/13.jpg";
+import BannerImg14 from "../../assets/img/banners/news/14.jpg";
+import BannerImg15 from "../../assets/img/banners/news/15.jpg";
+import BannerImg16 from "../../assets/img/banners/news/16.jpg";
+import BannerImg17 from "../../assets/img/banners/news/17.jpg";
 import "./SecundarySlider.css";
 
-let link1 = "/categoria/Hogar%20y%20Muebles";
-let link2 = "/busqueda/articulos%20para%20bebes";
+let link1 = "/categoria/Hogar";
+let link2 = "/categoria/Electrodomésticos";
 let link3 = "/categoria/Bebés";
-let link4 = "/categoria/Belleza%20y%20Cuidado%20Personal";
-let link5 = "/categoria/Cámaras%20y%20accesorios";
-let link6 = "/categoria/Celulares%20y%20Teléfonos";
-let link7 = "/categoria/Consolas%20y%20Videojuegos";
-let link8 = "/categoria/Deportes%20y%20Fitness";
-let link9 = "/categoria/Herramientas%20y%20Construcción";
-let link10 = "/categoria/Hogar%20y%20Muebles";
-let link11 = "/categoria/Industrias%20y%20Oficinas";
-let link12 = "/categoria/Música";
-let link13 = "/categoria/Juegos%20y%20Juguetes";
-let link14 = "/categoria/Relojes%20y%20Joyas";
-let link15 = "/categoria/Ropa,%20Zapatos%20y%20Accesorios";
-let link16 = "/categoria/Accesorios%20para%20Vehiculos";
-let link17 = "/categoria/Electrónica";
-let link18 = "/categoria/Salud"
-let link19 = "/categoria/Animales%20y%20Mascotas"
+let link4 = "/categoria/Belleza";
+let link5 = "/categoria/Cámaras y accesorios";
+let link6 = "/categoria/Electrónica, Audio y Video";
+let link7 = "/categoria/Consolas y videojuegos";
+let link8 = "/categoria/Deporte";
+let link9 = "/categoria/Herramientas";
+let link10 = "/categoria/Instrumentos musicales";
+let link11 = "/categoria/Industria y científico";
+let link12 = "/categoria/Computadoras y Accesorios";
+let link13 = "/categoria/Animales y Mascotas";
+let link14 = "/categoria/Relojes Y Joyería";
+let link15 = "/categoria/Ropa, calzados y accesorios";
+let link16 = "/categoria/Vehículos";
+let link17 = "/categoria/Salud"
 
 
 let slides = [
@@ -61,11 +57,9 @@ let slides = [
     { url: BannerImg14,  enlace: link14 },
     { url: BannerImg15,  enlace: link15 },
     { url: BannerImg16,  enlace: link16 },
-    { url: BannerImg17,  enlace: link17 },
-    { url: BannerImg18,  enlace: link18 },
     {
-        url: BannerImg19,
-        enlace: link19,
+        url: BannerImg17,
+        enlace: link17,
         slider: 'slider',
         previousButton: 'previousButton',
         nextButton: 'nextButton',
@@ -86,7 +80,7 @@ export default class SecundarySlider extends Component {
     render() {
         return (
             <div className="secundary-slider no-movil">
-                <Slider autoplay={4500}>
+                <Slider autoplay={3000}>
                     {slides.map((slide, index) =>
                         <div key={index}>
                             <Link href={slide.enlace}>

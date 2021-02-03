@@ -14,7 +14,7 @@
       -ms-flex-pack: center;
           justify-content: center;
   z-index: 100;
-  color: #6D6D6D;
+  color: #111111;
 }
 
 .modal {
@@ -25,6 +25,14 @@
   background: white;
   width: 50%;
   max-width: 600px !important;
+}
+.modal-close {
+  position: relative;
+  top: -5px;
+  float: right;
+}
+.modal-close span {
+ cursor: pointer;
 }
 
 .close {
@@ -47,6 +55,7 @@
   .wrap-modal .modal {
     max-width: initial;
     width: 80%;
+    margin-top: 10%;
     padding: 20px !important;
   }
 }

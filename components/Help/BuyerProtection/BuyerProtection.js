@@ -25,22 +25,22 @@ export default function BuyerProtection() {
                     </Link>
                 </div>
                 <div className="buyer-protection-content">
-                    <h1>Proteccion al comprador </h1>
+                    <h1>Protección al comprador </h1>
                     <div className="buyer-protection-box">
                         <p> En Kiero puedes comprar tranquilo, te ofrecemos los siguientes beneficios:</p>
                         <p> <FontAwesomeIcon icon={faCheck} />Puedes contar con nuestro respaldo</p>
                         <p>
                             Si tienes un problema con tu compra, queremos recordarte que estamos allí para ayudarte. Lo primordial que debes hacer,
                             es iniciar un reclamo a tu vendedor. Tienes que hacerlo lo antes posible,
-                            recuerda contarnos en detalle todo lo sucedido para hacer seguimiento y ayudarte lo mas pronto posible a resolverlo.
+                            recuerda contarnos en detalle todo lo sucedido para hacer seguimiento y ayudarte lo más pronto posible a resolverlo.
                         </p>
 
                         <p><FontAwesomeIcon icon={faCheck} /> Tranquilidad en tus compras</p>
 
                         <p>Nos encargaremos de cuidar su dinero, hasta que hayas asegurado tu compra.</p>
-                        <p>Cuando pagas, el vendedor puede ver el dinero reflejado en su cuenta, pero no tiene acceso a el,
-                        debe esperar a que recibas tu producto. Esto se realizo con el fin de que puedas evaluarlo. Además,
-                            puedes elegir que te entreguen el producto a través de Kiero Envíos y tu dinero estará protegido hasta 30 días después de que el correo envie informacion que el producto llegó.</p>
+                        <p>Cuando pagas, el vendedor puede ver el dinero reflejado en su cuenta, pero no tiene acceso a él,
+                        debe esperar a que recibas tu producto. Esto se realizó con el fin de que puedas evaluarlo. Además,
+                        puedes elegir que te entreguen el producto a través de Kiero Envíos y tu dinero estará protegido hasta 30 días después de que el correo envie información que el producto llegó.</p>
                     </div>
                 </div>
             </div>

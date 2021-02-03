@@ -38,13 +38,13 @@ export default class CategoriesImgMenu extends Component {
                 <h3 className="home-section-title">Categorías populares</h3>
                 <Slider autoplay={0}>
                     <div className="content-categories-img-menu no-movil">
-                    <Link href="/categoria/Accesorios para Vehiculos">
+                    <Link href="/categoria/Vehículos">
                         <a className="categories-img no-movil">
                             <div className="item">
                                 <p className="categories-menu-icon">
                                     <FontAwesomeIcon icon={faCar} />
                                 </p>
-                                <p>Accesorios para Vehiculos</p>
+                                <p>Accesorios para vehículos</p>
                             </div>
                         </a>
                     </Link>
@@ -54,7 +54,7 @@ export default class CategoriesImgMenu extends Component {
                                 <p className="categories-menu-icon">
                                     <FontAwesomeIcon icon={faDog} />
                                 </p>
-                                <p>Animales y Mascotas</p>
+                                <p>Animales y mascotas</p>
                             </div>
                         </a>
                     </Link>
@@ -68,22 +68,22 @@ export default class CategoriesImgMenu extends Component {
                             </div>
                         </a>
                     </Link>
-                    <Link href="/categoria/Belleza y Cuidado Personal">
+                    <Link href="/categoria/Belleza">
                         <a className="categories-img">
                             <div className="item">
                                 <p className="categories-menu-icon">
                                     <img alt="belleza" src={belleza} /></p>
-                                <p>Belleza y Cuidado Personal</p>
+                                <p>Belleza y cuidado Personal</p>
                             </div>
                         </a>
                     </Link>
-                    <Link href="/categoria/Cámaras y Accesorios">
+                    <Link href="/categoria/Cámaras y accesorios">
                         <a className="categories-img">
                         <div className="item">
                                 <p className="categories-menu-icon">
                                     <FontAwesomeIcon icon={faCameraRetro} />
                                 </p>
-                                <p>Cámaras y Accesorios</p>
+                                <p>Cámaras y accesorios</p>
                             </div>
                         </a>
                     </Link>
@@ -93,17 +93,17 @@ export default class CategoriesImgMenu extends Component {
                                 <p className="categories-menu-icon">
                                     <FontAwesomeIcon icon={faMobileAlt} />
                                 </p>
-                                <p>Celulares y Teléfonos</p>
+                                <p>Celulares y teléfonos</p>
                             </div>
                         </a>
                     </Link>
-                    <Link href="/categoria/Coleccionables y Hobbies">
+                    <Link href="/categoria/Coleccionables">
                         <a className="categories-img no-movil">
                             <div className="item">
                                 <p className="categories-menu-icon">
                                     <img src={hobbies} />
                                 </p>
-                                <p>Coleccionables y Hobbies</p>
+                                <p>Coleccionables y hobbies</p>
                             </div>
                         </a>
                     </Link>
@@ -123,17 +123,17 @@ export default class CategoriesImgMenu extends Component {
                                 <p className="categories-menu-icon">
                                     <FontAwesomeIcon icon={faGamepad} />
                                 </p>
-                                <p>Consolas y Videojuegos</p>
+                                <p>Consolas y videojuegos</p>
                             </div>
                         </a>
                     </Link>
-                    <Link href="/categoria/Deportes y Fitness">
+                    <Link href="/categoria/Deporte">
                         <a className="categories-img no-movil">
                             <div className="item">
                                 <p className="categories-menu-icon">
                                     <FontAwesomeIcon icon={faFutbol} />
                                 </p>
-                                <p>Deportes y Fitness</p>
+                                <p>Deportes y fitness</p>
                             </div>
                         </a>
                     </Link>
@@ -147,79 +147,79 @@ export default class CategoriesImgMenu extends Component {
                             </div>
                         </a>
                     </Link>
-                    <Link href="/categoria/Electrónica">
+                    <Link href="/categoria/Electrónica, Audio y Video">
                         <a className="categories-img no-movil">
                             <div className="item">
                                 <p className="categories-menu-icon">
                                     <FontAwesomeIcon icon={faHeadphones} />
                                 </p>
-                                <p>Electrónica, Audio y Video</p>
+                                <p>Electrónica, audio y video</p>
                             </div>
                         </a>
                     </Link>
-                    <Link href="/categoria/Herramientas y Construcción">
+                    <Link href="/categoria/Herramientas">
                         <a className="categories-img no-movil">
                             <div className="item">
                                 <p className="categories-menu-icon">
                                     <img src={herramientas} />
                                 </p>
-                                <p>Herramientas y Construcción</p>
+                                <p>Herramientas y construcción</p>
                             </div>
                         </a>
                     </Link>
-                    <Link href="/categoria/Hogar y Muebles">
+                    <Link href="/categoria/Hogar">
                         <a className="categories-img">
                         <div className="item">
                                 <p className="categories-menu-icon">
                                     <FontAwesomeIcon icon={faChair} />
                                 </p>
-                                <p>Hogar y Muebles</p>
+                                <p>Hogar y muebles</p>
                             </div>
                         </a>
                     </Link>
                 </div>
                     <div className="content-categories-img-menu diferent-numbers no-movil">
-                        <Link href="/categoria/Industrias y Oficinas">
+                        <Link href="/categoria/Industria%20y%20científico">
                             <a className="categories-img no-movil">
                                 <div className="item">
                                     <p className="categories-menu-icon">
                                         <FontAwesomeIcon icon={faBriefcase} />
                                     </p>
-                                    <p>Industrias y Ofocinas</p>
+                                    <p>Industria y científico </p>
                                 </div>
                             </a>
                         </Link>
-                        <Link href="/categoria/Instrumentos Musicales">
+                        <Link href="/categoria/Instrumentos musicales">
                             <a className="categories-img no-movil">
                                 <div className="item">
                                     <p className="categories-menu-icon">
                                         <FontAwesomeIcon icon={faDrum} />
                                     </p>
-                                    <p>Instrumentos Musicales</p>
+                                    <p>Instrumentos musicales</p>
                                 </div>
                             </a>
                         </Link>
-                        <Link href="/categoria/Juegos y Juguetes">
+                        <Link href="/categoria/Juguetes">
                             <a className="categories-img no-movil">
                                 <div className="item">
                                     <p className="categories-menu-icon">
                                         <FontAwesomeIcon icon={faDice} />
                                     </p>
-                                    <p>Juegos y Juguetes</p>
+                                    <p>Juegos y juguetes</p>
                                 </div>
                             </a>
                         </Link>
-                        <Link href="categoria/Libros, revistas, comics">
+                        {/* <Link href="categoria/Libros, revistas, comics">
                             <a className="categories-img no-movil">
                                 <div className="item">
                                     <p className="categories-menu-icon">
                                         <img src={libros} />
                                     </p>
-                                    <p>Libros, Revistas y Comics</p>
+                                    <p>Libros, revistas y comics</p>
                                 </div>
                             </a>
-                        </Link>
-                        <Link href="/categoria/Música">
+                        </Link> */}
+                        {/* <Link href="/categoria/Música">
                             <a className="categories-img no-movil">
                                 <div className="item">
                                     <p className="categories-menu-icon">
@@ -228,24 +228,24 @@ export default class CategoriesImgMenu extends Component {
                                     <p>Música</p>
                                 </div>
                             </a>
-                        </Link>
-                        <Link href="/categoria/Relojes y Joyas">
+                        </Link> */}
+                        <Link href="/categoria/Relojes Y Joyería">
                             <a className="categories-img no-movil">
                                 <div className="item">
                                     <p className="categories-menu-icon">
                                         <img src={relojes} />
                                     </p>
-                                    <p>Relojes y Joyas</p>
+                                    <p>Relojes y joyas</p>
                                 </div>
                             </a>
                         </Link>
-                        <Link href="/categoria/Ropa, Zapatos y Accesorios">
+                        <Link href="/categoria/Ropa">
                             <a className="categories-img no-movil">
                                 <div className="item">
                                     <p className="categories-menu-icon">
                                         <img src={ropa} />
                                     </p>
-                                    <p>Ropa, Zapatos y Accesorios</p>
+                                    <p>Ropa, zapatos y accesorios</p>
                                 </div>
                             </a>
                         </Link>
@@ -255,20 +255,20 @@ export default class CategoriesImgMenu extends Component {
                                     <p className="categories-menu-icon">
                                         <FontAwesomeIcon icon={faFemale} />
                                     </p>
-                                    <p>Salud y Equipamiento Médico</p>
+                                    <p>Salud y equipamiento médico</p>
                                 </div>
                             </a>
                         </Link>
                     </div>
                 </Slider>
                     <div className="content-categories-img-menu no-web">
-                        <Link href="/categoria/Accesorios para Vehiculos">
+                        <Link href="/categoria/Vehículos">
                             <a className="categories-img">
                                 <div className="item">
                                     <p className="categories-menu-icon">
                                         <FontAwesomeIcon icon={faCar} />
                                     </p>
-                                    <p>Accesorios para Vehiculos</p>
+                                    <p>Accesorios para vehículos</p>
                                 </div>
                             </a>
                         </Link>
@@ -278,7 +278,7 @@ export default class CategoriesImgMenu extends Component {
                                     <p className="categories-menu-icon">
                                         <FontAwesomeIcon icon={faDog} />
                                     </p>
-                                    <p>Animales y Mascotas</p>
+                                    <p>Animales y mascotas</p>
                                 </div>
                             </a>
                         </Link>
@@ -292,18 +292,18 @@ export default class CategoriesImgMenu extends Component {
                                 </div>
                             </a>
                         </Link>
-                        <Link href="/categoria/Belleza y Cuidado Personal">
+                        <Link href="/categoria/Belleza">
                             <a className="categories-img">
                                 <div className="item">
                                     <p className="categories-menu-icon">
                                         <img alt="belleza" src={belleza} /></p>
-                                    <p>Belleza y Cuidado Personal</p>
+                                    <p>Belleza y cuidado personal</p>
                                 </div>
                             </a>
                         </Link>
                     </div>
                 
-                <Link href="lista_categorias"><a className="main-button"><p>Ver mas</p></a></Link>
+                <Link href="lista_categorias"><a className="main-button"><p>Ver más</p></a></Link>
             </div>
         )
     }

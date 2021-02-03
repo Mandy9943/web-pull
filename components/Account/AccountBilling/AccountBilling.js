@@ -5,7 +5,7 @@ class AccountBilling extends Component {
   render() {
     return (
       <div className="account-summary-wrap">
-        <h1 className="account-billing-title">Facturacion</h1>
+        <h1 className="account-billing-title">Facturación</h1>
         <div className="account-billing-content">
           <h2>¿Buscas tu factura de compras?</h2>
           <p>

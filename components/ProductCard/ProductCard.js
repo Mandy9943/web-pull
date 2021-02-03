@@ -13,7 +13,7 @@ export default class ProductCard extends Component {
                             <img alt={this.props.title} src={this.props.url ? this.props.url : "https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png"} />
                         </div>
                         <button>Envío gratis</button>
-                        <h3>{this.props.price ? this.props.price.split(",")[0] : "$ ... "}</h3>
+                        <h3>$ {this.props.price ? String(this.props.price).split(".")[0].replace(/(.)(?=(\d{3})+$)/g,'$1,') : "$ ... "}</h3>
                         <h4 className="title">
                             {this.props.title}
                         </h4>

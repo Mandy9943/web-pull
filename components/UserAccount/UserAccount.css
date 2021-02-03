@@ -3,7 +3,7 @@
 }
 
 .user-account p {
-  color: #5A5A5A;
+  color: #111111;
 }
 
 .user-account .user-container {
@@ -19,7 +19,7 @@
 }
 
 .user-account .user-container .user-account-menu h3 {
-  color: #5A5A5A;
+  color: #111111;
 }
 
 .user-account .user-container .user-account-menu .user-account-menu-item {
@@ -54,7 +54,7 @@
 .user-account .user-container .user-account-content h2 {
   margin-bottom: 30px;
   font-size: 28px;
-  color: #5A5A5A;
+  color: #111111;
 }
 
 .user-account .user-container .user-account-content .user-acount-info {
@@ -72,7 +72,7 @@
 
 .user-account .user-container .user-account-content .user-acount-info-title h3 {
   font-size: 18px;
-  color: #5A5A5A;
+  color: #111111;
   font-weight: 500;
 }
 
@@ -84,8 +84,8 @@
 
 .user-account .user-container .user-account-content .user-accunt-info-box {
   background: #FFFFFF;
-  -webkit-box-shadow: 0px 3px 6px #00000029;
-          box-shadow: 0px 3px 6px #00000029;
+  -webkit-box-shadow: 0px 3px 6px #11111129;
+          box-shadow: 0px 3px 6px #11111129;
   border-radius: 5px;
 }
 
@@ -117,7 +117,7 @@
 }
 
 .user-account .user-container .user-account-content .user-accunt-info-box .user-accunt-info-tab p {
-  color: #5A5A5A;
+  color: #111111;
   font-size: 14px;
 }
 
@@ -259,7 +259,7 @@
 .user-account .user-container .user-account-content .user-accunt-info-box .with-addres h5 .strong {
   font-weight: bold;
   margin-left: 5px;
-  color: #5A5A5A;
+  color: #111111;
 }
 
 .user-account .user-container .user-account-content .user-accunt-info-box .with-addres h5 .button-delete {
@@ -295,7 +295,7 @@
   .with-addres h5 .strong {
     font-weight: 500;
     margin-left: 5px;
-    color: #5A5A5A;
+    color: #111111;
   }
 }
 /*# sourceMappingURL=UserAccount.css.map */

@@ -23,7 +23,7 @@ class Finding extends Component {
             <div className="wrap-info">
               <p className="category-text">{this.props.category.father0}</p>
               <h3 className="finding-title">{this.props.category.sub1}</h3>
-              <Link href={this.props.category.url1}>Ver mas</Link>
+              <Link href={this.props.category.url1}>Ver más</Link>
             </div>
           </div>
           <div className="finding">
@@ -33,7 +33,7 @@ class Finding extends Component {
             <div className="wrap-info">
               <p className="category-text">{this.props.category.father1}</p>
               <h3 className="finding-title">{this.props.category.sub2}</h3>
-              <Link href={this.props.category.url2}>Ver mas </Link>
+              <Link href={this.props.category.url2}>Ver más </Link>
             </div>
           </div>
         </div>

@@ -27,7 +27,7 @@ export default class ForgotPass extends Component {
                     <form className="form" onSubmit={this.handleSubmit}>
                         <div className="forgot-pass-content">
                             <p className="forgot-pass-text">Ingrese el correo electrónico asociado a su cuenta</p>
-                            <input className="input" type="email" name="email" placeholder="Correo lectrónico"/>
+                            <input className="input" type="email" name="email" placeholder="Correo electrónico"/>
                         </div>
                         <button type="submit" className="main-button">
                             <p>Recuperar</p>

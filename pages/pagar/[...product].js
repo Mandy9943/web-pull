@@ -9,7 +9,7 @@ import favicon from "../../assets/img/favicon.svg";
 
 
 
-function plataforma_de_pago({data, u_data}) {
+function plataforma_de_pago({data, u_data, cantidad}) {
     return (
         <div className="plataforma">
             <Head>
@@ -23,7 +23,7 @@ function plataforma_de_pago({data, u_data}) {
                 <meta name="Keywords" content="Tienda en Línea" />
                 <link rel="icon" href={favicon} type="image/png" />
             </Head>
-            <PaymentWay data={data} user={u_data} />
+            <PaymentWay data={data} user={u_data} cantidad={cantidad} />
         </div>
     )
 }
@@ -31,7 +31,9 @@ function plataforma_de_pago({data, u_data}) {
 
 export async function getServerSideProps(context) {
 
-    let id_product = String(context.params.product);
+    let id_product = String(context.params.product[0]);
+    let cantidad = String(context.params.product[1]);
+
     const res = await getProductDetail(id_product)
     const data = await res.data
     let usr = getUser(context);
@@ -47,7 +49,7 @@ export async function getServerSideProps(context) {
 
     redirectIfNotAuthenticated(context);
 
-    return { props: { data, u_data } }
+    return { props: { data, u_data, cantidad } }
 }
 
 

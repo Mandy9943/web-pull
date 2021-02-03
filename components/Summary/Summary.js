@@ -15,6 +15,7 @@ import {
 import "./Summary.css";
 import Sidebar from '../Sidebar/Sidebar';
 import Purchases from '../Purchases/Purchases';
+import PurchasesDetail from '../PurchasesDetail/PurchasesDetail';
 import AccountData from '../Account/AccountData';
 import AccountPurchase from '../Account/AccountPurchase';
 import AccountBilling from '../Account/AccountBilling';
@@ -42,7 +43,8 @@ export default class Summary extends Component {
                 bill: false,
                 orders: false,
                 questions: false,
-                items: false
+                items: false,
+                detail: false
             }
         }
     }
@@ -81,9 +83,28 @@ export default class Summary extends Component {
                 orders: section === "orders",
                 questions: section === "questions",
                 items: section === "items",
-                purchases: section === "purchases"
+                purchases: section === "purchases",
+                detail: section === "detail",
             }
         })
+    }
+
+    componentDidMount(){
+        let tab = document.location.href.split('#');
+        if(tab[1]!==undefined){
+            this.setState({
+                display: {
+                resume: false,
+                myData: tab[1]==="opciones"?true:false,
+                bill: tab[1]==="facturación"?true:false,
+                orders: tab[1]==="compras"?true:false,
+                mySales: tab[1]==="ventas"?true:false,
+                questions: false,
+                items: false,
+                detail: false
+                }
+            })   
+        }
     }
 
 
@@ -94,9 +115,8 @@ export default class Summary extends Component {
         console.info("si ejecuta y cambia el estado " + this.state.closeSidebar)
     }
 
-
     render() {
-
+        console.log(this.state.display.bill);
         let u_data = this.props.user_data;
 
         let url= "//www.sic.gov.co";
@@ -112,6 +132,7 @@ export default class Summary extends Component {
                     <Sidebar user_data={u_data} cb={this.showSection} />
                     {this.state.display.resume && <AccountSummary user={u_data} />}
                     {this.state.display.orders && <Purchases mode={"buy"} user={u_data} />}
+                    {this.state.display.detail && <PurchasesDetail mode={"buy"} user={u_data} />}
                     {this.state.display.bill && <AccountBilling user={u_data} cb={this.showSection} />}
                     
 

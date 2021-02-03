@@ -1,14 +1,14 @@
 .wrap-detail-info {
-  border-top: 0.5px solid #C6C6C6;
+  border-top: 0.5px solid #e2e2e2;
   font-family: 'Montserrat', sans-serif;
   padding: 40px;
-  color: #5A5A5A;
+  color: #111111;
 }
 
 .wrap-detail-info h4 {
   font-size: 20px;
   font-weight: 600;
-  color: #5A5A5A;
+  color: #111111;
 }
 
 .item-detail-info {
@@ -26,21 +26,21 @@
 
 .item-detail-info p {
   margin-bottom: 10px;
-  font-size: 20px;
-  color: #5A5A5A;
+  font-size: 16px;
+  color: #111111;
 }
 
 .characteristics, .guarantee, .characteristics-web {
   font-family: 'Montserrat', sans-serif;
   padding: 20px;
-  border-bottom: 0.5px solid #C6C6C6;
+  border-bottom: 0.5px solid #e2e2e2;
   background: white;
 }
 
 .characteristics .edit, .guarantee .edit, .characteristics-web .edit {
   -ms-grid-columns: 1fr auto;
       grid-template-columns: 1fr auto;
-  font-size: 17px;
+  font-size: 16px;
 }
 
 .characteristics .info, .guarantee .info, .characteristics-web .info {
@@ -58,19 +58,19 @@
 
 .characteristics .info .item .title, .guarantee .info .item .title, .characteristics-web .info .item .title {
   font-size: 12px;
-  color: #5A5A5A;
+  color: #111111;
 }
 
 .characteristics .info .item .sub-title, .guarantee .info .item .sub-title, .characteristics-web .info .item .sub-title {
   font-size: 14px;
   font-weight: 400;
-  color: #5A5A5A;
+  color: #111111;
   margin-top: 5px;
 }
 
 .characteristics-web {
   padding: 0;
-  font-size: 20px;
+  font-size: 16px;
   border: none;
 }
 
@@ -79,30 +79,30 @@
 }
 
 .characteristics-web .info .item .title {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .guarantee {
-  border-top: 0.5px solid #C6C6C6;
+  border-top: 0.5px solid #e2e2e2;
   padding: 30px 20px;
 }
 
 .guarantee h5 {
   margin-bottom: 10px;
-  font-size: 17px;
-  color: #5A5A5A;
+  font-size: 16px;
+  color: #111111;
 }
 
 .guarantee .title {
   display: block;
-  color: #5A5A5A;
+  color: #111111;
   font-size: 16px;
   font-weight: bold;
 }
 
 .guarantee .sub-title {
   display: block;
-  color: #5A5A5A;
+  color: #111111;
   font-size: 14px;
 }
 
@@ -117,17 +117,17 @@
   .guarantee h5 {
     margin-bottom: 10px;
     font-size: 17px;
-    color: #5A5A5A;
+    color: #111111;
   }
   .guarantee .title {
     display: block;
-    color: #5A5A5A;
+    color: #111111;
     font-size: 16px;
     font-weight: 400;
   }
   .guarantee .sub-title {
     display: block;
-    color: #5A5A5A;
+    color: #111111;
     font-size: 14px;
   }
 }

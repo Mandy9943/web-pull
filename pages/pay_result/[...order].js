@@ -7,9 +7,11 @@ import Header from "./../../components/Common/Header/Header";
 import Footer from "./../../components/Common/Footer/Footer";
 import '../sass/order.css';
 import favicon from "../../assets/img/favicon.svg";
-
-
-
+import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faCheck
+} from "@fortawesome/free-solid-svg-icons";
 
 function Product({ data, u_data }) {
 
@@ -30,20 +32,37 @@ function Product({ data, u_data }) {
         <link rel="icon" href={favicon} type="image/png" />
       </Head>
       <Header />
-
+    
+      <div className="container-success">
+        <p>
+            <div className={"icon-check"}>
+            <FontAwesomeIcon icon={faCheck} />
+            </div>
+            <br />
+            Su compra ha sido exitosa
+        </p>
+      </div> 
       <section className="order-content">
-
+        
         <section className="info">
           <h3 className="title">DATOS DE RESULTADO</h3>
-          <span className="user-id">USERID: <strong>{data.user_id}</strong></span>
-          <span>SELLERID: <strong>{data.seller_id}</strong></span>
-          <span>Metodo de pago: <strong>{data.method_id}</strong></span>
-          <span>Estado del pago:<strong>{data.status == 2 ? "APROBADO" : data.status == 6 ? "RECHAZADO" : "PENDIENTE"}</strong> </span>
-          <span>Total a pagar: <strong>{data.total} </strong></span>
-          <span className="name-product">Nombre del producto: <strong>{data.product.title}</strong></span>
+          <span className="user-id"><strong>COMPRADOR: </strong>{data.user_id}</span>
+          <span><strong>NOMBRE DE TIENDA: </strong>{data.seller_id}</span>
+          <span><strong>MÉTODO DE PAGO:</strong> {data.method_id}</span>
+          <span><strong>ESTADO DEL PAGO: </strong>{data.status == 2 ? "APROBADO" : data.status == 6 ? "RECHAZADO" : "PENDIENTE"} </span>
+          <span><strong>TOTAL:</strong> {data.total} </span>
+          <span className="name-product"><strong>NOMBRE DEL PRODUCTO: </strong>{data.product.title}</span>
         </section>
-
+      
       </section>
+      <div className="go-purchases-link">
+         <Link href="/">
+          <a>
+              <p>Ir a compras</p>
+          </a>
+        </Link>
+      </div>
+        
       <Footer />
     </div>
   );

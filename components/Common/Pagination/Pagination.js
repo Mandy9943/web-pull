@@ -112,8 +112,7 @@ export default class Pagination extends Component {
         };
 
         const PayOrder = (props) => {
-            const [active, setActive] = React.useState(this.props.actual);
-
+            const [active, setActive] = React.useState(parseInt(this.props.actual));   
             const activeHandler = (clickedActive) => {
                 setActive(parseInt(clickedActive));
                 this.props.cb(parseInt(clickedActive))
