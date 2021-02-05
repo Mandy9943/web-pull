@@ -25,10 +25,10 @@ function Product({ data, u_data }) {
       <title>Kiero.co | {data.title}</title>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <meta name="Description"
-      content="KIERO.CO MARKETPLACE | Compralo en Kiero {product.title} a {product.price}- Envío
-      gratis - Encuentra más productos de{product.category_name}" />
-      <meta name="Keywords" content="{product.title}" />
-      <meta name="Title" content="Kiero.co -{product.title} a {product.price}" />
+      content={`KIERO.CO MARKETPLACE | Compralo en Kiero ${data.title} a ${data.price} - Envío
+      gratis - Encuentra más productos de ${data.category.name}`} />
+      <meta name="Keywords" content={`${data.title}`} />
+      <meta name="Title" content={`Kiero.co -${data.title} a ${data.price}`} />
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       <meta name="google" content="notranslate" />
@@ -41,44 +41,44 @@ function Product({ data, u_data }) {
       <meta name="twitter: description"
       contenido=" Envíos gratis en Colombia, productos para Bebés, Belleza, Cámaras y accesorios,
       Electrodomésticos, Electrónica, Hogar y muebles y mucho más." />
-      <meta name="twitter: image" content="{product.image_url}" />
-      <meta property="og:title" content={"Compra en Kiero.co - Encuentra {product.category_name} en Kiero.co " }/>
-      <meta property=" og:description"
-      content="Encuentra {product.title} en Kiero.co - Descubre millones de productos online.
-      Encuentra {product.category_name} en Kiero.co " />
-      <meta property="og:url" content={`https://kiero.co/detalle/${data.product_id} ${data.title.replace(/[^\w\s]/gi, '' ).split(" ").join(" -")}`} />
+      <meta name="twitter: image" content={`${data.images[0].url}`} />
+      <meta property="og:title" content={`Compra en Kiero.co - Encuentra ${data.category.name} en Kiero.co`}/>
+      <meta property="og:description"
+      content={`Encuentra ${data.title} en Kiero.co - Descubre millones de productos online.
+      Encuentra ${data.category.name} en Kiero.co`}/>
+      <meta property="og:url" content={`https://kiero.co/detalle/${data.product_id}_${data.title.replace(/[^\w\s]/gi, '' ).split(" ").join("-")}`} />
       <meta property='og:locale' content='es_ES' />
       <meta property='og:type' content='WebSite' />
       <meta property='og:site_name' content='Kiero.co' />
-      <meta property="og:image" content="{product.image_url}" />
+      <meta property="og:image" content={`${data.images[0].url}`} />
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
       <meta name="robots" content="index,follow" />
       <link rel="icon" href={favicon} type="image/png" />
-      <link rel="canonical" href={`https://kiero.co/detalle/${data.product_id} ${data.title.replace(/[^\w\s]/gi, '' ).split(" ").join(" -")}`} />
+      <link rel="canonical" href={`https://kiero.co/detalle/${data.product_id}_${data.title.replace(/[^\w\s]/gi, '' ).split(" ").join("-")}`} />
       
       <script type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: {
         "@context": "https://schema.org/",
         "@type": "Product",
         "name": `${data.title}`,
-        "image": "{product.image}",
-        "description": "{product.description}",
-        "brand": "{product.brand}",
+        "image": `${data.images[0].url}`,
+        "description": `${data.description}`,
+        "brand": `${data.brand}`,
         "sku": `${data.product_id}`,
         "offers": {
-        "@type": "Offer","url": "{product.product_url}",
+        // "@type": "Offer","url": "{product.product_url}",
         "priceCurrency": "COP",
         "price": "3",
-        "priceValidUntil": "{product.created_since}",
+        // "priceValidUntil": "{product.created_since}",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition"
         },
         "aggregateRating": {
         "@type": "AggregateRating",
-        "ratingValue": "{product.rating}",
+        // "ratingValue": "{product.rating}",
         "bestRating": "5",
         "worstRating": "0",
-        "ratingCount": "{product.rating.count}"
+        // "ratingCount": "{product.rating.count}"
       } }}}>
     </script>
        
