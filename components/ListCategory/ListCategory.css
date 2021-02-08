@@ -11,8 +11,8 @@
 .grid {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[4];
-      grid-template-columns: repeat(4, 1fr);
+  -ms-grid-columns: 4;
+  grid-template-columns: repeat(4, 200px);
   grid-gap: 5px;
   height: auto;
 }
@@ -212,6 +212,12 @@
   color: #CF0A2C;
   font-size: 12px;
   margin-bottom:7px;
+}
+
+@media (min-width: 1900px) {
+  .grid {
+    grid-template-columns: repeat(4, 300px);
+  }
 }
 
 @media (max-width: 768px) {
