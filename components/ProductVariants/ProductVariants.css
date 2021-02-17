@@ -1,0 +1,30 @@
+
+.variants{
+    padding: 1em;
+    display: flow-root;
+}
+
+.variants .selector{
+    width: 40%;
+    margin-right: 10px;
+    float: left;
+}
+.variants select{
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    outline: none !important;
+    border: 0.31px solid #acacac;
+    background-color: #ffff;
+}
+.variants .variant-title{
+    width: 100%;
+}
+
+.variants button{
+    border: 1px solid gray;
+}
+
+.variants button.active{
+    border: 1px solid #16b3e2;
+}

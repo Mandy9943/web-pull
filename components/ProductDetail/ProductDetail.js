@@ -156,7 +156,7 @@ class ProductDetail extends Component {
           </section>
         </div>      
           <div className="home-content  no-movil">
-            <ProductsSlider category={mdata.breadcum.[1].name} />
+            <ProductsSlider category={mdata.breadcum[1]?.name} />
             </div>
           <Footer />
         <div className="footer-social">

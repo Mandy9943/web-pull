@@ -10,7 +10,7 @@ import Seller from "./../SellerInfo";
 import Link from "next/link";
 import ListProductMovil from "./../listProductMovil/listProductMovil"
 import Rating from '../RatingProduct/RatingProduct';
-
+import ProductVariants from '../ProductVariants';
 
 class PaySection extends Component {
 
@@ -29,7 +29,6 @@ class PaySection extends Component {
   }
 
   render() {
-
     let u_data = this.props.user_data
     let qty_options = [];
     for (let i = 1; i <= this.props.stock; i++) {
@@ -46,7 +45,7 @@ class PaySection extends Component {
           <Rating productId={this.props.pid}/>
         </div>
         <div className="pay-item">
-          <h3 className="price-pay-product-detail">$ {this.props.price ? this.props.price.split(".")[0].replace(/(.)(?=(\d{3})+$)/g,'$1,') : " ... "}</h3>
+          <h3 className="price-pay-product-detail">$ {this.props.price ? this.props.price.toString().split(".")[0].replace(/(.)(?=(\d{3})+$)/g,'$1,') : " ... "}</h3>
         </div>
         <div className="pay-item pay-img no-movil">
           <img src={iconCredit} className="icon-credit" />
@@ -66,6 +65,7 @@ class PaySection extends Component {
             </a>
           </Link>
         </div>
+        <ProductVariants />
         {this.props.stock > 0 ? <div className="pay-item">
           <section className="select-icon">
 
