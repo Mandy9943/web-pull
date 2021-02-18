@@ -120,8 +120,13 @@ export default class PaymentWay extends Component {
 
     setAddr = () => {
         const x = this.state.auxAddr;
-        this.setState({ modalAddr: false });
-        this.setState({ selectedAddr: x });
+        if(x!=="-1" && x!==0){
+            this.setState({ modalAddr: false });
+            this.setState({ selectedAddr: x });
+        }   
+        else{
+            alert('Seleccione una dirección')
+        }
     }
 
 
@@ -557,18 +562,11 @@ export default class PaymentWay extends Component {
                                         :
                                         <><Button onClick={this.openAddrsModal} text={"Seleccione una dirección"} /></>
                                 }
-
                             </div>
-
-
-
                         </div>
                     </div>
                 </div>
-
-                }
-
-               
+                }      
                 <Footer />
             </div>
         )
