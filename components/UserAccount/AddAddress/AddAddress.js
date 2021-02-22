@@ -47,20 +47,28 @@ export default class addAddress extends React.Component {
             phone: e.target.elements.phone.value,
             description: e.target.elements.description.value,
         }
-      
-        const error = await savePrivateData("/newAddress", xpayload, this.props.jwt);
 
-        if (error) {
+        if(xpayload.names && xpayload.department && xpayload.city && xpayload.neighborhood 
+            && xpayload.address && xpayload.phone && xpayload.description){
+                const error = await savePrivateData("/newAddress", xpayload, this.props.jwt);
+
+                if (error) {
+                    this.setState({
+                        error: error
+                    });
+                    return false;
+                }else{
+                    if(!this.props.cancel){
+                        redirect("/cuenta");
+                    }else{
+                        this.props.save();
+                    }
+                } 
+        }
+        else{
             this.setState({
-                error: error
+                error: "Complete todos los campos"
             });
-            return false;
-        }else{
-            if(!this.props.cancel){
-                redirect("/cuenta");
-            }else{
-                this.props.save();
-            }
         }
     };
 

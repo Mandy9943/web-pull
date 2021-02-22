@@ -57,7 +57,8 @@ export default class PaymentWay extends Component {
             paymentCash: false,
             paymentCashType: 1,
             paymentCashResult: false,
-            paymentCashDocument: ''
+            paymentCashDocument: '',
+            modalValidate: false,
         }
         this.addrRef = React.createRef();
 
@@ -120,8 +121,13 @@ export default class PaymentWay extends Component {
 
     setAddr = () => {
         const x = this.state.auxAddr;
-        this.setState({ modalAddr: false });
-        this.setState({ selectedAddr: x });
+        if(x!=="-1" && x!==0){
+            this.setState({ modalAddr: false });
+            this.setState({ selectedAddr: x });
+        }   
+        else{
+            alert('Seleccione una dirección')
+        }
     }
 
 
@@ -134,7 +140,7 @@ export default class PaymentWay extends Component {
         e.preventDefault();
 
         if (this.state.selectedAddr == -1) {
-            this.setState({ modalAddr: true });
+            this.setState({ modalValidate: true });
             return false;
         }
 
@@ -187,7 +193,7 @@ export default class PaymentWay extends Component {
         if(Object.values(validated).length == 0){
 
             if (this.state.selectedAddr == -1) {
-                this.setState({ modalAddr: true });
+                this.setState({ modalValidate: true });
                 return false;
             }
 
@@ -310,6 +316,12 @@ export default class PaymentWay extends Component {
             
         </>;
 
+        const modalValidatePay = <>
+         <p style={{width: '80%',margin: '0 auto', textAlign: 'center', marginBottom: '2em'}}>{'Para realizar el pago debes completar el formulario. Por favor introduce tu dirección de domicilio.'}</p>
+
+         <Button onClick={() => this.setState({ modal: 1, modalAddr: false, modalValidate: false })} text={"Agregar dirección"} />
+        </>;
+
         const docType = <> <option value={"CC"}>Cédula de ciudadanía </option>
             <option value={"CE"}>Cédula de extranjería </option>
             <option value={"NIT"}> NIT </option>
@@ -345,7 +357,11 @@ export default class PaymentWay extends Component {
                 {this.state.paymentCash ? (
                     <Modal toggle={() => this.setState({ paymentCash: false })} content={<PaymentCash onSubmit={this.payCash} />} button />
                 ) : null}
-
+                {
+                    this.state.modalValidate ? (
+                        <Modal toggle={() => this.setState({ modalValidate: false })} content={modalValidatePay} button />
+                    ): null
+                }
                 <Header />
 
                 {
@@ -557,18 +573,11 @@ export default class PaymentWay extends Component {
                                         :
                                         <><Button onClick={this.openAddrsModal} text={"Seleccione una dirección"} /></>
                                 }
-
                             </div>
-
-
-
                         </div>
                     </div>
                 </div>
-
-                }
-
-               
+                }      
                 <Footer />
             </div>
         )
