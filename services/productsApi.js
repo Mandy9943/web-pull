@@ -31,7 +31,8 @@ export const getProducts8 = () => {
 
 export const getProductDetail = (id_product) => {
     try {
-        let endpoint = ("/getProduct/"+id_product);
+        // let endpoint = ("/getProduct/"+id_product);
+        let endpoint = ("/variations/product_global/"+id_product);
         let data = sget(endpoint)
         return data;
     } catch (error) {

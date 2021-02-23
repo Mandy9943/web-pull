@@ -92,7 +92,6 @@ function Product({ data, u_data }) {
         {/* End Google Tag Manager (noscript) */}
       
       <Detail user_data={u_data} data={data} />
-    
     </div>
   );
 }
@@ -117,7 +116,7 @@ export async function getServerSideProps(context) {
     jwt: jwt ? jwt : ''
   }
 
-  return { props: { data, u_data } }
+  return { props: { data: data.data, u_data } }
 }
 
 export default Product

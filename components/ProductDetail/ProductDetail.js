@@ -133,7 +133,7 @@ class ProductDetail extends Component {
               </div>
             </div>
             <div className="pay-section-pc">
-              <Pay pid={mdata.product_id} seller={mdata.user} price={mdata.price} title={mdata.title} stock={mdata.stock} />
+              <Pay pid={mdata.product_id} dimensions={mdata.dimensions} seller={mdata.user} price={mdata.price} title={mdata.title} stock={mdata.stock} />
             </div>
           </div>
           <section className="questions-movil no-web">
@@ -156,7 +156,7 @@ class ProductDetail extends Component {
           </section>
         </div>      
           <div className="home-content  no-movil">
-            <ProductsSlider category={mdata.breadcum.[1].name} />
+            <ProductsSlider category={mdata.breadcum[1]?.name} />
             </div>
           <Footer />
         <div className="footer-social">
