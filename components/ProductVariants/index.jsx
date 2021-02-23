@@ -1,24 +1,27 @@
 import React from 'react';
 import './ProductVariants.css'
 
-function ProductVariants(props) {
+function ProductVariants({ dimensions }) {
 
+    const keys = Object.keys(dimensions);
 
     const Variant1 = () => {
         return (
             <div className={"variants"}>
-                <div className="selector">
-                    <label>Talla</label>
-                    <select>
-                        <option>{'Seleccionar talla'}</option>
-                    </select>
-                </div>
-                <div className="selector">
-                    <label>Color</label>
-                    <select>
-                        <option>{'Seleccionar color'}</option>
-                    </select>
-                </div>
+                {
+                    keys.map((item, index) =>
+                        <div key={index} className="selector">
+                            <label>{item}</label>
+                            <select>
+                                {
+                                    dimensions[item].variants.map((variant) =>
+                                        <option value={variant.product_global_id}>
+                                            {variant.value}
+                                        </option>)
+                                }
+                            </select>
+                        </div>
+                    )}
             </div>
         )
     }
@@ -44,7 +47,6 @@ function ProductVariants(props) {
     return (
         <>
             <Variant1 />
-            <Variant2 />
         </>
     );
 }

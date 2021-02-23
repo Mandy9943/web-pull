@@ -133,7 +133,7 @@ class ProductDetail extends Component {
               </div>
             </div>
             <div className="pay-section-pc">
-              <Pay pid={mdata.product_id} seller={mdata.user} price={mdata.price} title={mdata.title} stock={mdata.stock} />
+              <Pay pid={mdata.product_id} dimensions={mdata.dimensions} seller={mdata.user} price={mdata.price} title={mdata.title} stock={mdata.stock} />
             </div>
           </div>
           <section className="questions-movil no-web">

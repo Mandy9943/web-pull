@@ -65,7 +65,10 @@ class PaySection extends Component {
             </a>
           </Link>
         </div>
-        <ProductVariants />
+        {
+          this.props.dimensions &&  <ProductVariants dimensions={this.props.dimensions}/>
+        }
+       
         {this.props.stock > 0 ? <div className="pay-item">
           <section className="select-icon">
 
