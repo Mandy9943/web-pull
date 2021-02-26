@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState ,useEffect } from 'react';
 import Link from 'next/link';
 import "./Purchases.css";
 import ProductItem from '../ProductItem/ProductItem';
@@ -9,71 +9,75 @@ import OptionList from '../OptionList/OptionList';
 import AccountStoreSales from '../AccountStore/AccountStoreSales/AccountStoreSales'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faThList } from "@fortawesome/free-solid-svg-icons";
+import PurchaseItem from './PurchaseItem';
+import PurchasesDetail from '../PurchasesDetail';
 
 
+function Purchases(props) {
 
-export default class Purchases extends Component {
+    const [pagination, setPagination] = useState();
+    const [purchases, setPurchases] = useState([]);
+    const [selected, setSelected] = useState();
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            orders: [],
-            error: null
-        }
-    }
-
-    componentDidMount() {
-        const endp = this.props.mode === "sell" ? "/getSells" : "/getOrders"
-        getData(endp, this.props.user.jwt)
+    useEffect(() => {
+        const endp = props.mode === "sell" ? "/getSells" : "/getPurchases?page=1&size=4"
+        getData(endp, props.user.jwt)
             .then((response) => {
-                this.setState({ orders: response.data });
+                setPagination(response.data.pagination);
+                setPurchases(response.data.purchases);
             });
-    }
+    
+        return () => {
+            setPagination();
+            setPurchases([]);
+        };
+    }, []);
 
-    render() {
-        let mde = this.props.mode;
-        let orderList = this.state.orders.map(function (order, i) {
-            return <ProductItem key={i} order={order} mode={mde} />;
-        });
+    const handleSelect = item => {
+        setSelected(item);
+    };
 
-        return (
-            <div className="purchase-list">
-                <h1 className="status-title">{this.props.mode === "sell" ? "Mis ventas" : "Mis Compras"}</h1>
-                {this.props.mode === "sell" ? <>
-                    <AccountStoreSales />
-                    <div className="account-store-sales-wrap-search">
-                        <div className="account-store-sales-wrap-filter">
-                            <p>
-                                <FontAwesomeIcon icon={faThList} /> Filtrar y ordenar
-                        </p>
-                            <div className="account-store-sales-wrap-input-search">
-                                <span>
-                                    <FontAwesomeIcon icon={faSearch} />
-                                </span>
-                                <input className="account-store-sales-input-search" placeholder='buscar por # o titulo' />
-                            </div>
-                        </div>
-                        <span className="sub-title"> {this.state.orders.length} ventas</span>
-                    </div>
+    return (
+           !selected ? 
+           <div className="purchase-list">
+           <h1 className="status-title">{props.mode === "sell" ? "Mis ventas" : "Mis Compras"}</h1>
+           {props.mode === "sell" ? <>
+               <AccountStoreSales />
+               <div className="account-store-sales-wrap-search">
+                   <div className="account-store-sales-wrap-filter">
+                       <p>
+                           <FontAwesomeIcon icon={faThList} /> Filtrar y ordenar
+                   </p>
+                       <div className="account-store-sales-wrap-input-search">
+                           <span>
+                               <FontAwesomeIcon icon={faSearch} />
+                           </span>
+                           <input className="account-store-sales-input-search" placeholder='buscar por # o titulo' />
+                       </div>
+                   </div>
+                   <span className="sub-title"> {purchases.length} ventas</span>
+               </div>
 
-                        {this.state.orders.length===0 ?
-                            <section className="empty-text">
-                                <span>No tiene ninguna venta</span>
-                            </section>
-                            : orderList
-                        }
-                </>
-                    : <>
+                   {purchases.length===0 ?
+                       <section className="empty-text">
+                           <span>No tiene ninguna venta</span>
+                       </section>
+                       : orderList
+                   }
+           </>
+               : <>
 
-                        {this.state.orders.length===0 ?
-                            <section className="empty-text">
-                                <span>No tiene compras anteriores</span>
-                            </section>
-                            : orderList
-                        }
-                    </>
-                }
-            </div>
-        )
-    }
+                   {purchases.length===0 ?
+                       <section className="empty-text">
+                           <span>No tiene compras anteriores</span>
+                       </section>
+                       : 
+                       purchases.map((item, index) => <PurchaseItem key={index} item={item} onSelect={handleSelect} />)
+                   }
+               </>
+           }
+       </div>:<PurchasesDetail />
+    );
 }
+
+export default Purchases;

@@ -160,11 +160,11 @@ export default class Sidebar extends Component {
                     <div className="user-account-menu-accordion">
                         <p className="user-account-menu-text">Compras</p>
                         <div className="user-account-accordion">
-                            <p onClick={(e) => this.props.cb("orders", e)}>Mis Ordenes</p>
+                            <p onClick={(e) => this.props.cb("orders", e)}>Compras</p>
                         </div>
-                        <div className="user-account-accordion">
+                        {/* <div className="user-account-accordion">
                             <p onClick={(e) => this.props.cb("detail", e)}>Detalle de compra</p>
-                        </div>
+                        </div> */}
                     </div>
                     <p className="user-account-menu-icon">
                         <FontAwesomeIcon icon={this.state.userAccountIconShop} />

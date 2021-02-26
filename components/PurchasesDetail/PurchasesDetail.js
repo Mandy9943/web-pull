@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import "./PurchasesDetail.css";
 import ProductItem from '../ProductItem/ProductItem';
@@ -10,33 +10,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faThList, faAngleLeft, faStar, faCheck } from "@fortawesome/free-solid-svg-icons";
 
 
-
-export default class PurchasesDetail extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            orders: [],
-            error: null
-        }
-    }
-
-    componentDidMount() {
-        const endp = this.props.mode === "sell" ? "/getSells" : "/getOrders"
-        getData(endp, this.props.user.jwt)
-            .then((response) => {
-                this.setState({ orders: response.data });
-            });
-    }
-
-    render() {
-        let mde = this.props.mode;
-        let orderList = this.state.orders.map(function (order, i) {
-            return <ProductItem key={i} order={order} mode={mde} />;
-        });
-
-        return (
-            <div className="purchases-detail">
+function PurchasesDetail(props) {
+    return (
+        <div className="purchases-detail">
                 <h1>Compra #4124</h1>
                 <h3 className="status">Entregado</h3>
 
@@ -133,6 +109,7 @@ export default class PurchasesDetail extends Component {
                 
 
             </div>
-        )
-    }
+    );
 }
+
+export default PurchasesDetail;
