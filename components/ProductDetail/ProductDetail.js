@@ -79,7 +79,7 @@ class ProductDetail extends Component {
             <div className="wrap-product">
               <DetailImg images={mdata.images} category={mdata.category.name} product_name={mdata.title} />
               <div className="pay-section-responsive">
-                <Pay pid={mdata.product_id} seller={mdata.user} price={mdata.price} title={mdata.title} stock={mdata.stock} />
+                <Pay pid={mdata.product_id} pgid={mdata.product_global_id} dimensions={mdata.dimensions} seller={mdata.user} price={mdata.price} title={mdata.title} stock={mdata.stock} />
               </div>
               {/* <RecommendedProducts category={mdata.category.name} /> */}
               <div className="home-content slider-recommends">
@@ -133,7 +133,7 @@ class ProductDetail extends Component {
               </div>
             </div>
             <div className="pay-section-pc">
-              <Pay pid={mdata.product_id} dimensions={mdata.dimensions} seller={mdata.user} price={mdata.price} title={mdata.title} stock={mdata.stock} />
+              <Pay pid={mdata.product_id} pgid={mdata.product_global_id} dimensions={mdata.dimensions} seller={mdata.user} price={mdata.price} title={mdata.title} stock={mdata.stock} />
             </div>
           </div>
           <section className="questions-movil no-web">
