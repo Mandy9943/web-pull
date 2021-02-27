@@ -7,7 +7,7 @@ function PurchaseItem({ item, onSelect }) {
     return (
         <div className="product-item">
             <h5 className="status">{item.purchase_status_name}</h5>
-            <p className="detail-status">{`Ya han pasado 21 dias`}</p>
+            {item.purchase_status_name==="ENTREGADO" && <p className="detail-status">{item.data.days_msg}</p>} 
             {/*NEED FIX*/}
             <div className="content">
                 <a>
@@ -17,7 +17,7 @@ function PurchaseItem({ item, onSelect }) {
                         </div>
                         <section className='description'>
                             <h3>{item.data.product.title}</h3>
-                            <h3>{item.data.total}</h3>
+                            <h3>$ {item.data.total}</h3>
                             <h3 className="product-stock">{item.data.quantity} unidad</h3>
                         </section>
                     </section>

@@ -132,7 +132,7 @@ export default class Summary extends Component {
                     <Sidebar user_data={u_data} cb={this.showSection} />
                     {this.state.display.resume && <AccountSummary user={u_data} />}
                     {this.state.display.orders && <Purchases mode={"buy"} user={u_data} />}
-                    {this.state.display.detail && <PurchasesDetail mode={"buy"} user={u_data} />}
+                    {/* {this.state.display.detail && <PurchasesDetail mode={"buy"} user={u_data} />} */}
                     {this.state.display.bill && <AccountBilling user={u_data} cb={this.showSection} />}
                     
 

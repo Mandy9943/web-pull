@@ -76,7 +76,7 @@ function Purchases(props) {
                    }
                </>
            }
-       </div>:<PurchasesDetail />
+       </div>:<PurchasesDetail item={selected} close={()=>setSelected()}/>
     );
 }
 
