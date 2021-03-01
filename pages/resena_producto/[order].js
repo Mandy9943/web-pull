@@ -2,9 +2,11 @@ import React from 'react';
 import Head from "next/head";
 import ProductReview from '../../components/ProductReview/ProductReview';
 import favicon from "../../assets/img/favicon.svg";
+import { getJwt, getUser, isAuthenticated } from "../../lib/auth";
+import { getOrderDetails } from "../../services/productsApi";
 
 
-function resena_producto() {
+function resena_producto({data}) {
     return (
         <div>
             <Head>
@@ -18,14 +20,19 @@ function resena_producto() {
                 <meta name="Keywords" content="Tienda en Línea" />
                 <link rel="icon" href={favicon} type="image/png" />
             </Head>
-            <ProductReview />
+            <ProductReview order={data}/>
         </div>
     )
 }
 
 export async function getServerSideProps(context) {
 
-    return { props: { data: context.params.order } }
+    let jwt = getJwt(context);
+
+    const res = await getOrderDetails(context.params.order, jwt);
+    const data = await res.data;
+
+    return { props: { data: data } }
 }
 
 export default resena_producto
