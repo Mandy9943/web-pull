@@ -9,8 +9,9 @@ import "./ProductReview.css";
 
 function ProductReview({ order }) {
 
-
-    console.log(order);
+    const [c_rating, setC_rating] = useState(0);
+    const [p_rating, setP_rating] = useState(0);
+    
     return (
         <div className="product-review">
             <Header />
@@ -53,22 +54,22 @@ function ProductReview({ order }) {
                         <FontAwesomeIcon icon={faShoppingCart} />
                         <p><small>{'Calificar compra'}</small></p>
                         <p className="stars">
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
+                            <FontAwesomeIcon className={c_rating>0?'active':'inactive'} icon={faStar} onClick={()=>setC_rating(1)} />
+                            <FontAwesomeIcon className={c_rating>1?'active':'inactive'} icon={faStar} onClick={()=>setC_rating(2)}/>
+                            <FontAwesomeIcon className={c_rating>2?'active':'inactive'} icon={faStar} onClick={()=>setC_rating(3)}/>
+                            <FontAwesomeIcon className={c_rating>3?'active':'inactive'} icon={faStar} onClick={()=>setC_rating(4)}/>
+                            <FontAwesomeIcon className={c_rating>4?'active':'inactive'} icon={faStar} onClick={()=>setC_rating(5)}/>
                         </p>
                     </div>
                     <div className="rating-product">
                         <FontAwesomeIcon icon={faShoppingBag} />
                         <p><small>{'Calificar producto'}</small></p>
                         <p className="stars">
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
+                        <FontAwesomeIcon className={p_rating>0?'active':'inactive'} icon={faStar} onClick={()=>setP_rating(1)} />
+                            <FontAwesomeIcon className={p_rating>1?'active':'inactive'} icon={faStar} onClick={()=>setP_rating(2)}/>
+                            <FontAwesomeIcon className={p_rating>2?'active':'inactive'} icon={faStar} onClick={()=>setP_rating(3)}/>
+                            <FontAwesomeIcon className={p_rating>3?'active':'inactive'} icon={faStar} onClick={()=>setP_rating(4)}/>
+                            <FontAwesomeIcon className={p_rating>4?'active':'inactive'} icon={faStar} onClick={()=>setP_rating(5)}/>
                         </p>
                     </div>
                 </div>
