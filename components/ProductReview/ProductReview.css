@@ -150,6 +150,10 @@
   cursor: pointer;
 }
 
+.product-review .hide{
+  display: none;
+}
+
 .product-review .component-seller .review-comment label{
   float: left;
   margin-left: 4%;

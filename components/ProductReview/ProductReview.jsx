@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Link from "next/link";
 import Header from '../Common/Header';
 import Footer from '../Common/Footer';
@@ -12,6 +12,40 @@ function ProductReview({ order }) {
     const [c_rating, setC_rating] = useState(0);
     const [p_rating, setP_rating] = useState(0);
     
+    const [previews, setPreviews] = useState([]);
+
+    const inputFileRef = useRef(null);
+
+    const openDialog = () => {
+        inputFileRef.current.click();
+    };
+
+    const handleImage = event => {
+        let img = event.target.files[0];
+        let reader = new FileReader();
+        reader.readAsDataURL(img);
+        reader.onload = e => {
+            const item = {file: img, url:e.target.result};
+            setPreviews(previews => [...previews, item]);
+        } 
+    };
+
+    const [comment, setComment] = useState();
+    const handleComment = e => {
+        setComment(e.target.value);
+    };
+
+    const calificate = () => {
+        
+        const payload = {
+            order_id: order.data.order_id,
+            rate_purchase: c_rating,
+            rate_product: p_rating,
+            comments: comment,
+            images: previews.map(item=>item.file)
+        }
+    }
+
     return (
         <div className="product-review">
             <Header />
@@ -75,19 +109,21 @@ function ProductReview({ order }) {
                 </div>
                 <div className="review-comment">
                     <label><small>{'Escribele un comentario al vendedor y carga las fotos del producto recibido'}</small></label>
-                    <input placeholder={'Escribe un comentario'} />
+                    <input value={comment} onChange={handleComment} placeholder={'Escribe un comentario'} />
                 </div>
 
                 <div className="review-images">
                     <div style={{ width: '100%', float: 'left' }}>
-                        <button className="add-image">{'agregar fotos'} <FontAwesomeIcon icon={faPaperclip} /></button>
+                        <button className="add-image" onClick={openDialog}>{'agregar fotos'} <FontAwesomeIcon icon={faPaperclip}/></button>
+                        <input type="file" className={"hide"} ref={inputFileRef} onChange={handleImage}/>
                     </div>
                     <div style={{ width: '100%', float: 'left', paddingLeft: '4%' }}>
-                        <img src="https://picsum.photos/100" />
-                        <img src="https://picsum.photos/100" />
+                        {
+                            previews.map((item, index)=> <img key={index} src={item.url} />)
+                        }                        
                     </div>
                     <div style={{ width: '100%', float: 'left' }}>
-                        <button className="send-review">{'Calificar'}</button>
+                        <button onClick={calificate} className="send-review">{'Calificar'}</button>
                     </div>
                 </div>
             </section>
