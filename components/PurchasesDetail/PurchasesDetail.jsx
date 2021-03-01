@@ -8,7 +8,7 @@ import OptionList from '../OptionList/OptionList';
 import AccountStoreSales from '../AccountStore/AccountStoreSales/AccountStoreSales'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight, faThList, faAngleLeft, faStar, faCheck } from "@fortawesome/free-solid-svg-icons";
-
+import moment from 'moment';
 
 function PurchasesDetail({ item, close }) {
 
@@ -39,8 +39,8 @@ function PurchasesDetail({ item, close }) {
                     <section className="info">
                         <h4 className="title">Pago aprobado</h4>
                         <h4 className="sub-1">{item.data.method.name}</h4>
-                        <h4 className="sub-1">Transacción #7861284</h4>
-                        <h4 className="sub-1">21 de febrero de 2020</h4>
+                        <h4 className="sub-1">{item.data.transaction_id}</h4>
+                        <h4 className="sub-1">{moment(item.data.created_since).locale('es').format('D [de] MMMM [del] YYYY')}</h4>
                     </section>
                 </div>
             </section>
