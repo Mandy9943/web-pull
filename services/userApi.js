@@ -1,4 +1,4 @@
-import { post, get, rDelete } from "../lib/request";
+import { get, post, put, rDelete } from "../lib/request";
 
 export const createUser = async (
   name,
@@ -175,7 +175,7 @@ export const getDSI = async (jwt) => {
 
 export const changeUsername = async (data, jwt) => {
     try {
-        const response = await post("/changeUserName ", {
+        const response = await put("/changeUserName ", {
             new_name: data,
         }, jwt);
         return true;
