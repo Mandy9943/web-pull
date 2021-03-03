@@ -6,7 +6,7 @@ import Footer from '../Common/Footer';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faShoppingCart, faShoppingBag, faPaperclip } from "@fortawesome/free-solid-svg-icons";
 import "./ProductReview.css";
-import {post} from "../../lib/request";
+import {postForm} from "../../lib/request";
 import Modal from "../Common/Modal";
 
 
@@ -35,37 +35,33 @@ function ProductReview({ order, jwt }) {
         } 
     };
 
-    const [comment, setComment] = useState();
+    const [comment, setComment] = useState('');
     const handleComment = e => {
         setComment(e.target.value);
     };
 
-    const toggleModal = () => {
+    const toggleModal = async () => {
         setShowModal(!showModal);
-        // Go back to previous location
-        router.back();
     }
 
     const calificate = async () => {
-        
-        const payload = {
-            order_id: order.data.order_id,
-            rate_purchase: c_rating,
-            rate_product: p_rating,
-            comments: comment,
-            images: previews.map(item=>item.file)
-        }
+        let formData = new FormData();
+        Array.from(previews).forEach(image => {
+            image.file && formData.append('images', image.file);
+        });
+        formData.set('order_id', order.data.order_id);
+        formData.set('rate_purchase', c_rating);
+        formData.set('rate_product', p_rating);
+        formData.set('comments', comment);
 
         try {
-            // TODO Fix this: after succesful API call
-            const res = await post("/ratePurshase", payload, jwt);
-            console.log(res.data);
+            const res = await postForm("/ratePurchase", formData, jwt);
+            // Show Modal
+            setShowModal(true);
         } catch (error) {
-            console.log(error);
+            // TODO Handle error here, need to ask
+            console.log(error.response);
         }
-
-        // Show Modal
-        setShowModal(true);
     }
 
     return (
@@ -73,7 +69,10 @@ function ProductReview({ order, jwt }) {
             <Header />
 
             {showModal &&
-                <Modal content="Monto obrigado" toggle={toggleModal} />
+                <Modal content="Calificación exitosa." toggle={async ()=> {
+                    await toggleModal();
+                    router.back();
+                }} />
             }
 
             <div className="title-review">
