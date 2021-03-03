@@ -6,7 +6,7 @@ import { getJwt, getUser, isAuthenticated } from "../../lib/auth";
 import { getOrderDetails } from "../../services/productsApi";
 
 
-function resena_producto({data}) {
+function resena_producto({data, jwt}) {
     return (
         <div>
             <Head>
@@ -20,7 +20,7 @@ function resena_producto({data}) {
                 <meta name="Keywords" content="Tienda en Línea" />
                 <link rel="icon" href={favicon} type="image/png" />
             </Head>
-            <ProductReview order={data}/>
+            <ProductReview order={data} jwt={jwt}/>
         </div>
     )
 }
@@ -28,11 +28,10 @@ function resena_producto({data}) {
 export async function getServerSideProps(context) {
 
     let jwt = getJwt(context);
-
     const res = await getOrderDetails(context.params.order, jwt);
     const data = await res.data;
 
-    return { props: { data: data } }
+    return { props: { data: data, jwt:jwt } }
 }
 
 export default resena_producto

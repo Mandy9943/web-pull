@@ -1,18 +1,23 @@
 import React, { useState, useRef } from 'react';
+import {useRouter} from 'next/router';
 import Link from "next/link";
 import Header from '../Common/Header';
 import Footer from '../Common/Footer';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faShoppingCart, faShoppingBag, faPaperclip } from "@fortawesome/free-solid-svg-icons";
 import "./ProductReview.css";
+import {post} from "../../lib/request";
+import Modal from "../Common/Modal";
 
 
-function ProductReview({ order }) {
-
+function ProductReview({ order, jwt }) {
+    const router = useRouter();
     const [c_rating, setC_rating] = useState(0);
     const [p_rating, setP_rating] = useState(0);
     
     const [previews, setPreviews] = useState([]);
+
+    const [showModal, setShowModal] = useState(false);
 
     const inputFileRef = useRef(null);
 
@@ -35,7 +40,13 @@ function ProductReview({ order }) {
         setComment(e.target.value);
     };
 
-    const calificate = () => {
+    const toggleModal = () => {
+        setShowModal(!showModal);
+        // Go back to previous location
+        router.back();
+    }
+
+    const calificate = async () => {
         
         const payload = {
             order_id: order.data.order_id,
@@ -44,11 +55,26 @@ function ProductReview({ order }) {
             comments: comment,
             images: previews.map(item=>item.file)
         }
+
+        try {
+            // TODO Fix this: after succesful API call
+            const res = await post("/ratePurshase", payload, jwt);
+            console.log(res.data);
+        } catch (error) {
+            console.log(error);
+        }
+
+        // Show Modal
+        setShowModal(true);
     }
 
     return (
         <div className="product-review">
             <Header />
+
+            {showModal &&
+                <Modal content="Monto obrigado" toggle={toggleModal} />
+            }
 
             <div className="title-review">
                 <h3>{'Califica tu compra'}</h3>
