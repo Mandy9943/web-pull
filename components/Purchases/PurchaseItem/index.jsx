@@ -1,6 +1,7 @@
 import React from 'react';
 import './PurchaseItem.css';
 import Link from 'next/link';
+import {getProductImgs} from "../../../lib/functions";
 
 function PurchaseItem({ item, onSelect }) {
 
@@ -13,7 +14,10 @@ function PurchaseItem({ item, onSelect }) {
                 <a>
                     <section className="product">
                         <div className="product-card-img">
-                            <img alt={item.data.product.title} src={item.data.product.images.length > 0 ? item.data.product.images[0].url : 'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png'} />
+                            <img
+                                alt={item.data.product.title}
+                                src={getProductImgs(item.data.product.images)}
+                            />
                         </div>
                         <section className='description'>
                             <h3>{item.data.product.title}</h3>

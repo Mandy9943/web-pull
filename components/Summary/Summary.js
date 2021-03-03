@@ -94,14 +94,14 @@ export default class Summary extends Component {
         if(tab[1]!==undefined){
             this.setState({
                 display: {
-                resume: false,
-                myData: tab[1]==="opciones"?true:false,
-                bill: tab[1]==="facturación"?true:false,
-                orders: tab[1]==="compras"?true:false,
-                mySales: tab[1]==="ventas"?true:false,
-                questions: false,
-                items: false,
-                detail: false
+                    resume: false,
+                    myData: tab[1]==="opciones"?true:false,
+                    bill: tab[1]==="facturación"?true:false,
+                    orders: tab[1]==="compras"?true:false,
+                    mySales: tab[1]==="ventas"?true:false,
+                    questions: false,
+                    items: false,
+                    detail: false
                 }
             })   
         }
@@ -116,7 +116,6 @@ export default class Summary extends Component {
     }
 
     render() {
-        console.log(this.state.display.bill);
         let u_data = this.props.user_data;
 
         let url= "//www.sic.gov.co";

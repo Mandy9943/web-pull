@@ -35,48 +35,50 @@ function Purchases(props) {
 
     const handleSelect = item => {
         setSelected(item);
+        console.log(item);
     };
 
     return (
-           !selected ? 
-           <div className="purchase-list">
-           <h1 className="status-title">{props.mode === "sell" ? "Mis ventas" : "Mis Compras"}</h1>
-           {props.mode === "sell" ? <>
-               <AccountStoreSales />
-               <div className="account-store-sales-wrap-search">
-                   <div className="account-store-sales-wrap-filter">
-                       <p>
-                           <FontAwesomeIcon icon={faThList} /> Filtrar y ordenar
-                   </p>
-                       <div className="account-store-sales-wrap-input-search">
-                           <span>
-                               <FontAwesomeIcon icon={faSearch} />
-                           </span>
-                           <input className="account-store-sales-input-search" placeholder='buscar por # o titulo' />
+           !selected
+           ? <div className="purchase-list">
+               <h1 className="status-title">{props.mode === "sell" ? "Mis ventas" : "Mis Compras"}</h1>
+               {props.mode === "sell"
+                   ? <>
+                       <AccountStoreSales />
+                       <div className="account-store-sales-wrap-search">
+                           <div className="account-store-sales-wrap-filter">
+                               <p>
+                                   <FontAwesomeIcon icon={faThList} /> Filtrar y ordenar
+                           </p>
+                               <div className="account-store-sales-wrap-input-search">
+                                   <span>
+                                       <FontAwesomeIcon icon={faSearch} />
+                                   </span>
+                                   <input className="account-store-sales-input-search" placeholder='buscar por # o titulo' />
+                               </div>
+                           </div>
+                           <span className="sub-title"> {purchases.length} ventas</span>
                        </div>
-                   </div>
-                   <span className="sub-title"> {purchases.length} ventas</span>
-               </div>
 
-                   {purchases.length===0 ?
-                       <section className="empty-text">
-                           <span>No tiene ninguna venta</span>
-                       </section>
-                       : orderList
-                   }
-           </>
-               : <>
-
-                   {purchases.length===0 ?
-                       <section className="empty-text">
-                           <span>No tiene compras anteriores</span>
-                       </section>
-                       : 
-                       purchases.map((item, index) => <PurchaseItem key={index} item={item} onSelect={handleSelect} />)
-                   }
-               </>
-           }
-       </div>:<PurchasesDetail item={selected} close={()=>setSelected()}/>
+                           {purchases.length===0 ?
+                               <section className="empty-text">
+                                   <span>No tiene ninguna venta</span>
+                               </section>
+                               : orderList
+                           }
+                   </>
+                   : <> {/* Mode = buy */}
+                       {purchases.length===0 ?
+                           <section className="empty-text">
+                               <span>No tiene compras anteriores</span>
+                           </section>
+                           :
+                           purchases.map((item, index) => <PurchaseItem key={index} item={item} onSelect={handleSelect} />)
+                       }
+                   </>
+               }
+           </div>
+           :<PurchasesDetail item={selected} close={()=>setSelected()} />
     );
 }
 

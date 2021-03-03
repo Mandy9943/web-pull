@@ -9,10 +9,12 @@ import AccountStoreSales from '../AccountStore/AccountStoreSales/AccountStoreSal
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight, faThList, faAngleLeft, faStar, faCheck } from "@fortawesome/free-solid-svg-icons";
 import moment from 'moment';
+import {getProductImgs} from '../../lib/functions';
+
 
 function PurchasesDetail({ item, close }) {
-
     console.log(item);
+
     return (
         <div className="purchases-detail">
 
@@ -27,7 +29,10 @@ function PurchasesDetail({ item, close }) {
 
             <section className="twins">
                 <div className="item-product">
-                    <img alt={item.data.product.title} src={item.data.product.images.length > 0 ? item.data.product.images[0].url : 'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png'} />
+                    <img
+                        alt={item.data.product.title}
+                        src={getProductImgs(item.data.product.images)}
+                    />
                     <div className="info">
                         <p className="title">{item.data.product.title}</p>
                         <p className="price">$ {item.data.total}</p>
@@ -48,7 +53,7 @@ function PurchasesDetail({ item, close }) {
             <section className="twins">
                 <div className="vendor-info">
                     <section className="info">
-                        <img src="https://picsum.photos/100" />
+                        <img src={item.data.seller.photo} />
                         <section className="info-text">
                             <h4 className="title">Vendedor</h4>
                             <h4 className="sub-1">{item.data.seller.name + " " + item.data.seller.last_name}</h4>
@@ -64,13 +69,46 @@ function PurchasesDetail({ item, close }) {
                         </Link>
                     </div>
                 </div>
-                <div className="purchase-evaluation-link">
-                    <div className="link-content">
-                        <Link href={`/resena_producto/${item.data.order_id}`}><a>Calificar compra</a></Link>
+                {item.show_calificate
+                    ? <div className="purchase-evaluation-link">
+                        <div className="link-content">
+                            <Link href={`/resena_producto/${item.data.order_id}`}><a>Calificar compra</a></Link>
+                        </div>
                     </div>
-                </div>
+                    : <div className="vendor-reputation">
+                        <section className="info">
+                            <h4 className="title">Calificación de la tienda</h4>
+                            <p className="stars">
+                                {Array.from(Array(item.rate_purchase_data.rate_shop), i=>(
+                                    <FontAwesomeIcon icon={faStar} />
+                                ))}
+                            </p>
+                            <h4 className="sub">Excelente vendedor!</h4>
+                        </section>
+                        <img src={item.data.seller.photo} />
+                    </div>
+                }
             </section>
 
+            {(!item.show_calificate && item.rate_purchase_data) &&
+                <div className="product-valoration">
+                    <section className="info">
+                        <img src={getProductImgs(item.data.product.images)}/>
+                        <section className="info-text">
+                            <h4 className="title">Calificación del producto</h4>
+                            <h4 className="sub-1">{item.data.product.title}</h4>
+                            <p className="description">{item.rate_purchase_data.comments}</p>
+                        </section>
+                    </section>
+                    { item.rate_purchase_data.images.length > 0 &&
+                    <section className="thumbnails">
+                        {item.rate_purchase_data.images.map(url=>(
+                            <img src={"https://api.kieroapi.org/getFile/" + url} />
+                        ))}
+                    </section>
+                    }
+                </div>
+            }
 
             {/* <section className="detail-info">
                 <h4 className="title">Detalle de la compra</h4>
@@ -88,21 +126,7 @@ function PurchasesDetail({ item, close }) {
                 </section>
             </section> */}
 
-            {/* <section className="twins">
-                <div className="vendor-reputation">
-                    <section className="info">
-                        <h4 className="title">Calificación de la tienda</h4>
-                        <p className="stars">
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                        </p>
-                        <h4 className="sub">Excelente vendedor!</h4>
-                    </section>
-                    <img src="https://picsum.photos/100" />
-                </div>
+            {/*<section className="twins">
                 <div className="payment-status">
                     <FontAwesomeIcon icon={faCheck} />
                     <section className="info">
@@ -112,30 +136,7 @@ function PurchasesDetail({ item, close }) {
                         <h4 className="sub-1">21 de febrero de 2020</h4>
                     </section>
                 </div>
-            </section> */}
-
-          
-
-            {/* <div className="product-valoration">
-                <section className="info">
-                    <img src="https://picsum.photos/100" />
-                    <section className="info-text">
-                        <h4 className="title">Calificación del producto</h4>
-                        <h4 className="sub-1"> Portátil Premium 2020 HP 15 15,6" HD pantalla táctil Premium...</h4>
-                    </section>
-                </section>
-                <p className="description">Lo compramos porque necesitábamos un 2 portátil en casa y el tamaño no era importante. Por lo que me costo 250eur me da un rendimiento muy bueno. Para el trabajo no tengo ningún problema, la batería me ha durado todo el día.</p>
-                <section className="thumbnails">
-                    <img src="https://picsum.photos/100" />
-                    <img src="https://picsum.photos/100" />
-                    <img src="https://picsum.photos/100" />
-                    <img src="https://picsum.photos/100" />
-                    <img src="https://picsum.photos/100" />
-                </section>
-            </div> */}
-
-
-
+            </section>*/}
         </div>
     );
 }
