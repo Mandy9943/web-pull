@@ -83,7 +83,9 @@ function PurchasesDetail({ item, close }) {
                                     <FontAwesomeIcon icon={faStar} />
                                 ))}
                             </p>
+                            {item.rate_purchase_data.rate_shop == 5 &&
                             <h4 className="sub">Excelente vendedor!</h4>
+                            }
                         </section>
                         <img src={item.data.seller.photo} />
                     </div>
