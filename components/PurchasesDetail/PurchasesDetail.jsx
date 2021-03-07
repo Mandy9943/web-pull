@@ -13,8 +13,6 @@ import {getProductImgs} from '../../lib/functions';
 
 
 function PurchasesDetail({ item, close }) {
-    console.log(item);
-
     return (
         <div className="purchases-detail">
 

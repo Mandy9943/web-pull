@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
 import CardImg from "../../assets/img/cards-img/kohgsdfRecurso28.png";
-import "./MyProducts.css";
+import "./MyProducts.sass";
 import ProductItem from "../ProductItem"
 import { getData } from "../../services/userApi";
 import { updateProduct } from "../../services/productsApi"
@@ -118,6 +118,7 @@ export default class MyProducts extends Component {
         
     render() {
         let tmp = []
+        // TODO Implement this in a different component
         let productList = this.state.products.map((product, i) => {
 
             let statusI = product.status === 1 ? "cancel-btn delete" : "main-button"
@@ -173,25 +174,30 @@ export default class MyProducts extends Component {
 
         return (
             <div className="purchase-list" onClick={this.closeOptions}>
-                <h1 className="status-title" style={{ margin: '0 0 15px 0' }}>Publicaciones</h1>
-                <h5 className="accent">Gestion</h5>
-                {2 == 0 ?
-                    <section className="empty-text">
-                        {productList.length == 0 ? <span>No tienes Publicaciones</span> :  <Spinner /> }
-                        {/*NEED SPIINER*/}
-                    </section>
+                <h1 className="status-title">Publicaciones</h1>
+                <h5 className="accent">Gestión</h5>
+                <div className="account-store-sales-wrap-search">
+                    <div className="account-store-sales-wrap-filter">
+                        <div className="account-store-sales-wrap-input-search">
+                            <span>
+                                <FontAwesomeIcon icon={faSearch} />
+                            </span>
+                            <input className="account-store-sales-input-search" placeholder='buscar por # o titulo' />
+                        </div>
+                        <span className={"sub-title"}>{0} publicaciones</span>
+                    </div>
+                </div>
+                {true ?
+                    productList.length == 0 &&
+                        <section className="empty-text">
+                            <h5>Aún no tienes publicaciones</h5>
+                            <p>Empieza ahora...</p>
+                            <Link href="#">
+                                <h5 className={"accent"}><a>Crear publicacion</a></h5>
+                            </Link>
+                        </section>
                     :
                     <>
-                        <div className="account-store-sales-wrap-search">
-                            <div className="account-store-sales-wrap-filter">
-                                <div className="account-store-sales-wrap-input-search">
-                                    <span>
-                                        <FontAwesomeIcon icon={faSearch} />
-                                    </span>
-                                    <input className="account-store-sales-input-search" placeholder='buscar por # o titulo' />
-                                </div>
-                            </div>
-                        </div>
                         <section className="list-publications">
                             {productList}
                         </section>

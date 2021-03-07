@@ -11,7 +11,50 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faThList } from "@fortawesome/free-solid-svg-icons";
 import PurchaseItem from './PurchaseItem';
 import PurchasesDetail from '../PurchasesDetail';
+import OrderItem from '../OrderItem/OrderItem.js';
 
+const data = {
+    "code": 200,
+    "data": [
+        {
+            "created_since": "2020-06-17T23:16:04.226275",
+            "method_id": 2,
+            "order_id": 7,
+            "product_id": 41479552,
+            "purchase_status": "ENTREGADO",
+            "quantity": 1,
+            "seller_id": 22,
+            "status": 2,
+            "total": "135400.00",
+            "transaction_id": null,
+            "updated_since": "2021-03-04T00:00:00",
+            "user_id": 5551,
+            "product": {
+                "title": "Dell Inspiron 15 3000 Series, Core i3 HD 16``",
+                "images": [],
+                "category": "Electronica"
+            },
+            "client": {
+                "name": "Francisco",
+                "last_name": "Aro",
+                "phone": 55665566,
+
+            }
+        }
+    ],
+    "error": {},
+    "filters": [],
+    "pagination": {}
+}
+
+
+function processSellData(data) {
+    // Esta uncion es para que los datos devueltos por el endpoint /shop/orders/
+    // tengan el mismo formato del de las ventas.
+    return data.data.map(record=>{
+            return {data: record}
+        })
+}
 
 function Purchases(props) {
 
@@ -20,13 +63,16 @@ function Purchases(props) {
     const [selected, setSelected] = useState();
 
     useEffect(() => {
-        const endp = props.mode === "sell" ? "/getSells" : "/getPurchases?page=1&size=4"
-        getData(endp, props.user.jwt)
-            .then((response) => {
-                setPagination(response.data.pagination);
-                setPurchases(response.data.purchases);
-            });
-    
+        // const endp = props.mode === "sell" ? "/shop/orders?page=1&limit=4" : "/getPurchases?page=1&size=4"
+        // getData(endp, props.user.jwt)
+        //     .then((response) => {
+        //         setPagination(response.data.pagination);
+        //         setPurchases(processSellData(response.data));   // Dirty hack the funciton
+        //     });
+
+        setPagination(data.pagination);
+        setPurchases(processSellData(data));   // Dirty hack the funciton
+
         return () => {
             setPagination();
             setPurchases([]);
@@ -57,15 +103,14 @@ function Purchases(props) {
                                    <input className="account-store-sales-input-search" placeholder='buscar por # o titulo' />
                                </div>
                            </div>
-                           <span className="sub-title"> {purchases.length} ventas</span>
+                           {/*<span className="sub-title"> {purchases.length} ventas</span>*/}
                        </div>
-
-                           {purchases.length===0 ?
-                               <section className="empty-text">
-                                   <span>No tiene ninguna venta</span>
-                               </section>
-                               : orderList
-                           }
+                       {purchases.length===0 ?
+                           <section className="empty-text">
+                               <span>No tiene ninguna venta</span>
+                           </section>
+                           : purchases.map((item, index) => <OrderItem key={index} item={item} onSelect={handleSelect} />)
+                       }
                    </>
                    : <> {/* Mode = buy */}
                        {purchases.length===0 ?
@@ -78,7 +123,13 @@ function Purchases(props) {
                    </>
                }
            </div>
-           :<PurchasesDetail item={selected} close={()=>setSelected()} />
+           : <>{props.mode === "sell"
+                   ? <a href="#" onClick={e=>{
+                       e.preventDefault();
+                       setSelected();
+                   }}>Order detail, to do</a>
+                   : <PurchasesDetail item={selected} close={() => setSelected()}/>
+               }</>
     );
 }
 
