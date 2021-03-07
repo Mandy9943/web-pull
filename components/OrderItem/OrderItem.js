@@ -1,11 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import {getProductImgs} from "../../lib/functions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faCheck, faStar} from "@fortawesome/free-solid-svg-icons";
 import './OrderItem.sass';
+import Modal from '../../components/Common/Modal';
 // import '../Purchases/PurchaseItem/PurchaseItem.css';
 
 export default function OrderItem({ item, onSelect }) {
-    console.log(item)
+    const [showModal, setShowModal] = useState(false)
+
+    const qModal = (
+        <section>
+            <div className="item-product-modal">
+                <div className="vendor-reputation">
+                    <section className="info">
+                        <p className="stars">
+                            {Array.from(Array(item.data.rate_purchase_data.rate_shop), i=>(
+                                <FontAwesomeIcon icon={faStar} />
+                            ))}
+                        </p>
+                        {item.data.rate_purchase_data.rate_shop == 5 &&
+                        <h4 className="sub">Excelente vendedor!</h4>
+                        }
+                    </section>
+                    <section className="info-text">
+                        <h3>Calificación del producto</h3>
+                        <h4 className="sub-1">{item.data.product.title}</h4>
+                        <p className="description">{item.data.rate_purchase_data.comments}</p>
+                    </section>
+                </div>
+            </div>
+        </section>
+    )
+
     return (
         <div className="order-item">
             {item.purchase_status==="CALIFICADA" &&
@@ -35,11 +63,26 @@ export default function OrderItem({ item, onSelect }) {
                         <a>Ver Mensaje</a>
                     {/*</Link>*/}
                 </section>
-
-                <section className="info">
-                    <a onClick={()=>onSelect(item)}> Verificar</a>
-                </section>
-
+                {item.data.purchase_status === 'ENTREGADO' &&
+                    <section className="info">
+                        <p>En espera por calificacion</p>
+                    </section>
+                }
+                {item.data.purchase_status === 'CALIFICADO' &&
+                    <section className="info">
+                        <FontAwesomeIcon icon={faCheck}/>
+                        <p>Venta calificada</p>
+                        <a onClick={() => setShowModal(true)}> Ver</a>
+                        { showModal &&
+                            <Modal content={qModal} toggle={()=>setShowModal(false)}/>
+                        }
+                    </section>
+                }
+                {item.data.purchase_status === 'Algo' &&
+                    <section className="info">
+                        <a onClick={() => onSelect(item)}> Verificar</a>
+                    </section>
+                }
             </div>
         </div>
     );

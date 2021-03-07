@@ -21,7 +21,7 @@ const data = {
             "method_id": 2,
             "order_id": 7,
             "product_id": 41479552,
-            "purchase_status": "ENTREGADO",
+            "purchase_status": "CALIFICADO",
             "quantity": 1,
             "seller_id": 22,
             "status": 2,
@@ -39,6 +39,11 @@ const data = {
                 "last_name": "Aro",
                 "phone": 55665566,
 
+            },
+            "rate_purchase_data": {
+                "rate_shop": 5,
+                "created_since": "yesterday",
+                "comments": "Este producto es la hostia"
             }
         }
     ],
