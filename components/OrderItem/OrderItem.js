@@ -83,7 +83,7 @@ export default function OrderItem({ item, onSelect }) {
                         }
                     </section>
                 }
-                {item.data.purchase_status === 'Algo' &&
+                {item.data.purchase_status === 'Nueva' &&
                     <section className="info">
                         <a onClick={() => onSelect(item)}> Verificar</a>
                     </section>

@@ -12,6 +12,7 @@ import { faSearch, faThList } from "@fortawesome/free-solid-svg-icons";
 import PurchaseItem from './PurchaseItem';
 import PurchasesDetail from '../PurchasesDetail';
 import OrderItem from '../OrderItem/OrderItem.js';
+import OrdersDetail from '../OrdersDetail/OrdersDetail.js';
 
 const data = {
     "code": 200,
@@ -21,7 +22,7 @@ const data = {
             "method_id": 2,
             "order_id": 7,
             "product_id": 41479552,
-            "purchase_status": "CALIFICADO",
+            "purchase_status": "NUEVA",
             "quantity": 1,
             "seller_id": 22,
             "status": 2,
@@ -129,10 +130,7 @@ function Purchases(props) {
                }
            </div>
            : <>{props.mode === "sell"
-                   ? <a href="#" onClick={e=>{
-                       e.preventDefault();
-                       setSelected();
-                   }}>Order detail, to do</a>
+                   ? <OrdersDetail item={selected} close={() => setSelected()}/>
                    : <PurchasesDetail item={selected} close={() => setSelected()}/>
                }</>
     );
