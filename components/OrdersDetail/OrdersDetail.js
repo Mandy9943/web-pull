@@ -2,18 +2,30 @@ import React from 'react';
 import Link from 'next/link';
 import './OrdersDetail.sass'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faAngleRight} from "@fortawesome/free-solid-svg-icons";
+import {faAngleRight, faPaperclip} from "@fortawesome/free-solid-svg-icons";
 import {getProductImgs} from "../../lib/functions";
 
-export default function OrderDetail({item}) {
+export default function OrderDetail({item, close}) {
     return (
         <div className="orders-detail">
             <section class="left-panel">
                 <div className="breadcrumb">
                     <a onClick={close}>Ventas</a>
                     <FontAwesomeIcon icon={faAngleRight} />
-                    <a>{'ID VENTA SUPONGO'}</a>
+                    <a>#{item.data.order_id}</a>
                 </div>
+
+                <main>
+                    <div className="messages-area">
+                    </div>
+
+                    <div className="action-area">
+                        <input type="text" placeholder="Escribe tu mensaje"/>
+                        <button>Algo</button>
+                        <button>Enviar</button>
+                    </div>
+                </main>
+
             </section>
             <section className="right-panel">
                 <Link href={"/ayuda"}>
