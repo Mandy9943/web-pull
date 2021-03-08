@@ -60,7 +60,12 @@ export default function OrderItem({ item, onSelect }) {
                     <p>{item.data.client.name + " " + item.data.client.last_name}</p>
                     <p className="phone-client"> {item.data.client.phone}</p>
                     {/*<Link href={"/chat/" + 'Texto'}>*/}
+                    <div className="messages">
                         <a>Ver Mensaje</a>
+                        {1 &&
+                            <span className="accent-background">5</span>
+                        }
+                    </div>
                     {/*</Link>*/}
                 </section>
                 {item.data.purchase_status === 'ENTREGADO' &&
