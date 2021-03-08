@@ -201,3 +201,13 @@ export const sendAnswer = (msg, product_id, jwt) => {
         return error;
     }
 };
+
+export const getOrderDetails = (order_id, jwt) => {
+    try {
+        let endpoint = ("/getOrderDetails/"+order_id);
+        let data = sget(endpoint, jwt)
+        return data;
+    } catch (error) {
+        return error;
+    }
+};

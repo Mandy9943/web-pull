@@ -134,11 +134,24 @@
   margin-top: 10px;
 }
 
-.product-review .component-seller .seller-review-content .stars svg {
+.active{
   margin: auto 5px;
   width: 30px;
   height: 30px;
   color: #3F7FE1;
+  cursor: pointer;
+}
+
+.inactive{
+  margin: auto 5px;
+  width: 30px;
+  height: 30px;
+  color: #a9a9a9;
+  cursor: pointer;
+}
+
+.product-review .hide{
+  display: none;
 }
 
 .product-review .component-seller .review-comment label{

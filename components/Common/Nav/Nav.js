@@ -63,11 +63,11 @@ export default class Nav extends Component {
     loadNotifications = () => {
         const endp = "/getNotifications"
         console.log("LoadNotifications")
-        console.log(this.props)
+        // console.log(this.props)
         getData(endp, this.props.jwt)
             .then((response) => {
                 this.setState({ notifications: response.data });
-                console.log(response.data);
+                // console.log(response.data);
                 setTimeout(this.loadNotifications,60000);
             });
     }

@@ -1,6 +1,24 @@
+
 .purchases-detail {
   padding: 40px;
   padding-top: 42px;
+}
+
+.purchases-detail .breadcrumb {
+  margin: 40px 0px 20px;
+  color: #CF0A2C;
+  margin-bottom:3em;
+}
+
+.purchases-detail .breadcrumb a {
+  color: #111111;
+  font-size: 15px;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.purchases-detail .breadcrumb svg {
+  margin: 0px 5px;
 }
 
 .purchases-detail h1 {
@@ -23,23 +41,22 @@
 .purchases-detail .twins {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
+  -ms-grid-columns: 1.5fr 1fr;
+      grid-template-columns: 1.5fr 1fr;
   grid-gap: 30px;
 }
 
 .purchases-detail .item-product {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 2fr;
-      grid-template-columns: 1fr 2fr;
-  padding: 15px;
-  margin-top: 15px;
+  display: flex !important;
+  padding: 30px;
+  margin-top: 30px;
 }
 
 .purchases-detail .item-product img {
-  height: 100%;
   border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  margin-right: 1em;
 }
 
 .purchases-detail .item-product .info .t1, .purchases-detail .item-product .info .title {
@@ -49,11 +66,9 @@
 
 .purchases-detail .item-product .info .price, .purchases-detail .item-product .info .unit {
   font-size: 20px;
+  font-weight: 400 !important;
 }
 
-.purchases-detail .item-product .info .title, .purchases-detail .item-product .info .price {
-  font-weight: 600;
-}
 
 .purchases-detail .item-product .info .description {
   font-weight: 15px;
@@ -203,7 +218,7 @@
 
 .purchases-detail .vendor-info .link-msg a {
   color: #CF0A2C;
-  font-size: 23px;
+  font-size: 18px;
   font-weight: 500;
 }
 
@@ -273,6 +288,22 @@
   width: 100%;
 }
 
+.purchase-evaluation-link{
+  -webkit-box-shadow: 0px 3px 6px #11111129;
+    box-shadow: 0px 3px 6px #11111129;
+    border-radius: 5px;
+    background: white;
+    margin-top: 30px;
+}
+.purchase-evaluation-link .link-content{
+  text-align: center;
+}
+
+.purchase-evaluation-link a{ 
+  position: relative;
+  top: 5em;
+}
+
 @media (max-width: 700px) {
   .purchases-detail {
     padding: 15px;
@@ -292,14 +323,7 @@
         grid-template-columns: 1fr 1fr;
     grid-gap: 15px;
   }
-  .purchases-detail .item-product {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: 1fr 2fr;
-        grid-template-columns: 1fr 2fr;
-    padding: 15px;
-    margin-top: 15px;
-  }
+
   .purchases-detail .item-product img {
     height: initial;
     width: 90%;
@@ -311,9 +335,7 @@
   .purchases-detail .item-product .info .price, .purchases-detail .item-product .info .unit {
     font-size: 15px;
   }
-  .purchases-detail .item-product .info .title, .purchases-detail .item-product .info .price {
-    font-weight: 600;
-  }
+ 
   .purchases-detail .item-product .info .description {
     font-weight: 15px;
     margin-bottom: 10px;
