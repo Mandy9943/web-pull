@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import './OrdersDetail.sass'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faAngleRight, faPaperclip} from "@fortawesome/free-solid-svg-icons";
+import {faAngleRight, faCheck, faPaperclip} from "@fortawesome/free-solid-svg-icons";
 import {getProductImgs} from "../../lib/functions";
+import Modal from '../../components/Common/Modal';
 
-export default function OrderDetail({item, close}) {
+export default function OrderDetail({item, close, verifyOrder}) {
+    const [showModal, setShowModal] = useState(false);
+
+    const modalBodySuccess = (
+        <div id="modal-body">
+            <FontAwesomeIcon icon={faCheck}/>
+            <p>Verificado</p>
+        </div>
+    );
+
     return (
         <div className="orders-detail">
             <section class="left-panel">
@@ -21,7 +31,7 @@ export default function OrderDetail({item, close}) {
 
                     <div className="action-area">
                         <input type="text" placeholder="Escribe tu mensaje"/>
-                        <button>Algo</button>
+                        <a><FontAwesomeIcon icon={faPaperclip} /></a>
                         <button>Enviar</button>
                     </div>
                 </main>
@@ -84,9 +94,27 @@ export default function OrderDetail({item, close}) {
                     <p className="description">
                         Una vez confirme los detalles del producto y el tiempo de entrega podrás calificar la venta como verificada.
                     </p>
-                    <a href="#">He verificado esta venta</a>
+                    <a onClick={async (e, id)=> {
+                        e.preventDefault();
+
+                        // Steps to follow:
+                        // 1- Send request
+                        // let res = verifyOrder(e, id)
+
+                        // 2- Show Modal Exit after Modal and return to previous page
+                        setShowModal(true);
+
+                    }}>He verificado esta venta</a>
                 </section>
                 {/* Fin Seccion Action */}
+
+                {/*  Modal  */}
+                {showModal &&
+                    <Modal content={modalBodySuccess} toggle={async ()=>{
+                        setShowModal(false);
+                        close();
+                    }}/>
+                }
 
             </section>
         </div>

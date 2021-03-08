@@ -85,7 +85,7 @@ export default function OrderItem({ item, onSelect }) {
                 }
                 {item.data.purchase_status === 'NUEVA' &&
                     <section className="info">
-                        <a onClick={() => onSelect(item)}> Verificar</a>
+                        <a onClick={()=>onSelect(item)}> Verificar</a>
                     </section>
                 }
             </div>
