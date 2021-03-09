@@ -3,19 +3,30 @@
   display: grid;
   -ms-grid-columns: auto 1fr;
       grid-template-columns: auto 1fr;
-  padding: 15px;
+  padding: 10px;
   border-bottom: 0.5px solid #BEBEBE;
   color: #111111;
 }
-
-.notification-item img {
-  width: 80px;
+.notification-item a {
+margin: 0;
+}
+.notification-item-img  {
   height: 80px;
+  width: 80px;
+  margin: 0 auto 0;
+  left: 0;
+}
+.notification-item-img img {
+  height: auto;
+  max-height: 80px;
+  width: 80px;
+  float: left;
 }
 
 .notification-item .description {
   text-align: left;
   padding-left: 15px;
+  padding-top: 10px ;
 }
 
 .notification-item .description h4 {
@@ -30,8 +41,9 @@
 
 .notification-item .description .product-title {
   font-size: 14px;
-  font-weight: bold;
+  font-weight: 500;
   line-height: 1;
+  padding-top: 5px;
 }
 
 .notification-item .description .question {
@@ -47,12 +59,13 @@
 
 .notification-item .description .actions {
   float: right;
-  padding-top: 7px;
+  margin-top: 25px;
 }
 
 .notification-item .description .actions a {
   color: #CF0A2C;
   margin: auto;
+  font-size: 13px;
 }
 
 .notification-item .description .actions a:hover {

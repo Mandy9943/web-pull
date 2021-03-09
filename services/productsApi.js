@@ -63,6 +63,7 @@ export const getSellerByProduct = (product) => {
     try {
         let endpoint = ("/getSellerByIdProduct/"+product);
         let data = sget(endpoint)
+        console.log("data", data);
         return data;
     } catch (error) {
         return error;

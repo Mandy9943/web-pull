@@ -356,7 +356,7 @@ export default class PaymentWay extends Component {
                         <div className="content-product-description">
                             <p>{this.props.data.title}</p>
                             <p className="quantity">Cantidad: {this.state.productQuantity}</p>
-                            <h3>Total: $ {totalPrice}</h3>
+                            <h3>Total: $ {totalPrice} </h3>
                         </div>
                     </div>
                     <h2>Elige la forma de pago</h2>
@@ -527,7 +527,7 @@ export default class PaymentWay extends Component {
                                 <div className="content-product-description">
                                     <p>{this.props.data.title}</p>
                                     <p className="quantity">Cantidad: {this.state.productQuantity}</p>
-                                    <h3>$ {totalPrice}</h3>
+                                    <h3>$ {totalPrice}  </h3>
                                 </div>
                             </div>
 

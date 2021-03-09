@@ -26,15 +26,15 @@ class DetailProductInfo extends Component {
           <div className="info">
             <div className="item">
               <span className="title">Alto</span>
-              <span className="sub-title">{this.props.length}"</span>
+              <span className="sub-title">{parseFloat(this.props.length).toFixed(2)}"</span>
             </div>
             <div className="item">
               <span className="title">Ancho</span>
-              <span className="sub-title">{this.props.width}"</span>
+              <span className="sub-title">{parseFloat(this.props.width).toFixed(2)}"</span>
             </div>
             <div className="item">
               <span className="title">Peso </span>
-              <span className="sub-title">{this.props.weight} Lb</span>
+              <span className="sub-title">{parseFloat(this.props.weight).toFixed(2)} Lb</span>
             </div>
           </div>
         </section>
@@ -48,25 +48,25 @@ class DetailProductInfo extends Component {
             <p>
               {this.props.desciption}
             </p>
-            
+
           </div>
           <section className="characteristics-web no-movil">
             <div className="info-shops edit">
               <a>
-                <p>Caracterìsticas</p>
+                <p>Características</p>
               </a>
             </div>
             <div className="info">
               <div className="item">
-                <span className="title">Alto: {this.props.length}"</span>
+                <span className="title">Alto: {parseFloat(this.props.length).toFixed(2)}"</span>
                 
               </div>
               <div className="item">
-                <span className="title">Ancho: {this.props.width}"</span>
+                <span className="title">Ancho: {parseFloat(this.props.width).toFixed(2)}"</span>
                 
               </div>
               <div className="item">
-                <span className="title">Peso: {this.props.weight} Lb</span>
+                <span className="title">Peso: {parseFloat(this.props.weight).toFixed(2)} Lb</span>
               </div>
             </div>
             <br />
