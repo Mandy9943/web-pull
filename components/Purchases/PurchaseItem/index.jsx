@@ -15,7 +15,7 @@ function PurchaseItem({ item, onSelect }) {
                     <section className="product">
                         <div className="product-card-img">
                             <img
-                                alt={item.data.product.title}
+                                alt={item.data.product.title.length < 10 ? item.data.product.title : item.data.product.title.slice(0, 10)}
                                 src={getProductImgs(item.data.product.images)}
                             />
                         </div>
@@ -29,7 +29,7 @@ function PurchaseItem({ item, onSelect }) {
 
                 <section className="info">
                     <a onClick={()=>onSelect(item)}> Detalle de compra</a>
-                    <p>Vendedor:</p>
+                    <p className="vendedor">Vendedor:</p>
                     <p>{item.data.seller.name + " " + item.data.seller.last_name}</p>
                     <p className="phone-client"> {item.data.seller.phone}</p>
                     <Link href={"/chat/" + 'Texto'}>
