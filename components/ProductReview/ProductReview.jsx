@@ -18,6 +18,7 @@ function ProductReview({ order, jwt }) {
     const [previews, setPreviews] = useState([]);
 
     const [showModal, setShowModal] = useState(false);
+    const [errorModal, setErrorModal] = useState(true);
 
     const inputFileRef = useRef(null);
 
@@ -61,8 +62,12 @@ function ProductReview({ order, jwt }) {
         } catch (error) {
             // TODO Handle error here, need to ask
             console.log(error.response);
+            setErrorModal(true);
         }
     }
+    let months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+    let dateTime = new Date(order.data.created_since.replace(' ', 'T'));
+    let dateTimeFormated = dateTime.getDate() + " de " + months[dateTime.getMonth()] + " " + dateTime.getHours() + ":" + dateTime.getMinutes();
 
     return (
         <div className="product-review">
@@ -75,6 +80,10 @@ function ProductReview({ order, jwt }) {
                 }} />
             }
 
+            {errorModal &&
+                <Modal content="Ha ocurrido un error en la clasificacion." toggle={() => {}} />
+            }
+
             <div className="title-review">
                 <h3>{'Califica tu compra'}</h3>
             </div>
@@ -84,7 +93,7 @@ function ProductReview({ order, jwt }) {
 
                 <div className="product-detail">
                     <div className="product-detail-container">
-                    <img alt={order.data.product.title} src={order.data.product.images.length > 0 ? order.data.product.images[0].url : 'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png'} />
+                    <img alt={order.data.product.title} width="80" height="80" src={order.data.product.images.length > 0 ? order.data.product.images[0].url : 'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png'} />
                         <div>
                             <p>{order.data.product.title}</p>
                             <p>$ {order.data.total}</p>
@@ -102,6 +111,7 @@ function ProductReview({ order, jwt }) {
                         </div>
                     </div>
                 </div>
+                <div className="date_time"><p >{dateTimeFormated}</p></div>
             </section>
 
             <section className="component-seller">
@@ -148,7 +158,10 @@ function ProductReview({ order, jwt }) {
                         }                        
                     </div>
                     <div style={{ width: '100%', float: 'left' }}>
-                        <button onClick={calificate} className="send-review">{'Calificar'}</button>
+                        {(c_rating && p_rating && comment)
+                            ? <button onClick={calificate} className="send-review">Calificar</button>
+                            : <button onClick={calificate} className="send-review not-send-review" disabled>Calificar</button>}
+                        
                     </div>
                 </div>
             </section>
