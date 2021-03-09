@@ -27,12 +27,25 @@ function Purchases(props) {
   const [pagination, setPagination] = useState();
   const [purchases, setPurchases] = useState([]);
   const [selected, setSelected] = useState();
-
+  let lastPage = 1;
+  let currentPage = 1;
+  let nextPage = 1;
+  if (pagination) {
+    lastPage = pagination["last_page "];
+    currentPage = pagination.current_page;
+    if (currentPage === 0) {
+      currentPage = 1;
+    }
+    nextPage = pagination.next_page;
+    if (nextPage === 0) {
+      nextPage = 1;
+    }
+  }
   useEffect(() => {
     const endp =
       props.mode === "sell"
-        ? "/shop/orders?page=1&limit=4"
-        : "/getPurchases?page=1&size=4";
+        ? "/shop/orders?page=1&limit=2"
+        : "/getPurchases?page=1&size=2";
     getData(endp, props.user.jwt).then((response) => {
       setPagination(response.data.pagination);
 
@@ -106,9 +119,24 @@ function Purchases(props) {
           <br />
           {pagination && (
             <Pagination
-              actual={pagination.current_page}
-              totalPages={pagination.total}
-              cb={() => {}}
+              actual={currentPage}
+              totalPages={lastPage}
+              cb={(textContent) => {
+                const endp =
+                  props.mode === "sell"
+                    ? "/shop/orders?page=" + textContent + "&limit=2"
+                    : "/getPurchases?page=" + textContent + "&size=2";
+                getData(endp, props.user.jwt).then((response) => {
+                  setPagination(response.data.pagination);
+
+                  // Dirty Hack
+                  if (props.mode === "sell") {
+                    setPurchases(processSellData(response.data));
+                  } else {
+                    setPurchases(response.data.purchases); // Dirty hack the funciton
+                  }
+                });
+              }}
             />
           )}
         </>
