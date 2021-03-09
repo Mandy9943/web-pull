@@ -33,9 +33,10 @@
 .purchases-detail .item-product, .purchases-detail .detail-info, .purchases-detail .vendor-reputation, .purchases-detail .payment-status, .purchases-detail .vendor-info, .purchases-detail .product-valoration {
   -webkit-box-shadow: 0px 3px 6px #11111129;
           box-shadow: 0px 3px 6px #11111129;
-  border-radius: 5px;
+  border-radius: 8px;
   background: white;
   color: #111111;
+  height:90px;
 }
 
 .purchases-detail .twins {
@@ -48,27 +49,31 @@
 
 .purchases-detail .item-product {
   display: flex !important;
-  padding: 30px;
+  padding: 30px;  
+  padding-left:15px;
   margin-top: 30px;
+  border-radius:8px;
 }
 
 .purchases-detail .item-product img {
   border-radius: 50%;
   width: 60px;
   height: 60px;
-  margin-right: 1em;
+  margin-right: 2em;
+  box-shadow: 0px 3px 6px #11111129;
+  margin-top:12px;
 }
 
 .purchases-detail .item-product .info .t1, .purchases-detail .item-product .info .title {
-  font-size: 18px;
+  font-size: 16px;
   margin-bottom: 10px;
 }
 
 .purchases-detail .item-product .info .price, .purchases-detail .item-product .info .unit {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 400 !important;
+  margin-bottom: 5px;
 }
-
 
 .purchases-detail .item-product .info .description {
   font-weight: 15px;
@@ -118,15 +123,19 @@
   font-size: 18px;
   font-weight: 500;
   margin-bottom: 30px;
+  width:150%;
+  margin-left: -15px;
 }
 
 .purchases-detail .vendor-reputation .sub {
-  font-size: 15px;
-  margin-top: 15px;
+  font-size: 13px;
+  margin-top: 5px;
+  width:150%;
 }
 
 .purchases-detail .vendor-reputation .stars {
   display: block;
+  margin-top:-15px;
 }
 
 .purchases-detail .vendor-reputation .stars svg {
@@ -140,6 +149,10 @@
   width: 100%;
   border-radius: 100%;
   max-width: 125px;
+  width:60px;
+  height:60px;
+  box-shadow: 0px 3px 6px #11111129;
+  margin-top: 22px;
 }
 
 .purchases-detail .payment-status {
@@ -150,6 +163,7 @@
   -ms-grid-columns: 1fr 4fr;
       grid-template-columns: 1fr 4fr;
   grid-gap: 15px;
+  border-radius:8px;
 }
 
 .purchases-detail .payment-status .title {
@@ -162,6 +176,16 @@
   font-size: 15px;
 }
 
+.purchases-detail .payment-status .sub-title{
+  font-weight:600;
+  margin-top:-15px;
+}
+
+.purchases-detail .payment-status .info{
+  width:120%;
+  margin-left: -5px;
+}
+
 .purchases-detail .payment-status svg {
   color: #CF0A2C;
   height: 30px;
@@ -171,16 +195,19 @@
   padding: 15px;
   border-radius: 50%;
   margin: auto;
+  margin-left:-10px;
 }
 
 .purchases-detail .vendor-info {
   padding: 30px;
+  padding-left:15px;
   margin-top: 30px;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr;
       grid-template-columns: 1fr 1fr;
-  grid-gap: 30px;
+  grid-gap: 30px;  
+  
 }
 
 .purchases-detail .vendor-info .info {
@@ -192,22 +219,28 @@
 }
 
 .purchases-detail .vendor-info .info img {
-  width: 100%;
+  width: 60px;
+  height: 60px;
   border-radius: 100%;
   max-width: 125px;
   -webkit-box-shadow: 0px 3px 6px #11111129;
-          box-shadow: 0px 3px 6px #11111129;
+  box-shadow: 0px 3px 6px #11111129;
+  margin-top:12px;              
+}
+
+.purchases-detail .vendor-info .info-text {
+  margin-left:-15px;
 }
 
 .purchases-detail .vendor-info .info-text .title {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
 
 .purchases-detail .vendor-info .info-text .sub-1 {
   font-size: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
 
 .purchases-detail .vendor-info .link-msg {
@@ -217,18 +250,18 @@
 }
 
 .purchases-detail .vendor-info .link-msg a {
-  color: #CF0A2C;
+  color: #cf0a2c85;
   font-size: 18px;
   font-weight: 500;
 }
 
 .purchases-detail .vendor-info .link-msg a:hover {
-  cursor: pointer;
+  cursor: pointer;  
 }
 
 .purchases-detail .vendor-info .link-msg a .contador {
   background: #CF0A2C;
-  padding: 5px 7px;
+  padding: 5px 10px;
   border-radius: 50%;
   font-size: 12px;
   color: white;
@@ -240,6 +273,7 @@
 .purchases-detail .product-valoration {
   padding: 30px;
   margin-top: 30px;
+  height:180px;
 }
 
 .purchases-detail .product-valoration .info {
@@ -250,12 +284,18 @@
   grid-gap: 15px;
 }
 
+.purchases-detail .product-valoration .info .info-text{
+    margin-left:-45px;
+}
+
 .purchases-detail .product-valoration .info img {
   width: 100%;
   border-radius: 100%;
   max-width: 125px;
   -webkit-box-shadow: 0px 3px 6px #11111129;
           box-shadow: 0px 3px 6px #11111129;
+  width:80px;
+height:80px;  
 }
 
 .purchases-detail .product-valoration .info-text .title {
@@ -485,4 +525,5 @@
     width: 100%;
   }
 }
+
 /*# sourceMappingURL=PurchasesDetail.css.map */
