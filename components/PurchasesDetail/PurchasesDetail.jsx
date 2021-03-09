@@ -9,31 +9,31 @@ import AccountStoreSales from '../AccountStore/AccountStoreSales/AccountStoreSal
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight, faThList, faAngleLeft, faStar, faCheck } from "@fortawesome/free-solid-svg-icons";
 import moment from 'moment';
-import {getProductImgs} from '../../lib/functions';
+import { getProductImgs } from '../../lib/functions';
 
 
 function PurchasesDetail({ item, close }) {
     let splitUrl = item.data.product.images[0].url.split("/");
     let titleImg = (splitUrl[splitUrl.length - 1] !== "None") ? item.data.product.title : "";
-    
+
     return (
         <div className="purchases-detail">
 
-                <div className="breadcrumb">
-                    <a onClick={close}>Compras</a>
-                    <FontAwesomeIcon icon={faAngleRight} />
-                    <a>{'Detalles de compra'}</a>
-                </div>
-     
+            <div className="breadcrumb">
+                <a onClick={close}>Compras</a>
+                <FontAwesomeIcon icon={faAngleRight} />
+                <a>{'Detalles de compra'}</a>
+            </div>
+
             <h1>Compra #{item.data.order_id}</h1>
             <h3 className="status">{item.purchase_status_name}</h3>
 
             <section className="twins">
                 <div className="item-product">
                     <img
-                        alt={titleImg}                       
+                        alt={titleImg}
                         src={getProductImgs(item.data.product.images)}
-                        width="60" 
+                        width="60"
                         height="60"
                     />
                     <div className="info">
@@ -52,11 +52,11 @@ function PurchasesDetail({ item, close }) {
                     </section>
                 </div>
             </section>
-           
+
             <section className="twins">
                 <div className="vendor-info">
                     <section className="info">
-                        <img src={item.data.seller.photo} width="80" height="80"/>
+                        <img src={item.data.seller.photo} width="80" height="80" />
                         <section className="info-text">
                             <h4 className="title">Vendedor</h4>
                             <h4 className="sub-1">{item.data.seller.name + " " + item.data.seller.last_name}</h4>
@@ -82,12 +82,12 @@ function PurchasesDetail({ item, close }) {
                         <section className="info">
                             <h4 className="title">Calificación de la tienda</h4>
                             <p className="stars">
-                                {Array.from(Array(item.rate_purchase_data.rate_shop), i=>(
+                                {Array.from(Array(item.rate_purchase_data.rate_shop), i => (
                                     <FontAwesomeIcon icon={faStar} />
                                 ))}
                             </p>
                             {item.rate_purchase_data.rate_shop == 5 &&
-                            <h4 className="sub">Excelente vendedor!</h4>
+                                <h4 className="sub">Excelente vendedor!</h4>
                             }
                         </section>
                         <img src={item.data.seller.photo} width="80" height="80" />
@@ -98,19 +98,19 @@ function PurchasesDetail({ item, close }) {
             {(!item.show_calificate && item.rate_purchase_data) &&
                 <div className="product-valoration">
                     <section className="info">
-                        <img src={getProductImgs(item.data.product.images)} width="80" height="80"/>
+                        <img src={getProductImgs(item.data.product.images)} width="80" height="80" />
                         <section className="info-text">
                             <h4 className="title">Calificación del producto</h4>
                             <h4 className="sub-1">{item.data.product.title}</h4>
                             <p className="description">{item.rate_purchase_data.comments}</p>
                         </section>
                     </section>
-                    { item.rate_purchase_data.images.length > 0 &&
-                    <section className="thumbnails">
-                        {item.rate_purchase_data.images.map(url=>(
-                            <img src={"https://api.kieroapi.org/getFile/" + url} />
-                        ))}
-                    </section>
+                    {item.rate_purchase_data.images.length > 0 &&
+                        <section className="thumbnails">
+                            {item.rate_purchase_data.images.map(url => (
+                                <img src={"https://api.kieroapi.org/getFile/" + url} />
+                            ))}
+                        </section>
                     }
                 </div>
             }

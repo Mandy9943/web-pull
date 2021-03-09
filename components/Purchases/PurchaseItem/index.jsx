@@ -1,14 +1,14 @@
 import React from 'react';
 import './PurchaseItem.css';
 import Link from 'next/link';
-import {getProductImgs} from "../../../lib/functions";
+import { getProductImgs } from "../../../lib/functions";
 
 function PurchaseItem({ item, onSelect }) {
 
     return (
         <div className="product-item">
             <h5 className="status">{item.purchase_status_name}</h5>
-            {item.purchase_status_name==="ENTREGADO" && <p className="detail-status">{item.data.days_msg}</p>} 
+            {item.purchase_status_name === "ENTREGADO" && <p className="detail-status">{item.data.days_msg}</p>}
             {/*NEED FIX*/}
             <div className="content">
                 <a>
@@ -28,7 +28,7 @@ function PurchaseItem({ item, onSelect }) {
                 </a>
 
                 <section className="info">
-                    <a onClick={()=>onSelect(item)}> Detalle de compra</a>
+                    <a onClick={() => onSelect(item)}> Detalle de compra</a>
                     <p className="vendedor">Vendedor:</p>
                     <p>{item.data.seller.name + " " + item.data.seller.last_name}</p>
                     <p className="phone-client"> {item.data.seller.phone}</p>
