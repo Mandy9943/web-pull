@@ -4,7 +4,7 @@
   -ms-grid-columns: 1fr 1fr auto;
       grid-template-columns: 1fr 1fr auto;
   grid-gap: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   color: #303030;
   font-size: 16px;
   
@@ -13,6 +13,7 @@
 .title-seller-bar a {
   text-align: right;
   font-size: 12px;
+  
 }
 
 .title-seller-bar a, .title-seller-bar svg {
@@ -34,8 +35,9 @@
   border-radius: 50%;
   width: 60px;
   height: 60px;
-  -webkit-box-shadow: 0px 3px 6px #11111129;
-          box-shadow: 0px 3px 6px #11111129;
+  -webkit-box-shadow: 0px 3px 6px #11111138;
+          box-shadow: 0px 3px 6px #11111138;
+          border: #cccccc solid 0.5px;
 }
 
 .rank-seller {

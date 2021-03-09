@@ -43,7 +43,7 @@ export default class Home extends Component {
             sub1: "Aspiradoras", url1: "categoria/Aspiradoras", sub2: "Monitores", url2: "categoria/Monitores" }} 
            />
            <ProductsSlider category={"Juguetes"} />
-          {/* <Explorer /> */}
+           <Explorer /> 
           <Finding category={{
             father0: "Deportes", father1: "Electrónica",
             img0: "banner-deportes.jpg", img1: "banner-drones.jpg",

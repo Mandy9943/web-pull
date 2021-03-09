@@ -15,7 +15,7 @@
 
 
 .profile-seller .info-profile-seller,.seller-leader p{
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .seller-products{
@@ -31,6 +31,7 @@
   float: left;
   width: 48px;
   margin-right: 10px;
+  margin-left: 10px;
 }
 
 .seller-products p{
