@@ -136,7 +136,6 @@ function Purchases(props) {
                     setPurchases(response.data.purchases); // Dirty hack the funciton
                   }
                 });
-                //console.log(textContent);
               }}
             />
           )}

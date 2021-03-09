@@ -132,6 +132,15 @@
   width: 50%;
 }
 
+.product-review
+  .component-seller
+  .seller-review-content
+  .rating-purchases
+  small,
+.product-review .component-seller .seller-review-content .rating-product small {
+  color: #111 !important;
+}
+
 .product-review .component-seller .seller-review-content .rating-product {
   height: 100%;
   float: right;
@@ -166,6 +175,10 @@
 .product-review .component-seller .review-comment label {
   float: left;
   margin-left: 4%;
+}
+
+.product-review .component-seller .review-comment label small {
+  color: #111 !important;
 }
 
 .product-review .component-seller .review-comment input {
