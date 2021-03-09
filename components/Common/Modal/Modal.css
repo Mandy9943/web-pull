@@ -8,11 +8,11 @@
   width: 100%;
   height: 100vh;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   z-index: 100;
   color: #111111;
 }
@@ -21,18 +21,55 @@
   padding: 40px;
   border-radius: 15px;
   -webkit-box-shadow: 0px 0px 5px 1000px rgba(0, 0, 0, 0.75);
-          box-shadow: 0px 0px 5px 1000px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 5px 1000px rgba(0, 0, 0, 0.75);
   background: white;
   width: 50%;
   max-width: 600px !important;
 }
+
+.modal button {
+  width: auto !important;
+  background: transparent !important;
+  color: #cf0a2c;
+  float: right;
+  bottom: 10px;
+  margin-bottom: -35px;
+  margin-right: -25px;
+}
+
+.modal p {
+  text-align: center;
+  font-weight: 600;
+  margin-top: 10px !important;
+}
+
+.modal svg {
+  color: #0acf35;
+  height: 30px;
+  width: 30px;
+  -webkit-box-shadow: 0px 3px 6px #11111129;
+  box-shadow: 0px 3px 6px #11111129;
+  padding: 15px;
+  border-radius: 50%;
+  margin: auto;
+  margin-left: 45% !important;
+}
+
+.modal .icon-error svg {
+  color: #cf0a0a;
+}
+
+.modal .icon-ok svg {
+  color: #0acf35;
+}
+
 .modal-close {
   position: relative;
   top: -5px;
   float: right;
 }
 .modal-close span {
- cursor: pointer;
+  cursor: pointer;
 }
 
 .close {

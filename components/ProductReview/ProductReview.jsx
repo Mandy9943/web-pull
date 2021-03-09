@@ -4,11 +4,12 @@ import Link from "next/link";
 import Header from '../Common/Header';
 import Footer from '../Common/Footer';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar, faShoppingCart, faShoppingBag, faPaperclip } from "@fortawesome/free-solid-svg-icons";
+import { faStar, faShoppingCart, faShoppingBag, faPaperclip, faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 import "./ProductReview.css";
 import {postForm} from "../../lib/request";
 import Modal from "../Common/Modal";
-
+import Modal2 from "../Common/Modal/Modal2";
+import moment from 'moment';
 
 function ProductReview({ order, jwt }) {
     const router = useRouter();
@@ -18,7 +19,7 @@ function ProductReview({ order, jwt }) {
     const [previews, setPreviews] = useState([]);
 
     const [showModal, setShowModal] = useState(false);
-    const [errorModal, setErrorModal] = useState(true);
+    const [errorModal, setErrorModal] = useState(false);
 
     const inputFileRef = useRef(null);
 
@@ -74,14 +75,14 @@ function ProductReview({ order, jwt }) {
             <Header />
 
             {showModal &&
-                <Modal content="Calificación exitosa." toggle={async ()=> {
+                <Modal2 type="ok" icon={faCheck} content="Calificación exitosa." toggle={async ()=> {
                     await toggleModal();
                     router.back();
                 }} />
             }
 
             {errorModal &&
-                <Modal content="Ha ocurrido un error en la clasificacion." toggle={() => {}} />
+                 <Modal2 type="error" icon={faTimes} content="Ha ocurrido un error en la clasificación." toggle={() => {}} />
             }
 
             <div className="title-review">
@@ -111,7 +112,7 @@ function ProductReview({ order, jwt }) {
                         </div>
                     </div>
                 </div>
-                <div className="date_time"><p >{dateTimeFormated}</p></div>
+                <div className="date_time"><p >{moment(order.data.created_since).locale('es').format('D [de] MMMM [del] YYYY')}</p></div>
             </section>
 
             <section className="component-seller">
