@@ -4,7 +4,7 @@ import './OrdersDetail.sass'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faAngleRight, faCheck, faPaperclip} from "@fortawesome/free-solid-svg-icons";
 import {getProductImgs} from "../../lib/functions";
-import Modal from '../../components/Common/Modal';
+import '../../components/Common/Chat/Chat.sass';
 
 export default function OrderDetail({item, close, verifyOrder}) {
     const [showModal, setShowModal] = useState(false);
@@ -16,6 +16,8 @@ export default function OrderDetail({item, close, verifyOrder}) {
         </div>
     );
 
+
+    // Chat here lacks of functionality, it is just drawn
     return (
         <div className="orders-detail">
             <section class="left-panel">
@@ -26,13 +28,21 @@ export default function OrderDetail({item, close, verifyOrder}) {
                 </div>
 
                 <main>
-                    <div className="messages-area">
-                    </div>
+                    <div className="chat-wrap" >
+                        <div className="msg" style={{height: "50vh"}}></div>
+                        <form>
+                            <div className="chat-input">
 
-                    <div className="action-area">
-                        <input type="text" placeholder="Escribe tu mensaje"/>
-                        <a><FontAwesomeIcon icon={faPaperclip} /></a>
-                        <button>Enviar</button>
+                                <input type="text" />
+                                <input hidden type="file" id="file" />
+                                <div className="chat-wrap-button">
+                                    <label htmlFor="file">
+                                        <FontAwesomeIcon icon={faPaperclip} />
+                                    </label>
+                                    <button type="submit">Enviar</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </main>
 
