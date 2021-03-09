@@ -10,6 +10,25 @@
     > *
         padding: 7px
 
+    #info
+        display: flex
+        flex-direction: column
+        align-items: center
+        font: normal normal normal 15px/19px Montserrat
+
+        p
+            text-align: center
+            letter-spacing: 0px
+            color: #757575
+            opacity: 1
+
+        svg
+            color: green
+            height: 30px
+            width: 30px
+            padding: 5px
+
+
 .order
     display: flex
     flex-basis: 50%
@@ -53,27 +72,41 @@
             justify-content: center;
             align-items: center;
 
-.order-item-content
-    .info
-        display: flex
-        flex-direction: column
-        align-items: center
-
-        svg
-            color: green
-            height: 30px
-            width: 30px
-            padding: 5px
-
 .item-product-modal
     padding: 10px 30px 20px 50px
 
     .vendor-reputation
         section
-            margin-bottom: 25px
+            margin-bottom: 15px
+
+            p
+                text-align: inherit
+
+            svg
+                width: 20px
+                height: 20px
+                color: #3F7FE1
 
     h4.sub
         color: black
 
     .info svg
         color: #409dee;
+
+#verified-modal
+    padding: 25px 0px 10px 0px
+
+    h3
+        font: normal normal medium 22px/24px Montserrat
+        letterSpacing: 0px
+        color: #040404
+        opacity: 1
+        margin-bottom: 8px
+
+    .actions
+        display: flex
+        justify-content: space-evenly
+        margin-top: 20px
+
+        >*
+            font-size: 11px

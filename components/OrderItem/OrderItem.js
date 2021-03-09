@@ -6,33 +6,24 @@ import {faCheck, faStar} from "@fortawesome/free-solid-svg-icons";
 import './OrderItem.sass';
 import Modal from '../../components/Common/Modal';
 // import '../Purchases/PurchaseItem/PurchaseItem.css';
+import {Iniciada, Verificada, Entregado, Calificada} from './StateViews'
 
 export default function OrderItem({ item, onSelect }) {
-    const [showModal, setShowModal] = useState(false)
+    const [showModal, setShowModal] = useState(false);
 
-    const qModal = (
-        <section>
-            <div className="item-product-modal">
-                <div className="vendor-reputation">
-                    <section className="info">
-                        <p className="stars">
-                            {Array.from(Array(item.data.rate_purchase_data.rate_shop), i=>(
-                                <FontAwesomeIcon icon={faStar} />
-                            ))}
-                        </p>
-                        {item.data.rate_purchase_data.rate_shop == 5 &&
-                        <h4 className="sub">Excelente vendedor!</h4>
-                        }
-                    </section>
-                    <section className="info-text">
-                        <h3>Calificación del producto</h3>
-                        <h4 className="sub-1">{item.data.product.title}</h4>
-                        <p className="description">{item.data.rate_purchase_data.comments}</p>
-                    </section>
-                </div>
-            </div>
-        </section>
-    )
+    function getComponentByState(state) {
+        // Perhaps there is a cleaner way to do this, I dont like it D:
+        switch (state) {
+            case "INICIADA":
+                return (<Iniciada item={item} onSelect={onSelect} />);
+            case "VERIFICADA":
+                return ( <Verificada item={item} showModal={showModal} toggle={()=>{setShowModal(!showModal)}} />);
+            case "ENTREGADO":
+                return (<Entregado item={item} />);
+            case "CALIFICADA":
+                return (<Calificada item={item} showModal={showModal} toggle={()=>{setShowModal(!showModal)}} />);
+        }
+    }
 
     return (
         <div className="order-item">
@@ -61,34 +52,18 @@ export default function OrderItem({ item, onSelect }) {
                     <p className="phone-client"> {item.data.client.phone}</p>
                     {/*<Link href={"/chat/" + 'Texto'}>*/}
                     <div className="messages">
-                        <a>Ver Mensaje</a>
+                        <a>Ver Mensajes</a>
                         {1 &&
                             <span className="accent-background">5</span>
                         }
                     </div>
                     {/*</Link>*/}
                 </section>
-                {item.data.purchase_status === 'ENTREGADO' &&
-                    <section className="info">
-                        <p>En espera por calificacion</p>
-                    </section>
-                }
-                {item.data.purchase_status === 'CALIFICADO' &&
-                    <section className="info">
-                        <FontAwesomeIcon icon={faCheck}/>
-                        <p>Venta calificada</p>
-                        <a onClick={() => setShowModal(true)}> Ver</a>
-                        { showModal &&
-                            <Modal content={qModal} toggle={()=>setShowModal(false)}/>
-                        }
-                    </section>
-                }
-                {item.data.purchase_status === 'NUEVA' &&
-                    <section className="info">
-                        <a onClick={()=>onSelect(item)}> Verificar</a>
-                    </section>
-                }
+
+                {getComponentByState(item.data.purchase_status)}
+
             </div>
+
         </div>
     );
 }
