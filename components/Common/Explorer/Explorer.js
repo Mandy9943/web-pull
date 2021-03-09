@@ -42,7 +42,7 @@ class Explorer extends Component {
           exploreImage: "",
           categoryName: ""
       }
-
+      
   }
   
   componentDidMount() {
@@ -79,17 +79,18 @@ class Explorer extends Component {
         .then((response) => {
             let data = [];
             let product;
-            for (product in response.data.products) {
-                data.push(response.data.products[product]);
+            for (product in response.data.results) {
+                data.push(response.data.results[product]);
             }
             this.setState({ data: data, categoryName:category[categoryRandom].name, exploreImage: category[categoryRandom].image  });
+            console.log(response)
         });
   }
 
 
 
   render() {
-        return (
+    return (
         <div className="explorer">
         <h3 className="home-section-title">Encuentra los mejores productos de {this.state.categoryName} <Link href={"/categoria/"+this.state.categoryName}><a className="accent">Ver todos</a></Link></h3>
         <div className="content-explorer">
@@ -102,7 +103,7 @@ class Explorer extends Component {
             {this.state.data.map((item, i) => (
               <div className="wrapImgExplorer" key={i}>
                 <Link href={"/detalle/"+item.product_id+"_"+item.title.replace(/[^\w\s]/gi, '').split(" ").join("-")} ><a>
-                  <img alt={item.title} src={ getImgUrl(item.image) } /></a>
+                  <img alt={item.title} src={ getImgUrlMin(item.image) } /></a>
                 </Link>
               </div>
             ))}
@@ -112,5 +113,4 @@ class Explorer extends Component {
     );
   }
 }
-
 export default Explorer;

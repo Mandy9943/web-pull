@@ -98,15 +98,17 @@
 }
 
 .price-pay-product-detail {
-  font-size: 36px;
   color: #111111;
+  font-size: 36px;
+  font-weight: 600;
+  font-family: 'Roboto', sans-serif;
 }
 
 @media (max-width: 700px) {
   .price-pay-product-detail {
     color: #111111;
     font-weight: 600;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
   }
 }
 
