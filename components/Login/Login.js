@@ -11,26 +11,27 @@ import { signIn } from "../../lib/auth";
 
 
 const Login = ({success}) => {
-
-  const router = useRouter();
-  const [error, setError] = useState(null);
-  const handleSubmit = async e => {
-    e.preventDefault();
-    const email = e.target.elements.mail.value;
+    
+    const router = useRouter();
+    const [error, setError] = useState(null);
+    const handleSubmit = async e => {
+        e.preventDefault();
+        const email = e.target.elements.mail.value;
     const password = e.target.elements.password.value;
-
+    
     const error = await signIn(email, password);
-
+    
     if (error) {
-       setError(error);
+        setError(error);
         return false;
     }
- 
+    
     router.back();
+    
 };
 
-        return (
-            <div className="container login-component">
+return (
+    <div className="container login-component">
 
                 <Header />
                 <div className="login">
@@ -45,7 +46,6 @@ const Login = ({success}) => {
                     <form className="form" onSubmit={handleSubmit}>
                         <input className="input" type="text" name="mail" placeholder="Correo electrónico" />
                         <input className="input" type="password" name="password" placeholder="Contraseña" />
-
                     <p className="forgot-pass-link"><Link href="/recuperar"><a>¿Olvidaste tu contraseña?</a></Link></p>
                     <button type="submit" className="main-button">
                         <p>Ingresar</p>
@@ -58,6 +58,7 @@ const Login = ({success}) => {
             </div>
         );
     }
+    
 
    export default Login;
 

@@ -22,6 +22,7 @@
 }
 
 .user-menu .notification-off {
+  border-radius: 5px;
   position: absolute;
   top: 40px;
   background: white;
@@ -29,7 +30,7 @@
   min-width: 400px;
   border: 0.5px solid #BEBEBE;
   z-index: 20;
-  right: 115px;
+  right: 132px;
   padding: 5px 0 0;
   text-align: center;
   color: #111111;
@@ -52,6 +53,19 @@
   transition: 0.4s;
   display: block;
 }
+.user-menu .notification-on a{
+margin: 0;
+}
+.user-menu .notification-on .see-all{
+  color: #CF0A2C;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 0 20px;
+  border-bottom: 0.5px solid #BEBEBE;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
 
 .user-menu .notification-on h3.title {
   color: #111111;
@@ -59,6 +73,8 @@
   padding: 0 15px;
   border-bottom: 0.5px solid #BEBEBE;
   padding-bottom: 7px;
+  padding-left: 20px;
   padding-top: 7px;
+  font-size: 16px;
 }
 /*# sourceMappingURL=notification.css.map */

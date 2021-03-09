@@ -37,7 +37,9 @@ export default class NotificationItem extends Component {
                 <a>
 
                 <div className="notification-item">
-                    <img src={this.props.data.image} />
+                    <div className="notification-item-img">
+                        <img src={this.props.data.image}/>
+                    </div>
                     <section className="description">
                         <span className="small-text">{title}</span>
                         <h3 className="product-title">{producto}</h3>

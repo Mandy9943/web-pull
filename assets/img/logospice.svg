@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="552" height="552" viewBox="0 0 552 552">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clip-Mesa_de_trabajo_2);
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        fill: #42576f;
+        font-size: 41px;
+      }
+
+      .cls-3, .cls-6 {
+        font-family: BreeSerif-Regular, Bree Serif;
+      }
+
+      .cls-4 {
+        fill: none;
+        stroke: #2d3c5d;
+        stroke-linecap: round;
+        stroke-width: 13px;
+      }
+
+      .cls-5 {
+        fill: #2d3c5d;
+      }
+
+      .cls-6 {
+        fill: #418efe;
+        font-size: 128px;
+      }
+    </style>
+    <clipPath id="clip-Mesa_de_trabajo_2">
+      <rect width="552" height="552"/>
+    </clipPath>
+  </defs>
+  <g id="Mesa_de_trabajo_2" data-name="Mesa de trabajo – 2" class="cls-1">
+    <rect class="cls-2" width="552" height="552"/>
+    <g id="Grupo_3" data-name="Grupo 3" transform="translate(-845 2116)">
+      <circle id="Elipse_1" data-name="Elipse 1" class="cls-2" cx="276" cy="276" r="276" transform="translate(845 -2116)"/>
+      <text id="KieroMarketplace_" data-name="KieroMarketplace®" class="cls-3" transform="translate(1043 -1734)"><tspan x="0" y="0">e-commerce</tspan></text>
+      <g id="Grupo_1" data-name="Grupo 1" transform="translate(885.227 -1929.088)">
+        <path id="Trazado_1" data-name="Trazado 1" class="cls-4" d="M852.507-2081.12h41.224l48.859,145.052h364.916" transform="translate(-852.507 2081.12)"/>
+        <path id="Trazado_2" data-name="Trazado 2" class="cls-4" d="M1188.085-2077.986H861.34" transform="translate(-814.008 2094.781)"/>
+      </g>
+      <ellipse id="Elipse_2" data-name="Elipse 2" class="cls-5" cx="23" cy="24.5" rx="23" ry="24.5" transform="translate(980 -1768)"/>
+      <ellipse id="Elipse_3" data-name="Elipse 3" class="cls-5" cx="24" cy="24.5" rx="24" ry="24.5" transform="translate(1290 -1768)"/>
+      <text id="KieroMarketplace_2" data-name="KieroMarketplace®" class="cls-6" transform="translate(984 -1807)"><tspan x="0" y="0">SPICE</tspan></text>
+    </g>
+  </g>
+</svg>

@@ -21,8 +21,8 @@
   margin: auto;
   color: #111111;
   font-size: 12px;
-  font-weight: bold;
-  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
   opacity: 0;
   visibility: hidden;
   -webkit-transition: .1s ease-out;
@@ -111,12 +111,14 @@
 }
 
 .producto-card h3 {
-  padding: 15px;
+  padding: 12px;
   white-space: nowrap;
-  margin-top: 12px;
+  margin-top: 8px;
+  margin-bottom: 7px;
   color: #111111;
-  font-size: 15px;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 700;
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  
 }
 /*# sourceMappingURL=ProductCard.css.map */
