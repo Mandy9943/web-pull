@@ -29,7 +29,7 @@ export default function SelectVariant({dimensions, select, name}) {
                 e.preventDefault();
                 if (e.target.selectedIndex === 0) {
                     // Do not call select if none is selected
-                    // Tal vez deseleccionar aqui este 
+                    // Tal vez deseleccionar aqui
                     return
                 }
                 select({
