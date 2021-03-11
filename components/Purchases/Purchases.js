@@ -31,6 +31,7 @@ function Purchases(props) {
   let currentPage = 1;
   let nextPage = 1;
   const LIMIT = 20;
+
   if (pagination) {
     lastPage = pagination["last_page "];
     currentPage = pagination.current_page;
@@ -118,7 +119,7 @@ function Purchases(props) {
             ))
           )}
           <br />
-          {pagination && purchases.length > LIMIT && (
+          {pagination && purchases.length < pagination.total && (
             <Pagination
               actual={currentPage}
               totalPages={lastPage}
@@ -148,11 +149,7 @@ function Purchases(props) {
       {props.mode === "sell" ? (
         <OrdersDetail item={selected} close={() => setSelected()} />
       ) : (
-        <PurchasesDetail
-          item={selected}
-          close={() => setSelected()}
-          role={props.user.role}
-        />
+        <PurchasesDetail item={selected} close={() => setSelected()} />
       )}
     </>
   );
