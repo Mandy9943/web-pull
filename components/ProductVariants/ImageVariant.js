@@ -24,7 +24,7 @@ export default function SelectVariant({dimensions, select, name}) {
                             select({
                                 name,
                                 value: e.target.getAttribute('data-value'),
-                                available: e.target.getAttribute('data-available'),
+                                available: e.target.getAttribute('data-available') === 'true' ? true : false,
                             });
                         }}
                         src={item.image}

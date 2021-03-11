@@ -22,42 +22,106 @@ class PaySection extends Component {
     super(props);
     this.state = {
       cantidad: 1,
-      selectedDimensions: {},
       dimensions: {}
     }
   }
 
   loadData = async () => {
-    const res = await getVariantAvailable(this.props.pid, {});
-    const data = await res.data;
-    console.log(data);
-    // this.setState({dimensions: data.data});
+    // const res = await getVariantAvailable(this.props.pid, {});
+    // const data = await res.data;
+    // console.log(data);
+    // // this.setState({dimensions: data.data});
+
+    const data = {
+      "code":"200",
+      "data":{
+        "Color":{
+          "display_type":"image",
+          "values":[
+            {
+              "available":true,
+              "image":"https://images-na.ssl-images-amazon.com/images/I/41d3obyVMVL.jpg",
+              "select":true,
+              "value":"White"
+            },
+            {
+              "available":false,
+              "image":"https://images-na.ssl-images-amazon.com/images/I/41TlePgOFzL.jpg",
+              "select":false,
+              "value":"Pink"
+            },
+            {
+              "available":false,
+              "image":"https://images-na.ssl-images-amazon.com/images/I/41YRaWJlJtL.jpg",
+              "select":false,
+              "value":"Black"
+            }
+          ]
+        },
+        "Talla": {
+          "display_type":"select",
+          "values":[
+            {"available":true,"image":"","select":false,"value":"2.53 T"},
+            {"available":false,"image":"","select":false,"value":"3.54 T"},
+            {"available":false,"image":"","select":false,"value":"33.5 T"},
+            {"available":false,"image":"","select":false,"value":"5.56 T"},
+            {"available":false,"image":"","select":false,"value":"55.5 T"},
+            {"available":false,"image":"","select":false,"value":"4.55 T"},
+            {"available":false,"image":"","select":false,"value":"44.5 T"}
+          ]
+        },
+        "product_global_id":""
+      },
+      "error":{},
+      "filters":[],
+      "pagination":[]
+    }
+;
+    this.setState({dimensions: data.data});
+
   }
 
   componentDidMount() {
     this.loadData();
   }
 
-  handleSelect = (queryset) => {
-    // TODO: Esto aun no esta listo (tuve q hacer comit)
-
+  handleSelect = async (queryset) => {
     let params = {}
     // 1- Check if product is not available
-    if (!queryset.available) {
-    //  If it is not available query just that one
+    if (!queryset.available) {  //  If it is not available query just that one
       params[queryset.name] = queryset.value
-    }else {
-    //  If it's available appendto
-      // 1- Obtain non seleted keys
-      const nonSelectedKeys = Object.keys(this.state.dimensions).filter(key=>key!==queryset.name && key!=='product_global_id')
-      // 2- Check previously selected keys
+    }else { //  If it's available, so you can mix with another previously selected variant
+      // 2- Obtain selected keys
+      let selectedDimensions = [];
+      for (const key of
+          Object.keys(this.state.dimensions).filter(key=>key!==queryset.name && key!=='product_global_id')) {
+
+        for (const value of this.state.dimensions[key].values) {
+          if (value.select) {
+            selectedDimensions.push({name: key, value: value.value});
+          }
+        }
+      }
+
+      // 3- Prepare query for selected dimensions
+      // 3.1 Insert queryset into params
+      params[queryset.name] = queryset.value
+      //
+      // // 3.2 Insert selectedDimensions into params
+      selectedDimensions.forEach(item=>{
+        params[item.name] = item.value
+      })
     }
 
+    // 4- Once I have the payload (params) fetch data
+    const res = await getVariantAvailable(this.props.pid, {params: params})   // TODO handle exception
+    const data = await res.data;
 
-    // const res = getVariantAvailable(this.props.pgid, {params: params})
-    // this.setState({dimensions: res.data})
-
-    // console.log(queryset);
+    // 5- Check if product_global_id is non null
+    if (data.data.product_global_id) {
+      let url = `/detalle/${this.props.pid}?is_variant=true&product_global_id=${data.data.product_global_id}`
+      window.location = url;
+    }
   }
 
   handleChangeCantidad = (event) => {
