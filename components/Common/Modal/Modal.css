@@ -27,7 +27,7 @@
   max-width: 600px !important;
 }
 
-.modal button {
+.modal2 button {
   width: auto !important;
   background: transparent !important;
   color: #cf0a2c;
@@ -37,13 +37,13 @@
   margin-right: -25px;
 }
 
-.modal p {
+.modal2 p {
   text-align: center;
   font-weight: 600;
   margin-top: 10px !important;
 }
 
-.modal svg {
+.modal2 svg {
   color: #0acf35;
   height: 30px;
   width: 30px;
@@ -55,11 +55,11 @@
   margin-left: 45% !important;
 }
 
-.modal .icon-error svg {
+.modal2 .icon-error svg {
   color: #cf0a0a;
 }
 
-.modal .icon-ok svg {
+.modal2 .icon-ok svg {
   color: #0acf35;
 }
 

@@ -13,7 +13,7 @@ class Modal2 extends Component {
             this.props.toggle(this.props.num);
           }}
         />
-        <div className="modal">
+        <div className="modal modal2">
           {this.props.type === "error" && (
             <div className="icon-error">
               <FontAwesomeIcon icon={this.props.icon} />
