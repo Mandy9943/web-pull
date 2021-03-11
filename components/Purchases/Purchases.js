@@ -30,6 +30,7 @@ function Purchases(props) {
   let lastPage = 1;
   let currentPage = 1;
   let nextPage = 1;
+  const LIMIT = 20;
   if (pagination) {
     lastPage = pagination["last_page "];
     currentPage = pagination.current_page;
@@ -44,8 +45,8 @@ function Purchases(props) {
   useEffect(() => {
     const endp =
       props.mode === "sell"
-        ? "/shop/orders?page=1&limit=2"
-        : "/getPurchases?page=1&size=2";
+        ? "/shop/orders?page=1&limit=" + LIMIT
+        : "/getPurchases?page=1&size=" + LIMIT;
     getData(endp, props.user.jwt).then((response) => {
       setPagination(response.data.pagination);
 
@@ -117,15 +118,15 @@ function Purchases(props) {
             ))
           )}
           <br />
-          {pagination && (
+          {pagination && purchases.length > LIMIT && (
             <Pagination
               actual={currentPage}
               totalPages={lastPage}
               cb={(textContent) => {
                 const endp =
                   props.mode === "sell"
-                    ? "/shop/orders?page=" + textContent + "&limit=2"
-                    : "/getPurchases?page=" + textContent + "&size=2";
+                    ? "/shop/orders?page=" + textContent + "&limit=" + LIMIT
+                    : "/getPurchases?page=" + textContent + "&size=" + LIMIT;
                 getData(endp, props.user.jwt).then((response) => {
                   setPagination(response.data.pagination);
 
