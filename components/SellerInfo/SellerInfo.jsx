@@ -27,7 +27,7 @@ function SellerInfo({productId}){
   };
 
 
-  console.log(seller);
+  // console.log(seller);
 
     return (
       <>
@@ -52,7 +52,7 @@ function SellerInfo({productId}){
           </div>
          {
            seller?.products.map((item,index)=>
-                <div className="seller-products">
+                <div className="seller-products" key={index}>
                 <img src={item.images.length>0?item.images[0].url:"https://recap-project.eu/wp-content/uploads/2017/02/default-user.jpg"} />
                 <div className="seller-products-content">
                     <p><span>${item.price}</span></p>
