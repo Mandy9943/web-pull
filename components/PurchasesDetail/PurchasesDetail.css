@@ -1,4 +1,3 @@
-
 .purchases-detail {
   padding: 40px;
   padding-top: 42px;
@@ -6,8 +5,8 @@
 
 .purchases-detail .breadcrumb {
   margin: 40px 0px 20px;
-  color: #CF0A2C;
-  margin-bottom:3em;
+  color: #cf0a2c;
+  margin-bottom: 3em;
 }
 
 .purchases-detail .breadcrumb a {
@@ -30,47 +29,57 @@
   margin-top: 30px;
 }
 
-.purchases-detail .item-product, .purchases-detail .detail-info, .purchases-detail .vendor-reputation, .purchases-detail .payment-status, .purchases-detail .vendor-info, .purchases-detail .product-valoration {
+.purchases-detail .item-product,
+.purchases-detail .detail-info,
+.purchases-detail .vendor-reputation,
+.purchases-detail .payment-status,
+.purchases-detail .vendor-info,
+.purchases-detail .product-valoration {
   -webkit-box-shadow: 0px 3px 6px #11111129;
-          box-shadow: 0px 3px 6px #11111129;
+  box-shadow: 0px 3px 6px #11111129;
   border-radius: 8px;
   background: white;
   color: #111111;
-  height:90px;
 }
 
 .purchases-detail .twins {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1.5fr 1fr;
-      grid-template-columns: 1.5fr 1fr;
+  grid-template-columns: 1.5fr 1fr;
   grid-gap: 30px;
 }
 
 .purchases-detail .item-product {
   display: flex !important;
-  padding: 30px;  
-  padding-left:15px;
+  padding: 30px;
+  padding-left: 15px;
   margin-top: 30px;
-  border-radius:8px;
+  border-radius: 8px;
+  height: 90px;
 }
 
 .purchases-detail .item-product img {
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  margin-right: 2em;
+  width: 80px !important;
+  height: 60px !important;
   box-shadow: 0px 3px 6px #11111129;
-  margin-top:12px;
+  margin-top: 12px;
 }
 
-.purchases-detail .item-product .info .t1, .purchases-detail .item-product .info .title {
-  font-size: 16px;
+.purchases-detail .item-product .info {
+  margin-left: 2rem;
+}
+
+.purchases-detail .item-product .info .t1,
+.purchases-detail .item-product .info .title {
+  font-size: 14px !important;
   margin-bottom: 10px;
 }
 
-.purchases-detail .item-product .info .price, .purchases-detail .item-product .info .unit {
-  font-size: 16px;
+.purchases-detail .item-product .info .price,
+.purchases-detail .item-product .info .Unit {
+  font-size: 14px !important;
   font-weight: 400 !important;
   margin-bottom: 5px;
 }
@@ -92,16 +101,18 @@
   margin-bottom: 30px;
 }
 
-.purchases-detail .detail-info .info-1, .purchases-detail .detail-info .info-2 {
+.purchases-detail .detail-info .info-1,
+.purchases-detail .detail-info .info-2 {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 3fr 1fr;
-      grid-template-columns: 3fr 1fr;
+  grid-template-columns: 3fr 1fr;
   padding: 0 30px;
   padding-bottom: 15px;
 }
 
-.purchases-detail .detail-info .info-1 .right, .purchases-detail .detail-info .info-2 .right {
+.purchases-detail .detail-info .info-1 .right,
+.purchases-detail .detail-info .info-2 .right {
   font-weight: 600;
 }
 
@@ -116,43 +127,45 @@
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 2fr 1fr;
-      grid-template-columns: 2fr 1fr;
+  grid-template-columns: 2fr 1fr;
 }
 
 .purchases-detail .vendor-reputation h4.title {
-  font-size: 18px;
+  font-size: 16px !important;
   font-weight: 500;
   margin-bottom: 30px;
-  width:150%;
-  margin-left: -15px;
+  width: 150%;
+  margin-left: 0;
+  margin-top: -1px;
 }
 
 .purchases-detail .vendor-reputation .sub {
   font-size: 13px;
   margin-top: 5px;
-  width:150%;
+  width: 150%;
 }
 
 .purchases-detail .vendor-reputation .stars {
   display: block;
-  margin-top:-15px;
+  margin-top: -15px;
 }
 
 .purchases-detail .vendor-reputation .stars svg {
   margin-right: 7.5px;
   width: 20px;
   height: 20px;
-  color: #3F7FE1;
+  color: #3f7fe1;
 }
 
 .purchases-detail .vendor-reputation img {
   width: 100%;
   border-radius: 100%;
   max-width: 125px;
-  width:60px;
-  height:60px;
+  width: 60px;
+  height: 60px;
   box-shadow: 0px 3px 6px #11111129;
   margin-top: 22px;
+  margin-left: 15px;
 }
 
 .purchases-detail .payment-status {
@@ -161,60 +174,60 @@
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 4fr;
-      grid-template-columns: 1fr 4fr;
+  grid-template-columns: 1fr 4fr;
   grid-gap: 15px;
-  border-radius:8px;
+  border-radius: 8px;
 }
 
 .purchases-detail .payment-status .title {
-  font-size: 18px;
+  font-size: 16px !important;
   font-weight: 500;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 .purchases-detail .payment-status .sub-1 {
-  font-size: 15px;
+  font-size: 14px !important;
+  margin: 0 0;
 }
 
-.purchases-detail .payment-status .sub-title{
-  font-weight:600;
-  margin-top:-15px;
+.purchases-detail .payment-status .sub-title {
+  font-weight: 600;
+  margin-top: -15px;
 }
 
-.purchases-detail .payment-status .info{
-  width:120%;
+.purchases-detail .payment-status .info {
+  width: 120%;
   margin-left: -5px;
 }
 
 .purchases-detail .payment-status svg {
-  color: #CF0A2C;
+  color: #cf0a2c;
   height: 30px;
   width: 30px;
   -webkit-box-shadow: 0px 3px 6px #11111129;
-          box-shadow: 0px 3px 6px #11111129;
+  box-shadow: 0px 3px 6px #11111129;
   padding: 15px;
   border-radius: 50%;
   margin: auto;
-  margin-left:-10px;
+  margin-left: -10px;
 }
 
 .purchases-detail .vendor-info {
   padding: 30px;
-  padding-left:15px;
+  padding-left: 15px;
   margin-top: 30px;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
-  grid-gap: 30px;  
-  
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 30px;
 }
 
 .purchases-detail .vendor-info .info {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 15px;
 }
 
@@ -225,11 +238,11 @@
   max-width: 125px;
   -webkit-box-shadow: 0px 3px 6px #11111129;
   box-shadow: 0px 3px 6px #11111129;
-  margin-top:12px;              
+  margin-top: 12px;
 }
 
 .purchases-detail .vendor-info .info-text {
-  margin-left:-15px;
+  margin-left: -15px;
 }
 
 .purchases-detail .vendor-info .info-text .title {
@@ -239,7 +252,7 @@
 }
 
 .purchases-detail .vendor-info .info-text .sub-1 {
-  font-size: 15px;
+  font-size: 14px !important;
   margin-bottom: 5px;
 }
 
@@ -256,11 +269,11 @@
 }
 
 .purchases-detail .vendor-info .link-msg a:hover {
-  cursor: pointer;  
+  cursor: pointer;
 }
 
 .purchases-detail .vendor-info .link-msg a .contador {
-  background: #CF0A2C;
+  background: #cf0a2c;
   padding: 5px 10px;
   border-radius: 50%;
   font-size: 12px;
@@ -273,19 +286,19 @@
 .purchases-detail .product-valoration {
   padding: 30px;
   margin-top: 30px;
-  height:180px;
+  height: auto !important;
 }
 
 .purchases-detail .product-valoration .info {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 4fr;
-      grid-template-columns: 1fr 4fr;
+  grid-template-columns: 1fr 4fr;
   grid-gap: 15px;
 }
 
-.purchases-detail .product-valoration .info .info-text{
-    margin-left:-45px;
+.purchases-detail .product-valoration .info .info-text {
+  margin-left: -45px;
 }
 
 .purchases-detail .product-valoration .info img {
@@ -293,55 +306,62 @@
   border-radius: 100%;
   max-width: 125px;
   -webkit-box-shadow: 0px 3px 6px #11111129;
-          box-shadow: 0px 3px 6px #11111129;
-  width:80px;
-height:80px;  
+  box-shadow: 0px 3px 6px #11111129;
+  width: 80px;
+  height: 80px;
 }
 
 .purchases-detail .product-valoration .info-text .title {
-  font-size: 18px;
+  font-size: 16px !important;
   font-weight: 600;
   margin-bottom: 15px;
 }
 
+.purchases-detail .product-valoration .info-text h4.title {
+  font-size: 16px !important;
+  font-weight: 600;
+  margin-bottom: 5px !important;
+}
+
 .purchases-detail .product-valoration .info-text .sub-1 {
-  font-size: 15px;
+  font-size: 14px !important;
   margin-bottom: 15px;
 }
 
 .purchases-detail .product-valoration p {
-  margin-top: 15px;
-  font-size: 16px;
+  /*margin-top: 15px;*/
+  font-size: 14px !important;
 }
 
 .purchases-detail .product-valoration .thumbnails {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 15px;
   padding: 0 100px;
-  margin-top: 15px;
+  margin-top: 25px;
+  margin-left: 10px;
 }
 
 .purchases-detail .product-valoration .thumbnails img {
   width: 100%;
 }
 
-.purchase-evaluation-link{
+.purchase-evaluation-link {
   -webkit-box-shadow: 0px 3px 6px #11111129;
-    box-shadow: 0px 3px 6px #11111129;
-    border-radius: 5px;
-    background: white;
-    margin-top: 30px;
+  box-shadow: 0px 3px 6px #11111129;
+  border-radius: 5px;
+  background: white;
+  margin-top: 30px;
 }
-.purchase-evaluation-link .link-content{
+.purchase-evaluation-link .link-content {
   text-align: center;
 }
 
-.purchase-evaluation-link a{ 
+.purchase-evaluation-link a {
   position: relative;
-  top: 5em;
+  top: 3.3em !important;
 }
 
 @media (max-width: 700px) {
@@ -360,7 +380,7 @@ height:80px;
     display: -ms-grid;
     display: grid;
     -ms-grid-columns: 1fr 1fr;
-        grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-gap: 15px;
   }
 
@@ -368,14 +388,16 @@ height:80px;
     height: initial;
     width: 90%;
   }
-  .purchases-detail .item-product .info .t1, .purchases-detail .item-product .info .title {
+  .purchases-detail .item-product .info .t1,
+  .purchases-detail .item-product .info .title {
     font-size: 15px;
     margin-bottom: 10px;
   }
-  .purchases-detail .item-product .info .price, .purchases-detail .item-product .info .unit {
-    font-size: 15px;
+  .purchases-detail .item-product .info .price,
+  .purchases-detail .item-product .info .unit {
+    font-size: 14px;
   }
- 
+
   .purchases-detail .item-product .info .description {
     font-weight: 15px;
     margin-bottom: 10px;
@@ -390,15 +412,17 @@ height:80px;
     font-weight: 600;
     margin-bottom: 15px;
   }
-  .purchases-detail .detail-info .info-1, .purchases-detail .detail-info .info-2 {
+  .purchases-detail .detail-info .info-1,
+  .purchases-detail .detail-info .info-2 {
     display: -ms-grid;
     display: grid;
     -ms-grid-columns: 3fr 1fr;
-        grid-template-columns: 3fr 1fr;
+    grid-template-columns: 3fr 1fr;
     padding: 0 15px;
     padding-bottom: 15px;
   }
-  .purchases-detail .detail-info .info-1 .right, .purchases-detail .detail-info .info-2 .right {
+  .purchases-detail .detail-info .info-1 .right,
+  .purchases-detail .detail-info .info-2 .right {
     font-weight: 600;
   }
   .purchases-detail .detail-info .info-2 {
@@ -411,10 +435,10 @@ height:80px;
     display: -ms-grid;
     display: grid;
     -ms-grid-columns: 2fr 1fr;
-        grid-template-columns: 2fr 1fr;
+    grid-template-columns: 2fr 1fr;
   }
   .purchases-detail .vendor-reputation h4.title {
-    font-size: 15px;
+    font-size: 16px;
   }
   .purchases-detail .vendor-reputation .sub {
     font-size: 10px;
@@ -427,7 +451,7 @@ height:80px;
     margin-right: 7.5px;
     width: 20px;
     height: 20px;
-    color: #3F7FE1;
+    color: #3f7fe1;
   }
   .purchases-detail .vendor-reputation img {
     max-width: 90px;
@@ -438,21 +462,21 @@ height:80px;
     display: -ms-grid;
     display: grid;
     -ms-grid-columns: 1fr 4fr;
-        grid-template-columns: 1fr 4fr;
+    grid-template-columns: 1fr 4fr;
     grid-gap: 7px;
   }
   .purchases-detail .payment-status .title {
-    font-size: 15px;
+    font-size: 16px !important;
   }
   .purchases-detail .payment-status .sub-1 {
     font-size: 12px;
   }
   .purchases-detail .payment-status svg {
-    color: #CF0A2C;
+    color: #cf0a2c;
     height: 30px;
     width: 30px;
     -webkit-box-shadow: 0px 3px 6px #11111129;
-            box-shadow: 0px 3px 6px #11111129;
+    box-shadow: 0px 3px 6px #11111129;
     padding: 15px;
     border-radius: 50%;
     margin: auto;
@@ -461,12 +485,12 @@ height:80px;
     padding: 15px;
     margin-top: 15px;
     -ms-grid-columns: 2fr 1fr;
-        grid-template-columns: 2fr 1fr;
+    grid-template-columns: 2fr 1fr;
     grid-gap: 7px;
   }
   .purchases-detail .vendor-info .info {
     -ms-grid-columns: 1fr 1fr;
-        grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-gap: 10px;
   }
   .purchases-detail .vendor-info .info img {
@@ -502,7 +526,7 @@ height:80px;
     display: -ms-grid;
     display: grid;
     -ms-grid-columns: 1fr 4fr;
-        grid-template-columns: 1fr 4fr;
+    grid-template-columns: 1fr 4fr;
     grid-gap: 15px;
   }
   .purchases-detail .product-valoration .info img {

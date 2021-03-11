@@ -21,7 +21,7 @@
   }
   
   .slider-recommends .products-slider .slider .test .producto-card {
-    width: 22% !important;
+    width: 19% !important;
   }
 }
 
@@ -43,7 +43,7 @@
   }
   
   .slider-recommends .products-slider .slider .test .producto-card {
-    width: 22% !important;
+    width: 19% !important;
   }
 
   .producto-card:hover .title {
@@ -184,8 +184,14 @@
 }
 
 .wrap-slider-product-detail .products-slider .slider-movil .content-products-slider .producto-card h3 {
-  font-size: 15px;
-  font-family: 'Open Sans', sans-serif;
+  padding: 12px;
+  white-space: nowrap;
+  margin-top: 8px;
+  color: #272727;
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+
+}
 }
 
 .wrap-slider-product-detail .products-slider .slider-movil .content-products-slider .producto-card button {

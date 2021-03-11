@@ -33,8 +33,8 @@ function PurchasesDetail({ item, close }) {
                     <img
                         alt={titleImg}
                         src={getProductImgs(item.data.product.images)}
-                        width="60"
-                        height="60"
+                        width="80"
+                        height="80"
                     />
                     <div className="info">
                         <p className="title">{item.data.product.title}</p>
@@ -108,7 +108,7 @@ function PurchasesDetail({ item, close }) {
                     {item.rate_purchase_data.images.length > 0 &&
                         <section className="thumbnails">
                             {item.rate_purchase_data.images.map(url => (
-                                <img src={"https://api.kieroapi.org/getFile/" + url} />
+                                <img src={"https://api.kieroapi.org/getFile/" + url} width="80" height="80" />
                             ))}
                         </section>
                     }

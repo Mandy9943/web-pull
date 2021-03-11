@@ -52,11 +52,14 @@ export default class Register extends Component {
                             <input id="password" className="input" type="password" name="password" placeholder="Contraseña" />
                             <a onClick={this.mostrarContrasena}>Mostrar</a> 
                         </div>
-                    <p className="terms">Creando una cuenta, usted ha aceptado los
-                     <Link href="/terminos"><a>Terminos y condiciones</a>
+                    <p className="terms">Creando una cuenta, usted ha aceptado los 
+                     <Link href="/terminos"><a> Terminos y condiciones</a>
                      </Link> y las <Link href="/privacidad"><a>Políticas de privacidad de Kiero.</a></Link></p>
-                        <Button text={"Crea tu cuenta en Kiero"}/>
+                        <Button text={"Crear cuenta"}/>
                         {error && <Error message={error} />}
+                        <br></br>
+                        <p className="register-text">¿Ya tienes una cuenta?
+                     <Link href="/terminos"><a> Inicia sesión</a></Link></p>
                     </form>
                 </div>
                 <Footer />

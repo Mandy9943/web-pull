@@ -4,11 +4,12 @@ import Link from "next/link";
 import Header from '../Common/Header';
 import Footer from '../Common/Footer';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar, faShoppingCart, faShoppingBag, faPaperclip } from "@fortawesome/free-solid-svg-icons";
+import { faStar, faShoppingCart, faShoppingBag, faPaperclip, faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 import "./ProductReview.css";
 import {postForm} from "../../lib/request";
 import Modal from "../Common/Modal";
-
+import Modal2 from "../Common/Modal/Modal2";
+import moment from 'moment';
 
 function ProductReview({ order, jwt }) {
     const router = useRouter();
@@ -18,6 +19,7 @@ function ProductReview({ order, jwt }) {
     const [previews, setPreviews] = useState([]);
 
     const [showModal, setShowModal] = useState(false);
+    const [errorModal, setErrorModal] = useState(false);
 
     const inputFileRef = useRef(null);
 
@@ -61,18 +63,26 @@ function ProductReview({ order, jwt }) {
         } catch (error) {
             // TODO Handle error here, need to ask
             console.log(error.response);
+            setErrorModal(true);
         }
     }
+    let months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+    let dateTime = new Date(order.data.created_since.replace(' ', 'T'));
+    let dateTimeFormated = dateTime.getDate() + " de " + months[dateTime.getMonth()] + " " + dateTime.getHours() + ":" + dateTime.getMinutes();
 
     return (
         <div className="product-review">
             <Header />
 
             {showModal &&
-                <Modal content="Calificación exitosa." toggle={async ()=> {
+                <Modal2 type="ok" icon={faCheck} content="Calificación exitosa." toggle={async ()=> {
                     await toggleModal();
                     router.back();
                 }} />
+            }
+
+            {errorModal &&
+                 <Modal2 type="error" icon={faTimes} content="Ha ocurrido un error en la clasificación." toggle={() => {}} />
             }
 
             <div className="title-review">
@@ -84,7 +94,7 @@ function ProductReview({ order, jwt }) {
 
                 <div className="product-detail">
                     <div className="product-detail-container">
-                    <img alt={order.data.product.title} src={order.data.product.images.length > 0 ? order.data.product.images[0].url : 'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png'} />
+                    <img alt={order.data.product.title} width="80" height="80" src={order.data.product.images.length > 0 ? order.data.product.images[0].url : 'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png'} />
                         <div>
                             <p>{order.data.product.title}</p>
                             <p>$ {order.data.total}</p>
@@ -102,6 +112,7 @@ function ProductReview({ order, jwt }) {
                         </div>
                     </div>
                 </div>
+                <div className="date_time"><p >{moment(order.data.created_since).locale('es').format('D [de] MMMM [del] YYYY')}</p></div>
             </section>
 
             <section className="component-seller">
@@ -148,7 +159,10 @@ function ProductReview({ order, jwt }) {
                         }                        
                     </div>
                     <div style={{ width: '100%', float: 'left' }}>
-                        <button onClick={calificate} className="send-review">{'Calificar'}</button>
+                        {(c_rating && p_rating && comment)
+                            ? <button onClick={calificate} className="send-review">Calificar</button>
+                            : <button onClick={calificate} className="send-review not-send-review" disabled>Calificar</button>}
+                        
                     </div>
                 </div>
             </section>
