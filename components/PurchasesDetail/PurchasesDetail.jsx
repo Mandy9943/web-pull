@@ -12,9 +12,56 @@ import moment from 'moment';
 import { getProductImgs } from '../../lib/functions';
 
 
-function PurchasesDetail({ item, close }) {
+function PurchasesDetail({ item, close, role }) {
     let splitUrl = item.data.product.images[0].url.split("/");
     let titleImg = (splitUrl[splitUrl.length - 1] !== "None") ? item.data.product.title : "";
+    
+    let calificationStore = (item.show_calificate)
+        ? <div className="purchase-evaluation-link">
+            <div className="link-content">
+                <Link href={`/resena_producto/${item.data.order_id}`}><a>Calificar compra</a></Link>
+            </div>
+        </div>
+        : <div className="vendor-reputation">
+            <section className="info">
+                <h4 className="title">Calificación de la tienda</h4>
+                <p className="stars">
+                    {Array.from(Array(item.rate_purchase_data.rate_shop), i => (
+                        <FontAwesomeIcon icon={faStar} />
+                    ))}
+                </p>
+                {item.rate_purchase_data.rate_shop == 5 &&
+                    <h4 className="sub">Excelente vendedor!</h4>
+                }
+            </section>
+            <img src={item.data.seller.photo} width="80" height="80" />
+        </div>;
+    
+    let calificationProduct = (item.rate_purchase_data > 0 && !item.show_calificate)
+        ? <div className="product-valoration">
+            <section className="info">
+                <img src={getProductImgs(item.data.product.images)} width="80" height="80" />
+                <section className="info-text">
+                    <h4 className="title">Calificación del producto</h4>
+                    <h4 className="sub-1">{item.data.product.title}</h4>
+                    <p className="description">{item.rate_purchase_data.comments}</p>
+                </section>
+            </section>
+            {item.rate_purchase_data.images.length > 0 &&
+                <section className="thumbnails">
+                    {item.rate_purchase_data.images.map(url => (
+                        <img src={"https://api.kieroapi.org/getFile/" + url} width="80" height="80" />
+                    ))}
+                </section>
+            }
+        </div>
+        : null;
+    
+    if (role === 'user') {
+        calificationStore = null;
+    } else {
+        calificationProduct = null;
+    }
 
     return (
         <div className="purchases-detail">
@@ -72,48 +119,10 @@ function PurchasesDetail({ item, close }) {
                         </Link>
                     </div>
                 </div>
-                {item.show_calificate
-                    ? <div className="purchase-evaluation-link">
-                        <div className="link-content">
-                            <Link href={`/resena_producto/${item.data.order_id}`}><a>Calificar compra</a></Link>
-                        </div>
-                    </div>
-                    : <div className="vendor-reputation">
-                        <section className="info">
-                            <h4 className="title">Calificación de la tienda</h4>
-                            <p className="stars">
-                                {Array.from(Array(item.rate_purchase_data.rate_shop), i => (
-                                    <FontAwesomeIcon icon={faStar} />
-                                ))}
-                            </p>
-                            {item.rate_purchase_data.rate_shop == 5 &&
-                                <h4 className="sub">Excelente vendedor!</h4>
-                            }
-                        </section>
-                        <img src={item.data.seller.photo} width="80" height="80" />
-                    </div>
-                }
+                {calificationStore}
             </section>
 
-            {(!item.show_calificate && item.rate_purchase_data) &&
-                <div className="product-valoration">
-                    <section className="info">
-                        <img src={getProductImgs(item.data.product.images)} width="80" height="80" />
-                        <section className="info-text">
-                            <h4 className="title">Calificación del producto</h4>
-                            <h4 className="sub-1">{item.data.product.title}</h4>
-                            <p className="description">{item.rate_purchase_data.comments}</p>
-                        </section>
-                    </section>
-                    {item.rate_purchase_data.images.length > 0 &&
-                        <section className="thumbnails">
-                            {item.rate_purchase_data.images.map(url => (
-                                <img src={"https://api.kieroapi.org/getFile/" + url} width="80" height="80" />
-                            ))}
-                        </section>
-                    }
-                </div>
-            }
+            {calificationProduct}
 
             {/* <section className="detail-info">
                 <h4 className="title">Detalle de la compra</h4>
