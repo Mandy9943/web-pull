@@ -147,7 +147,11 @@ function Purchases(props) {
       {props.mode === "sell" ? (
         <OrdersDetail item={selected} close={() => setSelected()} />
       ) : (
-        <PurchasesDetail item={selected} close={() => setSelected()} />
+        <PurchasesDetail
+          item={selected}
+          close={() => setSelected()}
+          role={props.user.role}
+        />
       )}
     </>
   );
