@@ -27,58 +27,9 @@ class PaySection extends Component {
   }
 
   loadData = async () => {
-    // const res = await getVariantAvailable(this.props.pid, {});
-    // const data = await res.data;
-    // console.log(data);
-    // // this.setState({dimensions: data.data});
-
-    const data = {
-      "code":"200",
-      "data":{
-        "Color":{
-          "display_type":"image",
-          "values":[
-            {
-              "available":true,
-              "image":"https://images-na.ssl-images-amazon.com/images/I/41d3obyVMVL.jpg",
-              "select":true,
-              "value":"White"
-            },
-            {
-              "available":false,
-              "image":"https://images-na.ssl-images-amazon.com/images/I/41TlePgOFzL.jpg",
-              "select":false,
-              "value":"Pink"
-            },
-            {
-              "available":false,
-              "image":"https://images-na.ssl-images-amazon.com/images/I/41YRaWJlJtL.jpg",
-              "select":false,
-              "value":"Black"
-            }
-          ]
-        },
-        "Talla": {
-          "display_type":"select",
-          "values":[
-            {"available":true,"image":"","select":false,"value":"2.53 T"},
-            {"available":false,"image":"","select":false,"value":"3.54 T"},
-            {"available":false,"image":"","select":false,"value":"33.5 T"},
-            {"available":false,"image":"","select":false,"value":"5.56 T"},
-            {"available":false,"image":"","select":false,"value":"55.5 T"},
-            {"available":false,"image":"","select":false,"value":"4.55 T"},
-            {"available":false,"image":"","select":false,"value":"44.5 T"}
-          ]
-        },
-        "product_global_id":""
-      },
-      "error":{},
-      "filters":[],
-      "pagination":[]
-    }
-;
+    const res = await getVariantAvailable(this.props.pid, {});
+    const data = await res.data;
     this.setState({dimensions: data.data});
-
   }
 
   componentDidMount() {
@@ -122,6 +73,10 @@ class PaySection extends Component {
       let url = `/detalle/${this.props.pid}?is_variant=true&product_global_id=${data.data.product_global_id}`
       window.location = url;
     }
+
+    // 6- If it is not a variant, update current data
+    this.setState({dimensions: data.data})
+
   }
 
   handleChangeCantidad = (event) => {
