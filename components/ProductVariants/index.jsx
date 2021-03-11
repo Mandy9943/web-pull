@@ -2,53 +2,48 @@ import React from 'react';
 import { useRouter } from 'next/router'
 import './ProductVariants.css'
 
-function ProductVariants({ id, dimensions }) {
+import SelectVariant from "./SelectVariant";
+import ImageVariant from "./ImageVariant";
 
-    const router = useRouter();
+
+function ProductVariants({ id, dimensions, select }) {
     const keys = Object.keys(dimensions);
+    const router = useRouter();
 
-    const onChange = e => {
-        router.push(`/detalle/${e.target.value}`);
-    };
-
-    const getVariant = (arr) => {
-        return arr.find(d=>d.product_global_id === id);
-    };
-
-    const Variant1 = () => {
-        return (
-            <div className={"variants"}>
-                {
-                    keys.map((item, index) =>
-                        <div key={index} className="selector">
-                            <label>{item}</label>
-                            <select onChange={onChange}>
-                                {
-                                    getVariant(dimensions[item].variants) ?
-                                    <option value={getVariant(dimensions[item].variants).product_global_id}>
-                                        {getVariant(dimensions[item].variants).value}
-                                    </option>:
-                                    <option value={id}>
-                                        {'Seleccionar'}
-                                    </option>
-                                }
-                                {
-                                    dimensions[item].variants.filter((e, index, ar) => ar.findIndex((el) => el.value === e.value) === index).map((variant) =>
-                                        <option value={variant.product_global_id}>
-                                            {variant.value}
-                                        </option>)
-                                }
-                            </select>
-                        </div>
-                    )}
-            </div>
-        )
+    function getVariant(item) {
+        // Kinda ugly this switch
+        switch (dimensions[item].display_type) {
+            case 'image':
+                return (
+                    <ImageVariant
+                        dimensions={dimensions[item]}
+                        select={select}
+                        name={item}
+                    />
+                )
+            case 'select':
+                return (
+                    <SelectVariant
+                        id={dimensions.product_global_id}
+                        dimensions={dimensions[item]}
+                        select={select}
+                        name={item}
+                    />
+                );
+        }
     }
 
     return (
-        <>
-            <Variant1 />
-        </>
+        <div className="variants">
+            {
+                keys.filter(key=>{return key !== 'product_global_id'}).map((item, index)=>(
+                    <div key={index} className="selector">
+                        <label>{item}</label>
+                        {getVariant(item)}
+                    </div>
+                ))
+            }
+        </div>
     );
 }
 

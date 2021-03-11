@@ -1,14 +1,16 @@
 
 .variants{
     padding: 1em;
-    display: flow-root;
+    display: flex;
+    flex-direction: column;
 }
 
 .variants .selector{
-    width: 40%;
+    width: 100%;
     margin-right: 10px;
-    float: left;
+    margin-bottom: 15px
 }
+
 .variants select{
     width: 100%;
     padding: 8px;
@@ -27,4 +29,12 @@
 
 .variants button.active{
     border: 1px solid #16b3e2;
+}
+
+.unavailable {
+    filter: blur(0.5px);
+}
+
+.selected {
+    border-color: orange
 }

@@ -99,24 +99,27 @@ function Product({ data, u_data }) {
 
 // This gets called on every request
 export async function getServerSideProps(context) {
+    // Fetch data from external API
+    let temp_p = String(context.params.product).split("_");
+    const id_product = temp_p[0];
 
-  // Fetch data from external API
-  let temp_p = String(context.params.product).split("_");
+    const res = await getProductDetail(
+      id_product,
+      {params:{ is_variant: false, product_global_id: id_product}}
+    );
 
-  const id_product = temp_p[0];
-  const res = await getProductDetail(id_product)
-  const data = await res.data
+    const data = await res.data;
 
-  let usr = getUser(context);
-  let jwt = getJwt(context);
+    let usr = getUser(context);
+    let jwt = getJwt(context);
 
-  const u_data = {
+    const u_data = {
     user: (usr !== undefined ? usr : null),
     authenticated: isAuthenticated(context),
     jwt: jwt ? jwt : ''
-  }
+    }
 
-  return { props: { data: data.data, u_data } }
+    return { props: { data: data.data, u_data } }
 }
 
 export default Product

@@ -1,4 +1,4 @@
-import {get, post, postForm, putForm, sget, apiget} from "../lib/request";
+import {get, post, postForm, putForm, sget, apiget, apiget2} from "../lib/request";
 import {categoryApi, filtersApi, productsApi, suggestionsApi} from "../lib/config";
 
 const getDataJWT = (endpoint, jwt) => {
@@ -29,11 +29,20 @@ export const getProducts8 = () => {
     }
 };
 
-export const getProductDetail = (id_product) => {
+export const getProductDetail = (id_product, params) => {
     try {
-        // let endpoint = ("/getProduct/"+id_product);
-        let endpoint = ("/variations/product_global/"+id_product);
-        let data = sget(endpoint)
+        let endpoint = "/variations/product_global/" + id_product;
+        let data = apiget2(endpoint, params)
+        return data;
+    } catch (error) {
+        return error;
+    }
+};
+
+export const getVariantAvailable = (id_product, params) => {
+    try {
+        let endpoint = ("/variations/variantAvailable/"+id_product);
+        let data = apiget2(endpoint, params)
         return data;
     } catch (error) {
         return error;
@@ -64,7 +73,6 @@ export const getSellerByProduct = (product) => {
     try {
         let endpoint = ("/getSellerByIdProduct/"+product);
         let data = sget(endpoint)
-        console.log("data", data);
         return data;
     } catch (error) {
         return error;

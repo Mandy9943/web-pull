@@ -7,7 +7,7 @@ import { faTruck } from "@fortawesome/free-solid-svg-icons";
 import logo from "../../assets/img/logo-kiero.png";
 import ubication from "../../assets/img/iconos/UBICACIÓN-01.svg";
 import {getSellerByProduct} from '../../services/productsApi';
-import logoseller from "../../assets/img/logospice.svg";
+
 
 function SellerInfo({productId}){
 
@@ -26,9 +26,8 @@ function SellerInfo({productId}){
     } 
   };
 
-  console.log("seller description");
-  console.log(seller);
 
+  // console.log(seller);
 
     return (
       <>
@@ -37,7 +36,7 @@ function SellerInfo({productId}){
         </div>
           <div className="profile-seller">
             <div className="wrap-img-profile-seller">
-              <img alt={seller?.name} src={logoseller} />
+              <img alt={seller?.name} src={!seller?.photo ? "https://recap-project.eu/wp-content/uploads/2017/02/default-user.jpg" : seller.photo  } />
             </div>
             <div className="info-profile-seller">
               <p>{seller?.name} {seller?.last_name}</p>
@@ -53,7 +52,7 @@ function SellerInfo({productId}){
           </div>
          {
            seller?.products.map((item,index)=>
-                <div className="seller-products">
+                <div className="seller-products" key={index}>
                 <img src={item.images.length>0?item.images[0].url:"https://recap-project.eu/wp-content/uploads/2017/02/default-user.jpg"} />
                 <div className="seller-products-content">
                     <p><span>${item.price}</span></p>
@@ -71,7 +70,7 @@ function SellerInfo({productId}){
           )}
          
 
-         <br/>
+         
 
           <Link href={'/'}><a className="link-more-products">{'Mira más productos de este vendedor'}</a></Link>
       </>

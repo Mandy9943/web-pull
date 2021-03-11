@@ -11,6 +11,7 @@ import Link from "next/link";
 import ListProductMovil from "./../listProductMovil/listProductMovil"
 import Rating from '../RatingProduct/RatingProduct';
 import ProductVariants from '../ProductVariants';
+import { getVariantAvailable } from "../../services/productsApi";
 
 class PaySection extends Component {
 
@@ -21,9 +22,44 @@ class PaySection extends Component {
     super(props);
     this.state = {
       cantidad: 1,
+      selectedDimensions: {},
+      dimensions: {}
     }
   }
-  
+
+  loadData = async () => {
+    const res = await getVariantAvailable(this.props.pid, {});
+    const data = await res.data;
+    console.log(data);
+    // this.setState({dimensions: data.data});
+  }
+
+  componentDidMount() {
+    this.loadData();
+  }
+
+  handleSelect = (queryset) => {
+    // TODO: Esto aun no esta listo (tuve q hacer comit)
+
+    let params = {}
+    // 1- Check if product is not available
+    if (!queryset.available) {
+    //  If it is not available query just that one
+      params[queryset.name] = queryset.value
+    }else {
+    //  If it's available appendto
+      // 1- Obtain non seleted keys
+      const nonSelectedKeys = Object.keys(this.state.dimensions).filter(key=>key!==queryset.name && key!=='product_global_id')
+      // 2- Check previously selected keys
+    }
+
+
+    // const res = getVariantAvailable(this.props.pgid, {params: params})
+    // this.setState({dimensions: res.data})
+
+    // console.log(queryset);
+  }
+
   handleChangeCantidad = (event) => {
     this.setState({cantidad: event.target.value});
   }
@@ -32,7 +68,13 @@ class PaySection extends Component {
     let u_data = this.props.user_data
     let qty_options = [];
     for (let i = 1; i <= this.props.stock; i++) {
-      qty_options[i - 1] = (<option key={"d" + i} value={i}>Cantidad: {i} (stock disponible {this.props.stock})</option>);
+      qty_options[i - 1] = (
+          <option
+              key={"d" + i}
+              value={i}
+          >
+            Cantidad: {i} (stock disponible {this.props.stock})
+          </option>);
     }
 
 
@@ -65,8 +107,8 @@ class PaySection extends Component {
             </a>
           </Link>
         </div>
-        {
-          this.props.dimensions &&  <ProductVariants id={this.props.pgid} dimensions={this.props.dimensions}/>
+        { this.state.dimensions &&
+          <ProductVariants id={this.props.pgid} dimensions={this.state.dimensions} select={this.handleSelect}/>
         }
        
         {this.props.stock > 0 ? <div className="pay-item">
