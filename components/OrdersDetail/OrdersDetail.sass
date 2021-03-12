@@ -2,12 +2,13 @@
   display: flex
   justify-content: space-between
 
+  // Left Panelfrom here
+
   .left-panel
     flex: 0 1 65%
-    background-color: lightgreen
 
     .breadcrumb
-      margin: 40px 0px 3em 0px
+      margin: 40px 0px 1em 0px
       color: #CF0A2C
 
       a
@@ -19,6 +20,39 @@
       svg
         margin: 0px 5px
 
+    //main
+    //  display: flex
+    //  flex-direction: column
+    //  background: #FFFFFF 0% 0% no-repeat padding-box
+    //  border: 0.5px solid #B9B9B9
+    //  opacity: 1
+    //
+    //  div.messages-area
+    //    height: 40vh
+    //
+    //  .action-area
+    //    display: flex
+    //    padding: 8px 20px
+    //
+    //    background: #FFFFFF 0% 0% no-repeat padding-box
+    //    border-top: 0.5px solid #B9B9B9
+    //    opacity: 1
+    //
+    //    input
+    //      background: #FFFFFF 0% 0% no-repeat padding-box
+    //      border: 0.5px solid #BCBCBC
+    //      border-radius: 6px
+    //      opacity: 1
+    //
+    //    a
+    //      background: #FFFFFF 0% 0% no-repeat padding-box
+    //      align-items: stretch
+    //      border: 0.5px solid #BCBCBC
+    //      border-radius: 6px
+    //      opacity: 1
+
+  //  Right Panel from here
+
   .right-panel
     flex: 0 1 28%
     display: flex
@@ -27,10 +61,12 @@
     margin-top: 10px
     padding: 15px 10px 0px 15px
     border: 1px solid #f3f3f3
+    height: 75vh
 
     >a
       align-self: end
       color: #cf0a2c
+      font-size: 12px
 
     section.info-text
       display: flex
@@ -72,24 +108,43 @@
 
           h3
             padding: 0 0 0 15px
-            font-size: 14px
+            font-size: 12px
             color: #111111
 
           .product-stock
-            font-size: 13px
+            font-size: 11px
             opacity: 0.60
 
           a
             color: #cf0a2c
             margin: 8px auto auto 10px
+            font-size: 13px
 
     section.action
       text-align: center;
 
       >*
         padding-bottom: 15px
+        font: normal normal normal 12px/14px Montserrat;
 
       .description
-        font: normal normal normal 17px/20px Montserrat;
         letter-spacing: 0px;
         color: #757575;
+
+#modal-body
+  display: flex
+  flex-direction: column
+  align-items: center
+  margin: 50px auto
+
+  svg
+    box-shadow: 0px 3px 6px #00000029
+    border-radius: 50%
+    opacity: 1
+    color: green
+    height: 30px
+    width: 30px
+    padding: 15px
+
+  p
+    margin-top: 10px
