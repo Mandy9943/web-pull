@@ -1,19 +1,51 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import './OrdersDetail.sass'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faAngleRight} from "@fortawesome/free-solid-svg-icons";
+import {faAngleRight, faCheck, faPaperclip} from "@fortawesome/free-solid-svg-icons";
 import {getProductImgs} from "../../lib/functions";
+import '../../components/Common/Chat/Chat.sass';
 
-export default function OrderDetail({item}) {
+export default function OrderDetail({item, close, verifyOrder}) {
+    const [showModal, setShowModal] = useState(false);
+
+    const modalBodySuccess = (
+        <div id="modal-body">
+            <FontAwesomeIcon icon={faCheck}/>
+            <p>Verificado</p>
+        </div>
+    );
+
+
+    // Chat here lacks of functionality, it is just drawn
     return (
         <div className="orders-detail">
             <section class="left-panel">
                 <div className="breadcrumb">
                     <a onClick={close}>Ventas</a>
                     <FontAwesomeIcon icon={faAngleRight} />
-                    <a>{'ID VENTA SUPONGO'}</a>
+                    <a>#{item.data.order_id}</a>
                 </div>
+
+                <main>
+                    <div className="chat-wrap" >
+                        <div className="msg" style={{height: "50vh"}}></div>
+                        <form>
+                            <div className="chat-input">
+
+                                <input type="text" />
+                                <input hidden type="file" id="file" />
+                                <div className="chat-wrap-button">
+                                    <label htmlFor="file">
+                                        <FontAwesomeIcon icon={faPaperclip} />
+                                    </label>
+                                    <button type="submit">Enviar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </main>
+
             </section>
             <section className="right-panel">
                 <Link href={"/ayuda"}>
@@ -72,9 +104,27 @@ export default function OrderDetail({item}) {
                     <p className="description">
                         Una vez confirme los detalles del producto y el tiempo de entrega podrás calificar la venta como verificada.
                     </p>
-                    <a href="#">He verificado esta venta</a>
+                    <a onClick={async (e, id)=> {
+                        e.preventDefault();
+
+                        // Steps to follow:
+                        // 1- Send request
+                        // let res = verifyOrder(e, id)
+
+                        // 2- Show Modal Exit after Modal and return to previous page
+                        setShowModal(true);
+
+                    }}>He verificado esta venta</a>
                 </section>
                 {/* Fin Seccion Action */}
+
+                {/*  Modal  */}
+                {showModal &&
+                    <Modal content={modalBodySuccess} toggle={async ()=>{
+                        setShowModal(false);
+                        close();
+                    }}/>
+                }
 
             </section>
         </div>

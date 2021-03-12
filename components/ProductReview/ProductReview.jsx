@@ -94,7 +94,7 @@ function ProductReview({ order, jwt }) {
 
                 <div className="product-detail">
                     <div className="product-detail-container">
-                    <img alt={order.data.product.title} width="80" height="80" src={order.data.product.images.length > 0 ? order.data.product.images[0].url : 'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png'} />
+                    <img alt={order.data.product.title.slice(0,10)} width="80" height="80" src={order.data.product.images.length > 0 ? order.data.product.images[0].url : 'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png'} />
                         <div>
                             <p>{order.data.product.title}</p>
                             <p>$ {order.data.total}</p>
