@@ -11,14 +11,14 @@
     margin-bottom: 15px
 }
 
-.variants select{
-    width: 100%;
-    padding: 8px;
-    border-radius: 5px;
-    outline: none !important;
-    border: 0.31px solid #acacac;
-    background-color: #ffff;
-}
+/*.variants select{*/
+/*    width: 100%;*/
+/*    padding: 8px;*/
+/*    border-radius: 5px;*/
+/*    outline: none !important;*/
+/*    border: 0.31px solid #acacac;*/
+/*    background-color: #ffff;*/
+/*}*/
 .variants .variant-title{
     width: 100%;
 }
@@ -33,6 +33,7 @@
 
 .unavailable {
     filter: blur(0.5px);
+    opacity: 0.6;
 }
 
 .selected {
