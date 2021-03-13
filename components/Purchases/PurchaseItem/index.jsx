@@ -22,7 +22,7 @@ function PurchaseItem({ item, onSelect }) {
                         <section className='description'>
                             <h3>{item.data.product.title}</h3>
                             <h3>$ {item.data.total}</h3>
-                            <h3 className="product-stock">{item.data.quantity} unidad</h3>
+                            <h3 className="product-stock">{item.data.quantity}{" "} {Number(item.data.quantity) > 1 ? "unidades" : "unidad"}</h3>
                         </section>
                     </section>
                 </a>
