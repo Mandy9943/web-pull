@@ -105,8 +105,41 @@ function Purchases(props) {
 
   const handleSelect = (item) => {
     setSelected(item);
-    console.log(item);
   };
+
+  const orderBy = (type) => {
+    let endp = "/shop/orders?page=1&limit=" + LIMIT + "&order=" + type;
+    getData(endp, props.user.jwt).then((response) => {
+      setPagination(response.data.pagination);
+
+      setPurchases(processSellData(response.data));
+    });
+  };
+
+  let started = 0;
+  let verified = 0;
+  let delivered = 0;
+  let qualified = 0;
+
+  if (props.mode === "sell") {
+    purchases.map((item, i) => {
+      if (item.data.purchase_status === "INICIADA") {
+        started++;
+      }
+
+      if (item.data.purchase_status === "VERIFICADA") {
+        verified++;
+      }
+
+      if (item.data.purchase_status === "ENTREGADO") {
+        delivered++;
+      }
+
+      if (item.data.purchase_status === "CALIFICADA") {
+        qualified++;
+      }
+    });
+  }
 
   return !selected ? (
     <div className="purchase-list">
@@ -115,11 +148,42 @@ function Purchases(props) {
       </h1>
       {props.mode === "sell" ? (
         <>
-          <AccountStoreSales />
+          <AccountStoreSales
+            started={started}
+            verified={verified}
+            delivered={delivered}
+            qualified={qualified}
+          />
           <div className="account-store-sales-wrap-search">
             <div className="account-store-sales-wrap-filter">
               <p>
-                <FontAwesomeIcon icon={faThList} /> Filtrar y ordenar
+                <a>
+                  <FontAwesomeIcon icon={faThList} /> Filtrar y ordenar
+                  <div className="hide_menu_options">
+                    <ul>
+                      <li>
+                        <a
+                          onClick={(e) => {
+                            e.preventDefault();
+                            orderBy("created");
+                          }}
+                        >
+                          Fecha de creado
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          onClick={(e) => {
+                            e.preventDefault();
+                            orderBy("updated");
+                          }}
+                        >
+                          Fecha de modificado
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </a>
               </p>
               <div className="account-store-sales-wrap-input-search">
                 <span>
@@ -128,6 +192,9 @@ function Purchases(props) {
                 <input
                   className="account-store-sales-input-search"
                   placeholder="buscar por # o título"
+                  onChange={(e) => {
+                    console.log(e.target.value);
+                  }}
                 />
               </div>
             </div>
