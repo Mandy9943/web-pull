@@ -9,7 +9,7 @@ import Modal from "../../components/Common/Modal";
 import { Iniciada, Verificada, Entregado, Calificada } from "./StateViews";
 import moment from "moment";
 
-export default function OrderItem({ item, onSelect }) {
+export default function OrderItem({ item, onSelect, user }) {
   const [showModal, setShowModal] = useState(false);
   /*if (item) {
     item.data.purchase_status = "VERIFICADA";
@@ -44,6 +44,7 @@ export default function OrderItem({ item, onSelect }) {
           <Calificada
             item={item}
             showModal={showModal}
+            user={user}
             toggle={() => {
               setShowModal(!showModal);
             }}

@@ -10,7 +10,7 @@ import {
 import { getProductImgs } from "../../lib/functions";
 import "../../components/Common/Chat/Chat.sass";
 
-export default function OrderDetail({ item, close, verifyOrder }) {
+export default function OrderDetail({ item, close, updateState }) {
   const [showModal, setShowModal] = useState(false);
 
   const modalBodySuccess = (
@@ -49,9 +49,11 @@ export default function OrderDetail({ item, close, verifyOrder }) {
         </main>
       </section>
       <section className="right-panel">
-        <Link href={"/ayuda"}>
-          <a>Necesito ayuda</a>
-        </Link>
+        <p>
+          <Link href={"/ayuda"}>
+            <a>Necesito ayuda</a>
+          </Link>
+        </p>
 
         {/* Seccion Cliente */}
         <section className="card">
@@ -68,8 +70,10 @@ export default function OrderDetail({ item, close, verifyOrder }) {
 
             <section className="card-description">
               <h3>{item.data.user.name + " " + item.data.user.last_name}</h3>
-              <h3 className="product-stock">{item.data.user.phone}</h3>
-              <a href="#">Detalles de venta</a>
+              <h3>{item.data.user.phone ? item.data.user.phone : " "} </h3>
+              <a href="#" className="sell_detail">
+                Detalles de venta
+              </a>
             </section>
           </main>
         </section>
@@ -109,13 +113,16 @@ export default function OrderDetail({ item, close, verifyOrder }) {
           <a
             onClick={async (e, id) => {
               e.preventDefault();
-
+              let response = await updateState(
+                "/shop/order/" + item.data.order_id
+              );
+              console.log(response);
               // Steps to follow:
               // 1- Send request
               // let res = verifyOrder(e, id)
 
               // 2- Show Modal Exit after Modal and return to previous page
-              setShowModal(true);
+              //setShowModal(true);
             }}
           >
             He verificado esta venta

@@ -4,6 +4,7 @@ import "./Purchases.css";
 import ProductItem from "../ProductItem/ProductItem";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { getData } from "../../services/userApi";
+import { modifyData } from "../../services/ordersApi";
 import ProductCard from "../ProductCard";
 import OptionList from "../OptionList/OptionList";
 import AccountStoreSales from "../AccountStore/AccountStoreSales/AccountStoreSales";
@@ -18,6 +19,10 @@ import Pagination from "../Common/Pagination/Pagination";
 function processSellData(data) {
   // Esta uncion es para que los datos devueltos por el endpoint /shop/orders/
   // tengan el mismo formato del de las ventas.
+  if (!data) {
+    return [];
+  }
+
   return data.data.map((record) => {
     return { data: record };
   });
@@ -33,7 +38,7 @@ function Purchases(props) {
   let lastPage = 1;
   let currentPage = 1;
   let nextPage = 1;
-  const LIMIT = 2;
+  const LIMIT = 20;
 
   if (pagination) {
     lastPage = pagination["last_page"];
@@ -52,13 +57,18 @@ function Purchases(props) {
         ? "/shop/orders?page=1&limit=" + LIMIT + order
         : "/getPurchases?page=1&size=" + LIMIT;
     getData(endp, props.user.jwt).then((response) => {
-      setPagination(response.data.pagination);
+      if (response.data && response.data.code && response.data.code !== 404) {
+        setPagination(response.data.pagination);
 
-      // Dirty Hack
-      if (props.mode === "sell") {
-        setPurchases(processSellData(response.data));
+        // Dirty Hack
+        if (props.mode === "sell") {
+          setPurchases(processSellData(response.data));
+        } else {
+          setPurchases(response.data.purchases); // Dirty hack the funciton
+        }
       } else {
-        setPurchases(response.data.purchases); // Dirty hack the funciton
+        setPagination();
+        setPurchases([]);
       }
     });
 
@@ -76,14 +86,68 @@ function Purchases(props) {
     let order = "&order=" + type;
     let endp = "/shop/orders?page=1&limit=" + LIMIT + order;
     getData(endp, props.user.jwt).then((response) => {
-      setPagination(response.data.pagination);
-      setPurchases(processSellData(response.data));
-      setOrder(order);
+      if (response.data && response.data.code && response.data.code !== 404) {
+        setPagination(response.data.pagination);
+        setPurchases(processSellData(response.data));
+        setOrder(order);
+      } else {
+        setPagination();
+        setPurchases([]);
+      }
     });
   };
 
   const searchOrders = () => {
     console.log(search);
+    let endp = "/shop/orders?page=1&limit=" + LIMIT + "&search=" + search;
+    getData(endp, props.user.jwt).then((response) => {
+      console.log(response);
+      if (response.data && response.data.code && response.data.code !== 404) {
+        setPagination(response.data.pagination);
+        setPurchases(processSellData(response.data));
+        setSearch("");
+      } else {
+        setPagination();
+        setPurchases([]);
+      }
+    });
+  };
+
+  const paginate = (selectPage) => {
+    const endp =
+      props.mode === "sell"
+        ? "/shop/orders?page=" + selectPage + "&limit=" + LIMIT + order
+        : "/getPurchases?page=" + selectPage + "&size=" + LIMIT;
+    getData(endp, props.user.jwt).then((response) => {
+      if (response.data && response.data.code && response.data.code !== 404) {
+        setPagination(response.data.pagination);
+
+        // Dirty Hack
+        if (props.mode === "sell") {
+          setPurchases(processSellData(response.data));
+        } else {
+          setPurchases(response.data.purchases); // Dirty hack the funciton
+        }
+      } else {
+        setPagination();
+        setPurchases([]);
+      }
+    });
+  };
+
+  const updateState = async (endp) => {
+    let response = await modifyData(endp, "", props.user.jwt);
+    console.log(response);
+    let element = response.data[0];
+    //buscar este elemento en el arreglo original y sustituirlo
+    let newPurchases = purchases.map((item, i) => {
+      //if (item.data.order_id == response.data[0].order_id) {
+      //item.data = response.data[0];
+      console.log(item.data);
+      console.log(response.data[0]);
+      //}
+    });
+    //setPurchases(newPurchases);
   };
 
   return !selected ? (
@@ -153,7 +217,12 @@ function Purchases(props) {
             </section>
           ) : (
             purchases.map((item, index) => (
-              <OrderItem key={index} item={item} onSelect={handleSelect} />
+              <OrderItem
+                key={index}
+                item={item}
+                onSelect={handleSelect}
+                user={props.user}
+              />
             ))
           )}
         </>
@@ -178,20 +247,7 @@ function Purchases(props) {
           actual={currentPage}
           totalPages={lastPage}
           cb={(selectPage) => {
-            const endp =
-              props.mode === "sell"
-                ? "/shop/orders?page=" + selectPage + "&limit=" + LIMIT + order
-                : "/getPurchases?page=" + selectPage + "&size=" + LIMIT;
-            getData(endp, props.user.jwt).then((response) => {
-              setPagination(response.data.pagination);
-
-              // Dirty Hack
-              if (props.mode === "sell") {
-                setPurchases(processSellData(response.data));
-              } else {
-                setPurchases(response.data.purchases); // Dirty hack the funciton
-              }
-            });
+            paginate(selectPage);
           }}
         />
       )}
@@ -199,7 +255,11 @@ function Purchases(props) {
   ) : (
     <>
       {props.mode === "sell" ? (
-        <OrdersDetail item={selected} close={() => setSelected()} />
+        <OrdersDetail
+          item={selected}
+          close={() => setSelected()}
+          updateState={updateState}
+        />
       ) : (
         <PurchasesDetail item={selected} close={() => setSelected()} />
       )}

@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-//import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-//import {faCheck, faStar} from "@fortawesome/free-solid-svg-icons";
 import Modal from "../../Common/Modal";
 
 export default function Verificada({ item, showModal, toggle }) {
@@ -13,7 +11,8 @@ export default function Verificada({ item, showModal, toggle }) {
           onClick={(e) => {
             e.preventDefault();
             // TODO Logic behind this
-            alert("aqui que se hace");
+            alert("consumir nuevamente el put de cambio de estado");
+            alert("mostrar otro modal, foto 3");
             toggle();
           }}
         >
@@ -22,8 +21,6 @@ export default function Verificada({ item, showModal, toggle }) {
         <a
           onClick={(e) => {
             e.preventDefault();
-            // TODO Logic behind this
-            alert("aqui que se hace");
             toggle();
           }}
         >
