@@ -10,7 +10,17 @@ function ProductVariants({ id, dimensions, select }) {
     const keys = Object.keys(dimensions);
     const router = useRouter();
 
+    function sortDimension(dim) {
+        dim.values.sort((a,b)=>{
+            if (a.value < b.value){return -1}
+            if (a.value == b.value) {return 0}
+            return 1;
+        })
+    }
+
     function getVariant(item) {
+        sortDimension(dimensions[item]);
+
         // Kinda ugly this switch
         switch (dimensions[item].display_type) {
             case 'image':
