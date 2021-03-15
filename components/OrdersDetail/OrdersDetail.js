@@ -113,16 +113,14 @@ export default function OrderDetail({ item, close, updateState }) {
           <a
             onClick={async (e, id) => {
               e.preventDefault();
-              let response = await updateState(
-                "/shop/order/" + item.data.order_id
-              );
-              console.log(response);
+              await updateState("/shop/order/" + item.data.order_id);
+
               // Steps to follow:
               // 1- Send request
               // let res = verifyOrder(e, id)
 
               // 2- Show Modal Exit after Modal and return to previous page
-              //setShowModal(true);
+              setShowModal(true);
             }}
           >
             He verificado esta venta
