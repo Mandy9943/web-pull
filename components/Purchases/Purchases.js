@@ -141,13 +141,13 @@ function Purchases(props) {
     let element = response.data[0];
     //buscar este elemento en el arreglo original y sustituirlo
     let newPurchases = purchases.map((item, i) => {
-      //if (item.data.order_id == response.data[0].order_id) {
-      //item.data = response.data[0];
-      console.log(item.data);
-      console.log(response.data[0]);
-      //}
+      if (item.data.order_id == response.data[0].order_id) {
+        item.data = response.data[0];
+        console.log(item.data);
+        console.log(response.data[0]);
+      }
     });
-    //setPurchases(newPurchases);
+    setPurchases(newPurchases);
   };
 
   return !selected ? (
