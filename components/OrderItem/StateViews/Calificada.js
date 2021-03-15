@@ -29,7 +29,7 @@ export default function Calificada({ item, toggle, showModal }) {
             {/*item.data.rate_purchase_data.rate_shop == 5 && (
             <h5 className="sub">Excelente vendedor!</h5>
           )*/}
-            <h5 className="sub">Excelente vendedor!</h5>
+            <h5 className="sub_excelent">¡Excelente vendedor!</h5>
           </section>
         </section>
         <br />

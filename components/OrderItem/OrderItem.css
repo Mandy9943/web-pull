@@ -183,6 +183,14 @@ p.stars svg {
   font-size: 12px;
 }
 
+.item-product-modal
+  .purchases-detail
+  .product-valoration
+  .info-text
+  .sub_excelent {
+  font-size: 13px;
+}
+
 #verified-modal {
   padding: 25px 0px 10px 0px;
 }

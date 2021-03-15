@@ -39,7 +39,7 @@ export default function Verificada({ item, showModal, toggle }) {
         ¿Este producto ya fue <br />
         entregado?
       </a>
-      {!showModal && <Modal content={qModal} toggle={toggle} />}
+      {showModal && <Modal content={qModal} toggle={toggle} />}
     </section>
   );
 }

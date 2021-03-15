@@ -15,44 +15,6 @@ import OrderItem from "../OrderItem/OrderItem.js";
 import OrdersDetail from "../OrdersDetail/OrdersDetail.js";
 import Pagination from "../Common/Pagination/Pagination";
 
-/*const data = {
-  code: 200,
-  data: [
-    {
-      created_since: "2020-06-17T23:16:04.226275",
-      method_id: 2,
-      order_id: 7,
-      product_id: 41479552,
-      purchase_status: "NUEVA",
-      quantity: 1,
-      seller_id: 22,
-      status: 2,
-      total: "135400.00",
-      transaction_id: null,
-      updated_since: "2021-03-04T00:00:00",
-      user_id: 5551,
-      product: {
-        title: "Dell Inspiron 15 3000 Series, Core i3 HD 16``",
-        images: [],
-        category: "Electronica",
-      },
-      client: {
-        name: "Francisco",
-        last_name: "Aro",
-        phone: 55665566,
-      },
-      rate_purchase_data: {
-        rate_shop: 5,
-        created_since: "yesterday",
-        comments: "Este producto es la hostia",
-      },
-    },
-  ],
-  error: {},
-  filters: [],
-  pagination: {},
-};*/
-
 function processSellData(data) {
   // Esta uncion es para que los datos devueltos por el endpoint /shop/orders/
   // tengan el mismo formato del de las ventas.
@@ -65,10 +27,13 @@ function Purchases(props) {
   const [pagination, setPagination] = useState();
   const [purchases, setPurchases] = useState([]);
   const [selected, setSelected] = useState();
+  const [order, setOrder] = useState("");
+  const [search, setSearch] = useState();
+
   let lastPage = 1;
   let currentPage = 1;
   let nextPage = 1;
-  const LIMIT = 20;
+  const LIMIT = 2;
 
   if (pagination) {
     lastPage = pagination["last_page"];
@@ -84,7 +49,7 @@ function Purchases(props) {
   useEffect(() => {
     const endp =
       props.mode === "sell"
-        ? "/shop/orders?page=1&limit=" + LIMIT
+        ? "/shop/orders?page=1&limit=" + LIMIT + order
         : "/getPurchases?page=1&size=" + LIMIT;
     getData(endp, props.user.jwt).then((response) => {
       setPagination(response.data.pagination);
@@ -108,38 +73,18 @@ function Purchases(props) {
   };
 
   const orderBy = (type) => {
-    let endp = "/shop/orders?page=1&limit=" + LIMIT + "&order=" + type;
+    let order = "&order=" + type;
+    let endp = "/shop/orders?page=1&limit=" + LIMIT + order;
     getData(endp, props.user.jwt).then((response) => {
       setPagination(response.data.pagination);
-
       setPurchases(processSellData(response.data));
+      setOrder(order);
     });
   };
 
-  let started = 0;
-  let verified = 0;
-  let delivered = 0;
-  let qualified = 0;
-
-  if (props.mode === "sell") {
-    purchases.map((item, i) => {
-      if (item.data.purchase_status === "INICIADA") {
-        started++;
-      }
-
-      if (item.data.purchase_status === "VERIFICADA") {
-        verified++;
-      }
-
-      if (item.data.purchase_status === "ENTREGADO") {
-        delivered++;
-      }
-
-      if (item.data.purchase_status === "CALIFICADA") {
-        qualified++;
-      }
-    });
-  }
+  const searchOrders = () => {
+    console.log(search);
+  };
 
   return !selected ? (
     <div className="purchase-list">
@@ -148,12 +93,7 @@ function Purchases(props) {
       </h1>
       {props.mode === "sell" ? (
         <>
-          <AccountStoreSales
-            started={started}
-            verified={verified}
-            delivered={delivered}
-            qualified={qualified}
-          />
+          <AccountStoreSales user={props.user} mode={props.mode} />
           <div className="account-store-sales-wrap-search">
             <div className="account-store-sales-wrap-filter">
               <p>
@@ -185,18 +125,25 @@ function Purchases(props) {
                   </div>
                 </a>
               </p>
-              <div className="account-store-sales-wrap-input-search">
-                <span>
-                  <FontAwesomeIcon icon={faSearch} />
-                </span>
-                <input
-                  className="account-store-sales-input-search"
-                  placeholder="buscar por # o título"
-                  onChange={(e) => {
-                    console.log(e.target.value);
-                  }}
-                />
-              </div>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  searchOrders();
+                }}
+              >
+                <div className="account-store-sales-wrap-input-search">
+                  <span>
+                    <FontAwesomeIcon icon={faSearch} />
+                  </span>
+                  <input
+                    className="account-store-sales-input-search"
+                    placeholder="buscar por # o título"
+                    onChange={(e) => {
+                      setSearch(e.target.value);
+                    }}
+                  />
+                </div>
+              </form>
             </div>
             {/*<span className="sub-title"> {purchases.length} ventas</span>*/}
           </div>
@@ -233,7 +180,7 @@ function Purchases(props) {
           cb={(selectPage) => {
             const endp =
               props.mode === "sell"
-                ? "/shop/orders?page=" + selectPage + "&limit=" + LIMIT
+                ? "/shop/orders?page=" + selectPage + "&limit=" + LIMIT + order
                 : "/getPurchases?page=" + selectPage + "&size=" + LIMIT;
             getData(endp, props.user.jwt).then((response) => {
               setPagination(response.data.pagination);
