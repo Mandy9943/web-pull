@@ -70,13 +70,13 @@ class PaySection extends Component {
 
     // 5- Check if product_global_id is non null
     if (data.data.product_global_id) {
-      let url = `/detalle/${this.props.pid}?is_variant=true&product_global_id=${data.data.product_global_id}`
-      window.location = url;
+      // let url = `/detalle/${this.props.pid}?is_variant=true&product_global_id=${data.data.product_global_id}`
+      // window.location = url;
+      this.props.reloadDetails(data.data.product_global_id);
     }
 
     // 6- If it is not a variant, update current data
     this.setState({dimensions: data.data})
-
   }
 
   handleChangeCantidad = (event) => {

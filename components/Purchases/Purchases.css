@@ -14,26 +14,64 @@
   color: #111111;
 }
 
-.account-store-sales-wrap-search, .account-store-sales-wrap-filter {
+.account-store-sales-wrap-search,
+.account-store-sales-wrap-filter {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
-.account-store-sales-wrap-search .sub-title, .account-store-sales-wrap-filter .sub-title {
+.account-store-sales-wrap-search .sub-title,
+.account-store-sales-wrap-filter .sub-title {
   color: #444444;
   font-size: 13px;
 }
 
 .account-store-sales-wrap-filter p {
-  border-right: 0.5px solid;
+  /*border-right: 0.5px solid;*/
   padding-right: 7px;
+}
+
+.account-store-sales-wrap-filter a {
+  cursor: pointer;
+  padding: 5px;
+  color: #111111 !important;
+}
+
+.account-store-sales-wrap-filter a .hide_menu_options {
+  display: none;
+  position: absolute;
+  background-color: white;
+  border-radius: 6px;
+  padding: 5px;
+  z-index: 9999;
+  border: 0.5px solid #bebebe;
+  color: #111111 !important;
+}
+
+.account-store-sales-wrap-filter a:hover .hide_menu_options {
+  display: block;
+  box-shadow: 0px 3px 3px #11111129;
+}
+
+.account-store-sales-wrap-filter a .hide_menu_options ul {
+  list-style: none;
+  color: #111111 !important;
+}
+
+.account-store-sales-wrap-filter a .hide_menu_options ul li {
+  padding: 5px;
+}
+
+.account-store-sales-wrap-filter a .hide_menu_options ul li a {
+  color: #111111 !important;
+  font-size: 13px;
 }
 
 .account-store-sales-wrap-input-search {
@@ -46,7 +84,7 @@
   bottom: 8px;
   left: 4px;
   font-size: 16px;
-  color: #6F6F6F;
+  color: #6f6f6f;
 }
 
 .account-store-sales-input-search {
@@ -57,7 +95,7 @@
   padding-left: 22px;
   width: 100%;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   margin: 0px;
 }
 
