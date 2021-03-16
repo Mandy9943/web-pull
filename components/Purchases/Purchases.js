@@ -137,15 +137,13 @@ function Purchases(props) {
 
   const updateState = async (endp) => {
     let response = await modifyData(endp, "", props.user.jwt);
-    console.log(response);
-    let element = response.data[0];
+    let element = response.data.data[0];
     //buscar este elemento en el arreglo original y sustituirlo
     let newPurchases = purchases.map((item, i) => {
-      if (item.data.order_id == response.data[0].order_id) {
-        item.data = response.data[0];
-        console.log(item.data);
-        console.log(response.data[0]);
+      if (item.data.order_id == element.order_id) {
+        item.data = element;
       }
+      return item;
     });
     setPurchases(newPurchases);
   };
@@ -160,35 +158,33 @@ function Purchases(props) {
           <AccountStoreSales user={props.user} mode={props.mode} />
           <div className="account-store-sales-wrap-search">
             <div className="account-store-sales-wrap-filter">
-              <p>
-                <a>
-                  <FontAwesomeIcon icon={faThList} /> Filtrar y ordenar
-                  <div className="hide_menu_options">
-                    <ul>
-                      <li>
-                        <a
-                          onClick={(e) => {
-                            e.preventDefault();
-                            orderBy("created");
-                          }}
-                        >
-                          Fecha de creado
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          onClick={(e) => {
-                            e.preventDefault();
-                            orderBy("updated");
-                          }}
-                        >
-                          Fecha de modificado
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </a>
-              </p>
+              <div className="menu_options">
+                <FontAwesomeIcon icon={faThList} /> Filtrar y ordenar
+                <div className="hide_menu_options">
+                  <ul>
+                    <li>
+                      <a
+                        onClick={(e) => {
+                          e.preventDefault();
+                          orderBy("created");
+                        }}
+                      >
+                        Fecha de creado
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        onClick={(e) => {
+                          e.preventDefault();
+                          orderBy("updated");
+                        }}
+                      >
+                        Fecha de modificado
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -219,6 +215,7 @@ function Purchases(props) {
             purchases.map((item, index) => (
               <OrderItem
                 key={index}
+                updateState={updateState}
                 item={item}
                 onSelect={handleSelect}
                 user={props.user}

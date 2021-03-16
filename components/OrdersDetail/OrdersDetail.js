@@ -9,6 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { getProductImgs } from "../../lib/functions";
 import "../../components/Common/Chat/Chat.sass";
+import Modal from "../Common/Modal";
 
 export default function OrderDetail({ item, close, updateState }) {
   const [showModal, setShowModal] = useState(false);
@@ -23,7 +24,7 @@ export default function OrderDetail({ item, close, updateState }) {
   // Chat here lacks of functionality, it is just drawn
   return (
     <div className="orders-detail">
-      <section class="left-panel">
+      <section className="left-panel">
         <div className="breadcrumb">
           <a onClick={close}>Ventas</a>
           <FontAwesomeIcon icon={faAngleRight} />

@@ -9,11 +9,9 @@ import Modal from "../../components/Common/Modal";
 import { Iniciada, Verificada, Entregado, Calificada } from "./StateViews";
 import moment from "moment";
 
-export default function OrderItem({ item, onSelect, user }) {
+export default function OrderItem({ item, onSelect, user, updateState }) {
   const [showModal, setShowModal] = useState(false);
-  /*if (item) {
-    item.data.purchase_status = "VERIFICADA";
-  }*/
+
   function getComponentByState(state) {
     // Perhaps there is a cleaner way to do this, I dont like it D:
     switch (state) {
@@ -24,6 +22,7 @@ export default function OrderItem({ item, onSelect, user }) {
           <Verificada
             item={item}
             showModal={showModal}
+            updateState={updateState}
             toggle={() => {
               setShowModal(!showModal);
             }}

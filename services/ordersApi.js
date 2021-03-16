@@ -12,7 +12,7 @@ export const getOrderId = (order_id, jwt) => {
 
 export const modifyData = async (endpoint, data, jwt) => {
   try {
-    return await putForm(endpoint, data, jwt);
+    return await put(endpoint, data, jwt);
   } catch (error) {
     return false;
   }
