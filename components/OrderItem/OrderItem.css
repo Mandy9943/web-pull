@@ -125,6 +125,7 @@
 
 .item-product-modal .vendor-reputation section {
   margin-bottom: 15px;
+  margin-top: 15px;
 }
 
 .item-product-modal .vendor-reputation section p {
@@ -164,6 +165,7 @@
 .item-product-modal .purchases-detail .product-valoration .info img {
   max-width: 90px;
   float: left !important;
+  border-radius: 50%;
 }
 .item-product-modal .purchases-detail .product-valoration .info-text {
   margin-left: 80px !important;

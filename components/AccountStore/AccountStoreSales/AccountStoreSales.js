@@ -4,51 +4,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faThList } from "@fortawesome/free-solid-svg-icons";
 import { getData } from "../../../services/userApi";
 
-export default function AccountStoreSales(props) {
-  const { user, mode } = props;
-  const [purchases, setPurchases] = useState([]);
-
-  let started = 0;
-  let verified = 0;
-  let delivered = 0;
-  let qualified = 0;
-
-  function processSellData(data) {
-    // Esta uncion es para que los datos devueltos por el endpoint /shop/orders/
-    // tengan el mismo formato del de las ventas.
-    return data.data.map((record) => {
-      return { data: record };
-    });
-  }
-
-  if (mode === "sell") {
-    purchases.map((item, i) => {
-      if (item.data.purchase_status === "INICIADA") {
-        started++;
-      }
-
-      if (item.data.purchase_status === "VERIFICADA") {
-        verified++;
-      }
-
-      if (item.data.purchase_status === "ENTREGADO") {
-        delivered++;
-      }
-
-      if (item.data.purchase_status === "CALIFICADA") {
-        qualified++;
-      }
-    });
-  }
+export default function AccountStoreSales({ user, mode }) {
+  const [started, setStarted] = useState(0);
+  const [verified, setVerified] = useState(0);
+  const [delivered, setDelivered] = useState(0);
+  const [qualified, setQualified] = useState(0);
 
   useEffect(() => {
-    console.log(
-      "utilizar un endpoint que traiga exclusivamente la informacion de las cantidades"
-    );
-
-    let endp = "/shop/orders";
+    let endp = "/shop/orders/status";
     getData(endp, user.jwt).then((response) => {
-      setPurchases(processSellData(response.data));
+      setStarted(response.data.data[0]["Venta iniciada"]);
+      setVerified(response.data.data[0]["Venta verificada"]);
+      setDelivered(response.data.data[0]["Producto entregado"]);
+      setQualified(response.data.data[0]["Venta calificada"]);
     });
   }, []);
 

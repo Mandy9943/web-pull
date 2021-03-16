@@ -1,136 +1,150 @@
 .orders-detail {
-	display: flex;
-	justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .orders-detail .left-panel {
-	flex: 0 1 65%;
+  flex: 0 1 65%;
 }
 
 .orders-detail .left-panel .breadcrumb {
-	margin: 40px 0px 1em 0px;
-	color: #CF0A2C;
+  margin: 40px 0px 1em 0px;
+  color: #cf0a2c;
 }
 
 .orders-detail .left-panel .breadcrumb a {
-	color: #111111;
-	font-size: 15px;
-	text-transform: capitalize;
-	cursor: pointer;
+  color: #111111;
+  font-size: 15px;
+  text-transform: capitalize;
+  cursor: pointer;
 }
 
 .orders-detail .left-panel .breadcrumb svg {
-	margin: 0px 5px;
+  margin: 0px 5px;
 }
 
 .orders-detail .right-panel {
-	flex: 0 1 28%;
-	display: flex;
-	flex-direction: column;
-	background-color: #f9f9f9;
-	margin-top: 10px;
-	padding: 15px 10px 0px 15px;
-	border: 1px solid #f3f3f3;
-	height: 75vh;
+  flex: 0 1 28%;
+  display: flex;
+  flex-direction: column;
+  background-color: #f9f9f9;
+  margin-top: 10px;
+  padding: 15px 10px 0px 15px;
+  border: 1px solid #f3f3f3;
+  height: 75vh;
 }
 
-.orders-detail .right-panel > a {
-	align-self: end;
-	color: #cf0a2c;
-	font-size: 12px;
+.orders-detail .right-panel > p {
+  align-self: end;
+  color: #cf0a2c !important;
+  font-size: 12px;
+  text-align: right;
+  width: 100%;
+}
+
+.orders-detail .right-panel > p a {
+  color: #cf0a2c !important;
 }
 
 .orders-detail .right-panel section.info-text {
-	display: flex;
-	margin-left: 10px;
+  display: flex;
+  margin-left: 10px;
 }
 
 .orders-detail .right-panel .card#product header h4 {
-	font: normal normal medium 18px/22px "Montserrat";
-	opacity: 1;
+  font: normal normal medium 18px/22px "Montserrat";
+  opacity: 1;
 }
 
 .orders-detail .right-panel .card {
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .orders-detail .right-panel .card header {
-	margin-left: 8px;
+  margin-left: 8px;
 }
 
 .orders-detail .right-panel .card main {
-	display: flex;
-	padding: 5px 15px;
+  display: flex;
+  padding: 5px 15px;
 }
 
 .orders-detail .right-panel .card main .card-img {
-	margin-right: 15px;
+  margin-right: 15px;
 }
 
 .orders-detail .right-panel .card main .card-img img {
-	width: 55px;
-	height: 55px;
-	border-radius: 50%;
-	background: #FFFFFF 0% 0% no-repeat padding-box;
-	box-shadow: 0px 3px 6px #000029;
-	opacity: 1;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #000029;
+  opacity: 1;
 }
 
 .orders-detail .right-panel .card main .card-description {
-	font-size: 14px;
-	color: #111111;
-	display: flex;
-	flex-direction: column;
+  font-size: 14px;
+  color: #111111;
+  display: flex;
+  flex-direction: column;
 }
 
 .orders-detail .right-panel .card main .card-description h3 {
-	padding: 0 0 0 15px;
-	font-size: 12px;
-	color: #111111;
+  padding: 0 0 0 15px;
+  font-size: 12px;
+  color: #111111;
 }
 
 .orders-detail .right-panel .card main .card-description .product-stock {
-	font-size: 11px;
-	opacity: 0.60;
+  font-size: 11px;
+  opacity: 0.6;
 }
 
 .orders-detail .right-panel .card main .card-description a {
-	color: #cf0a2c;
-	margin: 8px auto auto 10px;
-	font-size: 13px;
+  color: #cf0a2c;
+  margin: 8px auto auto 10px;
+  font-size: 13px;
+}
+
+.orders-detail .right-panel .card main .card-description .sell_detail {
+  margin-left: 15px !important;
 }
 
 .orders-detail .right-panel section.action {
-	text-align: center;
+  text-align: center;
 }
 
 .orders-detail .right-panel section.action > * {
-	padding-bottom: 15px;
-	font: normal normal normal 12px/14px Montserrat;
+  padding-bottom: 15px;
+  font: normal normal normal 12px/14px Montserrat;
 }
 
 .orders-detail .right-panel section.action .description {
-	letter-spacing: 0px;
-	color: #757575;
+  letter-spacing: 0px;
+  color: #757575 !important;
+}
+
+.orders-detail .right-panel section.action > a {
+  cursor: pointer;
 }
 
 #modal-body {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px auto;
 }
 
 #modal-body svg {
-	box-shadow: 0px 3px 6px #000029;
-	border-radius: 50%;
-	opacity: 1;
-	color: green;
-	height: 30px;
-	width: 30px;
-	padding: 15px;
+  box-shadow: 0px 3px 6px #000029;
+  border-radius: 50%;
+  opacity: 1;
+  color: green;
+  height: 30px;
+  width: 30px;
+  padding: 15px;
 }
 
 #modal-body p {
-	margin-top: 10px;
+  margin-top: 10px;
 }
