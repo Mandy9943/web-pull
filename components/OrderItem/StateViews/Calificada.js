@@ -1,89 +1,95 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faStar } from "@fortawesome/free-solid-svg-icons";
 import Modal from "../../Common/Modal";
 import { getProductImgs } from "../../../lib/functions";
+import { getData } from "../../../services/userApi";
 
-export default function Calificada({ item, toggle, showModal }) {
-  const qModal = (
-    <div className="item-product-modal">
-      <div className="vendor-reputation">
-        <section className="info">
-          <img
-            src={getProductImgs(item.data.product.images)}
-            width="65"
-            height="56"
-            style={{ float: "left" }}
-          />
-          <section className="info-text" style={{ marginLeft: "80px" }}>
-            <p className="stars">
-              {/*Array.from(Array(item.data.rate_purchase_data.rate_shop), (i) => (
-              <FontAwesomeIcon icon={faStar} />
-            ))*/}
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faStar} />
-            </p>
-            {/*item.data.rate_purchase_data.rate_shop == 5 && (
-            <h5 className="sub">Excelente vendedor!</h5>
-          )*/}
-            <h5 className="sub_excelent">¡Excelente vendedor!</h5>
+export default function Calificada({ item, toggle, showModal, user }) {
+  let id = item.data.order_id;
+  let jwt = user.jwt;
+  const [showDetail, setShowDetail] = useState(false);
+  const [detailData, setDetailData] = useState(null);
+
+  useEffect(() => {
+    if (showModal) {
+      console.log(id);
+      const endp = "/getOrderDetails/" + id;
+
+      getData(endp, jwt).then((response) => {
+        setDetailData(response.data);
+      });
+    }
+  }, [showModal, id, jwt]);
+
+  let qModal = null;
+
+  if (detailData !== null) {
+    qModal = (
+      <div className="item-product-modal">
+        <div className="vendor-reputation">
+          <section className="info">
+            <img
+              src={detailData.data.seller.photo}
+              width="65"
+              height="56"
+              style={{ float: "left", borderRadius: "50%" }}
+            />
+            <section className="info-text" style={{ marginLeft: "80px" }}>
+              <p className="stars">
+                {Array.from(
+                  Array(detailData.rate_purchase_data.rate_product),
+                  (i) => (
+                    <FontAwesomeIcon icon={faStar} />
+                  )
+                )}
+              </p>
+              {detailData.rate_purchase_data.rate_product == 5 && (
+                <h5 className="sub">Excelente vendedor!</h5>
+              )}
+            </section>
           </section>
-        </section>
-        <br />
-        <section className="info">
-          <img
-            src={getProductImgs(item.data.product.images)}
-            width="65"
-            height="56"
-            style={{ float: "left" }}
-          />
-          <section className="info-text" style={{ marginLeft: "80px" }}>
-            <h4>Calificación del producto</h4>
-            <p className="description">{item.data.product.title}</p>
-            <p className="description" style={{ marginTop: "15px" }}>
-              {/*item.data.rate_purchase_data.comments*/}
-              Comentarios de la venta del producto.
-            </p>
+          <br />
+          <section className="info">
+            <img
+              src={detailData.data.product.images[0].url}
+              width="65"
+              height="56"
+              style={{ float: "left" }}
+            />
+            <section className="info-text" style={{ marginLeft: "80px" }}>
+              <h4>Calificación del producto</h4>
+              <p className="description">{detailData.data.product.title}</p>
+              <p className="description" style={{ marginTop: "15px" }}>
+                {detailData.rate_purchase_data.comments}
+              </p>
+            </section>
           </section>
-        </section>
-        {/*item.rate_purchase_data.images.length > 0 && (
-          <section className="thumbnails">
-            {item.rate_purchase_data.images.map((url, i) => (
-              <img
-                src={"https://api.kieroapi.org/getFile/" + url}
-                key={i}
-                width="80"
-                height="80"
-              />
-            ))}
-          </section>
-            )*/}
-        <section className="thumbnails">
-          <img
-            alt={item.data.product.title.slice(0, 10)}
-            src={getProductImgs(item.data.product.images)}
-            width="65"
-            height="56"
-          />
-          <img
-            alt={item.data.product.title.slice(0, 10)}
-            src={getProductImgs(item.data.product.images)}
-            width="65"
-            height="56"
-          />
-          <img
-            alt={item.data.product.title.slice(0, 10)}
-            src={getProductImgs(item.data.product.images)}
-            width="65"
-            height="56"
-          />
-        </section>
+          {detailData.rate_purchase_data.images_rate_purchase.length > 0 && (
+            <section className="thumbnails">
+              {detailData.rate_purchase_data.images_rate_purchase.map(
+                (url, i) => (
+                  <img src={url} key={i} width="65" height="56" />
+                )
+              )}
+            </section>
+          )}
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    qModal = (
+      <div className="item-product-modal">
+        <div className="vendor-reputation">
+          <section className="info">
+            <section className="info-text" style={{ textAlign: "center" }}>
+              <h4>Cargando datos ...</h4>
+            </section>
+          </section>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div>
