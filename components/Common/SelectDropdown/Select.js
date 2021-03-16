@@ -6,8 +6,8 @@ const defaultText = 'Seleccionar';
 
 
 export default function Select(props) {
-    const [selected, setSelected] = useState(defaultText);
-    const {onSelect, items} = props;
+    const {onSelect, items, showDefault} = props;
+    const [selected, setSelected] = useState(showDefault === true ? defaultText : items.values[0].value)
 
     function handleSelect(e) {
         e.preventDefault();
@@ -27,11 +27,13 @@ export default function Select(props) {
             <span>{selected}</span>
             <div className="dropdown-content">
                 <ul className="menu">
-                    <li
-                        data-index={-1}
-                        onClick={handleSelect}
-                    >Seleccionar
-                    </li>
+                    {showDefault===true &&
+                        <li
+                            data-index={-1}
+                            onClick={handleSelect}
+                        >Seleccionar
+                        </li>
+                    }
                     {items.values.map((item,index)=> {
                         return (
                             <li

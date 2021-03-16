@@ -16,6 +16,7 @@ export default function SelectVariant({dimensions, select, name}) {
         <Select
             onSelect={onSelect}
             items={dimensions}
+            showDefault={true}
         />
     )
 }
