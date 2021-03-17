@@ -29,7 +29,7 @@ export const getProducts8 = () => {
     }
 };
 
-export const getProductDetail = (id_product, params) => {
+export const getProductDetail = (id_product, params={}) => {
     try {
         let endpoint = "/variations/product_global/" + id_product;
         let data = apiget2(endpoint, params)
