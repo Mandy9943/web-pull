@@ -62,14 +62,14 @@ export default class PaymentWay extends Component {
         }
         this.addrRef = React.createRef();
 
+
+        console.log(this.props.data.images)
     }
 
     componentDidMount() {
         this.loadBanks();
         this.loadAddresses();
-        
     }
-
 
     loadBanks() {
         getData("/getPseBanks")
@@ -77,7 +77,6 @@ export default class PaymentWay extends Component {
                 this.setState({ banks: (response.data.banks ? response.data.banks : []) });
             });
     }
-
 
     loadAddresses = () => {
         console.log("load addresses");
@@ -104,6 +103,7 @@ export default class PaymentWay extends Component {
             closeTransfer: true,
         });
     }
+
     accordionTransfer = () => {
         this.setState({
             closeTransfer: !this.state.closeTransfer,
@@ -118,7 +118,6 @@ export default class PaymentWay extends Component {
         });
     }
 
-
     setAddr = () => {
         const x = this.state.auxAddr;
         if(x!=="-1" && x!==0){
@@ -130,11 +129,9 @@ export default class PaymentWay extends Component {
         }
     }
 
-
     tmpChangeAddr = (e) => {
         this.setState({ auxAddr: e.target.value });
     }
-
 
     payPSE = async e => {
         e.preventDefault();
@@ -164,7 +161,6 @@ export default class PaymentWay extends Component {
         }
 
     };
-
 
     payCC = async e => {
         e.preventDefault();
@@ -269,12 +265,12 @@ export default class PaymentWay extends Component {
         this.setState({ focus: name });
     }
       
-      handleInputChange = (e) => {
+    handleInputChange = (e) => {
         let { name, value } = e.target;
         this.setState({ [name]: value });
-      }
+    }
 
-      handleDateTimeChange = (e) => {
+    handleDateTimeChange = (e) => {
         let value = moment(e).format('YY/MM');
         this.setState({ expiration_date: value });
     };
@@ -337,7 +333,7 @@ export default class PaymentWay extends Component {
         }
 
         const totalPrice = priceFormat(parseFloat(this.props.data.price) * this.state.productQuantity);
-     
+
         return (
             <div className="payment-way">
 
@@ -396,7 +392,7 @@ export default class PaymentWay extends Component {
 
                                         callback={this.card_change}
                                         placeholders="TU NOMBRE"
-                                        
+
                                         />
                                     <form id="form-credit" onSubmit={this.payCC}>
 
@@ -407,7 +403,7 @@ export default class PaymentWay extends Component {
                                             onChange={this.handleInputChange}
                                             onFocus={this.handleInputFocus}
                                             maxLength={this.state.card_max_length}
-                                            
+
                                         />
 
                                         <InputTip msg={this.state.tips.card_number}/>
@@ -424,14 +420,14 @@ export default class PaymentWay extends Component {
                                             <InputTip msg={this.state.tips.ccv}/>
                                         </div>
 
-                                        
-                                            Coutas:  
-                                            <div className={"content-accordion-form"}>                                           
+
+                                            Coutas:
+                                            <div className={"content-accordion-form"}>
                                                 <Select name={"monthly_fees"}>
                                                     {months_fees}
                                                 </Select>
-                                            </div>   
-                                        
+                                            </div>
+
 
                                         <div className="input-form">
                                             <InputTip msg={this.state.tips.monthly_fees}/>
@@ -469,11 +465,11 @@ export default class PaymentWay extends Component {
                                             <img alt="pago en linea" src={PayBaloto} onClick={()=>this.openPaymentCash(2)} />
                                             <img alt="pago en linea" src={PaySured} onClick={()=>this.openPaymentCash(3)} />
                                         </div>
-                                    </div>: <PaymentCashResult 
-                                                type={this.state.paymentCashType} 
+                                    </div>: <PaymentCashResult
+                                                type={this.state.paymentCashType}
                                                 amount={totalPrice}
                                                 document={this.state.paymentCashDocument} />
-                               } 
+                               }
                             </div>
 
                             <div className="transfer payment-way-box" onClick={() => this.accordionTransfer()}>
@@ -577,7 +573,7 @@ export default class PaymentWay extends Component {
                         </div>
                     </div>
                 </div>
-                }      
+                }
                 <Footer />
             </div>
         )
