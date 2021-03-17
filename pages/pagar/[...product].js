@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import PaymentWay from '../../components/PaymentWay/PaymentWay';
-import { getProductDetail } from "../../services/productsApi";
+import { getProductGlobalDetail } from "../../services/productsApi";
 import {getUser, isAuthenticated, getJwt, redirectIfNotAuthenticated } from "../../lib/auth";
 import {authenticate} from "../../services/authApi";
 import {getDSI} from "../../services/userApi";
@@ -34,8 +34,9 @@ export async function getServerSideProps(context) {
     let id_product = String(context.params.product[0]);
     let cantidad = String(context.params.product[1]);
 
-    const res = await getProductDetail(id_product)
-    const data = await res.data
+    const res = await getProductGlobalDetail(id_product);
+    const data = await res.data;
+
     let usr = getUser(context);
     let jwt = getJwt(context);
 
