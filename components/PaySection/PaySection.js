@@ -92,15 +92,9 @@ class PaySection extends Component {
     for (let i = 1; i <= this.props.stock; i++) {
       qty_options['values'][i - 1] = {
         available: true,
-        value: `Cantidad: ${i} (stock disponible ${this.props.stock})`
-    }
-          // (
-          // <option
-          //     key={"d" + i}
-          //     value={i}
-          // >
-          //   Cantidad: {i} (stock disponible {this.props.stock})
-          // </option>);
+        text: `Cantidad: ${i} (stock disponible ${this.props.stock})`,
+        value: i
+      }
     }
 
     return (
@@ -136,22 +130,23 @@ class PaySection extends Component {
           <ProductVariants id={this.props.pgid} dimensions={this.state.dimensions} select={this.handleSelect}/>
         }
        
-        {this.props.stock > 0 ? <div className="pay-item">
-          <section className="select-icon">
-
-          {/*<select defaultValue={1} value={this.state.cantidad} onChange={this.handleChangeCantidad}>*/}
-          {/*    {qty_options}*/}
-          {/*  </select>*/}
-            <Select
-                items={qty_options}
-                showDefault={false}
-                onSelect={()=>{}}   // TODO empty for now if no action
-            />
-          </section>
-          <button onClick={() => this.go(this.props.pgid)}>Comprar</button>
-        </div>
-          :
-          <div className="pay-item info-pay-product-detail" ><h3>Sin unidades disponibles.</h3></div>
+        { this.props.m_pgid ?
+          [this.props.stock > 0 ?
+              <div className="pay-item">
+                <section className="select-icon">
+                  <Select
+                      items={qty_options}
+                      showDefault={false}
+                      onSelect={(qnt)=>{
+                        this.setState({cantidad: qnt});
+                      }}
+                  />
+                </section>
+                <button onClick={() => this.go(this.props.pgid)}>Comprar</button>
+              </div>
+            :
+              <div className="pay-item info-pay-product-detail" ><h3>Sin unidades disponibles.</h3></div>]
+          : <div className="pay-item info-pay-product-detail" ><h3>Seleccione una de las variantes disponibles.</h3></div>
         }
         <ListProductMovil />
         <div className="section-pay-type no-movil">
