@@ -33,12 +33,12 @@ function Purchases(props) {
   const [purchases, setPurchases] = useState([]);
   const [selected, setSelected] = useState();
   const [order, setOrder] = useState("");
-  const [search, setSearch] = useState();
+  const [search, setSearch] = useState("");
 
   let lastPage = 1;
   let currentPage = 1;
   let nextPage = 1;
-  const LIMIT = 20;
+  const LIMIT = 2;
 
   if (pagination) {
     lastPage = pagination["last_page"];
@@ -54,7 +54,7 @@ function Purchases(props) {
   useEffect(() => {
     const endp =
       props.mode === "sell"
-        ? "/shop/orders?page=1&limit=" + LIMIT + order
+        ? "/shop/orders?page=1&limit=" + LIMIT + order + search
         : "/getPurchases?page=1&size=" + LIMIT;
     getData(endp, props.user.jwt).then((response) => {
       if (response.data && response.data.code && response.data.code !== 404) {
@@ -83,8 +83,9 @@ function Purchases(props) {
   };
 
   const orderBy = (type) => {
+    //console.log(search);
     let order = "&order=" + type;
-    let endp = "/shop/orders?page=1&limit=" + LIMIT + order;
+    let endp = "/shop/orders?page=1&limit=" + LIMIT + order + search;
     getData(endp, props.user.jwt).then((response) => {
       if (response.data && response.data.code && response.data.code !== 404) {
         setPagination(response.data.pagination);
@@ -98,14 +99,14 @@ function Purchases(props) {
   };
 
   const searchOrders = () => {
-    console.log(search);
-    let endp = "/shop/orders?page=1&limit=" + LIMIT + "&search=" + search;
+    //console.log(search);
+    let endp = "/shop/orders?page=1&limit=" + LIMIT + order + search;
     getData(endp, props.user.jwt).then((response) => {
       console.log(response);
+      setSearch("");
       if (response.data && response.data.code && response.data.code !== 404) {
         setPagination(response.data.pagination);
         setPurchases(processSellData(response.data));
-        setSearch("");
       } else {
         setPagination();
         setPurchases([]);
@@ -145,7 +146,9 @@ function Purchases(props) {
       }
       return item;
     });
+    console.log(purchases);
     setPurchases(newPurchases);
+    console.log(purchases);
   };
 
   return !selected ? (
@@ -155,7 +158,7 @@ function Purchases(props) {
       </h1>
       {props.mode === "sell" ? (
         <>
-          <AccountStoreSales user={props.user} mode={props.mode} />
+          <AccountStoreSales user={props.user} />
           <div className="account-store-sales-wrap-search">
             <div className="account-store-sales-wrap-filter">
               <div className="menu_options">
@@ -198,8 +201,9 @@ function Purchases(props) {
                   <input
                     className="account-store-sales-input-search"
                     placeholder="buscar por # o título"
+                    value={search ? search.replace("&search=", "") : ""}
                     onChange={(e) => {
-                      setSearch(e.target.value);
+                      setSearch("&search=" + e.target.value);
                     }}
                   />
                 </div>
@@ -212,15 +216,27 @@ function Purchases(props) {
               <span>No tiene ninguna venta</span>
             </section>
           ) : (
-            purchases.map((item, index) => (
-              <OrderItem
-                key={index}
-                updateState={updateState}
-                item={item}
-                onSelect={handleSelect}
-                user={props.user}
-              />
-            ))
+            purchases.map((item, index) => {
+              if (
+                item.data.product !== null &&
+                item.data.purchase_status !== null
+              ) {
+                return (
+                  <OrderItem
+                    key={index}
+                    updateState={updateState}
+                    item={item}
+                    onSelect={handleSelect}
+                    close={() => {
+                      console.log(selected);
+                      setSelected(null);
+                      console.log(selected);
+                    }}
+                    user={props.user}
+                  />
+                );
+              }
+            })
           )}
         </>
       ) : (

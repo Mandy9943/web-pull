@@ -13,7 +13,6 @@ export default function Calificada({ item, toggle, showModal, user }) {
 
   useEffect(() => {
     if (showModal) {
-      console.log(id);
       const endp = "/getOrderDetails/" + id;
 
       getData(endp, jwt).then((response) => {
@@ -45,7 +44,7 @@ export default function Calificada({ item, toggle, showModal, user }) {
                 )}
               </p>
               {detailData.rate_purchase_data.rate_product == 5 && (
-                <h5 className="sub">Excelente vendedor!</h5>
+                <h5 className="sub_excelent">Excelente vendedor!</h5>
               )}
             </section>
           </section>
@@ -65,15 +64,16 @@ export default function Calificada({ item, toggle, showModal, user }) {
               </p>
             </section>
           </section>
-          {detailData.rate_purchase_data.images_rate_purchase.length > 0 && (
-            <section className="thumbnails">
-              {detailData.rate_purchase_data.images_rate_purchase.map(
-                (url, i) => (
-                  <img src={url} key={i} width="65" height="56" />
-                )
-              )}
-            </section>
-          )}
+          {detailData.rate_purchase_data &&
+            detailData.rate_purchase_data.images_rate_purchase.length > 0 && (
+              <section className="thumbnails">
+                {detailData.rate_purchase_data.images_rate_purchase.map(
+                  (url, i) => (
+                    <img src={url} key={i} width="65" height="56" />
+                  )
+                )}
+              </section>
+            )}
         </div>
       </div>
     );

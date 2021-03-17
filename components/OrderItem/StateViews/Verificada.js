@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import Modal from "../../Common/Modal";
+import { useRouter } from "next/router";
 
-export default function Verificada({ item, showModal, toggle, updateState }) {
+export default function Verificada({
+  item,
+  showModal,
+  toggle,
+  updateState,
+  close,
+}) {
+  const router = useRouter();
   const qModal = (
     <section id="verified-modal">
       <h3>¿Este producto ya fue entregado?</h3>
@@ -14,6 +22,8 @@ export default function Verificada({ item, showModal, toggle, updateState }) {
             await updateState("/shop/order/" + item.data.order_id);
             // TODO Logic behind this
             toggle();
+            close();
+            router.reload();
           }}
         >
           Ya fue entregado
@@ -23,6 +33,7 @@ export default function Verificada({ item, showModal, toggle, updateState }) {
           onClick={(e) => {
             e.preventDefault();
             toggle();
+            close();
           }}
         >
           Aun no lo ha recibido
