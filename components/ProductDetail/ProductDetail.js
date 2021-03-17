@@ -32,7 +32,8 @@ class ProductDetail extends Component {
     super(props);
     this.state = {
       questions: [],
-      mdata: this.props.data
+      mdata: this.props.data,
+      m_pgid: false
     }
     this.reLoadData = this.reLoadData.bind(this);
   }
@@ -42,6 +43,7 @@ class ProductDetail extends Component {
   }
 
   async reLoadData(pgid) {
+    // Esta funcion se llama cuando se encuentra un match de variantes
     const router = this.props.router;
     const res = await getProductDetail(
         this.state.mdata.product_id,
@@ -49,7 +51,10 @@ class ProductDetail extends Component {
     );
 
     const data = await res.data;
-    this.setState({mdata: data.data})
+    this.setState({
+      mdata: data.data,
+      m_pgid: true
+    })
 
     // https://stackoverflow.com/a/62947231/7771926  <--- reference
     let url = `/detalle/${this.state.mdata.product_id}?is_variant=true&product_global_id=${pgid}`
@@ -97,6 +102,7 @@ class ProductDetail extends Component {
                 <Pay
                     pid={this.state.mdata.product_id}
                     pgid={this.state.mdata.product_global_id}
+                    m_pgid={this.state.m_pgid}
                     dimensions={this.state.mdata.dimensions}
                     seller={this.state.mdata.user}
                     price={this.state.mdata.price}
@@ -118,9 +124,6 @@ class ProductDetail extends Component {
                 <div className="section-pay-type-title">
                   <h4>Medios de pago</h4>
                 </div>
-                {/*{1 > 0 ?
-                  <button className="main-button" onClick={() => this.go(this.props.pid)}><p>Comprar</p></button>
-                : null} */}
                 <div className="section-pay-type-items">
                   <p>Tarjetas de crédito</p>
                   <div>
@@ -160,6 +163,7 @@ class ProductDetail extends Component {
               <Pay
                   pid={this.state.mdata.product_id}
                   pgid={this.state.mdata.product_global_id}
+                  m_pgid={this.state.m_pgid}
                   dimensions={this.state.mdata.dimensions}
                   seller={this.state.mdata.user}
                   price={this.state.mdata.price}

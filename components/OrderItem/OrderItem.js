@@ -17,7 +17,7 @@ export default function OrderItem({
   close,
 }) {
   const [showModal, setShowModal] = useState(false);
-  item.data.purchase_status = "VERIFICADA";
+
   function getComponentByState(state) {
     // Perhaps there is a cleaner way to do this, I dont like it D:
     switch (state) {
