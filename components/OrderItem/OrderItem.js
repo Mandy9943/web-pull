@@ -1,17 +1,23 @@
 import React, { useState } from "react";
-import Link from "next/link";
+//import Link from "next/link";
 import { getProductImgs } from "../../lib/functions";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faStar } from "@fortawesome/free-solid-svg-icons";
+//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+//import { faCheck, faStar } from "@fortawesome/free-solid-svg-icons";
 import "./OrderItem.css";
-import Modal from "../../components/Common/Modal";
+//import Modal from "../../components/Common/Modal";
 // import '../Purchases/PurchaseItem/PurchaseItem.css';
 import { Iniciada, Verificada, Entregado, Calificada } from "./StateViews";
 import moment from "moment";
 
-export default function OrderItem({ item, onSelect, user, updateState }) {
+export default function OrderItem({
+  item,
+  onSelect,
+  user,
+  updateState,
+  close,
+}) {
   const [showModal, setShowModal] = useState(false);
-
+  item.data.purchase_status = "VERIFICADA";
   function getComponentByState(state) {
     // Perhaps there is a cleaner way to do this, I dont like it D:
     switch (state) {
@@ -23,6 +29,7 @@ export default function OrderItem({ item, onSelect, user, updateState }) {
             item={item}
             showModal={showModal}
             updateState={updateState}
+            close={close}
             toggle={() => {
               setShowModal(!showModal);
             }}
@@ -86,22 +93,16 @@ export default function OrderItem({ item, onSelect, user, updateState }) {
         <section id="order-client-data">
           <p className="title_cliente">Cliente:</p>
           <p>{item.data.user.name + " " + item.data.user.last_name}</p>
-          <p className="phone-client">3647777777 {item.data.user.phone}</p>
+          <p className="phone-client">{item.data.user.phone}</p>
           {/*<Link href={"/chat/" + 'Texto'}>*/}
           <div className="messages">
-            <a>Ver mensajes</a>
+            <a onClick={() => onSelect(item)} style={{ cursor: "pointer" }}>
+              Ver mensajes
+            </a>
             {1 && <span className="accent-background">5</span>}
           </div>
           {/*</Link>*/}
         </section>
-
-        {/*<section id="order-client-verify">
-                  <p>
-                      <Link href="/">
-                          <a>Verificar</a>
-                      </Link>
-                  </p>
-        </section>*/}
 
         {getComponentByState(item.data.purchase_status)}
       </div>
