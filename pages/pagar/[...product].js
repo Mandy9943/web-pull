@@ -50,7 +50,7 @@ export async function getServerSideProps(context) {
 
     redirectIfNotAuthenticated(context);
 
-    return { props: { data, u_data, cantidad } }
+    return { props: { data: data.data, u_data, cantidad } }
 }
 
 
