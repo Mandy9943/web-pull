@@ -72,7 +72,13 @@ export default function OrderDetail({ item, close, updateState }) {
             <section className="card-description">
               <h3>{item.data.user.name + " " + item.data.user.last_name}</h3>
               <h3>{item.data.user.phone ? item.data.user.phone : " "} </h3>
-              <a href="#" className="sell_detail">
+              <a
+                onClick={() => {
+                  alert("Aqui que se hace");
+                }}
+                className="sell_detail"
+                style={{ cursor: "pointer" }}
+              >
                 Detalles de venta
               </a>
             </section>
@@ -83,7 +89,7 @@ export default function OrderDetail({ item, close, updateState }) {
         {/* Seccion producto */}
         <section className="card" id="product">
           <header>
-            <h4>Entregado</h4>
+            <h4>{item.data.purchase_status}</h4>
           </header>
 
           <main>
@@ -106,27 +112,27 @@ export default function OrderDetail({ item, close, updateState }) {
         {/* Fin seccion producto */}
 
         {/* Seccion Action */}
-        <section className="action">
-          <p className="description">
-            Una vez confirme los detalles del producto y el tiempo de entrega
-            podrás calificar la venta como verificada.
-          </p>
-          <a
-            onClick={async (e, id) => {
-              e.preventDefault();
-              await updateState("/shop/order/" + item.data.order_id);
 
-              // Steps to follow:
-              // 1- Send request
-              // let res = verifyOrder(e, id)
+        {item.data.purchase_status === "INICIADA" ? (
+          <section className="action">
+            <p className="description">
+              Una vez confirme los detalles del producto y el tiempo de entrega
+              podrás calificar la venta como verificada.
+            </p>
+            <a
+              onClick={async (e, id) => {
+                e.preventDefault();
+                await updateState("/shop/order/" + item.data.order_id);
+                setShowModal(true);
+              }}
+            >
+              He verificado esta venta
+            </a>
+          </section>
+        ) : (
+          ""
+        )}
 
-              // 2- Show Modal Exit after Modal and return to previous page
-              setShowModal(true);
-            }}
-          >
-            He verificado esta venta
-          </a>
-        </section>
         {/* Fin Seccion Action */}
 
         {/*  Modal  */}
