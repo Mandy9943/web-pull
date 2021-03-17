@@ -14,6 +14,8 @@ import ProductVariants from '../ProductVariants';
 import { getVariantAvailable } from "../../services/productsApi";
 import Select from '../Common/SelectDropdown/Select';
 
+import Spinner from '../Common/Spinner';
+
 class PaySection extends Component {
 
   go = (id) => {
@@ -23,14 +25,21 @@ class PaySection extends Component {
     super(props);
     this.state = {
       cantidad: 1,
-      dimensions: {}
+      dimensions: {},
+      variantsSpinner: true
     }
   }
 
   loadData = async () => {
+    this.setState({
+      variantsSpinner: true
+    });
     const res = await getVariantAvailable(this.props.pid, {});
     const data = await res.data;
-    this.setState({dimensions: data.data});
+    this.setState({
+      dimensions: data.data,
+      variantsSpinner: false
+    });
   }
 
   componentDidMount() {
@@ -126,8 +135,9 @@ class PaySection extends Component {
             </a>
           </Link>
         </div>
-        { this.state.dimensions &&
-          <ProductVariants id={this.props.pgid} dimensions={this.state.dimensions} select={this.handleSelect}/>
+        { this.state.variantsSpinner
+            ? <Spinner />
+            : <ProductVariants id={this.props.pgid} dimensions={this.state.dimensions} select={this.handleSelect}/>
         }
        
         { this.props.m_pgid ?
