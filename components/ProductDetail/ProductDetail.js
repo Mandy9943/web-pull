@@ -24,7 +24,7 @@ import Logo2 from "../../assets/img/logo-social1.png";
 import Seller from "./../SellerInfo";
 import {RecommendedProducts} from '../RecommendedProducts';
 import {getProductDetail} from "../../services/productsApi";
-
+import { withRouter } from 'next/router'
 
 class ProductDetail extends Component {
 
@@ -51,8 +51,9 @@ class ProductDetail extends Component {
     const data = await res.data;
     this.setState({mdata: data.data})
 
-    // let url = `/detalle/${this.state.mdata.product_id}?is_variant=true&product_global_id=${pgid}`
-    // router.push(url, undefined, { shallow: true });
+    // https://stackoverflow.com/a/62947231/7771926  <--- reference
+    let url = `/detalle/${this.state.mdata.product_id}?is_variant=true&product_global_id=${pgid}`
+    this.props.router.push('/detalle/[...product]', url, { shallow: true });
   }
 
   loadQuestions = () => {
@@ -200,4 +201,4 @@ class ProductDetail extends Component {
   }
 }
 
-export default ProductDetail;
+export default withRouter(ProductDetail);

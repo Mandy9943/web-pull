@@ -58,9 +58,11 @@
 
 .pay-item .select-icon {
   position: relative;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  /*width: -webkit-fit-content;*/
+  /*width: -moz-fit-content;*/
+  /*width: fit-content;*/
 }
 
 .pay-item .select-icon .icon-select {
