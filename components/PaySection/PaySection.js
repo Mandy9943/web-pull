@@ -14,6 +14,8 @@ import ProductVariants from '../ProductVariants';
 import { getVariantAvailable } from "../../services/productsApi";
 import Select from '../Common/SelectDropdown/Select';
 
+import Spinner from '../Common/Spinner';
+
 class PaySection extends Component {
 
   go = (id) => {
@@ -23,14 +25,21 @@ class PaySection extends Component {
     super(props);
     this.state = {
       cantidad: 1,
-      dimensions: {}
+      dimensions: {},
+      variantsSpinner: true
     }
   }
 
   loadData = async () => {
+    this.setState({
+      variantsSpinner: true
+    });
     const res = await getVariantAvailable(this.props.pid, {});
     const data = await res.data;
-    this.setState({dimensions: data.data});
+    this.setState({
+      dimensions: data.data,
+      variantsSpinner: false
+    });
   }
 
   componentDidMount() {
@@ -84,25 +93,88 @@ class PaySection extends Component {
     this.setState({cantidad: event.target.value});
   }
 
-  render() {
-    let u_data = this.props.user_data
-    let qty_options = {
-      values: []
-    };
-    for (let i = 1; i <= this.props.stock; i++) {
-      qty_options['values'][i - 1] = {
-        available: true,
-        value: `Cantidad: ${i} (stock disponible ${this.props.stock})`
-    }
-          // (
-          // <option
-          //     key={"d" + i}
-          //     value={i}
-          // >
-          //   Cantidad: {i} (stock disponible {this.props.stock})
-          // </option>);
+  renderPayButtonSection = () => {
+    const btnEnabled = (<button onClick={() => this.go(this.props.pgid)}>Comprar</button>);
+    const btnDisabled = (
+        <button
+          style={{opacity: "0.35", cursor: "not-allowed"}}
+          onClick={(e) => {
+            e.preventDefault();
+        }}>Comprar</button>
+    );
+
+    if (this.props.m_pgid) {
+      let qty_options = {
+        values: []
+      };
+
+      if (Number(this.props.stock) > 0) {
+        for (let i = 1; i <= this.props.stock; i++) {
+          qty_options['values'][i - 1] = {
+            available: true,
+            text: `Cantidad: ${i} (stock disponible ${this.props.stock})`,
+            value: i
+          }
+        }
+      }
+
+      return qty_options.values.length > 0
+                ? <div className="pay-item">
+                    <section className="select-icon">
+                      <Select
+                          items={qty_options}
+                          showDefault={false}
+                          onSelect={(qnt) => {
+                            this.setState({cantidad: qnt});
+                          }}
+                      />
+                    </section>
+                    {btnEnabled}
+                  </div>
+                : <div className="pay-item info-pay-product-detail" >
+                    <h3>Sin unidades disponibles.</h3>
+                    {btnDisabled}
+                  </div>
+            ;
+    }else {
+      return (
+          <div className="pay-item">
+            <div className="pay-item info-pay-product-detail" >
+              <h3>Debe seleccionar la variante deseada</h3>
+            </div>
+            {btnDisabled}
+          </div>
+      )
     }
 
+
+    // this.props.stock > 0
+    //     ? <div className="pay-item">
+    //       <section className="select-icon">
+    //         <Select
+    //             items={qty_options}
+    //             showDefault={false}
+    //             onSelect={(qnt)=>{
+    //               this.setState({cantidad: qnt});
+    //             }}
+    //         />
+    //       </section>
+    //       {this.props.m_pgid
+    //           ? <button onClick={() => this.go(this.props.pgid)}>Comprar</button>
+    //           : <button
+    //               style={{opacity: "0.35", cursor: "not-allowed"}}
+    //               onClick={(e) => {
+    //                 e.preventDefault();
+    //
+    //               }}>Comprar</button>
+    //       }
+    //
+    //     </div>
+    //     :
+    //     <div className="pay-item info-pay-product-detail" ><h3>Sin unidades disponibles.</h3></div>
+  }
+
+  render() {
     return (
       <div className="pay">
         <div className="pay-item">
@@ -132,27 +204,39 @@ class PaySection extends Component {
             </a>
           </Link>
         </div>
-        { this.state.dimensions &&
-          <ProductVariants id={this.props.pgid} dimensions={this.state.dimensions} select={this.handleSelect}/>
+        { this.state.variantsSpinner
+            ? <Spinner />
+            : <ProductVariants id={this.props.pgid} dimensions={this.state.dimensions} select={this.handleSelect}/>
         }
        
-        {this.props.stock > 0 ? <div className="pay-item">
-          <section className="select-icon">
+        {/*{ this.props.stock > 0*/}
+        {/*    ? <div className="pay-item">*/}
+        {/*        <section className="select-icon">*/}
+        {/*          <Select*/}
+        {/*              items={qty_options}*/}
+        {/*              showDefault={false}*/}
+        {/*              onSelect={(qnt)=>{*/}
+        {/*                this.setState({cantidad: qnt});*/}
+        {/*              }}*/}
+        {/*          />*/}
+        {/*        </section>*/}
+        {/*      {this.props.m_pgid*/}
+        {/*        ? <button onClick={() => this.go(this.props.pgid)}>Comprar</button>*/}
+        {/*        : <button*/}
+        {/*              style={{opacity: "0.35", cursor: "not-allowed"}}*/}
+        {/*              onClick={(e) => {*/}
+        {/*                e.preventDefault();*/}
 
-          {/*<select defaultValue={1} value={this.state.cantidad} onChange={this.handleChangeCantidad}>*/}
-          {/*    {qty_options}*/}
-          {/*  </select>*/}
-            <Select
-                items={qty_options}
-                showDefault={false}
-                onSelect={()=>{}}   // TODO empty for now if no action
-            />
-          </section>
-          <button onClick={() => this.go(this.props.pgid)}>Comprar</button>
-        </div>
-          :
-          <div className="pay-item info-pay-product-detail" ><h3>Sin unidades disponibles.</h3></div>
-        }
+        {/*              }}>Comprar</button>*/}
+        {/*      }*/}
+
+        {/*      </div>*/}
+        {/*    :*/}
+        {/*      <div className="pay-item info-pay-product-detail" ><h3>Sin unidades disponibles.</h3></div>*/}
+        {/*}*/}
+
+        {this.renderPayButtonSection()}
+
         <ListProductMovil />
         <div className="section-pay-type no-movil">
           <div className="section-pay-type-title">

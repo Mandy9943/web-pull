@@ -29,9 +29,19 @@ export const getProducts8 = () => {
     }
 };
 
-export const getProductDetail = (id_product, params) => {
+export const getProductDetail = (id_product, params={}) => {
     try {
         let endpoint = "/variations/product_global/" + id_product;
+        let data = apiget2(endpoint, params)
+        return data;
+    } catch (error) {
+        return error;
+    }
+};
+
+export const getProductGlobalDetail = (id_product_global, params={}) => {
+    try {
+        let endpoint = "/variations/product_global_shortcut/" + id_product_global;
         let data = apiget2(endpoint, params)
         return data;
     } catch (error) {

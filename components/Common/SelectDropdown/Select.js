@@ -7,7 +7,7 @@ const defaultText = 'Seleccionar';
 
 export default function Select(props) {
     const {onSelect, items, showDefault} = props;
-    const [selected, setSelected] = useState(showDefault === true ? defaultText : items.values[0].value)
+    const [selected, setSelected] = useState(showDefault === true ? defaultText : (items.values[0].text || items.values[0].value))
 
     function handleSelect(e) {
         e.preventDefault();
@@ -17,9 +17,8 @@ export default function Select(props) {
             setSelected(defaultText)
             return;
         }
-        setSelected(items.values[index].value)
-
-        onSelect(e.target.innerText, items.values[index].available)
+        setSelected(items.values[index].text || items.values[index].value)
+        onSelect(items.values[index].value, items.values[index].available)
     }
 
     return (
@@ -42,7 +41,7 @@ export default function Select(props) {
                                 className={item.available ? "" : "unavailable"}
                                 onClick={handleSelect}
                             >
-                                {item.value}
+                                {item.text || item.value}
                             </li>
                         )
                     })
