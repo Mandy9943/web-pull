@@ -38,18 +38,12 @@ function Purchases(props) {
   let lastPage = 1;
   let currentPage = 1;
   let nextPage = 1;
-  const LIMIT = 2;
+  const LIMIT = 20;
 
   if (pagination) {
     lastPage = pagination["last_page"];
-    currentPage = pagination.current_page;
-    if (currentPage === 0) {
-      currentPage = 1;
-    }
-    nextPage = pagination.next_page;
-    if (nextPage === 0) {
-      nextPage = 1;
-    }
+    currentPage = pagination.current_page > 0 ? pagination.current_page : 1;
+    nextPage = pagination.next_page > 0 ? pagination.next_page : 1;
   }
   useEffect(() => {
     const endp =
@@ -83,7 +77,6 @@ function Purchases(props) {
   };
 
   const orderBy = (type) => {
-    //console.log(search);
     let order = "&order=" + type;
     let endp = "/shop/orders?page=1&limit=" + LIMIT + order + search;
     getData(endp, props.user.jwt).then((response) => {
@@ -99,10 +92,8 @@ function Purchases(props) {
   };
 
   const searchOrders = () => {
-    //console.log(search);
     let endp = "/shop/orders?page=1&limit=" + LIMIT + order + search;
     getData(endp, props.user.jwt).then((response) => {
-      console.log(response);
       setSearch("");
       if (response.data && response.data.code && response.data.code !== 404) {
         setPagination(response.data.pagination);
@@ -146,9 +137,7 @@ function Purchases(props) {
       }
       return item;
     });
-    console.log(purchases);
     setPurchases(newPurchases);
-    console.log(purchases);
   };
 
   return !selected ? (
@@ -227,11 +216,7 @@ function Purchases(props) {
                     updateState={updateState}
                     item={item}
                     onSelect={handleSelect}
-                    close={() => {
-                      console.log(selected);
-                      setSelected(null);
-                      console.log(selected);
-                    }}
+                    close={setSelected}
                     user={props.user}
                   />
                 );
@@ -270,11 +255,11 @@ function Purchases(props) {
       {props.mode === "sell" ? (
         <OrdersDetail
           item={selected}
-          close={() => setSelected()}
+          close={setSelected}
           updateState={updateState}
         />
       ) : (
-        <PurchasesDetail item={selected} close={() => setSelected()} />
+        <PurchasesDetail item={selected} close={setSelected} />
       )}
     </>
   );
