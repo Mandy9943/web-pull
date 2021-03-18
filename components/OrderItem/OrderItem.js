@@ -1,11 +1,6 @@
 import React, { useState } from "react";
-//import Link from "next/link";
 import { getProductImgs } from "../../lib/functions";
-//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-//import { faCheck, faStar } from "@fortawesome/free-solid-svg-icons";
 import "./OrderItem.css";
-//import Modal from "../../components/Common/Modal";
-// import '../Purchases/PurchaseItem/PurchaseItem.css';
 import { Iniciada, Verificada, Entregado, Calificada } from "./StateViews";
 import moment from "moment";
 
@@ -36,15 +31,7 @@ export default function OrderItem({
           />
         );
       case "ENTREGADO":
-        return (
-          <Entregado
-            item={item}
-            showModal={showModal}
-            toggle={() => {
-              setShowModal(!showModal);
-            }}
-          />
-        );
+        return <Entregado />;
       case "CALIFICADA": {
         return (
           <Calificada
@@ -74,8 +61,13 @@ export default function OrderItem({
         <section className="order">
           <div className="order-card-img">
             <img
-              alt={item.data.product.title.slice(0, 10)}
-              src={getProductImgs(item.data.product.images)}
+              alt="Foto del producto"
+              src={
+                item.data.product.imagescsv &&
+                item.data.product.imagescsv !== "None"
+                  ? item.data.product.imagescsv
+                  : getProductImgs(item.data.product.images)
+              }
               width="65"
               height="56"
             />

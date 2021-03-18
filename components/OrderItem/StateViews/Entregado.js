@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function Entregado({ item, toggle, showModal }) {
+export default function Entregado() {
   return (
     <div>
       <section className="state">

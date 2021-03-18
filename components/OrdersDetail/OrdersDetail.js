@@ -26,7 +26,14 @@ export default function OrderDetail({ item, close, updateState }) {
     <div className="orders-detail">
       <section className="left-panel">
         <div className="breadcrumb">
-          <a onClick={close}>Ventas</a>
+          <a
+            onClick={() => {
+              setShowModal(false);
+              close();
+            }}
+          >
+            Ventas
+          </a>
           <FontAwesomeIcon icon={faAngleRight} />
           <a>#{item.data.order_id}</a>
         </div>
@@ -51,7 +58,7 @@ export default function OrderDetail({ item, close, updateState }) {
       </section>
       <section className="right-panel">
         <p>
-          <Link href={"/ayuda"}>
+          <Link href="/ayuda">
             <a>Necesito ayuda</a>
           </Link>
         </p>
@@ -64,8 +71,8 @@ export default function OrderDetail({ item, close, updateState }) {
           <main>
             <div className="card-img">
               <img
-                alt={item.data.product.title}
-                src={getProductImgs(item.data.product.images)}
+                alt="Foto del usuario"
+                src={getProductImgs(item.data.user.photo)}
               />
             </div>
 
@@ -95,8 +102,13 @@ export default function OrderDetail({ item, close, updateState }) {
           <main>
             <div className="card-img">
               <img
-                alt={item.data.product.title}
-                src={getProductImgs(item.data.product.images)}
+                alt="Foto del producto"
+                src={
+                  item.data.product.imagescsv &&
+                  item.data.product.imagescsv !== "None"
+                    ? item.data.product.imagescsv
+                    : getProductImgs(item.data.product.images)
+                }
               />
             </div>
 
