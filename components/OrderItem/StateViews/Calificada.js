@@ -8,7 +8,6 @@ import { getData } from "../../../services/userApi";
 export default function Calificada({ item, toggle, showModal, user }) {
   let id = item.data.order_id;
   let jwt = user.jwt;
-  const [showDetail, setShowDetail] = useState(false);
   const [detailData, setDetailData] = useState(null);
 
   useEffect(() => {
@@ -29,6 +28,7 @@ export default function Calificada({ item, toggle, showModal, user }) {
         <div className="vendor-reputation">
           <section className="info">
             <img
+              alt="Foto del vendedor"
               src={detailData.data.seller.photo}
               width="65"
               height="56"
@@ -51,6 +51,7 @@ export default function Calificada({ item, toggle, showModal, user }) {
           <br />
           <section className="info">
             <img
+              alt="Foto del producto"
               src={detailData.data.product.images[0].url}
               width="65"
               height="56"
@@ -69,7 +70,13 @@ export default function Calificada({ item, toggle, showModal, user }) {
               <section className="thumbnails">
                 {detailData.rate_purchase_data.images_rate_purchase.map(
                   (url, i) => (
-                    <img src={url} key={i} width="65" height="56" />
+                    <img
+                      src={url}
+                      key={i}
+                      width="65"
+                      height="56"
+                      alt="Foto de la valoración"
+                    />
                   )
                 )}
               </section>
