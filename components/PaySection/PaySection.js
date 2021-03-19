@@ -21,12 +21,13 @@ class PaySection extends Component {
     this.state = {
       cantidad: 1,
       dimensions: {},
-      variantsSpinner: true,
-      m_pgid: props.m_pgid
+      variantsSpinner: props.m_pgid ? false : true,
     }
   }
 
   componentDidMount() {
+    if (this.props.m_pgid) return;
+
     this.loadData();
   }
 
@@ -103,7 +104,7 @@ class PaySection extends Component {
         }}>Comprar</button>
     );
 
-    if (this.state.m_pgid) {
+    if (this.props.m_pgid) {
       let qty_options = {
         values: []
       };
