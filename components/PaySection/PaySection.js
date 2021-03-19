@@ -13,21 +13,26 @@ import Rating from '../RatingProduct/RatingProduct';
 import ProductVariants from '../ProductVariants';
 import { getVariantAvailable } from "../../services/productsApi";
 import Select from '../Common/SelectDropdown/Select';
-
 import Spinner from '../Common/Spinner';
 
 class PaySection extends Component {
-
-  go = (id) => {
-    window.location = "/pagar/" + id + "/" + this.state.cantidad;
-  }
   constructor(props) {
     super(props);
     this.state = {
       cantidad: 1,
       dimensions: {},
-      variantsSpinner: true
+      variantsSpinner: props.m_pgid ? false : true,
     }
+  }
+
+  componentDidMount() {
+    if (this.props.m_pgid) return;
+
+    this.loadData();
+  }
+
+  go = (id) => {
+    window.location = "/pagar/" + id + "/" + this.state.cantidad;
   }
 
   loadData = async () => {
@@ -36,14 +41,12 @@ class PaySection extends Component {
     });
     const res = await getVariantAvailable(this.props.pid, {});
     const data = await res.data;
+
     this.setState({
       dimensions: data.data,
-      variantsSpinner: false
+      variantsSpinner: false,
+      m_pgid: data.data.product_global_id ? true : false
     });
-  }
-
-  componentDidMount() {
-    this.loadData();
   }
 
   handleSelect = async (queryset) => {
@@ -80,8 +83,6 @@ class PaySection extends Component {
 
     // 5- Check if product_global_id is non null
     if (data.data.product_global_id) {
-      // let url = `/detalle/${this.props.pid}?is_variant=true&product_global_id=${data.data.product_global_id}`
-      // window.location = url;
       this.props.reloadDetails(data.data.product_global_id);
     }
 
@@ -146,32 +147,6 @@ class PaySection extends Component {
           </div>
       )
     }
-
-
-    // this.props.stock > 0
-    //     ? <div className="pay-item">
-    //       <section className="select-icon">
-    //         <Select
-    //             items={qty_options}
-    //             showDefault={false}
-    //             onSelect={(qnt)=>{
-    //               this.setState({cantidad: qnt});
-    //             }}
-    //         />
-    //       </section>
-    //       {this.props.m_pgid
-    //           ? <button onClick={() => this.go(this.props.pgid)}>Comprar</button>
-    //           : <button
-    //               style={{opacity: "0.35", cursor: "not-allowed"}}
-    //               onClick={(e) => {
-    //                 e.preventDefault();
-    //
-    //               }}>Comprar</button>
-    //       }
-    //
-    //     </div>
-    //     :
-    //     <div className="pay-item info-pay-product-detail" ><h3>Sin unidades disponibles.</h3></div>
   }
 
   render() {
@@ -206,34 +181,11 @@ class PaySection extends Component {
         </div>
         { this.state.variantsSpinner
             ? <Spinner />
-            : <ProductVariants id={this.props.pgid} dimensions={this.state.dimensions} select={this.handleSelect}/>
+            : <ProductVariants
+                id={this.props.pgid}
+                dimensions={this.state.dimensions}
+                select={this.handleSelect}/>
         }
-       
-        {/*{ this.props.stock > 0*/}
-        {/*    ? <div className="pay-item">*/}
-        {/*        <section className="select-icon">*/}
-        {/*          <Select*/}
-        {/*              items={qty_options}*/}
-        {/*              showDefault={false}*/}
-        {/*              onSelect={(qnt)=>{*/}
-        {/*                this.setState({cantidad: qnt});*/}
-        {/*              }}*/}
-        {/*          />*/}
-        {/*        </section>*/}
-        {/*      {this.props.m_pgid*/}
-        {/*        ? <button onClick={() => this.go(this.props.pgid)}>Comprar</button>*/}
-        {/*        : <button*/}
-        {/*              style={{opacity: "0.35", cursor: "not-allowed"}}*/}
-        {/*              onClick={(e) => {*/}
-        {/*                e.preventDefault();*/}
-
-        {/*              }}>Comprar</button>*/}
-        {/*      }*/}
-
-        {/*      </div>*/}
-        {/*    :*/}
-        {/*      <div className="pay-item info-pay-product-detail" ><h3>Sin unidades disponibles.</h3></div>*/}
-        {/*}*/}
 
         {this.renderPayButtonSection()}
 

@@ -33,7 +33,7 @@ class ProductDetail extends Component {
     this.state = {
       questions: [],
       mdata: this.props.data,
-      m_pgid: false
+      m_pgid: (props.data.variants.length == 0 || props.data.is_variant ) ? true : false
     }
     this.reLoadData = this.reLoadData.bind(this);
   }
@@ -103,7 +103,6 @@ class ProductDetail extends Component {
                     pid={this.state.mdata.product_id}
                     pgid={this.state.mdata.product_global_id}
                     m_pgid={this.state.m_pgid}
-                    dimensions={this.state.mdata.dimensions}
                     seller={this.state.mdata.user}
                     price={this.state.mdata.price}
                     title={this.state.mdata.title}
@@ -164,7 +163,6 @@ class ProductDetail extends Component {
                   pid={this.state.mdata.product_id}
                   pgid={this.state.mdata.product_global_id}
                   m_pgid={this.state.m_pgid}
-                  dimensions={this.state.mdata.dimensions}
                   seller={this.state.mdata.user}
                   price={this.state.mdata.price}
                   title={this.state.mdata.title}
