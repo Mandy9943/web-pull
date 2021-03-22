@@ -61,9 +61,6 @@ export default class PaymentWay extends Component {
             modalValidate: false,
         }
         this.addrRef = React.createRef();
-
-
-        console.log(this.props.data.images)
     }
 
     componentDidMount() {
@@ -79,13 +76,10 @@ export default class PaymentWay extends Component {
     }
 
     loadAddresses = () => {
-        console.log("load addresses");
-        console.log(this.props);
         getData("/getAddresses", this.props.user.jwt)
             .then((response) => {
                 this.setState({ addresses: response.data, addrLoaded: true,modalAddr: false, modal: false });
             });
-        
     }
 
     accordionCredit = () => {
@@ -166,13 +160,14 @@ export default class PaymentWay extends Component {
         e.preventDefault();
 
         this.setState({cc_error: null});
-	const actualSize = e.target.elements.card_number.value.length;
-	var tips = {};
-	if(this.state.card_type == "invalid"){
-		tips.card_number == "El numero de tarjeta ingresado no es valido";
-	}
-        const ccPayload = {
+        const actualSize = e.target.elements.card_number.value.length;
+        let tips = {};
 
+        if (this.state.card_type == "invalid") {
+            tips.card_number == "El numero de tarjeta ingresado no es valido";
+        }
+
+        const ccPayload = {
             product_id: this.props.data.product_id,
             device_session_id: this.props.user.dsi.dsi,
             document_type: e.target.elements.document_type.value,
@@ -180,12 +175,13 @@ export default class PaymentWay extends Component {
             card_type: this.state.card_type,
             card_number: e.target.elements.card_number.value.split(" ").join(""),
             ccv: e.target.elements.ccv.value,
-            expiration_date: "20"+e.target.elements.expiration_date.value,
+            expiration_date: "20" + this.state.expiration_date,// .expiration_date.value,
             card_holder: e.target.elements.card_holder.value,
             monthly_fees: e.target.elements.monthly_fees.value
         };
 
         const validated = Object.assign(tips, validatePayCC(ccPayload));
+        console.log(validated);
         if(Object.values(validated).length == 0){
 
             if (this.state.selectedAddr == -1) {
@@ -195,7 +191,7 @@ export default class PaymentWay extends Component {
 
             ccPayload.address_id = this.state.addresses[this.state.selectedAddr].address_id;
             this.setState({paymentLoading:true});
-           const rs = await makePaymentCC(ccPayload, this.props.user.jwt);
+            const rs = await makePaymentCC(ccPayload, this.props.user.jwt);
             
             if (rs.data) {
                 window.location = "/pay_result/"+rs.data.id;
@@ -275,26 +271,28 @@ export default class PaymentWay extends Component {
         this.setState({ expiration_date: value });
     };
 
-      card_change = (type, valid) => {
-
+    card_change = (type, valid) => {
         this.setState({card_max_length: type.maxLength});
-        if(!valid){
+        if(valid){
+            this.setState({card_type: type.issuer});
+        } else {
             this.setState({card_type: "invalid"});
         }
+    }
 
-      }
-
-      getPaymentType = () => {
+    getPaymentType = () => {
         if(this.state.paymentCashType===1){
             return 'EFECTY';
         }
+
         if(this.state.paymentCashType===2){
             return 'BALOTO';
         }
+
         if(this.state.paymentCashType===3){
             return 'SURED';
         }
-      };
+    };
 
     render() {
         const addAddressContent = <AddAddress jwt={this.props.user.jwt} save={this.loadAddresses} cancel={() => this.setState({ modal: false, modalAddr: false })} noheader="1" />;
@@ -327,7 +325,7 @@ export default class PaymentWay extends Component {
         </>
 
         let months_fees = []
-	let i = 0;
+	    let i = 0;
         for (i=1; i<32; i++){
             months_fees.push(<option value={i}>{i}</option>)
         }
@@ -336,7 +334,6 @@ export default class PaymentWay extends Component {
 
         return (
             <div className="payment-way">
-
                 <script type="text/javascript" src={"https://maf.pagosonline.net/ws/fp/tags.js?id="+this.props.user.dsi.dsi+this.props.user.dsi.ui}></script>
                 <noscript>
                     <iframe style={{"width": "100px", "height": "100px", "border": "0", "position": "absolute", "top": "-5000px"}} src={"https://maf.pagosonline.net/ws/fp/tags.js?id="+this.props.user.dsi.dsi+this.props.user.dsi.ui}></iframe>
