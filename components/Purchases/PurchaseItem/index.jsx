@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { getProductImgs } from "../../../lib/functions";
 
 function PurchaseItem({ item, onSelect }) {
-
+    console.log(item)
     return (
         <div className="product-item">
             <h5 className="status">{item.purchase_status_name}</h5>
@@ -32,7 +32,7 @@ function PurchaseItem({ item, onSelect }) {
                     <p className="vendedor">Vendedor:</p>
                     <p>{item.data.seller.name + " " + item.data.seller.last_name}</p>
                     <p className="phone-client"> {item.data.seller.phone}</p>
-                    <Link href={"/chat/" + 'Texto'}>
+                    <Link href={`/chat/${item.data.order_id}?order=${item.data.order_id}&store=${item.data.seller_id}`}>
                         <a> Enviar mensaje</a>
                     </Link>
                 </section>

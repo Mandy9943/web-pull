@@ -41,14 +41,14 @@ export async function getServerSideProps(context) {
     let jwt = getJwt(context);
 
     if(user_id !== "" && user_id){
-        const res = await getChat(user_id,jwt )
-        data = await res.data
-        if(data.data){
-            chat_uid = data.u;
-            data = data.data;
-        }else{
-            data = [];
-        }
+        // const res = await getChat(user_id,jwt )
+        // data = await res.data
+        // if(data.data){
+        //     chat_uid = data.u;
+        //     data = data.data;
+        // }else{
+        //     data = [];
+        // }
     
     }
     return { props: { messages:data, jwt, name, chat_uid, myID:usr, user_id} }

@@ -51,7 +51,8 @@ function Purchases(props) {
         ? "/shop/orders?page=1&limit=" + LIMIT + order + search
         : "/getPurchases?page=1&size=" + LIMIT;
     getData(endp, props.user.jwt).then((response) => {
-      if (response.data && response.data.code && response.data.code !== 404) {
+      
+      if (response.status !== 404) {
         setPagination(response.data.pagination);
 
         // Dirty Hack
@@ -139,6 +140,8 @@ function Purchases(props) {
     });
     setPurchases(newPurchases);
   };
+
+  console.log(purchases)
 
   return !selected ? (
     <div className="purchase-list">
