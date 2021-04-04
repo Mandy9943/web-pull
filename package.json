@@ -19,6 +19,7 @@
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
     "axios": "^0.19.2",
+    "bootstrap": "^4.6.0",
     "chokidar": "^3.4.2",
     "ckeditor4-react": "^1.1.1",
     "js-cookie": "^2.2.1",
@@ -32,6 +33,8 @@
     "react": "^16.13.1",
     "react-animated-slider": "^2.0.0",
     "react-autocomplete-2": "^2.3.0",
+    "react-bootstrap": "^1.5.2",
+    "react-cookie": "^4.0.3",
     "react-credit-cards": "^0.8.3",
     "react-datetime": "^3.0.4",
     "react-dom": "^17.0.2",
@@ -39,8 +42,10 @@
     "react-items-carousel": "^2.8.0",
     "react-multi-carousel": "^2.5.5",
     "react-router-dom": "^5.2.0",
+    "reactstrap": "8.9.0",
     "sass": "^1.26.9",
-    "socket.io-client": "^3.1.3"
+    "socket.io-client": "^3.1.3",
+    "sweetalert": "^2.1.2"
   },
   "devDependencies": {
     "file-loader": "^6.0.0",

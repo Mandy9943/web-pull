@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import "./Chat.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPaperclip } from "@fortawesome/free-solid-svg-icons";
+import { faPaperclip, faChevronRight, faUser } from "@fortawesome/free-solid-svg-icons";
 import Bread from "./../BreadCrumbs";
 import Nav from "../../Common/Nav";
 import Footer from "./../Footer";
-import {socket} from "../../Services/socket"
+import swal from 'sweetalert';
+import {socket} from "../../Services/socket";
  
 class Chat extends Component {
   constructor(props) {
@@ -22,17 +23,14 @@ class Chat extends Component {
   }
   
   componentDidMount() {
-    console.log(localStorage.getItem('socket'))
     var url_string = location.href;
     var url = new URL(url_string);
     var store = url.searchParams.get("store");
     var order = url.searchParams.get("order");   
     this.setState({store:store,order:order})
-    console.log(store, order)
-    socket.emit('join', {room: `kieroUser_${this.state.user}`})
     socket.emit('get_chat_user_by_order', {order: order, room:`kieroUser_${this.state.user}`});
     
-    console.log(this.state.user)
+    // console.log(this.state.user)
     
     socket.on("response_join_chat", data => {
       console.log(data);
@@ -45,7 +43,7 @@ class Chat extends Component {
     socket.on("new_response_user", data => {
       this.setState({messages:(data.response)})
     });
-    
+
     socket.on("response_room_chats", data => {
       this.setState({messages:(data.rooms)})
     });
@@ -68,6 +66,14 @@ class Chat extends Component {
     socket.emit('new_room',obj );
     this.setState({value_message:''})
   }
+
+  handleVerify(){
+    swal({
+      title: "Buen trabajo!",
+      text: "La compra ha sido verificada!",
+      icon: "success",
+    });
+  }
   
   render() {   
     if (this.state.messages) {
@@ -86,27 +92,61 @@ class Chat extends Component {
 } else {
   this.allMessages = ''
 }
+// console.log(window.document.getElementsByClassName("containerChat"))
 return (
   <>
       <Nav dataId={this.props.data.myID} />
-        
-        <div className="chat-wrap" >
-        <h5>{ this.props.data.name }</h5>
-          <div className="msg">
-          { this.allMessages }
+        <div className="newContainer">
+          <div className="containerChat">
+            <div>Compras  <FontAwesomeIcon icon={faChevronRight} style={{color:"#CF0A2C", padding:"0px 10px 0px 10px"}} /> Detalles de compra  <FontAwesomeIcon icon={faChevronRight} style={{color:"#CF0A2C", padding:"0px 10px 0px 10px"}} /> Compra # {this.state.order}</div>
+          <div className="chat-wrap" >
+            <h5>{ this.props.data.name }</h5>
+              <div className="msg">
+              { this.allMessages }
+              </div>
+                <div className="chat-input">
+                
+                  <input type="text" value={this.state.value_message} onChange={( {target : {value} } ) => this.setValue(value)} />
+                  <div className="chat-wrap-button">
+                    {/* <label htmlFor="file">
+                      <FontAwesomeIcon icon={faPaperclip} />
+                    </label> */}
+                    <button onClick={() => this.handleSubmit()} type="submit">Enviar</button>
+                </div>
+              </div>
           </div>
-            <div className="chat-input">
-            
-              <input type="text" value={this.state.value_message} onChange={( {target : {value} } ) => this.setValue(value)} />
-              <div className="chat-wrap-button">
-                {/* <label htmlFor="file">
-                  <FontAwesomeIcon icon={faPaperclip} />
-                </label> */}
-                <button onClick={() => this.handleSubmit()} type="submit">Enviar</button>
+          </div>
+          <div className="infoContainer">
+            <p className="help">Necesito ayuda</p>
+            <div className="dataUser dataUserResponsive" style={{ marginTop:15}}>
+              <span>Vendedor</span>
+              <div style={{display:"flex"}}>
+                <div className="iconProfile">
+                  <FontAwesomeIcon icon={faUser} />
+                </div>
+                <div className="userData">
+                  <p>Spice Stock</p>
+                  <p>3001234567</p>
+                  <span className="detailsShop">Detalles de compra</span>
+                </div>
               </div>
             </div>
+            <div className="dataUser dataUserResponsiveV2" style={{ marginTop:20}}>
+              <span>Entregado</span>
+              <div style={{display:"flex"}}>
+                <div className="iconProfile">
+                  <FontAwesomeIcon icon={faUser} />
+                </div>
+                <div className="userData productData">
+                  <p>Portátil Premium 2020 HP 15 15,6" HD pantalla táctil Prem...</p>
+                  <p>$147.500</p>
+                  <span className="detailsShop" style={{color:"#757575 !important"}}>1 unidad</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <Footer/>
+        {/* <Footer/> */}
       </>
     );
   }

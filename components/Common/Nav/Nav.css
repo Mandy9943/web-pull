@@ -329,7 +329,10 @@
       grid-template-columns: 1fr 4fr 2fr;
     }
   }
-@media (max-width: 700px) {
+@media (max-width: 925px) {
+  .infoContainer{
+    top:110px;
+  }
   .desktop-nav {
     display: none;
   }

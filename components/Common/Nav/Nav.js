@@ -30,7 +30,6 @@ import Autocomplete from 'react-autocomplete-2';
 import {searchSuggestions} from "../../../services/productsApi";
 import {suggestionQuantity} from "../../../lib/config";
 import { signOut } from "../../../lib/auth";
-import {socket} from "../../Services/socket"
 
 export default class Nav extends Component {
     constructor(props) {
@@ -141,7 +140,6 @@ export default class Nav extends Component {
     }
 
     componentDidMount() {
-        localStorage.setItem('socket', JSON.stringify(socket))
         getData("/getMenuCategories")
             .then((response) => {
                 this.setState({ categories: response.data });
