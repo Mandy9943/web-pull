@@ -15,6 +15,8 @@ import PurchasesDetail from "../PurchasesDetail";
 import OrderItem from "../OrderItem/OrderItem.js";
 import OrdersDetail from "../OrdersDetail/OrdersDetail.js";
 import Pagination from "../Common/Pagination/Pagination";
+import { makeStyles } from '@material-ui/core/styles';
+import Paginations from './Pagination/Pagination';
 
 function processSellData(data) {
   // Esta uncion es para que los datos devueltos por el endpoint /shop/orders/
@@ -243,6 +245,7 @@ function Purchases(props) {
         </>
       )}
       <br />
+      <Paginations/>
       {pagination && lastPage > 1 && (
         <Pagination
           actual={currentPage}

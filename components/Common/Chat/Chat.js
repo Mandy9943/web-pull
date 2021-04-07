@@ -7,6 +7,14 @@ import Nav from "../../Common/Nav";
 import Footer from "./../Footer";
 import swal from 'sweetalert';
 import {socket} from "../../Services/socket";
+import {socketuser} from "../../Services/socketuser";
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Moment from 'react-moment';
+import 'moment-timezone';
+import 'moment/locale/es-mx';
  
 class Chat extends Component {
   constructor(props) {
@@ -19,6 +27,8 @@ class Chat extends Component {
       order: 0,
       messages: null,
       value_message: '',
+      dataguide:[]
+      // '<p style="text-align:center">Aún no hay información de la guía</p>'
     }
   }
   
@@ -42,13 +52,36 @@ class Chat extends Component {
     
     socket.on("new_response_user", data => {
       this.setState({messages:(data.response)})
-    });
-
-    socket.on("response_room_chats", data => {
-      this.setState({messages:(data.rooms)})
+      console.log("new_response_user", data)
     });
     
-  } 
+    socket.on("response_room_chats", data => {
+      this.setState({messages:(data.rooms)})
+      console.log("response_room_chats", data)
+      if(!data.guide){
+        console.log("no hay guía")
+      } else {
+        socketuser.emit('get_timeline', {order: order, guide:data.guide, room:`kieroUser_${this.state.user}`});
+      }
+    });
+
+    socketuser.on("timeline", data => {
+     
+      data.data.traking.map((datas) =>{
+
+        this.setState({dataguide:[...this.state.dataguide, datas]}) 
+        // arrayvar:[...this.state.arrayvar, newelement]
+        // console.log(datas.DescripcionEstado)
+        // return (
+        //           <div>
+        //             {datas.DescripcionEstado}
+        //           </div> 
+        //         )
+        })
+      })
+    // console.log("holaaaaa",viewguide)
+    // this.state.dataguide = this.viewguide
+  }   
   
   setValue (val) {
     this.setState({value_message:val})
@@ -92,6 +125,36 @@ class Chat extends Component {
 } else {
   this.allMessages = ''
 }
+
+console.log("parseado",this.state.dataguide)
+
+this.showInfo = (this.state.dataguide)
+                .sort((a, b) => a['@diffgr:id'] < b['@diffgr:id'] ? 1 : a['@diffgr:id'] > b['@diffgr:id'] ? -1 : 0)
+                .map((data,index)=>{
+                  return (
+                          <div className="containerStepGuide">
+                            <div className="countStep">
+                              <span>{index+1}</span>
+                            </div>
+                            <span className="descriptStep">
+                              {data.DescripcionEstado} - {data.ubicacion}
+                            </span>
+                            <Moment className="formatDateTime" format='LLLL' locale="es-mx">{data.fecha_hora}</Moment>
+                          </div>
+                          )
+                  // console.log("whit",data.DescripcionEstado)
+                })
+
+// console.log(this.state.dataguide)
+// function dataTest(data){
+ 
+//   data.map((test)=>{
+//     return(
+//           <div>{test.DescripcionEstado}</div>
+//           )
+//         })
+  
+// }
 // console.log(window.document.getElementsByClassName("containerChat"))
 return (
   <>
@@ -144,6 +207,23 @@ return (
                 </div>
               </div>
             </div>
+            <Accordion className="showGuide">
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <p>Estado de la guía</p>
+              </AccordionSummary>
+              <AccordionDetails>
+                {/* {dataTest(this.state.dataguide)} */}
+
+                  <div style={{width:"100%"}}>{this.showInfo}</div>
+               
+                {/* <div dangerouslySetInnerHTML={ {__html: this.state.dataguide} } style={{margin:"auto"}}/> */}
+                
+              </AccordionDetails>
+            </Accordion>
           </div>
         </div>
         {/* <Footer/> */}
