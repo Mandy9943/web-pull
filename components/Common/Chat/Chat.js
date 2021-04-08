@@ -125,7 +125,7 @@ class Chat extends Component {
 } else {
   this.allMessages = ''
 }
-
+console.log("mensjae",this.state.messages)
 console.log("parseado",this.state.dataguide)
 
 this.showInfo = (this.state.dataguide)
@@ -162,6 +162,23 @@ return (
         <div className="newContainer">
           <div className="containerChat">
             <div>Compras  <FontAwesomeIcon icon={faChevronRight} style={{color:"#CF0A2C", padding:"0px 10px 0px 10px"}} /> Detalles de compra  <FontAwesomeIcon icon={faChevronRight} style={{color:"#CF0A2C", padding:"0px 10px 0px 10px"}} /> Compra # {this.state.order}</div>
+            <Accordion className="showGuide">
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <p>Estado de la guía</p>
+              </AccordionSummary>
+              <AccordionDetails>
+                {/* {dataTest(this.state.dataguide)} */}
+
+                  <div style={{width:"100%"}}>{this.showInfo}</div>
+               
+                {/* <div dangerouslySetInnerHTML={ {__html: this.state.dataguide} } style={{margin:"auto"}}/> */}
+                
+              </AccordionDetails>
+            </Accordion>
           <div className="chat-wrap" >
             <h5>{ this.props.data.name }</h5>
               <div className="msg">
@@ -174,13 +191,13 @@ return (
                     {/* <label htmlFor="file">
                       <FontAwesomeIcon icon={faPaperclip} />
                     </label> */}
-                    <button onClick={() => this.handleSubmit()} type="submit">Enviar</button>
+                    <button onClick={() => this.handleSubmit()} type="submit" style={{zIndex:9}}>Enviar</button>
                 </div>
               </div>
           </div>
           </div>
           <div className="infoContainer">
-            <p className="help">Necesito ayuda</p>
+            <p className="helpChat">Necesito ayuda</p>
             <div className="dataUser dataUserResponsive" style={{ marginTop:15}}>
               <span>Vendedor</span>
               <div style={{display:"flex"}}>
@@ -207,23 +224,6 @@ return (
                 </div>
               </div>
             </div>
-            <Accordion className="showGuide">
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
-              >
-                <p>Estado de la guía</p>
-              </AccordionSummary>
-              <AccordionDetails>
-                {/* {dataTest(this.state.dataguide)} */}
-
-                  <div style={{width:"100%"}}>{this.showInfo}</div>
-               
-                {/* <div dangerouslySetInnerHTML={ {__html: this.state.dataguide} } style={{margin:"auto"}}/> */}
-                
-              </AccordionDetails>
-            </Accordion>
           </div>
         </div>
         {/* <Footer/> */}

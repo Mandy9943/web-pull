@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { getProductImgs } from "../../../lib/functions";
 
 function PurchaseItem({ item, onSelect }) {
-    console.log(item.data.product?.title.length)
+    console.log(item)
     return (
         <div className="product-item">
             <h5 className="status">{item.purchase_status_name}</h5>
@@ -15,18 +15,17 @@ function PurchaseItem({ item, onSelect }) {
                     <section className="product">
                         <div className="product-card-img">
                             <img
-                                alt={item.data.product?.title.length < 10 ? item.data.product?.title : item.data.product?.title.slice(0, 10)}
-                                src={getProductImgs(item.data.product?.images)}
+                                alt={item.data.product.title.length < 10 ? item.data.product.title : item.data.product.title.slice(0, 10)}
+                                src={getProductImgs(item.data.product.images)}
                             />
                         </div>
                         <section className='description'>
-                            <h3>{item.data.product?.title}</h3>
+                            <h3>{item.data.product.title}</h3>
                             <h3>$ {item.data.total}</h3>
                             <h3 className="product-stock">{item.data.quantity}{" "} {Number(item.data.quantity) > 1 ? "unidades" : "unidad"}</h3>
                         </section>
                     </section>
                 </a>
-
                 <section className="info">
                     <a onClick={() => onSelect(item)}> Detalle de compra</a>
                     <p className="vendedor">Vendedor:</p>

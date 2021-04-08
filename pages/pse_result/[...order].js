@@ -34,7 +34,7 @@ function Product({ data, u_data }) {
           <span className="user-id">USERID: <strong>{data.user_id}</strong></span>
           <span>SELLERID: <strong>{data.seller_id}</strong></span>
           <span>Método de pago: <strong>{data.method_id}</strong></span>
-          <span>Estado del pago:<strong>{data.status == 1 ? "APROBADO" : data.status == 6 ? "RECHAZADO" : "PENDIENTE"}</strong> </span>
+          <span>Estado del pago:<strong>{data.status == 2 ? "APROBADO" : data.status == 6 ? "RECHAZADO" : "PENDIENTE"}</strong> </span>
           <span>Total a pagar: <strong>{data.total} </strong></span>
           <span className="name-product">Nombre del producto: <strong>{data.product.title}</strong></span>
         </section>

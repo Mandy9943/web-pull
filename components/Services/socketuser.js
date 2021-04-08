@@ -1,7 +1,7 @@
 import socketIOClient from "socket.io-client";
 import Cookies from 'js-cookie';
 import React, { useState, useEffect } from "react";
-const ENDPOINT = "http://192.168.1.2:5010/users";
+const ENDPOINT = "https://users.kieroapi.net/users";
 
 const socketuser = socketIOClient(ENDPOINT)
 

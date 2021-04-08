@@ -13,7 +13,7 @@ import { getData, makePayment, makePaymentCC, makePaymentCash } from "../../serv
 import Modal from "../Common/Modal";
 import AddAddress from "../UserAccount/AddAddress"
 import { validatePayCC, validatePaymentPSE } from "../../lib/validation"
-import { priceFormat } from "../../lib/config"
+import { priceFormat, wompi_at_url } from "../../lib/config"
 import Error from "../Login/Error";
 import InputTip from "../InputTip"
 import PaymentLoading from '../PaymentLoading';
@@ -24,6 +24,7 @@ import PaymentCashResult from '../PaymentCashResult';
 import Datetime from 'react-datetime';
 import "react-datetime/css/react-datetime.css";
 import moment from 'moment';
+import {apiget} from "../../lib/request"
 
 
 export default class PaymentWay extends Component {
@@ -59,6 +60,8 @@ export default class PaymentWay extends Component {
             paymentCashResult: false,
             paymentCashDocument: '',
             modalValidate: false,
+            acceptance_token: '',
+            acp_checked: false
         }
         this.addrRef = React.createRef();
     }
@@ -72,6 +75,22 @@ export default class PaymentWay extends Component {
         getData("/getPseBanks")
             .then((response) => {
                 this.setState({ banks: (response.data.banks ? response.data.banks : []) });
+            });
+    }
+    
+    loadAcceptanceToken = (enabled) => {
+        
+        this.setState({acp_checked: enabled});
+        if (!enabled){
+            return false;
+        }
+
+        apiget(wompi_at_url)
+            .then((response) => {
+                if(response.data.data.presigned_acceptance.acceptance_token.length>0){
+                    let actkn=response.data.data.presigned_acceptance.acceptance_token;
+                    this.setState({acceptance_token: actkn});
+                }
             });
     }
 
@@ -164,7 +183,11 @@ export default class PaymentWay extends Component {
         let tips = {};
 
         if (this.state.card_type == "invalid") {
-            tips.card_number == "El numero de tarjeta ingresado no es valido";
+            tips.card_number = "El numero de tarjeta ingresado no es valido";
+        }
+
+        if (this.state.acceptance_token.length<1 || !this.state.acp_checked) {
+            tips.acceptance_token = "Debes aceptar los terminos y condiciones antes de continuar.";
         }
 
         const ccPayload = {
@@ -176,14 +199,15 @@ export default class PaymentWay extends Component {
             card_number: e.target.elements.card_number.value.split(" ").join(""),
             ccv: e.target.elements.ccv.value,
             expiration_date: "20" + this.state.expiration_date,// .expiration_date.value,
-            card_holder: e.target.elements.card_holder.value,
-            monthly_fees: e.target.elements.monthly_fees.value
+            card_holder: e.target.elements.card_holder.value,            
+            monthly_fees: e.target.elements.monthly_fees.value,
+            accept_token: this.state.acceptance_token
+
         };
 
         const validated = Object.assign(tips, validatePayCC(ccPayload));
         console.log(validated);
         if(Object.values(validated).length == 0){
-
             if (this.state.selectedAddr == -1) {
                 this.setState({ modalValidate: true });
                 return false;
@@ -440,8 +464,11 @@ export default class PaymentWay extends Component {
                                         <input name={"document_number"} placeholder="Número de documento" />
                                         <InputTip msg={this.state.tips.document_number}/>
                                     </form>
+                                    <input onChange={()=>this.loadAcceptanceToken(!this.state.acp_checked)} id={"tos_cb"} type="checkbox" checked={this.state.acp_checked} />
+                                <label htmlFor={"tos_cb"}>Aceptar terminos y condiciones </label><InputTip msg={this.state.tips.acceptance_token}/>
+                                
 
-                                </div>
+                                </div>  
                                         <button type="submit" form="form-credit" className="button-continue main-button">
                                             <p>Pagar</p>
                                         </button>

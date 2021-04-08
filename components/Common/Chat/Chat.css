@@ -163,7 +163,7 @@
   margin-left: 2%;
   padding:15px;
 }
-.infoContainer .help{
+.infoContainer .helpChat{
   text-align: right;
   color:#CF0A2C;
   font-size: 10px;
@@ -250,7 +250,14 @@
 .descriptStep{
   margin-left:5% !important;
 }
+.showGuide{
+  margin-top: 15px;
+}
 @media (max-width:1000px){
+  .MuiAccordion-root.Mui-expanded {
+    margin: 145px 0 !important;
+    margin-bottom: 0 !important;
+  }
   .infoContainer{
     background: #F9F9F9;
     margin-left: 2%;
@@ -263,10 +270,11 @@
     left: calc(100% - 88.5%);
   }
   .showGuide{
-    position: absolute !important;
+    /* position: absolute !important;
     top: 115px;
     right: 0px;
-    width: 100%;
+    width: 100%; */
+    margin-top:150px;
   }
   .dataUser{
     width:100%;
@@ -282,12 +290,12 @@
     left: 0;
     right: 0;
   }
-  .infoContainer .help{
+  .infoContainer .helpChat{
     position: absolute;
     right: 15px;
   }
   .chat-wrap {
-    margin-top: 180px !important;
+    margin-top: 0px !important;
   }
 }
 @media (max-width:605px){
@@ -305,6 +313,9 @@
   }
 }
 @media (max-width: 520px) {
+  .showGuide{
+    margin-top:230px;
+  }
   .dataUserResponsiveV2{
     position: absolute;
   }
@@ -323,7 +334,11 @@
     top:185px;
   }
   .chat-wrap {
-    margin-top: 230px !important;
+    margin-top: 0px !important;
+  }
+  .MuiAccordion-root.Mui-expanded {
+    margin: 225px 0 !important;
+    margin-bottom: 0px !important;
   }
 }
 

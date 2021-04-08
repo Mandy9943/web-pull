@@ -2,30 +2,35 @@
 import socketIOClient from "socket.io-client";
 import Cookies from 'js-cookie';
 import React, { useState, useEffect } from "react";
-const ENDPOINT = "http://192.168.1.2:5001/chat";
+// const ENDPOINT = "http://192.168.1.2:5001/chat";
+const ENDPOINT = "https://socket-chat.kieroapi.net/chat";
 
 const socket = socketIOClient(ENDPOINT)
 
 export{socket}
 export default function SocketChat() {
+  // const [newNotification, setNewNotification] = React.useState(false)
   socket.emit('join', {room: `kieroUser_`+Cookies.get('user_id')})
     useEffect(() => {
-        handleLoad()
+        
         if (!("Notification" in window)) {
           alert("Tu navegador no es compatible con notificaciones, actualizaa por favor.");
         } else {
           Notification.requestPermission();
         }
         socket.on("new_response_user", data => {
-          showNotification()
+          handleLoad()
+          // showNotification()
+          // setNewNotification(true)
         });
-      },["new_response_user"]);
+      },[]);
       const handleLoad = () => {
              var addClass = document.getElementsByClassName('containerChat');
-             if (addClass.length === 1){
-               console.log("existe")
+             if (addClass.length === 1 ){
+                console.log("existe")
              }else {
-               console.log("no existe")
+                showNotification()
+                console.log("no existe")
              }
          };
      
