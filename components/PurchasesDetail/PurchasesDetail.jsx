@@ -108,6 +108,7 @@ function PurchasesDetail({ item, close }) {
                         </section>
                     </section>
                     <div className="link-msg">
+                        
                         <Link href="#">
                             <a>
                                 Ver mensajes

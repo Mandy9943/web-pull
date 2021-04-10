@@ -47,13 +47,13 @@
 }
 
 .user-account .user-container .user-account-content {
-  padding: 40px 20px;
+  padding: 40px 15% 40px 40px;
   background-color: trasparent;
 }
 
 .user-account .user-container .user-account-content h2 {
   margin-bottom: 30px;
-  font-size: 28px;
+  font-size: 22px;
   color: #111111;
 }
 

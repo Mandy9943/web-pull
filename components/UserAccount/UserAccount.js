@@ -271,7 +271,7 @@ export default class UserAccount extends Component {
             <div className="user-account">
                 <div className="user-container" >
                     <div className="user-account-content" >
-                        <h2>Mis Datos</h2>
+                        <h2>Mis datos</h2>
                         <div className="user-acount-info" >
                             <div className="user-acount-info-title">
                                 <h3>Cuenta</h3>

@@ -15,7 +15,8 @@ import {
     faMoneyBill,
     faAlignLeft,
     faQuestion,
-    faUser
+    faUser,
+    faStar
 } from "@fortawesome/free-solid-svg-icons";
 import "./Sidebar.css";
 import redirect from "../../lib/redirect";
@@ -109,8 +110,8 @@ export default class Sidebar extends Component {
     render() {
         return (
             <div id="sidebar" className="user-account-menu">
-                <div className="user-account-menu-item border-bottom">
-                    <p className="user-account-menu-icon icon-profile">
+                <div className="user-account-head-item border-bottom">
+                    <p className="user-account-head-icon icon-profile">
                         <FontAwesomeIcon icon={faUser} />
                     </p>
                     <div className="user-name">
@@ -151,45 +152,46 @@ export default class Sidebar extends Component {
                         <p className="user-account-menu-icon">
                             <FontAwesomeIcon icon={this.state.userAccountIconBill} />
                         </p>
+                        <p className="lineBottop">
+                            <FontAwesomeIcon icon={this.state.userAccountIconBill} />
+                        </p>
                     </div>
                 }
 
                 {/* User */}
+
+
+                    {this.props.user_data.role === "user" &&
+                        <div className="user-account-menu-item" >
+                        <p className="user-account-menu-icon">
+                            <FontAwesomeIcon icon={faShoppingBag} />
+                        </p>
+                        <p onClick={(e) => this.props.cb("orders", e)}>Compras</p>
+                    </div>
+                    
+                }
                 {this.props.user_data.role === "user" &&
-                <div className={this.state.closeShop ? "user-account-menu-item" : "user-account-menu-item active"} onClick={() => this.accordionShop()}>
-                    <p className="user-account-menu-icon">
-                        <FontAwesomeIcon icon={faShoppingBag} />
-                    </p>
-                    <div className="user-account-menu-accordion">
-                        <p className="user-account-menu-text">Compras</p>
-                        <div className="user-account-accordion">
-                            <p onClick={(e) => this.props.cb("orders", e)}>Compras</p>
-                        </div>
-                        {/* <div className="user-account-accordion">
-                            <p onClick={(e) => this.props.cb("detail", e)}>Detalle de compra</p>
-                        </div> */}
+                        <div className="user-account-menu-item" >
+                        <p className="user-account-menu-icon">
+                            <FontAwesomeIcon icon={faStar} />
+                        </p>
+                        <p onClick={(e) => this.props.cb("myData", e)} >Favoritos</p>
+                        
                     </div>
-                    <p className="user-account-menu-icon">
-                        <FontAwesomeIcon icon={this.state.userAccountIconShop} />
-                    </p>
-                </div>}
+                }
+
+                {this.props.user_data.role === "user" &&
+                        <div className="user-account-menu-item" >
+                        <p className="user-account-menu-icon">
+                            <FontAwesomeIcon icon={faCog} />
+                        </p>
+                        <p onClick={(e) => this.props.cb("myData", e)} >Mis datos</p>
+                    </div>
+                }
 
 
-                <div className={this.state.closeMyData ? "user-account-menu-item border-bottom" : "user-account-menu-item border-bottom active"} onClick={() => this.accordionMyData()}>
-                    <p className="user-account-menu-icon">
-                        <FontAwesomeIcon icon={faCog} />
-                    </p>
-                    <div className="user-account-menu-accordion">
-                        <p className="user-account-menu-text">Mis datos</p>
-                        <div className="user-account-accordion">
-                            <p onClick={(e) => this.props.cb("myData", e)} >Mis datos</p>
-                            {/*<p onClick={(e)=>this.props.cb("security", e)}>Seguridad</p>*/}
-                        </div>
-                    </div>
-                    <p className="user-account-menu-icon">
-                        <FontAwesomeIcon icon={this.state.userAccountIconMyData} />
-                    </p>
-                </div>
+
+
                 <Link href="/lista_categorias"><a className="no-web">
                     <div className="user-account-menu-item border-bottom">
                         <p className="user-account-menu-icon">

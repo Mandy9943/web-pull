@@ -148,7 +148,7 @@ function Purchases(props) {
   return !selected ? (
     <div className="purchase-list">
       <h1 className="status-title">
-        {props.mode === "sell" ? "Mis ventas" : "Mis Compras"}
+        {props.mode === "sell" ? "Mis ventas" : "Mis compras"}
       </h1>
       {props.mode === "sell" ? (
         <>

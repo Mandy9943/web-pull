@@ -129,10 +129,10 @@ console.log("mensjae",this.state.messages)
 console.log("parseado",this.state.dataguide)
 
 this.showInfo = (this.state.dataguide)
-                .sort((a, b) => a['@diffgr:id'] < b['@diffgr:id'] ? 1 : a['@diffgr:id'] > b['@diffgr:id'] ? -1 : 0)
-                .map((data,index)=>{
-                  return (
-                          <div className="containerStepGuide">
+.sort((a, b) => a['@diffgr:id'] < b['@diffgr:id'] ? 1 : a['@diffgr:id'] > b['@diffgr:id'] ? -1 : 0)
+.map((data,index)=>{
+  return (
+    <div className="containerStepGuide">
                             <div className="countStep">
                               <span>{index+1}</span>
                             </div>
@@ -142,11 +142,10 @@ this.showInfo = (this.state.dataguide)
                             <Moment className="formatDateTime" format='LLLL' locale="es-mx">{data.fecha_hora}</Moment>
                           </div>
                           )
-                  // console.log("whit",data.DescripcionEstado)
-                })
-
-// console.log(this.state.dataguide)
-// function dataTest(data){
+                        })
+                        
+                        // console.log(this.state.dataguide)
+                        // function dataTest(data){
  
 //   data.map((test)=>{
 //     return(
@@ -161,32 +160,16 @@ return (
       <Nav dataId={this.props.data.myID} />
         <div className="newContainer">
           <div className="containerChat">
-            <div>Compras  <FontAwesomeIcon icon={faChevronRight} style={{color:"#CF0A2C", padding:"0px 10px 0px 10px"}} /> Detalles de compra  <FontAwesomeIcon icon={faChevronRight} style={{color:"#CF0A2C", padding:"0px 10px 0px 10px"}} /> Compra # {this.state.order}</div>
-            <Accordion className="showGuide">
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
-              >
-                <p>Estado de la guía</p>
-              </AccordionSummary>
-              <AccordionDetails>
-                {/* {dataTest(this.state.dataguide)} */}
-
-                  <div style={{width:"100%"}}>{this.showInfo}</div>
-               
-                {/* <div dangerouslySetInnerHTML={ {__html: this.state.dataguide} } style={{margin:"auto"}}/> */}
-                
-              </AccordionDetails>
-            </Accordion>
+            <div className="breadcrumChat">Compras  <FontAwesomeIcon icon={faChevronRight} style={{color:"#CF0A2C", padding:"0px 5px 0px 5px"}} /> Detalles de compra  <FontAwesomeIcon icon={faChevronRight} style={{color:"#CF0A2C", padding:"0px 5px 0px 5px"}} /> Compra # {this.state.order}</div>
+           
           <div className="chat-wrap" >
-            <h5>{ this.props.data.name }</h5>
+            <h5>{ this.props.data.name } </h5>
               <div className="msg">
               { this.allMessages }
               </div>
                 <div className="chat-input">
                 
-                  <input type="text" value={this.state.value_message} onChange={( {target : {value} } ) => this.setValue(value)} />
+                  <input type="text" value={this.state.value_message} onChange={( {target : {value} } ) => this.setValue(value)} placeholder="Escribe un mensaje" />
                   <div className="chat-wrap-button">
                     {/* <label htmlFor="file">
                       <FontAwesomeIcon icon={faPaperclip} />
@@ -223,6 +206,23 @@ return (
                   <span className="detailsShop" style={{color:"#757575 !important"}}>1 unidad</span>
                 </div>
               </div>
+              <Accordion className="showGuide">
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+                >
+                <p className="guideState">Estado de la guía</p>
+              </AccordionSummary>
+              <AccordionDetails>
+                {/* {dataTest(this.state.dataguide)} */}
+
+                  <div style={{width:"100%"}}>{this.showInfo}</div>
+               
+                {/* <div dangerouslySetInnerHTML={ {__html: this.state.dataguide} } style={{margin:"auto"}}/> */}
+                
+              </AccordionDetails>
+            </Accordion>
             </div>
           </div>
         </div>

@@ -5,7 +5,7 @@
   margin-right: 250px;
   position: relative;
   border-radius: 5px;
-  font-weight: bold;
+  font-weight: 500;
   padding-bottom: 25px;
 }
 
@@ -32,7 +32,7 @@
   border-radius: 5px;
   position: relative;
   text-align: right;
-  font-weight: bold;
+  font-weight: 500;
   padding-bottom: 25px;
 }
 
@@ -74,20 +74,20 @@
 
 .chat-wrap h5 {
   padding: 15px;
-  font-weight: bold;
-  background: #CF0A2C;
-  color: white;
+  font-weight: 500;
+  background:#CF0A2C;
+  color: #ffffff;
   border-radius: 5px 5px 0px 0px;
 }
-
 .msg {
   overflow-y: scroll;
+  background: #f4f4f4;
 }
 
 .chat-wrap-none {
   text-align: center;
   margin: 15px;
-  font-size: 15px;
+  font-size: 14px;
   color: #565555;
 }
 
@@ -100,7 +100,7 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
   border-top: 1px solid #c5c5c5;
-  padding: 20px;
+  padding: 15px;
   border-radius: 0 0 5px;
 }
 
@@ -113,7 +113,9 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  padding-left: 5px;
 }
+
 
 .chat-wrap-button label {
   width: 100%;
@@ -138,6 +140,9 @@
   background: #E9E8E8;
   border: 1px solid #c5c5c5;
   margin: 0px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #3c3c3c;
 }
 
 .chat-msg-none .hours {
@@ -148,13 +153,16 @@
   position: absolute;
   bottom: -17px;
   font-size: 12px;
-  font-weight: bold;
+  font-weight: 500;
   color: #565555;
 }
 .newContainer{
   width:78%;
-  margin:15px auto;
+  margin:0px auto;
   display:flex;
+}
+.breadcrumChat{
+padding-top: 15px;
 }
 .infoContainer{
   width: 35%;
@@ -166,7 +174,7 @@
 .infoContainer .helpChat{
   text-align: right;
   color:#CF0A2C;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 500;
 }
 .iconProfile{
@@ -181,14 +189,16 @@
 .iconProfile svg{
   color: rgb(207, 10, 44);
   margin: 0 auto;
-  font-size: 20px;
+  font-size: 18px;
 }
 .userData{
   padding: 8px 0px 0px 15px;
   width: calc(100% - 25%);
+  font-weight: 500;
+  font-size: 14px;
 }
 .productData p{
-  font-size: 10px;
+  font-size: 13px;
 }
 .verifyShop{
   padding: 25px 0px;
@@ -198,13 +208,13 @@
 }
 .verifyStatus{
   text-align: center;
-  font-size: 15px;
+  font-size: 14px;
   color:#3F7FE1;
 }
 .detailsShop{
   margin-top: 15px;
   font-weight: 500;
-  font-size: 10px;
+  font-size: 12px;
   color: #CF0A2C;
 }
 .chat-wrap {
@@ -220,7 +230,8 @@
   height: 65vh;
 }
 .containerChat{
-  width:100%
+  width:100%;
+  font-size: 14px;
 }
 .containerStepGuide{
   width:100%; 
@@ -245,36 +256,48 @@
   position: absolute;
   right: 15px;
   font-weight: 500;
-  font-size: 1.2vw;
+  font-size: 10px;
 }
 .descriptStep{
   margin-left:5% !important;
 }
 .showGuide{
   margin-top: 15px;
+  width: 100%;
 }
+.guideState{
+font-size: 14px
+}
+.MuiAccordion-rounded:last-child{
+  background: #ffffff
+}
+
 @media (max-width:1000px){
-  .MuiAccordion-root.Mui-expanded {
-    margin: 145px 0 !important;
-    margin-bottom: 0 !important;
+  .newContainer {
+  display: inline;
+  width: 90%;
   }
+
   .infoContainer{
     background: #F9F9F9;
-    margin-left: 2%;
-    position: absolute;
     padding: 15px;
     top: 140px;
-    height: 95px;
-    display: flex;
-    width: calc(100% - 30%);
-    left: calc(100% - 88.5%);
+    height: 260px;
+    width: 95%;
+  }
+  .infoContainer .helpChat{
+    text-align: right;
+    color:#CF0A2C;
+    font-size: 12px;
+    font-weight: 500;
+    margin-right: 10%;
   }
   .showGuide{
     /* position: absolute !important;
     top: 115px;
     right: 0px;
-    width: 100%; */
     margin-top:150px;
+    width: 100%; */
   }
   .dataUser{
     width:100%;
@@ -298,7 +321,7 @@
     margin-top: 0px !important;
   }
 }
-@media (max-width:605px){
+/* @media (max-width:605px){
   .infoContainer{
     top:120px !important;
   }
@@ -311,11 +334,11 @@
   .chat-msg-out {
     margin-left: 50px;
   }
-}
-@media (max-width: 520px) {
-  .showGuide{
+} */
+/* @media (max-width: 520px) {
+   .showGuide{
     margin-top:230px;
-  }
+  } 
   .dataUserResponsiveV2{
     position: absolute;
   }
@@ -340,7 +363,7 @@
     margin: 225px 0 !important;
     margin-bottom: 0px !important;
   }
-}
+} */
 
 /* @media (max-width:550px)
     .chat-wrap

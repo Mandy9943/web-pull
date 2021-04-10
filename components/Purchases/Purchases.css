@@ -1,11 +1,12 @@
 .purchase-list {
-  padding: 40px;
+  padding: 40px 15% 40px 40px;
   padding-top: 42px;
 }
 
 .purchase-list .status-title {
   color: #111111;
-  font-size: 27px;
+  font-size: 22px;
+  font-weight: 500;
 }
 
 .purchase-list .empty-text {
@@ -101,12 +102,12 @@
 .MuiPagination-ul{
     margin: auto !important
 }
-@media (max-width: 700px) {
+@media (max-width: 925px) {
   .purchase-list {
     padding: 15px;
   }
   .purchase-list .status-title {
-    font-size: 28px;
+    font-size: 22px;
     font-weight: 600;
   }
   .purchase-list .account-store-sales-wrap-search {
