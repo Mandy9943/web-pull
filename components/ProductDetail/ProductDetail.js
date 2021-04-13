@@ -16,7 +16,7 @@ import { getData } from "../../services/userApi";
 import PayCredit from "../../assets/img/pay-credit.png";
 import iconCredit from "../../assets/img/card.svg";
 import PayOnline from "../../assets/img/pay-online.png";
-import PayTransfer from "../../assets/img/pay-transfer.png";
+import PayTransfer from "../../assets/img/pay-transfer.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTruck, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import Logo1 from "../../assets/img/logo-social.png";

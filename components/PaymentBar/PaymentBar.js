@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Modal from "./../Common/Modal";
 import CreditCard from "../../assets/img/pay-credit.png";
-import BankTransfer from "../../assets/img/pay-transfer.png";
+import BankTransfer from "../../assets/img/pay-transfer.jpg";
 import PayEfecty from "../../assets/img/pay-cash-efecty.png";
 import PayBaloto from "../../assets/img/pay-cash-baloto.png";
 import PaySured from "../../assets/img/pay-cash-sured.png";

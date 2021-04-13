@@ -50,10 +50,12 @@ export default class Home extends Component {
             img0: "banner-deportes.jpg", img1: "banner-drones.jpg",
             sub1: "Bicicletas de carretera", url1: "categoria/Bicicle-tas%20de%20carretera", sub2: "Drones", url2:"categoria/Drones" }}
           />
+          <Explorer /> 
           <ProductsSlider category={"Animales y Mascotas"} />
          <ListProductMovil jwt={u_data.jwt} />
           <CategoriesImgMenu />
           <Tickets /> 
+          <ProductsSlider category={"Bebés"} />
         </div>
         <Info />
         <News />

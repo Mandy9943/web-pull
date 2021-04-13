@@ -32,7 +32,7 @@ class Detail extends Component {
               this.props.images.map((img, i) =>
                 i < 5 ? (
                   <img
-                    src={getImgUrl(img.url)}
+                    src={getImgUrlMinMin(img.url)}
                     alt={this.props.product_name+" "+i}
                     className="size-img-list"
                     onMouseEnter={() => {
