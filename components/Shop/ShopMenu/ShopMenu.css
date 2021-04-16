@@ -1,0 +1,20 @@
+.menu {
+  width: 85% !important;
+}
+
+.menu .breadcrumb {
+  margin: 40px 0px 1em 0px;
+  color: #cf0a2c;
+}
+
+.menu .breadcrumb span,
+.menu .breadcrumb a {
+  color: #111111;
+  font-size: 15px;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.menu .breadcrumb svg {
+  margin: 0px 5px;
+}

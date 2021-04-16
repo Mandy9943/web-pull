@@ -1,0 +1,283 @@
+.shop-block {
+  background: white;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 3px 6px #11111129;
+  box-shadow: 0px 3px 6px #11111129;
+  width: 85% !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.shop-principal,
+.shop-stadistic,
+.shop-adventage,
+.shop-novelty {
+  margin: 50px 0;
+  padding: 15px;
+  overflow: hidden;
+}
+
+.shop-principal .shop-principal-add-photo {
+  float: left;
+  width: 80px;
+  border-radius: 50%;
+  height: 80px;
+  padding: 5px;
+  text-align: center;
+  background: lightgray;
+}
+
+.shop-principal .shop-principal-add-photo svg {
+  margin-top: 15px;
+  color: grey;
+  font-size: 25px;
+}
+
+.shop-principal .shop-principal-add-photo sub {
+  display: block;
+  color: #222;
+  font-size: 11px;
+}
+
+.shop-block hr,
+.shop-stadistic h3 {
+  clear: both;
+  margin-top: 10px;
+  width: calc(100% + 30px);
+  margin-left: -15px;
+  border: none;
+  border-bottom: 1px solid #dad9d9;
+  height: 10px;
+}
+
+.shop-principal .shop-principal-data {
+  float: left;
+  margin-left: 30px;
+  margin-top: 25px;
+}
+
+.shop-principal .shop-principal-data .direction {
+  font-size: 15px;
+}
+
+.shop-principal .shop-principal-data .direction sup {
+  font-size: 11px;
+}
+
+.shop-principal .shop-principal-data .link {
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.shop-block .shop-principal-state {
+  float: right;
+  text-align: center;
+  margin-top: 25px;
+}
+
+.shop-principal .shop-principal-state .title {
+  font-size: 14px;
+}
+
+.shop-principal .shop-principal-state p.botton {
+  margin-top: 15px;
+}
+
+.shop-principal .shop-principal-state p.botton span {
+  color: green;
+  padding: 5px 15px;
+  background: lightgray;
+  font-weight: bold;
+  border-radius: 3px;
+  -webkit-box-shadow: 0px 3px 6px #11111129;
+  box-shadow: 0px 3px 6px #11111129;
+  font-size: 13px;
+}
+
+.shop-principal .shop-principal-data h3 {
+  font-weight: bolder;
+}
+
+.shop-principal .shop-icons {
+  text-align: center;
+
+  margin: 25px 0;
+}
+
+.shop-principal .shop-icons svg {
+  color: #cf0a2c;
+  font-size: 25px;
+  margin-right: 35px;
+  margin-left: 35px;
+}
+
+.shop-stadistic {
+  padding-bottom: 0;
+  margin: 20px 0;
+}
+
+.shop-stadistic .shop-stadistic-left {
+  float: left;
+}
+
+.shop-stadistic .shop-stadistic-right {
+  float: right;
+  font-size: 13px;
+}
+
+.shop-stadistic .shop-stadistic-data {
+  margin-top: 15px;
+  overflow: hidden;
+  height: 150px;
+}
+
+.shop-stadistic .shop-stadistic-data div {
+  float: left;
+  width: 30%;
+  border-left: 1px solid #dad9d9;
+  height: 100%;
+  padding: 0 1%;
+}
+
+.shop-stadistic .shop-stadistic-data div:first-child {
+  border-left: none;
+}
+
+.shop-stadistic .shop-stadistic-data div .type {
+  font-size: 14px;
+  padding: 0;
+}
+
+.shop-stadistic .shop-stadistic-data div .number {
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.shop-adventage {
+  margin: 20px 0;
+}
+
+.shop-adventage div {
+  width: 100%;
+  overflow: hidden;
+}
+
+.shop-adventage > div:first-child {
+  margin-bottom: 30px;
+}
+
+.shop-adventage div > div.shop-adventage-block {
+  float: left;
+  width: 43%;
+  padding: 10px;
+}
+
+.shop-adventage div > div.shop-adventage-block:last-child {
+  float: right;
+}
+
+.shop-adventage .shop-adventage-block .shop-adventage-block-icon,
+.shop-adventage .shop-adventage-block h4 {
+  float: left;
+}
+
+.shop-adventage .shop-adventage-block .shop-adventage-block-icon {
+  width: 30%;
+}
+
+.shop-adventage .shop-adventage-block .shop-adventage-block-icon img {
+  margin-left: -15px;
+}
+
+.shop-adventage .shop-adventage-block h4 {
+  width: 45%;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.shop-adventage .shop-adventage-block p {
+  clear: both;
+  font-size: 13px;
+}
+
+.shop-novelty {
+  margin: 20px 0;
+}
+
+.shop-novelty > h4 {
+  padding-left: 10px;
+  padding-bottom: 15px;
+}
+
+.shop-novelty > h4,
+.shop-novelty ul.options h4 {
+  font-weight: bold;
+}
+
+.shop-novelty ul.options {
+  list-style: none;
+  margin-left: -15px;
+  width: calc(100% + 30px);
+}
+
+.shop-novelty ul.options li {
+  overflow: hidden;
+  border-top: 1px solid #dad9d9;
+  padding: 15px 25px;
+}
+
+.shop-novelty ul.options li:last-child {
+  border-bottom: 1px solid #dad9d9;
+}
+
+.shop-novelty ul.options li div {
+  font-size: 14px;
+}
+
+.shop-novelty ul.options li div:first-child {
+  float: left;
+}
+
+.shop-novelty ul.options li div:last-child {
+  float: right;
+  margin-top: 10px;
+  padding-right: 10px;
+}
+
+.shop-novelty ul.options li h4 {
+  margin-bottom: 5px;
+}
+
+.shop-novelty ul.options li p {
+  font-size: 13px;
+}
+
+.shop-novelty ul.options li div a {
+  font-size: 13px;
+  color: #cf0a2c;
+}
+
+.shop-novelty .links {
+  padding: 25px 15px;
+  padding-bottom: 10px;
+}
+
+.shop-novelty .links h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.shop-novelty .links ul {
+  list-style: none;
+}
+
+.shop-novelty .links ul li {
+  display: inline;
+  margin-right: 15px;
+}
+
+.shop-novelty .links ul li a {
+  font-size: 13px;
+}

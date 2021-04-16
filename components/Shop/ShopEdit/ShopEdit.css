@@ -1,0 +1,321 @@
+.edit {
+  width: 85% !important;
+}
+
+.edit h3 {
+  font-weight: 500;
+}
+
+.edit ul.icons {
+  list-style: none;
+}
+
+.edit ul.icons li {
+  display: inline;
+}
+
+.edit .shop-icons {
+  text-align: center;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.edit .shop-icons svg {
+  color: #111;
+  font-size: 15px;
+  margin-right: 15px;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.edit .shop-icons svg.active {
+  color: #2a6ef6;
+}
+
+.edit .edit-header,
+.edit .edit-footer {
+  background-color: #000;
+  padding: 20px 0;
+  overflow: hidden;
+}
+
+.edit .edit-header h3,
+.edit .edit-header p,
+.edit .edit-footer h3,
+.edit .edit-footer p{
+  /*display: inline;*/
+  color: #fff;
+  float: left;
+}
+
+.edit .edit-header h3,
+.edit .edit-footer h3{
+  width: 45%;
+  font-size: 15px;
+  text-indent: 30px;
+}
+
+.edit .edit-header p,
+.edit .edit-footer p{
+  font-size: 13px;
+}
+
+.edit .edit-footer {
+  margin: 60px 0px 50px 0px;
+  height: 100px;
+}
+
+.edit .edit-image {
+  height: 100px;
+  padding-top: 40px;
+}
+
+.edit .edit-image p,
+.edit .edit-image h4 {
+  text-align: center;
+  text-transform: uppercase;
+  margin-left: -25px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.edit .edit-image p {
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.edit .edit-banner {
+  background-color: #fff;
+  /*padding-bottom: 100px;
+  margin-bottom: 70px;*/
+}
+
+.edit .edit-banner ul {
+  list-style: none;
+}
+
+.edit .edit-banner ul li {
+  display: inline;
+}
+
+.edit .edit-banner {
+  padding-top: 30px;
+}
+
+.edit .edit-banner .block-container {
+  overflow: hidden;
+  width: 85%;
+  margin: 0 auto;
+  margin-bottom: 40px;
+  padding-bottom: 5px;
+}
+
+.edit .edit-banner .block {
+  float: left;
+  width: 30%;
+  margin-right: 30px;
+}
+
+.edit .edit-banner .block:last-child {
+  margin-right: 0px;
+}
+
+.edit .edit-banner .block-image {
+  background: #f3f3f3;
+  height: 200px;
+}
+
+.edit .edit-banner .block-image p {
+  padding-top: 90px;
+  text-align: center;
+}
+
+.edit .edit-banner .block .block-footer {
+  height: 50px;
+  border: 1px solid #f3f3f3;
+  box-shadow: 0px 3px 6px #11111129;
+}
+
+ul.clasification {
+  list-style-type: none;
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+ul.clasification li {
+  display: inline;
+  margin-right: 25px;
+  cursor: pointer;
+}
+
+ul.clasification li.active {
+  border-bottom: 1px solid #111;
+}
+
+ul.clasification li a {
+  color: #111;
+}
+
+ul.clasification li:last-child {
+  margin-right: 0;
+}
+
+.edit .edit-banner .block-clasificaction {
+  float: left;
+  width: 22%;
+  margin-right: 20px;
+}
+
+.edit .edit-banner .block-clasificaction:last-child {
+  margin-right: 0px;
+}
+
+.edit .edit-banner .block-clasificaction-image {
+  background: #f3f3f3;
+  height: 150px;
+}
+
+.edit .central-banner {
+  height: 200px;
+  box-shadow: 0px 3px 6px #11111129;
+  margin-bottom: 20px;
+}
+
+.edit .central-banner p {
+  width: 100px;
+  margin: 0 auto;
+  padding-top: 80px;
+  /*vertical-align: middle;*/
+}
+
+.edit .edit-banner .block-sub-banner {
+  float: left;
+  width: 48%;
+  margin-right: 20px;
+}
+
+.edit .edit-banner .block-sub-banner:last-child {
+  margin-right: 0px;
+}
+
+.edit .edit-banner .block-sub-banner-image {
+  background: #f3f3f3;
+  height: 150px;
+}
+
+.edit .edit-banner .more {
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 40px;
+}
+
+.edit .edit-banner .more a {
+  border: 1px solid #111;
+  color: #111;
+  padding: 5px 15px;
+}
+
+ul.more-options {
+  list-style-type: none;
+  text-align: center;
+  font-size: 13px;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  width: 65%;
+  box-shadow: 0px 3px 6px #11111129;
+  padding: 8px 0px;
+}
+
+ul.more-options li {
+  display: inline;
+  margin-right: 25px;
+  cursor: pointer;
+}
+
+ul.other-details {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  text-align: center;
+  font-size: 13px;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  width: 85%;
+}
+
+ul.other-details li {
+  margin-right: 25px;
+  cursor: pointer;
+  border: 1px solid black;
+  padding: 15px 7px
+}
+
+ul.other-details li h3{
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+ul.other-details li p{
+  font-size: 9px;
+}
+
+ul.more-options li:last-child {
+  margin-right: 0;
+}
+
+div.cards {
+  width: 80%;
+  margin: 50px auto;
+  overflow: hidden;
+}
+
+div.cards div {
+  float: left;
+  margin-right: 10px;
+  border: 1px solid gray;
+  width: 28%;
+  text-align: center;
+  padding: 5px 10px;
+  height: 70px;
+}
+
+div.cards div:last-child {
+  margin-right: 0;
+}
+
+div.cards div h4 {
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 500;
+  vertical-align: middle;
+}
+
+div.cards div p {
+  font-size: 13px;
+  vertical-align: middle;
+}
+
+.image-round {
+  border-radius: 3px;
+}
+
+.image-shadow {
+  box-shadow: 0px 1px 4px #11111129;
+}
+
+.rows2 {
+  margin-bottom: 20px !important;
+}
+
+.footer {
+  height: 150px;
+  width: 97%;
+  margin: 0 auto;
+  margin-bottom: 70px;
+}
+
+.footer p:first-child {
+  width: 45%;
+  text-indent: 60px;
+}
