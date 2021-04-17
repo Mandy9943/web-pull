@@ -74,8 +74,8 @@ class ProductDetail extends Component {
   render() {
     const u_data = this.props.user_data;
     let url = "//www.sic.gov.co";
-    console.log(this.state.mdata)
-    console.log("data")
+    // console.log(this.state.mdata)
+    // console.log("data")
     return (
       <div>
         <Nav user={u_data.user} jwt={u_data.jwt} home={true} authenticated={u_data.authenticated} />
