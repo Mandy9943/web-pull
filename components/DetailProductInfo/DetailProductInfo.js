@@ -11,8 +11,8 @@ class DetailProductInfo extends Component {
   }
   render() {
 
-    console.log("description section");
-    console.log(this.props);
+    //console.log("description section");
+    //console.log(this.props);
 
     let u_data = this.props.user_data
     return (

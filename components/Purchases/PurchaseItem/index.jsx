@@ -5,7 +5,7 @@ import { getProductImgs } from "../../../lib/functions";
 import { getImgUrl } from '../../../lib/config';
 
 function PurchaseItem({ item, onSelect }) {
-    console.log(item.data.product?.title.length)
+    //console.log(item.data.product?.title.length)
     return (
         <div className="product-item">
             <h5 className="status">{item.purchase_status_name}</h5>

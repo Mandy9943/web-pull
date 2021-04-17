@@ -24,7 +24,7 @@ import SecundarySlider from "./../SecundarySlider";
 
 export default class Home extends Component {
   render() {
-    console.log(this.props.user_data)
+    //console.log(this.props.user_data)
     let u_data = this.props.user_data;
     let authenticated = this.props.authenticated;
 
