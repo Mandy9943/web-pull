@@ -162,7 +162,7 @@ class ProductDetail extends Component {
             <div className="pay-section-pc">
               <Pay
                   pid={this.state.mdata.product_id}
-                  pgid={this.state.mdata.product_global_id}
+                  pgid={this.state.mdata.product_id}//aqui va product_global_id
                   m_pgid={this.state.m_pgid}
                   seller={this.state.mdata.user}
                   price={this.state.mdata.price}
