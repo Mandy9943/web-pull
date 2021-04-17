@@ -45,7 +45,7 @@ class PaySection extends Component {
     this.setState({
       dimensions: data.data,
       variantsSpinner: false,
-      m_pgid: data.data.product_global_id ? true : false
+      m_pgid: data.data.product_id ? true : false //Aqui va product_global_id
     });
   }
 
