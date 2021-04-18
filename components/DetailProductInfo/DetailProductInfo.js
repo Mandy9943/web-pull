@@ -18,37 +18,54 @@ class DetailProductInfo extends Component {
     return (
       <>
         <section className="characteristics no-web">
-          <div className="info-shops edit">
-            <a>
-              <p>Características</p>
-            </a>
-          </div>
-          <div className="info">
-            <div className="item">
-              <span className="title">Alto</span>
-              <span className="sub-title">{parseFloat(this.props.length).toFixed(2)}"</span>
+        <div className="info-shops edit">
+              <a>
+                <p>Características</p>
+              </a>
             </div>
+            <div className="info">
             <div className="item">
-              <span className="title">Ancho</span>
-              <span className="sub-title">{parseFloat(this.props.width).toFixed(2)}"</span>
+                <span className="title">Marca: {this.props.brand}</span>
+              </div>
+              <div className="item">
+                <span className="title">Tipo: {this.props.type}</span>
+              </div>
+              <div className="item">
+                <span className="title">Color: {this.props.color}</span>
+              </div>
+              <div className="item">
+                <span className="title">Alto: {parseFloat(this.props.length).toFixed(2)}"</span>
+                
+              </div>
+              <div className="item">
+                <span className="title">Ancho: {parseFloat(this.props.width).toFixed(2)}"</span>
+                
+              </div>
+              <div className="item">
+                <span className="title">Peso: {parseFloat(this.props.weight).toFixed(2)} Lb</span>
+              </div>
             </div>
-            <div className="item">
-              <span className="title">Peso </span>
-              <span className="sub-title">{parseFloat(this.props.weight).toFixed(2)} Lb</span>
-            </div>
-          </div>
         </section>
         <div className="wrap-detail-info">
-          <h4 className="accent">DETALLE DEL PRODUCTO</h4>
+          <h4 className="accent">Detalle del producto</h4>
           <div className="item-detail-info">
             <p>
               {this.props.product_name}
             </p>
             <br />
+            <br />
             <p>
+            <h3 className="accent">Descipción:</h3>
+            <br />
               {this.props.desciption}
             </p>
-
+            <br />
+            <br />
+            <p>
+            <h3 className="accent">Información:</h3>
+            <br />
+              {this.props.information}
+            </p>
           </div>
           <section className="characteristics-web no-movil">
             <div className="info-shops edit">
@@ -57,6 +74,15 @@ class DetailProductInfo extends Component {
               </a>
             </div>
             <div className="info">
+            <div className="item">
+                <span className="title">Marca: {this.props.brand}</span>
+              </div>
+              <div className="item">
+                <span className="title">Tipo: {this.props.type}</span>
+              </div>
+              <div className="item">
+                <span className="title">Color: {this.props.color}</span>
+              </div>
               <div className="item">
                 <span className="title">Alto: {parseFloat(this.props.length).toFixed(2)}"</span>
                 

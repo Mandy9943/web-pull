@@ -74,7 +74,8 @@ class ProductDetail extends Component {
   render() {
     const u_data = this.props.user_data;
     let url = "//www.sic.gov.co";
-
+    console.log(this.state.mdata)
+    console.log("data")
     return (
       <div>
         <Nav user={u_data.user} jwt={u_data.jwt} home={true} authenticated={u_data.authenticated} />
@@ -114,7 +115,7 @@ class ProductDetail extends Component {
               <div className="home-content slider-recommends">
                 <ProductsSlider category={this.state.mdata.category.name} />
               </div>
-              <Detail width={this.state.mdata.width} length={this.state.mdata.length} weight={this.state.mdata.weight} title={this.state.mdata.title} product_name={this.state.mdata.title} desciption={this.state.mdata.description} />
+              <Detail width={this.state.mdata.width} information={this.state.mdata.information} length={this.state.mdata.length} weight={this.state.mdata.weight} title={this.state.mdata.title} product_name={this.state.mdata.title} desciption={this.state.mdata.description} brand={this.state.mdata.brand} type={this.state.mdata.type} color={this.state.mdata.color} />
               <Question user_data={this.props.user_data} product_id={this.state.mdata.product_id} cb={this.loadQuestions} />
               <section>
                 <QuestionItem product_id={this.state.mdata.product_id} questions={this.state.questions} />
