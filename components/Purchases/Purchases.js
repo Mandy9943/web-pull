@@ -76,6 +76,7 @@ function Purchases(props) {
   }, []);
 
   const handleSelect = (item) => {
+    // console.log("elementos",item)
     setSelected(item);
   };
 
@@ -148,7 +149,7 @@ function Purchases(props) {
   return !selected ? (
     <div className="purchase-list">
       <h1 className="status-title">
-        {props.mode === "sell" ? "Mis ventas" : "Mis compras"}
+        {props.mode === "sell" ? "Mis ventas" : "Mis Compras"}
       </h1>
       {props.mode === "sell" ? (
         <>

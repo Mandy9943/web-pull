@@ -82,6 +82,7 @@
 .msg {
   overflow-y: scroll;
   background: #f4f4f4;
+  height: 100%;
 }
 
 .chat-wrap-none {

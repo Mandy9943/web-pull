@@ -15,8 +15,11 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Moment from 'react-moment';
 import 'moment-timezone';
 import 'moment/locale/es-mx';
- 
+import AutoScroll from '@brianmcallister/react-auto-scroll';
+
 class Chat extends Component {
+  // chatContainer = React.createRef();
+  messagesEndRef = React.createRef();
   constructor(props) {
     super(props);
     this.state = {
@@ -96,6 +99,7 @@ class Chat extends Component {
       order:this.state.order, // id de la orden por la cual el usuario puede escribir 
       data: this.state.value_message // mensaje que el usuario envia 
     }
+    // document.getElementsByClassName('msg').scrollTop = this.state.value_message.offsetHeight + this.state.value_message.offsetTop; 
     socket.emit('new_room',obj );
     this.setState({value_message:''})
   }
@@ -114,19 +118,26 @@ class Chat extends Component {
         const type =(!msg.send ? "out" : "in");
         const cn0 = "chat-wrap-"+type;
         const cn1 = "chat-msg-"+type;
-        return <div key={i} className={ cn0 }>
-          <div className={ cn1 }>
-            { msg.message }
-            <span className="hours">{ (msg.created_at.split(" ")[1]).split('.')[0] }</span>
-          </div>
-        </div>;
-    
+        setTimeout(() => {
+          this.messagesEndRef.current.scrollIntoView({block: "end" })
+        }, 50);
+        // document.getElementsByClassName('msg').scrollTop = (msg.message).offsetHeight + (msg.message).offsetTop; 
+        return (
+             <>
+              <div key={i} className={ cn0 } >
+                <div className={ cn1 } >
+                  { msg.message }
+                  <span className="hours">{ (msg.created_at.split(" ")[1]).split('.')[0] }</span>
+                </div>
+              </div>
+             </>
+              );
   });
 } else {
   this.allMessages = ''
 }
-console.log("mensjae",this.state.messages)
-console.log("parseado",this.state.dataguide)
+// console.log("mensjae",this.state.messages)
+// console.log("parseado",this.state.dataguide)
 
 this.showInfo = (this.state.dataguide)
 .sort((a, b) => a['@diffgr:id'] < b['@diffgr:id'] ? 1 : a['@diffgr:id'] > b['@diffgr:id'] ? -1 : 0)
@@ -164,9 +175,12 @@ return (
            
           <div className="chat-wrap" >
             <h5>{ this.props.data.name } </h5>
-              <div className="msg">
-              { this.allMessages }
-              </div>
+                {/* <AutoScroll> */}
+                  <div className="msg"  >
+                      { this.allMessages }
+                      <div className="holasi" ref={this.messagesEndRef} style={{height:5}}></div>
+                  </div>
+                {/* </AutoScroll> */}
                 <div className="chat-input">
                 
                   <input type="text" value={this.state.value_message} onChange={( {target : {value} } ) => this.setValue(value)} placeholder="Escribe un mensaje" />
@@ -177,6 +191,7 @@ return (
                     <button onClick={() => this.handleSubmit()} type="submit" style={{zIndex:9}}>Enviar</button>
                 </div>
               </div>
+              
           </div>
           </div>
           <div className="infoContainer">

@@ -12,8 +12,10 @@ import moment from 'moment';
 import { getProductImgs } from '../../lib/functions';
 
 function PurchasesDetail({ item, close }) {
-    let splitUrl = item.data.product.images[0].url.split("/");
-    let titleImg = (splitUrl[splitUrl.length - 1] !== "None") ? item.data.product.title : "";
+    console.log("itemm",item, "colsee",close)
+    let splitUrl = item.data?.product.images[0].url.split("/");
+    console.log("split",splitUrl)
+    let titleImg = (splitUrl[splitUrl.length - 1] !== "None") ? item.data?.product.title : "";
 
     let calificationStore = null;
     let calificationProduct = null;
@@ -28,10 +30,10 @@ function PurchasesDetail({ item, close }) {
         calificationProduct = (Object.keys(item.rate_purchase_data).length > 0) &&
             <div className="product-valoration">
                 <section className="info">
-                    <img src={getProductImgs(item.data.product.images)} width="80" height="80" />
+                    <img src={getProductImgs(item.data?.product.images)} width="80" height="80" />
                     <section className="info-text">
                         <h4 className="title">Calificación del producto</h4>
-                        <h4 className="sub-1">{item.data.product.title}</h4>
+                        <h4 className="sub-1">{item.data?.product.title}</h4>
                         <p className="description">{item.rate_purchase_data.comments}</p>
                     </section>
                 </section>
@@ -76,12 +78,12 @@ function PurchasesDetail({ item, close }) {
                 <div className="item-product">
                     <img
                         alt={titleImg}
-                        src={getProductImgs(item.data.product.images)}
+                        src={getProductImgs(item.data?.product.images)}
                         width="80"
                         height="80"
                     />
                     <div className="info">
-                        <p className="title">{item.data.product.title}</p>
+                        <p className="title">{item.data?.product.title}</p>
                         <p className="price">$ {item.data.total}</p>
                         <span className="Unit">{item.data.quantity} unidad</span>
                     </div>
