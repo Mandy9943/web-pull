@@ -298,7 +298,7 @@ export default class Nav extends Component {
                                         :
                                             <b><br />No tienes notificaciones.<br /><br /></b>
                                     }
-                                    <Link href={"/cuenta"}><h4 className="see-all">Ver todas las notificaciones</h4></Link>
+                                    <Link href={"/cuenta"}><a><h4 className="see-all">Ver todas las notificaciones</h4></a></Link>
                                 </section>
                                 </ul>
                             </div>}

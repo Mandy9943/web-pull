@@ -96,7 +96,7 @@ class Explorer extends Component {
         <div className="content-explorer">
           <div className="main-img">
                 <Link href={"/categoria/"+this.state.categoryName}>
-                  <img alt={this.state.categoryName} src={this.state.exploreImage} />
+                  <a><img alt={this.state.categoryName} src={this.state.exploreImage} /></a>
                 </Link>
           </div>
           <div className="group-img">
