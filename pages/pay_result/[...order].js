@@ -36,10 +36,10 @@ function Product({ data, u_data }) {
       <div className="container-success">
         <p>
             <div className={"icon-check"}>
-            <FontAwesomeIcon icon={faCheck} />
+            {data.status == 2 ? <FontAwesomeIcon icon={faCheck} /> : data.status == 6 ? <FontAwesomeIcon icon={fa-window-close} />: <FontAwesomeIcon icon={fa-hourglass-half} />}
             </div>
             <br />
-            Su compra ha sido exitosa
+            <span><strong>{data.status == 2 ? "Su compra ha sido exitosa" : data.status == 6 ? "Su compra ha sido rechazada": "Su compra esta en espera por aprobación"} </strong></span>
         </p>
       </div> 
       <section className="order-content">

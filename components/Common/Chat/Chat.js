@@ -144,11 +144,11 @@ this.showInfo = (this.state.dataguide)
 .map((data,index)=>{
   return (
     <div className="containerStepGuide">
-                            <div className="countStep">
+                            {/* <div className="countStep">
                               <span>{index+1}</span>
-                            </div>
+                            </div> */}
                             <span className="descriptStep">
-                              {data.DescripcionEstado} - {data.ubicacion}
+                            <b> {index+1}- {data.DescripcionEstado}</b> <br/> {data.ubicacion}
                             </span>
                             <Moment className="formatDateTime" format='LLLL' locale="es-mx">{data.fecha_hora}</Moment>
                           </div>

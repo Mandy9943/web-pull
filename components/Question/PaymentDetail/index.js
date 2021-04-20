@@ -2,7 +2,7 @@ import React from 'react';
 import "./PaymentDetail.css";
 import PayOnline from "../../../assets/img/pay-online.png";
 import PayCredit from  '../../../assets/img/pay-credit.png';
-import PayTransfer from '../../../assets/img/pay-transfer.png';
+import PayTransfer from '../../../assets/img/pay-transfer.jpg';
 
 function PaymentDetail() {
     return (
