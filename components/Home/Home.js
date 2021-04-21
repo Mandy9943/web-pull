@@ -45,6 +45,7 @@ export default class Home extends Component {
            />
            <ProductsSlider category={"Juguetes"} />
            <Explorer /> 
+           <ProductsSlider category={"Bebés"} />
           <Finding category={{
             father0: "Deportes", father1: "Electrónica",
             img0: "banner-deportes.jpg", img1: "banner-drones.jpg",
@@ -55,7 +56,6 @@ export default class Home extends Component {
          <ListProductMovil jwt={u_data.jwt} />
           <CategoriesImgMenu />
           <Tickets /> 
-          <ProductsSlider category={"Bebés"} />
         </div>
         <Info />
         <News />
