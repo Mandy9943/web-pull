@@ -44,7 +44,7 @@ class DetailProductInfo extends Component {
       }
     }
     const handleModel = (dataModel) => {
-      if(dataModel === null|| dataModel === "NULL"){
+      if(dataModel === null|| dataModel === "NULL" || dataModel === ""){
         return<></>
       }else{
         return(
@@ -60,7 +60,7 @@ class DetailProductInfo extends Component {
       }else{
         return(
           <div className="item">
-                <span className="title">Largo: {parseFloat(dataLength).toFixed(2)}"</span>
+                <span className="title">Largo: {parseFloat(dataLength).toFixed(2)}" - ({parseFloat((dataLength) * 2.54).toFixed(1)}cm)</span>
           </div>
         )
       }
@@ -71,7 +71,7 @@ class DetailProductInfo extends Component {
       }else{
         return(
           <div className="item">
-                <span className="title">Ancho: {parseFloat(dataWidth).toFixed(2)}"</span>
+                <span className="title">Ancho: {parseFloat(dataWidth).toFixed(2)}" - ({parseFloat((dataWidth) * 2.54).toFixed(1)}cm)</span>
           </div>
         )
       }
@@ -82,7 +82,7 @@ class DetailProductInfo extends Component {
       }else{
         return(
           <div className="item">
-          <span className="title">Peso: {parseFloat(this.props.weight).toFixed(2)} Lb</span>
+          <span className="title">Peso: {parseFloat(dataWeight).toFixed(2)} Lb  - ({parseFloat((dataWeight) / 2.205).toFixed(1)}kg)</span>
         </div>
         )
       }
