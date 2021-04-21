@@ -21,14 +21,16 @@ import Paginations from './Pagination/Pagination';
 function processSellData(data) {
   // Esta uncion es para que los datos devueltos por el endpoint /shop/orders/
   // tengan el mismo formato del de las ventas.
-  if (!data) {
+  console.log(data)
+  if (data.message === 'Error') {
     return [];
+  }else{
+    return data.data.map((record) => {
+      return { data: record };
+    });
   }
-
-  return data.data.map((record) => {
-    return { data: record };
-  });
 }
+
 
 function Purchases(props) {
   const [pagination, setPagination] = useState();
