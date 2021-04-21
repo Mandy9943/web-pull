@@ -1,146 +1,212 @@
-.help
-    position: relative
-    display: grid
-    grid-template-rows: auto auto 1fr auto
-    height: 100vh
-    a
-        color: #111111
-        font-size: 14px
-    .help-top
-        z-index: 100
-        position: relative
-        padding: 60px 0px
-        background: #FBFBFB
-        box-shadow: 0px 3px 6px #11111129
-        .content-help-top
-            display: grid
-            grid-template-columns: repeat(2,1fr)
-            grid-gap: 15px
-            margin: 0px auto
-            width: 70%
-            h1
-                color: #111111
-                font-size: 26px
-                font-weight: lighter
-            .help-search
-                display: grid
-                grid-template-columns: auto 1fr
-                background: #FFFFFF
-                box-shadow: 0px 3px 6px #11111129
-                border-radius: 5px
-                color: #A8A8A8
-                .help-search-icon
-                    padding: 0px 15px
-                    align-self: center
-                input
-                    border: none
-    .content-help
-        z-index: 0
-        position: relative
-        display: grid
-        grid-template-columns: 3fr 2fr
-        grid-gap: 80px
-        margin: 0px auto
-        width: 70%
-        .help-left
-            padding: 40px 0px
-            a.help-button
-                display: grid
-                grid-template-columns: auto 1fr
-                grid-gap: 10px
-                margin-bottom: 20px
-                padding: 15px 20px
-                background-color: #fff
-                border: 0.5px solid #9E9E9E
-                border-radius: 6px
-                .help-icon
-                    svg
-                        color: #888888
-        .help-right
-            padding: 40px
-            background-color: #FBFBFB
-            h5
-                margin-bottom: 20px
-                color: #CF0A2C
-            p
-                cursor: pointer
-            svg
-                opacity: 0.50
-                color: #111111
-            .help-accordion-title
-                display: grid
-                grid-template-columns: 1fr auto
-                grid-gap: 10px
-                padding: 15px 10px
-                border-top: 0.5px solid #111111
-                cursor: pointer
-                &.active
-                    p
-                        color: #CF0A2C
-                &.active
-                    display: grid
-                p
-                    color: #111111
-                    font-size: 12px
-                &.fisrt-element
-                    border: none
-            .help-accordion
-                display: none
-                padding: 0px 20px 10px 20px
-                &.active
-                    display: block
-                p
-                    margin-bottom: 10px
-                    color: #111111
-                    font-size: 12px
+$color1: #111111
+$color2: #FBFBFB
+$color3: #FFFFFF
+$color4: #A8A8A8
+$color5: #ffffff
+$color6: #9E9E9E
+$color7: #888888
+$color8: #CF0A2C
 
-.help-buy-accordion, .ask-in-post-accordion
-    display: none
-    margin-left: 15px
-    p
-        display: block
-        margin: 15px 0px
-    &.active
-        display: block
+.help 
+	position: relative
+	display: -ms-grid
+	display: grid
+	-ms-grid-rows: auto auto 1fr auto
+	grid-template-rows: auto auto 1fr auto
+	height: 100vh
+	a 
+		color: @color1
+		font-size: 14px
+	
+	.help-top 
+		z-index: 100
+		position: relative
+		padding: 60px 0px
+		background: @color2
+		-webkit-box-shadow: 0px 3px 6px @color129
+		box-shadow: 0px 3px 6px @color129
+		.content-help-top 
+			display: -ms-grid
+			display: grid
+			-ms-grid-columns: (1fr)
+			grid-template-columns: repeat(2, 1fr)
+			grid-gap: 15px
+			margin: 0px auto
+			width: 70%
+			h1 
+				color: @color1
+				font-size: 26px
+				font-weight: lighter
+			
+			.help-search 
+				display: -ms-grid
+				display: grid
+				-ms-grid-columns: auto 1fr
+				grid-template-columns: auto 1fr
+				background: @color3
+				-webkit-box-shadow: 0px 3px 6px @color129
+				box-shadow: 0px 3px 6px @color129
+				border-radius: 5px
+				color: @color4
+				.help-search-icon 
+					padding: 0px 15px
+					-ms-flex-item-align: center
+					-ms-grid-row-align: center
+					align-self: center
+				
+				input 
+					border: none
+				
+			
+			h1 
+				font-size: 20px
+			
+		
+		&-top 
+			width: auto
+			-ms-grid-rows: 1fr 1fr
+			grid-template-rows: 1fr 1fr
+			-ms-grid-columns: auto
+			grid-template-columns: auto
+			grid-gap: 0
+		
+	
+	.content-help 
+		z-index: 0
+		position: relative
+		display: -ms-grid
+		display: grid
+		-ms-grid-columns: 3fr 2fr
+		grid-template-columns: 3fr 2fr
+		grid-gap: 80px
+		margin: 0px auto
+		width: 70%
+		.help-left 
+			padding: 40px 0px
+			a.help-button 
+				display: -ms-grid
+				display: grid
+				-ms-grid-columns: auto 1fr
+				grid-template-columns: auto 1fr
+				grid-gap: 10px
+				margin-bottom: 20px
+				padding: 15px 20px
+				background-color: @color5
+				border: 0.5px solid @color6
+				border-radius: 6px
+				.help-icon svg 
+					color: @color7
+				
+			
+			a.help-button 
+				display: -ms-grid
+				display: grid
+				grid-gap: 7px
+				margin-bottom: 15px
+				padding: 15px
+			
+		
+		.help-right 
+			padding: 40px
+			background-color: @color2
+			h5 
+				margin-bottom: 20px
+				color: @color8
+			
+			p 
+				cursor: pointer
+			
+			svg 
+				opacity: 0.50
+				color: @color1
+			
+			.help-accordion-title 
+				display: -ms-grid
+				display: grid
+				-ms-grid-columns: 1fr auto
+				grid-template-columns: 1fr auto
+				grid-gap: 10px
+				padding: 15px 10px
+				border-top: 0.5px solid @color1
+				cursor: pointer
+				&.active p 
+					color: @color8
+				
+				&.active 
+					display: -ms-grid
+					display: grid
+				
+				p 
+					color: @color1
+					font-size: 12px
+				
+				&.fisrt-element 
+					border: none
+				
+			
+			.help-accordion 
+				display: none
+				padding: 0px 20px 10px 20px
+				&.active 
+					display: block
+				
+				p 
+					margin-bottom: 10px
+					color: @color1
+					font-size: 12px
+				
+			
+		
+		&-top 
+			width: auto
+			-ms-grid-rows: 1fr 1fr
+			grid-template-rows: 1fr 1fr
+			-ms-grid-columns: auto
+			grid-template-columns: auto
+			grid-gap: 0
+		
+		.off 
+			display: none 
+		
+		.active 
+			display: block
+		
+		.help-left 
+			padding: 40px 15px 0
+		
+		.help-right 
+			padding: 55px 15px 0
+			min-height: auto
+		
+	
+	.content-help 
+		width: auto
+		-ms-grid-columns: 2fr 1fr
+		grid-template-columns: 2fr 1fr
+		min-height: auto
+		grid-gap: 15px
+	
 
-.help-buy-accordion-title.active, .ask-in-post-title.active
-    color: #CF0A2C !important
+.help-buy-accordion, .ask-in-post-accordion 
+	display: none
+	margin-left: 15px
+	p 
+		display: block
+		margin: 15px 0px
+	
+	&.active 
+		display: block
+	
 
-@media(max-width:700px)
-    .help 
-        .help-top
-            padding: 20px 15px
-            .content-help-top
-                width: auto
-                grid-template-rows: 1fr 1fr
-                grid-template-columns: auto
-                grid-gap: 0
-                h1
-                    font-size: 20px
-        .content-help
-            width: auto
-            grid-template-columns: 2fr 1fr;
-            min-height: auto
-            grid-gap: 15px
-            .off
-                display: none !important
-            .active
-                display: block
-            .help-left
-                padding: 40px 15px 0
-                a.help-button
-                    display: grid
-                    grid-gap: 7px
-                    margin-bottom: 15px
-                    padding: 15px
-            .help-right
-                padding: 55px 15px 0
-                min-height: auto
-.off
-    display: none !important
-.active
-    display: block
+.help-buy-accordion-title.active, .ask-in-post-title.active 
+	color: @color8 
 
+media (max-width: 700px) 
+	padding: 20px 15px
 
+.off 
+	display: none 
 
+.active 
+	display: block
 
