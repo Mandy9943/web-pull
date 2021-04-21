@@ -31,11 +31,7 @@ function PurchasesDetail({ item, close }) {
         calificationProduct = (Object.keys(item.rate_purchase_data).length > 0) &&
             <div className="product-valoration">
                 <section className="info">
-<<<<<<< HEAD
-                    <img src={getProductImgs(item.data?.product.images)} width="80" height="80" />
-=======
                     <img src={getImgUrlMinMin(getProductImgs(item.data.product.images))} width="80" height="80" />
->>>>>>> 9b1d5ab2a3378b25e8ada2fc7e4b173d76a08ce8
                     <section className="info-text">
                         <h4 className="title">Calificación del producto</h4>
                         <h4 className="sub-1">{item.data?.product.title}</h4>
@@ -83,11 +79,7 @@ function PurchasesDetail({ item, close }) {
                 <div className="item-product">
                     <img
                         alt={titleImg}
-<<<<<<< HEAD
-                        src={getProductImgs(item.data?.product.images)}
-=======
                         src={getImgUrlMinMin(getProductImgs(item.data.product.images))}
->>>>>>> 9b1d5ab2a3378b25e8ada2fc7e4b173d76a08ce8
                         width="80"
                         height="80"
                     />
