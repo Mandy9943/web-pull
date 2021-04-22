@@ -21,14 +21,16 @@ import Paginations from './Pagination/Pagination';
 function processSellData(data) {
   // Esta uncion es para que los datos devueltos por el endpoint /shop/orders/
   // tengan el mismo formato del de las ventas.
-  if (!data) {
+  console.log(data)
+  if (data.message === 'Error') {
     return [];
+  }else{
+    return data.data.map((record) => {
+      return { data: record };
+    });
   }
-
-  return data.data.map((record) => {
-    return { data: record };
-  });
 }
+
 
 function Purchases(props) {
   const [pagination, setPagination] = useState();
@@ -76,6 +78,7 @@ function Purchases(props) {
   }, []);
 
   const handleSelect = (item) => {
+    // console.log("elementos",item)
     setSelected(item);
   };
 
@@ -148,7 +151,7 @@ function Purchases(props) {
   return !selected ? (
     <div className="purchase-list">
       <h1 className="status-title">
-        {props.mode === "sell" ? "Mis ventas" : "Mis compras"}
+        {props.mode === "sell" ? "Mis ventas" : "Mis Compras"}
       </h1>
       {props.mode === "sell" ? (
         <>
