@@ -15,20 +15,14 @@ import PurchasesDetail from "../PurchasesDetail";
 import OrderItem from "../OrderItem/OrderItem.js";
 import OrdersDetail from "../OrdersDetail/OrdersDetail.js";
 import Pagination from "../Common/Pagination/Pagination";
-import { makeStyles } from '@material-ui/core/styles';
-import Paginations from './Pagination/Pagination';
 
 function processSellData(data) {
   // Esta uncion es para que los datos devueltos por el endpoint /shop/orders/
   // tengan el mismo formato del de las ventas.
-  console.log("data: "+data.data);
   if (!data) {
     return [];
   }
-  /** TODO borrar este return para que continue el flujo normal de los eventos cuando 
-   * arreglen el endpoint 
-   */
-  return [];
+
   return data.data.map((record) => {
     return { data: record };
   });
@@ -57,8 +51,7 @@ function Purchases(props) {
         ? "/shop/orders?page=1&limit=" + LIMIT + order + search
         : "/getPurchases?page=1&size=" + LIMIT;
     getData(endp, props.user.jwt).then((response) => {
-      
-      if (response.status !== 404) {
+      if (response.data && response.data.code && response.data.code !== 404) {
         setPagination(response.data.pagination);
 
         // Dirty Hack
@@ -147,12 +140,10 @@ function Purchases(props) {
     setPurchases(newPurchases);
   };
 
-  console.log(purchases)
-
   return !selected ? (
     <div className="purchase-list">
       <h1 className="status-title">
-        {props.mode === "sell" ? "Mis ventas" : "Mis compras"}
+        {props.mode === "sell" ? "Mis ventas" : "Mis Compras"}
       </h1>
       {props.mode === "sell" ? (
         <>
@@ -249,7 +240,6 @@ function Purchases(props) {
         </>
       )}
       <br />
-      <Paginations/>
       {pagination && lastPage > 1 && (
         <Pagination
           actual={currentPage}

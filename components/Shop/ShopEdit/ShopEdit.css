@@ -6,6 +6,23 @@
   font-weight: 500;
 }
 
+.breadcrumb {
+  margin: 40px 0px 1em 0px;
+  color: #cf0a2c;
+}
+
+.breadcrumb span,
+.breadcrumb a {
+  color: #111111;
+  font-size: 15px;
+  
+  cursor: pointer;
+}
+
+.breadcrumb svg {
+  margin: 0px 5px;
+}
+
 .edit ul.icons {
   list-style: none;
 }

@@ -19,7 +19,6 @@ import GoogleAds from "../../../assets/img/shop/Google Ads@2x.png";
 import VinculateFacebook from "../../../assets/img/shop/Vincúlate a Facebook@2x.png";
 import {update_store} from "../../../services/storeApi";
 import shopQuickConfig from "./lib";
-import "animate.css";
 
 const ShopStart = (props) => {
   let {
@@ -55,9 +54,8 @@ const ShopStart = (props) => {
             <a onClick={(e) => cb("edit", e)}>Editar tienda</a> {" - "}
             <a onClick={(e) => {
               e.preventDefault();
-              cb('edit', e);
               shopQuickConfig(props.quick_config);
-            }}>Edici&oacute;n r&aacute;pida</a>
+            }}>Edicion rapida</a>
           </p>
         </div>
         <div className="shop-principal-state">

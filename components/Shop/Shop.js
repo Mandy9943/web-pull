@@ -13,16 +13,16 @@ import "./Shop.css";
 import Sidebar from "../Sidebar/Sidebar";
 import Logo1 from "../../assets/img/logo-social.png";
 import Logo2 from "../../assets/img/logo-social1.png";
-// import RightSideBar from "./RightSideBar/RightSideBar";
+import RightSideBar from "./RightSideBar/RightSideBar";
 // import ShopCrumble from "./Common/ShopCrumble/ShopCrumble";
 import ShopStart from "./ShopStart/ShopStart";
-// import ShopEdit from "./ShopEdit/ShopEdit";
-// import ShopEditScreen from "./ShopEditScreen";
-// import ShopEditMenu from "./ShopEditMenu";
-// import ShopAnalytics from "./ShopAnalytics";
-// import ShopEditDomain from "./ShopEditDomain";
-// import {findKeyValueInArr} from '../../lib/functions'
-// import {update_store} from '../../services/storeApi';
+import ShopEdit from "./ShopEdit/ShopEdit";
+import ShopEditScreen from "./ShopEditScreen";
+import ShopEditMenu from "./ShopEditMenu";
+import ShopAnalytics from "./ShopAnalytics";
+import ShopEditDomain from "./ShopEditDomain";
+import {findKeyValueInArr} from '../../lib/functions'
+import {update_store} from '../../services/storeApi';
 
 export default class Shop extends Component {
   constructor(props) {

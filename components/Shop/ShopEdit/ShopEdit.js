@@ -53,7 +53,7 @@ const ShopEdit = ({ cb, section_edit }) => {
       <div className="breadcrumb">
         <a onClick={(e) => cb("start", e)}>KieroShop</a>
         <FontAwesomeIcon icon={faAngleRight} />
-        <span>Editar la tienda</span>
+        <span>Editar tienda</span>
       </div>
       {/* Fin breadcrumb*/}
 
