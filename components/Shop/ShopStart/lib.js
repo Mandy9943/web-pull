@@ -6,13 +6,14 @@ import { SliderPicker } from 'react-color';
 const MySwal = withReactContent(Swal)
 
 function SliderWrapper(props) {
-    const [color, setColor] = useState();
+    const [color, setColor] = useState('#1767ad');
 
+   
     return (
         <SliderPicker
             color={color}
-            onChangeComplete={(color, e)=>{
-                setColor(color);
+            onChangeComplete={(color, e) => {
+                setColor(color.hex);
                 props.onChange(color.hex);
             }}
         />
@@ -31,42 +32,78 @@ export default async function shopQuickConfig(quick_config) {
 
     const queueConfig = [
         {// Background img
-            title: 'Encabezado',
-            text: 'Imagen de background',
+            title: 'Imagen del Banner',
+            text: 'Preferiblemente 2000px X 200px',
             input: 'url',
             inputPlaceholder: 'Url de la imagen',
             validationMessage: 'Url invalida'
-        },{//Titulo
-            title: 'Encabezado',
+        }, {//Titulo
+            title: 'Color del titulo',
             text: 'Titulo (Color)',
-            html: (<SliderWrapper onChange={(color)=>{colorTitle=color;}} />),
+            html: (<SliderWrapper onChange={(color) => { colorTitle = color; }} />),
             preConfirm: () => {
-                return colorTitle
+                return  colorTitle
             }
-        },{
-            title: 'Encabezado',
-            text: 'Titulo (Fuente)'
+        }, {
+            title: 'Tipografia Titulo',
+            input: 'select',
+            inputOptions: {
+                'Arial, sans-serif': 'Arial',
+                'Helvetica, sans-serif': 'Helvetica',
+                'Gill Sans, sans-serif': 'Gill Sans',
+                'Times New Roman, serif': 'Times New Roman'
+            },
+            inputPlaceholder: 'Selecciona la tipografia',
+            // showCancelButton: true,
+            inputValidator: (value) => {
+                return new Promise((resolve) => {
+                    if (value) {
+                        resolve()
+                    } else {
+                        resolve('Escoge una tipografia')
+                    }
+                })
+            }
         }, {//Subtitulo
-            title: 'Encabezado',
+            title: 'Subtitulo',
             text: 'Subtitulo (Texto)',
-        },{
-            title: 'Encabezado',
+            input: 'text',
+            inputPlaceholder: 'Subtitulo',
+        }, {
+            title: 'Subtitulo (Color)',
             text: 'Subtitulo (Color)',
-            html: (<SliderWrapper onChange={(color)=>{colorSubtitle=color;}} />),
+            html: (<SliderWrapper onChange={(color) => { colorSubtitle = color; }} />),
             preConfirm: () => {
                 return colorSubtitle
             }
-        },{
-            title: 'Encabezado',
-            text: 'Subtitulo (Fuente)'
-        },{//Contenido
+        }, {
+            title: 'Tipografia Subtitulo',
+            input: 'select',
+            inputOptions: {
+                'Arial, sans-serif': 'Arial',
+                'Helvetica, sans-serif': 'Helvetica',
+                'Gill Sans, sans-serif': 'Gill Sans',
+                'Times New Roman, serif': 'Times New Roman'
+            },
+            inputPlaceholder: 'Selecciona la tipografia',
+            // showCancelButton: true,
+            inputValidator: (value) => {
+                return new Promise((resolve) => {
+                    if (value) {
+                        resolve()
+                    } else {
+                        resolve('Escoge una tipografia')
+                    }
+                })
+            }
+        }, {//Contenido
             title: 'Contenido',
             text: 'Color de fondo',
-            html: (<SliderWrapper onChange={(color)=>{colorMainBg=color;}} />),
+            html: (<SliderWrapper onChange={(color) => { colorMainBg = color; }} />),
             preConfirm: () => {
                 return colorMainBg
             }
-        },{
+        }, {
             title: 'Contenido',
             text: 'Widget',
             input: 'radio',
@@ -79,17 +116,20 @@ export default async function shopQuickConfig(quick_config) {
                     return 'Debes seleccionar uno'
                 }
             }
-        },{//Footer
+        }, {//Footer
             title: 'Pie de pagina',
             text: 'Color de fondo',
-            html: (<SliderWrapper onChange={(color)=>{colorFooter=color;}} />),
+            html: (<SliderWrapper onChange={(color) => { colorFooter = color; }} />),
             preConfirm: () => {
                 return colorFooter
             }
-        },{
-            title: 'Pie de pagina',
+        }, {
+            title: 'Texto del pie de pagina',
             text: 'Copyright (Texto)',
-        },{
+            input: 'text',
+            inputPlaceholder: 'Copyright',
+
+        }, {
             title: 'Pie de pagina',
             text: 'Logo',
             input: 'url',
@@ -107,6 +147,7 @@ export default async function shopQuickConfig(quick_config) {
 
     if (result.value) { // Generar estructura de datos a enviar
         // TODO improve all this
+        console.log(result.value)
         const configObj = {
             "header": {
                 "background_img": result.value[0],
@@ -120,14 +161,14 @@ export default async function shopQuickConfig(quick_config) {
                     "font": result.value[5]
                 },
             },
-            "main" : {
+            "main": {
                 "background_color": result.value[6],
                 "widget": result.value[7]
             },
             "footer": {
                 "background_color": result.value[8],
                 "copyright": result.value[9],
-                "logo":result.value[10],
+                "logo": result.value[10],
                 // "facebook_link":"",
                 // "twitter_link":"",
                 // "instagram_link":"",
@@ -141,7 +182,7 @@ export default async function shopQuickConfig(quick_config) {
             icon: 'question',
             showCancelButton: false,
             showDenyButton: true,
-            showConfirmButon: true,
+            showConfirmButton: true,
             confirmButtonText: 'Si',
             allowOutsideClick: false,
             preConfirm: () => {

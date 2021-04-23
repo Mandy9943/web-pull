@@ -36,7 +36,10 @@ export default class Shop extends Component {
       {text:'Marketing', key: 'marketing', cb: this.showSection}
     ];
 
-    let store_data = this.props.store_data.data[0];
+    // let store_data = this.props.store_data.data[0];
+    
+    let store_data = this.props.store_data.data[0]; 
+    console.log("store_data: "+ Object.values(store_data))
 
     this.state = {
       // Store related states
@@ -177,6 +180,7 @@ export default class Shop extends Component {
               cb={this.showSection}
               quick_config={this.onQuickConfig}
           />
+          
           }
 
           {this.state.display.edit &&
@@ -184,6 +188,7 @@ export default class Shop extends Component {
             <ShopEdit
                 cb={this.showSection}
                 section_edit={this.state.show_edit_section}
+                data={this.props.store_data.data[0]}
             />
             <RightSideBar
                 cb={this.showSection}

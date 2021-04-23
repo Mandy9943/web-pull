@@ -9,9 +9,10 @@ import {
   faTv,
 } from "@fortawesome/free-solid-svg-icons";
 
-const ShopEdit = ({ cb, section_edit }) => {
+const ShopEdit = ({ cb, section_edit, data }) => {
   const [clasification, setClasification] = useState(1);
   const [display, setDisplay] = useState(2);
+
 
   const ulMoreOptions = () => (
     <ul className="more-options">
@@ -83,19 +84,30 @@ const ShopEdit = ({ cb, section_edit }) => {
       {/* Fin Display selection*/}
 
       <div className="edit-header">
-        <h3>Wild Commerce</h3>
+        <h3>{data.store.name}</h3>
         <p>Menú</p>
       </div>
 
       <div
         className="edit-image"
         style={{
-          backgroundImage:
-            "url(https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png)",
+
+          backgroundImage: "url(" + data.design.header.background_img + ")",
+          backgroundSize: "100% 100%",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
         }}
       >
-        <p>Texto</p>
-        <h4>Texto</h4>
+        <p style={{
+          color: data.design.header.title.color,
+        }}>
+          {data.store.name}
+        </p>
+        <h4 style={{
+          color: data.design.header.subtitle.color,
+        }}>
+          {data.design.header.subtitle.text}
+        </h4>
       </div>
 
       <div className="edit-banner">
@@ -225,19 +237,19 @@ const ShopEdit = ({ cb, section_edit }) => {
             </li>
           </ul>
           : <ul className="other-details">
-              <li>
-                <h3>Pago y entrega</h3>
-                <p>Envios gratis para algunos productos.</p>
-              </li>
-              <li>
-                <h3>Reembolso de vuelta</h3>
-                <p>Garantia gratuita de devolucion del 100%.</p>
-              </li>
-              <li>
-                <h3>Soporte de calidad</h3>
-                <p>Soporte en linea 24/7.</p>
-              </li>
-            </ul>
+            <li>
+              <h3>Pago y entrega</h3>
+              <p>Envios gratis para algunos productos.</p>
+            </li>
+            <li>
+              <h3>Reembolso de vuelta</h3>
+              <p>Garantia gratuita de devolucion del 100%.</p>
+            </li>
+            <li>
+              <h3>Soporte de calidad</h3>
+              <p>Soporte en linea 24/7.</p>
+            </li>
+          </ul>
         }
 
         <ul className="clasification">
@@ -259,7 +271,7 @@ const ShopEdit = ({ cb, section_edit }) => {
         <p>Wild Commerce</p>
         <p>Información</p>
       </div>
-    </div>
+    </div >
   );
 };
 

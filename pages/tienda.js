@@ -29,7 +29,7 @@ export default class Tienda extends React.Component {
   render() {
     let {user_d, store_d} = this.props;
 
-    console.log(this.props.store_d);
+    console.log("store_d : "+this.props.store_d);
 
     return (
         <div>
