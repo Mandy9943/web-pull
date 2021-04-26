@@ -115,7 +115,7 @@ class ProductDetail extends Component {
               <div className="home-content slider-recommends">
                 <ProductsSlider category={this.state.mdata.category.name} />
               </div>
-              <Detail width={this.state.mdata.width} information={this.state.mdata.information} length={this.state.mdata.length} weight={this.state.mdata.weight} title={this.state.mdata.title} product_name={this.state.mdata.title} desciption={this.state.mdata.description} brand={this.state.mdata.brand} type={this.state.mdata.type} color={this.state.mdata.color} />
+              <Detail width={this.state.mdata.width} information={this.state.mdata.information} length={this.state.mdata.length} weight={this.state.mdata.weight} title={this.state.mdata.title} product_name={this.state.mdata.title} desciption={this.state.mdata.description} brand={this.state.mdata.brand} type={this.state.mdata.type} color={this.state.mdata.color} model={this.state.mdata.model} />
               <Question user_data={this.props.user_data} product_id={this.state.mdata.product_id} cb={this.loadQuestions} />
               <section>
                 <QuestionItem product_id={this.state.mdata.product_id} questions={this.state.questions} />

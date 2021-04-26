@@ -9,7 +9,7 @@ import { faTruck, faAngleRight, faAngleDown } from "@fortawesome/free-solid-svg-
 import Seller from "./../SellerInfo";
 import Link from "next/link";
 import ListProductMovil from "./../listProductMovil/listProductMovil"
-import Rating from '../RatingProduct/RatingProduct';
+// import Rating from '../RatingProduct/RatingProduct';
 import ProductVariants from '../ProductVariants';
 import { getVariantAvailable } from "../../services/productsApi";
 import Select from '../Common/SelectDropdown/Select';
@@ -155,9 +155,9 @@ class PaySection extends Component {
         <div className="pay-item">
           <h1 className="title-pay-product-detail">{this.props.title.substr(0,60)}</h1>
         </div>
-        <div className="pay-item">
+        {/* <div className="pay-item">
           <Rating productId={this.props.pid}/>
-        </div>
+        </div> */}
         <div className="pay-item">
           <h3 className="price-pay-product-detail">$ {this.props.price ? this.props.price.toString().split(".")[0].replace(/(.)(?=(\d{3})+$)/g,'$1.') : " ... "}</h3>
         </div>

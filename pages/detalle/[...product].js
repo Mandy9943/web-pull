@@ -56,9 +56,9 @@ function Product({ data, u_data }) {
       <link rel="icon" href={favicon} type="image/png" />
       <link rel="canonical" href={`https://kiero.co/detalle/${data.product_id}_${data.title.replace(/[^\w\s]/gi, '' ).split(" ").join("-")}`} />
 
-          <script type='application/json'>
-              {JSON.stringify(
-                  {
+          <script
+              type='application/json'
+              dangerouslySetInnerHTML={{ __html: JSON.stringify({
                       "@context": "https://schema.org/",
                       "@type": "Product",
                       "name": `${data.title}`,
@@ -81,8 +81,8 @@ function Product({ data, u_data }) {
                           "worstRating": "0",
                           // "ratingCount": "{product.rating.count}"
                       }
-                  }
-              )}
+                  }) }}
+          >
           </script>
        
       </Head>

@@ -10,9 +10,109 @@ class DetailProductInfo extends Component {
     super(props);
   }
   render() {
-
-    //console.log("description section");
-    //console.log(this.props);
+    const handleBrand = (dataBrand) => {
+      if(dataBrand === null){
+        return<></>
+      }else{
+        return(
+          <div className="item">
+                <span className="title">Marca: {dataBrand}</span>
+          </div>
+        )
+      }
+    }
+    const handleType = (dataType) => {
+      if(dataType === null){
+        return<></>
+      }else{
+        return(
+          <div className="item">
+                <span className="title">Tipo: {dataType}</span>
+          </div>
+        )
+      }
+    }
+    const handleColor = (dataColor) => {
+      if(dataColor === null || dataColor === "" || dataColor === "Ninguno" ){
+        return<></>
+      }else{
+        return(
+          <div className="item">
+                <span className="title">Color: {dataColor}</span>
+          </div>
+        )
+      }
+    }
+    const handleModel = (dataModel) => {
+      if(dataModel === null|| dataModel === "NULL" || dataModel === ""){
+        return<></>
+      }else{
+        return(
+          <div className="item">
+                <span className="title">Modelo: {dataModel}</span>
+          </div>
+        )
+      }
+    }
+    const handleLength = (dataLength) => {
+      if(dataLength === null || dataLength <= 0){
+        return<></>
+      }else{
+        return(
+          <div className="item">
+                <span className="title">Largo: {parseFloat(dataLength).toFixed(2)}" - ({parseFloat((dataLength) * 2.54).toFixed(1)}cm)</span>
+          </div>
+        )
+      }
+    }
+    const handleWidth = (dataWidth) => {
+      if(dataWidth === null  || dataWidth <= 0){
+        return<></>
+      }else{
+        return(
+          <div className="item">
+                <span className="title">Ancho: {parseFloat(dataWidth).toFixed(2)}" - ({parseFloat((dataWidth) * 2.54).toFixed(1)}cm)</span>
+          </div>
+        )
+      }
+    }
+    const handleWeight = (dataWeight) => {
+      if(dataWeight === null || dataWeight <= 0){
+        return<></>
+      }else{
+        return(
+          <div className="item">
+          <span className="title">Peso: {parseFloat(dataWeight).toFixed(2)} Lb  - ({parseFloat((dataWeight) / 2.205).toFixed(1)}kg)</span>
+        </div>
+        )
+      }
+    }
+    const handleDesciption = (dataDesciption) => {
+      if(dataDesciption === null){
+        return<></>
+      }else{
+        return(
+          <p>
+          <h3 className="accent">Descipción:</h3>
+          <br />
+            {this.props.desciption}
+          </p>
+        )
+      }
+    }
+    const handleInformation = (dataInformation) => {
+      if(dataInformation === null){
+        return<></>
+      }else{
+        return(
+          <p>
+          <h3 className="accent">Información:</h3>
+          <br />
+            {this.props.information}
+          </p>
+        )
+      }
+    }
 
     let u_data = this.props.user_data
     return (
@@ -24,48 +124,27 @@ class DetailProductInfo extends Component {
               </a>
             </div>
             <div className="info">
-            <div className="item">
-                <span className="title">Marca: {this.props.brand}</span>
-              </div>
-              <div className="item">
-                <span className="title">Tipo: {this.props.type}</span>
-              </div>
-              <div className="item">
-                <span className="title">Color: {this.props.color}</span>
-              </div>
-              <div className="item">
-                <span className="title">Alto: {parseFloat(this.props.length).toFixed(2)}"</span>
-                
-              </div>
-              <div className="item">
-                <span className="title">Ancho: {parseFloat(this.props.width).toFixed(2)}"</span>
-                
-              </div>
-              <div className="item">
-                <span className="title">Peso: {parseFloat(this.props.weight).toFixed(2)} Lb</span>
-              </div>
+              {handleBrand(this.props.brand)}
+              {handleType(this.props.type)}
+              {handleColor(this.props.color)}
+              {handleModel(this.props.model)}
+              {handleLength(this.props.length)}
+              {handleWidth(this.props.width)}
+              {handleWeight(this.props.weight)}
             </div>
         </section>
         <div className="wrap-detail-info">
-          <h4 className="accent">Detalle del producto</h4>
+          <h3 >Detalle del producto</h3>
           <div className="item-detail-info">
             <p>
               {this.props.product_name}
             </p>
             <br />
             <br />
-            <p>
-            <h3 className="accent">Descipción:</h3>
-            <br />
-              {this.props.desciption}
-            </p>
+            {handleDesciption(this.props.desciption)}
             <br />
             <br />
-            <p>
-            <h3 className="accent">Información:</h3>
-            <br />
-              {this.props.information}
-            </p>
+            {handleInformation(this.props.desciption)}
           </div>
           <section className="characteristics-web no-movil">
             <div className="info-shops edit">
@@ -74,26 +153,13 @@ class DetailProductInfo extends Component {
               </a>
             </div>
             <div className="info">
-            <div className="item">
-                <span className="title">Marca: {this.props.brand}</span>
-              </div>
-              <div className="item">
-                <span className="title">Tipo: {this.props.type}</span>
-              </div>
-              <div className="item">
-                <span className="title">Color: {this.props.color}</span>
-              </div>
-              <div className="item">
-                <span className="title">Alto: {parseFloat(this.props.length).toFixed(2)}"</span>
-                
-              </div>
-              <div className="item">
-                <span className="title">Ancho: {parseFloat(this.props.width).toFixed(2)}"</span>
-                
-              </div>
-              <div className="item">
-                <span className="title">Peso: {parseFloat(this.props.weight).toFixed(2)} Lb</span>
-              </div>
+              {handleBrand(this.props.brand)}
+              {handleType(this.props.type)}
+              {handleColor(this.props.color)}
+              {handleModel(this.props.model)}
+              {handleLength(this.props.length)}
+              {handleWidth(this.props.width)}
+              {handleWeight(this.props.weight)}
             </div>
             <br />
             <p className="accent">SPICESTOCK</p>            <br />

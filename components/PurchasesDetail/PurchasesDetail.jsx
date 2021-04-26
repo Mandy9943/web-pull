@@ -13,8 +13,10 @@ import { getProductImgs } from '../../lib/functions';
 import { getImgUrl } from '../../lib/config';
 
 function PurchasesDetail({ item, close }) {
-    let splitUrl = item.data.product.images[0].url.split("/");
-    let titleImg = (splitUrl[splitUrl.length - 1] !== "None") ? item.data.product.title : "";
+    console.log("itemm",item, "colsee",close)
+    let splitUrl = item.data?.product.images[0].url.split("/");
+    console.log("split",splitUrl)
+    let titleImg = (splitUrl[splitUrl.length - 1] !== "None") ? item.data?.product.title : "";
 
     let calificationStore = null;
     let calificationProduct = null;
@@ -32,7 +34,7 @@ function PurchasesDetail({ item, close }) {
                     <img src={getImgUrlMinMin(getProductImgs(item.data.product.images))} width="80" height="80" />
                     <section className="info-text">
                         <h4 className="title">Calificación del producto</h4>
-                        <h4 className="sub-1">{item.data.product.title}</h4>
+                        <h4 className="sub-1">{item.data?.product.title}</h4>
                         <p className="description">{item.rate_purchase_data.comments}</p>
                     </section>
                 </section>
@@ -82,7 +84,7 @@ function PurchasesDetail({ item, close }) {
                         height="80"
                     />
                     <div className="info">
-                        <p className="title">{item.data.product.title}</p>
+                        <p className="title">{item.data?.product.title}</p>
                         <p className="price">$ {item.data.total}</p>
                         <span className="Unit">{item.data.quantity} unidad</span>
                     </div>
