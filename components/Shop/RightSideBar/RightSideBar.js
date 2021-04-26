@@ -55,7 +55,7 @@ const RightSideBAr = (props) => {
                     </p>
 
                 {/*  COLOR PICKER HERE  */}
-                <ColorPicker />
+                <ColorPicker hex={"#52fcf3"}/>
 
                 </main>
             </>

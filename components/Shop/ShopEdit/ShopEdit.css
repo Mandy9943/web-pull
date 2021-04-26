@@ -52,7 +52,7 @@
 .edit .edit-header,
 .edit .edit-footer {
   background-color: #000;
-  padding: 20px 0;
+  padding: 20px ;
   overflow: hidden;
 }
 
@@ -88,12 +88,18 @@
 }
 
 .edit .edit-image p,
-.edit .edit-image h4 {
+.edit .edit-image h5 {
   text-align: center;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   margin-left: -25px;
   color: #fff;
   font-weight: bold;
+}
+.edit .edit-image h5{
+  font-size: 1.6em;
+  text-align: center;
+  justify-content: center;
+  
 }
 
 .edit .edit-image p {
@@ -327,7 +333,7 @@ div.cards div p {
 
 .footer {
   height: 150px;
-  width: 97%;
+  /* width: 97%; */
   margin: 0 auto;
   margin-bottom: 70px;
 }

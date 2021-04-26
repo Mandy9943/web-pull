@@ -21,6 +21,7 @@ import ShopEditScreen from "./ShopEditScreen";
 import ShopEditMenu from "./ShopEditMenu";
 import ShopAnalytics from "./ShopAnalytics";
 import ShopEditDomain from "./ShopEditDomain";
+import ShopEditDataStorage from './ShopEditDataStorage'
 import {findKeyValueInArr} from '../../lib/functions'
 import {update_store} from '../../services/storeApi';
 
@@ -39,7 +40,7 @@ export default class Shop extends Component {
     // let store_data = this.props.store_data.data[0];
     
     let store_data = this.props.store_data.data[0]; 
-    console.log("store_data: "+ Object.values(store_data))
+    
 
     this.state = {
       // Store related states
@@ -219,6 +220,18 @@ export default class Shop extends Component {
                 cb={this.showSection}
                 saveDomain={this.onSaveDomain}
                 store_domain={this.state.store_domain}
+            />
+          </ShopEditScreen>
+          }
+          {this.state.display.stdata &&
+          <ShopEditScreen
+              cb={this.showSection}
+              section={{text:"Datos de la tienda", key:"stdata"}}
+          >
+            <ShopEditDataStorage
+                cb={this.showSection}
+                saveDomain={this.onSaveDomain}
+                store_name={this.state.store_name}
             />
           </ShopEditScreen>
           }

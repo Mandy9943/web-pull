@@ -84,7 +84,7 @@ const ShopEdit = ({ cb, section_edit, data }) => {
       {/* Fin Display selection*/}
 
       <div className="edit-header">
-        <h3>{data.store.name}</h3>
+        <h3>{data.store.name || "Mi tienda"}</h3>
         <p>Menú</p>
       </div>
 
@@ -92,22 +92,23 @@ const ShopEdit = ({ cb, section_edit, data }) => {
         className="edit-image"
         style={{
 
-          backgroundImage: "url(" + data.design.header.background_img + ")",
+          backgroundImage: data.design.header.background_img !='undefined' ?"url(" + data.design.header.background_img + ")":"url(https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png)",
           backgroundSize: "100% 100%",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
         }}
       >
         <p style={{
-          color: data.design.header.title.color,
+
+          color: data.design.header.title.color || "black",
         }}>
-          {data.store.name}
+          {data.store.name || "Texto"}
         </p>
-        <h4 style={{
-          color: data.design.header.subtitle.color,
+        <h5 style={{
+          color: data.design.header.subtitle.color || "black" ,
         }}>
-          {data.design.header.subtitle.text}
-        </h4>
+          {data.design.header.subtitle.text || "Texto"}
+        </h5>
       </div>
 
       <div className="edit-banner">
@@ -267,8 +268,13 @@ const ShopEdit = ({ cb, section_edit, data }) => {
         ></div>
       </div>
 
-      <div className="edit-header footer">
-        <p>Wild Commerce</p>
+      <div className="edit-header footer"
+          style={{
+            backgroundColor: data.design.header.title.color || "black"
+            
+          }}
+        >
+        <p> {data.store.name || "Texto"}</p>
         <p>Información</p>
       </div>
     </div >

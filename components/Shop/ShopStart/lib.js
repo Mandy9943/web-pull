@@ -44,7 +44,7 @@ export default async function shopQuickConfig(quick_config) {
             preConfirm: () => {
                 return  colorTitle
             }
-        }, {
+        }, {//tipografia del titulo
             title: 'Tipografia Titulo',
             input: 'select',
             inputOptions: {
@@ -64,19 +64,19 @@ export default async function shopQuickConfig(quick_config) {
                     }
                 })
             }
-        }, {//Subtitulo
+        }, {//Subtitulo texto
             title: 'Subtitulo',
             text: 'Subtitulo (Texto)',
             input: 'text',
             inputPlaceholder: 'Subtitulo',
-        }, {
+        }, {//Subtirulo color
             title: 'Subtitulo (Color)',
             text: 'Subtitulo (Color)',
             html: (<SliderWrapper onChange={(color) => { colorSubtitle = color; }} />),
             preConfirm: () => {
                 return colorSubtitle
             }
-        }, {
+        }, {//Subtitulo tipografia
             title: 'Tipografia Subtitulo',
             input: 'select',
             inputOptions: {
@@ -96,14 +96,14 @@ export default async function shopQuickConfig(quick_config) {
                     }
                 })
             }
-        }, {//Contenido
+        }, {// Color de fondo del contenido
             title: 'Contenido',
             text: 'Color de fondo',
             html: (<SliderWrapper onChange={(color) => { colorMainBg = color; }} />),
             preConfirm: () => {
                 return colorMainBg
             }
-        }, {
+        }, {// escoger plantilla
             title: 'Contenido',
             text: 'Widget',
             input: 'radio',
@@ -116,21 +116,21 @@ export default async function shopQuickConfig(quick_config) {
                     return 'Debes seleccionar uno'
                 }
             }
-        }, {//Footer
-            title: 'Pie de pagina',
+        }, {//Footer color
+            title: 'Color Pie de pagina ',
             text: 'Color de fondo',
             html: (<SliderWrapper onChange={(color) => { colorFooter = color; }} />),
             preConfirm: () => {
                 return colorFooter
             }
-        }, {
+        }, { //Footer Texto 
             title: 'Texto del pie de pagina',
             text: 'Copyright (Texto)',
             input: 'text',
             inputPlaceholder: 'Copyright',
 
-        }, {
-            title: 'Pie de pagina',
+        }, {//Footer logo
+            title: 'Pie de pagina Logo',
             text: 'Logo',
             input: 'url',
             inputPlaceholder: 'Url de la imagen',

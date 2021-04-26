@@ -3,20 +3,20 @@ import Link from "next/link";
 
 import DomainImg from '../../../assets/img/shop/domain.png';
 import OwnDomainImg from '../../../assets/img/shop/own_domain.png';
-import "./ShopEditDomain.sass";
+import "./ShopEditDataStorage.sass";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faAngleRight,
 } from "@fortawesome/free-solid-svg-icons";
 
-export default function ShopEditDomain({ store_domain, cb, saveDomain }) {
+export default function ShopEditDataStorage({ store_name, cb, saveDomain }) {
 
-    console.log(store_domain)
+    console.log(store_name)
     const [display, setDisplay] = useState(false);
-    const [domain, setDomain] = useState(store_domain || '')
+    const [domain, setDomain] = useState(store_name || '')
 
     switch (display) {
-        case 'domain':
+        case 'store':
             return (
                 <section className="edit-domain">
                     <header>
@@ -69,33 +69,45 @@ export default function ShopEditDomain({ store_domain, cb, saveDomain }) {
             return (
                 <section className="edit-domain">
                     <header>
-                        <h4>Dominio Web</h4>
+                        <h4>Nombre de la Tienda</h4>
                     </header>
                     <main>
                         <div>
-                            <h4>Tu dominio</h4>
-                            <div className="white-box">
-                                <img src={DomainImg} alt="" />
-                                <span>{store_domain || "midominio"}.shops.kiero.co</span>
+                            <h4>Mi Tienda</h4>
+
+                            <div className="white-box row">
+                                <div className="col-md-2">
+                                    <img src={DomainImg} alt="" />
+                                </div>
+                                <div className="ml-2">
+                                     <p>{store_name || "midominio"}</p>
+                                     {/* <p>{store_name || "midominio"}</p>
+                                     <p>{store_name || "midominio"}</p> */}
+                                </div>
+                               
                                 <a
                                     className="push-right"
                                     onClick={e => {
                                         e.preventDefault()
-                                        setDisplay('domain')
+                                        setDisplay('store')
                                     }}
                                 >
                                     Editar
                                 </a>
                             </div>
+
+
+
+
                         </div>
-                        <div>
+                        {/* <div>
                             <h4>Asocia tu dominio</h4>
                             <div className="white-box">
                                 <img src={OwnDomainImg} alt="" />
                                 <span>Si ya posees un dominio propio puedes asociarlo</span>
                                 <a className="push-right"><FontAwesomeIcon icon={faAngleRight} /></a>
                             </div>
-                        </div>
+                        </div> */}
                     </main>
                 </section>
             );

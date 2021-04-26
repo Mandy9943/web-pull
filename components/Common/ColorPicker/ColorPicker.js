@@ -3,6 +3,7 @@ import { CustomPicker } from 'react-color'
 import { EditableInput, Hue } from 'react-color/lib/components/common'
 
 const MyColorPicker = ({ hex, hsl, onChange }) => {
+    
     const styles = {
         hue: {
             height: 10,
@@ -26,13 +27,16 @@ const MyColorPicker = ({ hex, hsl, onChange }) => {
             {/*    <Hue hsl={ hsl } onChange={ onChange } />*/}
             {/*</div>*/}
 
-            <div style={{ display: 'flex' }}>
+            <div style={{ display: 'flex', paddingTop:'20px' }}>
                 {/*<EditableInput*/}
                 {/*    style={{ input: styles.input }}*/}
                 {/*    value={ hex }*/}
                 {/*    onChange={ onChange }*/}
                 {/*/>*/}
                 <div style={ styles.swatch } />
+                <div style={ styles.swatch } />
+                <div style={ styles.swatch } />
+                
             </div>
         </div>
     )

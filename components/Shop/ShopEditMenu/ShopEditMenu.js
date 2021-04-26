@@ -4,7 +4,7 @@ import "./ShopEditMenu.sass";
 
 export default function ShopEditMenu({cb}) {
     return (
-        <section class="edit-menu">
+        <section className="edit-menu">
             <header>
                 <h4>Menu</h4>
                 <p>Selecciona las categorias para que los compradores puedan ver tus
