@@ -48,7 +48,7 @@ export default class listProductMovil extends Component {
                                 </div>
                                 <section className='description'>
                                     <h3>{product.title}</h3>
-                                    <h3 className="price">$ {product.price ? String(product.price).split(".")[0].replace(/(.)(?=(\d{3})+$)/g,'$1,') : "$ ... "}</h3>
+                                    <h3 className="price">$ {product.price ? String(product.price).split(".")[0].replace(/(.)(?=(\d{3})+$)/g,'$1.') : "$ ... "}</h3>
                                     <span><FontAwesomeIcon icon={faTruck} />Envío gratis</span>
                                 </section>
                             </section>

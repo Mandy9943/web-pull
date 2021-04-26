@@ -2,9 +2,10 @@ import React from 'react';
 import './PurchaseItem.css';
 import Link from 'next/link';
 import { getProductImgs } from "../../../lib/functions";
+import { getImgUrl } from '../../../lib/config';
 
 function PurchaseItem({ item, onSelect }) {
-    console.log(item.data.product?.title.length)
+    //console.log(item.data.product?.title.length)
     return (
         <div className="product-item">
             <h5 className="status">{item.purchase_status_name}</h5>
@@ -16,7 +17,7 @@ function PurchaseItem({ item, onSelect }) {
                         <div className="product-card-img">
                             <img
                                 alt={item.data.product?.title.length < 10 ? item.data.product?.title : item.data.product?.title.slice(0, 10)}
-                                src={getProductImgs(item.data.product?.images)}
+                                src={getImgUrlMinMin(getProductImgs(item.data.product?.images))}
                             />
                         </div>
                         <section className='description'>

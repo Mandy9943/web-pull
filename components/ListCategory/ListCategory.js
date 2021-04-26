@@ -37,7 +37,7 @@ class ListCategory extends Component {
                                             </div>
                                             <div className="product-card-description-box">
                                                 <h2> $
-                                                {product.price ? String(product.price).split(".")[0].replace(/(.)(?=(\d{3})+$)/g,'$1,') : "$ ... "} 
+                                                {product.price ? String(product.price).split(".")[0].replace(/(.)(?=(\d{3})+$)/g,'$1.') : "$ ... "} 
                                                      
                                                     </h2>
                                                 <h4>{product.brand} </h4>
@@ -68,7 +68,7 @@ class ListCategory extends Component {
                                                 <img alt={product.title} src={getImgUrl(product.image)} className="img"/>
                                             </div>
                                             <div className="product-list-description-box">
-                                            <h2>$ {product.price ? String(product.price).split(".")[0].replace(/(.)(?=(\d{3})+$)/g,'$1,') : "$ ... "} </h2>
+                                            <h2>$ {product.price ? String(product.price).split(".")[0].replace(/(.)(?=(\d{3})+$)/g,'$1.') : "$ ... "} </h2>
                                                 <h4>{product.brand}</h4>
                                                 <p>{product.title}</p>
                                                 {parseInt(product.is_prime) ? (
