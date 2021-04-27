@@ -28,7 +28,7 @@ function Activate({ result }) {
             {
                 result ?
                     <div className="msg">
-                        <Link href="/home"><a>ir al Marketplace</a></Link>
+                        <Link href="/"><a>ir al Marketplace</a></Link>
                     </div>
                     :
                     <div className="msg"><span>Se produjo un error al activar su cuenta.</span></div>
