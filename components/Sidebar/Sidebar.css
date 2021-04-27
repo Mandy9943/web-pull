@@ -1,8 +1,8 @@
 .user-account-menu {
   padding: 40px 20px;
-  background: #ffffff;
-  width: 80%;
+  
 }
+
 
 .user-account-menu h3 {
   color: #111111;
@@ -14,68 +14,21 @@
   -ms-grid-columns: auto auto auto;
       grid-template-columns: auto auto auto;
   grid-gap: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 40px;
   cursor: pointer;
-  margin-left: 20px;
-  margin-right: 20px;
-  padding-bottom: 15px;
-  border-bottom: 0.5px solid #e8e8e8;
-}
-
-.user-account-menu .user-account-head-item {
-
-  cursor: pointer;
-  grid-template-columns: -webkit-min-content auto auto;
-    grid-template-columns: min-content auto auto;
-    grid-gap: 10px;
-    cursor: pointer;
-    text-align:center;
-    margin-right: 20;
-    margin-bottom: 20px;
-    margin-top: 20px;
-}
-.user-account-head-item {
-  margin: auto;
-  
-}
-.lineBottom{
-  border-bottom: 0.5px solid #d6d6d6;
-  margin-bottom: 15px;
-}
-.user-account-menu .user-account-head-item .user-account-head-icon {
-  display: -ms-grid;
-  display: grid;
-  margin: auto;
-
-
-}
-.user-account-menu .user-account-head-item .icon-profile {
-  background: #CF0A2C;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-margin: auto ;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 .user-account-menu .user-account-menu-item .user-account-menu-icon {
   display: -ms-grid;
   display: grid;
   margin: auto;
+  margin-right: 0;
   margin-top: 0;
-
 }
 
 .user-account-menu .user-account-menu-item .user-account-menu-icon svg {
   position: relative;
   top: 1px;
-  color: #313131;
-  padding-left: 10px;
 }
 
 .user-account-menu .user-account-menu-item .user-account-menu-icon img {
@@ -101,7 +54,7 @@ margin: auto ;
           align-items: center;
 }
 
-.user-account-menu .user-account-head-item .icon-profile svg {
+.user-account-menu .user-account-menu-item .icon-profile svg {
   width: 16px;
   height: 16px;
   color: white;
