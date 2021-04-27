@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faThList, faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 import Pagination from "../Common/Pagination/Pagination";
 import Spinner from "../Common/Spinner";
+import Modal from "../Common/Modal/Modal";
 
 
 
@@ -24,7 +25,12 @@ export default class MyProducts extends Component {
             totalPages: 1,
             optionPanel: [],
             keepOpen : false,
+            modalNewProduct : false
         }
+        this.toggleModalNewProduct = this.toggleModalNewProduct.bind(this);
+    }
+    toggleModalNewProduct() {
+        this.setState({modalNewProduct: !this.state.modalNewProduct});
     }
 
     getYear() {
@@ -117,6 +123,13 @@ export default class MyProducts extends Component {
     }
         
     render() {
+        const contentModalNewProduct = (
+            <div className="modal-logout">
+                <p>{'Selecciona el tipo de publicación que quieres hacer'}</p> 
+                 <button className="logout-button">Individual</button>
+                 <button onClick={this.toggleModalNewProduct} className="cancelar-button">Masivamente(en desarrollo)</button>
+            </div>
+        );
         let tmp = []
         // TODO Implement this in a different component
         let productList = this.state.products.map((product, i) => {
@@ -192,8 +205,8 @@ export default class MyProducts extends Component {
                         <section className="empty-text">
                             <h5>Aún no tienes publicaciones</h5>
                             <p>Empieza ahora...</p>
-                            <Link href="#">
-                                <h5 className={"accent"}><a>Crear publicacion</a></h5>
+                            <Link href="#" >
+                                <h5 className={"accent"} onClick={this.toggleModalNewProduct}><a>Crear publicacion</a></h5>
                             </Link>
                         </section>
                     :
@@ -204,7 +217,11 @@ export default class MyProducts extends Component {
                         <Pagination actual={this.state.page} totalPages={this.state.totalPages} cb={this.loadData} />
                     </>
                 }
+                 {this.state.modalNewProduct ? (
+                 <Modal toggle={this.toggleModalNewProduct} content={contentModalNewProduct} button />
+                    ) : null}
             </div>
+            
         )
     }
 }
