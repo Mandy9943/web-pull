@@ -9,7 +9,7 @@ import {
     faAngleRight,
 } from "@fortawesome/free-solid-svg-icons";
 
-export default function ShopEditDataStorage({ store_name, cb, saveDomain }) {
+export default function ShopEditDataStorage({ store_name, cb, saveDomain, store_design,quick_config }) {
 
     console.log(store_name)
     const [display, setDisplay] = useState(false);
@@ -83,6 +83,42 @@ export default function ShopEditDataStorage({ store_name, cb, saveDomain }) {
                                      <p>{store_name || "midominio"}</p>
                                      {/* <p>{store_name || "midominio"}</p>
                                      <p>{store_name || "midominio"}</p> */}
+                                </div>
+                               
+                                <a
+                                    className="push-right"
+                                    onClick={e => {
+                                        e.preventDefault()
+                                        setDisplay('store')
+                                    }}
+                                >
+                                    Editar
+                                </a>
+                            </div>
+
+
+
+
+                        </div>
+                        <div>
+                            <h4>Diseño</h4>
+
+                            <div className="white-box row">
+                                <div className="col-md-2">
+                                    <img src={DomainImg} alt="" />
+                                </div>
+                                <div className="ml-2">
+                                     <p>Background Image URL: {store_design.header.background_img || "url(https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png)"}</p>
+                                     <p>Color del Titulo: {store_design.header.title.color || "black"}</p>
+                                     <p>Tipografia del Titulo: {store_design.header.title.font_family || "Arial"}</p>
+                                     <p>Texto del Subtitulo: {store_design.header.subtitle.text || "Texto"}</p>
+                                     <p>Color del Subtitulo: {store_design.header.subtitle.color || "black"}</p>
+                                     <p>Tipografia del Subtitulo: {store_design.header.subtitle.font_family || "Arial"}</p>
+                                     <p>Color del Contenido: {store_design.main.background_color || "white"}</p>
+                                     <p>Plantilla: {store_design.main.widget || "p2"}</p>
+                                     <p>Color del Footer: {store_design.footer.background_color || "#333333"}</p>
+                                     <p>Texto del Footer: {store_design.footer.copyright || "Texto de copyright"}</p>
+                                     <p>Logo Footer URL: {store_design.footer.logo || "url(https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png)"}</p>
                                 </div>
                                
                                 <a

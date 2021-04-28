@@ -22,31 +22,32 @@ import ShopEditMenu from "./ShopEditMenu";
 import ShopAnalytics from "./ShopAnalytics";
 import ShopEditDomain from "./ShopEditDomain";
 import ShopEditDataStorage from './ShopEditDataStorage'
-import {findKeyValueInArr} from '../../lib/functions'
-import {update_store} from '../../services/storeApi';
+import { findKeyValueInArr } from '../../lib/functions'
+import { update_store } from '../../services/storeApi';
 
 export default class Shop extends Component {
   constructor(props) {
     super(props);
 
     this.configMenu = [
-      {text:'Menu', key: 'menu', cb: this.showSection},
-      {text:'Dominio web', key: 'domain', cb: this.showSection},
-      {text:'Datos de la tienda', key: 'stdata', cb: this.showSection},
-      {text:'Whatapp', key: 'ws', cb: this.showSection},
-      {text:'Marketing', key: 'marketing', cb: this.showSection}
+      { text: 'Menu', key: 'menu', cb: this.showSection },
+      { text: 'Dominio web', key: 'domain', cb: this.showSection },
+      { text: 'Datos de la tienda', key: 'stdata', cb: this.showSection },
+      { text: 'Whatapp', key: 'ws', cb: this.showSection },
+      { text: 'Marketing', key: 'marketing', cb: this.showSection }
     ];
 
     // let store_data = this.props.store_data.data[0];
-    
-    let store_data = this.props.store_data.data[0]; 
-    
+
+    let store_data = this.props.store_data.data[0];
+
 
     this.state = {
       // Store related states
-      store_name:   store_data.store.business_name,
+      store_name: store_data.store.business_name,
       store_domain: store_data.domain,
       store_status: store_data.store.status,
+      store_design: store_data.design,
 
       // Other states
       userName: this.props.user_data.user,
@@ -65,7 +66,7 @@ export default class Shop extends Component {
         marketing: false,
         analytics: false
       },
-      show_edit_section: false   // Mostrar 'theme' o 'color'
+      show_edit_section: "main"   // Mostrar 'theme' o 'color'
     };
   }
 
@@ -104,12 +105,12 @@ export default class Shop extends Component {
   showSection = (section, e) => {
     // Basicamente recorre el objeto display y determina el estado
     // al cual se desea pasar
-    this.setState(prev=>{
-      let display_arr = Object.entries(prev.display).map(item=>{
+    this.setState(prev => {
+      let display_arr = Object.entries(prev.display).map(item => {
         return [item[0], item[0] === section]
       });
 
-      return {display: Object.fromEntries(display_arr)};
+      return { display: Object.fromEntries(display_arr) };
     });
   };
 
@@ -123,26 +124,29 @@ export default class Shop extends Component {
   setEditSection = (section) => {
     switch (section) {
       case 'theme':
-        this.setState({show_edit_section: 'theme'})
+        this.setState({ show_edit_section: 'theme' })
         break;
       case 'color':
-        this.setState({show_edit_section: 'color'})
+        this.setState({ show_edit_section: 'color' })
+        break;
+      case 'edit':
+        this.setState({ show_edit_section: 'edit' })
         break;
       default:
-        this.setState({show_edit_section: false})
+        this.setState({ show_edit_section: "main" })
     }
   }
 
-  onSaveDomain = async (new_domain) =>{
-    update_store(this.state.store_domain, this.props.user_data.jwt, {domain: new_domain})
+  onSaveDomain = async (new_domain) => {
+    update_store(this.state.store_domain, this.props.user_data.jwt, { domain: new_domain })
   }
 
   onQuickConfig = async (data) => {
-    update_store(this.state.store_domain, this.props.user_data.jwt, {design: data})
-}
+    update_store(this.state.store_domain, this.props.user_data.jwt, { design: data })
+  }
 
   render() {
-    if (this.props.store_data.code !== 200 ) {
+    if (this.props.store_data.code !== 200) {
       return <Error statusCode={this.props.store_data.code} />
     }
 
@@ -174,77 +178,80 @@ export default class Shop extends Component {
           <Sidebar user_data={u_data} cb={this.showSection} />
 
           {this.state.display.start &&
-          <ShopStart
+            <ShopStart
               store_name={this.state.store_name}
               store_domain={this.state.store_domain}
               store_status={this.state.store_status}
               cb={this.showSection}
               quick_config={this.onQuickConfig}
-          />
-          
+            />
+
           }
 
           {this.state.display.edit &&
-          <>
-            <ShopEdit
+            <>
+              <ShopEdit
                 cb={this.showSection}
                 section_edit={this.state.show_edit_section}
                 data={this.props.store_data.data[0]}
-            />
-            <RightSideBar
+              />
+              <RightSideBar
                 cb={this.showSection}
                 setEditSection={this.setEditSection}
                 section_edit={this.state.show_edit_section}
                 menu={this.configMenu}
-            />
-          </>
+                store_design={this.state.store_design}
+              />
+            </>
           }
 
           {this.state.display.menu &&
-          <ShopEditScreen
+            <ShopEditScreen
               cb={this.showSection}
               section={findKeyValueInArr('key', 'menu', this.configMenu)}
-          >
+            >
               <ShopEditMenu
-                  cb={this.showSection}
+                cb={this.showSection}
               />
-          </ShopEditScreen>
+            </ShopEditScreen>
           }
 
           {this.state.display.domain &&
-          <ShopEditScreen
+            <ShopEditScreen
               cb={this.showSection}
-              section={{text:"Dominio Web", key:"domain"}}
-          >
-            <ShopEditDomain
+              section={{ text: "Dominio Web", key: "domain" }}
+            >
+              <ShopEditDomain
                 cb={this.showSection}
                 saveDomain={this.onSaveDomain}
                 store_domain={this.state.store_domain}
-            />
-          </ShopEditScreen>
+              />
+            </ShopEditScreen>
           }
           {this.state.display.stdata &&
-          <ShopEditScreen
+            <ShopEditScreen
               cb={this.showSection}
-              section={{text:"Datos de la tienda", key:"stdata"}}
-          >
-            <ShopEditDataStorage
+              section={{ text: "Datos de la tienda", key: "stdata" }}
+            >
+              <ShopEditDataStorage
                 cb={this.showSection}
                 saveDomain={this.onSaveDomain}
                 store_name={this.state.store_name}
-            />
-          </ShopEditScreen>
+                store_design={this.state.store_design}
+                quick_config={this.onQuickConfig}
+              />
+            </ShopEditScreen>
           }
 
           {this.state.display.analytics &&
-          <ShopEditScreen
+            <ShopEditScreen
               cb={this.showSection}
-              section={{text:"Google analytics", key:"analytics"}}
-          >
-            <ShopAnalytics
+              section={{ text: "Google analytics", key: "analytics" }}
+            >
+              <ShopAnalytics
                 cb={this.showSection}
-            />
-          </ShopEditScreen>
+              />
+            </ShopEditScreen>
           }
 
 
