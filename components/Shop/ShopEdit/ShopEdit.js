@@ -9,11 +9,11 @@ import {
   faTv,
 } from "@fortawesome/free-solid-svg-icons";
 
-const ShopEdit = ({ cb, section_edit, data }) => {
+const ShopEdit = ({ cb, section_edit, data,store_design }) => {
   const [clasification, setClasification] = useState(1);
   const [display, setDisplay] = useState(2);
 
-
+  
   const ulMoreOptions = () => (
     <ul className="more-options">
       <li>
@@ -99,15 +99,17 @@ const ShopEdit = ({ cb, section_edit, data }) => {
         }}
       >
         <p style={{
-
-          color: data.design.header.title.color || "black",
+          fontFamily: store_design.st_design_header_title_font_family || "Verdana",
+          color: store_design.st_design_header_title_color || "black",
         }}>
           {data.store.name || "Texto"}
+          {/* {store_design.st_design_st_design_footer_copyright || "Texto"} */}
         </p>
         <h5 style={{
           color: data.design.header.subtitle.color || "black" ,
+          fontFamily: store_design.st_design_st_design_header_subtitle_font_family || "Verdana",
         }}>
-          {data.design.header.subtitle.text || "Texto"}
+          {store_design.st_design_header_subtitle_text || "Texto"}
         </h5>
       </div>
 

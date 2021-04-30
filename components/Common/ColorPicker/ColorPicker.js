@@ -20,6 +20,16 @@ const MyColorPicker = ({ hex, hsl, onChange }) => {
             height: 38,
             background: hex,
         },
+        swatch1: {
+            width: 38,
+            height: 38,
+            background: "red",
+        },
+        swatch2: {
+            width: 38,
+            height: 38,
+            background: "green",
+        }
     }
     return (
         <div>
@@ -34,8 +44,8 @@ const MyColorPicker = ({ hex, hsl, onChange }) => {
                 {/*    onChange={ onChange }*/}
                 {/*/>*/}
                 <div style={ styles.swatch } />
-                <div style={ styles.swatch } />
-                <div style={ styles.swatch } />
+                <div style={ styles.swatch1 } />
+                <div style={ styles.swatch2 } />
                 
             </div>
         </div>
