@@ -7,16 +7,72 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import ColorPicker from '../../Common/ColorPicker';
+//import state from "sweetalert/typings/modules/state";
+
+
+
+
 
 
 const RightSideBAr = (props) => {
-    const [tab, setTab] = useState(1);
+
+
     const {
         section_edit, setEditSection, cbConfig,
-        menu, store_design
+        menu, store_design, setDesignValues, quick_config
     } = props;
 
-    console.log(section_edit)
+    const [tab, setTab] = useState(1);
+
+    const [inputValue, setValue] = useState(store_design)
+
+    const [hasChange, setHasChange] = useState(false)
+
+    const handleText = (name, value) => {
+        setValue({ [name]: value })
+        setHasChange(true)
+        setDesignValues(name, value)
+
+
+    }
+
+    const onSaveDesign = () => {
+        const design = {
+            "header": {
+                "background_img": store_design.st_design_header_backgroundimage,
+                "title": {
+                    "color": store_design.st_design_header_title_color,
+                    "font": store_design.st_design_header_title_font_family,
+                },
+                "subtitle": {
+                    "text": store_design.st_design_header_subtitle_text,
+                    "color": store_design.st_design_main_background_color,
+                    "font": store_design.st_design_st_design_header_subtitle_font_family
+                },
+            },
+            "main": {
+                "background_color": store_design.st_design_footer_background_color,
+                "widget": "p2"
+            },
+            "footer": {
+                "background_color": store_design.st_design_footer_background_color,
+                "copyright": store_design.st_design_st_design_footer_copyright,
+                "logo": store_design.st_design_footer_logo,
+                // "facebook_link":"",
+                // "twitter_link":"",
+                // "instagram_link":"",
+                // "youtube_link":"",
+                // "pinterest_link":"",
+            }
+        }
+
+
+        const response = quick_config(design)
+        response && setHasChange(false)
+
+    }
+
+
 
     return (
         <section className="right-panel">
@@ -43,6 +99,7 @@ const RightSideBAr = (props) => {
                         ))}
                     </ul>
 
+
                     <p className="right-panel-help">
                         <a>Ayuda</a>
                     </p>
@@ -62,6 +119,7 @@ const RightSideBAr = (props) => {
                         <ColorPicker hex={"#52fcf3"} />
 
                     </main>
+                    <button disabled={!hasChange} onClick={onSaveDesign}>Actualizar</button>
                 </>
             }
             {
@@ -73,73 +131,68 @@ const RightSideBAr = (props) => {
                     </header>
                     <main>
                         <p>Edit Section</p>
-                        <div class="form-group pt-2">
-                            <label for="exampleInputEmail1">Background Image URL</label>
-                            <input type="email" class="form-control" readOnly id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"
-                                value={store_design.header.background_img || "url(https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png)"} />
+                        <div className="form-group pt-2">
+                            <label htmlFor="exampleInputEmail1">Background Image URL</label>
+                            <input type="email" className="form-control" id="exampleInputEmail2"
+                                name="st_design_header_backgroundimage" aria-describedby="emailHelp" placeholder="URL de la imagen de fondo"
+                                value={inputValue.st_design_header_backgroundimage}
+                                onChange={(e) => handleText(e.target.name, e.target.value)} />
 
 
                         </div>
-                        {/* <div class="form-group pt-2">
-                            <label for="exampleInputEmail1">Color del Titulo</label>
-                            <input type="email" class="form-control" readOnly id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" 
-                            value={store_design.header.title.color || "black"}  />
-                               
+
+                        <div className="form-group pt-2">
+                            <label htmlFor="exampleInputEmail3">Tipografia del Titulo</label>
+                           
+                            <select className="form-select " name="st_design_header_title_font_family"
+                            onChange={(e) => handleText(e.target.name, e.target.value)}>
+                                <option value="Arial, sans-serif" >Arial</option>
+                                <option value="Verdana" >Verdana</option>
+                                <option value="Gill Sans, sans-serif">Gill Sans</option>
+                                <option value="Times New Roman, serif">Times New Roman</option>
+                            </select>
+
+
+                        </div>
+                        <div className="form-group pt-2">
+                            <label htmlFor="exampleInputEmail4">Texto del Subtitulo</label>
+                            <input type="email" className="form-control" id="exampleInputEmail5"
+                                name="st_design_header_subtitle_text" aria-describedby="emailHelp" placeholder="Introduce el subtitulo"
+                                value={inputValue.st_design_header_title_font_family}
+                                onChange={(e) => handleText(e.target.name, e.target.value)}
+                            />
+
+
+                        </div>
+
+                        <div className="form-group pt-2">
+                            <label htmlFor="exampleInputEmail6">Tipografia del Subtitulo</label>
                             
-                        </div> */}
-                        <div class="form-group pt-2">
-                            <label for="exampleInputEmail1">Tipografia del Titulo</label>
-                            <input type="email" class="form-control" readOnly id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"
-                                value={store_design.header.title.font_family || "Arial"} />
+                            <select className="form-select " name="st_design_st_design_header_subtitle_font_family"
+                            onChange={(e) => handleText(e.target.name, e.target.value)}>
+                                <option value="Arial, sans-serif" >Arial</option>
+                                <option value="Helvetica, sans-serif" >Helvetica</option>
+                                <option value="Gill Sans, sans-serif">Gill Sans</option>
+                                <option value="Times New Roman, serif">Times New Roman</option>
+                            </select>
+
+                        </div>
+
+                        <div className="form-group pt-2">
+                            <label htmlFor="exampleInputEmail9">Texto del Footer</label>
+                            <input type="email" className="form-control" id="exampleInputEmail9"
+                                name="st_design_st_design_footer_copyright" aria-describedby="emailHelp" placeholder="Texto del Copyright"
+                                value={inputValue.st_design_st_design_footer_copyright}
+                                onChange={(e) => handleText(e.target.name, e.target.value)} />
 
 
                         </div>
-                        <div class="form-group pt-2">
-                            <label for="exampleInputEmail1">Texto del Subtitulo</label>
-                            <input type="email" class="form-control" readOnly id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"
-                                value={store_design.header.subtitle.text || "Texto"} />
-
-
-                        </div>
-                        {/* <div class="form-group pt-2">
-                            <label for="exampleInputEmail1">Color del Subtitulo</label>
-                            <input type="email" class="form-control" readOnly id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" 
-                            value={store_design.header.subtitle.color || "black"}/>
-                               
-                            
-                        </div> */}
-                        <div class="form-group pt-2">
-                            <label for="exampleInputEmail1">Tipografia del Subtitulo</label>
-                            <input type="email" class="form-control" readOnly id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"
-                                value={store_design.header.subtitle.font_family || "Arial"} />
-
-
-                        </div>
-                        {/* <div class="form-group pt-2">
-                            <label for="exampleInputEmail1">Color del Contenido</label>
-                            <input type="email" class="form-control" readOnly id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" 
-                            value={store_design.main.background_color || "white"}/>
-                               
-                            
-                        </div> */}
-                        {/* <div class="form-group pt-2">
-                            <label for="exampleInputEmail1">Color del Footer</label>
-                            <input type="email" class="form-control" readOnly id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" 
-                            value={store_design.footer.background_color || "#333333"}/>
-                               
-                            
-                        </div> */}
-                        <div class="form-group pt-2">
-                            <label for="exampleInputEmail1">Texto del Footer</label>
-                            <input type="email" class="form-control" readOnly id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"
-                                value={store_design.footer.copyright || "Texto de copyright"} />
-
-
-                        </div>
-                        <div class="form-group pt-2">
-                            <label for="exampleInputEmail1">Logo Footer URL</label>
-                            <input type="email" class="form-control" readOnly id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"
-                                value={store_design.footer.logo || "url(https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png)"} />
+                        <div className="form-group pt-2">
+                            <label htmlFor="exampleInputEmail10">Logo Footer URL</label>
+                            <input type="email" className="form-control" id="exampleInputEmail10"
+                                name="st_design_footer_logo" aria-describedby="emailHelp" placeholder="Enter email"
+                                value={inputValue.st_design_footer_logo}
+                                onChange={(e) => handleText(e.target.name, e.target.value)} />
 
 
                         </div>
@@ -148,6 +201,7 @@ const RightSideBAr = (props) => {
 
 
                     </main>
+                    <button disabled={!hasChange} onClick={onSaveDesign}>Actualizar</button>
 
 
                 </>
@@ -179,6 +233,7 @@ const RightSideBAr = (props) => {
 
                         </div>
                     </main>
+                    <button disabled={!hasChange} onClick={onSaveDesign}>Actualizar</button>
 
                 </>
 
@@ -229,5 +284,7 @@ const RightSideBAr = (props) => {
         </section >
     );
 };
+
+
 
 export default RightSideBAr;

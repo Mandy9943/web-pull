@@ -29,9 +29,7 @@ export default class Tienda extends React.Component {
   render() {
     let {user_d, store_d} = this.props;
 
-    console.log("store_d : "+this.props.store_d);
-
-    return (
+   return (
         <div>
           <Head>
             <title>Kiero | KieroShop</title>
@@ -50,6 +48,7 @@ export default class Tienda extends React.Component {
             />
             <link rel="icon" href={favicon} type="image/png" />
           </Head>
+          
           <Shop user_data={user_d} store_data={store_d} />
         </div>
     );

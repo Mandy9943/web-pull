@@ -35,7 +35,11 @@
     li.active a {
       color: #2a6ef6;
     }
+
+   
   }
+
+  
 
   ul.design, ul.config {
     margin-top: 10px;
@@ -60,6 +64,16 @@
     }
   }
 
+  button{
+    background-color: #cf0a2c;
+
+  }
+  button:disabled{
+    cursor: unset;
+    background-color: #cccccc;
+   }
+
+
   // This content is for the select color section
   header{
     display: flex;
@@ -76,6 +90,72 @@
 
   main {
       font-size: 12px;
+
+      div{
+        margin-top: 10px;
+      }
+
+  }
+
+  
+  p {
+    margin-top: 5px;
+  }
+  select {
+    margin:5px 0px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    height: 35px;
+    border: 0.5px solid #b8b8b8;
+    border-radius: 5px;
+    // border-color: black;
+    background: #ffffff;
+    color:black;
+    text-decoration-color: black;
+    background-image: none;
+  }
+  /* Remove IE arrow */
+  select::-ms-expand {
+    display: none;
+  }
+  /* Custom Select */
+  .select {
+    position: relative;
+    display: flex;
+    width: 20em;
+    height: 3em;
+    line-height: 3;
+    // background: #2c3e50;
+    overflow: hidden;
+    border-radius: .25em;
+  }
+  select {
+    flex: 1;
+    padding: 0 .5em;
+    // color: #fff;
+    cursor: pointer;
+  }
+  /* Arrow */
+  .select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1em;
+    // background: #34495e;
+    cursor: pointer;
+    pointer-events: none;
+    -webkit-transition: .25s all ease;
+    -o-transition: .25s all ease;
+    transition: .25s all ease;
+  }
+  /* Transition */
+  .select:hover::after {
+    color: #f39c12;
   }
 
 }

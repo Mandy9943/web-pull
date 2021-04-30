@@ -30,7 +30,7 @@ const ShopStart = (props) => {
     color: store_status ? 'green' : 'red'
   }
 
-
+ 
   return (
     <div>
       <div className="shop-block shop-principal">
