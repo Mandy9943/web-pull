@@ -16,7 +16,7 @@ import { getData } from "../../services/userApi";
 import PayCredit from "../../assets/img/pay-credit.png";
 import iconCredit from "../../assets/img/card.svg";
 import PayOnline from "../../assets/img/pay-online.png";
-import PayTransfer from "../../assets/img/pay-transfer.png";
+import PayTransfer from "../../assets/img/pay-transfer.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTruck, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import Logo1 from "../../assets/img/logo-social.png";
@@ -74,7 +74,8 @@ class ProductDetail extends Component {
   render() {
     const u_data = this.props.user_data;
     let url = "//www.sic.gov.co";
-
+    // console.log(this.state.mdata)
+    // console.log("data")
     return (
       <div>
         <Nav user={u_data.user} jwt={u_data.jwt} home={true} authenticated={u_data.authenticated} />
@@ -101,7 +102,7 @@ class ProductDetail extends Component {
               <div className="pay-section-responsive">
                 <Pay
                     pid={this.state.mdata.product_id}
-                    pgid={this.state.mdata.product_global_id}
+                    pgid={this.state.mdata.product_id}//aqui va product_global_id
                     m_pgid={this.state.m_pgid}
                     seller={this.state.mdata.user}
                     price={this.state.mdata.price}
@@ -114,7 +115,7 @@ class ProductDetail extends Component {
               <div className="home-content slider-recommends">
                 <ProductsSlider category={this.state.mdata.category.name} />
               </div>
-              <Detail width={this.state.mdata.width} length={this.state.mdata.length} weight={this.state.mdata.weight} title={this.state.mdata.title} product_name={this.state.mdata.title} desciption={this.state.mdata.description} />
+              <Detail width={this.state.mdata.width} information={this.state.mdata.information} length={this.state.mdata.length} weight={this.state.mdata.weight} title={this.state.mdata.title} product_name={this.state.mdata.title} desciption={this.state.mdata.description} brand={this.state.mdata.brand} type={this.state.mdata.type} color={this.state.mdata.color} model={this.state.mdata.model} />
               <Question user_data={this.props.user_data} product_id={this.state.mdata.product_id} cb={this.loadQuestions} />
               <section>
                 <QuestionItem product_id={this.state.mdata.product_id} questions={this.state.questions} />
@@ -161,7 +162,7 @@ class ProductDetail extends Component {
             <div className="pay-section-pc">
               <Pay
                   pid={this.state.mdata.product_id}
-                  pgid={this.state.mdata.product_global_id}
+                  pgid={this.state.mdata.product_id}//aqui va product_global_id
                   m_pgid={this.state.m_pgid}
                   seller={this.state.mdata.user}
                   price={this.state.mdata.price}

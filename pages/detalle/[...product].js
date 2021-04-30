@@ -55,32 +55,35 @@ function Product({ data, u_data }) {
       <meta name="robots" content="index,follow" />
       <link rel="icon" href={favicon} type="image/png" />
       <link rel="canonical" href={`https://kiero.co/detalle/${data.product_id}_${data.title.replace(/[^\w\s]/gi, '' ).split(" ").join("-")}`} />
-      
-      <script type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: {
-        "@context": "https://schema.org/",
-        "@type": "Product",
-        "name": `${data.title}`,
-        "image": `${data.images[0].url}`,
-        "description": `${data.description}`,
-        "brand": `${data.brand}`,
-        "sku": `${data.product_id}`,
-        "offers": {
-        // "@type": "Offer","url": "{product.product_url}",
-        "priceCurrency": "COP",
-        "price": "3",
-        // "priceValidUntil": "{product.created_since}",
-        "availability": "https://schema.org/InStock",
-        "itemCondition": "https://schema.org/NewCondition"
-        },
-        "aggregateRating": {
-        "@type": "AggregateRating",
-        // "ratingValue": "{product.rating}",
-        "bestRating": "5",
-        "worstRating": "0",
-        // "ratingCount": "{product.rating.count}"
-      } }}}>
-    </script>
+
+          <script
+              type='application/json'
+              dangerouslySetInnerHTML={{ __html: JSON.stringify({
+                      "@context": "https://schema.org/",
+                      "@type": "Product",
+                      "name": `${data.title}`,
+                      "image": `${data.images[0].url}`,
+                      "description": `${data.description}`,
+                      "brand": `${data.brand}`,
+                      "sku": `${data.product_id}`,
+                      "offers": {
+                          // "@type": "Offer","url": "{product.product_url}",
+                          "priceCurrency": "COP",
+                          "price": "3",
+                          // "priceValidUntil": "{product.created_since}",
+                          "availability": "https://schema.org/InStock",
+                          "itemCondition": "https://schema.org/NewCondition"
+                      },
+                      "aggregateRating": {
+                          "@type": "AggregateRating",
+                          // "ratingValue": "{product.rating}",
+                          "bestRating": "5",
+                          "worstRating": "0",
+                          // "ratingCount": "{product.rating.count}"
+                      }
+                  }) }}
+          >
+          </script>
        
       </Head>
         {/* Google Tag Manager (noscript) */}

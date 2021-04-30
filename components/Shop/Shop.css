@@ -1,0 +1,197 @@
+.summary-content {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: auto 1fr auto;
+  grid-template-rows: auto 1fr auto;
+  height: 100%;
+}
+
+.summary-content p {
+  color: #111111;
+}
+
+.summary-content .user-account-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 4fr;
+  grid-template-columns: 1fr 4fr;
+  grid-gap: 30px;
+  margin: auto;
+  width: 80%;
+  height: 100%;
+}
+
+.summary-content .user-account-container .user-account-menu {
+  padding: 40px 0px;
+}
+
+.summary-content .user-account-container .user-account-menu h3 {
+  color: #111111;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.summary-content
+  .user-account-container
+  .user-account-menu
+  .user-account-menu-text {
+  color: #111111;
+  font-size: 14px;
+}
+
+.summary-content
+  .user-account-container
+  .user-account-menu
+  .user-account-menu-item {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: min-content auto auto;
+  grid-template-columns: -webkit-min-content auto auto;
+  grid-template-columns: min-content auto auto;
+  grid-gap: 10px;
+  margin-bottom: 40px;
+  cursor: pointer;
+}
+
+.summary-content
+  .user-account-container
+  .user-account-menu
+  .user-account-menu-item
+  .user-account-accordion {
+  display: none;
+}
+
+.summary-content
+  .user-account-container
+  .user-account-menu
+  .user-account-menu-item
+  .user-account-accordion
+  p {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.summary-content
+  .user-account-container
+  .user-account-menu
+  .user-account-menu-item.active
+  .user-account-accordion {
+  display: block;
+}
+
+.summary-content .user-account-container .summary {
+  padding: 40px;
+}
+
+.summary-content .user-account-container .summary .items {
+  margin-top: 30px;
+}
+
+.summary-content .user-account-container .summary .items .title {
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  border-bottom: 0.5px dashed #9e9e9e;
+}
+
+.footer-social {
+  width: 80%;
+  margin: auto;
+  padding: 25px 0;
+}
+
+.footer-social img:last-child {
+  margin-left: 30px;
+}
+
+.summary-botton {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .summary-content .user-account-menu {
+    display: none;
+  }
+  .summary-content .mobil-nav .nav-botton {
+    opacity: 0 !important;
+  }
+  .summary-content .summary-botton {
+    position: absolute;
+    top: 15px;
+    right: 14px;
+    height: 30px;
+    width: 30px;
+    display: block;
+    left: auto;
+    bottom: auto;
+    z-index: 10000000;
+  }
+  .summary-content .summary-botton svg {
+    font-size: 25px;
+    color: white;
+  }
+  .summary-content .show-sidebar {
+    -ms-grid-rows: auto auto;
+    grid-template-rows: auto auto;
+    grid-gap: 0;
+  }
+  .summary-content .show-sidebar .user-account-menu {
+    background: white;
+    padding: 0;
+    border: 0.5px solid #bebebe;
+    border-radius: 0 0 5px 5px;
+    grid-gap: 0;
+    display: block;
+  }
+  .summary-content .show-sidebar .user-account-menu .user-account-menu-item {
+    padding: 15px;
+    margin-bottom: 0;
+  }
+  .summary-content .show-sidebar .user-account-menu .border-bottom {
+    border-bottom: 0.5px solid #bebebe;
+  }
+  .summary-content .user-account-container {
+    width: 100%;
+    position: relative;
+    -ms-grid-columns: auto;
+    grid-template-columns: auto;
+  }
+  .summary-content .user-account-container .user-account-content {
+    padding: 0;
+  }
+  .summary-content .user-account-container .user-account-content h2 {
+    margin: 15px 15px 30px;
+    font-weight: 600;
+  }
+  .summary-content
+    .user-account-container
+    .user-account-content
+    .user-acount-info {
+    width: 90%;
+    margin: 15px auto;
+  }
+  .summary-content
+    .user-account-container
+    .user-account-content
+    .user-accunt-info-box
+    .user-accunt-info-tab.user-accunt-info-address
+    p:first-child {
+    padding: 30px;
+  }
+  .modal-actions {
+    grid-gap: 15px !important;
+  }
+  .footer-social {
+    width: 100%;
+    margin: auto;
+    padding: 30px 0;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+  }
+  .footer-social img {
+    width: 80%;
+    margin: auto !important;
+  }
+}
+/*# sourceMappingURL=Summary.css.map */

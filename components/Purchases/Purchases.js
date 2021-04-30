@@ -15,18 +15,22 @@ import PurchasesDetail from "../PurchasesDetail";
 import OrderItem from "../OrderItem/OrderItem.js";
 import OrdersDetail from "../OrdersDetail/OrdersDetail.js";
 import Pagination from "../Common/Pagination/Pagination";
+import { makeStyles } from '@material-ui/core/styles';
+import Paginations from './Pagination/Pagination';
 
 function processSellData(data) {
   // Esta uncion es para que los datos devueltos por el endpoint /shop/orders/
   // tengan el mismo formato del de las ventas.
-  if (!data) {
+  console.log(data)
+  if (data.message === 'Error') {
     return [];
+  }else{
+    return data.data.map((record) => {
+      return { data: record };
+    });
   }
-
-  return data.data.map((record) => {
-    return { data: record };
-  });
 }
+
 
 function Purchases(props) {
   const [pagination, setPagination] = useState();
@@ -74,6 +78,7 @@ function Purchases(props) {
   }, []);
 
   const handleSelect = (item) => {
+    // console.log("elementos",item)
     setSelected(item);
   };
 
@@ -243,6 +248,7 @@ function Purchases(props) {
         </>
       )}
       <br />
+      <Paginations/>
       {pagination && lastPage > 1 && (
         <Pagination
           actual={currentPage}

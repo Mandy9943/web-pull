@@ -105,5 +105,5 @@ h1, h2, h3, h4, h5 {
 }
 
 
-@media (max-width:700px){.no-movil{display:none !important}}
-@media (min-width:700px){.no-web{display:none !important}}
+@media (max-width:925px){.no-movil{display:none !important}}
+@media (min-width:926px){.no-web{display:none !important}}

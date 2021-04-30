@@ -2,9 +2,10 @@ import React from 'react';
 import './PurchaseItem.css';
 import Link from 'next/link';
 import { getProductImgs } from "../../../lib/functions";
+import { getImgUrl } from '../../../lib/config';
 
 function PurchaseItem({ item, onSelect }) {
-    console.log(item)
+    //console.log(item.data.product?.title.length)
     return (
         <div className="product-item">
             <h5 className="status">{item.purchase_status_name}</h5>
@@ -15,12 +16,12 @@ function PurchaseItem({ item, onSelect }) {
                     <section className="product">
                         <div className="product-card-img">
                             <img
-                                alt={item.data.product.title.length < 10 ? item.data.product.title : item.data.product.title.slice(0, 10)}
-                                src={getProductImgs(item.data.product.images)}
+                                alt={item.data.product?.title.length < 10 ? item.data.product?.title : item.data.product?.title.slice(0, 10)}
+                                src={getImgUrlMinMin(getProductImgs(item.data.product?.images))}
                             />
                         </div>
                         <section className='description'>
-                            <h3>{item.data.product.title}</h3>
+                            <h3>{item.data.product?.title}</h3>
                             <h3>$ {item.data.total}</h3>
                             <h3 className="product-stock">{item.data.quantity}{" "} {Number(item.data.quantity) > 1 ? "unidades" : "unidad"}</h3>
                         </section>
@@ -30,7 +31,7 @@ function PurchaseItem({ item, onSelect }) {
                 <section className="info">
                     <a onClick={() => onSelect(item)}> Detalle de compra</a>
                     <p className="vendedor">Vendedor:</p>
-                    <p>{item.data.seller.name + " " + item.data.seller.last_name}</p>
+                    <p>{item.data.seller.name}</p>
                     <p className="phone-client"> {item.data.seller.phone}</p>
                     <Link href={`/chat/${item.data.order_id}?order=${item.data.order_id}&store=${item.data.seller_id}`}>
                         <a> Enviar mensaje</a>

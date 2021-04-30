@@ -5,6 +5,7 @@ import { Component } from "react";
 import PropTypes from "prop-types";
 import {isAuthenticated, getUser, getJwt, getRole} from "../lib/auth";
 import favicon from "../assets/img/favicon.svg";
+// import 'bootstrap/dist/css/bootstrap.css'
 
 
 export default class Index extends Component {

@@ -1,0 +1,81 @@
+.right-panel {
+  /*flex: 0 1 28%;*/
+  display: flex;
+  flex-direction: column;
+  // margin-top: 25px;
+  padding: 25px 10px 0px 0px;
+  height: 100%;
+  position: absolute;
+  width: 200px;
+  margin-left: 74%;
+  
+
+  .hide {
+    display: none;
+  }
+
+  ul.options, ul.design {
+    list-style: none;
+  }
+
+  ul.options {
+    li {
+      display: inline;
+      margin-right: 20px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+
+      a {
+        color: #111;
+        cursor: pointer;
+      }
+    }
+
+    li.active a {
+      color: #2a6ef6;
+    }
+  }
+
+  ul.design, ul.config {
+    margin-top: 10px;
+  }
+
+  ul.design li,
+  ul.config li {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 13px;
+    font-weight: normal;
+    cursor: pointer;
+  }
+
+  p.right-panel-help {
+    color: red;
+    font-size: 13px;
+    text-align: right;
+
+    a {
+      color: red;
+    }
+  }
+
+  // This content is for the select color section
+  header{
+    display: flex;
+    margin-bottom: 15px;
+
+    &>* {
+      padding-right: 5px;
+    }
+
+    h4 {
+      margin-left: 7px;
+    }
+  }
+
+  main {
+      font-size: 12px;
+  }
+
+}

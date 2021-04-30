@@ -3,13 +3,13 @@ import "./PaySection.css";
 import PayCredit from "../../assets/img/pay-credit.png";
 import iconCredit from "../../assets/img/card.svg";
 import PayOnline from "../../assets/img/pay-online.png";
-import PayTransfer from "../../assets/img/pay-transfer.png";
+import PayTransfer from "../../assets/img/pay-transfer.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTruck, faAngleRight, faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import Seller from "./../SellerInfo";
 import Link from "next/link";
 import ListProductMovil from "./../listProductMovil/listProductMovil"
-import Rating from '../RatingProduct/RatingProduct';
+// import Rating from '../RatingProduct/RatingProduct';
 import ProductVariants from '../ProductVariants';
 import { getVariantAvailable } from "../../services/productsApi";
 import Select from '../Common/SelectDropdown/Select';
@@ -45,7 +45,7 @@ class PaySection extends Component {
     this.setState({
       dimensions: data.data,
       variantsSpinner: false,
-      m_pgid: data.data.product_global_id ? true : false
+      m_pgid: data.data.product_id ? true : false //Aqui va product_global_id
     });
   }
 
@@ -155,11 +155,11 @@ class PaySection extends Component {
         <div className="pay-item">
           <h1 className="title-pay-product-detail">{this.props.title.substr(0,60)}</h1>
         </div>
-        <div className="pay-item">
+        {/* <div className="pay-item">
           <Rating productId={this.props.pid}/>
-        </div>
+        </div> */}
         <div className="pay-item">
-          <h3 className="price-pay-product-detail">$ {this.props.price ? this.props.price.toString().split(".")[0].replace(/(.)(?=(\d{3})+$)/g,'$1,') : " ... "}</h3>
+          <h3 className="price-pay-product-detail">$ {this.props.price ? this.props.price.toString().split(".")[0].replace(/(.)(?=(\d{3})+$)/g,'$1.') : " ... "}</h3>
         </div>
         <div className="pay-item pay-img no-movil">
           <img src={iconCredit} className="icon-credit" />
