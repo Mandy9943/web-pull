@@ -24,12 +24,9 @@ const RightSideBAr = (props) => {
 
     const [tab, setTab] = useState(1);
 
-    const [inputValue, setValue] = useState(store_design)
-
     const [hasChange, setHasChange] = useState(false)
 
     const handleText = (name, value) => {
-        setValue({ [name]: value })
         setHasChange(true)
         setDesignValues(name, value)
 
@@ -135,7 +132,7 @@ const RightSideBAr = (props) => {
                             <label htmlFor="exampleInputEmail1">Background Image URL</label>
                             <input type="email" className="form-control" id="exampleInputEmail2"
                                 name="st_design_header_backgroundimage" aria-describedby="emailHelp" placeholder="URL de la imagen de fondo"
-                                value={inputValue.st_design_header_backgroundimage}
+                                value={store_design.st_design_header_backgroundimage}
                                 onChange={(e) => handleText(e.target.name, e.target.value)} />
 
 
@@ -158,7 +155,7 @@ const RightSideBAr = (props) => {
                             <label htmlFor="exampleInputEmail4">Texto del Subtitulo</label>
                             <input type="email" className="form-control" id="exampleInputEmail5"
                                 name="st_design_header_subtitle_text" aria-describedby="emailHelp" placeholder="Introduce el subtitulo"
-                                value={inputValue.st_design_header_title_font_family}
+                                value={store_design.st_design_header_subtitle_text}
                                 onChange={(e) => handleText(e.target.name, e.target.value)}
                             />
 
@@ -182,7 +179,7 @@ const RightSideBAr = (props) => {
                             <label htmlFor="exampleInputEmail9">Texto del Footer</label>
                             <input type="email" className="form-control" id="exampleInputEmail9"
                                 name="st_design_st_design_footer_copyright" aria-describedby="emailHelp" placeholder="Texto del Copyright"
-                                value={inputValue.st_design_st_design_footer_copyright}
+                                value={store_design.st_design_st_design_footer_copyright}
                                 onChange={(e) => handleText(e.target.name, e.target.value)} />
 
 
@@ -191,7 +188,7 @@ const RightSideBAr = (props) => {
                             <label htmlFor="exampleInputEmail10">Logo Footer URL</label>
                             <input type="email" className="form-control" id="exampleInputEmail10"
                                 name="st_design_footer_logo" aria-describedby="emailHelp" placeholder="Enter email"
-                                value={inputValue.st_design_footer_logo}
+                                value={store_design.st_design_footer_logo}
                                 onChange={(e) => handleText(e.target.name, e.target.value)} />
 
 

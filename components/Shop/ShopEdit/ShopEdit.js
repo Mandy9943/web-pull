@@ -102,11 +102,12 @@ const ShopEdit = ({ cb, section_edit, data,store_design }) => {
           fontFamily: store_design.st_design_header_title_font_family || "Verdana",
           color: store_design.st_design_header_title_color || "black",
         }}>
-          {/* {data.store.name || "Texto"} */}
-          {store_design.st_design_st_design_footer_copyright || "Texto"}
+          {data.store.name || "Texto"}
+          {/* {store_design.st_design_st_design_footer_copyright || "Texto"} */}
         </p>
         <h5 style={{
           color: data.design.header.subtitle.color || "black" ,
+          fontFamily: store_design.st_design_st_design_header_subtitle_font_family || "Verdana",
         }}>
           {store_design.st_design_header_subtitle_text || "Texto"}
         </h5>
