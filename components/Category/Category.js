@@ -66,7 +66,6 @@ class Category extends Component {
 			// const params = new URLSearchParams();
 			// params.append('category', name !== '' ? name: 'xxxx');
 			let endpoint = categoryApi + '/' + name;
-			console.log(endpoint);
 			return apiget(endpoint);
 		} catch (error) {
 			return error;
@@ -89,16 +88,12 @@ class Category extends Component {
 
 	applyFilter = (type, value, categoryLevel = '', loadFilter = true) => {
 		let tmp_filters = this.state.filters;
-		console.log(tmp_filters);
 		const new_val = type + '|' + value;
-		console.log(new_val);
 		// Remove previous filter by type
 		tmp_filters.forEach((value, index) => {
 			const item = value.split('|');
-			console.log(item);
 			if (item[0] === type) {
 				tmp_filters.splice(index, 1);
-				console.log(tmp_filters);
 			}
 		});
 
@@ -156,11 +151,9 @@ class Category extends Component {
 			switch (item[0]) {
 				case 'price':
 					let valueArray = value.split('|')[1].split(' ');
-					console.log(valueArray);
 					valueArray[0] === 'Desde'
 						? (price = parseFloat(valueArray[1]) + '-' + parseFloat(valueArray[3]))
 						: (price = parseFloat(valueArray[2]) + '-' + this.state.data.max_price);
-					console.log(price);
 					break;
 				case 'brand':
 					brand = value.split('|')[1];

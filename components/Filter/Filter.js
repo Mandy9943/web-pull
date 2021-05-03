@@ -76,6 +76,7 @@ class Filter extends Component {
 		let res_categories = [];
 		let res_brands = [];
 		let prices = [];
+		let renderedPrices = [];
 
 		if (this.props.data && this.props.data.categories) {
 			res_categories = this.props.data.categories;
@@ -126,19 +127,18 @@ class Filter extends Component {
 			}
 
 			let div = top / 4;
-			prices.push('Más de ' + moneyFormater(top));
+			prices.push('Más de ' + top);
+			renderedPrices.push('Más de ' + moneyFormater(top));
 			for (let it = 0; it < 4; it++) {
 				if (
 					this.props.filters.indexOf(
 						'price|' + 'Desde ' + (top - div * (it + 1)) + ' Hasta ' + (top - div * it)
 					) === -1
 				)
-					prices.push(
-						'Desde ' +
-							moneyFormater(top - div * (it + 1)) +
-							' Hasta ' +
-							moneyFormater(top - div * it)
-					);
+					prices.push('Desde ' + (top - div * (it + 1)) + ' Hasta ' + (top - div * it));
+				renderedPrices.push(
+					'Desde ' + moneyFormater(top - div * (it + 1)) + ' Hasta ' + moneyFormater(top - div * it)
+				);
 			}
 		}
 
@@ -379,7 +379,7 @@ class Filter extends Component {
 											this.props.applyFilter('price', item);
 										}}
 									>
-										<p className="item-filter-group show">{item}</p>
+										<p className="item-filter-group show">{renderedPrices[index]}</p>
 									</a>
 								</div>
 							))}
