@@ -33,12 +33,6 @@ class Filter extends Component {
 		this.setState({ menuOrder: !this.state.menuOrder });
 	}
 
-<<<<<<< HEAD
-    }
-    toggleMenuOrder() {
-        this.setState({menuOrder: !this.state.menuOrder});
-    }
-=======
 	toggleMenuFilter() {
 		this.setState({ menuFilter: !this.state.menuFilter });
 	}
@@ -46,7 +40,6 @@ class Filter extends Component {
 	ShowAllCategories() {
 		this.setState({ categorySize: this.state.categorySize + 10 });
 	}
->>>>>>> 79da57d6e774eafec4e9da464376ad6e55322e73
 
 	setSort(event) {
 		this.setState({ menuOrder: false });
