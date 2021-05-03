@@ -17,6 +17,7 @@ class ListCategory extends Component {
     }
 
     render() {
+        // console.log("category",this.props)
         const Class = this.props.format == "grid" ? "grid" : "list";
 
         return (

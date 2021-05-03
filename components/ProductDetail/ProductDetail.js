@@ -72,6 +72,7 @@ class ProductDetail extends Component {
   }
 
   render() {
+    console.log("detalles",this.props)
     const u_data = this.props.user_data;
     let url = "//www.sic.gov.co";
     // console.log(this.state.mdata)

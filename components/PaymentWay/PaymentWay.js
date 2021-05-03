@@ -319,6 +319,7 @@ export default class PaymentWay extends Component {
     };
 
     render() {
+        console.log("props al pagar",this.props)
         const addAddressContent = <AddAddress jwt={this.props.user.jwt} save={this.loadAddresses} cancel={() => this.setState({ modal: false, modalAddr: false })} noheader="1" />;
 
         const addressListContent = <>

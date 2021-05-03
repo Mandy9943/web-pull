@@ -24,7 +24,6 @@ class Filter extends Component {
         this.toggleMenuFilter = this.toggleMenuFilter.bind(this);
 
     }
-
     toggleMenuOrder() {
         this.setState({menuOrder: !this.state.menuOrder});
     }
@@ -71,7 +70,7 @@ class Filter extends Component {
     }
 
     render() {
-
+        
         let res_categories = [];
         let res_brands = [];
         let prices = [];

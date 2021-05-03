@@ -37,9 +37,11 @@ class Category extends Component {
 
     componentDidMount() {
         if (this.props.data.type === 'category') {
+            // console.log("es category")
             //buscar nivel de la categoria
             let categoryLevel = this.searchCategoryLevel(this.props.data.search);
             categoryLevel.then((response) => {
+                // console.log("response",response)
                 this.setState({
                     categoryLevel: response.data.results.length>0 ? response.data.level : ''
                 })
@@ -53,6 +55,7 @@ class Category extends Component {
         }
 
         if (this.props.data.type !== 'category') {
+            // console.log("no es category")
             this.loadProducts(this.state.page)
             this.loadAllFilters()
         }
@@ -62,7 +65,6 @@ class Category extends Component {
             // const params = new URLSearchParams();
             // params.append('category', name !== '' ? name: 'xxxx');
             let endpoint = categoryApi + '/'+ name;
-            console.log(endpoint);
             return  apiget(endpoint)
         } catch (error) {
             return error;
@@ -142,7 +144,7 @@ class Category extends Component {
         let price = '';
         let brand = '';
         let category = '';
-
+        // 
         // Filters
         this.state.filters.forEach(value => {
             const item = value.split('|');
@@ -170,6 +172,7 @@ class Category extends Component {
                 totalPages: Math.ceil(response.data.total / this.props.data.params.items_per_page),
                 totalItems: response.data.total,
             })
+            console.log("productos",this.state.products)
         })
     }
 
@@ -279,6 +282,7 @@ class Category extends Component {
     }
 
     render() {
+        // console.log("data", this.state.products)
         return this.state.existsCategoryMenu ? (
             <div className="search">
                 <Nav user={this.props.user_data.user} home={true} jwt={this.props.user_data.jwt}

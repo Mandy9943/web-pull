@@ -17,7 +17,7 @@ import {
 import favicon from "../assets/img/favicon.svg";
 
 
-export default class cuenta extends React.Component {
+export default class nuevo_producto extends React.Component {
 
     static propTypes = {
         user: PropTypes.string,
@@ -39,7 +39,7 @@ export default class cuenta extends React.Component {
             full_name: getFullName(ctx),
             email: getEmail(ctx),
             user_id: getUserId(ctx),
-            authenticated: isAuthenticated(ctx),
+            authenticated: 5(ctx),
         };
     }
 

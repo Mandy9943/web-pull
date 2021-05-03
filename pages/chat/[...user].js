@@ -9,6 +9,7 @@ import favicon from "../../assets/img/favicon.svg";
 
 
 function chat(precomp) {
+    
     return (
         <div className="chat-page">
             <Head>
@@ -22,13 +23,14 @@ function chat(precomp) {
                 <meta name="Keywords" content="Tienda en Línea" />
                 <link rel="icon" href={favicon} type="image/png" />
             </Head>
-            <Chat data={precomp} />
+            <Chat data={precomp}  />
         </div>
     )
 }
 
 
 export async function getServerSideProps(context) {
+    
 
     if (redirectIfNotAuthenticated(context)) {
         return {};

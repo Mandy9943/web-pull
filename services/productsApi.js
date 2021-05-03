@@ -45,6 +45,7 @@ export const getProductGlobalDetail = (id_product_global, params={}) => {
         let data = apiget2(endpoint, params)
         return data;
     } catch (error) {
+        console.log("error",error)
         return error;
     }
 };
