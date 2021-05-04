@@ -145,14 +145,17 @@ class Filter extends Component {
 		const filters = this.props.filters.map((item, index) => {
 			if (item.split('|')[0] !== 'category') {
 				return (
-					<p
-						key={index}
-						className="result"
-						onClick={() => {
-							this.props.removeFilter(index);
-						}}
-					>
-						{item.split('|')[1]} <FontAwesomeIcon icon={faWindowClose} />
+					<p key={index} className="result">
+						{item.split('|')[1]}
+						<div className="resultIconContainer">
+							<FontAwesomeIcon
+								className="resultIcon"
+								icon={faTimes}
+								onClick={() => {
+									this.props.removeFilter(index);
+								}}
+							/>
+						</div>
 					</p>
 				);
 			}
@@ -167,9 +170,11 @@ class Filter extends Component {
 				<div className="wrap-filter">
 					<div
 						style={{
-							marginBottom: this.props.filters.length > 0 ? 12 : 0,
+							marginTop: '30px',
+							width: '100%',
 						}}
 					>
+						<div>Filtros seleccionados</div>
 						{filters}
 					</div>
 					<div className="filter-group categories">

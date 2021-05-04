@@ -276,14 +276,33 @@
 }
 
 .result {
-	display: block;
+	display: flex;
 	font-size: 0.8rem;
 	margin-bottom: 7px;
-	color: #cf0a2c;
+	color: white;
+	padding: 5px;
+	background-color: #cf0a2c;
+	border-radius: 5px;
+	width: fit-content;
+	white-space: nowrap;
+	align-items: center;
 }
 
-.result:hover {
+.resultIconContainer {
+	display: flex;
+	margin-left: 5px;
+	align-content: center;
+	padding: 2px 4px;
+	margin-top: 0px;
+}
+
+.resultIcon:hover {
 	cursor: pointer;
+}
+
+.resultIconContainer:hover {
+	color: #cf0a2c;
+	background-color: white;
 }
 
 .show {
