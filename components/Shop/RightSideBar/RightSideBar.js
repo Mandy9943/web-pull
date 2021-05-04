@@ -6,7 +6,12 @@ import {
     faArrowLeft, faBars
 } from "@fortawesome/free-solid-svg-icons";
 
-import ColorPicker from '../../Common/ColorPicker';
+import MyColorPicker from '../../Common/MyColorPicker'
+import { ColorPicker } from 'material-ui-color';
+import { HexColorPicker } from "react-colorful";
+import InputColor from 'react-input-color';
+import { ChromePicker } from 'react-color'
+
 //import state from "sweetalert/typings/modules/state";
 
 
@@ -26,12 +31,18 @@ const RightSideBAr = (props) => {
 
     const [hasChange, setHasChange] = useState(false)
 
-    const handleText = (name, value) => {
+    const [color, setColor] = useState()
+
+
+    const handleDesign = (name, value) => {
+
         setHasChange(true)
         setDesignValues(name, value)
 
 
     }
+
+
 
     const onSaveDesign = () => {
         const design = {
@@ -96,7 +107,7 @@ const RightSideBAr = (props) => {
                         ))}
                     </ul>
 
-
+                    <button disabled={!hasChange} onClick={onSaveDesign}>Actualizar</button>
                     <p className="right-panel-help">
                         <a>Ayuda</a>
                     </p>
@@ -113,7 +124,88 @@ const RightSideBAr = (props) => {
                         <p>Selecciona el color que quieres para tu sitio. Puedes combinar colores
                         o elegir tu propia paleta.
                     </p>
-                        <ColorPicker hex={"#52fcf3"} />
+                        <MyColorPicker hex={"#52fcf3"} store_design={store_design} setEditSection={setEditSection} handleDesign={handleDesign} />
+
+                    </main>
+                    <button disabled={!hasChange} onClick={onSaveDesign}>Actualizar</button>
+                </>
+            }
+            {
+                section_edit === 'colorEdit' &&
+                <>
+                    <header>
+                        <span onClick={() => setEditSection("color")}><FontAwesomeIcon icon={faArrowLeft} /></span>
+                        <h4>Elige tu paleta de colores</h4>
+                    </header>
+                    <main>
+                        <p>Crea una paleta de colores para tu sitio
+                    </p>
+                        <div>
+                            <div >
+
+                                <div >
+                                    <p>Encabezado y pie de paguina</p>
+                                    {/* <div className="colorSelect" name="midiv"  style={{ background: store_design.st_design_footer_background_color }} 
+                                     onClick={(e) => handleDesign(e.target.name,()=>{
+                                     
+                                         <ColorPicker hideTextfield defaultValue={store_design.st_design_footer_background_color}/>
+                                     
+                                     }
+                                     )}/> */}
+                                    {/* <InputColor
+                                        initialValue={store_design.st_design_footer_background_color}
+                                        onChangeComplete={
+                                            (color)=>handleDesign("st_design_header_title_color",color.css.backgroundColor)
+                                            // (color)=>console.log(color.css.backgroundColor)
+                                            
+                                        }
+                                        placement="right"
+                                    /> */}
+                                    {/* <ChromePicker onChangeComplete={
+                                        (color) => handleDesign("st_design_header_title_color", color.hex)
+                                    }/> */}
+                                    {/* <ColorPicker hideTextfield defaultValue={store_design.st_design_header_title_color}
+                                        onChange={
+                                            // (color) => handleDesign("st_design_header_title_color", color.css.backgroundColor)
+                                            (color) => console.log(color.css.backgroundColor)
+
+                                        } /> */}
+
+                                    <HexColorPicker color={store_design.st_design_footer_background_color} onChange={
+
+                                        (color) => handleDesign("st_design_footer_background_color", color)
+                                    } />
+
+                                </div>
+                                <div>
+                                    <p>Fondo</p>
+                                    <div     style={{ background: store_design.st_design_main_background_color }} >
+                                        <HexColorPicker color={store_design.st_design_main_background_color} onChange={
+
+                                            (color) => handleDesign("st_design_main_background_color", color)
+                                        } />
+                                    </div>
+                                </div>
+                                <div>
+                                    <p>Titulo</p>
+                                    <div  style={{ background: store_design.st_design_header_title_color }} >
+                                        <HexColorPicker color={store_design.st_design_header_title_color} onChange={
+
+                                            (color) => handleDesign("st_design_header_title_color", color)
+                                        } />
+                                    </div>
+                                </div>
+                                <div>
+                                    <p>Subtitulo</p>
+                                    <div  style={{ background: store_design.st_design_header_subtitle_color }} >
+                                        <HexColorPicker color={store_design.st_design_header_subtitle_color} onChange={
+
+                                            (color) => handleDesign("st_design_header_subtitle_color", color)
+                                        } />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                     </main>
                     <button disabled={!hasChange} onClick={onSaveDesign}>Actualizar</button>
@@ -133,16 +225,16 @@ const RightSideBAr = (props) => {
                             <input type="email" className="form-control" id="exampleInputEmail2"
                                 name="st_design_header_backgroundimage" aria-describedby="emailHelp" placeholder="URL de la imagen de fondo"
                                 value={store_design.st_design_header_backgroundimage}
-                                onChange={(e) => handleText(e.target.name, e.target.value)} />
+                                onChange={(e) => handleDesign(e.target.name, e.target.value)} />
 
 
                         </div>
 
                         <div className="form-group pt-2">
                             <label htmlFor="exampleInputEmail3">Tipografia del Titulo</label>
-                           
+
                             <select className="form-select " name="st_design_header_title_font_family"
-                            onChange={(e) => handleText(e.target.name, e.target.value)}>
+                                onChange={(e) => handleDesign(e.target.name, e.target.value)}>
                                 <option value="Arial, sans-serif" >Arial</option>
                                 <option value="Verdana" >Verdana</option>
                                 <option value="Gill Sans, sans-serif">Gill Sans</option>
@@ -156,7 +248,7 @@ const RightSideBAr = (props) => {
                             <input type="email" className="form-control" id="exampleInputEmail5"
                                 name="st_design_header_subtitle_text" aria-describedby="emailHelp" placeholder="Introduce el subtitulo"
                                 value={store_design.st_design_header_subtitle_text}
-                                onChange={(e) => handleText(e.target.name, e.target.value)}
+                                onChange={(e) => handleDesign(e.target.name, e.target.value)}
                             />
 
 
@@ -164,9 +256,9 @@ const RightSideBAr = (props) => {
 
                         <div className="form-group pt-2">
                             <label htmlFor="exampleInputEmail6">Tipografia del Subtitulo</label>
-                            
+
                             <select className="form-select " name="st_design_st_design_header_subtitle_font_family"
-                            onChange={(e) => handleText(e.target.name, e.target.value)}>
+                                onChange={(e) => handleDesign(e.target.name, e.target.value)}>
                                 <option value="Arial, sans-serif" >Arial</option>
                                 <option value="Helvetica, sans-serif" >Helvetica</option>
                                 <option value="Gill Sans, sans-serif">Gill Sans</option>
@@ -180,7 +272,7 @@ const RightSideBAr = (props) => {
                             <input type="email" className="form-control" id="exampleInputEmail9"
                                 name="st_design_st_design_footer_copyright" aria-describedby="emailHelp" placeholder="Texto del Copyright"
                                 value={store_design.st_design_st_design_footer_copyright}
-                                onChange={(e) => handleText(e.target.name, e.target.value)} />
+                                onChange={(e) => handleDesign(e.target.name, e.target.value)} />
 
 
                         </div>
@@ -189,7 +281,7 @@ const RightSideBAr = (props) => {
                             <input type="email" className="form-control" id="exampleInputEmail10"
                                 name="st_design_footer_logo" aria-describedby="emailHelp" placeholder="Enter email"
                                 value={store_design.st_design_footer_logo}
-                                onChange={(e) => handleText(e.target.name, e.target.value)} />
+                                onChange={(e) => handleDesign(e.target.name, e.target.value)} />
 
 
                         </div>
@@ -273,7 +365,7 @@ const RightSideBAr = (props) => {
                     </p>
 
                         
-            <ColorPicker hex={"#52fcf3"} />
+            <MyColorPickerex={"#52fcf3"} />
 
                     </main>
                 </>

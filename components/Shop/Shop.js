@@ -58,16 +58,22 @@ const Shop = ({ store_data, user_data }) => {
   const [store_domain, setStoreDomain] = useState(st_data.domain)
   const [store_status, setStoreStatus] = useState(st_data.store.status)
 
+  console.log("data :" + st_data.design)
+
+
+
   const [store_design, setStoreDesign] = useState({
     st_design_header_backgroundimage: st_data.design.header.background_img,
     st_design_header_title_color: st_data.design.header.title.color,
     st_design_header_title_font_family: st_data.design.header.title.font_family,
     st_design_header_subtitle_text: st_data.design.header.subtitle.text,
+    st_design_header_subtitle_color: st_data.design.header.subtitle.color,
     st_design_st_design_header_subtitle_font_family: st_data.design.header.subtitle.font_family,
     st_design_main_background_color: st_data.design.main.background_color,
     st_design_footer_background_color: st_data.design.footer.background_color,
     st_design_st_design_footer_copyright: st_data.design.footer.copyright,
     st_design_footer_logo: st_data.design.footer.logo,
+    st_desing_main_widget: st_data.design.main.widget,
   }
   )
 
@@ -127,6 +133,8 @@ const Shop = ({ store_data, user_data }) => {
 
 
   const setDesignValues = (name, value) => {
+
+    console.log(name+"."+value)
     setStoreDesign({ ...store_design, [name]: value })
 
   }
@@ -148,6 +156,9 @@ const Shop = ({ store_data, user_data }) => {
         break;
       case 'edit':
         setShow_edit_sectionState('edit')
+        break;
+      case 'colorEdit':
+        setShow_edit_sectionState('colorEdit')
         break;
       default:
         setShow_edit_sectionState('main')

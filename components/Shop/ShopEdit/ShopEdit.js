@@ -83,7 +83,10 @@ const ShopEdit = ({ cb, section_edit, data,store_design }) => {
       </div>
       {/* Fin Display selection*/}
 
-      <div className="edit-header">
+      <div className="edit-header" style={{
+          
+          backgroundColor: store_design.st_design_footer_background_color || "black",
+        }}>
         <h3>{data.store.name || "Mi tienda"}</h3>
         <p>Menú</p>
       </div>
@@ -103,17 +106,20 @@ const ShopEdit = ({ cb, section_edit, data,store_design }) => {
           color: store_design.st_design_header_title_color || "black",
         }}>
           {data.store.name || "Texto"}
-          {/* {store_design.st_design_st_design_footer_copyright || "Texto"} */}
+          
         </p>
         <h5 style={{
-          color: data.design.header.subtitle.color || "black" ,
+          color: store_design.st_design_header_subtitle_color || "black" ,
           fontFamily: store_design.st_design_st_design_header_subtitle_font_family || "Verdana",
         }}>
           {store_design.st_design_header_subtitle_text || "Texto"}
         </h5>
       </div>
 
-      <div className="edit-banner">
+      <div className="edit-banner" style={{
+          backgroundColor: store_design.st_design_main_background_color || "white" ,
+         
+        }}>
         <div className="block-container">
           <div className="block">
             <div className="block-image">
@@ -272,7 +278,7 @@ const ShopEdit = ({ cb, section_edit, data,store_design }) => {
 
       <div className="edit-header footer"
           style={{
-            backgroundColor: data.design.header.title.color || "black"
+            backgroundColor: store_design.st_design_footer_background_color || "black"
             
           }}
         >
