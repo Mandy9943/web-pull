@@ -58,7 +58,7 @@ const Shop = ({ store_data, user_data }) => {
   const [store_domain, setStoreDomain] = useState(st_data.domain)
   const [store_status, setStoreStatus] = useState(st_data.store.status)
 
-  console.log("data :" + st_data.design)
+  
 
 
 
@@ -134,7 +134,7 @@ const Shop = ({ store_data, user_data }) => {
 
   const setDesignValues = (name, value) => {
 
-    console.log(name+"."+value)
+   
     setStoreDesign({ ...store_design, [name]: value })
 
   }

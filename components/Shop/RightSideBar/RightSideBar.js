@@ -54,12 +54,12 @@ const RightSideBAr = (props) => {
                 },
                 "subtitle": {
                     "text": store_design.st_design_header_subtitle_text,
-                    "color": store_design.st_design_main_background_color,
+                    "color": store_design.st_design_header_subtitle_color,
                     "font": store_design.st_design_st_design_header_subtitle_font_family
                 },
             },
             "main": {
-                "background_color": store_design.st_design_footer_background_color,
+                "background_color": store_design.st_design_main_background_color,
                 "widget": "p2"
             },
             "footer": {

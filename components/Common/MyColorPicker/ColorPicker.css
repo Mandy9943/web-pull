@@ -25,6 +25,10 @@
     width: 18px;
     
 }
+.color_edit span:hover{
+   cursor: pointer;
+    
+}
 
 .color_edit span svg{
     height: 18px;

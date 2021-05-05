@@ -147,7 +147,7 @@ export default async function shopQuickConfig(quick_config) {
 
     if (result.value) { // Generar estructura de datos a enviar
         // TODO improve all this
-        console.log(result.value)
+        
         const configObj = {
             "header": {
                 "background_img": result.value[0],
@@ -187,7 +187,7 @@ export default async function shopQuickConfig(quick_config) {
             allowOutsideClick: false,
             preConfirm: () => {
                 let result = quick_config(configObj);
-                console.log(result)
+                
             }
         })
 

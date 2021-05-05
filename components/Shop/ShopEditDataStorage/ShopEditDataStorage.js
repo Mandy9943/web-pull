@@ -11,7 +11,7 @@ import {
 
 export default function ShopEditDataStorage({ store_name, cb, saveDomain, store_design,quick_config }) {
 
-    console.log(store_name)
+    
     const [display, setDisplay] = useState(false);
     const [domain, setDomain] = useState(store_name || '')
 
