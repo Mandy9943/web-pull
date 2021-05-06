@@ -22,6 +22,7 @@ export default class listProductMovil extends Component {
     componentDidMount() {
         getProductsBasic("Computación", 5)
             .then((response) => {
+                console.log("response",response)
                 this.setState(
                     { products: response.data.results }
                 );
