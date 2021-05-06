@@ -31,6 +31,7 @@ export default class PaymentWay extends Component {
 		super(props);
 		this.state = {
 			productQuantity: this.props.cantidad,
+			shownPaymentOption: 0,
 			closeCredit: true,
 			closeCash: true,
 			closeTransfer: true,
@@ -94,6 +95,24 @@ export default class PaymentWay extends Component {
 		getData('/getAddresses', this.props.user.jwt).then((response) => {
 			this.setState({ addresses: response.data, addrLoaded: true, modalAddr: false, modal: false });
 		});
+	};
+
+	hidePaymentOptions = (option) => {
+		if (option === 1) {
+			this.setState({
+				shownPaymentOption: 1,
+			});
+		}
+		if (option === 2) {
+			this.setState({
+				shownPaymentOption: 2,
+			});
+		}
+		if (option === 3) {
+			this.setState({
+				shownPaymentOption: 3,
+			});
+		}
 	};
 
 	accordionCredit = () => {
@@ -234,6 +253,7 @@ export default class PaymentWay extends Component {
 
 	payCash = async (e) => {
 		e.preventDefault();
+		this.hidePaymentOptions(2);
 		const cashPayload = {
 			product_id: this.props.data.product_id,
 			full_name: e.target.elements.cash_form_name.value,
@@ -467,9 +487,13 @@ export default class PaymentWay extends Component {
 
 						<div className="content-payment-way">
 							<div className="way-to-pay">
-								<div className="credit payment-way-box" onClick={() => this.accordionCredit()}>
-									<p>Crédito</p>
-								</div>
+								{this.state.shownPaymentOption === 0 || this.state.shownPaymentOption === 1 ? (
+									<div className="credit payment-way-box" onClick={() => this.accordionCredit()}>
+										<p>Crédito</p>
+									</div>
+								) : (
+									''
+								)}
 								<div
 									className={
 										this.state.closeCredit
@@ -549,16 +573,24 @@ export default class PaymentWay extends Component {
 										<label htmlFor={'tos_cb'}>Aceptar terminos y condiciones </label>
 										<InputTip msg={this.state.tips.acceptance_token} />
 									</div>
-									<button type="submit" form="form-credit" className="button-continue main-button">
+									<button
+										onClick={() => this.hidePaymentOptions(1)}
+										type="submit"
+										form="form-credit"
+										className="button-continue main-button"
+									>
 										<p>Pagar</p>
 									</button>
 
 									{this.state.cc_error && <Error message={this.state.cc_error} />}
 								</div>
-
-								<div className="cash payment-way-box" onClick={() => this.accordionCash()}>
-									<p>Efectivo</p>
-								</div>
+								{this.state.shownPaymentOption === 0 || this.state.shownPaymentOption === 2 ? (
+									<div className="cash payment-way-box" onClick={() => this.accordionCash()}>
+										<p>Efectivo</p>
+									</div>
+								) : (
+									''
+								)}
 								<div
 									className={
 										this.state.closeCash ? 'accordion-payment-way' : 'accordion-payment-way active'
@@ -592,11 +624,16 @@ export default class PaymentWay extends Component {
 										/>
 									)}
 								</div>
-
-								<div className="transfer payment-way-box" onClick={() => this.accordionTransfer()}>
-									<p>Transferencia desde PSE</p>
-								</div>
-
+								{this.state.shownPaymentOption === 0 || this.state.shownPaymentOption === 3 ? (
+									<div
+										className="transfer payment-way-box"
+										onClick={() => this.accordionTransfer()}
+									>
+										<p>Transferencia desde PSE</p>
+									</div>
+								) : (
+									''
+								)}
 								<form onSubmit={this.payPSE}>
 									<div
 										className={
@@ -644,7 +681,11 @@ export default class PaymentWay extends Component {
 													<input name={'document_number'} placeholder="Número documento" />
 												</label>
 
-												<button type="submit" className="button-continue main-button">
+												<button
+													onClick={() => this.hidePaymentOptions(3)}
+													type="submit"
+													className="button-continue main-button"
+												>
 													<p>Continuar con la compra</p>
 												</button>
 											</div>

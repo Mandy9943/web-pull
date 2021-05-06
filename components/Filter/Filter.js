@@ -88,30 +88,25 @@ class Filter extends Component {
 
 		if (this.props.data && this.props.data.max_price) {
 			var max_price = this.props.data.max_price;
-			let top = 0;
-
-			if (max_price > 99999999999) {
-				top = 100000000000;
-			} else if (max_price > 9999999999) {
-				top = 10000000000;
-			} else if (max_price > 999999999) {
-				top = 1000000000;
-			} else if (max_price > 99999999) {
-				top = 100000000;
-			} else if (max_price > 9999999) {
-				top = 10000000;
-			} else if (max_price > 999999) {
-				top = 1000000;
-			} else if (max_price > 99999) {
-				top = 100000;
-			} else if (max_price > 9999) {
-				top = 10000;
-			} else if (max_price > 999) {
-				top = 1000;
-			} else if (max_price > 99) {
-				top = 100;
-			} else if (max_price > 9) {
-				top = 10;
+			let top = Math.round((max_price * 0.1) / 100000) * 100000;
+			if (top > 1000000) {
+				if (max_price > 9999999) {
+					top = 1000000;
+				} else if (max_price > 999999) {
+					top = 100000;
+				} else if (max_price > 99999) {
+					top = 10000;
+				} else if (max_price > 9999) {
+					top = 1000;
+				} else if (max_price > 999) {
+					top = 100;
+				} else if (max_price > 99) {
+					top = 10;
+				} else if (max_price > 9) {
+					top = 1;
+				} else if (max_price > 0.9) {
+					top = 0.1;
+				}
 			}
 
 			function moneyFormater(price) {
