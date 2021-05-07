@@ -20,6 +20,8 @@ import ShopEdit from "./ShopEdit/ShopEdit";
 import ShopEditScreen from "./ShopEditScreen";
 import ShopEditMenu from "./ShopEditMenu";
 import ShopAnalytics from "./ShopAnalytics";
+import ShopGoogleAds from "./ShopGoogleAds";
+import ShopFacebookPixel from "./ShopFacebookPixel";
 import ShopEditDomain from "./ShopEditDomain";
 import ShopEditDataStorage from './ShopEditDataStorage'
 import { findKeyValueInArr } from '../../lib/functions'
@@ -58,7 +60,7 @@ const Shop = ({ store_data, user_data }) => {
   const [store_domain, setStoreDomain] = useState(st_data.domain)
   const [store_status, setStoreStatus] = useState(st_data.store.status)
 
-  
+  const [facebook_pixel, setFacebookPixel] = useState(st_data.facebook_pixel)
 
 
 
@@ -92,7 +94,9 @@ const Shop = ({ store_data, user_data }) => {
     stdata: false,
     ws: false,
     marketing: false,
-    analytics: false
+    analytics: false,
+    facebookPixel: false,
+    googleAds: false
   })
 
   const [show_edit_section, setShow_edit_sectionState] = useState("main")
@@ -134,7 +138,7 @@ const Shop = ({ store_data, user_data }) => {
 
   const setDesignValues = (name, value) => {
 
-   
+
     setStoreDesign({ ...store_design, [name]: value })
 
   }
@@ -174,6 +178,11 @@ const Shop = ({ store_data, user_data }) => {
 
   const onQuickConfig = async (data) => {
     update_store(store_domain, user_data.jwt, { design: data })
+  }
+
+  const onSaveFacebookPixel = async () => {
+    
+    update_store(store_domain, user_data.jwt, { facebook_pixel: facebook_pixel })
   }
 
 
@@ -289,6 +298,40 @@ const Shop = ({ store_data, user_data }) => {
             section={{ text: "Google analytics", key: "analytics" }}
           >
             <ShopAnalytics
+              cb={showSection}
+            />
+          </ShopEditScreen>
+        }
+        {display.googleAds &&
+          <ShopEditScreen
+            cb={showSection}
+            section={{ text: "Google Ads", key: "googleAds" }}
+          >
+            <ShopGoogleAds
+              cb={showSection}
+            />
+          </ShopEditScreen>
+        }
+        {display.facebookPixel &&
+          <ShopEditScreen
+            cb={showSection}
+            section={{ text: "Facebook Pixel", key: "facebookPixel" }}
+
+          >
+            <ShopFacebookPixel
+              cb={showSection}
+              onSaveFacebookPixel={onSaveFacebookPixel}
+              facebook_pixel={facebook_pixel}
+              setFacebookPixel={setFacebookPixel}
+            />
+          </ShopEditScreen>
+        }
+        {display.facebook &&
+          <ShopEditScreen
+            cb={showSection}
+            section={{ text: "Facebook", key: "facebook" }}
+          >
+            <ShopFacebook
               cb={showSection}
             />
           </ShopEditScreen>

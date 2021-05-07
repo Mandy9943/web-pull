@@ -1,12 +1,12 @@
 import React from "react";
 import Link from "next/link";
-import "./ShopAnalytics.sass";
+import "./ShopGoogleAds.sass";
 
-export default function ShopAnalytics({cb}) {
+export default function ShopGoogleAds({cb}) {
     return (
         <section className="edit-menu">
             <header>
-                <h4>Instala Google Analytics</h4>
+                <h4>Instala Google Ads</h4>
                 <p>Obten toda la informacion necesaria de tus visitantes y sacale provecho
                 a tus campanas de marketing.</p>
             </header>

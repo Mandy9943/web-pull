@@ -1,12 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import "./ShopAnalytics.sass";
+import "./ShopFacebookPixel.sass";
 
-export default function ShopAnalytics({cb}) {
+export default function ShopFacebookPixel({ cb, facebook_pixel, setFacebookPixel, onSaveFacebookPixel }) {
+    const [activate, setActivate] = useState(facebook_pixel ? true : false)
+
+    const onChangeValue = (value) => {
+         
+        setFacebookPixel(value)
+        
+        
+    }
+
+    const handleCheckboxChange =()=>{
+        setActivate(!activate)
+        setFacebookPixel('')
+    }
+
+
+
+
     return (
-        <section className="edit-menu">
+        <section className="edit-menu-facebook-pixel">
             <header>
-                <h4>Instala Google Analytics</h4>
+                <h4>Vinculate a Facebook</h4>
                 <p>Obten toda la informacion necesaria de tus visitantes y sacale provecho
                 a tus campanas de marketing.</p>
             </header>
@@ -18,7 +35,21 @@ export default function ShopAnalytics({cb}) {
                         <a className="help">Ayuda</a>
                     </Link>
                 </div>
-                <textarea name="textarea" id="textarea"></textarea>
+                <div>
+                    <label><input type="checkbox" checked={activate}
+                      onChange={handleCheckboxChange}  
+                    />Activar Pixel de Facebook </label>
+
+                </div>
+                <div>
+                    {activate &&
+                        <>
+
+                            <label>Codigo de Pixel<input type="text" className="codigo" value={facebook_pixel||''}
+                                onChange={(e) => onChangeValue(e.target.value)}></input>  </label>
+                        </>
+                    }
+                </div>
                 <p>Una vez agregues tu codigo configuraremos el seguimiento de comercio electronico.
                     Para hacerlo funcionar debe ser habilitado desde el administrador de Google Analytics.</p>
             </main>
@@ -28,8 +59,9 @@ export default function ShopAnalytics({cb}) {
                         backgroundColor: '#b9b9b9',
                         color: 'white'
                     }}
-                    onClick={(e)=>{
+                    onClick={(e) => {
                         e.preventDefault();
+                        onSaveFacebookPixel().then(console.log('salvo'))
                     }}
                 >Confirmar</button>
                 <button
@@ -37,7 +69,7 @@ export default function ShopAnalytics({cb}) {
                         backgroundColor: '#F3F3F3',
                         color: 'red'
                     }}
-                    onClick={(e)=>{
+                    onClick={(e) => {
                         cb('start', e)
                     }}
                 >Cancelar</button>

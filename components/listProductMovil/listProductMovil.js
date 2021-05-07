@@ -28,10 +28,11 @@ export default class listProductMovil extends Component {
             });
     }
 
+    
     render() {
 
         
-        const productList = this.state.products.map((product, i) => {
+        const productList = this.state.products && this.state.products.map((product, i) => {
             let image_url = product.image ?
                 getImgUrl(product.image) :
                 "https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png"
@@ -58,7 +59,7 @@ export default class listProductMovil extends Component {
             </div>)
         });
 
-        console.log(productList)
+        
 
         return (
             <div>
