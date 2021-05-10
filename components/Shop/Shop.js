@@ -61,8 +61,9 @@ const Shop = ({ store_data, user_data }) => {
   const [store_status, setStoreStatus] = useState(st_data.store.status)
 
   const [facebook_pixel, setFacebookPixel] = useState(st_data.facebook_pixel)
+  const [google_analytic, setGoogleAnalytic] = useState(st_data.google_analytic)
 
-
+  const [hasChange, setHasChange] = useState(false)
 
   const [store_design, setStoreDesign] = useState({
     st_design_header_backgroundimage: st_data.design.header.background_img,
@@ -181,8 +182,11 @@ const Shop = ({ store_data, user_data }) => {
   }
 
   const onSaveFacebookPixel = async () => {
-    
     update_store(store_domain, user_data.jwt, { facebook_pixel: facebook_pixel })
+  }
+  const onSaveGoogleAnalytic = async () => {
+    console.log(encodeURI(google_analytic))    
+    update_store(store_domain, user_data.jwt, { google_analytic: google_analytic })
   }
 
 
@@ -250,7 +254,9 @@ const Shop = ({ store_data, user_data }) => {
               store_design={store_design}
               setDesignValues={setDesignValues}
               quick_config={onQuickConfig}
-            />
+              hasChange={hasChange}
+              setHasChange={setHasChange}  
+                        />
           </>
         }
 
@@ -299,6 +305,11 @@ const Shop = ({ store_data, user_data }) => {
           >
             <ShopAnalytics
               cb={showSection}
+              onSaveGoogleAnalytic={onSaveGoogleAnalytic}
+              google_analytic={google_analytic}
+              setGoogleAnalytic={setGoogleAnalytic}
+              hasChange={hasChange}
+              setHasChange={setHasChange}
             />
           </ShopEditScreen>
         }
@@ -323,6 +334,8 @@ const Shop = ({ store_data, user_data }) => {
               onSaveFacebookPixel={onSaveFacebookPixel}
               facebook_pixel={facebook_pixel}
               setFacebookPixel={setFacebookPixel}
+              hasChange={hasChange}
+              setHasChange={setHasChange}
             />
           </ShopEditScreen>
         }

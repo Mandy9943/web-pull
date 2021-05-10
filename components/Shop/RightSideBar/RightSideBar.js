@@ -24,13 +24,12 @@ const RightSideBAr = (props) => {
 
     const {
         section_edit, setEditSection, cbConfig,
-        menu, store_design, setDesignValues, quick_config
+        menu, store_design, setDesignValues, quick_config,hasChange,setHasChange
     } = props;
 
     const [tab, setTab] = useState(1);
 
-    const [hasChange, setHasChange] = useState(false)
-
+    
     const [color, setColor] = useState()
 
 
