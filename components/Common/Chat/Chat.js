@@ -188,7 +188,6 @@ class Chat extends Component {
 					jwt={this.props.data.jwt}
 					user={this.props.data.name}
 					authenticated={this.props.data.authenticated}
-					
 				/>
 				<div className="newContainer">
 					<div className="containerChat">
@@ -207,7 +206,7 @@ class Chat extends Component {
 						</div>
 
 						<div className="chat-wrap">
-							<h5>{this.props.data.name} </h5>
+							<h5>{this.props.data.name + ' ' + this.props.data.LastName} </h5>
 							{/* <AutoScroll> */}
 							<div className="msg">
 								{this.allMessages}

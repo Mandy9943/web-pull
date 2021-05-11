@@ -6,6 +6,7 @@ import '../sass/chat.css';
 import { getChat } from '../../services/chatApi';
 import {
 	getName,
+	getLastName,
 	getUserId,
 	getJwt,
 	redirectIfNotAuthenticated,
@@ -40,6 +41,7 @@ export async function getServerSideProps(context) {
 		return {};
 	}
 	let name = getName(context);
+	let LastName = getLastName(context);
 	let usr = getUserId(context);
 	let user_id = context.params.user[0];
 	let data = null;
@@ -59,7 +61,16 @@ export async function getServerSideProps(context) {
 		// }
 	}
 	return {
-		props: { messages: data, jwt, name, chat_uid, myID: usr, user_id, authenticated },
+		props: {
+			messages: data,
+			jwt,
+			name,
+			LastName,
+			chat_uid,
+			myID: usr,
+			user_id,
+			authenticated,
+		},
 	};
 }
 
