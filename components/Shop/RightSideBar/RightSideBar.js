@@ -12,6 +12,8 @@ import { HexColorPicker } from "react-colorful";
 import InputColor from 'react-input-color';
 import { ChromePicker } from 'react-color'
 
+import { useForm } from 'react-hook-form'
+
 //import state from "sweetalert/typings/modules/state";
 
 
@@ -21,15 +23,18 @@ import { ChromePicker } from 'react-color'
 
 const RightSideBAr = (props) => {
 
+    const { register, handleSubmit, formState: { errors } } = useForm()
 
     const {
         section_edit, setEditSection, cbConfig,
-        menu, store_design, setDesignValues, quick_config,hasChange,setHasChange
+        menu, store_design, setDesignValues, quick_config, hasChange, setHasChange
     } = props;
+
+
 
     const [tab, setTab] = useState(1);
 
-    
+
     const [color, setColor] = useState()
 
 
@@ -77,6 +82,13 @@ const RightSideBAr = (props) => {
         const response = quick_config(design)
         response && setHasChange(false)
 
+    }
+
+    const onSubmitForm = () => {
+       
+        setHasChange(false)
+        onSaveDesign()
+        
     }
 
 
@@ -178,7 +190,7 @@ const RightSideBAr = (props) => {
                                 </div>
                                 <div>
                                     <p>Fondo</p>
-                                    <div     style={{ background: store_design.st_design_main_background_color }} >
+                                    <div style={{ background: store_design.st_design_main_background_color }} >
                                         <HexColorPicker color={store_design.st_design_main_background_color} onChange={
 
                                             (color) => handleDesign("st_design_main_background_color", color)
@@ -187,7 +199,7 @@ const RightSideBAr = (props) => {
                                 </div>
                                 <div>
                                     <p>Titulo</p>
-                                    <div  style={{ background: store_design.st_design_header_title_color }} >
+                                    <div style={{ background: store_design.st_design_header_title_color }} >
                                         <HexColorPicker color={store_design.st_design_header_title_color} onChange={
 
                                             (color) => handleDesign("st_design_header_title_color", color)
@@ -196,7 +208,7 @@ const RightSideBAr = (props) => {
                                 </div>
                                 <div>
                                     <p>Subtitulo</p>
-                                    <div  style={{ background: store_design.st_design_header_subtitle_color }} >
+                                    <div style={{ background: store_design.st_design_header_subtitle_color }} >
                                         <HexColorPicker color={store_design.st_design_header_subtitle_color} onChange={
 
                                             (color) => handleDesign("st_design_header_subtitle_color", color)
@@ -217,81 +229,94 @@ const RightSideBAr = (props) => {
                         <span onClick={() => setEditSection("main")}><FontAwesomeIcon icon={faArrowLeft} /></span>
                         <h4>Edici&oacute;n</h4>
                     </header>
-                    <main>
-                        <p>Edit Section</p>
-                        <div className="form-group pt-2">
-                            <label htmlFor="exampleInputEmail1">Background Image URL</label>
-                            <input type="email" className="form-control" id="exampleInputEmail2"
-                                name="st_design_header_backgroundimage" aria-describedby="emailHelp" placeholder="URL de la imagen de fondo"
-                                value={store_design.st_design_header_backgroundimage}
-                                onChange={(e) => handleDesign(e.target.name, e.target.value)} />
+                    <form onSubmit={handleSubmit(onSubmitForm)}>
+                        <main>
+
+                            
+                            <div className="form-group pt-2">
+                                <label htmlFor="exampleInputEmail1">Background Image URL</label>
+                                <input type="text" className="form-control" id="exampleInputEmail2"
+                                    name="st_design_header_backgroundimage"  placeholder="URL de la imagen de fondo"
+                                    value={store_design.st_design_header_backgroundimage}
+                                    {...register('st_design_header_backgroundimage',{ pattern: /[(http(s)?):\/\/(www\.)?a-zA-Z0-9-@:%.\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%\+.~#?&//=]*)/})}
+                                    onChange={(e) => handleDesign(e.target.name, e.target.value)} />
+                                {errors.st_design_header_backgroundimage && <span className="error">Introduzca url a una imagen</span>}
+
+                            </div>
+
+                            <div className="form-group pt-2">
+                                <label htmlFor="exampleInputEmail3">Tipografia del Titulo</label>
+
+                                <select className="form-select " name="st_design_header_title_font_family"
+                                    onChange={(e) => handleDesign(e.target.name, e.target.value)}>
+                                    <option value="Arial, sans-serif" >Arial</option>
+                                    <option value="Verdana" >Verdana</option>
+                                    <option value="Gill Sans, sans-serif">Gill Sans</option>
+                                    <option value="Times New Roman, serif">Times New Roman</option>
+                                </select>
 
 
-                        </div>
-
-                        <div className="form-group pt-2">
-                            <label htmlFor="exampleInputEmail3">Tipografia del Titulo</label>
-
-                            <select className="form-select " name="st_design_header_title_font_family"
-                                onChange={(e) => handleDesign(e.target.name, e.target.value)}>
-                                <option value="Arial, sans-serif" >Arial</option>
-                                <option value="Verdana" >Verdana</option>
-                                <option value="Gill Sans, sans-serif">Gill Sans</option>
-                                <option value="Times New Roman, serif">Times New Roman</option>
-                            </select>
-
-
-                        </div>
-                        <div className="form-group pt-2">
-                            <label htmlFor="exampleInputEmail4">Texto del Subtitulo</label>
-                            <input type="email" className="form-control" id="exampleInputEmail5"
-                                name="st_design_header_subtitle_text" aria-describedby="emailHelp" placeholder="Introduce el subtitulo"
-                                value={store_design.st_design_header_subtitle_text}
-                                onChange={(e) => handleDesign(e.target.name, e.target.value)}
-                            />
+                            </div>
+                            <div className="form-group pt-2">
+                                <label htmlFor="exampleInputEmail4">Texto del Subtitulo</label>
+                                <input type="text" className="form-control" id="exampleInputEmail5"
+                                    name="st_design_header_subtitle_text" aria-describedby="emailHelp" placeholder="Introduce el subtitulo"
+                                    value={store_design.st_design_header_subtitle_text}
+                                    {...register('st_design_header_subtitle_text', 
+                                    { pattern: /^[0-9a-zA-Z. ,:]+$/})}
+                                    onChange={(e) => handleDesign(e.target.name, e.target.value)}
+                                />
+                                {errors.st_design_header_subtitle_text && <span className="error">Introduzca el subtitulo</span>}
 
 
-                        </div>
+                            </div>
 
-                        <div className="form-group pt-2">
-                            <label htmlFor="exampleInputEmail6">Tipografia del Subtitulo</label>
+                            <div className="form-group pt-2">
+                                <label htmlFor="exampleInputEmail6">Tipografia del Subtitulo</label>
 
-                            <select className="form-select " name="st_design_st_design_header_subtitle_font_family"
-                                onChange={(e) => handleDesign(e.target.name, e.target.value)}>
-                                <option value="Arial, sans-serif" >Arial</option>
-                                <option value="Helvetica, sans-serif" >Helvetica</option>
-                                <option value="Gill Sans, sans-serif">Gill Sans</option>
-                                <option value="Times New Roman, serif">Times New Roman</option>
-                            </select>
+                                <select className="form-select " name="st_design_st_design_header_subtitle_font_family"
+                                    onChange={(e) => handleDesign(e.target.name, e.target.value)}>
+                                    <option value="Arial, sans-serif" >Arial</option>
+                                    <option value="Helvetica, sans-serif" >Helvetica</option>
+                                    <option value="Gill Sans, sans-serif">Gill Sans</option>
+                                    <option value="Times New Roman, serif">Times New Roman</option>
+                                </select>
 
-                        </div>
+                            </div>
 
-                        <div className="form-group pt-2">
-                            <label htmlFor="exampleInputEmail9">Texto del Footer</label>
-                            <input type="email" className="form-control" id="exampleInputEmail9"
-                                name="st_design_st_design_footer_copyright" aria-describedby="emailHelp" placeholder="Texto del Copyright"
-                                value={store_design.st_design_st_design_footer_copyright}
-                                onChange={(e) => handleDesign(e.target.name, e.target.value)} />
+                            <div className="form-group pt-2">
+                                <label htmlFor="exampleInputEmail9">Texto del Footer</label>
+                                <input type="text" className="form-control" id="exampleInputEmail9"
+                                    name="st_design_st_design_footer_copyright" aria-describedby="emailHelp" placeholder="Texto del Copyright"
+                                    value={store_design.st_design_st_design_footer_copyright}
+                                    {...register('st_design_st_design_footer_copyright', 
+                                    { pattern: /^[0-9a-zA-Z. ,:]+$/})}
+                                   
+                                    onChange={(e) => handleDesign(e.target.name, e.target.value)} />
+                                    {errors.st_design_st_design_footer_copyright && <span className="error">Introduzca Copyright</span>}
+
+                            </div>
+                            <div className="form-group pt-2">
+                                <label htmlFor="exampleInputEmail10">Logo Footer URL</label>
+                                <input type="text" className="form-control" id="exampleInputEmail10"
+                                    name="st_design_footer_logo" aria-describedby="emailHelp" placeholder="Intrudzca url de imagen "
+                                    value={store_design.st_design_footer_logo}
+                                    {...register('st_design_footer_logo', 
+                                    { pattern: /[(http(s)?):\/\/(www\.)?a-zA-Z0-9-@:%.\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%\+.~#?&//=]*)/})}
+                                   
+                                    onChange={(e) => handleDesign(e.target.name, e.target.value)} />
+                                    {errors.st_design_footer_logo && <span className="error">Introduzca url a una imagen</span>}
 
 
-                        </div>
-                        <div className="form-group pt-2">
-                            <label htmlFor="exampleInputEmail10">Logo Footer URL</label>
-                            <input type="email" className="form-control" id="exampleInputEmail10"
-                                name="st_design_footer_logo" aria-describedby="emailHelp" placeholder="Enter email"
-                                value={store_design.st_design_footer_logo}
-                                onChange={(e) => handleDesign(e.target.name, e.target.value)} />
-
-
-                        </div>
+                            </div>
 
 
 
 
-                    </main>
-                    <button disabled={!hasChange} onClick={onSaveDesign}>Actualizar</button>
+                        </main>
+                        <button disabled={!hasChange} type="submit" >Actualizar</button>
 
-
+                    </form>
                 </>
 
             }

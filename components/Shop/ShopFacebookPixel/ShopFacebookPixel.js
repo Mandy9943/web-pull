@@ -10,7 +10,7 @@ export default function ShopFacebookPixel({ cb, facebook_pixel, setFacebookPixel
     const { register, handleSubmit, formState: { errors } } = useForm()
 
     const onChangeValue = (value) => {
-
+        setHasChange(true)
         setFacebookPixel(value)
     }
 
@@ -68,7 +68,7 @@ export default function ShopFacebookPixel({ cb, facebook_pixel, setFacebookPixel
                         }
                     </div>
                     <p>Una vez agregues tu codigo configuraremos el seguimiento de comercio electronico.
-                    Para hacerlo funcionar debe ser habilitado desde el administrador de Google Analytics.</p>
+                    Para hacerlo funcionar debe ser habilitado desde el administrador de Facebook Pixel.</p>
                 </main>
                 <footer>
                     <button
