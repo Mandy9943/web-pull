@@ -5,6 +5,8 @@ import Modal from "./../Common/Modal";
 import PaymentDetail from './PaymentDetail';
 import WarrantyDetail from './WarrantyDetail';
 import SendDetail from './SendDetail';
+import {sendQuestionSocketChat} from "../../components/Services/kierochat-socket"
+import swal from 'sweetalert';
 
 class Question extends Component {
 
@@ -23,15 +25,24 @@ class Question extends Component {
     e.preventDefault();
     const question = e.target.elements.question.value;
     if (question !== "") {
-      const r = await sendQuestion(question, this.props.product_id, this.props.user_data.jwt);
-      console.log(r);
-      if (r.data.result === "ok") {
+        sendQuestionSocketChat(question, this.props.market_id, this.props.product_id)
+      // const r = await sendQuestion(question, this.props.product_id, this.props.user_data.jwt);
+       // console.log(r);
+      // if (r.data.result === "ok") {
+      //   this.cngQuestion("");
+      //   this.props.cb();
+      //   alert("Pregúnta enviada");
+      // } else {
+      //   alert("No se ha podido enviar la pregúnta, intentelo nuevamente.")
+      // }
         this.cngQuestion("");
         this.props.cb();
-        alert("Pregúnta enviada");
-      } else {
-        alert("No se ha podido enviar la pregúnta, intentelo nuevamente.")
-      }
+        swal({
+          title: "Excelente!",
+          text: "La pregunta fue enviada correctamente!",
+          icon: "success",
+        });
+        // alert("Pregúnta enviada");
     } else {
       alert("Escriba una pregunta.")
     }
@@ -48,7 +59,7 @@ class Question extends Component {
   }
 
   render() {
-
+// console.log("id user", this.props, "id market",this.props.market_id, "id product",this.props.product_id,"pregunta")
     return (
       <div className="wrap-question">
         <h3>Preguntas y respuestas</h3>
@@ -67,7 +78,7 @@ class Question extends Component {
         </div>
         { this.props.user_data.authenticated &&
           <div className="">
-            <form className="wrap-question-input" onSubmit={this.newQuestion}>
+            <form className="wrap-question-input newquestionsocketchat" onSubmit={this.newQuestion}>
               <input type="text" name={"question"} placeholder="Pregunta al vendedor" />
               <button type="submit" className="button-question-product-detail">Preguntar</button>
             </form>
