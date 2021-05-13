@@ -136,7 +136,6 @@ export default class Help extends Component {
 
 		const filter = this.searchBoxRef.current.value.toUpperCase();
 		const li = this.resultBoxRef.current.getElementsByTagName('li');
-
 		//Recorriendo elementos a filtrar mediante los "li"
 		for (let i = 0; i < li.length; i++) {
 			let a = li[i].getElementsByTagName('div')[0];
@@ -145,11 +144,13 @@ export default class Help extends Component {
 			if (textValue.toUpperCase().indexOf(filter) > -1) {
 				li[i].style.display = '';
 				this.resultBoxRef.current.style.display = 'block';
+				li[14].style.display = 'none';
 				if (this.searchBoxRef.current.value === '') {
 					this.resultBoxRef.current.style.display = 'none';
 				}
 			} else {
 				li[i].style.display = 'none';
+				li[14].style.display = 'block';
 			}
 		}
 	};
@@ -290,6 +291,9 @@ export default class Help extends Component {
 											</div>
 										</li>
 									</Link>
+									<li id="noneResults">
+										<div id="noneResults">No hay coincidencias</div>
+									</li>
 								</ul>
 							) : (
 								''
@@ -298,23 +302,25 @@ export default class Help extends Component {
 					</div>
 				</div>
 				<div className="content-help">
-					<div className={this.state.accordionTip ? 'help-tip-1' : 'help-tip-1 active'}>
+					<div
+						className={this.state.accordionTip ? 'help-tip-1' : 'help-tip-1 helpActive'}
+					>
 						<p>
-							En el momento que tengas el producto, puedes dejar un comentario al vendedor, este se
-							mostrara en su perfil. La forma de realizar este comentario depende como hayas
-							recibido el producto.
+							En el momento que tengas el producto, puedes dejar un comentario al
+							vendedor, este se mostrara en su perfil. La forma de realizar este
+							comentario depende como hayas recibido el producto.
 						</p>
 						<h5>A través de Kiero Envíos</h5>
 						<p>
-							En esta opición encontrarás en el menú de listado de compras, alli podrás opinar sobre
-							el vendedor
+							En esta opición encontrarás en el menú de listado de compras, alli podrás
+							opinar sobre el vendedor
 						</p>
 						<h5>Entrega acordada</h5>
 						<p>
-							Si acordaste la entrega personalemente con el vendor, o en su defecto usó una forma
-							propia de envío te haremos llegar un email asi podremos asegurarnos de que recibiste
-							el producto de forma correcta. Una vez confirmado el estado y experiencia de tu
-							entrega podrás dejar un comentario.
+							Si acordaste la entrega personalemente con el vendor, o en su defecto usó
+							una forma propia de envío te haremos llegar un email asi podremos
+							asegurarnos de que recibiste el producto de forma correcta. Una vez
+							confirmado el estado y experiencia de tu entrega podrás dejar un comentario.
 						</p>
 						{/*NEED FIX THIS SHIT*/}
 						<Link href="/cuenta#orders">
@@ -325,7 +331,7 @@ export default class Help extends Component {
 					</div>
 
 					{this.state.accordionAskInPostTitle ? null : (
-						<div className="help-left active">
+						<div className="help-left helpActive">
 							<Link href="#">
 								<a className="help-button">
 									<p>Han eliminado una pregunta que he realizado</p>
@@ -341,7 +347,11 @@ export default class Help extends Component {
 					{this.state.accordionTip2 ? (
 						<>
 							{this.state.accordionAskInPostTitle ? (
-								<div className={this.state.accordionTip ? 'help-left active ' : 'help-left off'}>
+								<div
+									className={
+										this.state.accordionTip ? 'help-left helpActive ' : 'help-left off'
+									}
+								>
 									{/*<Link href="#">
                                     <a className="help-button">
                                         <p className="help-icon">
@@ -373,10 +383,13 @@ export default class Help extends Component {
 							) : null}{' '}
 						</>
 					) : (
-						<div className="help-left active">
+						<div className="help-left helpActive">
 							<Link href="/contactanos_email">
 								<a className="help-button">
-									<p>Contáctanos por e-mail Te enviaremos un formulario y los requerimientos</p>
+									<p>
+										Contáctanos por e-mail Te enviaremos un formulario y los
+										requerimientos
+									</p>
 								</a>
 							</Link>
 							<Link href="/contactanos_wsp">
@@ -401,7 +414,7 @@ export default class Help extends Component {
 							className={
 								this.state.accordionTitleBuy
 									? 'help-accordion-title fisrt-element'
-									: 'help-accordion-title active'
+									: 'help-accordion-title helpActive'
 							}
 							onClick={() => this.accordionBuy()}
 						>
@@ -410,12 +423,16 @@ export default class Help extends Component {
 								<FontAwesomeIcon icon={this.state.helpIconBuy} />
 							</p>
 						</div>
-						<div className={this.state.closeBuy ? 'help-accordion' : 'help-accordion active'}>
+						<div
+							className={
+								this.state.closeBuy ? 'help-accordion' : 'help-accordion helpActive'
+							}
+						>
 							<p
 								className={
 									this.state.accordionBuyHelpTitle
 										? 'help-buy-accordion-title'
-										: 'help-buy-accordion-title active'
+										: 'help-buy-accordion-title helpActive'
 								}
 								onClick={() => this.accordionBuyHelp()}
 							>
@@ -423,7 +440,9 @@ export default class Help extends Component {
 							</p>
 							<div
 								className={
-									this.state.closeBuyHelp ? 'help-buy-accordion' : 'help-buy-accordion active'
+									this.state.closeBuyHelp
+										? 'help-buy-accordion'
+										: 'help-buy-accordion helpActive'
 								}
 							>
 								<Link href="/reputacion_de_vendedor">
@@ -459,7 +478,7 @@ export default class Help extends Component {
 								className={
 									this.state.accordionAskInPostTitle
 										? 'ask-in-post-title'
-										: 'ask-in-post-title active'
+										: 'ask-in-post-title helpActive'
 								}
 								onClick={() => this.accordionAskInPost()}
 							>
@@ -469,7 +488,7 @@ export default class Help extends Component {
 								className={
 									this.state.closeAskInPost
 										? 'ask-in-post-accordion'
-										: 'ask-in-post-accordion active'
+										: 'ask-in-post-accordion helpActive'
 								}
 							>
 								<p>Han eliminado una pregunta que he realizado</p>
@@ -484,7 +503,7 @@ export default class Help extends Component {
 							className={
 								this.state.accordionTitleAccount
 									? 'help-accordion-title'
-									: 'help-accordion-title active'
+									: 'help-accordion-title helpActive'
 							}
 							onClick={() => this.accordionAccount()}
 						>
@@ -493,7 +512,11 @@ export default class Help extends Component {
 								<FontAwesomeIcon icon={this.state.helpIconAccount} />
 							</p>
 						</div>
-						<div className={this.state.closeAccount ? 'help-accordion' : 'help-accordion active'}>
+						<div
+							className={
+								this.state.closeAccount ? 'help-accordion' : 'help-accordion helpActive'
+							}
+						>
 							<a onClick={() => this.accordionTip2()}>
 								<p>Crear una cuenta como empresa</p>
 							</a>
@@ -519,7 +542,7 @@ export default class Help extends Component {
 							className={
 								this.state.accordionTitleSecurity
 									? 'help-accordion-title'
-									: 'help-accordion-title active'
+									: 'help-accordion-title helpActive'
 							}
 							onClick={() => this.accordionSecurity()}
 						>
@@ -528,7 +551,11 @@ export default class Help extends Component {
 								<FontAwesomeIcon icon={this.state.helpIconSecurity} />
 							</p>
 						</div>
-						<div className={this.state.closeSecurity ? 'help-accordion' : 'help-accordion active'}>
+						<div
+							className={
+								this.state.closeSecurity ? 'help-accordion' : 'help-accordion helpActive'
+							}
+						>
 							<Link href="/proteccion_comprador">
 								<a>
 									<p>Protección al comprador</p>

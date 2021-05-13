@@ -58,22 +58,81 @@
 
 .help .help-top .content-help-top .help-search .help-result-box {
 	position: fixed;
-	width: 440px;
+	width: 610px;
+	height: 80px;
 	top: 165px;
-	right: 192px;
+	right: 290px;
 	background-color: white;
 	text-decoration: none;
-	overflow: hidden;
+	overflow: auto;
+	overflow-x: hidden;
 	font: 400 13.3333px Arial;
 }
 
+.help .help-top .content-help-top .help-search .help-result-box::-webkit-scrollbar {
+	-webkit-appearance: none;
+}
+
+.help
+	.help-top
+	.content-help-top
+	.help-search
+	.help-result-box::-webkit-scrollbar:vertical {
+	width: 10px;
+}
+
+.help
+	.help-top
+	.content-help-top
+	.help-search
+	.help-result-box::-webkit-scrollbar-button:increment,
+.help
+	.help-top
+	.content-help-top
+	.help-search
+	.help-result-box::-webkit-scrollbar-button {
+	display: none;
+}
+
+.help
+	.help-top
+	.content-help-top
+	.help-search
+	.help-result-box::-webkit-scrollbar:horizontal {
+	height: 10px;
+}
+
+.help .help-top .content-help-top .help-search .help-result-box::-webkit-scrollbar-thumb {
+	background-color: #797979;
+	border-radius: 20px;
+	border: 2px solid #f1f2f3;
+}
+
+.help .help-top .content-help-top .help-search .help-result-box::-webkit-scrollbar-track {
+	border-radius: 10px;
+}
+.help .help-top .content-help-top .help-search .help-result-box::-webkit-scrollbar-track {
+	/*Estilos estándar experimentales (Principalmente Firefox)*/
+	scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0);
+	scrollbar-width: thin;
+}
+
 .help .help-top .content-help-top .help-search .help-result-box li {
-	padding: 12px;
+	padding: 6px;
 	width: 100%;
 	cursor: pointer;
 }
+
 .help .help-top .content-help-top .help-search .help-result-box li:hover {
 	background-color: #535353;
+}
+
+#noneResults {
+	cursor: text;
+}
+
+#noneResults:hover {
+	background-color: white;
 }
 
 .listIcon {
@@ -170,7 +229,7 @@
 	padding: 0px 20px 10px 20px;
 }
 
-.help .content-help .help-right .help-accordion.active {
+.help .content-help .help-right .help-accordion.helpActive {
 	display: block;
 }
 
@@ -250,7 +309,7 @@
 	display: none !important;
 }
 
-.active {
+.helpActive {
 	display: block;
 }
 /*# sourceMappingURL=Help.css.map */
