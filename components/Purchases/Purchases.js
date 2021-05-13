@@ -243,16 +243,13 @@ function Purchases(props) {
 				</>
 			)}
 			<br />
-			<Paginations />
-			{pagination && lastPage > 1 && (
-				<Pagination
-					actual={currentPage}
-					totalPages={lastPage}
-					cb={(selectPage) => {
-						paginate(selectPage);
-					}}
-				/>
-			)}
+			<Paginations
+				actual={currentPage}
+				totalPages={20}
+				cb={(selectPage) => {
+					paginate(selectPage);
+				}}
+			/>
 		</div>
 	) : (
 		<>
