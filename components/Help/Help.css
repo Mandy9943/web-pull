@@ -69,6 +69,21 @@
 	font: 400 13.3333px Arial;
 }
 
+@media (max-width: 1024px) {
+	.help .help-top .content-help-top .help-search .help-result-box {
+		width: 300px;
+		top: 126px;
+		right: 155px;
+	}
+}
+@media (max-width: 768px) {
+	.help .help-top .content-help-top .help-search .help-result-box {
+		width: 260px;
+		top: 126px;
+		right: 115px;
+	}
+}
+
 .help .help-top .content-help-top .help-search .help-result-box::-webkit-scrollbar {
 	-webkit-appearance: none;
 }

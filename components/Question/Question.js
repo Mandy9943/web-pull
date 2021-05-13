@@ -100,7 +100,7 @@ class Question extends Component {
         <Modal toggle={this.toggleModal} num="1" content={<SendDetail/>} button />
       ) : null}
       {this.state.modal2 ? (
-        <Modal toggle={this.toggleModal} num="2" content={<PaymentDetail />} button />
+        <Modal id='paymentDetailModal' toggle={this.toggleModal} num="2" content={<PaymentDetail />} button />
       ) : null}
       {this.state.modal3 ? (
         <Modal toggle={this.toggleModal} num="3" content={<WarrantyDetail />} button />
