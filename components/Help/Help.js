@@ -45,22 +45,7 @@ export default class Help extends Component {
 			accordionAskInPostTitle: true,
 		};
 	}
-	accordionBuy = () => {
-		this.setState({
-			closeBuy: !this.state.closeBuy,
-			accordionTitleBuy: !this.state.accordionTitleBuy,
-			iconBuy: !this.state.iconBuy,
-		});
-		if (this.state.iconBuy === true) {
-			this.setState({
-				helpIconBuy: faAngleDown,
-			});
-		} else if (this.state.iconBuy === false) {
-			this.setState({
-				helpIconBuy: faAngleRight,
-			});
-		}
-	};
+	 
 	accordionBuyHelp = () => {
 		this.setState({
 			closeBuyHelp: !this.state.closeBuyHelp,
