@@ -1,19 +1,59 @@
-.payment-questions{
-    padding: 3% 3%;
+.payment-questions {
+	padding: 3% 3%;
 }
 
-.payment-questions .pay-online-question{
-    width: 100%;
-    position: relative;
-    left: 0px;
-  }
-  .payment-questions .pay-transfer-question{
-    position: relative;
-    width: 100%;
-    left: 0px;
-  }
-  .payment-questions .pay-credit-question{
-    position: relative;
-    width: 100%;
-    left: 8px;
-  }
+.payment-questions .pay-online-question {
+	width: 100%;
+	position: relative;
+	left: 0px;
+}
+.payment-questions .pay-transfer-question {
+	position: relative;
+	width: 100%;
+	left: 0px;
+}
+.payment-questions .pay-credit-question {
+	position: relative;
+	width: 100%;
+	left: 8px;
+}
+
+@media (max-width: 1366px) {
+	.payment-questions {
+		font-size: 15px;
+	}
+	.payment-questions .pay-online-question {
+		width: 60%;
+		left: 120px;
+	}
+	.payment-questions .pay-transfer-question {
+		width: 60%;
+		left: 120px;
+	}
+	.payment-questions .pay-credit-question {
+		width: 60%;
+		left: 120px;
+	}
+}
+@media (max-width: 1024px) {
+	.payment-questions .pay-online-question {
+		left: 90px;
+	}
+	.payment-questions .pay-transfer-question {
+		left: 90px;
+	}
+	.payment-questions .pay-credit-question {
+		left: 90px;
+	}
+}
+@media (max-width: 768px) {
+	.payment-questions .pay-online-question {
+		left: 80px;
+	}
+	.payment-questions .pay-transfer-question {
+		left: 80px;
+	}
+	.payment-questions .pay-credit-question {
+		left: 80px;
+	}
+}
