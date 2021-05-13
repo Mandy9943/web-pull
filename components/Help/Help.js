@@ -135,22 +135,37 @@ export default class Help extends Component {
 		}
 
 		const filter = this.searchBoxRef.current.value.toUpperCase();
-		const li = this.resultBoxRef.current.getElementsByTagName('li');
+		const li = this.resultBoxRef.current
+			? this.resultBoxRef.current.getElementsByTagName('li')
+			: '';
+
+		//Almacenando numero de coincidencias
+		let numberOfCoincidences = 0;
+
 		//Recorriendo elementos a filtrar mediante los "li"
 		for (let i = 0; i < li.length; i++) {
 			let a = li[i].getElementsByTagName('div')[0];
 			let textValue = a.textContent || a.innerText;
+			console.log(numberOfCoincidences);
 
 			if (textValue.toUpperCase().indexOf(filter) > -1) {
-				li[i].style.display = '';
+				numberOfCoincidences += 1;
 				this.resultBoxRef.current.style.display = 'block';
-				li[14].style.display = 'none';
+				li[i].style.display = '';
+				if (numberOfCoincidences > -14) {
+					li[li.length - 1].style.display = 'none';
+				}
+				console.log(this.resultBoxRef.current);
+				console.log(textValue.toUpperCase().indexOf(filter));
 				if (this.searchBoxRef.current.value === '') {
 					this.resultBoxRef.current.style.display = 'none';
 				}
 			} else {
+				numberOfCoincidences -= 1;
 				li[i].style.display = 'none';
-				li[14].style.display = 'block';
+				if (numberOfCoincidences < -13) {
+					li[li.length - 1].style.display = '';
+				}
 			}
 		}
 	};
@@ -174,12 +189,12 @@ export default class Help extends Component {
 								<FontAwesomeIcon icon={faSearch} />
 							</p>
 							<input
-								onChange={() =>
+								onChange={() => this.resultSearcher()}
+								onKeyUp={() =>
 									this.setState({
 										resultBoxDisplay: true,
 									})
 								}
-								onKeyUp={() => this.resultSearcher()}
 								ref={this.searchBoxRef}
 								placeholder="Buscar soluciones"
 							/>

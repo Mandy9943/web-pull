@@ -15,7 +15,7 @@ export default function SocketChat() {
     console.log("no hay inicio de sesión")
   }else{
     socket.emit('join', {room: `kieroUser_`+user_id})
-    console.log("no hay inicio de sesión")
+    console.log("si hay inicio de sesión")
   }
     useEffect(() => {
         

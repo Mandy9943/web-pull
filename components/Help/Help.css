@@ -57,11 +57,11 @@
 }
 
 .help .help-top .content-help-top .help-search .help-result-box {
-	position: fixed;
-	width: 610px;
+	position: absolute;
+	width: 410px;
 	height: 80px;
-	top: 165px;
-	right: 290px;
+	top: 105px;
+	right: 205px;
 	background-color: white;
 	text-decoration: none;
 	overflow: auto;
