@@ -3,6 +3,7 @@ import '../styles.css'
 
 import SocketChat from "../components/Services/socket"
 import SocketUser from "../components/Services/socketuser"
+import KieroSocketChat from "../components/Services/kierochat-socket"
 
 export default function MyApp({ Component, pageProps }) {
 
@@ -10,6 +11,7 @@ export default function MyApp({ Component, pageProps }) {
     <>
       <SocketChat/>
       <SocketUser/>
+      <KieroSocketChat/>
       <Component {...pageProps} />
     </>
   )
