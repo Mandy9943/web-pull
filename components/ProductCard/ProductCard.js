@@ -5,6 +5,7 @@ import "./ProductCard.css";
 
 export default class ProductCard extends Component {
     render() {
+        console.log("detalles de tarjeta",this.props)
         return (
             <div className="producto-card">
                 <Link href={"/detalle/[product]"} as={"/detalle/" + this.props.product_id + "_" + this.props.title.replace(/[^\w\s]/gi, '').split(" ").join("-")}>

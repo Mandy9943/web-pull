@@ -29,6 +29,14 @@ export default class Register extends Component {
             tipo.type = "password";
         }
     }
+    // handleValidate(){
+    //     // if (this.state.error.length > 0){
+    //     //     console.log("hay error")
+    //     // } else {
+    //     //     console.log("no hay error")
+    //     // }
+    //     console.log(this.state)
+    // }
 
 
     render() {
@@ -55,11 +63,12 @@ export default class Register extends Component {
                     <p className="terms">Creando una cuenta, usted ha aceptado los 
                      <Link href="/terminos"><a> Terminos y condiciones</a>
                      </Link> y las <Link href="/privacidad"><a>Políticas de privacidad de Kiero.</a></Link></p>
-                        <Button text={"Crear cuenta"}/>
+                        <Button text={"Crear cuenta"} onClick={this.handleValidate}/>
+                        {success && <Success message={success} />}
                         {error && <Error message={error} />}
                         <br></br>
                         <p className="register-text">¿Ya tienes una cuenta?
-                     <Link href="/terminos"><a> Inicia sesión</a></Link></p>
+                     <Link href="/login"><a> Inicia sesión</a></Link></p>
                     </form>
                 </div>
                 <Footer />
@@ -77,7 +86,7 @@ export default class Register extends Component {
         const password_confirmation = e.target.elements.password.value;
 
         const error = await signUp(name, last_name, email, password, password_confirmation);
-        console.log(error)
+        console.log("console_1",error)
         if (error) {
             console.log(this)
             this.setState({

@@ -7,6 +7,7 @@ export const createUser = async (
   password,
   password_confirmation
 ) => {
+  
   try {
     const response = await post("/register", {
       name: name,

@@ -81,7 +81,7 @@ class MenuCategories extends Component {
                 <span>
                   {this.props.categories[this.state.selectedCategory].name}
                 </span>
-
+                
                 <img src={urlBanner + this.state.selectedCategory + "/1.jpg"} />
                 <img src={urlBanner + this.state.selectedCategory + "/2.jpg"} />
                 <img src={urlBanner + this.state.selectedCategory + "/3.jpg"} />
