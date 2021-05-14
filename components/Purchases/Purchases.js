@@ -14,9 +14,8 @@ import PurchaseItem from './PurchaseItem';
 import PurchasesDetail from '../PurchasesDetail';
 import OrderItem from '../OrderItem/OrderItem.js';
 import OrdersDetail from '../OrdersDetail/OrdersDetail.js';
-import Pagination from '../Common/Pagination/Pagination';
 import { makeStyles } from '@material-ui/core/styles';
-import Paginations from './Pagination/Pagination';
+import Pagination from './Pagination/Pagination';
 
 function processSellData(data) {
 	// Esta uncion es para que los datos devueltos por el endpoint /shop/orders/
@@ -33,29 +32,31 @@ function processSellData(data) {
 
 function Purchases(props) {
 	const [pagination, setPagination] = useState();
+	const [currentPage, setCurrentPage] = useState(1);
 	const [purchases, setPurchases] = useState([]);
 	const [selected, setSelected] = useState();
 	const [order, setOrder] = useState('');
 	const [search, setSearch] = useState('');
 
-	let lastPage = 1;
-	let currentPage = 1;
-	let nextPage = 1;
-	const LIMIT = 20;
-
+	// let lastPage = 20;
+	// let nextPage = 2;
+	const LIMIT = 10;
+	const upperRange = currentPage * 3;
+	console.log(purchases);
 	if (pagination) {
 		lastPage = pagination['last_page'];
-		currentPage = pagination.current_page > 0 ? pagination.current_page : 1;
+		setCurrentPage(pagination.current_page > 0 ? pagination.current_page : 1);
 		nextPage = pagination.next_page > 0 ? pagination.next_page : 1;
 	}
 	useEffect(() => {
 		const endp =
 			props.mode === 'sell'
 				? '/shop/orders?page=1&limit=' + LIMIT + order + search
-				: '/getPurchases?page=1&size=' + LIMIT;
+				: `/getPurchases?page=${currentPage}&size=` + LIMIT;
 		getData(endp, props.user.jwt).then((response) => {
+			console.log(response);
 			if (response.status !== 404) {
-				setPagination(response.data.pagination);
+				() => setPagination(response.data.pagination);
 
 				// Dirty Hack
 				if (props.mode === 'sell') {
@@ -109,27 +110,28 @@ function Purchases(props) {
 		});
 	};
 
-	const paginate = (selectPage) => {
-		const endp =
-			props.mode === 'sell'
-				? '/shop/orders?page=' + selectPage + '&limit=' + LIMIT + order
-				: '/getPurchases?page=' + selectPage + '&size=' + LIMIT;
-		getData(endp, props.user.jwt).then((response) => {
-			if (response.data && response.data.code && response.data.code !== 404) {
-				setPagination(response.data.pagination);
+	// const paginate = (selectPage) => {
+	// 	const endp =
+	// 		props.mode === 'sell'
+	// 			? '/shop/orders?page=' + selectPage + '&limit=' + LIMIT + order
+	// 			: '/getPurchases?page=' + selectPage + '&size=' + LIMIT;
+	// 	getData(endp, props.user.jwt).then((response) => {
+	// 		if (response.data && response.data.code && response.data.code !== 404) {
+	// 			console.log(response);
+	// 			setPagination(response.data.pagination);
 
-				// Dirty Hack
-				if (props.mode === 'sell') {
-					setPurchases(processSellData(response.data));
-				} else {
-					setPurchases(response.data.purchases); // Dirty hack the funciton
-				}
-			} else {
-				setPagination();
-				setPurchases([]);
-			}
-		});
-	};
+	// 			// Dirty Hack
+	// 			if (props.mode === 'sell') {
+	// 				setPurchases(processSellData(response.data));
+	// 			} else {
+	// 				setPurchases(response.data.purchases); // Dirty hack the funciton
+	// 			}
+	// 		} else {
+	// 			setPagination();
+	// 			setPurchases([]);
+	// 		}
+	// 	});
+	// };
 
 	const updateState = async (endp) => {
 		let response = await modifyData(endp, '', props.user.jwt);
@@ -143,8 +145,6 @@ function Purchases(props) {
 		});
 		setPurchases(newPurchases);
 	};
-
-	console.log(purchases);
 
 	return !selected ? (
 		<div className="purchase-list">
@@ -211,7 +211,7 @@ function Purchases(props) {
 							<span>No tiene ninguna venta</span>
 						</section>
 					) : (
-						purchases.map((item, index) => {
+						purchases.filter((item, index) => {
 							if (item.data.product !== null && item.data.purchase_status !== null) {
 								return (
 									<OrderItem
@@ -236,19 +236,20 @@ function Purchases(props) {
 							<span>No tiene compras anteriores</span>
 						</section>
 					) : (
-						purchases.map((item, index) => (
-							<PurchaseItem key={index} item={item} onSelect={handleSelect} />
-						))
+						purchases
+							.slice(currentPage === 1 ? 0 : upperRange - 3, upperRange)
+							.map((item, index) => (
+								<PurchaseItem key={index} item={item} onSelect={handleSelect} />
+							))
 					)}
 				</>
 			)}
 			<br />
-			<Paginations
-				actual={currentPage}
-				totalPages={20}
-				cb={(selectPage) => {
-					paginate(selectPage);
-				}}
+			<Pagination
+				//onChange={paginate(currentPage)}
+				totalPages={Math.ceil(purchases.length / 3)}
+				currentPage={currentPage}
+				setCurrentPage={setCurrentPage}
 			/>
 		</div>
 	) : (

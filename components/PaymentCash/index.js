@@ -2,16 +2,17 @@ import React from 'react';
 import './PaymentCash.css';
 
 function PaymentCash({ onSubmit }) {
+	
 	return (
 		<div className="payment-cash">
 			<h2>Ingresa los siguientes datos</h2>
 			<br />
 			<form onSubmit={onSubmit}>
-				<input name={'cash_form_name'} placeholder="Nombre y apellido *" />
+				<input required name={'cash_form_name'} placeholder="Nombre y apellido *" />
 				<br />
-				<input name={'cash_form_email'} placeholder="Email *" />
+				<input required type='email' name={'cash_form_email'} placeholder="Email *" />
 				<br />
-				<input name={'cash_form_number'} placeholder="Número de contacto *" />
+				<input required name={'cash_form_number'} placeholder="Número de contacto *" />
 				<br />
 				<button type="submit" className="button-continue main-button">
 					<p>Continuar</p>

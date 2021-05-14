@@ -9,7 +9,12 @@ import Footer from '../Common/Footer';
 import Select from '../Common/Select';
 import './PaymentWay.css';
 import './PaymentWayMovil.css';
-import { getData, makePayment, makePaymentCC, makePaymentCash } from '../../services/userApi';
+import {
+	getData,
+	makePayment,
+	makePaymentCC,
+	makePaymentCash,
+} from '../../services/userApi';
 import Modal from '../Common/Modal';
 import AddAddress from '../UserAccount/AddAddress';
 import { validatePayCC, validatePaymentPSE } from '../../lib/validation';
@@ -93,7 +98,12 @@ export default class PaymentWay extends Component {
 
 	loadAddresses = () => {
 		getData('/getAddresses', this.props.user.jwt).then((response) => {
-			this.setState({ addresses: response.data, addrLoaded: true, modalAddr: false, modal: false });
+			this.setState({
+				addresses: response.data,
+				addrLoaded: true,
+				modalAddr: false,
+				modal: false,
+			});
 		});
 	};
 
@@ -202,7 +212,8 @@ export default class PaymentWay extends Component {
 		}
 
 		if (this.state.acceptance_token.length < 1 || !this.state.acp_checked) {
-			tips.acceptance_token = 'Debes aceptar los terminos y condiciones antes de continuar.';
+			tips.acceptance_token =
+				'Debes aceptar los terminos y condiciones antes de continuar.';
 		}
 
 		const ccPayload = {
@@ -370,14 +381,23 @@ export default class PaymentWay extends Component {
 
 		const modalValidatePay = (
 			<>
-				<p style={{ width: '80%', margin: '0 auto', textAlign: 'center', marginBottom: '2em' }}>
+				<p
+					style={{
+						width: '80%',
+						margin: '0 auto',
+						textAlign: 'center',
+						marginBottom: '2em',
+					}}
+				>
 					{
 						'Para realizar el pago debes completar el formulario. Por favor introduce tu dirección de domicilio.'
 					}
 				</p>
 
 				<Button
-					onClick={() => this.setState({ modal: 1, modalAddr: false, modalValidate: false })}
+					onClick={() =>
+						this.setState({ modal: 1, modalAddr: false, modalValidate: false })
+					}
 					text={'Agregar dirección'}
 				/>
 			</>
@@ -401,7 +421,9 @@ export default class PaymentWay extends Component {
 			months_fees.push(<option value={i}>{i}</option>);
 		}
 
-		const totalPrice = priceFormat(parseFloat(this.props.data.price) * this.state.productQuantity);
+		const totalPrice = priceFormat(
+			parseFloat(this.props.data.price) * this.state.productQuantity
+		);
 
 		return (
 			<div className="payment-way">
@@ -487,8 +509,12 @@ export default class PaymentWay extends Component {
 
 						<div className="content-payment-way">
 							<div className="way-to-pay">
-								{this.state.shownPaymentOption === 0 || this.state.shownPaymentOption === 1 ? (
-									<div className="credit payment-way-box" onClick={() => this.accordionCredit()}>
+								{this.state.shownPaymentOption === 0 ||
+								this.state.shownPaymentOption === 1 ? (
+									<div
+										className="credit payment-way-box"
+										onClick={() => this.accordionCredit()}
+									>
 										<p>Crédito</p>
 									</div>
 								) : (
@@ -513,6 +539,7 @@ export default class PaymentWay extends Component {
 										/>
 										<form id="form-credit" onSubmit={this.payCC}>
 											<input
+												required
 												type="tel"
 												name="card_number"
 												placeholder="Numero de tarjeta."
@@ -522,6 +549,7 @@ export default class PaymentWay extends Component {
 											/>
 											<InputTip msg={this.state.tips.card_number} />
 											<input
+												required
 												maxLength={64}
 												name={'card_holder'}
 												onChange={this.handleInputChange}
@@ -538,6 +566,7 @@ export default class PaymentWay extends Component {
 													timeFormat={false}
 												/>
 												<input
+													required
 													maxLength={4}
 													onChange={this.handleInputChange}
 													onFocus={this.handleInputFocus}
@@ -561,10 +590,15 @@ export default class PaymentWay extends Component {
 												<Select name={'document_type'}>{docType}</Select>
 												<InputTip msg={this.state.tips.document_type} />
 											</div>
-											<input name={'document_number'} placeholder="Número de documento" />
+											<input
+												required
+												name={'document_number'}
+												placeholder="Número de documento"
+											/>
 											<InputTip msg={this.state.tips.document_number} />
 										</form>
 										<input
+											required
 											onChange={() => this.loadAcceptanceToken(!this.state.acp_checked)}
 											id={'tos_cb'}
 											type="checkbox"
@@ -584,8 +618,12 @@ export default class PaymentWay extends Component {
 
 									{this.state.cc_error && <Error message={this.state.cc_error} />}
 								</div>
-								{this.state.shownPaymentOption === 0 || this.state.shownPaymentOption === 2 ? (
-									<div className="cash payment-way-box" onClick={() => this.accordionCash()}>
+								{this.state.shownPaymentOption === 0 ||
+								this.state.shownPaymentOption === 2 ? (
+									<div
+										className="cash payment-way-box"
+										onClick={() => this.accordionCash()}
+									>
 										<p>Efectivo</p>
 									</div>
 								) : (
@@ -593,7 +631,9 @@ export default class PaymentWay extends Component {
 								)}
 								<div
 									className={
-										this.state.closeCash ? 'accordion-payment-way' : 'accordion-payment-way active'
+										this.state.closeCash
+											? 'accordion-payment-way'
+											: 'accordion-payment-way active'
 									}
 								>
 									{!this.state.paymentCashResult ? (
@@ -624,7 +664,8 @@ export default class PaymentWay extends Component {
 										/>
 									)}
 								</div>
-								{this.state.shownPaymentOption === 0 || this.state.shownPaymentOption === 3 ? (
+								{this.state.shownPaymentOption === 0 ||
+								this.state.shownPaymentOption === 3 ? (
 									<div
 										className="transfer payment-way-box"
 										onClick={() => this.accordionTransfer()}
@@ -646,9 +687,9 @@ export default class PaymentWay extends Component {
 											<div className="content-accordion-form">
 												<label>
 													<p>Datos de titular</p>
-													<input name={'names'} placeholder="Nombre completo *" />
-													<input name={'email'} placeholder="Email *" />
-													<input name={'phone'} placeholder="Teléfono *" />
+													<input required name={'names'} placeholder="Nombre completo *" />
+													<input required type='email' name={'email'} placeholder="Email *" />
+													<input required name={'phone'} placeholder="Teléfono *" />
 												</label>
 												<label>
 													<p>Banco</p>
@@ -678,7 +719,11 @@ export default class PaymentWay extends Component {
 
 													<Select name={'document_type'}>{docType}</Select>
 
-													<input name={'document_number'} placeholder="Número documento" />
+													<input
+													required
+														name={'document_number'}
+														placeholder="Número documento"
+													/>
 												</label>
 
 												<button
@@ -725,16 +770,27 @@ export default class PaymentWay extends Component {
 										<>
 											<p>{this.state.addresses[this.state.selectedAddr].description}</p>
 											<h3>Dirección de envío</h3>
-											<p>Dirección: {this.state.addresses[this.state.selectedAddr].address}</p>
-											<p>Barrio:{this.state.addresses[this.state.selectedAddr].neighborhood}</p>
-											<p>Departamento:{this.state.addresses[this.state.selectedAddr].department}</p>
+											<p>
+												Dirección: {this.state.addresses[this.state.selectedAddr].address}
+											</p>
+											<p>
+												Barrio:
+												{this.state.addresses[this.state.selectedAddr].neighborhood}
+											</p>
+											<p>
+												Departamento:
+												{this.state.addresses[this.state.selectedAddr].department}
+											</p>
 											<p>Ciudad:{this.state.addresses[this.state.selectedAddr].city}</p>
 
 											<Button onClick={this.openAddrsModal} text={'Cambiar dirección'} />
 										</>
 									) : (
 										<>
-											<Button onClick={this.openAddrsModal} text={'Seleccione una dirección'} />
+											<Button
+												onClick={this.openAddrsModal}
+												text={'Seleccione una dirección'}
+											/>
 										</>
 									)}
 								</div>

@@ -51,7 +51,10 @@ class Category extends Component {
 				if (this.state.categoryLevel === '') {
 					this.setState({ existsCategoryMenu: false });
 				} else {
-					this.loadAllFilters((this.state.categoryLevel + 1).toString(), this.props.data.search);
+					this.loadAllFilters(
+						(this.state.categoryLevel + 1).toString(),
+						this.props.data.search
+					);
 				}
 			});
 		}
@@ -83,7 +86,9 @@ class Category extends Component {
 	changePage = (p) => {
 		this.setState({ page: p });
 		document.location = `${this.props.path.split('?')[0]}?page=${p}`;
+		console.log(document.location);
 		this.loadProducts(p);
+		console.log(p);
 	};
 
 	applyFilter = (type, value, categoryLevel = '', loadFilter = true) => {
@@ -179,7 +184,9 @@ class Category extends Component {
 		products.then((response) => {
 			this.setState({
 				products: response.data.results,
-				totalPages: Math.ceil(response.data.total / this.props.data.params.items_per_page),
+				totalPages: Math.ceil(
+					response.data.total / this.props.data.params.items_per_page
+				),
 				totalItems: response.data.total,
 			});
 		});
@@ -200,7 +207,10 @@ class Category extends Component {
 				}))
 				.sort(compareValues('label'));
 
-			if (this.state.treeSelectedCategory.length === 0 || this.props.data.type === 'category') {
+			if (
+				this.state.treeSelectedCategory.length === 0 ||
+				this.props.data.type === 'category'
+			) {
 				mergedCategories = newCategories;
 			} else {
 				mergedCategories = this.state.data.categories;
@@ -246,15 +256,17 @@ class Category extends Component {
 					case 4:
 						mergedCategories[this.state.treeSelectedCategory[0].index].items[
 							this.state.treeSelectedCategory[1].index
-						].items[this.state.treeSelectedCategory[2].index].items.forEach((value, index) => {
-							if (index !== this.state.treeSelectedCategory[3].index) {
-								value.items = null;
-								value.selected = false;
-							} else {
-								value.items = newCategories;
-								value.selected = true;
+						].items[this.state.treeSelectedCategory[2].index].items.forEach(
+							(value, index) => {
+								if (index !== this.state.treeSelectedCategory[3].index) {
+									value.items = null;
+									value.selected = false;
+								} else {
+									value.items = newCategories;
+									value.selected = true;
+								}
 							}
-						});
+						);
 				}
 			}
 			this.sendToFilters({
@@ -285,10 +297,15 @@ class Category extends Component {
 					this.setState({ existsCategoryMenu: false });
 				} else {
 					if (this.state.categoryLevel === 0) {
-						this.setState({ treeSelectedCategory: [{ index: index, key: node.key, level: 0 }] });
+						this.setState({
+							treeSelectedCategory: [{ index: index, key: node.key, level: 0 }],
+						});
 					} else {
 						let tmpTreeSelectedCategory = this.state.treeSelectedCategory;
-						tmpTreeSelectedCategory = tmpTreeSelectedCategory.slice(0, this.state.categoryLevel);
+						tmpTreeSelectedCategory = tmpTreeSelectedCategory.slice(
+							0,
+							this.state.categoryLevel
+						);
 						tmpTreeSelectedCategory.push({
 							index: index,
 							key: node.key,
@@ -296,7 +313,12 @@ class Category extends Component {
 						});
 						this.setState({ treeSelectedCategory: tmpTreeSelectedCategory });
 					}
-					this.applyFilter('category', node.key, this.state.categoryLevel.toString(), false);
+					this.applyFilter(
+						'category',
+						node.key,
+						this.state.categoryLevel.toString(),
+						false
+					);
 					this.loadAllFilters((this.state.categoryLevel + 1).toString(), node.key);
 				}
 			});
