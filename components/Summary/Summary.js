@@ -110,7 +110,6 @@ export default class Summary extends Component {
 
 	render() {
 		let u_data = this.props.user_data;
-		console.log(u_data);
 		let url = '//www.sic.gov.co';
 
 		return (
