@@ -72,7 +72,6 @@ class ProductDetail extends Component {
   }
 
   render() {
-    console.log("detalles",this.props)
     const u_data = this.props.user_data;
     let url = "//www.sic.gov.co";
     // console.log(this.state.mdata)
@@ -94,8 +93,9 @@ class ProductDetail extends Component {
                     <a>
                       {item.name}
                     </a>
-                  </Link></>
-            ))}
+                  </Link>
+                  </>
+              ))}
           </div>
           <div className="wrap-section-1">
             <div className="wrap-product">

@@ -27,7 +27,7 @@ class ListCategory extends Component {
 							? this.props.products.map((product, i) => (
 									<Link
 										href={
-											'/detalle/' + product.product_id + '_' + product.title.split(' ').join('-')
+											'/detalle/' + product.product_id + '_' + product.title.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '').split(' ').join('-')
 										}
 										key={i}
 									>

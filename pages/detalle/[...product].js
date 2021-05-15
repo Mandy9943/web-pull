@@ -46,7 +46,7 @@ function Product({ data, u_data }) {
       <meta property="og:description"
       content={`Encuentra ${data.title} en Kiero.co - Descubre millones de productos online.
       Encuentra ${data.category.name} en Kiero.co`}/>
-      {/* <meta property="og:url" content={`https://kiero.co/detalle/${data.product_id}_${data.title.replace(/[^\w\s]/gi, '' ).split(" ").join("-")}`} /> */}
+      <meta property="og:url" content={`https://kiero.co/detalle/${data.product_id}_${data.title.replace(/[^\w\s\/]/gi, '' ).split(" ").join("-")}`} />
       <meta property='og:locale' content='es_ES' />
       <meta property='og:type' content='WebSite' />
       <meta property='og:site_name' content='Kiero.co' />
@@ -54,7 +54,7 @@ function Product({ data, u_data }) {
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
       <meta name="robots" content="index,follow" />
       <link rel="icon" href={favicon} type="image/png" />
-      {/* <link rel="canonical" href={`https://kiero.co/detalle/${data.product_id}_${data.title.replace(/[^\w\s]/gi, '' ).split(" ").join("-")}`} /> */}
+      <link rel="canonical" href={`https://kiero.co/detalle/${data.product_id}_${data.title.replace(/[^\w\s\/]/gi, '' ).split(" ").join("-")}`} />
 
           <script
               type='application/json'

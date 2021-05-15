@@ -140,7 +140,7 @@ export default class Nav extends Component {
     }
 
     componentDidMount() {
-        getData("/getMenuCategories")
+        getData("/getCategoriesForMenu")
             .then((response) => {
                 this.setState({ categories: response.data });
             });
