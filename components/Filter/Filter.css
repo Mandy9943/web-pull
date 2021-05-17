@@ -38,10 +38,9 @@
 .wrap-filter-button {
 	display: -ms-grid;
 	display: grid;
-	-ms-grid-columns: 1fr auto auto;
+	-ms-grid-columns: 100px auto auto;
 	grid-template-columns: 1fr auto auto;
 	grid-gap: 10px;
-	width: 200px;
 	margin-top: 5px;
 }
 
@@ -61,7 +60,7 @@
 	outline: none;
 }
 
-.active {
+.actives {
 	color: #cf0a2c;
 }
 
@@ -85,9 +84,10 @@
 }
 
 .select-filter {
+	width: auto !important;
 	background: transparent;
+	appearance: auto !important;
 	border: 0;
-	width: 100%;
 	font-size: 0.8rem;
 	font-weight: 400;
 	color: #575757;
