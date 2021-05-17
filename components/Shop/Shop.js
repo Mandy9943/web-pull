@@ -139,8 +139,8 @@ const Shop = ({ store_data, user_data }) => {
 
   const setDesignValues = (name, value) => {
 
-
     setStoreDesign({ ...store_design, [name]: value })
+
 
   }
 
@@ -185,7 +185,7 @@ const Shop = ({ store_data, user_data }) => {
     update_store(store_domain, user_data.jwt, { facebook_pixel: facebook_pixel })
   }
   const onSaveGoogleAnalytic = async () => {
-    console.log(encodeURI(google_analytic))    
+    console.log(encodeURI(google_analytic))
     update_store(store_domain, user_data.jwt, { google_analytic: google_analytic })
   }
 
@@ -255,8 +255,8 @@ const Shop = ({ store_data, user_data }) => {
               setDesignValues={setDesignValues}
               quick_config={onQuickConfig}
               hasChange={hasChange}
-              setHasChange={setHasChange}  
-                        />
+              setHasChange={setHasChange}
+            />
           </>
         }
 

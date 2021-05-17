@@ -10,9 +10,15 @@ import MyColorPicker from '../../Common/MyColorPicker'
 import { ColorPicker } from 'material-ui-color';
 import { HexColorPicker } from "react-colorful";
 import InputColor from 'react-input-color';
-import { ChromePicker } from 'react-color'
+import { ChromePicker } from 'react-color';
+
 
 import { useForm } from 'react-hook-form'
+
+
+import p2 from '../../../assets/img/themeImg/plantilla2.jpg'
+import p7 from '../../../assets/img/themeImg/plantilla7.jpg'
+
 
 //import state from "sweetalert/typings/modules/state";
 
@@ -64,7 +70,7 @@ const RightSideBAr = (props) => {
             },
             "main": {
                 "background_color": store_design.st_design_main_background_color,
-                "widget": "p2"
+                "widget": store_design.st_desing_main_widget
             },
             "footer": {
                 "background_color": store_design.st_design_footer_background_color,
@@ -85,11 +91,13 @@ const RightSideBAr = (props) => {
     }
 
     const onSubmitForm = () => {
-       
+
         setHasChange(false)
         onSaveDesign()
-        
+
     }
+
+
 
 
 
@@ -190,7 +198,7 @@ const RightSideBAr = (props) => {
                                 </div>
                                 <div>
                                     <p>Fondo</p>
-                                    <div style={{ background: store_design.st_design_main_background_color }} >
+                                    <div  >
                                         <HexColorPicker color={store_design.st_design_main_background_color} onChange={
 
                                             (color) => handleDesign("st_design_main_background_color", color)
@@ -199,7 +207,7 @@ const RightSideBAr = (props) => {
                                 </div>
                                 <div>
                                     <p>Titulo</p>
-                                    <div style={{ background: store_design.st_design_header_title_color }} >
+                                    <div >
                                         <HexColorPicker color={store_design.st_design_header_title_color} onChange={
 
                                             (color) => handleDesign("st_design_header_title_color", color)
@@ -208,7 +216,7 @@ const RightSideBAr = (props) => {
                                 </div>
                                 <div>
                                     <p>Subtitulo</p>
-                                    <div style={{ background: store_design.st_design_header_subtitle_color }} >
+                                    <div >
                                         <HexColorPicker color={store_design.st_design_header_subtitle_color} onChange={
 
                                             (color) => handleDesign("st_design_header_subtitle_color", color)
@@ -232,13 +240,13 @@ const RightSideBAr = (props) => {
                     <form onSubmit={handleSubmit(onSubmitForm)}>
                         <main>
 
-                            
+
                             <div className="form-group pt-2">
                                 <label htmlFor="exampleInputEmail1">Background Image URL</label>
                                 <input type="text" className="form-control" id="exampleInputEmail2"
-                                    name="st_design_header_backgroundimage"  placeholder="URL de la imagen de fondo"
+                                    name="st_design_header_backgroundimage" placeholder="URL de la imagen de fondo"
                                     value={store_design.st_design_header_backgroundimage}
-                                    {...register('st_design_header_backgroundimage',{ pattern: /[(http(s)?):\/\/(www\.)?a-zA-Z0-9-@:%.\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%\+.~#?&//=]*)/})}
+                                    {...register('st_design_header_backgroundimage', { pattern: /[(http(s)?):\/\/(www\.)?a-zA-Z0-9-@:%.\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%\+.~#?&//=]*)/ })}
                                     onChange={(e) => handleDesign(e.target.name, e.target.value)} />
                                 {errors.st_design_header_backgroundimage && <span className="error">Introduzca url a una imagen</span>}
 
@@ -262,8 +270,8 @@ const RightSideBAr = (props) => {
                                 <input type="text" className="form-control" id="exampleInputEmail5"
                                     name="st_design_header_subtitle_text" aria-describedby="emailHelp" placeholder="Introduce el subtitulo"
                                     value={store_design.st_design_header_subtitle_text}
-                                    {...register('st_design_header_subtitle_text', 
-                                    { pattern: /^[0-9a-zA-Z. ,:]+$/})}
+                                    {...register('st_design_header_subtitle_text',
+                                        { pattern: /^[0-9a-zA-Z. ,:]+$/ })}
                                     onChange={(e) => handleDesign(e.target.name, e.target.value)}
                                 />
                                 {errors.st_design_header_subtitle_text && <span className="error">Introduzca el subtitulo</span>}
@@ -289,11 +297,11 @@ const RightSideBAr = (props) => {
                                 <input type="text" className="form-control" id="exampleInputEmail9"
                                     name="st_design_st_design_footer_copyright" aria-describedby="emailHelp" placeholder="Texto del Copyright"
                                     value={store_design.st_design_st_design_footer_copyright}
-                                    {...register('st_design_st_design_footer_copyright', 
-                                    { pattern: /^[0-9a-zA-Z. ,:]+$/})}
-                                   
+                                    {...register('st_design_st_design_footer_copyright',
+                                        { pattern: /^[0-9a-zA-Z. ,:]+$/ })}
+
                                     onChange={(e) => handleDesign(e.target.name, e.target.value)} />
-                                    {errors.st_design_st_design_footer_copyright && <span className="error">Introduzca Copyright</span>}
+                                {errors.st_design_st_design_footer_copyright && <span className="error">Introduzca Copyright</span>}
 
                             </div>
                             <div className="form-group pt-2">
@@ -301,11 +309,11 @@ const RightSideBAr = (props) => {
                                 <input type="text" className="form-control" id="exampleInputEmail10"
                                     name="st_design_footer_logo" aria-describedby="emailHelp" placeholder="Intrudzca url de imagen "
                                     value={store_design.st_design_footer_logo}
-                                    {...register('st_design_footer_logo', 
-                                    { pattern: /[(http(s)?):\/\/(www\.)?a-zA-Z0-9-@:%.\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%\+.~#?&//=]*)/})}
-                                   
+                                    {...register('st_design_footer_logo',
+                                        { pattern: /[(http(s)?):\/\/(www\.)?a-zA-Z0-9-@:%.\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%\+.~#?&//=]*)/ })}
+
                                     onChange={(e) => handleDesign(e.target.name, e.target.value)} />
-                                    {errors.st_design_footer_logo && <span className="error">Introduzca url a una imagen</span>}
+                                {errors.st_design_footer_logo && <span className="error">Introduzca url a una imagen</span>}
 
 
                             </div>
@@ -332,17 +340,30 @@ const RightSideBAr = (props) => {
 
                         <div>
                             <div>
-                                <div className="block">
+                                <div className="block" onClick={() => { handleDesign("st_desing_main_widget", "p2") }}
+                                >
+                                    <div className="block-footer"
+                                        style={{ backgroundColor: store_design.st_desing_main_widget === "p2" ? "#cf0a2c" : "" }}>Plantilla 2</div>
                                     <div className="block-image">
-                                        <p>banner</p>
+                                        <img src={p2} />
                                     </div>
-                                    <div className="block-footer"></div>
+
                                 </div>
-                                <input id="p2" value="p2" type="radio" name="Plantilla 2" /><span>Plantilla 2</span>
+
                             </div>
                             <div>
-                                <input id="p7" value="p7" type="radio" name="Plantilla 7 " /><span>Plantilla 7</span>
+                                <div className="block" onClick={() => { handleDesign("st_desing_main_widget", "p7") }} >
+                                    <div className="block-footer"
+                                    style={{ backgroundColor: store_design.st_desing_main_widget === "p7" ? "#cf0a2c" : "" }}
+                                    >Plantilla 7</div>
+                                    <div className="block-image">
+                                        <img src={p7} />
+                                    </div>
+
+                                </div>
+
                             </div>
+
 
                         </div>
                     </main>
