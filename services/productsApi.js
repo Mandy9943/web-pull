@@ -124,7 +124,6 @@ export const searchProducts = (
 		let endpoint2 = categoryApi + `/${ots}?size=${size}&page=${page}`;
 		let endpoint = type === 'search' ? endpoint1 : endpoint2;
 		if (params.toString().length) endpoint = endpoint + '&' + params.toString();
-		console.log(endpoint);
 		return apiget(endpoint);
 	} catch (error) {
 		return error;
@@ -150,7 +149,6 @@ export const searchFilters = (ots, level, category) => {
 
 		let endpoint = filtersApi + `?ots=${ots}`;
 		if (params.toString().length) endpoint = endpoint + '&' + params.toString();
-		console.log(endpoint);
 		return apiget(endpoint);
 	} catch (error) {
 		return error;
