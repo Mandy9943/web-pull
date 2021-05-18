@@ -325,7 +325,7 @@ class Category extends Component {
 	};
 
 	render() {
-		console.log("propiedades", this.props)
+		// console.log("propiedades", this.products)
 		return this.state.existsCategoryMenu ? (
 			<div className="search">
 				<Nav
