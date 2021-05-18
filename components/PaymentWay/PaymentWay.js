@@ -35,6 +35,13 @@ export default class PaymentWay extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			name: '',
+			phone: '',
+			idNumber: '',
+			ccNumber: '',
+			ccName: '',
+			ccCvv: '',
+			ccId: '',
 			productQuantity: this.props.cantidad,
 			shownPaymentOption: 0,
 			closeCredit: true,
@@ -44,6 +51,7 @@ export default class PaymentWay extends Component {
 			addresses: [],
 			modal: false,
 			modalAddr: false,
+			modalCashAfterAddr: false,
 			selectedAddr: -1,
 			auxAddr: 0,
 			addrLoaded: false,
@@ -68,12 +76,71 @@ export default class PaymentWay extends Component {
 			acceptance_token: '',
 			acp_checked: false,
 		};
-		this.addrRef = React.createRef();
+		this.validateName = this.validateName.bind(this);
+		this.validatePhone = this.validatePhone.bind(this);
+		this.validateIdNumber = this.validateIdNumber.bind(this);
+
+		this.validateCcNumber = this.validateCcNumber.bind(this);
+		this.validateCcName = this.validateCcName.bind(this);
+		this.validateCcCvv = this.validateCcCvv.bind(this);
+		this.validateCcId = this.validateCcId.bind(this);
 	}
 
 	componentDidMount() {
 		this.loadBanks();
 		this.loadAddresses();
+	}
+
+	preventCopyPasteCut(event) {
+		event.preventDefault();
+	}
+
+	validateName(event) {
+		const { name, value } = event.target;
+		const pattern = new RegExp('^[a-zA-Z\u0080-\uFFFF ]+$');
+		this.setState({
+			name: pattern.test(value) ? value : value.slice(0, -1),
+		});
+	}
+
+	validatePhone(event) {
+		const { name, value } = event.target;
+		const pattern = new RegExp('^[0-9]*$');
+		this.setState({
+			phone: pattern.test(value) ? value : value.slice(0, -1),
+		});
+	}
+
+	validateIdNumber(event) {
+		const { name, value } = event.target;
+		const pattern = new RegExp('^[0-9]*$');
+		this.setState({
+			idNumber: pattern.test(value) ? value : value.slice(0, -1),
+		});
+	}
+	validateCcNumber(value) {
+		const pattern = new RegExp('^[0-9]*$');
+		this.setState({
+			ccNumber: pattern.test(value) ? value : value.slice(0, -1),
+		});
+	}
+	validateCcName(value) {
+		const pattern = new RegExp('^[a-zA-Z\u0080-\uFFFF ]+$');
+		this.setState({
+			ccName: pattern.test(value) ? value : value.slice(0, -1),
+		});
+	}
+	validateCcCvv(value) {
+		const pattern = new RegExp('^[0-9]*$');
+		this.setState({
+			ccCvv: pattern.test(value) ? value : value.slice(0, -1),
+		});
+	}
+	validateCcId(value) {
+		const pattern = new RegExp('^[0-9]*$');
+		this.setState({
+			ccId: pattern.test(value) ? value : value.slice(0, -1),
+		});
 	}
 
 	loadBanks() {
@@ -158,8 +225,10 @@ export default class PaymentWay extends Component {
 	setAddr = () => {
 		const x = this.state.auxAddr;
 		if (x !== '-1' && x !== 0) {
-			this.setState({ modalAddr: false });
-			this.setState({ selectedAddr: x });
+			this.setState({ modalAddr: false, selectedAddr: x });
+			if (this.state.paymentCashType > 0) {
+				this.setState({ paymentCash: true });
+			}
 		} else {
 			alert('Seleccione una dirección');
 		}
@@ -293,7 +362,7 @@ export default class PaymentWay extends Component {
 
 	openPaymentCash = (type) => {
 		if (this.state.selectedAddr == -1) {
-			this.setState({ modalAddr: true });
+			this.setState({ modalAddr: true, paymentCashType: type });
 			return false;
 		} else {
 			this.setState({ paymentCash: true, paymentCashType: type });
@@ -317,6 +386,18 @@ export default class PaymentWay extends Component {
 	handleInputChange = (e) => {
 		let { name, value } = e.target;
 		this.setState({ [name]: value });
+		if (name === 'card_number') {
+			this.validateCcNumber(value);
+		}
+		if (name === 'card_holder') {
+			this.validateCcName(value);
+		}
+		if (name === 'cvv') {
+			this.validateCcCvv(value);
+		}
+		if (name === 'document_number') {
+			this.validateCcId(value);
+		}
 	};
 
 	handleDateTimeChange = (e) => {
@@ -462,7 +543,7 @@ export default class PaymentWay extends Component {
 
 				{this.state.modalAddr ? (
 					<Modal
-						toggle={() => this.setState({ modalAddr: false })}
+						toggle={() => this.setState({ modalAddr: false, paymentCashType: 0 })}
 						content={addressListContent}
 						button
 					/>
@@ -470,7 +551,7 @@ export default class PaymentWay extends Component {
 
 				{this.state.paymentCash ? (
 					<Modal
-						toggle={() => this.setState({ paymentCash: false })}
+						toggle={() => this.setState({ paymentCash: false, paymentCashType: 0 })}
 						content={<PaymentCash onSubmit={this.payCash} />}
 						button
 					/>
@@ -543,6 +624,11 @@ export default class PaymentWay extends Component {
 												type="tel"
 												name="card_number"
 												placeholder="Numero de tarjeta."
+												onCut={this.preventCopyPasteCut}
+												onCopy={this.preventCopyPasteCut}
+												onPaste={this.preventCopyPasteCut}
+												autocomplete="off"
+												value={this.state.ccNumber}
 												onChange={this.handleInputChange}
 												onFocus={this.handleInputFocus}
 												maxLength={this.state.card_max_length}
@@ -550,8 +636,13 @@ export default class PaymentWay extends Component {
 											<InputTip msg={this.state.tips.card_number} />
 											<input
 												required
+												onCut={this.preventCopyPasteCut}
+												onCopy={this.preventCopyPasteCut}
+												onPaste={this.preventCopyPasteCut}
+												autocomplete="off"
 												maxLength={64}
 												name={'card_holder'}
+												value={this.state.ccName}
 												onChange={this.handleInputChange}
 												onFocus={this.handleInputFocus}
 												placeholder="Nombre y apellido impreso *"
@@ -559,19 +650,29 @@ export default class PaymentWay extends Component {
 											<InputTip msg={this.state.tips.card_holder} />
 											<div className="input-form">
 												<Datetime
+													onCut={this.preventCopyPasteCut}
+													onCopy={this.preventCopyPasteCut}
+													onPaste={this.preventCopyPasteCut}
+													autocomplete="off"
 													onChange={this.handleDateTimeChange}
 													value={this.state.expiration_date}
 													placeholder="AA/MM"
 													dateFormat="YY/MM"
 													timeFormat={false}
+													strictParsing="true"
 												/>
 												<input
+													onCut={this.preventCopyPasteCut}
+													onCopy={this.preventCopyPasteCut}
+													onPaste={this.preventCopyPasteCut}
+													autocomplete="off"
 													required
 													maxLength={4}
 													onChange={this.handleInputChange}
+													value={this.state.ccCvv}
 													onFocus={this.handleInputFocus}
 													onBlur={this.exitccv}
-													name={'ccv'}
+													name={'cvv'}
 													placeholder="CVV"
 												/>
 											</div>
@@ -591,6 +692,12 @@ export default class PaymentWay extends Component {
 												<InputTip msg={this.state.tips.document_type} />
 											</div>
 											<input
+												onCut={this.preventCopyPasteCut}
+												onCopy={this.preventCopyPasteCut}
+												onPaste={this.preventCopyPasteCut}
+												autocomplete="off"
+												onChange={this.handleInputChange}
+												value={this.state.ccId}
 												required
 												name={'document_number'}
 												placeholder="Número de documento"
@@ -687,9 +794,38 @@ export default class PaymentWay extends Component {
 											<div className="content-accordion-form">
 												<label>
 													<p>Datos de titular</p>
-													<input required name={'names'} placeholder="Nombre completo *" />
-													<input required type='email' name={'email'} placeholder="Email *" />
-													<input required name={'phone'} placeholder="Teléfono *" />
+													<input
+														onCut={this.preventCopyPasteCut}
+														onCopy={this.preventCopyPasteCut}
+														onPaste={this.preventCopyPasteCut}
+														autocomplete="off"
+														onChange={this.validateName}
+														value={this.state.name}
+														required
+														name={'names'}
+														placeholder="Nombre completo *"
+													/>
+													<input
+														onCut={this.preventCopyPasteCut}
+														onCopy={this.preventCopyPasteCut}
+														onPaste={this.preventCopyPasteCut}
+														autocomplete="off"
+														type="email"
+														required
+														name={'email'}
+														placeholder="Email *"
+													/>
+													<input
+														onCut={this.preventCopyPasteCut}
+														onCopy={this.preventCopyPasteCut}
+														onPaste={this.preventCopyPasteCut}
+														autocomplete="off"
+														onChange={this.validatePhone}
+														value={this.state.phone}
+														required
+														name={'phone'}
+														placeholder="Teléfono *"
+													/>
 												</label>
 												<label>
 													<p>Banco</p>
@@ -720,7 +856,13 @@ export default class PaymentWay extends Component {
 													<Select name={'document_type'}>{docType}</Select>
 
 													<input
-													required
+														onCut={this.preventCopyPasteCut}
+														onCopy={this.preventCopyPasteCut}
+														onPaste={this.preventCopyPasteCut}
+														autocomplete="off"
+														onChange={this.validateIdNumber}
+														value={this.state.idNumber}
+														required
 														name={'document_number'}
 														placeholder="Número documento"
 													/>

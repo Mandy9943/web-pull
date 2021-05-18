@@ -5,6 +5,16 @@ import { getProductImgs } from '../../../lib/functions';
 import { getImgUrl } from '../../../lib/config';
 
 function PurchaseItem({ item, onSelect }) {
+	function saveInStorage(name, phone, productTitle, productPrice, productQuantity) {
+		const merchInfo = {
+			name: name,
+			phone: phone,
+			productTitle: productTitle,
+			productPrice: productPrice,
+			productQuantity: productQuantity,
+		};
+		localStorage.setItem('merchInf', JSON.stringify(merchInfo));
+	}
 	function moneyFormater(price) {
 		var num = price;
 		num = num
@@ -16,7 +26,7 @@ function PurchaseItem({ item, onSelect }) {
 		num = num.split('').reverse().join('').replace(/^[\.]/, '');
 		return num;
 	}
-	//console.log(item.data.product?.title.length)
+	console.log(item.data.seller);
 	return (
 		<div className="product-item">
 			<h5 className="status">{item.purchase_status_name}</h5>
@@ -51,12 +61,25 @@ function PurchaseItem({ item, onSelect }) {
 				<section className="info">
 					<a onClick={() => onSelect(item)}> Detalle de compra</a>
 					<p className="vendedor">Vendedor:</p>
-					<p>{item.data.seller.name}</p>
+					<p>{item.data.seller.name}ee</p>
 					<p className="phone-client"> {item.data.seller.phone}</p>
 					<Link
 						href={`/chat/${item.data.order_id}?order=${item.data.order_id}&store=${item.data.seller_id}`}
 					>
-						<a> Enviar mensaje</a>
+						<a
+							onClick={() =>
+								saveInStorage(
+									item.data.seller.name,
+									item.data.seller.phone,
+									item.data.product.title,
+									item.data.product.price,
+									item.data.quantity
+								)
+							}
+						>
+							{' '}
+							Enviar mensaje
+						</a>
 					</Link>
 				</section>
 			</div>

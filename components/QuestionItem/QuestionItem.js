@@ -16,7 +16,7 @@ class QuestionItem extends Component {
 								{question.created_since.split(' ')[0]}
 							</small>
 						</h5>
-						{responses && <h5 className="responses-title">si tengo</h5>}
+						{responses && <h5 className="responses-title">{question.answer}</h5>}
 					</section>
 				))}
 				{this.props.questions.length === 0 ? (

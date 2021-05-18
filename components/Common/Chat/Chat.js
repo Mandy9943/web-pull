@@ -23,6 +23,7 @@ class Chat extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			nea: '',
 			room_user: `KieroUser_${this.props.data.myID}`,
 			send: 0,
 			user: this.props.data.myID,
@@ -90,6 +91,10 @@ class Chat extends Component {
 		});
 		// console.log("holaaaaa",viewguide)
 		// this.state.dataguide = this.viewguide
+	}
+
+	componentWillUnmount() {
+		localStorage.removeItem('merchInf');
 	}
 
 	setValue(val) {
@@ -182,6 +187,8 @@ class Chat extends Component {
 
 		// }
 		// console.log(window.document.getElementsByClassName("containerChat"))
+
+		// s
 		return (
 			<>
 				<Nav
@@ -248,7 +255,7 @@ class Chat extends Component {
 									<FontAwesomeIcon icon={faUser} />
 								</div>
 								<div className="userData">
-									<p>Spice Stock</p>
+									<p>SpiceStock</p>
 									<p>3001234567</p>
 									<span className="detailsShop">Detalles de compra</span>
 								</div>
