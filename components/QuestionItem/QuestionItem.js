@@ -12,11 +12,11 @@ class QuestionItem extends Component {
 					<section key={i} className="question-item">
 						<h5 className="question-title">
 							{question.content} &nbsp;&nbsp;
-							<small style={{ color: 'black', fontWeight: '400', fontSize: 'smaller' }}>
+							<small style={{ color: 'black', fontWeight: '500', fontSize: 'smaller' }}>
 								{question.created_since.split(' ')[0]}
 							</small>
 						</h5>
-						{responses && <h5 className="responses-title">{question.answer}</h5>}
+						{responses && <h5 className="responses-title">si tengo</h5>}
 					</section>
 				))}
 				{this.props.questions.length === 0 ? (
