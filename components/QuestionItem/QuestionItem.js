@@ -5,6 +5,7 @@ import Link from 'next/link';
 class QuestionItem extends Component {
 	render() {
 		let responses = true;
+		console.log("respuestas",this.props.questions)
 		return (
 			<div className="QuestionItem-list">
 				<h5 className="title">Últimas Preguntas</h5>
@@ -16,7 +17,7 @@ class QuestionItem extends Component {
 								{question.created_since.split(' ')[0]}
 							</small>
 						</h5>
-						{responses && <h5 className="responses-title">si tengo</h5>}
+						{responses && <h5 className="responses-title">{question.answer}</h5>}
 					</section>
 				))}
 				{this.props.questions.length === 0 ? (
