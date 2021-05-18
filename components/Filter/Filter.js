@@ -197,7 +197,7 @@ class Filter extends Component {
 						</div>
 
 						<div className="filter-top-container-order">
-							<div className="order">
+							<div>
 								<div className="text">Ordenar publicaciones</div>
 								<div className="wrap-filter-button">
 									<select onChange={(e) => this.setSort(e)} className="select-filter">
@@ -208,20 +208,22 @@ class Filter extends Component {
 									<p>|</p>
 									<div className="wrap-filter-format">
 										<div
+											style={{ padding: '0px', margin: '0px' }}
 											onClick={() => {
 												this.props.toggle({ format: 'list' });
 											}}
-											className={buttonState == 'list' ? 'active' : null}
+											className={buttonState == 'list' ? 'actives' : null}
 										>
-											<FontAwesomeIcon icon={faList} />
+											<FontAwesomeIcon style={{ padding: '0px', margin: '0px' }} icon={faList} />
 										</div>
 										<div
+											style={{ padding: '0px', margin: '0px' }}
 											onClick={() => {
 												this.props.toggle({ format: 'grid' });
 											}}
-											className={buttonState == 'grid' ? 'active' : null}
+											className={buttonState == 'grid' ? 'actives' : null}
 										>
-											<FontAwesomeIcon icon={faTh} />
+											<FontAwesomeIcon style={{ padding: '0px', margin: '0px' }} icon={faTh} />
 										</div>
 									</div>
 								</div>
