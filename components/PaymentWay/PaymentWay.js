@@ -69,7 +69,7 @@ export default class PaymentWay extends Component {
 			paymentLoading: false,
 			paymentError: false,
 			paymentCash: false,
-			paymentCashType: 1,
+			paymentCashType: 0,
 			paymentCashResult: false,
 			paymentCashDocument: '',
 			modalValidate: false,
