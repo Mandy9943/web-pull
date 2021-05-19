@@ -9,8 +9,8 @@ import {
   faTv,
 } from "@fortawesome/free-solid-svg-icons";
 
-import Theme2 from './ShopThemes/Theme2'
-import Theme7 from './ShopThemes/Theme7'
+import Theme2 from './ShopThemes/Theme2/Theme2'
+import Theme7 from './ShopThemes/Theme7/Theme7'
 
 
 const ShopEdit = ({ cb, section_edit, data, store_design }) => {
