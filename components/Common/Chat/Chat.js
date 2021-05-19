@@ -23,7 +23,7 @@ class Chat extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			nea: '',
+			storage: '',
 			room_user: `KieroUser_${this.props.data.myID}`,
 			send: 0,
 			user: this.props.data.myID,
@@ -37,6 +37,11 @@ class Chat extends Component {
 	}
 
 	componentDidMount() {
+		if (this.state.storage === '') {
+			this.setState({
+				storage: JSON.parse(localStorage.getItem('merchInf')),
+			});
+		}
 		console.log(this.props.data);
 		var url_string = location.href;
 		var url = new URL(url_string);
@@ -93,10 +98,6 @@ class Chat extends Component {
 		// this.state.dataguide = this.viewguide
 	}
 
-	componentWillUnmount() {
-		localStorage.removeItem('merchInf');
-	}
-
 	setValue(val) {
 		this.setState({ value_message: val });
 	}
@@ -122,7 +123,17 @@ class Chat extends Component {
 			icon: 'success',
 		});
 	}
-
+	moneyFormater(price) {
+		var num = price;
+		num = num
+			.toString()
+			.split('')
+			.reverse()
+			.join('')
+			.replace(/(?=\d*\.?)(\d{3})/g, '$1.');
+		num = num.split('').reverse().join('').replace(/^[\.]/, '');
+		return num;
+	}
 	render() {
 		if (this.state.messages) {
 			this.allMessages = this.state.messages.map((msg, i) => {
@@ -188,7 +199,6 @@ class Chat extends Component {
 		// }
 		// console.log(window.document.getElementsByClassName("containerChat"))
 
-		// s
 		return (
 			<>
 				<Nav
@@ -255,8 +265,8 @@ class Chat extends Component {
 									<FontAwesomeIcon icon={faUser} />
 								</div>
 								<div className="userData">
-									<p>SpiceStock</p>
-									<p>3001234567</p>
+									<p>{this.state.storage.name ? this.state.storage.name : ''}</p>
+									<p>{this.state.storage.phone ? this.state.storage.phone : ''}</p>
 									<span className="detailsShop">Detalles de compra</span>
 								</div>
 							</div>
@@ -268,10 +278,25 @@ class Chat extends Component {
 									<FontAwesomeIcon icon={faUser} />
 								</div>
 								<div className="userData productData">
-									<p>Portátil Premium 2020 HP 15 15,6" HD pantalla táctil Prem...</p>
-									<p>$147.500</p>
+									<p>
+										{this.state.storage.productTitle
+											? this.state.storage.productTitle
+											: ''}
+									</p>
+									<p>
+										${' '}
+										{this.state.storage.productPrice
+											? this.moneyFormater(this.state.storage.productPrice).replace(
+													'.00',
+													''
+											  )
+											: ''}
+									</p>
 									<span className="detailsShop" style={{ color: '#757575 !important' }}>
-										1 unidad
+										{this.state.storage.productQuantity
+											? this.state.storage.productQuantity
+											: ''}{' '}
+										unidad
 									</span>
 								</div>
 							</div>

@@ -69,7 +69,7 @@ export default class PaymentWay extends Component {
 			paymentLoading: false,
 			paymentError: false,
 			paymentCash: false,
-			paymentCashType: 1,
+			paymentCashType: 0,
 			paymentCashResult: false,
 			paymentCashDocument: '',
 			modalValidate: false,
@@ -336,6 +336,7 @@ export default class PaymentWay extends Component {
 		this.hidePaymentOptions(2);
 		const cashPayload = {
 			product_id: this.props.data.product_id,
+			product_quantity: this.state.productQuantity,
 			full_name: e.target.elements.cash_form_name.value,
 			email: e.target.elements.cash_form_email.value,
 			phone_number: e.target.elements.cash_form_number.value,
@@ -345,6 +346,7 @@ export default class PaymentWay extends Component {
 			cashPayload.address_id = this.state.addresses[this.state.selectedAddr].address_id;
 
 			const rs = await makePaymentCash(cashPayload, this.props.user.jwt);
+			console.log(rs);
 			if (rs.data) {
 				console.log(rs.data);
 				this.setState({
@@ -415,6 +417,8 @@ export default class PaymentWay extends Component {
 	};
 
 	getPaymentType = () => {
+		console.log(this.state.paymentCashType);
+
 		if (this.state.paymentCashType === 1) {
 			return 'EFECTY';
 		}
