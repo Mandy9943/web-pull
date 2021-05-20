@@ -41,7 +41,7 @@ export default class Home extends Component {
           <Finding category={{
             father0: "Electrodomésticos", father1: "Computación",
             img0: "banner-electrodomesticos.jpg", img1: "banner-computacion.jpg",
-            sub1: "Aspiradoras", url1: "categoria/Aspiradoras", sub2: "Monitores", url2: "categoria/Monitores" }} 
+            sub1: "Aspiradoras", url1: "categoria/Aspiradoras domésticas", sub2: "Monitores", url2: "categoria/Monitores de computadoras" }} 
            />
            <ProductsSlider category={"Juguetes"} />
            <Explorer /> 
@@ -49,7 +49,7 @@ export default class Home extends Component {
           <Finding category={{
             father0: "Deportes", father1: "Electrónica",
             img0: "banner-deportes.jpg", img1: "banner-drones.jpg",
-            sub1: "Bicicletas de carretera", url1: "categoria/Bicicle-tas%20de%20carretera", sub2: "Drones", url2:"categoria/Drones" }}
+            sub1: "Bicicletas de carretera", url1: "categoria/Bicicletas", sub2: "Drones", url2:"categoria/Cuadricópteros drones y accesorios" }}
           />
           <Explorer /> 
           <ProductsSlider category={"Animales y Mascotas"} />

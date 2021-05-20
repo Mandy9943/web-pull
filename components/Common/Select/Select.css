@@ -1,45 +1,56 @@
-.wrap-select {
-  position: relative;
+.paymentWaySelect {
+	left: 60px;
+	border: 1px solid #989898;
+	width: 480px;
+	border-radius: 5px;
+	display: flex;
+	margin-top: 20px;
 }
 
-.wrap-select::before, .wrap-select::after {
-  content: "";
-  width: 7px;
-  height: 2px;
-  background: #6F6F6F;
-  position: absolute;
-  -webkit-transform: rotateZ(45deg);
-          transform: rotateZ(45deg);
-  border-radius: 50px;
-  right: 5px;
-  top: 9px;
+.wrap-select {
+	position: relative;
+}
+
+.wrap-select::before,
+.wrap-select::after {
+	content: '';
+	width: 7px;
+	height: 2px;
+	background: #6f6f6f;
+	position: absolute;
+	-webkit-transform: rotateZ(45deg);
+	transform: rotateZ(45deg);
+	border-radius: 50px;
+	right: 5px;
+	top: 9px;
 }
 
 .wrap-select::before {
-  right: 0px;
-  -webkit-transform: rotateZ(135deg);
-          transform: rotateZ(135deg);
+	right: 0px;
+	-webkit-transform: rotateZ(135deg);
+	transform: rotateZ(135deg);
 }
 
 select {
-  border: 0px;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  background: transparent;
-  position: relative;
-  width: 100%;
-  height: 100%;
-  padding: 1px 15px 1px 1px;
-  outline: none;
-  color: #737272;
-  cursor: pointer;
+	border: 0px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background: transparent;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	padding: 1px 15px 1px 1px;
+	outline: none;
+	color: #737272;
+	cursor: pointer;
 }
 
-select:after, select:before {
-  content: "";
-  width: 100px;
-  height: 100px;
-  background: lime;
+select:after,
+select:before {
+	content: '';
+	width: 100px;
+	height: 100px;
+	background: lime;
 }
 /*# sourceMappingURL=Select.css.map */

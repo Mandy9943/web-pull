@@ -168,7 +168,7 @@ function Results({ data, session }) {
     if (category_name in complete) {
         let bannerNo = 1;
         for (let i = 0; i < e.estructure.length; i++) {
-
+            
             if (e.estructure[i] === 1) {
                 if (e.links[bannerNo - 1] !== "") {
                     structure.push(
