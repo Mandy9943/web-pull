@@ -4,7 +4,7 @@
     "target": {
       "namespace": "android_app",
       "package_name": "com.kiero.kieromarketplace",
-      "sha256_cert_fingerprints": ["3B:A4:1F:BC:9A:6A:71:58:92:42:4E:4F:64:88:0E:F1:3D:B8:84:DC"]
+      "sha256_cert_fingerprints": ["C2:00:FC:A7:C0:4A:E2:AC:95:AF:0B:9C:03:21:22:34:17:0D:7E:90:F4:EB:66:68:EF:E0:2B:71:66:5B:B2:D4"]
     }
   }
 ]
