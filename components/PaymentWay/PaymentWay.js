@@ -242,7 +242,9 @@ export default class PaymentWay extends Component {
 		e.preventDefault();
 
 		if (this.state.selectedAddr == -1) {
-			this.setState({ modalValidate: true });
+			this.setState({
+				modalAddr: true,
+			});
 			return false;
 		}
 
@@ -302,13 +304,22 @@ export default class PaymentWay extends Component {
 			monthly_fees: e.target.elements.monthly_fees.value,
 			accept_token: this.state.acceptance_token,
 		};
-		console.log("payment",ccPayload, "this.state.ccCvv",this.state.ccCvv, "cvv",e.target.elements)
+		console.log(
+			'payment',
+			ccPayload,
+			'this.state.ccCvv',
+			this.state.ccCvv,
+			'cvv',
+			e.target.elements
+		);
 
 		const validated = Object.assign(tips, validatePayCC(ccPayload));
 		console.log(validated);
 		if (Object.values(validated).length == 0) {
 			if (this.state.selectedAddr == -1) {
-				this.setState({ modalValidate: true });
+				this.setState({
+					modalAddr: true,
+				});
 				return false;
 			}
 
@@ -343,7 +354,7 @@ export default class PaymentWay extends Component {
 			phone_number: e.target.elements.cash_form_number.value,
 			paymentMethod: this.getPaymentType(),
 		};
-		console.log("propiedades de pagar",cashPayload)
+		console.log('propiedades de pagar', cashPayload);
 		if (cashPayload.email && cashPayload.full_name && cashPayload.phone_number) {
 			cashPayload.address_id = this.state.addresses[this.state.selectedAddr].address_id;
 

@@ -40,7 +40,6 @@ function SellerInfo({productId}){
             </div>
             <div className="info-profile-seller">
               <p>{seller?.name} {seller?.last_name}</p>
-              <p>{seller?.phone}</p>
             </div>
            {
              seller?.leader && 
