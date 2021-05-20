@@ -64,7 +64,10 @@ class MenuCategories extends Component {
 								>
 									<a>
 										<Link href={'/categoria/' + ccat.name}>{ccat.name}</Link>
-										<FontAwesomeIcon onClick={() => this.menuMouseEnter(i)} icon={faAngleRight} />
+										<FontAwesomeIcon
+											onClick={() => this.menuMouseEnter(i)}
+											icon={faAngleRight}
+										/>
 									</a>
 								</span>
 							);
@@ -81,28 +84,30 @@ class MenuCategories extends Component {
 								<img src={urlBanner + this.state.selectedCategory + '/4.jpg'} />
 								<img src={urlBanner + this.state.selectedCategory + '/5.jpg'} />
 							</section>
-							{this.props.categories[this.state.selectedCategory].childs.map((sl_cat, i) => {
-								return (
-									<section className="sub-cat" key={i}>
-										{
-											<Link href={'/categoria/' + sl_cat.name}>
-												<h5>
-													<div className="subCatText">{sl_cat.name}</div>
-												</h5>
-											</Link>
-										}
-										{sl_cat.childs.map((tl_cat, i) => {
-											return (
-												<span>
-													<Link href={'/categoria/' + tl_cat.name}>
-														<a>{tl_cat.name}</a>
-													</Link>
-												</span>
-											);
-										})}
-									</section>
-								);
-							})}
+							{this.props.categories[this.state.selectedCategory].childs.map(
+								(sl_cat, i) => {
+									return (
+										<section className="sub-cat" key={i}>
+											{
+												<Link href={'/categoria/' + sl_cat.name}>
+													<h5>
+														<div className="subCatText">{sl_cat.name}</div>
+													</h5>
+												</Link>
+											}
+											{sl_cat.childs.map((tl_cat, i) => {
+												return (
+													<span>
+														<Link href={'/categoria/' + tl_cat.name}>
+															<a>{tl_cat.name}</a>
+														</Link>
+													</span>
+												);
+											})}
+										</section>
+									);
+								}
+							)}
 						</section>
 					) : null}
 				</div>
