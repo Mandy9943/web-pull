@@ -18,11 +18,14 @@ export default class addAddress extends React.Component {
             neighborhood: '',
             phone: '',
             error: null,
-            department: "Amazonas"
+            department: "Amazonas",
+            description: '',
         }
         this.validateName = this.validateName.bind(this);
         this.validateNeighborhood = this.validateNeighborhood.bind(this);
         this.validatePhone = this.validatePhone.bind(this);
+        this.validateDescription = this.validateDescription.bind(this);
+        
     }
 
 
@@ -55,6 +58,14 @@ export default class addAddress extends React.Component {
             phone: pattern.test(value)? value: value.slice(0,-1)
         })
     }
+ 
+    validateDescription(event){
+        const { name, value } = event.target;
+        const pattern = new RegExp("^[a-zA-Z\u0080-\uFFFF ]+$");
+        this.setState({
+            description: pattern.test(value)? value: value.slice(0,-1)
+        })
+    }
 
     
     getDepartments(){
@@ -85,7 +96,7 @@ export default class addAddress extends React.Component {
         }
         
         if(xpayload.names && xpayload.department && xpayload.city && xpayload.neighborhood 
-            && xpayload.address && xpayload.phone && xpayload.description){
+            && xpayload.address && xpayload.phone){
                 const error = await savePrivateData("/newAddress", xpayload, this.props.jwt);
                 
                 if (error) {
@@ -170,7 +181,6 @@ export default class addAddress extends React.Component {
                                     onCut={this.preventCopyPasteCut}
 					                onCopy={this.preventCopyPasteCut}
 					                onPaste={this.preventCopyPasteCut}
-                                    onChange={this.validateName} 
                                     autocomplete="off" 
                                     onChange={this.validateNeighborhood} 
                                     value={this.state.neighborhood} 
@@ -197,7 +207,6 @@ export default class addAddress extends React.Component {
                                         onCut={this.preventCopyPasteCut}
                                         onCopy={this.preventCopyPasteCut}
                                         onPaste={this.preventCopyPasteCut}
-                                        onChange={this.validateName} 
                                         autocomplete="off"
                                         required name={"address1"}
                                     />
@@ -205,7 +214,6 @@ export default class addAddress extends React.Component {
                                         onCut={this.preventCopyPasteCut}
                                         onCopy={this.preventCopyPasteCut}
                                         onPaste={this.preventCopyPasteCut}
-                                        onChange={this.validateName} 
                                         autocomplete="off"
                                         required name={"address2"}
                                     />
@@ -213,7 +221,6 @@ export default class addAddress extends React.Component {
                                         onCut={this.preventCopyPasteCut}
                                         onCopy={this.preventCopyPasteCut}
                                         onPaste={this.preventCopyPasteCut}
-                                        onChange={this.validateName} 
                                         autocomplete="off"
                                         required name={"address3"}
                                     />
@@ -244,10 +251,11 @@ export default class addAddress extends React.Component {
                                     onCut={this.preventCopyPasteCut}
                                     onCopy={this.preventCopyPasteCut}
                                     onPaste={this.preventCopyPasteCut}
-                                    onChange={this.validateName} 
+                                    onChange={this.validateDescription} 
+                                    value={this.state.description}
                                     autocomplete="off" 
                                     type='text' 
-                                    required name={"description"}
+                                    name={"description"}
                                 />
                             </label>
                             <div className="add-address-actions">
