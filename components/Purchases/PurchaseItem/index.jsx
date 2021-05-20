@@ -13,6 +13,7 @@ function PurchaseItem({ item, onSelect }) {
 			productPrice: productPrice,
 			productQuantity: productQuantity,
 		};
+		localStorage.removeItem('merchInf');
 		localStorage.setItem('merchInf', JSON.stringify(merchInfo));
 	}
 	function moneyFormater(price) {
