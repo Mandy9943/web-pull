@@ -1,0 +1,10 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.kiero.kieromarketplace",
+      "sha256_cert_fingerprints": ["3B:A4:1F:BC:9A:6A:71:58:92:42:4E:4F:64:88:0E:F1:3D:B8:84:DC"]
+    }
+  }
+]
