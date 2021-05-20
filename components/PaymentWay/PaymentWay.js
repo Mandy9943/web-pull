@@ -296,12 +296,13 @@ export default class PaymentWay extends Component {
 				.join(''),
 			card_type: this.state.card_type,
 			card_number: e.target.elements.card_number.value.split(' ').join(''),
-			ccv: e.target.elements.ccv.value,
+			ccv: this.state.ccCvv,
 			expiration_date: '20' + this.state.expiration_date, // .expiration_date.value,
 			card_holder: e.target.elements.card_holder.value,
 			monthly_fees: e.target.elements.monthly_fees.value,
 			accept_token: this.state.acceptance_token,
 		};
+		console.log("payment",ccPayload, "this.state.ccCvv",this.state.ccCvv, "cvv",e.target.elements)
 
 		const validated = Object.assign(tips, validatePayCC(ccPayload));
 		console.log(validated);
@@ -342,6 +343,7 @@ export default class PaymentWay extends Component {
 			phone_number: e.target.elements.cash_form_number.value,
 			paymentMethod: this.getPaymentType(),
 		};
+		console.log("propiedades de pagar",cashPayload)
 		if (cashPayload.email && cashPayload.full_name && cashPayload.phone_number) {
 			cashPayload.address_id = this.state.addresses[this.state.selectedAddr].address_id;
 
@@ -433,7 +435,6 @@ export default class PaymentWay extends Component {
 	};
 
 	render() {
-		console.log('props al pagar', this.props);
 		const addAddressContent = (
 			<AddAddress
 				jwt={this.props.user.jwt}
