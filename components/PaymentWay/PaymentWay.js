@@ -304,14 +304,7 @@ export default class PaymentWay extends Component {
 			monthly_fees: e.target.elements.monthly_fees.value,
 			accept_token: this.state.acceptance_token,
 		};
-		console.log(
-			'payment',
-			ccPayload,
-			'this.state.ccCvv',
-			this.state.ccCvv,
-			'cvv',
-			e.target.elements
-		);
+		// console.log("payment",ccPayload, "this.state.ccCvv",this.state.ccCvv, "cvv",e.target.elements)
 
 		const validated = Object.assign(tips, validatePayCC(ccPayload));
 		console.log(validated);
