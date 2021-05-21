@@ -38,7 +38,7 @@ function Results({ data, session }) {
 
         "bebés": {
             "estructure": [1, 2, 3, 2, 3, 2, 1],
-            "links": ["Bebés", "Regalos%20para%20recién%20nacidos", "Bacinicas%20y%20bancos%20infantiles", "Asientos%20y%20accesorios%20de%20carro%20para%20bebés", "Productos%20cambio%20de%20pañales%20bebés", "Productos%20para%20embarazo%20y%20maternidad", "Centros%20actividad%20entretenimiento%20bebés", "Coches%20de%20bebés%20y%20accesorios", "Productos%20para%20el%20cuidado%20del%20bebé", "Papelería%20para%20bebés", "Productos%20para%20el%20cuidado%20del%20bebé", "Recámara%20del%20bebé", "Productos%20de%20seguridad%20para%20bebés", "Lactancia%20y%20alimentación", "Artículos%20de%20viaje%20para%20bebés"],
+            "links": ["Bebés", "Bacinicas%20y%20bancos%20infantiles", "Regalos%20para%20recién%20nacidos", "Asientos%20y%20accesorios%20de%20carro%20para%20bebés", "Productos%20cambio%20de%20pañales%20bebés", "Productos%20para%20embarazo%20y%20maternidad", "Centros%20actividad%20entretenimiento%20bebés", "Coches%20de%20bebés%20y%20accesorios", "Papelería%20para%20bebés", "Productos%20para%20el%20cuidado%20del%20bebé", "Recámara%20del%20bebé", "Productos%20de%20seguridad%20para%20bebés", "Lactancia%20y%20alimentación", "Artículos%20de%20viaje%20para%20bebés"],
             "image_path": encodeURI("//kiero.co/images/resources/bebes/"), "enable": true
         },
 
@@ -127,13 +127,13 @@ function Results({ data, session }) {
         // },
         "ropa, calzado y accesorios": {
             "estructure": [1, 2, 3, 3, 2, 1],
-            "links": ["Ropa,%20calzado%20y%20accesorios", "Moda%20para%20hombres", "Moda%20para%20mujeres", "Tiendas%20para%20niñas", "Disfraces%20y%20accesorios%20para%20todo%20género", "Ropa%20para%20bebés", "Novedades%20y%20de%20uso%20especial", "Uniformes,%20trabajo%20y%20seguridad", "Moda%20para%20niñas", "Moda%20para%20niños", "Equipaje%20y%20equipo%20de%20viaje"],
+            "links": ["Ropa,%20calzado%20y%20accesorios", "Moda%20para%20hombres", "Moda%20para%20mujeres", "Tiendas%20para%20niñas", "Disfraces%20y%20accesorios%20para%20todo%20género", "Accesorios para zapatos y relojes", "Ropa%20para%20bebés", "Novedades%20y%20de%20uso%20especial", "Uniformes,%20trabajo%20y%20seguridad", "Moda%20para%20niños", "Moda%20para%20niñas", "Equipaje%20y%20equipo%20de%20viaje"],
             "image_path": encodeURI("//kiero.co/images/resources/ropa calzado y accesorios/"), "enable": true
         },
 
         "vehículos": {
             "estructure": [1, 2, 3, 3, 2, 3, 3, 1],
-            "links": ["Vehículos", "Accesorios%20interiores%20para%20carro", "Accesorios%20exteriores%20para%20carro", "Neumáticos%20y%20rines%20para%20carro", "Aceites%20y%20fluidos%20para%20carro", "Cuidado%20de%20carro%20y%20moto", "Equipo%20de%20carros%20comerciales%20y%20uso%20pesado", "Luces,%20bombillas%20e%20indicadores", "Motos,%20accesorios%20y%20piezas", "Piezas%20de%20repuestos%20para%20carro", "Herramientas%20para%20carro", "Otros%20accesorios%20de%20vehículos", "Piezas%20y%20repuestos%20para%20caravanas", "Pintura%20y%20suministros%20de%20pintura%20carro", "Artículos%20para%20aficionados%20de%20vehículos", "Accesorios%20para%20remolques", "Electrónica%20y%20accesorios%20para%20carros", "Repuestos%20y%20accesorios%20rendimiento%20carro"],
+            "links": ["Vehículos", "Accesorios%20exteriores%20para%20carro", "Accesorios%20interiores%20para%20carro", "Neumáticos%20y%20rines%20para%20carro", "Aceites%20y%20fluidos%20para%20carro", "Cuidado%20de%20carro%20y%20moto", "Equipo%20de%20carros%20comerciales%20y%20uso%20pesado", "Luces,%20bombillas%20e%20indicadores", "Motos,%20accesorios%20y%20piezas", "Piezas%20de%20repuestos%20para%20carro", "Herramientas%20para%20carro", "Otros%20accesorios%20de%20vehículos", "Piezas%20y%20repuestos%20para%20caravanas", "Pintura%20y%20suministros%20de%20pintura%20carro", "Artículos%20para%20aficionados%20de%20vehículos", "Accesorios%20para%20remolques", "Electrónica%20y%20accesorios%20para%20carros", "Repuestos%20y%20accesorios%20rendimiento%20carro"],
             "image_path": encodeURI("//kiero.co/images/resources/vehiculos/"), "enable": true
         },
         "computadoras y accesorios": {
@@ -195,6 +195,7 @@ function Results({ data, session }) {
             "image_path": encodeURI("//kiero.co/images/resources/jardin y exteriores/"), "enable": true
         }
     }
+
     let category_name = data.search.toLowerCase();
 
     let structure = [];
