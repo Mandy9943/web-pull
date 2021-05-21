@@ -24,23 +24,21 @@ function Results({ data, session }) {
     const currentPath = router.asPath;
     let url = "//www.sic.gov.co";
     var complete = {
-        "deporte": {
-            "estructure": [1, 2, 3, 3, 3, 3],
-            "links": ["Deporte", "Accesorios%20deportivos%20para%20deportes", "Entrenamiento%20de%20fitness", "Caza%20y%20Pezca", 
-            "Fútbol%20de%20mesa%20y%20futbolito", "Equipo%20deportivo%20para%20atletismo", "Hockey%20de%20mesa%20y%20mini%20hockey", "Conjunto%20de%20juego%20de%20tejo", "Tenis%20de%20mesa", "Paintball%20y%20Airsoft", 
-            "Equipo%20de%20Natación", "Equipo%20de%20Natación", "Deportes%20recreativos%20y%20sala%20de%20juegos", "Deporte%20al%20aire%20libre", "Compra%20por%20Deporte", "Tiendas%20Destacadas"],
+        "deportes y fitness": {
+            "estructure": [1, 2, 3],
+            "links": ["Deportes%20y%20fitness", "Accesorios%20deportes%20y%20aire%20libre", "Entrenamiento%20de%20fitness", "Recreación%20en%20exteriores", "Deportes%20y%20acondicionamiento%20físico", "Tienda%20para%20fanáticos%20de%20los%20deportes"],
             "image_path": encodeURI("//kiero.co/images/resources/deportes y fitness/"), "enable": true
         },
 
         "animales y mascotas": {
-            "estructure": [1, 2, 3, 3, 2],
-            "links": ["Animales%20y%20Mascotas", "Perros", "Gatos", "Aves", "Acuáticos", "Reptiles%20y%20anfibios", "Cumpleaños%20de%20mascotas", "Otros%20alimentos%20para%20mascotas", "Otros%20productos%20mascotas", "Animales%20Pequeños", "Caballos"],
+            "estructure": [1, 2, 3, 2, 3, 3, 2],
+            "links": ["Animales%20y%20mascotas", "Suministros%20para%20perros", "Suministros%20para%20gatos", "Suministros%20para%20aves%20domésticas", "Alimentos%20para%20mascotas", "Centro%20de%20pulgas%20y%20garrapatas", "Suministros%20para%20peces", "Suministros%20para%20reptiles%20y%20anfibios", "Alimentos%20especiales%20para%20mascotas", "Productos%20para%20cumpleaños%20de%20mascotas", "Suministros%20de%20salud%20mascotas", "Cercado%20y%20contención%20mascotas", "Disfraces%20de%20halloween%20para%20mascotas", "Tecnología%20para%20mascotas", "Suministros%20para%20animales%20pequeños", "Suministros%20para%20caballos"],
             "image_path": encodeURI("//kiero.co/images/resources/animales y mascotas/"), "enable": true
         },
 
         "bebés": {
-            "estructure": [1, 2, 3, 3, 3, 2, 1],
-            "links": ["Bebés", "Regalos%20para%20recién%20nacidos", "Bacinicas%20y%20Bancos%20Infantiles", "Asientos%20y%20accesorios%20de%20carro%20para%20bebés", "Productos%20cambio%20de%20pañales%20bebés", "Coches%20de%20viaje%20para%20bebés%20y%20accesorios", "Centros%20actividad%20entretenimiento%20bebés", "Productos%20para%20el%20cuidado%20del%20bebé", "Productos%20para%20embarazo%20y%20maternidad", "Papelería%20de%20bebé", "Productos%20para%20bebé", "Recámara%20del%20bebé", "Lactancia%20y%20Alimentación", "Seguridad%20para%20el%20bebé", "Artículos%20de%20viaje%20para%20bebés"],
+            "estructure": [1, 2, 3, 2, 3, 2, 1],
+            "links": ["Bebés", "Regalos%20para%20recién%20nacidos", "Bacinicas%20y%20bancos%20infantiles", "Asientos%20y%20accesorios%20de%20carro%20para%20bebés", "Productos%20cambio%20de%20pañales%20bebés", "Productos%20para%20embarazo%20y%20maternidad", "Centros%20actividad%20entretenimiento%20bebés", "Coches%20de%20bebés%20y%20accesorios", "Productos%20para%20el%20cuidado%20del%20bebé", "Papelería%20para%20bebés", "Productos%20para%20el%20cuidado%20del%20bebé", "Recámara%20del%20bebé", "Productos%20de%20seguridad%20para%20bebés", "Lactancia%20y%20alimentación", "Artículos%20de%20viaje%20para%20bebés"],
             "image_path": encodeURI("//kiero.co/images/resources/bebes/"), "enable": true
         },
 
@@ -48,71 +46,73 @@ function Results({ data, session }) {
 
         "belleza": {
             "estructure":  [1, 2, 3, 3, 1],
-            "links": ["Belleza", "Artículos%20y%20accesorios%20de%20belleza", "Cosméticos%20y%20maquillaje", "Cuidado%20de%20Boca", "Cuidado%20de%20la%20Piel", "Cuidado%20de%20pies%20manos%20y%20uñas", "Cuidado%20del%20Cabello", "Productos%20de%20cuidado%20personal", "Fragancia", "Afeitado%20y%20depilación%20mujeres"],
+            "links": ["Belleza", "Artículos%20y%20accesorios%20de%20belleza", "Cosméticos%20y%20maquillaje", "Productos%20para%20el%20cuidado%20bucal", "Cuidado%20de%20la%20piel", "Cuidado%20de%20pies%20manos%20y%20uñas", "Cuidado%20del%20cabello", "Productos%20de%20cuidado%20personal", "Perfumes%20y%20fragancias", "Productos%20de%20afeitado%20y%20depilación"],
             "image_path": encodeURI("//kiero.co/images/resources/belleza/"), "enable": true
         },
 
-        "cámaras y accesorios": {
-            "estructure": [1, 2, 3, 3, 3, 2],
-            "links": ["Cámaras%20y%20Accesorios", "Cámaras%20y%20Fotografía", "Accesorios%20cámaras", "Estuches%20y%20bolsas%20para%20cámaras", "Estuches%20para%20binóculos%20y%20microscopio", "Fotografía%20de%20rollo%20para%20cámaras", "Cámaras%20Digitales", "Lentes", "Iluminación%20y%20estudio%20para%20cámaras", "Equipo%20de%20Video", "Impresoras%20y%20Escáneres", "Trípodes%20y%20Monopie%20para%20cámaras", "Cámaras%20de%20fotografía%20Subacuático", "Cámaras%20de%20vigilancia%20y%20seguridad"],
-            "image_path": encodeURI("//kiero.co/images/resources/camaras y accesorios/"), "enable": true
+        "cámaras, fotografía y video": {
+            "estructure": [1, 2, 3, 3, 3, 2, 1],
+            "links": ["Cámaras,%20fotografía%20y%20video", "Binoculares,%20telescopios%20y%20óptica", "Accesorios%20para%20cámara,%20foto%20y%20video", "Estuches%20y%20bolsas%20para%20cámaras", "Cámaras%20de%20vigilancia%20simuladas", "Flash%20de%20cámara", "Cámaras%20digitales", "Fotografía%20cinematográfica", "Iluminación%20y%20estudio%20para%20cámaras", "Equipo%20de%20video", "Impresoras%20y%20escáneres", "Trípodes%20y%20monopie%20de%20cámara", "Cámaras%20de%20fotografía%20subacuático", "Cámaras%20de%20vigilancia%20y%20seguridad", "Videocámaras%20y%20lentes%20de%20cámara"],
+            "image_path": encodeURI("//kiero.co/images/resources/camaras fotografia y video/"), "enable": true
         },
 
 
-        "celulares y teléfonos": {
-            "estructure": [1, 2, 2],
-            "links": ["Celulares%20y%20Teléfonos", "Celulares%20y%20accesorios", "Estuches%20y%20Fundas%20Iphone", "Dispositivos%20Conectados", "Accesorios%20de%20Celulares"],
-            "image_path": encodeURI("//kiero.co/images/resources/celulares y telefonos/"), "enable": true
+        "celulares y accesorios": {
+            "estructure": [1, 2],
+            "links": ["Celulares%20y%20accesorios", "Celulares", "Accesorios%20para%20celulares"],
+            "image_path": encodeURI("//kiero.co/images/resources/celulares y accesorios/"), "enable": true
         },
 
         "consolas y videojuegos": {
             "estructure": [1, 2, 3, 3, 1],
-            "links": ["Consolas%20y%20Videojuegos", "PlayStation%204", "Xbox%20One", "Nintendo%20Switch", "PC", "Mac", "Nintendo%203DS%20y%202DS", "PlayStation%20Vita", "Sistemas%20Heredados", "Microconsoles"],
+            "links": ["Consolas%20y%20videojuegos", "Juegos,%20consolas%20y%20accesorios%20PlayStation%204", "Juegos%20y%20accesorios%20de%20PC", "Juegos%20y%20accesorios%20para%20Mac", "Nintendo%203DS%20y%202DS", "PlayStation%20Vita", "Sistemas%20heredados, juegos%20retro", "Accesorios%20de%20Xbox%20Serie%20X", "Accesorios%20realidad%20virtual%20independientes", "Juegos%20de%20Xbox%20Serie%20X%20&%20S", "Microconsolas%20de%20videojuegos"],
             "image_path": encodeURI("//kiero.co/images/resources/consolas y videojuegos/"), "enable": true
         },
 
         "electrónica, audio y video": {
-            "estructure": [1, 2, 3, 3, 3, 2, 3, 3, 2],
-            "links": ["Electrónica,%20Audio%20y%20Video", "Accesorios%20de%20audio%20y%20video", "Accesorios%20y%20Suministros", "Accesorios%20y%20suministros%20de%20electrónica", "Audio%20y%20video%20portátil", "Componentes%20electrónicos", "DVD", "Electrónica%20para%20Autos%20y%20Vehículos", "Electrónicos%20de%20oficina", "Lectores%20de%20Libros%20Digitales%20y%20accesorios", "Navegación%20satelital%20y%20GPS", "Pilas,%20Baterías,%20cargadores", "Reproductores%20MP3%20y%20MP4", "Seguridad%20y%20vigilancia", "Proyectores%20de%20vídeo", "Plan%20de%20servicio%20computadora%20electrónica", "Tecnología%20vestible", "Teléfonos%20fijos", "Televisión%20y%20video", "Video%20beams%20y%20pantallas", "Otros%20artículos%20electrónica", "Otros%20productos%20de%20Electrónica"],
+            "estructure": [1, 2, 3, 3, 2, 3, 3, 1],
+            "links": ["Electrónica,%20audio%20y%20video", "Televisión%20y%20video", "Accesorios%20y%20suministros%20de%20electrónica", "Contenedores%20de%20almacenamiento%20baterías", "Componentes%20electrónicos", "Dispositivos%20y%20accesorios%20de%20Amazon", "Electrónica%20para%20carros%20y%20vehículos", "Lectores%20de%20libros%20digitales%20y%20accesorios", "GPS,%20buscadores%20y%20accesorios", "Otros%20accesorios%20de%20electrónica", "Equipo%20de%20seguridad%20y%20vigilancia", "Baterías,%20cargadores%20y%20accesorios%20hogar", "Proyectores%20de%20vídeo", "Plan%20de%20servicio%20computadora%20electrónica", "Portapilas%20y%20soportes", "Transformadores%20de%20aislamiento", "Unidades%20de%20distribución%20energía", "Tecnología%20vestible"],
             "image_path": encodeURI("//kiero.co/images/resources/electronica audio y video/"), "enable": true
         },
 
         "electrodomésticos": {
-            "estructure": [1, 2, 3, 3, 3, 2, 3, 3, 3, 2, 3, 3, 3, 1],
-            "links": ["Electrodomésticos","Electrodomésticos%20de%20lavandería","Bodegas%20para%20vinos%20y%20bebidas","Arroceras%20del%20hogar","Aspiradoras%20de%20pisos","Batidoras%20eléctricas%20para%20el%20hogar","","Cafeteras%20de%20expreso%20y%20cafeteras","Calefacción%20ventilador%20purificador%20aire","Calentadores%20de%20bebidas%20de%20té%20y%20espresso","Garantías%20de%20Electrodomésticos","Envasadoras%20al%20vacío","Freidoras","Cocinas%20hornos%20y%20estufas","Hornos%20de%20microondas%20para%20hogar","Hornos%20y%20tostadores%20para%20hogar", "Jarras%20eléctricas%20para%20hervir%20agua", "Piezas%20y%20accesorios%20electrodomésticos%20pequeños", "Lavavajillas%20o%20lavaplatos%20automático", "Licuadoras%20para%20el%20hogar", "Licuadoras%20y%20exprimidores%20eléctricos", "Máquinas%20para%20hacer%20helado", "Moldes%20de%20minipasteles%20y%20cake%20pops", "Ollas%20a%20presión%20eléctricas", "Ollas%20de%20cocción%20lenta%20para%20el%20hogar", "Máquinas%20de%20pan%20para%20el%20hogar", "Parrilla%20eléctrica%20de%20cocina", "Partes%20y%20Accesorios%20ventiladores%20de%20techo", "Teteras%20y%20máquinas%20de%20té", "Procesadores%20de%20alimentos%20para%20el%20hogar", "Quemadores%20de%20mostrador", "Refrigeradores%20compactos", "Refrigeradores,%20Congeladores%20y%20Máquinas%20de%20Hielo", "Trituradores%20y%20Compactadores%20de%20Basura", "Sifones%20y%20máquinas%20para%20hacer%20refresco", "Wafleras%20para%20el%20hogar"],
+            "estructure": [1, 2, 3, 2],
+            "links": ["Electrodomésticos", "Piezas%20y%20accesorios", "Electrodomésticos%20de%20lavandería", "Refrigeradores%20y%20fabricadores%20de%20hielo", "Trituradores%20de%20basura%20y%20compactadores", "Garantías%20de%20electrodomésticos", "Cocinas%20hornos%20y%20estufas", "Electrodomésticos%20del%20hogar"],
             "image_path": encodeURI("//kiero.co/images/resources/electrodomesticos/"), "enable": true
         },
 
         "herramientas": {
-            "estructure": [1, 2, 3, 3,  1],
-            "links": ["Herramientas", "Almacenamiento%20y%20organización%20del%20hogar", "Equipo%20Eléctrico", "Electrodomésticos%20y%20repuestos", "Accesorios%20para%20cocina%20y%20baño", "Herramientas%20para%20ferretería", "Focos%20y%20bombillas%20para%20el%20hogar", "Herramientas%20manuales%20y%20eléctricas", "Equipo%20de%20soldadura", "Productos%20para%20la%20construcción"],
+            "estructure": [1, 2, 3, 3,  2],
+            "links": ["Herramientas", "Almacenamiento%20y%20organización%20del%20hogar", "Equipo%20eléctrico", "Electrodomésticos%20y%20repuestos", "Accesorios%20para%20cocina%20y%20baño", "Herramientas%20para%20ferretería", "Focos%20y%20bombillas%20para%20el%20hogar", "Herramientas%20manuales%20y%20eléctricas", "Equipo%20de%20soldadura", "Productos%20para%20la%20construcción", "Protección%20y%20seguridad%20para%20el%20hogar"],
             "image_path": encodeURI("//kiero.co/images/resources/herramientas/"), "enable": true
         },
 
+
+
         "hogar": {
-            "estructure": [1, 2, 3, 3, 3, 2, 3, 3, 3, 2, 3, 3, 3, 2, 3, 3, 3, 2, 3, 3, 3, 2, 3, 3, 2],
-            "links": ["Hogar", "Accesorios%20de%20Baño", "Accesorios%20de%20cuchillos%20y%20cubiertos", "Accesorios%20Decorativos", "Alfombras%20y%20tapetes%20para%20el%20hogar", "Almacenamiento%20y%20organización%20de%20cocina", "Almohadas%20y%20fundas%20decorativas", "Almohadas%20y%20posicionadores%20de%20cama", "Artículos%20de%20Lavandería", "Asientos%20y%20sillas%20para%20patios", "Aspiradoras%20y%20cuidado%20de%20pisos", "Baño%20infantil", "Baterías%20o%20juegos%20de%20ollas%20para%20cocina", "Colecciones%20de%20ropa%20de%20cama", "Cortinas,%20Ganchos%20y%20Forros%20de%20ducha", "Cubrecamas%20o%20mantas%20para%20cuartos", "Cubrecolchones", "Difusores%20y%20fragancias%20para%20el%20hogar", "Electrodomésticos%20del%20hogar", "Entrepaños%20flotantes%20para%20el%20hogar", "Equipos%20para%20café%20té%20y%20espresso", "Espejos", "Funda%20decorativa%20para%20almohada%20de%20niño", "Iluminación%20de%20Exterior", "Iluminación%20de%20temporada", "Iluminación%20y%20ventiladores%20de%20techo", "Jarrones", "Juegos%20de%20accesorios%20de%20baño", "Edredones%20y%20Juegos%20de%20Ropa%20de%20Cama", "Juegos%20de%20Edredones%20y%20Fundas%20para%20Edredón", "Juegos%20de%20vajilla", "Macetas,%20Plantadores%20y%20Contenedores", "Marcos%20de%20Fotos", "Mejoras%20del%20hogar", "Muebles%20de%20Cocina%20y%20Comedor", "Muebles%20de%20Dormitorio", "Muebles%20de%20Oficina", "Muebles%20de%20patio", "Muebles%20de%20Sala", "Muebles%20de%20Vestíbulo", "Muebles%20para%20Entretenimiento%20de%20Hogar", "Muebles%20para%20niños", "Obras%20de%20arte%20y%20material%20decorativo", "Organizador%20almacenamiento%20en%20el%20hogar", "Organizadores%20para%20regadera", "Plantas%20y%20Flores%20Artificiales", "Plantas,%20Semillas%20y%20Bulbos", "Portavelas", "Productos%20de%20patio,%20césped%20y%20jardín", "Equipo%20de%20riego%20automático", "Productos%20hechos%20a%20mano", "Protectores%20y%20cubrealmohadas", "Relojes%20de%20hogar", "Repostería", "Revestimientos%20para%20cortinas", "Ropa%20blanca%20para%20la%20cocina%20y%20el%20comedor", "Ropa%20de%20cama%20doméstico", "Set%20de%20toallas%20y%20toallones%20de%20baño", "Suministros%20para%20Eventos%20y%20Fiestas", "Tapetes%20de%20Baño", "Tienda%20infantil%20para%20el%20hogar", "Toldos%20carpas%20y%20pérgolas", "Utensilios%20mesa%20y%20comedor%20para%20el%20hogar", "Utensilios%20y%20Aparatos%20de%20Cocina", "Velas", "Calefacción%20Enfriamiento%20y%20Calidad%20Air"],
-            "image_path": encodeURI("//kiero.co/images/resources/hogar y muebles/"), "enable": true
+            "estructure": [1, 2, 3, 3, 2, 3, 3, 2, 3, 3, 3, 2, 1],
+            "links": ["Hogar", "Productos%20de%20baño%20hogar", "Set%20de%20toallas%20y%20toallones%20de%20baño", "Funda%20decorativa%20para%20almohada%20de%20niño", "Alfombras%20y%20tapetes%20para%20el%20hogar", "Aspiradoras%20y%20cuidado%20de%20pisos", "Cubrecamas%20o%20mantas%20para%20cuartos", "Cortinas,%20ganchos%20y%20forros%20de%20ducha", "Artículos%20de%20uso%20doméstico", "Calefacción,%20enfriamiento%20y%20calidad%20del%20aire", "Ropa%20de%20cama%20doméstico", "Cubrecolchones", "Difusores%20y%20fragancias%20para%20el%20hogar", "Entrepaños%20flotantespara%20el%20hogar", "Equipos%20para%20café%20té%20y%20exprés", "Espejos", "Mejoras%20del%20hogar", "Colecciones%20de%20ropa%20de%20cama", "Muebles%20para%20el%20hogar", "Obras%20de%20arte%20y%20material%20decorativo", "Organizador%20almacenamiento%20en%20el%20hogar", "Controladores%20de%20riego%20automático", "Protectores%20y%20cubrealmohadas", "Relojes%20de%20hogar", "Tienda%20infantil%20para%20el%20hogar", "Otros%20productos%20hogar", "Suministros%20de%20papelería%20y%20envoltura%20de%20regalos", "Suministros%20para%20eventos%20y%20fiestas", "Cocina%20y%20comedor", "Decoración%20de%20temporada", "Accesorios%20decorativos"],
+            "image_path": encodeURI("//kiero.co/images/resources/hogar/"), "enable": true
         },
 
 
         "instrumentos musicales": {
-            "estructure": [1, 2, 3, 3, 1],
-            "links": ["Instrumentos%20Musicales", "Bajos", "Baterías%20y%20percusión", "DJ%20y%20Karaoke", "Estudio%20de%20grabacion", "Guitarras", "Instrumentos%20de%20Cuerda", "Microfonos%20y%20accesorios", "Sonido%20en%20Vivo%20y%20Escenario", "Teclados%20y%20MIDI"],
+            "estructure": [1, 2, 3, 3, 2, 3, 1],
+            "links": ["Instrumentos%20musicales", "Instrumentos%20musicales%20de%20banda%20y%20orquesta", "Bajos%20musicales", "Música%20electrónica,%20DJ%20y%20karaoke", "Equipo%20de%20grabación%20de%20estudio", "Guitarras", "Accesorios%20para%20instrumentos%20musicales", "Micrófonos%20de%20grabación%20y%20accesorios", "Equipo%20de%20escenario%20y%20sonido%20en%20vivo", "Instrumentos%20musicales%20de%20cuerda", "Tambores%20y%20percusiones", "Ukeleles,%20mandolinas%20y%20banjos", "Instrumentos%20musicales%20de%20viento%20y%20madera", "Amplificadores%20y%20efectos", "Teclados%20y%20MIDI"],
             "image_path": encodeURI("//kiero.co/images/resources/instrumentos musicales/"), "enable": true
         },
 
-        "juguetes": {
-            "estructure": [1, 2, 3, 3, 3, 2, 3, 3, 1],
-            "links": ["Juegos%20y%20Juguetes", "Aire%20Libre%20y%20Deportes", "Artes%20y%20Manualidades", "Artículos%20para%20Fiesta", "Bicicletas,%20Triciclos%20y%20Carritos", "Collectible%20Toys", "Figuras%20de%20Acción%20y%20Estatuas", "Juegos", "Juegos%20de%20Imitación", "Juegos%20Educativos", "Juguetes%20de%20Construcción", "Juguetes%20Electrónicos", "Juguetes%20Novedosos%20y%20de%20Broma", "Juguetes%20para%20bebés%20y%20Niños", "Juguetes%20Vehicular%20de%20RC", "Muebles,%20Decoración%20y%20Almacenamiento%20de%20juguetes", "Muñecas%20y%20Accesorios", "Pasatiempos", "Peluches", "Rompecabezas", "Títeres"],
-            "image_path": encodeURI("//kiero.co/images/resources/juegos y juguetes/"), "enable": true
+        "juguetes y juegos": {
+            "estructure": [1, 2, 3, 3, 2, 3, 3, 2, 1],
+            "links": ["Juguetes%20y%20juegos", "Juguetes%20y%20deportes%20al%20aire%20libre", "Juguetes%20de%20aprendizaje%20y%20educación", "Artículos%20para%20fiesta", "Bicicletas,%20triciclos%20y%20carritos", "Juguetes%20y%20juegos%20coleccionables", "Figuras%20y%20sets%20de%20juegos", "Juegos%20y%20accesorios", "Juegos%20de%20imitación", "Juguetes%20novedosos%20y%20de%20broma", "Juguetes%20para%20bebés%20y%20niños%20pequeños", "Vehículos%20de%20juguete%20y%20control%20remoto", "Muebles,%20decoración%20y%20almacenamiento%20niños", "Muñecas%20y%20accesorios", "Pasatiempos", "Juguetes%20y%20animales%20de%20peluche", "Rompecabezas", "Juguetes%20electrónicos", "Juguetes%20de%20construcción", "Títeres%20y%20teatros%20de%20títeres"],
+            "image_path": encodeURI("//kiero.co/images/resources/juguetes y juegos/"), "enable": true
         },
 
 
         "relojes y joyería": {
             "estructure": [1, 2, 2, 2],
-            "links": ["Relojes%20y%20Joyas", "Accesorios%20para%20Relojes", "Joyeria", "Reloj%20para%20hombre", "Relojes%20para%20mujer", "Relojes%20para%20niña", "Relojes%20para%20niño"],
-            "image_path": encodeURI("//kiero.co/images/resources/relojes/"), "enable": true
+            "links": ["Relojes%20y%20joyería", "Accesorios%20para%20relojes", "Joyeria", "Reloj%20para%20hombre", "Relojes%20para%20mujer", "Relojes%20para%20niña", "Relojes%20para%20niño"],
+            "image_path": encodeURI("//kiero.co/images/resources/relojes y joyeria/"), "enable": true
         },
 
         // "ropa,%20calzados%20y%20accesorios": {
@@ -125,38 +125,76 @@ function Results({ data, session }) {
         //     "links": ["Ropa,%20calzados%20y%20accesorios", "Ropa%20para%20mujeres", "Moda%20para%20hombres", "Moda%20para%20niñas", "Moda%20para%20niños", "Ropa%20para%20bebés", "Ropa%20y%20zapatos%20para%20niños%20"],
         //     "image_path": encodeURI("//kiero.co/images/resources/ropa/"), "enable": true
         // },
-        "ropa": {
-            "estructure": [1, 2, 3, 3, 1],
-            "links": ["Ropa,%20calzados%20y%20accesorios", "Accesorios%20y%20cuidado%20de%20zapatos", "Equipaje%20y%20equipo%20de%20viaje", "Moda%20para%20hombres", "Moda%20para%20niñas", "Moda%20para%20niños", "Ropa%20para%20bebés", "Ropa%20para%20mujeres", "Ropa%20uniformes,%20trabajo%20y%20seguridad", "Ropa%20y%20zapatos%20para%20niños"],
-            "image_path": encodeURI("//kiero.co/images/resources/ropa/"), "enable": true
+        "ropa, calzado y accesorios": {
+            "estructure": [1, 2, 3, 3, 2, 1],
+            "links": ["Ropa,%20calzado%20y%20accesorios", "Moda%20para%20hombres", "Moda%20para%20mujeres", "Tiendas%20para%20niñas", "Disfraces%20y%20accesorios%20para%20todo%20género", "Ropa%20para%20bebés", "Novedades%20y%20de%20uso%20especial", "Uniformes,%20trabajo%20y%20seguridad", "Moda%20para%20niñas", "Moda%20para%20niños", "Equipaje%20y%20equipo%20de%20viaje"],
+            "image_path": encodeURI("//kiero.co/images/resources/ropa calzado y accesorios/"), "enable": true
         },
 
         "vehículos": {
-            "estructure": [1, 2, 3, 3, 3, 3, 1],
-            "links": ["Vehículos", "Accesorios%20exteriores%20para%20carro", "Accesorios%20Interiores%20para%20carro", "Aceites%20y%20Fluidos", "Cuidado%20de%20Carro%20y%20Moto", "Equipo%20de%20Uso%20Pesado%20y%20Comerciales", "Herramientas%20para%20Carro", "Luces,%20Bombillas%20e%20Indicadores", "Motos,%20Accesorios%20y%20Piezas", "Neumáticos%20y%20Llantas%20para%20Coche", "Otros%20accesorios%20vehiculos", "Piezas%20para%20Coche", "Piezas%20y%20Repuestos%20para%20Caravanas", "Pintura%20y%20Suministros%20de%20Pintura", "Productos%20para%20Aficionados", "Repuestos%20y%20Accesorios%20de%20Rendimiento"],
-            "image_path": encodeURI("//kiero.co/images/resources/vehiculos y accesorios/"), "enable": true
+            "estructure": [1, 2, 3, 3, 2, 3, 3, 1],
+            "links": ["Vehículos", "Accesorios%20interiores%20para%20carro", "Accesorios%20exteriores%20para%20carro", "Neumáticos%20y%20rines%20para%20carro", "Aceites%20y%20fluidos%20para%20carro", "Cuidado%20de%20carro%20y%20moto", "Equipo%20de%20carros%20comerciales%20y%20uso%20pesado", "Luces,%20bombillas%20e%20indicadores", "Motos,%20accesorios%20y%20piezas", "Piezas%20de%20repuestos%20para%20carro", "Herramientas%20para%20carro", "Otros%20accesorios%20de%20vehículos", "Piezas%20y%20repuestos%20para%20caravanas", "Pintura%20y%20suministros%20de%20pintura%20carro", "Artículos%20para%20aficionados%20de%20vehículos", "Accesorios%20para%20remolques", "Electrónica%20y%20accesorios%20para%20carros", "Repuestos%20y%20accesorios%20rendimiento%20carro"],
+            "image_path": encodeURI("//kiero.co/images/resources/vehiculos/"), "enable": true
         },
         "computadoras y accesorios": {
-            "estructure": [1, 2, 3, 3, 3],
-            "links": ["Computadoras%20y%20Accesorios", "Computadoras%20y%20tabletas", "Monitores%20de%20Computadoras", "Componentes%20Para%20Computadoras", "Accesorios%20para%20Laptop", "Almacenamiento%20de%20datos", "Piezas%20de%20Repuesto%20para%20Tabletas", "Garantías%20y%20Servicios%20para%20Computadoras", "Dispositivos%20para%20Redes", "Accesorios%20para%20Tablets", "Servidores%20para%20Computadora", "Accesorios%20y%20periféricos%20de%20ordenador"],
-            "image_path": encodeURI("//kiero.co/images/resources/computacion/"), "enable": true
+            "estructure": [1, 2, 3, 3, 2, 1],
+            "links": ["Computadoras%20y%20Accesorios", "Computadoras%20y%20tabletas", "Monitores%20de%20computadoras", "Componentes%20para%20computadoras", "Almacenamiento%20de%20datos%20para%20computador", "Accesorios%20para%20tablets", "Piezas%20y%20repuestos%20para%20tablets", "Garantías%20de%20equipos%20informáticos", "Servidores%20para%20computadora", "Dispositivos%20para%20redes%20de%20computadoras", "Accesorios%20y%20periféricos%20informáticos", "Accesorios%20para%20laptop"],
+            "image_path": encodeURI("//kiero.co/images/resources/computadoras y accesorios/"), "enable": true
         },
         "salud": {
             "estructure": [1, 2, 3, 3],
-            "links": ["Salud", "Cuidado%20de%20la%20salud", "Equipo%20y%20suministros%20médicos", "Herramientas%20y%20equipos%20para%20masajes", "Productos%20de%20medicina%20alternativa", "Productos%20relacionados%20con%20el%20tabaco", "Tirantes%20férulas%20y%20soportes", "Utensilios%20para%20movilidad%20y%20vida%20diaria", "Vitaminas%20y%20suplementos%20dietéticos"],
-            "image_path": encodeURI("//kiero.co/images/resources/salud y equipo medico/"), "enable": true
+            "links": ["Salud", "Cuidado%20de%20la%20salud", "Equipo%20y%20suministros%20médicos", "Cuidado%20de%20bebés%20y%20niños", "Productos%20de%20bienestar%20y%20relajación", "Productos%20para%20cuidado%20de%20los%20ojos", "Nutrición%20deportiva", "Productos%20relacionados%20con%20el%20tabaco", "Vitaminas%20y%20suplementos%20dietéticos"],
+            "image_path": encodeURI("//kiero.co/images/resources/salud/"), "enable": true
         },
 
 
-
-        "Industria%20y%20científico": {
-            "estructure": [1, 2, 3, 3, 3, 2, 3, 3, 3, 2, 3, 1],
-            "links": ["Industria%20y%20científico","Aditamentos%20y%20Equipo%20para%20Tienda","Cintas,%20Adhesivos%20y%20Sellantes", "Educación%20en%20Ciencias", "Equipo%20de%20Riego%20Automático", "Equipo%20Industrial", "Equipo%20y%20Suministros%20para%20Servicio", "Filtración", "Herramientas%20de%20Corte", "Herramientas%20Eléctricas%20y%20de%20Mano", "Hidráulica,%20Neumática%20y%20Plomería", "Higiene%20y%20Seguridad%20Laboral", "Iluminación%20Comercial", "Industrial%20y%20Eléctrico", "Materias%20Primas", "Medición%20y%20test%20industrial", "Otros%20Industria%20y%20cientifico", "Productos%20Abrasivos%20y%20de%20Terminado", "Productos%20de%20Laboratorio%20y%20Ciencias", "Productos%20de%20Manipulación%20de%20Materiales", "Productos%20de%20Puertas%20Comerciales", "Productos%20de%20Transmisión%20de%20Energía", "Robótica", "Señalización%20Digital", "Sujetadores", "Suministros%20de%20Empaque%20y%20Envío", "Suministros%20de%20Limpieza%20y%20Saneamiento", "Suministros%20Dentales%20Profesionales", "Suministros%20Médicos%20Profesionales"],
-            "image_path": encodeURI("//kiero.co/images/resources/industria/"), "enable": true
+        "industria%20y%20científico": {
+            "estructure": [1, 2, 3, 3, 2, 3, 3, 2, 3, 3, 2, 1],
+            "links": ["Industria%20y%20científico", "Accesorios%20y%20equipos%20de%20tiendas%20minoristas", "Cintas,%20adhesivos%20y%20sellantes", "Productos%20de%20laboratorio%20y%20ciencias", "Equipo%20industrial", "Equipo%20y%20suministros%20para%20servicio", "Filtración%20industrial", "Herramientas%20de%20corte", "Herramientas%20eléctricas%20y%20de%20mano", "Productos%20de%20iluminación%20comercial", "Industrial%20y%20eléctrico", "Materias%20primas", "Hidráulica,%20neumática%20y%20plomería", "Higiene%20y%20seguridad%20laboral", "Productos%20abrasivos%20y%20de%20acabado", "Medición%20y%20test%20industrial", "Productos%20de%20laboratorio%20y%20ciencias", "Señalización%20digital", "Sujetadores", "Productos%20para%20manipulación%20de%20materiales", "Productos%20de%20puertas%20comerciales", "Productos%20de%20transmisión%20de%20energía", "Robótica", "Suministros%20de%20empaque%20y%20envío", "Suministros%20de%20limpieza%20y%20saneamiento", "Suministros%20médicos%20profesionales", "Productos%20para%20impresión%203D", "Suministros%20dentales%20profesionales"],
+            "image_path": encodeURI("//kiero.co/images/resources/industria y cientifico/"), "enable": true
         },
+        
+         "artes y manualidades": {
+            "estructure": [1, 2, 3, 3, 2, 1],
+            "links": ["Artes%20y%20manualidades", "Artes%20y%20manualidades%20para%20niños", "Materiales%20para%20arte%20y%20manualidades", "Almacenamiento%20de%20materiales%20de%20arte", "Cuentas%20y%20adornos,%20elaboración%20bisutería", "Productos%20de%20costura", "Telas%20para%20manualidades", "Suministro%20de%20punto%20y%20ganchillo", "Suministros%20para%20álbumes%20de%20recortes", "Artículos%20para%20pintura,%20dibujo%20y%20arte", "Suministros%20de%20grabado", "Suministros%20de%20tejido%20y%20costura"],
+            "image_path": encodeURI("//kiero.co/images/resources/artes y manualidades/"), "enable": true
 
+      },
+        
+         "artesanías y productos hechos a mano": {
+            "estructure": [1, 2, 1],
+            "links": ["Artesanías%20y%20productos%20hechos%20a%20mano", "Artículos%20hechos%20a%20mano%20para%20boda", "Decoración%20hogar%20hecha%20a%20mano", "Utensilios%20para%20hornear%20hechos%20a%20mano"],
+            "image_path": encodeURI("//kiero.co/images/resources/artesanias y productos hechos a manos/"), "enable": true
+             
+     },
+        
+         "coleccionables y bellas artes": {
+            "estructure": [1, 2, 3, 3],
+            "links": ["Coleccionables%20y%20bellas%20artes", "Arte%20coleccionable%20y%20bellas%20artes", "Artículos%20de%20deportes%20coleccionables", "Accesorios%20coleccionables%20de%20hockey", "Accesorios%20recuerdos%20históricos%20y%20políticos", "Cascos%20coleccionables%20de%20fútbol", "Entretenimiento%20coleccionable", "Monedas%20coleccionables", "Tarjetas%20coleccionables%20de%20béisbol"],
+            "image_path": encodeURI("//kiero.co/images/resources/coleccionables y bellas artes/"), "enable": true
+             
+     },
+        
+         "libros": {
+            "estructure": [1, 2, 3, 3, 3, 2, 3, 3, 3, 2, 3, 3, 1],
+            "links": ["Libros", "Libros%20de%20autoayuda", "Libros%20de%20calendarios", "Libros%20de%20adolescente%20y%20jóvenes", "Libros%20de%20artesanía%20hobbies%20y%20hogar", "Libros%20de%20arte%20y%20fotografía", "Libros%20de%20biografías%20y%20memorias", "Libros%20de%20ciencia%20ficción%20y%20fantasía", "Libros%20de%20ciencia%20y%20matemáticas", "Libros%20de%20cómics%20y%20novelas%20gráficas", "Libros%20de%20crianza%20y%20relaciones", "Libros%20de%20cristianismo", "Libros%20de%20computadoras%20y%20tecnología", "Libros%20de%20negocios%20e%20inversiones", "Libros%20deportes%20y%20tiempo%20libre", "Libros%20de%20educación%20y%20enseñanza", "Libros%20de%20LGBTQ", "Libros%20de%20humor%20y%20entretenimiento", "Libros%20de%20ingeniería%20y%20transportes", "Libros%20derecho", "Libros%20de%20medicina%20y%20médicos", "Libros%20de%20viaje", "Libros%20de%20misterio%20thriller%20y%20suspenso", "Libros%20de%20recetas%20comida%20y%20vino", "Libros%20de%20infantil%20y%20juvenil", "Libros%20de%20política%20y%20ciencias%20sociales", "Libros%20de%20preparación%20para%20pruebas", "Libros%20de%20referencias", "Libros%20de%20religión%20y%20espiritualidad", "Libros%20de%20romance", "Libros%20de%20salud%20fitness%20y%20dieta", "Libros%20de%20literatura%20y%20ficción"],
+            "image_path": encodeURI("//kiero.co/images/resources/libros/"), "enable": true
+             
+         },
+        
+         "productos y suministros de oficina": {
+            "estructure": [1, 2, 1],
+            "links": ["Productos%20y%20suministros%20de%20oficina", "Electrónicos%20de%20oficina", "Productos%20de%20oficina", "Suministros%20escolares%20y%20de%20oficina"],
+            "image_path": encodeURI("//kiero.co/images/resources/productos y suministros de oficina/"), "enable": true
+             
+         },
+        
+         "jardín y exteriores": {
+            "estructure": [1, 2, 3, 2, 1],
+            "links": ["Jardín%20y%20exteriores", "Herramientas%20eléctricas%20para%20exterior", "Calefacción%20exterior", "Almacenamiento%20y%20vivienda%20al%20aire%20libre", "Cuidado%20del%20césped", "Generadores%20y%20energía%20portátil", "Albercas,%20jacuzzis%20y%20suministros", "Agricultura%20urbana%20y%20ganadería", "Patio,%20césped%20y%20jardín"],
+            "image_path": encodeURI("//kiero.co/images/resources/jardin y exteriores/"), "enable": true
+        }
     }
-
     let category_name = data.search.toLowerCase();
 
     let structure = [];
@@ -165,7 +203,7 @@ function Results({ data, session }) {
     if (category_name in complete) {
         let bannerNo = 1;
         for (let i = 0; i < e.estructure.length; i++) {
-            
+
             if (e.estructure[i] === 1) {
                 if (e.links[bannerNo - 1] !== "") {
                     structure.push(
