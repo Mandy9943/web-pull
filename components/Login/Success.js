@@ -8,7 +8,7 @@ export default ({ message }) =>
           text-align: center;
           margin: 15px 0px;
           color: #28a745;
-          background: #28a745;
+          background: transparent;
           border-radius: 6px;
           border: 0.5px solid #28a745;
           font-weight: 500;
