@@ -97,6 +97,8 @@ class Filter extends Component {
 		let res_brands = [];
 		let prices = [];
 		let renderedPrices = [];
+		console.log(prices);
+		console.log(renderedPrices);
 
 		if (this.props.data && this.props.data.categories) {
 			res_categories = this.props.data.categories;
@@ -142,14 +144,18 @@ class Filter extends Component {
 			}
 
 			let div = top / 4;
-			prices.push('Más de ' + top);
-			renderedPrices.push('Más de ' + moneyFormater(top));
+			if (!prices.length || !renderedPrices.length) {
+				prices.push('Más de ' + top);
+				renderedPrices.push('Más de ' + moneyFormater(top));
+			}
 			for (let it = 0; it < 4; it++) {
 				if (
 					this.props.filters.indexOf(
 						'price|' + 'Desde ' + (top - div * (it + 1)) + ' Hasta ' + (top - div * it)
 					) === -1
 				)
+					// if (prices.length < 5 || renderedPrices.length < 5) {
+					// }
 					prices.push('Desde ' + (top - div * (it + 1)) + ' Hasta ' + (top - div * it));
 				renderedPrices.push(
 					'Desde ' +

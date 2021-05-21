@@ -1,237 +1,247 @@
 .container-payment-way {
-  margin: 60px auto;
-  width: 80%;
-  min-height: 60vh;
+	margin: 60px auto;
+	width: 80%;
+	min-height: 60vh;
 }
 
-.rdtPicker{
-  left: -15px !important;
-}
+
 
 .container-payment-way h2 {
-  margin-bottom: 50px;
-  color: #111111;
-  font-size: 24px;
-  font-weight: 600;
+	margin-bottom: 50px;
+	color: #111111;
+	font-size: 24px;
+	font-weight: 600;
 }
 
 .container-payment-way .only-movil {
-  display: none !important;
+	display: none !important;
 }
 
 .content-payment-way {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 3fr 2fr;
-      grid-template-columns: 3fr 2fr;
-  grid-gap: 100px;
+	display: -ms-grid;
+	display: grid;
+	-ms-grid-columns: 3fr 2fr;
+	grid-template-columns: 3fr 2fr;
+	grid-gap: 100px;
 }
 
 .product-description {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: auto 1fr;
-      grid-template-columns: auto 1fr;
-  grid-gap: 20px;
+	display: -ms-grid;
+	display: grid;
+	-ms-grid-columns: auto 1fr;
+	grid-template-columns: auto 1fr;
+	grid-gap: 20px;
 }
 
 .product-description img {
-  width: 50px;
-  height: auto;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
+	width: 50px;
+	height: auto;
+	-ms-flex-item-align: center;
+	-ms-grid-row-align: center;
+	align-self: center;
 }
 
 .product-description p {
-  margin-bottom: 10px;
-  color: #111111;
-  font-size: 15px;
+	margin-bottom: 10px;
+	color: #111111;
+	font-size: 15px;
 }
 
 .product-description .quantity {
-  color: #111111;
-  font-size: 15px;
+	color: #111111;
+	font-size: 15px;
 }
 
 .product-description h3 {
-  font-size: 18px;
+	font-size: 18px;
 }
 
 .payment-way-box {
-  margin-bottom: 40px;
-  padding: 20px;
-  background: #FBFBFB 0% 0% no-repeat padding-box;
-  -webkit-box-shadow: 0px 3px 6px #11111129;
-          box-shadow: 0px 3px 6px #11111129;
-  border-radius: 8px;
-  cursor: pointer;
+	margin-bottom: 40px;
+	padding: 20px;
+	background: #fbfbfb 0% 0% no-repeat padding-box;
+	-webkit-box-shadow: 0px 3px 6px #11111129;
+	box-shadow: 0px 3px 6px #11111129;
+	border-radius: 8px;
+	cursor: pointer;
 }
 
 .payment-way-box p {
-  color: #111111;
-  font-size: 15px;
-  font-weight: 500;
+	color: #111111;
+	font-size: 15px;
+	font-weight: 500;
 }
 
 .payment-way-box h3 {
-  color: #111111;
-  font-size: 20px;
-  font-weight: 600;
+	color: #111111;
+	font-size: 20px;
+	font-weight: 600;
 }
 
 .way-to-pay form {
-  margin: 0px;
-  padding: 0px;
-  padding-top: 20px;
+	margin: 0px;
+	padding: 0px;
+	padding-top: 20px;
 }
 
 .way-to-pay form label p {
-  color: #111111;
-  font-size: 15px;
+	color: #111111;
+	font-size: 15px;
 }
 
 .way-to-pay form input {
-  margin-bottom: 15px;
+	margin-bottom: 15px;
 }
 
 .way-to-pay form .input-form {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 3fr 1fr;
-      grid-template-columns: 3fr 1fr;
-  grid-gap: 20px;
+	display: -ms-grid;
+	display: grid;
+	-ms-grid-columns: 3fr 1fr;
+	grid-template-columns: 3fr 1fr;
+	grid-gap: 20px;
 }
 
 .way-to-pay img {
-  width: 100%;
-  height: auto;
+	width: 100%;
+	height: auto;
 }
 
 .accordion-payment-way {
-  height: 0px;
-  margin-top: -20px;
-  margin-bottom: 20px;
-  padding: 0px 20px;
-  background: #FBFBFB 0% 0% no-repeat padding-box;
-  -webkit-box-shadow: 0px 3px 6px #11111129;
-          box-shadow: 0px 3px 6px #11111129;
-  border-radius: 8px;
-  -webkit-transition: 0.25s ease-out;
-  transition: 0.25s ease-out;
-  overflow: hidden;
-  opacity: 0;
+	height: 0px;
+	margin-top: -20px;
+	margin-bottom: 20px;
+	padding: 0px 20px;
+	background: #fbfbfb 0% 0% no-repeat padding-box;
+	-webkit-box-shadow: 0px 3px 6px #11111129;
+	box-shadow: 0px 3px 6px #11111129;
+	border-radius: 8px;
+	-webkit-transition: 0.25s ease-out;
+	transition: 0.25s ease-out;
+	overflow: hidden;
+	opacity: 0;
 }
 
-.accordion-payment-way.active {
-  padding: 20px;
-  width: auto;
-  height: auto;
-  -webkit-transition: 0.25s ease-in;
-  transition: 0.25s ease-in;
-  opacity: 1;
+.accordion-payment-way.actives {
+	padding: 20px !important;
+	width: auto !important;
+	height: auto !important;
+	-webkit-transition: 0.25s ease-in !important;
+	transition: 0.25s ease-in !important;
+	opacity: 1 !important;
+}
+
+.accordion-payment-way table,
+th,
+td {
+	border: none !important;
+	border-collapse: collapse !important;
+	padding: 0 !important;
+}
+
+.rdtPicker {
+	padding: 0px !important;
 }
 
 .accordion-payment-way .content-accordion {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1.75fr 1.25fr;
-      grid-template-columns: 1fr 1fr;
-  grid-gap: 10px;
+	display: -ms-grid;
+	display: grid;
+	-ms-grid-columns: 1.75fr 1.25fr;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 10px;
 }
 
 .accordion-payment-way button.main-button {
-  float: right;
+	float: right;
 }
 
 .add-direction {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 50% 1fr 1fr 1fr;
-      grid-template-columns: 50% 1fr 1fr 1fr;
-  grid-gap: 5px;
+	display: -ms-grid;
+	display: grid;
+	-ms-grid-columns: 50% 1fr 1fr 1fr;
+	grid-template-columns: 50% 1fr 1fr 1fr;
+	grid-gap: 5px;
 }
 
 .add-direction input {
-  height: auto;
-  margin: auto;
+	height: auto;
+	margin: auto;
 }
 
 .content-accordion-form {
-  display: -ms-grid;
-  display: grid;
+	display: -ms-grid;
+	display: grid;
 }
 
 .content-accordion-form button.main-button {
-  float: none;
-  -ms-flex-item-align: end;
-      -ms-grid-row-align: end;
-      align-self: end;
+	float: none;
+	-ms-flex-item-align: end;
+	-ms-grid-row-align: end;
+	align-self: end;
 }
 
 .content-accordion-form .button-continue {
-  font-size: 14px;
+	font-size: 14px;
 }
 
 .content-accordion-form .wrap-select {
-  margin: 7px 0;
+	margin: 7px 0;
 }
 
 .content-accordion-form .wrap-select select {
-  border: 0.5px solid #707070 !important;
+	border: 0.5px solid #707070 !important;
 
-  padding: 8px !important;
-  border-radius: 5px;
+	padding: 8px !important;
+	border-radius: 5px;
 }
 
 .content-accordion-form .wrap-select::before {
-  right: 8px !important;
-  top: 15px !important;
+	right: 8px !important;
+	top: 15px !important;
 }
 
 .content-accordion-form .wrap-select::after {
-  right: 13px !important;
-  top: 15px !important;
+	right: 13px !important;
+	top: 15px !important;
 }
 
 .shipping-address h3 {
-  margin-bottom: 20px;
-  text-align: center;
+	margin-bottom: 20px;
+	text-align: center;
 }
 
 .shipping-address p {
-  margin-bottom: 10px;
-  color: #111111;
-  font-size: 16px;
+	margin-bottom: 10px;
+	color: #111111;
+	font-size: 16px;
 }
 
 .content-accordion-form {
-  position: relative;
+	position: relative;
 }
 
 button.main-button {
-  margin-top: 20px;
+	margin-top: 20px;
 }
 
 button.main-button p {
-  margin: 0px;
-  color: #fff;
-  font-size: 16px;
+	margin: 0px;
+	color: #fff;
+	font-size: 16px;
 }
 
-.payment-cash-logos img{
-  width: 180px;
-  float: left;
-  cursor: pointer;
+.payment-cash-logos img {
+	width: 180px;
+	float: left;
+	cursor: pointer;
 }
 
 @media (max-width: 700px) {
-  .accordion-payment-way .content-accordion {
-    display: block;
-  -ms-grid-columns: 1.75fr 1.25fr;
-      grid-template-columns: 1fr 1fr;
-  gap: 30px;
-  padding-bottom: 20px;
-}
+	.accordion-payment-way .content-accordion {
+		display: block;
+		-ms-grid-columns: 1.75fr 1.25fr;
+		grid-template-columns: 1fr 1fr;
+		gap: 30px;
+		padding-bottom: 20px;
+	}
 }
 /*# sourceMappingURL=PaymentWay.css.map */
