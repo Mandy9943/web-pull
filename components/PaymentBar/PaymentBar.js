@@ -33,25 +33,24 @@ class PaymentBar extends Component {
     const content1 = (
       <>
         <div className="header-modal">
-          <h3>Más medios de pago</h3>
+          <h3 className="texto-metodo"><b>Más metodos de pago</b></h3>
         </div>
         <div className="payment-way-content">
-          <h4>Tarjetas de credito</h4>
+          <h4><b>Tarjetas de crédito</b></h4>
           <img  className="payment-way-img" src={CreditCard} alt="Tarjetas de credito" />
           <p className="sub-title">
             El banco incluirá los intereses de las cuotas en el resumen de tu
             tarjeta
           </p>
-          <h4>Transferencia desde tu banco</h4>
-          <img className="payment-way-img" src={BankTransfer} alt="TRansferencia bancaria" />
-          <h4>Traspaso Online</h4>
+          <h4><b>Transferencia desde tu banco</b></h4>
+          <img className="payment-way-img2" src={BankTransfer} alt="TRansferencia bancaria" />
+          <h4><b>Pago con efectivo</b></h4>
           <img className="payment-way-img-cash" src={PayEfecty} alt="Pago online con EFECTY" />
           <img className="payment-way-img-cash" src={PayBaloto} alt="Pago online con BALOTO" />
           <img className="payment-way-img-cash" src={PaySured} alt="Pago online con SURED" />
-        
+           <br/><br/>
           <p className="payment-way-footer-p">
-            Cuando termines tu compra, te daremos las instrucciones para que
-            sepas cómo y dónde pagarla
+          Cuando efectúes tu compra, te brindaremos las instrucciones para que sepas cómo y dónde pagar.
           </p>
         </div>
       </>
@@ -59,7 +58,7 @@ class PaymentBar extends Component {
     const content2 = (
       <>
         <div className="header-modal">
-          <h3>Transferencia desde tu banco</h3>
+          <h3 className="texto-metodo">Consignacion desde tu banco</h3>
         </div>
         <div className="bank-transfer-content">
           <h4>Consignación Bancaria</h4>
@@ -80,16 +79,13 @@ class PaymentBar extends Component {
     const content3 = (
       <>
         <div className="header-modal">
-          <h3>Paga en efectivo</h3>
+          <h3 className="texto-metodo">Paga en efectivo</h3>
         </div>
         <div className="cash-transfer-content">
           <h4>Efecty</h4>
           <p>
-            Acércate a cualquier punto Efecty del país, tienes un plazo de 2
-            días Si pasados 2 días de realizar el pedido en www.kiero.co no se
-            realiza el pago por Efecty, el pedido se cancelará. En el punto
-            Efecty es indispensable informar que va dirigido a KIERO Cuando te
-            soliciten la referencia, suministra el número de pedido.
+          Acércate a cualquier punto Efecty del país, tienes un plazo de 2 días, si pasados estos días de realizar el pedido en www.kiero.co no se efectúa el pago, el pedido 
+          se cancelará. En el punto Efecty, es indispensable informar que va dirigido a KIERO Cuando te soliciten la referencia, suministra el número de pedido.
           </p>
         </div>
       </>
