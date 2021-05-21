@@ -64,7 +64,7 @@ function Results({ data, session }) {
         },
 
         "consolas y videojuegos": {
-            "estructure": [1, 2, 3, 3, 1],
+            "estructure": [1, 2, 3, 3, 3, 1],
             "links": ["Consolas%20y%20videojuegos", "Juegos,%20consolas%20y%20accesorios%20PlayStation%204", "Juegos%20y%20accesorios%20de%20PC", "Juegos%20y%20accesorios%20para%20Mac", "Nintendo%203DS%20y%202DS", "PlayStation%20Vita", "Sistemas%20heredados, juegos%20retro", "Accesorios%20de%20Xbox%20Serie%20X", "Accesorios%20realidad%20virtual%20independientes", "Juegos%20de%20Xbox%20Serie%20X%20&%20S", "Microconsolas%20de%20videojuegos"],
             "image_path": encodeURI("//kiero.co/images/resources/consolas y videojuegos/"), "enable": true
         },
