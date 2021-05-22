@@ -99,11 +99,13 @@ class Category extends Component {
 			const item = value.split('|');
 			if (item[0] === type) {
 				tmp_filters.splice(index, 1);
+				console.log(tmp_filters);
 			}
 		});
 
 		if (tmp_filters.indexOf(new_val) == -1) {
 			tmp_filters.push(new_val);
+			console.log(tmp_filters);
 		}
 
 		this.setState({
