@@ -54,8 +54,7 @@ class Filter extends Component {
 		ele.classList.add('display-none');
 		if (ref === 'brands') this.brands.current.classList.remove('filter-height-overflow');
 
-		if (ref === 'categories')
-			this.categories.current.classList.remove('filter-height-overflow');
+		if (ref === 'categories') this.categories.current.classList.remove('filter-height-overflow');
 	};
 
 	handlePrice = (e) => {
@@ -104,6 +103,7 @@ class Filter extends Component {
 
 		if (this.props.data && this.props.data.brands) {
 			res_brands = this.props.data.brands;
+			console.log('oelo');
 		}
 
 		if (this.props.data && this.props.data.max_price) {
@@ -152,10 +152,7 @@ class Filter extends Component {
 				)
 					prices.push('Desde ' + (top - div * (it + 1)) + ' Hasta ' + (top - div * it));
 				renderedPrices.push(
-					'Desde ' +
-						moneyFormater(top - div * (it + 1)) +
-						' Hasta ' +
-						moneyFormater(top - div * it)
+					'Desde ' + moneyFormater(top - div * (it + 1)) + ' Hasta ' + moneyFormater(top - div * it)
 				);
 			}
 		}
@@ -237,10 +234,7 @@ class Filter extends Component {
 											}}
 											className={buttonState == 'list' ? 'actives' : null}
 										>
-											<FontAwesomeIcon
-												style={{ padding: '0px', margin: '0px' }}
-												icon={faList}
-											/>
+											<FontAwesomeIcon style={{ padding: '0px', margin: '0px' }} icon={faList} />
 										</div>
 										<div
 											style={{ padding: '0px', margin: '0px' }}
@@ -249,10 +243,7 @@ class Filter extends Component {
 											}}
 											className={buttonState == 'grid' ? 'actives' : null}
 										>
-											<FontAwesomeIcon
-												style={{ padding: '0px', margin: '0px' }}
-												icon={faTh}
-											/>
+											<FontAwesomeIcon style={{ padding: '0px', margin: '0px' }} icon={faTh} />
 										</div>
 									</div>
 								</div>
@@ -269,9 +260,7 @@ class Filter extends Component {
 													<span
 														className="node"
 														onClick={() => this.props.onSelectCategory(node, i)}
-														style={
-															node.selected ? { color: '#d00a2d', fontWeight: '600' } : {}
-														}
+														style={node.selected ? { color: '#d00a2d', fontWeight: '600' } : {}}
 													>
 														{node.label}
 													</span>
@@ -285,9 +274,7 @@ class Filter extends Component {
 																	className="node"
 																	onClick={() => this.props.onSelectCategory(node1, i1)}
 																	style={
-																		node1.selected
-																			? { color: '#d00a2d', fontWeight: '600' }
-																			: {}
+																		node1.selected ? { color: '#d00a2d', fontWeight: '600' } : {}
 																	}
 																>
 																	{node1.label}
@@ -296,15 +283,10 @@ class Filter extends Component {
 																	node1.items.length > 0 &&
 																	node1.items.map((node2, i2) => {
 																		return (
-																			<div
-																				className="tree-view_children"
-																				key={node2.label}
-																			>
+																			<div className="tree-view_children" key={node2.label}>
 																				<span
 																					className="node"
-																					onClick={() =>
-																						this.props.onSelectCategory(node2, i2)
-																					}
+																					onClick={() => this.props.onSelectCategory(node2, i2)}
 																					style={
 																						node2.selected
 																							? { color: '#d00a2d', fontWeight: '600' }
@@ -317,10 +299,7 @@ class Filter extends Component {
 																					node2.items.length > 0 &&
 																					node2.items.map((node3, i3) => {
 																						return (
-																							<div
-																								className="tree-view_children"
-																								key={node3.label}
-																							>
+																							<div className="tree-view_children" key={node3.label}>
 																								<span
 																									className="node"
 																									onClick={() =>
@@ -348,10 +327,7 @@ class Filter extends Component {
 																												<span
 																													className="node"
 																													onClick={() =>
-																														this.props.onSelectCategory(
-																															node4,
-																															i4
-																														)
+																														this.props.onSelectCategory(node4, i4)
 																													}
 																													style={
 																														node4.selected
@@ -411,10 +387,7 @@ class Filter extends Component {
 										</p>
 									))}
 								</div>
-								<div
-									className="view-all"
-									onClick={(e) => this.viewAll(e.target, 'brands')}
-								>
+								<div className="view-all" onClick={(e) => this.viewAll(e.target, 'brands')}>
 									Ver Todos
 								</div>
 							</>
@@ -473,53 +446,33 @@ class Filter extends Component {
 					<div
 						className="responsive-filter-item"
 						onClick={() => {
-							const format =
-								buttonState == 'grid' ? { format: 'list' } : { format: 'grid' };
+							const format = buttonState == 'grid' ? { format: 'list' } : { format: 'grid' };
 							this.props.toggle(format);
 						}}
 					>
 						{text} <FontAwesomeIcon icon={responsiveButton} />
 					</div>
-					<div
-						className="responsive-filter-item border-none"
-						onClick={this.toggleMenuFilter}
-					>
+					<div className="responsive-filter-item border-none" onClick={this.toggleMenuFilter}>
 						Filtrar
 					</div>
-					<div
-						className={`responsive-menu-filter ${this.state.menuOrder ? 'show' : null}`}
-					>
+					<div className={`responsive-menu-filter ${this.state.menuOrder ? 'show' : null}`}>
 						<ul>
 							<li>
 								<FontAwesomeIcon icon={faTimes} onClick={this.toggleMenuOrder} />
 							</li>
 							<li>Ordenar</li>
-							<li
-								onClick={(e) => this.setSort(e)}
-								value="2"
-								className="responsive-dropdown-item"
-							>
+							<li onClick={(e) => this.setSort(e)} value="2" className="responsive-dropdown-item">
 								Menor precio
 							</li>
-							<li
-								onClick={(e) => this.setSort(e)}
-								value="1"
-								className="responsive-dropdown-item"
-							>
+							<li onClick={(e) => this.setSort(e)} value="1" className="responsive-dropdown-item">
 								Mayor precio
 							</li>
-							<li
-								onClick={(e) => this.setSort(e)}
-								value="0"
-								className="responsive-dropdown-item"
-							>
+							<li onClick={(e) => this.setSort(e)} value="0" className="responsive-dropdown-item">
 								Mas relevante
 							</li>
 						</ul>
 					</div>
-					<div
-						className={`responsive-menu-filter ${this.state.menuFilter ? 'show' : null}`}
-					>
+					<div className={`responsive-menu-filter ${this.state.menuFilter ? 'show' : null}`}>
 						<ul>
 							<li>
 								<FontAwesomeIcon icon={faTimes} onClick={this.toggleMenuFilter} />
@@ -578,19 +531,9 @@ class Filter extends Component {
 										</div>
 										<form onSubmit={this.handlePrice}>
 											<div className="wrap-filter-price">
-												<input
-													placeholder="Minimo"
-													name={'from_price'}
-													type="number"
-													size="mini"
-												/>
+												<input placeholder="Minimo" name={'from_price'} type="number" size="mini" />
 												<p>-</p>
-												<input
-													placeholder="Maximo"
-													name={'to_price'}
-													type-="number"
-													size="mini"
-												/>
+												<input placeholder="Maximo" name={'to_price'} type-="number" size="mini" />
 												<FontAwesomeIcon icon={faChevronCircleRight} />
 												<button type="submit">Filtrar</button>
 											</div>
