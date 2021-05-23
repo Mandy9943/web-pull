@@ -614,7 +614,7 @@ export default class PaymentWay extends Component {
 									className={
 										this.state.closeCredit
 											? 'accordion-payment-way'
-											: 'accordion-payment-way active'
+											: 'accordion-payment-way actives'
 									}
 								>
 									<div className="content-accordion">
@@ -659,16 +659,12 @@ export default class PaymentWay extends Component {
 											<InputTip msg={this.state.tips.card_holder} />
 											<div className="input-form">
 												<Datetime
-													onCut={this.preventCopyPasteCut}
-													onCopy={this.preventCopyPasteCut}
-													onPaste={this.preventCopyPasteCut}
-													autocomplete="off"
+													inputProps={{ readOnly: 'true' , appearance: 'auto'}}
 													onChange={this.handleDateTimeChange}
 													value={this.state.expiration_date}
 													placeholder="AA/MM"
 													dateFormat="YY/MM"
 													timeFormat={false}
-													strictParsing="true"
 												/>
 												<input
 													onCut={this.preventCopyPasteCut}
@@ -749,7 +745,7 @@ export default class PaymentWay extends Component {
 									className={
 										this.state.closeCash
 											? 'accordion-payment-way'
-											: 'accordion-payment-way active'
+											: 'accordion-payment-way actives'
 									}
 								>
 									{!this.state.paymentCashResult ? (
@@ -796,7 +792,7 @@ export default class PaymentWay extends Component {
 										className={
 											this.state.closeTransfer
 												? 'accordion-payment-way'
-												: 'accordion-payment-way active'
+												: 'accordion-payment-way actives'
 										}
 									>
 										<div className="content-accordion">

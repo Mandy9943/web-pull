@@ -23,7 +23,7 @@
 	display: grid;
 	-ms-grid-columns: 300px 3fr;
 	grid-template-columns: 300px 3fr;
-	height: 60vh;
+	height: 650px;
 }
 
 .menu-categories.active {
@@ -50,6 +50,41 @@
 	/* width: 400px; */
 	padding: 10px 0;
 	border-radius: 0 0px 0 5px;
+	height: 650px;
+	overflow: auto;
+	overflow-x: hidden;
+}
+
+.title-categories::-webkit-scrollbar {
+	-webkit-appearance: none;
+}
+
+.title-categories::-webkit-scrollbar:vertical {
+	width: 10px;
+}
+
+.title-categories::-webkit-scrollbar-button:increment,
+.title-categories::-webkit-scrollbar-button {
+	display: none;
+}
+
+.title-categories::-webkit-scrollbar:horizontal {
+	height: 10px;
+}
+
+.title-categories::-webkit-scrollbar-thumb {
+	background-color: #797979;
+	border-radius: 20px;
+	border: 2px solid #f1f2f3;
+}
+
+.title-categories::-webkit-scrollbar-track {
+	border-radius: 10px;
+}
+.title-categories::-webkit-scrollbar-track {
+	/*Estilos estándar experimentales (Principalmente Firefox)*/
+	scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0);
+	scrollbar-width: thin;
 }
 
 .title-categories svg {
