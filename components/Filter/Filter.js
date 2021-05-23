@@ -105,7 +105,6 @@ class Filter extends Component {
 
 		if (this.props.data && this.props.data.brands) {
 			res_brands = this.props.data.brands;
-			console.log('oelo');
 		}
 
 		if (this.props.data && this.props.data.max_price) {
@@ -144,7 +143,7 @@ class Filter extends Component {
 			}
 
 			let div = top / 4;
-			if (!prices.length || !renderedPrices.length) {
+			if (this.props.filters.indexOf('price|' + 'Más de ' + top) === -1) {
 				prices.push('Más de ' + top);
 				renderedPrices.push('Más de ' + moneyFormater(top));
 			}
@@ -153,13 +152,17 @@ class Filter extends Component {
 					this.props.filters.indexOf(
 						'price|' + 'Desde ' + (top - div * (it + 1)) + ' Hasta ' + (top - div * it)
 					) === -1
-				)
-					// if (prices.length < 5 || renderedPrices.length < 5) {
-					// }
-					prices.push('Desde ' + (top - div * (it + 1)) + ' Hasta ' + (top - div * it));
-				renderedPrices.push(
-					'Desde ' + moneyFormater(top - div * (it + 1)) + ' Hasta ' + moneyFormater(top - div * it)
-				);
+				) {
+					if (renderedPrices.length < 5) {
+						prices.push('Desde ' + (top - div * (it + 1)) + ' Hasta ' + (top - div * it));
+						renderedPrices.push(
+							'Desde ' +
+								moneyFormater(top - div * (it + 1)) +
+								' Hasta ' +
+								moneyFormater(top - div * it)
+						);
+					}
+				}
 			}
 		}
 

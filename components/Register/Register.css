@@ -1,119 +1,124 @@
 .register-component {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-rows: auto 1fr auto;
-      grid-template-rows: auto 1fr auto;
-  height: 100vh;
+	display: -ms-grid;
+	display: grid;
+	-ms-grid-rows: auto 1fr auto;
+	grid-template-rows: auto 1fr auto;
+	height: 100vh;
 }
 
 .register {
-  margin: 80px auto 80px auto;
-  padding: 6vh 5vw;
-  width: 15vw;
-  min-width: 320px;
-  color: #111111;
-  background-color: #fff;
-  border-radius: 20px;
-  -webkit-box-shadow: 0px 3px 6px #11111129;
-          box-shadow: 0px 3px 6px #11111129;
+	margin: 80px auto 80px auto;
+	padding: 6vh 5vw;
+	width: 15vw;
+	min-width: 320px;
+	color: #111111;
+	background-color: #fff;
+	border-radius: 20px;
+	-webkit-box-shadow: 0px 3px 6px #11111129;
+	box-shadow: 0px 3px 6px #11111129;
 }
 
 .register p.register-text {
-  font-size: 14px;
+	font-size: 14px;
 }
 
 .register h1 {
-  font-size: 28px;
-  text-align: center;
-  font-weight: lighter;
+	font-size: 28px;
+	text-align: center;
+	font-weight: lighter;
 }
 
 .register .social-buttons {
-  margin: 60px 0px 30px;
-  padding: 0px 10px;
+	margin: 60px 0px 30px;
+	padding: 0px 10px;
 }
 
 .register .main-button {
-  width: auto;
+	width: auto;
 }
 
 .password {
-  position: relative;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr auto;
-      grid-template-columns: 1fr auto;
-  grid-gap: 10px;
+	position: relative;
+	display: flex;
+}
+
+.password button{
+  width:20% !important;
+  background:#CF0A2C;
+  border-radius: 0px 5px 5px 0px !important;
+  display: flex;
+  align-items: center;
+  outline: none;
 }
 
 .password a {
-  margin: auto;
+	margin: auto;
 }
 
 .password a:hover {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .register-text {
-  font-size: 14px;
-  text-align: center;
+	font-size: 14px;
+	text-align: center;
 }
 
 .input {
-  max-width: 95%;
+	max-width: 95%;
 }
 
 .input::-webkit-input-placeholder {
-  color: #111111;
-  text-align: center;
+	color: #111111;
+	text-align: center;
 }
 
 .input:-ms-input-placeholder {
-  color: #111111;
-  text-align: center;
+	color: #111111;
+	text-align: center;
 }
 
 .input::-ms-input-placeholder {
-  color: #111111;
-  text-align: center;
+	color: #111111;
+	text-align: center;
 }
 
 .input::placeholder {
-  color: #111111;
-  text-align: center;
+	color: #111111;
+	text-align: center;
 }
 
 p.terms {
-  margin-bottom: 30px;
-  font-size: 12px;
+	margin-bottom: 30px;
+	font-size: 12px;
 }
 
 @media (max-width: 700px) {
-  .register-component {
-    background-color: transparent !important;
-    height: auto !important;
-  }
-  .register-component .register {
-    border-radius: inherit !important;
-    background-color: transparent !important;
-    padding: 15px !important;
-    -webkit-box-shadow: none !important;
-            box-shadow: none !important;
-    margin: 7vh auto 7vh auto !important;
-    min-width: 280px;
-  }
-  .register-component .register h1 {
-    width: 80%;
-    margin: auto;
-  }
-  .register-component .footer {
-    display: none;
-  }
+	.register-component {
+		background-color: transparent !important;
+		height: auto !important;
+	}
+	.register-component .register {
+		border-radius: inherit !important;
+		background-color: transparent !important;
+		padding: 15px !important;
+		-webkit-box-shadow: none !important;
+		box-shadow: none !important;
+		margin: 7vh auto 7vh auto !important;
+		min-width: 280px;
+	}
+	.register-component .register h1 {
+		width: 80%;
+		margin: auto;
+	}
+	.register-component .footer {
+		display: none;
+	}
 }
 
 @media (min-width: 700px) and (min-height: 1000px) {
-  .register {
-    margin: auto;
-  }
+	.register {
+		margin: auto;
+	}
 }
 /*# sourceMappingURL=Register.css.map */
