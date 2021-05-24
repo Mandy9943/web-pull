@@ -42,16 +42,16 @@ class Category extends Component {
 	}
 
 	componentDidMount() {
-		if (this.state.storage === '') {
-			const filter1 = JSON.parse(
-				localStorage.getItem('filters').appliedFilter[0].split('|')
-			);
-			const filter2 = JSON.parse(
-				localStorage.getItem('filters').appliedFilter[1].split('|')
-			);
-			console.log(filter1);
-			console.log(filter2);
-		}
+		// if (this.state.storage === '') {
+		// 	const filter1 = JSON.parse(
+		// 		localStorage.getItem('filters').appliedFilter[0].split('|')
+		// 	);
+		// 	const filter2 = JSON.parse(
+		// 		localStorage.getItem('filters').appliedFilter[1].split('|')
+		// 	);
+		// 	console.log(filter1);
+		// 	console.log(filter2);
+		// }
 		if (this.props.data.type === 'category') {
 			//buscar nivel de la categoria
 			let categoryLevel = this.searchCategoryLevel(this.props.data.search);
