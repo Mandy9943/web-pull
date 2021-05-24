@@ -1,6 +1,12 @@
 ::-webkit-scrollbar {
     display: none;
 }
+.hiddenChat{
+    display:none !important
+}
+.showChat{
+    display: block !important;
+}
 .buttonChat{
     position: fixed !important;
     background: #CF0A2C !important;
@@ -16,7 +22,7 @@
 }
 .containerChat{
     height: 450px;
-    background: aquamarine;
+    background: #CF0A2C;
     position: fixed;
     width: 320px;
     bottom: 5px;
@@ -38,7 +44,8 @@
 .containerChat .headChat svg{
     position:absolute;
     color:white;
-    right:15px
+    right:15px;
+    cursor: pointer;
 }
 .containerChat .sendMessage{
     position: absolute;
@@ -47,6 +54,7 @@
     display:flex;
     align-items: center;
     padding: 5px;
+    height: 50px;
 }
 .containerChat .sendMessage textarea{
     height: 64px;
@@ -61,27 +69,31 @@
 }
 .containerChat .sendMessage svg{
     margin-left: 4px !important;
-    color: #CF0A2C;
+    color:white;
 }
 .containerChat .containerMessages{
     height:350px;
-    background:blue
+    background:white;
+    max-height: 350px;
+    overflow: scroll;
 }
 .containerChat .containerMessages .rightMessage{
     max-width: 80%;
-    background: red;
     float: right;
     padding: 5px;
     border-radius: 10px;
     margin: 8px 10px 0px 0px;
+    border: 1px inset;
+    background: #00B2FF;
 }
 .containerChat .containerMessages .leftMessage{
     max-width: 80%;
-    background: green;
     float: left;
     padding: 5px;
     border-radius: 10px;
     margin: 8px 0px 0px 10px;
+    border-color: #CF0A2C;
+    background: #F59D9D;
 }
 /* .rightMessage::after, .rightMessage::before{
     content: "";

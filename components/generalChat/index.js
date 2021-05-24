@@ -6,49 +6,103 @@ import Fab from '@material-ui/core/Fab';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import './style.css'
 import GeneralSocketChat from '../services/socker-general-chat';
-import Reveal from "react-awesome-reveal";
-import { keyframes } from "@emotion/react";
+import Cookies from 'js-cookie';
 
 export default function GeneralChat() {
     const [values, setValues] = useState({
-        message:''
+        message:'',
+        openChats:'',
+        closeButtons:'',
+        dataLogin:[],
+        login:false
     });
 
     const handleSendMessage = () => {
         console.log(values.message);
     }
-
     const handleWriteMessage = (prop) => (event) =>  {
         setValues({ ...values, [prop]: event.target.value });
     }
+    const handleOpenChat = () =>{
+        const chatContent = document.querySelector('.showChat');
+        chatContent.classList.add('containerChat');
+        const user_id =Cookies.get('user_id');
+        if(!user_id){
+            setValues({ ...values, login: false });
+            renderFormChat(false)
+          
+        }else{
+            setValues({ ...values, login: true });
+            renderFormChat(true)
+        }
+    }
+    const handleCloseChat = () => {
+        const chatContent = document.querySelector('.showChat');
+        chatContent.classList.remove('containerChat');
+    }
+    const renderFormChat = (type) =>{
+        console.log(type)
+        if (type === !false){
+            return(
+                    <>
+                        <div className="rightMessage">
+                            holaaaaaaaa cómo estás? porque demoras tanto?
+                        </div>
+                        <div className="leftMessage">
+                            holaaaaaaaa cómo estás? no demoro nada, 
+                        </div>
+                        <div className="rightMessage">
+                            holaaaaaaaa cómo estás? porque demoras tanto?
+                        </div>
+                        <div className="rightMessage">
+                            holaaaaaaaa cómo estás? porque demoras tanto?
+                        </div>
+                        <div className="rightMessage">
+                            holaaaaaaaa cómo estás? porque demoras tanto?
+                        </div>
+                        <div className="rightMessage">
+                            holaaaaaaaa cómo estás? porque demoras tanto?
+                        </div>
+                        <div className="leftMessage">
+                            holaaaaaaaa cómo estás? no demoro nada, 
+                        </div>
+                        <div className="leftMessage">
+                            holaaaaaaaa cómo estás? no demoro nada, 
+                        </div>
+                        <div className="leftMessage">
+                            holaaaaaaaa cómo estás? no demoro nada, 
+                        </div>
+                        <div className="leftMessage">
+                            holaaaaaaaa cómo estás? no demoro nada,  nasa
+                        </div>
+                    </>
+            )
+        } else {
+            return('holaaaa')
+        }
+    }
 	return (
 		<>
-        <GeneralSocketChat/>
-            <div className="containerChat">
+            <GeneralSocketChat/>
+            <div className="showChat">
 
                 <div className="headChat">
                     <p>Usuario</p>
-                    <CloseRounded/>
+                    <CloseRounded onClick={handleCloseChat}/>
                 </div>
 
                 <div className="containerMessages">
-                    <div className="rightMessage">
-                        holaaaaaaaa cómo estás? porque demoras tanto?
-                    </div>
-                    <div className="leftMessage">
-                        holaaaaaaaa cómo estás? no demoro nada, es que hablas
-                    </div>
-                    <div className="rightMessage">
-                        holaaaaaaaa cómo estás? porque demoras tanto?
-                    </div>
+
+                {renderFormChat(values.login)}
+                    
                 </div>
 
                 <div className="sendMessage">
                     <TextareaAutosize
                         id="outlined-multiline-static"
                         label="Escribir mensaje"
-                        rows={2}
-                        rowsMax={4}
+                        rows={1}
+                        rowsMax={2}
                         variant="outlined"
                         value={values.message}
                         onChange={handleWriteMessage('message')}
@@ -57,8 +111,7 @@ export default function GeneralChat() {
                 </div>
 
             </div>
-
-			<Fab variant="outline" className="buttonChat">
+			<Fab className="buttonChat" variant="extended" onClick={handleOpenChat}>
                 <SmsIcon />
                 Hablar con un asesor
             </Fab>
