@@ -40,11 +40,11 @@ class Category extends Component {
 	}
 
 	componentDidMount() {
-		const storage = JSON.parse(localStorage.getItem('filters'));
-		const filter1 = storage.appliedFilters[0] ? storage.appliedFilters[0].split('|') : '';
-		const filter2 = storage.appliedFilters[1] ? storage.appliedFilters[1].split('|') : '';
-		this.applyFilter(filter1[0], filter1[1])
-		this.applyFilter(filter2[0], filter2[1])
+		// const storage = JSON.parse(localStorage.getItem('filters'));
+		// const filter1 = storage.appliedFilters[0] ? storage.appliedFilters[0].split('|') : '';
+		// const filter2 = storage.appliedFilters[1] ? storage.appliedFilters[1].split('|') : '';
+		// this.applyFilter(filter1[0], filter1[1])
+		// this.applyFilter(filter2[0], filter2[1])
 
 		if (this.props.data.type === 'category') {
 			//buscar nivel de la categoria
