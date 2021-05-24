@@ -24,6 +24,7 @@ class Category extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			storage: '',
 			format: 'grid',
 			data: [],
 			filters: [],
@@ -40,6 +41,12 @@ class Category extends Component {
 	}
 
 	componentDidMount() {
+		if (this.state.storage === '') {
+			this.setState({
+				storage: JSON.parse(localStorage.getItem('filters').split('|')),
+			});
+			console.log(this.state.storage);
+		}
 		if (this.props.data.type === 'category') {
 			//buscar nivel de la categoria
 			let categoryLevel = this.searchCategoryLevel(this.props.data.search);
@@ -360,6 +367,7 @@ class Category extends Component {
 					/>
 				</div>
 				<Pagination
+					filters={this.state.filters}
 					actual={this.state.page}
 					totalPages={this.state.totalPages}
 					cb={this.changePage}

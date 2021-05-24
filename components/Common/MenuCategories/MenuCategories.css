@@ -51,8 +51,8 @@
 	padding: 10px 0;
 	border-radius: 0 0px 0 5px;
 	height: 650px;
-	overflow: auto;
-	overflow-x: hidden;
+	overflow: scroll;
+	overflow-x: auto;
 }
 
 .title-categories::-webkit-scrollbar {

@@ -96,8 +96,6 @@ class Filter extends Component {
 		let res_brands = [];
 		let prices = [];
 		let renderedPrices = [];
-		console.log(prices);
-		console.log(renderedPrices);
 
 		if (this.props.data && this.props.data.categories) {
 			res_categories = this.props.data.categories;

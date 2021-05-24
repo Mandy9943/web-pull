@@ -38,11 +38,9 @@ function Results({ data, session }) {
 
         "bebés": {
             "estructure": [1, 2, 3, 2, 3, 2, 1],
-            "links": ["Bebés", "Bacinicas%20y%20bancos%20infantiles", "Regalos%20para%20recién%20nacidos", "Asientos%20y%20accesorios%20de%20carro%20para%20bebés", "Productos%20cambio%20de%20pañales%20bebés", "Productos%20para%20embarazo%20y%20maternidad", "Centros%20actividad%20entretenimiento%20bebés", "Coches%20de%20bebés%20y%20accesorios", "Papelería%20para%20bebés", "Productos%20para%20el%20cuidado%20del%20bebé", "Recámara%20del%20bebé", "Productos%20de%20seguridad%20para%20bebés", "Lactancia%20y%20alimentación", "Artículos%20de%20viaje%20para%20bebés"],
+            "links": ["Bebés",  "Bacinicas%20y%20bancos%20infantiles", "Asientos%20y%20accesorios%20de%20carro%20para%20bebés", "Productos%20cambio%20de%20pañales%20bebés", "Productos%20para%20embarazo%20y%20maternidad", "Centros%20actividad%20entretenimiento%20bebés", "Coches%20de%20bebés%20y%20accesorios", "Productos%20para%20el%20cuidado%20del%20bebé", "Papelería%20para%20bebés", "Recámara%20del%20bebé", "Productos%20de%20seguridad%20para%20bebés", "Lactancia%20y%20alimentación", "Artículos%20de%20viaje%20para%20bebés"],
             "image_path": encodeURI("//kiero.co/images/resources/bebes/"), "enable": true
         },
-
-
 
         "belleza": {
             "estructure":  [1, 2, 3, 3, 1],
