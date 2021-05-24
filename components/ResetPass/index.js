@@ -12,24 +12,41 @@ function ResetPass({ token }) {
 	const router = useRouter();
 	const [password1, setPassword1] = useState();
 	const [password2, setPassword2] = useState();
-	const [equal, setEqual] = useState(false);
+	const [equal, setEqual] = useState(1);
 	const [error, setError] = useState();
+
 	const handlePassword1 = (e) => {
 		setPassword1(e.target.value);
-        if (e.target.value && password2 && e.target.value === password2) {
-			setEqual(true);
-		} else {
-			setEqual(false);
+		if (password2) {
+			setEqual(1);
+			if (e.target.value === password2) {
+				setEqual(2);
+			} else {
+				setEqual(0);
+			}
 		}
 	};
+
 	const handlePassword2 = (e) => {
 		setPassword2(e.target.value);
-		if (e.target.value && password1 && e.target.value === password1) {
-			setEqual(true);
-		} else {
-			setEqual(false);
+		if (password1) {
+			setEqual(1);
+			if (e.target.value === password1) {
+				setEqual(2);
+			} else {
+				setEqual(0);
+			}
 		}
+		// if (password1 && e.target.value === password1) {
+		// 	setEqual(2);
+		// 	if (password1) {
+		// 		setEqual(1);
+		// 	}
+		// } else {
+		// 	setEqual(0);
+		// }
 	};
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const rs = await resetPassword(password1, token);
@@ -64,10 +81,12 @@ function ResetPass({ token }) {
 								onChange={handlePassword1}
 								placeholder="Contraseña"
 							/>
-							{equal ? (
+							{equal === 2 ? (
 								<CheckIcon className="equalityConfirm" />
-							) : (
+							) : equal === 0 ? (
 								<CloseIcon className="equalityConfirm" />
+							) : (
+								''
 							)}
 						</div>
 						<div className="inputContainer">
@@ -81,10 +100,12 @@ function ResetPass({ token }) {
 								onChange={handlePassword2}
 								placeholder="Confirma la contraseña"
 							/>
-							{equal ? (
+							{equal === 2 ? (
 								<CheckIcon className="equalityConfirm" />
-							) : (
+							) : equal === 0 ? (
 								<CloseIcon className="equalityConfirm" />
+							) : (
+								''
 							)}
 						</div>
 					</div>

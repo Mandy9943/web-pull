@@ -7,18 +7,20 @@ small {
 	color: #cf0a2c;
 }
 
-input {
-	width: 200px !important;
-}
 .main-button {
-	display: flex;
+    display: flex;
 	justify-content: center;
 }
 
 .inputContainer {
-	display: flex;
+    display: flex;
 	align-content: center;
 	align-items: center;
+}
+
+.inputContainer input{
+    width: 200px !important;
+
 }
 
 .equalityConfirm {

@@ -77,7 +77,12 @@ class ProductDetail extends Component {
 		// console.log("data")
 		return (
 			<div>
-				<Nav user={u_data.user} jwt={u_data.jwt} home={true} authenticated={u_data.authenticated} />
+				<Nav
+					user={u_data.user}
+					jwt={u_data.jwt}
+					home={true}
+					authenticated={u_data.authenticated}
+				/>
 				<div className="detail-content">
 					<div className="breadcrumb">
 						<Link href="/">
@@ -97,7 +102,7 @@ class ProductDetail extends Component {
 						<div className="wrap-product">
 							<DetailImg
 								images={this.state.mdata.images}
-								category={this.state.mdata.category.name}
+								category={this.state.mdata.category ? this.state.mdata.category.name : ''}
 								product_name={this.state.mdata.title}
 							/>
 							<div className="pay-section-responsive">
@@ -114,7 +119,7 @@ class ProductDetail extends Component {
 							</div>
 							{/* <RecommendedProducts category={this.state.mdata.category.name} /> */}
 							<div className="home-content slider-recommends">
-								<ProductsSlider category={this.state.mdata.category.name} />
+								<ProductsSlider category={this.state.mdata.category ? this.state.mdata.category.name : ''} />
 							</div>
 							<Detail
 								width={this.state.mdata.width}
@@ -172,8 +177,8 @@ class ProductDetail extends Component {
 								</div>
 								<div className="section-pay-send-description">
 									<p>
-										Es el servicio de kiero que permite recibir tus productos de forma rapida y
-										segura
+										Es el servicio de kiero que permite recibir tus productos de forma
+										rapida y segura
 									</p>
 								</div>
 							</div>
@@ -198,7 +203,7 @@ class ProductDetail extends Component {
 						{/* <QuestionItem product_id={this.state.mdata.product_id} q questions={this.state.questions} /> */}
 						<ProductsSlider
 							images={this.state.mdata.images}
-							category={this.state.mdata.category.name}
+							category={this.state.mdata.category ? this.state.mdata.category.name : ''}
 						/>
 
 						{/* <Explorer />
@@ -208,7 +213,10 @@ class ProductDetail extends Component {
             <Explorer /> */}
 					</section>
 					<section className="advertising-movil no-movil no-web">
-						<ProductCardFinding notitle={'true'} category={this.state.mdata.category.name} />
+						<ProductCardFinding
+							notitle={'true'}
+							category={this.state.mdata.category ? this.state.mdata.category.name : ''}
+						/>
 					</section>
 				</div>
 				<div className="home-content  no-movil">
