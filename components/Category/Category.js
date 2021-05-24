@@ -19,13 +19,11 @@ import { getData } from '../../services/userApi';
 import redirect from '../../lib/redirect';
 import Error from 'next/error';
 import { apiget } from '../../lib/request';
-import { filter } from 'lodash';
 
 class Category extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			storage: '',
 			format: 'grid',
 			data: [],
 			filters: [],
@@ -42,16 +40,12 @@ class Category extends Component {
 	}
 
 	componentDidMount() {
-		// if (this.state.storage === '') {
-		// 	const filter1 = JSON.parse(
-		// 		localStorage.getItem('filters').appliedFilter[0].split('|')
-		// 	);
-		// 	const filter2 = JSON.parse(
-		// 		localStorage.getItem('filters').appliedFilter[1].split('|')
-		// 	);
-		// 	console.log(filter1);
-		// 	console.log(filter2);
-		// }
+		const storage = JSON.parse(localStorage.getItem('filters'));
+		const filter1 = storage.appliedFilters[0] ? storage.appliedFilters[0].split('|') : '';
+		const filter2 = storage.appliedFilters[1] ? storage.appliedFilters[1].split('|') : '';
+		this.applyFilter(filter1[0], filter1[1])
+		this.applyFilter(filter2[0], filter2[1])
+
 		if (this.props.data.type === 'category') {
 			//buscar nivel de la categoria
 			let categoryLevel = this.searchCategoryLevel(this.props.data.search);
@@ -120,7 +114,7 @@ class Category extends Component {
 
 		this.setState({
 			filters: tmp_filters,
-			page: 1,
+			page: this.state.page,
 		});
 
 		this.loadProducts(1, '', '', categoryLevel);
