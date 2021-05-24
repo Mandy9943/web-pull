@@ -1,6 +1,27 @@
-.button-recovery p{
- margin: 0 auto;
+.button-recovery p {
+	margin: 0 auto;
 }
-small{
-    color: #CF0A2C;
+small {
+	display: flex;
+	justify-content: center;
+	color: #cf0a2c;
+}
+
+input {
+	width: 200px !important;
+}
+.main-button {
+	display: flex;
+	justify-content: center;
+}
+
+.inputContainer {
+	display: flex;
+	align-content: center;
+	align-items: center;
+}
+
+.equalityConfirm {
+	margin-left: 10px;
+	color: #cf0a2c;
 }
