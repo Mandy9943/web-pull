@@ -41,12 +41,12 @@ class Category extends Component {
 	}
 
 	componentDidMount() {
-		if (this.state.storage === '') {
-			this.setState({
-				storage: JSON.parse(localStorage.getItem('filters').split('|')),
-			});
-			console.log(this.state.storage);
-		}
+		// if (this.state.storage === '') {
+		// 	this.setState({
+		// 		storage: JSON.parse(localStorage.getItem('filters').appliedFilter[0].split('|')),
+		// 	});
+		// 	console.log(this.state.storage);
+		// }
 		if (this.props.data.type === 'category') {
 			//buscar nivel de la categoria
 			let categoryLevel = this.searchCategoryLevel(this.props.data.search);
