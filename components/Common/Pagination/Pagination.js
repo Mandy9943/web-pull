@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, setState } from 'react';
 import Button from '../Button/Button';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,6 +8,13 @@ import _ from 'lodash';
 import './Pagination.css';
 
 export default class Pagination extends Component {
+	saveInStorage(appliedFilters) {
+		const filters = {
+			appliedFilters: appliedFilters,
+		};
+		localStorage.removeItem('filters');
+		localStorage.setItem('filters', JSON.stringify(filters));
+	}
 	render() {
 		const Pagination = (props) => {
 			const { active, size, step, onClickHandler } = props;
@@ -39,7 +46,10 @@ export default class Pagination extends Component {
 
 			return (
 				<section className="pagination-component">
-					<ul className="pagination">
+					<ul
+						onClick={() => this.saveInStorage(this.props.filters)}
+						className="pagination"
+					>
 						{active > 1 ? (
 							<li
 								className="page-item prev arrow-icon"

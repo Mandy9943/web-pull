@@ -40,6 +40,12 @@ class Category extends Component {
 	}
 
 	componentDidMount() {
+		const storage = JSON.parse(localStorage.getItem('filters'));
+		const filter1 = storage.appliedFilters[0] ? storage.appliedFilters[0].split('|') : '';
+		const filter2 = storage.appliedFilters[1] ? storage.appliedFilters[1].split('|') : '';
+		this.applyFilter(filter1[0], filter1[1])
+		this.applyFilter(filter2[0], filter2[1])
+
 		if (this.props.data.type === 'category') {
 			//buscar nivel de la categoria
 			let categoryLevel = this.searchCategoryLevel(this.props.data.search);
@@ -108,7 +114,7 @@ class Category extends Component {
 
 		this.setState({
 			filters: tmp_filters,
-			page: 1,
+			page: this.state.page,
 		});
 
 		this.loadProducts(1, '', '', categoryLevel);
@@ -360,6 +366,7 @@ class Category extends Component {
 					/>
 				</div>
 				<Pagination
+					filters={this.state.filters}
 					actual={this.state.page}
 					totalPages={this.state.totalPages}
 					cb={this.changePage}
