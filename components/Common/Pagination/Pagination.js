@@ -16,7 +16,6 @@ export default class Pagination extends Component {
 		localStorage.setItem('filters', JSON.stringify(filters));
 	}
 	render() {
-
 		const Pagination = (props) => {
 			const { active, size, step, onClickHandler } = props;
 

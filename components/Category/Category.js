@@ -19,6 +19,7 @@ import { getData } from '../../services/userApi';
 import redirect from '../../lib/redirect';
 import Error from 'next/error';
 import { apiget } from '../../lib/request';
+import { filter } from 'lodash';
 
 class Category extends Component {
 	constructor(props) {
@@ -41,12 +42,16 @@ class Category extends Component {
 	}
 
 	componentDidMount() {
-		// if (this.state.storage === '') {
-		// 	this.setState({
-		// 		storage: JSON.parse(localStorage.getItem('filters').appliedFilter[0].split('|')),
-		// 	});
-		// 	console.log(this.state.storage);
-		// }
+		if (this.state.storage === '') {
+			const filter1 = JSON.parse(
+				localStorage.getItem('filters').appliedFilter[0].split('|')
+			);
+			const filter2 = JSON.parse(
+				localStorage.getItem('filters').appliedFilter[1].split('|')
+			);
+			console.log(filter1);
+			console.log(filter2);
+		}
 		if (this.props.data.type === 'category') {
 			//buscar nivel de la categoria
 			let categoryLevel = this.searchCategoryLevel(this.props.data.search);
