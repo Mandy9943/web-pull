@@ -43,24 +43,16 @@ class Category extends Component {
 
 	componentDidMount() {
 		// window.addEventListener('beforeunload', this.removeLocalStorage);
-		// const currentPage = window.location.href.split('');
-		// const prevPage = document.referrer.split('');
-		// var differences = 0;
-		// // for (
-		// // 	let i = 0;
-		// // 	i < currentPage.length > prevPage.length ? currentPage.length : prevPage.length;
-		// // 	i++
-		// // ) {
-		// // 	if (currentPage[i] === prevPage[i]) {
-		// // 		differences += 1;
-		// // 		return false;
-		// // 	}
-		// // }
-		// if (differences > 7) {
-		// 	localStorage.removeItem('filters');
-		// }
-		// console.log(currentPage);
-		// console.log(prevPage);
+		const currentPage = window.location.href.split('');
+		const prevPage = document.referrer.split('');
+		const minor = currentPage.length > prevPage.length ? prevPage : currentPage;
+		const equals = currentPage.filter((value, index) => value === prevPage[index]);
+
+		if (minor.length > equals.length + 1) {
+			localStorage.removeItem('filters');
+			this.removeFilter;
+			console.log('oe');
+		}
 
 		const storage = JSON.parse(localStorage.getItem('filters'));
 		if (storage) {
@@ -101,9 +93,6 @@ class Category extends Component {
 		}
 	}
 
-	// removeLocalStorage = () => {
-
-	// };
 
 	searchCategoryLevel = (name = '') => {
 		try {
