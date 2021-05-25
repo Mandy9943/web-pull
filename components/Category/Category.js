@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import './Category.css';
 import Filter from './../Filter';
 import ListCategory from './../ListCategory';
@@ -19,6 +20,7 @@ import { getData } from '../../services/userApi';
 import redirect from '../../lib/redirect';
 import Error from 'next/error';
 import { apiget } from '../../lib/request';
+import { difference } from 'lodash';
 
 class Category extends Component {
 	constructor(props) {
@@ -40,12 +42,38 @@ class Category extends Component {
 	}
 
 	componentDidMount() {
+		// window.addEventListener('beforeunload', this.removeLocalStorage);
+		// const currentPage = window.location.href.split('');
+		// const prevPage = document.referrer.split('');
+		// var differences = 0;
+		// // for (
+		// // 	let i = 0;
+		// // 	i < currentPage.length > prevPage.length ? currentPage.length : prevPage.length;
+		// // 	i++
+		// // ) {
+		// // 	if (currentPage[i] === prevPage[i]) {
+		// // 		differences += 1;
+		// // 		return false;
+		// // 	}
+		// // }
+		// if (differences > 7) {
+		// 	localStorage.removeItem('filters');
+		// }
+		// console.log(currentPage);
+		// console.log(prevPage);
+
 		const storage = JSON.parse(localStorage.getItem('filters'));
-		const filter1 = storage.appliedFilters[0] ? storage.appliedFilters[0].split('|') : '';
-		const filter2 = storage.appliedFilters[1] ? storage.appliedFilters[1].split('|') : '';
-		if (filter1 || filter2) {
-			this.applyFilter(filter1[0], filter1[1]);
-			this.applyFilter(filter2[0], filter2[1]);
+		if (storage) {
+			const filter1 = storage.appliedFilters[0]
+				? storage.appliedFilters[0].split('|')
+				: '';
+			const filter2 = storage.appliedFilters[1]
+				? storage.appliedFilters[1].split('|')
+				: '';
+			if (filter1 || filter2) {
+				this.applyFilter(filter1[0], filter1[1]);
+				this.applyFilter(filter2[0], filter2[1]);
+			}
 		}
 
 		if (this.props.data.type === 'category') {
@@ -72,6 +100,11 @@ class Category extends Component {
 			this.loadAllFilters();
 		}
 	}
+
+	// removeLocalStorage = () => {
+
+	// };
+
 	searchCategoryLevel = (name = '') => {
 		try {
 			// const params = new URLSearchParams();

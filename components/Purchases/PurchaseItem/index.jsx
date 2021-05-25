@@ -62,7 +62,7 @@ function PurchaseItem({ item, onSelect }) {
 				<section className="info">
 					<a onClick={() => onSelect(item)}> Detalle de compra</a>
 					<p className="vendedor">Vendedor:</p>
-					<p>{item.data.seller.name}ee</p>
+					<p>{item.data.seller.name}</p>
 					<p className="phone-client"> {item.data.seller.phone}</p>
 					<Link
 						href={`/chat/${item.data.order_id}?order=${item.data.order_id}&store=${item.data.seller_id}`}
