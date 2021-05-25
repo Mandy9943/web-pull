@@ -408,7 +408,7 @@ export default class UserAccount extends Component {
                                     <Link href="/agregar_direccion">
                                         <a>
                                             <div className="user-accunt-info-tab user-accunt-info-address">
-                                                <p>No tienes ninguno <strong>¡Agregalo!</strong>.
+                                                <p>No tienes ninguno <strong>¡Agrégalo!</strong>.
                                                         </p>
                                                 <p className="user-accunt-info-box-icon">
                                                     <FontAwesomeIcon icon={faAngleRight} />
