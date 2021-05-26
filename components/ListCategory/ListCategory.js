@@ -70,9 +70,6 @@ class ListCategory extends Component {
 																</div>
 																<div>Envío gratis</div>
 															</div>
-														// ) : (
-														// 	''
-														// )
 													</div>
 												</div>
 											</div>
@@ -116,9 +113,6 @@ class ListCategory extends Component {
 															</div>
 															<div>Envío gratis</div>
 														</div>
-													// ) : (
-													// 	''
-													// )
 												</div>
 											</div>
 										</a>
