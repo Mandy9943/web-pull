@@ -63,16 +63,16 @@ class ListCategory extends Component {
 															{product.title.substr(0, 60) +
 																(product.title.length > 60 ? '...' : '.')}
 														</p>
-														{parseInt(product.is_prime) ? (
+														{/* {parseInt(product.is_prime) ? ( */}
 															<div className="kiero-envios-card">
 																<div className="kiero-envios-card-icon">
 																	<FontAwesomeIcon icon={faTruck} />
 																</div>
 																<div>Envío gratis</div>
 															</div>
-														) : (
-															''
-														)}
+														// ) : (
+														// 	''
+														// )
 													</div>
 												</div>
 											</div>
@@ -109,16 +109,16 @@ class ListCategory extends Component {
 													</h2>
 													<h4>{product.brand}</h4>
 													<p>{product.title}</p>
-													{parseInt(product.is_prime) ? (
+													{/* {parseInt(product.is_prime) ? ( */}
 														<div className="kiero-envios-card">
 															<div className="kiero-envios-card-icon">
 																<FontAwesomeIcon icon={faTruck} />
 															</div>
 															<div>Envío gratis</div>
 														</div>
-													) : (
-														''
-													)}
+													// ) : (
+													// 	''
+													// )
 												</div>
 											</div>
 										</a>
