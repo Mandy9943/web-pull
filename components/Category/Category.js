@@ -51,7 +51,6 @@ class Category extends Component {
 		if (minor.length > equals.length + 1) {
 			localStorage.removeItem('filters');
 			this.removeFilter;
-			console.log('oe');
 		}
 
 		const storage = JSON.parse(localStorage.getItem('filters'));
