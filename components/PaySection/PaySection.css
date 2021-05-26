@@ -15,7 +15,21 @@
   position: relative;
   margin-bottom: 15px;
 }
+.clasecantidad{
+  margin:5px 20px;
+  margin-top: 20px 10px;
+}
+.cantidad{
+  border:1px inset;
+  padding:5px;
+  border-radius: 5px;
+  border-color:#CF0A2C;
+  font-size: 15px;
+  text-align: center;
+  background:#CF0A2C;
+  color:#ffff;
 
+}
 .pay-img img {
   height: 38px !important;
   margin: auto;
