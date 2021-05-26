@@ -12,8 +12,9 @@ class ListCategory extends Component {
 	constructor(props) {
 		super(props);
 	}
-
 	render() {
+		console.log(this.props.products);
+		console.log(this.props.category);
 		const Class = this.props.format == 'grid' ? 'grid' : 'list';
 
 		return (
@@ -27,14 +28,24 @@ class ListCategory extends Component {
 							? this.props.products.map((product, i) => (
 									<Link
 										href={
-											'/detalle/' + product.product_id + '_' + product.title.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '').split(' ').join('-')
+											'/detalle/' +
+											product.product_id +
+											'_' +
+											product.title
+												.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '')
+												.split(' ')
+												.join('-')
 										}
 										key={i}
 									>
 										<a className="d-flex">
 											<div className="temp-card">
 												<div className="product-card-img">
-													<img alt={product.title} src={getImgUrl(product.image)} className="img" />
+													<img
+														alt={product.title}
+														src={getImgUrl(product.image)}
+														className="img"
+													/>
 												</div>
 												<div className="product-card-description-box">
 													<h2>
@@ -52,16 +63,18 @@ class ListCategory extends Component {
 															{product.title.substr(0, 60) +
 																(product.title.length > 60 ? '...' : '.')}
 														</p>
-														{parseInt(product.is_prime) ? (
-															<div className="kiero-envios-card">
-																<div className="kiero-envios-card-icon">
-																	<FontAwesomeIcon icon={faTruck} />
-																</div>
-																<div>Envío gratis</div>
+														{/* {parseInt(product.is_prime) ? ( */}
+														<div className="kiero-envios-card">
+															<div className="kiero-envios-card-icon">
+																<FontAwesomeIcon icon={faTruck} />
 															</div>
-														) : (
-															''
-														)}
+															<div>Envío gratis</div>
+														</div>
+														{
+															// ) : (
+															// 	''
+															// )}
+														}
 													</div>
 												</div>
 											</div>
@@ -71,14 +84,21 @@ class ListCategory extends Component {
 							: this.props.products.map((product, i) => (
 									<Link
 										href={
-											'/detalle/' + product.product_id + '_' + product.title.split(' ').join('-')
+											'/detalle/' +
+											product.product_id +
+											'_' +
+											product.title.split(' ').join('-')
 										}
 										key={i}
 									>
 										<a>
 											<div className="temp-list">
 												<div className="product-list-img">
-													<img alt={product.title} src={getImgUrl(product.image)} className="img" />
+													<img
+														alt={product.title}
+														src={getImgUrl(product.image)}
+														className="img"
+													/>
 												</div>
 												<div className="product-list-description-box">
 													<h2>
@@ -91,16 +111,18 @@ class ListCategory extends Component {
 													</h2>
 													<h4>{product.brand}</h4>
 													<p>{product.title}</p>
-													{parseInt(product.is_prime) ? (
-														<div className="kiero-envios-card">
-															<div className="kiero-envios-card-icon">
-																<FontAwesomeIcon icon={faTruck} />
-															</div>
-															<div>Envío gratis</div>
+													{/* {parseInt(product.is_prime) ? ( */}
+													<div className="kiero-envios-card">
+														<div className="kiero-envios-card-icon">
+															<FontAwesomeIcon icon={faTruck} />
 														</div>
-													) : (
-														''
-													)}
+														<div>Envío gratis</div>
+													</div>
+													{
+														// ) : (
+														// 	''
+														// )}
+													}
 												</div>
 											</div>
 										</a>
@@ -111,7 +133,9 @@ class ListCategory extends Component {
 				{(!this.props.products || this.props.products.length === 0) && (
 					<div className="fetching-empty">
 						{this.props.products ? (
-							<div className="text">Lo sentimos, no logramos encontrar lo que buscas.</div>
+							<div className="text">
+								Lo sentimos, no logramos encontrar lo que buscas.
+							</div>
 						) : (
 							<div className="spinner" style={{ marginTop: 200 }}>
 								<Spinner />
@@ -125,13 +149,3 @@ class ListCategory extends Component {
 }
 
 export default ListCategory;
-
-
-
-
-
-
-
-
-
-
