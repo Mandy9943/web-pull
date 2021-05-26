@@ -7,6 +7,7 @@ import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import './style.css'
 import GeneralSocketChat from '../services/socker-general-chat';
 import Cookies from 'js-cookie';
+import Form from './Components/form.js'
 
 export default function GeneralChat() {
     const [values, setValues] = useState({
@@ -24,7 +25,8 @@ export default function GeneralChat() {
         setValues({ ...values, [prop]: event.target.value });
     }
     const handleOpenChat = () =>{
-        const chatContent = document.querySelector('.showChat');
+        const chatContent = document.querySelector('.generalChat');
+        chatContent.classList.remove('hiddenChat');
         chatContent.classList.add('containerChat');
         const user_id =Cookies.get('user_id');
         if(!user_id){
@@ -37,54 +39,57 @@ export default function GeneralChat() {
         }
     }
     const handleCloseChat = () => {
-        const chatContent = document.querySelector('.showChat');
+        const chatContent = document.querySelector('.generalChat');
+        chatContent.classList.add('hiddenChat');
         chatContent.classList.remove('containerChat');
     }
     const renderFormChat = (type) =>{
         console.log(type)
-        if (type === !false){
+        // if (type === true){
+        //     return(
+        //             <>
+        //                 <div className="rightMessage">
+        //                     holaaaaaaaa cómo estás? porque demoras tanto?
+        //                 </div>
+        //                 <div className="leftMessage">
+        //                     holaaaaaaaa cómo estás? no demoro nada, 
+        //                 </div>
+        //                 <div className="rightMessage">
+        //                     holaaaaaaaa cómo estás? porque demoras tanto?
+        //                 </div>
+        //                 <div className="rightMessage">
+        //                     holaaaaaaaa cómo estás? porque demoras tanto?
+        //                 </div>
+        //                 <div className="rightMessage">
+        //                     holaaaaaaaa cómo estás? porque demoras tanto?
+        //                 </div>
+        //                 <div className="rightMessage">
+        //                     holaaaaaaaa cómo estás? porque demoras tanto?
+        //                 </div>
+        //                 <div className="leftMessage">
+        //                     holaaaaaaaa cómo estás? no demoro nada, 
+        //                 </div>
+        //                 <div className="leftMessage">
+        //                     holaaaaaaaa cómo estás? no demoro nada, 
+        //                 </div>
+        //                 <div className="leftMessage">
+        //                     holaaaaaaaa cómo estás? no demoro nada, 
+        //                 </div>
+        //                 <div className="leftMessage">
+        //                     holaaaaaaaa cómo estás? no demoro nada,  nasa
+        //                 </div>
+        //             </>
+        //     )
+        // } else if (type == false) {
             return(
-                    <>
-                        <div className="rightMessage">
-                            holaaaaaaaa cómo estás? porque demoras tanto?
-                        </div>
-                        <div className="leftMessage">
-                            holaaaaaaaa cómo estás? no demoro nada, 
-                        </div>
-                        <div className="rightMessage">
-                            holaaaaaaaa cómo estás? porque demoras tanto?
-                        </div>
-                        <div className="rightMessage">
-                            holaaaaaaaa cómo estás? porque demoras tanto?
-                        </div>
-                        <div className="rightMessage">
-                            holaaaaaaaa cómo estás? porque demoras tanto?
-                        </div>
-                        <div className="rightMessage">
-                            holaaaaaaaa cómo estás? porque demoras tanto?
-                        </div>
-                        <div className="leftMessage">
-                            holaaaaaaaa cómo estás? no demoro nada, 
-                        </div>
-                        <div className="leftMessage">
-                            holaaaaaaaa cómo estás? no demoro nada, 
-                        </div>
-                        <div className="leftMessage">
-                            holaaaaaaaa cómo estás? no demoro nada, 
-                        </div>
-                        <div className="leftMessage">
-                            holaaaaaaaa cómo estás? no demoro nada,  nasa
-                        </div>
-                    </>
-            )
-        } else {
-            return('holaaaa')
-        }
+            <Form logedIn = {values.login}/>
+                )
+        // } 
     }
 	return (
 		<>
             <GeneralSocketChat/>
-            <div className="showChat">
+            <div className="generalChat hiddenChat">
 
                 <div className="headChat">
                     <p>Usuario</p>
