@@ -19,7 +19,7 @@ class PaySection extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cantidad: 1,
+      cantidad: 0,
       dimensions: {},
       variantsSpinner: props.m_pgid ? false : true,
     }
@@ -111,6 +111,7 @@ class PaySection extends Component {
 
       if (Number(this.props.stock) > 0) {
         for (let i = 1; i <= this.props.stock; i++) {
+          
           qty_options['values'][i - 1] = {
             available: true,
             text: `Cantidad: ${i} (stock disponible ${this.props.stock})`,
@@ -186,7 +187,9 @@ class PaySection extends Component {
                 dimensions={this.state.dimensions}
                 select={this.handleSelect}/>
         }
-
+        <div className="clasecantidad">
+          {this.state.cantidad > 0 ? <div className="cantidad">{'Haz Seleccionado la cantidad de '+this.state.cantidad+' articulos'}</div>:''}
+        </div>
         {this.renderPayButtonSection()}
 
         <ListProductMovil />
