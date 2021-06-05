@@ -2,12 +2,12 @@
 import socketIOClient from "socket.io-client";
 import Cookies from 'js-cookie';
 import React, { useState, useEffect } from "react";
-const ENDPOINT = "http://192.168.1.18:5001/public-socket-chat";
+const ENDPOINT = "http://192.168.1.10:5000/public-socket-chat";
 // const ENDPOINT = "https://socket-chat.kieroapi.net/chat";
 
 const generalsocketchat = socketIOClient(ENDPOINT)
 
-// export{socket}
+export{generalsocketchat}
 export default function GeneralSocketChat() {
   // const [newNotification, setNewNotification] = React.useState(false)
   const user_id =Cookies.get('user_id');

@@ -17,7 +17,8 @@ export default function GeneralChat() {
   });
   const [dataError, setDataError] = useState(false);
   const [dataMsg, setDataMsg] = useState([{}]);
-  const endMessage = React.useRef(null);
+  const [showMsgs, setShowMsgs] = useState('')
+
   useEffect(() => {
     generalsocketchat.on("response_open_chat", function (msg) {
       Cookies.set("roomId", msg.room_id);
@@ -41,18 +42,16 @@ export default function GeneralChat() {
         console.log("mnsjaes al entrar", dataMsg)
     });
     generalsocketchat.on("response_chat", function (msg) {
-        console.log("new_msg",msg.messages.messages)
-        setDataMsg(msg.messages.messages);
-        console.log("todos los mensja", dataMsg)
-        endMessage.current.scrollIntoView({ block: 'end', behavior: "smooth"});
+      console.log("new_msg",msg.messages.messages)
+      setDataMsg(msg.messages.messages);
+      console.log("todos los mensja", dataMsg)
+      // setShowMsgs(renderFormChat(values.login))
     });
+    setShowMsgs(renderFormChat(values.login))
   }, []);
 
   const showMsg = (msg) => {
     console.log("entró el mensaje",dataMsg)
-    setTimeout(() => {
-      endMessage.current.scrollIntoView({ block: 'end'});
-    }, 50);
     return (
       <>
         {msg.map((msg, i) => {
@@ -61,7 +60,7 @@ export default function GeneralChat() {
             return <div>No hay ningún mensaje</div>;
           } else {
             return (
-              <div style={{ width: "100%" }} key={i} >
+              <div style={{ width: "100%" }} key={i}>
                 <div className={type}>{msg.message}</div>
               </div>
             );
@@ -82,37 +81,34 @@ export default function GeneralChat() {
       "send":0
     }
     generalsocketchat.emit("chat-response", dataSend)
-    setValues({ ...values, message: '' })
+    // setDataMsg([{"send":0,"message":"hola meeeeeeennn"}])
+    setShowMsgs(renderFormChat(values.login))
   };
   const handleWriteMessage = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
   };
   const handleOpenChat = () => {
-      
     const chatContent = document.querySelector(".generalChat");
     chatContent.classList.remove("hiddenChat");
     chatContent.classList.add("containerChats");
     const user_id = Cookies.get("user_id");
     if (!user_id) {
-      return setValues({ ...values, login: false });
+      setValues({ ...values, login: false });
       // renderFormChat(room)
     } else {
-      return setValues({ ...values, login: true });
+      setValues({ ...values, login: true });
       // renderFormChat(room)
     }
-    // setShowMsgs(renderFormChat(values.login))
+    setShowMsgs(renderFormChat(values.login))
   };
   const handleCloseChat = () => {
     const chatContent = document.querySelector(".generalChat");
     chatContent.classList.add("hiddenChat");
     chatContent.classList.remove("containerChats");
   };
-  const renderFormChat = () => {
+  const renderFormChat = (type) => {
     console.log("mensajes en render", dataMsg)
     const roomId = Cookies.get("roomId");
-    const data = {
-      'room_id': roomId,
-    };
     if (dataError == true) {
       return (
         <div>
@@ -124,15 +120,17 @@ export default function GeneralChat() {
         </div>
       );
     }
-    if (values.login === true && roomId) {
-      useEffect(() => {
-        generalsocketchat.emit("get-chat", data);
-      },[])
+    if (type === true && roomId) {
+      const data = {
+        'room_id': roomId,
+      };
+      generalsocketchat.emit("get-chat", data);
       return showMsg(dataMsg);
-    } else if (values.login === false && roomId) {
-      useEffect(() => {
-        generalsocketchat.emit("get-chat", data);
-      },[])
+    } else if (type === false && roomId) {
+      const data = {
+        'room_id': roomId,
+      };
+      generalsocketchat.emit("get-chat", data);
       return showMsg(dataMsg);
     } else {
       return <Form logedIn={values.login} validateRoom={handleOpenChat} />;
@@ -142,15 +140,13 @@ export default function GeneralChat() {
   return (
     <>
       <GeneralSocketChat />
-      <div className="generalChat hiddenChat" >
+      <div className="generalChat hiddenChat">
         <div className="headChat">
           <p>Usuario</p>
           <CloseRounded onClick={handleCloseChat} />
         </div>
 
-        <div className="containerMessages">{renderFormChat()}
-          <div ref={endMessage} style={{ height: 5 }}></div>
-        </div>
+        <div className="containerMessages">{showMsgs}</div>
 
         <div className="sendMessage">
           <TextareaAutosize
@@ -160,7 +156,7 @@ export default function GeneralChat() {
             rowsMax={2}
             variant="outlined"
             value={values.message}
-            onInput={handleWriteMessage("message")}
+            onChange={handleWriteMessage("message")}
           />
           <Send onClick={handleSendMessage} />
         </div>

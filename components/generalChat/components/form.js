@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Cookies from 'js-cookie';
+import {generalsocketchat} from '../../Services/socker-general-chat'
 
-function Form({ logedIn }) {
+function Form({ logedIn, validateRoom }) {
 	const [name, setName] = useState('');
 	const [phone, setPhone] = useState('');
 	const [email, setEmail] = useState('');
@@ -24,10 +25,12 @@ function Form({ logedIn }) {
 		const { name, value } = event.target;
 		setEmail(value);
 	}
+
 	function validateAnswer(event) {
 		const { name, value } = event.target;
-		setAnswer(value);
+		setAnswer(value); 
 	}
+
 	const handleValidateForm = () => {
 		const validateForms = document.querySelector('.infoValidate');
 		if(name.length < 1 || phone.length < 1 || email.length < 1 || answer.length < 1 || terms==false){
@@ -36,7 +39,15 @@ function Form({ logedIn }) {
 		} else {
 			validateForms.classList.add('hiddenChat');
 			validateForms.classList.remove('formValidate');
-			Cookies.set("roomId","123")
+			const _json = {
+				"name": name,
+				"number":phone,
+				"email":email,
+				'message':answer,
+				"user_id":0,
+				"login":false,
+			}
+			generalsocketchat.emit('open-chat', _json);
 		}
 	}
 	const handleValidateFormLogin = () =>{
@@ -47,16 +58,22 @@ function Form({ logedIn }) {
 		} else {
 			validateForms.classList.add('hiddenChat');
 			validateForms.classList.remove('formValidate');
-			Cookies.set("roomId","123")
+			const _json = {
+				'message':answer,
+				"user_id":Cookies.get('user_id'),
+				"login":true,
+			}
+			generalsocketchat.emit('open-chat', _json);
 		}
 	}
+	
 	return (
-		<div>
+		<>
 			{logedIn ? (
 				<div className="formLogin">
 					<textarea
 							required
-							autocomplete="off"
+							autoComplete="off"
 							type="textarea"
 							onChange={validateAnswer}
 							value={answer}
@@ -64,7 +81,7 @@ function Form({ logedIn }) {
 						></textarea>
 						<div className=" hiddenChat infoValidate">
 							Debe llenar todos los campos y aceptar los términos para continuar
-						</div>
+						</div> 
 						<div className="termsOutLogin">
 							<input
 								required
@@ -84,7 +101,7 @@ function Form({ logedIn }) {
 						<input
 							style={{ display: 'flex' }}
 							required
-							autocomplete="off"
+							autoComplete="off"
 							value={name}
 							onChange={validateName}
 							placeholder="Nombres y apellidos"
@@ -92,7 +109,7 @@ function Form({ logedIn }) {
 						<input
 							style={{ display: 'flex' }}
 							required
-							autocomplete="off"
+							autoComplete="off"
 							value={phone}
 							onChange={validatePhone}
 							placeholder="Telefono"
@@ -100,7 +117,7 @@ function Form({ logedIn }) {
 
 						<input
 							required
-							autocomplete="off"
+							autoComplete="off"
 							type="email"
 							onChange={validateEmail}
 							value={email}
@@ -109,7 +126,7 @@ function Form({ logedIn }) {
 						<textarea
 							style={{ display: 'flex' }}
 							required
-							autocomplete="off"
+							autoComplete="off"
 							type="textarea"
 							onChange={validateAnswer}
 							value={answer}
@@ -132,7 +149,7 @@ function Form({ logedIn }) {
 					</button>
 				</div>
 			)}
-		</div>
+		</>
 	);
 }
 

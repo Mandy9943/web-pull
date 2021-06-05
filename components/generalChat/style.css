@@ -21,7 +21,7 @@
 .buttonChat svg{
     padding-right: 10px;
 }
-.containerChat{
+.containerChats{
     height: 450px;
     background: #CF0A2C;
     position: fixed;
@@ -33,7 +33,7 @@
     z-index: 15;
     /* display:none */
 }
-.containerChat .headChat{
+.containerChats .headChat{
     height: 33px;
     background: #CF0A2C;
     padding: 5px;
@@ -42,13 +42,13 @@
     border-radius: 10px 10px 0px 0px;
     color:white;
 }
-.containerChat .headChat svg{
+.containerChats .headChat svg{
     position:absolute;
     color:white;
     right:15px;
     cursor: pointer;
 }
-.containerChat .sendMessage{
+.containerChats .sendMessage{
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -57,7 +57,7 @@
     padding: 5px;
     height: 50px;
 }
-.containerChat .sendMessage textarea{
+.containerChats .sendMessage textarea{
     height: 64px;
     margin: 0px;
     resize: none;
@@ -68,33 +68,40 @@
     font-size: 15px;
     padding: 5px;
 }
-.containerChat .sendMessage svg{
+.containerChats .sendMessage svg{
     margin-left: 4px !important;
     color:white;
 }
-.containerChat .containerMessages{
+.containerChats .containerMessages{
     height:350px;
     background:white;
     max-height: 350px;
     overflow: scroll;
+    flex-direction: column;
+    display: flex;
 }
-.containerChat .containerMessages .rightMessage{
+.containerChats .containerMessages .rightMessage{
     max-width: 80%;
     float: right;
     padding: 5px;
     border-radius: 10px;
-    margin: 8px 10px 0px 0px;
+    margin: 8px 10px 5px 0px;
     border: 1px inset;
     background: #00B2FF;
+    text-align: right;
+    height: auto;
+    word-break: break-word;
 }
-.containerChat .containerMessages .leftMessage{
+.containerChats .containerMessages .leftMessage{
     max-width: 80%;
     float: left;
     padding: 5px;
     border-radius: 10px;
-    margin: 8px 0px 0px 10px;
+    margin: 8px 0px 5px 10px;
     border-color: #CF0A2C;
     background: #F59D9D;
+    height: auto;
+    word-break: break-word;
 }
 .formOutLogin{
     width:94%;
@@ -116,11 +123,11 @@
     display:flex;
     flex-direction:column;
     align-items:center;
-    margin-top:40px;
+    margin-top:50px;
 }
 .formOutLogin button{
    background:#CF0A2C;
-   margin-top:15px;
+   margin-top:10px;
 }
 .formLogin{
     width:94%;
