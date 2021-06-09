@@ -26,15 +26,15 @@ export default function GeneralChat() {
     generalsocketchat.on("response_open_chat", function (msg) {
       Cookies.set("roomId", msg.room_id);
       Cookies.set("room", msg.room);
-      console.log("validando sala", msg.room);
+      // console.log("validando sala", msg.room);
       setTimeout(() => {
-        console.log("sala validada");
+        // console.log("sala validada");
         handleOpenChat();
       }, 1000);
-      console.log("mensaje", msg);
+      // console.log("mensaje", msg);
     });
     generalsocketchat.on("notifications", function (msg) {
-      console.log("notificación", msg);
+      // console.log("notificación", msg);
       if (msg.error == true) {
         setDataError(msg.error);
       }
@@ -45,27 +45,27 @@ export default function GeneralChat() {
     });
     generalsocketchat.on("response_get_chat", function (msg) {
       setDataMsg(msg.chats.messages);
-      console.log("new_msg_12", msg);
-      console.log("mnsjaes al entrar", dataMsg);
+      // console.log("new_msg_12", msg);
+      // console.log("mnsjaes al entrar", dataMsg);
     });
     generalsocketchat.on("response_chat", function (msg) {
-      console.log("new_msg", msg.messages.messages);
+      // console.log("new_msg", msg.messages.messages);
       setDataMsg(msg.messages.messages);
       endMessage.current.scrollIntoView({ block: "end", behavior: "smooth" });
       const openPublicChat = document.querySelector(".openPublicChat");
       if(openPublicChat){
-        console.log("está dentro de la sala")
+        // console.log("está dentro de la sala")
       }else{
         showNotification()
-        console.log("no está en la sala")
+        // console.log("no está en la sala")
       }
     });
     generalsocketchat.on("response_archive", function (msg) {
-      console.log("respuesta", msg);
+      // console.log("respuesta", msg);
       if (msg.type == "archive" && msg.chat.error == false) {
-        console.log("estamos borrando su sala");
+        // console.log("estamos borrando su sala");
         setTimeout(() => {
-          console.log("sala borrada con éxito")
+          // console.log("sala borrada con éxito")
           Cookies.remove("roomId");
           Cookies.remove("room");
           handleSendMessage()
@@ -94,7 +94,7 @@ export default function GeneralChat() {
   }
 
   const showMsg = (msg) => {
-    console.log("entró el mensaje", dataMsg);
+    // console.log("entró el mensaje", dataMsg);
     setTimeout(() => {
       endMessage.current.scrollIntoView({ block: "end" });
     }, 50);
@@ -116,7 +116,7 @@ export default function GeneralChat() {
     );
   };
   const emitGetPublicChat = (data) => {
-    console.log("data", data, "estado", pointData);
+    // console.log("data", data, "estado", pointData);
     const datas = {
       room_id: Cookies.get("roomId"),
     };
@@ -168,7 +168,7 @@ export default function GeneralChat() {
     chatContent.classList.remove("openPublicChat");
   };
   const renderFormChat = () => {
-    console.log("mensajes en render", dataMsg);
+    // console.log("mensajes en render", dataMsg);
     const roomId = Cookies.get("roomId");
     const data = {
       room_id: Cookies.get("roomId"),
