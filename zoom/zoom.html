@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Lupa</title>
+		<style type="text/css">
+			#min_wrap {
+				position: absolute;
+				width: 350px;
+				border: 1px solid #ccc;
+			}
+			#max_wrap {
+				position: absolute;
+				left: 370px;
+				width: 400px;
+				height: 400px;
+				border: 1px solid #ccc;
+				overflow: hidden;
+				display: none;
+			}
+			#max_wrap img {
+				position: absolute;
+			}
+			#slider {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 175px;
+				height: 175px;
+				background-color: rgba(255, 255, 0, 0.3);
+				cursor: pointer;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="min_wrap">
+			<img src="images/min.jpg" alt="" />
+			<div id="slider"></div>
+		</div>
+		<div id="max_wrap">
+			<img src="images/max.jpg" alt="" />
+		</div>
+	</body>
+	<script type="text/javascript">
+		function magnifier() {
+			var minWrap = document.querySelector('#min_wrap');
+			var maxWrap = document.querySelector('#max_wrap');
+			var slider = document.querySelector('#slider');
+			var maxImg = maxWrap.children[0];
+
+			// Ratón en
+			min_wrap.onmousemove = function (event) {
+				slider.style.display = 'block';
+				maxWrap.style.display = 'block';
+
+				var event = event || window.event;
+
+				// Obtener las coordenadas del mouse
+				var disX = event.clientX - minWrap.offsetLeft;
+				var disY = event.clientY - minWrap.offsetTop;
+
+				// El propósito es alinear el centro del control deslizante en movimiento con las coordenadas del mouse
+				var x = disX - slider.offsetWidth / 2;
+				var y = disY - slider.offsetHeight / 2;
+
+				// Establecer el rango de movimiento del control deslizante en movimiento
+				var maxWidth = minWrap.clientWidth - slider.offsetWidth;
+				var maxHeight = minWrap.clientHeight - slider.offsetHeight;
+
+				if (x >= maxWidth) {
+					x = maxWidth;
+				} else if (x <= 0) {
+					x = 0;
+				}
+
+				if (y >= maxHeight) {
+					y = maxHeight;
+				} else if (y <= 0) {
+					y = 0;
+				}
+
+				slider.style.left = x + 'px';
+				slider.style.top = y + 'px';
+
+				// La relación entre la posición del control deslizante en movimiento y el área móvil
+				var scaleX = x / maxWidth;
+				var scaleY = y / maxHeight;
+
+				// El desplazamiento de maxWrap es igual a la relación de movimiento multiplicada por el rango de movimiento de maxWrap
+				maxWrap.scrollLeft = scaleX * (maxImg.offsetWidth - maxWrap.clientWidth);
+				maxWrap.scrollTop = scaleY * (maxImg.offsetHeight - maxWrap.clientHeight);
+			};
+
+			// Ratón fuera de la lupa para ocultar funciones relacionadas
+			minWrap.onmouseleave = function () {
+				slider.style.display = 'none';
+				maxWrap.style.display = 'none';
+			};
+		}
+		magnifier();
+	</script>
+</html>

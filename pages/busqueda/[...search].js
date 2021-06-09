@@ -7,7 +7,6 @@ import {searchItemsPerPage} from "../../lib/config";
 import { useRouter } from 'next/router'
 
 function Results({data, session}) {
-    
     const router = useRouter();
     const {page} = router.query;
     const currentPath = router.asPath;

@@ -1,283 +1,285 @@
 .pay {
-  padding: 20px 0px;
-  background: white;
-  border-bottom: 0.5px solid #e2e2e2;
-  border-top: 0.5px solid #e2e2e2;
-  border-right: 0.5px solid #e2e2e2;
+	padding: 20px 0px;
+	background: white;
+	border-bottom: 0.5px solid #e2e2e2;
+	border-top: 0.5px solid #e2e2e2;
+	border-right: 0.5px solid #e2e2e2;
 }
 
 .pay-img {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: min-content auto;
-      grid-template-columns: -webkit-min-content auto;
-      grid-template-columns: min-content auto;
-  position: relative;
-  margin-bottom: 15px;
+	display: -ms-grid;
+	display: grid;
+	-ms-grid-columns: min-content auto;
+	grid-template-columns: -webkit-min-content auto;
+	grid-template-columns: min-content auto;
+	position: relative;
+	margin-bottom: 15px;
 }
-.clasecantidad{
-  margin:5px 20px;
-  margin-top: 20px 10px;
+.clasecantidad {
+	margin: 5px 20px;
+	margin-top: 20px 10px;
 }
-.cantidad{
-  border:1px inset;
-  padding:5px;
-  border-radius: 5px;
-  border-color:#CF0A2C;
-  font-size: 15px;
-  text-align: center;
-  background:#CF0A2C;
-  color:#ffff;
-
+.cantidad {
+	border: 1px inset;
+	padding: 5px;
+	border-radius: 5px;
+	border-color: #cf0a2c;
+	font-size: 15px;
+	text-align: center;
+	background: #cf0a2c;
+	color: #ffff;
 }
 .pay-img img {
-  height: 38px !important;
-  margin: auto;
-  margin-bottom: 4px;
+	height: 38px !important;
+	margin: auto;
+	margin-bottom: 4px;
 }
 
 .pay-img .pay-section-img {
-  margin-left: 0 !important;
+	margin-left: 0 !important;
 }
 
 .pay-img a {
-  position: absolute;
-  bottom: -10px;
-  left: 19px;
+	position: absolute;
+	bottom: -10px;
+	left: 19px;
 }
 
 .pay-item {
-  padding: 10px 20px;
-  color: #111111;
-  font-size: 14px;
+	display: flex;
+	padding: 10px 20px;
+	color: #111111;
+	font-size: 14px;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .pay-item img {
-  width: auto;
-  height: 50px;
+	width: auto;
+	height: 50px;
 }
 
 .pay-item button {
-  margin-top: 20px;
-  background: #CF0A2C;
-  color: white;
-  width: 80%;
+	margin-top: 20px;
+	background: #cf0a2c;
+	color: white;
+	width: 80%;
 }
 
 @media (max-width: 700px) {
-  .pay-item button {
-    width: 100%;
-  }
+	.pay-item button {
+		width: 100%;
+	}
 }
 
 .pay-item .select-icon {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  /*width: -webkit-fit-content;*/
-  /*width: -moz-fit-content;*/
-  /*width: fit-content;*/
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	/*width: -webkit-fit-content;*/
+	/*width: -moz-fit-content;*/
+	/*width: fit-content;*/
 }
 
 .pay-item .select-icon .icon-select {
-  position: absolute;
-  right: 15px;
-  top: 11px;
-  color: #CF0A2C;
+	position: absolute;
+	right: 15px;
+	top: 11px;
+	color: #cf0a2c;
 }
 
 .pay-item .select-icon select {
-  padding: 8px;
-  border-radius: 5px;
-  outline: none !important;
-  border: 0.31px solid #acacac;
-  width: 260px !important;
-  background-color: #ffff;
+	padding: 8px;
+	border-radius: 5px;
+	outline: none !important;
+	border: 0.31px solid #acacac;
+	width: 260px !important;
+	background-color: #ffff;
 }
 
 .pay-item .select-icon select:focus {
-  outline: none !important;
+	outline: none !important;
 }
 
 .pay-item .select-icon select option {
-  margin: 10px 0 !important;
+	margin: 10px 0 !important;
 }
 
 .pay-item .select-icon select:focus {
-  outline: none;
+	outline: none;
 }
 
 .title-pay-product-detail {
-  font-size: 20px;
-  font-weight: 600;
-  color: #111111;
+	font-size: 20px;
+	font-weight: 600;
+	color: #111111;
 }
 
 .price-pay-product-detail {
-  color: #111111;
-  font-size: 36px;
-  font-weight: 600;
-  font-family: 'Roboto', sans-serif;
+	color: #111111;
+	font-size: 36px;
+	font-weight: 600;
+	font-family: 'Roboto', sans-serif;
 }
 
 @media (max-width: 700px) {
-  .price-pay-product-detail {
-    color: #111111;
-    font-weight: 600;
-    font-family: 'Roboto', sans-serif;
-  }
+	.price-pay-product-detail {
+		color: #111111;
+		font-weight: 600;
+		font-family: 'Roboto', sans-serif;
+	}
 }
 
 .info-pay-product-detail h3 {
-  color: #CF0A2C;
-  margin-bottom: 5px;
-  text-transform: capitalize;
+	color: #cf0a2c;
+	margin-bottom: 5px;
+	text-transform: capitalize;
 }
 
 .info-pay-product-detail p {
-  font-size: 15px;
-  margin-bottom: 5px;
-  color: #111111;
+	font-size: 15px;
+	margin-bottom: 5px;
+	color: #111111;
 }
 
 .info-pay-product-detail .no-web {
-  margin-right: 15px;
+	margin-right: 15px;
 }
 
 .info-pay-product-detail .icon-right {
-  margin-left: 12%;
+	margin-left: 12%;
 }
 
 .pay-section-img {
-  width: 100%;
+	width: 100%;
 }
 
 .section-pay-type {
-  border-top: 0.5px solid #e2e2e2;
-  padding: 20px;
+	border-top: 0.5px solid #e2e2e2;
+	padding: 20px;
 }
 
 .section-pay-type.pay-movil {
-  background: white !important;
+	background: white !important;
 }
 
 .section-pay-type img {
-  width: auto;
-  height: 44px;
-  padding-right: 10%;
+	width: auto;
+	height: 44px;
+	padding-right: 10%;
 }
 
 .section-pay-type .section-pay-type-title {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr auto;
-      grid-template-columns: 1fr auto;
-  grid-gap: 15px;
-  margin: 10px 0;
-  text-align: left;
+	display: -ms-grid;
+	display: grid;
+	-ms-grid-columns: 1fr auto;
+	grid-template-columns: 1fr auto;
+	grid-gap: 15px;
+	margin: 10px 0;
+	text-align: left;
 }
 
 .section-pay-type .section-pay-type-title h4 {
-  color: #111111;
-  font-size: 17px;
-  font-weight: 600;
+	color: #111111;
+	font-size: 17px;
+	font-weight: 600;
 }
 
 .section-pay-type .section-pay-type-title svg {
-  color: #CF0A2C;
+	color: #cf0a2c;
 }
 
 .section-pay-type .main-button {
-  width: 100%;
+	width: 100%;
 }
 
 .section-pay-type .main-button p {
-  margin: 0 !important;
-  color: white !important;
+	margin: 0 !important;
+	color: white !important;
 }
 
 .section-pay-type p {
-  margin: 10px 0px;
-  color: #111111;
-  font-size: 15px;
+	margin: 10px 0px;
+	color: #111111;
+	font-size: 15px;
 }
 
 .section-pay-type .section-pay-type-items {
-  padding: 20px 10px;
+	padding: 20px 10px;
 }
 
 .section-pay-send {
-  padding: 20px;
-  border-top: 0.5px solid #e2e2e2;
+	padding: 20px;
+	border-top: 0.5px solid #e2e2e2;
 }
 
 .section-pay-send .section-pay-send-title {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: auto 1fr;
-      grid-template-columns: auto 1fr;
-  grid-gap: 15px;
-  margin: 20px 0px;
-  color: #111111;
-  font-size: 16px;
+	display: -ms-grid;
+	display: grid;
+	-ms-grid-columns: auto 1fr;
+	grid-template-columns: auto 1fr;
+	grid-gap: 15px;
+	margin: 20px 0px;
+	color: #111111;
+	font-size: 16px;
 }
 
 .section-pay-send .section-pay-send-title svg {
-  color: #CF0A2C;
-  position: relative;
-  top: 2px;
+	color: #cf0a2c;
+	position: relative;
+	top: 2px;
 }
 
 .section-pay-send .section-pay-send-subtitle {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: auto 1fr;
-      grid-template-columns: auto 1fr;
-  grid-gap: 15px;
-  color: #CF0A2C;
-  font-size: 15px;
+	display: -ms-grid;
+	display: grid;
+	-ms-grid-columns: auto 1fr;
+	grid-template-columns: auto 1fr;
+	grid-gap: 15px;
+	color: #cf0a2c;
+	font-size: 15px;
 }
 
 .section-pay-send .section-pay-send-subtitle p {
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
+	-ms-flex-item-align: center;
+	-ms-grid-row-align: center;
+	align-self: center;
 }
 
 .section-pay-send .section-pay-send-subtitle svg {
-  font-size: 20px;
+	font-size: 20px;
 }
 
 .section-pay-send .section-pay-send-description {
-  margin: 20px 0px;
-  color: #111111;
-  font-size: 15px;
+	margin: 20px 0px;
+	color: #111111;
+	font-size: 15px;
 }
 
 .section-pay-wrap-seller {
-  border-top: 0.5px solid #e2e2e2;
-  padding: 20px;
+	border-top: 0.5px solid #e2e2e2;
+	padding: 20px;
 }
 
 @media (max-width: 768px) {
-  .pay {
-    border-right: 0px;
-    border-bottom: 0px;
-    margin-bottom: 30px;
-    padding: 0;
-    border-top: 0;
-  }
-  .section-pay-send {
-    background: white;
-  }
-  .section-pay-send-title h4 {
-    font-weight: 600;
-  }
-  .section-pay-send-subtitle p {
-    font-weight: 400;
-  }
-  .info-pay-product-detail h3 {
-    font-size: 22px;
-  }
+	.pay {
+		border-right: 0px;
+		border-bottom: 0px;
+		margin-bottom: 30px;
+		padding: 0;
+		border-top: 0;
+	}
+	.section-pay-send {
+		background: white;
+	}
+	.section-pay-send-title h4 {
+		font-weight: 600;
+	}
+	.section-pay-send-subtitle p {
+		font-weight: 400;
+	}
+	.info-pay-product-detail h3 {
+		font-size: 22px;
+	}
 }
 /*# sourceMappingURL=PaySection.css.map */

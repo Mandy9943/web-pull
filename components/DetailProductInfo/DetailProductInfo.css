@@ -16,7 +16,7 @@
 }
 
 .justifyText{
-  text-align: justify;
+  text-align: justify !important;
 }
 
 .item-detail-info:nth-child(2) {

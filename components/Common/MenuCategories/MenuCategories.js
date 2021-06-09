@@ -38,7 +38,6 @@ class MenuCategories extends Component {
 
 	render() {
 		let urlBanner = '//kiero.co/images/resources/categorias-menu/';
-
 		return (
 			<div className="wrap-menu-categories">
 				<div

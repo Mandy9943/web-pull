@@ -109,7 +109,7 @@ function Results({ data, session }) {
 
         "relojes y joyería": {
             "estructure": [1, 2, 2, 2],
-            "links": ["Relojes%20y%20joyería", "Accesorios%20para%20relojes", "Joyeria", "Reloj%20para%20hombre", "Relojes%20para%20mujer", "Relojes%20para%20niña", "Relojes%20para%20niño"],
+            "links": ["Relojes%20y%20joyería", "Accesorios%20para%20relojes", "Joyería", "Reloj%20para%20hombre", "Reloj%20para%20mujer", "Relojes%20para%20niña", "Relojes%20para%20niño"],
             "image_path": encodeURI("//kiero.co/images/resources/relojes y joyeria/"), "enable": true
         },
 

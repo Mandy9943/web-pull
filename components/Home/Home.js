@@ -43,7 +43,7 @@ export default class Home extends Component {
             img0: "banner-electrodomesticos.jpg", img1: "banner-computacion.jpg",
             sub1: "Aspiradoras", url1: "categoria/Aspiradoras domésticas", sub2: "Monitores", url2: "categoria/Monitores de computadoras" }} 
            />
-           <ProductsSlider category={"Juguetes"} />
+           <ProductsSlider category={"Juguetes y juegos"} />
            <Explorer /> 
            <ProductsSlider category={"Bebés"} />
           <Finding category={{

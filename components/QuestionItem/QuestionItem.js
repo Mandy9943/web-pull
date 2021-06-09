@@ -5,7 +5,6 @@ import Link from 'next/link';
 class QuestionItem extends Component {
 	render() {
 		let responses = true;
-		console.log("respuestas",this.props.questions)
 		return (
 			<div className="QuestionItem-list">
 				<h5 className="title">Últimas Preguntas</h5>
