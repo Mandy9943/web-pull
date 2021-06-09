@@ -69,8 +69,6 @@ export default class listProductMovil extends Component {
 			);
 		});
 
-		console.log(productList);
-
 		return (
 			<div>
 				{/* 

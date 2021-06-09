@@ -62,8 +62,6 @@ class ProductDetail extends Component {
 		getData('/getQuestions/' + this.props.data.product_id)
 			.then((response) => {
 				this.setState({ questions: response.data });
-				console.log(this.props.data.product_id);
-				console.log(response.data);
 			})
 			.catch((error) => {
 				console.error(error);

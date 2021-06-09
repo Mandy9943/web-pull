@@ -121,10 +121,10 @@ export const searchProducts = (
 		if (order_by !== '') params.append('order_by', order_by);
 		if (level !== '') params.append('level', level);
 
-		let endpoint = productsApi + `?size=${size}&page=${page}`;
-		// let endpoint2 = categoryApi + `/${ots}?size=${size}&page=${page}`;
-		// let endpoint = type === 'search' ? endpoint1 : endpoint2;
-		if (params.toString().length) endpoint = endpoint +  '&' + params.toString();
+		let endpoint1 = productsApi + `?size=${size}&page=${page}`;
+		let endpoint2 = categoryApi + `/${ots}?size=${size}&page=${page}`;
+		let endpoint = type === 'search' ? endpoint1 : endpoint2;
+		if (params.toString().length) endpoint = endpoint + '&' + params.toString();
 		return apiget(endpoint);
 	} catch (error) {
 		return error;
@@ -143,7 +143,7 @@ export const searchSuggestions = (size, ots) => {
 export const searchFilters = (ots, level, category) => {
 	try {
 		const params = new URLSearchParams();
-
+		console.log('level', level);
 		if (level !== '') params.append('level', level);
 		if (category !== '') params.append('category', category);
 

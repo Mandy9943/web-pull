@@ -54,11 +54,28 @@
 .payment-way-content .sub-title {
   font-size: 18px;
 }
+.texto-metodo{
+  text-align: center;
+  font-size:30px;
+}
 
 .payment-way-content .payment-way-img {
-  width: 40%;
-  margin-bottom: 15px;
+  width: 30%;
+  margin-bottom: 10px;
 }
+.payment-way-content .payment-way-img {
+  width: 30%;
+  margin-bottom: 10px;
+}
+.payment-way-content .payment-way-img2 {
+  width: 30%;
+  margin-bottom: 10px;
+}
+.payment-way-content .payment-way-img2 {
+  width: 30%;
+  margin-bottom: 10px;
+}
+
 
 .payment-way-content .payment-way-img-cash{
   width: 33%;

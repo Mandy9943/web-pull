@@ -18,7 +18,6 @@ export default class Pagination extends Component {
 	render() {
 		const Pagination = (props) => {
 			const { active, size, step, onClickHandler } = props;
-
 			const showingNumbers = step * 2 + 1;
 			let startNumber = 2;
 			let startArrayNumber = props.step;

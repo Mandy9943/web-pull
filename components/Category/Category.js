@@ -92,7 +92,6 @@ class Category extends Component {
 		}
 	}
 
-
 	searchCategoryLevel = (name = '') => {
 		try {
 			// const params = new URLSearchParams();
@@ -226,7 +225,7 @@ class Category extends Component {
 
 		filters.then((response) => {
 			let mergedCategories = [];
-
+			console.log(response);
 			let newCategories = response.data.catalog_category
 				.map((item) => ({
 					key: item.key,
