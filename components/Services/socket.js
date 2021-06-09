@@ -7,7 +7,24 @@ const ENDPOINT = "https://socket-chat.kieroapi.net/chat";
 
 const socket = socketIOClient(ENDPOINT)
 
+const showNotification = (data, param) =>{
+  Notification.requestPermission().then(function(result) {
+    if(result === "granted"){
+      Notification.requestPermission();
+    } else {
+      alert("notificacion web")
+    }
+  });
+   var options = {
+            body: "Revisa tu cuenta para ver el mensaje",
+            icon: "https://kiero.co/_next/static/images/logo-kiero-8bcc295b260198657f0395231376ca1a.png",
+            dir: "ltr"
+          };
+  var notification = new Notification("Tienes un nuevo mensaje", options);
+ }
+
 export{socket}
+export{showNotification}
 export default function SocketChat() {
   // const [newNotification, setNewNotification] = React.useState(false)
   const user_id =Cookies.get('user_id');
@@ -40,21 +57,7 @@ export default function SocketChat() {
              }
          };
      
-       const showNotification = () =>{
-         Notification.requestPermission().then(function(result) {
-           if(result === "granted"){
-             Notification.requestPermission();
-           } else {
-             alert("notificacion web")
-           }
-         });
-          var options = {
-                   body: "Revisa tu cuenta par ver el mensaje",
-                   icon: "https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?    auto=compress&cs=tinysrgb&dpr=1&w=500",
-                   dir: "ltr"
-                 };
-         var notification = new Notification("Tienes un nuevo mensaje", options);
-        }
+      
         // const [room_user, setRoom_user] = useState(`KieroUser_${this.props.data.myID}`);
   return (<></>)
 }

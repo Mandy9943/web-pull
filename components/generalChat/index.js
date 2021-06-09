@@ -7,6 +7,8 @@ import GeneralSocketChat from "../services/socker-general-chat";
 import Cookies from "js-cookie";
 import Form from "./Components/form.js";
 import { generalsocketchat } from "../Services/socker-general-chat";
+import { showNotification } from "../Services/socket.js";
+
 export default function GeneralChat() {
   const [values, setValues] = useState({
     message: "",
@@ -18,6 +20,8 @@ export default function GeneralChat() {
   const [dataError, setDataError] = useState(false);
   const [dataMsg, setDataMsg] = useState([{}]);
   const endMessage = React.useRef(null);
+  const [pointData, setPointData] = useState(false);
+
   useEffect(() => {
     generalsocketchat.on("response_open_chat", function (msg) {
       Cookies.set("roomId", msg.room_id);
@@ -34,24 +38,65 @@ export default function GeneralChat() {
       if (msg.error == true) {
         setDataError(msg.error);
       }
+      if (msg.type == "get-chat" && msg.archive == true) {
+        Cookies.remove("roomId");
+        Cookies.remove("room");
+      }
     });
     generalsocketchat.on("response_get_chat", function (msg) {
-        setDataMsg(msg.chats.messages);
-        console.log("new_msg_12",msg)
-        console.log("mnsjaes al entrar", dataMsg)
+      setDataMsg(msg.chats.messages);
+      console.log("new_msg_12", msg);
+      console.log("mnsjaes al entrar", dataMsg);
     });
     generalsocketchat.on("response_chat", function (msg) {
-        console.log("new_msg",msg.messages.messages)
-        setDataMsg(msg.messages.messages);
-        console.log("todos los mensja", dataMsg)
-        endMessage.current.scrollIntoView({ block: 'end', behavior: "smooth"});
+      console.log("new_msg", msg.messages.messages);
+      setDataMsg(msg.messages.messages);
+      endMessage.current.scrollIntoView({ block: "end", behavior: "smooth" });
+      const openPublicChat = document.querySelector(".openPublicChat");
+      if(openPublicChat){
+        console.log("está dentro de la sala")
+      }else{
+        showNotification()
+        console.log("no está en la sala")
+      }
+    });
+    generalsocketchat.on("response_archive", function (msg) {
+      console.log("respuesta", msg);
+      if (msg.type == "archive" && msg.chat.error == false) {
+        console.log("estamos borrando su sala");
+        setTimeout(() => {
+          console.log("sala borrada con éxito")
+          Cookies.remove("roomId");
+          Cookies.remove("room");
+          handleSendMessage()
+          },5000)
+      }
     });
   }, []);
 
+  const handleRenderButton = () => {
+    if (!pointData) {
+   return(<></>)
+            } else {
+              return (<div className="sendMessage">
+              <TextareaAutosize
+                id="outlined-multiline-static"
+                label="Escribir mensaje"
+                rows={1}
+                rowsMax={2}
+                variant="outlined"
+                value={values.message}
+                onInput={handleWriteMessage("message")}
+              />
+              <Send onClick={handleSendMessage} />
+            </div>)
+            }
+  }
+
   const showMsg = (msg) => {
-    console.log("entró el mensaje",dataMsg)
+    console.log("entró el mensaje", dataMsg);
     setTimeout(() => {
-      endMessage.current.scrollIntoView({ block: 'end'});
+      endMessage.current.scrollIntoView({ block: "end" });
     }, 50);
     return (
       <>
@@ -61,7 +106,7 @@ export default function GeneralChat() {
             return <div>No hay ningún mensaje</div>;
           } else {
             return (
-              <div style={{ width: "100%" }} key={i} >
+              <div style={{ width: "100%" }} key={i}>
                 <div className={type}>{msg.message}</div>
               </div>
             );
@@ -70,28 +115,42 @@ export default function GeneralChat() {
       </>
     );
   };
+  const emitGetPublicChat = (data) => {
+    console.log("data", data, "estado", pointData);
+    const datas = {
+      room_id: Cookies.get("roomId"),
+    };
+    if (pointData) {
+    } else {
+      
+      generalsocketchat.emit("join", { room: Cookies.get("room") });
+      generalsocketchat.emit("get-chat", datas);
+      setPointData(true);
+    }
+  };
   const handleSendMessage = () => {
     const user_id = Cookies.get("user_id");
     if (!user_id) {
-        user_id = 0
-    } 
-    const dataSend = {
-      "room_id":Cookies.get("roomId"),
-      "message":values.message,
-      "user_id":user_id, 
-      "send":0
+      user_id = 0;
     }
-    generalsocketchat.emit("chat-response", dataSend)
-    setValues({ ...values, message: '' })
+    const dataSend = {
+      room_id: Cookies.get("roomId"),
+      message: values.message,
+      user_id: user_id,
+      send: 0,
+    };
+    generalsocketchat.emit("chat-response", dataSend);
+    setValues({ ...values, message: "" });
   };
   const handleWriteMessage = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
   };
   const handleOpenChat = () => {
-      
+    setPointData(false)
     const chatContent = document.querySelector(".generalChat");
     chatContent.classList.remove("hiddenChat");
     chatContent.classList.add("containerChats");
+    chatContent.classList.add("openPublicChat");
     const user_id = Cookies.get("user_id");
     if (!user_id) {
       return setValues({ ...values, login: false });
@@ -106,13 +165,15 @@ export default function GeneralChat() {
     const chatContent = document.querySelector(".generalChat");
     chatContent.classList.add("hiddenChat");
     chatContent.classList.remove("containerChats");
+    chatContent.classList.remove("openPublicChat");
   };
   const renderFormChat = () => {
-    console.log("mensajes en render", dataMsg)
+    console.log("mensajes en render", dataMsg);
     const roomId = Cookies.get("roomId");
     const data = {
-      'room_id': roomId,
+      room_id: Cookies.get("roomId"),
     };
+
     if (dataError == true) {
       return (
         <div>
@@ -124,15 +185,8 @@ export default function GeneralChat() {
         </div>
       );
     }
-    if (values.login === true && roomId) {
-      useEffect(() => {
-        generalsocketchat.emit("get-chat", data);
-      },[])
-      return showMsg(dataMsg);
-    } else if (values.login === false && roomId) {
-      useEffect(() => {
-        generalsocketchat.emit("get-chat", data);
-      },[])
+    if (roomId) {
+      emitGetPublicChat(data);
       return showMsg(dataMsg);
     } else {
       return <Form logedIn={values.login} validateRoom={handleOpenChat} />;
@@ -142,28 +196,18 @@ export default function GeneralChat() {
   return (
     <>
       <GeneralSocketChat />
-      <div className="generalChat hiddenChat" >
+      <div className="generalChat hiddenChat">
         <div className="headChat">
           <p>Usuario</p>
           <CloseRounded onClick={handleCloseChat} />
         </div>
 
-        <div className="containerMessages">{renderFormChat()}
+        <div className="containerMessages">
+          {renderFormChat()}
           <div ref={endMessage} style={{ height: 5 }}></div>
         </div>
 
-        <div className="sendMessage">
-          <TextareaAutosize
-            id="outlined-multiline-static"
-            label="Escribir mensaje"
-            rows={1}
-            rowsMax={2}
-            variant="outlined"
-            value={values.message}
-            onInput={handleWriteMessage("message")}
-          />
-          <Send onClick={handleSendMessage} />
-        </div>
+        {handleRenderButton()}
       </div>
       <Fab className="buttonChat" variant="extended" onClick={handleOpenChat}>
         <SmsIcon />
