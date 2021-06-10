@@ -5,10 +5,14 @@
     border-top: 0.5px solid #e2e2e2
     border-right: 0.5px solid #e2e2e2
 .pay-img
-    display: grid
+    display: -ms-grid !important
+    display: grid !important
+    -ms-grid-columns: min-content auto
+    grid-template-columns: -webkit-min-content auto
     grid-template-columns: min-content auto
     position: relative
-    margin-bottom: 15px;
+    margin-bottom: 15px
+    justify-content: normal !important
     img
         height: 38px !important
         margin: auto
@@ -27,7 +31,7 @@
         width: auto
         height: 50px
     button
-        margin-top: 20px
+        margin: 20px auto;
         background: #CF0A2C
         color: white
         width: 80%
