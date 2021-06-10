@@ -2,8 +2,8 @@
 import socketIOClient from "socket.io-client";
 import Cookies from 'js-cookie';
 import React, { useState, useEffect } from "react";
-// const ENDPOINT = "http://192.168.1.1:5001/public-socket-chat";
-const ENDPOINT = 'https://public-chat.kieroapi.net/public-socket-chat';
+const ENDPOINT = "http://192.168.1.1:5001/public-socket-chat";
+// const ENDPOINT = 'https://public-chat.kieroapi.net/public-socket-chat';
 
 const generalsocketchat = socketIOClient(ENDPOINT)
 

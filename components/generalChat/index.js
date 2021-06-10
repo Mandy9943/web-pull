@@ -3,9 +3,9 @@ import { Sms as SmsIcon, CloseRounded, Send } from "@material-ui/icons";
 import Fab from "@material-ui/core/Fab";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import "./style.css";
-import GeneralSocketChat from "../services/socker-general-chat";
+import GeneralSocketChat from "../Services/socker-general-chat";
 import Cookies from "js-cookie";
-import Form from "./Components/form.js";
+import Form from "./components/form.js";
 import { generalsocketchat } from "../Services/socker-general-chat";
 import { showNotification } from "../Services/socket.js";
 
@@ -68,7 +68,7 @@ export default function GeneralChat() {
           // console.log("sala borrada con éxito")
           Cookies.remove("roomId");
           Cookies.remove("room");
-          handleSendMessage()
+          handleOpenChat()
           },5000)
       }
     });
@@ -129,14 +129,14 @@ export default function GeneralChat() {
     }
   };
   const handleSendMessage = () => {
-    const user_id = Cookies.get("user_id");
-    if (!user_id) {
-      user_id = 0;
+    var user_ids = Cookies.get("user_id");
+    if (!user_ids) {
+      var user_ids = 0;
     }
     const dataSend = {
       room_id: Cookies.get("roomId"),
       message: values.message,
-      user_id: user_id,
+      user_id: user_ids,
       send: 0,
     };
     generalsocketchat.emit("chat-response", dataSend);
