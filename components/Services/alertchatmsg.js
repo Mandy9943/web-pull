@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import CloseIcon from '@material-ui/icons/Close';
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 
-export default function Alert({ notify }) {
+export default function Alert({ msg, notify }) {
 	// const [notify, setNotify] = useState(false);
 	return (
 		<div>
@@ -35,7 +35,7 @@ export default function Alert({ notify }) {
 						}}
 					>
 						<NotificationsNoneIcon fontSize="large" />
-						Tienes un nuevo mensaje
+						{msg !== '' ? msg : 'Tienes un nuevo mensaje'}
 					</div>
 					<CloseIcon
 						// onClick={() => setNotify(false)}
