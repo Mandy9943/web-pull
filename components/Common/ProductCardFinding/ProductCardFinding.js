@@ -43,7 +43,7 @@ export default class ProductCardFinding extends React.Component {
 
                 {!this.props.notitle && <h3 className="home-section-title">Encuentra los mejores productos en {this.props.category && this.props.category}<Link href={this.props.category && "/categoria/"+this.props.category}><a className="accent">Ver todos</a></Link></h3>}
 
-                <div className="slider-movil">
+                <div className="slider">
                     <div className="content-product-card-finding">
                         { productList }
                     </div>
