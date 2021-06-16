@@ -26,13 +26,13 @@ class ListCategory extends Component {
 						(this.props.format == 'grid'
 							? this.props.products.map((product, i) => (
 									<div>
-										{/* <div className="productFavIcon">
+										<div className="productFavIcon">
 											<Checkbox
 												style={{ color: '#CF0A2C' }}
 												icon={<FavoriteBorder />}
 												checkedIcon={<Favorite />}
 											/>
-										</div> */}
+										</div>
 										<Link
 											href={
 												'/detalle/' +

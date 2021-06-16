@@ -9,6 +9,7 @@ import Form from './components/form.js';
 import { generalsocketchat } from '../Services/socker-general-chat';
 import showNotification from '../Services/socket.js';
 import Alert from '../Services/alertchatmsg';
+import Spinner from '../Common/Spinner';
 
 export default function GeneralChat() {
 	const [values, setValues] = useState({
@@ -21,6 +22,7 @@ export default function GeneralChat() {
 	const [dataError, setDataError] = useState(false);
 	const [dataMsg, setDataMsg] = useState([{}]);
 	const [pointData, setPointData] = useState(false);
+	const [alert, setAlert] = useState(false);
 	const endMessage = React.useRef(null);
 
 	useEffect(() => {
@@ -150,7 +152,7 @@ export default function GeneralChat() {
 			emitGetPublicChat();
 			return showMsg(dataMsg);
 		} else {
-			return <Form logedIn={values.login} validateRoom={handleOpenChat} />;
+			return <Form user_id={0} logedIn={values.login} validateRoom={handleOpenChat} />;
 		}
 		// }
 	};
@@ -253,6 +255,11 @@ export default function GeneralChat() {
 
 	/////////////////////////////////
 
+	const closeAlert = () => {
+		setAlert(false);
+		handleOpenChat();
+	};
+
 	return (
 		<>
 			<div onClick={closeAlert}>
@@ -265,7 +272,13 @@ export default function GeneralChat() {
 					<CloseRounded onClick={handleCloseChat} />
 				</div>
 
+				<div className="containerMessages">
+					{renderFormChat()}
+					<div ref={endMessage} style={{ height: 5 }}></div>
+				</div>
+
 				{handleRenderButton()}
+				
 			</div>
 			<Fab className="buttonChat" variant="extended" onClick={handleOpenChat}>
 				<SmsIcon />

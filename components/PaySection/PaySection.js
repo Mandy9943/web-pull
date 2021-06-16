@@ -163,13 +163,13 @@ class PaySection extends Component {
 			<div className="pay">
 				<div className="pay-item">
 					<h1 className="title-pay-product-detail">{this.props.title.substr(0, 60)} </h1>
-					{/* <div className="productFavIcon2">
+					<div className="productFavIcon2">
 						<Checkbox
 							style={{ color: '#CF0A2C' }}
 							icon={<FavoriteBorder fontSize="large" />}
 							checkedIcon={<Favorite fontSize="large" />}
 						/>
-					</div> */}
+					</div>
 				</div>
 				{/* <div className="pay-item">
           <Rating productId={this.props.pid}/>
