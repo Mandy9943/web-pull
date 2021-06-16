@@ -8,21 +8,21 @@ const ENDPOINT = 'https://socket-chat.kieroapi.net/chat';
 
 const socket = socketIOClient(ENDPOINT);
 
-const showNotification = (data, param) => {
-	Notification.requestPermission().then(function (result) {
-		if (result === 'granted') {
-			Notification.requestPermission();
-		} else {
-			return false;
-		}
-	});
-	var options = {
-		body: 'Revisa tu cuenta para ver el mensaje',
-		icon: 'https://kiero.co/_next/static/images/logo-kiero-8bcc295b260198657f0395231376ca1a.pngD',
-		dir: 'ltr',
-	};
-	var notification = new Notification('Tienes un nuevo mensaje', options);
-};
+const showNotification = (data, param) =>{
+  Notification.requestPermission().then(function(result) {
+    if(result === "granted"){
+      Notification.requestPermission();
+    } else {
+      alert("notificacion web")
+    }
+  });
+   var options = {
+            body: "Revisa tu cuenta para ver el mensaje",
+            icon: "https://kiero.co/_next/static/images/logo-kiero-8bcc295b260198657f0395231376ca1a.png",
+            dir: "ltr"
+          };
+  var notification = new Notification("Tienes un nuevo mensaje", options);
+ }
 
 export { showNotification };
 export { socket };

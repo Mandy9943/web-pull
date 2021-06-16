@@ -7,13 +7,14 @@
 }
 
 .pay-img {
-	display: -ms-grid;
-	display: grid;
-	-ms-grid-columns: min-content auto;
-	grid-template-columns: -webkit-min-content auto;
-	grid-template-columns: min-content auto;
-	position: relative;
-	margin-bottom: 15px;
+	display: -ms-grid !important;
+    display: grid !important;
+    -ms-grid-columns: min-content auto;
+    grid-template-columns: -webkit-min-content auto;
+    grid-template-columns: min-content auto;
+    position: relative;
+    margin-bottom: 15px;
+    justify-content: normal !important;
 }
 .clasecantidad {
 	margin: 5px 20px;
@@ -50,8 +51,9 @@
 	padding: 10px 20px;
 	color: #111111;
 	font-size: 14px;
-	align-items: center;
+	/* align-items: center; */
 	justify-content: space-between;
+	flex-direction: column
 }
 
 .pay-item img {
@@ -60,10 +62,11 @@
 }
 
 .pay-item button {
-	margin-top: 20px;
+	/* margin-top: 20px; */
 	background: #cf0a2c;
 	color: white;
 	width: 80%;
+	margin: 20px auto;
 }
 
 @media (max-width: 700px) {
