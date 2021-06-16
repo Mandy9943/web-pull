@@ -44,6 +44,7 @@ function Form({ logedIn, validateRoom }) {
 				"number":phone,
 				"email":email,
 				'message':answer,
+				"user_id":0,
 				"login":false,
 			}
 			generalsocketchat.emit('open-chat', _json);
