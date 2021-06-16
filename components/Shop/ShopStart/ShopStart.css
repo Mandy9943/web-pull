@@ -104,7 +104,7 @@
 
 .shop-principal .shop-icons {
   text-align: center;
-
+  
   margin: 25px 0;
 }
 
@@ -113,6 +113,7 @@
   font-size: 25px;
   margin-right: 35px;
   margin-left: 35px;
+  cursor: pointer;
 }
 
 .shop-stadistic {
@@ -174,6 +175,7 @@
   float: left;
   width: 43%;
   padding: 10px;
+  cursor: pointer;
 }
 
 .shop-adventage div > div.shop-adventage-block:last-child {

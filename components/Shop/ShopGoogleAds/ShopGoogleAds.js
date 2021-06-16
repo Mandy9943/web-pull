@@ -4,23 +4,56 @@ import "./ShopGoogleAds.sass";
 
 export default function ShopGoogleAds({cb}) {
     return (
-        <section className="edit-menu">
+        <section className="edit-menu-googleads">
             <header>
-                <h4>Instala Google Ads</h4>
-                <p>Obten toda la informacion necesaria de tus visitantes y sacale provecho
-                a tus campanas de marketing.</p>
-            </header>
-            <main>
                 <div>
-                    <label htmlFor="textarea">Copia y pega aqui la etiqueta del sitio web global o el id de
-                        seguimiento</label>
-                    <Link href='/ayuda'>
-                        <a className="help">Ayuda</a>
-                    </Link>
+                    <h4>Instala Google Ads</h4>
+                    <p>Mide el rendimiento de tus anuncios de Google Ads y optimízalos.</p>
                 </div>
-                <textarea name="textarea" id="textarea"></textarea>
-                <p>Una vez agregues tu codigo configuraremos el seguimiento de comercio electronico.
-                    Para hacerlo funcionar debe ser habilitado desde el administrador de Google Analytics.</p>
+
+                
+            </header>
+            <h5><b>Conversión </b></h5>
+            <main>
+                <div >
+                    <div className="space">
+                        <spam>
+                            <label><b>Intención de compra</b></label>
+                            <p>Toma en cuenta a los usuarios que realizan clic en comprar </p>
+                        </spam>
+                    
+                        <div className="google-link">
+                            <Link href="/ayuda">Agregar el código</Link>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div className="space">
+                        <spam>
+                            <label><b>Confirmacion de compra</b></label>
+                            <p>Mide a los usuarios que finalizan la compra </p>
+                        </spam>
+                    
+                        <div className="google-link">
+                            <Link href="/ayuda">Agregar el código</Link>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <h5><b>Público</b></h5>
+            <main>
+                <div >
+                    <div className="space">
+                        <spam>
+                            <label><b>Remarketing </b></label>
+                            <p>Consiga toda la información sobre las acciones de los visitantes en la tienda</p>
+                        </spam>
+                    
+                        <div className="google-link">
+                            <Link href="/ayuda">Agregar el código</Link>
+                        </div>
+                    </div>
+                    
+                </div>
             </main>
             <footer>
                 <button

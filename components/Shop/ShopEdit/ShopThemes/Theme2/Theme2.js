@@ -12,8 +12,19 @@ const Theme2 = ({ store_design, data, section_edit }) => {
 
                     backgroundColor: store_design.st_design_footer_background_color || "black",
                 }}>
-                    <h3>{data.store.name || "Mi tienda"}</h3>
-                    <p>Menú Theme2</p>
+                    <div className="block-container">
+                        <div className="block">
+                            <h3>{data.store.name || "Mi tienda"}</h3>
+                        </div>
+                        <div className="block">
+                            <input type="text" placeholder="Buscar un producto" disabled />
+                        </div>
+                        <div className="block">
+                            <p>Menú</p>
+                        </div>
+                    </div>
+
+
                 </div>
 
                 <div

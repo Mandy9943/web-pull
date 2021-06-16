@@ -2,33 +2,29 @@ import React from "react";
 import Link from "next/link";
 import "./ShopEditMenu.sass";
 
-export default function ShopEditMenu({cb}) {
+export default function ShopEditMenu({ cb }) {
     return (
-        <section className="edit-menu">
+        <section className="edit-menu-menu">
             <header>
                 <h4>Menu</h4>
                 <p>Selecciona las categorias para que los compradores puedan ver tus
                 productos y visitar tu tienda</p>
             </header>
-            <main>
-                <div>
-                    <label htmlFor="textarea">Copia y pega aqui la etiqueta del sitio web global o el id de
-                        seguimiento</label>
-                    <Link href='/ayuda'>
-                        <a className="help">Ayuda</a>
-                    </Link>
-                </div>
-                <textarea name="textarea" id="textarea"></textarea>
-                <p>Una vez agregues tu codigo configuraremos el seguimiento de comercio electronico.
-                Para hacerlo funcionar debe ser habilitado desde el administrador de Google Analytics.</p>
-            </main>
+            <div>
+                <select name="select" >
+                    <option value="value0">Seleccione una categoria</option>
+                    <option value="value1">Value 1</option>
+                    <option value="value2" >Value 2</option>
+                    <option value="value3">Value 3</option>
+                </select>
+            </div>
             <footer>
                 <button
                     style={{
                         backgroundColor: '#b9b9b9',
                         color: 'white'
                     }}
-                    onClick={(e)=>{
+                    onClick={(e) => {
                         e.preventDefault();
                     }}
                 >Confirmar</button>
@@ -37,7 +33,7 @@ export default function ShopEditMenu({cb}) {
                         backgroundColor: '#F3F3F3',
                         color: 'red'
                     }}
-                    onClick={(e)=>{
+                    onClick={(e) => {
                         cb('edit', e)
                     }}
                 >Cancelar</button>

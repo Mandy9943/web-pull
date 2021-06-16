@@ -1,28 +1,22 @@
-.edit-theme2 .edit-header,
-.edit-theme2 .edit-footer {
+.edit-theme2 .edit-header, .edit-theme2 .edit-footer {
   background-color: #000;
-  padding: 20px ;
+  padding: 20px;
   overflow: hidden;
 }
 
-.edit-theme2 .edit-header h3,
-.edit-theme2 .edit-header p,
-.edit-theme2 .edit-footer h3,
-.edit-theme2 .edit-footer p{
+.edit-theme2 .edit-header h3, .edit-theme2 .edit-header p, .edit-theme2 .edit-footer h3, .edit-theme2 .edit-footer p {
   /*display: inline;*/
   color: #fff;
   float: left;
 }
 
-.edit-theme2 .edit-header h3,
-.edit-theme2 .edit-footer h3{
+.edit-theme2 .edit-header h3, .edit-theme2 .edit-footer h3 {
   width: 45%;
   font-size: 15px;
   text-indent: 30px;
 }
 
-.edit-theme2 .edit-header p,
-.edit-theme2 .edit-footer p{
+.edit-theme2 .edit-header p, .edit-theme2 .edit-footer p {
   font-size: 13px;
 }
 
@@ -36,19 +30,18 @@
   padding-top: 40px;
 }
 
-.edit-theme2 .edit-image p,
-.edit-theme2 .edit-image h5 {
+.edit-theme2 .edit-image p, .edit-theme2 .edit-image h5 {
   text-align: center;
   /* text-transform: uppercase; */
   margin-left: -25px;
   color: #fff;
   font-weight: bold;
 }
-.edit-theme2 .edit-image h5{
+
+.edit-theme2 .edit-image h5 {
   font-size: 1.6em;
   text-align: center;
   justify-content: center;
-  
 }
 
 .edit-theme2 .edit-image p {
@@ -223,12 +216,12 @@ ul.other-details li {
   padding: 15px 7px
 }
 
-ul.other-details li h3{
+ul.other-details li h3 {
   font-size: 10px;
   text-transform: uppercase;
 }
 
-ul.other-details li p{
+ul.other-details li p {
   font-size: 9px;
 }
 
@@ -291,3 +284,27 @@ div.cards div p {
   width: 45%;
   text-indent: 60px;
 }
+
+.edit-header .block-container{
+  position: relative;
+}
+
+
+.edit-header .block-container .block {
+  float: left;
+  width: 33.3%;
+   
+  display: flex; 
+  
+  justify-content: center;
+  /* align-items: center; */
+  vertical-align: middle;
+  
+  
+  
+}
+
+.edit-header .block-container .block input{
+  height: 10px;
+}
+

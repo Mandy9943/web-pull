@@ -32,7 +32,7 @@ const RightSideBAr = (props) => {
     const { register, handleSubmit, formState: { errors } } = useForm()
 
     const {
-        section_edit, setEditSection, cbConfig,
+        section_edit, setEditSection, cb,
         menu, store_design, setDesignValues, quick_config, hasChange, setHasChange
     } = props;
 
@@ -116,7 +116,8 @@ const RightSideBAr = (props) => {
                         </ul>
 
                         <ul className={tab === 1 ? "design" : "design hide"}>
-                            <li onClick={() => setEditSection('theme')}>Temas</li>
+                            {/* <li onClick={() => setEditSection('theme')}>Temas</li> */}
+                            <li onClick={(e) => cb('theme',e)}>Temas</li>
                             <li onClick={() => setEditSection('color')}>Colores</li>
                             <li onClick={() => setEditSection('edit')}>Edici&oacute;n</li>
                         </ul>

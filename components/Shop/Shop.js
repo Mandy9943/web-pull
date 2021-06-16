@@ -20,12 +20,16 @@ import ShopEdit from "./ShopEdit/ShopEdit";
 import ShopEditScreen from "./ShopEditScreen";
 import ShopEditMenu from "./ShopEditMenu";
 import ShopAnalytics from "./ShopAnalytics";
+import ShopTheme from "./ShopTheme";
 import ShopGoogleAds from "./ShopGoogleAds";
 import ShopFacebookPixel from "./ShopFacebookPixel";
+import ShopFacebookLink from "./ShopFacebookLink";
 import ShopEditDomain from "./ShopEditDomain";
 import ShopEditDataStorage from './ShopEditDataStorage'
 import { findKeyValueInArr } from '../../lib/functions'
 import { update_store } from '../../services/storeApi';
+import ShopMarketing from "./ShopMarketing";
+import ShopWhatsapp from "./ShopWhatsapp";
 
 const Shop = ({ store_data, user_data }) => {
 
@@ -97,7 +101,9 @@ const Shop = ({ store_data, user_data }) => {
     marketing: false,
     analytics: false,
     facebookPixel: false,
-    googleAds: false
+    googleAds: false,
+    facebookLink: false,
+    theme: false
   })
 
   const [show_edit_section, setShow_edit_sectionState] = useState("main")
@@ -138,13 +144,8 @@ const Shop = ({ store_data, user_data }) => {
 
 
   const setDesignValues = (name, value) => {
-
     setStoreDesign({ ...store_design, [name]: value })
-
-
   }
-
-
 
   const CloseSidebar = () => {
     setCloseSidebar(!closeSidebar)
@@ -153,9 +154,9 @@ const Shop = ({ store_data, user_data }) => {
 
   const setEditSection = (section) => {
     switch (section) {
-      case 'theme':
-        setShow_edit_sectionState('theme')
-        break;
+      // case 'theme':
+      //   setShow_edit_sectionState('theme')
+      //   break;
       case 'color':
         setShow_edit_sectionState('color')
         break;
@@ -275,6 +276,7 @@ const Shop = ({ store_data, user_data }) => {
           <ShopEditScreen
             cb={showSection}
             section={{ text: "Dominio Web", key: "domain" }}
+            // section={findKeyValueInArr('key', 'domain', configMenu)}
           >
             <ShopEditDomain
               cb={showSection}
@@ -345,6 +347,50 @@ const Shop = ({ store_data, user_data }) => {
             section={{ text: "Facebook", key: "facebook" }}
           >
             <ShopFacebook
+              cb={showSection}
+            />
+          </ShopEditScreen>
+        }
+        {display.facebookLink &&
+          <ShopEditScreen
+            cb={showSection}
+            section={{ text: "Vínculate a Facebook", key: "facebookLink" }}
+          >
+            <ShopFacebookLink
+              cb={showSection}
+            />
+          </ShopEditScreen>
+        }
+        {display.theme &&
+          <ShopEditScreen
+            cb={showSection}
+            section={{ text: "Theme", key: "theme" }}
+            // section={findKeyValueInArr('key', 'theme', configMenu)}
+          >
+
+            <ShopTheme
+              cb={showSection}
+            />
+          </ShopEditScreen>
+        }
+        {display.marketing &&
+          <ShopEditScreen
+            cb={showSection}
+            section={{ text: "Herramientas de Marketing", key: "marketing" }}
+          >
+
+            <ShopMarketing
+              cb={showSection}
+            />
+          </ShopEditScreen>
+        }
+        {display.ws &&
+          <ShopEditScreen
+            cb={showSection}
+            section={{ text: "Whatsapp", key: "ws" }}
+          >
+
+            <ShopWhatsapp
               cb={showSection}
             />
           </ShopEditScreen>

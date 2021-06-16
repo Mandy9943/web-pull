@@ -9,6 +9,7 @@ import {
   faTag,
   faLightbulb,
   faMobile,
+  faWhatsapp,
 } from "@fortawesome/free-solid-svg-icons";
 import { getProductImgs } from "../../../lib/functions";
 import Link from "next/link";
@@ -66,8 +67,8 @@ const ShopStart = (props) => {
         </div>
         <hr />
         <div className="shop-icons">
-          <FontAwesomeIcon icon={faLightbulb} />
-          <FontAwesomeIcon icon={faGlobe} />
+        <a title="Herramientas de Marketing" onClick={(e) => cb("marketing", e)}><FontAwesomeIcon icon={faLightbulb} /></a>
+          <a title="Dominio Web" onClick={(e) => cb("domain", e)}><FontAwesomeIcon icon={faGlobe} /></a>
           <FontAwesomeIcon icon={faClone} />
           <FontAwesomeIcon icon={faMobile} />
           <FontAwesomeIcon icon={faTag} />
@@ -146,7 +147,7 @@ const ShopStart = (props) => {
 
         <div>
           <div className="shop-adventage-block"
-           onClick={e => cb('googleAds', e)}>
+            onClick={e => cb('googleAds', e)}>
             <div className="shop-adventage-block-icon">
               <img
                 alt="Foto del icono"
@@ -164,7 +165,7 @@ const ShopStart = (props) => {
           </div>
 
           <div className="shop-adventage-block"
-          onClick={e => cb('googleAds', e)}>
+            onClick={e => cb('facebookLink', e)}>
             <div className="shop-adventage-block-icon">
               <img
                 alt="Foto del icono"
