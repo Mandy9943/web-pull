@@ -20,6 +20,7 @@
 	grid-gap: 10px;
 	margin-bottom: 40px;
 	cursor: pointer;
+	padding: 10px;
 }
 
 .user-account-menu .user-account-menu-item .user-account-menu-icon {
@@ -68,8 +69,8 @@
 	display: none;
 }
 
-.user-account-menu .user-account-menu-item .user-account-accordion p {
-	margin-top: 20px;
+.summary-content .user-account-container .user-account-menu .user-account-menu-item .user-account-accordion p {
+	margin-top: 10px;
 	font-size: 14px;
 }
 

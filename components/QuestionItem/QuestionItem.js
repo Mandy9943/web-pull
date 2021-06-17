@@ -10,7 +10,7 @@ class QuestionItem extends Component {
 				<h5 className="title">Últimas Preguntas</h5>
 				{this.props.questions.map((question, i) => (
 					<section key={i} className="question-item">
-						<h5 className="question-title">
+						<h5 className="question-title" style={{fontWeight:'bold'}}>
 							{question.content} &nbsp;&nbsp;
 							<small style={{ color: 'black', fontWeight: '500', fontSize: 'smaller' }}>
 								{question.created_since.split(' ')[0]}
@@ -20,7 +20,7 @@ class QuestionItem extends Component {
 					</section>
 				))}
 				{this.props.questions.length === 0 ? (
-					<span className="empty-question">Se el primero en preguntar.</span>
+					<span className="empty-question">Sé el primero en preguntar.</span>
 				) : null}
 
 				{this.props.questions.length > 2 ? (

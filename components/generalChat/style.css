@@ -87,10 +87,11 @@
     border-radius: 10px;
     margin: 8px 10px 5px 0px;
     border: 1px inset;
-    background: #00B2FF;
+    background: #CF0A2C;
     text-align: right;
     height: auto;
     word-break: break-word;
+    color:white; 
 }
 .containerChats .containerMessages .leftMessage{
     max-width: 80%;
@@ -98,8 +99,8 @@
     padding: 5px;
     border-radius: 10px;
     margin: 8px 0px 5px 10px;
-    border-color: #CF0A2C;
-    background: #F59D9D;
+    /* border-color: #CF0A2C; */
+    background: #d2d6de;
     height: auto;
     word-break: break-word;
 }

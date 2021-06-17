@@ -103,24 +103,24 @@ export default class Sidebar extends Component {
 
   render() {
     return (
-      <div id="sidebar" className="user-account-menu">
-        <div className="user-account-menu-wrapper">
-          <div className="user-account-menu-item border-bottom">
-            <p className="user-account-menu-icon icon-profile">
+      <div id='sidebar' className='user-account-menu'>
+        <div className='user-account-menu-wrapper'>
+          <div className='user-account-menu-item border-bottom'>
+            <p className='user-account-menu-icon icon-profile'>
               <FontAwesomeIcon icon={faUser} />
             </p>
-            <div className="user-name">
+            <div className='user-name'>
               <h3>Mi cuenta</h3>
               <p
                 onClick={(e) => this.props.cb("home", e)}
-                className="user-account-menu-text"
+                className='user-account-menu-text'
               >
                 ¡Hola {this.state.userName}!
-            </p>
+              </p>
             </div>
           </div>
-          <div className="user-account-menu-item">
-            <p className="user-account-menu-icon">
+          <div className='user-account-menu-item'>
+            <p className='user-account-menu-icon'>
               <FontAwesomeIcon icon={faListUl} />
             </p>
             <p
@@ -131,14 +131,14 @@ export default class Sidebar extends Component {
                   Router.push("/cuenta#resume");
                 }
               }}
-              className="user-account-menu-text"
+              className='user-account-menu-text'
             >
               Resumen
-          </p>
+            </p>
           </div>
           {this.props.user_data.role === "user" && (
-            <div className="user-account-menu-item">
-              <p className="user-account-menu-icon">
+            <div className='user-account-menu-item'>
+              <p className='user-account-menu-icon'>
                 <FontAwesomeIcon icon={faMoneyBill} />
               </p>
               <p
@@ -149,10 +149,10 @@ export default class Sidebar extends Component {
                     Router.push("/cuenta#facturación");
                   }
                 }}
-                className="user-account-menu-text"
+                className='user-account-menu-text'
               >
                 Facturación
-            </p>
+              </p>
             </div>
           )}
           {/* Vendedor */}
@@ -165,12 +165,12 @@ export default class Sidebar extends Component {
               }
               onClick={() => this.accordionBill()}
             >
-              <p className="user-account-menu-icon">
+              <p className='user-account-menu-icon'>
                 <FontAwesomeIcon icon={faMoneyBillWave} />
               </p>
-              <div className="user-account-menu-accordion">
-                <p className="user-account-menu-text">Ventas</p>
-                <div className="user-account-accordion">
+              <div className='user-account-menu-accordion'>
+                <p className='user-account-menu-text'>Ventas</p>
+                <div className='user-account-accordion'>
                   {/* <p onClick={this.newProduct} >Agregar nuevo producto</p> */}
                   <p
                     onClick={(e) => {
@@ -182,7 +182,7 @@ export default class Sidebar extends Component {
                     }}
                   >
                     Publicaciones
-                </p>
+                  </p>
                   <p
                     onClick={(e) => {
                       if (window.location.pathname === "/cuenta") {
@@ -193,7 +193,7 @@ export default class Sidebar extends Component {
                     }}
                   >
                     Ventas
-                </p>
+                  </p>
                   <p
                     onClick={(e) => {
                       if (window.location.pathname === "/cuenta") {
@@ -204,11 +204,11 @@ export default class Sidebar extends Component {
                     }}
                   >
                     Preguntas
-                </p>
+                  </p>
                   <p onClick={(e) => Router.push("/tienda")}>KieroShop</p>
                 </div>
               </div>
-              <p className="user-account-menu-icon">
+              <p className='user-account-menu-icon'>
                 <FontAwesomeIcon icon={this.state.userAccountIconBill} />
               </p>
             </div>
@@ -224,12 +224,12 @@ export default class Sidebar extends Component {
               }
               onClick={() => this.accordionShop()}
             >
-              <p className="user-account-menu-icon">
+              <p className='user-account-menu-icon'>
                 <FontAwesomeIcon icon={faShoppingBag} />
               </p>
-              <div className="user-account-menu-accordion">
-                <p className="user-account-menu-text">Compras</p>
-                <div className="user-account-accordion">
+              <div className='user-account-menu-accordion'>
+                <p className='user-account-menu-text'>Compras</p>
+                <div className='user-account-accordion'>
                   <p
                     onClick={(e) => {
                       if (window.location.pathname === "/cuenta") {
@@ -240,13 +240,13 @@ export default class Sidebar extends Component {
                     }}
                   >
                     Compras
-                </p>
+                  </p>
                 </div>
                 {/* <div className="user-account-accordion">
                             <p onClick={(e) => this.props.cb("detail", e)}>Detalle de compra</p>
                         </div> */}
               </div>
-              <p className="user-account-menu-icon">
+              <p className='user-account-menu-icon'>
                 <FontAwesomeIcon icon={this.state.userAccountIconShop} />
               </p>
             </div>
@@ -260,12 +260,12 @@ export default class Sidebar extends Component {
             }
             onClick={() => this.accordionMyData()}
           >
-            <p className="user-account-menu-icon">
+            <p className='user-account-menu-icon'>
               <FontAwesomeIcon icon={faCog} />
             </p>
-            <div className="user-account-menu-accordion">
-              <p className="user-account-menu-text">Mis datos</p>
-              <div className="user-account-accordion">
+            <div className='user-account-menu-accordion'>
+              <p className='user-account-menu-text'>Mis datos</p>
+              <div className='user-account-accordion'>
                 <p
                   onClick={(e) => {
                     if (window.location.pathname === "/cuenta") {
@@ -276,31 +276,31 @@ export default class Sidebar extends Component {
                   }}
                 >
                   Mis datos
-              </p>
+                </p>
                 {/*<p onClick={(e)=>this.props.cb("security", e)}>Seguridad</p>*/}
               </div>
             </div>
-            <p className="user-account-menu-icon">
+            <p className='user-account-menu-icon'>
               <FontAwesomeIcon icon={this.state.userAccountIconMyData} />
             </p>
           </div>
-          <Link href="/lista_categorias">
-            <a className="no-web">
-              <div className="user-account-menu-item border-bottom">
-                <p className="user-account-menu-icon">
+          <Link href='/lista_categorias'>
+            <a className='no-web'>
+              <div className='user-account-menu-item border-bottom'>
+                <p className='user-account-menu-icon'>
                   <FontAwesomeIcon icon={faAlignLeft} />
                 </p>
-                <p className="user-account-menu-text">Categorias</p>
+                <p className='user-account-menu-text'>Categorias</p>
               </div>
             </a>
           </Link>
-          <Link href="/ayuda">
-            <a className="no-web">
-              <div className="user-account-menu-item">
-                <p className="user-account-menu-icon">
+          <Link href='/ayuda'>
+            <a className='no-web'>
+              <div className='user-account-menu-item'>
+                <p className='user-account-menu-icon'>
                   <FontAwesomeIcon icon={faQuestion} />
                 </p>
-                <p className="user-account-menu-text">Ayuda / PQR</p>
+                <p className='user-account-menu-text'>Ayuda / PQR</p>
               </div>
             </a>
           </Link>
