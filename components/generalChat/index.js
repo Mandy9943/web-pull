@@ -195,6 +195,20 @@ export default function GeneralChat() {
   //Función para enviar los mensajes, si no hay usuario, el id del usuario debe ser cero(0)
 
   const handleSendMessage = () => {
+    let date = new Date();
+
+    let year = date.getFullYear()
+    let month = date.getMonth() + 1
+    let day = date.getDate()
+    var hora = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+        
+
+    if(month < 10){
+    var fecha = year + '-0' + month + '-' + day + ' ' + hora;
+    }else{
+    var fecha = year+ '-' +month+ '-' +day + ' ' +hora
+    }
+    
     var user_ids = Cookies.get("user_id");
     if (!user_ids) {
       var user_ids = 0;
@@ -204,6 +218,7 @@ export default function GeneralChat() {
       message: values.message,
       user_id: user_ids,
       send: 0,
+      "date":fecha
     };
     generalsocketchat.emit("chat-response", dataSend);
     setValues({ ...values, message: "" });
