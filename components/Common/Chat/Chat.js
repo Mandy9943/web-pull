@@ -176,7 +176,8 @@ class Chat extends Component {
 						<span className="descriptStep">
 							<b>
 								{' '}
-								{index + 1}- {data.DescripcionEstado}
+								{/* {index + 1}- {data.DescripcionEstado} */}
+								{data.DescripcionEstado}
 							</b>{' '}
 							<br /> {data.ubicacion}
 						</span>

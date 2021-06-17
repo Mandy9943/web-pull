@@ -48,7 +48,7 @@ export default class NotificationsMovil extends Component {
 /********************* END NOTIFICATIONS ******************************/
 
     componentDidMount() {
-        getData("/getMenuCategories")
+        getData("/getCategoriesForMenu")
             .then((response) => {
                 this.setState({ categories: response.data });
             });

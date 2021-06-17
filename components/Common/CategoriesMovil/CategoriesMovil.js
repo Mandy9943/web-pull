@@ -20,7 +20,7 @@ class CategoriesMovil extends Component {
 
 
     return (
-      <div className="menu-categorias">
+      <div className="menu-categorias" style={{marginBottom:50}}>
         <h1 className="tite-categories"><Logo /> <span>Categorías</span> <Link href="/ayuda"><a>Ayuda</a></Link> </h1>
         <div className="menu-list">
           {this.props.categories.map((cat, i) => {
