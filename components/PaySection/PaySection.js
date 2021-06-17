@@ -35,7 +35,13 @@ class PaySection extends Component {
 	}
 
 	go = (id) => {
-		window.location = '/pagar/' + id + '/' + this.state.cantidad;
+		var quantity = this.state.cantidad
+		if (quantity == 0){
+			var quantity = 1
+		}else{
+			var quantity = this.state.cantidad
+		}
+		window.location = '/pagar/' + id + '/' + quantity;
 	};
 
 	loadData = async () => {
@@ -163,13 +169,13 @@ class PaySection extends Component {
 			<div className="pay">
 				<div className="pay-item">
 					<h1 className="title-pay-product-detail">{this.props.title.substr(0, 60)} </h1>
-					<div className="productFavIcon2">
+					{/* <div className="productFavIcon2">
 						<Checkbox
 							style={{ color: '#CF0A2C' }}
 							icon={<FavoriteBorder fontSize="large" />}
 							checkedIcon={<Favorite fontSize="large" />}
 						/>
-					</div>
+					</div> */}
 				</div>
 				{/* <div className="pay-item">
           <Rating productId={this.props.pid}/>

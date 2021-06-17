@@ -10,13 +10,13 @@ export default class ProductCard extends Component {
 	render() {
 		return (
 			<div className="producto-card">
-				<div className="productFavIcon3">
+				{/* <div className="productFavIcon3">
 					<Checkbox
 						style={{ color: '#CF0A2C' }}
 						icon={<FavoriteBorder />}
 						checkedIcon={<Favorite />}
 					/>
-				</div>
+				</div> */}
 				<Link
 					href={'/detalle/[product]'}
 					as={
