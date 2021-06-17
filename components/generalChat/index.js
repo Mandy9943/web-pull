@@ -7,9 +7,7 @@ import GeneralSocketChat from '../Services/socker-general-chat';
 import Cookies from 'js-cookie';
 import Form from './components/form.js';
 import { generalsocketchat } from '../Services/socker-general-chat';
-import showNotification from '../Services/socket.js';
-import Alert from '../Services/alertchatmsg';
-import Spinner from '../Common/Spinner';
+import ShowNotification from '../Services/notification';
 
 export default function GeneralChat() {
 	const [values, setValues] = useState({
@@ -22,7 +20,6 @@ export default function GeneralChat() {
 	const [dataError, setDataError] = useState(false);
 	const [dataMsg, setDataMsg] = useState([{}]);
 	const [pointData, setPointData] = useState(false);
-	const [alert, setAlert] = useState(false);
 	const endMessage = React.useRef(null);
 
 	useEffect(() => {
@@ -77,8 +74,9 @@ export default function GeneralChat() {
 			setDataMsg(msg.messages.messages);
 			endMessage.current.scrollIntoView({ block: 'end', behavior: 'smooth' });
 			const openPublicChat = document.querySelector('.openPublicChat');
-			if (!openPublicChat) {
-				showNotification();
+			if (openPublicChat) {
+			} else {
+				ShowNotification();
 			}
 		});
 
@@ -152,7 +150,7 @@ export default function GeneralChat() {
 			emitGetPublicChat();
 			return showMsg(dataMsg);
 		} else {
-			return <Form user_id={0} logedIn={values.login} validateRoom={handleOpenChat} />;
+			return <Form logedIn={values.login} validateRoom={handleOpenChat} />;
 		}
 		// }
 	};
@@ -255,16 +253,9 @@ export default function GeneralChat() {
 
 	/////////////////////////////////
 
-	const closeAlert = () => {
-		setAlert(false);
-		handleOpenChat();
-	};
-
 	return (
 		<>
-			<div onClick={closeAlert}>
-				<Alert notify={alert} />
-			</div>
+			{/* <Alert msg="oelo" notify={true} />; */}
 			<GeneralSocketChat />
 			<div className="generalChat hiddenChat">
 				<div className="headChat">
@@ -278,7 +269,6 @@ export default function GeneralChat() {
 				</div>
 
 				{handleRenderButton()}
-				
 			</div>
 			<Fab className="buttonChat" variant="extended" onClick={handleOpenChat}>
 				<SmsIcon />
