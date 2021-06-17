@@ -2,29 +2,15 @@ import socketIOClient from 'socket.io-client';
 import Cookies from 'js-cookie';
 import React, { useState, useEffect } from 'react';
 import { div } from 'prelude-ls';
+import Alert from './alertchatmsg';
 
 // const ENDPOINT = "http://192.168.1.2:5001/chat";
 const ENDPOINT = 'https://socket-chat.kieroapi.net/chat';
 
 const socket = socketIOClient(ENDPOINT);
 
-const showNotification = () =>{
-  Notification.requestPermission().then(function(result) {
-    if(result === "granted"){
-      Notification.requestPermission();
-    } else {
-      alert("notificacion web")
-    }
-  });
-   var options = {
-            body: "Revisa tu cuenta para ver el mensaje",
-            icon: "https://kiero.co/_next/static/images/logo-kiero-8bcc295b260198657f0395231376ca1a.png",
-            dir: "ltr"
-          };
-  var notification = new Notification("Tienes un nuevo mensaje", options);
- }
 
-export { showNotification };
+
 export { socket };
 export default function SocketChat() {
 	// const [newNotification, setNewNotification] = React.useState(false)
