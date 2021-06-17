@@ -9,12 +9,12 @@ const ENDPOINT = 'https://socket-chat.kieroapi.net/chat';
 
 const socket = socketIOClient(ENDPOINT);
 
-const showNotification = () => {
+const ShowNotification = () => {
 	Notification.requestPermission().then(function (result) {
 		if (result === 'granted') {
 			Notification.requestPermission();
 		} else {
-			return <Alert notify={true}/>;
+			return <Alert notify={true} />;
 		}
 	});
 	var options = {
@@ -25,6 +25,7 @@ const showNotification = () => {
 	var notification = new Notification('Tienes un nuevo mensaje', options);
 };
 
+export { ShowNotification };
 export { socket };
 export default function SocketChat() {
 	// const [newNotification, setNewNotification] = React.useState(false)
