@@ -659,7 +659,7 @@ export default class PaymentWay extends Component {
 											<InputTip msg={this.state.tips.card_holder} />
 											<div className="input-form">
 												<Datetime
-													inputProps={{ readOnly: 'true' , appearance: 'auto'}}
+													inputProps={{ readOnly: 'true', appearance: 'auto' }}
 													onChange={this.handleDateTimeChange}
 													value={this.state.expiration_date}
 													placeholder="AA/MM"

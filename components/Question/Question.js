@@ -22,9 +22,11 @@ class Question extends Component {
   }
 
   newQuestion = async e => {
+    console.log("probandp", this.props)
     e.preventDefault();
     const question = e.target.elements.question.value;
     if (question !== "") {
+      console.log("probandp x2")
         sendQuestionSocketChat(question, this.props.market_id, this.props.product_id)
       // const r = await sendQuestion(question, this.props.product_id, this.props.user_data.jwt);
        // console.log(r);

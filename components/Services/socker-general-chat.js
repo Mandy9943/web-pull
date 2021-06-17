@@ -10,35 +10,35 @@ const generalsocketchat = socketIOClient(ENDPOINT)
 export{generalsocketchat}
 export default function GeneralSocketChat() {
   // const [newNotification, setNewNotification] = React.useState(false)
-  const user_id =Cookies.get('user_id');
+  // const user_id =Cookies.get('user_id');
  
-    useEffect(() => {
+  //   useEffect(() => {
         
-        // if (!("Notification" in window)) {
-        //   alert("Tu navegador no es compatible con notificaciones, actualizaa por favor.");
-        // } else {
-        //   Notification.requestPermission();
-        // }
-        // generalsocketchat.on("new_response_user", data => {
-        //   handleLoad()
-        //   // showNotification()
-        //   // setNewNotification(true)
-        // });
-        if(!user_id){
-          console.log("no hay inicio de sesión x 2")
-        //   const _json = {
-        //     "name": "qwe 1",
-        //     "number":"qwe 2",
-        //     "email":"qwe 3",
-        //     "user_id":"qwe 4",
-        //     "login":true,
-        // }
-        //   generalsocketchat.emit('open-chat', _json);
-        }else{
+  //       // if (!("Notification" in window)) {
+  //       //   alert("Tu navegador no es compatible con notificaciones, actualizaa por favor.");
+  //       // } else {
+  //       //   Notification.requestPermission();
+  //       // }
+  //       // generalsocketchat.on("new_response_user", data => {
+  //       //   handleLoad()
+  //       //   // showNotification()
+  //       //   // setNewNotification(true)
+  //       // });
+  //       if(!user_id){
+  //         console.log("no hay inicio de sesión x 2")
+  //       //   const _json = {
+  //       //     "name": "qwe 1",
+  //       //     "number":"qwe 2",
+  //       //     "email":"qwe 3",
+  //       //     "user_id":"qwe 4",
+  //       //     "login":true,
+  //       // }
+  //       //   generalsocketchat.emit('open-chat', _json);
+  //       }else{
          
-          console.log("si hay inicio de sesión")
-        }
-      },[]);
+  //         console.log("si hay inicio de sesión")
+  //       }
+  //     },[]);
       // const handleLoad = () => {
       //        var addClass = document.getElementsByClassName('containerChat');
       //        if (addClass.length === 1 ){

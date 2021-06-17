@@ -74,7 +74,9 @@ export default function GeneralChat() {
       setDataMsg(msg.messages.messages);
       endMessage.current.scrollIntoView({ block: "end", behavior: "smooth" });
       const openPublicChat = document.querySelector(".openPublicChat");
-      if (!openPublicChat) {
+      if (openPublicChat) {
+        
+      }else {
         showNotification();
       }
     });
