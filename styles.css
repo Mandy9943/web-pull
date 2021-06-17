@@ -1,109 +1,120 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
-
 * {
-    margin: 0px;
-    padding: 0px;
-    text-decoration: none;
-    font-family: 'Montserrat', sans-serif;
+	margin: 0px;
+	padding: 0px;
+	text-decoration: none;
+	font-family: 'Montserrat', sans-serif;
 }
-
 
 body {
-    display: grid;
-    margin: 0px;
-    padding: 0px;
-    height: 100vh;
-    background-color: #F3F3F3;
+	display: grid;
+	margin: 0px;
+	padding: 0px;
+	height: 100vh;
+	background-color: #f3f3f3;
 }
 
-.accent{ color: #CF0A2C}
+.accent {
+	color: #cf0a2c;
+}
 
 svg {
-    max-height: 30px !important;
-    max-width: 30px !important;
-    display: inline !important;
+	max-height: 30px !important;
+	max-width: 30px !important;
+	display: inline !important;
 }
 
-.container{
-    position: relative;
+.container {
+	position: relative;
 }
 
 .main-button {
-    display: flex;
-    margin: 5px auto;
-    width: auto;
-    padding: 10px 0;
-    background-color: #CF0A2C;
-    color: white;
-    text-align: center;
-    width: 80%;
-    font-size: 18px;
+	display: flex;
+	margin: 5px auto;
+	width: auto;
+	padding: 10px 0;
+	background-color: #cf0a2c;
+	color: white;
+	text-align: center;
+	width: 80%;
+	font-size: 18px;
 }
 svg:not(:root).svg-inline--fa {
-    overflow: visible;
+	overflow: visible;
 }
 
 .svg-inline--fa.fa-w-10 {
-    width: 0.625em;
+	width: 0.625em;
 }
 .svg-inline--fa {
-    display: inline-block;
-    font-size: inherit;
-    height: 1em;
-    overflow: visible;
-    vertical-align: -0.125em;
+	display: inline-block;
+	font-size: inherit;
+	height: 1em;
+	overflow: visible;
+	vertical-align: -0.125em;
 }
 
 #__next {
-    display: grid;
+	display: grid;
 }
 
 a {
-    /*display: block;*/
-    color: #2A6EF6;
+	/*display: block;*/
+	color: #2a6ef6;
 }
 
 form {
-    margin: 10px 0px;
-    padding: 0px 10px;
+	margin: 10px 0px;
+	padding: 0px 10px;
 }
 
 input {
-    margin: 5px 0px;
-    outline: none;
-    width: calc(100% - 20px);
-    padding: 8px;
-    border: 0.5px solid #b8b8b8;
-    border-radius: 5px;
+	margin: 5px 0px;
+	outline: none;
+	width: calc(100% - 20px);
+	padding: 8px;
+	border: 0.5px solid #b8b8b8;
+	border-radius: 5px;
 }
 
 button {
-    margin: 5px 0px;
-    padding: 10px;
-    width: 100%;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    font: 400 'Montserrat', sans-serif !important;
+	margin: 5px 0px;
+	padding: 10px;
+	width: 100%;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 16px;
+	font: 400 'Montserrat', sans-serif !important;
 }
 
 .previousButton svg {
-    fill: #CF0A2C !important;
+	fill: #cf0a2c !important;
 }
 .nextButton svg {
-    fill: #CF0A2C !important;
+	fill: #cf0a2c !important;
 }
 
-h1, h2, h3, h4, h5 {
-    font-weight: lighter;
+h1,
+h2,
+h3,
+h4,
+h5 {
+	font-weight: lighter;
 }
 
 .no-overflow {
-    overflow : hidden;
+	overflow: hidden;
 }
 
-
-@media (max-width:925px){.no-movil{display:none !important}}
-@media (min-width:926px){.no-web{display:none !important}}
+@media (max-width: 925px) {
+	.no-movil {
+		display: none !important;
+	}
+}
+@media (min-width: 926px) {
+	.no-web {
+		display: none !important;
+	}
+}

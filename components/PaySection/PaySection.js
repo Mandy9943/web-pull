@@ -35,7 +35,13 @@ class PaySection extends Component {
 	}
 
 	go = (id) => {
-		window.location = '/pagar/' + id + '/' + this.state.cantidad;
+		var quantity = this.state.cantidad
+		if (quantity == 0){
+			var quantity = 1
+		}else{
+			var quantity = this.state.cantidad
+		}
+		window.location = '/pagar/' + id + '/' + quantity;
 	};
 
 	loadData = async () => {
