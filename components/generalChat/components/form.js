@@ -32,6 +32,21 @@ function Form({ logedIn, validateRoom }) {
 	}
 
 	const handleValidateForm = () => {
+		
+		let date = new Date();
+
+		let year = date.getFullYear()
+		let month = date.getMonth() + 1
+		let day = date.getDate()
+		var hora = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+			
+
+		if(month < 10){
+			var fecha = year + '-0' + month + '-' + day + ' ' + hora;
+		}else{
+			var fecha = year+ '-' +month+ '-' +day + ' ' +hora;
+		}
+		
 		const validateForms = document.querySelector('.infoValidate');
 		if(name.length < 1 || phone.length < 1 || email.length < 1 || answer.length < 1 || terms==false){
 			validateForms.classList.remove('hiddenChat');
@@ -46,11 +61,25 @@ function Form({ logedIn, validateRoom }) {
 				'message':answer,
 				"user_id":0,
 				"login":false,
+				'date':fecha
 			}
 			generalsocketchat.emit('open-chat', _json);
 		}
 	}
 	const handleValidateFormLogin = () =>{
+		let date = new Date();
+
+			let year = date.getFullYear()
+			let month = date.getMonth() + 1
+			let day = date.getDate()
+			var hora = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+				
+
+			if(month < 10){
+				var fecha = year + '-0' + month + '-' + day + ' ' + hora;
+			}else{
+				var fecha = year+ '-' +month+ '-' +day + ' ' +hora;
+			}
 		const validateForms = document.querySelector('.infoValidate');
 		if(answer.length < 1 || terms==false){
 			validateForms.classList.remove('hiddenChat');
@@ -62,6 +91,7 @@ function Form({ logedIn, validateRoom }) {
 				'message':answer,
 				"user_id":Cookies.get('user_id'),
 				"login":true,
+				"date":fecha
 			}
 			generalsocketchat.emit('open-chat', _json);
 		}
