@@ -7,7 +7,7 @@ import GeneralSocketChat from '../Services/socker-general-chat';
 import Cookies from 'js-cookie';
 import Form from './components/form.js';
 import { generalsocketchat } from '../Services/socker-general-chat';
-import { ShowNotification } from '../Services/socket.js';
+import { showNotification } from '../Services/socket.js';
 import Spinner from '../Common/Spinner/Spinner';
 
 export default function GeneralChat() {
@@ -80,7 +80,7 @@ export default function GeneralChat() {
 			const openPublicChat = document.querySelector('.openPublicChat');
 			if (openPublicChat) {
 			} else {
-				showNotification();
+				showNotification(false);
 			}
 		});
 
