@@ -164,11 +164,7 @@
 }
 
 @media (max-width: 365px) {
-<<<<<<< HEAD
 .home-content .products-slider, .detail-content .products-slider {
-=======
-  .home-content .products-slider, .detail-content .products-slider {
->>>>>>> 288e3dee46cd84cdcfe4a57be0000f5a30031eeb
     padding: 15px 7px;
     width: auto;
 }
@@ -215,8 +211,5 @@
 .detail-content .producto-card {
     width: 37% !important;
 }
-<<<<<<< HEAD
 }
-=======
->>>>>>> 288e3dee46cd84cdcfe4a57be0000f5a30031eeb
 /*# sourceMappingURL=ProductsSlider.css.map */

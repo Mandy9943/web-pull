@@ -108,7 +108,7 @@ export default class ProductsSlider extends Component {
 						{productListMobile}
 					</section>
 				</div>
-				<Slider autoplay={4000}>{productList}</Slider>
+				<Slider autoplay={5000}>{productList}</Slider>
 			</div>
 		);
 	}
