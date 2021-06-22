@@ -23,7 +23,7 @@ export default function ShopGoogleAds({cb}) {
                         </spam>
                     
                         <div className="google-link">
-                            <Link href="/ayuda">Agregar el código</Link>
+                            <Link href="/ayuda"><a>Agregar el código</a></Link>
                         </div>
                     </div>
                     <hr/>
@@ -34,7 +34,7 @@ export default function ShopGoogleAds({cb}) {
                         </spam>
                     
                         <div className="google-link">
-                            <Link href="/ayuda">Agregar el código</Link>
+                            <Link href="/ayuda"><a>Agregar el código</a></Link>
                         </div>
                     </div>
                 </div>
@@ -49,7 +49,7 @@ export default function ShopGoogleAds({cb}) {
                         </spam>
                     
                         <div className="google-link">
-                            <Link href="/ayuda">Agregar el código</Link>
+                            <Link href="/ayuda"><a>Agregar el código</a></Link>
                         </div>
                     </div>
                     

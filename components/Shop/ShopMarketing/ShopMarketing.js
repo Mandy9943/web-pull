@@ -24,100 +24,113 @@ export default function ShopMarketing({ cb }) {
             <main>
                 <div className="row">
                     <div className="marketing">
-                        <img
-                            src={GAnlitycs}
-                            alt="Picture of the author"
+                        <div className="info">
+                            <img
+                                src={GAnlitycs}
+                                alt="Picture of the author"
 
-                        />
-                        
-                        <div>
-                            <h4><b>Google Analytics</b></h4>
-                            <p>Conoce y obtén información de tus visitantes para tus campañas de marketing.</p>
+                            />
+
+                            <div >
+                                <h4><b>Google Analytics</b></h4>
+                                <p>Conoce y obtén información de tus visitantes para tus campañas de marketing.</p>
+                            </div>
                         </div>
                         <div className="link">
                             <a onClick={(e) => cb("analytics", e)}>Configurar</a>
                         </div>
                     </div>
                     <div className="marketing">
-                        <img
-                            src={GAds}
-                            alt="Picture of the author"
+                        <div className="info">
+                            <img
+                                src={GAds}
+                                alt="Picture of the author"
 
-                        />
-                         <div>
-                            <h4><b>Google Ads</b></h4>
-                            <p>Mide las acciones que realizan tus visitantes y la eficacia de tus anuncios. </p>
+                            />
+                            <div>
+                                <h4><b>Google Ads</b></h4>
+                                <p>Mide las acciones que realizan tus visitantes y la eficacia de tus anuncios. </p>
+                            </div>
                         </div>
                         <div className="link">
                             <Link href={"/tienda"}>Configurar</Link>
                         </div>
                     </div>
                     <div className="marketing">
-                        <img
-                            src={Gconsole}
-                            alt="Picture of the author"
+                        <div className="info">
+                            <img
+                                src={Gconsole}
+                                alt="Picture of the author"
 
-                        />
-                        <div>
-                            <h4><b>Google Search Console</b></h4>
-                            <p>Mejora el posicionamiento de tu tienda en los resultados de búsqueda de Google. </p>
-                        </div>
-                        
-                        <div className="link">
-                            <Link href={"/tienda"}>Configurar</Link>
-                        </div>
-                    </div>
-                    <div className="marketing">
-                        <img
-                            src={GShopping}
-                            alt="Picture of the author"
-
-                        />
-                        <div>
-                            <h4><b>Google Shoping</b></h4>
-                            <p>Crea anuncios publicitarios en Google para promocionar tus productos y aumentar las ventas de tu tienda. </p>
+                            />
+                            <div>
+                                <h4><b>Google Search Console</b></h4>
+                                <p>Mejora el posicionamiento de tu tienda en los resultados de búsqueda de Google. </p>
+                            </div>
                         </div>
                         <div className="link">
                             <Link href={"/tienda"}>Configurar</Link>
                         </div>
                     </div>
                     <div className="marketing">
-                        <img
-                            src={fb}
-                            alt="Picture of the author"
+                        <div className="info">
+                            <img
+                                src={GShopping}
+                                alt="Picture of the author"
 
-                        />
-                        <div>
-                            <h4><b>Facebook Pixel</b></h4>
-                            <p>Mide las acciones que realizan tus visitantes y la eficacia de tus anuncios. </p>
-                        </div>
-                        <div className="link">
-                        <a onClick={(e) => cb("facebookPixel", e)}>Configurar</a>
-                        </div>
-                    </div>
-                    <div className="marketing">
-                        <img
-                            src={fblike}
-                            alt="Picture of the author"
-
-                        />
-                        <div>
-                            <h4><b>Tu Tienda en Facebook</b></h4>
-                            <p>Vincula tu tienda con Facebook y aumenta tu tráfico en KieroShops.</p>
+                            />
+                            <div>
+                                <h4><b>Google Shoping</b></h4>
+                                <p>Crea anuncios publicitarios en Google para promocionar tus productos y aumentar las ventas de tu tienda. </p>
+                            </div>
                         </div>
                         <div className="link">
                             <Link href={"/tienda"}>Configurar</Link>
                         </div>
                     </div>
                     <div className="marketing">
-                        <img
-                            src={Instagram}
-                            alt="Picture of the author"
+                        <div className="info">
+                            <img
+                                src={fb}
+                                alt="Picture of the author"
 
-                        />
-                        <div>
-                            <h4><b>Tu Tienda en Instagram</b></h4>
-                            <p>Vincula tu tienda con Instagram y etiqueta tus productos para aumentar tu tráfico en KieroShops.</p>
+                            />
+                            <div>
+                                <h4><b>Facebook Pixel</b></h4>
+                                <p>Mide las acciones que realizan tus visitantes y la eficacia de tus anuncios. </p>
+                            </div>
+                        </div>
+                        <div className="link">
+                            <a onClick={(e) => cb("facebookPixel", e)}>Configurar</a>
+                        </div>
+                    </div>
+                    <div className="marketing">
+                        <div className="info">
+                            <img
+                                src={fblike}
+                                alt="Picture of the author"
+
+                            />
+                            <div>
+                                <h4><b>Tu Tienda en Facebook</b></h4>
+                                <p>Vincula tu tienda con Facebook y aumenta tu tráfico en KieroShops.</p>
+                            </div>
+                        </div>
+                        <div className="link">
+                            <Link href={"/tienda"}>Configurar</Link>
+                        </div>
+                    </div>
+                    <div className="marketing">
+                        <div className="info">
+                            <img
+                                src={Instagram}
+                                alt="Picture of the author"
+
+                            />
+                            <div>
+                                <h4><b>Tu Tienda en Instagram</b></h4>
+                                <p>Vincula tu tienda con Instagram y etiqueta tus productos para aumentar tu tráfico en KieroShops.</p>
+                            </div>
                         </div>
                         <div className="link">
                             <Link href={"/tienda"}>Configurar</Link>
