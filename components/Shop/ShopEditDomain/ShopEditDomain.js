@@ -11,7 +11,7 @@ import {
 
 export default function ShopEditDomain({ store_domain, cb, saveDomain }) {
 
-    console.log(store_domain)
+    
     const [display, setDisplay] = useState(false);
     const [domain, setDomain] = useState(store_domain || '')
 

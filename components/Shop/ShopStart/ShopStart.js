@@ -9,6 +9,7 @@ import {
   faTag,
   faLightbulb,
   faMobile,
+  faWhatsapp,
 } from "@fortawesome/free-solid-svg-icons";
 import { getProductImgs } from "../../../lib/functions";
 import Link from "next/link";
@@ -17,7 +18,7 @@ import GoogleAnalytisc from "../../../assets/img/shop/Google analytics@2x.png";
 import PixelFacebook from "../../../assets/img/shop/Pixel de Facebook@2x.png";
 import GoogleAds from "../../../assets/img/shop/Google Ads@2x.png";
 import VinculateFacebook from "../../../assets/img/shop/Vincúlate a Facebook@2x.png";
-import {update_store} from "../../../services/storeApi";
+import { update_store } from "../../../services/storeApi";
 import shopQuickConfig from "./lib";
 
 const ShopStart = (props) => {
@@ -30,7 +31,7 @@ const ShopStart = (props) => {
     color: store_status ? 'green' : 'red'
   }
 
- 
+
   return (
     <div>
       <div className="shop-block shop-principal">
@@ -66,8 +67,8 @@ const ShopStart = (props) => {
         </div>
         <hr />
         <div className="shop-icons">
-          <FontAwesomeIcon icon={faLightbulb} />
-          <FontAwesomeIcon icon={faGlobe} />
+        <a title="Herramientas de Marketing" onClick={(e) => cb("marketing", e)}><FontAwesomeIcon icon={faLightbulb} /></a>
+          <a title="Dominio Web" onClick={(e) => cb("domain", e)}><FontAwesomeIcon icon={faGlobe} /></a>
           <FontAwesomeIcon icon={faClone} />
           <FontAwesomeIcon icon={faMobile} />
           <FontAwesomeIcon icon={faTag} />
@@ -101,8 +102,8 @@ const ShopStart = (props) => {
       <div className="shop-block shop-adventage">
         <div>
           <div
-              className="shop-adventage-block"
-              onClick={e=>cb('analytics', e)}
+            className="shop-adventage-block"
+            onClick={e => cb('analytics', e)}
           >
             <div className="shop-adventage-block-icon">
               <img
@@ -121,7 +122,10 @@ const ShopStart = (props) => {
             </p>
           </div>
 
-          <div className="shop-adventage-block">
+          <div className="shop-adventage-block"
+            onClick={e => cb('facebookPixel', e)}
+          >
+
             <div className="shop-adventage-block-icon">
               <img
                 alt="Foto del icono"
@@ -137,11 +141,13 @@ const ShopStart = (props) => {
               Agrega los códigos de conversión y remarketing para medir el
               rendimiento de tus anuncios de Google Ads, y poder obtimizarlos.
             </p>
+
           </div>
         </div>
 
         <div>
-          <div className="shop-adventage-block">
+          <div className="shop-adventage-block"
+            onClick={e => cb('googleAds', e)}>
             <div className="shop-adventage-block-icon">
               <img
                 alt="Foto del icono"
@@ -158,7 +164,8 @@ const ShopStart = (props) => {
             </p>
           </div>
 
-          <div className="shop-adventage-block">
+          <div className="shop-adventage-block"
+            onClick={e => cb('facebookLink', e)}>
             <div className="shop-adventage-block-icon">
               <img
                 alt="Foto del icono"

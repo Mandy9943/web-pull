@@ -1,0 +1,41 @@
+.sugest div {
+    width: 38px;
+    height: 38px; 
+    border: 1px;
+    border-color: black;
+}
+
+.color_edit{
+    
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border: 1px solid black;
+    border-radius: 25px;
+    margin: 4px;
+    box-shadow: 2px 3px #888888;
+    background-color: white;
+    
+    
+
+} 
+.color_edit span{
+    padding: 3px;
+    height: 18px;
+    width: 18px;
+    
+}
+.color_edit span:hover{
+   cursor: pointer;
+    
+}
+
+.color_edit span svg{
+    height: 18px;
+    width: 18px;
+    color:blue;
+    
+    
+}
+
+

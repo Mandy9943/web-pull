@@ -120,10 +120,10 @@ export default class Shop extends Component {
   };
 
   setDesignValues = (name, value) => {
-    console.log(name+":"+value)
+    
     
     this.setState([{[name] : value}] )
-    console.log(this.state.store_design)
+   
   }
 
   showSection = (section, e) => {
