@@ -116,7 +116,6 @@ function Product({ data, u_data }) {
 					}}
 				></script>
 			</Head>
-			<Detail user_data={u_data} data={data} />
 			{/* Google Tag Manager (noscript) */}
 			<noscript
 				dangerouslySetInnerHTML={{
@@ -124,6 +123,7 @@ function Product({ data, u_data }) {
 				}}
 			/>
 			{/* End Google Tag Manager (noscript) */}
+			<Detail user_data={u_data} data={data} />
 
 		</div>
 	);

@@ -41,7 +41,6 @@ function plataforma_de_pago({ data, u_data, cantidad }) {
 				<meta name="Keywords" content="Tienda en Línea" />
 				<link rel="icon" href={favicon} type="image/png" />
 			</Head>
-			<PaymentWay data={data} user={u_data} cantidad={cantidad} />
 			{/* Google Tag Manager (noscript) */}
 			<noscript
 				dangerouslySetInnerHTML={{
@@ -49,6 +48,7 @@ function plataforma_de_pago({ data, u_data, cantidad }) {
 				}}
 			/>
 			{/* End Google Tag Manager (noscript) */}
+			<PaymentWay data={data} user={u_data} cantidad={cantidad} />
 		</div>
 	);
 }
