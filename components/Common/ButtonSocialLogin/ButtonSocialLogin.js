@@ -134,13 +134,13 @@ class ButtonFacebook extends Component {
 
                       }  
         return (<>
-            <FacebookLogin className="button buttonFacebook" 
-                          cssClass="button buttonFacebook"
-                          appId="311507753333551"  
-                          autoLoad={false}  
-                          fields="name,email,picture"  
-                          callback={responseFacebook}
-                          >
+            <FacebookLogin  className="button buttonFacebook" 
+                            cssClass="button buttonFacebook"
+                            appId="311507753333551"  
+                            autoLoad={false}  
+                            fields="name,email,picture"  
+                            callback={responseFacebook}
+                            >
 
                <img alt="Facebook" src={fb}/> <p>Continua con Facebook</p>
             </FacebookLogin>

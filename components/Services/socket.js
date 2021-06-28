@@ -1,6 +1,7 @@
 import socketIOClient from 'socket.io-client';
 import Cookies from 'js-cookie';
 import React, { useState, useEffect } from 'react';
+import swal from 'sweetalert';
 
 import Alert from './alertchatmsg';
 // const ENDPOINT = "http://192.168.1.2:5001/chat";
@@ -13,7 +14,8 @@ const showNotification = () =>{
     if(result === "granted"){
       Notification.requestPermission();
     } else {
-      alert("notificacion web")
+      //alert("notificacion web")
+	  enviandoInfo(1)
     }
   });
    var options = {
@@ -22,6 +24,17 @@ const showNotification = () =>{
             dir: "ltr"
           };
   var notification = new Notification("Tienes un nuevo mensaje", options);
+  const enviandoInfo =(data)=> {
+	  console.log(data)
+	  if(data == 1){
+		swal({
+			title: "Buen trabajo!",
+			text: "La compra ha sido verificada!",
+		  });
+	  }else{
+		  return ('')
+	  }
+  }
  }
 
 export { showNotification };
