@@ -283,7 +283,7 @@
 	-webkit-box-shadow: 0px 3px 6px #11111129;
 	box-shadow: 0px 3px 6px #11111129;
 	white-space: nowrap;
-    overflow: hidden;
+	overflow: hidden;
 	text-overflow: clip;
 }
 
@@ -358,6 +358,7 @@
 	}
 	.mobil-nav .nav-top input {
 		margin-top: 0;
+		text-overflow: ellipsis;
 	}
 	.mobil-nav .nav-botton {
 		font-size: 25px;
@@ -374,6 +375,21 @@
 	}
 	.search-bar .icon svg {
 		top: 8px;
+	}
+}
+
+@media (max-width: 375px) {
+	.mobil-nav .nav-top input {
+		text-overflow: ellipsis;
+		width: 205px;
+		padding-right: 40px;
+	}
+}
+@media (max-width: 365px) {
+	.mobil-nav .nav-top input {
+		text-overflow: ellipsis;
+		width: 195px;
+		padding-right: 40px;
 	}
 }
 

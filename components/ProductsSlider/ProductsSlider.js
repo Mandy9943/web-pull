@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import Link from "next/link";
-import ProductCard from "../ProductCard/ProductCard";
-import "./ProductsSlider.css";
-import { getProductsBasic } from "../../services/productsApi";
-import Success from "../Login/Success";
-import { getImgUrl } from "../../lib/config";
-import Slider from "react-animated-slider";
+import React, { Component } from 'react';
+import Link from 'next/link';
+import ProductCard from '../ProductCard/ProductCard';
+import './ProductsSlider.css';
+import { getProductsBasic } from '../../services/productsApi';
+import Success from '../Login/Success';
+import { getImgUrl } from '../../lib/config';
+import Slider from 'react-animated-slider';
 
 export default class ProductsSlider extends Component {
 	constructor(props) {
@@ -20,7 +20,6 @@ export default class ProductsSlider extends Component {
 			let data = [];
 			let product;
 			let i = 1;
-
 			for (product in response.data.results) {
 				data.push(response.data.results[product]);
 			}
@@ -35,12 +34,12 @@ export default class ProductsSlider extends Component {
 		let kid = 0;
 		let skid = 0;
 		for (let i = 0; i < this.state.data.length; i++) {
-			let url = "";
+			let url = '';
 			if (this.state.data[i].image) {
 				url = getImgUrl(this.state.data[i].image);
 			} else {
 				url =
-					"https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png";
+					'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png';
 			}
 			tmpList.push(
 				<ProductCard
@@ -72,15 +71,16 @@ export default class ProductsSlider extends Component {
 		}
 
 		for (let i = 0; i < this.state.data.length; i++) {
-			let url = "";
+			let url = '';
 			if (this.state.data[i].image) {
 				url = getImgUrl(this.state.data[i].image);
 			} else {
 				url =
-					"https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png";
+					'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png';
 			}
 			productListMobile.push(
 				<ProductCard
+					style={{ padding: '30px' }}
 					key={skid++}
 					price={this.state.data[i].price}
 					url={url}
@@ -96,19 +96,19 @@ export default class ProductsSlider extends Component {
 					<h3 className="home-section-title">
 						Descubre productos de {this.props.category && this.props.category}
 						<Link
-							href={"/categoria/[category]"}
-							as={this.props.category && "/categoria/" + this.props.category}
+							href={'/categoria/[category]'}
+							as={this.props.category && '/categoria/' + this.props.category}
 						>
 							<a className="accent">Ver todos</a>
 						</Link>
 					</h3>
 				)}
 				<div className="slider-movil">
-					<section className="content-products-slider">
-						{productListMobile}
-					</section>
+					<section className="content-products-slider">{productListMobile}</section>
 				</div>
-				<Slider autoplay={4000}>{productList}</Slider>
+				<Slider infinite={false} autoplay={4000}>
+					{productList}
+				</Slider>
 			</div>
 		);
 	}

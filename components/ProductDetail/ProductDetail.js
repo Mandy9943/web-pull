@@ -27,7 +27,6 @@ import { getProductDetail } from '../../services/productsApi';
 import { withRouter } from 'next/router';
 
 class ProductDetail extends Component {
-	
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -40,7 +39,7 @@ class ProductDetail extends Component {
 	componentDidMount() {
 		this.loadQuestions();
 	}
-	
+
 	async reLoadData(pgid) {
 		// Esta funcion se llama cuando se encuentra un match de variantes
 		const router = this.props.router;
@@ -70,7 +69,7 @@ class ProductDetail extends Component {
 	};
 
 	render() {
-		console.log("propiedades",this.props)
+		console.log('propiedades', this.props);
 		const u_data = this.props.user_data;
 		let url = '//www.sic.gov.co';
 		// console.log(this.state.mdata)
@@ -119,7 +118,12 @@ class ProductDetail extends Component {
 							</div>
 							{/* <RecommendedProducts category={this.state.mdata.category.name} /> */}
 							<div className="home-content slider-recommends">
-								<ProductsSlider category={this.state.mdata.category ? this.state.mdata.category.name : ''} />
+								<ProductsSlider
+									category={
+										this.state.mdata.category ? this.state.mdata.category.name : ''
+									}
+								/>
+							
 							</div>
 							<Detail
 								width={this.state.mdata.width}

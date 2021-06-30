@@ -231,7 +231,6 @@
 		-ms-grid-columns: (1fr) [2];
 		grid-template-columns: repeat(2, 1fr);
 		width: 100%;
-		height: 100%;
 		margin: 1%;
 		grid-gap: 10px;
 	}
@@ -257,7 +256,6 @@
 	}
 	.temp-card .product-card-description-box {
 		padding: 11px 15px;
-		height: 110px;
 	}
 	.temp-card .product-card-description-box .product-card-description {
 		font-size: 13px;
@@ -281,4 +279,5 @@
 .d-flex {
 	display: flex;
 }
+
 /*# sourceMappingURL=ListCategory.css.map */

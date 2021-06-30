@@ -82,6 +82,8 @@ function Product({ data, u_data }) {
 					rel="canonical"
 					href={`https://kiero.co/detalle/${data.product_id}_${data.title
 						.replace(/[^\w\s\/]/gi, '')
+						.replace('//', '%2F')
+						.replace('%', '')
 						.split(' ')
 						.join('-')}`}
 				/>

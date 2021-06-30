@@ -320,6 +320,15 @@
 	}
 }
 
+@media (max-width: 375px) {
+	.help .content-help .help-left {
+		width: 130px;
+	}
+	.help .content-help .help-right {
+		width: 170px;
+	}
+}
+
 .off {
 	display: none !important;
 }
