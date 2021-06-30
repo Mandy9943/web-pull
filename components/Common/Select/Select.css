@@ -7,6 +7,13 @@
 	margin-top: 20px;
 }
 
+@media (max-width: 375px) {
+	.paymentWaySelect {
+		left: 25px;
+		width: 250px;
+	}
+}
+
 .wrap-select {
 	position: relative;
 }

@@ -65,11 +65,12 @@
 
 .modal-close {
   position: relative;
-  top: -5px;
+  top: -1px;
   float: right;
 }
 .modal-close span {
   cursor: pointer;
+  margin-right: 25px;
 }
 
 .close {

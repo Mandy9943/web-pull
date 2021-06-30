@@ -80,7 +80,9 @@ export default function GeneralChat() {
 			const openPublicChat = document.querySelector('.openPublicChat');
 			if (openPublicChat) {
 			} else {
-				showNotification(false);
+				showNotification(
+					'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec mattis neque. Pellentesque duis.'
+				);
 			}
 		});
 

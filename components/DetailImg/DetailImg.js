@@ -29,7 +29,7 @@ class Detail extends Component {
         <div className="wrap-gallery">
           <div className="list-gallery">
             {this.props.images && this.props.images.length ? (
-              this.props.images.map((img, i) =>
+              this.props.images.reverse().map((img, i) =>
                 i < 5 ? (
                   <img
                     src={getImgUrlMinMin(img.url)}

@@ -2,40 +2,48 @@ import socketIOClient from 'socket.io-client';
 import Cookies from 'js-cookie';
 import React, { useState, useEffect } from 'react';
 import { div } from 'prelude-ls';
-import Alert from './alertchatmsg';
-
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 // const ENDPOINT = "http://192.168.1.2:5001/chat";
 const ENDPOINT = 'https://socket-chat.kieroapi.net/chat';
 
 const socket = socketIOClient(ENDPOINT);
+const showNotification = ({ text }) => {
 
-const showNotification = (state) => {
-	// Notification.requestPermission().then(function (result) {
-	// 	if (result === 'granted') {
-	// 		Notification.requestPermission();
-	// 	} else {
-	// 		prueba(true);
-	// 		alert('hola');
-	// 	}
-	// });
-	// var options = {
-	// 	body: 'Revisa tu cuenta para ver el mensaje',
-	// 	icon: 'https://kiero.co/_next/static/images/logo-kiero-8bcc295b260198657f0395231376ca1a.png',
-	// 	dir: 'ltr',
-	// };
-	// var notification = new Notification('Tienes un nuevo mensaje', options);
-	// Notification.requestPermission().then(function (result) {
-	// 	console.log(result);
-	// });
-	const [prueba, setPrueba] = useState(false);
-	console.log(state);
-	if (state) {
-		setPrueba(true);
-	}
-	return <Alert msg="oe que paso pues" notify={prueba} />;
+	const Toast = Swal.mixin({
+		toast: true,
+		position: 'top-end',
+		showConfirmButton: false,
+		didOpen: (toast) => {
+			toast.addEventListener('mouseenter', Swal.stopTimer);
+			toast.addEventListener('mouseleave', Swal.resumeTimer);
+		},
+	});
+
+	Notification.requestPermission().then(function (result) {
+		if (result === 'granted') {
+			Notification.requestPermission();
+		} else {
+			//alert("notificacion web")
+			Toast.fire({
+				icon: <NotificationsNoneIcon/>,
+				iconColor: 'white',
+				title: <div>{text}</div>,
+				background: '#cf0a2c',
+			});
+		}
+	});
+	var options = {
+		body: 'Revisa tu cuenta para ver el mensaje',
+		icon: 'https://kiero.co/_next/static/images/logo-kiero-8bcc295b260198657f0395231376ca1a.png',
+		dir: 'ltr',
+	};
+	var notification = new Notification('Tienes un nuevo mensaje', options);
 };
 
 export { showNotification };
+
 export { socket };
 export default function SocketChat() {
 	// const [newNotification, setNewNotification] = React.useState(false)
@@ -68,5 +76,5 @@ export default function SocketChat() {
 		}
 	};
 	// const [room_user, setRoom_user] = useState(`KieroUser_${this.props.data.myID}`);
-	return <>{showNotification()}</>;
+	return <></>;
 }

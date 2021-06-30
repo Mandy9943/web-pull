@@ -13,7 +13,6 @@ import { getDSI } from '../../services/userApi';
 import favicon from '../../assets/img/favicon.svg';
 
 function plataforma_de_pago({ data, u_data, cantidad }) {
-	console.log(cantidad);
 	return (
 		<div className="plataforma">
 			<Head>

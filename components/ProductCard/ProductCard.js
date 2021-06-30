@@ -25,6 +25,8 @@ export default class ProductCard extends Component {
 						'_' +
 						this.props.title
 							.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+							.replace('//', '%2F')
+							.replace('%', '')
 							.split(' ')
 							.join('-')
 					}
