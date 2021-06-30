@@ -81,7 +81,7 @@ export default function GeneralChat() {
 			if (openPublicChat) {
 			} else {
 				showNotification(
-					'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec mattis neque. Pellentesque duis.'
+					'Te han enviado un mensaje en el chat'
 				);
 			}
 		});

@@ -229,6 +229,17 @@ function Results({ data, session }) {
         return (
             <>
                 <Head>
+                    {/* Google Tag Manager */}
+				<script
+					dangerouslySetInnerHTML={{
+						__html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                    })(window,document,'script','dataLayer','GTM-TXNXPM7');`,
+					}}
+				/>
+				{/* End Google Tag Manager */}
                     <title>Kiero | Categorías</title>
                     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
                     <title>Compra en Kiero.co Marketplace | {category_name}</title>
@@ -257,6 +268,13 @@ function Results({ data, session }) {
                     bd92b4b573820ab.jpg"/>
                     <link rel="icon" href={favicon} type="image/png" />
                 </Head>
+                {/* Google Tag Manager (noscript) */}
+			<noscript
+				dangerouslySetInnerHTML={{
+					__html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TXNXPM7" height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
+				}}
+			/>
+			{/* End Google Tag Manager (noscript) */}
 
                 <div className="container category-list">
                     <Nav jwt={session.jwt} user={session.user} home={true} authenticated={session.authenticated} />
@@ -292,6 +310,17 @@ function Results({ data, session }) {
         return (
             <div>
                 <Head>
+                    {/* Google Tag Manager */}
+				<script
+					dangerouslySetInnerHTML={{
+						__html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                    })(window,document,'script','dataLayer','GTM-TXNXPM7');`,
+					}}
+				/>
+				{/* End Google Tag Manager */}
                     <title>Kiero | Categorías</title>
                     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
                     <title>Compra en Kiero.co Marketplace | {category_name}</title>
@@ -320,6 +349,13 @@ function Results({ data, session }) {
                     bd92b4b573820ab.jpg"/>
                     <link rel="icon" href={favicon} type="image/png" />
                 </Head>
+                {/* Google Tag Manager (noscript) */}
+			<noscript
+				dangerouslySetInnerHTML={{
+					__html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TXNXPM7" height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
+				}}
+			/>
+			{/* End Google Tag Manager (noscript) */}
                 <Category data={data} user_data={session} page={page} path={currentPath}/>
             </div>
         )

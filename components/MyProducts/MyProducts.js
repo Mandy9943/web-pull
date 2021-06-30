@@ -134,6 +134,7 @@ export default class MyProducts extends Component {
         // TODO Implement this in a different component
         let productList = this.state.products.map((product, i) => {
 
+            console.log('informacion del producto',product)
             let statusI = product.status === 1 ? "cancel-btn delete" : "main-button"
 
             let clsItem = product.status === 1 ? "product-item-edit" : "product-item-edit off"
@@ -153,10 +154,10 @@ export default class MyProducts extends Component {
                         <h3>{product.title}</h3>
                     </div>
                     <div className="option category">
-                        {product.category.name}
+                        {product.category ? product.category.name : 'sin categoria'}
                 </div>
                     <div className="option date">
-                        {product.created_since.split(" ")[0]}
+                        {product.created_since ? product.created_since.split(" ")[0] : 'sin fecha'}
                     </div>
                     <div className="option id">{product.product_id} 
                         <a style={{ padding: "10px", cursor: "pointer"}} className="icon-action" onClick={() => this.openOption(i)}>

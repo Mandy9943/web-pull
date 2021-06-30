@@ -2,16 +2,17 @@ import socketIOClient from 'socket.io-client';
 import Cookies from 'js-cookie';
 import React, { useState, useEffect } from 'react';
 import { div } from 'prelude-ls';
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
+import swal from 'sweetalert';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 // const ENDPOINT = "http://192.168.1.2:5001/chat";
 const ENDPOINT = 'https://socket-chat.kieroapi.net/chat';
 
 const socket = socketIOClient(ENDPOINT);
-const showNotification = ({ text }) => {
 
-	const Toast = Swal.mixin({
+const showNotification = (text) => {
+	const Toast = withReactContent(Swal).mixin({
 		toast: true,
 		position: 'top-end',
 		showConfirmButton: false,
@@ -27,11 +28,12 @@ const showNotification = ({ text }) => {
 		} else {
 			//alert("notificacion web")
 			Toast.fire({
-				icon: <NotificationsNoneIcon/>,
+				iconHtml: <NotificationsNoneIcon />,
 				iconColor: 'white',
-				title: <div>{text}</div>,
+				title: <div style={{ color: 'white' }}>{text}</div>,
 				background: '#cf0a2c',
 			});
+			enviandoInfo(1);
 		}
 	});
 	var options = {
@@ -40,10 +42,20 @@ const showNotification = ({ text }) => {
 		dir: 'ltr',
 	};
 	var notification = new Notification('Tienes un nuevo mensaje', options);
+	const enviandoInfo = (data) => {
+		console.log(data);
+		if (data == 1) {
+			swal({
+				title: 'Buen trabajo!',
+				text: 'La compra ha sido verificada!',
+			});
+		} else {
+			return '';
+		}
+	};
 };
 
 export { showNotification };
-
 export { socket };
 export default function SocketChat() {
 	// const [newNotification, setNewNotification] = React.useState(false)
@@ -75,6 +87,7 @@ export default function SocketChat() {
 			console.log('no existe');
 		}
 	};
+
 	// const [room_user, setRoom_user] = useState(`KieroUser_${this.props.data.myID}`);
 	return <></>;
 }
