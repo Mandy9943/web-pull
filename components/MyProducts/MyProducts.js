@@ -63,7 +63,6 @@ export default class MyProducts extends Component {
 
     }
 
-
     changePState = async (id, newState, e) => {
 
         let formData = new FormData();
@@ -133,8 +132,6 @@ export default class MyProducts extends Component {
         let tmp = []
         // TODO Implement this in a different component
         let productList = this.state.products.map((product, i) => {
-
-            console.log('informacion del producto',product)
             let statusI = product.status === 1 ? "cancel-btn delete" : "main-button"
 
             let clsItem = product.status === 1 ? "product-item-edit" : "product-item-edit off"
@@ -185,7 +182,6 @@ export default class MyProducts extends Component {
                 </div>
                 )
             });
-
         return (
             <div className="purchase-list" onClick={this.closeOptions}>
                 <h1 className="status-title">Publicaciones</h1>
@@ -201,8 +197,7 @@ export default class MyProducts extends Component {
                         <span className={"sub-title"}>{0} publicaciones</span>
                     </div>
                 </div>
-                {true ?
-                    productList.length == 0 &&
+                {productList.length == 0  ?
                         <section className="empty-text">
                             <h5>Aún no tienes publicaciones</h5>
                             <p>Empieza ahora...</p>
