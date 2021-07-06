@@ -5,7 +5,6 @@ import GeneralChat from '../components/generalChat/index.js';
 import SocketChat from '../components/Services/socket';
 import SocketUser from '../components/Services/socketuser';
 import KieroSocketChat from '../components/Services/kierochat-socket';
-
 export default function MyApp({ Component, pageProps }) {
 	return (
 		<>

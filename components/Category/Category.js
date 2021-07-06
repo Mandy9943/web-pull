@@ -120,6 +120,8 @@ class Category extends Component {
 	};
 
 	applyFilter = (type, value, categoryLevel = '', loadFilter = true) => {
+		console.log(value);
+		console.log(categoryLevel);
 		let tmp_filters = this.state.filters;
 		const new_val = type + '|' + value;
 		// Remove previous filter by type
@@ -361,6 +363,7 @@ class Category extends Component {
 					home={true}
 					jwt={this.props.user_data.jwt}
 					actualSearch={this.props.data.search}
+					
 					authenticated={this.props.user_data.authenticated}
 				/>
 

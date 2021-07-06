@@ -70,9 +70,8 @@ export default class Index extends Component {
                     <meta property="og:image" content="https://kiero.co/_next/static/images/banners-apk-
                     911388a7cee05467bbd92b4b573820ab.jpg" />
                     <link rel="icon" href={favicon} type="image/png" />
-
                     <script type="application/ld+json" 
-                    dangerouslySetInnerHTML={{ __html: {
+                    dangerouslySetInnerHTML={{ __html: `{
                         "@context": "https://schema.org",
                         "@type": "WebSite",
                         "name": "Kiero Marketplace",
@@ -91,9 +90,10 @@ export default class Index extends Component {
                         "https://www.youtube.com/user/KieroGroup",
                         "https://co.pinterest.com/novedadeskiero/pins/"
                         ]
-                        } }}>
+                        }` }}>
 
                     </script>
+
                 </Head>
                   {/* Google Tag Manager (noscript) */}
                     <noscript
