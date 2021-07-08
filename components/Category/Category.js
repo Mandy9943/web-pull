@@ -198,6 +198,24 @@ class Category extends Component {
 			}
 		});
 
+		let oe = searchProducts(
+			this.props.data.type,
+			5000,
+			page,
+			this.props.data.search,
+			brand,
+			price,
+			category,
+			sortBy,
+			orderBy,
+			categoryLevel
+		);
+
+		oe.then((response) => {
+			console.log('oe', response.data.results);
+			console.log()
+		});
+
 		let products = searchProducts(
 			this.props.data.type,
 			this.props.data.params.items_per_page,
@@ -363,7 +381,6 @@ class Category extends Component {
 					home={true}
 					jwt={this.props.user_data.jwt}
 					actualSearch={this.props.data.search}
-					
 					authenticated={this.props.user_data.authenticated}
 				/>
 

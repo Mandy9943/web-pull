@@ -35,6 +35,13 @@ class MenuCategories extends Component {
 	subMenuMouseEnter = () => {
 		this.setState({ showMenu: true });
 	};
+	componentWillUnmount() {
+		this.setState({
+			showMenu: false,
+			moreAll: false,
+			lessAll: true,
+		});
+	}
 
 	render() {
 		let urlBanner = '//kiero.co/images/resources/categorias-menu/';
@@ -61,13 +68,13 @@ class MenuCategories extends Component {
 									onMouseEnter={() => this.menuMouseEnter(i)}
 									onMouseLeave={this.menuMouseLeave}
 								>
-									<a>
-										<Link href={'/categoria/' + ccat.name}>{ccat.name}</Link>
-										<FontAwesomeIcon
-											onClick={() => this.menuMouseEnter(i)}
-											icon={faAngleRight}
-										/>
-									</a>
+									<Link href={'/categoria/' + ccat.name}>
+										<a>{ccat.name}</a>
+									</Link>
+									<FontAwesomeIcon
+										onClick={() => this.menuMouseEnter(i)}
+										icon={faAngleRight}
+									/>
 								</span>
 							);
 						})}

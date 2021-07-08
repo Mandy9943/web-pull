@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import Link from "next/link";
-import Logo from "../Logo/Logo";
-import "./Nav.css";
-import "./notification.css";
-import "./modal-home.css";
-import "./modal-account.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { getData } from "../../../services/userApi";
-import Modal from "../Modal/Modal";
-import NotificationItem from "../NotificationItem";
-import MenuCategories from "../MenuCategories";
+import React, { Component } from 'react';
+import Link from 'next/link';
+import Logo from '../Logo/Logo';
+import './Nav.css';
+import './notification.css';
+import './modal-home.css';
+import './modal-account.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { getData } from '../../../services/userApi';
+import Modal from '../Modal/Modal';
+import NotificationItem from '../NotificationItem';
+import MenuCategories from '../MenuCategories';
 import {
 	faBars,
 	faSearch,
@@ -25,11 +25,11 @@ import {
 	faShoppingBag,
 	faCog,
 	faTag,
-} from "@fortawesome/free-solid-svg-icons";
-import Autocomplete from "react-autocomplete-2";
-import { searchSuggestions } from "../../../services/productsApi";
-import { suggestionQuantity } from "../../../lib/config";
-import { signOut } from "../../../lib/auth";
+} from '@fortawesome/free-solid-svg-icons';
+import Autocomplete from 'react-autocomplete-2';
+import { searchSuggestions } from '../../../services/productsApi';
+import { suggestionQuantity } from '../../../lib/config';
+import { signOut } from '../../../lib/auth';
 
 export default class Nav extends Component {
 	constructor(props) {
@@ -56,12 +56,12 @@ export default class Nav extends Component {
 
 	logout() {
 		signOut();
-		document.location = "/";
+		document.location = '/';
 	}
 	/********************* START NOTIFICATIONS ******************************/
 	loadNotifications = () => {
-		const endp = "/getNotifications";
-		console.log("LoadNotifications");
+		const endp = '/getNotifications';
+		console.log('LoadNotifications');
 		// console.log(this.props)
 		getData(endp, this.props.jwt).then((response) => {
 			this.setState({ notifications: response.data });
@@ -111,17 +111,14 @@ export default class Nav extends Component {
 	};
 
 	boldString = (str, find) => {
-		let re = new RegExp(find, "g");
+		let re = new RegExp(find, 'g');
 		return str.replace(re, find.bold());
 	};
 
 	onChange = (event) => {
 		this.setState({ value: event.target.value });
-		if (event.target.value !== "") {
-			let suggestions = searchSuggestions(
-				suggestionQuantity,
-				event.target.value
-			);
+		if (event.target.value !== '') {
+			let suggestions = searchSuggestions(suggestionQuantity, event.target.value);
 			suggestions.then((response) => {
 				let filterResponse = response.data.results.map((item) => ({
 					text: this.boldString(item.alias, this.state.value),
@@ -132,19 +129,19 @@ export default class Nav extends Component {
 	};
 
 	onKeyPress = (event) => {
-		if (event.key === "Enter") {
+		if (event.key === 'Enter') {
 			this.search();
 		}
 	};
 
 	onSuggestionSelected = (suggestion) => {
-		let text = suggestion.replace(/<\/?[^>]+(>|$)/g, "");
+		let text = suggestion.replace(/<\/?[^>]+(>|$)/g, '');
 		this.setState({ value: text });
 		this.search(text);
 	};
 
 	componentDidMount() {
-		getData("/getCategoriesForMenu").then((response) => {
+		getData('/getCategoriesForMenu').then((response) => {
 			this.setState({ categories: response.data });
 		});
 		if (this.props.authenticated) {
@@ -175,7 +172,7 @@ export default class Nav extends Component {
 		const { suggestions, value } = this.state;
 		const contentLogoutComp = (
 			<div className="modal-logout">
-				<p>{"¿Estás seguro que quieres cerrar sesión?"}</p>
+				<p>{'¿Estás seguro que quieres cerrar sesión?'}</p>
 				<button onClick={this.logout} className="logout-button">
 					Aceptar
 				</button>
@@ -244,7 +241,7 @@ export default class Nav extends Component {
 					</Link>
 					{authenticated ? (
 						<a
-							style={{ cursor: "pointer" }}
+							style={{ cursor: 'pointer' }}
 							onClick={this.toggleModalLogout}
 							className="logout"
 						>
@@ -270,7 +267,7 @@ export default class Nav extends Component {
 										<div
 											className="suggestion-item"
 											aria-selected={isHighlighted}
-											style={{ background: isHighlighted ? "#ddd" : "white" }}
+											style={{ background: isHighlighted ? '#ddd' : 'white' }}
 										>
 											<span dangerouslySetInnerHTML={{ __html: item.text }} />
 										</div>
@@ -279,7 +276,7 @@ export default class Nav extends Component {
 									onChange={this.onChange}
 									onSelect={this.onSuggestionSelected}
 									inputProps={{
-										placeholder: "Buscar productos...",
+										placeholder: 'Buscar productos...',
 										onKeyPress: this.onKeyPress,
 									}}
 									autoHighlight={false}
@@ -318,10 +315,7 @@ export default class Nav extends Component {
 											<Link href="/ayuda">
 												<a className="bell">Ayuda / PQR</a>
 											</Link>
-											<a
-												className="bell"
-												onClick={() => this.showHideNotification()}
-											>
+											<a className="bell" onClick={() => this.showHideNotification()}>
 												<FontAwesomeIcon icon={faBell} />
 												{this.state.notifications.length > 0 ? (
 													<span className="accent-background">
@@ -330,47 +324,42 @@ export default class Nav extends Component {
 												) : null}
 											</a>
 										</span>
-										<a
-											onClick={() => this.showHideMenu()}
-											className="user-icon"
-										>
-											<FontAwesomeIcon icon={faUser} /> {this.props.user}{" "}
+										<a onClick={() => this.showHideMenu()} className="user-icon">
+											<FontAwesomeIcon icon={faUser} /> {this.props.user}{' '}
 											<FontAwesomeIcon icon={faAngleDown} />
 										</a>
 										<section
 											onMouseEnter={() => this.mEnterMenu()}
 											onMouseLeave={() => this.mLeaveMenu()}
-											className={
-												this.state.showMenu ? "menu-off menu-on" : "menu-off"
-											}
+											className={this.state.showMenu ? 'menu-off menu-on' : 'menu-off'}
 										>
 											<h5>
 												<FontAwesomeIcon className="icon" icon={faUser} />
-												<b className="name"> Hola, {this.props.user}</b>{" "}
-												Bienvenido a Kiero Marketplace
+												<b className="name"> Hola, {this.props.user}</b> Bienvenido a
+												Kiero Marketplace
 											</h5>
 											<section className="options">
 												<hr />
 												<Link href="/cuenta">
 													<a className="items">
-														{" "}
+														{' '}
 														<FontAwesomeIcon icon={faUser} />
 														Mi cuenta
 													</a>
 												</Link>
-												{this.props.role === "user" && (
+												{this.props.role === 'user' && (
 													<Link href="/cuenta#compras">
 														<a className="items">
-															{" "}
+															{' '}
 															<FontAwesomeIcon icon={faShoppingBag} />
 															Compras
 														</a>
 													</Link>
 												)}
-												{this.props.role === "vendedor" && (
+												{this.props.role === 'vendedor' && (
 													<Link href="/cuenta#ventas">
 														<a className="items">
-															{" "}
+															{' '}
 															<FontAwesomeIcon icon={faTag} />
 															Ventas
 														</a>
@@ -378,15 +367,15 @@ export default class Nav extends Component {
 												)}
 												<Link href="/cuenta">
 													<a className="items">
-														{" "}
+														{' '}
 														<FontAwesomeIcon icon={faServer} />
 														Resumen
 													</a>
 												</Link>
-												{this.props.role === "user" && (
+												{this.props.role === 'user' && (
 													<Link href="/cuenta#facturacion">
 														<a className="items">
-															{" "}
+															{' '}
 															<FontAwesomeIcon icon={faMoneyBillWave} />
 															Facturacion
 														</a>
@@ -394,14 +383,14 @@ export default class Nav extends Component {
 												)}
 												<Link href="/cuenta#opciones">
 													<a className="items">
-														{" "}
+														{' '}
 														<FontAwesomeIcon icon={faCog} />
 														Mis datos
 													</a>
 												</Link>
 												<hr />
 												<a
-													style={{ cursor: "pointer" }}
+													style={{ cursor: 'pointer' }}
 													onClick={this.toggleModalLogout}
 													className="items"
 												>
@@ -414,20 +403,15 @@ export default class Nav extends Component {
 											onMouseLeave={() => this.mLeave()}
 											className={
 												this.state.showNotification
-													? "notification-off notification-on"
-													: "notification-off"
+													? 'notification-off notification-on'
+													: 'notification-off'
 											}
 										>
 											<div className="triangle-up" />
 											<h3 className="title">Notificaciones</h3>
 											{this.state.notifications.length > 0 ? (
-												this.state.notifications.map(function (
-													notification,
-													i
-												) {
-													return (
-														<NotificationItem key={i} data={notification} />
-													);
+												this.state.notifications.map(function (notification, i) {
+													return <NotificationItem key={i} data={notification} />;
 												})
 											) : (
 												<b>
@@ -437,11 +421,9 @@ export default class Nav extends Component {
 													<br />
 												</b>
 											)}
-											<Link href={"/cuenta"}>
+											<Link href={'/cuenta'}>
 												<a>
-													<h4 className="see-all">
-														Ver todas las notificaciones
-													</h4>
+													<h4 className="see-all">Ver todas las notificaciones</h4>
 												</a>
 											</Link>
 										</section>
@@ -457,7 +439,7 @@ export default class Nav extends Component {
 											<li
 												onMouseEnter={this.mouseEnter}
 												onClick={this.mouseEnter}
-												style={{ cursor: "pointer" }}
+												style={{ cursor: 'pointer' }}
 											>
 												Categorías <FontAwesomeIcon icon={faAngleDown} />
 											</li>
@@ -475,10 +457,7 @@ export default class Nav extends Component {
 									>
 										<a>Cámaras</a>
 									</Link>
-									<Link
-										href="/categoria/[category]"
-										as="/categoria/Electrodomésticos"
-									>
+									<Link href="/categoria/[category]" as="/categoria/Electrodomésticos">
 										<a>Electrodomésticos</a>
 									</Link>
 									<Link
@@ -490,10 +469,7 @@ export default class Nav extends Component {
 									<Link href="/categoria/[category]" as="/categoria/Hogar">
 										<a>Hogar</a>
 									</Link>
-									<Link
-										href="/categoria/[category]"
-										as="/categoria/Juguetes y juegos"
-									>
+									<Link href="/categoria/[category]" as="/categoria/Juguetes y juegos">
 										<a>Juguetes</a>
 									</Link>
 									<Link
@@ -518,10 +494,7 @@ export default class Nav extends Component {
 									suggestionsMenuId="search-suggestions"
 									items={suggestions}
 									renderItem={(item, isHighlighted) => (
-										<div
-											className="suggestion-item"
-											style={{ background: "white" }}
-										>
+										<div className="suggestion-item" style={{ background: 'white' }}>
 											{item.text}
 										</div>
 									)}
@@ -529,7 +502,7 @@ export default class Nav extends Component {
 									onChange={this.onChange}
 									onSelect={this.onSuggestionSelected}
 									inputProps={{
-										placeholder: "Buscar productos...",
+										placeholder: 'Buscar productos...',
 										onKeyPress: this.onKeyPress,
 									}}
 								/>
@@ -553,12 +526,7 @@ export default class Nav extends Component {
 							<div className="nav-botton">
 								{this.state.modal2 ? (
 									<section className="modal-home">
-										<Modal
-											toggle={this.toggleModal}
-											num="2"
-											content={content2}
-											button
-										/>
+										<Modal toggle={this.toggleModal} num="2" content={content2} button />
 									</section>
 								) : null}
 								<div
@@ -587,19 +555,15 @@ export default class Nav extends Component {
 				) : null}
 
 				{this.state.modalLogout ? (
-					<Modal
-						toggle={this.toggleModalLogout}
-						content={contentLogoutComp}
-						button
-					/>
+					<Modal toggle={this.toggleModalLogout} content={contentLogoutComp} button />
 				) : null}
 			</>
 		);
 	}
 
-	search = (ots = "") => {
-		let url = "/busqueda/";
-		this.state.value !== undefined && ots === ""
+	search = (ots = '') => {
+		let url = '/busqueda/';
+		this.state.value !== undefined && ots === ''
 			? (url = url + this.state.value)
 			: (url = url + ots);
 		location.href = url;
