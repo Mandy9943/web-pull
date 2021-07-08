@@ -14,7 +14,6 @@ export default class ProductsSlider extends Component {
 			data: [],
 		};
 	}
-
 	componentDidMount() {
 		getProductsBasic(this.props.category, 25).then((response) => {
 			let data = [];
@@ -24,6 +23,18 @@ export default class ProductsSlider extends Component {
 				data.push(response.data.results[product]);
 			}
 			this.setState({ data });
+			const oe = response.data.results.map((prod, index) => {
+				return {
+					item_name: prod.title,
+					item_id: prod.product_id,
+					price: prod.price,
+					item_brand: prod.brand,
+					item_category: prod.category,
+					item_list_name: 'Sliders Home',
+					index: index,
+				};
+			});
+			console.log('oe', oe);
 		});
 	}
 
@@ -80,7 +91,6 @@ export default class ProductsSlider extends Component {
 			}
 			productListMobile.push(
 				<ProductCard
-					style={{ padding: '30px' }}
 					key={skid++}
 					price={this.state.data[i].price}
 					url={url}

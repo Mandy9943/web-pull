@@ -1,6 +1,7 @@
 import socketIOClient from 'socket.io-client';
 import Cookies from 'js-cookie';
 import React, { useState, useEffect } from 'react';
+import './socket.css';
 import { div } from 'prelude-ls';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
@@ -27,9 +28,10 @@ const showNotification = (text) => {
 		} else {
 			//alert("notificacion web")
 			Toast.fire({
-				iconHtml: <NotificationsNoneIcon />,
+				iconHtml: <NotificationsNoneIcon fontSize="large" />,
 				iconColor: 'white',
-				title: <div style={{ color: 'white' }}>{text}</div>,
+				border: 'none !important',
+				title: <div style={{ color: 'white', border: 'none' }}>{text}</div>,
 				background: '#cf0a2c',
 			});
 		}

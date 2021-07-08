@@ -83,7 +83,6 @@ class Explorer extends Component {
                 data.push(response.data.results[product]);
             }
             this.setState({ data: data, categoryName:category[categoryRandom].name, exploreImage: category[categoryRandom].image  });
-            console.log(response)
         });
   }
 
