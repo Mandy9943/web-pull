@@ -1,6 +1,6 @@
 // Duplicating
 
-section.edit-menu
+section.edit-menu-analytics
   margin-bottom: 25px;
   font-size: 14px;
 
@@ -23,18 +23,28 @@ section.edit-menu
     padding: 25px 50px;
     margin: 16px 0px;
 
-    div
-      display: flex;
+    .encabezado
+      display: flex
       justify-content: space-between;
       margin-bottom: 8px;
 
-    textarea
-      width: 100%;
-      height: 200px;
-      overflow: auto;
-      margin-top: 5px;
-      resize: none;
-
+    div
+      justify-content: space-between;
+      margin-bottom: 8px;
+      
+    
+      input
+        margin: 10px
+        width: 20px
+      
+      .codigo
+        width: 60%
+      
+      .error
+        color: red
+        align-items: center
+        display: flex
+        justify-content: center
     p
       margin-top: 8px;
 

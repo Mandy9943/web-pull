@@ -11,12 +11,12 @@ export default function({ cb, children, section }) {
             <div className="breadcrumb">
                 <a onClick={(e) => cb("start", e)}>KieroShop</a>
                 <FontAwesomeIcon icon={faAngleRight} />
-                {['menu'].some(el=>el===section.key) &&
+                {['menu','domain','theme'].some(el=>el===section.key) &&
                 <>
                     <a onClick={(e) => cb("edit", e)}>Editar la tienda</a>
                     <FontAwesomeIcon icon={faAngleRight} />
-                    <a onClick={(e) => cb("edit", e)}>Configuracion</a>
-                    <FontAwesomeIcon icon={faAngleRight} />
+                    {/* <a onClick={(e) => cb("edit", e)}>Configuraci&oacute;n</a>
+                    <FontAwesomeIcon icon={faAngleRight} /> */}
                 </>
                 }
                 <span>{section.text}</span>
