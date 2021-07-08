@@ -30,6 +30,7 @@
   .home-content {
     margin: 0px auto;
     width: 100%;
+    overflow-x: hidden;
   }
   .footer-social {
     width: 100%;
@@ -45,4 +46,6 @@
     margin: auto !important;
   }
 }
+
+
 /*# sourceMappingURL=Home.css.map */

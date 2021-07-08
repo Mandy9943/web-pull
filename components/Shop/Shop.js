@@ -20,10 +20,16 @@ import ShopEdit from "./ShopEdit/ShopEdit";
 import ShopEditScreen from "./ShopEditScreen";
 import ShopEditMenu from "./ShopEditMenu";
 import ShopAnalytics from "./ShopAnalytics";
+import ShopTheme from "./ShopTheme";
+import ShopGoogleAds from "./ShopGoogleAds";
+import ShopFacebookPixel from "./ShopFacebookPixel";
+import ShopFacebookLink from "./ShopFacebookLink";
 import ShopEditDomain from "./ShopEditDomain";
 import ShopEditDataStorage from './ShopEditDataStorage'
 import { findKeyValueInArr } from '../../lib/functions'
 import { update_store } from '../../services/storeApi';
+import ShopMarketing from "./ShopMarketing";
+import ShopWhatsapp from "./ShopWhatsapp";
 
 const Shop = ({ store_data, user_data }) => {
 
@@ -58,16 +64,23 @@ const Shop = ({ store_data, user_data }) => {
   const [store_domain, setStoreDomain] = useState(st_data.domain)
   const [store_status, setStoreStatus] = useState(st_data.store.status)
 
+  const [facebook_pixel, setFacebookPixel] = useState(st_data.facebook_pixel)
+  const [google_analytic, setGoogleAnalytic] = useState(st_data.google_analytic)
+
+  const [hasChange, setHasChange] = useState(false)
+
   const [store_design, setStoreDesign] = useState({
     st_design_header_backgroundimage: st_data.design.header.background_img,
     st_design_header_title_color: st_data.design.header.title.color,
     st_design_header_title_font_family: st_data.design.header.title.font_family,
     st_design_header_subtitle_text: st_data.design.header.subtitle.text,
+    st_design_header_subtitle_color: st_data.design.header.subtitle.color,
     st_design_st_design_header_subtitle_font_family: st_data.design.header.subtitle.font_family,
     st_design_main_background_color: st_data.design.main.background_color,
     st_design_footer_background_color: st_data.design.footer.background_color,
     st_design_st_design_footer_copyright: st_data.design.footer.copyright,
     st_design_footer_logo: st_data.design.footer.logo,
+    st_desing_main_widget: st_data.design.main.widget,
   }
   )
 
@@ -86,7 +99,11 @@ const Shop = ({ store_data, user_data }) => {
     stdata: false,
     ws: false,
     marketing: false,
-    analytics: false
+    analytics: false,
+    facebookPixel: false,
+    googleAds: false,
+    facebookLink: false,
+    theme: false
   })
 
   const [show_edit_section, setShow_edit_sectionState] = useState("main")
@@ -128,10 +145,7 @@ const Shop = ({ store_data, user_data }) => {
 
   const setDesignValues = (name, value) => {
     setStoreDesign({ ...store_design, [name]: value })
-
   }
-
-
 
   const CloseSidebar = () => {
     setCloseSidebar(!closeSidebar)
@@ -140,14 +154,17 @@ const Shop = ({ store_data, user_data }) => {
 
   const setEditSection = (section) => {
     switch (section) {
-      case 'theme':
-        setShow_edit_sectionState('theme')
-        break;
+      // case 'theme':
+      //   setShow_edit_sectionState('theme')
+      //   break;
       case 'color':
         setShow_edit_sectionState('color')
         break;
       case 'edit':
         setShow_edit_sectionState('edit')
+        break;
+      case 'colorEdit':
+        setShow_edit_sectionState('colorEdit')
         break;
       default:
         setShow_edit_sectionState('main')
@@ -163,6 +180,14 @@ const Shop = ({ store_data, user_data }) => {
 
   const onQuickConfig = async (data) => {
     update_store(store_domain, user_data.jwt, { design: data })
+  }
+
+  const onSaveFacebookPixel = async () => {
+    update_store(store_domain, user_data.jwt, { facebook_pixel: facebook_pixel })
+  }
+  const onSaveGoogleAnalytic = async () => {
+    console.log(encodeURI(google_analytic))
+    update_store(store_domain, user_data.jwt, { google_analytic: google_analytic })
   }
 
 
@@ -230,6 +255,8 @@ const Shop = ({ store_data, user_data }) => {
               store_design={store_design}
               setDesignValues={setDesignValues}
               quick_config={onQuickConfig}
+              hasChange={hasChange}
+              setHasChange={setHasChange}
             />
           </>
         }
@@ -249,6 +276,7 @@ const Shop = ({ store_data, user_data }) => {
           <ShopEditScreen
             cb={showSection}
             section={{ text: "Dominio Web", key: "domain" }}
+            // section={findKeyValueInArr('key', 'domain', configMenu)}
           >
             <ShopEditDomain
               cb={showSection}
@@ -278,6 +306,91 @@ const Shop = ({ store_data, user_data }) => {
             section={{ text: "Google analytics", key: "analytics" }}
           >
             <ShopAnalytics
+              cb={showSection}
+              onSaveGoogleAnalytic={onSaveGoogleAnalytic}
+              google_analytic={google_analytic}
+              setGoogleAnalytic={setGoogleAnalytic}
+              hasChange={hasChange}
+              setHasChange={setHasChange}
+            />
+          </ShopEditScreen>
+        }
+        {display.googleAds &&
+          <ShopEditScreen
+            cb={showSection}
+            section={{ text: "Google Ads", key: "googleAds" }}
+          >
+            <ShopGoogleAds
+              cb={showSection}
+            />
+          </ShopEditScreen>
+        }
+        {display.facebookPixel &&
+          <ShopEditScreen
+            cb={showSection}
+            section={{ text: "Facebook Pixel", key: "facebookPixel" }}
+
+          >
+            <ShopFacebookPixel
+              cb={showSection}
+              onSaveFacebookPixel={onSaveFacebookPixel}
+              facebook_pixel={facebook_pixel}
+              setFacebookPixel={setFacebookPixel}
+              hasChange={hasChange}
+              setHasChange={setHasChange}
+            />
+          </ShopEditScreen>
+        }
+        {display.facebook &&
+          <ShopEditScreen
+            cb={showSection}
+            section={{ text: "Facebook", key: "facebook" }}
+          >
+            <ShopFacebook
+              cb={showSection}
+            />
+          </ShopEditScreen>
+        }
+        {display.facebookLink &&
+          <ShopEditScreen
+            cb={showSection}
+            section={{ text: "Vínculate a Facebook", key: "facebookLink" }}
+          >
+            <ShopFacebookLink
+              cb={showSection}
+            />
+          </ShopEditScreen>
+        }
+        {display.theme &&
+          <ShopEditScreen
+            cb={showSection}
+            section={{ text: "Theme", key: "theme" }}
+            // section={findKeyValueInArr('key', 'theme', configMenu)}
+          >
+
+            <ShopTheme
+              cb={showSection}
+            />
+          </ShopEditScreen>
+        }
+        {display.marketing &&
+          <ShopEditScreen
+            cb={showSection}
+            section={{ text: "Herramientas de Marketing", key: "marketing" }}
+          >
+
+            <ShopMarketing
+              cb={showSection}
+            />
+          </ShopEditScreen>
+        }
+        {display.ws &&
+          <ShopEditScreen
+            cb={showSection}
+            section={{ text: "Whatsapp", key: "ws" }}
+          >
+
+            <ShopWhatsapp
               cb={showSection}
             />
           </ShopEditScreen>
