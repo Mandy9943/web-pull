@@ -75,7 +75,7 @@ function Product({ data, u_data }) {
 				<meta property="og:type" content="WebSite" />
 				<meta property="og:site_name" content="Kiero.co" />
 				<meta property="og:image" content={`${data.images[0].url}`} />
-				<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+				<meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
 				<meta name="robots" content="index,follow" />
 				<link rel="icon" href={favicon} type="image/png" />
 				<link

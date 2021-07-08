@@ -48,7 +48,7 @@ export default class Tienda extends React.Component {
                 name="viewport"
                 content="initial-scale=1.0, width=device-width"
             />
-            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
             <meta name="robots" content="index,follow" />
             <meta name="robots" content="noodp" />
             <meta name="robots" content="noydir" />
