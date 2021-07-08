@@ -38,7 +38,7 @@ function Results({data, session}) {
             <meta name="twitter: title" content={`Compra en Kiero ${data.search} - todo lo
             encuentras en nuestra Tienda Online`} />
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
             <meta name="robots" content="index,follow" />
             <meta name="description" content="Descubre miles de productos al mejor precio. Envíos
             gratis a todo el país, encuentra lo que buscas en Kiero.co" />

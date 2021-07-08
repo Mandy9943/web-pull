@@ -40,7 +40,7 @@ export default class category_list extends Component {
                     <title>Compra en Kiero.co Marketplace | "category_name"</title>
                     <meta name="Title" content="Compra en Kiero.co Marketplace | category_name" />
                     <meta name="Description" content="KIERO.CO Marketplace | Encuentra category_name en Kiero.co - Descubre millones de productos online" />
-                    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+                    <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
                     <meta name="robots" content="index,follow" />
                     <meta name="robots" content="noodp" />
                     <meta name="robots" content="noydir" />

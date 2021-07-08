@@ -11,7 +11,7 @@ import Spinner from "./../Common/Spinner";
 class Detail extends Component {
   constructor(props) {
     super(props);
-    this.state = { image: this.props.images[0].url };
+    this.state = { image: this.props.images[this.props.images.length - 1].url };
     this.showImage = this.showImage.bind(this);
   }
 
@@ -53,7 +53,7 @@ class Detail extends Component {
         <div className="gallery-responsive">
           <Link href={url}><a className="back-button"><FontAwesomeIcon icon={faAngleLeft} /> Ir al listado</a></Link>
           {/*NEED FIX THIS SHIT*/}
-          <SliderDetail img={this.props.images} />
+          <SliderDetail img={this.props.images.reverse()} />
         </div>
       </>
     );

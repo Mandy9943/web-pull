@@ -20,7 +20,7 @@ function Product({ data, u_data }) {
 					}}
 				/>
 				{/* End Google Tag Manager */}
-				<title>Kiero.co | {data.title}</title>
+				<title>Kiero.co | {data.title.substring(0,60)}</title>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 				<meta
 					name="Description"
@@ -30,7 +30,7 @@ function Product({ data, u_data }) {
       gratis - Encuentra más productos de ${data.category ? data.category.name : ''}`}
 				/>
 				<meta name="Keywords" content={`${data.title}`} />
-				<meta name="Title" content={`Kiero.co -${data.title} a ${data.price}`} />
+				<meta name="Title" content={`Kiero.co -${data.title.substring(0,60)} a ${data.price}`} />
 				<meta name="apple-mobile-web-app-capable" content="yes" />
 				<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 				<meta name="google" content="notranslate" />
@@ -75,7 +75,7 @@ function Product({ data, u_data }) {
 				<meta property="og:type" content="WebSite" />
 				<meta property="og:site_name" content="Kiero.co" />
 				<meta property="og:image" content={`${data.images[0].url}`} />
-				<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+				<meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
 				<meta name="robots" content="index,follow" />
 				<link rel="icon" href={favicon} type="image/png" />
 				<link
