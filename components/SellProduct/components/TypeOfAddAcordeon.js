@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ErrorIcon from '@material-ui/icons/Error';
 import Collapse from '@material-ui/core/Collapse';
@@ -28,15 +28,10 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function TypeOfAddAcordeon({
-	expandedTypeOfAdd,
-	setExpandedTypeOfAdd,
-	typeOfAddInfo,
-	setTypeOfAddInfo,
-	selectedTypeOfAdd,
-	setSelectedTypeOfAdd,
-}) {
+export default function TypeOfAddAcordeon({ selectedTypeOfAdd, setSelectedTypeOfAdd }) {
 	const classes = useStyles();
+	const [expandedTypeOfAdd, setExpandedTypeOfAdd] = useState(false);
+	const [typeOfAddInfo, setTypeOfAddInfo] = useState(false);
 
 	return (
 		<div className="productAcordeonContainer">
@@ -155,7 +150,6 @@ export default function TypeOfAddAcordeon({
 						</div>
 					</div>
 				</div>
-			
 			</Collapse>
 		</div>
 	);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ErrorIcon from '@material-ui/icons/Error';
 import Collapse from '@material-ui/core/Collapse';
@@ -26,13 +26,10 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function AvailabilityAcordeon({
-	expandedAvailability,
-	setExpandedAvailability,
-	availabilityInfo,
-	setAvailabilityInfo,
-}) {
+export default function AvailabilityAcordeon({}) {
 	const classes = useStyles();
+	const [expandedAvailability, setExpandedAvailability] = useState(false);
+	const [availabilityInfo, setAvailabilityInfo] = useState(false);
 
 	return (
 		<div className="productAcordeonContainer">

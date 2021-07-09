@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ErrorIcon from '@material-ui/icons/Error';
 import Collapse from '@material-ui/core/Collapse';
@@ -26,13 +26,10 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function DescriptionAcordeon({
-	expandedDescription,
-	setExpandedDescription,
-	descriptionInfo,
-	setDescriptionInfo,
-}) {
+export default function DescriptionAcordeon({}) {
 	const classes = useStyles();
+	const [expandedDescription, setExpandedDescription] = useState(false);
+	const [descriptionInfo, setDescriptionInfo] = useState(false);
 
 	return (
 		<div className="productAcordeonContainer">

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase';
 import FormControl from '@material-ui/core/FormControl';
@@ -63,13 +63,10 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function DataSheetAcordeon({
-	expandedDataSheet,
-	setExpandedDataSheet,
-	dataSheetInfo,
-	setDataSheetInfo,
-}) {
+export default function DataSheetAcordeon({}) {
 	const classes = useStyles();
+	const [expandedDataSheet, setExpandedDataSheet] = useState(false);
+	const [dataSheetInfo, setDataSheetInfo] = useState(false);
 
 	return (
 		<div className="productAcordeonContainer">

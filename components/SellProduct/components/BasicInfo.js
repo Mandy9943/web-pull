@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import CameraAltIcon from '@material-ui/icons/CameraAlt';
 import InputBase from '@material-ui/core/InputBase';
@@ -16,12 +16,24 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function BasicInfo({
-	pictureInfo,
-	setPictureInfo,
-	codeInfo,
-	setCodeInfo,
+	title,
+	setTitle,
+	price,
+	setPrice,
+	image,
+	setImage,
+	color,
+	setColor,
+	quantity,
+	setQuantity,
+	code,
+	setCode,
+	noCode,
+	setNoCode,
 }) {
 	const classes = useStyles();
+	const [pictureInfo, setPictureInfo] = useState(false);
+	const [codeInfo, setCodeInfo] = useState(false);
 
 	return (
 		<>
@@ -33,6 +45,10 @@ export default function BasicInfo({
 				<div>Título</div>
 				<div className="productTitleInput">
 					<InputBase
+						inputProps={{ maxLength: '12' }}
+						maxLength="16"
+						value={title}
+						onChange={(e) => setTitle(e.target.value)}
 						margin="dense"
 						fullWidth
 						className={classes.margin}
@@ -40,7 +56,7 @@ export default function BasicInfo({
 						placeholder="Escribe el titulo del producto"
 					/>
 				</div>
-				<div className="charCount">54/150</div>
+				<div className="charCount">{title.length} / 150</div>
 			</div>
 			<div className="productPrice">
 				<div>Precio</div>

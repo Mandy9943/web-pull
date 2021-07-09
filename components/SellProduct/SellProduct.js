@@ -16,31 +16,29 @@ import Button from '@material-ui/core/Button';
 import Footer from '../Common/Footer';
 
 export default function SellProduct({ sesion }) {
-	const [pictureInfo, setPictureInfo] = useState(false);
-	const [codeInfo, setCodeInfo] = useState(false);
+	//BasicInfo States
 	const [title, setTitle] = useState('');
+	console.log('Titulo', title);
 	const [price, setPrice] = useState('');
+	const [image, setImage] = useState('');
+	const [color, setColor] = useState('');
+	const [quantity, setQuantity] = useState('');
+	const [code, setCode] = useState('');
+	const [noCode, setNoCode] = useState(false);
 
-	const [expandedDataSheet, setExpandedDataSheet] = useState(false);
-	const [dataSheetInfo, setDataSheetInfo] = useState(false);
-	const [expandedWithdraw, setExpandedWithdraw] = useState(false);
-	const [withdrawInfo, setWithdrawInfo] = useState(false);
+	//DataSheet States
+
 	const [switchedWithdraw, setSwitchedWithdraw] = useState(false);
-	const [expandedTypeOfAdd, setExpandedTypeOfAdd] = useState(false);
-	const [typeOfAddInfo, setTypeOfAddInfo] = useState(false);
+	console.log('Retiro en persona', switchedWithdraw);
+
 	const [selectedTypeOfAdd, setSelectedTypeOfAdd] = useState('');
-	const [expandedDescription, setExpandedDescription] = useState(false);
-	const [descriptionInfo, setDescriptionInfo] = useState(false);
-	const [expandedVideo, setExpandedVideo] = useState(false);
-	const [videoInfo, setVideoInfo] = useState(false);
-	const [expandedAvailability, setExpandedAvailability] = useState(false);
-	const [availabilityInfo, setAvailabilityInfo] = useState(false);
-	const [expandedWarranty, setExpandedWarranty] = useState(false);
-	const [warrantyInfo, setWarrantyInfo] = useState(false);
+	console.log('Tipo de anuncio', selectedTypeOfAdd);
+
 	const [warrantyValue, setWarrantyValue] = useState('');
-	const [expandedCategory, setExpandedCategory] = useState(false);
-	const [categoryInfo, setCategoryInfo] = useState(false);
+	console.log('Garantia', warrantyValue);
+
 	const [categoryValue, setCategoryValue] = useState('');
+	console.log('Categoria', categoryValue);
 
 	return (
 		<>
@@ -53,65 +51,39 @@ export default function SellProduct({ sesion }) {
 			<div className="sellProductContainer">
 				<div>
 					<BasicInfo
-						pictureInfo={pictureInfo}
-						setPictureInfo={setPictureInfo}
-						codeInfo={codeInfo}
-						setCodeInfo={setCodeInfo}
+						title={title}
+						setTitle={setTitle}
+						price={price}
+						setPrice={setPrice}
+						image={image}
+						setImage={setImage}
+						color={color}
+						setColor={setColor}
+						quantity={quantity}
+						setQuantity={setQuantity}
+						code={code}
+						setCode={setCode}
+						noCode={noCode}
+						setNoCode={setNoCode}
 					/>
 					<div className="productAcordeonsContainer">
-						<DataSheetAcordeon
-							expandedDataSheet={expandedDataSheet}
-							setExpandedDataSheet={setExpandedDataSheet}
-							dataSheetInfo={dataSheetInfo}
-							setDataSheetInfo={setDataSheetInfo}
-						/>
+						<DataSheetAcordeon />
 						<WithdrawAcordeon
-							expandedWithdraw={expandedWithdraw}
-							setExpandedWithdraw={setExpandedWithdraw}
-							withdrawInfo={withdrawInfo}
-							setWithdrawInfo={setWithdrawInfo}
 							switchedWithdraw={switchedWithdraw}
 							setSwitchedWithdraw={setSwitchedWithdraw}
 						/>
 						<TypeOfAddAcordeon
-							expandedTypeOfAdd={expandedTypeOfAdd}
-							setExpandedTypeOfAdd={setExpandedTypeOfAdd}
-							typeOfAddInfo={typeOfAddInfo}
-							setTypeOfAddInfo={setTypeOfAddInfo}
 							selectedTypeOfAdd={selectedTypeOfAdd}
 							setSelectedTypeOfAdd={setSelectedTypeOfAdd}
 						/>
-						<DescriptionAcordeon
-							expandedDescription={expandedDescription}
-							setExpandedDescription={setExpandedDescription}
-							descriptionInfo={descriptionInfo}
-							setDescriptionInfo={setDescriptionInfo}
-						/>
-						<VideoAcordeon
-							expandedVideo={expandedVideo}
-							setExpandedVideo={setExpandedVideo}
-							videoInfo={videoInfo}
-							setVideoInfo={setVideoInfo}
-						/>
-						<AvailabilityAcordeon
-							expandedAvailability={expandedAvailability}
-							setExpandedAvailability={setExpandedAvailability}
-							availabilityInfo={availabilityInfo}
-							setAvailabilityInfo={setAvailabilityInfo}
-						/>
+						<DescriptionAcordeon />
+						<VideoAcordeon />
+						<AvailabilityAcordeon />
 						<WarrantyAcordeon
-							expandedWarranty={expandedWarranty}
-							setExpandedWarranty={setExpandedWarranty}
-							warrantyInfo={warrantyInfo}
-							setWarrantyInfo={setWarrantyInfo}
 							warrantyValue={warrantyValue}
 							setWarrantyValue={setWarrantyValue}
 						/>
 						<CategoryAcordeon
-							expandedCategory={expandedCategory}
-							setExpandedCategory={setExpandedCategory}
-							categoryInfo={categoryInfo}
-							setCategoryInfo={setCategoryInfo}
 							categoryValue={categoryValue}
 							setCategoryValue={setCategoryValue}
 						/>

@@ -28,16 +28,10 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function CategoryAcordeon({
-	expandedCategory,
-	setExpandedCategory,
-	categoryInfo,
-	setCategoryInfo,
-	categoryValue,
-	setCategoryValue,
-}) {
+export default function CategoryAcordeon({ categoryValue, setCategoryValue }) {
 	const classes = useStyles();
-
+	const [expandedCategory, setExpandedCategory] = useState(false);
+	const [categoryInfo, setCategoryInfo] = useState(false);
 	const [subCategories, setSubCategories] = useState([]);
 
 	useEffect(() => {
@@ -103,6 +97,10 @@ export default function CategoryAcordeon({
 					Indica en que categoría se encuentra se encuentra tu producto
 				</div>
 				<Autocomplete
+					value={categoryValue}
+					onChange={(event, newValue) => {
+						setCategoryValue(newValue);
+					}}
 					options={subCategories}
 					getOptionLabel={(option) => option}
 					style={{ width: 380, marginBottom: 20 }}
@@ -112,7 +110,6 @@ export default function CategoryAcordeon({
 					popupIcon={<ExpandMoreIcon />}
 					noOptionsText="La categoria que buscas no existe"
 				/>
-			
 			</Collapse>
 		</div>
 	);

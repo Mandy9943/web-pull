@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ErrorIcon from '@material-ui/icons/Error';
 import Collapse from '@material-ui/core/Collapse';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Switch from '@material-ui/core/Switch';
 import clsx from 'clsx';
@@ -27,15 +26,11 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function WithdrawAcordeon({
-	expandedWithdraw,
-	setExpandedWithdraw,
-	withdrawInfo,
-	setWithdrawInfo,
-	switchedWithdraw,
-	setSwitchedWithdraw,
-}) {
+export default function WithdrawAcordeon({ switchedWithdraw, setSwitchedWithdraw }) {
 	const classes = useStyles();
+
+	const [expandedWithdraw, setExpandedWithdraw] = useState(false);
+	const [withdrawInfo, setWithdrawInfo] = useState(false);
 
 	return (
 		<div className="productAcordeonContainer">
