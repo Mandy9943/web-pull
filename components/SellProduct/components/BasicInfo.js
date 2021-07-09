@@ -4,10 +4,10 @@ import CameraAltIcon from '@material-ui/icons/CameraAlt';
 import InputBase from '@material-ui/core/InputBase';
 import TextField from '@material-ui/core/TextField';
 import Checkbox from '@material-ui/core/Checkbox';
-import Button from '@material-ui/core/Button';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import ErrorIcon from '@material-ui/icons/Error';
 import barCode from '../img/barCode.png';
+import HtmlTooltip from './Tooltip';
 
 const useStyles = makeStyles((theme) => ({
 	margin: {
@@ -60,15 +60,11 @@ export default function BasicInfo({
 					<div className="picturesContainer">
 						<div className="picturesTitle">
 							Fotos
-							<ErrorIcon
-								id="picturesTitleInfo"
-								onClick={() => setPictureInfo(!pictureInfo)}
-								onMouseOver={() => setPictureInfo(true)}
-								onMouseOut={() => setPictureInfo(false)}
-							/>
-							{pictureInfo ? (
-								<div className="picturesInfo">
-									<div className="picturesInfoContainer">
+							<HtmlTooltip
+								open={pictureInfo}
+								placement="top-start"
+								title={
+									<div style={{ width: '400px' }}>
 										<div className="picturesInfoTitle">Selecciona una buena foto</div>
 										<div className="picturesInfoParagraph">
 											Realizar la captura de buenas imágenes es fundamental, para que
@@ -78,10 +74,15 @@ export default function BasicInfo({
 											compradores puedan ampliarlas.
 										</div>
 									</div>
-								</div>
-							) : (
-								''
-							)}
+								}
+							>
+								<ErrorIcon
+									id="picturesTitleInfo"
+									onClick={() => setPictureInfo(!pictureInfo)}
+									onMouseOver={() => setPictureInfo(true)}
+									onMouseOut={() => setPictureInfo(false)}
+								/>
+							</HtmlTooltip>
 						</div>
 						<div className="picturesInstruction">Agrega fotos de tu producto</div>
 						<TextField id="uploadImageButton" type="file" style={{ display: 'none' }} />
@@ -159,12 +160,6 @@ export default function BasicInfo({
 							<Checkbox style={{ color: '#CF0A2C' }} />
 							<div className="productCodeCheckBoxText">Sin código</div>
 						</div>
-					</div>
-					<div className="productConfirmAndCancelButtons">
-						<Button id="productConfirmButton" variant="outlined" color="secondary">
-							Confirmar
-						</Button>
-						<Button id="productCancelButton">Cancelar</Button>
 					</div>
 				</div>
 			</div>

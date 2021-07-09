@@ -5,9 +5,9 @@ import FormControl from '@material-ui/core/FormControl';
 import NativeSelect from '@material-ui/core/NativeSelect';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Collapse from '@material-ui/core/Collapse';
-import Button from '@material-ui/core/Button';
 import ErrorIcon from '@material-ui/icons/Error';
 import clsx from 'clsx';
+import HtmlTooltip from './Tooltip';
 
 const BootstrapInput = withStyles((theme) => ({
 	root: {
@@ -76,28 +76,29 @@ export default function DataSheetAcordeon({
 			<div className="productAcordeon">
 				Ficha técnica
 				{expandedDataSheet ? (
-					<ErrorIcon
-						onClick={() => setDataSheetInfo(!dataSheetInfo)}
-						onMouseOver={() => setDataSheetInfo(true)}
-						onMouseOut={() => setDataSheetInfo(false)}
-						id="picturesCodeInfo"
-					/>
-				) : (
-					''
-				)}
-				{expandedDataSheet && dataSheetInfo ? (
-					<div className="dataSheetInfo">
-						<div className="dataSheetInfoContainer">
-							<div className="dataSheetInfoTitle">
-								Agrega las características del producto que estás vendiendo
+					<HtmlTooltip
+						open={dataSheetInfo}
+						placement="top-start"
+						title={
+							<div style={{ width: '431px' }}>
+								<div className="dataSheetInfoTitle">
+									Agrega las características del producto que estás vendiendo
+								</div>
+								<div className="dataSheetInfoParagraph">
+									Recuerda que entre más específico seas en tu descripción mayor confianza
+									le vas a generar al comprador, además de que vas a evitar preguntas
+									referentes a los detalles del producto que ofreces.
+								</div>
 							</div>
-							<div className="dataSheetInfoParagraph">
-								Recuerda que entre más específico seas en tu descripción mayor confianza
-								le vas a generar al comprador, además de que vas a evitar preguntas
-								referentes a los detalles del producto que ofreces.
-							</div>
-						</div>
-					</div>
+						}
+					>
+						<ErrorIcon
+							onClick={() => setDataSheetInfo(!dataSheetInfo)}
+							onMouseOver={() => setDataSheetInfo(true)}
+							onMouseOut={() => setDataSheetInfo(false)}
+							id="picturesCodeInfo"
+						/>
+					</HtmlTooltip>
 				) : (
 					''
 				)}
@@ -207,12 +208,6 @@ export default function DataSheetAcordeon({
 									</NativeSelect>
 								</FormControl>
 							</div>
-						</div>
-						<div className="productConfirmAndCancelButtons">
-							<Button id="dataSheetConfirmButton" variant="outlined">
-								Confirmar
-							</Button>
-							<Button id="dataSheetCancelButton">Cancelar</Button>
 						</div>
 					</div>
 				</div>

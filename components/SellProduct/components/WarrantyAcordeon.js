@@ -1,12 +1,12 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import ErrorIcon from '@material-ui/icons/Error';
 import Collapse from '@material-ui/core/Collapse';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Button from '@material-ui/core/Button';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import clsx from 'clsx';
+import HtmlTooltip from './Tooltip';
 
 const useStyles = makeStyles((theme) => ({
 	expand: {
@@ -52,29 +52,28 @@ export default function WarrantyAcordeon({
 			<div className="productAcordeon">
 				Garantía
 				{expandedWarranty ? (
-					<ErrorIcon
-						onClick={() => setWarrantyInfo(!warrantyInfo)}
-						onMouseOver={() => setWarrantyInfo(true)}
-						onMouseOut={() => setWarrantyInfo(false)}
-						id="picturesCodeInfo"
-					/>
-				) : (
-					''
-				)}
-				{expandedWarranty && warrantyInfo ? (
-					<div className="warrantyInfo">
-						<div className="warrantyInfoContainer">
-							<div className="warrantyInfoTitle">
-								Informales a tus comprados la garantía de tu producto
-							</div>
-							<div className="warrantyInfoParagraph">
-								<div>
+					<HtmlTooltip
+						open={warrantyInfo}
+						placement="top-start"
+						title={
+							<div>
+								<div className="warrantyInfoTitle">
+									Informales a tus comprados la garantía de tu producto
+								</div>
+								<div className="warrantyInfoParagraph">
 									Incluye la garantía de tus productos con la finalidad de brindarle una
 									mayor confianza a tus compradores.
 								</div>
 							</div>
-						</div>
-					</div>
+						}
+					>
+						<ErrorIcon
+							onClick={() => setWarrantyInfo(!warrantyInfo)}
+							onMouseOver={() => setWarrantyInfo(true)}
+							onMouseOut={() => setWarrantyInfo(false)}
+							id="picturesCodeInfo"
+						/>
+					</HtmlTooltip>
 				) : (
 					''
 				)}
@@ -117,14 +116,6 @@ export default function WarrantyAcordeon({
 						Sin garantía
 					</div>
 				</RadioGroup>
-				<div className="withdrawButtonsContainer">
-					<div className="withdrawConfirmAndCancelButtons">
-						<Button id="dataSheetConfirmButton" variant="outlined">
-							Confirmar
-						</Button>
-						<Button id="dataSheetCancelButton">Cancelar</Button>
-					</div>
-				</div>
 			</Collapse>
 		</div>
 	);

@@ -12,11 +12,15 @@ import VideoAcordeon from './components/VideoAcordeon';
 import AvailabilityAcordeon from './components/AvailabilityAcordeon';
 import WarrantyAcordeon from './components/WarrantyAcordeon';
 import CategoryAcordeon from './components/CategoryAcordeon';
+import Button from '@material-ui/core/Button';
 import Footer from '../Common/Footer';
 
 export default function SellProduct({ sesion }) {
 	const [pictureInfo, setPictureInfo] = useState(false);
 	const [codeInfo, setCodeInfo] = useState(false);
+	const [title, setTitle] = useState('');
+	const [price, setPrice] = useState('');
+
 	const [expandedDataSheet, setExpandedDataSheet] = useState(false);
 	const [dataSheetInfo, setDataSheetInfo] = useState(false);
 	const [expandedWithdraw, setExpandedWithdraw] = useState(false);
@@ -111,6 +115,14 @@ export default function SellProduct({ sesion }) {
 							categoryValue={categoryValue}
 							setCategoryValue={setCategoryValue}
 						/>
+					</div>
+					<div>
+						<div className="productConfirmAndCancelButtons">
+							<Button id="productConfirmButton" variant="outlined" color="secondary">
+								Confirmar
+							</Button>
+							<Button id="productCancelButton">Cancelar</Button>
+						</div>
 					</div>
 				</div>
 			</div>

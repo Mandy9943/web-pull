@@ -3,9 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import ErrorIcon from '@material-ui/icons/Error';
 import Collapse from '@material-ui/core/Collapse';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import clsx from 'clsx';
+import HtmlTooltip from './Tooltip';
 
 const useStyles = makeStyles((theme) => ({
 	expand: {
@@ -39,29 +39,28 @@ export default function AvailabilityAcordeon({
 			<div className="productAcordeon">
 				Disponibilidad de stock
 				{expandedAvailability ? (
-					<ErrorIcon
-						onClick={() => setAvailabilityInfo(!availabilityInfo)}
-						onMouseOver={() => setAvailabilityInfo(true)}
-						onMouseOut={() => setAvailabilityInfo(false)}
-						id="picturesCodeInfo"
-					/>
-				) : (
-					''
-				)}
-				{expandedAvailability && availabilityInfo ? (
-					<div className="availabilityInfo">
-						<div className="availabilityInfoContainer">
-							<div className="availabilityInfoTitle">
-								Mantén tu stock de producto actualizado
-							</div>
-							<div className="availabilityInfoParagraph">
-								<div>
+					<HtmlTooltip
+						open={availabilityInfo}
+						placement="top-start"
+						title={
+							<div>
+								<div className="availabilityInfoTitle">
+									Mantén tu stock de producto actualizado
+								</div>
+								<div className="availabilityInfoParagraph">
 									Dar a conocer a tus compradores la cantidad de unidades disponibles es
 									importante, asegúrate de tener tu stock actualizado.
 								</div>
 							</div>
-						</div>
-					</div>
+						}
+					>
+						<ErrorIcon
+							onClick={() => setAvailabilityInfo(!availabilityInfo)}
+							onMouseOver={() => setAvailabilityInfo(true)}
+							onMouseOut={() => setAvailabilityInfo(false)}
+							id="picturesCodeInfo"
+						/>
+					</HtmlTooltip>
 				) : (
 					''
 				)}
@@ -79,7 +78,9 @@ export default function AvailabilityAcordeon({
 				/>
 			</div>
 			<Collapse in={expandedAvailability} timeout="auto" unmountOnExit>
-				<div className="typeOfAddP">Agrega el link de algún video de Youtube</div>
+				<div className="typeOfAddP">
+					Indícale a tus compradores la cantidad disponible de tu producto
+				</div>
 				<div className="availabilityInput">
 					<TextField
 						variant="outlined"
@@ -87,14 +88,6 @@ export default function AvailabilityAcordeon({
 						placeholder="Ejemplo: 3"
 						type="number"
 					/>
-				</div>
-				<div className="withdrawButtonsContainer">
-					<div className="withdrawConfirmAndCancelButtons">
-						<Button id="dataSheetConfirmButton" variant="outlined">
-							Confirmar
-						</Button>
-						<Button id="dataSheetCancelButton">Cancelar</Button>
-					</div>
 				</div>
 			</Collapse>
 		</div>

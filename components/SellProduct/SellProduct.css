@@ -1,6 +1,6 @@
 .sellProductContainer {
-	margin-left: 200px;
-	width: 800px;
+	display: flex;
+	justify-content: center;
 }
 
 .backOption {
@@ -255,25 +255,27 @@
 
 .productConfirmAndCancelButtons {
 	display: flex;
-	width: 230px;
+	justify-content: flex-end;
 	height: 35px;
-	margin-bottom: 40px;
+	margin: 0 90px 90px 0;
 }
 
 #productConfirmButton {
 	color: white;
 	background-color: #cf0a2c;
 	font-size: 11px;
+	width: 115px;
 }
 
 #productCancelButton {
 	color: #cf0a2c;
 	margin-left: 20px;
 	font-size: 11px;
+	width: 115px;
 }
 
 .productAcordeonsContainer {
-	margin-bottom: 80px;
+	margin-bottom: 40px;
 }
 
 .productAcordeonContainer {
@@ -300,20 +302,6 @@
 
 .dataSheetContainer {
 	width: 500px;
-}
-
-.dataSheetInfo {
-	background-color: white;
-	position: absolute;
-	top: 630px;
-	left: 315px;
-	box-shadow: 0px 3px 6px #00000029;
-	border-radius: 5px;
-	width: 431px;
-	height: 129px;
-	z-index: 1;
-	display: flex;
-	align-items: center;
 }
 
 .dataSheetInfoContainer {
@@ -374,34 +362,8 @@ select option {
 	height: 60px;
 }
 
-#dataSheetConfirmButton {
-	color: black;
-	background-color: #d9d9d9;
-	font-size: 11px;
-	border: none;
-}
-
-#dataSheetCancelButton {
-	color: #cf0a2c;
-	font-size: 11px;
-}
-
 .withdrawText {
 	font-size: 12px;
-}
-
-.withdrawInfo {
-	background-color: white;
-	position: absolute;
-	top: 760px;
-	left: 345px;
-	box-shadow: 0px 3px 6px #00000029;
-	border-radius: 5px;
-	width: 437px;
-	height: 61px;
-	z-index: 1;
-	display: flex;
-	align-items: center;
 }
 
 .withdrawInfoContainer {
@@ -412,37 +374,11 @@ select option {
 	display: flex;
 	align-items: flex-start;
 	font-size: 10px;
+	width: 437px;
 }
 
 .withdrawSwitch {
 	margin: 15px;
-}
-
-.withdrawButtonsContainer {
-	display: flex;
-	justify-content: flex-end;
-}
-
-.withdrawConfirmAndCancelButtons {
-	display: flex;
-	justify-content: flex;
-	width: 230px;
-	height: 35px;
-	margin-bottom: 20px;
-}
-
-.typeOfAddInfo {
-	background-color: white;
-	position: absolute;
-	top: 775px;
-	left: 350px;
-	box-shadow: 0px 3px 6px #00000029;
-	border-radius: 5px;
-	width: 470px;
-	height: 115px;
-	z-index: 1;
-	display: flex;
-	align-items: center;
 }
 
 .typeOfAddInfoContainer {
@@ -456,8 +392,6 @@ select option {
 }
 
 .typeOfAddInfoParagraph {
-	display: flex;
-	align-items: flex-start;
 	font-size: 10px;
 }
 
@@ -502,20 +436,6 @@ select option {
 	text-align: center;
 }
 
-.descriptionInfo {
-	background-color: white;
-	position: absolute;
-	top: 840px;
-	left: 305px;
-	box-shadow: 0px 3px 6px #00000029;
-	border-radius: 5px;
-	width: 470px;
-	height: 115px;
-	z-index: 1;
-	display: flex;
-	align-items: center;
-}
-
 .descriptionInfoContainer {
 	padding: 0 20px;
 }
@@ -536,20 +456,6 @@ select option {
 	text-align: end;
 	width: 626px;
 	margin-bottom: 30px;
-}
-
-.videoInfo {
-	background-color: white;
-	position: absolute;
-	top: 920px;
-	left: 270px;
-	box-shadow: 0px 3px 6px #00000029;
-	border-radius: 5px;
-	width: 598px;
-	height: 101px;
-	z-index: 1;
-	display: flex;
-	align-items: center;
 }
 
 .videoInfoContainer {
@@ -573,20 +479,6 @@ select option {
 	margin: 0 0 30px 20px;
 }
 
-.availabilityInfo {
-	background-color: white;
-	position: absolute;
-	top: 980px;
-	left: 375px;
-	box-shadow: 0px 3px 6px #00000029;
-	border-radius: 5px;
-	width: 598px;
-	height: 101px;
-	z-index: 1;
-	display: flex;
-	align-items: center;
-}
-
 .availabilityInfoContainer {
 	padding: 0 20px;
 }
@@ -608,20 +500,6 @@ select option {
 	margin: 0 0 30px 20px;
 }
 
-.warrantyInfo {
-	background-color: white;
-	position: absolute;
-	top: 1045px;
-	left: 285px;
-	box-shadow: 0px 3px 6px #00000029;
-	border-radius: 5px;
-	width: 598px;
-	height: 101px;
-	z-index: 1;
-	display: flex;
-	align-items: center;
-}
-
 .warrantyInfoContainer {
 	padding: 0 20px;
 }
@@ -636,20 +514,6 @@ select option {
 	display: flex;
 	align-items: flex-start;
 	font-size: 10px;
-}
-
-.categoryInfo {
-	background-color: white;
-	position: absolute;
-	top: 1105px;
-	left: 290px;
-	box-shadow: 0px 3px 6px #00000029;
-	border-radius: 5px;
-	width: 598px;
-	height: 101px;
-	z-index: 1;
-	display: flex;
-	align-items: center;
 }
 
 .categoryInfoContainer {
@@ -669,8 +533,8 @@ select option {
 }
 
 .MuiAutocomplete-endAdornment {
-	top: 10px ;
+	top: 10px;
 	left: 320px;
-	width: 24px ;
+	width: 24px;
 	display: flex;
 }

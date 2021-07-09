@@ -100,11 +100,11 @@ class DetailProductInfo extends Component {
 				return <></>;
 			} else {
 				return (
-					<p>
+					<div>
 						<h3 className="accent">Descripción:</h3>
 						<br />
 						<div className="justifyText">{this.props.desciption}</div>
-					</p>
+					</div>
 				);
 			}
 		};
@@ -113,11 +113,11 @@ class DetailProductInfo extends Component {
 				return <></>;
 			} else {
 				return (
-					<p>
+					<div>
 						<h3 className="accent">Información:</h3>
 						<br />
 						<div className="justifyText">{this.props.information}</div>
-					</p>
+					</div>
 				);
 			}
 		};

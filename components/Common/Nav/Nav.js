@@ -562,10 +562,12 @@ export default class Nav extends Component {
 	}
 
 	search = (ots = '') => {
-		let url = '/busqueda/';
-		this.state.value !== undefined && ots === ''
-			? (url = url + this.state.value)
-			: (url = url + ots);
-		location.href = url;
+		if (this.state.value.length > 2) {
+			let url = '/busqueda/';
+			this.state.value !== undefined && ots === ''
+				? (url = url + this.state.value)
+				: (url = url + ots);
+			location.href = url;
+		}
 	};
 }
