@@ -67,9 +67,26 @@ class ProductDetail extends Component {
 				console.error(error);
 			});
 	};
-
+	categoriesGooleDataLaye = () => {
+		
+	}
 	render() {
 		console.log('propiedades', this.props);
+		console.log({
+			'event': 'view_item',
+			'ecommerce': {
+			'items': [{
+			'item_name': 'Leica CL Mirrorless Digital Camera, Silver 18mm F2.8 ELMARIT', // Name or ID is required.
+			'item_id': '44942095',
+			'price': '14444994.00',
+			'item_brand': 'Leica',
+			'item_category': 'Cámaras, fotografía y video',
+			'item_category2': 'Cámaras digitales',
+			'item_category3': 'Cámaras digitales sin espejos',
+			}],
+			'currency': 'COP'
+			}
+			});
 		const u_data = this.props.user_data;
 		let url = '//www.sic.gov.co';
 		// console.log(this.state.mdata)

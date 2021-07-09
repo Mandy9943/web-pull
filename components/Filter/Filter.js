@@ -557,7 +557,7 @@ class Filter extends Component {
 											}}
 										>
 											{item.key + ' (' + item.doc_count + ')'}
-											{console.log(item)}
+											{/* {console.log(item)} */}
 										</div>
 									))}
 								</details>

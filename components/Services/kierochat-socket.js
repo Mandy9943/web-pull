@@ -10,12 +10,12 @@ const kierosocketchat = socketIOClient(ENDPOINT)
 export{kierosocketchat}
 const user_id = Cookies.get('user_id');
   if(!user_id){
-    console.log("no hay inicio de sesión")
+    // console.log("no hay inicio de sesión")
   }else{
     kierosocketchat.emit('join', {room: `kieroUser_`+user_id})
   }
 export const sendQuestionSocketChat = (question, market_id, product_id) => {
-  console.log("probandp x4")
+//   console.log("probandp x4")
   // console.log("pregunta", question, "market_id",market_id, "product_id",product_id, "user_id", user_id )
   kierosocketchat.emit('new_question', {question: question, market_id: market_id, product_id: product_id, user_id: user_id})
 	// try {

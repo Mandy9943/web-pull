@@ -50,10 +50,10 @@ export default function SocketChat() {
 	// const [newNotification, setNewNotification] = React.useState(false)
 	const user_id = Cookies.get('user_id');
 	if (!user_id) {
-		console.log('no hay inicio de sesión');
+		// console.log('no hay inicio de sesión');
 	} else {
 		socket.emit('join', { room: `kieroUser_` + user_id });
-		console.log('si hay inicio de sesión');
+		// console.log('si hay inicio de sesión');
 	}
 	useEffect(() => {
 		if (!('Notification' in window)) {
@@ -70,10 +70,10 @@ export default function SocketChat() {
 	const handleLoad = () => {
 		var addClass = document.getElementsByClassName('containerChat');
 		if (addClass.length === 1) {
-			console.log('existe');
+			// console.log('existe');
 		} else {
 			showNotification();
-			console.log('no existe');
+			// console.log('no existe');
 		}
 	};
 

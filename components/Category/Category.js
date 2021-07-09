@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from 'react';
+import React, { Component } from 'react';
 import { useHistory } from 'react-router-dom';
 import './Category.css';
 import Filter from './../Filter';
@@ -114,14 +114,14 @@ class Category extends Component {
 	changePage = (p) => {
 		this.setState({ page: p });
 		document.location = `${this.props.path.split('?')[0]}?page=${p}`;
-		console.log(document.location);
+		// console.log(document.location);
 		this.loadProducts(p);
-		console.log(p);
+		// console.log(p);
 	};
 
 	applyFilter = (type, value, categoryLevel = '', loadFilter = true) => {
-		console.log(value);
-		console.log(categoryLevel);
+		// console.log(value);
+		// console.log(categoryLevel);
 		let tmp_filters = this.state.filters;
 		const new_val = type + '|' + value;
 		// Remove previous filter by type
@@ -198,23 +198,23 @@ class Category extends Component {
 			}
 		});
 
-		let oe = searchProducts(
-			this.props.data.type,
-			5000,
-			page,
-			this.props.data.search,
-			brand,
-			price,
-			category,
-			sortBy,
-			orderBy,
-			categoryLevel
-		);
+		// let dataProducts = searchProducts(
+		// 	this.props.data.type,
+		// 	5000,
+		// 	page,
+		// 	this.props.data.search,
+		// 	brand,
+		// 	price,
+		// 	category,
+		// 	sortBy,
+		// 	orderBy,
+		// 	categoryLevel
+		// );
 
-		oe.then((response) => {
-			console.log('oe', response.data.results);
-			console.log()
-		});
+		// dataProducts.then((response) => {
+		// 	console.log('dataProducts', response.data.results);
+		// 	console.log()
+		// });
 
 		let products = searchProducts(
 			this.props.data.type,
@@ -245,7 +245,7 @@ class Category extends Component {
 
 		filters.then((response) => {
 			let mergedCategories = [];
-			console.log(response);
+			// console.log(response);
 			let newCategories = response.data.catalog_category
 				.map((item) => ({
 					key: item.key,

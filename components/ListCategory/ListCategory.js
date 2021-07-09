@@ -14,6 +14,44 @@ class ListCategory extends Component {
 	constructor(props) {
 		super(props);
 	}
+	componentDidMount(){
+	
+		var awaitProducts = setInterval(function(){
+            var dataProducts = document.getElementsByClassName('temp-card');
+            if(dataProducts.length){
+                layerGoogle()
+                clearInterval(awaitProducts)
+            }
+        },300)
+        const layerGoogle = () => {
+            dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
+            const dataLayerGoogleSearchResults = this.props.products?.map((prod, index) => {
+                return {
+                    item_name: prod.title,
+                    item_id: prod.product_id,
+                    price: prod.price,
+                    item_brand: prod.brand,
+                    item_category: prod.category,
+                    item_list_name: 'Search Results',
+                    url:'https://kiero.co/detalle/' + prod.product_id + '_' + prod.title
+                                                                            .replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+                                                                            .replace('//', '%2F')
+                                                                            .replace('%', '')
+                                                                            .split(' ')
+                                                                            .join('-'),
+                    index: index
+                };
+            });
+            dataLayer.push({
+                'event': 'view_item_list',
+                'ecommerce': {
+                'items': 
+                    dataLayerGoogleSearchResults
+                }
+            })
+        }
+
+	}
 	render() {
 		const Class = this.props.format == 'grid' ? 'grid' : 'list';
 		return (
@@ -25,7 +63,7 @@ class ListCategory extends Component {
 						this.props.products.length > 0 &&
 						(this.props.format == 'grid'
 							? this.props.products.map((product, i) => (
-									<div>
+									<div key={i}>
 										{/* <div className="productFavIcon">
 											<Checkbox
 												style={{ color: '#CF0A2C' }}
