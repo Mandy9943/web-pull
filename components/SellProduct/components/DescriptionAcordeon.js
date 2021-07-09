@@ -3,9 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import ErrorIcon from '@material-ui/icons/Error';
 import Collapse from '@material-ui/core/Collapse';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import clsx from 'clsx';
+import HtmlTooltip from './Tooltip';
 
 const useStyles = makeStyles((theme) => ({
 	expand: {
@@ -39,27 +39,26 @@ export default function DescriptionAcordeon({
 			<div className="productAcordeon">
 				Descripción
 				{expandedDescription ? (
-					<ErrorIcon
-						onClick={() => setDescriptionInfo(!descriptionInfo)}
-						onMouseOver={() => setDescriptionInfo(true)}
-						onMouseOut={() => setDescriptionInfo(false)}
-						id="picturesCodeInfo"
-					/>
-				) : (
-					''
-				)}
-				{expandedDescription && descriptionInfo ? (
-					<div className="descriptionInfo">
-						<div className="descriptionInfoContainer">
-							<div className="descriptionInfoTitle">Describe mejor tu producto</div>
-							<div className="descriptionInfoParagraph">
-								<div>
+					<HtmlTooltip
+						open={descriptionInfo}
+						placement="top-start"
+						title={
+							<div>
+								<div className="descriptionInfoTitle">Describe mejor tu producto</div>
+								<div className="descriptionInfoParagraph">
 									En esta sección deberás complementar otras características que no
 									conseguiste colocar en la ficha técnica, siendo organizado y breve.
 								</div>
 							</div>
-						</div>
-					</div>
+						}
+					>
+						<ErrorIcon
+							onClick={() => setDescriptionInfo(!descriptionInfo)}
+							onMouseOver={() => setDescriptionInfo(true)}
+							onMouseOut={() => setDescriptionInfo(false)}
+							id="picturesCodeInfo"
+						/>
+					</HtmlTooltip>
 				) : (
 					''
 				)}
@@ -90,14 +89,6 @@ export default function DescriptionAcordeon({
 					placeholder="Escribe aquí información para compartir con tus clientes."
 				/>
 				<div className="descriptionCharCount">50/150</div>
-				<div className="withdrawButtonsContainer">
-					<div className="withdrawConfirmAndCancelButtons">
-						<Button id="dataSheetConfirmButton" variant="outlined">
-							Confirmar
-						</Button>
-						<Button id="dataSheetCancelButton">Cancelar</Button>
-					</div>
-				</div>
 			</Collapse>
 		</div>
 	);

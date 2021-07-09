@@ -3,11 +3,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import ErrorIcon from '@material-ui/icons/Error';
 import Collapse from '@material-ui/core/Collapse';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Button from '@material-ui/core/Button';
 import medalla1 from '../img/medalla1.svg';
 import medalla2 from '../img/medalla2.svg';
 import medalla3 from '../img/medalla3.svg';
 import clsx from 'clsx';
+import HtmlTooltip from './Tooltip';
 
 const useStyles = makeStyles((theme) => ({
 	expand: {
@@ -43,31 +43,30 @@ export default function TypeOfAddAcordeon({
 			<div className="productAcordeon">
 				Tipo de publicación
 				{expandedTypeOfAdd ? (
-					<ErrorIcon
-						onClick={() => setTypeOfAddInfo(!typeOfAddInfo)}
-						onMouseOver={() => setTypeOfAddInfo(true)}
-						onMouseOut={() => setTypeOfAddInfo(false)}
-						id="picturesCodeInfo"
-					/>
-				) : (
-					''
-				)}
-				{expandedTypeOfAdd && typeOfAddInfo ? (
-					<div className="typeOfAddInfo">
-						<div className="typeOfAddInfoContainer">
-							<div className="typeOfAddInfoTitle">
-								Ten mayor visibilidad en tus publicaciones
-							</div>
-							<div className="typeOfAddInfoParagraph">
-								<div>
+					<HtmlTooltip
+						open={typeOfAddInfo}
+						placement="top-start"
+						title={
+							<div>
+								<div className="typeOfAddInfoTitle">
+									Ten mayor visibilidad en tus publicaciones
+								</div>
+								<div className="typeOfAddInfoParagraph">
 									Para que tus publicaciones puedan tener una visibilidad mayor, es
 									necesario que selecciones un tipo de publicación con una exposición
 									alta. En nuestra plataforma puedes contar con{' '}
 									<b>Plan Platinium, Plan Oro y Plan Plata.</b>
 								</div>
 							</div>
-						</div>
-					</div>
+						}
+					>
+						<ErrorIcon
+							onClick={() => setTypeOfAddInfo(!typeOfAddInfo)}
+							onMouseOver={() => setTypeOfAddInfo(true)}
+							onMouseOut={() => setTypeOfAddInfo(false)}
+							id="picturesCodeInfo"
+						/>
+					</HtmlTooltip>
 				) : (
 					''
 				)}
@@ -156,14 +155,7 @@ export default function TypeOfAddAcordeon({
 						</div>
 					</div>
 				</div>
-				<div className="withdrawButtonsContainer">
-					<div className="withdrawConfirmAndCancelButtons">
-						<Button id="dataSheetConfirmButton" variant="outlined">
-							Confirmar
-						</Button>
-						<Button id="dataSheetCancelButton">Cancelar</Button>
-					</div>
-				</div>
+			
 			</Collapse>
 		</div>
 	);

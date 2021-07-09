@@ -3,9 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import ErrorIcon from '@material-ui/icons/Error';
 import Collapse from '@material-ui/core/Collapse';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import clsx from 'clsx';
+import HtmlTooltip from './Tooltip';
 
 const useStyles = makeStyles((theme) => ({
 	expand: {
@@ -39,27 +39,26 @@ export default function VideoAcordeon({
 			<div className="productAcordeon">
 				Video
 				{expandedVideo ? (
-					<ErrorIcon
-						onClick={() => setVideoInfo(!videoInfo)}
-						onMouseOver={() => setVideoInfo(true)}
-						onMouseOut={() => setVideoInfo(false)}
-						id="picturesCodeInfo"
-					/>
-				) : (
-					''
-				)}
-				{expandedVideo && videoInfo ? (
-					<div className="videoInfo">
-						<div className="videoInfoContainer">
-							<div className="videoInfoTitle">Agrega un video</div>
-							<div className="videoInfoParagraph">
-								<div>
+					<HtmlTooltip
+						open={videoInfo}
+						placement="top-start"
+						title={
+							<div>
+								<div className="videoInfoTitle">Agrega un video</div>
+								<div className="videoInfoParagraph">
 									Es importante complementar la publicación con un video que muestre la
 									funcionalidad del producto que estás ofertando.
 								</div>
 							</div>
-						</div>
-					</div>
+						}
+					>
+						<ErrorIcon
+							onClick={() => setVideoInfo(!videoInfo)}
+							onMouseOver={() => setVideoInfo(true)}
+							onMouseOut={() => setVideoInfo(false)}
+							id="picturesCodeInfo"
+						/>
+					</HtmlTooltip>
 				) : (
 					''
 				)}
@@ -80,14 +79,6 @@ export default function VideoAcordeon({
 				<div className="typeOfAddP">Agrega el link de algún video de Youtube</div>
 				<div className="videoInput">
 					<TextField fullWidth placeholder="Agrega un link de video" />
-				</div>
-				<div className="withdrawButtonsContainer">
-					<div className="withdrawConfirmAndCancelButtons">
-						<Button id="dataSheetConfirmButton" variant="outlined">
-							Confirmar
-						</Button>
-						<Button id="dataSheetCancelButton">Cancelar</Button>
-					</div>
 				</div>
 			</Collapse>
 		</div>

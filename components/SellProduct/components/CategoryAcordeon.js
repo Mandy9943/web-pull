@@ -3,9 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import ErrorIcon from '@material-ui/icons/Error';
 import Collapse from '@material-ui/core/Collapse';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import HtmlTooltip from './Tooltip';
 import { getData } from '../../../services/userApi';
 import clsx from 'clsx';
 
@@ -60,29 +60,28 @@ export default function CategoryAcordeon({
 			<div className="productAcordeon">
 				Categoría
 				{expandedCategory ? (
-					<ErrorIcon
-						onClick={() => setCategoryInfo(!categoryInfo)}
-						onMouseOver={() => setCategoryInfo(true)}
-						onMouseOut={() => setCategoryInfo(false)}
-						id="picturesCodeInfo"
-					/>
-				) : (
-					''
-				)}
-				{expandedCategory && categoryInfo ? (
-					<div className="categoryInfo">
-						<div className="categoryInfoContainer">
-							<div className="categoryInfoTitle">
-								Organiza tus productos por categorias
-							</div>
-							<div className="categoryInfoParagraph">
-								<div>
+					<HtmlTooltip
+						open={categoryInfo}
+						placement="top-start"
+						title={
+							<div>
+								<div className="categoryInfoTitle">
+									Organiza tus productos por categorias
+								</div>
+								<div className="categoryInfoParagraph">
 									Seleccionar correctamente la categoría a la cual pertenece tu producto
 									es fundamental para que pueda ser encontrado.
 								</div>
 							</div>
-						</div>
-					</div>
+						}
+					>
+						<ErrorIcon
+							onClick={() => setCategoryInfo(!categoryInfo)}
+							onMouseOver={() => setCategoryInfo(true)}
+							onMouseOut={() => setCategoryInfo(false)}
+							id="picturesCodeInfo"
+						/>
+					</HtmlTooltip>
 				) : (
 					''
 				)}
@@ -113,14 +112,7 @@ export default function CategoryAcordeon({
 					popupIcon={<ExpandMoreIcon />}
 					noOptionsText="La categoria que buscas no existe"
 				/>
-				<div className="withdrawButtonsContainer">
-					<div className="withdrawConfirmAndCancelButtons">
-						<Button id="dataSheetConfirmButton" variant="outlined">
-							Confirmar
-						</Button>
-						<Button id="dataSheetCancelButton">Cancelar</Button>
-					</div>
-				</div>
+			
 			</Collapse>
 		</div>
 	);

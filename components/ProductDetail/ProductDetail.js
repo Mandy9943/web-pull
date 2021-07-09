@@ -84,18 +84,19 @@ class ProductDetail extends Component {
 				/>
 				<div className="detail-content">
 					<div className="breadcrumb">
-						<Link href="/">
-							<a>Inicio</a>
-						</Link>
-
-						{this.state.mdata.breadcum.map((item, i) => (
-							<>
-								<FontAwesomeIcon icon={faAngleRight} />
-								<Link key={i} href="/categoria/[category]" as={'/categoria/' + item.name}>
-									<a>{item.name}</a>
-								</Link>
-							</>
-						))}
+						<div style={{ display: 'flex' }}>
+							<Link href="/">
+								<a>Inicio</a>
+							</Link>
+							{this.state.mdata.breadcum.map((item, i) => (
+								<div key={i}>
+									<FontAwesomeIcon icon={faAngleRight} />
+									<Link href="/categoria/[category]" as={'/categoria/' + item.name}>
+										<a>{item.name}</a>
+									</Link>
+								</div>
+							))}
+						</div>
 					</div>
 					<div className="wrap-section-1">
 						<div className="wrap-product">
@@ -123,7 +124,6 @@ class ProductDetail extends Component {
 										this.state.mdata.category ? this.state.mdata.category.name : ''
 									}
 								/>
-							
 							</div>
 							<Detail
 								width={this.state.mdata.width}

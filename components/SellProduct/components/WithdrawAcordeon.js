@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Switch from '@material-ui/core/Switch';
 import clsx from 'clsx';
+import HtmlTooltip from './Tooltip';
 
 const useStyles = makeStyles((theme) => ({
 	expand: {
@@ -41,24 +42,23 @@ export default function WithdrawAcordeon({
 			<div className="productAcordeon">
 				{expandedWithdraw ? <b>Retiro en persona</b> : 'Retiro'}
 				{expandedWithdraw ? (
-					<ErrorIcon
-						onClick={() => setWithdrawInfo(!withdrawInfo)}
-						onMouseOver={() => setWithdrawInfo(true)}
-						onMouseOut={() => setWithdrawInfo(false)}
-						id="picturesCodeInfo"
-					/>
-				) : (
-					''
-				)}
-				{expandedWithdraw && withdrawInfo ? (
-					<div className="withdrawInfo">
-						<div className="withdrawInfoContainer">
+					<HtmlTooltip
+						open={withdrawInfo}
+						placement="top-start"
+						title={
 							<div className="withdrawInfoParagraph">
 								Indícale a tus clientes si el producto puede ser retirado directamente en
 								la tienda física o no cuenta con esta alternativa.
 							</div>
-						</div>
-					</div>
+						}
+					>
+						<ErrorIcon
+							onClick={() => setWithdrawInfo(!withdrawInfo)}
+							onMouseOver={() => setWithdrawInfo(true)}
+							onMouseOut={() => setWithdrawInfo(false)}
+							id="picturesCodeInfo"
+						/>
+					</HtmlTooltip>
 				) : (
 					''
 				)}
@@ -87,16 +87,6 @@ export default function WithdrawAcordeon({
 						onChange={() => setSwitchedWithdraw(!switchedWithdraw)}
 						checked={switchedWithdraw}
 					/>
-				</div>
-				<div>
-					<div className="withdrawButtonsContainer">
-						<div className="withdrawConfirmAndCancelButtons">
-							<Button id="dataSheetConfirmButton" variant="outlined">
-								Confirmar
-							</Button>
-							<Button id="dataSheetCancelButton">Cancelar</Button>
-						</div>
-					</div>
 				</div>
 			</Collapse>
 		</div>
