@@ -41,7 +41,7 @@ export const getProductGlobalDetail = (id_product_global, params = {}) => {
 	try {
 		let endpoint = '/variations/product_global_shortcut/' + id_product_global;
 		let data = apiget2(endpoint, params);
-		console.log(data);
+		// console.log(data);
 		return data;
 	} catch (error) {
 		return error;
@@ -143,7 +143,7 @@ export const searchSuggestions = (size, ots) => {
 export const searchFilters = (ots, level, category) => {
 	try {
 		const params = new URLSearchParams();
-		console.log('level', level);
+		// console.log('level', level);
 		if (level !== '') params.append('level', level);
 		if (category !== '') params.append('category', category);
 

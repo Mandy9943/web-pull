@@ -23,7 +23,8 @@ export default class ProductsSlider extends Component {
 				data.push(response.data.results[product]);
 			}
 			this.setState({ data });
-			const oe = response.data.results.map((prod, index) => {
+			dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
+			const dataLayerGoogleSliders = response.data.results?.map((prod, index) => {
 				return {
 					item_name: prod.title,
 					item_id: prod.product_id,
@@ -31,14 +32,27 @@ export default class ProductsSlider extends Component {
 					item_brand: prod.brand,
 					item_category: prod.category,
 					item_list_name: 'Sliders Home',
-					index: index,
+					url:'https://kiero.co/detalle/' + prod.product_id + '_' + prod.title
+																			.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+																			.replace('//', '%2F')
+																			.replace('%', '')
+																			.split(' ')
+																			.join('-'),
+					index: index
 				};
 			});
-			console.log('oe', oe);
+			dataLayer.push({
+				'event': 'view_item_list',
+				'ecommerce': {
+				'items': 
+					dataLayerGoogleSliders
+				}
+			})
 		});
 	}
 
 	render() {
+		// console.log(this.state)
 		let productList = [];
 		let productListMobile = [];
 		let tmpList = [];
@@ -55,10 +69,13 @@ export default class ProductsSlider extends Component {
 			tmpList.push(
 				<ProductCard
 					key={skid++}
+					index={skid++}
 					price={this.state.data[i].price}
 					url={url}
 					product_id={this.state.data[i].product_id}
 					title={this.state.data[i].title}
+					category={this.state.data[i].category}
+					brand={this.state.data[i].brand}
 				/>
 			);
 
@@ -93,10 +110,13 @@ export default class ProductsSlider extends Component {
 				<ProductCard
 					style={{ padding: '30px' }}
 					key={skid++}
+					index={skid++}
 					price={this.state.data[i].price}
 					url={url}
 					product_id={this.state.data[i].product_id}
 					title={this.state.data[i].title}
+					category={this.state.data[i].category}
+					brand={this.state.data[i].brand}
 				/>
 			);
 		}

@@ -38,6 +38,42 @@ class ProductDetail extends Component {
 	}
 	componentDidMount() {
 		this.loadQuestions();
+		dataLayer.push({ ecommerce: null });
+		// console.log('propiedades', this.props);
+		let dataLayerProductDetail = {
+			'event': 'view_item',
+			'ecommerce': {
+			'items': 
+						{
+							'item_name': this.props.data.product_global_title, // Name or ID is required.
+							'item_id': this.props.data.product_global_id,
+							'price': this.props.data.price,
+							'item_brand': this.props.data.brand,
+							'url':'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
+																							.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+																							.replace('//', '%2F')
+																							.replace('%', '')
+																							.split(' ')
+																							.join('-'),
+					},
+			
+			'currency': 'COP'
+			}
+		}
+
+		const productDetailGooleDataLayer = (dataLayerProductDetail) => {
+			this.props.data.breadcum.forEach((prod, index) => {
+				let key = `item_category${index + 1}`;
+				let value = prod.name;
+				dataLayerProductDetail['ecommerce']['items'][key] = value;
+			});
+			return dataLayerProductDetail;
+		}
+		
+		let resultDataLayerProductDetail = productDetailGooleDataLayer(dataLayerProductDetail);
+
+		dataLayer.push(resultDataLayerProductDetail);
+
 	}
 
 	async reLoadData(pgid) {
@@ -67,9 +103,8 @@ class ProductDetail extends Component {
 				console.error(error);
 			});
 	};
-
 	render() {
-		console.log('propiedades', this.props);
+		
 		const u_data = this.props.user_data;
 		let url = '//www.sic.gov.co';
 		// console.log(this.state.mdata)

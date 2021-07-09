@@ -7,17 +7,51 @@ import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 
 export default class ProductCard extends Component {
+	handleDataInfo(data){
+		dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
+		dataLayer.push({
+			'event': 'view_item_list',
+			'ecommerce': {
+			'items': 
+				{
+					'item_name':data.title,
+					'item_id':data.product_id,
+					'item_brand':data.brand,
+					'item_category':data.category,
+					'item_list_name':'ListCategory',
+					'index':data.index,
+					'price':data.price,
+					'url':'https://kiero.co/detalle/' + data.product_id + '_' + data.title
+																					.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+																					.replace('//', '%2F')
+																					.replace('%', '')
+																					.split(' ')
+																					.join('-'),
+				}
+			}
+		})
+		window.location.href = '/detalle/' +
+		data.product_id +
+		'_' +
+		data.title
+			.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+			.replace('//', '%2F')
+			.replace('%', '')
+			.split(' ')
+			.join('-')
+		
+	}
 	render() {
 		return (
-			<div className="producto-card">
+			<div className="producto-card" onClick={() => this.handleDataInfo(this.props)}>
 				{/* <div className="productFavIcon3">
 					<Checkbox
 						style={{ color: '#CF0A2C' }}
-						icon={<FavoriteBorder />}
+						icon={<FavoriteBorder />} 
 						checkedIcon={<Favorite />}
 					/>
 				</div> */}
-				<Link
+				{/* <Link
 					href={'/detalle/[product]'}
 					as={
 						'/detalle/' +
@@ -30,8 +64,8 @@ export default class ProductCard extends Component {
 							.split(' ')
 							.join('-')
 					}
-				>
-					<a>
+				> */}
+					<a >
 						<div className="product-card-img">
 							<img
 								alt={this.props.title}
@@ -53,7 +87,7 @@ export default class ProductCard extends Component {
 						</h3>
 						<h4 className="title">{this.props.title}</h4>
 					</a>
-				</Link>
+				{/* </Link> */}
 			</div>
 		);
 	}
