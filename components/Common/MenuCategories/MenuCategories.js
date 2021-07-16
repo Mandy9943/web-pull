@@ -60,7 +60,7 @@ class MenuCategories extends Component {
 					}}
 				>
 					<section className="title-categories">
-						{this.props.categories.map((ccat, i) => {
+						{this.props.categories?.map((ccat, i) => {
 							return (
 								<span
 									key={i}

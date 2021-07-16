@@ -27,7 +27,7 @@ const PaymentCash = ({ onSubmit }) => {
 			<br />
 			<form onSubmit={onSubmit}>
 				<input
-					autocomplete="off"
+					autoComplete="off"
 					onCut={preventCopyPasteCut}
 					onCopy={preventCopyPasteCut}
 					onPaste={preventCopyPasteCut}
@@ -39,7 +39,7 @@ const PaymentCash = ({ onSubmit }) => {
 				/>
 				<br />
 				<input
-					autocomplete="off"
+					autoComplete="off"
 					onCut={preventCopyPasteCut}
 					onCopy={preventCopyPasteCut}
 					onPaste={preventCopyPasteCut}
@@ -50,7 +50,7 @@ const PaymentCash = ({ onSubmit }) => {
 				/>
 				<br />
 				<input
-					autocomplete="off"
+					autoComplete="off"
 					onCut={preventCopyPasteCut}
 					onCopy={preventCopyPasteCut}
 					onPaste={preventCopyPasteCut}

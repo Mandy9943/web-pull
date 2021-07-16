@@ -229,6 +229,38 @@ export default class PaymentWay extends Component {
 			if (this.state.paymentCashType > 0) {
 				this.setState({ paymentCash: true });
 			}
+			dataLayer.push({ ecommerce: null });
+			let dataLayerAddShippingInfo = {
+				'event': 'add_shipping_info',
+				'ecommerce': {
+					'currency': 'COP',
+					'items': {
+						'item_name': this.props.data.product_global_title, // Name or ID is required.
+						'item_id': this.props.data.product_global_id,
+						'price': this.props.data.price,
+						'item_brand': this.props.data.brand,
+						'quantity': this.props.cantidad,
+						'url':'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
+																										.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+																										.replace('//', '%2F')
+																										.replace('%', '')
+																										.split(' ')
+																										.join('-'),
+						}
+					}
+				};
+			const AddShippingInfoGooleDataLayer = (dataLayerAddShippingInfo) => {
+				this.props.data.breadcum.forEach((prod, index) => {
+					let keyCategory = `item_category${index + 1}`;
+					let valueNameCategory = prod.name;
+					dataLayerAddShippingInfo['ecommerce']['items'][keyCategory] = valueNameCategory;
+				});
+				return dataLayerAddShippingInfo;
+			}
+			
+			let resultDataLayerAddShippingInfo = AddShippingInfoGooleDataLayer(dataLayerAddShippingInfo);
+
+			dataLayer.push(resultDataLayerAddShippingInfo);
 		} else {
 			alert('Seleccione una dirección');
 		}
@@ -262,7 +294,50 @@ export default class PaymentWay extends Component {
 			},
 			this.props.user.jwt
 		);
+		dataLayer.push({ ecommerce: null });
+			let dataLayerAddPaymentInfoPSE = {
+				'event': 'add_payment_info',
+				'ecommerce': {
+					'currency': 'COP',
+					'items': {
+						'item_name': this.props.data.product_global_title, // Name or ID is required.
+						'item_id': this.props.data.product_global_id,
+						'price': this.props.data.price,
+						'item_brand': this.props.data.brand,
+						'quantity': this.props.cantidad,
+						'url':'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
+																										.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+																										.replace('//', '%2F')
+																										.replace('%', '')
+																										.split(' ')
+																										.join('-'),
+						}
+					}
+				};
+			const addPaymentInfoPSEGooleDataLayer = (dataLayerAddPaymentInfoPSE) => {
+				this.props.data.breadcum.forEach((prod, index) => {
+					let keyCategory = `item_category${index + 1}`;
+					let valueNameCategory = prod.name;
+					dataLayerAddPaymentInfoPSE['ecommerce']['items'][keyCategory] = valueNameCategory;
+				});
+				return dataLayerAddPaymentInfoPSE;
+			}
+				
+			let resultDataLayerAddPaymentInfoPSE = addPaymentInfoPSEGooleDataLayer(dataLayerAddPaymentInfoPSE);
+
+			dataLayer.push(resultDataLayerAddPaymentInfoPSE);
 		if (result.data) {
+			// console.log("pse",result.data.data)
+			dataLayer.push({ ecommerce: null });
+			let resultDataLayerPurchasePSE = result.data.data;
+			resultDataLayerPurchasePSE.ecommerce.transaction_status = result.data.result;
+			resultDataLayerPurchasePSE.ecommerce.items.url = 'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
+																												.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+																												.replace('//', '%2F')
+																												.replace('%', '')
+																												.split(' ')
+																												.join('-'),
+			dataLayer.push(resultDataLayerPurchasePSE);
 			window.location = result.data.URL;
 		} else {
 			this.setState({
@@ -307,7 +382,7 @@ export default class PaymentWay extends Component {
 		// console.log("payment",ccPayload, "this.state.ccCvv",this.state.ccCvv, "cvv",e.target.elements)
 
 		const validated = Object.assign(tips, validatePayCC(ccPayload));
-		console.log(validated);
+		// console.log(validated);
 		if (Object.values(validated).length == 0) {
 			if (this.state.selectedAddr == -1) {
 				this.setState({
@@ -318,9 +393,54 @@ export default class PaymentWay extends Component {
 
 			ccPayload.address_id = this.state.addresses[this.state.selectedAddr].address_id;
 			this.setState({ paymentLoading: true });
-			const rs = await makePaymentCC(ccPayload, this.props.user.jwt);
 
+			dataLayer.push({ ecommerce: null });
+			let dataLayerAddPaymentInfoCC = {
+				'event': 'add_payment_info',
+				'ecommerce': {
+					'currency': 'COP',
+					'items': {
+						'item_name': this.props.data.product_global_title, // Name or ID is required.
+						'item_id': this.props.data.product_global_id,
+						'price': this.props.data.price,
+						'item_brand': this.props.data.brand,
+						'quantity': this.props.cantidad,
+						'url':'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
+																										.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+																										.replace('//', '%2F')
+																										.replace('%', '')
+																										.split(' ')
+																										.join('-'),
+						}
+					}
+				};
+			const addPaymentInfoCCGooleDataLayer = (dataLayerAddPaymentInfoCC) => {
+				this.props.data.breadcum.forEach((prod, index) => {
+					let keyCategory = `item_category${index + 1}`;
+					let valueNameCategory = prod.name;
+					dataLayerAddPaymentInfoCC['ecommerce']['items'][keyCategory] = valueNameCategory;
+				});
+				return dataLayerAddPaymentInfoCC;
+			}
+				
+			let resultDataLayerAddPaymentInfoCC = addPaymentInfoCCGooleDataLayer(dataLayerAddPaymentInfoCC);
+
+			dataLayer.push(resultDataLayerAddPaymentInfoCC);
+
+			const rs = await makePaymentCC(ccPayload, this.props.user.jwt);
+			
 			if (rs.data) {
+				// console.log('CC',rs.data.data)
+				dataLayer.push({ ecommerce: null });
+				let resultDataLayerPurchaseCC = rs.data.data;
+				resultDataLayerPurchaseCC.ecommerce.transaction_status = rs.data.result;
+				resultDataLayerPurchaseCC.ecommerce.items.url = 'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
+																													.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+																													.replace('//', '%2F')
+																													.replace('%', '')
+																													.split(' ')
+																													.join('-'),
+				dataLayer.push(resultDataLayerPurchaseCC);
 				window.location = '/pay_result/' + rs.data.id;
 			} else {
 				this.setState({
@@ -347,21 +467,65 @@ export default class PaymentWay extends Component {
 			phone_number: e.target.elements.cash_form_number.value,
 			paymentMethod: this.getPaymentType(),
 		};
-		console.log('propiedades de pagar', cashPayload);
+		// console.log('propiedades de pagar', cashPayload);
 		if (cashPayload.email && cashPayload.full_name && cashPayload.phone_number) {
 			cashPayload.address_id = this.state.addresses[this.state.selectedAddr].address_id;
 
+			dataLayer.push({ ecommerce: null });
+			let dataLayerAddPaymentInfoMoney = {
+				'event': 'add_payment_info',
+				'ecommerce': {
+					'currency': 'COP',
+					'items': {
+						'item_name': this.props.data.product_global_title, // Name or ID is required.
+						'item_id': this.props.data.product_global_id,
+						'price': this.props.data.price,
+						'item_brand': this.props.data.brand,
+						'quantity': this.props.cantidad,
+						'url':'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
+																										.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+																										.replace('//', '%2F')
+																										.replace('%', '')
+																										.split(' ')
+																										.join('-'),
+						}
+					}
+				};
+			const AddPaymentInfoMoneyGooleDataLayer = (dataLayerAddPaymentInfoMoney) => {
+				this.props.data.breadcum.forEach((prod, index) => {
+					let keyCategory = `item_category${index + 1}`;
+					let valueNameCategory = prod.name;
+					dataLayerAddPaymentInfoMoney['ecommerce']['items'][keyCategory] = valueNameCategory;
+				});
+				return dataLayerAddPaymentInfoMoney;
+			}
+			
+			let resultDataLayerAddPaymentInfoMoney = AddPaymentInfoMoneyGooleDataLayer(dataLayerAddPaymentInfoMoney);
+
+			dataLayer.push(resultDataLayerAddPaymentInfoMoney);
+
 			const rs = await makePaymentCash(cashPayload, this.props.user.jwt);
-			console.log(rs);
+			// console.log(rs);
 			if (rs.data) {
-				console.log(rs.data);
+				dataLayer.push({ ecommerce: null });
+				let resultDataLayerPurchaseCash = rs.data.data;
+				resultDataLayerPurchaseCash.ecommerce.transaction_status = rs.data.result;
+				resultDataLayerPurchaseCash.ecommerce.items.url = 'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
+																													.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+																													.replace('//', '%2F')
+																													.replace('%', '')
+																													.split(' ')
+																													.join('-'),
+				dataLayer.push(resultDataLayerPurchaseCash);
+
 				this.setState({
 					paymentCashResult: true,
 					paymentCash: false,
 					paymentCashDocument: rs.data.result.pdf,
 				});
+
 			} else {
-				console.log(rs);
+				// console.log(rs);
 			}
 		} else {
 			alert('Complete todos los campos');
@@ -423,7 +587,7 @@ export default class PaymentWay extends Component {
 	};
 
 	getPaymentType = () => {
-		console.log(this.state.paymentCashType);
+		// console.log(this.state.paymentCashType);
 
 		if (this.state.paymentCashType === 1) {
 			return 'EFECTY';
@@ -437,8 +601,9 @@ export default class PaymentWay extends Component {
 			return 'SURED';
 		}
 	};
-
+	// dataPaymentGoogle = {}
 	render() {
+		// console.log("propiedades al pagar", this.props)
 		const addAddressContent = (
 			<AddAddress
 				jwt={this.props.user.jwt}
@@ -450,11 +615,11 @@ export default class PaymentWay extends Component {
 
 		const addressListContent = (
 			<>
-				<Select customStyles="paymentWaySelect" onChange={this.tmpChangeAddr}>
-					<option value="-1">Seleccione una dirección existente</option>
+				<Select  customStyles="paymentWaySelect" onChange={this.tmpChangeAddr}>
+					<option value="-1" key={99999999}>Seleccione una dirección existente</option>
 					{this.state.addresses.map((addr, i) => {
 						return (
-							<option key={i} value={i}>
+							<option key={i + 1} value={i}>
 								{addr.address}
 							</option>
 						);
@@ -496,19 +661,19 @@ export default class PaymentWay extends Component {
 		const docType = (
 			<>
 				{' '}
-				<option value={'CC'}>Cédula de ciudadanía </option>
-				<option value={'CE'}>Cédula de extranjería </option>
-				<option value={'NIT'}> NIT </option>
-				{/* <option value={"TI"}>Tarjeta de Identidad </option> */}
-				<option value={'PP'}>Pasaporte </option>
-				<option value={'DE'}>Documento de identificación extranjero </option>
+				<option key={1} value={'CC'}>Cédula de ciudadanía </option>
+				<option key={2} value={'CE'}>Cédula de extranjería </option>
+				<option key={3} value={'NIT'}> NIT </option>
+				{/* <option key={4} value={"TI"}>Tarjeta de Identidad </option> */}
+				<option key={5} value={'PP'}>Pasaporte </option>
+				<option key={6} value={'DE'}>Documento de identificación extranjero </option>
 			</>
 		);
 
 		let months_fees = [];
 		let i = 0;
 		for (i = 1; i < 32; i++) {
-			months_fees.push(<option value={i}>{i}</option>);
+			months_fees.push(<option value={i} key={i + 1}>{i}</option>);
 		}
 
 		const totalPrice = priceFormat(
@@ -625,7 +790,7 @@ export default class PaymentWay extends Component {
 											name={this.state.card_holder}
 											number={this.state.card_number}
 											callback={this.card_change}
-											placeholders="TU NOMBRE"
+											// placeholders={"TU NOMBRE"}
 										/>
 										<form id="form-credit" onSubmit={this.payCC}>
 											<input
@@ -636,7 +801,7 @@ export default class PaymentWay extends Component {
 												onCut={this.preventCopyPasteCut}
 												onCopy={this.preventCopyPasteCut}
 												onPaste={this.preventCopyPasteCut}
-												autocomplete="off"
+												autoComplete="off"
 												value={this.state.ccNumber}
 												onChange={this.handleInputChange}
 												onFocus={this.handleInputFocus}
@@ -648,7 +813,7 @@ export default class PaymentWay extends Component {
 												onCut={this.preventCopyPasteCut}
 												onCopy={this.preventCopyPasteCut}
 												onPaste={this.preventCopyPasteCut}
-												autocomplete="off"
+												autoComplete="off"
 												maxLength={64}
 												name={'card_holder'}
 												value={this.state.ccName}
@@ -659,7 +824,7 @@ export default class PaymentWay extends Component {
 											<InputTip msg={this.state.tips.card_holder} />
 											<div className="input-form">
 												<Datetime
-													inputProps={{ readOnly: 'true', appearance: 'auto' }}
+													inputProps={{ readOnly: true, appearance: 'auto' }}
 													onChange={this.handleDateTimeChange}
 													value={this.state.expiration_date}
 													placeholder="AA/MM"
@@ -670,7 +835,7 @@ export default class PaymentWay extends Component {
 													onCut={this.preventCopyPasteCut}
 													onCopy={this.preventCopyPasteCut}
 													onPaste={this.preventCopyPasteCut}
-													autocomplete="off"
+													autoComplete="off"
 													required
 													maxLength={4}
 													onChange={this.handleInputChange}
@@ -687,20 +852,20 @@ export default class PaymentWay extends Component {
 											</div>
 											Coutas:
 											<div className={'content-accordion-form'}>
-												<Select name={'monthly_fees'}>{months_fees}</Select>
+												<Select  name={'monthly_fees'}>{months_fees}</Select>
 											</div>
 											<div className="input-form">
 												<InputTip msg={this.state.tips.monthly_fees} />
 											</div>
 											<div className={'content-accordion-form'}>
-												<Select name={'document_type'}>{docType}</Select>
+												<Select  name={'document_type'}>{docType}</Select>
 												<InputTip msg={this.state.tips.document_type} />
 											</div>
 											<input
 												onCut={this.preventCopyPasteCut}
 												onCopy={this.preventCopyPasteCut}
 												onPaste={this.preventCopyPasteCut}
-												autocomplete="off"
+												autoComplete="off"
 												onChange={this.handleInputChange}
 												value={this.state.ccId}
 												required
@@ -773,6 +938,7 @@ export default class PaymentWay extends Component {
 											type={this.state.paymentCashType}
 											amount={totalPrice}
 											document={this.state.paymentCashDocument}
+											props={this.props}
 										/>
 									)}
 								</div>
@@ -803,7 +969,7 @@ export default class PaymentWay extends Component {
 														onCut={this.preventCopyPasteCut}
 														onCopy={this.preventCopyPasteCut}
 														onPaste={this.preventCopyPasteCut}
-														autocomplete="off"
+														autoComplete="off"
 														onChange={this.validateName}
 														value={this.state.name}
 														required
@@ -814,7 +980,7 @@ export default class PaymentWay extends Component {
 														onCut={this.preventCopyPasteCut}
 														onCopy={this.preventCopyPasteCut}
 														onPaste={this.preventCopyPasteCut}
-														autocomplete="off"
+														autoComplete="off"
 														type="email"
 														required
 														name={'email'}
@@ -824,7 +990,7 @@ export default class PaymentWay extends Component {
 														onCut={this.preventCopyPasteCut}
 														onCopy={this.preventCopyPasteCut}
 														onPaste={this.preventCopyPasteCut}
-														autocomplete="off"
+														autoComplete="off"
 														onChange={this.validatePhone}
 														value={this.state.phone}
 														required
@@ -834,10 +1000,10 @@ export default class PaymentWay extends Component {
 												</label>
 												<label>
 													<p>Banco</p>
-													<Select name={'bank_id'}>
+													<Select  name={'bank_id'}>
 														{this.state.banks.map((bank, i) => {
 															return (
-																<option key={i} value={bank.pseCode}>
+																<option key={i + 2} value={bank.pseCode}>
 																	{' '}
 																	{bank.description}{' '}
 																</option>
@@ -848,9 +1014,9 @@ export default class PaymentWay extends Component {
 												<label>
 													<p>Tipo de persona</p>
 
-													<Select name={'person_type'}>
-														<option value={'N'}>Natural</option>
-														<option value={'J'}>Juridica</option>
+													<Select  name={'person_type'}>
+														<option key={1} value={'N'}>Natural</option>
+														<option key={2}  value={'J'}>Juridica</option>
 													</Select>
 												</label>
 											</div>
@@ -858,13 +1024,13 @@ export default class PaymentWay extends Component {
 												<label>
 													<p>Documento de identificación</p>
 
-													<Select name={'document_type'}>{docType}</Select>
+													<Select  name={'document_type'}>{docType}</Select>
 
 													<input
 														onCut={this.preventCopyPasteCut}
 														onCopy={this.preventCopyPasteCut}
 														onPaste={this.preventCopyPasteCut}
-														autocomplete="off"
+														autoComplete="off"
 														onChange={this.validateIdNumber}
 														value={this.state.idNumber}
 														required

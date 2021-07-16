@@ -35,16 +35,44 @@ class PaySection extends Component {
 	}
 
 	go = (id) => {
-		var quantity = this.state.cantidad
-		if (quantity == 0){
-			var quantity = 1
-		}else{
-			var quantity = this.state.cantidad
-		}
-		window.location = '/pagar/' + id + '/' + quantity;
-	};
+		dataLayer.push({ ecommerce: null });
+		let dataLayerBeginCheckout = {
+			'event': 'begin_checkout',
+			'ecommerce': {
+				'items': {
+					'item_name': this.props.props.data.product_global_title, // Name or ID is required.
+					'item_id': this.props.props.data.product_global_id,
+					'price': this.props.props.data.price,
+					'item_brand': this.props.props.data.brand,
+					'quantity': this.state.cantidad == 0 ? 1 : this.state.cantidad,
+					'url':'https://kiero.co/detalle/' + this.props.props.data.product_global_id + '_' + this.props.props.data.product_global_title
+					.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+					.replace('//', '%2F')
+																									.replace('%', '')
+																									.split(' ')
+																									.join('-'),
+																								}
+																							}
+			};
+			const beginCheckoutGooleDataLayer = (dataLayerBeginCheckout) => {
+				this.props.props.data.breadcum.forEach((prod, index) => {
+					let keyCategory = `item_category${index + 1}`;
+					let valueNameCategory = prod.name;
+					dataLayerBeginCheckout['ecommerce']['items'][keyCategory] = valueNameCategory;
+				});
+				return dataLayerBeginCheckout;
+			}
+			
+			let resultDataLayerBeginCheckout = beginCheckoutGooleDataLayer(dataLayerBeginCheckout);
+			
+			dataLayer.push(resultDataLayerBeginCheckout);
 
-	loadData = async () => {
+			var quantity = this.state.cantidad == 0 ? 1 : this.state.cantidad
+			
+			window.location = '/pagar/' + id + '/' + quantity;
+		};
+		
+		loadData = async () => {
 		this.setState({
 			variantsSpinner: true,
 		});

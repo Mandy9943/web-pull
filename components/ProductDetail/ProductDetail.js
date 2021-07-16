@@ -63,9 +63,9 @@ class ProductDetail extends Component {
 
 		const productDetailGooleDataLayer = (dataLayerProductDetail) => {
 			this.props.data.breadcum.forEach((prod, index) => {
-				let key = `item_category${index + 1}`;
-				let value = prod.name;
-				dataLayerProductDetail['ecommerce']['items'][key] = value;
+				let keyCategory = `item_category${index + 1}`;
+				let valueNameCategory = prod.name;
+				dataLayerProductDetail['ecommerce']['items'][keyCategory] = valueNameCategory;
 			});
 			return dataLayerProductDetail;
 		}
@@ -142,6 +142,7 @@ class ProductDetail extends Component {
 							/>
 							<div className="pay-section-responsive">
 								<Pay
+									props={this.props}
 									pid={this.state.mdata.product_id}
 									pgid={this.state.mdata.product_id} //aqui va product_global_id
 									m_pgid={this.state.m_pgid}
@@ -224,6 +225,7 @@ class ProductDetail extends Component {
 						</div>
 						<div className="pay-section-pc">
 							<Pay
+								props={this.props}
 								pid={this.state.mdata.product_id}
 								pgid={this.state.mdata.product_id} //aqui va product_global_id
 								m_pgid={this.state.m_pgid}

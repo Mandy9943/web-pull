@@ -16,7 +16,7 @@ import {
 function Product({ data, u_data }) {
 
   console.log("PRODUCT IN DATA:");
-  console.log(data);
+  // console.log(data);
 
   return (
     <div className="order-page">
