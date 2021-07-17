@@ -311,6 +311,7 @@ export default class PaymentWay extends Component {
 																										.replace('%', '')
 																										.split(' ')
 																										.join('-'),
+						'payment_type':'pse'																				
 						}
 					}
 				};
@@ -411,6 +412,7 @@ export default class PaymentWay extends Component {
 																										.replace('%', '')
 																										.split(' ')
 																										.join('-'),
+						'payment_type':'cc'
 						}
 					}
 				};
@@ -488,6 +490,7 @@ export default class PaymentWay extends Component {
 																										.replace('%', '')
 																										.split(' ')
 																										.join('-'),
+						'payment_type':'cash'
 						}
 					}
 				};

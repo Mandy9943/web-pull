@@ -25,6 +25,7 @@ import Seller from './../SellerInfo';
 import { RecommendedProducts } from '../RecommendedProducts';
 import { getProductDetail } from '../../services/productsApi';
 import { withRouter } from 'next/router';
+import ReactPixelFacebook from '../../pages/_app';
 
 class ProductDetail extends Component {
 	constructor(props) {
@@ -44,7 +45,7 @@ class ProductDetail extends Component {
 			'event': 'view_item',
 			'ecommerce': {
 			'items': 
-						{
+						[{
 							'item_name': this.props.data.product_global_title, // Name or ID is required.
 							'item_id': this.props.data.product_global_id,
 							'price': this.props.data.price,
@@ -55,7 +56,7 @@ class ProductDetail extends Component {
 																							.replace('%', '')
 																							.split(' ')
 																							.join('-'),
-					},
+					}],
 			
 			'currency': 'COP'
 			}
@@ -74,8 +75,54 @@ class ProductDetail extends Component {
 
 		dataLayer.push(resultDataLayerProductDetail);
 
-	}
+		if (typeof window !== "undefined") {
+			setTimeout(() => {
+				if (window.fbq != null) { 
+					window.fbq('track','ViewContent',{
+														'content_ids': this.props.data.product_global_id,
+														'content_name': this.props.data.product_global_title,
+														'product_group': this.props.data.type,
+														'content_type':'product',
+														'contents': [{
+															'id':this.props.data.product_global_id,
+															'quantity':1
+														}],
+														'currency': 'COP',
+														'value': this.props.data.price
+													}) 
+				} else {
+						fbq('track','ViewContent',{
+														'content_ids': this.props.data.product_global_id,
+														'content_name': this.props.data.product_global_title,
+														'product_group': this.props.data.type,
+														'content_type':'product',
+														'contents': [{
+															'id':this.props.data.product_global_id,
+															'quantity':1
+														}],
+														'currency': 'COP',
+														'value': this.props.data.price
+													}) 
+						}
+			}, 3000);
+		}
+		// window.fbq('track','ViewContent',{})
+		// window.fbq('track','ViewContent',{
+		// 	'content_ids': this.props.data.product_global_id,
+		// 	'content_name': this.props.data.product_global_title,
+		// 	'product_group': this.props.data.type,
+		// 	'content_type':'product',
+		// 	'contents': [{
+		// 		'id':this.props.data.product_global_id,
+		// 		'quantity':1
+		// 	}],
+		// 	'currency': 'COP',
+		// 	'value': this.props.data.price
+		// })
 
+
+	}
+	
 	async reLoadData(pgid) {
 		// Esta funcion se llama cuando se encuentra un match de variantes
 		const router = this.props.router;
@@ -104,7 +151,19 @@ class ProductDetail extends Component {
 			});
 	};
 	render() {
-		
+	// let DataForPixel = {
+	// 	'content_ids': this.props.data.product_global_id,
+	// 	'content_name': this.props.data.product_global_title,
+	// 	'product_group': this.props.data.type,
+	// 	'content_type':'product',
+	// 	'contents': [{
+	// 		'id':this.props.data.product_global_id,
+	// 		'quantity':1
+	// 	}],
+	// 	'currency': 'COP',
+	// 	'value': this.props.data.price
+	// };
+	// <ReactPixelFacebook type={'ViewContent'} data={DataForPixel}/>
 		const u_data = this.props.user_data;
 		let url = '//www.sic.gov.co';
 		// console.log(this.state.mdata)
