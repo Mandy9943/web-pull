@@ -234,7 +234,7 @@ export default class PaymentWay extends Component {
 				'event': 'add_shipping_info',
 				'ecommerce': {
 					'currency': 'COP',
-					'items': {
+					'items':[ {
 						'item_name': this.props.data.product_global_title, // Name or ID is required.
 						'item_id': this.props.data.product_global_id,
 						'price': this.props.data.price,
@@ -246,14 +246,14 @@ export default class PaymentWay extends Component {
 																										.replace('%', '')
 																										.split(' ')
 																										.join('-'),
-						}
+						}]
 					}
 				};
 			const AddShippingInfoGooleDataLayer = (dataLayerAddShippingInfo) => {
 				this.props.data.breadcum.forEach((prod, index) => {
 					let keyCategory = `item_category${index + 1}`;
 					let valueNameCategory = prod.name;
-					dataLayerAddShippingInfo['ecommerce']['items'][keyCategory] = valueNameCategory;
+					dataLayerAddShippingInfo['ecommerce']['items'][0][keyCategory] = valueNameCategory;
 				});
 				return dataLayerAddShippingInfo;
 			}
@@ -299,7 +299,7 @@ export default class PaymentWay extends Component {
 				'event': 'add_payment_info',
 				'ecommerce': {
 					'currency': 'COP',
-					'items': {
+					'items': [{
 						'item_name': this.props.data.product_global_title, // Name or ID is required.
 						'item_id': this.props.data.product_global_id,
 						'price': this.props.data.price,
@@ -312,14 +312,14 @@ export default class PaymentWay extends Component {
 																										.split(' ')
 																										.join('-'),
 						'payment_type':'pse'																				
-						}
+						}]
 					}
 				};
 			const addPaymentInfoPSEGooleDataLayer = (dataLayerAddPaymentInfoPSE) => {
 				this.props.data.breadcum.forEach((prod, index) => {
 					let keyCategory = `item_category${index + 1}`;
 					let valueNameCategory = prod.name;
-					dataLayerAddPaymentInfoPSE['ecommerce']['items'][keyCategory] = valueNameCategory;
+					dataLayerAddPaymentInfoPSE['ecommerce']['items'][0][keyCategory] = valueNameCategory;
 				});
 				return dataLayerAddPaymentInfoPSE;
 			}
@@ -400,7 +400,7 @@ export default class PaymentWay extends Component {
 				'event': 'add_payment_info',
 				'ecommerce': {
 					'currency': 'COP',
-					'items': {
+					'items': [{
 						'item_name': this.props.data.product_global_title, // Name or ID is required.
 						'item_id': this.props.data.product_global_id,
 						'price': this.props.data.price,
@@ -413,14 +413,14 @@ export default class PaymentWay extends Component {
 																										.split(' ')
 																										.join('-'),
 						'payment_type':'cc'
-						}
+						}]
 					}
 				};
 			const addPaymentInfoCCGooleDataLayer = (dataLayerAddPaymentInfoCC) => {
 				this.props.data.breadcum.forEach((prod, index) => {
 					let keyCategory = `item_category${index + 1}`;
 					let valueNameCategory = prod.name;
-					dataLayerAddPaymentInfoCC['ecommerce']['items'][keyCategory] = valueNameCategory;
+					dataLayerAddPaymentInfoCC['ecommerce']['items'][0][keyCategory] = valueNameCategory;
 				});
 				return dataLayerAddPaymentInfoCC;
 			}
@@ -478,7 +478,7 @@ export default class PaymentWay extends Component {
 				'event': 'add_payment_info',
 				'ecommerce': {
 					'currency': 'COP',
-					'items': {
+					'items': [{
 						'item_name': this.props.data.product_global_title, // Name or ID is required.
 						'item_id': this.props.data.product_global_id,
 						'price': this.props.data.price,
@@ -491,14 +491,14 @@ export default class PaymentWay extends Component {
 																										.split(' ')
 																										.join('-'),
 						'payment_type':'cash'
-						}
+						}]
 					}
 				};
 			const AddPaymentInfoMoneyGooleDataLayer = (dataLayerAddPaymentInfoMoney) => {
 				this.props.data.breadcum.forEach((prod, index) => {
 					let keyCategory = `item_category${index + 1}`;
 					let valueNameCategory = prod.name;
-					dataLayerAddPaymentInfoMoney['ecommerce']['items'][keyCategory] = valueNameCategory;
+					dataLayerAddPaymentInfoMoney['ecommerce']['items'][0][keyCategory] = valueNameCategory;
 				});
 				return dataLayerAddPaymentInfoMoney;
 			}
