@@ -78,6 +78,7 @@ class ProductDetail extends Component {
 		if (typeof window !== "undefined") {
 			setTimeout(() => {
 				if (window.fbq != null) { 
+					window.fbq('track','ViewContent',{})
 					window.fbq('track','ViewContent',{
 														'content_ids': this.props.data.product_global_id,
 														'content_name': this.props.data.product_global_title,
@@ -91,6 +92,7 @@ class ProductDetail extends Component {
 														'value': this.props.data.price
 													}) 
 				} else {
+						fbq('track','ViewContent',{})
 						fbq('track','ViewContent',{
 														'content_ids': this.props.data.product_global_id,
 														'content_name': this.props.data.product_global_title,
@@ -106,21 +108,6 @@ class ProductDetail extends Component {
 						}
 			}, 3000);
 		}
-		// window.fbq('track','ViewContent',{})
-		// window.fbq('track','ViewContent',{
-		// 	'content_ids': this.props.data.product_global_id,
-		// 	'content_name': this.props.data.product_global_title,
-		// 	'product_group': this.props.data.type,
-		// 	'content_type':'product',
-		// 	'contents': [{
-		// 		'id':this.props.data.product_global_id,
-		// 		'quantity':1
-		// 	}],
-		// 	'currency': 'COP',
-		// 	'value': this.props.data.price
-		// })
-
-
 	}
 	
 	async reLoadData(pgid) {

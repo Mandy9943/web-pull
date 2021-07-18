@@ -68,8 +68,8 @@ class PaySection extends Component {
 			dataLayer.push(resultDataLayerBeginCheckout);
 
 			if (typeof window !== "undefined") {
-				setTimeout(() => {
 					if (window.fbq != null) { 
+						window.fbq('track','InitiateCheckout',{})
 						window.fbq('track','InitiateCheckout',{
 															'content_ids': this.props.props.data.product_global_id,
 															'content_name': this.props.props.data.product_global_title,
@@ -85,6 +85,7 @@ class PaySection extends Component {
 															'num_items':this.state.cantidad == 0 ? 1 : this.state.cantidad
 														}) 
 					} else {
+							fbq('track','InitiateCheckout',{})
 							fbq('track','InitiateCheckout',{
 															'content_ids': this.props.props.data.product_global_id,
 															'content_name': this.props.props.data.product_global_title,
@@ -100,7 +101,6 @@ class PaySection extends Component {
 															'num_items':this.state.cantidad == 0 ? 1 : this.state.cantidad
 														}) 
 							}
-				}, 3000);
 			}
 
 			var quantity = this.state.cantidad == 0 ? 1 : this.state.cantidad

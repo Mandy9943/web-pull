@@ -291,30 +291,31 @@ export default class PaymentWay extends Component {
 				document_type: e.target.elements.document_type.value,
 				document_number: e.target.elements.document_number.value,
 				bank_id: e.target.elements.bank_id.value,
+				quantity:this.props.cantidad
 			},
 			this.props.user.jwt
 		);
 		dataLayer.push({ ecommerce: null });
-			let dataLayerAddPaymentInfoPSE = {
-				'event': 'add_payment_info',
-				'ecommerce': {
-					'currency': 'COP',
-					'items': [{
-						'item_name': this.props.data.product_global_title, // Name or ID is required.
-						'item_id': this.props.data.product_global_id,
-						'price': this.props.data.price,
-						'item_brand': this.props.data.brand,
-						'quantity': this.props.cantidad,
-						'url':'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
-																										.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-																										.replace('//', '%2F')
-																										.replace('%', '')
-																										.split(' ')
-																										.join('-'),
-						'payment_type':'pse'																				
-						}]
-					}
-				};
+		let dataLayerAddPaymentInfoPSE = {
+			'event': 'add_payment_info',
+			'ecommerce': {
+				'currency': 'COP',
+				'items': [{
+					'item_name': this.props.data.product_global_title, // Name or ID is required.
+					'item_id': this.props.data.product_global_id,
+					'price': this.props.data.price,
+					'item_brand': this.props.data.brand,
+					'quantity': this.props.cantidad,
+					'url':'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
+																									.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+																									.replace('//', '%2F')
+																									.replace('%', '')
+																									.split(' ')
+																									.join('-'),
+					'payment_type':'pse'																				
+					}]
+				}
+			};
 			const addPaymentInfoPSEGooleDataLayer = (dataLayerAddPaymentInfoPSE) => {
 				this.props.data.breadcum.forEach((prod, index) => {
 					let keyCategory = `item_category${index + 1}`;
@@ -327,18 +328,91 @@ export default class PaymentWay extends Component {
 			let resultDataLayerAddPaymentInfoPSE = addPaymentInfoPSEGooleDataLayer(dataLayerAddPaymentInfoPSE);
 
 			dataLayer.push(resultDataLayerAddPaymentInfoPSE);
+			
+			if (typeof window !== "undefined") {
+				if (window.fbq != null) { 
+					window.fbq('track','AddPaymentInfo',{})
+					window.fbq('track','AddPaymentInfo',{
+														'content_ids': this.props.data.product_global_id,
+														'content_name': this.props.data.product_global_title,
+														'product_group': this.props.data.type,
+														'content_type':'product',
+														'content_category':this.props.data.breadcum[0].name,
+														'contents': [{
+															'id':this.props.data.product_global_id,
+															'quantity':this.props.cantidad,
+														}],
+														'currency': 'COP',
+														'value': this.props.data.price,
+														'payment_type':'pse'
+													}) 
+				} else {
+						fbq('track','AddPaymentInfo',{})
+						fbq('track','AddPaymentInfo',{
+														'content_ids': this.props.data.product_global_id,
+														'content_name': this.props.data.product_global_title,
+														'product_group': this.props.data.type,
+														'content_type':'product',
+														'content_category':this.props.data.breadcum[0].name,
+														'contents': [{
+															'id':this.props.data.product_global_id,
+															'quantity':this.props.cantidad,
+														}],
+														'currency': 'COP',
+														'value': this.props.data.price,
+														'payment_type':'pse'
+													}) 
+						}
+			}
+
 		if (result.data) {
-			// console.log("pse",result.data.data)
 			dataLayer.push({ ecommerce: null });
 			let resultDataLayerPurchasePSE = result.data.data;
-			resultDataLayerPurchasePSE.ecommerce.transaction_status = result.data.result;
-			resultDataLayerPurchasePSE.ecommerce.items.url = 'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
+			resultDataLayerPurchasePSE.ecommerce.transaction_status = result.data.transaction_status;
+			resultDataLayerPurchasePSE.ecommerce.items[0].url = 'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
 																												.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
 																												.replace('//', '%2F')
 																												.replace('%', '')
 																												.split(' ')
 																												.join('-'),
 			dataLayer.push(resultDataLayerPurchasePSE);
+			if (typeof window !== "undefined") {
+				if (window.fbq != null) { 
+					window.fbq('track','Purchase',{})
+					window.fbq('track','Purchase',{
+													'content_ids': this.props.data.product_global_id,
+													'content_name': this.props.data.product_global_title,
+													'product_group': this.props.data.type,
+													'content_type':'product',
+													'content_category':this.props.data.breadcum[0].name,
+													'contents': [{
+																	'id':this.props.data.product_global_id,
+																	'quantity':this.props.cantidad,
+																}],
+													'currency': 'COP',
+													'value': this.props.data.price,
+													'payment_type':'pse',
+													'num_items':this.props.cantidad
+												}) 
+				} else {
+						fbq('track','Purchase',{})
+						fbq('track','Purchase',{
+													'content_ids': this.props.data.product_global_id,
+													'content_name': this.props.data.product_global_title,
+													'product_group': this.props.data.type,
+													'content_type':'product',
+													'content_category':this.props.data.breadcum[0].name,
+													'contents': [{
+																	'id':this.props.data.product_global_id,
+																	'quantity':this.props.cantidad,
+																}],
+													'currency': 'COP',
+													'value': this.props.data.price,
+													'payment_type':'pse',
+													'num_items':this.props.cantidad
+												}) 
+						}
+		}
 			window.location = result.data.URL;
 		} else {
 			this.setState({
@@ -379,6 +453,7 @@ export default class PaymentWay extends Component {
 			card_holder: e.target.elements.card_holder.value,
 			monthly_fees: e.target.elements.monthly_fees.value,
 			accept_token: this.state.acceptance_token,
+			quantity: this.props.cantidad
 		};
 		// console.log("payment",ccPayload, "this.state.ccCvv",this.state.ccCvv, "cvv",e.target.elements)
 
@@ -429,6 +504,41 @@ export default class PaymentWay extends Component {
 
 			dataLayer.push(resultDataLayerAddPaymentInfoCC);
 
+			if (window.fbq != null) { 
+				window.fbq('track','AddPaymentInfo',{})
+				window.fbq('track','AddPaymentInfo',{
+													'content_ids': this.props.data.product_global_id,
+													'content_name': this.props.data.product_global_title,
+													'product_group': this.props.data.type,
+													'content_type':'product',
+													'content_category':this.props.data.breadcum[0].name,
+													'contents': [{
+																	'id':this.props.data.product_global_id,
+																	'quantity':this.props.cantidad,
+																}],
+													'currency': 'COP',
+													'value': this.props.data.price,
+													'payment_type':'cc'
+												}) 
+			} else {
+					fbq('track','AddPaymentInfo',{})
+					fbq('track','AddPaymentInfo',{
+													'content_ids': this.props.data.product_global_id,
+													'content_name': this.props.data.product_global_title,
+													'product_group': this.props.data.type,
+													'content_type':'product',
+													'content_category':this.props.data.breadcum[0].name,
+													'contents': [{
+																	'id':this.props.data.product_global_id,
+																	'quantity':this.props.cantidad,
+																}],
+													'currency': 'COP',
+													'value': this.props.data.price,
+													'payment_type':'cc'
+												}) 
+					}
+	
+
 			const rs = await makePaymentCC(ccPayload, this.props.user.jwt);
 			
 			if (rs.data) {
@@ -436,14 +546,53 @@ export default class PaymentWay extends Component {
 				dataLayer.push({ ecommerce: null });
 				let resultDataLayerPurchaseCC = rs.data.data;
 				resultDataLayerPurchaseCC.ecommerce.transaction_status = rs.data.result;
-				resultDataLayerPurchaseCC.ecommerce.items.url = 'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
+				resultDataLayerPurchaseCC.ecommerce.items[0].url = 'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
 																													.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
 																													.replace('//', '%2F')
 																													.replace('%', '')
 																													.split(' ')
 																													.join('-'),
 				dataLayer.push(resultDataLayerPurchaseCC);
+				if (typeof window !== "undefined") {
+					if (window.fbq != null) { 
+						window.fbq('track','Purchase',{})
+						window.fbq('track','Purchase',{
+														'content_ids': this.props.data.product_global_id,
+														'content_name': this.props.data.product_global_title,
+														'product_group': this.props.data.type,
+														'content_type':'product',
+														'content_category':this.props.data.breadcum[0].name,
+														'contents': [{
+																		'id':this.props.data.product_global_id,
+																		'quantity':this.props.cantidad,
+																	}],
+														'currency': 'COP',
+														'value': this.props.data.price,
+														'payment_type':'cc',
+														'num_items':this.props.cantidad
+													}) 
+					} else {
+							fbq('track','Purchase',{})
+							fbq('track','Purchase',{
+														'content_ids': this.props.data.product_global_id,
+														'content_name': this.props.data.product_global_title,
+														'product_group': this.props.data.type,
+														'content_type':'product',
+														'content_category':this.props.data.breadcum[0].name,
+														'contents': [{
+																		'id':this.props.data.product_global_id,
+																		'quantity':this.props.cantidad,
+																	}],
+														'currency': 'COP',
+														'value': this.props.data.price,
+														'payment_type':'cc',
+														'num_items':this.props.cantidad
+													}) 
+							}
+				}
+
 				window.location = '/pay_result/' + rs.data.id;
+
 			} else {
 				this.setState({
 					paymentLoading: false,
@@ -506,20 +655,93 @@ export default class PaymentWay extends Component {
 			let resultDataLayerAddPaymentInfoMoney = AddPaymentInfoMoneyGooleDataLayer(dataLayerAddPaymentInfoMoney);
 
 			dataLayer.push(resultDataLayerAddPaymentInfoMoney);
+			if (window.fbq != null) { 
+				window.fbq('track','AddPaymentInfo',{})
+				window.fbq('track','AddPaymentInfo',{
+													'content_ids': this.props.data.product_global_id,
+													'content_name': this.props.data.product_global_title,
+													'product_group': this.props.data.type,
+													'content_type':'product',
+													'content_category':this.props.data.breadcum[0].name,
+													'contents': [{
+																	'id':this.props.data.product_global_id,
+																	'quantity':this.props.cantidad,
+																}],
+													'currency': 'COP',
+													'value': this.props.data.price,
+													'payment_type':'cash'
+												}) 
+			} else {
+					fbq('track','AddPaymentInfo',{})
+					fbq('track','AddPaymentInfo',{
+													'content_ids': this.props.data.product_global_id,
+													'content_name': this.props.data.product_global_title,
+													'product_group': this.props.data.type,
+													'content_type':'product',
+													'content_category':this.props.data.breadcum[0].name,
+													'contents': [{
+																	'id':this.props.data.product_global_id,
+																	'quantity':this.props.cantidad,
+																}],
+													'currency': 'COP',
+													'value': this.props.data.price,
+													'payment_type':'cash'
+												}) 
+					}
+		
+	
 
 			const rs = await makePaymentCash(cashPayload, this.props.user.jwt);
 			// console.log(rs);
 			if (rs.data) {
 				dataLayer.push({ ecommerce: null });
 				let resultDataLayerPurchaseCash = rs.data.data;
-				resultDataLayerPurchaseCash.ecommerce.transaction_status = rs.data.result;
-				resultDataLayerPurchaseCash.ecommerce.items.url = 'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
+				resultDataLayerPurchaseCash.ecommerce.transaction_status = rs.data.result.state;
+				resultDataLayerPurchaseCash.ecommerce.items[0].url = 'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
 																													.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
 																													.replace('//', '%2F')
 																													.replace('%', '')
 																													.split(' ')
 																													.join('-'),
 				dataLayer.push(resultDataLayerPurchaseCash);
+
+				if (typeof window !== "undefined") {
+					if (window.fbq != null) { 
+						window.fbq('track','Purchase',{})
+						window.fbq('track','Purchase',{
+														'content_ids': this.props.data.product_global_id,
+														'content_name': this.props.data.product_global_title,
+														'product_group': this.props.data.type,
+														'content_type':'product',
+														'content_category':this.props.data.breadcum[0].name,
+														'contents': [{
+																		'id':this.props.data.product_global_id,
+																		'quantity':this.props.cantidad,
+																	}],
+														'currency': 'COP',
+														'value': this.props.data.price,
+														'payment_type':'cash',
+														'num_items':this.props.cantidad
+													}) 
+					} else {
+							fbq('track','Purchase',{})
+							fbq('track','Purchase',{
+														'content_ids': this.props.data.product_global_id,
+														'content_name': this.props.data.product_global_title,
+														'product_group': this.props.data.type,
+														'content_type':'product',
+														'content_category':this.props.data.breadcum[0].name,
+														'contents': [{
+																		'id':this.props.data.product_global_id,
+																		'quantity':this.props.cantidad,
+																	}],
+														'currency': 'COP',
+														'value': this.props.data.price,
+														'payment_type':'cash',
+														'num_items':this.props.cantidad
+													}) 
+							}
+			}
 
 				this.setState({
 					paymentCashResult: true,
