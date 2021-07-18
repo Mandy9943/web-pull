@@ -331,7 +331,6 @@ export default class PaymentWay extends Component {
 			
 			if (typeof window !== "undefined") {
 				if (window.fbq != null) { 
-					window.fbq('track','AddPaymentInfo',{})
 					window.fbq('track','AddPaymentInfo',{
 														'content_ids': this.props.data.product_global_id,
 														'content_name': this.props.data.product_global_title,
@@ -347,7 +346,6 @@ export default class PaymentWay extends Component {
 														'payment_type':'pse'
 													}) 
 				} else {
-						fbq('track','AddPaymentInfo',{})
 						fbq('track','AddPaymentInfo',{
 														'content_ids': this.props.data.product_global_id,
 														'content_name': this.props.data.product_global_title,
@@ -378,7 +376,6 @@ export default class PaymentWay extends Component {
 			dataLayer.push(resultDataLayerPurchasePSE);
 			if (typeof window !== "undefined") {
 				if (window.fbq != null) { 
-					window.fbq('track','Purchase',{})
 					window.fbq('track','Purchase',{
 													'content_ids': this.props.data.product_global_id,
 													'content_name': this.props.data.product_global_title,
@@ -395,7 +392,6 @@ export default class PaymentWay extends Component {
 													'num_items':this.props.cantidad
 												}) 
 				} else {
-						fbq('track','Purchase',{})
 						fbq('track','Purchase',{
 													'content_ids': this.props.data.product_global_id,
 													'content_name': this.props.data.product_global_title,
@@ -505,7 +501,6 @@ export default class PaymentWay extends Component {
 			dataLayer.push(resultDataLayerAddPaymentInfoCC);
 
 			if (window.fbq != null) { 
-				window.fbq('track','AddPaymentInfo',{})
 				window.fbq('track','AddPaymentInfo',{
 													'content_ids': this.props.data.product_global_id,
 													'content_name': this.props.data.product_global_title,
@@ -521,7 +516,6 @@ export default class PaymentWay extends Component {
 													'payment_type':'cc'
 												}) 
 			} else {
-					fbq('track','AddPaymentInfo',{})
 					fbq('track','AddPaymentInfo',{
 													'content_ids': this.props.data.product_global_id,
 													'content_name': this.props.data.product_global_title,
@@ -555,7 +549,6 @@ export default class PaymentWay extends Component {
 				dataLayer.push(resultDataLayerPurchaseCC);
 				if (typeof window !== "undefined") {
 					if (window.fbq != null) { 
-						window.fbq('track','Purchase',{})
 						window.fbq('track','Purchase',{
 														'content_ids': this.props.data.product_global_id,
 														'content_name': this.props.data.product_global_title,
@@ -572,7 +565,6 @@ export default class PaymentWay extends Component {
 														'num_items':this.props.cantidad
 													}) 
 					} else {
-							fbq('track','Purchase',{})
 							fbq('track','Purchase',{
 														'content_ids': this.props.data.product_global_id,
 														'content_name': this.props.data.product_global_title,
@@ -656,7 +648,6 @@ export default class PaymentWay extends Component {
 
 			dataLayer.push(resultDataLayerAddPaymentInfoMoney);
 			if (window.fbq != null) { 
-				window.fbq('track','AddPaymentInfo',{})
 				window.fbq('track','AddPaymentInfo',{
 													'content_ids': this.props.data.product_global_id,
 													'content_name': this.props.data.product_global_title,
@@ -672,7 +663,6 @@ export default class PaymentWay extends Component {
 													'payment_type':'cash'
 												}) 
 			} else {
-					fbq('track','AddPaymentInfo',{})
 					fbq('track','AddPaymentInfo',{
 													'content_ids': this.props.data.product_global_id,
 													'content_name': this.props.data.product_global_title,
@@ -707,7 +697,6 @@ export default class PaymentWay extends Component {
 
 				if (typeof window !== "undefined") {
 					if (window.fbq != null) { 
-						window.fbq('track','Purchase',{})
 						window.fbq('track','Purchase',{
 														'content_ids': this.props.data.product_global_id,
 														'content_name': this.props.data.product_global_title,
@@ -724,7 +713,6 @@ export default class PaymentWay extends Component {
 														'num_items':this.props.cantidad
 													}) 
 					} else {
-							fbq('track','Purchase',{})
 							fbq('track','Purchase',{
 														'content_ids': this.props.data.product_global_id,
 														'content_name': this.props.data.product_global_title,

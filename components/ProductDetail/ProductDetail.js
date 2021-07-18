@@ -78,7 +78,6 @@ class ProductDetail extends Component {
 		if (typeof window !== "undefined") {
 			setTimeout(() => {
 				if (window.fbq != null) { 
-					window.fbq('track','ViewContent',{})
 					window.fbq('track','ViewContent',{
 														'content_ids': this.props.data.product_global_id,
 														'content_name': this.props.data.product_global_title,
@@ -92,7 +91,6 @@ class ProductDetail extends Component {
 														'value': this.props.data.price
 													}) 
 				} else {
-						fbq('track','ViewContent',{})
 						fbq('track','ViewContent',{
 														'content_ids': this.props.data.product_global_id,
 														'content_name': this.props.data.product_global_title,
