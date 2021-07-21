@@ -35,16 +35,77 @@ class PaySection extends Component {
 	}
 
 	go = (id) => {
-		var quantity = this.state.cantidad
-		if (quantity == 0){
-			var quantity = 1
-		}else{
-			var quantity = this.state.cantidad
-		}
-		window.location = '/pagar/' + id + '/' + quantity;
-	};
+		dataLayer.push({ ecommerce: null });
+		let dataLayerBeginCheckout = {
+			'event': 'begin_checkout',
+			'ecommerce': {
+				'items': [{
+					'item_name': this.props.props.data.product_global_title, // Name or ID is required.
+					'item_id': this.props.props.data.product_global_id,
+					'price': this.props.props.data.price,
+					'item_brand': this.props.props.data.brand,
+					'quantity': this.state.cantidad == 0 ? 1 : this.state.cantidad,
+					'url':'https://kiero.co/detalle/' + this.props.props.data.product_global_id + '_' + this.props.props.data.product_global_title
+					.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+					.replace('//', '%2F')
+																									.replace('%', '')
+																									.split(' ')
+																									.join('-'),
+																								}]
+																							}
+			};
+			const beginCheckoutGooleDataLayer = (dataLayerBeginCheckout) => {
+				this.props.props.data.breadcum.forEach((prod, index) => {
+					let keyCategory = `item_category${index + 1}`;
+					let valueNameCategory = prod.name;
+					dataLayerBeginCheckout['ecommerce']['items'][0][keyCategory] = valueNameCategory;
+				});
+				return dataLayerBeginCheckout;
+			}
+			
+			let resultDataLayerBeginCheckout = beginCheckoutGooleDataLayer(dataLayerBeginCheckout);
+			
+			dataLayer.push(resultDataLayerBeginCheckout);
 
-	loadData = async () => {
+			if (typeof window !== "undefined") {
+					if (window.fbq != null) { 
+						window.fbq('track','InitiateCheckout',{
+															'content_ids': this.props.props.data.product_global_id,
+															'content_name': this.props.props.data.product_global_title,
+															'product_group': this.props.props.data.type,
+															'content_type':'product',
+															'content_category':this.props.props.data.breadcum[0].name,
+															'contents': [{
+																'id':this.props.props.data.product_global_id,
+																'quantity':this.state.cantidad == 0 ? 1 : this.state.cantidad,
+															}],
+															'currency': 'COP',
+															'value': this.props.props.data.price,
+															'num_items':this.state.cantidad == 0 ? 1 : this.state.cantidad
+														}) 
+					} else {
+							fbq('track','InitiateCheckout',{
+															'content_ids': this.props.props.data.product_global_id,
+															'content_name': this.props.props.data.product_global_title,
+															'product_group': this.props.props.data.type,
+															'content_type':'product',
+															'content_category':this.props.props.data.breadcum[0].name,
+															'contents': [{
+																'id':this.props.props.data.product_global_id,
+																'quantity':this.state.cantidad == 0 ? 1 : this.state.cantidad,
+															}],
+															'currency': 'COP',
+															'value': this.props.props.data.price,
+															'num_items':this.state.cantidad == 0 ? 1 : this.state.cantidad
+														}) 
+							}
+			}
+
+			var quantity = this.state.cantidad == 0 ? 1 : this.state.cantidad
+			window.location = '/pagar/' + id + '/' + quantity;
+		};
+		
+		loadData = async () => {
 		this.setState({
 			variantsSpinner: true,
 		});

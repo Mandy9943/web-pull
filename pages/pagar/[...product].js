@@ -56,8 +56,8 @@ function plataforma_de_pago({ data, u_data, cantidad }) {
 export async function getServerSideProps(context) {
 	let id_product = String(context.params.product[0]);
 	let cantidad = String(context.params.product[1]);
-	console.log(context);
-	console.log(context.params.product[1]);
+	// console.log(context);
+	// console.log(context.params.product[1]);
 	const res = await getProductGlobalDetail(id_product);
 	const data = await res.data;
 
@@ -73,7 +73,7 @@ export async function getServerSideProps(context) {
 	};
 
 	redirectIfNotAuthenticated(context);
-	console.log('payment', res);
+	// console.log('payment', res);
 
 	return { props: { data: data.data, u_data, cantidad } };
 }

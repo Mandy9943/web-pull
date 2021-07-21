@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PayEfecty from '../../assets/img/pay-cash-efecty.png';
 import PayBaloto from '../../assets/img/pay-cash-baloto.png';
 import PaySured from '../../assets/img/pay-cash-sured.png';
@@ -7,13 +7,19 @@ import './PaymentCashResult.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
-function PaymentCashResult({ type, amount, document }) {
+function PaymentCashResult({ type, amount, document, props }) {
 	const [pdfDownloaded, setPdfDownloaded] = useState(false);
 	const downloadPDF = () => {
 		setPdfDownloaded(true);
 		window.open(document);
 	};
 	console.log(amount);
+	console.log("efectivo", props);
+
+	useEffect(() => {
+
+	})
+
 
 	const message = (
 		<>
