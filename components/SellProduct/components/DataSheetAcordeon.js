@@ -63,10 +63,35 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function DataSheetAcordeon({}) {
+export default function DataSheetAcordeon({
+	valid,
+	brand,
+	setBrand,
+	model,
+	setModel,
+	material,
+	setMaterial,
+	long,
+	setLong,
+	longUnit,
+	setLongUnit,
+	width,
+	setWidth,
+	widthUnit,
+	setWidthUnit,
+}) {
 	const classes = useStyles();
 	const [expandedDataSheet, setExpandedDataSheet] = useState(false);
 	const [dataSheetInfo, setDataSheetInfo] = useState(false);
+
+	function handleLong(e) {
+		const pattern = new RegExp('^[0-9]*$');
+		setLong(pattern.test(e.target.value) ? e.target.value : e.target.value.slice(0, -1));
+	}
+	function handleWidth(e) {
+		const pattern = new RegExp('^[0-9]*$');
+		setWidth(pattern.test(e.target.value) ? e.target.value : e.target.value.slice(0, -1));
+	}
 
 	return (
 		<div className="productAcordeonContainer">
@@ -112,7 +137,14 @@ export default function DataSheetAcordeon({}) {
 					aria-expanded={setExpandedDataSheet}
 				/>
 			</div>
-			<Collapse in={expandedDataSheet} timeout="auto" unmountOnExit>
+			<Collapse
+				in={
+					expandedDataSheet ||
+					(!valid && (!brand || !model || !material || !long || !width))
+				}
+				timeout="auto"
+				unmountOnExit
+			>
 				<div className="dataSheetContainer">
 					<div className="dataSheetText">
 						Completa estos datos con la ayuda de la caja de producto,
@@ -121,57 +153,87 @@ export default function DataSheetAcordeon({}) {
 					<div className="dataSheetBrandAndModel">
 						<div className="dataSheetInput">
 							<InputBase
+								onChange={(e) => setBrand(e.target.value)}
+								value={brand}
 								margin="dense"
 								fullWidth
 								placeholder="Marca"
 								className={classes.margin}
 								inputProps={{ 'aria-label': 'naked' }}
 							/>
+							{!valid && !brand ? (
+								<div className="productTitleError">Debes completar este campo</div>
+							) : (
+								''
+							)}
 						</div>
 						<div className="dataSheetInput">
 							<InputBase
+								onChange={(e) => setModel(e.target.value)}
+								value={model}
 								margin="dense"
 								fullWidth
 								placeholder="Modelo"
 								className={classes.margin}
 								inputProps={{ 'aria-label': 'naked' }}
 							/>
+							{!valid && !model ? (
+								<div className="productTitleError">Debes completar este campo</div>
+							) : (
+								''
+							)}
 						</div>
 					</div>
 					<div className="dataSheetBrandAndModel">
 						<div className="dataSheetInput">
 							<InputBase
+								onChange={(e) => setMaterial(e.target.value)}
+								value={material}
 								margin="dense"
 								fullWidth
 								placeholder="Material"
 								className={classes.margin}
 								inputProps={{ 'aria-label': 'naked' }}
 							/>
+							{!valid && !material ? (
+								<div className="productTitleError">Debes completar este campo</div>
+							) : (
+								''
+							)}
 						</div>
 						<div className="dataSheetLongContainer">
 							<div className="dataSheetLongInput">
 								<InputBase
+									onChange={handleLong}
+									value={long}
 									margin="dense"
 									fullWidth
 									placeholder="Largo"
 									className={classes.margin}
 									inputProps={{ 'aria-label': 'naked' }}
 								/>
+								{!valid && !long ? (
+									<div className="dataSheetInputLongWidthError">
+										Debes completar este campo
+									</div>
+								) : (
+									''
+								)}
 							</div>
 							<div>
 								<FormControl className={classes.margin}>
 									<NativeSelect
 										style={{ color: '#A2A2A2' }}
 										id="demo-customized-select-native"
-										// value={age}
-										// onChange={handleChange}
+										value={longUnit}
+										onChange={(e) => setLongUnit(e.target.value)}
 										input={<BootstrapInput />}
 										IconComponent={ExpandMoreIcon}
 									>
 										<option value="cm">cm</option>
 										<option value="mm">mm</option>
 										<option value="mt">mt</option>
-										<option value="pulgada">plg</option>
+										<option value="plg">plg</option>
 									</NativeSelect>
 								</FormControl>
 							</div>
@@ -181,27 +243,36 @@ export default function DataSheetAcordeon({}) {
 						<div className="dataSheetLongContainer">
 							<div className="dataSheetLongInput">
 								<InputBase
+									onChange={handleWidth}
+									value={width}
 									margin="dense"
 									fullWidth
 									placeholder="Ancho"
 									className={classes.margin}
 									inputProps={{ 'aria-label': 'naked' }}
 								/>
+								{!valid && !width ? (
+									<div className="dataSheetInputLongWidthError">
+										Debes completar este campo
+									</div>
+								) : (
+									''
+								)}
 							</div>
 							<div>
 								<FormControl className={classes.margin}>
 									<NativeSelect
 										style={{ color: '#A2A2A2' }}
 										id="demo-customized-select-native"
-										// value={age}
-										// onChange={handleChange}
+										value={widthUnit}
+										onChange={(e) => setWidthUnit(e.target.value)}
 										input={<BootstrapInput />}
 										IconComponent={ExpandMoreIcon}
 									>
 										<option value="cm">cm</option>
 										<option value="mm">mm</option>
 										<option value="mt">mt</option>
-										<option value="pulgada">plg</option>
+										<option value="plg">plg</option>
 									</NativeSelect>
 								</FormControl>
 							</div>

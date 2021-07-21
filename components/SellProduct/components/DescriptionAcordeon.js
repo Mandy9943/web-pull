@@ -26,10 +26,16 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function DescriptionAcordeon({}) {
+export default function DescriptionAcordeon({ description, setDescription }) {
 	const classes = useStyles();
 	const [expandedDescription, setExpandedDescription] = useState(false);
 	const [descriptionInfo, setDescriptionInfo] = useState(false);
+
+	function handleDescription(e) {
+		if (e.target.value.length < 151) {
+			setDescription(e.target.value);
+		}
+	}
 
 	return (
 		<div className="productAcordeonContainer">
@@ -78,6 +84,8 @@ export default function DescriptionAcordeon({}) {
 					más detallada de él
 				</div>
 				<TextField
+					onChange={handleDescription}
+					value={description}
 					id="outlined-multiline-static"
 					fullWidth
 					multiline
@@ -85,7 +93,7 @@ export default function DescriptionAcordeon({}) {
 					variant="outlined"
 					placeholder="Escribe aquí información para compartir con tus clientes."
 				/>
-				<div className="descriptionCharCount">50/150</div>
+				<div className="descriptionCharCount">{description.length + ' / 150'} </div>
 			</Collapse>
 		</div>
 	);

@@ -35,7 +35,7 @@ export default function WithdrawAcordeon({ switchedWithdraw, setSwitchedWithdraw
 	return (
 		<div className="productAcordeonContainer">
 			<div className="productAcordeon">
-				{expandedWithdraw ? <b>Retiro en persona</b> : 'Retiro'}
+				Retiro en persona
 				{expandedWithdraw ? (
 					<HtmlTooltip
 						open={withdrawInfo}

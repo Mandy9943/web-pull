@@ -26,10 +26,14 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function VideoAcordeon({}) {
+export default function VideoAcordeon({ video, setVideo }) {
 	const classes = useStyles();
 	const [expandedVideo, setExpandedVideo] = useState(false);
 	const [videoInfo, setVideoInfo] = useState(false);
+
+	function handleVideo(e) {
+		setVideo(e.target.value);
+	}
 
 	return (
 		<div className="productAcordeonContainer">
@@ -75,7 +79,12 @@ export default function VideoAcordeon({}) {
 			<Collapse in={expandedVideo} timeout="auto" unmountOnExit>
 				<div className="typeOfAddP">Agrega el link de algún video de Youtube</div>
 				<div className="videoInput">
-					<TextField fullWidth placeholder="Agrega un link de video" />
+					<TextField
+						onChange={handleVideo}
+						value={video}
+						fullWidth
+						placeholder="Agrega un link de video"
+					/>
 				</div>
 			</Collapse>
 		</div>
