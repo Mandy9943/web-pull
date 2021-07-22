@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function VideoAcordeon({ video, setVideo }) {
+export default function VideoAcordeon({ video, setVideo, videoError }) {
 	const classes = useStyles();
 	const [expandedVideo, setExpandedVideo] = useState(false);
 	const [videoInfo, setVideoInfo] = useState(false);
@@ -39,7 +39,7 @@ export default function VideoAcordeon({ video, setVideo }) {
 		<div className="productAcordeonContainer">
 			<div className="productAcordeon">
 				Video
-				{expandedVideo ? (
+				{expandedVideo || videoError ? (
 					<HtmlTooltip
 						open={videoInfo}
 						placement="top-start"
@@ -65,18 +65,18 @@ export default function VideoAcordeon({ video, setVideo }) {
 				)}
 				<ExpandMoreIcon
 					style={{
-						color: expandedVideo ? '#CF0A2C' : '',
-						marginBottom: expandedVideo ? '40px' : '',
+						color: expandedVideo || videoError ? '#CF0A2C' : '',
+						marginBottom: expandedVideo || videoError ? '40px' : '',
 						cursor: 'pointer',
 					}}
 					className={clsx(classes.expand, {
-						[classes.expandOpen]: expandedVideo,
+						[classes.expandOpen]: expandedVideo || videoError,
 					})}
 					onClick={() => setExpandedVideo(!expandedVideo)}
-					aria-expanded={expandedVideo}
+					aria-expanded={expandedVideo || videoError}
 				/>
 			</div>
-			<Collapse in={expandedVideo} timeout="auto" unmountOnExit>
+			<Collapse in={expandedVideo || videoError} timeout="auto" unmountOnExit>
 				<div className="typeOfAddP">Agrega el link de algún video de Youtube</div>
 				<div className="videoInput">
 					<TextField
@@ -85,6 +85,11 @@ export default function VideoAcordeon({ video, setVideo }) {
 						fullWidth
 						placeholder="Agrega un link de video"
 					/>
+					{videoError && !video ? (
+						<div className="productTitleError">Debes completar este campo</div>
+					) : (
+						''
+					)}
 				</div>
 			</Collapse>
 		</div>

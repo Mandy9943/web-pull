@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function DataSheetAcordeon({
-	valid,
+	dataSheetError,
 	brand,
 	setBrand,
 	model,
@@ -97,7 +97,7 @@ export default function DataSheetAcordeon({
 		<div className="productAcordeonContainer">
 			<div className="productAcordeon">
 				Ficha técnica
-				{expandedDataSheet ? (
+				{expandedDataSheet || dataSheetError ? (
 					<HtmlTooltip
 						open={dataSheetInfo}
 						placement="top-start"
@@ -126,25 +126,18 @@ export default function DataSheetAcordeon({
 				)}
 				<ExpandMoreIcon
 					style={{
-						color: expandedDataSheet ? '#CF0A2C' : '',
-						marginBottom: expandedDataSheet ? '40px' : '',
+						color: expandedDataSheet || dataSheetError ? '#CF0A2C' : '',
+						marginBottom: expandedDataSheet || dataSheetError ? '40px' : '',
 						cursor: 'pointer',
 					}}
 					className={clsx(classes.expand, {
-						[classes.expandOpen]: expandedDataSheet,
+						[classes.expandOpen]: expandedDataSheet || dataSheetError,
 					})}
 					onClick={() => setExpandedDataSheet(!expandedDataSheet)}
-					aria-expanded={setExpandedDataSheet}
+					aria-expanded={expandedDataSheet || dataSheetError}
 				/>
 			</div>
-			<Collapse
-				in={
-					expandedDataSheet ||
-					(!valid && (!brand || !model || !material || !long || !width))
-				}
-				timeout="auto"
-				unmountOnExit
-			>
+			<Collapse in={expandedDataSheet || dataSheetError} timeout="auto" unmountOnExit>
 				<div className="dataSheetContainer">
 					<div className="dataSheetText">
 						Completa estos datos con la ayuda de la caja de producto,
@@ -161,7 +154,7 @@ export default function DataSheetAcordeon({
 								className={classes.margin}
 								inputProps={{ 'aria-label': 'naked' }}
 							/>
-							{!valid && !brand ? (
+							{dataSheetError && !brand ? (
 								<div className="productTitleError">Debes completar este campo</div>
 							) : (
 								''
@@ -177,7 +170,7 @@ export default function DataSheetAcordeon({
 								className={classes.margin}
 								inputProps={{ 'aria-label': 'naked' }}
 							/>
-							{!valid && !model ? (
+							{dataSheetError && !model ? (
 								<div className="productTitleError">Debes completar este campo</div>
 							) : (
 								''
@@ -195,7 +188,7 @@ export default function DataSheetAcordeon({
 								className={classes.margin}
 								inputProps={{ 'aria-label': 'naked' }}
 							/>
-							{!valid && !material ? (
+							{dataSheetError && !material ? (
 								<div className="productTitleError">Debes completar este campo</div>
 							) : (
 								''
@@ -212,7 +205,7 @@ export default function DataSheetAcordeon({
 									className={classes.margin}
 									inputProps={{ 'aria-label': 'naked' }}
 								/>
-								{!valid && !long ? (
+								{dataSheetError && !long ? (
 									<div className="dataSheetInputLongWidthError">
 										Debes completar este campo
 									</div>
@@ -251,7 +244,7 @@ export default function DataSheetAcordeon({
 									className={classes.margin}
 									inputProps={{ 'aria-label': 'naked' }}
 								/>
-								{!valid && !width ? (
+								{dataSheetError && !width ? (
 									<div className="dataSheetInputLongWidthError">
 										Debes completar este campo
 									</div>

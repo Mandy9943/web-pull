@@ -229,6 +229,16 @@ export default function BasicInfo({
 					<div className="productCodeTitle">
 						Código universal del producto
 						<HtmlTooltip
+							PopperProps={{
+								popperOptions: {
+									modifiers: {
+										offset: {
+											enabled: true,
+											offset: '-10px, 10px',
+										},
+									},
+								},
+							}}
 							open={codeInfo}
 							placement="top-end"
 							title={

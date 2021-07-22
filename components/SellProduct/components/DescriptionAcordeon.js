@@ -26,7 +26,11 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function DescriptionAcordeon({ description, setDescription }) {
+export default function DescriptionAcordeon({
+	description,
+	setDescription,
+	descriptionError,
+}) {
 	const classes = useStyles();
 	const [expandedDescription, setExpandedDescription] = useState(false);
 	const [descriptionInfo, setDescriptionInfo] = useState(false);
@@ -41,7 +45,7 @@ export default function DescriptionAcordeon({ description, setDescription }) {
 		<div className="productAcordeonContainer">
 			<div className="productAcordeon">
 				Descripción
-				{expandedDescription ? (
+				{expandedDescription || descriptionError ? (
 					<HtmlTooltip
 						open={descriptionInfo}
 						placement="top-start"
@@ -67,18 +71,18 @@ export default function DescriptionAcordeon({ description, setDescription }) {
 				)}
 				<ExpandMoreIcon
 					style={{
-						color: expandedDescription ? '#CF0A2C' : '',
-						marginBottom: expandedDescription ? '40px' : '',
+						color: expandedDescription || descriptionError ? '#CF0A2C' : '',
+						marginBottom: expandedDescription || descriptionError ? '40px' : '',
 						cursor: 'pointer',
 					}}
 					className={clsx(classes.expand, {
-						[classes.expandOpen]: expandedDescription,
+						[classes.expandOpen]: expandedDescription || descriptionError,
 					})}
 					onClick={() => setExpandedDescription(!expandedDescription)}
-					aria-expanded={expandedDescription}
+					aria-expanded={expandedDescription || descriptionError}
 				/>
 			</div>
-			<Collapse in={expandedDescription} timeout="auto" unmountOnExit>
+			<Collapse in={expandedDescription || descriptionError} timeout="auto" unmountOnExit>
 				<div className="typeOfAddP">
 					Agrega una descripción sobre tu producto así los usuarios tendrán información
 					más detallada de él
@@ -94,6 +98,11 @@ export default function DescriptionAcordeon({ description, setDescription }) {
 					placeholder="Escribe aquí información para compartir con tus clientes."
 				/>
 				<div className="descriptionCharCount">{description.length + ' / 150'} </div>
+				{descriptionError && !description ? (
+					<div className="productTitleError">Debes completar este campo</div>
+				) : (
+					''
+				)}
 			</Collapse>
 		</div>
 	);

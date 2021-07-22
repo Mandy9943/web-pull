@@ -28,7 +28,11 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function TypeOfAddAcordeon({ selectedTypeOfAdd, setSelectedTypeOfAdd }) {
+export default function TypeOfAddAcordeon({
+	selectedTypeOfAdd,
+	setSelectedTypeOfAdd,
+	typeOfAddError,
+}) {
 	const classes = useStyles();
 	const [expandedTypeOfAdd, setExpandedTypeOfAdd] = useState(false);
 	const [typeOfAddInfo, setTypeOfAddInfo] = useState(false);
@@ -37,7 +41,7 @@ export default function TypeOfAddAcordeon({ selectedTypeOfAdd, setSelectedTypeOf
 		<div className="productAcordeonContainer">
 			<div className="productAcordeon">
 				Tipo de publicación
-				{expandedTypeOfAdd ? (
+				{expandedTypeOfAdd || typeOfAddError ? (
 					<HtmlTooltip
 						open={typeOfAddInfo}
 						placement="top-start"
@@ -67,18 +71,18 @@ export default function TypeOfAddAcordeon({ selectedTypeOfAdd, setSelectedTypeOf
 				)}
 				<ExpandMoreIcon
 					style={{
-						color: expandedTypeOfAdd ? '#CF0A2C' : '',
-						marginBottom: expandedTypeOfAdd ? '40px' : '',
+						color: expandedTypeOfAdd || typeOfAddError ? '#CF0A2C' : '',
+						marginBottom: expandedTypeOfAdd || typeOfAddError ? '40px' : '',
 						cursor: 'pointer',
 					}}
 					className={clsx(classes.expand, {
-						[classes.expandOpen]: expandedTypeOfAdd,
+						[classes.expandOpen]: expandedTypeOfAdd || typeOfAddError,
 					})}
 					onClick={() => setExpandedTypeOfAdd(!expandedTypeOfAdd)}
-					aria-expanded={expandedTypeOfAdd}
+					aria-expanded={expandedTypeOfAdd || typeOfAddError}
 				/>
 			</div>
-			<Collapse in={expandedTypeOfAdd} timeout="auto" unmountOnExit>
+			<Collapse in={expandedTypeOfAdd || typeOfAddError} timeout="auto" unmountOnExit>
 				<div className="typeOfAddP">
 					Selecciona en que posición quieres que este tu publicación
 				</div>
@@ -150,6 +154,11 @@ export default function TypeOfAddAcordeon({ selectedTypeOfAdd, setSelectedTypeOf
 						</div>
 					</div>
 				</div>
+				{typeOfAddError && !selectedTypeOfAdd ? (
+					<div className="picturesError">Debes completar este campo</div>
+				) : (
+					''
+				)}
 			</Collapse>
 		</div>
 	);

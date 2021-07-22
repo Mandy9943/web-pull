@@ -33,21 +33,24 @@ export default function SellProduct({ user_data }) {
 	const [material, setMaterial] = useState('');
 	const [long, setLong] = useState('');
 	const [longUnit, setLongUnit] = useState('cm');
-	console.log(longUnit);
 	const [width, setWidth] = useState('');
 	const [widthUnit, setWidthUnit] = useState('cm');
+	const [dataSheetError, setDataSheetError] = useState(false);
 
 	//Withdraw States
 	const [switchedWithdraw, setSwitchedWithdraw] = useState(false);
 
 	//TypeOfAdd States
 	const [selectedTypeOfAdd, setSelectedTypeOfAdd] = useState('');
+	const [typeOfAddError, setTypeOfAddError] = useState(false);
 
 	//Description States
 	const [description, setDescription] = useState('');
+	const [descriptionError, setDescriptionError] = useState(false);
 
 	//Video States
 	const [video, setVideo] = useState('');
+	const [videoError, setVideoError] = useState(false);
 
 	//Availability States
 	const [availability, setAvailability] = useState('');
@@ -85,6 +88,26 @@ export default function SellProduct({ user_data }) {
 			setValid(true);
 		} else {
 			setValid(false);
+			if (!brand || !model || !material || !long || !width) {
+				setDataSheetError(true);
+			} else {
+				setDataSheetError(false);
+			}
+			if (!selectedTypeOfAdd) {
+				setTypeOfAddError(true);
+			} else {
+				setTypeOfAddError(false);
+			}
+			if (!description) {
+				setDescriptionError(true);
+			} else {
+				setDescriptionError(false);
+			}
+			if (!video) {
+				setVideoError(true);
+			} else {
+				setVideoError(false);
+			}
 		}
 		const info = {
 			title: title,
@@ -142,7 +165,7 @@ export default function SellProduct({ user_data }) {
 					/>
 					<div className="productAcordeonsContainer">
 						<DataSheetAcordeon
-							valid={valid}
+							dataSheetError={dataSheetError}
 							brand={brand}
 							setBrand={setBrand}
 							model={model}
@@ -159,21 +182,20 @@ export default function SellProduct({ user_data }) {
 							setWidthUnit={setWidthUnit}
 						/>
 						<WithdrawAcordeon
-							valid={valid}
 							switchedWithdraw={switchedWithdraw}
 							setSwitchedWithdraw={setSwitchedWithdraw}
 						/>
 						<TypeOfAddAcordeon
-							valid={valid}
+							typeOfAddError={typeOfAddError}
 							selectedTypeOfAdd={selectedTypeOfAdd}
 							setSelectedTypeOfAdd={setSelectedTypeOfAdd}
 						/>
 						<DescriptionAcordeon
-							valid={valid}
+							descriptionError={descriptionError}
 							description={description}
 							setDescription={setDescription}
 						/>
-						<VideoAcordeon valid={valid} video={video} setVideo={setVideo} />
+						<VideoAcordeon videoError={videoError} video={video} setVideo={setVideo} />
 						<AvailabilityAcordeon
 							valid={valid}
 							availability={availability}
