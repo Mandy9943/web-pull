@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase';
 import FormControl from '@material-ui/core/FormControl';
@@ -64,18 +64,40 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function DataSheetAcordeon({
-	expandedDataSheet,
-	setExpandedDataSheet,
-	dataSheetInfo,
-	setDataSheetInfo,
+	dataSheetError,
+	brand,
+	setBrand,
+	model,
+	setModel,
+	material,
+	setMaterial,
+	long,
+	setLong,
+	longUnit,
+	setLongUnit,
+	width,
+	setWidth,
+	widthUnit,
+	setWidthUnit,
 }) {
 	const classes = useStyles();
+	const [expandedDataSheet, setExpandedDataSheet] = useState(false);
+	const [dataSheetInfo, setDataSheetInfo] = useState(false);
+
+	function handleLong(e) {
+		const pattern = new RegExp('^[0-9]*$');
+		setLong(pattern.test(e.target.value) ? e.target.value : e.target.value.slice(0, -1));
+	}
+	function handleWidth(e) {
+		const pattern = new RegExp('^[0-9]*$');
+		setWidth(pattern.test(e.target.value) ? e.target.value : e.target.value.slice(0, -1));
+	}
 
 	return (
 		<div className="productAcordeonContainer">
 			<div className="productAcordeon">
 				Ficha técnica
-				{expandedDataSheet ? (
+				{expandedDataSheet || dataSheetError ? (
 					<HtmlTooltip
 						open={dataSheetInfo}
 						placement="top-start"
@@ -104,18 +126,18 @@ export default function DataSheetAcordeon({
 				)}
 				<ExpandMoreIcon
 					style={{
-						color: expandedDataSheet ? '#CF0A2C' : '',
-						marginBottom: expandedDataSheet ? '40px' : '',
+						color: expandedDataSheet || dataSheetError ? '#CF0A2C' : '',
+						marginBottom: expandedDataSheet || dataSheetError ? '40px' : '',
 						cursor: 'pointer',
 					}}
 					className={clsx(classes.expand, {
-						[classes.expandOpen]: expandedDataSheet,
+						[classes.expandOpen]: expandedDataSheet || dataSheetError,
 					})}
 					onClick={() => setExpandedDataSheet(!expandedDataSheet)}
-					aria-expanded={setExpandedDataSheet}
+					aria-expanded={expandedDataSheet || dataSheetError}
 				/>
 			</div>
-			<Collapse in={expandedDataSheet} timeout="auto" unmountOnExit>
+			<Collapse in={expandedDataSheet || dataSheetError} timeout="auto" unmountOnExit>
 				<div className="dataSheetContainer">
 					<div className="dataSheetText">
 						Completa estos datos con la ayuda de la caja de producto,
@@ -124,57 +146,87 @@ export default function DataSheetAcordeon({
 					<div className="dataSheetBrandAndModel">
 						<div className="dataSheetInput">
 							<InputBase
+								onChange={(e) => setBrand(e.target.value)}
+								value={brand}
 								margin="dense"
 								fullWidth
 								placeholder="Marca"
 								className={classes.margin}
 								inputProps={{ 'aria-label': 'naked' }}
 							/>
+							{dataSheetError && !brand ? (
+								<div className="productTitleError">Debes completar este campo</div>
+							) : (
+								''
+							)}
 						</div>
 						<div className="dataSheetInput">
 							<InputBase
+								onChange={(e) => setModel(e.target.value)}
+								value={model}
 								margin="dense"
 								fullWidth
 								placeholder="Modelo"
 								className={classes.margin}
 								inputProps={{ 'aria-label': 'naked' }}
 							/>
+							{dataSheetError && !model ? (
+								<div className="productTitleError">Debes completar este campo</div>
+							) : (
+								''
+							)}
 						</div>
 					</div>
 					<div className="dataSheetBrandAndModel">
 						<div className="dataSheetInput">
 							<InputBase
+								onChange={(e) => setMaterial(e.target.value)}
+								value={material}
 								margin="dense"
 								fullWidth
 								placeholder="Material"
 								className={classes.margin}
 								inputProps={{ 'aria-label': 'naked' }}
 							/>
+							{dataSheetError && !material ? (
+								<div className="productTitleError">Debes completar este campo</div>
+							) : (
+								''
+							)}
 						</div>
 						<div className="dataSheetLongContainer">
 							<div className="dataSheetLongInput">
 								<InputBase
+									onChange={handleLong}
+									value={long}
 									margin="dense"
 									fullWidth
 									placeholder="Largo"
 									className={classes.margin}
 									inputProps={{ 'aria-label': 'naked' }}
 								/>
+								{dataSheetError && !long ? (
+									<div className="dataSheetInputLongWidthError">
+										Debes completar este campo
+									</div>
+								) : (
+									''
+								)}
 							</div>
 							<div>
 								<FormControl className={classes.margin}>
 									<NativeSelect
 										style={{ color: '#A2A2A2' }}
 										id="demo-customized-select-native"
-										// value={age}
-										// onChange={handleChange}
+										value={longUnit}
+										onChange={(e) => setLongUnit(e.target.value)}
 										input={<BootstrapInput />}
 										IconComponent={ExpandMoreIcon}
 									>
 										<option value="cm">cm</option>
 										<option value="mm">mm</option>
 										<option value="mt">mt</option>
-										<option value="pulgada">plg</option>
+										<option value="plg">plg</option>
 									</NativeSelect>
 								</FormControl>
 							</div>
@@ -184,27 +236,36 @@ export default function DataSheetAcordeon({
 						<div className="dataSheetLongContainer">
 							<div className="dataSheetLongInput">
 								<InputBase
+									onChange={handleWidth}
+									value={width}
 									margin="dense"
 									fullWidth
 									placeholder="Ancho"
 									className={classes.margin}
 									inputProps={{ 'aria-label': 'naked' }}
 								/>
+								{dataSheetError && !width ? (
+									<div className="dataSheetInputLongWidthError">
+										Debes completar este campo
+									</div>
+								) : (
+									''
+								)}
 							</div>
 							<div>
 								<FormControl className={classes.margin}>
 									<NativeSelect
 										style={{ color: '#A2A2A2' }}
 										id="demo-customized-select-native"
-										// value={age}
-										// onChange={handleChange}
+										value={widthUnit}
+										onChange={(e) => setWidthUnit(e.target.value)}
 										input={<BootstrapInput />}
 										IconComponent={ExpandMoreIcon}
 									>
 										<option value="cm">cm</option>
 										<option value="mm">mm</option>
 										<option value="mt">mt</option>
-										<option value="pulgada">plg</option>
+										<option value="plg">plg</option>
 									</NativeSelect>
 								</FormControl>
 							</div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import CameraAltIcon from '@material-ui/icons/CameraAlt';
 import InputBase from '@material-ui/core/InputBase';
@@ -16,16 +16,81 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function BasicInfo({
-	pictureInfo,
-	setPictureInfo,
-	codeInfo,
-	setCodeInfo,
+	valid,
+	title,
+	setTitle,
+	price,
+	setPrice,
+	images,
+	setImages,
+	color,
+	setColor,
+	quantity,
+	setQuantity,
+	code,
+	setCode,
+	noCode,
+	setNoCode,
 }) {
 	const classes = useStyles();
+	const [pictureInfo, setPictureInfo] = useState(false);
+	const [codeInfo, setCodeInfo] = useState(false);
+	// const [formatedPrice, setFormatedPrice] = useState(null);
+
+	function goBack() {
+		window.history.back();
+	}
+
+	// function moneyFormater(price) {
+	// 	var num = price;
+	// 	num = num
+	// 		.toString()
+	// 		.split('')
+	// 		.reverse()
+	// 		.join('')
+	// 		.replace(/(?=\d*\.?)(\d{3})/g, '$1.');
+	// 	num = num.split('').reverse().join('').replace(/^[\.]/, '');
+	// 	return num;
+	// }
+
+	function handleTitle(e) {
+		if (e.target.value.length < 151) {
+			setTitle(e.target.value);
+		}
+	}
+
+	function handlePrice(e) {
+		const pattern = new RegExp('^[0-9]*$');
+		setPrice(pattern.test(e.target.value) ? e.target.value : e.target.value.slice(0, -1));
+		// setFormatedPrice(moneyFormater(pattern.test(e.target.value) ? e.target.value : e.target.value.slice(0, -1)));
+	}
+
+	function handleImgs(e) {
+		setImages(e.target.value);
+	}
+
+	function handleColor(e) {
+		const pattern = new RegExp('^[a-zA-Z\u0080-\uFFFF ]+$');
+		setColor(pattern.test(e.target.value) ? e.target.value : e.target.value.slice(0, -1));
+	}
+
+	function handleQuantity(e) {
+		const pattern = new RegExp('^[0-9]*$');
+		setQuantity(
+			pattern.test(e.target.value) ? e.target.value : e.target.value.slice(0, -1)
+		);
+	}
+
+	function handleCode(e) {
+		const pattern = new RegExp('^[0-9]*$');
+		setCode(pattern.test(e.target.value) ? e.target.value : e.target.value.slice(0, -1));
+	}
+
+	noCode ? setCode('') : '';
 
 	return (
 		<>
-			<div className="backOption">
+			<div onClick={goBack} className="backOption">
 				<ArrowBackIosIcon fontSize="small" id="backOptionArrow" />
 				Volver
 			</div>
@@ -33,25 +98,39 @@ export default function BasicInfo({
 				<div>Título</div>
 				<div className="productTitleInput">
 					<InputBase
+						value={title}
+						onChange={handleTitle}
 						margin="dense"
 						fullWidth
 						className={classes.margin}
 						inputProps={{ 'aria-label': 'naked' }}
 						placeholder="Escribe el titulo del producto"
 					/>
+					{!valid && !title ? (
+						<div className="productTitleError">Debes completar este campo</div>
+					) : (
+						''
+					)}
 				</div>
-				<div className="charCount">54/150</div>
+				<div className="charCount">{title.length} / 150</div>
 			</div>
 			<div className="productPrice">
 				<div>Precio</div>
 				<div className="productPriceInput">
 					<InputBase
+						value={price}
+						onChange={handlePrice}
 						margin="dense"
 						fullWidth
 						className={classes.margin}
 						inputProps={{ 'aria-label': 'naked' }}
 						placeholder="$."
 					/>
+					{!valid && !price ? (
+						<div className="productTitleError">Debes completar este campo</div>
+					) : (
+						''
+					)}
 				</div>
 			</div>
 			<div className="productCharacteristicsContainer">
@@ -85,7 +164,17 @@ export default function BasicInfo({
 							</HtmlTooltip>
 						</div>
 						<div className="picturesInstruction">Agrega fotos de tu producto</div>
-						<TextField id="uploadImageButton" type="file" style={{ display: 'none' }} />
+						<TextField
+							value={images}
+							onChange={handleImgs}
+							id="uploadImageButton"
+							type="file"
+							inputProps={{
+								multiple: true,
+								accept: '.png, .jpg, .jpeg',
+							}}
+							style={{ display: 'none' }}
+						/>
 						<div className="picturesButtonContainer">
 							<label htmlFor="uploadImageButton">
 								<div className="picturesAddButton">
@@ -94,41 +183,66 @@ export default function BasicInfo({
 								</div>
 							</label>
 						</div>
+						{!valid && !images ? (
+							<div className="picturesError">Debes completar este campo</div>
+						) : (
+							''
+						)}
 					</div>
 				</div>
 				<div>
 					<div className="productColorTitle">Color</div>
 					<div className="productColorInput">
 						<InputBase
+							value={color}
+							onChange={handleColor}
 							margin="dense"
 							fullWidth
 							className={classes.margin}
 							inputProps={{ 'aria-label': 'naked' }}
 							placeholder="Escribe el color de tu producto"
 						/>
+						{!valid && !color ? (
+							<div className="productTitleError">Debes completar este campo</div>
+						) : (
+							''
+						)}
 					</div>
 					<div className="productQuantityTitle">Cantidad</div>
 					<div>
 						<div className="productQuantityInput">
 							<InputBase
+								value={quantity}
+								onChange={handleQuantity}
 								margin="dense"
 								fullWidth
 								inputProps={{ 'aria-label': 'naked' }}
 								placeholder="0"
 							/>
+							{!valid && !quantity ? (
+								<div className="productQuantityError">Debes completar este campo</div>
+							) : (
+								''
+							)}
 						</div>
 					</div>
 					<div className="productCodeTitle">
 						Código universal del producto
-						<ErrorIcon
-							id="picturesTitleInfo"
-							onClick={() => setCodeInfo(!codeInfo)}
-							onMouseOver={() => setCodeInfo(true)}
-							onMouseOut={() => setCodeInfo(false)}
-						/>
-						{codeInfo ? (
-							<div className="codeInfo">
-								<div className="codeInfoContainer">
+						<HtmlTooltip
+							PopperProps={{
+								popperOptions: {
+									modifiers: {
+										offset: {
+											enabled: true,
+											offset: '-10px, 10px',
+										},
+									},
+								},
+							}}
+							open={codeInfo}
+							placement="top-end"
+							title={
+								<div style={{ width: '400px' }}>
 									<div className="codeInfoTitle">Códigos de producto</div>
 									<div className="codeInfoParagraph">
 										Estos son parte importante, puesto que son únicos para identificar
@@ -136,28 +250,44 @@ export default function BasicInfo({
 										lo que deseas vender, destacando los EAN, ISBN, y UPC. Así mismo, es
 										importante señalar que lo puedes encontrar junto al código de barra
 										y/o en la caja del producto.
-										<div>
-											<img className="codeInfoBarCode" src={barCode} alt="" />
-										</div>
 									</div>
+									<img className="codeInfoBarCode" src={barCode} alt="" />
 								</div>
-							</div>
-						) : (
-							''
-						)}
+							}
+						>
+							<ErrorIcon
+								id="picturesTitleInfo"
+								onClick={() => setCodeInfo(!codeInfo)}
+								onMouseOver={() => setCodeInfo(true)}
+								onMouseOut={() => setCodeInfo(false)}
+							/>
+						</HtmlTooltip>
 					</div>
 
 					<div className="productCodeOptContainer">
 						<div className="productCodeInput">
 							<InputBase
+								error
+								value={code}
+								onChange={handleCode}
 								margin="dense"
 								fullWidth
 								className={classes.margin}
 								inputProps={{ 'aria-label': 'naked' }}
+								helperText="Incorrect entry."
 							/>
+							{!valid && !code && !noCode ? (
+								<div className="productTitleError">Debes completar este campo</div>
+							) : (
+								''
+							)}
 						</div>
 						<div className="productCodeCheckBoxContainer">
-							<Checkbox style={{ color: '#CF0A2C' }} />
+							<Checkbox
+								value={noCode}
+								onChange={() => setNoCode(!noCode)}
+								style={{ color: '#CF0A2C' }}
+							/>
 							<div className="productCodeCheckBoxText">Sin código</div>
 						</div>
 					</div>

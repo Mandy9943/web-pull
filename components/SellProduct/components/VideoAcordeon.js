@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ErrorIcon from '@material-ui/icons/Error';
 import Collapse from '@material-ui/core/Collapse';
@@ -26,19 +26,20 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function VideoAcordeon({
-	expandedVideo,
-	setExpandedVideo,
-	videoInfo,
-	setVideoInfo,
-}) {
+export default function VideoAcordeon({ video, setVideo, videoError }) {
 	const classes = useStyles();
+	const [expandedVideo, setExpandedVideo] = useState(false);
+	const [videoInfo, setVideoInfo] = useState(false);
+
+	function handleVideo(e) {
+		setVideo(e.target.value);
+	}
 
 	return (
 		<div className="productAcordeonContainer">
 			<div className="productAcordeon">
 				Video
-				{expandedVideo ? (
+				{expandedVideo || videoError ? (
 					<HtmlTooltip
 						open={videoInfo}
 						placement="top-start"
@@ -64,21 +65,31 @@ export default function VideoAcordeon({
 				)}
 				<ExpandMoreIcon
 					style={{
-						color: expandedVideo ? '#CF0A2C' : '',
-						marginBottom: expandedVideo ? '40px' : '',
+						color: expandedVideo || videoError ? '#CF0A2C' : '',
+						marginBottom: expandedVideo || videoError ? '40px' : '',
 						cursor: 'pointer',
 					}}
 					className={clsx(classes.expand, {
-						[classes.expandOpen]: expandedVideo,
+						[classes.expandOpen]: expandedVideo || videoError,
 					})}
 					onClick={() => setExpandedVideo(!expandedVideo)}
-					aria-expanded={expandedVideo}
+					aria-expanded={expandedVideo || videoError}
 				/>
 			</div>
-			<Collapse in={expandedVideo} timeout="auto" unmountOnExit>
+			<Collapse in={expandedVideo || videoError} timeout="auto" unmountOnExit>
 				<div className="typeOfAddP">Agrega el link de algún video de Youtube</div>
 				<div className="videoInput">
-					<TextField fullWidth placeholder="Agrega un link de video" />
+					<TextField
+						onChange={handleVideo}
+						value={video}
+						fullWidth
+						placeholder="Agrega un link de video"
+					/>
+					{videoError && !video ? (
+						<div className="productTitleError">Debes completar este campo</div>
+					) : (
+						''
+					)}
 				</div>
 			</Collapse>
 		</div>

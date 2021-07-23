@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ErrorIcon from '@material-ui/icons/Error';
 import Collapse from '@material-ui/core/Collapse';
@@ -26,14 +26,17 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function AvailabilityAcordeon({
-	expandedAvailability,
-	setExpandedAvailability,
-	availabilityInfo,
-	setAvailabilityInfo,
-}) {
+export default function AvailabilityAcordeon({ availability, setAvailability }) {
 	const classes = useStyles();
+	const [expandedAvailability, setExpandedAvailability] = useState(false);
+	const [availabilityInfo, setAvailabilityInfo] = useState(false);
 
+	function handleAvailability(e) {
+		const pattern = new RegExp('^[0-9]*$');
+		setAvailability(
+			pattern.test(e.target.value) ? e.target.value : e.target.value.slice(0, -1)
+		);
+	}
 	return (
 		<div className="productAcordeonContainer">
 			<div className="productAcordeon">
@@ -83,10 +86,11 @@ export default function AvailabilityAcordeon({
 				</div>
 				<div className="availabilityInput">
 					<TextField
+						onChange={handleAvailability}
+						value={availability}
 						variant="outlined"
 						fullWidth
 						placeholder="Ejemplo: 3"
-						type="number"
 					/>
 				</div>
 			</Collapse>

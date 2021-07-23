@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import ErrorIcon from '@material-ui/icons/Error';
 import Collapse from '@material-ui/core/Collapse';
@@ -33,15 +33,10 @@ const useStyles = makeStyles((theme) => ({
 	checked: {},
 }));
 
-export default function WarrantyAcordeon({
-	expandedWarranty,
-	setExpandedWarranty,
-	warrantyInfo,
-	setWarrantyInfo,
-	warrantyValue,
-	setWarrantyValue,
-}) {
+export default function WarrantyAcordeon({ warrantyValue, setWarrantyValue }) {
 	const classes = useStyles();
+	const [expandedWarranty, setExpandedWarranty] = useState(false);
+	const [warrantyInfo, setWarrantyInfo] = useState(false);
 
 	const handleChange = (event) => {
 		setWarrantyValue(event.target.value);

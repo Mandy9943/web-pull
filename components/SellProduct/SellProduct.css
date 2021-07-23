@@ -7,6 +7,10 @@
 	font-size: 13px;
 	color: #cf0a2c;
 	margin: 40px 0;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	width: fit-content;
 }
 
 #backOptionArrow {
@@ -27,6 +31,11 @@
 	height: 39px;
 	margin-bottom: 5px;
 	padding-right: 15px;
+}
+
+.productTitleError {
+	font-size: 12px;
+	color: #cf0a2c;
 }
 
 .charCount {
@@ -112,6 +121,12 @@
 	margin-top: 3px;
 	align-items: center;
 }
+.picturesError {
+	font-size: 12px;
+	color: #cf0a2c;
+	margin-top: 20px;
+	text-align: center;
+}
 
 .productColorTitle {
 	font-size: 14px;
@@ -126,7 +141,6 @@
 	width: 225px;
 	height: 39px;
 	margin-bottom: 30px;
-	text-align: center;
 	padding-right: 15px;
 }
 
@@ -149,6 +163,14 @@
 .productQuantityInput input {
 	text-align: center;
 	margin-top: 6px;
+}
+
+.productQuantityError {
+	font-size: 12px;
+	color: #cf0a2c;
+	width: 200px;
+	text-align: start;
+	margin-top: 10px;
 }
 
 #picturesCodeInfo {
@@ -195,20 +217,6 @@
 	margin-bottom: 10px;
 }
 
-.codeInfo {
-	background-color: white;
-	position: absolute;
-	top: 410px;
-	left: 350px;
-	box-shadow: 0px 3px 6px #00000029;
-	border-radius: 5px;
-	width: 471px;
-	height: 141px;
-	z-index: 1;
-	display: flex;
-	align-items: center;
-}
-
 .codeInfoContainer {
 	padding: 0 20px;
 }
@@ -223,11 +231,12 @@
 	display: flex;
 	align-items: flex-start;
 	font-size: 10px;
+	text-align: justify;
 }
 
 .codeInfoBarCode {
 	width: 157px;
-	height: 71px;
+	margin-left: 60%;
 }
 
 .productCodeInput {
@@ -282,7 +291,7 @@
 	background-color: white;
 	box-shadow: 0px 3px 6px #00000029;
 	border-radius: 5px;
-	padding: 10px 15px;
+	padding: 10px 15px 15px 15px;
 	font-size: 12px;
 	width: 625px;
 	margin-bottom: 20px;
@@ -337,6 +346,14 @@
 	width: 185px;
 	height: 39px;
 	padding-right: 15px;
+	margin-bottom: 15px;
+}
+
+.dataSheetInputLongWidthError {
+	font-size: 12px;
+	color: #cf0a2c;
+	width: 200px;
+	text-align: start;
 }
 
 .dataSheetLongContainer {
@@ -417,6 +434,7 @@ select option {
 	width: 183px;
 	box-shadow: 0px 3px 6px #00000029;
 	border-radius: 5px;
+	cursor: pointer;
 }
 
 .typeOfAddOptTitle {
@@ -455,7 +473,7 @@ select option {
 .descriptionCharCount {
 	text-align: end;
 	width: 626px;
-	margin-bottom: 30px;
+	margin-bottom: 15px;
 }
 
 .videoInfoContainer {

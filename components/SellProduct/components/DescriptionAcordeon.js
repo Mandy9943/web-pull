@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ErrorIcon from '@material-ui/icons/Error';
 import Collapse from '@material-ui/core/Collapse';
@@ -27,18 +27,25 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function DescriptionAcordeon({
-	expandedDescription,
-	setExpandedDescription,
-	descriptionInfo,
-	setDescriptionInfo,
+	description,
+	setDescription,
+	descriptionError,
 }) {
 	const classes = useStyles();
+	const [expandedDescription, setExpandedDescription] = useState(false);
+	const [descriptionInfo, setDescriptionInfo] = useState(false);
+
+	function handleDescription(e) {
+		if (e.target.value.length < 151) {
+			setDescription(e.target.value);
+		}
+	}
 
 	return (
 		<div className="productAcordeonContainer">
 			<div className="productAcordeon">
 				Descripción
-				{expandedDescription ? (
+				{expandedDescription || descriptionError ? (
 					<HtmlTooltip
 						open={descriptionInfo}
 						placement="top-start"
@@ -64,23 +71,25 @@ export default function DescriptionAcordeon({
 				)}
 				<ExpandMoreIcon
 					style={{
-						color: expandedDescription ? '#CF0A2C' : '',
-						marginBottom: expandedDescription ? '40px' : '',
+						color: expandedDescription || descriptionError ? '#CF0A2C' : '',
+						marginBottom: expandedDescription || descriptionError ? '40px' : '',
 						cursor: 'pointer',
 					}}
 					className={clsx(classes.expand, {
-						[classes.expandOpen]: expandedDescription,
+						[classes.expandOpen]: expandedDescription || descriptionError,
 					})}
 					onClick={() => setExpandedDescription(!expandedDescription)}
-					aria-expanded={expandedDescription}
+					aria-expanded={expandedDescription || descriptionError}
 				/>
 			</div>
-			<Collapse in={expandedDescription} timeout="auto" unmountOnExit>
+			<Collapse in={expandedDescription || descriptionError} timeout="auto" unmountOnExit>
 				<div className="typeOfAddP">
 					Agrega una descripción sobre tu producto así los usuarios tendrán información
 					más detallada de él
 				</div>
 				<TextField
+					onChange={handleDescription}
+					value={description}
 					id="outlined-multiline-static"
 					fullWidth
 					multiline
@@ -88,7 +97,12 @@ export default function DescriptionAcordeon({
 					variant="outlined"
 					placeholder="Escribe aquí información para compartir con tus clientes."
 				/>
-				<div className="descriptionCharCount">50/150</div>
+				<div className="descriptionCharCount">{description.length + ' / 150'} </div>
+				{descriptionError && !description ? (
+					<div className="productTitleError">Debes completar este campo</div>
+				) : (
+					''
+				)}
 			</Collapse>
 		</div>
 	);
