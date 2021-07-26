@@ -54,7 +54,7 @@ class PaySection extends Component {
 																								}]
 																							}
 			};
-			const beginCheckoutGooleDataLayer = (dataLayerBeginCheckout) => {
+			const beginCheckoutGooleDataLayerG4 = (dataLayerBeginCheckout) => {
 				this.props.props.data.breadcum.forEach((prod, index) => {
 					let keyCategory = `item_category${index + 1}`;
 					let valueNameCategory = prod.name;
@@ -63,9 +63,38 @@ class PaySection extends Component {
 				return dataLayerBeginCheckout;
 			}
 			
-			let resultDataLayerBeginCheckout = beginCheckoutGooleDataLayer(dataLayerBeginCheckout);
+			let resultDataLayerBeginCheckout = beginCheckoutGooleDataLayerG4(dataLayerBeginCheckout);
 			
 			dataLayer.push(resultDataLayerBeginCheckout);
+
+			const beginCheckoutGooleDataLayerUniversal = ()=>{
+				var dataCategory = [];
+				this.props.props.data.breadcum.forEach((prod, index) => {
+					dataCategory.push(prod.name)
+				});
+				return dataCategory.join('/ ')
+			}
+
+			gtag('event', 'begin_checkout', {
+											"items": [
+														{
+															"id": this.props.props.data.product_global_id,
+															"name": this.props.props.data.product_global_title,
+															"list_name": "Search Results",
+															"brand": this.props.props.data.brand,
+															"category": beginCheckoutGooleDataLayerUniversal(),
+															"quantity": 5,
+															'price': this.props.props.data.price,
+															'url':'https://kiero.co/detalle/' + this.props.props.data.product_global_id + '_' + this.props.props.data.product_global_title
+																										.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+																										.replace('//', '%2F')
+																										.replace('%', '')
+																										.split(' ')
+																										.join('-'),
+															"list_position": 0,
+														}
+											]
+	  			});
 
 			if (typeof window !== "undefined") {
 					if (window.fbq != null) { 

@@ -89,6 +89,27 @@ export default class PaymentWay extends Component {
 	componentDidMount() {
 		this.loadBanks();
 		this.loadAddresses();
+		const checkoutProgressGooleDataLayerUniversal = ()=>{
+			var dataCategory = [];
+			this.props.data.breadcum.forEach((prod, index) => {
+				dataCategory.push(prod.name)
+			});
+			return dataCategory.join('/ ')
+		}
+		gtag('event', 'checkout_progress', {
+											"items": [
+												{
+													"id": this.props.data.product_global_id,
+													"name": this.props.data.product_global_title,
+													"list_name": "Search Results",
+													"brand": this.props.data.brand,
+													"category": checkoutProgressGooleDataLayerUniversal(),
+													"list_position": 0,
+													"quantity": this.props.cantidad,
+													"price": this.props.data.price,
+												}
+											]
+					});
 	}
 
 	preventCopyPasteCut(event) {
@@ -362,6 +383,12 @@ export default class PaymentWay extends Component {
 													}) 
 						}
 			}
+			
+			gtag('event', 'set_checkout_option', {
+													"checkout_step": 1,
+													"checkout_option": "pse",
+													"value": this.props.data.price * this.props.cantidad,
+												});
 
 		if (result.data) {
 			dataLayer.push({ ecommerce: null });
@@ -531,6 +558,12 @@ export default class PaymentWay extends Component {
 													'payment_type':'cc'
 												}) 
 					}
+					
+			gtag('event', 'set_checkout_option', {
+													"checkout_step": 2,
+													"checkout_option": "cc",
+													"value": this.props.data.price * this.props.cantidad,
+												});
 	
 
 			const rs = await makePaymentCC(ccPayload, this.props.user.jwt);
@@ -679,7 +712,11 @@ export default class PaymentWay extends Component {
 												}) 
 					}
 		
-	
+			gtag('event', 'set_checkout_option', {
+													"checkout_step": 3,
+													"checkout_option": "cash",
+													"value": this.props.data.price * this.props.cantidad,
+												});
 
 			const rs = await makePaymentCash(cashPayload, this.props.user.jwt);
 			// console.log(rs);

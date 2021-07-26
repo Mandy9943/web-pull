@@ -248,31 +248,31 @@ class Terms extends Component {
             <h3 className="terms-title">Política de envios</h3>
             <h3 className="terms-title">Aclaraciones</h3>
             <p className="terms-paragraph">
-            -Cada publicación, especifica la forma de envío y el costo del producto. Adquirirás este beneficio de envíos gratis cuando veas el clásico camión rojo de Kiero Envíos cuando aparezca en la publicación.
+              -Cada publicación, especifica la forma de envío y el costo del producto. Adquirirás este beneficio de envíos gratis cuando veas el clásico camión rojo de Kiero Envíos cuando aparezca en la publicación.
             </p>
             <p className="terms-paragraph">
-            -Se realizan envíos a todo el territorio Colombiano, sin embargo las entregas están sujetas a la cobertura de servicio que preste el operador de servicios de entregas, es de aclarar que el paquete puede ser entregado en una dirección alternativa suministrada por el comprador.
+             -Se realizan envíos a todo el territorio Colombiano, sin embargo las entregas están sujetas a la cobertura de servicio que preste el operador de servicios de entregas, es de aclarar que el paquete puede ser entregado en una dirección alternativa suministrada por el comprador.
             </p>
             <p className="terms-paragraph">
-            -Actualmente no es posible elegir una hora y fecha de entrega de los productos ya que el aliado logístico cuenta con unas rutas programadas para las entregas y estas pueden variar, a través de la página de la transportadora y el número de guía o rastreo suministrado, podrás hacer seguimiento a tu paquete y saber la fecha estimada en que el transportista te visitará para hacer entrega de tu pedido.
+              -Actualmente no es posible elegir una hora y fecha de entrega de los productos ya que el aliado logístico cuenta con unas rutas programadas para las entregas y estas pueden variar, a través de la página de la transportadora y el número de guía o rastreo suministrado, podrás hacer seguimiento a tu paquete y saber la fecha estimada en que el transportista te visitará para hacer entrega de tu pedido.
             </p>
             <p className="terms-paragraph">
-            -El tiempo estimado de entrega para los productos internacionales es de 3 a 7 días hábiles, el Marketplace brindará información sobre la transportadora y el número de guía o seguimiento para que el comprador pueda hacer rastreo de su producto.
+              -El tiempo estimado de entrega para los productos internacionales es de 3 a 7 días hábiles, el Marketplace brindará información sobre la transportadora y el número de guía o seguimiento para que el comprador pueda hacer rastreo de su producto.
             </p>
             <p className="terms-paragraph">
-            -La política del Marketplace no contempla el pago del producto contra entrega por seguridad tanto del cliente como del personal al servicio del operador logístico.
+             -La política del Marketplace no contempla el pago del producto contra entrega por seguridad tanto del cliente como del personal al servicio del operador logístico.
             </p>
             <p className="terms-paragraph">
-            -El transportista tendrá la facultad de entregar el producto en la dirección o domicilio suministrado por el cliente y podrá ser recibido por una persona mayor de edad habitante del domicilio, a no ser que el cliente informe en el momento de la compra que el producto solo debe ser entregado al comprador o a un tercero autorizado.
+             -El transportista tendrá la facultad de entregar el producto en la dirección o domicilio suministrado por el cliente y podrá ser recibido por una persona mayor de edad habitante del domicilio, a no ser que el cliente informe en el momento de la compra que el producto solo debe ser entregado al comprador o a un tercero autorizado.
             </p>
             <p className="terms-paragraph">
-            -El cliente junto con el transportista, deberán revisar el producto al ser entregado y colocar cualquier anotación en el documento de entrega o guía de entrega si se encuentra alguna novedad con el paquete.
+              -El cliente junto con el transportista, deberán revisar el producto al ser entregado y colocar cualquier anotación en el documento de entrega o guía de entrega si se encuentra alguna novedad con el paquete.
             </p>
             <p className="terms-paragraph">
-            -Después de haber recibido el producto, ni el transportista, ni un tercero tendrán autorización para volver a recoger el producto en el domicilio; este hecho debe ser reportado por el comprador a la transportadora y las autoridades, al igual que al Marketplace.
+             -Después de haber recibido el producto, ni el transportista, ni un tercero tendrán autorización para volver a recoger el producto en el domicilio; este hecho debe ser reportado por el comprador a la transportadora y las autoridades, al igual que al Marketplace.
             </p>
             <p className="terms-paragraph">
-            -Los productos comercializados a través de KieroMarketplace llegarán hasta la puerta de su casa, o a la dirección suministrada por el comprador, actualmente no disponemos del servicio compra y recoge en el punto físico.
+             -Los productos comercializados a través de KieroMarketplace llegarán hasta la puerta de su casa, o a la dirección suministrada por el comprador, actualmente no disponemos del servicio compra y recoge en el punto físico.
             </p>
             <h3 className="terms-title">Anexos</h3>
             <p className="terms-paragraph">

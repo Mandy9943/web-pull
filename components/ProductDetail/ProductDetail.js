@@ -41,7 +41,7 @@ class ProductDetail extends Component {
 		this.loadQuestions();
 		dataLayer.push({ ecommerce: null });
 		// console.log('propiedades', this.props);
-		let dataLayerProductDetail = {
+		let dataLayerProductDetailG4 = {
 			'event': 'view_item',
 			'ecommerce': {
 			'items': 
@@ -62,18 +62,47 @@ class ProductDetail extends Component {
 			}
 		}
 
-		const productDetailGooleDataLayer = (dataLayerProductDetail) => {
+		const productDetailGooleDataLayerG4 = (dataLayerProductDetailG4) => {
 			this.props.data.breadcum.forEach((prod, index) => {
 				let keyCategory = `item_category${index + 1}`;
 				let valueNameCategory = prod.name;
-				dataLayerProductDetail['ecommerce']['items'][keyCategory] = valueNameCategory;
+				dataLayerProductDetailG4['ecommerce']['items'][keyCategory] = valueNameCategory;
 			});
-			return dataLayerProductDetail;
+			return dataLayerProductDetailG4;
 		}
 		
-		let resultDataLayerProductDetail = productDetailGooleDataLayer(dataLayerProductDetail);
+		let resultDataLayerProductDetailG4 = productDetailGooleDataLayerG4(dataLayerProductDetailG4);
 
-		dataLayer.push(resultDataLayerProductDetail);
+		dataLayer.push(resultDataLayerProductDetailG4);
+
+		const productDetailGooleDataLayerUniversal = ()=>{
+			var dataCategory = [];
+			this.props.data.breadcum.forEach((prod, index) => {
+				dataCategory.push(prod.name)
+			});
+			return dataCategory.join('/ ')
+		}
+		
+		gtag('event', 'view_item', {
+								"items": [
+											{
+												"id": this.props.data.product_global_id,
+												"name": this.props.data.product_global_title,
+												"list_name": "Search Results",
+												"brand": this.props.data.brand,
+												"category": productDetailGooleDataLayerUniversal(),
+												"quantity": 5,
+												'price': this.props.data.price,
+												'url':'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
+																							.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+																							.replace('//', '%2F')
+																							.replace('%', '')
+																							.split(' ')
+																							.join('-'),
+												"list_position": 0,
+											}
+								]
+		 			 });
 
 		if (typeof window !== "undefined") {
 			setTimeout(() => {

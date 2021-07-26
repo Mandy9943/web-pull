@@ -57,7 +57,7 @@ export default function SocketChat() {
 	}
 	useEffect(() => {
 		if (!('Notification' in window)) {
-			alert('Tu navegador no es compatible con notificaciones, actualizaa por favor.');
+			// alert('Tu navegador no es compatible con notificaciones, actualizaa por favor.');
 		} else {
 			Notification.requestPermission();
 		}
