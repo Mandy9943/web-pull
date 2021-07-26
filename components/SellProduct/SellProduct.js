@@ -54,12 +54,15 @@ export default function SellProduct({ user_data }) {
 
 	//Availability States
 	const [availability, setAvailability] = useState('');
+	const [availabilityError, setAvailabilityError] = useState(false);
 
 	//Warranty States
 	const [warrantyValue, setWarrantyValue] = useState('');
+	const [warrantyError, setWarrantyError] = useState(false);
 
 	//Category States
 	const [categoryValue, setCategoryValue] = useState('');
+	const [categoryError, setCategoryError] = useState(false);
 
 	function validateForm() {
 		if (
@@ -103,10 +106,25 @@ export default function SellProduct({ user_data }) {
 			} else {
 				setDescriptionError(false);
 			}
-			if (!video) {
+			if (!video || !video.includes('https://www.youtube.com/watch?')) {
 				setVideoError(true);
 			} else {
 				setVideoError(false);
+			}
+			if (!availability) {
+				setAvailabilityError(true);
+			} else {
+				setAvailabilityError(false);
+			}
+			if (!warrantyValue) {
+				setWarrantyError(true);
+			} else {
+				setWarrantyError(false);
+			}
+			if (!categoryValue) {
+				setCategoryError(true);
+			} else {
+				setCategoryError(false);
 			}
 		}
 		const info = {
@@ -197,17 +215,17 @@ export default function SellProduct({ user_data }) {
 						/>
 						<VideoAcordeon videoError={videoError} video={video} setVideo={setVideo} />
 						<AvailabilityAcordeon
-							valid={valid}
+							availabilityError={availabilityError}
 							availability={availability}
 							setAvailability={setAvailability}
 						/>
 						<WarrantyAcordeon
-							valid={valid}
+							warrantyError={warrantyError}
 							warrantyValue={warrantyValue}
 							setWarrantyValue={setWarrantyValue}
 						/>
 						<CategoryAcordeon
-							valid={valid}
+							categoryError={categoryError}
 							categoryValue={categoryValue}
 							setCategoryValue={setCategoryValue}
 						/>

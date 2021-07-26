@@ -35,6 +35,8 @@ export default function VideoAcordeon({ video, setVideo, videoError }) {
 		setVideo(e.target.value);
 	}
 
+	console.log(video.includes('https://www.youtube.com/watch?'));
+
 	return (
 		<div className="productAcordeonContainer">
 			<div className="productAcordeon">
@@ -85,8 +87,8 @@ export default function VideoAcordeon({ video, setVideo, videoError }) {
 						fullWidth
 						placeholder="Agrega un link de video"
 					/>
-					{videoError && !video ? (
-						<div className="productTitleError">Debes completar este campo</div>
+					{(videoError && !video) || !video.includes('https://www.youtube.com/watch?') ? (
+						<div className="productQuantityError">Ingresa un video de youtube</div>
 					) : (
 						''
 					)}

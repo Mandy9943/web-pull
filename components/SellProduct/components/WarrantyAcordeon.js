@@ -33,7 +33,11 @@ const useStyles = makeStyles((theme) => ({
 	checked: {},
 }));
 
-export default function WarrantyAcordeon({ warrantyValue, setWarrantyValue }) {
+export default function WarrantyAcordeon({
+	warrantyValue,
+	setWarrantyValue,
+	warrantyError,
+}) {
 	const classes = useStyles();
 	const [expandedWarranty, setExpandedWarranty] = useState(false);
 	const [warrantyInfo, setWarrantyInfo] = useState(false);
@@ -46,7 +50,7 @@ export default function WarrantyAcordeon({ warrantyValue, setWarrantyValue }) {
 		<div className="productAcordeonContainer">
 			<div className="productAcordeon">
 				Garantía
-				{expandedWarranty ? (
+				{expandedWarranty || warrantyError ? (
 					<HtmlTooltip
 						open={warrantyInfo}
 						placement="top-start"
@@ -74,18 +78,18 @@ export default function WarrantyAcordeon({ warrantyValue, setWarrantyValue }) {
 				)}
 				<ExpandMoreIcon
 					style={{
-						color: expandedWarranty ? '#CF0A2C' : '',
-						marginBottom: expandedWarranty ? '40px' : '',
+						color: expandedWarranty || warrantyError ? '#CF0A2C' : '',
+						marginBottom: expandedWarranty || warrantyError ? '40px' : '',
 						cursor: 'pointer',
 					}}
 					className={clsx(classes.expand, {
-						[classes.expandOpen]: expandedWarranty,
+						[classes.expandOpen]: expandedWarranty || warrantyError,
 					})}
 					onClick={() => setExpandedWarranty(!expandedWarranty)}
-					aria-expanded={expandedWarranty}
+					aria-expanded={expandedWarranty || warrantyError}
 				/>
 			</div>
-			<Collapse in={expandedWarranty} timeout="auto" unmountOnExit>
+			<Collapse in={expandedWarranty || warrantyError} timeout="auto" unmountOnExit>
 				<div className="typeOfAddP">Indica que tipo de garantía ofreces</div>
 
 				<RadioGroup value={warrantyValue} onChange={handleChange}>
@@ -111,6 +115,11 @@ export default function WarrantyAcordeon({ warrantyValue, setWarrantyValue }) {
 						Sin garantía
 					</div>
 				</RadioGroup>
+				{warrantyError && !warrantyValue ? (
+					<div className="productQuantityError">Debes completar este campo</div>
+				) : (
+					''
+				)}
 			</Collapse>
 		</div>
 	);
