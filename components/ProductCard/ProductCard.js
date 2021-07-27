@@ -80,7 +80,7 @@ export default class ProductCard extends Component {
 				}
 			},
 			'eventCallback': function(){
-				document.location = 'detalle/' + data.product_id + '_' + data.title
+				document.location = 'https://kiero.co/detalle/' + data.product_id + '_' + data.title
 				.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
 				.replace('//', '%2F')
 				.replace('%', '')

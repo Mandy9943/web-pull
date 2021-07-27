@@ -111,7 +111,7 @@ class ListCategory extends Component {
 							"list_position": index,
 							"quantity": 5,
 							'price':data.price,
-							'url':'detalle/' + data.product_id + '_' + data.title
+							'url':'https://kiero.co/detalle/' + data.product_id + '_' + data.title
 																							.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
 																							.replace('//', '%2F')
 																							.replace('%', '')
