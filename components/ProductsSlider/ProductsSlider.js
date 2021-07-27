@@ -23,32 +23,59 @@ export default class ProductsSlider extends Component {
 				data.push(response.data.results[product]);
 			}
 			this.setState({ data });
+			// dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
+			// const dataLayerGoogleSlidersG4 = response.data.results?.map((prod, index) => {
+			// 	return {
+			// 		item_name: prod.title,
+			// 		item_id: prod.product_id,
+			// 		price: prod.price,
+			// 		item_brand: prod.brand,
+			// 		item_category: prod.category,
+			// 		item_list_name: 'Sliders Home',
+			// 		url:'https://kiero.co/detalle/' + prod.product_id + '_' + prod.title
+			// 																.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+			// 																.replace('//', '%2F')
+			// 																.replace('%', '')
+			// 																.split(' ')
+			// 																.join('-'),
+			// 		index: index
+			// 	};
+			// });
+			// dataLayer.push({
+			// 	'event': 'view_item_list',
+			// 	'ecommerce': {
+			// 	'items': 
+			// 		dataLayerGoogleSlidersG4
+			// 	}
+			// })
 			dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
-			const dataLayerGoogleSlidersG4 = response.data.results?.map((prod, index) => {
+			const dataLayerGoogleSlidersUniversal = response.data.results?.map((prod, index) => {
 				return {
-					item_name: prod.title,
-					item_id: prod.product_id,
+					name: prod.title,
+					id: prod.product_id,
 					price: prod.price,
-					item_brand: prod.brand,
-					item_category: prod.category,
-					item_list_name: 'Sliders Home',
+					brand: prod.brand,
+					category: prod.category,
 					url:'https://kiero.co/detalle/' + prod.product_id + '_' + prod.title
 																			.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
 																			.replace('//', '%2F')
 																			.replace('%', '')
 																			.split(' ')
 																			.join('-'),
-					index: index
+					position: index + 1
 				};
 			});
 			dataLayer.push({
-				'event': 'view_item_list',
 				'ecommerce': {
-				'items': 
-					dataLayerGoogleSlidersG4
+					"currencyCode": "COP",
+					"actionField": {
+									"list": "Apparel Gallery"
+									},
+					'impressions': 
+						dataLayerGoogleSlidersUniversal
 				}
 			})
-			const dataLayerGoogleSlidersUniversal = response.data.results?.map((prod, index) => {
+			const gtagSlidersUniversal = response.data.results?.map((prod, index) => {
 				return {
 					name: prod.title,
 					id: prod.product_id,
@@ -67,7 +94,7 @@ export default class ProductsSlider extends Component {
 				};
 			});
 			gtag('event', 'view_item_list', {
-				"items": dataLayerGoogleSlidersUniversal
+				"items": gtagSlidersUniversal
 			})
 		});
 	}
