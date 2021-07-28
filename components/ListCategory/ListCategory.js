@@ -14,119 +14,138 @@ class ListCategory extends Component {
 	constructor(props) {
 		super(props);
 	}
-	componentDidMount(){
-	
-		var awaitProducts = setInterval(function(){
-            var dataProducts = document.getElementsByClassName('temp-card');
-            if(dataProducts.length){
-                layerGoogle()
-                clearInterval(awaitProducts)
-            }
-        },300)
-        const layerGoogle = () => {
-            dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
-            const dataLayerGoogleSearchResultsG4 = this.props.products?.map((prod, index) => {
-                return {
-                    item_name: prod.title,
-                    item_id: prod.product_id,
-                    price: prod.price,
-                    item_brand: prod.brand,
-                    item_category: prod.category,
-                    item_list_name: 'Search Results',
-                    url:'https://kiero.co/detalle/' + prod.product_id + '_' + prod.title
-                                                                            .replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-                                                                            .replace('//', '%2F')
-                                                                            .replace('%', '')
-                                                                            .split(' ')
-                                                                            .join('-'),
-                    index: index, 
-                };
-            });
-            dataLayer.push({
-                'event': 'view_item_list',
-                'ecommerce': {
-                'items': 
-                    dataLayerGoogleSearchResultsG4
-                }
-            })
 
-			const dataLayerGoogleSearchResultsUniversal = this.props.products?.map((prod, index) => {
-                return {
-                    name: prod.title,
-                    id: prod.product_id,
-                    price: prod.price,
-                    brand: prod.brand,
-                    category: prod.category,
-                    list_name: 'Search Results',
-                    url:'https://kiero.co/detalle/' + prod.product_id + '_' + prod.title
-                                                                            .replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-                                                                            .replace('//', '%2F')
-                                                                            .replace('%', '')
-                                                                            .split(' ')
-                                                                            .join('-'),
-					list_position: index, 
-					quantity: 5
-                };
-            });
+	componentDidMount() {
+		var awaitProducts = setInterval(function () {
+			var dataProducts = document.getElementsByClassName('temp-card');
+			if (dataProducts.length) {
+				layerGoogle();
+				clearInterval(awaitProducts);
+			}
+		}, 300);
+		const layerGoogle = () => {
+			dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
+			const dataLayerGoogleSearchResultsG4 = this.props.products?.map((prod, index) => {
+				return {
+					item_name: prod.title,
+					item_id: prod.product_id,
+					price: prod.price,
+					item_brand: prod.brand,
+					item_category: prod.category,
+					item_list_name: 'Search Results',
+					url:
+						'https://kiero.co/detalle/' +
+						prod.product_id +
+						'_' +
+						prod.title
+							.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+							.replace('//', '%2F')
+							.replace('%', '')
+							.split(' ')
+							.join('-'),
+					index: index,
+				};
+			});
+			dataLayer.push({
+				event: 'view_item_list',
+				ecommerce: {
+					items: dataLayerGoogleSearchResultsG4,
+				},
+			});
 
-			gtag('event', 'view_item_list', {'items': dataLayerGoogleSearchResultsUniversal})
-        }
+			const dataLayerGoogleSearchResultsUniversal = this.props.products?.map(
+				(prod, index) => {
+					return {
+						name: prod.title,
+						id: prod.product_id,
+						price: prod.price,
+						brand: prod.brand,
+						category: prod.category,
+						list_name: 'Search Results',
+						url:
+							'https://kiero.co/detalle/' +
+							prod.product_id +
+							'_' +
+							prod.title
+								.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+								.replace('//', '%2F')
+								.replace('%', '')
+								.split(' ')
+								.join('-'),
+						list_position: index,
+						quantity: 5,
+					};
+				}
+			);
+
+			gtag('event', 'view_item_list', { items: dataLayerGoogleSearchResultsUniversal });
+		};
 	}
-	handleDataInfoSearch = (data, index)=> {
+	handleDataInfoSearch = (data, index) => {
 		dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
 		dataLayer.push({
-			'event': 'select_item',
-			'ecommerce': {
-			'items': 
-				{
-					'item_name':data.title,
-					'item_id':data.product_id,
-					'item_brand':data.brand,
-					'item_category':data.category,
-					'item_list_name':'ListCategory',
-					'index':index,
-					"quantity": 5,
-					'price':data.price,
-					'url':'https://kiero.co/detalle/' + data.product_id + '_' + data.title
-																					.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-																					.replace('//', '%2F')
-																					.replace('%', '')
-																					.split(' ')
-																					.join('-'),
-				}
-			}
+			event: 'select_item',
+			ecommerce: {
+				items: {
+					item_name: data.title,
+					item_id: data.product_id,
+					item_brand: data.brand,
+					item_category: data.category,
+					item_list_name: 'ListCategory',
+					index: index,
+					quantity: 5,
+					price: data.price,
+					url:
+						'https://kiero.co/detalle/' +
+						data.product_id +
+						'_' +
+						data.title
+							.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+							.replace('//', '%2F')
+							.replace('%', '')
+							.split(' ')
+							.join('-'),
+				},
+			},
 		});
 		gtag('event', 'select_content', {
-			"content_type": "product",
-			"items": [
-						{
-							"id": data.product_id,
-							"name": data.title,
-							"list_name": "Search Results",
-							"brand": data.brand,
-							"category": data.category,
-							"list_position": index,
-							"quantity": 5,
-							'price':data.price,
-							'url':'https://kiero.co/detalle/' + data.product_id + '_' + data.title
-																							.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-																							.replace('//', '%2F')
-																							.replace('%', '')
-																							.split(' ')
-																							.join('-'),
-						}
-			]
+			content_type: 'product',
+			items: [
+				{
+					id: data.product_id,
+					name: data.title,
+					list_name: 'Search Results',
+					brand: data.brand,
+					category: data.category,
+					list_position: index,
+					quantity: 5,
+					price: data.price,
+					url:
+						'https://kiero.co/detalle/' +
+						data.product_id +
+						'_' +
+						data.title
+							.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+							.replace('//', '%2F')
+							.replace('%', '')
+							.split(' ')
+							.join('-'),
+				},
+			],
 		});
-		window.location.href = '/detalle/' +
-		data.product_id +
-		'_' +
-		data.title
-			.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-			.replace('//', '%2F')
-			.replace('%', '')
-			.split(' ')
-			.join('-')
-	}
+		window.location.href =
+			'/detalle/' +
+			data.product_id +
+			'_' +
+			data.title
+				.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+				.replace('//', '%2F')
+				.replace('%', '')
+				.split(' ')
+				.join('-');
+
+		console.log(dataLayer);
+	};
 	render() {
 		const Class = this.props.format == 'grid' ? 'grid' : 'list';
 		return (
@@ -146,8 +165,25 @@ class ListCategory extends Component {
 												checkedIcon={<Favorite />}
 											/>
 										</div> */}
-									
-											<a className="d-flex" key={i} onClick={ () => this.handleDataInfoSearch(product, i)}>
+										<div
+											className="d-flex"
+											key={i}
+											onClick={() => this.handleDataInfoSearch(product, i)}
+										>
+											<Link
+												href={'/detalle/[product]'}
+												as={
+													'/detalle/' +
+													product.product_id +
+													'_' +
+													product.title
+														.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+														.replace('//', '%2F')
+														.replace('%', '')
+														.split(' ')
+														.join('-')
+												}
+											>
 												<div className="temp-card">
 													<div className="product-card-img">
 														<img
@@ -187,12 +223,26 @@ class ListCategory extends Component {
 														</div>
 													</div>
 												</div>
-											</a>
+											</Link>
+										</div>
 									</div>
 							  ))
 							: this.props.products.map((product, i) => (
-									
-										<a key={i + 1} onClick={ () => this.handleDataInfoSearch(product, i)}>
+									<div key={i + 1} onClick={() => this.handleDataInfoSearch(product, i)}>
+										<Link
+											href={'/detalle/[product]'}
+											as={
+												'/detalle/' +
+												product.product_id +
+												'_' +
+												product.title
+													.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+													.replace('//', '%2F')
+													.replace('%', '')
+													.split(' ')
+													.join('-')
+											}
+										>
 											<div className="temp-list">
 												<div className="product-list-img">
 													<img
@@ -226,7 +276,8 @@ class ListCategory extends Component {
 													}
 												</div>
 											</div>
-										</a>
+										</Link>
+									</div>
 							  )))}
 				</div>
 

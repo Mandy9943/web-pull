@@ -21,7 +21,7 @@ export default function SellProduct({ user_data }) {
 	//BasicInfo States
 	const [title, setTitle] = useState('');
 	const [price, setPrice] = useState('');
-	const [images, setImages] = useState('');
+	const [images, setImages] = useState([]);
 	const [color, setColor] = useState('');
 	const [quantity, setQuantity] = useState('');
 	const [code, setCode] = useState('');
@@ -65,6 +65,33 @@ export default function SellProduct({ user_data }) {
 	const [categoryError, setCategoryError] = useState(false);
 
 	function validateForm() {
+		const headers ={
+			headers: { Authorization: `Bearer ${user_data.jwt}` },
+		}
+		const info = {
+			title: title,
+			price: price,
+			images: images,
+			color: color,
+			quantity: quantity,
+			code: code,
+			noCode: noCode,
+			brand: brand,
+			model: model,
+			material: material,
+			long: long,
+			longUnit: longUnit,
+			width: width,
+			widthUnit: widthUnit,
+			switchedWithdraw: switchedWithdraw,
+			selectedTypeOfAdd: selectedTypeOfAdd,
+			description: description,
+			video: video,
+			availability: availability,
+			warrantyValue: warrantyValue,
+			categoryValue: categoryValue,
+		};
+		console.log(info);
 		if (
 			title &&
 			price &&
@@ -127,30 +154,6 @@ export default function SellProduct({ user_data }) {
 				setCategoryError(false);
 			}
 		}
-		const info = {
-			title: title,
-			price: price,
-			images: images,
-			color: color,
-			quantity: quantity,
-			code: code,
-			noCode: noCode,
-			brand: brand,
-			model: model,
-			material: material,
-			long: long,
-			longUnit: longUnit,
-			width: width,
-			widthUnit: widthUnit,
-			switchedWithdraw: switchedWithdraw,
-			selectedTypeOfAdd: selectedTypeOfAdd,
-			description: description,
-			video: video,
-			availability: availability,
-			warrantyValue: warrantyValue,
-			categoryValue: categoryValue,
-		};
-		console.log(info);
 	}
 
 	return (

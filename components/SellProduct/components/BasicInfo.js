@@ -36,7 +36,7 @@ export default function BasicInfo({
 	const [pictureInfo, setPictureInfo] = useState(false);
 	const [codeInfo, setCodeInfo] = useState(false);
 	// const [formatedPrice, setFormatedPrice] = useState(null);
-
+	console.log(images);
 	function goBack() {
 		window.history.back();
 	}
@@ -66,7 +66,19 @@ export default function BasicInfo({
 	}
 
 	function handleImgs(e) {
-		setImages(e.target.value);
+		// let files = e.target.files;
+		// let reader = new FileReader();
+		// reader.readAsDataURL(files[0]);
+		// reader.onload = (e) => {
+		// 	setImages(e.target.result);
+		// };
+		if (e.target.files) {
+			const fileArray = Array.from(e.target.files).map((file) =>
+				URL.createObjectURL(file)
+			);
+			setImages((prevImages) => prevImages.concat(fileArray));
+			Array.from(e.target.files).map((file) => URL.revokeObjectURL(file));
+		}
 	}
 
 	function handleColor(e) {
@@ -165,7 +177,6 @@ export default function BasicInfo({
 						</div>
 						<div className="picturesInstruction">Agrega fotos de tu producto</div>
 						<TextField
-							value={images}
 							onChange={handleImgs}
 							id="uploadImageButton"
 							type="file"
@@ -188,6 +199,17 @@ export default function BasicInfo({
 						) : (
 							''
 						)}
+						<div className="picturesPreview">
+							{images.length
+								? images.map((im) => {
+										return (
+											<div className="picturePreview">
+												<img className="picture" src={im} alt="" />
+											</div>
+										);
+								  })
+								: ''}
+						</div>
 					</div>
 				</div>
 				<div>

@@ -7,6 +7,7 @@ import {
 	isAuthenticated,
 	getUser,
 	getJwt,
+	getUserId,
 	redirectIfNotAuthenticated,
 } from '../lib/auth';
 
@@ -18,6 +19,7 @@ export default class extends React.Component {
 
 		return {
 			jwt: getJwt(ctx),
+			user_id: getUserId(ctx),
 			user: getUser(ctx),			
 			authenticated: isAuthenticated(ctx),
 		};
