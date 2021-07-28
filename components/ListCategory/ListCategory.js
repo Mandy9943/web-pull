@@ -124,13 +124,6 @@ class ListCategory extends Component {
 				},
 			],
 		});
-<<<<<<< HEAD
-		window.location.href =
-			'/detalle/' +
-			data.product_id +
-			'_' +
-			data.title
-=======
 		dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
 		// dataLayer.push({
 		// 	'event': 'select_item',
@@ -182,17 +175,10 @@ class ListCategory extends Component {
 			},
 			'eventCallback': function(){
 				document.location = 'https://kiero.co/detalle/' + data.product_id + '_' + data.title
->>>>>>> 6a51911400a078d819d514444dbd2661daaa8218
 				.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
 				.replace('//', '%2F')
 				.replace('%', '')
 				.split(' ')
-<<<<<<< HEAD
-				.join('-');
-
-		console.log(dataLayer);
-	};
-=======
 				.join('-')
 			} 
 		})
@@ -207,7 +193,6 @@ class ListCategory extends Component {
 		// 	.split(' ')
 		// 	.join('-')
 	}
->>>>>>> 6a51911400a078d819d514444dbd2661daaa8218
 	render() {
 		const Class = this.props.format == 'grid' ? 'grid' : 'list';
 		return (

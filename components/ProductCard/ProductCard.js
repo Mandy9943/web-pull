@@ -7,9 +7,6 @@ import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 
 export default class ProductCard extends Component {
-<<<<<<< HEAD
-	handleDataInfo(data) {
-=======
 	handleDataInfo(data){
 		
 		gtag('event', 'select_content', {
@@ -33,7 +30,6 @@ export default class ProductCard extends Component {
 						}
 					]
 		});
->>>>>>> 6a51911400a078d819d514444dbd2661daaa8218
 		dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
 		// dataLayer.push({
 		// 	'event': 'select_item',
