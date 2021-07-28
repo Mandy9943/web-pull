@@ -89,7 +89,7 @@ export default class PaymentWay extends Component {
 	componentDidMount() {
 		this.loadBanks();
 		this.loadAddresses();
-		const checkoutProgressGooleDataLayerUniversal = ()=>{
+		const concatCategories = ()=>{
 			var dataCategory = [];
 			this.props.data.breadcum.forEach((prod, index) => {
 				dataCategory.push(prod.name)
@@ -103,7 +103,7 @@ export default class PaymentWay extends Component {
 													"name": this.props.data.product_global_title,
 													"list_name": "Search Results",
 													"brand": this.props.data.brand,
-													"category": checkoutProgressGooleDataLayerUniversal(),
+													"category": concatCategories(),
 													"list_position": 0,
 													"quantity": this.props.cantidad,
 													"price": this.props.data.price,
@@ -317,38 +317,48 @@ export default class PaymentWay extends Component {
 			this.props.user.jwt
 		);
 		dataLayer.push({ ecommerce: null });
-		let dataLayerAddPaymentInfoPSE = {
-			'event': 'add_payment_info',
-			'ecommerce': {
-				'currency': 'COP',
-				'items': [{
-					'item_name': this.props.data.product_global_title, // Name or ID is required.
-					'item_id': this.props.data.product_global_id,
-					'price': this.props.data.price,
-					'item_brand': this.props.data.brand,
-					'quantity': this.props.cantidad,
-					'url':'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
-																									.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-																									.replace('//', '%2F')
-																									.replace('%', '')
-																									.split(' ')
-																									.join('-'),
-					'payment_type':'pse'																				
-					}]
+		dataLayer.push({
+			'event':'checkoutOption',
+			'ecommerce':{
+				'checkout_option':{
+					'actionField':{
+						'step': 2, 'option':'pse'
+					}
 				}
-			};
-			const addPaymentInfoPSEGooleDataLayer = (dataLayerAddPaymentInfoPSE) => {
-				this.props.data.breadcum.forEach((prod, index) => {
-					let keyCategory = `item_category${index + 1}`;
-					let valueNameCategory = prod.name;
-					dataLayerAddPaymentInfoPSE['ecommerce']['items'][0][keyCategory] = valueNameCategory;
-				});
-				return dataLayerAddPaymentInfoPSE;
 			}
+		})
+		// let dataLayerAddPaymentInfoPSE = {
+		// 	'event': 'add_payment_info',
+		// 	'ecommerce': {
+		// 		'currency': 'COP',
+		// 		'items': [{
+		// 			'item_name': this.props.data.product_global_title, // Name or ID is required.
+		// 			'item_id': this.props.data.product_global_id,
+		// 			'price': this.props.data.price,
+		// 			'item_brand': this.props.data.brand,
+		// 			'quantity': this.props.cantidad,
+		// 			'url':'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
+		// 																							.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+		// 																							.replace('//', '%2F')
+		// 																							.replace('%', '')
+		// 																							.split(' ')
+		// 																							.join('-'),
+		// 			'payment_type':'pse'																				
+		// 			}]
+		// 		}
+		// 	};
+		// 	const addPaymentInfoPSEGooleDataLayer = (dataLayerAddPaymentInfoPSE) => {
+		// 		this.props.data.breadcum.forEach((prod, index) => {
+		// 			let keyCategory = `item_category${index + 1}`;
+		// 			let valueNameCategory = prod.name;
+		// 			dataLayerAddPaymentInfoPSE['ecommerce']['items'][0][keyCategory] = valueNameCategory;
+		// 		});
+		// 		return dataLayerAddPaymentInfoPSE;
+		// 	}
 				
-			let resultDataLayerAddPaymentInfoPSE = addPaymentInfoPSEGooleDataLayer(dataLayerAddPaymentInfoPSE);
+		// 	let resultDataLayerAddPaymentInfoPSE = addPaymentInfoPSEGooleDataLayer(dataLayerAddPaymentInfoPSE);
 
-			dataLayer.push(resultDataLayerAddPaymentInfoPSE);
+		// 	dataLayer.push(resultDataLayerAddPaymentInfoPSE);
 			
 			if (typeof window !== "undefined") {
 				if (window.fbq != null) { 
@@ -494,38 +504,48 @@ export default class PaymentWay extends Component {
 			this.setState({ paymentLoading: true });
 
 			dataLayer.push({ ecommerce: null });
-			let dataLayerAddPaymentInfoCC = {
-				'event': 'add_payment_info',
-				'ecommerce': {
-					'currency': 'COP',
-					'items': [{
-						'item_name': this.props.data.product_global_title, // Name or ID is required.
-						'item_id': this.props.data.product_global_id,
-						'price': this.props.data.price,
-						'item_brand': this.props.data.brand,
-						'quantity': this.props.cantidad,
-						'url':'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
-																										.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-																										.replace('//', '%2F')
-																										.replace('%', '')
-																										.split(' ')
-																										.join('-'),
-						'payment_type':'cc'
-						}]
+			dataLayer.push({
+				'event':'checkoutOption',
+				'ecommerce':{
+					'checkout_option':{
+						'actionField':{
+							'step': 2, 'option':'cc'
+						}
 					}
-				};
-			const addPaymentInfoCCGooleDataLayer = (dataLayerAddPaymentInfoCC) => {
-				this.props.data.breadcum.forEach((prod, index) => {
-					let keyCategory = `item_category${index + 1}`;
-					let valueNameCategory = prod.name;
-					dataLayerAddPaymentInfoCC['ecommerce']['items'][0][keyCategory] = valueNameCategory;
-				});
-				return dataLayerAddPaymentInfoCC;
-			}
+				}
+			})
+			// let dataLayerAddPaymentInfoCC = {
+			// 	'event': 'add_payment_info',
+			// 	'ecommerce': {
+			// 		'currency': 'COP',
+			// 		'items': [{
+			// 			'item_name': this.props.data.product_global_title, // Name or ID is required.
+			// 			'item_id': this.props.data.product_global_id,
+			// 			'price': this.props.data.price,
+			// 			'item_brand': this.props.data.brand,
+			// 			'quantity': this.props.cantidad,
+			// 			'url':'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
+			// 																							.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+			// 																							.replace('//', '%2F')
+			// 																							.replace('%', '')
+			// 																							.split(' ')
+			// 																							.join('-'),
+			// 			'payment_type':'cc'
+			// 			}]
+			// 		}
+			// 	};
+			// const addPaymentInfoCCGooleDataLayer = (dataLayerAddPaymentInfoCC) => {
+			// 	this.props.data.breadcum.forEach((prod, index) => {
+			// 		let keyCategory = `item_category${index + 1}`;
+			// 		let valueNameCategory = prod.name;
+			// 		dataLayerAddPaymentInfoCC['ecommerce']['items'][0][keyCategory] = valueNameCategory;
+			// 	});
+			// 	return dataLayerAddPaymentInfoCC;
+			// }
 				
-			let resultDataLayerAddPaymentInfoCC = addPaymentInfoCCGooleDataLayer(dataLayerAddPaymentInfoCC);
+			// let resultDataLayerAddPaymentInfoCC = addPaymentInfoCCGooleDataLayer(dataLayerAddPaymentInfoCC);
 
-			dataLayer.push(resultDataLayerAddPaymentInfoCC);
+			// dataLayer.push(resultDataLayerAddPaymentInfoCC);
 
 			if (window.fbq != null) { 
 				window.fbq('track','AddPaymentInfo',{
@@ -648,38 +668,48 @@ export default class PaymentWay extends Component {
 			cashPayload.address_id = this.state.addresses[this.state.selectedAddr].address_id;
 
 			dataLayer.push({ ecommerce: null });
-			let dataLayerAddPaymentInfoMoney = {
-				'event': 'add_payment_info',
-				'ecommerce': {
-					'currency': 'COP',
-					'items': [{
-						'item_name': this.props.data.product_global_title, // Name or ID is required.
-						'item_id': this.props.data.product_global_id,
-						'price': this.props.data.price,
-						'item_brand': this.props.data.brand,
-						'quantity': this.props.cantidad,
-						'url':'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
-																										.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-																										.replace('//', '%2F')
-																										.replace('%', '')
-																										.split(' ')
-																										.join('-'),
-						'payment_type':'cash'
-						}]
+			dataLayer.push({
+				'event':'checkoutOption',
+				'ecommerce':{
+					'checkout_option':{
+						'actionField':{
+							'step': 2, 'option':'cash'
+						}
 					}
-				};
-			const AddPaymentInfoMoneyGooleDataLayer = (dataLayerAddPaymentInfoMoney) => {
-				this.props.data.breadcum.forEach((prod, index) => {
-					let keyCategory = `item_category${index + 1}`;
-					let valueNameCategory = prod.name;
-					dataLayerAddPaymentInfoMoney['ecommerce']['items'][0][keyCategory] = valueNameCategory;
-				});
-				return dataLayerAddPaymentInfoMoney;
-			}
+				}
+			})
+			// let dataLayerAddPaymentInfoMoney = {
+			// 	'event': 'add_payment_info',
+			// 	'ecommerce': {
+			// 		'currency': 'COP',
+			// 		'items': [{
+			// 			'item_name': this.props.data.product_global_title, // Name or ID is required.
+			// 			'item_id': this.props.data.product_global_id,
+			// 			'price': this.props.data.price,
+			// 			'item_brand': this.props.data.brand,
+			// 			'quantity': this.props.cantidad,
+			// 			'url':'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
+			// 																							.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+			// 																							.replace('//', '%2F')
+			// 																							.replace('%', '')
+			// 																							.split(' ')
+			// 																							.join('-'),
+			// 			'payment_type':'cash'
+			// 			}]
+			// 		}
+			// 	};
+			// const AddPaymentInfoMoneyGooleDataLayer = (dataLayerAddPaymentInfoMoney) => {
+			// 	this.props.data.breadcum.forEach((prod, index) => {
+			// 		let keyCategory = `item_category${index + 1}`;
+			// 		let valueNameCategory = prod.name;
+			// 		dataLayerAddPaymentInfoMoney['ecommerce']['items'][0][keyCategory] = valueNameCategory;
+			// 	});
+			// 	return dataLayerAddPaymentInfoMoney;
+			// }
 			
-			let resultDataLayerAddPaymentInfoMoney = AddPaymentInfoMoneyGooleDataLayer(dataLayerAddPaymentInfoMoney);
+			// let resultDataLayerAddPaymentInfoMoney = AddPaymentInfoMoneyGooleDataLayer(dataLayerAddPaymentInfoMoney);
 
-			dataLayer.push(resultDataLayerAddPaymentInfoMoney);
+			// dataLayer.push(resultDataLayerAddPaymentInfoMoney);
 			if (window.fbq != null) { 
 				window.fbq('track','AddPaymentInfo',{
 													'content_ids': this.props.data.product_global_id,
