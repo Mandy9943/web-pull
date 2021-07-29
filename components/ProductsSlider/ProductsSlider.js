@@ -75,27 +75,27 @@ export default class ProductsSlider extends Component {
 						dataLayerGoogleSlidersUniversal
 				}
 			})
-			const gtagSlidersUniversal = response.data.results?.map((prod, index) => {
-				return {
-					name: prod.title,
-					id: prod.product_id,
-					price: prod.price,
-					brand: prod.brand,
-					category: prod.category,
-					list_name: 'Sliders Home',
-					url:'https://kiero.co/detalle/' + prod.product_id + '_' + prod.title
-																			.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-																			.replace('//', '%2F')
-																			.replace('%', '')
-																			.split(' ')
-																			.join('-'),
-					list_position: index,
-					quantity: 5,
-				};
-			});
-			gtag('event', 'view_item_list', {
-				"items": gtagSlidersUniversal
-			})
+			// const gtagSlidersUniversal = response.data.results?.map((prod, index) => {
+			// 	return {
+			// 		name: prod.title,
+			// 		id: prod.product_id,
+			// 		price: prod.price,
+			// 		brand: prod.brand,
+			// 		category: prod.category,
+			// 		list_name: 'Sliders Home',
+			// 		url:'https://kiero.co/detalle/' + prod.product_id + '_' + prod.title
+			// 																.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+			// 																.replace('//', '%2F')
+			// 																.replace('%', '')
+			// 																.split(' ')
+			// 																.join('-'),
+			// 		list_position: index,
+			// 		quantity: 5,
+			// 	};
+			// });
+			// gtag('event', 'view_item_list', {
+			// 	"items": gtagSlidersUniversal
+			// })
 		});
 	}
 
