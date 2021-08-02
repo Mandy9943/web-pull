@@ -48,7 +48,7 @@ export default class ProductsSlider extends Component {
 			// 		dataLayerGoogleSlidersG4
 			// 	}
 			// })
-			dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
+			// dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
 			const dataLayerGoogleSlidersUniversal = response.data.results?.map((prod, index) => {
 				return {
 					name: prod.title,

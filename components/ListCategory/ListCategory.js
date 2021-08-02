@@ -24,7 +24,7 @@ class ListCategory extends Component {
             }
         },300)
         const layerGoogle = () => {
-            dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
+            // dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
             // const dataLayerGoogleSearchResultsG4 = this.props.products?.map((prod, index) => {
             //     return {
             //         item_name: prod.title,
@@ -124,7 +124,7 @@ class ListCategory extends Component {
 		// 		},
 		// 	],
 		// });
-		dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
+		// dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
 		// dataLayer.push({
 		// 	'event': 'select_item',
 		// 	'ecommerce': {

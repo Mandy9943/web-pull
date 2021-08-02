@@ -45,7 +45,7 @@ class PaySection extends Component {
 			return dataCategory.join(' / ')
 		}
 
-		dataLayer.push({ ecommerce: null });
+		// dataLayer.push({ ecommerce: null });
 		// let dataLayerBeginCheckout = {
 		// 	'event': 'begin_checkout',
 		// 	'ecommerce': {

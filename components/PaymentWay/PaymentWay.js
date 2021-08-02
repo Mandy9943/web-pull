@@ -316,7 +316,7 @@ export default class PaymentWay extends Component {
 			},
 			this.props.user.jwt
 		);
-		dataLayer.push({ ecommerce: null });
+		// dataLayer.push({ ecommerce: null });
 		dataLayer.push({
 			'event':'checkoutOption',
 			'ecommerce':{
@@ -402,7 +402,7 @@ export default class PaymentWay extends Component {
 
 		if (result.data) {
 			// console.log(result.data.data)
-			dataLayer.push({ ecommerce: null });
+			// dataLayer.push({ ecommerce: null });
 			// let resultDataLayerPurchasePSE = result.data.data;
 			// resultDataLayerPurchasePSE.ecommerce.transaction_status = result.data.transaction_status;
 			// resultDataLayerPurchasePSE.ecommerce.items[0].url = 'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
@@ -533,7 +533,7 @@ export default class PaymentWay extends Component {
 			ccPayload.address_id = this.state.addresses[this.state.selectedAddr].address_id;
 			this.setState({ paymentLoading: true });
 
-			dataLayer.push({ ecommerce: null });
+			// dataLayer.push({ ecommerce: null });
 			dataLayer.push({
 				'event':'checkoutOption',
 				'ecommerce':{
@@ -620,7 +620,7 @@ export default class PaymentWay extends Component {
 			
 			if (rs.data) {
 				// console.log('CC',rs.data.data)
-				dataLayer.push({ ecommerce: null });
+				// dataLayer.push({ ecommerce: null });
 				// let resultDataLayerPurchaseCC = rs.data.data;
 				// resultDataLayerPurchaseCC.ecommerce.transaction_status = rs.data.result;
 				// resultDataLayerPurchaseCC.ecommerce.items[0].url = 'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
@@ -729,7 +729,7 @@ export default class PaymentWay extends Component {
 		if (cashPayload.email && cashPayload.full_name && cashPayload.phone_number) {
 			cashPayload.address_id = this.state.addresses[this.state.selectedAddr].address_id;
 
-			dataLayer.push({ ecommerce: null });
+			// dataLayer.push({ ecommerce: null });
 			dataLayer.push({
 				'event':'checkoutOption',
 				'ecommerce':{
@@ -813,7 +813,7 @@ export default class PaymentWay extends Component {
 			const rs = await makePaymentCash(cashPayload, this.props.user.jwt);
 			// console.log(rs);
 			if (rs.data) {
-				dataLayer.push({ ecommerce: null });
+				// dataLayer.push({ ecommerce: null });
 				// let resultDataLayerPurchaseCash = rs.data.data;
 				// resultDataLayerPurchaseCash.ecommerce.transaction_status = rs.data.result.state;
 				// resultDataLayerPurchaseCash.ecommerce.items[0].url = 'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title

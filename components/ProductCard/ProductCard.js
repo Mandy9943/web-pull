@@ -30,7 +30,7 @@ export default class ProductCard extends Component {
 		// 				}
 		// 			]
 		// });
-		dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
+		// dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
 		// dataLayer.push({
 		// 	'event': 'select_item',
 		// 	'ecommerce': {

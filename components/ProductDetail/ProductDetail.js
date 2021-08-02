@@ -75,7 +75,7 @@ class ProductDetail extends Component {
 
 		// dataLayer.push(resultDataLayerProductDetailG4);
 
-		dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
+		// dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
 		
 		const concatCategories = ()=>{
 			var dataCategory = [];
