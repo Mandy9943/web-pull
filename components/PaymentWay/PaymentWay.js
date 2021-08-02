@@ -476,7 +476,7 @@ export default class PaymentWay extends Component {
 												}) 
 						}
 		}
-			// window.location = result.data.URL;
+			window.location = result.data.URL;
 		} else {
 			this.setState({
 				error: result.error,
