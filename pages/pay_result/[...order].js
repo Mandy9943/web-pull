@@ -10,12 +10,12 @@ import favicon from "../../assets/img/favicon.svg";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-    faCheck
+    faCheck, faWindowClose, faHourglassHalf
+
 } from "@fortawesome/free-solid-svg-icons";
 
 function Product({ data, u_data }) {
 
-  console.log("PRODUCT IN DATA:");
   // console.log(data);
 
   return (
@@ -54,7 +54,7 @@ function Product({ data, u_data }) {
       <div className="container-success">
         <p>
             <div className={"icon-check"}>
-            {data.status == 2 ? <FontAwesomeIcon icon={faCheck} /> : data.status == 6 ? <FontAwesomeIcon icon={fa-window-close} />: <FontAwesomeIcon icon={fa-hourglass-half} />}
+            {data.status == 2 ? <FontAwesomeIcon icon={faCheck} /> : data.status == 6 ? <FontAwesomeIcon icon={faWindowClose} />: <FontAwesomeIcon icon={faHourglassHalf} />}
             </div>
             <br />
             <span><strong>{data.status == 2 ? "Su compra ha sido exitosa" : data.status == 6 ? "Su compra ha sido rechazada": "Su compra esta en espera por aprobación"} </strong></span>
@@ -89,17 +89,17 @@ function Product({ data, u_data }) {
 
 // This gets called on every request
 export async function getServerSideProps(context) {
-
   // Fetch data from external API
-  let order_id = context.params.order;
+  let order_id = JSON.parse(context.params.order)
 
   let usr = getUser(context);
   let jwt = getJwt(context);
 
-  const res = await getOrderId(order_id[0], jwt)
+  const res = await getOrderId(order_id, jwt)
   const data = await res.data
+  // const data = order_id
 
-  console.log(data);
+  // console.log(data);
   const u_data = {
     user: (usr !== undefined ? usr : null),
     authenticated: isAuthenticated(context),

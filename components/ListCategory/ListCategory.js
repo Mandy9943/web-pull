@@ -49,7 +49,7 @@ class ListCategory extends Component {
             //         dataLayerGoogleSearchResultsG4
             //     }
             // })dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
-			const dataLayerGoogleSearchUniversal = response.data.results?.map((prod, index) => {
+			const dataLayerGoogleSearchUniversal = this.props.products?.map((prod, index) => {
 				return {
 					name: prod.title,
 					id: prod.product_id,
