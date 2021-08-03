@@ -1,0 +1,136 @@
+.container-payment-way
+    margin: 100px auto
+    width: 70%
+    min-height: 60vh
+    h2
+        margin-bottom: 50px
+        color: #4E4E4E
+        font-size: 28px
+        font-weight: 600
+    .only-movil
+        display: none !important
+
+.content-payment-way
+    display: grid
+    grid-template-columns: 3fr 2fr
+    grid-gap: 100px
+
+.product-description
+    display: grid
+    grid-template-columns: auto 1fr
+    grid-gap: 20px
+    img
+        width: 50px
+        height: auto
+        align-self: center
+    p
+        margin-bottom: 10px
+        color: #4E4E4E
+        font-size: 16px
+    .quantity
+        color: #4E4E4E
+        font-size: 15px
+    h3
+        font-size: 20px
+.payment-way-box
+    margin-bottom: 40px
+    padding: 20px
+    background: #FBFBFB 0% 0% no-repeat padding-box
+    box-shadow: 0px 3px 6px #11111129
+    border-radius: 8px
+    cursor: pointer
+    p
+        color: #4E4E4E
+        font-size: 16px
+    h3
+        color: #4E4E4E
+        font-size: 20px
+        font-weight: 600
+
+.way-to-pay
+    form
+        margin: 0px
+        padding: 0px
+        label
+            p
+                color: #4E4E4E
+                font-size: 15px
+        input
+            margin-bottom: 15px
+        .input-form
+            display: grid
+            grid-template-columns: 3fr 1fr
+            grid-gap: 20px
+    img
+        width: 100%
+        height: auto
+
+.accordion-payment-way
+    height: 0px
+    margin-top: -20px
+    margin-bottom: 20px
+    padding: 0px 20px
+    background: #FBFBFB 0% 0% no-repeat padding-box
+    box-shadow: 0px 3px 6px #11111129
+    border-radius: 8px
+    transition: 0.25s ease-out
+    overflow: hidden
+    opacity: 0
+    &.active
+        padding: 20px
+        height: auto
+        width: auto
+        transition: 0.25s ease-in
+        opacity: 1
+    .content-accordion
+        display: grid
+        grid-template-columns: 1fr 1fr
+        grid-gap: 20px
+    button.main-button
+        float: right
+
+.add-direction
+    display: grid
+    grid-template-columns: 50% 1fr 1fr 1fr
+    grid-gap: 5px
+    input
+        height: auto;
+        margin: auto;
+
+.content-accordion-form
+    display: grid
+    button.main-button
+        float: none
+        align-self: end
+    .button-continue
+        font-size: 14px
+    .wrap-select
+        margin: 7px 0
+        select
+            border: 0.5px solid #111111 !important
+            padding: 8px !important
+            border-radius: 5px;
+    .wrap-select::before
+        right: 8px !important
+        top: 15px !important
+    .wrap-select::after
+        right: 13px !important
+        top: 15px !important
+
+.shipping-address
+    h3
+        margin-bottom: 20px
+        text-align: center
+    p
+        margin-bottom: 10px
+        color: #4E4E4E
+        font-size: 16px
+
+.content-accordion-form
+    position: relative
+
+button.main-button
+    margin-top: 20px
+    p
+        margin: 0px
+        color: #fff
