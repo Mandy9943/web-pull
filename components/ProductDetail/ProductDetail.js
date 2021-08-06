@@ -44,7 +44,7 @@ class ProductDetail extends Component {
 		// let dataLayerProductDetailG4 = {
 		// 	'event': 'view_item',
 		// 	'ecommerce': {
-		// 	'items': 
+		// 	'items':
 		// 				[{
 		// 					'item_name': this.props.data.product_global_title, // Name or ID is required.
 		// 					'item_id': this.props.data.product_global_id,
@@ -57,7 +57,7 @@ class ProductDetail extends Component {
 		// 																					.split(' ')
 		// 																					.join('-'),
 		// 			}],
-			
+
 		// 	'currency': 'COP'
 		// 	}
 		// }
@@ -70,49 +70,51 @@ class ProductDetail extends Component {
 		// 	});
 		// 	return dataLayerProductDetailG4;
 		// }
-		
+
 		// let resultDataLayerProductDetailG4 = productDetailGooleDataLayerG4(dataLayerProductDetailG4);
 
 		// dataLayer.push(resultDataLayerProductDetailG4);
 
 		// dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
-		
-		const concatCategories = ()=>{
+
+		const concatCategories = () => {
 			var dataCategory = [];
 			this.props.data.breadcum.forEach((prod, index) => {
-				dataCategory.push(prod.name)
+				dataCategory.push(prod.name);
 			});
-			return dataCategory.join(' / ')
-		}
+			return dataCategory.join(' / ');
+		};
 
 		dataLayer.push({
-			'ecommerce': {
-				'detail':{
-					"actionField": {
-									"list": this.props.data.category.name
-									},
-					'products': [
-						{ 
-							'name': this.props.data.product_global_title, // Name or ID is required.
-							'id': this.props.data.product_global_id,
-							'price': this.props.data.price,
-							'brand': this.props.data.brand,
-							'category': concatCategories(),
-							'url':'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
-																							.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-																							.replace('//', '%2F')
-																							.replace('%', '')
-																							.split(' ')
-																							.join('-'),
-							'position': 1
-						}
-					]
+			ecommerce: {
+				detail: {
+					actionField: {
+						list: this.props.data.category.name,
+					},
+					products: [
+						{
+							name: this.props.data.product_global_title, // Name or ID is required.
+							id: this.props.data.product_global_id,
+							price: this.props.data.price,
+							brand: this.props.data.brand,
+							category: concatCategories(),
+							url:
+								'https://kiero.co/detalle/' +
+								this.props.data.product_global_id +
+								'_' +
+								this.props.data.product_global_title
+									.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+									.replace('//', '%2F')
+									.replace('%', '')
+									.split(' ')
+									.join('-'),
+							position: 1,
+						},
+					],
+				},
+			},
+		});
 
-				}
-					
-			}
-		})
-		
 		// gtag('event', 'view_item', {
 		// 						"items": [
 		// 									{
@@ -134,39 +136,43 @@ class ProductDetail extends Component {
 		// 						]
 		//  			 });
 
-		if (typeof window !== "undefined") {
+		if (typeof window !== 'undefined') {
 			setTimeout(() => {
-				if (window.fbq != null) { 
-					window.fbq('track','ViewContent',{
-														'content_ids': this.props.data.product_global_id,
-														'content_name': this.props.data.product_global_title,
-														'product_group': this.props.data.type,
-														'content_type':'product',
-														'contents': [{
-															'id':this.props.data.product_global_id,
-															'quantity':1
-														}],
-														'currency': 'COP',
-														'value': this.props.data.price
-													}) 
+				if (window.fbq != null) {
+					window.fbq('track', 'ViewContent', {
+						content_ids: this.props.data.product_global_id,
+						content_name: this.props.data.product_global_title,
+						product_group: this.props.data.type,
+						content_type: 'product',
+						contents: [
+							{
+								id: this.props.data.product_global_id,
+								quantity: 1,
+							},
+						],
+						currency: 'COP',
+						value: this.props.data.price,
+					});
 				} else {
-						fbq('track','ViewContent',{
-														'content_ids': this.props.data.product_global_id,
-														'content_name': this.props.data.product_global_title,
-														'product_group': this.props.data.type,
-														'content_type':'product',
-														'contents': [{
-															'id':this.props.data.product_global_id,
-															'quantity':1
-														}],
-														'currency': 'COP',
-														'value': this.props.data.price
-													}) 
-						}
+					fbq('track', 'ViewContent', {
+						content_ids: this.props.data.product_global_id,
+						content_name: this.props.data.product_global_title,
+						product_group: this.props.data.type,
+						content_type: 'product',
+						contents: [
+							{
+								id: this.props.data.product_global_id,
+								quantity: 1,
+							},
+						],
+						currency: 'COP',
+						value: this.props.data.price,
+					});
+				}
 			}, 3000);
 		}
 	}
-	
+
 	async reLoadData(pgid) {
 		// Esta funcion se llama cuando se encuentra un match de variantes
 		const router = this.props.router;
@@ -195,19 +201,19 @@ class ProductDetail extends Component {
 			});
 	};
 	render() {
-	// let DataForPixel = {
-	// 	'content_ids': this.props.data.product_global_id,
-	// 	'content_name': this.props.data.product_global_title,
-	// 	'product_group': this.props.data.type,
-	// 	'content_type':'product',
-	// 	'contents': [{
-	// 		'id':this.props.data.product_global_id,
-	// 		'quantity':1
-	// 	}],
-	// 	'currency': 'COP',
-	// 	'value': this.props.data.price
-	// };
-	// <ReactPixelFacebook type={'ViewContent'} data={DataForPixel}/>
+		// let DataForPixel = {
+		// 	'content_ids': this.props.data.product_global_id,
+		// 	'content_name': this.props.data.product_global_title,
+		// 	'product_group': this.props.data.type,
+		// 	'content_type':'product',
+		// 	'contents': [{
+		// 		'id':this.props.data.product_global_id,
+		// 		'quantity':1
+		// 	}],
+		// 	'currency': 'COP',
+		// 	'value': this.props.data.price
+		// };
+		// <ReactPixelFacebook type={'ViewContent'} data={DataForPixel}/>
 		const u_data = this.props.user_data;
 		let url = '//www.sic.gov.co';
 		// console.log(this.state.mdata)
@@ -222,7 +228,7 @@ class ProductDetail extends Component {
 				/>
 				<div className="detail-content">
 					<div className="breadcrumb">
-						<div style={{ display: 'flex' }}>
+						<div style={{ display: 'flex', flexWrap: 'wrap' }}>
 							<Link href="/">
 								<a>Inicio</a>
 							</Link>
