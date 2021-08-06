@@ -1,0 +1,29 @@
+@media(max-width:1100px)
+    .content-payment-way
+        display: grid
+        grid-template-columns: 3fr 2fr
+        grid-gap: 60px
+
+@media(max-width:700px)
+    .container-payment-way
+        width: auto
+        margin: 15px 15px auto
+        min-height: auto
+        h2  
+            margin-bottom: 15px
+        .only-movil
+            display: block !important
+        .content-payment-way
+            grid-template-columns: auto
+            grid-gap: 0
+            .payment-way-box
+                margin-bottom: 15px
+            .accordion-payment-way
+                &.active
+                margin-top: 15px
+                .main-button
+                    float: none
+                .content-accordion
+                    grid-template-columns: auto
+            .only-desktop
+                display: none !important
