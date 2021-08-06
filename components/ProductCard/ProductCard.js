@@ -139,7 +139,6 @@ export default class ProductCard extends Component {
 							${' '}
 							{this.props.price
 								? String(this.props.price)
-										.split('.')[0]
 										.replace(/(.)(?=(\d{3})+$)/g, '$1.')
 								: '$ ... '}
 						</h3>

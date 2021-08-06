@@ -312,7 +312,6 @@ class PaySection extends Component {
 						{this.props.price
 							? this.props.price
 									.toString()
-									.split('.')[0]
 									.replace(/(.)(?=(\d{3})+$)/g, '$1.')
 							: ' ... '}
 					</h3>
