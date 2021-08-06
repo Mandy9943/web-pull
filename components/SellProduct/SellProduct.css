@@ -74,9 +74,11 @@
 	border-radius: 5px;
 	opacity: 1;
 	width: 322px;
-	height: 160px;
+	min-height: 160px;
+	height: fit-content;
 	padding: 10px;
 	margin-right: 50px;
+	margin-bottom: 30px;
 }
 
 .picturesTitle {
@@ -130,18 +132,37 @@
 
 .picturesPreview {
 	margin-top: 20px;
-	width: 50px;
 	display: flex;
-	justify-content: space-between;
+	flex-wrap: wrap;
+	justify-content: space-around;
 }
 
-.picturePreview {
-	width: 40px;
+.pictureCont {
+	width: 70px;
+	height: 50px;
+	margin-bottom: 10px;
+	position: relative;
+	text-align: center;
 }
 
-.picture{
-	width: 80px;
-	border-radius: 5px;
+#pictureDelete {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+}
+
+#pictureDelete:hover {
+	color: #cf0a2c;
+	cursor: pointer;
+}
+
+.picture {
+	width: 100%;
+	height: 100%;
+	border-radius: 3px;
+	object-fit: contain;
 }
 
 .productColorTitle {

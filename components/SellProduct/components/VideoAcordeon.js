@@ -35,8 +35,6 @@ export default function VideoAcordeon({ video, setVideo, videoError }) {
 		setVideo(e.target.value);
 	}
 
-	console.log(video.includes('https://www.youtube.com/watch?'));
-
 	return (
 		<div className="productAcordeonContainer">
 			<div className="productAcordeon">

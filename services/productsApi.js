@@ -230,3 +230,13 @@ export const getOrderDetails = (order_id, jwt) => {
 		return error;
 	}
 };
+
+export const sellProducts = (order_id, jwt) => {
+	try {
+		let endpoint = '/publicate/';
+		let data = sget(endpoint, jwt);
+		return data;
+	} catch (error) {
+		return error;
+	}
+};

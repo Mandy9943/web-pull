@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import CameraAltIcon from '@material-ui/icons/CameraAlt';
+import CloseIcon from '@material-ui/icons/Close';
 import InputBase from '@material-ui/core/InputBase';
 import TextField from '@material-ui/core/TextField';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -36,7 +37,6 @@ export default function BasicInfo({
 	const [pictureInfo, setPictureInfo] = useState(false);
 	const [codeInfo, setCodeInfo] = useState(false);
 	// const [formatedPrice, setFormatedPrice] = useState(null);
-	console.log(images);
 	function goBack() {
 		window.history.back();
 	}
@@ -66,19 +66,31 @@ export default function BasicInfo({
 	}
 
 	function handleImgs(e) {
-		// let files = e.target.files;
-		// let reader = new FileReader();
-		// reader.readAsDataURL(files[0]);
-		// reader.onload = (e) => {
-		// 	setImages(e.target.result);
-		// };
+		const maxLength = 8;
 		if (e.target.files) {
 			const fileArray = Array.from(e.target.files).map((file) =>
 				URL.createObjectURL(file)
 			);
-			setImages((prevImages) => prevImages.concat(fileArray));
-			Array.from(e.target.files).map((file) => URL.revokeObjectURL(file));
+			if (images.length + Array.from(e.target.files).length <= maxLength) {
+				setImages((prevImages) => prevImages.concat(fileArray));
+				Array.from(e.target.files).map((file) => URL.revokeObjectURL(file));
+			} else {
+				e.preventDefault();
+				alert(`Cannot upload files more than ${maxLength}`);
+				return;
+			}
 		}
+	}
+
+	console.log(images);
+	function deleteImg(im) {
+		const newImgArr = [];
+		images.forEach((img) => {
+			if (im !== img) {
+				newImgArr.push(img);
+			}
+		});
+		setImages(newImgArr);
 	}
 
 	function handleColor(e) {
@@ -199,17 +211,18 @@ export default function BasicInfo({
 						) : (
 							''
 						)}
-						<div className="picturesPreview">
+						<ul className="picturesPreview">
 							{images.length
-								? images.map((im) => {
+								? images.map((im, index) => {
 										return (
-											<div className="picturePreview">
+											<div key={index} className="pictureCont">
+												<CloseIcon onClick={() => deleteImg(im)} id="pictureDelete" />
 												<img className="picture" src={im} alt="" />
 											</div>
 										);
 								  })
 								: ''}
-						</div>
+						</ul>
 					</div>
 				</div>
 				<div>

@@ -22,7 +22,6 @@ import { priceFormat, wompi_at_url } from '../../lib/config';
 import Error from '../Login/Error';
 import InputTip from '../InputTip';
 import PaymentLoading from '../PaymentLoading';
-import Cards from 'react-credit-cards';
 import 'react-credit-cards/es/styles-compiled.css';
 import PaymentCash from '../PaymentCash';
 import PaymentCashResult from '../PaymentCashResult';
@@ -30,6 +29,9 @@ import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
 import moment from 'moment';
 import { apiget } from '../../lib/request';
+
+//components
+import Credit from './components/Credit';
 
 export default class PaymentWay extends Component {
 	constructor(props) {
@@ -89,27 +91,33 @@ export default class PaymentWay extends Component {
 	componentDidMount() {
 		this.loadBanks();
 		this.loadAddresses();
-		const concatCategories = ()=>{
+		const concatCategories = () => {
 			var dataCategory = [];
 			this.props.data.breadcum.forEach((prod, index) => {
-				dataCategory.push(prod.name)
+				dataCategory.push(prod.name);
 			});
-			return dataCategory.join('/ ')
-		}
+			return dataCategory.join('/ ');
+		};
 		gtag('event', 'checkout_progress', {
-											"items": [
-												{
-													"id": this.props.data.product_global_id,
-													"name": this.props.data.product_global_title,
-													"list_name": "Search Results",
-													"brand": this.props.data.brand,
-													"category": concatCategories(),
-													"list_position": 0,
-													"quantity": this.props.cantidad,
-													"price": this.props.data.price,
-												}
-											]
-					});
+			items: [
+				{
+					id: this.props.data.product_global_id,
+					name: this.props.data.product_global_title,
+					list_name: 'Search Results',
+					brand: this.props.data.brand,
+					category: concatCategories(),
+					list_position: 0,
+					quantity: this.props.cantidad,
+					price: this.props.data.price,
+				},
+			],
+		});
+	}
+
+	updateState({ state, value }) {
+		this.setState({
+			state: value,
+		});
 	}
 
 	preventCopyPasteCut(event) {
@@ -252,34 +260,43 @@ export default class PaymentWay extends Component {
 			}
 			dataLayer.push({ ecommerce: null });
 			let dataLayerAddShippingInfo = {
-				'event': 'add_shipping_info',
-				'ecommerce': {
-					'currency': 'COP',
-					'items':[ {
-						'item_name': this.props.data.product_global_title, // Name or ID is required.
-						'item_id': this.props.data.product_global_id,
-						'price': this.props.data.price,
-						'item_brand': this.props.data.brand,
-						'quantity': this.props.cantidad,
-						'url':'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
-																										.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-																										.replace('//', '%2F')
-																										.replace('%', '')
-																										.split(' ')
-																										.join('-'),
-						}]
-					}
-				};
+				event: 'add_shipping_info',
+				ecommerce: {
+					currency: 'COP',
+					items: [
+						{
+							item_name: this.props.data.product_global_title, // Name or ID is required.
+							item_id: this.props.data.product_global_id,
+							price: this.props.data.price,
+							item_brand: this.props.data.brand,
+							quantity: this.props.cantidad,
+							url:
+								'https://kiero.co/detalle/' +
+								this.props.data.product_global_id +
+								'_' +
+								this.props.data.product_global_title
+									.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+									.replace('//', '%2F')
+									.replace('%', '')
+									.split(' ')
+									.join('-'),
+						},
+					],
+				},
+			};
 			const AddShippingInfoGooleDataLayer = (dataLayerAddShippingInfo) => {
 				this.props.data.breadcum.forEach((prod, index) => {
 					let keyCategory = `item_category${index + 1}`;
 					let valueNameCategory = prod.name;
-					dataLayerAddShippingInfo['ecommerce']['items'][0][keyCategory] = valueNameCategory;
+					dataLayerAddShippingInfo['ecommerce']['items'][0][keyCategory] =
+						valueNameCategory;
 				});
 				return dataLayerAddShippingInfo;
-			}
-			
-			let resultDataLayerAddShippingInfo = AddShippingInfoGooleDataLayer(dataLayerAddShippingInfo);
+			};
+
+			let resultDataLayerAddShippingInfo = AddShippingInfoGooleDataLayer(
+				dataLayerAddShippingInfo
+			);
 
 			dataLayer.push(resultDataLayerAddShippingInfo);
 		} else {
@@ -312,21 +329,22 @@ export default class PaymentWay extends Component {
 				document_type: e.target.elements.document_type.value,
 				document_number: e.target.elements.document_number.value,
 				bank_id: e.target.elements.bank_id.value,
-				quantity:this.props.cantidad
+				quantity: this.props.cantidad,
 			},
 			this.props.user.jwt
 		);
 		dataLayer.push({ ecommerce: null });
 		dataLayer.push({
-			'event':'checkoutOption',
-			'ecommerce':{
-				'checkout_option':{
-					'actionField':{
-						'step': 2, 'option':'pse'
-					}
-				}
-			}
-		})
+			event: 'checkoutOption',
+			ecommerce: {
+				checkout_option: {
+					actionField: {
+						step: 2,
+						option: 'pse',
+					},
+				},
+			},
+		});
 		// let dataLayerAddPaymentInfoPSE = {
 		// 	'event': 'add_payment_info',
 		// 	'ecommerce': {
@@ -343,7 +361,7 @@ export default class PaymentWay extends Component {
 		// 																							.replace('%', '')
 		// 																							.split(' ')
 		// 																							.join('-'),
-		// 			'payment_type':'pse'																				
+		// 			'payment_type':'pse'
 		// 			}]
 		// 		}
 		// 	};
@@ -355,127 +373,144 @@ export default class PaymentWay extends Component {
 		// 		});
 		// 		return dataLayerAddPaymentInfoPSE;
 		// 	}
-				
+
 		// 	let resultDataLayerAddPaymentInfoPSE = addPaymentInfoPSEGooleDataLayer(dataLayerAddPaymentInfoPSE);
 
 		// 	dataLayer.push(resultDataLayerAddPaymentInfoPSE);
-			
-			if (typeof window !== "undefined") {
-				if (window.fbq != null) { 
-					window.fbq('track','AddPaymentInfo',{
-														'content_ids': this.props.data.product_global_id,
-														'content_name': this.props.data.product_global_title,
-														'product_group': this.props.data.type,
-														'content_type':'product',
-														'content_category':this.props.data.breadcum[0].name,
-														'contents': [{
-															'id':this.props.data.product_global_id,
-															'quantity':this.props.cantidad,
-														}],
-														'currency': 'COP',
-														'value': this.props.data.price,
-														'payment_type':'pse'
-													}) 
-				} else {
-						fbq('track','AddPaymentInfo',{
-														'content_ids': this.props.data.product_global_id,
-														'content_name': this.props.data.product_global_title,
-														'product_group': this.props.data.type,
-														'content_type':'product',
-														'content_category':this.props.data.breadcum[0].name,
-														'contents': [{
-															'id':this.props.data.product_global_id,
-															'quantity':this.props.cantidad,
-														}],
-														'currency': 'COP',
-														'value': this.props.data.price,
-														'payment_type':'pse'
-													}) 
-						}
+
+		if (typeof window !== 'undefined') {
+			if (window.fbq != null) {
+				window.fbq('track', 'AddPaymentInfo', {
+					content_ids: this.props.data.product_global_id,
+					content_name: this.props.data.product_global_title,
+					product_group: this.props.data.type,
+					content_type: 'product',
+					content_category: this.props.data.breadcum[0].name,
+					contents: [
+						{
+							id: this.props.data.product_global_id,
+							quantity: this.props.cantidad,
+						},
+					],
+					currency: 'COP',
+					value: this.props.data.price,
+					payment_type: 'pse',
+				});
+			} else {
+				fbq('track', 'AddPaymentInfo', {
+					content_ids: this.props.data.product_global_id,
+					content_name: this.props.data.product_global_title,
+					product_group: this.props.data.type,
+					content_type: 'product',
+					content_category: this.props.data.breadcum[0].name,
+					contents: [
+						{
+							id: this.props.data.product_global_id,
+							quantity: this.props.cantidad,
+						},
+					],
+					currency: 'COP',
+					value: this.props.data.price,
+					payment_type: 'pse',
+				});
 			}
-			
-			gtag('event', 'set_checkout_option', {
-													"checkout_step": 1,
-													"checkout_option": "pse",
-													"value": this.props.data.price * this.props.cantidad,
-												});
+		}
+
+		gtag('event', 'set_checkout_option', {
+			checkout_step: 1,
+			checkout_option: 'pse',
+			value: this.props.data.price * this.props.cantidad,
+		});
 
 		if (result.data) {
 			// console.log(result.data.data)
 			dataLayer.push({ ecommerce: null });
 			let resultDataLayerPurchasePSE = result.data.data;
-			resultDataLayerPurchasePSE.ecommerce.transaction_status = result.data.transaction_status;
-			resultDataLayerPurchasePSE.ecommerce.items[0].url = 'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
-																												.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-																												.replace('//', '%2F')
-																												.replace('%', '')
-																												.split(' ')
-																												.join('-'),
-			// dataLayer.push(resultDataLayerPurchasePSE);
-			dataLayer.push({
-				'ecommerce':{
-					'purchase':{
-						'actionField':{
-							'id':result.data.data.ecommerce.transaction_id,
-							'affiliation':this.props.data.user.name,
-							'tax':result.data.data.ecommerce.tax,
-							'shipping':result.data.data.ecommerce.shipping,
-							'value':result.data.data.ecommerce.items[0].price
+			resultDataLayerPurchasePSE.ecommerce.transaction_status =
+				result.data.transaction_status;
+			(resultDataLayerPurchasePSE.ecommerce.items[0].url =
+				'https://kiero.co/detalle/' +
+				this.props.data.product_global_id +
+				'_' +
+				this.props.data.product_global_title
+					.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+					.replace('//', '%2F')
+					.replace('%', '')
+					.split(' ')
+					.join('-')),
+				// dataLayer.push(resultDataLayerPurchasePSE);
+				dataLayer.push({
+					ecommerce: {
+						purchase: {
+							actionField: {
+								id: result.data.data.ecommerce.transaction_id,
+								affiliation: this.props.data.user.name,
+								tax: result.data.data.ecommerce.tax,
+								shipping: result.data.data.ecommerce.shipping,
+								value: result.data.data.ecommerce.items[0].price,
+							},
+							products: [
+								{
+									name: result.data.data.ecommerce.items[0].item_name,
+									id: result.data.data.ecommerce.items[0].item_id,
+									category: this.props.data.category.name,
+									brand: result.data.data.ecommerce.items[0].item_brand,
+									price: result.data.data.ecommerce.value,
+									quantity: parseInt(result.data.data.ecommerce.items[0].quantity),
+									url:
+										'https://kiero.co/detalle/' +
+										this.props.data.product_global_id +
+										'_' +
+										this.props.data.product_global_title
+											.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+											.replace('//', '%2F')
+											.replace('%', '')
+											.split(' ')
+											.join('-'),
+								},
+							],
 						},
-						'products':[
+					},
+				});
+			if (typeof window !== 'undefined') {
+				if (window.fbq != null) {
+					window.fbq('track', 'Purchase', {
+						content_ids: this.props.data.product_global_id,
+						content_name: this.props.data.product_global_title,
+						product_group: this.props.data.type,
+						content_type: 'product',
+						content_category: this.props.data.breadcum[0].name,
+						contents: [
 							{
-								'name':result.data.data.ecommerce.items[0].item_name,
-								'id':result.data.data.ecommerce.items[0].item_id,
-								'category':this.props.data.category.name,
-								'brand':result.data.data.ecommerce.items[0].item_brand,
-								'price':result.data.data.ecommerce.value,
-								'quantity':parseInt(result.data.data.ecommerce.items[0].quantity),
-								'url':'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
-																	.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-																	.replace('//', '%2F')
-																	.replace('%', '')
-																	.split(' ')
-																	.join('-'),
-							}
-						]
-					}
-				}
-			})
-			if (typeof window !== "undefined") {
-				if (window.fbq != null) { 
-					window.fbq('track','Purchase',{
-													'content_ids': this.props.data.product_global_id,
-													'content_name': this.props.data.product_global_title,
-													'product_group': this.props.data.type,
-													'content_type':'product',
-													'content_category':this.props.data.breadcum[0].name,
-													'contents': [{
-																	'id':this.props.data.product_global_id,
-																	'quantity':this.props.cantidad,
-																}],
-													'currency': 'COP',
-													'value': this.props.data.price,
-													'payment_type':'pse',
-													'num_items':this.props.cantidad
-												}) 
+								id: this.props.data.product_global_id,
+								quantity: this.props.cantidad,
+							},
+						],
+						currency: 'COP',
+						value: this.props.data.price,
+						payment_type: 'pse',
+						num_items: this.props.cantidad,
+					});
 				} else {
-						fbq('track','Purchase',{
-													'content_ids': this.props.data.product_global_id,
-													'content_name': this.props.data.product_global_title,
-													'product_group': this.props.data.type,
-													'content_type':'product',
-													'content_category':this.props.data.breadcum[0].name,
-													'contents': [{
-																	'id':this.props.data.product_global_id,
-																	'quantity':this.props.cantidad,
-																}],
-													'currency': 'COP',
-													'value': this.props.data.price,
-													'payment_type':'pse',
-													'num_items':this.props.cantidad
-												}) 
-						}
-		}
+					fbq('track', 'Purchase', {
+						content_ids: this.props.data.product_global_id,
+						content_name: this.props.data.product_global_title,
+						product_group: this.props.data.type,
+						content_type: 'product',
+						content_category: this.props.data.breadcum[0].name,
+						contents: [
+							{
+								id: this.props.data.product_global_id,
+								quantity: this.props.cantidad,
+							},
+						],
+						currency: 'COP',
+						value: this.props.data.price,
+						payment_type: 'pse',
+						num_items: this.props.cantidad,
+					});
+				}
+			}
 			// window.location = result.data.URL;
 		} else {
 			this.setState({
@@ -484,234 +519,7 @@ export default class PaymentWay extends Component {
 		}
 	};
 
-	payCC = async (e) => {
-		e.preventDefault();
-
-		this.setState({ cc_error: null });
-		const actualSize = e.target.elements.card_number.value.length;
-		let tips = {};
-
-		if (this.state.card_type == 'invalid') {
-			tips.card_number = 'El numero de tarjeta ingresado no es valido';
-		}
-
-		if (this.state.acceptance_token.length < 1 || !this.state.acp_checked) {
-			tips.acceptance_token =
-				'Debes aceptar los terminos y condiciones antes de continuar.';
-		}
-
-		const ccPayload = {
-			product_id: this.props.data.product_id,
-			device_session_id: this.props.user.dsi.dsi,
-			document_type: e.target.elements.document_type.value,
-			document_number: e.target.elements.document_number.value
-				.split(' ')
-				.join('')
-				.split('.')
-				.join(''),
-			card_type: this.state.card_type,
-			card_number: e.target.elements.card_number.value.split(' ').join(''),
-			ccv: this.state.ccCvv,
-			expiration_date: '20' + this.state.expiration_date, // .expiration_date.value,
-			card_holder: e.target.elements.card_holder.value,
-			monthly_fees: e.target.elements.monthly_fees.value,
-			accept_token: this.state.acceptance_token,
-			quantity: this.props.cantidad
-		};
-		// console.log("payment",ccPayload, "this.state.ccCvv",this.state.ccCvv, "cvv",e.target.elements)
-
-		const validated = Object.assign(tips, validatePayCC(ccPayload));
-		// console.log(validated);
-		if (Object.values(validated).length == 0) {
-			if (this.state.selectedAddr == -1) {
-				this.setState({
-					modalAddr: true,
-				});
-				return false;
-			}
-
-			ccPayload.address_id = this.state.addresses[this.state.selectedAddr].address_id;
-			this.setState({ paymentLoading: true });
-
-			dataLayer.push({ ecommerce: null });
-			dataLayer.push({
-				'event':'checkoutOption',
-				'ecommerce':{
-					'checkout_option':{
-						'actionField':{
-							'step': 2, 'option':'cc'
-						}
-					}
-				}
-			})
-			// let dataLayerAddPaymentInfoCC = {
-			// 	'event': 'add_payment_info',
-			// 	'ecommerce': {
-			// 		'currency': 'COP',
-			// 		'items': [{
-			// 			'item_name': this.props.data.product_global_title, // Name or ID is required.
-			// 			'item_id': this.props.data.product_global_id,
-			// 			'price': this.props.data.price,
-			// 			'item_brand': this.props.data.brand,
-			// 			'quantity': this.props.cantidad,
-			// 			'url':'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
-			// 																							.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-			// 																							.replace('//', '%2F')
-			// 																							.replace('%', '')
-			// 																							.split(' ')
-			// 																							.join('-'),
-			// 			'payment_type':'cc'
-			// 			}]
-			// 		}
-			// 	};
-			// const addPaymentInfoCCGooleDataLayer = (dataLayerAddPaymentInfoCC) => {
-			// 	this.props.data.breadcum.forEach((prod, index) => {
-			// 		let keyCategory = `item_category${index + 1}`;
-			// 		let valueNameCategory = prod.name;
-			// 		dataLayerAddPaymentInfoCC['ecommerce']['items'][0][keyCategory] = valueNameCategory;
-			// 	});
-			// 	return dataLayerAddPaymentInfoCC;
-			// }
-				
-			// let resultDataLayerAddPaymentInfoCC = addPaymentInfoCCGooleDataLayer(dataLayerAddPaymentInfoCC);
-
-			// dataLayer.push(resultDataLayerAddPaymentInfoCC);
-
-			if (window.fbq != null) { 
-				window.fbq('track','AddPaymentInfo',{
-													'content_ids': this.props.data.product_global_id,
-													'content_name': this.props.data.product_global_title,
-													'product_group': this.props.data.type,
-													'content_type':'product',
-													'content_category':this.props.data.breadcum[0].name,
-													'contents': [{
-																	'id':this.props.data.product_global_id,
-																	'quantity':this.props.cantidad,
-																}],
-													'currency': 'COP',
-													'value': this.props.data.price,
-													'payment_type':'cc'
-												}) 
-			} else {
-					fbq('track','AddPaymentInfo',{
-													'content_ids': this.props.data.product_global_id,
-													'content_name': this.props.data.product_global_title,
-													'product_group': this.props.data.type,
-													'content_type':'product',
-													'content_category':this.props.data.breadcum[0].name,
-													'contents': [{
-																	'id':this.props.data.product_global_id,
-																	'quantity':this.props.cantidad,
-																}],
-													'currency': 'COP',
-													'value': this.props.data.price,
-													'payment_type':'cc'
-												}) 
-					}
-					
-			gtag('event', 'set_checkout_option', {
-													"checkout_step": 2,
-													"checkout_option": "cc",
-													"value": this.props.data.price * this.props.cantidad,
-												});
 	
-
-			const rs = await makePaymentCC(ccPayload, this.props.user.jwt);
-			
-			if (rs.data) {
-				// console.log('CC',rs.data.data)
-				dataLayer.push({ ecommerce: null });
-				// let resultDataLayerPurchaseCC = rs.data.data;
-				// resultDataLayerPurchaseCC.ecommerce.transaction_status = rs.data.result;
-				// resultDataLayerPurchaseCC.ecommerce.items[0].url = 'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
-				// 																									.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-				// 																									.replace('//', '%2F')
-				// 																									.replace('%', '')
-				// 																									.split(' ')
-				// 																									.join('-'),
-				// dataLayer.push(resultDataLayerPurchaseCC);
-
-				dataLayer.push({
-					'ecommerce':{
-						'purchase':{
-							'actionField':{
-								'id':rs.data.data.ecommerce.transaction_id,
-								'affiliation':this.props.data.user.name,
-								'tax':rs.data.data.ecommerce.tax,
-								'shipping':rs.data.data.ecommerce.shipping,
-								'value':rs.data.data.ecommerce.items[0].price
-							},
-							'products':[
-								{
-									'name':rs.data.data.ecommerce.items[0].item_name,
-									'id':rs.data.data.ecommerce.items[0].item_id,
-									'category':this.props.data.category.name,
-									'brand':rs.data.data.ecommerce.items[0].item_brand,
-									'price':rs.data.data.ecommerce.value,
-									'quantity':parseInt(rs.data.data.ecommerce.items[0].quantity),
-									'url':'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
-																		.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-																		.replace('//', '%2F')
-																		.replace('%', '')
-																		.split(' ')
-																		.join('-'),
-								}
-							]
-						}
-					}
-				})
-
-				if (typeof window !== "undefined") {
-					if (window.fbq != null) { 
-						window.fbq('track','Purchase',{
-														'content_ids': this.props.data.product_global_id,
-														'content_name': this.props.data.product_global_title,
-														'product_group': this.props.data.type,
-														'content_type':'product',
-														'content_category':this.props.data.breadcum[0].name,
-														'contents': [{
-																		'id':this.props.data.product_global_id,
-																		'quantity':this.props.cantidad,
-																	}],
-														'currency': 'COP',
-														'value': this.props.data.price,
-														'payment_type':'cc',
-														'num_items':this.props.cantidad
-													}) 
-					} else {
-							fbq('track','Purchase',{
-														'content_ids': this.props.data.product_global_id,
-														'content_name': this.props.data.product_global_title,
-														'product_group': this.props.data.type,
-														'content_type':'product',
-														'content_category':this.props.data.breadcum[0].name,
-														'contents': [{
-																		'id':this.props.data.product_global_id,
-																		'quantity':this.props.cantidad,
-																	}],
-														'currency': 'COP',
-														'value': this.props.data.price,
-														'payment_type':'cc',
-														'num_items':this.props.cantidad
-													}) 
-							}
-				}
-
-				window.location = '/pay_result/' + rs.data.id;
-
-			} else {
-				this.setState({
-					paymentLoading: false,
-					error: rs.error,
-					paymentError: true,
-				});
-			}
-		} else {
-			this.setState({
-				tips: validated,
-			});
-		}
-	};
 
 	payCash = async (e) => {
 		e.preventDefault();
@@ -730,15 +538,16 @@ export default class PaymentWay extends Component {
 
 			dataLayer.push({ ecommerce: null });
 			dataLayer.push({
-				'event':'checkoutOption',
-				'ecommerce':{
-					'checkout_option':{
-						'actionField':{
-							'step': 2, 'option':'cash'
-						}
-					}
-				}
-			})
+				event: 'checkoutOption',
+				ecommerce: {
+					checkout_option: {
+						actionField: {
+							step: 2,
+							option: 'cash',
+						},
+					},
+				},
+			});
 			// let dataLayerAddPaymentInfoMoney = {
 			// 	'event': 'add_payment_info',
 			// 	'ecommerce': {
@@ -767,47 +576,51 @@ export default class PaymentWay extends Component {
 			// 	});
 			// 	return dataLayerAddPaymentInfoMoney;
 			// }
-			
+
 			// let resultDataLayerAddPaymentInfoMoney = AddPaymentInfoMoneyGooleDataLayer(dataLayerAddPaymentInfoMoney);
 
 			// dataLayer.push(resultDataLayerAddPaymentInfoMoney);
-			if (window.fbq != null) { 
-				window.fbq('track','AddPaymentInfo',{
-													'content_ids': this.props.data.product_global_id,
-													'content_name': this.props.data.product_global_title,
-													'product_group': this.props.data.type,
-													'content_type':'product',
-													'content_category':this.props.data.breadcum[0].name,
-													'contents': [{
-																	'id':this.props.data.product_global_id,
-																	'quantity':this.props.cantidad,
-																}],
-													'currency': 'COP',
-													'value': this.props.data.price,
-													'payment_type':'cash'
-												}) 
+			if (window.fbq != null) {
+				window.fbq('track', 'AddPaymentInfo', {
+					content_ids: this.props.data.product_global_id,
+					content_name: this.props.data.product_global_title,
+					product_group: this.props.data.type,
+					content_type: 'product',
+					content_category: this.props.data.breadcum[0].name,
+					contents: [
+						{
+							id: this.props.data.product_global_id,
+							quantity: this.props.cantidad,
+						},
+					],
+					currency: 'COP',
+					value: this.props.data.price,
+					payment_type: 'cash',
+				});
 			} else {
-					fbq('track','AddPaymentInfo',{
-													'content_ids': this.props.data.product_global_id,
-													'content_name': this.props.data.product_global_title,
-													'product_group': this.props.data.type,
-													'content_type':'product',
-													'content_category':this.props.data.breadcum[0].name,
-													'contents': [{
-																	'id':this.props.data.product_global_id,
-																	'quantity':this.props.cantidad,
-																}],
-													'currency': 'COP',
-													'value': this.props.data.price,
-													'payment_type':'cash'
-												}) 
-					}
-		
+				fbq('track', 'AddPaymentInfo', {
+					content_ids: this.props.data.product_global_id,
+					content_name: this.props.data.product_global_title,
+					product_group: this.props.data.type,
+					content_type: 'product',
+					content_category: this.props.data.breadcum[0].name,
+					contents: [
+						{
+							id: this.props.data.product_global_id,
+							quantity: this.props.cantidad,
+						},
+					],
+					currency: 'COP',
+					value: this.props.data.price,
+					payment_type: 'cash',
+				});
+			}
+
 			gtag('event', 'set_checkout_option', {
-													"checkout_step": 3,
-													"checkout_option": "cash",
-													"value": this.props.data.price * this.props.cantidad,
-												});
+				checkout_step: 3,
+				checkout_option: 'cash',
+				value: this.props.data.price * this.props.cantidad,
+			});
 
 			const rs = await makePaymentCash(cashPayload, this.props.user.jwt);
 			// console.log(rs);
@@ -824,78 +637,84 @@ export default class PaymentWay extends Component {
 				// dataLayer.push(resultDataLayerPurchaseCash);
 
 				dataLayer.push({
-					'ecommerce':{
-						'purchase':{
-							'actionField':{
-								'id':rs.data.data.ecommerce.transaction_id,
-								'affiliation':this.props.data.user.name,
-								'tax':rs.data.data.ecommerce.tax,
-								'shipping':rs.data.data.ecommerce.shipping,
-								'value':rs.data.data.ecommerce.items[0].price
+					ecommerce: {
+						purchase: {
+							actionField: {
+								id: rs.data.data.ecommerce.transaction_id,
+								affiliation: this.props.data.user.name,
+								tax: rs.data.data.ecommerce.tax,
+								shipping: rs.data.data.ecommerce.shipping,
+								value: rs.data.data.ecommerce.items[0].price,
 							},
-							'products':[
+							products: [
 								{
-									'name':rs.data.data.ecommerce.items[0].item_name,
-									'id':rs.data.data.ecommerce.items[0].item_id,
-									'category':this.props.data.category.name,
-									'brand':rs.data.data.ecommerce.items[0].item_brand,
-									'price':rs.data.data.ecommerce.value,
-									'quantity':parseInt(rs.data.data.ecommerce.items[0].quantity),
-									'url':'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
-																		.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-																		.replace('//', '%2F')
-																		.replace('%', '')
-																		.split(' ')
-																		.join('-'),
-								}
-							]
-						}
-					}
-				})
+									name: rs.data.data.ecommerce.items[0].item_name,
+									id: rs.data.data.ecommerce.items[0].item_id,
+									category: this.props.data.category.name,
+									brand: rs.data.data.ecommerce.items[0].item_brand,
+									price: rs.data.data.ecommerce.value,
+									quantity: parseInt(rs.data.data.ecommerce.items[0].quantity),
+									url:
+										'https://kiero.co/detalle/' +
+										this.props.data.product_global_id +
+										'_' +
+										this.props.data.product_global_title
+											.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+											.replace('//', '%2F')
+											.replace('%', '')
+											.split(' ')
+											.join('-'),
+								},
+							],
+						},
+					},
+				});
 
-
-				if (typeof window !== "undefined") {
-					if (window.fbq != null) { 
-						window.fbq('track','Purchase',{
-														'content_ids': this.props.data.product_global_id,
-														'content_name': this.props.data.product_global_title,
-														'product_group': this.props.data.type,
-														'content_type':'product',
-														'content_category':this.props.data.breadcum[0].name,
-														'contents': [{
-																		'id':this.props.data.product_global_id,
-																		'quantity':this.props.cantidad,
-																	}],
-														'currency': 'COP',
-														'value': this.props.data.price,
-														'payment_type':'cash',
-														'num_items':this.props.cantidad
-													}) 
+				if (typeof window !== 'undefined') {
+					if (window.fbq != null) {
+						window.fbq('track', 'Purchase', {
+							content_ids: this.props.data.product_global_id,
+							content_name: this.props.data.product_global_title,
+							product_group: this.props.data.type,
+							content_type: 'product',
+							content_category: this.props.data.breadcum[0].name,
+							contents: [
+								{
+									id: this.props.data.product_global_id,
+									quantity: this.props.cantidad,
+								},
+							],
+							currency: 'COP',
+							value: this.props.data.price,
+							payment_type: 'cash',
+							num_items: this.props.cantidad,
+						});
 					} else {
-							fbq('track','Purchase',{
-														'content_ids': this.props.data.product_global_id,
-														'content_name': this.props.data.product_global_title,
-														'product_group': this.props.data.type,
-														'content_type':'product',
-														'content_category':this.props.data.breadcum[0].name,
-														'contents': [{
-																		'id':this.props.data.product_global_id,
-																		'quantity':this.props.cantidad,
-																	}],
-														'currency': 'COP',
-														'value': this.props.data.price,
-														'payment_type':'cash',
-														'num_items':this.props.cantidad
-													}) 
-							}
-			}
+						fbq('track', 'Purchase', {
+							content_ids: this.props.data.product_global_id,
+							content_name: this.props.data.product_global_title,
+							product_group: this.props.data.type,
+							content_type: 'product',
+							content_category: this.props.data.breadcum[0].name,
+							contents: [
+								{
+									id: this.props.data.product_global_id,
+									quantity: this.props.cantidad,
+								},
+							],
+							currency: 'COP',
+							value: this.props.data.price,
+							payment_type: 'cash',
+							num_items: this.props.cantidad,
+						});
+					}
+				}
 
 				this.setState({
 					paymentCashResult: true,
 					paymentCash: false,
 					paymentCashDocument: rs.data.result.pdf,
 				});
-
 			} else {
 				// console.log(rs);
 			}
@@ -949,15 +768,7 @@ export default class PaymentWay extends Component {
 		this.setState({ expiration_date: value });
 	};
 
-	card_change = (type, valid) => {
-		this.setState({ card_max_length: type.maxLength });
-		if (valid) {
-			this.setState({ card_type: type.issuer });
-		} else {
-			this.setState({ card_type: 'invalid' });
-		}
-	};
-
+	
 	getPaymentType = () => {
 		// console.log(this.state.paymentCashType);
 
@@ -987,8 +798,10 @@ export default class PaymentWay extends Component {
 
 		const addressListContent = (
 			<>
-				<Select  customStyles="paymentWaySelect" onChange={this.tmpChangeAddr}>
-					<option value="-1" key={99999999}>Seleccione una dirección existente</option>
+				<Select customStyles="paymentWaySelect" onChange={this.tmpChangeAddr}>
+					<option value="-1" key={99999999}>
+						Seleccione una dirección existente
+					</option>
 					{this.state.addresses.map((addr, i) => {
 						return (
 							<option key={i + 1} value={i}>
@@ -1033,19 +846,34 @@ export default class PaymentWay extends Component {
 		const docType = (
 			<>
 				{' '}
-				<option key={1} value={'CC'}>Cédula de ciudadanía </option>
-				<option key={2} value={'CE'}>Cédula de extranjería </option>
-				<option key={3} value={'NIT'}> NIT </option>
+				<option key={1} value={'CC'}>
+					Cédula de ciudadanía{' '}
+				</option>
+				<option key={2} value={'CE'}>
+					Cédula de extranjería{' '}
+				</option>
+				<option key={3} value={'NIT'}>
+					{' '}
+					NIT{' '}
+				</option>
 				{/* <option key={4} value={"TI"}>Tarjeta de Identidad </option> */}
-				<option key={5} value={'PP'}>Pasaporte </option>
-				<option key={6} value={'DE'}>Documento de identificación extranjero </option>
+				<option key={5} value={'PP'}>
+					Pasaporte{' '}
+				</option>
+				<option key={6} value={'DE'}>
+					Documento de identificación extranjero{' '}
+				</option>
 			</>
 		);
 
 		let months_fees = [];
 		let i = 0;
 		for (i = 1; i < 32; i++) {
-			months_fees.push(<option value={i} key={i + 1}>{i}</option>);
+			months_fees.push(
+				<option value={i} key={i + 1}>
+					{i}
+				</option>
+			);
 		}
 
 		const totalPrice = priceFormat(
@@ -1147,126 +975,7 @@ export default class PaymentWay extends Component {
 								) : (
 									''
 								)}
-								<div
-									className={
-										this.state.closeCredit
-											? 'accordion-payment-way'
-											: 'accordion-payment-way actives'
-									}
-								>
-									<div className="content-accordion">
-										<Cards
-											cvc={this.state.ccv}
-											expiry={this.state.expiration_date}
-											focused={this.state.focus}
-											name={this.state.card_holder}
-											number={this.state.card_number}
-											callback={this.card_change}
-											// placeholders={"TU NOMBRE"}
-										/>
-										<form id="form-credit" onSubmit={this.payCC}>
-											<input
-												required
-												type="tel"
-												name="card_number"
-												placeholder="Numero de tarjeta."
-												onCut={this.preventCopyPasteCut}
-												onCopy={this.preventCopyPasteCut}
-												onPaste={this.preventCopyPasteCut}
-												autoComplete="off"
-												value={this.state.ccNumber}
-												onChange={this.handleInputChange}
-												onFocus={this.handleInputFocus}
-												maxLength={this.state.card_max_length}
-											/>
-											<InputTip msg={this.state.tips.card_number} />
-											<input
-												required
-												onCut={this.preventCopyPasteCut}
-												onCopy={this.preventCopyPasteCut}
-												onPaste={this.preventCopyPasteCut}
-												autoComplete="off"
-												maxLength={64}
-												name={'card_holder'}
-												value={this.state.ccName}
-												onChange={this.handleInputChange}
-												onFocus={this.handleInputFocus}
-												placeholder="Nombre y apellido impreso *"
-											/>
-											<InputTip msg={this.state.tips.card_holder} />
-											<div className="input-form">
-												<Datetime
-													inputProps={{ readOnly: true, appearance: 'auto' }}
-													onChange={this.handleDateTimeChange}
-													value={this.state.expiration_date}
-													placeholder="AA/MM"
-													dateFormat="YY/MM"
-													timeFormat={false}
-												/>
-												<input
-													onCut={this.preventCopyPasteCut}
-													onCopy={this.preventCopyPasteCut}
-													onPaste={this.preventCopyPasteCut}
-													autoComplete="off"
-													required
-													maxLength={4}
-													onChange={this.handleInputChange}
-													value={this.state.ccCvv}
-													onFocus={this.handleInputFocus}
-													onBlur={this.exitccv}
-													name={'cvv'}
-													placeholder="CVV"
-												/>
-											</div>
-											<div className="input-form">
-												<InputTip msg={this.state.tips.expiration_date} />
-												<InputTip msg={this.state.tips.ccv} />
-											</div>
-											Coutas:
-											<div className={'content-accordion-form'}>
-												<Select  name={'monthly_fees'}>{months_fees}</Select>
-											</div>
-											<div className="input-form">
-												<InputTip msg={this.state.tips.monthly_fees} />
-											</div>
-											<div className={'content-accordion-form'}>
-												<Select  name={'document_type'}>{docType}</Select>
-												<InputTip msg={this.state.tips.document_type} />
-											</div>
-											<input
-												onCut={this.preventCopyPasteCut}
-												onCopy={this.preventCopyPasteCut}
-												onPaste={this.preventCopyPasteCut}
-												autoComplete="off"
-												onChange={this.handleInputChange}
-												value={this.state.ccId}
-												required
-												name={'document_number'}
-												placeholder="Número de documento"
-											/>
-											<InputTip msg={this.state.tips.document_number} />
-										</form>
-										<input
-											required
-											onChange={() => this.loadAcceptanceToken(!this.state.acp_checked)}
-											id={'tos_cb'}
-											type="checkbox"
-											checked={this.state.acp_checked}
-										/>
-										<label htmlFor={'tos_cb'}>Aceptar terminos y condiciones </label>
-										<InputTip msg={this.state.tips.acceptance_token} />
-									</div>
-									<button
-										onClick={() => this.hidePaymentOptions(1)}
-										type="submit"
-										form="form-credit"
-										className="button-continue main-button"
-									>
-										<p>Pagar</p>
-									</button>
-
-									{this.state.cc_error && <Error message={this.state.cc_error} />}
-								</div>
+								<Credit state={this.state} updateState={this.updateState} />
 								{this.state.shownPaymentOption === 0 ||
 								this.state.shownPaymentOption === 2 ? (
 									<div
@@ -1372,7 +1081,7 @@ export default class PaymentWay extends Component {
 												</label>
 												<label>
 													<p>Banco</p>
-													<Select  name={'bank_id'}>
+													<Select name={'bank_id'}>
 														{this.state.banks.map((bank, i) => {
 															return (
 																<option key={i + 2} value={bank.pseCode}>
@@ -1386,9 +1095,13 @@ export default class PaymentWay extends Component {
 												<label>
 													<p>Tipo de persona</p>
 
-													<Select  name={'person_type'}>
-														<option key={1} value={'N'}>Natural</option>
-														<option key={2}  value={'J'}>Juridica</option>
+													<Select name={'person_type'}>
+														<option key={1} value={'N'}>
+															Natural
+														</option>
+														<option key={2} value={'J'}>
+															Juridica
+														</option>
 													</Select>
 												</label>
 											</div>
@@ -1396,7 +1109,7 @@ export default class PaymentWay extends Component {
 												<label>
 													<p>Documento de identificación</p>
 
-													<Select  name={'document_type'}>{docType}</Select>
+													<Select name={'document_type'}>{docType}</Select>
 
 													<input
 														onCut={this.preventCopyPasteCut}

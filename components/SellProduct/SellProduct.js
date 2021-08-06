@@ -15,6 +15,8 @@ import CategoryAcordeon from './components/CategoryAcordeon';
 import Button from '@material-ui/core/Button';
 import Footer from '../Common/Footer';
 
+import { sellProducts } from "../../services/productsApi";
+
 export default function SellProduct({ user_data }) {
 	const [valid, setValid] = useState(true);
 
