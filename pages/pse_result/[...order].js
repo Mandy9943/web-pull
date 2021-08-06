@@ -12,7 +12,6 @@ import favicon from "../../assets/img/favicon.svg";
 
 
 function Product({ data, u_data }) {
-  console.log("data", data, "u_data", u_data)
   return (
     <div className="order-page">
       <Head>
