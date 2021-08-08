@@ -76,61 +76,6 @@ class PaySection extends Component {
 		// 	let resultDataLayerBeginCheckout = beginCheckoutGooleDataLayerG4(dataLayerBeginCheckout);
 			
 		// 	dataLayer.push(resultDataLayerBeginCheckout);
-
-		dataLayer.push({
-			'event':'checkout',
-			'ecommerce': {
-				'checkout':{
-					"currencyCode": "COP",
-					"actionField": {
-									"step": 1
-									},
-					'impressions': [
-						{ 
-							'name': this.props.props.data.product_global_title, // Name or ID is required.
-							'id': this.props.props.data.product_global_id,
-							'price': this.props.props.data.price,
-							'brand': this.props.props.data.brand,
-							'category': concatCategories(),
-							'url':'https://kiero.co/detalle/' + this.props.props.data.product_global_id + '_' + this.props.props.data.product_global_title
-																							.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-																							.replace('//', '%2F')
-																							.replace('%', '')
-																							.split(' ')
-																							.join('-'),
-							'quantity': this.state.cantidad == 0 ? 1 : this.state.cantidad,
-						}
-					]
-				}
-					
-			},
-			// 'eventCallback': function(){
-			// 	window.location = '/pagar/' + id + '/' + quantity;
-			// } 
-		})
-
-		
-		// gtag('event', 'begin_checkout', {
-		// 								"items": [
-		// 											{
-		// 												"id": this.props.props.data.product_global_id,
-		// 												"name": this.props.props.data.product_global_title,
-		// 												"list_name": "Search Results",
-		// 												"brand": this.props.props.data.brand,
-		// 												"category": concatCategories(),
-		// 												"quantity": 5,
-		// 												'price': this.props.props.data.price,
-		// 												'url':'https://kiero.co/detalle/' + this.props.props.data.product_global_id + '_' + this.props.props.data.product_global_title
-		// 																							.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-		// 																							.replace('//', '%2F')
-		// 																							.replace('%', '')
-		// 																							.split(' ')
-		// 																							.join('-'),
-		// 												"list_position": 0,
-		// 											}
-		// 								]
-		// 	});
-
 		if (typeof window !== "undefined") {
 				if (window.fbq != null) { 
 					window.fbq('track','InitiateCheckout',{
@@ -164,6 +109,61 @@ class PaySection extends Component {
 													}) 
 						}
 		}
+
+	
+		dataLayer.push({
+			'event':'checkout',
+			'ecommerce': {
+				'checkout':{
+					"currencyCode": "COP",
+					"actionField": {
+									"step": 1
+									},
+					'impressions': [
+						{ 
+							'name': this.props.props.data.product_global_title, // Name or ID is required.
+							'id': this.props.props.data.product_global_id,
+							'price': this.props.props.data.price,
+							'brand': this.props.props.data.brand,
+							'category': concatCategories(),
+							'url':'https://kiero.co/detalle/' + this.props.props.data.product_global_id + '_' + this.props.props.data.product_global_title
+																							.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+																							.replace('//', '%2F')
+																							.replace('%', '')
+																							.split(' ')
+																							.join('-'),
+							'quantity': this.state.cantidad == 0 ? 1 : this.state.cantidad,
+						}
+					]
+				}
+					
+			},
+				'eventCallback': function(){
+			 	window.location = '/pagar/' + id + '/' + quantity;
+			 } 
+		})
+
+		
+		// gtag('event', 'begin_checkout', {
+		// 								"items": [
+		// 											{
+		// 												"id": this.props.props.data.product_global_id,
+		// 												"name": this.props.props.data.product_global_title,
+		// 												"list_name": "Search Results",
+		// 												"brand": this.props.props.data.brand,
+		// 												"category": concatCategories(),
+		// 												"quantity": 5,
+		// 												'price': this.props.props.data.price,
+		// 												'url':'https://kiero.co/detalle/' + this.props.props.data.product_global_id + '_' + this.props.props.data.product_global_title
+		// 																							.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+		// 																							.replace('//', '%2F')
+		// 																							.replace('%', '')
+		// 																							.split(' ')
+		// 																							.join('-'),
+		// 												"list_position": 0,
+		// 											}
+		// 								]
+		// 	});
 
 		
 
@@ -357,23 +357,8 @@ class PaySection extends Component {
 						''
 					)}
 				</div>
-				<form method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/" target="_blank">
-						<input name="merchantId"    type="hidden"  value="530932"   />
-						<input name="accountId"     type="hidden"  value="512321" />
-						<input name="description"   type="hidden"  value="Kiero Pagos"  />
-						<input name="referenceCode" type="hidden"  value="kieropagosfgkjwl24332" />
-						<input name="amount"        type="hidden"  value="20000"   />
-						<input name="tax"           type="hidden"  value="3193"  />
-						<input name="taxReturnBase" type="hidden"  value="16806" />
-						<input name="currency"      type="hidden"  value="COP" />
-						<input name="signature"     type="hidden"  value="1a0d02164c30fed7e6fcf65ac78ebb7c"  />
-						<input name="test"          type="hidden"  value="0" />
-						<input name="buyerEmail"    type="hidden"  value="test@test.com" />
-						<input name="responseUrl"    type="hidden"  value="http://www.test.com/response" />
-						<input name="confirmationUrl"    type="hidden"  value="http://www.test.com/confirmation" />
-						{this.renderPayButtonSection()}
-						{/* <input name="Submit"        type="submit"  value="Enviar" > */}
-				</form>
+				
+				{this.renderPayButtonSection()}
 
 				<ListProductMovil />
 				<div className="section-pay-type no-movil">
