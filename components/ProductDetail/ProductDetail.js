@@ -39,70 +39,100 @@ class ProductDetail extends Component {
 	}
 	componentDidMount() {
 		this.loadQuestions();
-		dataLayer.push({ ecommerce: null });
+		// dataLayer.push({ ecommerce: null });
 		// console.log('propiedades', this.props);
-		let dataLayerProductDetailG4 = {
-			'event': 'view_item',
+		// let dataLayerProductDetailG4 = {
+		// 	'event': 'view_item',
+		// 	'ecommerce': {
+		// 	'items': 
+		// 				[{
+		// 					'item_name': this.props.data.product_global_title, // Name or ID is required.
+		// 					'item_id': this.props.data.product_global_id,
+		// 					'price': this.props.data.price,
+		// 					'item_brand': this.props.data.brand,
+		// 					'url':'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
+		// 																					.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+		// 																					.replace('//', '%2F')
+		// 																					.replace('%', '')
+		// 																					.split(' ')
+		// 																					.join('-'),
+		// 			}],
+			
+		// 	'currency': 'COP'
+		// 	}
+		// }
+
+		// const productDetailGooleDataLayerG4 = (dataLayerProductDetailG4) => {
+		// 	this.props.data.breadcum.forEach((prod, index) => {
+		// 		let keyCategory = `item_category${index + 1}`;
+		// 		let valueNameCategory = prod.name;
+		// 		dataLayerProductDetailG4['ecommerce']['items'][keyCategory] = valueNameCategory;
+		// 	});
+		// 	return dataLayerProductDetailG4;
+		// }
+		
+		// let resultDataLayerProductDetailG4 = productDetailGooleDataLayerG4(dataLayerProductDetailG4);
+
+		// dataLayer.push(resultDataLayerProductDetailG4);
+
+		// dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
+		
+		const concatCategories = ()=>{
+			var dataCategory = [];
+			this.props.data.breadcum.forEach((prod, index) => {
+				dataCategory.push(prod.name)
+			});
+			return dataCategory.join(' / ')
+		}
+
+		dataLayer.push({
 			'ecommerce': {
-			'items': 
-						[{
-							'item_name': this.props.data.product_global_title, // Name or ID is required.
-							'item_id': this.props.data.product_global_id,
+				'detail':{
+					"actionField": {
+									"list": this.props.data.category.name
+									},
+					'products': [
+						{ 
+							'name': this.props.data.product_global_title, // Name or ID is required.
+							'id': this.props.data.product_global_id,
 							'price': this.props.data.price,
-							'item_brand': this.props.data.brand,
+							'brand': this.props.data.brand,
+							'category': concatCategories(),
 							'url':'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
 																							.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
 																							.replace('//', '%2F')
 																							.replace('%', '')
 																							.split(' ')
 																							.join('-'),
-					}],
-			
-			'currency': 'COP'
+							'position': 1
+						}
+					]
+
+				}
+					
 			}
-		}
-
-		const productDetailGooleDataLayerG4 = (dataLayerProductDetailG4) => {
-			this.props.data.breadcum.forEach((prod, index) => {
-				let keyCategory = `item_category${index + 1}`;
-				let valueNameCategory = prod.name;
-				dataLayerProductDetailG4['ecommerce']['items'][keyCategory] = valueNameCategory;
-			});
-			return dataLayerProductDetailG4;
-		}
+		})
 		
-		let resultDataLayerProductDetailG4 = productDetailGooleDataLayerG4(dataLayerProductDetailG4);
-
-		dataLayer.push(resultDataLayerProductDetailG4);
-
-		const productDetailGooleDataLayerUniversal = ()=>{
-			var dataCategory = [];
-			this.props.data.breadcum.forEach((prod, index) => {
-				dataCategory.push(prod.name)
-			});
-			return dataCategory.join('/ ')
-		}
-		
-		gtag('event', 'view_item', {
-								"items": [
-											{
-												"id": this.props.data.product_global_id,
-												"name": this.props.data.product_global_title,
-												"list_name": "Search Results",
-												"brand": this.props.data.brand,
-												"category": productDetailGooleDataLayerUniversal(),
-												"quantity": 5,
-												'price': this.props.data.price,
-												'url':'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
-																							.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-																							.replace('//', '%2F')
-																							.replace('%', '')
-																							.split(' ')
-																							.join('-'),
-												"list_position": 0,
-											}
-								]
-		 			 });
+		// gtag('event', 'view_item', {
+		// 						"items": [
+		// 									{
+		// 										"id": this.props.data.product_global_id,
+		// 										"name": this.props.data.product_global_title,
+		// 										"list_name": "Search Results",
+		// 										"brand": this.props.data.brand,
+		// 										"category": concatCategories(),
+		// 										"quantity": 5,
+		// 										'price': this.props.data.price,
+		// 										'url':'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
+		// 																					.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+		// 																					.replace('//', '%2F')
+		// 																					.replace('%', '')
+		// 																					.split(' ')
+		// 																					.join('-'),
+		// 										"list_position": 1,
+		// 									}
+		// 						]
+		//  			 });
 
 		if (typeof window !== "undefined") {
 			setTimeout(() => {

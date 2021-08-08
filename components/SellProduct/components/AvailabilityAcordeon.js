@@ -26,7 +26,11 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function AvailabilityAcordeon({ availability, setAvailability }) {
+export default function AvailabilityAcordeon({
+	availability,
+	setAvailability,
+	availabilityError,
+}) {
 	const classes = useStyles();
 	const [expandedAvailability, setExpandedAvailability] = useState(false);
 	const [availabilityInfo, setAvailabilityInfo] = useState(false);
@@ -41,7 +45,7 @@ export default function AvailabilityAcordeon({ availability, setAvailability }) 
 		<div className="productAcordeonContainer">
 			<div className="productAcordeon">
 				Disponibilidad de stock
-				{expandedAvailability ? (
+				{expandedAvailability || availabilityError ? (
 					<HtmlTooltip
 						open={availabilityInfo}
 						placement="top-start"
@@ -69,18 +73,22 @@ export default function AvailabilityAcordeon({ availability, setAvailability }) 
 				)}
 				<ExpandMoreIcon
 					style={{
-						color: expandedAvailability ? '#CF0A2C' : '',
-						marginBottom: expandedAvailability ? '40px' : '',
+						color: expandedAvailability || availabilityError ? '#CF0A2C' : '',
+						marginBottom: expandedAvailability || availabilityError ? '40px' : '',
 						cursor: 'pointer',
 					}}
 					className={clsx(classes.expand, {
-						[classes.expandOpen]: expandedAvailability,
+						[classes.expandOpen]: expandedAvailability || availabilityError,
 					})}
 					onClick={() => setExpandedAvailability(!expandedAvailability)}
-					aria-expanded={expandedAvailability}
+					aria-expanded={expandedAvailability || availabilityError}
 				/>
 			</div>
-			<Collapse in={expandedAvailability} timeout="auto" unmountOnExit>
+			<Collapse
+				in={expandedAvailability || availabilityError}
+				timeout="auto"
+				unmountOnExit
+			>
 				<div className="typeOfAddP">
 					Indícale a tus compradores la cantidad disponible de tu producto
 				</div>
@@ -92,6 +100,11 @@ export default function AvailabilityAcordeon({ availability, setAvailability }) 
 						fullWidth
 						placeholder="Ejemplo: 3"
 					/>
+					{availabilityError && !availability ? (
+						<div className="productQuantityError">Debes completar este campo</div>
+					) : (
+						''
+					)}
 				</div>
 			</Collapse>
 		</div>

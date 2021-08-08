@@ -21,7 +21,7 @@ export default function SellProduct({ user_data }) {
 	//BasicInfo States
 	const [title, setTitle] = useState('');
 	const [price, setPrice] = useState('');
-	const [images, setImages] = useState('');
+	const [images, setImages] = useState([]);
 	const [color, setColor] = useState('');
 	const [quantity, setQuantity] = useState('');
 	const [code, setCode] = useState('');
@@ -54,14 +54,44 @@ export default function SellProduct({ user_data }) {
 
 	//Availability States
 	const [availability, setAvailability] = useState('');
+	const [availabilityError, setAvailabilityError] = useState(false);
 
 	//Warranty States
 	const [warrantyValue, setWarrantyValue] = useState('');
+	const [warrantyError, setWarrantyError] = useState(false);
 
 	//Category States
 	const [categoryValue, setCategoryValue] = useState('');
+	const [categoryError, setCategoryError] = useState(false);
 
 	function validateForm() {
+		const headers ={
+			headers: { Authorization: `Bearer ${user_data.jwt}` },
+		}
+		const info = {
+			title: title,
+			price: price,
+			images: images,
+			color: color,
+			quantity: quantity,
+			code: code,
+			noCode: noCode,
+			brand: brand,
+			model: model,
+			material: material,
+			long: long,
+			longUnit: longUnit,
+			width: width,
+			widthUnit: widthUnit,
+			switchedWithdraw: switchedWithdraw,
+			selectedTypeOfAdd: selectedTypeOfAdd,
+			description: description,
+			video: video,
+			availability: availability,
+			warrantyValue: warrantyValue,
+			categoryValue: categoryValue,
+		};
+		console.log(info);
 		if (
 			title &&
 			price &&
@@ -103,36 +133,27 @@ export default function SellProduct({ user_data }) {
 			} else {
 				setDescriptionError(false);
 			}
-			if (!video) {
+			if (!video || !video.includes('https://www.youtube.com/watch?')) {
 				setVideoError(true);
 			} else {
 				setVideoError(false);
 			}
+			if (!availability) {
+				setAvailabilityError(true);
+			} else {
+				setAvailabilityError(false);
+			}
+			if (!warrantyValue) {
+				setWarrantyError(true);
+			} else {
+				setWarrantyError(false);
+			}
+			if (!categoryValue) {
+				setCategoryError(true);
+			} else {
+				setCategoryError(false);
+			}
 		}
-		const info = {
-			title: title,
-			price: price,
-			images: images,
-			color: color,
-			quantity: quantity,
-			code: code,
-			noCode: noCode,
-			brand: brand,
-			model: model,
-			material: material,
-			long: long,
-			longUnit: longUnit,
-			width: width,
-			widthUnit: widthUnit,
-			switchedWithdraw: switchedWithdraw,
-			selectedTypeOfAdd: selectedTypeOfAdd,
-			description: description,
-			video: video,
-			availability: availability,
-			warrantyValue: warrantyValue,
-			categoryValue: categoryValue,
-		};
-		console.log(info);
 	}
 
 	return (
@@ -197,17 +218,17 @@ export default function SellProduct({ user_data }) {
 						/>
 						<VideoAcordeon videoError={videoError} video={video} setVideo={setVideo} />
 						<AvailabilityAcordeon
-							valid={valid}
+							availabilityError={availabilityError}
 							availability={availability}
 							setAvailability={setAvailability}
 						/>
 						<WarrantyAcordeon
-							valid={valid}
+							warrantyError={warrantyError}
 							warrantyValue={warrantyValue}
 							setWarrantyValue={setWarrantyValue}
 						/>
 						<CategoryAcordeon
-							valid={valid}
+							categoryError={categoryError}
 							categoryValue={categoryValue}
 							setCategoryValue={setCategoryValue}
 						/>

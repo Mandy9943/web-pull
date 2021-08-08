@@ -852,7 +852,7 @@ export default class PaymentWay extends Component {
 				// 			]
 				// 		}
 				// 	}
-				// })
+				// }) 
 				
 
 

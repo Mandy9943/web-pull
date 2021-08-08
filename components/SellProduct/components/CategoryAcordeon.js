@@ -28,7 +28,11 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function CategoryAcordeon({ categoryValue, setCategoryValue }) {
+export default function CategoryAcordeon({
+	categoryValue,
+	setCategoryValue,
+	categoryError,
+}) {
 	const classes = useStyles();
 	const [expandedCategory, setExpandedCategory] = useState(false);
 	const [categoryInfo, setCategoryInfo] = useState(false);
@@ -53,7 +57,7 @@ export default function CategoryAcordeon({ categoryValue, setCategoryValue }) {
 		<div className="productAcordeonContainer">
 			<div className="productAcordeon">
 				Categoría
-				{expandedCategory ? (
+				{expandedCategory || categoryError ? (
 					<HtmlTooltip
 						open={categoryInfo}
 						placement="top-start"
@@ -81,18 +85,18 @@ export default function CategoryAcordeon({ categoryValue, setCategoryValue }) {
 				)}
 				<ExpandMoreIcon
 					style={{
-						color: expandedCategory ? '#CF0A2C' : '',
-						marginBottom: expandedCategory ? '40px' : '',
+						color: expandedCategory || categoryError ? '#CF0A2C' : '',
+						marginBottom: expandedCategory || categoryError ? '40px' : '',
 						cursor: 'pointer',
 					}}
 					className={clsx(classes.expand, {
-						[classes.expandOpen]: expandedCategory,
+						[classes.expandOpen]: expandedCategory || categoryError,
 					})}
 					onClick={() => setExpandedCategory(!expandedCategory)}
-					aria-expanded={expandedCategory}
+					aria-expanded={expandedCategory || categoryError}
 				/>
 			</div>
-			<Collapse in={expandedCategory} timeout="auto" unmountOnExit>
+			<Collapse in={expandedCategory || categoryError} timeout="auto" unmountOnExit>
 				<div className="typeOfAddP">
 					Indica en que categoría se encuentra se encuentra tu producto
 				</div>
@@ -110,6 +114,11 @@ export default function CategoryAcordeon({ categoryValue, setCategoryValue }) {
 					popupIcon={<ExpandMoreIcon />}
 					noOptionsText="La categoria que buscas no existe"
 				/>
+				{categoryError && !categoryValue ? (
+					<div className="productQuantityError">Debes completar este campo</div>
+				) : (
+					''
+				)}
 			</Collapse>
 		</div>
 	);
