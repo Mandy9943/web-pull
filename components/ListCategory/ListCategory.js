@@ -303,6 +303,7 @@ class ListCategory extends Component {
 														${' '}
 														{product.price
 															? String(product.price)
+																	.split('.')[0]
 																	.replace(/(.)(?=(\d{3})+$)/g, '$1.')
 															: '$ ... '}{' '}
 													</h2>

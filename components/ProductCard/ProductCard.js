@@ -79,14 +79,14 @@ export default class ProductCard extends Component {
 						}]
 				}
 			},
-			'eventCallback': function(){
-				document.location = 'https://kiero.co/detalle/' + data.product_id + '_' + data.title
-				.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-				.replace('//', '%2F')
-				.replace('%', '')
-				.split(' ')
-				.join('-')
-			} 
+			// 'eventCallback': function(){
+			// 	document.location = 'https://kiero.co/detalle/' + data.product_id + '_' + data.title
+			// 	.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+			// 	.replace('//', '%2F')
+			// 	.replace('%', '')
+			// 	.split(' ')
+			// 	.join('-')
+			// } 
 		})
 		// window.location.href = '/detalle/' +
 		// data.product_id +
@@ -139,6 +139,7 @@ export default class ProductCard extends Component {
 							${' '}
 							{this.props.price
 								? String(this.props.price)
+										.split('.')[0]
 										.replace(/(.)(?=(\d{3})+$)/g, '$1.')
 								: '$ ... '}
 						</h3>

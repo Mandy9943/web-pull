@@ -104,9 +104,9 @@ class PaySection extends Component {
 				}
 					
 			},
-			'eventCallback': function(){
-				window.location = '/pagar/' + id + '/' + quantity;
-			} 
+			// 'eventCallback': function(){
+			// 	window.location = '/pagar/' + id + '/' + quantity;
+			// } 
 		})
 
 		
@@ -232,7 +232,7 @@ class PaySection extends Component {
 	};
 
 	renderPayButtonSection = () => {
-		const btnEnabled = <button onClick={() => this.go(this.props.pgid)}>Comprar</button>;
+		const btnEnabled = <button type="submit" onClick={() => this.go(this.props.pgid)}>Comprar</button>;
 		const btnDisabled = (
 			<button
 				style={{ opacity: '0.35', cursor: 'not-allowed' }}
@@ -312,6 +312,7 @@ class PaySection extends Component {
 						{this.props.price
 							? this.props.price
 									.toString()
+									.split('.')[0]
 									.replace(/(.)(?=(\d{3})+$)/g, '$1.')
 							: ' ... '}
 					</h3>
@@ -356,7 +357,23 @@ class PaySection extends Component {
 						''
 					)}
 				</div>
-				{this.renderPayButtonSection()}
+				<form method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/" target="_blank">
+						<input name="merchantId"    type="hidden"  value="530932"   />
+						<input name="accountId"     type="hidden"  value="512321" />
+						<input name="description"   type="hidden"  value="Kiero Pagos"  />
+						<input name="referenceCode" type="hidden"  value="kieropagosfgkjwl24332" />
+						<input name="amount"        type="hidden"  value="20000"   />
+						<input name="tax"           type="hidden"  value="3193"  />
+						<input name="taxReturnBase" type="hidden"  value="16806" />
+						<input name="currency"      type="hidden"  value="COP" />
+						<input name="signature"     type="hidden"  value="1a0d02164c30fed7e6fcf65ac78ebb7c"  />
+						<input name="test"          type="hidden"  value="0" />
+						<input name="buyerEmail"    type="hidden"  value="test@test.com" />
+						<input name="responseUrl"    type="hidden"  value="http://www.test.com/response" />
+						<input name="confirmationUrl"    type="hidden"  value="http://www.test.com/confirmation" />
+						{this.renderPayButtonSection()}
+						{/* <input name="Submit"        type="submit"  value="Enviar" > */}
+				</form>
 
 				<ListProductMovil />
 				<div className="section-pay-type no-movil">
