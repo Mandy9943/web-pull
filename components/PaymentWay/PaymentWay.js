@@ -34,6 +34,7 @@ import { apiget } from '../../lib/request';
 export default class PaymentWay extends Component {
 	constructor(props) {
 		super(props);
+		var md5 = require('md5');
 		this.state = {
 			name: '',
 			phone: '',
@@ -75,6 +76,7 @@ export default class PaymentWay extends Component {
 			modalValidate: false,
 			acceptance_token: '',
 			acp_checked: false,
+			signature: md5('4Vj8eK4rloUd272L48hsrarnUA~508029~AAAAAA013~'+props.data.price+'~COP'),
 		};
 		this.validateName = this.validateName.bind(this);
 		this.validatePhone = this.validatePhone.bind(this);
@@ -84,6 +86,9 @@ export default class PaymentWay extends Component {
 		this.validateCcName = this.validateCcName.bind(this);
 		this.validateCcCvv = this.validateCcCvv.bind(this);
 		this.validateCcId = this.validateCcId.bind(this);
+		console.log(props);
+
+		console.log(md5('4Vj8eK4rloUd272L48hsrarnUA~508029~AAAAAA013~'+props.data.price+'~COP'));
 	}
 
 	componentDidMount() {
@@ -1481,16 +1486,17 @@ export default class PaymentWay extends Component {
 									</div>
 								</div>
 							</div>
-							<form className="finish-pay" method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">
+
+							<form className="finish-pay" method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu">
 							<input name="merchantId"    type="hidden"  value="508029"   />
 								<input name="accountId"     type="hidden"  value="512321" />
-									<input name="description"   type="hidden"  value="Test PAYU"  />
-										<input name="referenceCode" type="hidden"  value="kieroco-1628458267.037697" />
-											<input name="amount"        type="hidden"  value="2"   />
-												<input name="tax"           type="hidden"  value="3193"  />
-													<input name="taxReturnBase" type="hidden"  value="16806" />
+									<input name="description"   type="hidden"  value={this.props.data.title}  />
+										<input name="referenceCode" type="hidden"  value="AAAAAA013" />
+											<input name="amount"        type="hidden"  value={this.props.data.price}   />
+												<input name="tax"           type="hidden"  value="0"  />
+													<input name="taxReturnBase" type="hidden"  value="0" />
 														<input name="currency"      type="hidden"  value="COP" />
-															<input name="signature"     type="hidden"  value="6c01b98a65a8c9fe75f2c2b5182c7148"  />
+															<input name="signature"     type="hidden"  value={this.state.signature}  />
 																<input name="test"          type="hidden"  value="0" />
 																	<input name="buyerEmail"    type="hidden"  value="test@test.com" />
 																		<input name="responseUrl"    type="hidden"  value="http://www.test.com/response" />
