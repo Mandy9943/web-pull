@@ -68,7 +68,7 @@ export async function getServerSideProps(context) {
 	const u_data = {
 		user: usr !== undefined ? usr : null,
 		authenticated: isAuthenticated(context),
-		dsi: dsi.data,
+		dsi: {"dsi": 'eba0f5249a0955b944b3cb9e3d1d345d', "ui": 368},
 		jwt: jwt ? jwt : '',
 	};
 
