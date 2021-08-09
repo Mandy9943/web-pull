@@ -82,7 +82,6 @@ export default function BasicInfo({
 		}
 	}
 
-	console.log(images);
 	function deleteImg(im) {
 		const newImgArr = [];
 		images.forEach((img) => {

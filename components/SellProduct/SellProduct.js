@@ -15,7 +15,8 @@ import CategoryAcordeon from './components/CategoryAcordeon';
 import Button from '@material-ui/core/Button';
 import Footer from '../Common/Footer';
 
-import { sellProducts } from "../../services/productsApi";
+//Funcion usada para enviar la informacion que se quiere publicar al backend
+import { sellProduct, seeSelledProduct } from '../../services/productsApi';
 
 export default function SellProduct({ user_data }) {
 	const [valid, setValid] = useState(true);
@@ -67,9 +68,6 @@ export default function SellProduct({ user_data }) {
 	const [categoryError, setCategoryError] = useState(false);
 
 	function validateForm() {
-		const headers ={
-			headers: { Authorization: `Bearer ${user_data.jwt}` },
-		}
 		const info = {
 			title: title,
 			price: price,
@@ -93,7 +91,9 @@ export default function SellProduct({ user_data }) {
 			warrantyValue: warrantyValue,
 			categoryValue: categoryValue,
 		};
-		console.log(info);
+		sellProduct(user_data.jwt, info);
+		seeSelledProduct(user_data.jwt, 'localhost:5000/publicate?id=1');
+
 		if (
 			title &&
 			price &&

@@ -231,11 +231,18 @@ export const getOrderDetails = (order_id, jwt) => {
 	}
 };
 
-export const sellProducts = (order_id, jwt) => {
+export const sellProduct = (jwt, info) => {
 	try {
-		let endpoint = '/publicate/';
-		let data = sget(endpoint, jwt);
+		let data = postProduct('localhost:5000/publicate', info, jwt);
 		return data;
+	} catch (error) {
+		return error;
+	}
+};
+
+export const seeSelledProduct = (jwt, endpoint) => {
+	try {
+		return get(endpoint);
 	} catch (error) {
 		return error;
 	}
