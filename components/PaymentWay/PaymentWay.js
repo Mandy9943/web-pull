@@ -1129,15 +1129,15 @@ export default class PaymentWay extends Component {
 								}
 							/>
 							<div className="content-product-description">
-								<p>{this.props.data.title}</p>
+								<p>{this.props.data.title.substr(0, 60)}</p>
 								<p className="quantity">Cantidad: {this.state.productQuantity}</p>
 								<h3>Total: $ {totalPrice} </h3>
 							</div>
 						</div>
-						<h2>Elige la forma de pago</h2>
+						<h2>¿Dónde quieres recibir el producto?</h2>
 
 						<div className="content-payment-way">
-							<div className="way-to-pay">
+							{/* <div className="way-to-pay">
 								{this.state.shownPaymentOption === 0 ||
 								this.state.shownPaymentOption === 1 ? (
 									<div
@@ -1425,23 +1425,7 @@ export default class PaymentWay extends Component {
 										</div>
 									</div>
 								</form>
-							</div>
-							<div className="payment-data">
-								<div className="product-description payment-way-box only-desktop">
-									<img
-										src={
-											this.props.data.images.length > 0
-												? this.props.data.images[0].url
-												: 'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png'
-										}
-									/>
-									<div className="content-product-description">
-										<p>{this.props.data.title}</p>
-										<p className="quantity">Cantidad: {this.state.productQuantity}</p>
-										<h3>$ {totalPrice} </h3>
-									</div>
-								</div>
-
+							</div> */}
 								<div className="shipping-address payment-way-box">
 									{this.state.addrLoaded && this.state.addresses.length == 0 && (
 										<>
@@ -1481,7 +1465,38 @@ export default class PaymentWay extends Component {
 										</>
 									)}
 								</div>
+							<div className="payment-data">
+								<div className="product-description payment-way-box only-desktop">
+									<img
+										src={
+											this.props.data.images.length > 0
+												? this.props.data.images[0].url
+												: 'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png'
+										}
+									/>
+									<div className="content-product-description">
+										<p>{this.props.data.title.substr(0, 60)}</p>
+										<p className="quantity">Cantidad: {this.state.productQuantity}</p>
+										<h3>$ {totalPrice} </h3>
+									</div>
+								</div>
 							</div>
+							<form className="finish-pay" method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">
+							<input name="merchantId"    type="hidden"  value="508029"   />
+								<input name="accountId"     type="hidden"  value="512321" />
+									<input name="description"   type="hidden"  value="Test PAYU"  />
+										<input name="referenceCode" type="hidden"  value="kieroco-1628458267.037697" />
+											<input name="amount"        type="hidden"  value="2"   />
+												<input name="tax"           type="hidden"  value="3193"  />
+													<input name="taxReturnBase" type="hidden"  value="16806" />
+														<input name="currency"      type="hidden"  value="COP" />
+															<input name="signature"     type="hidden"  value="6c01b98a65a8c9fe75f2c2b5182c7148"  />
+																<input name="test"          type="hidden"  value="0" />
+																	<input name="buyerEmail"    type="hidden"  value="test@test.com" />
+																		<input name="responseUrl"    type="hidden"  value="http://www.test.com/response" />
+																			<input name="confirmationUrl"    type="hidden"  value="http://www.test.com/confirmation" />
+																				<input className="button-finish-pay" name="Submit"        type="submit"  value="Finalizar compra"/>
+																					</form>
 						</div>
 					</div>
 				)}
