@@ -146,10 +146,10 @@ function Results({ data, session }) {
         },
 
 
-        "industria%20y%20científico": {
+        "industria y científico": {
             "estructure": [1, 2, 3, 3, 2, 3, 3, 2, 3, 3, 2, 1],
-            "links": ["Industria%20y%20científico", "Accesorios%20y%20equipos%20de%20tiendas%20minoristas", "Cintas,%20adhesivos%20y%20sellantes", "Productos%20de%20laboratorio%20y%20ciencias", "Equipo%20industrial", "Equipo%20y%20suministros%20para%20servicio", "Filtración%20industrial", "Herramientas%20de%20corte", "Herramientas%20eléctricas%20y%20de%20mano", "Productos%20de%20iluminación%20comercial", "Industrial%20y%20eléctrico", "Materias%20primas", "Hidráulica,%20neumática%20y%20plomería", "Higiene%20y%20seguridad%20laboral", "Productos%20abrasivos%20y%20de%20acabado", "Medición%20y%20test%20industrial", "Productos%20de%20laboratorio%20y%20ciencias", "Señalización%20digital", "Sujetadores", "Productos%20para%20manipulación%20de%20materiales", "Productos%20de%20puertas%20comerciales", "Productos%20de%20transmisión%20de%20energía", "Robótica", "Suministros%20de%20empaque%20y%20envío", "Suministros%20de%20limpieza%20y%20saneamiento", "Suministros%20médicos%20profesionales", "Productos%20para%20impresión%203D", "Suministros%20dentales%20profesionales"],
-            "image_path": encodeURI("//kiero.co/images/resources/industria y cientifico/"), "enable": true
+            "links": ["industria y científico", "Accesorios%20y%20equipos%20de%20tiendas%20minoristas", "Cintas,%20adhesivos%20y%20sellantes", "Productos%20de%20laboratorio%20y%20ciencias", "Equipo%20industrial", "Equipo%20y%20suministros%20para%20servicio", "Filtración%20industrial", "Herramientas%20de%20corte", "Herramientas%20eléctricas%20y%20de%20mano", "Productos%20de%20iluminación%20comercial", "Industrial%20y%20eléctrico", "Materias%20primas", "Hidráulica,%20neumática%20y%20plomería", "Higiene%20y%20seguridad%20laboral", "Productos%20abrasivos%20y%20de%20acabado", "Medición%20y%20test%20industrial", "Productos%20de%20laboratorio%20y%20ciencias", "Señalización%20digital", "Sujetadores", "Productos%20para%20manipulación%20de%20materiales", "Productos%20de%20puertas%20comerciales", "Productos%20de%20transmisión%20de%20energía", "Robótica", "Suministros%20de%20empaque%20y%20envío", "Suministros%20de%20limpieza%20y%20saneamiento", "Suministros%20médicos%20profesionales", "Productos%20para%20impresión%203D", "Suministros%20dentales%20profesionales"],
+            "image_path": encodeURI("//kiero.co/images/resources/industria y científico/"), "enable": true
         },
         
          "artes y manualidades": {
@@ -157,7 +157,7 @@ function Results({ data, session }) {
             "links": ["Artes%20y%20manualidades", "Artes%20y%20manualidades%20para%20niños", "Materiales%20para%20arte%20y%20manualidades", "Almacenamiento%20de%20materiales%20de%20arte", "Cuentas%20y%20adornos,%20elaboración%20bisutería", "Productos%20de%20costura", "Telas%20para%20manualidades", "Suministro%20de%20punto%20y%20ganchillo", "Suministros%20para%20álbumes%20de%20recortes", "Artículos%20para%20pintura,%20dibujo%20y%20arte", "Suministros%20de%20grabado", "Suministros%20de%20tejido%20y%20costura"],
             "image_path": encodeURI("//kiero.co/images/resources/artes y manualidades/"), "enable": true
 
-      },
+        },
         
          "artesanías y productos hechos a mano": {
             "estructure": [1, 2, 1],

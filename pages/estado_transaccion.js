@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import SellProduct from '../components/SellProduct/SellProduct';
+import ComprobarTransaccion from '../components/SellProduct/ComprobarTransaccion';
 import favicon from '../assets/img/favicon.svg';
 import {
 	isAuthenticated,
@@ -19,7 +19,7 @@ export default class extends React.Component {
 		return {
 			jwt: getJwt(ctx),
 			user_id: getUserId(ctx),
-			user: getUser(ctx),			
+			user: getUser(ctx),
 			authenticated: isAuthenticated(ctx),
 		};
 	}
@@ -40,7 +40,7 @@ export default class extends React.Component {
 					/>
 					<link rel="icon" href={favicon} type="image/png" />
 				</Head>
-				<SellProduct user_data={this.props} />
+				<ComprobarTransaccion user_data={this.props} />
 			</div>
 		);
 	}
