@@ -17,6 +17,11 @@ import Spinner from '../Common/Spinner';
 import Checkbox from '@material-ui/core/Checkbox';
 import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
+import Modal from '../Common/Modal/Modal';
+import Cookies from 'js-cookie';
+import {addPaymentDataWompi} from '../../services/userApi'
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import { Button, Modal } from 'react-bootstrap';
 
 class PaySection extends Component {
 	constructor(props) {
@@ -25,9 +30,24 @@ class PaySection extends Component {
 			cantidad: 0,
 			dimensions: {},
 			variantsSpinner: props.m_pgid ? false : true,
+			modalAddr : false,
+			user: '',
+			email: '',
+			phone: '',
+			mobile_phone: '',
+			city: '',
+			phone: '',
+			region: '',
+			address: '',
+			neighborhood: '',
+			dataTransaction : [],
+			validForm: true,
 		};
+		this.toggleModalAddr = this.toggleModalAddr.bind(this);
 	}
-
+	toggleModalAddr() {
+		this.setState({ modalAddr: !this.state.modalAddr });
+	}
 	componentDidMount() {
 		if (this.props.m_pgid) return;
 
@@ -138,9 +158,9 @@ class PaySection extends Component {
 				}
 					
 			},
-				'eventCallback': function(){
-			 	window.location = '/pagar/' + id + '/' + quantity;
-			 } 
+			// 	'eventCallback': function(){
+			//  	window.location = '/pagar/' + id + '/' + quantity;
+			//  } 
 		})
 
 		
@@ -232,7 +252,8 @@ class PaySection extends Component {
 	};
 
 	renderPayButtonSection = () => {
-		const btnEnabled = <button type="submit" onClick={() => this.go(this.props.pgid)}>Comprar</button>;
+		// const btnEnabled = <button type="submit" onClick={() => this.go(this.props.pgid)}>Comprar</button>;
+		const btnEnabled = <button type="submit" onClick={() => this.renderWompi()}>Comprar</button>;
 		const btnDisabled = (
 			<button
 				style={{ opacity: '0.35', cursor: 'not-allowed' }}
@@ -289,8 +310,186 @@ class PaySection extends Component {
 			);
 		}
 	};
+	validateNumber(name, value) {
+		const pattern = new RegExp('^[0-9]*$');
+		this.setState({
+			[name]: pattern.test(value) ? value : value.slice(0, -1),
+		});
+	}
+
+	validateText(name, value) {
+		const pattern = new RegExp('^[a-zA-Z\u0080-\uFFFF ]+$');
+		this.setState({
+			[name]: pattern.test(value) ? value : value.slice(0, -1),
+		});
+	}
+
+	handleFormValue = (e) => {
+		let { name, value } = e.target;
+
+		if (name === 'phone' || name === 'mobile_phone') {
+			this.validateNumber(name, value);
+		}
+		if (name === 'region' || name === 'neighborhood' || name === 'city') {
+			this.validateText(name, value);
+		}
+		if (name === 'user' || name === 'email' || name === 'address') {
+			this.setState({ [name]: value });
+		}
+	};
+
+	randomPayReference = (length, chars) => {
+		var result = '';
+		for (var i = length; i > 0; --i) result += chars[Math.round(Math.random() * (chars.length - 1))];
+		return result;
+	}
+
+	renderWompi = () => {
+		// let userLogin = Cookies.get('user_id');
+		// let date = new Date();
+		let quantity = this.state.cantidad == 0 ? 1 : this.state.cantidad
+		let price = this.props.price
+							.toString()
+							.split('.')[0] + '00'
+		// console.log(this.padLeadingZeros(parseInt(this.props.price) , 1) )
+		let checkout = new WidgetCheckout({
+							currency: 'COP',
+							amountInCents: price * quantity,
+							reference: this.randomPayReference(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' + (price * quantity) + this.props.props.data.product_global_id),
+							// publicKey: 'pub_test_pYoEwV7Vh2UjsXGhNQ5JEYWa1LnXKj9r',
+							publicKey: 'pub_prod_6SqAXiHbJoIQH2e9I85GgxA1Gmd9he20',
+							redirectUrl: 'http://localhost:3000/pay_status',
+							shippingAddress:{
+								country:'CO',
+								city: this.state.city == '' ? 'null' : this.state.city,
+								phoneNumber: this.state.mobile_phone == '' ? 'null' : this.state.mobile_phone,
+								region: this.state.region == '' ? 'null' : this.state.region,
+								addressLine1: this.state.neighborhood == '' ? 'null' : this.state.address + ' Barrio ' + this.state.neighborhood
+							},
+						})
+
+					this.state.user == ''  ||
+					this.state.email == ''  ||
+					this.state.phone == ''  ||
+					this.state.mobile_phone == ''  ||
+					this.state.city == ''  ||
+					this.state.region == ''  ||
+					this.state.address == ''  ||
+					this.state.neighborhood == '' ? this.setState({modalAddr: true}) : 
+																						checkout.open(function ( result ) {
+																							var transaction = result.transaction
+																							console.log('Transaction ID: ', transaction.id)
+																							console.log('Transaction object: ', transaction)
+																							let dataTransaction = {
+																											'transactionId':transaction.id,
+																											'transactionReference':transaction.reference,
+																											'paymentMethod':transaction.paymentMethodType,
+																											'userIdentificationType':transaction.billingData.legalIdType,
+																											'userIdentification':transaction.billingData.legalId,
+																											'userName': transaction.customerData.fullName,
+																											'emailAddres': transaction.customerEmail,
+																											'userMobilePhone': transaction.customerData.phoneNumber,
+																											'cityAddress': transaction.shippingAddress.city,
+																											'regionAddress': transaction.shippingAddress.region,
+																											'userAddress': transaction.shippingAddress.addressLine1
+																										}
+																							console.log(dataTransaction)
+
+																							addPaymentDataWompi("/DataWompiTransaction", dataTransaction);
+
+																						})
+	}
+
+	validateForm = () => {
+		const { user, email, phone, mobile_phone, city, region, address, neighborhood } =
+			this.state;
+					if (
+						!user ||
+						!email ||
+						!phone ||
+						!mobile_phone ||
+						!city ||
+						!region ||
+						!address ||
+						!neighborhood
+					) {
+						this.setState({ validForm: false });
+					} else {
+						this.setState({modalAddr: false}) 
+						this.setState({ validForm: true });
+						this.renderWompi()
+					}
+	};
 
 	render() {
+		const contentModalNewAddress = (
+			<div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
+				<p style={{ textAlign: 'center', fontWeight: 'bold', paddingBottom:30 }}>Por favor agregue los datos de envío</p>
+				<div style={{ width: '300px', margin: '0 auto'}}>
+					<input
+						value={this.state.user}
+						onChange={this.handleFormValue}
+						placeholder="Usuario"
+						name="user"
+					/>
+					<input
+						value={this.state.email}
+						onChange={this.handleFormValue}
+						placeholder="Correo"
+						name="email"
+					/>
+					<input
+						value={this.state.phone}
+						onChange={this.handleFormValue}
+						placeholder="Telefono fijo"
+						name="phone"
+					/>
+					<input
+						value={this.state.mobile_phone}
+						onChange={this.handleFormValue}
+						placeholder="Telefono Movil"
+						name="mobile_phone"
+					/>
+					<input
+						value={this.state.city}
+						onChange={this.handleFormValue}
+						placeholder="Ciudad"
+						name="city"
+					/>
+					<input
+						value={this.state.region}
+						onChange={this.handleFormValue}
+						placeholder="Region/Departamento"
+						name="region"
+					/>
+					<input
+						value={this.state.address}
+						onChange={this.handleFormValue}
+						placeholder="Direccion"
+						name="address"
+					/>
+					<input
+						value={this.state.neighborhood}
+						onChange={this.handleFormValue}
+						placeholder="Barrio"
+						name="neighborhood"
+					/>
+					<button style={{ background:'#cf0a2c', color:'white'}} onClick={() => this.validateForm()}>Continuar con la transacción</button>
+				</div>
+					{!this.state.validForm ? (
+					<div style={{     	color: 'white',
+										background: 'rgb(207, 10, 44)',
+										height: 40,
+										borderRadius: 15,
+										width: '80%',
+										margin:'15px auto'}}>
+											<p style={{ textAlign: 'center', fontWeight: 'bold', marginTop: 10.5 }}>Tienes campos pendientes por completar</p>
+										</div>
+					) : (
+						''
+					)}
+			</div>
+		);
 		return (
 			<div className="pay">
 				<div className="pay-item">
@@ -304,8 +503,8 @@ class PaySection extends Component {
 					</div> */}
 				</div>
 				{/* <div className="pay-item">
-          <Rating productId={this.props.pid}/>
-        </div> */}
+					<Rating productId={this.props.pid}/>
+				</div> */}
 				<div className="pay-item">
 					<h3 className="price-pay-product-detail">
 						${' '}
@@ -357,9 +556,21 @@ class PaySection extends Component {
 						''
 					)}
 				</div>
-				
-				{this.renderPayButtonSection()}
 
+				{this.renderPayButtonSection()}
+				{/* {this.renderWompi()} */}
+				{/* <form aria-hidden="true"> 
+								<script
+									src="https://checkout.wompi.co/widget.js"
+									data-render="button"
+									data-public-key="pub_test_pYoEwV7Vh2UjsXGhNQ5JEYWa1LnXKj9r"
+									data-redirect-url="http://localhost:3000/pay_status"
+									data-currency="COP"
+									data-amount-in-cents="4950000"
+									data-reference="4XMPGKWWPKWQ"
+									>
+								</script>
+							</form> */}
 				<ListProductMovil />
 				<div className="section-pay-type no-movil">
 					<div className="section-pay-type-title">
@@ -402,7 +613,15 @@ class PaySection extends Component {
 				<div className="section-pay-wrap-seller no-movil">
 					<Seller productId={this.props.pid} />
 				</div>
+				{this.state.modalAddr ? (
+					<Modal
+						toggle={this.toggleModalAddr}
+						content={contentModalNewAddress}
+						button
+					/>
+				) : null}
 			</div>
+			
 		);
 	}
 }

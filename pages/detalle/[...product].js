@@ -20,6 +20,7 @@ function Product({ data, u_data }) {
 					}}
 				/>
 				{/* End Google Tag Manager */}
+				<script type="text/javascript" src="https://checkout.wompi.co/widget.js"></script>
 				<title>Kiero.co | {data.title.substring(0,60)}</title>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 				<meta

@@ -1,4 +1,4 @@
-import { get, post, put, rDelete } from "../lib/request";
+import { get, post, put, rDelete, postWompi } from "../lib/request";
 
 export const createUser = async (
   name,
@@ -115,6 +115,18 @@ export const completeData = async (data, jwt) => {
 export const savePrivateData = async (endpoint, data, jwt) => {
   try {
     const response = await post(endpoint, data, jwt);
+    return !response.data ? response : null;
+  } catch (error) {
+    return (
+      error.response &&
+      "No se pudo guardar la información, intentelo nuevamente."
+    );
+  }
+};
+
+export const addPaymentDataWompi = async (endpoint, data) => {
+  try {
+    const response = await postWompi(endpoint, data);
     return !response.data ? response : null;
   } catch (error) {
     return (
