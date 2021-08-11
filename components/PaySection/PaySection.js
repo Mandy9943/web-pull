@@ -345,10 +345,15 @@ class PaySection extends Component {
 	renderWompi = () => {
 		// let userLogin = Cookies.get('user_id');
 		// let date = new Date();
-		let quantity = this.state.cantidad == 0 ? 1 : this.state.cantidad
+		let marketId = this.props.props.data.store_id;
+		let productId = this.props.props.data.product_global_id;
+		let quantity = this.state.cantidad == 0 ? 1 : this.state.cantidad;
+		let priceToCalc = this.props.price
+										.toString()
+										.split('.')[0];
 		let price = this.props.price
 							.toString()
-							.split('.')[0] + '00'
+							.split('.')[0] + '00';
 		// console.log(this.padLeadingZeros(parseInt(this.props.price) , 1) )
 		let checkout = new WidgetCheckout({
 							currency: 'COP',
@@ -356,7 +361,15 @@ class PaySection extends Component {
 							reference: this.randomPayReference(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' + (price * quantity) + this.props.props.data.product_global_id),
 							// publicKey: 'pub_test_pYoEwV7Vh2UjsXGhNQ5JEYWa1LnXKj9r',
 							publicKey: 'pub_prod_6SqAXiHbJoIQH2e9I85GgxA1Gmd9he20',
-							// redirectUrl: 'http://localhost:3000/pay_status',
+							redirectUrl: 'https://kiero.co/detalle/' +
+																		this.props.props.data.product_global_id +
+																		'_' +
+																		this.props.props.data.product_global_title
+																			.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+																			.replaceAll('//', '%2F')
+																			.replace('%', '')
+																			.split(' ')
+																			.join('-'),
 							shippingAddress:{
 								country:'CO',
 								city: this.state.city == '' ? 'null' : this.state.city,
@@ -375,8 +388,8 @@ class PaySection extends Component {
 					this.state.neighborhood == '' ? this.setState({modalAddr: true}) : 
 																						checkout.open(function ( result ) {
 																							var transaction = result.transaction
-																							console.log('Transaction ID: ', transaction.id)
-																							console.log('Transaction object: ', transaction)
+																							// console.log('Transaction ID: ', transaction.id)
+																							// console.log('Transaction object: ', transaction)
 																							let dataTransaction = {
 																											'transactionId':transaction.id,
 																											'transactionReference':transaction.reference,
@@ -388,9 +401,15 @@ class PaySection extends Component {
 																											'userMobilePhone': transaction.customerData.phoneNumber,
 																											'cityAddress': transaction.shippingAddress.city,
 																											'regionAddress': transaction.shippingAddress.region,
-																											'userAddress': transaction.shippingAddress.addressLine1
+																											'userAddress': transaction.shippingAddress.addressLine1,
+																											'quantity':quantity,
+																											'productId':productId,
+																											'price':parseInt(priceToCalc),
+																											'total':parseInt(priceToCalc * quantity),
+																											'marketId':marketId
 																										}
-																							console.log(dataTransaction)
+
+																							// console.log(dataTransaction)
 
 																							addPaymentDataWompi("/DataWompiTransaction", dataTransaction);
 
