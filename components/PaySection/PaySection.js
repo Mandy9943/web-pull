@@ -33,10 +33,8 @@ class PaySection extends Component {
 			modalAddr : false,
 			user: '',
 			email: '',
-			phone: '',
 			mobile_phone: '',
 			city: '',
-			phone: '',
 			region: '',
 			address: '',
 			neighborhood: '',
@@ -327,7 +325,7 @@ class PaySection extends Component {
 	handleFormValue = (e) => {
 		let { name, value } = e.target;
 
-		if (name === 'phone' || name === 'mobile_phone') {
+		if (name === 'mobile_phone') {
 			this.validateNumber(name, value);
 		}
 		if (name === 'region' || name === 'neighborhood' || name === 'city') {
@@ -358,7 +356,7 @@ class PaySection extends Component {
 							reference: this.randomPayReference(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' + (price * quantity) + this.props.props.data.product_global_id),
 							// publicKey: 'pub_test_pYoEwV7Vh2UjsXGhNQ5JEYWa1LnXKj9r',
 							publicKey: 'pub_prod_6SqAXiHbJoIQH2e9I85GgxA1Gmd9he20',
-							redirectUrl: 'http://localhost:3000/pay_status',
+							// redirectUrl: 'http://localhost:3000/pay_status',
 							shippingAddress:{
 								country:'CO',
 								city: this.state.city == '' ? 'null' : this.state.city,
@@ -370,7 +368,6 @@ class PaySection extends Component {
 
 					this.state.user == ''  ||
 					this.state.email == ''  ||
-					this.state.phone == ''  ||
 					this.state.mobile_phone == ''  ||
 					this.state.city == ''  ||
 					this.state.region == ''  ||
@@ -401,12 +398,11 @@ class PaySection extends Component {
 	}
 
 	validateForm = () => {
-		const { user, email, phone, mobile_phone, city, region, address, neighborhood } =
+		const { user, email, mobile_phone, city, region, address, neighborhood } =
 			this.state;
 					if (
 						!user ||
 						!email ||
-						!phone ||
 						!mobile_phone ||
 						!city ||
 						!region ||
@@ -429,7 +425,7 @@ class PaySection extends Component {
 					<input
 						value={this.state.user}
 						onChange={this.handleFormValue}
-						placeholder="Usuario"
+						placeholder="Nombres"
 						name="user"
 					/>
 					<input
@@ -437,12 +433,6 @@ class PaySection extends Component {
 						onChange={this.handleFormValue}
 						placeholder="Correo"
 						name="email"
-					/>
-					<input
-						value={this.state.phone}
-						onChange={this.handleFormValue}
-						placeholder="Telefono fijo"
-						name="phone"
 					/>
 					<input
 						value={this.state.mobile_phone}
