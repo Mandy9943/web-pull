@@ -74,9 +74,10 @@ class PaySection extends Component {
 		// 			'item_brand': this.props.props.data.brand,
 		// 			'quantity': this.state.cantidad == 0 ? 1 : this.state.cantidad,
 		// 			'url':'https://kiero.co/detalle/' + this.props.props.data.product_global_id + '_' + this.props.props.data.product_global_title
-		// 			.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-		// 			.replace('//', '%2F')
-		// 																							.replace('%', '')
+		// 			.replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+		// 			.replaceAll('//', '%2F')
+		// 																							.replaceAll('%', '')
+		// 																							.replaceAll(/['"]+/g, '')
 		// 																							.split(' ')
 		// 																							.join('-'),
 		// 																						}]
@@ -152,9 +153,10 @@ class PaySection extends Component {
 								this.props.props.data.product_global_id +
 								'_' +
 								this.props.props.data.product_global_title
-									.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-									.replace('//', '%2F')
-									.replace('%', '')
+									.replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+									.replaceAll('//', '%2F')
+									.replaceAll('%', '')
+									.replaceAll(/['"]+/g, '')
 									.split(' ')
 									.join('-'),
 							quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
@@ -178,9 +180,10 @@ class PaySection extends Component {
 		// 												"quantity": 5,
 		// 												'price': this.props.props.data.price,
 		// 												'url':'https://kiero.co/detalle/' + this.props.props.data.product_global_id + '_' + this.props.props.data.product_global_title
-		// 																							.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-		// 																							.replace('//', '%2F')
-		// 																							.replace('%', '')
+		// 																							.replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+		// 																							.replaceAll('//', '%2F')
+		// 																							.replaceAll('%', '')
+		//																							.replaceAll(/['"]+/g, '')
 		// 																							.split(' ')
 		// 																							.join('-'),
 		// 												"list_position": 0,
@@ -352,63 +355,77 @@ class PaySection extends Component {
 	renderWompi = () => {
 		// let userLogin = Cookies.get('user_id');
 		// let date = new Date();
+		let marketId = this.props.props.data.store_id;
+		let productId = this.props.props.data.product_global_id;
 		let quantity = this.state.cantidad == 0 ? 1 : this.state.cantidad;
-		let price = this.props.price.toString().split('.')[0] + '00';
+		let priceToCalc = this.props.price
+										.toString()
+										.split('.')[0];
+		let price = this.props.price
+							.toString()
+							.split('.')[0] + '00';
 		// console.log(this.padLeadingZeros(parseInt(this.props.price) , 1) )
 		let checkout = new WidgetCheckout({
-			currency: 'COP',
-			amountInCents: price * quantity,
-			reference: this.randomPayReference(
-				32,
-				'0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' +
-					price * quantity +
-					this.props.props.data.product_global_id
-			),
-			// publicKey: 'pub_test_pYoEwV7Vh2UjsXGhNQ5JEYWa1LnXKj9r',
-			publicKey: 'pub_prod_6SqAXiHbJoIQH2e9I85GgxA1Gmd9he20',
-			// redirectUrl: 'http://localhost:3000/pay_status',
-			shippingAddress: {
-				country: 'CO',
-				city: this.state.city == '' ? 'null' : this.state.city,
-				phoneNumber: this.state.mobile_phone == '' ? 'null' : this.state.mobile_phone,
-				region: this.state.region == '' ? 'null' : this.state.region,
-				addressLine1:
-					this.state.neighborhood == ''
-						? 'null'
-						: this.state.address + ' Barrio ' + this.state.neighborhood,
-			},
-		});
+							currency: 'COP',
+							amountInCents: price * quantity,
+							reference: this.randomPayReference(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' + (price * quantity) + this.props.props.data.product_global_id),
+							// publicKey: 'pub_test_pYoEwV7Vh2UjsXGhNQ5JEYWa1LnXKj9r',
+							publicKey: 'pub_prod_6SqAXiHbJoIQH2e9I85GgxA1Gmd9he20',
+							redirectUrl: 'https://kiero.co/detalle/' +
+																		this.props.props.data.product_global_id +
+																		'_' +
+																		this.props.props.data.product_global_title
+																			.replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+																			.replaceAllAll('//', '%2F')
+																			.replaceAll('%', '')
+																			.replaceAll(/['"]+/g, '')
+																			.split(' ')
+																			.join('-'),
+							shippingAddress:{
+								country:'CO',
+								city: this.state.city == '' ? 'null' : this.state.city,
+								phoneNumber: this.state.mobile_phone == '' ? 'null' : this.state.mobile_phone,
+								region: this.state.region == '' ? 'null' : this.state.region,
+								addressLine1: this.state.neighborhood == '' ? 'null' : this.state.address + ' Barrio ' + this.state.neighborhood
+							},
+						})
 
-		this.state.user == '' ||
-		this.state.email == '' ||
-		this.state.mobile_phone == '' ||
-		this.state.city == '' ||
-		this.state.region == '' ||
-		this.state.address == '' ||
-		this.state.neighborhood == ''
-			? this.setState({ modalAddr: true })
-			: checkout.open(function (result) {
-					var transaction = result.transaction;
-					console.log('Transaction ID: ', transaction.id);
-					console.log('Transaction object: ', transaction);
-					let dataTransaction = {
-						transactionId: transaction.id,
-						transactionReference: transaction.reference,
-						paymentMethod: transaction.paymentMethodType,
-						userIdentificationType: transaction.billingData.legalIdType,
-						userIdentification: transaction.billingData.legalId,
-						userName: transaction.customerData.fullName,
-						emailAddres: transaction.customerEmail,
-						userMobilePhone: transaction.customerData.phoneNumber,
-						cityAddress: transaction.shippingAddress.city,
-						regionAddress: transaction.shippingAddress.region,
-						userAddress: transaction.shippingAddress.addressLine1,
-					};
-					console.log(dataTransaction);
+					this.state.user == ''  ||
+					this.state.email == ''  ||
+					this.state.mobile_phone == ''  ||
+					this.state.city == ''  ||
+					this.state.region == ''  ||
+					this.state.address == ''  ||
+					this.state.neighborhood == '' ? this.setState({modalAddr: true}) : 
+																						checkout.open(function ( result ) {
+																							var transaction = result.transaction
+																							// console.log('Transaction ID: ', transaction.id)
+																							// console.log('Transaction object: ', transaction)
+																							let dataTransaction = {
+																											'transactionId':transaction.id,
+																											'transactionReference':transaction.reference,
+																											'paymentMethod':transaction.paymentMethodType,
+																											'userIdentificationType':transaction.billingData.legalIdType,
+																											'userIdentification':transaction.billingData.legalId,
+																											'userName': transaction.customerData.fullName,
+																											'emailAddres': transaction.customerEmail,
+																											'userMobilePhone': transaction.customerData.phoneNumber,
+																											'cityAddress': transaction.shippingAddress.city,
+																											'regionAddress': transaction.shippingAddress.region,
+																											'userAddress': transaction.shippingAddress.addressLine1,
+																											'quantity':quantity,
+																											'productId':productId,
+																											'price':parseInt(priceToCalc),
+																											'total':parseInt(priceToCalc * quantity),
+																											'marketId':marketId
+																										}
 
-					addPaymentDataWompi('/DataWompiTransaction', dataTransaction);
-			  });
-	};
+																							// console.log(dataTransaction)
+
+																							addPaymentDataWompi("/DataWompiTransaction", dataTransaction);
+
+																						})
+	}
 
 	validateForm = () => {
 		const { user, email, mobile_phone, city, region, address, neighborhood } = this.state;
@@ -527,7 +544,7 @@ class PaySection extends Component {
 							? this.props.price
 									.toString()
 									.split('.')[0]
-									.replace(/(.)(?=(\d{3})+$)/g, '$1.')
+									.replaceAll(/(.)(?=(\d{3})+$)/g, '$1.')
 							: ' ... '}
 					</h3>
 				</div>
