@@ -19,7 +19,7 @@ import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import Modal from '../Common/Modal/Modal';
 import Cookies from 'js-cookie';
-import {addPaymentDataWompi} from '../../services/userApi'
+import { addPaymentDataWompi } from '../../services/userApi';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import { Button, Modal } from 'react-bootstrap';
 
@@ -30,7 +30,7 @@ class PaySection extends Component {
 			cantidad: 0,
 			dimensions: {},
 			variantsSpinner: props.m_pgid ? false : true,
-			modalAddr : false,
+			modalAddr: false,
 			user: '',
 			email: '',
 			mobile_phone: '',
@@ -38,7 +38,7 @@ class PaySection extends Component {
 			region: '',
 			address: '',
 			neighborhood: '',
-			dataTransaction : [],
+			dataTransaction: [],
 			validForm: true,
 		};
 		this.toggleModalAddr = this.toggleModalAddr.bind(this);
@@ -53,15 +53,15 @@ class PaySection extends Component {
 	}
 
 	go = (id) => {
-		var quantity = this.state.cantidad == 0 ? 1 : this.state.cantidad
+		var quantity = this.state.cantidad == 0 ? 1 : this.state.cantidad;
 
-		const concatCategories = ()=>{
+		const concatCategories = () => {
 			var dataCategory = [];
 			this.props.props.data.breadcum.forEach((prod, index) => {
-				dataCategory.push(prod.name)
+				dataCategory.push(prod.name);
 			});
-			return dataCategory.join(' / ')
-		}
+			return dataCategory.join(' / ');
+		};
 
 		// dataLayer.push({ ecommerce: null });
 		// let dataLayerBeginCheckout = {
@@ -90,78 +90,83 @@ class PaySection extends Component {
 		// 		});
 		// 		return dataLayerBeginCheckout;
 		// 	}
-			
+
 		// 	let resultDataLayerBeginCheckout = beginCheckoutGooleDataLayerG4(dataLayerBeginCheckout);
-			
+
 		// 	dataLayer.push(resultDataLayerBeginCheckout);
-		if (typeof window !== "undefined") {
-				if (window.fbq != null) { 
-					window.fbq('track','InitiateCheckout',{
-														'content_ids': this.props.props.data.product_global_id,
-														'content_name': this.props.props.data.product_global_title,
-														'product_group': this.props.props.data.type,
-														'content_type':'product',
-														'content_category':this.props.props.data.breadcum[0].name,
-														'contents': [{
-															'id':this.props.props.data.product_global_id,
-															'quantity':this.state.cantidad == 0 ? 1 : this.state.cantidad,
-														}],
-														'currency': 'COP',
-														'value': this.props.props.data.price,
-														'num_items':this.state.cantidad == 0 ? 1 : this.state.cantidad
-													}) 
-				} else {
-						fbq('track','InitiateCheckout',{
-														'content_ids': this.props.props.data.product_global_id,
-														'content_name': this.props.props.data.product_global_title,
-														'product_group': this.props.props.data.type,
-														'content_type':'product',
-														'content_category':this.props.props.data.breadcum[0].name,
-														'contents': [{
-															'id':this.props.props.data.product_global_id,
-															'quantity':this.state.cantidad == 0 ? 1 : this.state.cantidad,
-														}],
-														'currency': 'COP',
-														'value': this.props.props.data.price,
-														'num_items':this.state.cantidad == 0 ? 1 : this.state.cantidad
-													}) 
-						}
+		if (typeof window !== 'undefined') {
+			if (window.fbq != null) {
+				window.fbq('track', 'InitiateCheckout', {
+					content_ids: this.props.props.data.product_global_id,
+					content_name: this.props.props.data.product_global_title,
+					product_group: this.props.props.data.type,
+					content_type: 'product',
+					content_category: this.props.props.data.breadcum[0].name,
+					contents: [
+						{
+							id: this.props.props.data.product_global_id,
+							quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
+						},
+					],
+					currency: 'COP',
+					value: this.props.props.data.price,
+					num_items: this.state.cantidad == 0 ? 1 : this.state.cantidad,
+				});
+			} else {
+				fbq('track', 'InitiateCheckout', {
+					content_ids: this.props.props.data.product_global_id,
+					content_name: this.props.props.data.product_global_title,
+					product_group: this.props.props.data.type,
+					content_type: 'product',
+					content_category: this.props.props.data.breadcum[0].name,
+					contents: [
+						{
+							id: this.props.props.data.product_global_id,
+							quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
+						},
+					],
+					currency: 'COP',
+					value: this.props.props.data.price,
+					num_items: this.state.cantidad == 0 ? 1 : this.state.cantidad,
+				});
+			}
 		}
 
-	
 		dataLayer.push({
-			'event':'checkout',
-			'ecommerce': {
-				'checkout':{
-					"currencyCode": "COP",
-					"actionField": {
-									"step": 1
-									},
-					'impressions': [
-						{ 
-							'name': this.props.props.data.product_global_title, // Name or ID is required.
-							'id': this.props.props.data.product_global_id,
-							'price': this.props.props.data.price,
-							'brand': this.props.props.data.brand,
-							'category': concatCategories(),
-							'url':'https://kiero.co/detalle/' + this.props.props.data.product_global_id + '_' + this.props.props.data.product_global_title
-																							.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-																							.replace('//', '%2F')
-																							.replace('%', '')
-																							.split(' ')
-																							.join('-'),
-							'quantity': this.state.cantidad == 0 ? 1 : this.state.cantidad,
-						}
-					]
-				}
-					
+			event: 'checkout',
+			ecommerce: {
+				checkout: {
+					currencyCode: 'COP',
+					actionField: {
+						step: 1,
+					},
+					impressions: [
+						{
+							name: this.props.props.data.product_global_title, // Name or ID is required.
+							id: this.props.props.data.product_global_id,
+							price: this.props.props.data.price,
+							brand: this.props.props.data.brand,
+							category: concatCategories(),
+							url:
+								'https://kiero.co/detalle/' +
+								this.props.props.data.product_global_id +
+								'_' +
+								this.props.props.data.product_global_title
+									.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+									.replace('//', '%2F')
+									.replace('%', '')
+									.split(' ')
+									.join('-'),
+							quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
+						},
+					],
+				},
 			},
 			// 	'eventCallback': function(){
 			//  	window.location = '/pagar/' + id + '/' + quantity;
-			//  } 
-		})
+			//  }
+		});
 
-		
 		// gtag('event', 'begin_checkout', {
 		// 								"items": [
 		// 											{
@@ -182,13 +187,9 @@ class PaySection extends Component {
 		// 											}
 		// 								]
 		// 	});
+	};
 
-		
-
-			
-		};
-		
-		loadData = async () => {
+	loadData = async () => {
 		this.setState({
 			variantsSpinner: true,
 		});
@@ -251,7 +252,11 @@ class PaySection extends Component {
 
 	renderPayButtonSection = () => {
 		// const btnEnabled = <button type="submit" onClick={() => this.go(this.props.pgid)}>Comprar</button>;
-		const btnEnabled = <button type="submit" onClick={() => this.renderWompi()}>Comprar</button>;
+		const btnEnabled = (
+			<button type="submit" onClick={() => this.renderWompi()}>
+				Comprar
+			</button>
+		);
 		const btnDisabled = (
 			<button
 				style={{ opacity: '0.35', cursor: 'not-allowed' }}
@@ -308,6 +313,7 @@ class PaySection extends Component {
 			);
 		}
 	};
+	
 	validateNumber(name, value) {
 		const pattern = new RegExp('^[0-9]*$');
 		this.setState({
@@ -338,90 +344,98 @@ class PaySection extends Component {
 
 	randomPayReference = (length, chars) => {
 		var result = '';
-		for (var i = length; i > 0; --i) result += chars[Math.round(Math.random() * (chars.length - 1))];
+		for (var i = length; i > 0; --i)
+			result += chars[Math.round(Math.random() * (chars.length - 1))];
 		return result;
-	}
+	};
 
 	renderWompi = () => {
 		// let userLogin = Cookies.get('user_id');
 		// let date = new Date();
-		let quantity = this.state.cantidad == 0 ? 1 : this.state.cantidad
-		let price = this.props.price
-							.toString()
-							.split('.')[0] + '00'
+		let quantity = this.state.cantidad == 0 ? 1 : this.state.cantidad;
+		let price = this.props.price.toString().split('.')[0] + '00';
 		// console.log(this.padLeadingZeros(parseInt(this.props.price) , 1) )
 		let checkout = new WidgetCheckout({
-							currency: 'COP',
-							amountInCents: price * quantity,
-							reference: this.randomPayReference(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' + (price * quantity) + this.props.props.data.product_global_id),
-							// publicKey: 'pub_test_pYoEwV7Vh2UjsXGhNQ5JEYWa1LnXKj9r',
-							publicKey: 'pub_prod_6SqAXiHbJoIQH2e9I85GgxA1Gmd9he20',
-							// redirectUrl: 'http://localhost:3000/pay_status',
-							shippingAddress:{
-								country:'CO',
-								city: this.state.city == '' ? 'null' : this.state.city,
-								phoneNumber: this.state.mobile_phone == '' ? 'null' : this.state.mobile_phone,
-								region: this.state.region == '' ? 'null' : this.state.region,
-								addressLine1: this.state.neighborhood == '' ? 'null' : this.state.address + ' Barrio ' + this.state.neighborhood
-							},
-						})
+			currency: 'COP',
+			amountInCents: price * quantity,
+			reference: this.randomPayReference(
+				32,
+				'0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' +
+					price * quantity +
+					this.props.props.data.product_global_id
+			),
+			// publicKey: 'pub_test_pYoEwV7Vh2UjsXGhNQ5JEYWa1LnXKj9r',
+			publicKey: 'pub_prod_6SqAXiHbJoIQH2e9I85GgxA1Gmd9he20',
+			// redirectUrl: 'http://localhost:3000/pay_status',
+			shippingAddress: {
+				country: 'CO',
+				city: this.state.city == '' ? 'null' : this.state.city,
+				phoneNumber: this.state.mobile_phone == '' ? 'null' : this.state.mobile_phone,
+				region: this.state.region == '' ? 'null' : this.state.region,
+				addressLine1:
+					this.state.neighborhood == ''
+						? 'null'
+						: this.state.address + ' Barrio ' + this.state.neighborhood,
+			},
+		});
 
-					this.state.user == ''  ||
-					this.state.email == ''  ||
-					this.state.mobile_phone == ''  ||
-					this.state.city == ''  ||
-					this.state.region == ''  ||
-					this.state.address == ''  ||
-					this.state.neighborhood == '' ? this.setState({modalAddr: true}) : 
-																						checkout.open(function ( result ) {
-																							var transaction = result.transaction
-																							console.log('Transaction ID: ', transaction.id)
-																							console.log('Transaction object: ', transaction)
-																							let dataTransaction = {
-																											'transactionId':transaction.id,
-																											'transactionReference':transaction.reference,
-																											'paymentMethod':transaction.paymentMethodType,
-																											'userIdentificationType':transaction.billingData.legalIdType,
-																											'userIdentification':transaction.billingData.legalId,
-																											'userName': transaction.customerData.fullName,
-																											'emailAddres': transaction.customerEmail,
-																											'userMobilePhone': transaction.customerData.phoneNumber,
-																											'cityAddress': transaction.shippingAddress.city,
-																											'regionAddress': transaction.shippingAddress.region,
-																											'userAddress': transaction.shippingAddress.addressLine1
-																										}
-																							console.log(dataTransaction)
+		this.state.user == '' ||
+		this.state.email == '' ||
+		this.state.mobile_phone == '' ||
+		this.state.city == '' ||
+		this.state.region == '' ||
+		this.state.address == '' ||
+		this.state.neighborhood == ''
+			? this.setState({ modalAddr: true })
+			: checkout.open(function (result) {
+					var transaction = result.transaction;
+					console.log('Transaction ID: ', transaction.id);
+					console.log('Transaction object: ', transaction);
+					let dataTransaction = {
+						transactionId: transaction.id,
+						transactionReference: transaction.reference,
+						paymentMethod: transaction.paymentMethodType,
+						userIdentificationType: transaction.billingData.legalIdType,
+						userIdentification: transaction.billingData.legalId,
+						userName: transaction.customerData.fullName,
+						emailAddres: transaction.customerEmail,
+						userMobilePhone: transaction.customerData.phoneNumber,
+						cityAddress: transaction.shippingAddress.city,
+						regionAddress: transaction.shippingAddress.region,
+						userAddress: transaction.shippingAddress.addressLine1,
+					};
+					console.log(dataTransaction);
 
-																							addPaymentDataWompi("/DataWompiTransaction", dataTransaction);
-
-																						})
-	}
+					addPaymentDataWompi('/DataWompiTransaction', dataTransaction);
+			  });
+	};
 
 	validateForm = () => {
-		const { user, email, mobile_phone, city, region, address, neighborhood } =
-			this.state;
-					if (
-						!user ||
-						!email ||
-						!mobile_phone ||
-						!city ||
-						!region ||
-						!address ||
-						!neighborhood
-					) {
-						this.setState({ validForm: false });
-					} else {
-						this.setState({modalAddr: false}) 
-						this.setState({ validForm: true });
-						this.renderWompi()
-					}
+		const { user, email, mobile_phone, city, region, address, neighborhood } = this.state;
+		if (
+			!user ||
+			!email ||
+			!mobile_phone ||
+			!city ||
+			!region ||
+			!address ||
+			!neighborhood
+		) {
+			this.setState({ validForm: false });
+		} else {
+			this.setState({ modalAddr: false });
+			this.setState({ validForm: true });
+			this.renderWompi();
+		}
 	};
 
 	render() {
 		const contentModalNewAddress = (
 			<div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
-				<p style={{ textAlign: 'center', fontWeight: 'bold', paddingBottom:30 }}>Por favor agregue los datos de envío</p>
-				<div style={{ width: '300px', margin: '0 auto'}}>
+				<p style={{ textAlign: 'center', fontWeight: 'bold', paddingBottom: 30 }}>
+					Por favor agregue los datos de envío
+				</p>
+				<div style={{ width: '300px', margin: '0 auto' }}>
 					<input
 						value={this.state.user}
 						onChange={this.handleFormValue}
@@ -464,20 +478,31 @@ class PaySection extends Component {
 						placeholder="Barrio"
 						name="neighborhood"
 					/>
-					<button style={{ background:'#cf0a2c', color:'white'}} onClick={() => this.validateForm()}>Continuar con la transacción</button>
+					<button
+						style={{ background: '#cf0a2c', color: 'white' }}
+						onClick={() => this.validateForm()}
+					>
+						Continuar con la transacción
+					</button>
 				</div>
-					{!this.state.validForm ? (
-					<div style={{     	color: 'white',
-										background: 'rgb(207, 10, 44)',
-										height: 40,
-										borderRadius: 15,
-										width: '80%',
-										margin:'15px auto'}}>
-											<p style={{ textAlign: 'center', fontWeight: 'bold', marginTop: 10.5 }}>Tienes campos pendientes por completar</p>
-										</div>
-					) : (
-						''
-					)}
+				{!this.state.validForm ? (
+					<div
+						style={{
+							color: 'white',
+							background: 'rgb(207, 10, 44)',
+							height: 40,
+							borderRadius: 15,
+							width: '80%',
+							margin: '15px auto',
+						}}
+					>
+						<p style={{ textAlign: 'center', fontWeight: 'bold', marginTop: 10.5 }}>
+							Tienes campos pendientes por completar
+						</p>
+					</div>
+				) : (
+					''
+				)}
 			</div>
 		);
 		return (
@@ -604,14 +629,9 @@ class PaySection extends Component {
 					<Seller productId={this.props.pid} />
 				</div>
 				{this.state.modalAddr ? (
-					<Modal
-						toggle={this.toggleModalAddr}
-						content={contentModalNewAddress}
-						button
-					/>
+					<Modal toggle={this.toggleModalAddr} content={contentModalNewAddress} button />
 				) : null}
 			</div>
-			
 		);
 	}
 }
