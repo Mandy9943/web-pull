@@ -35,6 +35,7 @@ export default class PaymentWay extends Component {
 	constructor(props) {
 		super(props);
 		var md5 = require('md5');
+		var ref_code = 'kieroco-'+new Date().getTime();
 		this.state = {
 			name: '',
 			phone: '',
@@ -76,7 +77,8 @@ export default class PaymentWay extends Component {
 			modalValidate: false,
 			acceptance_token: '',
 			acp_checked: false,
-			signature: md5('4Vj8eK4rloUd272L48hsrarnUA~508029~AAAAAA013~'+props.data.price+'~COP'),
+			ref_code: ref_code,
+			signature: md5('4Vj8eK4rloUd272L48hsrarnUA~508029~'+ref_code+'~'+props.data.price+'~COP'),
 		};
 		this.validateName = this.validateName.bind(this);
 		this.validatePhone = this.validatePhone.bind(this);
@@ -1491,7 +1493,7 @@ export default class PaymentWay extends Component {
 							<input name="merchantId"    type="hidden"  value="508029"   />
 								<input name="accountId"     type="hidden"  value="512321" />
 									<input name="description"   type="hidden"  value={this.props.data.title}  />
-										<input name="referenceCode" type="hidden"  value="AAAAAA013" />
+										<input name="referenceCode" type="hidden"  value={this.state.ref_code} />
 											<input name="amount"        type="hidden"  value={this.props.data.price}   />
 												<input name="tax"           type="hidden"  value="0"  />
 													<input name="taxReturnBase" type="hidden"  value="0" />
@@ -1499,8 +1501,10 @@ export default class PaymentWay extends Component {
 															<input name="signature"     type="hidden"  value={this.state.signature}  />
 																<input name="test"          type="hidden"  value="0" />
 																	<input name="buyerEmail"    type="hidden"  value="test@test.com" />
+																	<input name="extra1"    type="hidden"  value={this.props.data.id} />
+																	<input name="extra2"    type="hidden"  value={this.props.user.id} />
 																		<input name="responseUrl"    type="hidden"  value="http://www.test.com/response" />
-																			<input name="confirmationUrl"    type="hidden"  value="http://www.test.com/confirmation" />
+																			<input name="confirmationUrl"    type="hidden"  value="http://localhost:5000/payuComplete" />
 																				<input className="button-finish-pay" name="Submit"        type="submit"  value="Finalizar compra"/>
 																					</form>
 						</div>
