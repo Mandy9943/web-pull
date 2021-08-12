@@ -106,6 +106,7 @@ class ProductDetail extends Component {
 									.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
 									.replace('//', '%2F')
 									.replace('%', '')
+									.replaceAll(/['"]+/g, '')
 									.split(' ')
 									.join('-'),
 							position: 1,
