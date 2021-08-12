@@ -1504,7 +1504,7 @@ export default class PaymentWay extends Component {
 																	<input name="extra1"    type="hidden"  value={this.props.data.id} />
 																	<input name="extra2"    type="hidden"  value={this.props.user.id} />
 																		<input name="responseUrl"    type="hidden"  value="http://www.test.com/response" />
-																			<input name="confirmationUrl"    type="hidden"  value="http://localhost:5000/payuComplete" />
+																			<input name="confirmationUrl"    type="hidden"  value="https://api.kieroapi.org/payuComplete" />
 																				<input className="button-finish-pay" name="Submit"        type="submit"  value="Finalizar compra"/>
 																					</form>
 						</div>
