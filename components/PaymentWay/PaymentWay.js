@@ -34,6 +34,8 @@ import { apiget } from '../../lib/request';
 export default class PaymentWay extends Component {
 	constructor(props) {
 		super(props);
+		var md5 = require('md5');
+		var ref_code = 'kieroco-'+new Date().getTime();
 		this.state = {
 			name: '',
 			phone: '',
@@ -75,6 +77,8 @@ export default class PaymentWay extends Component {
 			modalValidate: false,
 			acceptance_token: '',
 			acp_checked: false,
+			ref_code: ref_code,
+			signature: md5('4Vj8eK4rloUd272L48hsrarnUA~508029~'+ref_code+'~'+props.data.price+'~COP'),
 		};
 		this.validateName = this.validateName.bind(this);
 		this.validatePhone = this.validatePhone.bind(this);
@@ -84,6 +88,9 @@ export default class PaymentWay extends Component {
 		this.validateCcName = this.validateCcName.bind(this);
 		this.validateCcCvv = this.validateCcCvv.bind(this);
 		this.validateCcId = this.validateCcId.bind(this);
+		console.log(props);
+
+		console.log(md5('4Vj8eK4rloUd272L48hsrarnUA~508029~AAAAAA013~'+props.data.price+'~COP'));
 	}
 
 	componentDidMount() {
@@ -1129,15 +1136,15 @@ export default class PaymentWay extends Component {
 								}
 							/>
 							<div className="content-product-description">
-								<p>{this.props.data.title}</p>
+								<p>{this.props.data.title.substr(0, 60)}</p>
 								<p className="quantity">Cantidad: {this.state.productQuantity}</p>
 								<h3>Total: $ {totalPrice} </h3>
 							</div>
 						</div>
-						<h2>Elige la forma de pago</h2>
+						<h2>¿Dónde quieres recibir el producto?</h2>
 
 						<div className="content-payment-way">
-							<div className="way-to-pay">
+							{/* <div className="way-to-pay">
 								{this.state.shownPaymentOption === 0 ||
 								this.state.shownPaymentOption === 1 ? (
 									<div
@@ -1425,23 +1432,7 @@ export default class PaymentWay extends Component {
 										</div>
 									</div>
 								</form>
-							</div>
-							<div className="payment-data">
-								<div className="product-description payment-way-box only-desktop">
-									<img
-										src={
-											this.props.data.images.length > 0
-												? this.props.data.images[0].url
-												: 'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png'
-										}
-									/>
-									<div className="content-product-description">
-										<p>{this.props.data.title}</p>
-										<p className="quantity">Cantidad: {this.state.productQuantity}</p>
-										<h3>$ {totalPrice} </h3>
-									</div>
-								</div>
-
+							</div> */}
 								<div className="shipping-address payment-way-box">
 									{this.state.addrLoaded && this.state.addresses.length == 0 && (
 										<>
@@ -1481,7 +1472,41 @@ export default class PaymentWay extends Component {
 										</>
 									)}
 								</div>
+							<div className="payment-data">
+								<div className="product-description payment-way-box only-desktop">
+									<img
+										src={
+											this.props.data.images.length > 0
+												? this.props.data.images[0].url
+												: 'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png'
+										}
+									/>
+									<div className="content-product-description">
+										<p>{this.props.data.title.substr(0, 60)}</p>
+										<p className="quantity">Cantidad: {this.state.productQuantity}</p>
+										<h3>$ {totalPrice} </h3>
+									</div>
+								</div>
 							</div>
+
+							<form className="finish-pay" method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu">
+							<input name="merchantId"    type="hidden"  value="508029"   />
+								<input name="accountId"     type="hidden"  value="512321" />
+									<input name="description"   type="hidden"  value={this.props.data.title}  />
+										<input name="referenceCode" type="hidden"  value={this.state.ref_code} />
+											<input name="amount"        type="hidden"  value={this.props.data.price}   />
+												<input name="tax"           type="hidden"  value="0"  />
+													<input name="taxReturnBase" type="hidden"  value="0" />
+														<input name="currency"      type="hidden"  value="COP" />
+															<input name="signature"     type="hidden"  value={this.state.signature}  />
+																<input name="test"          type="hidden"  value="0" />
+																	<input name="buyerEmail"    type="hidden"  value="test@test.com" />
+																	<input name="extra1"    type="hidden"  value={this.props.data.id} />
+																	<input name="extra2"    type="hidden"  value={this.props.user.id} />
+																		<input name="responseUrl"    type="hidden"  value="http://www.test.com/response" />
+																			<input name="confirmationUrl"    type="hidden"  value="http://localhost:5000/payuComplete" />
+																				<input className="button-finish-pay" name="Submit"        type="submit"  value="Finalizar compra"/>
+																					</form>
 						</div>
 					</div>
 				)}
