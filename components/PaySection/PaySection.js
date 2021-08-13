@@ -376,7 +376,7 @@ class PaySection extends Component {
 																		'_' +
 																		this.props.props.data.product_global_title
 																			.replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-																			.replaceAllAll('//', '%2F')
+																			.replaceAll('//', '%2F')
 																			.replaceAll('%', '')
 																			.replaceAll(/['"]+/g, '')
 																			.split(' ')
@@ -544,7 +544,7 @@ class PaySection extends Component {
 							? this.props.price
 									.toString()
 									.split('.')[0]
-									.replaceAll(/(.)(?=(\d{3})+$)/g, '$1.')
+									.replace(/(.)(?=(\d{3})+$)/g, '$1.')
 							: ' ... '}
 					</h3>
 				</div>
