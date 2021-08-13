@@ -5,7 +5,7 @@ import './SellProduct.css';
 import Nav from '../Common/Nav/Nav';
 import BasicInfo from './components/BasicInfo';
 import DataSheetAcordeon from './components/DataSheetAcordeon';
-import WithdrawAcordeon from './components/WithDrawAcordeon';
+import WithDrawAcordeon from './components/WithDrawAcordeon';
 import TypeOfAddAcordeon from './components/TypeOfAddAcordeon';
 import DescriptionAcordeon from './components/DescriptionAcordeon';
 import VideoAcordeon from './components/VideoAcordeon';
@@ -204,7 +204,7 @@ export default function SellProduct({ user_data }) {
 							widthUnit={widthUnit}
 							setWidthUnit={setWidthUnit}
 						/>
-						<WithdrawAcordeon
+						<WithDrawAcordeon
 							switchedWithdraw={switchedWithdraw}
 							setSwitchedWithdraw={setSwitchedWithdraw}
 						/>
