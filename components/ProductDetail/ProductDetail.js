@@ -1,16 +1,7 @@
 import React, { Component } from 'react';
-import Nav from '../Common/Nav';
-import Footer from '../Common/Footer';
 import FooterMovil from '../Common/FooterMovil';
-import DetailImg from '../DetailImg';
-import Pay from './../PaySection';
-import Detail from './../DetailProductInfo';
-import Question from './../Question';
-import QuestionItem from './../QuestionItem';
-import ProductCardFinding from './../Common/ProductCardFinding';
 import './ProductDetail.css';
 import Link from 'next/link';
-import ProductsSlider from './../ProductsSlider';
 import Explorer from '../Common/Explorer';
 import { getData } from '../../services/userApi';
 import PayCredit from '../../assets/img/pay-credit.png';
@@ -21,11 +12,34 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTruck, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import Logo1 from '../../assets/img/logo-social.png';
 import Logo2 from '../../assets/img/logo-social1.png';
-import Seller from './../SellerInfo';
 import { RecommendedProducts } from '../RecommendedProducts';
 import { getProductDetail } from '../../services/productsApi';
 import { withRouter } from 'next/router';
 import ReactPixelFacebook from '../../pages/_app';
+
+import dynamic from 'next/dynamic';
+
+// import Nav from '../Common/Nav';
+// import DetailImg from '../DetailImg';
+// import Pay from './../PaySection';
+// import ProductsSlider from './../ProductsSlider';
+// import Detail from './../DetailProductInfo';
+// import Question from './../Question';
+// import QuestionItem from './../QuestionItem';
+// import Seller from './../SellerInfo';
+// import ProductCardFinding from './../Common/ProductCardFinding';
+// import Footer from '../Common/Footer';
+
+const Nav = dynamic(() => import('../Common/Nav/Nav'));
+const DetailImg = dynamic(() => import('../DetailImg'));
+const Pay = dynamic(() => import('./../PaySection'));
+const ProductsSlider = dynamic(() => import('./../ProductsSlider'));
+const Detail = dynamic(() => import('./../DetailProductInfo'));
+const Question = dynamic(() => import('./../Question'));
+const QuestionItem = dynamic(() => import('./../QuestionItem'));
+const Seller = dynamic(() => import('./../SellerInfo'));
+const ProductCardFinding = dynamic(() => import('./../Common/ProductCardFinding'));
+const Footer = dynamic(() => import('../Common/Footer'));
 
 class ProductDetail extends Component {
 	constructor(props) {
