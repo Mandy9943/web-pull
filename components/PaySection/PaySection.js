@@ -328,7 +328,7 @@ class PaySection extends Component {
 		if (name === 'mobile_phone') {
 			this.validateNumber(name, value);
 		}
-		if (name === 'region' || name === 'neighborhood' || name === 'city') {
+		if (name === 'city') {
 			this.validateText(name, value);
 		}
 		if (name === 'user' || name === 'email' || name === 'address') {
@@ -417,25 +417,35 @@ class PaySection extends Component {
 	}
 
 	validateForm = () => {
-		const { user, email, mobile_phone, city, region, address, neighborhood } =
+		const { user, email, mobile_phone, city, address } =
 			this.state;
 					if (
 						!user ||
 						!email ||
 						!mobile_phone ||
 						!city ||
-						!region ||
-						!address ||
-						!neighborhood
+						// !region ||
+						!address
+						// !neighborhood
 					) {
+
 						this.setState({ validForm: false });
 					} else {
-						this.setState({modalAddr: false}) 
+						// this.setState({modalAddr: false})
 						this.setState({ validForm: true });
-						this.renderWompi()
+						// this.renderWompi()
 					}
 	};
+	contactSubmit(e){
+		e.preventDefault();
 
+		if(this.validateForm()){
+			alert("Form submitted");
+		}else{
+			alert("Form has errors.")
+		}
+
+	}
 	render() {
 		var md5 = require('md5');
 		var ref_code = 'kieroco-'+new Date().getTime();
@@ -509,7 +519,7 @@ class PaySection extends Component {
                         <input name="extra2"    type="hidden"  value={this.props.props.data.user.user_id} />
                         <input name="responseUrl"    type="hidden"  value="http://www.test.com/response" />
                         <input name="confirmationUrl"    type="hidden"  value="https://api.kieroapi.org/payuComplete" />
-                        <input className="button-finish-pay" style={{ background:'#cf0a2c', color:'white',cursor: 'pointer'}} name="Submit"  type="submit"  value="Continuar con la transacción"/>
+                        <input className="button-finish-pay" onMouseDown={ this.validateForm } style={{ background:'#cf0a2c', color:'white',cursor: 'pointer'}} name="Submit"  type="submit" value="Continuar con la transacción"/>
                     </form>
 					{/*<button style={{ background:'#cf0a2c', color:'white'}} onClick={() => this.validateForm()}>Continuar con la transacción</button>*/}
 				</div>
