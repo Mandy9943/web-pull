@@ -40,6 +40,7 @@ class PaySection extends Component {
 			neighborhood: '',
 			dataTransaction : [],
 			validForm: true,
+			disabledButton: true,
 		};
 		this.toggleModalAddr = this.toggleModalAddr.bind(this);
 	}
@@ -334,6 +335,7 @@ class PaySection extends Component {
 		if (name === 'user' || name === 'email' || name === 'address') {
 			this.setState({ [name]: value });
 		}
+		this.validateForm()
 	};
 
 	randomPayReference = (length, chars) => {
@@ -430,28 +432,20 @@ class PaySection extends Component {
 					) {
 
 						this.setState({ validForm: false });
+						this.setState({ disabledButton: true });
 					} else {
 						// this.setState({modalAddr: false})
 						this.setState({ validForm: true });
+						this.setState({ disabledButton: false });
 						// this.renderWompi()
 					}
 	};
-	contactSubmit(e){
-		e.preventDefault();
 
-		if(this.validateForm()){
-			alert("Form submitted");
-		}else{
-			alert("Form has errors.")
-		}
-
-	}
 	render() {
 		var md5 = require('md5');
 		var ref_code = 'kieroco-'+new Date().getTime();
 		var signature= md5('4Vj8eK4rloUd272L48hsrarnUA~508029~'+ref_code+'~'+this.props.props.data.price+'~COP')
-
-		console.log(this.state);
+		console.log(this.state)
 		const contentModalNewAddress = (
 			<div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
 				<p style={{ textAlign: 'center', fontWeight: 'bold', paddingBottom:30 }}>Por favor agregue los datos de envío</p>
@@ -519,7 +513,8 @@ class PaySection extends Component {
                         <input name="extra2"    type="hidden"  value={this.props.props.data.user.user_id} />
                         <input name="responseUrl"    type="hidden"  value="http://www.test.com/response" />
                         <input name="confirmationUrl"    type="hidden"  value="https://api.kieroapi.org/payuComplete" />
-                        <input className="button-finish-pay" onMouseDown={ this.validateForm } style={{ background:'#cf0a2c', color:'white',cursor: 'pointer'}} name="Submit"  type="submit" value="Continuar con la transacción"/>
+                        <input className="button-finish-pay"  onMouseDown={ this.validateForm } disabled={this.state.disabledButton}
+							   style={{ background:this.state.disabledButton?'#cf0a2c':'#cf0a2c', color:'white',cursor: 'pointer'}} name="Submit"  type="submit" value="Continuar con la transacción"/>
                     </form>
 					{/*<button style={{ background:'#cf0a2c', color:'white'}} onClick={() => this.validateForm()}>Continuar con la transacción</button>*/}
 				</div>
