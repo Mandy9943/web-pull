@@ -24,7 +24,22 @@
 	grid-template-columns: 3fr 2fr;
 	grid-gap: 100px;
 }
-
+.button-finish-pay {
+	/* margin-top: 20px; */
+	background: #cf0a2c;
+	color: white;
+	width: 80%;
+	font-weight: 500;
+	margin: 5px auto;
+	font-size: 16px;
+	display: flex;
+	justify-content: center;
+}
+.finish-pay {
+	/* margin-top: 20px; */
+	width: 100%;
+	margin: 10px auto;
+}
 .product-description {
 	display: -ms-grid;
 	display: grid;
