@@ -337,7 +337,7 @@ class PaySection extends Component {
 		if (name === 'mobile_phone') {
 			this.validateNumber(name, value);
 		}
-		if (name === 'region' || name === 'neighborhood' || name === 'city') {
+		if (name === 'city') {
 			this.validateText(name, value);
 		}
 		if (name === 'user' || name === 'email' || name === 'address') {
@@ -428,25 +428,41 @@ class PaySection extends Component {
 	}
 
 	validateForm = () => {
-		const { user, email, mobile_phone, city, region, address, neighborhood } = this.state;
-		if (
-			!user ||
-			!email ||
-			!mobile_phone ||
-			!city ||
-			!region ||
-			!address ||
-			!neighborhood
-		) {
-			this.setState({ validForm: false });
-		} else {
-			this.setState({ modalAddr: false });
-			this.setState({ validForm: true });
-			this.renderWompi();
-		}
-	};
+		const { user, email, mobile_phone, city, address } =
+			this.state;
+					if (
+						!user ||
+						!email ||
+						!mobile_phone ||
+						!city ||
+						// !region ||
+						!address
+						// !neighborhood
+					) {
 
+						this.setState({ validForm: false });
+					} else {
+						// this.setState({modalAddr: false})
+						this.setState({ validForm: true });
+						// this.renderWompi()
+					}
+	};
+	contactSubmit(e){
+		e.preventDefault();
+
+		if(this.validateForm()){
+			alert("Form submitted");
+		}else{
+			alert("Form has errors.")
+		}
+
+	}
 	render() {
+		var md5 = require('md5');
+		var ref_code = 'kieroco-'+new Date().getTime();
+		var signature= md5('4Vj8eK4rloUd272L48hsrarnUA~508029~'+ref_code+'~'+this.props.props.data.price+'~COP')
+
+		console.log(this.state);
 		const contentModalNewAddress = (
 			<div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
 				<p style={{ textAlign: 'center', fontWeight: 'bold', paddingBottom: 30 }}>
@@ -460,11 +476,11 @@ class PaySection extends Component {
 						name="user"
 					/>
 					<input
-						value={this.state.email}
-						onChange={this.handleFormValue}
-						placeholder="Correo"
-						name="email"
-					/>
+					 	value={this.state.email}
+					 	onChange={this.handleFormValue}
+					 	placeholder="Correo"
+					 	name="email"
+					 />
 					<input
 						value={this.state.mobile_phone}
 						onChange={this.handleFormValue}
@@ -477,30 +493,48 @@ class PaySection extends Component {
 						placeholder="Ciudad"
 						name="city"
 					/>
-					<input
-						value={this.state.region}
-						onChange={this.handleFormValue}
-						placeholder="Region/Departamento"
-						name="region"
-					/>
+					{/*<input*/}
+					{/*	value={this.state.region}*/}
+					{/*	onChange={this.handleFormValue}*/}
+					{/*	placeholder="Region/Departamento"*/}
+					{/*	name="region"*/}
+					{/*/>*/}
 					<input
 						value={this.state.address}
 						onChange={this.handleFormValue}
 						placeholder="Direccion"
 						name="address"
 					/>
-					<input
-						value={this.state.neighborhood}
-						onChange={this.handleFormValue}
-						placeholder="Barrio"
-						name="neighborhood"
-					/>
-					<button
-						style={{ background: '#cf0a2c', color: 'white' }}
-						onClick={() => this.validateForm()}
-					>
-						Continuar con la transacción
-					</button>
+					{/*<input*/}
+					{/*	value={this.state.neighborhood}*/}
+					{/*	onChange={this.handleFormValue}*/}
+					{/*	placeholder="Barrio"*/}
+					{/*	name="neighborhood"*/}
+					{/*/>*/}
+                    <form className="finish-pay" method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu">
+                        <input name="merchantId"    type="hidden"  value="508029"   />
+                        <input name="accountId"     type="hidden"  value="512321" />
+                        <input name="description"   type="hidden"  value={this.props.props.data.title}  />
+                        <input name="referenceCode" type="hidden"  value={ref_code} />
+                        <input name="amount"        type="hidden"  value={this.props.props.data.price}   />
+                        <input name="tax"           type="hidden"  value="0"  />
+                        <input name="taxReturnBase" type="hidden"  value="0" />
+                        <input name="currency"      type="hidden"  value="COP" />
+                        <input name="signature"     type="hidden"  value={signature}  />
+                        <input name="test"          type="hidden"  value="0" />
+                        <input name="buyerEmail"    type="hidden"  value={this.state.email} />
+                        <input name="telephone"    type="hidden"  value={this.state.mobile_phone} />
+                        <input name="shippingCountry"    type="hidden"  value='CO' />
+                        <input name="shippingCity"    type="hidden"  value={this.state.city} />
+                        <input name="shippingAddress"    type="hidden"  value={this.state.address} />
+                        <input name="payerFullName"    type="hidden"  value={this.state.user} />
+                        <input name="extra1"    type="hidden"  value={this.props.props.data.product_id} />
+                        <input name="extra2"    type="hidden"  value={this.props.props.data.user.user_id} />
+                        <input name="responseUrl"    type="hidden"  value="http://www.test.com/response" />
+                        <input name="confirmationUrl"    type="hidden"  value="https://api.kieroapi.org/payuComplete" />
+                        <input className="button-finish-pay" onMouseDown={ this.validateForm } style={{ background:'#cf0a2c', color:'white',cursor: 'pointer'}} name="Submit"  type="submit" value="Continuar con la transacción"/>
+                    </form>
+					{/*<button style={{ background:'#cf0a2c', color:'white'}} onClick={() => this.validateForm()}>Continuar con la transacción</button>*/}
 				</div>
 				{!this.state.validForm ? (
 					<div
