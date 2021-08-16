@@ -511,7 +511,7 @@ class PaySection extends Component {
                         <input name="payerFullName"    type="hidden"  value={this.state.user} />
                         <input name="extra1"    type="hidden"  value={this.props.props.data.product_id} />
                         <input name="extra2"    type="hidden"  value={this.props.props.data.user.user_id} />
-                        <input name="responseUrl"    type="hidden"  value="http://www.test.com/response" />
+                        <input name="responseUrl"    type="hidden"  value="https://api.kieroapi.org/pay_result" />
                         <input name="confirmationUrl"    type="hidden"  value="https://api.kieroapi.org/payuComplete" />
                         <input className="button-finish-pay"  onMouseDown={ this.validateForm } disabled={this.state.disabledButton}
 							   style={{ background:this.state.disabledButton?'#cf0a2c':'#cf0a2c', color:'white',cursor: 'pointer'}} name="Submit"  type="submit" value="Continuar con la transacción"/>
