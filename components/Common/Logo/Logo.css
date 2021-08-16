@@ -4,8 +4,9 @@
 
 .logo img.logo-img {
   width: auto;
-  height: 55px;
+  height: 33px;
   margin-right: 35px;
+  margin-top: 6px;
 }
 
 @media (max-width: 925px) {

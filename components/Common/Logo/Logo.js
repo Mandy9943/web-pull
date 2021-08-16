@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from "next/link";
 import LogoMovil from "../../../assets/img/logo-kiero.png";
-import LogoWeb from "../../../assets/img/KieroMarketplace-logo.svg";
+import LogoWeb from "../../../assets/img/logokieroweb.png";
 import "./Logo.css";
 
 export default function Logo() {
