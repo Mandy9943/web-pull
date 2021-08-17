@@ -350,7 +350,15 @@ class PaySection extends Component {
 	};
 
 	handleTerms = (e) => {
-		this.setState({ termsOfService: !this.state.termsOfService });
+		console.log(this.state.termsOfService)
+		if(this.state.termsOfService){
+			this.setState({ termsOfService: false });
+		}
+		else{
+			this.setState({ termsOfService: true });
+		}
+		console.log(this.state.termsOfService)
+		this.validateForm();
 	};
 
 	randomPayReference = (length, chars) => {
@@ -449,7 +457,7 @@ class PaySection extends Component {
 			!mobile_phone ||
 			!city ||
 			!address ||
-			!termsOfService
+			this.state.termsOfService === false
 			// !region ||
 			// !neighborhood
 		) {
