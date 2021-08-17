@@ -108,12 +108,12 @@ h5 {
 	overflow: hidden;
 }
 
-@media (max-width: 925px) {
+@media (max-width: 768px) {
 	.no-movil {
 		display: none !important;
 	}
 }
-@media (min-width: 926px) {
+@media (min-width: 769px) {
 	.no-web {
 		display: none !important;
 	}
