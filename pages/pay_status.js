@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useState} from "react";
+import { useRouter,  } from "next/router";
 import Head from "next/head";
 import { getUser, isAuthenticated, getJwt } from "../lib/auth";
 import Header from "../components/Common/Header/Header";
@@ -13,6 +14,15 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 function PayStatus({ data, u_data }) {
+  const router = useRouter()
+
+  const [params, setparams] = useState([])
+
+  React.useEffect(() => {
+      const paramsUrl = router.query
+      setparams(paramsUrl)
+      console.log(params)
+  }, [router.query])
 
   return (
     <div className="order-page">
@@ -47,13 +57,20 @@ function PayStatus({ data, u_data }) {
 			{/* End Google Tag Manager (noscript) */}
       <Header />
     
-      <div className="container-success">
+      {/* <div className="container-success">
         
-      </div> 
+      </div>  */}
       <section className="order-content">
         
         <section className="info">
           <h3 className="title">DATOS DE RESULTADO</h3>
+          {/* <span className="user-id">USERID: <strong>{data.user_id}</strong></span> */}
+          <span>Referencia de pago: <strong>{params.referenceCode}</strong></span>
+          <span>SELLERID: <strong>{params.extra2}</strong></span>
+          <span>Método de pago: <strong>{params.lapPaymentMethodType}</strong></span>
+          <span>Estado del pago:<strong>{params.lapResponseCode == "APPROVED" ? "APROBADO" : params.lapResponseCode == "DECLINED" ? "RECHAZADO" : "PENDIENTE"}</strong> </span>
+          {/* <span>Total a pagar: <strong>{params.cus} </strong></span> */}
+          <span className="name-product">Nombre del producto: <strong>{params.description}</strong></span>
         </section>
       
       </section>

@@ -505,10 +505,10 @@ class PaySection extends Component {
 					{/*	placeholder="Barrio"*/}
 					{/*	name="neighborhood"*/}
 					{/*/>*/}
-                    <form className="finish-pay" method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu">
+                    <form className="finish-pay" method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu" target="_blank">
                         <input name="merchantId"    type="hidden"  value="508029"   />
                         <input name="accountId"     type="hidden"  value="512321" />
-                        <input name="description"   type="hidden"  value={this.props.props.data.title}  />
+                        <input name="description"   type="hidden"  value={this.props.props.data.title.substr(0, 250)}  />
                         <input name="referenceCode" type="hidden"  value={ref_code} />
                         <input name="amount"        type="hidden"  value={this.props.props.data.price}   />
                         <input name="tax"           type="hidden"  value="0"  />
@@ -524,7 +524,7 @@ class PaySection extends Component {
                         <input name="payerFullName"    type="hidden"  value={this.state.user} />
                         <input name="extra1"    type="hidden"  value={this.props.props.data.product_id} />
                         <input name="extra2"    type="hidden"  value={this.props.props.data.user.user_id} />
-                        <input name="responseUrl"    type="hidden"  value="http://www.test.com/response" />
+                        <input name="responseUrl"    type="hidden"  value="http://localhost:3000/pay_status" />
                         <input name="confirmationUrl"    type="hidden"  value="https://api.kieroapi.org/payuComplete" />
                         <input className="button-finish-pay"  onMouseDown={ this.validateForm } disabled={this.state.disabledButton}
 							   style={{ background:this.state.disabledButton?'#cf0a2c':'#cf0a2c', color:'white',cursor: 'pointer'}} name="Submit"  type="submit" value="Continuar con la transacción"/>
