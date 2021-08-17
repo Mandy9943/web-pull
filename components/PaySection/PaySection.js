@@ -20,6 +20,7 @@ import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import Modal from '../Common/Modal/Modal';
 import Cookies from 'js-cookie';
 import { addPaymentDataWompi } from '../../services/userApi';
+
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import { Button, Modal } from 'react-bootstrap';
 
@@ -41,6 +42,7 @@ class PaySection extends Component {
 			dataTransaction: [],
 			validForm: true,
 			disabledButton: true,
+			termsOfService: false,
 		};
 		this.toggleModalAddr = this.toggleModalAddr.bind(this);
 	}
@@ -317,7 +319,7 @@ class PaySection extends Component {
 			);
 		}
 	};
-	
+
 	validateNumber(name, value) {
 		const pattern = new RegExp('^[0-9]*$');
 		this.setState({
@@ -344,7 +346,11 @@ class PaySection extends Component {
 		if (name === 'user' || name === 'email' || name === 'address') {
 			this.setState({ [name]: value });
 		}
-		this.validateForm()
+		this.validateForm();
+	};
+
+	handleTerms = (e) => {
+		this.setState({ termsOfService: !this.state.termsOfService });
 	};
 
 	randomPayReference = (length, chars) => {
@@ -360,103 +366,114 @@ class PaySection extends Component {
 		let marketId = this.props.props.data.store_id;
 		let productId = this.props.props.data.product_global_id;
 		let quantity = this.state.cantidad == 0 ? 1 : this.state.cantidad;
-		let priceToCalc = this.props.price
-										.toString()
-										.split('.')[0];
-		let price = this.props.price
-							.toString()
-							.split('.')[0] + '00';
+		let priceToCalc = this.props.price.toString().split('.')[0];
+		let price = this.props.price.toString().split('.')[0] + '00';
 		// console.log(this.padLeadingZeros(parseInt(this.props.price) , 1) )
 		let checkout = new WidgetCheckout({
-							currency: 'COP',
-							amountInCents: price * quantity,
-							reference: this.randomPayReference(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' + (price * quantity) + this.props.props.data.product_global_id),
-							// publicKey: 'pub_test_pYoEwV7Vh2UjsXGhNQ5JEYWa1LnXKj9r',
-							publicKey: 'pub_prod_6SqAXiHbJoIQH2e9I85GgxA1Gmd9he20',
-							redirectUrl: 'https://kiero.co/detalle/' +
-																		this.props.props.data.product_global_id +
-																		'_' +
-																		this.props.props.data.product_global_title
-																			.replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-																			.replaceAll('//', '%2F')
-																			.replaceAll('%', '')
-																			.replaceAll(/['"]+/g, '')
-																			.split(' ')
-																			.join('-'),
-							shippingAddress:{
-								country:'CO',
-								city: this.state.city == '' ? 'null' : this.state.city,
-								phoneNumber: this.state.mobile_phone == '' ? 'null' : this.state.mobile_phone,
-								region: this.state.region == '' ? 'null' : this.state.region,
-								addressLine1: this.state.neighborhood == '' ? 'null' : this.state.address + ' Barrio ' + this.state.neighborhood
-							},
-						})
+			currency: 'COP',
+			amountInCents: price * quantity,
+			reference: this.randomPayReference(
+				32,
+				'0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' +
+					price * quantity +
+					this.props.props.data.product_global_id
+			),
+			// publicKey: 'pub_test_pYoEwV7Vh2UjsXGhNQ5JEYWa1LnXKj9r',
+			publicKey: 'pub_prod_6SqAXiHbJoIQH2e9I85GgxA1Gmd9he20',
+			redirectUrl:
+				'https://kiero.co/detalle/' +
+				this.props.props.data.product_global_id +
+				'_' +
+				this.props.props.data.product_global_title
+					.replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+					.replaceAll('//', '%2F')
+					.replaceAll('%', '')
+					.replaceAll(/['"]+/g, '')
+					.split(' ')
+					.join('-'),
+			shippingAddress: {
+				country: 'CO',
+				city: this.state.city == '' ? 'null' : this.state.city,
+				phoneNumber: this.state.mobile_phone == '' ? 'null' : this.state.mobile_phone,
+				region: this.state.region == '' ? 'null' : this.state.region,
+				addressLine1:
+					this.state.neighborhood == ''
+						? 'null'
+						: this.state.address + ' Barrio ' + this.state.neighborhood,
+			},
+		});
 
-					this.state.user == ''  ||
-					this.state.email == ''  ||
-					this.state.mobile_phone == ''  ||
-					this.state.city == ''  ||
-					this.state.region == ''  ||
-					this.state.address == ''  ||
-					this.state.neighborhood == '' ? this.setState({modalAddr: true}) : 
-																						checkout.open(function ( result ) {
-																							var transaction = result.transaction
-																							// console.log('Transaction ID: ', transaction.id)
-																							// console.log('Transaction object: ', transaction)
-																							let dataTransaction = {
-																											'transactionId':transaction.id,
-																											'transactionReference':transaction.reference,
-																											'paymentMethod':transaction.paymentMethodType,
-																											'userIdentificationType':transaction.billingData.legalIdType,
-																											'userIdentification':transaction.billingData.legalId,
-																											'userName': transaction.customerData.fullName,
-																											'emailAddres': transaction.customerEmail,
-																											'userMobilePhone': transaction.customerData.phoneNumber,
-																											'cityAddress': transaction.shippingAddress.city,
-																											'regionAddress': transaction.shippingAddress.region,
-																											'userAddress': transaction.shippingAddress.addressLine1,
-																											'quantity':quantity,
-																											'productId':productId,
-																											'price':parseInt(priceToCalc),
-																											'total':parseInt(priceToCalc * quantity),
-																											'marketId':marketId
-																										}
+		this.state.user == '' ||
+		this.state.email == '' ||
+		this.state.mobile_phone == '' ||
+		this.state.city == '' ||
+		this.state.region == '' ||
+		this.state.address == '' ||
+		this.state.neighborhood == '' ||
+		this.state.termsOfService == ''
+			? this.setState({ modalAddr: true })
+			: checkout.open(function (result) {
+					var transaction = result.transaction;
+					// console.log('Transaction ID: ', transaction.id)
+					// console.log('Transaction object: ', transaction)
+					let dataTransaction = {
+						transactionId: transaction.id,
+						transactionReference: transaction.reference,
+						paymentMethod: transaction.paymentMethodType,
+						userIdentificationType: transaction.billingData.legalIdType,
+						userIdentification: transaction.billingData.legalId,
+						userName: transaction.customerData.fullName,
+						emailAddres: transaction.customerEmail,
+						userMobilePhone: transaction.customerData.phoneNumber,
+						cityAddress: transaction.shippingAddress.city,
+						regionAddress: transaction.shippingAddress.region,
+						userAddress: transaction.shippingAddress.addressLine1,
+						quantity: quantity,
+						productId: productId,
+						price: parseInt(priceToCalc),
+						total: parseInt(priceToCalc * quantity),
+						marketId: marketId,
+					};
 
-																							// console.log(dataTransaction)
+					// console.log(dataTransaction)
 
-																							addPaymentDataWompi("/DataWompiTransaction", dataTransaction);
-
-																						})
-	}
+					addPaymentDataWompi('/DataWompiTransaction', dataTransaction);
+			  });
+	};
 
 	validateForm = () => {
-		const { user, email, mobile_phone, city, address } =
-			this.state;
-					if (
-						!user ||
-						!email ||
-						!mobile_phone ||
-						!city ||
-						// !region ||
-						!address
-						// !neighborhood
-					) {
-
-						this.setState({ validForm: false });
-						this.setState({ disabledButton: true });
-					} else {
-						// this.setState({modalAddr: false})
-						this.setState({ validForm: true });
-						this.setState({ disabledButton: false });
-						// this.renderWompi()
-					}
+		const { user, email, mobile_phone, city, address, termsOfService } = this.state;
+		if (
+			!user ||
+			!email ||
+			!mobile_phone ||
+			!city ||
+			!address ||
+			!termsOfService
+			// !region ||
+			// !neighborhood
+		) {
+			this.setState({ validForm: false });
+			this.setState({ disabledButton: true });
+		} else {
+			// this.setState({modalAddr: false})
+			this.setState({ validForm: true });
+			this.setState({ disabledButton: false });
+			// this.renderWompi()
+		}
 	};
 
 	render() {
 		var md5 = require('md5');
-		var ref_code = 'kieroco-'+new Date().getTime();
-		var signature= md5('4Vj8eK4rloUd272L48hsrarnUA~508029~'+ref_code+'~'+this.props.props.data.price+'~COP')
-		console.log(this.state)
+		var ref_code = 'kieroco-' + new Date().getTime();
+		var signature = md5(
+			'4Vj8eK4rloUd272L48hsrarnUA~508029~' +
+				ref_code +
+				'~' +
+				this.props.props.data.price +
+				'~COP'
+		);
+		console.log(this.state);
 		const contentModalNewAddress = (
 			<div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
 				<p style={{ textAlign: 'center', fontWeight: 'bold', paddingBottom: 30 }}>
@@ -470,11 +487,11 @@ class PaySection extends Component {
 						name="user"
 					/>
 					<input
-					 	value={this.state.email}
-					 	onChange={this.handleFormValue}
-					 	placeholder="Correo"
-					 	name="email"
-					 />
+						value={this.state.email}
+						onChange={this.handleFormValue}
+						placeholder="Correo"
+						name="email"
+					/>
 					<input
 						value={this.state.mobile_phone}
 						onChange={this.handleFormValue}
@@ -499,36 +516,80 @@ class PaySection extends Component {
 						placeholder="Direccion"
 						name="address"
 					/>
+					<div style={{ display: 'flex', backgroundColor: 'grey' }}>
+						<Checkbox
+							value={this.state.termsOfService}
+							onChange={this.handleTerms}
+							style={{ color: '#CF0A2C' }}
+						/>
+						<div>
+							Antes de continuar debes aceptar los
+							<div>términos, condiciones y política de privacidad</div>
+							de KieroMarketPlace
+						</div>
+					</div>
 					{/*<input*/}
 					{/*	value={this.state.neighborhood}*/}
 					{/*	onChange={this.handleFormValue}*/}
 					{/*	placeholder="Barrio"*/}
 					{/*	name="neighborhood"*/}
 					{/*/>*/}
-                    <form className="finish-pay" method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu" target="_blank">
-                        <input name="merchantId"    type="hidden"  value="508029"   />
-                        <input name="accountId"     type="hidden"  value="512321" />
-                        <input name="description"   type="hidden"  value={this.props.props.data.title.substr(0, 250)}  />
-                        <input name="referenceCode" type="hidden"  value={ref_code} />
-                        <input name="amount"        type="hidden"  value={this.props.props.data.price}   />
-                        <input name="tax"           type="hidden"  value="0"  />
-                        <input name="taxReturnBase" type="hidden"  value="0" />
-                        <input name="currency"      type="hidden"  value="COP" />
-                        <input name="signature"     type="hidden"  value={signature}  />
-                        <input name="test"          type="hidden"  value="0" />
-                        <input name="buyerEmail"    type="hidden"  value={this.state.email} />
-                        <input name="telephone"    type="hidden"  value={this.state.mobile_phone} />
-                        <input name="shippingCountry"    type="hidden"  value='CO' />
-                        <input name="shippingCity"    type="hidden"  value={this.state.city} />
-                        <input name="shippingAddress"    type="hidden"  value={this.state.address} />
-                        <input name="payerFullName"    type="hidden"  value={this.state.user} />
-                        <input name="extra1"    type="hidden"  value={this.props.props.data.product_id} />
-                        <input name="extra2"    type="hidden"  value={this.props.props.data.user.user_id} />
-                        <input name="responseUrl"    type="hidden"  value="http://localhost:3000/pay_status" />
-                        <input name="confirmationUrl"    type="hidden"  value="https://api.kieroapi.org/payuComplete" />
-                        <input className="button-finish-pay"  onMouseDown={ this.validateForm } disabled={this.state.disabledButton}
-							   style={{ background:this.state.disabledButton?'#cf0a2c':'#cf0a2c', color:'white',cursor: 'pointer'}} name="Submit"  type="submit" value="Continuar con la transacción"/>
-                    </form>
+					<form
+						className="finish-pay"
+						method="post"
+						action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu"
+						target="_blank"
+					>
+						<input name="merchantId" type="hidden" value="508029" />
+						<input name="accountId" type="hidden" value="512321" />
+						<input
+							name="description"
+							type="hidden"
+							value={this.props.props.data.title.substr(0, 250)}
+						/>
+						<input name="referenceCode" type="hidden" value={ref_code} />
+						<input name="amount" type="hidden" value={this.props.props.data.price} />
+						<input name="tax" type="hidden" value="0" />
+						<input name="taxReturnBase" type="hidden" value="0" />
+						<input name="currency" type="hidden" value="COP" />
+						<input name="signature" type="hidden" value={signature} />
+						<input name="test" type="hidden" value="0" />
+						<input name="buyerEmail" type="hidden" value={this.state.email} />
+						<input name="telephone" type="hidden" value={this.state.mobile_phone} />
+						<input name="shippingCountry" type="hidden" value="CO" />
+						<input name="shippingCity" type="hidden" value={this.state.city} />
+						<input name="shippingAddress" type="hidden" value={this.state.address} />
+						<input name="payerFullName" type="hidden" value={this.state.user} />
+						<input name="extra1" type="hidden" value={this.props.props.data.product_id} />
+						<input
+							name="extra2"
+							type="hidden"
+							value={this.props.props.data.user.user_id}
+						/>
+						<input
+							name="responseUrl"
+							type="hidden"
+							value="http://localhost:3000/pay_status"
+						/>
+						<input
+							name="confirmationUrl"
+							type="hidden"
+							value="https://api.kieroapi.org/payuComplete"
+						/>
+						<input
+							className="button-finish-pay"
+							onMouseDown={this.validateForm}
+							disabled={this.state.disabledButton}
+							style={{
+								background: this.state.disabledButton ? '#cf0a2c' : '#cf0a2c',
+								color: 'white',
+								cursor: 'pointer',
+							}}
+							name="Submit"
+							type="submit"
+							value="Continuar con la transacción"
+						/>
+					</form>
 					{/*<button style={{ background:'#cf0a2c', color:'white'}} onClick={() => this.validateForm()}>Continuar con la transacción</button>*/}
 				</div>
 				{!this.state.validForm ? (
@@ -544,6 +605,25 @@ class PaySection extends Component {
 					>
 						<p style={{ textAlign: 'center', fontWeight: 'bold', marginTop: 10.5 }}>
 							Tienes campos pendientes por completar
+						</p>
+					</div>
+				) : (
+					''
+				)}
+				{!this.state.termsOfService ? (
+					<div
+						style={{
+							color: 'white',
+							background: 'rgb(207, 10, 44)',
+							height: 60,
+							borderRadius: 15,
+							width: '80%',
+							margin: '15px auto',
+						}}
+					>
+						<p style={{ textAlign: 'center', fontWeight: 'bold', marginTop: 10.5 }}>
+							Debes aceptar nuestros términos, condiciones y política de privacidad antes
+							de continuar
 						</p>
 					</div>
 				) : (
