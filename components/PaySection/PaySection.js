@@ -442,7 +442,7 @@ class PaySection extends Component {
 	};
 
 	validateForm = () => {
-		const { user, email, mobile_phone, city, address, termsOfService } = this.state;
+		const { user, email, mobile_phone, city, address } = this.state;
 		if (
 			!user ||
 			!email ||
@@ -516,16 +516,39 @@ class PaySection extends Component {
 						placeholder="Direccion"
 						name="address"
 					/>
-					<div style={{ display: 'flex', backgroundColor: 'grey' }}>
-						<Checkbox
-							value={this.state.termsOfService}
-							onChange={this.handleTerms}
-							style={{ color: '#CF0A2C' }}
-						/>
-						<div>
-							Antes de continuar debes aceptar los
-							<div>términos, condiciones y política de privacidad</div>
-							de KieroMarketPlace
+					<div
+						style={{
+							display: 'flex',
+							marginTop: '40px',
+							height: '60px',
+							borderRadius: '5px',
+							margin: '10px -80px',
+							justifyContent: 'center',
+							padding: '10px 0px',
+							backgroundColor: '#D4D4D4',
+						}}
+					>
+						<div
+							style={{
+								display: 'flex',
+							}}
+						>
+							<Checkbox
+								style={{
+									width: 'fit-content',
+									alignSelf: 'center',
+									marginRight: '10px',
+									color: '#CF0A2C',
+								}}
+								type="checkbox"
+								value={this.state.termsOfService}
+								onChange={this.handleTerms}
+							/>
+							<div>
+								Antes de continuar debes aceptar los
+								<div>términos, condiciones y política de privacidad</div>
+								de KieroMarketPlace
+							</div>
 						</div>
 					</div>
 					{/*<input*/}
