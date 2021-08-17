@@ -600,12 +600,12 @@ class PaySection extends Component {
 						<input
 							name="responseUrl"
 							type="hidden"
-							value="http://localhost:3000/pay_status"
+							value="https://api.kieroapi.org/pay_status"
 						/>
 						<input
 							name="confirmationUrl"
 							type="hidden"
-							value="https://api.kieroapi.org/payuComplete"
+							value={"https://api.kieroapi.org/payuComplete?extra1="+this.props.props.data.product_id+"&extra2="+this.props.props.data.user.user_id}
 						/>
 						<input
 							className="button-finish-pay"
