@@ -30,6 +30,7 @@ export const getProducts8 = () => {
 export const getProductDetail = (id_product, params = {}) => {
 	try {
 		let endpoint = '/variations/product_global/' + id_product;
+		console.log(endpoint);
 		let data = apiget2(endpoint, params);
 		return data;
 	} catch (error) {
