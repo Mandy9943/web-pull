@@ -600,7 +600,7 @@ class PaySection extends Component {
 						<input
 							name="extra3"
 							type="hidden"
-							value=4
+							value={this.state.cantidad.toString()}
 						/>
 						<input
 							name="responseUrl"
