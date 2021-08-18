@@ -481,7 +481,7 @@ class PaySection extends Component {
 				this.props.props.data.price +
 				'~COP'
 		);
-		console.log(this.state);
+		// console.log(this.state);
 		const contentModalNewAddress = (
 			<div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
 				<p style={{ textAlign: 'center', fontWeight: 'bold', paddingBottom: 30 }}>
