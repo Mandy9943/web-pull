@@ -458,16 +458,19 @@ class PaySection extends Component {
 	};
 
 	render() {
+		var quantity = this.state.cantidad == 0 ? 1 : this.state.cantidad;
 		var md5 = require('md5');
 		var ref_code = 'kieroco-' + new Date().getTime();
-		var signature = md5(
-			'uzIc90bkpXj0aJDh22H67MRJnl~530932~' +
-				ref_code +
-				'~' +
-				this.props.props.data.price +
-				'~COP'
-		);
-		// console.log(this.state);
+		var signature = md5(`uzIc90bkpXj0aJDh22H67MRJnl~530932~${ref_code}~${this.props.props.data.price*quantity}~COP`)
+		
+		// (
+		// 	'uzIc90bkpXj0aJDh22H67MRJnl~530932~' +
+		// 		ref_code +
+		// 		'~' +
+		// 		this.state.cantidad == 0 ? 1 : this.state.cantidad * this.props.props.data.price +
+		// 		'~COP'
+		// );
+		console.log(signature);
 		const contentModalNewAddress = (
 			<div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
 				<p style={{ textAlign: 'center', fontWeight: 'bold', paddingBottom: 30 }}>
@@ -574,9 +577,9 @@ class PaySection extends Component {
 							value={this.props.props.data.title.substr(0, 250)}
 						/>
 						<input name="referenceCode" type="hidden" value={ref_code} />
-						<input name="amount" type="hidden" value={this.state.cantidad == 0 ? 1 : this.state.cantidad * this.props.props.data.price } />
+						<input name="amount" type="hidden" value={quantity * this.props.props.data.price } />
 						<input name="tax" type="hidden" value="0" />
-						<input name="taxReturnBase" type="hidden" value="0" />
+						<input name="taxReturnBase" type="hidden" value="0" /> 
 						<input name="currency" type="hidden" value="COP" />
 						<input name="signature" type="hidden" value={signature} />
 						<input name="test" type="hidden" value="0" />
