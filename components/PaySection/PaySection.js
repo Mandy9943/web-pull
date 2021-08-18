@@ -457,7 +457,7 @@ class PaySection extends Component {
 			!mobile_phone ||
 			!city ||
 			!address ||
-			this.state.termsOfService === false
+			!this.state.termsOfService
 			// !region ||
 			// !neighborhood
 		) {
@@ -596,6 +596,11 @@ class PaySection extends Component {
 							name="extra2"
 							type="hidden"
 							value={this.props.props.data.user.user_id}
+						/>
+						<input
+							name="extra3"
+							type="hidden"
+							value=1
 						/>
 						<input
 							name="responseUrl"
