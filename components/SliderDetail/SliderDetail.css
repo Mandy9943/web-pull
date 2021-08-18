@@ -1,12 +1,12 @@
 .SliderDetail {
-  margin-botton: 50px;
+  margin-bottom: 50px;
 }
 
 .SliderDetail .mobil {
   display: none;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
   .SliderDetail .mobil {
     display: block !important;
   }
