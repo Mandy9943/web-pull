@@ -474,11 +474,12 @@ class PaySection extends Component {
 	render() {
 		var md5 = require('md5');
 		var ref_code = 'kieroco-' + new Date().getTime();
+		var amount = this.state.cantidad == 0 ? 1 : this.state.cantidad * this.props.props.data.price;
 		var signature = md5(
 			'uzIc90bkpXj0aJDh22H67MRJnl~530932~' +
 				ref_code +
-				'~' +
-				this.props.props.data.price +
+				'~' + amount
+			 +
 				'~COP'
 		);
 		// console.log(this.state);
@@ -579,7 +580,7 @@ class PaySection extends Component {
 							value={this.props.props.data.title.substr(0, 250)}
 						/>
 						<input name="referenceCode" type="hidden" value={ref_code} />
-						<input name="amount" type="hidden" value={this.state.cantidad == 0 ? 1 : this.state.cantidad * this.props.props.data.price } />
+						<input name="amount" type="hidden" value={amount} />
 						<input name="tax" type="hidden" value="0" />
 						<input name="taxReturnBase" type="hidden" value="0" />
 						<input name="currency" type="hidden" value="COP" />
