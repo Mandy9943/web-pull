@@ -45,9 +45,13 @@ class PaySection extends Component {
 			termsOfService: '',
 		};
 	}
-	toggleModalAddr() {
-		this.setState({ modalAddr: !this.state.modalAddr });
-	}
+
+	toggleModalAddr = () => {
+		setTimeout(() => {
+			this.setState({ modalAddr: !this.state.modalAddr });
+		}, 2000);
+	};
+
 	componentDidMount() {
 		if (this.props.m_pgid) return;
 
@@ -565,6 +569,7 @@ class PaySection extends Component {
 						method="post"
 						action="https://checkout.payulatam.com/ppp-web-gateway-payu/"
 						target="_blank"
+						onSubmit={this.toggleModalAddr}
 					>
 						<input name="merchantId" type="hidden" value="530932" />
 						<input name="accountId" type="hidden" value="532826" />
@@ -574,7 +579,15 @@ class PaySection extends Component {
 							value={this.props.props.data.title.substr(0, 250)}
 						/>
 						<input name="referenceCode" type="hidden" value={ref_code} />
-						<input name="amount" type="hidden" value={this.state.cantidad == 0 ? 1 : this.state.cantidad * this.props.props.data.price } />
+						<input
+							name="amount"
+							type="hidden"
+							value={
+								this.state.cantidad == 0
+									? 1
+									: this.state.cantidad * this.props.props.data.price
+							}
+						/>
 						<input name="tax" type="hidden" value="0" />
 						<input name="taxReturnBase" type="hidden" value="0" />
 						<input name="currency" type="hidden" value="COP" />
@@ -592,11 +605,7 @@ class PaySection extends Component {
 							type="hidden"
 							value={this.props.props.data.user.user_id}
 						/>
-						<input
-							name="extra3"
-							type="hidden"
-							value={this.state.cantidad.toString()}
-						/>
+						<input name="extra3" type="hidden" value={this.state.cantidad.toString()} />
 						<input
 							name="responseUrl"
 							type="hidden"
