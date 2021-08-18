@@ -605,7 +605,7 @@ class PaySection extends Component {
 						<input
 							name="responseUrl"
 							type="hidden"
-							value="https://kieroapi.org/pay_status"
+							value="https://kiero.co/pay_status"
 						/>
 						<input
 							name="confirmationUrl"
