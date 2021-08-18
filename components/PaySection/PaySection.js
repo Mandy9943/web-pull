@@ -577,11 +577,7 @@ class PaySection extends Component {
 							value={this.props.props.data.title.substr(0, 250)}
 						/>
 						<input name="referenceCode" type="hidden" value={ref_code} />
-<<<<<<< HEAD
 						<input name="amount" type="hidden" value={quantity * this.props.props.data.price } />
-=======
-						<input name="amount" type="hidden" value={amount} />
->>>>>>> 47f8116f26c3987a56695cdab389c52619d81885
 						<input name="tax" type="hidden" value="0" />
 						<input name="taxReturnBase" type="hidden" value="0" /> 
 						<input name="currency" type="hidden" value="COP" />
