@@ -42,9 +42,8 @@ class PaySection extends Component {
 			dataTransaction: [],
 			validForm: true,
 			disabledButton: true,
-			termsOfService: false,
+			termsOfService: '',
 		};
-		this.toggleModalAddr = this.toggleModalAddr.bind(this);
 	}
 	toggleModalAddr() {
 		this.setState({ modalAddr: !this.state.modalAddr });
@@ -334,6 +333,25 @@ class PaySection extends Component {
 		});
 	}
 
+	validateForm = () => {
+		const { user, email, mobile_phone, city, address, termsOfService } = this.state;
+		if (
+			!user ||
+			!email ||
+			!mobile_phone ||
+			!city ||
+			!address
+			// !region ||
+			// !neighborhood
+		) {
+			this.setState({ disabledButton: true, validForm: false });
+		} else {
+			// this.setState({modalAddr: false})
+			this.setState({ disabledButton: false, validForm: true });
+			// this.renderWompi()
+		}
+	};
+
 	handleFormValue = (e) => {
 		let { name, value } = e.target;
 
@@ -346,18 +364,9 @@ class PaySection extends Component {
 		if (name === 'user' || name === 'email' || name === 'address') {
 			this.setState({ [name]: value });
 		}
-		this.validateForm();
-	};
-
-	handleTerms = (e) => {
-		console.log(this.state.termsOfService)
-		if(this.state.termsOfService){
-			this.setState({ termsOfService: false });
+		if (name === 'terms') {
+			this.setState({ termsOfService: !this.state.termsOfService });
 		}
-		else{
-			this.setState({ termsOfService: true });
-		}
-		console.log(this.state.termsOfService)
 		this.validateForm();
 	};
 
@@ -417,8 +426,7 @@ class PaySection extends Component {
 		this.state.city == '' ||
 		this.state.region == '' ||
 		this.state.address == '' ||
-		this.state.neighborhood == '' ||
-		this.state.termsOfService == ''
+		this.state.neighborhood == ''
 			? this.setState({ modalAddr: true })
 			: checkout.open(function (result) {
 					var transaction = result.transaction;
@@ -447,28 +455,6 @@ class PaySection extends Component {
 
 					addPaymentDataWompi('/DataWompiTransaction', dataTransaction);
 			  });
-	};
-
-	validateForm = () => {
-		const { user, email, mobile_phone, city, address } = this.state;
-		if (
-			!user ||
-			!email ||
-			!mobile_phone ||
-			!city ||
-			!address ||
-			!this.state.termsOfService
-			// !region ||
-			// !neighborhood
-		) {
-			this.setState({ validForm: false });
-			this.setState({ disabledButton: true });
-		} else {
-			// this.setState({modalAddr: false})
-			this.setState({ validForm: true });
-			this.setState({ disabledButton: false });
-			// this.renderWompi()
-		}
 	};
 
 	render() {
@@ -529,11 +515,11 @@ class PaySection extends Component {
 							display: 'flex',
 							marginTop: '40px',
 							height: '60px',
-							borderRadius: '5px',
+							borderRadius: '10px',
 							margin: '10px -80px',
-							justifyContent: 'center',
 							padding: '10px 0px',
-							backgroundColor: '#D4D4D4',
+							backgroundColor: '#E1E1E1',
+							justifyContent: 'center',
 						}}
 					>
 						<div
@@ -543,18 +529,27 @@ class PaySection extends Component {
 						>
 							<Checkbox
 								style={{
-									width: 'fit-content',
 									alignSelf: 'center',
 									marginRight: '10px',
 									color: '#CF0A2C',
 								}}
-								type="checkbox"
+								name="terms"
 								value={this.state.termsOfService}
-								onChange={this.handleTerms}
+								onChange={this.handleFormValue}
 							/>
-							<div>
+							<div
+								style={{
+									fontSize: '15px',
+								}}
+							>
 								Antes de continuar debes aceptar los
-								<div>términos, condiciones y política de privacidad</div>
+								<div
+									style={{
+										color: '#007BFF',
+									}}
+								>
+									términos, condiciones y política de privacidad
+								</div>
 								de KieroMarketPlace
 							</div>
 						</div>
@@ -615,7 +610,7 @@ class PaySection extends Component {
 						<input
 							className="button-finish-pay"
 							onMouseDown={this.validateForm}
-							disabled={this.state.disabledButton}
+							disabled={this.state.termsOfService ? this.state.disabledButton : true}
 							style={{
 								background: this.state.disabledButton ? '#cf0a2c' : '#cf0a2c',
 								color: 'white',
