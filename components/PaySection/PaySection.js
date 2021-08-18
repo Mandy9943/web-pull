@@ -475,7 +475,7 @@ class PaySection extends Component {
 		var md5 = require('md5');
 		var ref_code = 'kieroco-' + new Date().getTime();
 		var signature = md5(
-			'4Vj8eK4rloUd272L48hsrarnUA~508029~' +
+			'uzIc90bkpXj0aJDh22H67MRJnl~530932~' +
 				ref_code +
 				'~' +
 				this.props.props.data.price +
