@@ -481,7 +481,7 @@ class PaySection extends Component {
 				this.props.props.data.price +
 				'~COP'
 		);
-		console.log(this.state);
+		// console.log(this.state);
 		const contentModalNewAddress = (
 			<div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
 				<p style={{ textAlign: 'center', fontWeight: 'bold', paddingBottom: 30 }}>
@@ -568,18 +568,18 @@ class PaySection extends Component {
 					<form
 						className="finish-pay"
 						method="post"
-						action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu"
+						action="https://checkout.payulatam.com/ppp-web-gateway-payu/"
 						target="_blank"
 					>
-						<input name="merchantId" type="hidden" value="508029" />
-						<input name="accountId" type="hidden" value="512321" />
+						<input name="merchantId" type="hidden" value="530932" />
+						<input name="accountId" type="hidden" value="532826" />
 						<input
 							name="description"
 							type="hidden"
 							value={this.props.props.data.title.substr(0, 250)}
 						/>
 						<input name="referenceCode" type="hidden" value={ref_code} />
-						<input name="amount" type="hidden" value={this.props.props.data.price} />
+						<input name="amount" type="hidden" value={this.state.cantidad == 0 ? 1 : this.state.cantidad * this.props.props.data.price } />
 						<input name="tax" type="hidden" value="0" />
 						<input name="taxReturnBase" type="hidden" value="0" />
 						<input name="currency" type="hidden" value="COP" />
@@ -610,7 +610,7 @@ class PaySection extends Component {
 						<input
 							name="confirmationUrl"
 							type="hidden"
-							value="https://api.kieroapi.org/payuComplete"
+							value="https://api.kieroapi.net/payuComplete"
 						/>
 						<input
 							className="button-finish-pay"
