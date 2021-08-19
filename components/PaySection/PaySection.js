@@ -569,7 +569,7 @@ class PaySection extends Component {
 							value="https://api.kieroapi.net/payuComplete"
 						/>
 						<input
-							className="button-finish-pay"
+							className="button-finish-payu"
 							onMouseDown={this.validateForm}
 							disabled={this.state.termsOfService ? this.state.disabledButton : true}
 							style={{
