@@ -53,10 +53,10 @@ export default function MyApp({ Component, pageProps}) {
 			<Component {...pageProps} />
 			<GeneralChat />
 			 {/* <!--  Clickcease.com tracking--> */}
-			 <noscript>
-                        <a href='https://www.clickcease.com' rel='nofollow'><img src='https://monitor.clickcease.com/stats/stats.aspx' alt='ClickCease'/></a>
-                    </noscript>
-                {/* Clickcease.com tracking */}
+				<noscript>
+							<a href='https://www.clickcease.com' rel='nofollow'><img src='https://monitor.clickcease.com/stats/stats.aspx' alt='ClickCease'/></a>
+				</noscript>
+			{/* Clickcease.com tracking */}
 		</>
 	);
 }
