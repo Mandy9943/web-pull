@@ -474,9 +474,9 @@ class PaySection extends Component {
 		// 		this.state.cantidad == 0 ? 1 : this.state.cantidad * this.props.props.data.price +
 		// 		'~COP'
 		// );
-		console.log(signature);
+		// console.log(signature);
 		const contentModalNewAddress = (
-			<div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
+			<div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', position: 'relative', width:'100%' }}>
 				<p style={{ textAlign: 'center', fontWeight: 'bold', paddingBottom: 30 }}>
 					Por favor agregue los datos de envío
 				</p>
@@ -517,50 +517,7 @@ class PaySection extends Component {
 						placeholder="Direccion"
 						name="address"
 					/>
-					<div
-						style={{
-							display: 'flex',
-							marginTop: '40px',
-							height: '60px',
-							borderRadius: '10px',
-							margin: '10px -80px',
-							padding: '10px 0px',
-							backgroundColor: '#E1E1E1',
-							justifyContent: 'center',
-						}}
-					>
-						<div
-							style={{
-								display: 'flex',
-							}}
-						>
-							<Checkbox
-								style={{
-									alignSelf: 'center',
-									marginRight: '10px',
-									color: '#CF0A2C',
-								}}
-								name="terms"
-								value={this.state.termsOfService}
-								onChange={this.handleFormValue}
-							/>
-							<div
-								style={{
-									fontSize: '15px',
-								}}
-							>
-								Antes de continuar debes aceptar los
-								<div
-									style={{
-										color: '#007BFF',
-									}}
-								>
-									términos, condiciones y política de privacidad
-								</div>
-								de KieroMarketPlace
-							</div>
-						</div>
-					</div>
+					
 					{/*<input*/}
 					{/*	value={this.state.neighborhood}*/}
 					{/*	onChange={this.handleFormValue}*/}
@@ -619,6 +576,7 @@ class PaySection extends Component {
 								background: this.state.disabledButton ? '#cf0a2c' : '#cf0a2c',
 								color: 'white',
 								cursor: 'pointer',
+								marginTop:125
 							}}
 							name="Submit"
 							type="submit"
@@ -627,18 +585,61 @@ class PaySection extends Component {
 					</form>
 					{/*<button style={{ background:'#cf0a2c', color:'white'}} onClick={() => this.validateForm()}>Continuar con la transacción</button>*/}
 				</div>
+				<div
+						style={{
+							display: 'flex',
+							top: 295,
+							borderRadius: '10px',
+							padding: '10px 0px',
+							backgroundColor: '#E1E1E1',
+							justifyContent: 'center',
+							position: 'absolute',
+							width:'100%', 
+						}}
+					>
+						<div
+							style={{
+								display: 'flex',
+							}}
+						>
+							<Checkbox
+								style={{
+									alignSelf: 'center',
+									marginRight: '10px',
+									color: '#CF0A2C',
+								}}
+								name="terms"
+								value={this.state.termsOfService}
+								onChange={this.handleFormValue}
+							/>
+							<div
+								style={{
+									fontSize: '15px',
+								}}
+							>
+								Antes de continuar debes aceptar los
+								<div
+									style={{
+										color: '#007BFF',
+									}}
+								>
+									términos, condiciones y política de privacidad
+								</div>
+								de KieroMarketPlace
+							</div>
+						</div>
+					</div>
 				{!this.state.validForm ? (
 					<div
 						style={{
 							color: 'white',
 							background: 'rgb(207, 10, 44)',
-							height: 40,
 							borderRadius: 15,
-							width: '80%',
+							width: '100%',
 							margin: '15px auto',
 						}}
 					>
-						<p style={{ textAlign: 'center', fontWeight: 'bold', marginTop: 10.5 }}>
+						<p style={{ textAlign: 'center', fontWeight: 'bold', marginTop: 9 }}>
 							Tienes campos pendientes por completar
 						</p>
 					</div>
@@ -650,13 +651,12 @@ class PaySection extends Component {
 						style={{
 							color: 'white',
 							background: 'rgb(207, 10, 44)',
-							height: 60,
 							borderRadius: 15,
-							width: '80%',
+							width: '100%',
 							margin: '15px auto',
 						}}
 					>
-						<p style={{ textAlign: 'center', fontWeight: 'bold', marginTop: 10.5 }}>
+						<p style={{ textAlign: 'center', fontWeight: 'bold', margin: '10px 2px' }}>
 							Debes aceptar nuestros términos, condiciones y política de privacidad antes
 							de continuar
 						</p>
