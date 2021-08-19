@@ -39,6 +39,7 @@
 	height: -moz-min-content;
 	padding: 25px 0;
 	overflow-x: auto;
+	overflow-y: hidden;
 }
 
 .home-content .products-slider .slider-movil .content-products-slider .producto-card {
