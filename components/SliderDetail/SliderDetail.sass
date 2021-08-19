@@ -1,20 +1,20 @@
 .SliderDetail
-    margin-botton: 50px
-    .mobil
+  margin-bottom: 50px
+
+  .mobil
+    display: none
+
+@media (max-width: 768px)
+  .SliderDetail .mobil
+    display: block !important
+
+    .slider
+      height: auto
+      padding-bottom: 100%
+      display: block !important
+
+      img
+        width: 100% !important
+
+      .previousButton, .nextButton
         display: none
-        
-
-@media(max-width:700px)
-    .SliderDetail
-        .mobil
-            display: block !important 
-            .slider
-                height: auto
-                padding-bottom: 100%
-                display: block !important
-                img
-                    width: 100% !important
-                .previousButton, .nextButton
-                    display: none
-                    
-

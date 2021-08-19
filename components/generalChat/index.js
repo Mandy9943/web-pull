@@ -296,9 +296,12 @@ export default function GeneralChat() {
 
 				{handleRenderButton()}
 			</div>
-			<Fab className="buttonChat" variant="extended" onClick={handleOpenChat}>
+			<Fab className="buttonChat buttonChat-Web" variant="extended" onClick={handleOpenChat}>
 				<SmsIcon />
 				Hablar con un asesor
+			</Fab>
+			<Fab className="buttonChat buttonChat-NoWeb" variant="extended" onClick={handleOpenChat}>
+				<SmsIcon />
 			</Fab>
 		</>
 	);
