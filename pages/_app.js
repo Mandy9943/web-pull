@@ -23,6 +23,17 @@ export default function MyApp({ Component, pageProps}) {
 
 	return (
 		<>
+		{/* <!--  Clickcease.com tracking--> */}
+					<script 
+                        dangerouslySetInnerHTML={{
+                            __html: `var script = document.createElement('script');
+                            script.async = true; script.type = 'text/javascript';
+                            var target = 'https://www.clickcease.com/monitor/stat.js';
+                            script.src = target;var elem = document.head;elem.appendChild(script);`,
+                        }}>
+                    </script>
+		{/* <!--  Clickcease.com tracking--> */}
+               
 		 	<script async src="https://www.googletagmanager.com/gtag/js?id=GTM-TXNXPM7"></script>
 			<script
 				dangerouslySetInnerHTML={{
@@ -41,6 +52,11 @@ export default function MyApp({ Component, pageProps}) {
 			<KieroSocketChat />
 			<Component {...pageProps} />
 			<GeneralChat />
+			 {/* <!--  Clickcease.com tracking--> */}
+			 <noscript>
+                        <a href='https://www.clickcease.com' rel='nofollow'><img src='https://monitor.clickcease.com/stats/stats.aspx' alt='ClickCease'/></a>
+                    </noscript>
+                {/* Clickcease.com tracking */}
 		</>
 	);
 }

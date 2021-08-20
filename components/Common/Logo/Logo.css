@@ -10,10 +10,25 @@
 }
 
 @media (max-width: 925px) {
+  .logo-movil{
+    display:block
+  }
+  .logo-web{
+    display:none
+  }
   .logo img.logo-img {
     width: 42px !important;
     height: 32px !important;
     margin: 0;
+  }
+}
+
+@media(min-width: 926px){
+  .logo-movil{
+    display:none
+  }
+  .logo-web{
+    display:block
   }
 }
 /*# sourceMappingURL=Logo.css.map */
