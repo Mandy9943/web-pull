@@ -56,6 +56,18 @@
 	flex-direction: column;
 }
 
+#crossIcon {
+	background-color: rgb(207, 10, 44);
+	color: white;
+	width: 15px;
+	padding: 2px;
+}
+
+#crossIcon:hover {
+	color: rgb(207, 10, 44);
+	background-color: white;
+}
+
 .pay-item img {
 	width: auto;
 	height: 50px;

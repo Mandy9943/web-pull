@@ -42,13 +42,25 @@ class PaySection extends Component {
 			dataTransaction: [],
 			validForm: true,
 			disabledButton: true,
-			termsOfService: '',
+			termsOfService: 2,
 		};
 	}
 
 	toggleModalAddr = () => {
+		this.setState({ modalAddr: !this.state.modalAddr });
+	};
+
+	closeModalAfterSubmit = () => {
 		setTimeout(() => {
-			this.setState({ modalAddr: !this.state.modalAddr });
+			this.setState({
+				modalAddr: !this.state.modalAddr,
+				user: '',
+				email: '',
+				mobile_phone: '',
+				city: '',
+				address: '',
+				termsOfService: 2,
+			});
 		}, 2000);
 	};
 
@@ -369,7 +381,10 @@ class PaySection extends Component {
 			this.setState({ [name]: value });
 		}
 		if (name === 'terms') {
-			this.setState({ termsOfService: !this.state.termsOfService });
+			this.setState({
+				termsOfService: this.state.termsOfService === 2 ? 1 : !this.state.termsOfService,
+			});
+			console.elog;
 		}
 		this.validateForm();
 	};
@@ -465,8 +480,12 @@ class PaySection extends Component {
 		var quantity = this.state.cantidad == 0 ? 1 : this.state.cantidad;
 		var md5 = require('md5');
 		var ref_code = 'kieroco-' + new Date().getTime();
-		var signature = md5(`uzIc90bkpXj0aJDh22H67MRJnl~530932~${ref_code}~${this.props.props.data.price*quantity}~COP`)
-		
+		var signature = md5(
+			`uzIc90bkpXj0aJDh22H67MRJnl~530932~${ref_code}~${
+				this.props.props.data.price * quantity
+			}~COP`
+		);
+
 		// (
 		// 	'uzIc90bkpXj0aJDh22H67MRJnl~530932~' +
 		// 		ref_code +
@@ -476,7 +495,15 @@ class PaySection extends Component {
 		// );
 		// console.log(signature);
 		const contentModalNewAddress = (
-			<div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', position: 'relative', width:'100%' }}>
+			<div
+				style={{
+					display: 'flex',
+					justifyContent: 'center',
+					flexDirection: 'column',
+					position: 'relative',
+					width: '100%',
+				}}
+			>
 				<p style={{ textAlign: 'center', fontWeight: 'bold', paddingBottom: 30 }}>
 					Por favor agregue los datos de envío
 				</p>
@@ -517,7 +544,7 @@ class PaySection extends Component {
 						placeholder="Direccion"
 						name="address"
 					/>
-					
+
 					{/*<input*/}
 					{/*	value={this.state.neighborhood}*/}
 					{/*	onChange={this.handleFormValue}*/}
@@ -529,7 +556,7 @@ class PaySection extends Component {
 						method="post"
 						action="https://checkout.payulatam.com/ppp-web-gateway-payu/"
 						target="_blank"
-						onSubmit={this.toggleModalAddr}
+						onSubmit={this.closeModalAfterSubmit}
 					>
 						<input name="merchantId" type="hidden" value="530932" />
 						<input name="accountId" type="hidden" value="532826" />
@@ -539,9 +566,13 @@ class PaySection extends Component {
 							value={this.props.props.data.title.substr(0, 250)}
 						/>
 						<input name="referenceCode" type="hidden" value={ref_code} />
-						<input name="amount" type="hidden" value={quantity * this.props.props.data.price } />
+						<input
+							name="amount"
+							type="hidden"
+							value={quantity * this.props.props.data.price}
+						/>
 						<input name="tax" type="hidden" value="0" />
-						<input name="taxReturnBase" type="hidden" value="0" /> 
+						<input name="taxReturnBase" type="hidden" value="0" />
 						<input name="currency" type="hidden" value="COP" />
 						<input name="signature" type="hidden" value={signature} />
 						<input name="test" type="hidden" value="0" />
@@ -558,11 +589,7 @@ class PaySection extends Component {
 							value={this.props.props.data.user.user_id}
 						/>
 						<input name="extra3" type="hidden" value={this.state.cantidad.toString()} />
-						<input
-							name="responseUrl"
-							type="hidden"
-							value="https://kiero.co/pay_status"
-						/>
+						<input name="responseUrl" type="hidden" value="https://kiero.co/pay_status" />
 						<input
 							name="confirmationUrl"
 							type="hidden"
@@ -576,7 +603,8 @@ class PaySection extends Component {
 								background: this.state.disabledButton ? '#cf0a2c' : '#cf0a2c',
 								color: 'white',
 								cursor: 'pointer',
-								marginTop:125
+								margin: '0 auto',
+								marginTop: 125,
 							}}
 							name="Submit"
 							type="submit"
@@ -586,77 +614,91 @@ class PaySection extends Component {
 					{/*<button style={{ background:'#cf0a2c', color:'white'}} onClick={() => this.validateForm()}>Continuar con la transacción</button>*/}
 				</div>
 				<div
+					style={{
+						display: 'flex',
+						position: 'absolute',
+						top: '285px',
+						left: '152px',
+						width: '294px',
+					}}
+				>
+					<div
 						style={{
 							display: 'flex',
-							top: 295,
-							borderRadius: '10px',
-							padding: '10px 0px',
-							backgroundColor: '#E1E1E1',
-							justifyContent: 'center',
-							position: 'absolute',
-							width:'100%', 
 						}}
 					>
 						<div
 							style={{
-								display: 'flex',
+								textAlign: 'justify',
+								fontSize: '12px',
 							}}
 						>
 							<Checkbox
 								style={{
 									alignSelf: 'center',
-									marginRight: '10px',
-									color: '#CF0A2C',
+									color: 'gray',
+									padding: '0px',
+									width: '15px',
+									margin: '-5px 5px -2px 0',
 								}}
 								name="terms"
 								value={this.state.termsOfService}
 								onChange={this.handleFormValue}
 							/>
-							<div
+							Antes de continuar debes aceptar los{' '}
+							<span
 								style={{
-									fontSize: '15px',
+									color: '#007BFF',
 								}}
 							>
-								Antes de continuar debes aceptar los
-								<div
-									style={{
-										color: '#007BFF',
-									}}
-								>
-									términos, condiciones y política de privacidad
-								</div>
-								de KieroMarketPlace
-							</div>
+								Términos, condiciones y Política de privacidad
+							</span>{' '}
+							de KieroMarketPlace
 						</div>
 					</div>
+				</div>
 				{!this.state.validForm ? (
 					<div
 						style={{
 							color: 'white',
 							background: 'rgb(207, 10, 44)',
 							borderRadius: 15,
-							width: '100%',
+							width: '45%',
 							margin: '15px auto',
+							padding: '5px',
 						}}
 					>
-						<p style={{ textAlign: 'center', fontWeight: 'bold', marginTop: 9 }}>
+						<p
+							style={{
+								fontSize: '12px',
+								textAlign: 'justify',
+								fontWeight: 'bold',
+							}}
+						>
 							Tienes campos pendientes por completar
 						</p>
 					</div>
 				) : (
 					''
 				)}
-				{!this.state.termsOfService ? (
+				{this.state.termsOfService === 0 || !this.state.termsOfService ? (
 					<div
 						style={{
 							color: 'white',
 							background: 'rgb(207, 10, 44)',
 							borderRadius: 15,
-							width: '100%',
+							width: '45%',
 							margin: '15px auto',
+							padding: '5px',
 						}}
 					>
-						<p style={{ textAlign: 'center', fontWeight: 'bold', margin: '10px 2px' }}>
+						<p
+							style={{
+								fontSize: '12px',
+								textAlign: 'justify',
+								fontWeight: 'bold',
+							}}
+						>
 							Debes aceptar nuestros términos, condiciones y política de privacidad antes
 							de continuar
 						</p>
@@ -790,7 +832,12 @@ class PaySection extends Component {
 					<Seller productId={this.props.pid} />
 				</div>
 				{this.state.modalAddr ? (
-					<Modal toggle={this.toggleModalAddr} content={contentModalNewAddress} button />
+					<Modal
+						toggle={this.toggleModalAddr}
+						content={contentModalNewAddress}
+						button
+						cross="crossIcon"
+					/>
 				) : null}
 			</div>
 		);
