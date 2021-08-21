@@ -600,11 +600,10 @@ class PaySection extends Component {
 							onMouseDown={this.validateForm}
 							disabled={this.state.termsOfService ? this.state.disabledButton : true}
 							style={{
-								background: this.state.disabledButton ? '#cf0a2c' : '#cf0a2c',
+								background: this.state.disabledButton ? 'grey' : '#cf0a2c',
 								color: 'white',
 								cursor: 'pointer',
-								margin: '0 auto',
-								marginTop: 125,
+								margin: '120px auto 0 auto',
 							}}
 							name="Submit"
 							type="submit"
@@ -612,19 +611,13 @@ class PaySection extends Component {
 						/>
 					</form>
 					{/*<button style={{ background:'#cf0a2c', color:'white'}} onClick={() => this.validateForm()}>Continuar con la transacción</button>*/}
-				</div>
-				<div
-					style={{
-						display: 'flex',
-						position: 'absolute',
-						top: '285px',
-						left: '152px',
-						width: '294px',
-					}}
-				>
 					<div
 						style={{
 							display: 'flex',
+							position: 'relative',
+							bottom: '146px',
+							left: '10px',
+							width: '92%',
 						}}
 					>
 						<div
@@ -663,8 +656,8 @@ class PaySection extends Component {
 							color: 'white',
 							background: 'rgb(207, 10, 44)',
 							borderRadius: 15,
-							width: '45%',
-							margin: '15px auto',
+							width: '90%',
+							margin: '5px auto',
 							padding: '5px',
 						}}
 					>
@@ -672,6 +665,8 @@ class PaySection extends Component {
 							style={{
 								fontSize: '12px',
 								textAlign: 'justify',
+								wordSpacing: '-2px',
+								wordBreak: 'break-all',
 								fontWeight: 'bold',
 							}}
 						>
@@ -687,7 +682,7 @@ class PaySection extends Component {
 							color: 'white',
 							background: 'rgb(207, 10, 44)',
 							borderRadius: 15,
-							width: '45%',
+							width: '90%',
 							margin: '15px auto',
 							padding: '5px',
 						}}
@@ -695,7 +690,8 @@ class PaySection extends Component {
 						<p
 							style={{
 								fontSize: '12px',
-								textAlign: 'justify',
+								textAlign: 'start',
+								wordSpacing: '1px',
 								fontWeight: 'bold',
 							}}
 						>
