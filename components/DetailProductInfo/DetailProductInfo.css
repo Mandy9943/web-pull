@@ -107,7 +107,7 @@
 .guarantee .sub-title {
   display: block;
   color: #111111;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 @media (max-width: 700px) {
@@ -120,19 +120,19 @@
   }
   .guarantee h5 {
     margin-bottom: 10px;
-    font-size: 17px;
+    font-size: 15px;
     color: #111111;
   }
   .guarantee .title {
     display: block;
     color: #111111;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 400;
   }
   .guarantee .sub-title {
     display: block;
     color: #111111;
-    font-size: 14px;
+    font-size: 13px;
   }
 }
 /*# sourceMappingURL=DetailProductInfo.css.map */

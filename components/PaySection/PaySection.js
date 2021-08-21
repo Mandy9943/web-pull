@@ -685,15 +685,10 @@ class PaySection extends Component {
 				<div className="pay-item info-pay-product-detail">
 					<h3>
 						<span className="no-movil">Kiero</span> envíos{' '}
-						<span className="no-web">gratis</span> <FontAwesomeIcon icon={faTruck} />{' '}
-						<FontAwesomeIcon className="no-web icon-right" icon={faAngleRight} />
+						<span className="no-web">gratis</span> <FontAwesomeIcon icon={faTruck} />
 					</h3>
 					<p>Nuestros productos son importados</p>
-					<Link href="/ayuda">
-						<a>
-							<p>Conoce más</p>
-						</a>
-					</Link>
+
 				</div>
 				{this.state.variantsSpinner ? (
 					<Spinner />

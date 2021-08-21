@@ -5,7 +5,7 @@
 
 .wrap-question h3 {
 	color: #111111;
-	font-size: 18px;
+	font-size: 16px;
 	font-weight: 600;
 }
 
@@ -99,6 +99,7 @@
 	.wrap-question-input {
 		display: inline-block;
 		width: 95%;
+		font-size: 14px;
 	}
 	.wrap-question-buttons {
 		display: -ms-grid;

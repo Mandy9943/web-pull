@@ -19,14 +19,14 @@
 }
 .QuestionItem-list .title {
   color: #111111;
-  font-size: 18px;
+  font-size: 16px;
   padding-bottom: 20px;
   font-weight: 600;
 }
 
 .QuestionItem-list .empty-question {
   color: #4E4E4E;
-  font-size: 16px;
+  font-size: 14px;
   padding-bottom: 20px;
   display: block;
 }

@@ -219,7 +219,7 @@ text-align: center;
     width: 100%;
   }
   .breadcrumb {
-    display: none;
+    display: none !important;
   }
   .wrap-explorer-product-detail {
     display: none;
@@ -243,11 +243,11 @@ text-align: center;
     background: white;
   }
   .detail-content .wrap-product .wrap-detail-info h4, .detail-content .wrap-product .wrap-detail-info .item-detail-info {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 400;
   }
   .detail-content .wrap-product .wrap-detail-info .item-detail-info p {
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 400;
   }
   .detail-content .questions-movil {
