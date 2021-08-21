@@ -1,6 +1,6 @@
 
 .variants{
-    padding: 1em;
+    padding: 0em;
     display: flex;
     flex-direction: column;
 }

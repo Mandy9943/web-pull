@@ -477,7 +477,7 @@ class PaySection extends Component {
 		// console.log(signature);
 		const contentModalNewAddress = (
 			<div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', position: 'relative', width:'100%' }}>
-				<p style={{ textAlign: 'center', fontWeight: 'bold', paddingBottom: 30 }}>
+				<p style={{ textAlign: 'center', fontWeight: 'medium', paddingBottom: 20, paddingTop: 15 }}>
 					Por favor agregue los datos de envío
 				</p>
 				<div style={{ width: '300px', margin: '0 auto' }}>
@@ -576,7 +576,8 @@ class PaySection extends Component {
 								background: this.state.disabledButton ? '#cf0a2c' : '#cf0a2c',
 								color: 'white',
 								cursor: 'pointer',
-								marginTop:125
+								margin: '125px auto 15px auto',
+								padding: '7px 15px'
 							}}
 							name="Submit"
 							type="submit"
@@ -591,10 +592,10 @@ class PaySection extends Component {
 							top: 295,
 							borderRadius: '10px',
 							padding: '10px 0px',
-							backgroundColor: '#E1E1E1',
+							backgroundColor: '#f3f3f3',
 							justifyContent: 'center',
 							position: 'absolute',
-							width:'100%', 
+
 						}}
 					>
 						<div
@@ -605,7 +606,7 @@ class PaySection extends Component {
 							<Checkbox
 								style={{
 									alignSelf: 'center',
-									marginRight: '10px',
+									marginRight: '8px',
 									color: '#CF0A2C',
 								}}
 								name="terms"
@@ -614,56 +615,36 @@ class PaySection extends Component {
 							/>
 							<div
 								style={{
-									fontSize: '15px',
+									fontSize: '14px',
 								}}
 							>
 								Antes de continuar debes aceptar los
-								<div
-									style={{
+								<Link href="/terminos">
+    								<a target="_blank" style={{
 										color: '#007BFF',
-									}}
-								>
-									términos, condiciones y política de privacidad
-								</div>
-								de KieroMarketPlace
+									}}> términos, condiciones y política de privacidad </a>
+   								</Link>de KieroMarketplace
 							</div>
 						</div>
 					</div>
 				{!this.state.validForm ? (
 					<div
 						style={{
-							color: 'white',
-							background: 'rgb(207, 10, 44)',
-							borderRadius: 15,
+							color: 'rgb(31 31 31)',
+							background: 'rgb(230 230 230)',
+							borderRadius: 5,
 							width: '100%',
 							margin: '15px auto',
 						}}
 					>
-						<p style={{ textAlign: 'center', fontWeight: 'bold', marginTop: 9 }}>
+						<p style={{ textAlign: 'center', fontWeight: 'medium', margin: '9px 2px' }}>
 							Tienes campos pendientes por completar
 						</p>
 					</div>
 				) : (
 					''
 				)}
-				{!this.state.termsOfService ? (
-					<div
-						style={{
-							color: 'white',
-							background: 'rgb(207, 10, 44)',
-							borderRadius: 15,
-							width: '100%',
-							margin: '15px auto',
-						}}
-					>
-						<p style={{ textAlign: 'center', fontWeight: 'bold', margin: '10px 2px' }}>
-							Debes aceptar nuestros términos, condiciones y política de privacidad antes
-							de continuar
-						</p>
-					</div>
-				) : (
-					''
-				)}
+
 			</div>
 		);
 		return (
