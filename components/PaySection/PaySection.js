@@ -577,7 +577,7 @@ class PaySection extends Component {
 								color: 'white',
 								cursor: 'pointer',
 								margin: '125px auto 15px auto',
-								padding: '7px 15px'
+
 							}}
 							name="Submit"
 							type="submit"

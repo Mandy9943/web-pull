@@ -22,7 +22,8 @@ function Product({ data, u_data }) {
 				{/* End Google Tag Manager */}
 				<script type="text/javascript" src="https://checkout.wompi.co/widget.js"></script>
 				<title>Kiero.co | {data.title.substring(0,60)}</title>
-				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+				<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+				<meta name="MobileOptimized" content="360"/> 
 				<meta
 					name="Description"
 					content={`KIERO.CO MARKETPLACE | Compralo en Kiero ${data.title} a ${
