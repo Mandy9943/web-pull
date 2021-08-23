@@ -42,25 +42,13 @@ class PaySection extends Component {
 			dataTransaction: [],
 			validForm: true,
 			disabledButton: true,
-			termsOfService: 2,
+			termsOfService: '',
 		};
 	}
 
 	toggleModalAddr = () => {
-		this.setState({ modalAddr: !this.state.modalAddr });
-	};
-
-	closeModalAfterSubmit = () => {
 		setTimeout(() => {
-			this.setState({
-				modalAddr: !this.state.modalAddr,
-				user: '',
-				email: '',
-				mobile_phone: '',
-				city: '',
-				address: '',
-				termsOfService: 2,
-			});
+			this.setState({ modalAddr: !this.state.modalAddr });
 		}, 2000);
 	};
 
@@ -381,10 +369,7 @@ class PaySection extends Component {
 			this.setState({ [name]: value });
 		}
 		if (name === 'terms') {
-			this.setState({
-				termsOfService: this.state.termsOfService === 2 ? 1 : !this.state.termsOfService,
-			});
-			console.elog;
+			this.setState({ termsOfService: !this.state.termsOfService });
 		}
 		this.validateForm();
 	};
@@ -480,12 +465,8 @@ class PaySection extends Component {
 		var quantity = this.state.cantidad == 0 ? 1 : this.state.cantidad;
 		var md5 = require('md5');
 		var ref_code = 'kieroco-' + new Date().getTime();
-		var signature = md5(
-			`uzIc90bkpXj0aJDh22H67MRJnl~530932~${ref_code}~${
-				this.props.props.data.price * quantity
-			}~COP`
-		);
-
+		var signature = md5(`uzIc90bkpXj0aJDh22H67MRJnl~530932~${ref_code}~${this.props.props.data.price*quantity}~COP`)
+		
 		// (
 		// 	'uzIc90bkpXj0aJDh22H67MRJnl~530932~' +
 		// 		ref_code +
@@ -794,12 +775,7 @@ class PaySection extends Component {
 					<Seller productId={this.props.pid} />
 				</div>
 				{this.state.modalAddr ? (
-					<Modal
-						toggle={this.toggleModalAddr}
-						content={contentModalNewAddress}
-						button
-						cross="crossIcon"
-					/>
+					<Modal toggle={this.toggleModalAddr} content={contentModalNewAddress} button />
 				) : null}
 
 
