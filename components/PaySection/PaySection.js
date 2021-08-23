@@ -662,9 +662,21 @@ class PaySection extends Component {
 				{/* <div className="pay-item">
 					<Rating productId={this.props.pid}/>
 				</div> */}
+				<div className="pay-item-oldprice">
+
+					<h3 className="price-pay-product-detail-oldprice">
+						${' '}
+						{(this.props.price*1.3)
+							? (this.props.price*1.3)
+									.toString()
+									.split('.')[0]
+									.replace(/(.)(?=(\d{3})+$)/g, '$1.')
+							: ' ... '}
+					</h3> <p  className="price-pay-product-detail-oldprice-discount">&nbsp; -30%</p> 
+				</div>
 				<div className="pay-item">
 					<h3 className="price-pay-product-detail">
-						${' '}
+						$
 						{this.props.price
 							? this.props.price
 									.toString()
@@ -672,15 +684,7 @@ class PaySection extends Component {
 									.replace(/(.)(?=(\d{3})+$)/g, '$1.')
 							: ' ... '}
 					</h3>
-				</div>
-				<div className="pay-item pay-img no-movil">
-					<img src={iconCredit} className="icon-credit" />
-					<img src={PayCredit} className="pay-section-img" />
-					<Link href="/ayuda">
-						<a>
-							<p>Más informacion</p>
-						</a>
-					</Link>
+
 				</div>
 				<div className="pay-item info-pay-product-detail">
 					<h3>
@@ -768,7 +772,25 @@ class PaySection extends Component {
 				{this.state.modalAddr ? (
 					<Modal toggle={this.toggleModalAddr} content={contentModalNewAddress} button />
 				) : null}
+
+
+
+
+
+				{/* <div className="pay-item pay-img no-movil">
+					<img src={iconCredit} className="icon-credit" />
+					<img src={PayCredit} className="pay-section-img" />
+					<Link href="/ayuda">
+						<a>
+							<p>Más informacion</p>
+						</a>
+					</Link>
+				</div> */}
+
+
+
 			</div>
+			
 		);
 	}
 }

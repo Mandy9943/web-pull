@@ -6,7 +6,10 @@
 	padding: 0;
 	width: auto;
 }
-
+.home-content .products-slider .home-section-title{
+	font-size: 15px;
+	margin-left: 10px;
+}
 @media (max-width: 360px) {
 	.home-content .products-slider {
 		width: 60%;
@@ -123,7 +126,7 @@
 	}
 	.home-content .products-slider .home-section-title,
 	.detail-content .products-slider .home-section-title {
-		font-size: 16px !important;
+		font-size: 15px !important;
 		color: #111111;
 		margin-bottom: 15px;
 		font-weight: 500;
@@ -177,7 +180,7 @@
 	}
 	.home-content .products-slider .home-section-title,
 	.detail-content .products-slider .home-section-title {
-		font-size: 16px !important;
+		font-size: 15px !important;
 		color: #111111;
 		margin-bottom: 15px;
 		font-weight: 400;

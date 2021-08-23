@@ -151,7 +151,7 @@ class DetailProductInfo extends Component {
 									aria-controls="panel1a-content"
 									id="panel1a-header"
 								>
-									<h4>Detalle del producto</h4>
+									<h5>Detalle del producto</h5>
 								</AccordionSummary>
 								<AccordionDetails>
 									{/* {dataTest(this.state.dataguide)} */}
@@ -257,6 +257,7 @@ asumir el valor del retorno a una de las direcciones que se le indicará, el val
 						En caso de que surja algún problema o no recibas el producto tal como lo
 						compraste, te devolveremos el dinero que pagaste.
 					</span>
+					<br/>
 					<span className="title">Garantía del vendedor</span>
 					<span className="sub-title">
 						Garantía por defecto de fabrica de (1) un mes.
