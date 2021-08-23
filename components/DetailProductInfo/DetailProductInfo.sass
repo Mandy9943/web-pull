@@ -1,91 +1,144 @@
 .wrap-detail-info
-    border-top: 0.5px solid #e2e2e2
-    font-family: 'Montserrat', sans-serif;
-    padding: 40px
-    color: #111111
-    h4
-        font-size: 20px
-        font-weight: 600
-        color: #111111
-.item-detail-info
-    margin-bottom: 20px
-    &:nth-child(2)
-        margin-top: 20px
-    h5
-        margin-bottom: 10px
-        text-transform: capitalize
-    p
-        margin-bottom: 10px
-        font-size: 20px
-        color: #111111
-.characteristics, .guarantee, .characteristics-web
-    font-family: 'Montserrat', sans-serif;
-    padding: 20px
-    border-bottom: 0.5px solid #e2e2e2
-    background: white
-    .edit 
-        grid-template-columns: 1fr auto;
-        font-size: 17px
-    .info
-        display: grid
-        grid-template-columns: 1fr 1fr
-        .item
-            display: grid
-            margin-top: 15px
-            .title
-                font-size: 12px
-                color: #111111
-            .sub-title
-                font-size: 14px
-                font-weight: 400
-                color: #111111
-                margin-top: 5px
-.characteristics-web
-    padding: 0
+  border-top: 0.5px solid #e2e2e2
+  font-family: 'Montserrat', sans-serif
+  padding: 40px
+  color: #111111
+
+  h4
     font-size: 20px
-    border: none
-    .info-shops, .edit
-        font-size: 20px
-    .info .item .title
-        font-size: 18px
+    font-weight: 600
+    color: #111111
+
+.item-detail-info
+  margin-bottom: 20px
+
+.justifyText
+  text-align: justify !important
+
+.item-detail-info
+  &:nth-child(2)
+    margin-top: 20px
+
+  h5
+    margin-bottom: 10px
+    text-transform: capitalize
+
+  p
+    margin-bottom: 10px
+    font-size: 16px
+    color: #111111
+
+.characteristics, .guarantee, .characteristics-web
+  font-family: 'Montserrat', sans-serif
+  padding: 20px
+  border-bottom: 0.5px solid #e2e2e2
+  background: white
+
+.characteristics .edit, .guarantee .edit, .characteristics-web .edit
+  -ms-grid-columns: 1fr auto
+  grid-template-columns: 1fr auto
+  font-size: 16px
+
+.characteristics .info, .guarantee .info, .characteristics-web .info
+  display: -ms-grid
+  display: grid
+  -ms-grid-columns: 1fr 1fr
+  grid-template-columns: 1fr 1fr
+
+.characteristics .info .item, .guarantee .info .item, .characteristics-web .info .item
+  display: -ms-grid
+  display: grid
+  margin-top: 15px
+
+.characteristics .info .item .title, .guarantee .info .item .title, .characteristics-web .info .item .title
+  font-size: 12px
+  color: #111111
+
+.characteristics .info .item .sub-title, .guarantee .info .item .sub-title
+  font-size: 14px
+  font-weight: 400
+  color: #111111
+  margin-top: 5px
+
+.characteristics-web
+  .info .item .sub-title
+    font-size: 14px
+    font-weight: 400
+    color: #111111
+    margin-top: 5px
+
+  padding: 0
+  font-size: 13px
+  border: none
+
+  .info-shops, .edit
+    font-size: 20px
+
+  .info .item .title
+    font-size: 16px
+
 .guarantee
-    border-top: 0.5px solid #e2e2e2
-    padding: 30px 20px;
-    h5
-        margin-bottom: 10px
-        font-size: 17px
-        color: #111111
-    .title
-        display: block
-        color: #111111
-        font-size: 16px
-        font-weight: bold
-    .sub-title
-        display: block
-        color: #111111
-        font-size: 14px
+  border-top: 0.5px solid #e2e2e2
+  padding: 30px 20px
 
+  h5
+    margin-bottom: 10px
+    font-size: 16px
+    color: #111111
 
+  .title
+    display: block
+    color: #111111
+    font-size: 16px
+    font-weight: bold
+
+  .sub-title
+    display: block
+    color: #111111
+    font-size: 15px
+
+.showGuide
+  display: none
 
 @media (max-width: 700px)
-    .wrap-detail-info
-        padding: 20px
-    .footer-social
-        display: grid
-    .guarantee
-        h5
-            margin-bottom: 10px
-            font-size: 17px
-            color: #111111
-        .title
-            display: block
-            color: #111111
-            font-size: 16px
-            font-weight: 400
-        .sub-title
-            display: block
-            color: #111111
-            font-size: 14px
+  .wrap-detail-info-movil
+    padding: 0px
 
+  .wrap-detail-info
+    display: none
 
+  .showGuide
+    width: 100%
+    display: initial
 
+  .footer-social
+    display: -ms-grid
+    display: grid
+
+  .guarantee h5
+    margin-bottom: 10px
+    font-size: 15px
+    color: #111111
+
+  .justifyText
+    text-align: justify !important
+    font-size: 13px
+
+  .guarantee
+    .title
+      display: block
+      color: #111111
+      font-size: 14px
+      font-weight: 500
+
+    .sub-title
+      display: block
+      color: #111111
+      font-size: 13px
+
+  .item-detail-info p
+    margin-bottom: 10px
+    font-size: 14px
+    color: #111111
+
+/*# sourceMappingURL=DetailProductInfo.css.map

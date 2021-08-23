@@ -495,16 +495,8 @@ class PaySection extends Component {
 		// );
 		// console.log(signature);
 		const contentModalNewAddress = (
-			<div
-				style={{
-					display: 'flex',
-					justifyContent: 'center',
-					flexDirection: 'column',
-					position: 'relative',
-					width: '100%',
-				}}
-			>
-				<p style={{ textAlign: 'center', fontWeight: 'bold', paddingBottom: 30 }}>
+			<div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', position: 'relative', width:'100%' }}>
+				<p style={{ textAlign: 'center', fontWeight: 'medium', paddingBottom: 20, paddingTop: 15 }}>
 					Por favor agregue los datos de envío
 				</p>
 				<div style={{ width: '300px', margin: '0 auto' }}>
@@ -603,7 +595,8 @@ class PaySection extends Component {
 								background: this.state.disabledButton ? 'grey' : '#cf0a2c',
 								color: 'white',
 								cursor: 'pointer',
-								margin: '120px auto 0 auto',
+								margin: '125px auto 15px auto',
+
 							}}
 							name="Submit"
 							type="submit"
@@ -614,10 +607,13 @@ class PaySection extends Component {
 					<div
 						style={{
 							display: 'flex',
-							position: 'relative',
-							bottom: '146px',
-							left: '10px',
-							width: '92%',
+							top: 295,
+							borderRadius: '10px',
+							padding: '10px 0px',
+							backgroundColor: '#f3f3f3',
+							justifyContent: 'center',
+							position: 'absolute',
+
 						}}
 					>
 						<div
@@ -629,10 +625,8 @@ class PaySection extends Component {
 							<Checkbox
 								style={{
 									alignSelf: 'center',
-									color: 'gray',
-									padding: '0px',
-									width: '15px',
-									margin: '-5px 5px -2px 0',
+									marginRight: '2px',
+									color: '#CF0A2C',
 								}}
 								name="terms"
 								value={this.state.termsOfService}
@@ -641,62 +635,36 @@ class PaySection extends Component {
 							Antes de continuar debes aceptar los{' '}
 							<span
 								style={{
-									color: '#007BFF',
+									fontSize: '13px',
 								}}
 							>
-								Términos, condiciones y Política de privacidad
-							</span>{' '}
-							de KieroMarketPlace
+								Antes de continuar debes aceptar los
+								<Link href="/terminos">
+    								<a target="_blank" style={{
+										color: '#007BFF',
+									}}> términos, condiciones </a>
+   								</Link> y 							
+								   <Link href="/privacidad">
+    								<a target="_blank" style={{
+										color: '#007BFF',
+									}}> política de privacidad </a>
+   								</Link>de KieroMarketplace
+							</div>
 						</div>
 					</div>
 				</div>
 				{!this.state.validForm ? (
 					<div
 						style={{
-							color: 'white',
-							background: 'rgb(207, 10, 44)',
-							borderRadius: 15,
-							width: '90%',
-							margin: '5px auto',
-							padding: '5px',
-						}}
-					>
-						<p
-							style={{
-								fontSize: '12px',
-								textAlign: 'justify',
-								wordSpacing: '-2px',
-								wordBreak: 'break-all',
-								fontWeight: 'bold',
-							}}
-						>
-							Tienes campos pendientes por completar
-						</p>
-					</div>
-				) : (
-					''
-				)}
-				{this.state.termsOfService === 0 || !this.state.termsOfService ? (
-					<div
-						style={{
-							color: 'white',
-							background: 'rgb(207, 10, 44)',
-							borderRadius: 15,
-							width: '90%',
+							color: 'rgb(31 31 31)',
+							background: 'rgb(230 230 230)',
+							borderRadius: 5,
+							width: '100%',
 							margin: '15px auto',
-							padding: '5px',
 						}}
 					>
-						<p
-							style={{
-								fontSize: '12px',
-								textAlign: 'start',
-								wordSpacing: '1px',
-								fontWeight: 'bold',
-							}}
-						>
-							Debes aceptar nuestros términos, condiciones y política de privacidad antes
-							de continuar
+						<p style={{ textAlign: 'center', fontWeight: 'medium', margin: '9px 2px' }}>
+							Tienes campos pendientes por completar
 						</p>
 					</div>
 				) : (
@@ -719,9 +687,21 @@ class PaySection extends Component {
 				{/* <div className="pay-item">
 					<Rating productId={this.props.pid}/>
 				</div> */}
+				<div className="pay-item-oldprice">
+
+					<h3 className="price-pay-product-detail-oldprice">
+						${' '}
+						{(this.props.price*1.3)
+							? (this.props.price*1.3)
+									.toString()
+									.split('.')[0]
+									.replace(/(.)(?=(\d{3})+$)/g, '$1.')
+							: ' ... '}
+					</h3> <p  className="price-pay-product-detail-oldprice-discount">&nbsp; -30%</p> 
+				</div>
 				<div className="pay-item">
 					<h3 className="price-pay-product-detail">
-						${' '}
+						$
 						{this.props.price
 							? this.props.price
 									.toString()
@@ -729,28 +709,15 @@ class PaySection extends Component {
 									.replace(/(.)(?=(\d{3})+$)/g, '$1.')
 							: ' ... '}
 					</h3>
-				</div>
-				<div className="pay-item pay-img no-movil">
-					<img src={iconCredit} className="icon-credit" />
-					<img src={PayCredit} className="pay-section-img" />
-					<Link href="/ayuda">
-						<a>
-							<p>Más informacion</p>
-						</a>
-					</Link>
+
 				</div>
 				<div className="pay-item info-pay-product-detail">
 					<h3>
 						<span className="no-movil">Kiero</span> envíos{' '}
-						<span className="no-web">gratis</span> <FontAwesomeIcon icon={faTruck} />{' '}
-						<FontAwesomeIcon className="no-web icon-right" icon={faAngleRight} />
+						<span className="no-web">gratis</span> <FontAwesomeIcon icon={faTruck} />
 					</h3>
 					<p>Nuestros productos son importados</p>
-					<Link href="/ayuda">
-						<a>
-							<p>Conoce más</p>
-						</a>
-					</Link>
+
 				</div>
 				{this.state.variantsSpinner ? (
 					<Spinner />
@@ -835,7 +802,25 @@ class PaySection extends Component {
 						cross="crossIcon"
 					/>
 				) : null}
+
+
+
+
+
+				{/* <div className="pay-item pay-img no-movil">
+					<img src={iconCredit} className="icon-credit" />
+					<img src={PayCredit} className="pay-section-img" />
+					<Link href="/ayuda">
+						<a>
+							<p>Más informacion</p>
+						</a>
+					</Link>
+				</div> */}
+
+
+
 			</div>
+			
 		);
 	}
 }

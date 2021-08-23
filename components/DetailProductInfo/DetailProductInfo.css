@@ -9,6 +9,7 @@
   font-size: 20px;
   font-weight: 600;
   color: #111111;
+
 }
 
 .item-detail-info {
@@ -74,7 +75,7 @@
 
 .characteristics-web {
   padding: 0;
-  font-size: 16px;
+  font-size: 13px;
   border: none;
 }
 
@@ -107,12 +108,21 @@
 .guarantee .sub-title {
   display: block;
   color: #111111;
-  font-size: 14px;
+  font-size: 15px;
 }
-
+.showGuide{
+  display: none;
+}
 @media (max-width: 700px) {
+  .wrap-detail-info-movil {
+    padding: 0px;
+  }
   .wrap-detail-info {
-    padding: 20px;
+    display: none;
+  }
+  .showGuide{
+    width: 100%;
+    display: initial;
   }
   .footer-social {
     display: -ms-grid;
@@ -120,19 +130,29 @@
   }
   .guarantee h5 {
     margin-bottom: 10px;
-    font-size: 17px;
+    font-size: 15px;
     color: #111111;
+  }
+  .justifyText{
+    text-align: justify !important;
+    font-size: 13px;
   }
   .guarantee .title {
     display: block;
     color: #111111;
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 14px;
+    font-weight:500;
   }
   .guarantee .sub-title {
     display: block;
     color: #111111;
-    font-size: 14px;
+    font-size: 13px;
   }
+  .item-detail-info p {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #111111;
+  }
+  
 }
 /*# sourceMappingURL=DetailProductInfo.css.map */

@@ -3,7 +3,10 @@ import './DetailProductInfo.css';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faAngleRight } from '@fortawesome/free-solid-svg-icons';
-
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 class DetailProductInfo extends Component {
 	constructor(props) {
 		super(props);
@@ -141,6 +144,70 @@ class DetailProductInfo extends Component {
 						{handleWeight(this.props.weight)}
 					</div>
 				</section>
+
+				<Accordion className="showGuide">
+								<AccordionSummary
+									expandIcon={<ExpandMoreIcon />}
+									aria-controls="panel1a-content"
+									id="panel1a-header"
+								>
+									<h5>Detalle del producto</h5>
+								</AccordionSummary>
+								<AccordionDetails>
+									{/* {dataTest(this.state.dataguide)} */}
+
+									<div style={{ width: '100%' }}>
+
+<div className="wrap-detail-info-movil">
+
+	<div className="item-detail-info">
+		<p>{this.props.product_name}</p>
+		<br />
+		<br />
+		{handleDesciption(this.props.desciption)}
+		<br />
+		<br />
+		{handleInformation(this.props.desciption)}
+	</div>
+	<section className="characteristics-web no-movil">
+		<div className="info-shops edit">
+			<a>
+				<p style={{ fontSize: '16px' }}>Características</p>
+			</a>
+		</div>
+		<div className="info">
+			{handleBrand(this.props.brand)}
+			{handleType(this.props.type)}
+			{handleColor(this.props.color)}
+			{handleModel(this.props.model)}
+			{handleLength(this.props.length)}
+			{handleWidth(this.props.width)}
+			{handleWeight(this.props.weight)}
+		</div>
+		<br />
+		<p style={{ fontSize: '16px' }} className="accent">
+			SPICESTOCK
+		</p>{' '}
+		<br />
+		*Este producto viene desde Estados Unidos
+		<br />
+		*(Entrega de 3 a 7 hábiles) *Envío gratis
+		<br />
+		<br />
+		{/* <p className="accent">ME RETRACTÉ DE MI COMPRA!</p>
+<br />
+En caso de ya que no quieras el producto que recibiste puedes realizar la devolución de esté, en un periodo no mayor a 5 días calendario desde su fecha de entrega, por ende el cliente deberá
+asumir el valor del retorno a una de las direcciones que se le indicará, el valor del envío varía según el peso y el tamaño del producto. */}
+	</section>
+</div>
+</div>
+
+									{/* <div dangerouslySetInnerHTML={ {__html: this.state.dataguide} } style={{margin:"auto"}}/> */}
+								</AccordionDetails>
+							</Accordion>
+
+
+
 				<div className="wrap-detail-info">
 					<h3>Detalle del producto</h3>
 					<div className="item-detail-info">
@@ -190,11 +257,14 @@ class DetailProductInfo extends Component {
 						En caso de que surja algún problema o no recibas el producto tal como lo
 						compraste, te devolveremos el dinero que pagaste.
 					</span>
+					<br/>
 					<span className="title">Garantía del vendedor</span>
 					<span className="sub-title">
 						Garantía por defecto de fabrica de (1) un mes.
 					</span>
 				</section>
+
+
 			</>
 		);
 	}

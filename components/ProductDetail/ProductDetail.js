@@ -366,10 +366,7 @@ class ProductDetail extends Component {
 							<Seller productId={this.state.mdata.product_id} />
 						</div>
 						{/* <QuestionItem product_id={this.state.mdata.product_id} q questions={this.state.questions} /> */}
-						<ProductsSlider
-							images={this.state.mdata.images}
-							category={this.state.mdata.category ? this.state.mdata.category.name : ''}
-						/>
+
 
 						{/* <Explorer />
           </section>
@@ -384,9 +381,7 @@ class ProductDetail extends Component {
 						/>
 					</section>
 				</div>
-				<div className="home-content  no-movil">
-					<ProductsSlider category={this.state.mdata.breadcum[1]?.name} />
-				</div>
+
 				<Footer />
 				<div className="footer-social">
 					<Link href={url}>
