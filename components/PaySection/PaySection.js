@@ -495,8 +495,23 @@ class PaySection extends Component {
 		// );
 		// console.log(signature);
 		const contentModalNewAddress = (
-			<div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', position: 'relative', width:'100%' }}>
-				<p style={{ textAlign: 'center', fontWeight: 'medium', paddingBottom: 20, paddingTop: 15 }}>
+			<div
+				style={{
+					display: 'flex',
+					justifyContent: 'center',
+					flexDirection: 'column',
+					position: 'relative',
+					width: '100%',
+				}}
+			>
+				<p
+					style={{
+						textAlign: 'center',
+						fontWeight: 'medium',
+						paddingBottom: 20,
+						paddingTop: 15,
+					}}
+				>
 					Por favor agregue los datos de envío
 				</p>
 				<div style={{ width: '300px', margin: '0 auto' }}>
@@ -536,7 +551,7 @@ class PaySection extends Component {
 						placeholder="Direccion"
 						name="address"
 					/>
-					
+
 					{/*<input*/}
 					{/*	value={this.state.neighborhood}*/}
 					{/*	onChange={this.handleFormValue}*/}
@@ -548,7 +563,7 @@ class PaySection extends Component {
 						method="post"
 						action="https://checkout.payulatam.com/ppp-web-gateway-payu/"
 						target="_blank"
-						onSubmit={this.toggleModalAddr}
+						onSubmit={this.closeModalAfterSubmit}
 					>
 						<input name="merchantId" type="hidden" value="530932" />
 						<input name="accountId" type="hidden" value="532826" />
@@ -558,9 +573,13 @@ class PaySection extends Component {
 							value={this.props.props.data.title.substr(0, 250)}
 						/>
 						<input name="referenceCode" type="hidden" value={ref_code} />
-						<input name="amount" type="hidden" value={quantity * this.props.props.data.price } />
+						<input
+							name="amount"
+							type="hidden"
+							value={quantity * this.props.props.data.price}
+						/>
 						<input name="tax" type="hidden" value="0" />
-						<input name="taxReturnBase" type="hidden" value="0" /> 
+						<input name="taxReturnBase" type="hidden" value="0" />
 						<input name="currency" type="hidden" value="COP" />
 						<input name="signature" type="hidden" value={signature} />
 						<input name="test" type="hidden" value="0" />
@@ -577,11 +596,7 @@ class PaySection extends Component {
 							value={this.props.props.data.user.user_id}
 						/>
 						<input name="extra3" type="hidden" value={this.state.cantidad.toString()} />
-						<input
-							name="responseUrl"
-							type="hidden"
-							value="https://kiero.co/pay_status"
-						/>
+						<input name="responseUrl" type="hidden" value="https://kiero.co/pay_status" />
 						<input
 							name="confirmationUrl"
 							type="hidden"
@@ -592,11 +607,10 @@ class PaySection extends Component {
 							onMouseDown={this.validateForm}
 							disabled={this.state.termsOfService ? this.state.disabledButton : true}
 							style={{
-								background: this.state.disabledButton ? '#cf0a2c' : '#cf0a2c',
+								background: this.state.disabledButton ? 'grey' : '#cf0a2c',
 								color: 'white',
 								cursor: 'pointer',
 								margin: '125px auto 15px auto',
-
 							}}
 							name="Submit"
 							type="submit"
@@ -604,8 +618,7 @@ class PaySection extends Component {
 						/>
 					</form>
 					{/*<button style={{ background:'#cf0a2c', color:'white'}} onClick={() => this.validateForm()}>Continuar con la transacción</button>*/}
-				</div>
-				<div
+					<div
 						style={{
 							display: 'flex',
 							top: 295,
@@ -614,12 +627,12 @@ class PaySection extends Component {
 							backgroundColor: '#f3f3f3',
 							justifyContent: 'center',
 							position: 'absolute',
-
 						}}
 					>
 						<div
 							style={{
-								display: 'flex',
+								textAlign: 'justify',
+								fontSize: '12px',
 							}}
 						>
 							<Checkbox
@@ -632,6 +645,7 @@ class PaySection extends Component {
 								value={this.state.termsOfService}
 								onChange={this.handleFormValue}
 							/>
+							Antes de continuar debes aceptar los{' '}
 							<div
 								style={{
 									fontSize: '13px',
@@ -639,18 +653,33 @@ class PaySection extends Component {
 							>
 								Antes de continuar debes aceptar los
 								<Link href="/terminos">
-    								<a target="_blank" style={{
-										color: '#007BFF',
-									}}> términos, condiciones </a>
-   								</Link> y 							
-								   <Link href="/privacidad">
-    								<a target="_blank" style={{
-										color: '#007BFF',
-									}}> política de privacidad </a>
-   								</Link>de KieroMarketplace
+									<a
+										target="_blank"
+										style={{
+											color: '#007BFF',
+										}}
+									>
+										{' '}
+										términos, condiciones{' '}
+									</a>
+								</Link>{' '}
+								y
+								<Link href="/privacidad">
+									<a
+										target="_blank"
+										style={{
+											color: '#007BFF',
+										}}
+									>
+										{' '}
+										política de privacidad{' '}
+									</a>
+								</Link>
+								de KieroMarketplace
 							</div>
 						</div>
 					</div>
+				</div>
 				{!this.state.validForm ? (
 					<div
 						style={{
@@ -668,7 +697,6 @@ class PaySection extends Component {
 				) : (
 					''
 				)}
-
 			</div>
 		);
 		return (
@@ -687,16 +715,16 @@ class PaySection extends Component {
 					<Rating productId={this.props.pid}/>
 				</div> */}
 				<div className="pay-item-oldprice">
-
 					<h3 className="price-pay-product-detail-oldprice">
 						${' '}
-						{(this.props.price*1.3)
-							? (this.props.price*1.3)
+						{this.props.price * 1.3
+							? (this.props.price * 1.3)
 									.toString()
 									.split('.')[0]
 									.replace(/(.)(?=(\d{3})+$)/g, '$1.')
 							: ' ... '}
-					</h3> <p  className="price-pay-product-detail-oldprice-discount">&nbsp; -30%</p> 
+					</h3>{' '}
+					<p className="price-pay-product-detail-oldprice-discount">&nbsp; -30%</p>
 				</div>
 				<div className="pay-item">
 					<h3 className="price-pay-product-detail">
@@ -708,7 +736,6 @@ class PaySection extends Component {
 									.replace(/(.)(?=(\d{3})+$)/g, '$1.')
 							: ' ... '}
 					</h3>
-
 				</div>
 				<div className="pay-item info-pay-product-detail">
 					<h3>
@@ -716,7 +743,6 @@ class PaySection extends Component {
 						<span className="no-web">gratis</span> <FontAwesomeIcon icon={faTruck} />
 					</h3>
 					<p>Nuestros productos son importados</p>
-
 				</div>
 				{this.state.variantsSpinner ? (
 					<Spinner />
@@ -802,10 +828,6 @@ class PaySection extends Component {
 					/>
 				) : null}
 
-
-
-
-
 				{/* <div className="pay-item pay-img no-movil">
 					<img src={iconCredit} className="icon-credit" />
 					<img src={PayCredit} className="pay-section-img" />
@@ -815,11 +837,7 @@ class PaySection extends Component {
 						</a>
 					</Link>
 				</div> */}
-
-
-
 			</div>
-			
 		);
 	}
 }
