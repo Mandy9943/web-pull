@@ -630,7 +630,7 @@ class PaySection extends Component {
 									}}> política de privacidad </a>
    								</Link>de KieroMarketplace
 							</div>
-						</div>
+						</div> 
 					</div>
 				{!this.state.validForm ? (
 					<div
