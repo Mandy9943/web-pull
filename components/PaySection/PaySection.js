@@ -561,7 +561,7 @@ class PaySection extends Component {
 						<input
 							name="responseUrl"
 							type="hidden"
-							value={"https://kieroapi.org/pay_status?extra4="+
+							value={"https://kiero.co/pay_status?extra4="+
 							this.props.props.data.title+'~' +
 							this.props.props.data.product_id+'~'+
 							this.props.props.data.price+'~'+
@@ -573,7 +573,7 @@ class PaySection extends Component {
 						<input
 							name="confirmationUrl"
 							type="hidden"
-							value="https://api.kieroapi.org/payuComplete"
+							value="https://api.kieroapi.net/payuComplete"
 						/>
 						<input
 							className="button-finish-payu"
