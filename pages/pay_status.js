@@ -22,7 +22,8 @@ function PayStatus({ data, u_data }) {
       const paramsUrl = router.query
       setparams(paramsUrl)
       console.log(params)
-  }, [router.query])
+  }, [router.query]);
+    var listValue = params.split("~")
     dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
     dataLayer.push({
         'ecommerce': {
@@ -36,13 +37,12 @@ function PayStatus({ data, u_data }) {
                     //'coupon': 'SUMMER_SALE'
                 },
                 'products': [{                            // List of productFieldObjects.
-                    'name': params.description,     // Name or ID is required.
-                    'id': params.extra1,
-                    'price': '15.25',
-                    'brand': 'Google',
-                    'category': 'Apparel',
-                    'variant': 'Gray',
-                    'quantity': params.extra3
+                    'name': listValue[0],     // Name or ID is required.
+                    'id': listValue[1],
+                    'price': listValue[2],
+                    'brand': listValue[3],
+                    'category': listValue[4],
+                    'quantity': listValue[5]
                 }]
             }
         }
