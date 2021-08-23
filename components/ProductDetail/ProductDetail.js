@@ -368,7 +368,7 @@ class ProductDetail extends Component {
 						{/* <QuestionItem product_id={this.state.mdata.product_id} q questions={this.state.questions} /> */}
 						<ProductsSlider
 							images={this.state.mdata.images}
-							category={this.state.mdata.category ? this.state.mdata.category.name : ''}
+							category={this.state.mdata.breadcum[0]?.name}
 						/>
 
 						{/* <Explorer />
