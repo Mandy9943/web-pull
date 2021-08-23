@@ -23,7 +23,30 @@ function PayStatus({ data, u_data }) {
       setparams(paramsUrl)
       console.log(params)
   }, [router.query])
-
+    dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+    dataLayer.push({
+        'ecommerce': {
+            'purchase': {
+                'actionField': {
+                    'id': params.transactionId,                         // Transaction ID. Required for purchases and refunds.
+                    'affiliation': 'SpiceStock',
+                    'revenue': params.TX_VALUE.toString(),                     // Total transaction value (incl. tax and shipping)
+                    'tax':params.TX_TAX.toString(),
+                    'shipping': '0',
+                    //'coupon': 'SUMMER_SALE'
+                },
+                'products': [{                            // List of productFieldObjects.
+                    'name': params.description,     // Name or ID is required.
+                    'id': params.extra1,
+                    'price': '15.25',
+                    'brand': 'Google',
+                    'category': 'Apparel',
+                    'variant': 'Gray',
+                    'quantity': params.extra3
+                }]
+            }
+        }
+    });
   return (
     <div className="order-page">
       <Head>
