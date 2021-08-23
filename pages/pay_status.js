@@ -50,7 +50,7 @@ function PayStatus({ data, u_data }) {
                 }
             }
         });
-        console.log('JOSE ESTO ES LO QUE TIENE'+dataLayer);
+        console.log('JOSE ESTO ES LO QUE TIENE'+dataLayer.toString());
     }
 
   return (
