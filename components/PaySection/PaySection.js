@@ -606,7 +606,7 @@ class PaySection extends Component {
 							<Checkbox
 								style={{
 									alignSelf: 'center',
-									marginRight: '8px',
+									marginRight: '2px',
 									color: '#CF0A2C',
 								}}
 								name="terms"
@@ -615,14 +615,19 @@ class PaySection extends Component {
 							/>
 							<div
 								style={{
-									fontSize: '14px',
+									fontSize: '13px',
 								}}
 							>
 								Antes de continuar debes aceptar los
 								<Link href="/terminos">
     								<a target="_blank" style={{
 										color: '#007BFF',
-									}}> términos, condiciones y política de privacidad </a>
+									}}> términos, condiciones </a>
+   								</Link> y 							
+								   <Link href="/privacidad">
+    								<a target="_blank" style={{
+										color: '#007BFF',
+									}}> política de privacidad </a>
    								</Link>de KieroMarketplace
 							</div>
 						</div>
