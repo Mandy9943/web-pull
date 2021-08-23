@@ -625,32 +625,32 @@ class PaySection extends Component {
 							borderRadius: '10px',
 							padding: '10px 0px',
 							backgroundColor: '#f3f3f3',
-							justifyContent: 'center',
 							position: 'absolute',
 						}}
 					>
 						<div
 							style={{
 								textAlign: 'justify',
+								textJustify: 'distribute',
 								fontSize: '12px',
 							}}
 						>
-							<Checkbox
-								style={{
-									alignSelf: 'center',
-									marginRight: '2px',
-									color: '#CF0A2C',
-								}}
-								name="terms"
-								value={this.state.termsOfService}
-								onChange={this.handleFormValue}
-							/>
-							Antes de continuar debes aceptar los{' '}
 							<div
 								style={{
 									fontSize: '13px',
 								}}
 							>
+								<Checkbox
+									style={{
+										marginRight: '2px',
+										color: '#CF0A2C',
+										width: '5px',
+										padding: '0 10px 0 10px',
+									}}
+									name="terms"
+									value={this.state.termsOfService}
+									onChange={this.handleFormValue}
+								/>
 								Antes de continuar debes aceptar los
 								<Link href="/terminos">
 									<a
@@ -660,10 +660,9 @@ class PaySection extends Component {
 										}}
 									>
 										{' '}
-										términos, condiciones{' '}
+										términos, condiciones y{' '}
 									</a>
 								</Link>{' '}
-								y
 								<Link href="/privacidad">
 									<a
 										target="_blank"
