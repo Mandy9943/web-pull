@@ -57,6 +57,9 @@
 }
 
 #crossIcon {
+	position: relative;
+	top: -5px;
+	left: 30px;
 	background-color: rgb(207, 10, 44);
 	color: white;
 	width: 15px;

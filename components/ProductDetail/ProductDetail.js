@@ -278,7 +278,7 @@ class ProductDetail extends Component {
 								/>
 							</div>
 							{/* <RecommendedProducts category={this.state.mdata.category.name} /> */}
-							<div className="home-content-slider slider-recommends">
+							<div className="home-content slider-recommends">
 								<ProductsSlider
 									category={
 										this.state.mdata.category ? this.state.mdata.category.name : ''
@@ -384,7 +384,7 @@ class ProductDetail extends Component {
 						/>
 					</section>
 				</div>
-				<div className="home-content-slider  no-movil">
+				<div className="home-content  no-movil">
 					<ProductsSlider category={this.state.mdata.breadcum[1]?.name} />
 				</div>
 				<Footer />
