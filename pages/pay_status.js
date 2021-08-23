@@ -24,8 +24,10 @@ function PayStatus({ data, u_data }) {
       console.log(params)
   }, [router.query]);
     var listValue = params.split("~")
+    console.log(params)
     dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
     dataLayer.push({
+        event: 'purchase',
         'ecommerce': {
             'purchase': {
                 'actionField': {
@@ -47,6 +49,7 @@ function PayStatus({ data, u_data }) {
             }
         }
     });
+    console.log('JOSE ESTO ES LO QUE TIENE'+dataLayer);
   return (
     <div className="order-page">
       <Head>
