@@ -47,8 +47,21 @@ class PaySection extends Component {
 	}
 
 	toggleModalAddr = () => {
+		this.setState({ modalAddr: !this.state.modalAddr,
+						termsOfService: '' });
+	};
+
+	closeModalAfterSubmit = () => {
 		setTimeout(() => {
-			this.setState({ modalAddr: !this.state.modalAddr });
+			this.setState({
+				modalAddr: !this.state.modalAddr,
+				user: '',
+				email: '',
+				mobile_phone: '',
+				city: '',
+				address: '',
+				termsOfService: '',
+			});
 		}, 2000);
 	};
 
