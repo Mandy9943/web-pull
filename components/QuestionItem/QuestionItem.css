@@ -30,6 +30,7 @@
   font-size: 14px;
   padding-bottom: 20px;
   display: block;
+  -webkit-text-size-adjust: none;
 }
 
 .QuestionItem-list .question-item {
