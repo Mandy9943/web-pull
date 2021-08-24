@@ -19,7 +19,11 @@
 .justifyText{
   text-align: justify !important;
 }
-
+.title-section {
+  font-size: 17px;
+  font-weight: 500;
+  -webkit-text-size-adjust: none;
+}
 .item-detail-info:nth-child(2) {
   margin-top: 20px;
 }
@@ -149,6 +153,11 @@
   .justifyText{
     text-align: justify !important;
     font-size: 13px;
+    -webkit-text-size-adjust: none;
+  }
+  .title-section {
+    font-size: 15px;
+    font-weight: 500;
     -webkit-text-size-adjust: none;
   }
   .guarantee .title {
