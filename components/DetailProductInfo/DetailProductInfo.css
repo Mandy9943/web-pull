@@ -47,6 +47,7 @@
   -ms-grid-columns: 1fr auto;
       grid-template-columns: 1fr auto;
   font-size: 16px;
+  -webkit-text-size-adjust: none;
 }
 
 .characteristics .info, .guarantee .info, .characteristics-web .info {
@@ -64,7 +65,8 @@
 }
 
 .characteristics .info .item .title, .guarantee .info .item .title, .characteristics-web .info .item .title {
-  font-size: 12px;
+  font-size: 13px;
+  -webkit-text-size-adjust: none;
   color: #111111;
 }
 
@@ -88,6 +90,9 @@
 .characteristics-web .info .item .title {
   font-size: 16px;
 }
+.characteristics-title {
+  font-size: 15px;
+}
 
 .guarantee {
   border-top: 0.5px solid #e2e2e2;
@@ -97,6 +102,7 @@
 .guarantee h5 {
   margin-bottom: 10px;
   font-size: 16px;
+  -webkit-text-size-adjust: none;
   color: #111111;
 }
 
@@ -111,6 +117,7 @@
 .guarantee .sub-title {
   display: block;
   color: #111111;
+  -webkit-text-size-adjust: none;
   font-size: 15px;
 }
 .showGuide{
@@ -134,11 +141,13 @@
   .guarantee h5 {
     margin-bottom: 10px;
     font-size: 15px;
+    -webkit-text-size-adjust: none;
     color: #111111;
   }
   .justifyText{
     text-align: justify !important;
     font-size: 13px;
+    -webkit-text-size-adjust: none;
   }
   .guarantee .title {
     display: block;

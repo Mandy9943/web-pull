@@ -131,7 +131,7 @@ class DetailProductInfo extends Component {
 				<section className="characteristics no-web">
 					<div className="info-shops edit">
 						<a>
-							<p>Características</p>
+							<p className="characteristics-title">Características</p>
 						</a>
 					</div>
 					<div className="info">

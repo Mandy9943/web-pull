@@ -261,8 +261,6 @@
   }
   .detail-content .questions-movil {
     background: #ffffff;
-    padding-bottom: 30px;
-    margin-bottom: 15px;
   }
   .detail-content .questions-movil .slider {
     display: none !important;
@@ -270,7 +268,7 @@
   .detail-content .questions-movil .QuestionItem-list {
     border: none !important;
     background: white;
-    padding: 15px;
+    padding: 40px;
   }
   .detail-content .questions-movil .QuestionItem-list .title {
     margin: 15px 0;
@@ -299,7 +297,8 @@
 }
 
 .footer-social img:last-child {
-  margin-left: 30px;
+  margin-left: 20px !important;
+  margin-top: 5px !important;
 }
 
 @media (max-width: 700px) {
