@@ -104,7 +104,7 @@ class DetailProductInfo extends Component {
 			} else {
 				return (
 					<div>
-						<h3 className="accent">Descripción:</h3>
+						<h3 className="title-section accent" >Descripción:</h3>
 						<br />
 						<div className="justifyText">{this.props.desciption}</div>
 					</div>
@@ -117,7 +117,7 @@ class DetailProductInfo extends Component {
 			} else {
 				return (
 					<div>
-						<h3 className="accent">Información:</h3>
+						<h3 className="title-section accent">Información:</h3>
 						<br />
 						<div className="justifyText">{this.props.information}</div>
 					</div>
@@ -129,9 +129,9 @@ class DetailProductInfo extends Component {
 		return (
 			<>
 				<section className="characteristics no-web">
-					<div className="info-shops edit">
+					<div className="info-shops">
 						<a>
-							<p>Características</p>
+							<p className="characteristics-title">Características</p>
 						</a>
 					</div>
 					<div className="info">
@@ -151,7 +151,7 @@ class DetailProductInfo extends Component {
 									aria-controls="panel1a-content"
 									id="panel1a-header"
 								>
-									<h5>Detalle del producto</h5>
+									<h4 className="title-section">Detalle del producto</h4>
 								</AccordionSummary>
 								<AccordionDetails>
 									{/* {dataTest(this.state.dataguide)} */}
@@ -222,7 +222,7 @@ asumir el valor del retorno a una de las direcciones que se le indicará, el val
 					<section className="characteristics-web no-movil">
 						<div className="info-shops edit">
 							<a>
-								<p style={{ fontSize: '18.72px' }}>Características</p>
+								<p className="title-section accent">Características</p>
 							</a>
 						</div>
 						<div className="info">
@@ -235,7 +235,7 @@ asumir el valor del retorno a una de las direcciones que se le indicará, el val
 							{handleWeight(this.props.weight)}
 						</div>
 						<br />
-						<p style={{ fontSize: '18.72px' }} className="accent">
+						<p style={{ fontSize: '18.72px' }} className="title-section accent">
 							SPICESTOCK
 						</p>{' '}
 						<br />
@@ -251,7 +251,7 @@ asumir el valor del retorno a una de las direcciones que se le indicará, el val
 					</section>
 				</div>
 				<section className="guarantee no-web">
-					<h5>Garantía</h5>
+					<h5 style={{ fontSize: '15px', fontWeight: 500}}>Garantía</h5>
 					<span className="title">Compra protegida</span>
 					<span className="sub-title">
 						En caso de que surja algún problema o no recibas el producto tal como lo
