@@ -175,6 +175,7 @@
 
 .info-pay-product-detail p {
 	font-size: 13px;
+	-webkit-text-size-adjust: none;
 	margin-bottom: 5px;
 	color: #111111;
 }

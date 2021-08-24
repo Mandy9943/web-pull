@@ -32,6 +32,7 @@
 .item-detail-info p {
   margin-bottom: 10px;
   font-size: 16px;
+  -webkit-text-size-adjust: none;
   color: #111111;
 }
 
@@ -51,6 +52,7 @@
 .characteristics .info, .guarantee .info, .characteristics-web .info {
   display: -ms-grid;
   display: grid;
+  -webkit-text-size-adjust: none;
   -ms-grid-columns: 1fr 1fr;
       grid-template-columns: 1fr 1fr;
 }
@@ -102,6 +104,7 @@
   display: block;
   color: #111111;
   font-size: 16px;
+  -webkit-text-size-adjust: none;
   font-weight: bold;
 }
 
@@ -139,18 +142,21 @@
   }
   .guarantee .title {
     display: block;
+    -webkit-text-size-adjust: none;
     color: #111111;
-    font-size: 14px;
+    font-size: 14px !important;
     font-weight:500;
   }
   .guarantee .sub-title {
     display: block;
     color: #111111;
-    font-size: 13px;
+    -webkit-text-size-adjust: none;
+    font-size: 13px  !important;
   }
   .item-detail-info p {
     margin-bottom: 10px;
-    font-size: 14px;
+    font-size: 14px  !important;
+    -webkit-text-size-adjust: none;
     color: #111111;
   }
   
