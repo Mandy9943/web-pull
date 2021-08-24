@@ -100,7 +100,8 @@
 }
 
 .footer-social img:last-child {
-  margin-left: 30px;
+  margin-left: 20px !important;
+  margin-top: 5px !important;
 }
 
 .summary-botton {
