@@ -23,7 +23,7 @@ function PayStatus({ data, u_data }) {
       setparams(paramsUrl)
       console.log(params)
   }, [router.query]);
-    var listValue = params.extra4.split("~")
+  if(params.extra4!==undefined) var listValue = params.extra4.split("~")
     console.log(params)
     if(params.lapResponseCode == "APPROVED"){
         dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
