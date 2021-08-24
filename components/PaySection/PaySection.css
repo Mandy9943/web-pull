@@ -221,7 +221,7 @@
 	color: #111111;
 	font-size: 15px;
 	-webkit-text-size-adjust: none;
-	font-weight: 600;
+	font-weight: 500;
 }
 
 .section-pay-type .section-pay-type-title svg {
@@ -315,7 +315,7 @@
 		background: white;
 	}
 	.section-pay-send-title h4 {
-		font-weight: 600;
+		font-weight: 500;
 		font-size: 15px;
 		-webkit-text-size-adjust: none;
 	}

@@ -19,9 +19,10 @@
 }
 .QuestionItem-list .title {
   color: #111111;
-  font-size: 14px;
+  font-size: 15px;
   padding-bottom: 20px;
-  font-weight: 600;
+  font-weight: 500;
+  -webkit-text-size-adjust: none;
 }
 
 .QuestionItem-list .empty-question {

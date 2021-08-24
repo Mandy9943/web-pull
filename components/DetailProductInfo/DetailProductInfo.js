@@ -104,7 +104,7 @@ class DetailProductInfo extends Component {
 			} else {
 				return (
 					<div>
-						<h3 className="accent">Descripción:</h3>
+						<h3 className="accent" style={{ fontSize: '15px', fontWeight: 500}}>Descripción:</h3>
 						<br />
 						<div className="justifyText">{this.props.desciption}</div>
 					</div>
@@ -117,7 +117,7 @@ class DetailProductInfo extends Component {
 			} else {
 				return (
 					<div>
-						<h3 className="accent">Información:</h3>
+						<h3 className="accent" style={{ fontSize: '15px', fontWeight: 500}}>Información:</h3>
 						<br />
 						<div className="justifyText">{this.props.information}</div>
 					</div>
@@ -151,7 +151,7 @@ class DetailProductInfo extends Component {
 									aria-controls="panel1a-content"
 									id="panel1a-header"
 								>
-									<h5>Detalle del producto</h5>
+									<h4 style={{ fontSize: '15px', fontWeight: 500}}>Detalle del producto</h4>
 								</AccordionSummary>
 								<AccordionDetails>
 									{/* {dataTest(this.state.dataguide)} */}
@@ -251,7 +251,7 @@ asumir el valor del retorno a una de las direcciones que se le indicará, el val
 					</section>
 				</div>
 				<section className="guarantee no-web">
-					<h5>Garantía</h5>
+					<h5 style={{ fontSize: '15px', fontWeight: 500}}>Garantía</h5>
 					<span className="title">Compra protegida</span>
 					<span className="sub-title">
 						En caso de que surja algún problema o no recibas el producto tal como lo
