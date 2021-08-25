@@ -21,7 +21,7 @@ class Modal extends Component {
 								this.props.toggle(this.props.num);
 							}}
 						>
-							<FontAwesomeIcon icon={faTimes} />
+							<FontAwesomeIcon id={this.props.cross} icon={faTimes} />
 						</span>
 					</div>
 					{this.props.content}
