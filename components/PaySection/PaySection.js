@@ -462,6 +462,7 @@ class PaySection extends Component {
 	};
 
 	render() {
+		console.log(this.state);
 		var quantity = this.state.cantidad === 0 ? 1 : this.state.cantidad;
 		var md5 = require('md5');
 		var ref_code = 'kieroco-' + new Date().getTime();
@@ -557,7 +558,7 @@ class PaySection extends Component {
 							type="hidden"
 							value={this.props.props.data.user.user_id}
 						/>
-						<input name="extra3" type="hidden" value={quantity.toString()} />
+						<input name="extra3" type="hidden" value={quantity} />
 						<input
 							name="responseUrl"
 							type="hidden"
