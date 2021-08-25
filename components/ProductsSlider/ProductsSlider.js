@@ -117,7 +117,7 @@ export default class ProductsSlider extends Component {
 			// console.log( encodeURIComponent(this.state.data[i].image), "imagen:", '?img=' + this.state.data[i].image)
 
 			let newUrl = 'https://api.kieroapi.net/img/v1/'+ this.state.data[i].product_id + '?img=' + encodeURIComponent(this.state.data[i].image)
-			console.log(newUrl, this.state.data[i].product_id)
+			console.log(this.state.data[i].image)
 			tmpList.push(
 				<ProductCard
 					key={skid++}
@@ -142,7 +142,7 @@ export default class ProductsSlider extends Component {
 		}
 
 		if (tmpList.length > 0) {
-			console.log(tmpList);
+			// console.log(tmpList);
 			productList.push(
 				<section key={kid++} className="test">
 					{tmpList}

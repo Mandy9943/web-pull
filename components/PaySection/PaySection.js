@@ -590,18 +590,7 @@ class PaySection extends Component {
 							value={this.props.props.data.user.user_id}
 						/>
 						<input name="extra3" type="hidden" value={this.state.cantidad.toString()} />
-						<input
-							name="responseUrl"
-							type="hidden"
-							value={"https://kiero.co/pay_status?extra4="+
-							this.props.props.data.title+'~' +
-							this.props.props.data.product_id+'~'+
-							this.props.props.data.price+'~'+
-							this.props.props.data.brand+'~'+
-							this.props.props.data.category.name+'~'+
-							this.state.cantidad
-							}
-						/>
+						<input name="responseUrl" type="hidden" value="https://kiero.co/pay_status" />
 						<input
 							name="confirmationUrl"
 							type="hidden"
