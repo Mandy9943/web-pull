@@ -475,7 +475,7 @@ class PaySection extends Component {
 	};
 
 	render() {
-		var quantity = this.state.cantidad == 0 ? 1 : this.state.cantidad;
+		var quantity = this.state.cantidad === 0 ? 1 : this.state.cantidad;
 		var md5 = require('md5');
 		var ref_code = 'kieroco-' + new Date().getTime();
 		var signature = md5(`uzIc90bkpXj0aJDh22H67MRJnl~530932~${ref_code}~${this.props.props.data.price*quantity}~COP`)
@@ -589,12 +589,25 @@ class PaySection extends Component {
 							type="hidden"
 							value={this.props.props.data.user.user_id}
 						/>
-						<input name="extra3" type="hidden" value={this.state.cantidad.toString()} />
-						<input name="responseUrl" type="hidden" value="https://kiero.co/pay_status" />
+						<input name="extra3" type="hidden" value={quantity.toString()} />
+						<input
+							name="responseUrl"
+							type="hidden"
+							value={"https://kieroapi.org/pay_status?extra4="+
+							//value={"https://kiero.co/pay_status?extra4="+
+							this.props.props.data.title+'~' +
+							this.props.props.data.product_id+'~'+
+							this.props.props.data.price+'~'+
+							this.props.props.data.brand+'~'+
+							this.props.props.data.category.name+'~'+
+							this.state.cantidad
+							}
+						/>
 						<input
 							name="confirmationUrl"
 							type="hidden"
-							value="https://api.kieroapi.net/payuComplete"
+							//value="https://api.kieroapi.net/payuComplete"
+							value="https://api.kieroapi.org/payuComplete"
 						/>
 						<input
 							className="button-finish-payu"
