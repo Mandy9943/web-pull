@@ -462,7 +462,8 @@ class PaySection extends Component {
 	};
 
 	render() {
-		var quantity = this.state.cantidad == 0 ? 1 : this.state.cantidad;
+		var quantity = this.state.cantidad === 0 ? 1 : this.state.cantidad;
+
 		var md5 = require('md5');
 		var ref_code = 'kieroco-' + new Date().getTime();
 		var signature = md5(`uzIc90bkpXj0aJDh22H67MRJnl~530932~${ref_code}~${this.props.props.data.price*quantity}~COP`)
