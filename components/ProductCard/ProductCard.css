@@ -102,6 +102,18 @@
 	}
 }
 
+@media (min-width: 1150px) {
+	.producto-card .product-card-img  {
+		height: 180px;
+	}
+}
+
+@media (min-width: 1360px) {
+	.producto-card .product-card-img  {
+		height: 220px;
+	}
+}
+
 @media (min-width: 1600px) {
 	.producto-card .product-card-img img {
 		min-height: 10vw;
