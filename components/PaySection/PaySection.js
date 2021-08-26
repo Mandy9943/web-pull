@@ -146,41 +146,7 @@ class PaySection extends Component {
             }
         }
 
-        dataLayer.push({
-            event: 'checkout',
-            ecommerce: {
-                checkout: {
-                    currencyCode: 'COP',
-                    actionField: {
-                        step: 1,
-                    },
-                    impressions: [
-                        {
-                            name: this.props.props.data.product_global_title, // Name or ID is required.
-                            id: this.props.props.data.product_global_id,
-                            price: this.props.props.data.price,
-                            brand: this.props.props.data.brand,
-                            category: concatCategories(),
-                            url:
-                                'https://kiero.co/detalle/' +
-                                this.props.props.data.product_global_id +
-                                '_' +
-                                this.props.props.data.product_global_title
-                                    .replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-                                    .replaceAll('//', '%2F')
-                                    .replaceAll('%', '')
-                                    .replaceAll(/['"]+/g, '')
-                                    .split(' ')
-                                    .join('-'),
-                            quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
-                        },
-                    ],
-                },
-            },
-            // 	'eventCallback': function(){
-            //  	window.location = '/pagar/' + id + '/' + quantity;
-            //  }
-        });
+
 
         // gtag('event', 'begin_checkout', {
         // 								"items": [
@@ -360,8 +326,21 @@ class PaySection extends Component {
             // this.setState({modalAddr: false})
             this.setState({disabledButton: false, validForm: true});
             // this.renderWompi()
+
         }
     };
+    checkoutOption = () =>{
+        dataLayer.push({
+            'event':'checkoutOption',
+            'ecommerce':{
+                'checkout_option':{
+                    'actionField':{
+                        'step': 1, 'option':'form_complete'
+                    }
+                }
+            }
+        })
+    }
 
     handleFormValue = (e) => {
         let {name, value} = e.target;
@@ -385,7 +364,42 @@ class PaySection extends Component {
     };
 
     renderPayu = () => {
-        this.setState({ modalAddr: true });
+        dataLayer.push({
+            event: 'checkout',
+            ecommerce: {
+                checkout: {
+                    currencyCode: 'COP',
+                    actionField: {
+                        step: 1,
+                    },
+                    impressions: [
+                        {
+                            name: this.props.props.data.product_global_title, // Name or ID is required.
+                            id: this.props.props.data.product_global_id,
+                            price: this.props.props.data.price,
+                            brand: this.props.props.data.brand,
+                            category: concatCategories(),
+                            url:
+                                'https://kiero.co/detalle/' +
+                                this.props.props.data.product_global_id +
+                                '_' +
+                                this.props.props.data.product_global_title
+                                    .replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+                                    .replaceAll('//', '%2F')
+                                    .replaceAll('%', '')
+                                    .replaceAll(/['"]+/g, '')
+                                    .split(' ')
+                                    .join('-'),
+                            quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
+                        },
+                    ],
+                },
+            },
+            // 	'eventCallback': function(){
+            //  	window.location = '/pagar/' + id + '/' + quantity;
+            //  }
+        });
+        this.setState({modalAddr: true});
     }
     // randomPayReference = (length, chars) => {
     // 	var result = '';
@@ -586,8 +600,8 @@ class PaySection extends Component {
                         <input
                             name="responseUrl"
                             type="hidden"
-                            value={"https://kieroapi.org/pay_status?extra4=" +
-                            //value={"https://kiero.co/pay_status?extra4="+
+                            // value={"https://kieroapi.org/pay_status?extra4=" +
+                            value={"https://kiero.co/pay_status?extra4="+
                             this.props.props.data.title + '~' +
                             this.props.props.data.product_id + '~' +
                             this.props.props.data.price + '~' +
@@ -599,13 +613,13 @@ class PaySection extends Component {
                         <input
                             name="confirmationUrl"
                             type="hidden"
-                            //value="https://api.kieroapi.net/payuComplete"
-                            value="https://api.kieroapi.org/payuComplete"
+                            value="https://api.kieroapi.net/payuComplete"
+                            // value="https://api.kieroapi.org/payuComplete"
                         />
                         <input
                             className="button-finish-payu"
                             onMouseDown={this.validateForm}
-                             disabled={this.state.termsOfService ? this.state.disabledButton : true}
+                            disabled={this.state.termsOfService ? this.state.disabledButton : true}
                             style={{
                                 background: this.state.disabledButton ? '#cf0a2c' : '#cf0a2c',
                                 color: 'white',
