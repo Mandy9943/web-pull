@@ -144,21 +144,19 @@
 	font-weight: 600;
 	font-family: 'Roboto', sans-serif;
 }
-.price-pay-product-detail-oldprice{
+.price-pay-product-detail-oldprice {
 	color: #646464;
 	font-size: 15px;
 	font-weight: 400;
 	font-family: 'Roboto', sans-serif;
-	text-decoration:line-through;
+	text-decoration: line-through;
 }
 
-.price-pay-product-detail-oldprice-discount{
+.price-pay-product-detail-oldprice-discount {
 	color: #cf0a2c;
 	font-size: 15px;
 	font-weight: 500;
 	font-family: 'Roboto', sans-serif;
-
-	
 }
 @media (max-width: 700px) {
 	.price-pay-product-detail {
@@ -285,6 +283,18 @@
 	-ms-flex-item-align: center;
 	-ms-grid-row-align: center;
 	align-self: center;
+}
+
+#crossIcon {
+	background-color: #cf0a2c;
+	width: 20px;
+	height: 20px;
+	color: white;
+}
+
+#crossIcon:hover {
+	background-color: white;
+	color: #cf0a2c;
 }
 
 .section-pay-send .section-pay-send-subtitle svg {

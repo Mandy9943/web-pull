@@ -107,19 +107,23 @@ export default class ProductsSlider extends Component {
 		let kid = 0;
 		let skid = 0;
 		for (let i = 0; i < this.state.data.length; i++) {
-			let url = '';
-			if (this.state.data[i].image) {
-				url = getImgUrl(this.state.data[i].image);
-			} else {
-				url =
-					'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png';
-			}
+			// let url = '';
+			// if (this.state.data[i].image) {
+			// 	url = getImgUrl(this.state.data[i].image);
+			// } else {
+			// 	url =
+			// 		'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png';
+			// }
+			// console.log( encodeURIComponent(this.state.data[i].image), "imagen:", '?img=' + this.state.data[i].image)
+
+			let newUrl = 'https://api.kieroapi.net/img/v1/'+ this.state.data[i].product_id + '?img=' + encodeURIComponent(this.state.data[i].image)
+			console.log(newUrl, this.state.data[i].product_id)
 			tmpList.push(
 				<ProductCard
 					key={skid++}
 					index={skid++}
 					price={this.state.data[i].price}
-					url={url}
+					url={newUrl}
 					product_id={this.state.data[i].product_id}
 					title={this.state.data[i].title}
 					category={this.state.data[i].category}
@@ -147,20 +151,21 @@ export default class ProductsSlider extends Component {
 		}
 
 		for (let i = 0; i < this.state.data.length; i++) {
-			let url = '';
-			if (this.state.data[i].image) {
-				url = getImgUrl(this.state.data[i].image);
-			} else {
-				url =
-					'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png';
-			}
+			// let url = '';
+			// if (this.state.data[i].image) {
+			// 	url = getImgUrl(this.state.data[i].image);
+			// } else {
+			// 	url =
+			// 		'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png';
+			// }
+			let newUrl = 'https://api.kieroapi.net/img/v1/'+ this.state.data[i].product_id + '?img=' + encodeURIComponent(this.state.data[i].image)
 			productListMobile.push(
 				<ProductCard
 					style={{ padding: '30px' }}
 					key={skid++}
 					index={skid++}
 					price={this.state.data[i].price}
-					url={url}
+					url={newUrl}
 					product_id={this.state.data[i].product_id}
 					title={this.state.data[i].title}
 					category={this.state.data[i].category}

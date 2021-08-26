@@ -20,44 +20,45 @@ import Modal from '../Common/Modal/Modal';
 // import { Button, Modal } from 'react-bootstrap';
 
 class PaySection extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            cantidad: 0,
-            dimensions: {},
-            variantsSpinner: props.m_pgid ? false : true,
-            modalAddr: false,
-            user: '',
-            email: '',
-            mobile_phone: '',
-            city: '',
-            region: '',
-            address: '',
-            neighborhood: '',
-            dataTransaction: [],
-            validForm: true,
-            disabledButton: true,
-            termsOfService: 2,
-        };
-    }
+	constructor(props) {
+		super(props);
+		this.state = {
+			cantidad: 0,
+			dimensions: {},
+			variantsSpinner: props.m_pgid ? false : true,
+			modalAddr: false,
+			user: '',
+			email: '',
+			mobile_phone: '',
+			city: '',
+			region: '',
+			address: '',
+			neighborhood: '',
+			dataTransaction: [],
+			validForm: true,
+			disabledButton: true,
+			termsOfService: '',
+		};
+	}
 
-    toggleModalAddr = () => {
-        this.setState({modalAddr: !this.state.modalAddr});
-    };
+	toggleModalAddr = () => {
+		this.setState({ modalAddr: !this.state.modalAddr,
+						termsOfService: '' });
+	};
 
-    closeModalAfterSubmit = () => {
-        setTimeout(() => {
-            this.setState({
-                modalAddr: !this.state.modalAddr,
-                user: '',
-                email: '',
-                mobile_phone: '',
-                city: '',
-                address: '',
-                termsOfService: 2,
-            });
-        }, 2000);
-    };
+	closeModalAfterSubmit = () => {
+		setTimeout(() => {
+			this.setState({
+				modalAddr: !this.state.modalAddr,
+				user: '',
+				email: '',
+				mobile_phone: '',
+				city: '',
+				address: '',
+				termsOfService: '',
+			});
+		}, 2000);
+	};
 
     componentDidMount() {
         if (this.props.m_pgid) return;
