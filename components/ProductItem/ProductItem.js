@@ -22,7 +22,7 @@ export default class ProductItem extends Component {
 				.join('-');
 		let image_url =
 			product.images[0] && product.images[0].url !== ''
-				? getImgUrl(product.images[0].url)
+				? getImgUrl(product.images[0].url,1000)
 				: 'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png';
 
 		let status = '';

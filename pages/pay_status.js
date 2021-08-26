@@ -20,48 +20,51 @@ function PayStatus({ data, u_data }) {
 
   React.useEffect(() => {
       const paramsUrl = router.query
+      dataLayer.push({
+          event:'checkoutOption',
+          ecommerce:{
+              checkoutOption:{
+                  actionField:{
+                      step: 1, 'option':paramsUrl.polPaymentMethodType
+                  }
+              }
+          }
+      })
       setparams(paramsUrl)
-      console.log(params)
+
   }, [router.query]);
-    dataLayer.push({ ecommerce: null });
-    dataLayer.push({
-        'event':'checkoutOption',
-        'ecommerce':{
-            'checkout_option':{
-                'actionField':{
-                    'step': 1, 'option':params.polPaymentMethodType
+
+  if(params.extra4!==undefined) {
+      var listValue = params.extra4.split("~")
+        if(params.lapResponseCode == "APPROVED"){
+            dataLayer.push({
+                event: 'purchase',
+                'ecommerce': {
+                    'purchase': {
+                        'actionField': {
+                            'id': params.transactionId,                         // Transaction ID. Required for purchases and refunds.
+                            'affiliation': 'SpiceStock',
+                            'revenue': params.TX_VALUE.toString(),                     // Total transaction value (incl. tax and shipping)
+                            'tax':params.TX_TAX.toString(),
+                            'shipping': '0',
+                            //'coupon': 'SUMMER_SALE'
+                        },
+                        'products': [{                            // List of productFieldObjects.
+                            'name': listValue[0],     // Name or ID is required.
+                            'id': listValue[1],
+                            'price': listValue[2],
+                            'brand': listValue[3],
+                            'category': listValue[4],
+                            'quantity': listValue[5]
+                        }]
+                    }
                 }
-            }
+            });
+            console.log('JOSE ESTO ES LO QUE TIENE'+dataLayer.toString());
         }
-    })
-  if(params.extra4!==undefined) var listValue = params.extra4.split("~")
-    console.log(params)
-    if(params.lapResponseCode == "APPROVED"){
-        dataLayer.push({
-            event: 'purchase',
-            'ecommerce': {
-                'purchase': {
-                    'actionField': {
-                        'id': params.transactionId,                         // Transaction ID. Required for purchases and refunds.
-                        'affiliation': 'SpiceStock',
-                        'revenue': params.TX_VALUE.toString(),                     // Total transaction value (incl. tax and shipping)
-                        'tax':params.TX_TAX.toString(),
-                        'shipping': '0',
-                        //'coupon': 'SUMMER_SALE'
-                    },
-                    'products': [{                            // List of productFieldObjects.
-                        'name': listValue[0],     // Name or ID is required.
-                        'id': listValue[1],
-                        'price': listValue[2],
-                        'brand': listValue[3],
-                        'category': listValue[4],
-                        'quantity': listValue[5]
-                    }]
-                }
-            }
-        });
-        console.log('JOSE ESTO ES LO QUE TIENE'+dataLayer.toString());
     }
+
+
 
   return (
     <div className="order-page">
