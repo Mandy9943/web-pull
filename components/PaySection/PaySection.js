@@ -68,13 +68,7 @@ class PaySection extends Component {
     go = (id) => {
         var quantity = this.state.cantidad == 0 ? 1 : this.state.cantidad;
 
-        const concatCategories = () => {
-            var dataCategory = [];
-            this.props.props.data.breadcum.forEach((prod, index) => {
-                dataCategory.push(prod.name);
-            });
-            return dataCategory.join(' / ');
-        };
+
 
         // dataLayer.push({ ecommerce: null });
         // let dataLayerBeginCheckout = {
@@ -326,44 +320,18 @@ class PaySection extends Component {
             // this.setState({modalAddr: false})
             this.setState({disabledButton: false, validForm: true});
             // this.renderWompi()
+            this.checkout()
 
         }
     };
-    checkoutOption = () =>{
-        dataLayer.push({
-            'event':'checkoutOption',
-            'ecommerce':{
-                'checkout_option':{
-                    'actionField':{
-                        'step': 1, 'option':'form_complete'
-                    }
-                }
-            }
-        })
-    }
-
-    handleFormValue = (e) => {
-        let {name, value} = e.target;
-
-        if (name === 'mobile_phone') {
-            this.validateNumber(name, value);
-        }
-        if (name === 'city') {
-            this.validateText(name, value);
-        }
-        if (name === 'user' || name === 'email' || name === 'address') {
-            this.setState({[name]: value});
-        }
-        if (name === 'terms') {
-            this.setState({
-                termsOfService: this.state.termsOfService === 2 ? 1 : !this.state.termsOfService,
+    checkout = () =>{
+        const concatCategories = () => {
+            var dataCategory = [];
+            this.props.props.data.breadcum.forEach((prod, index) => {
+                dataCategory.push(prod.name);
             });
-            console.elog;
-        }
-        this.validateForm();
-    };
-
-    renderPayu = () => {
+            return dataCategory.join(' / ');
+        };
         dataLayer.push({
             event: 'checkout',
             ecommerce: {
@@ -399,6 +367,32 @@ class PaySection extends Component {
             //  	window.location = '/pagar/' + id + '/' + quantity;
             //  }
         });
+    }
+
+    handleFormValue = (e) => {
+        let {name, value} = e.target;
+
+        if (name === 'mobile_phone') {
+            this.validateNumber(name, value);
+        }
+        if (name === 'city') {
+            this.validateText(name, value);
+        }
+        if (name === 'user' || name === 'email' || name === 'address') {
+            this.setState({[name]: value});
+        }
+        if (name === 'terms') {
+            this.setState({
+                termsOfService: this.state.termsOfService === 2 ? 1 : !this.state.termsOfService,
+            });
+            console.elog;
+        }
+        this.validateForm();
+    };
+
+    renderPayu = () => {
+
+
         this.setState({modalAddr: true});
     }
     // randomPayReference = (length, chars) => {
