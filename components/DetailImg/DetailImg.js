@@ -32,6 +32,7 @@ class Detail extends Component {
               this.props.images.reverse().map((img, i) =>
                 i < 5 ? (
                   <img
+                    // src={'https://api.kieroapi.net/img/v1/'+ img.product_id + '?img=' + encodeURIComponent(img.url)}
                     src={getImgUrlMinMin(img.url)}
                     alt={this.props.product_name+" "+i}
                     className="size-img-list"

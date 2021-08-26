@@ -40,14 +40,18 @@ export default class SliderDetail extends Component {
             animateIn: 'animateIn',
             animateOut: 'animateOut'}
 
-        return (
-            <div className="SliderDetail">
+        const renderImages = (images) =>{
+           return images.map((slide, index) =>
+           <div key={index}>
+                <img src={'https://api.kieroapi.net/img/v1/'+ slide.product_id + '?img=' + encodeURIComponent(slide.url)} />        
+           </div>
+            )
+        }
+            return (
+                <div className="SliderDetail">
                 <section className="mobil">
                     <Slider autoplay={3000}>
-                        {images.map((slide, index) =>
-                        <div key={index}>
-                            <img src={getImgUrl(slide.url,1000)} />
-                        </div>)}
+                        {renderImages(images)}
                     </Slider>
                 </section>
             </div>
