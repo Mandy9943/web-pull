@@ -23,10 +23,20 @@ function PayStatus({ data, u_data }) {
       setparams(paramsUrl)
       console.log(params)
   }, [router.query]);
+    dataLayer.push({ ecommerce: null });
+    dataLayer.push({
+        'event':'checkoutOption',
+        'ecommerce':{
+            'checkout_option':{
+                'actionField':{
+                    'step': 1, 'option':params.polPaymentMethodType
+                }
+            }
+        }
+    })
   if(params.extra4!==undefined) var listValue = params.extra4.split("~")
     console.log(params)
     if(params.lapResponseCode == "APPROVED"){
-        dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
         dataLayer.push({
             event: 'purchase',
             'ecommerce': {
