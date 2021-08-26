@@ -320,11 +320,31 @@ class PaySection extends Component {
         } else {
             // this.setState({modalAddr: false})
             this.setState({disabledButton: false, validForm: true});
+
+        }
+    };
+
+    validateFormFinal = () => {
+        const {user, email, mobile_phone, city, address, termsOfService} = this.state;
+        if (
+            !user ||
+            !email ||
+            !mobile_phone ||
+            !city ||
+            !address
+            // !region ||
+            // !neighborhood
+        ) {
+            this.setState({disabledButton: true, validForm: false});
+        } else {
+            // this.setState({modalAddr: false})
+            this.setState({disabledButton: false, validForm: true});
             // this.renderWompi()
             this.checkout()
 
         }
     };
+
     checkout = () =>{
         const concatCategories = () => {
             var dataCategory = [];
@@ -613,7 +633,7 @@ class PaySection extends Component {
                         />
                         <input
                             className="button-finish-payu"
-                            onMouseDown={this.validateForm}
+                            onMouseDown={this.validateFormFinal}
                             disabled={this.state.termsOfService ? this.state.disabledButton : true}
                             style={{
                                 background: this.state.disabledButton ? '#cf0a2c' : '#cf0a2c',
