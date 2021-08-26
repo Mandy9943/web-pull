@@ -22,11 +22,11 @@ function PayStatus({ data, u_data }) {
       const paramsUrl = router.query
       setparams(paramsUrl)
       dataLayer.push({
-          'event':'checkoutOption',
-          'ecommerce':{
-              'checkoutOption':{
-                  'actionField':{
-                      'step': 1, 'option':params.polPaymentMethodType
+          event:'checkoutOption',
+          ecommerce:{
+              checkoutOption:{
+                  actionField:{
+                      step: 1, 'option':params.polPaymentMethodType
                   }
               }
           }
