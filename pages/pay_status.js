@@ -21,19 +21,18 @@ function PayStatus({ data, u_data }) {
   React.useEffect(() => {
       const paramsUrl = router.query
       setparams(paramsUrl)
-      console.log(params)
+      dataLayer.push({
+          'event':'checkoutOption',
+          'ecommerce':{
+              'checkout_option':{
+                  'actionField':{
+                      'step': 1, 'option':params.polPaymentMethodType
+                  }
+              }
+          }
+      })
   }, [router.query]);
-    dataLayer.push({ ecommerce: null });
-    dataLayer.push({
-        'event':'checkoutOption',
-        'ecommerce':{
-            'checkout_option':{
-                'actionField':{
-                    'step': 1, 'option':params.polPaymentMethodType
-                }
-            }
-        }
-    })
+
   if(params.extra4!==undefined) var listValue = params.extra4.split("~")
     console.log(params)
     if(params.lapResponseCode == "APPROVED"){
