@@ -385,7 +385,7 @@ class PaySection extends Component {
     };
 
     renderPayu = () => {
-        this.setState({ modalAddr: true });
+        this.setState({modalAddr: true});
     }
     // randomPayReference = (length, chars) => {
     // 	var result = '';
@@ -605,7 +605,7 @@ class PaySection extends Component {
                         <input
                             className="button-finish-payu"
                             onMouseDown={this.validateForm}
-                             disabled={this.state.termsOfService ? this.state.disabledButton : true}
+                            disabled={this.state.termsOfService ? this.state.disabledButton : true}
                             style={{
                                 background: this.state.disabledButton ? '#cf0a2c' : '#cf0a2c',
                                 color: 'white',
