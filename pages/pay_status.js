@@ -24,7 +24,7 @@ function PayStatus({ data, u_data }) {
       dataLayer.push({
           'event':'checkoutOption',
           'ecommerce':{
-              'checkout_option':{
+              'checkoutOption':{
                   'actionField':{
                       'step': 1, 'option':params.polPaymentMethodType
                   }
