@@ -502,6 +502,9 @@ class PaySection extends Component {
     // 				addPaymentDataWompi('/DataWompiTransaction', dataTransaction);
     // 		  });
     // };
+	handleFormatName = (str) => {
+		return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
+	}
 
     render() {
         // console.log(this.state);
@@ -604,7 +607,7 @@ class PaySection extends Component {
                         <input name="shippingCountry" type="hidden" value="CO"/>
                         <input name="shippingCity" type="hidden" value={this.state.city}/>
                         <input name="shippingAddress" type="hidden" value={this.state.address}/>
-                        <input name="payerFullName" type="hidden" value={this.state.user}/>
+                        <input name="payerFullName" type="hidden" value={this.handleFormatName(this.state.user)}/>
                         <input name="extra1" type="hidden" value={this.props.props.data.product_id}/>
                         <input
                             name="extra2"
