@@ -6,6 +6,10 @@
     padding: 0
     width: auto
 
+    .home-section-title
+      font-size: 15px
+      margin-left: 10px
+
     .slider-movil
       position: relative
       padding-bottom: 34%
@@ -25,6 +29,7 @@
         height: -moz-min-content
         padding: 25px 0
         overflow-x: auto
+        overflow-y: hidden
 
         .producto-card
           width: 18%
@@ -86,12 +91,12 @@
     display: none !important
 
 @media (max-width: 768px)
-  
-    padding: 0 15px 
+  .home-content .products-slider, .detail-content .products-slider
+    padding: 0 15px
     width: auto
 
   .home-content .products-slider .home-section-title, .detail-content .products-slider .home-section-title
-    font-size: 16px !important
+    font-size: 15px !important
     color: #111111
     margin-bottom: 15px
     font-weight: 500
@@ -143,10 +148,8 @@
     padding: 0 15px
     width: auto
 
-
-
   .home-content .products-slider .home-section-title, .detail-content .products-slider .home-section-title
-    font-size: 16px !important
+    font-size: 15px !important
     color: #111111
     margin-bottom: 15px
     font-weight: 400
@@ -174,8 +177,6 @@
     height: -moz-min-content
     height: min-content
     padding: 5px 0
-    overflow-x: auto
-    overflow-y: hidden
 
   .home-content .products-slider .slider-movil .content-products-slider .producto-card, .detail-content .products-slider .slider-movil .content-products-slider .producto-card
     width: 33%

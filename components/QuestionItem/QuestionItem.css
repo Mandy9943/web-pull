@@ -19,9 +19,10 @@
 }
 .QuestionItem-list .title {
   color: #111111;
-  font-size: 14px;
+  font-size: 15px;
   padding-bottom: 20px;
-  font-weight: 600;
+  font-weight: 500;
+  -webkit-text-size-adjust: none;
 }
 
 .QuestionItem-list .empty-question {
@@ -29,6 +30,7 @@
   font-size: 14px;
   padding-bottom: 20px;
   display: block;
+  -webkit-text-size-adjust: none;
 }
 
 .QuestionItem-list .question-item {
@@ -66,10 +68,12 @@
 .QuestionItem-list .footer-question span {
   color: #BEBEBE;
   font-size: 13px;
+  -webkit-text-size-adjust: none;
 }
 
 .QuestionItem-list .footer-question a {
   color: #4E8EFE;
   font-size: 13px;
+  -webkit-text-size-adjust: none;
 }
 /*# sourceMappingURL=QuestionItem.css.map */

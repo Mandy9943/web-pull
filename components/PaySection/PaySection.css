@@ -74,6 +74,7 @@
 	color: white;
 	width: 80%;
 	margin: 10px auto;
+	font-weight: 500;
 }
 
 .button-finish-payu {
@@ -173,6 +174,7 @@
 
 .info-pay-product-detail p {
 	font-size: 13px;
+	-webkit-text-size-adjust: none;
 	margin-bottom: 5px;
 	color: #111111;
 }
@@ -216,8 +218,9 @@
 
 .section-pay-type .section-pay-type-title h4 {
 	color: #111111;
-	font-size: 17px;
-	font-weight: 600;
+	font-size: 15px;
+	-webkit-text-size-adjust: none;
+	font-weight: 500;
 }
 
 .section-pay-type .section-pay-type-title svg {
@@ -236,7 +239,8 @@
 .section-pay-type p {
 	margin: 10px 0px;
 	color: #111111;
-	font-size: 15px;
+	font-size: 14px;
+	-webkit-text-size-adjust: none;
 }
 
 .section-pay-type .section-pay-type-items {
@@ -272,7 +276,7 @@
 	grid-template-columns: auto 1fr;
 	grid-gap: 15px;
 	color: #cf0a2c;
-	font-size: 15px;
+	font-size: 14px;
 }
 
 .section-pay-send .section-pay-send-subtitle p {
@@ -295,12 +299,14 @@
 
 .section-pay-send .section-pay-send-subtitle svg {
 	font-size: 20px;
+	-webkit-text-size-adjust: none;
 }
 
 .section-pay-send .section-pay-send-description {
 	margin: 20px 0px;
 	color: #111111;
 	font-size: 15px;
+	-webkit-text-size-adjust: none;
 }
 
 .section-pay-wrap-seller {
@@ -320,13 +326,23 @@
 		background: white;
 	}
 	.section-pay-send-title h4 {
-		font-weight: 600;
+		font-weight: 500;
+		font-size: 15px;
+		-webkit-text-size-adjust: none;
 	}
 	.section-pay-send-subtitle p {
 		font-weight: 400;
+		-webkit-text-size-adjust: none;
 	}
 	.info-pay-product-detail h3 {
-		font-size: 16px;
+		font-size: 15px;
+		-webkit-text-size-adjust: none;
+	}
+	.section-pay-send .section-pay-send-description {
+		margin: 20px 0px;
+		color: #111111;
+		font-size: 14px;
+		-webkit-text-size-adjust: none;
 	}
 }
 /*# sourceMappingURL=PaySection.css.map */
