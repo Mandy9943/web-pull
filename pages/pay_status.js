@@ -25,7 +25,7 @@ function PayStatus({ data, u_data }) {
           ecommerce:{
               checkoutOption:{
                   actionField:{
-                      step: 1, 'option':paramsUrl.polPaymentMethodType
+                      step: 1, 'option':paramsUrl.lapPaymentMethodType
                   }
               }
           }
