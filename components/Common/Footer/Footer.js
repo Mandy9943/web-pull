@@ -8,7 +8,7 @@ export default class Footer extends Component {
         return new Date().getFullYear();
     }
     render() {
-        let url = "//sic.gov.co";
+        let url = "https://www.sic.gov.co/";
         return (
             <div className="footer">
                 <div className="footer-content">
