@@ -21,16 +21,16 @@ function PayStatus({ data, u_data }) {
   React.useEffect(() => {
       const paramsUrl = router.query
       setparams(paramsUrl)
-      if(params.extra4!==undefined) {
-          var listValue = params.extra4.split("~")
+      if(paramsUrl.extra4!==undefined) {
+          var listValue = paramsUrl.extra4.split("~")
           dataLayer.push({
               'ecommerce': {
                   'pending_transaction': {
                       'actionField': {
-                          'id': params.transactionId,                         // Transaction ID. Required for purchases and refunds.
+                          'id': paramsUrl.transactionId,                         // Transaction ID. Required for purchases and refunds.
                           'affiliation': 'SpiceStock',
-                          'revenue': params.TX_VALUE.toString(),                     // Total transaction value (incl. tax and shipping)
-                          'tax':params.TX_TAX.toString(),
+                          'revenue': paramsUrl.TX_VALUE.toString(),                     // Total transaction value (incl. tax and shipping)
+                          'tax':paramsUrl.TX_TAX.toString(),
                           'shipping': '0',
                           //'coupon': 'SUMMER_SALE'
                       },
@@ -46,16 +46,16 @@ function PayStatus({ data, u_data }) {
                   }
               }
           });
-          if(params.lapResponseCode == "APPROVED"){
+          if(paramsUrl.lapResponseCode == "APPROVED"){
               dataLayer.push({
                   event: 'purchase',
                   'ecommerce': {
                       'purchase': {
                           'actionField': {
-                              'id': params.transactionId,                         // Transaction ID. Required for purchases and refunds.
+                              'id': paramsUrl.transactionId,                         // Transaction ID. Required for purchases and refunds.
                               'affiliation': 'SpiceStock',
-                              'revenue': params.TX_VALUE.toString(),                     // Total transaction value (incl. tax and shipping)
-                              'tax':params.TX_TAX.toString(),
+                              'revenue': paramsUrl.TX_VALUE.toString(),                     // Total transaction value (incl. tax and shipping)
+                              'tax':paramsUrl.TX_TAX.toString(),
                               'shipping': '0',
                               //'coupon': 'SUMMER_SALE'
                           },
