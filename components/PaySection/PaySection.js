@@ -340,7 +340,8 @@ class PaySection extends Component {
             // this.setState({modalAddr: false})
             this.setState({disabledButton: false, validForm: true});
             // this.renderWompi()
-            this.checkout()
+            this.checkoutOption();
+
 
         }
     };
@@ -390,6 +391,19 @@ class PaySection extends Component {
         });
     }
 
+    checkoutOption = () =>{
+        dataLayer.push({
+            event:'checkoutOption',
+            ecommerce:{
+                checkoutOption:{
+                    actionField:{
+                        step: 1, 'option':'payu'
+                    }
+                }
+            }
+        })
+    }
+
     handleFormValue = (e) => {
         let {name, value} = e.target;
 
@@ -412,7 +426,7 @@ class PaySection extends Component {
     };
 
     renderPayu = () => {
-
+        this.checkout();
 
         this.setState({modalAddr: true});
     }
