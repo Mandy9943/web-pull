@@ -56,25 +56,24 @@ class ListCategory extends Component {
 					price: prod.price,
 					brand: prod.brand,
 					category: prod.category,
-					url:
-						'https://kiero.co/detalle/' +
-						prod.product_id +
-						'_' +
-						prod.title
-							.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-							.replaceAll('//', '%2F')
-							.replace('%', '')
-							.split(' ')
-							.join('-'),
+					list: 'Search Result',
+					// url:
+					// 	'https://kiero.co/detalle/' +
+					// 	prod.product_id +
+					// 	'_' +
+					// 	prod.title
+					// 		.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+					// 		.replaceAll('//', '%2F')
+					// 		.replace('%', '')
+					// 		.split(' ')
+					// 		.join('-'),
 					position: index + 1,
 				};
 			});
 			dataLayer.push({
+				event:'gtm.dom',
 				ecommerce: {
 					currencyCode: 'COP',
-					actionField: {
-						list: 'Search Result',
-					},
 					impressions: dataLayerGoogleSearchUniversal,
 				},
 			});
