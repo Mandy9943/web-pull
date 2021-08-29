@@ -56,12 +56,12 @@ export default class ProductsSlider extends Component {
 					price: prod.price,
 					brand: prod.brand,
 					category: prod.category,
-					url:'https://kiero.co/detalle/' + prod.product_id + '_' + prod.title
-																			.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-																			.replace('//', '%2F')
-																			.replace('%', '')
-																			.split(' ')
-																			.join('-'),
+					// url:'https://kiero.co/detalle/' + prod.product_id + '_' + prod.title
+					// 														.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+					// 														.replace('//', '%2F')
+					// 														.replace('%', '')
+					// 														.split(' ')
+					// 														.join('-'),
 					position: index + 1
 				};
 			});
