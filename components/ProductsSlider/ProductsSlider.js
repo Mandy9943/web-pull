@@ -56,6 +56,7 @@ export default class ProductsSlider extends Component {
 					price: prod.price,
 					brand: prod.brand,
 					category: prod.category,
+					list: 'Products Slider',
 					// url:'https://kiero.co/detalle/' + prod.product_id + '_' + prod.title
 					// 														.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
 					// 														.replace('//', '%2F')
