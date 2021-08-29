@@ -100,6 +100,7 @@ class ProductDetail extends Component {
 		};
 
 		dataLayer.push({
+			event:'gtm.dom',
 			ecommerce: {
 				detail: {
 					actionField: {
