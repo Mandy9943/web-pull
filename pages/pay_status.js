@@ -24,9 +24,10 @@ function PayStatus({ data, u_data }) {
       if(paramsUrl.extra4!==undefined) {
           var listValue = paramsUrl.extra4.split("~")
           dataLayer.push({
-              'ecommerce': {
-                  'pending_transaction': {
-                      'actionField': {
+              event:'pending_transaction',
+              ecommerce: {
+                  pending_transaction: {
+                      actionField: {
                           'id': paramsUrl.transactionId,                         // Transaction ID. Required for purchases and refunds.
                           'affiliation': 'SpiceStock',
                           'revenue': paramsUrl.TX_VALUE.toString(),                     // Total transaction value (incl. tax and shipping)
@@ -34,7 +35,7 @@ function PayStatus({ data, u_data }) {
                           'shipping': '0',
                           //'coupon': 'SUMMER_SALE'
                       },
-                      'products': [{                            // List of productFieldObjects.
+                      products: [{                            // List of productFieldObjects.
                           'name': listValue[0],     // Name or ID is required.
                           'id': listValue[1],
                           'price': listValue[2],
