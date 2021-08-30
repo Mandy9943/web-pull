@@ -119,6 +119,7 @@ function Product({ data, u_data }) {
 						}),
 					}}
 				></script>
+
 			</Head>
 			{/* Google Tag Manager (noscript) */}
 			<noscript
@@ -153,7 +154,12 @@ export async function getServerSideProps(context) {
 		authenticated: isAuthenticated(context),
 		jwt: jwt ? jwt : '',
 	};
+	var _learnq = _learnq || [];
 
+	_learnq.push(['identify', {
+		'email': 'jujuj'
+	}]);
+	console.log(_learnq)
 	return { props: { data: data.data, u_data } };
 }
 

@@ -130,7 +130,30 @@ class ProductDetail extends Component {
 				},
 			},
 		});
-
+	// 	var _learnq = _learnq || [];
+	// 	var item = {
+	// 		Name: this.props.data.product_global_title,
+	// 	ProductID: this.props.data.product_global_id,
+	// 	Categories: concatCategories(),
+	// 	ImageURL: "https:{{ product.featured_image.src|img_url:'grande' }}",
+	// 		URL: "{{ shop.secure_url }}{{ product.url }}",
+	// 		Brand: this.props.data.brand,
+	// 	Price: this.props.data.price,
+	// 	CompareAtPrice: ''
+	// };
+	// 	_learnq.push(['track', 'Viewed Product', item]);
+	// 	_learnq.push(['trackViewedItem', {
+	// 		Title: item.Name,
+	// 		ItemId: item.ProductID,
+	// 		Categories: item.Categories,
+	// 		ImageUrl: item.ImageURL,
+	// 		Url: item.URL,
+	// 		Metadata: {
+	// 			Brand: item.Brand,
+	// 			Price: item.Price,
+	// 			CompareAtPrice: item.CompareAtPrice
+	// 		}
+	// 	}]);
 		// gtag('event', 'view_item', {
 		// 						"items": [
 		// 									{
