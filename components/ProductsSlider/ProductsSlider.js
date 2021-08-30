@@ -56,22 +56,21 @@ export default class ProductsSlider extends Component {
 					price: prod.price,
 					brand: prod.brand,
 					category: prod.category,
-					url:'https://kiero.co/detalle/' + prod.product_id + '_' + prod.title
-																			.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-																			.replace('//', '%2F')
-																			.replace('%', '')
-																			.split(' ')
-																			.join('-'),
+					list: 'Products Slider',
+					// url:'https://kiero.co/detalle/' + prod.product_id + '_' + prod.title
+					// 														.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+					// 														.replace('//', '%2F')
+					// 														.replace('%', '')
+					// 														.split(' ')
+					// 														.join('-'),
 					position: index + 1
 				};
 			});
 			dataLayer.push({
-				'ecommerce': {
-					"currencyCode": "COP",
-					"actionField": {
-									"list": "Apparel Gallery"
-									},
-					'impressions': 
+				event:'gtm.dom',
+				ecommerce: {
+					currencyCode: "COP",
+					impressions:
 						dataLayerGoogleSlidersUniversal
 				}
 			})

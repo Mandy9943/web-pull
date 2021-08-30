@@ -340,7 +340,8 @@ class PaySection extends Component {
             // this.setState({modalAddr: false})
             this.setState({disabledButton: false, validForm: true});
             // this.renderWompi()
-            this.checkout()
+            this.checkoutOption();
+
 
         }
     };
@@ -357,11 +358,10 @@ class PaySection extends Component {
             event: 'checkout',
             ecommerce: {
                 checkout: {
-                    currencyCode: 'COP',
                     actionField: {
-                        step: 1,
+                        step: 1
                     },
-                    impressions: [
+                    products: [
                         {
                             name: this.props.props.data.product_global_title, // Name or ID is required.
                             id: this.props.props.data.product_global_id,
@@ -390,6 +390,19 @@ class PaySection extends Component {
         });
     }
 
+    checkoutOption = () =>{
+        dataLayer.push({
+            event:'checkoutOption',
+            ecommerce:{
+                checkout_option:{
+                    actionField:{
+                        step: 2, option:'form_complete'
+                    }
+                }
+            }
+        })
+    }
+
     handleFormValue = (e) => {
         let {name, value} = e.target;
 
@@ -412,7 +425,7 @@ class PaySection extends Component {
     };
 
     renderPayu = () => {
-
+        this.checkout();
 
         this.setState({modalAddr: true});
     }
@@ -502,6 +515,9 @@ class PaySection extends Component {
     // 				addPaymentDataWompi('/DataWompiTransaction', dataTransaction);
     // 		  });
     // };
+	handleFormatName = (str) => {
+		return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
+	}
 
     render() {
         // console.log(this.state);
@@ -604,7 +620,7 @@ class PaySection extends Component {
                         <input name="shippingCountry" type="hidden" value="CO"/>
                         <input name="shippingCity" type="hidden" value={this.state.city}/>
                         <input name="shippingAddress" type="hidden" value={this.state.address}/>
-                        <input name="payerFullName" type="hidden" value={this.state.user}/>
+                        <input name="payerFullName" type="hidden" value={this.handleFormatName(this.state.user)}/>
                         <input name="extra1" type="hidden" value={this.props.props.data.product_id}/>
                         <input
                             name="extra2"
