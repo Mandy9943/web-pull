@@ -638,7 +638,7 @@ class PaySection extends Component {
                             this.props.props.data.price + '~' +
                             this.props.props.data.brand + '~' +
                             this.props.props.data.category.name + '~' +
-                            this.state.cantidad
+                            quantity
                             }
                         />
                         <input
