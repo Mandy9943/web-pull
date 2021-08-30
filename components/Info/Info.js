@@ -18,7 +18,7 @@ class Info extends Component {
             </p>
             <h3>Contacto</h3>
             <p>
-              Sobre dudas, quejas y reclamos +57 (1) 5800817 (4) 604 6458 EXT 1103
+              Sobre dudas, quejas y reclamos +57 (4) 604 6458
             </p>
           </div>
           <div className="info-item">
