@@ -358,10 +358,11 @@ class PaySection extends Component {
             event: 'checkout',
             ecommerce: {
                 checkout: {
+                    currencyCode: 'COP',
                     actionField: {
-                        step: 1
+                        step: 1,
                     },
-                    products: [
+                    impressions: [
                         {
                             name: this.props.props.data.product_global_title, // Name or ID is required.
                             id: this.props.props.data.product_global_id,
@@ -394,9 +395,9 @@ class PaySection extends Component {
         dataLayer.push({
             event:'checkoutOption',
             ecommerce:{
-                checkout_option:{
+                checkoutOption:{
                     actionField:{
-                        step: 2, option:'form_complete'
+                        step: 1, 'option':'payu'
                     }
                 }
             }
