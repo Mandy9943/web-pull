@@ -189,7 +189,7 @@ export default class ProductsSlider extends Component {
 				<div className="slider-movil">
 					<section className="content-products-slider">{productListMobile}</section>
 				</div>
-				<Slider autoplay={5000}>{productList}</Slider>
+				<Slider autoplay={false}>{productList}</Slider>
 			</div>
 		);
 	}
