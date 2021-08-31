@@ -35,6 +35,9 @@ function PayStatus({ data, u_data }) {
                               'revenue': paramsUrl.TX_VALUE.toString(),                     // Total transaction value (incl. tax and shipping)
                               'tax':paramsUrl.TX_TAX.toString(),
                               'shipping': '0',
+                              'aw_merchant_id': '450067839',
+                              'aw_feed_country': 'CO',
+                              'aw_feed_language': 'ES',
                               //'coupon': 'SUMMER_SALE'
                           },
                           'products': [{                            // List of productFieldObjects.
@@ -43,7 +46,7 @@ function PayStatus({ data, u_data }) {
                               'price': listValue[2],
                               'brand': listValue[3],
                               'category': listValue[4],
-                              'quantity': listValue[5]
+                              'quantity': paramsUrl.extra3.toString()
                           }]
                       }
                   }
@@ -61,7 +64,7 @@ function PayStatus({ data, u_data }) {
                               'revenue': paramsUrl.TX_VALUE.toString(),                     // Total transaction value (incl. tax and shipping)
                               'tax':paramsUrl.TX_TAX.toString(),
                               'shipping': '0',
-                              'aw_merchant_id': '0',
+                              'aw_merchant_id': '450067839',
                               'aw_feed_country': 'CO',
                               'aw_feed_language': 'ES',
                           },
@@ -71,7 +74,7 @@ function PayStatus({ data, u_data }) {
                               'price': listValue[2],
                               'brand': listValue[3],
                               'category': listValue[4],
-                              'quantity': paramsUrl.extra3.toString(),                            // Optional fields may be omitted or set to empty string.
+                              'quantity': paramsUrl.extra3.toString()                            // Optional fields may be omitted or set to empty string.
                           }
                           ]
                       }
@@ -81,9 +84,6 @@ function PayStatus({ data, u_data }) {
 
       }
   }, [router.query]);
-
-
-  https://kiero.co/pay_status?extra4=Firstfly%20Colorido%202pcs%20Delineador%20de%20ojos%20a%20prueba%20de%20agua%20Plumas%20Delineador%20de%20ojos%20Sombra%20de%20ojos%20Lápices%20Resalte%20Herramientas%20para%20el%20maquillaje%20de%20ojos%20Cosmético%200708~3720533~69024~firstfly~Delineadores~0&merchantId=530932&merchant_name=Kiero+International+Group+SAS&merchant_address=Carrera+54+%23+1A+-+54&telephone=6046458&merchant_url=&transactionState=4&lapTransactionState=APPROVED&message=APPROVED&referenceCode=kieroco-1630327561057&reference_pol=1627540481&transactionId=11842754-3322-4ab5-94e5-464eceeac3d1&description=Firstfly+Colorido+2pcs+Delineador+de+ojos+a+prueba+de+agua+Plumas+Delineador+de+ojos+Sombra+de+ojos+Lápices+Resalte+Herramientas+para+el+maquillaje+de+ojos+Cosmético+0708&trazabilityCode=797843&cus=797843&orderLanguage=es&extra1=3720533&extra2=16&extra3=1&polTransactionState=4&signature=792896dd56be377050bc45bb2d98b058&polResponseCode=1&lapResponseCode=APPROVED&risk=&polPaymentMethod=11&lapPaymentMethod=MASTERCARD&polPaymentMethodType=2&lapPaymentMethodType=CREDIT_CARD&installmentsNumber=1&TX_VALUE=69024.00&TX_TAX=.00&currency=COP&lng=es&pseCycle=&buyerEmail=gloria.castaneda%40kiero.co&pseBank=&pseReference1=&pseReference2=&pseReference3=&authorizationCode=R07847&TX_ADMINISTRATIVE_FEE=.00&TX_TAX_ADMINISTRATIVE_FEE=.00&TX_TAX_ADMINISTRATIVE_FEE_RETURN_BASE=.00&processingDate=2021-08-30
 
 
   return (
