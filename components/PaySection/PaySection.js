@@ -340,7 +340,7 @@ class PaySection extends Component {
             // this.setState({modalAddr: false})
             this.setState({disabledButton: false, validForm: true});
             // this.renderWompi()
-            this.checkoutOption();
+            this.checkout();
 
 
         }
@@ -425,7 +425,7 @@ class PaySection extends Component {
     };
 
     renderPayu = () => {
-        this.checkout();
+        this.checkoutOption();
 
         this.setState({modalAddr: true});
     }
