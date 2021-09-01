@@ -397,7 +397,7 @@ class PaySection extends Component {
             ecommerce:{
                 checkout_option:{
                     actionField:{
-                        step: 1, 'option':'form_complete'
+                        step: 2, 'option':'form_complete'
                     }
                 }
             }
