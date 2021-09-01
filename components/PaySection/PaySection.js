@@ -340,7 +340,7 @@ class PaySection extends Component {
             // this.setState({modalAddr: false})
             this.setState({disabledButton: false, validForm: true});
             // this.renderWompi()
-            this.checkout();
+            this.checkoutOption();
 
 
         }
@@ -358,8 +358,9 @@ class PaySection extends Component {
             event: 'checkout',
             ecommerce: {
                 checkout: {
+                    currencyCode: 'COP',
                     actionField: {
-                        step: 1
+                        step: 1,
                     },
                     products: [
                         {
@@ -396,7 +397,7 @@ class PaySection extends Component {
             ecommerce:{
                 checkout_option:{
                     actionField:{
-                        step: 2, option:'form_complete'
+                        step: 1, 'option':'form_complete'
                     }
                 }
             }
@@ -425,7 +426,7 @@ class PaySection extends Component {
     };
 
     renderPayu = () => {
-        this.checkoutOption();
+        this.checkout();
 
         this.setState({modalAddr: true});
     }
