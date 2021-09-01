@@ -1,9 +1,12 @@
 import React from 'react';
 import Head from 'next/head';
-import Detail from '../../components/ProductDetail';
+// import Detail from '../../components/ProductDetail';
 import { getProductDetail } from '../../services/productsApi';
 import { getUser, isAuthenticated, getJwt } from '../../lib/auth';
 import favicon from '../../assets/img/favicon.svg';
+import dynamic from 'next/dynamic';
+
+const Detail = dynamic(() => import('../../components/ProductDetail'),{loading: ()=> <p>loading...</p> });
 
 function Product({ data, u_data }) {
 	return (
