@@ -23,7 +23,7 @@ function PayStatus({ data, u_data }) {
 
       if(paramsUrl.extra4!==undefined) {
           var listValue = paramsUrl.extra4.split("~")
-          if(localStorage.getItem('referenceCode')!=params.referenceCode){
+          if(localStorage.getItem('referenceCode')!=paramsUrl.referenceCode){
               if(paramsUrl.lapResponseCode == "APPROVED"){
                   dataLayer.push({
                       event: 'purchase',
@@ -39,7 +39,14 @@ function PayStatus({ data, u_data }) {
                                   'aw_feed_country': 'CO',
                                   'aw_feed_language': 'ES',
                                   //'coupon': 'SUMMER_SALE'
-                              },
+                                  "items": [
+                                    {
+                                      "id": listValue[1],
+                                      "quantity": paramsUrl.extra3.toString(),
+                                      "price": listValue[2]
+                                    }
+                                  ]
+                                },
                               'products': [{                            // List of productFieldObjects.
                                   'name': listValue[0],     // Name or ID is required.
                                   'id': listValue[1],
@@ -67,7 +74,14 @@ function PayStatus({ data, u_data }) {
                                   'aw_merchant_id': '450067839',
                                   'aw_feed_country': 'CO',
                                   'aw_feed_language': 'ES',
-                              },
+                                  "items": [
+                                    {
+                                      "id": listValue[1],
+                                      "quantity": paramsUrl.extra3.toString(),
+                                      "price": listValue[2]
+                                    }
+                                  ]
+                                },
                               products: [{                            // List of productFieldObjects.
                                   'name': listValue[0],     // Name or ID is required.
                                   'id': listValue[1],
@@ -82,7 +96,7 @@ function PayStatus({ data, u_data }) {
                   });
               }
           }
-          localStorage.setItem('referenceCode',params.referenceCode);
+          localStorage.setItem('referenceCode',paramsUrl.referenceCode);
       }
   }, [router.query]);
 
