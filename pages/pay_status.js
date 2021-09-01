@@ -20,7 +20,7 @@ function PayStatus({ data, u_data }) {
 
   React.useEffect(() => {
       const paramsUrl = router.query
-
+      setparams(paramsUrl);
       if(paramsUrl.extra4!==undefined) {
           var listValue = paramsUrl.extra4.split("~")
           if(localStorage.getItem('referenceCode')!=paramsUrl.referenceCode){
@@ -100,7 +100,7 @@ function PayStatus({ data, u_data }) {
       }
   }, [router.query]);
 
-
+    console.log(params)
   return (
     <div className="order-page">
       <Head>
