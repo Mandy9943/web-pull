@@ -390,19 +390,51 @@ class PaySection extends Component {
             //  }
         });
     }
-
     checkoutOption = () =>{
+        const concatCategories = () => {
+            var dataCategory = [];
+            this.props.props.data.breadcum.forEach((prod, index) => {
+                dataCategory.push(prod.name);
+            });
+            return dataCategory.join(' / ');
+        };
         dataLayer.push({
-            event:'checkoutOption',
-            ecommerce:{
-                checkout_option:{
-                    actionField:{
+            event: 'checkout',
+            ecommerce: {
+                checkout: {
+                    currencyCode: 'COP',
+                    actionField: {
                         step: 2, 'option':'form_complete'
-                    }
-                }
-            }
-        })
+                    },
+                    products: [
+                        {
+                            name: this.props.props.data.product_global_title, // Name or ID is required.
+                            id: this.props.props.data.product_global_id,
+                            price: this.props.props.data.price,
+                            brand: this.props.props.data.brand,
+                            category: concatCategories(),
+                            url:
+                                'https://kiero.co/detalle/' +
+                                this.props.props.data.product_global_id +
+                                '_' +
+                                this.props.props.data.product_global_title
+                                    .replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+                                    .replaceAll('//', '%2F')
+                                    .replaceAll('%', '')
+                                    .replaceAll(/['"]+/g, '')
+                                    .split(' ')
+                                    .join('-'),
+                            quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
+                        },
+                    ],
+                },
+            },
+            // 	'eventCallback': function(){
+            //  	window.location = '/pagar/' + id + '/' + quantity;
+            //  }
+        });
     }
+
 
     handleFormValue = (e) => {
         let {name, value} = e.target;
