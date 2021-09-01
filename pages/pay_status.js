@@ -23,7 +23,7 @@ function PayStatus({ data, u_data }) {
 
       if(paramsUrl.extra4!==undefined) {
           var listValue = paramsUrl.extra4.split("~")
-          if(localStorage.getItem('referenceCode')!=params.referenceCode){
+          if(localStorage.getItem('referenceCode')!=paramsUrl.referenceCode){
               if(paramsUrl.lapResponseCode == "APPROVED"){
                   dataLayer.push({
                       event: 'purchase',
