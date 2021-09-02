@@ -47,7 +47,7 @@ function PayStatus({ data, u_data }) {
                                                 }],
                                           'currency': 'COP',
                                           'value': listValue[2],
-                                          'payment_type':'pse',
+                                          'payment_type': paramsUrl.lapPaymentMethodType.toString(),
                                           'num_items': paramsUrl.extra3.toString()
                                         })
                   // whenWindowFbq().then(() => {
