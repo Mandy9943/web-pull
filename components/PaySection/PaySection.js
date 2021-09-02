@@ -371,6 +371,7 @@ class PaySection extends Component {
             });
             return dataCategory.join(' / ');
         };
+        
         dataLayer.push({
             event: 'checkout',
             ecommerce: {
@@ -415,6 +416,26 @@ class PaySection extends Component {
             });
             return dataCategory.join(' / ');
         };
+
+        // Facebook Pixel
+        fbq('track', 'InitiateCheckout', {
+            content_ids: this.props.props.data.product_global_id,
+            content_name: this.props.props.data.product_global_title,
+            product_group: this.props.props.data.type,
+            content_type: 'product',
+            content_category: concatCategories(),
+            contents: [
+                {
+                    id: this.props.props.data.product_global_id,
+                    quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
+                },
+            ],
+            currency: 'COP',
+            value: this.props.props.data.price,
+            num_items: this.state.cantidad == 0 ? 1 : this.state.cantidad,
+        });
+
+        // GAnalytics
         dataLayer.push({
             event: 'checkout',
             ecommerce: {
