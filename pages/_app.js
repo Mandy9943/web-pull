@@ -34,10 +34,10 @@ export default function MyApp({ Component, pageProps}) {
 					fbq('track', 'PageView');
 				`}}
 			/>
-			<noscript>
-				<img height="1" width="1" style={{display:"none"}} src="https://www.facebook.com/tr?id=pixelID&ev=PageView&noscript=1"
-			/>
-			</noscript>
+		<noscript>
+			<img height="1" width="1" style={{display:"none"}} src="https://www.facebook.com/tr?id=217430273456334&ev=PageView&noscript=1"
+		/>
+		</noscript>
 
 
 		{/* <!--  Clickcease.com tracking--> */}
