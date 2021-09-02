@@ -51,6 +51,14 @@ class ProductDetail extends Component {
 		this.reLoadData = this.reLoadData.bind(this);
 	}
 	componentDidMount() {
+		console.log('entro')
+		const script = document.createElement("script");
+
+		script.src = "//static.klaviyo.com/onsite/js/klaviyo.js?company_id=Sr8j85";
+		script.async = true;
+
+		document.body.appendChild(script);
+
 
 		// function whenWindowFbq() {
 		// 	return new Promise(function (resolve, reject) {
