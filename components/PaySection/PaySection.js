@@ -103,43 +103,60 @@ class PaySection extends Component {
         // 	let resultDataLayerBeginCheckout = beginCheckoutGooleDataLayerG4(dataLayerBeginCheckout);
 
         // 	dataLayer.push(resultDataLayerBeginCheckout);
-        if (typeof window !== 'undefined') {
-            if (window.fbq != null) {
-                window.fbq('track', 'InitiateCheckout', {
-                    content_ids: this.props.props.data.product_global_id,
-                    content_name: this.props.props.data.product_global_title,
-                    product_group: this.props.props.data.type,
-                    content_type: 'product',
-                    content_category: this.props.props.data.breadcum[0].name,
-                    contents: [
-                        {
-                            id: this.props.props.data.product_global_id,
-                            quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
-                        },
-                    ],
-                    currency: 'COP',
-                    value: this.props.props.data.price,
-                    num_items: this.state.cantidad == 0 ? 1 : this.state.cantidad,
-                });
-            } else {
-                fbq('track', 'InitiateCheckout', {
-                    content_ids: this.props.props.data.product_global_id,
-                    content_name: this.props.props.data.product_global_title,
-                    product_group: this.props.props.data.type,
-                    content_type: 'product',
-                    content_category: this.props.props.data.breadcum[0].name,
-                    contents: [
-                        {
-                            id: this.props.props.data.product_global_id,
-                            quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
-                        },
-                    ],
-                    currency: 'COP',
-                    value: this.props.props.data.price,
-                    num_items: this.state.cantidad == 0 ? 1 : this.state.cantidad,
-                });
-            }
-        }
+        // if (typeof window !== 'undefined') {
+        //     if (window.fbq != null) {
+        //         window.fbq('track', 'InitiateCheckout', {
+        //             content_ids: this.props.props.data.product_global_id,
+        //             content_name: this.props.props.data.product_global_title,
+        //             product_group: this.props.props.data.type,
+        //             content_type: 'product',
+        //             content_category: this.props.props.data.breadcum[0].name,
+        //             contents: [
+        //                 {
+        //                     id: this.props.props.data.product_global_id,
+        //                     quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
+        //                 },
+        //             ],
+        //             currency: 'COP',
+        //             value: this.props.props.data.price,
+        //             num_items: this.state.cantidad == 0 ? 1 : this.state.cantidad,
+        //         });
+        //     } else {
+        //         fbq('track', 'InitiateCheckout', {
+        //             content_ids: this.props.props.data.product_global_id,
+        //             content_name: this.props.props.data.product_global_title,
+        //             product_group: this.props.props.data.type,
+        //             content_type: 'product',
+        //             content_category: this.props.props.data.breadcum[0].name,
+        //             contents: [
+        //                 {
+        //                     id: this.props.props.data.product_global_id,
+        //                     quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
+        //                 },
+        //             ],
+        //             currency: 'COP',
+        //             value: this.props.props.data.price,
+        //             num_items: this.state.cantidad == 0 ? 1 : this.state.cantidad,
+        //         });
+        //     }
+        // }
+
+        fbq('track', 'InitiateCheckout', {
+            content_ids: this.props.props.data.product_global_id,
+            content_name: this.props.props.data.product_global_title,
+            product_group: this.props.props.data.type,
+            content_type: 'product',
+            content_category: this.props.props.data.breadcum[0].name,
+            contents: [
+                {
+                    id: this.props.props.data.product_global_id,
+                    quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
+                },
+            ],
+            currency: 'COP',
+            value: this.props.props.data.price,
+            num_items: this.state.cantidad == 0 ? 1 : this.state.cantidad,
+        });
 
 
 

@@ -52,31 +52,47 @@ class ProductDetail extends Component {
 	}
 	componentDidMount() {
 
-		function whenWindowFbq() {
-			return new Promise(function (resolve, reject) {
-						(function waitForFbq(){
-								if (typeof(window.fbq) == "function" ) return resolve();
-								setTimeout(waitForFbq, 300);
-						})();
-				});
-		};
+		// function whenWindowFbq() {
+		// 	return new Promise(function (resolve, reject) {
+		// 				(function waitForFbq(){
+		// 						if (typeof(window.fbq) == "function" ) return resolve();
+		// 						setTimeout(waitForFbq, 300);
+		// 				})();
+		// 		});
+		// };
 
-		whenWindowFbq().then(() => {
-			window.fbq('track', 'ViewContent', {
-				content_ids: this.props.data.product_global_id,
-				content_name: this.props.data.product_global_title,
-				product_group: this.props.data.type,
-				content_type: 'product',
-				contents: [
-					{
-						id: this.props.data.product_global_id,
-						quantity: 1,
-					},
-				],
-				currency: 'COP',
-				value: this.props.data.price,
-			})
-		});
+		// whenWindowFbq().then(() => {
+		// 	window.fbq('track', 'ViewContent', {
+		// 		content_ids: this.props.data.product_global_id,
+		// 		content_name: this.props.data.product_global_title,
+		// 		product_group: this.props.data.type,
+		// 		content_type: 'product',
+		// 		contents: [
+		// 			{
+		// 				id: this.props.data.product_global_id,
+		// 				quantity: 1,
+		// 			},
+		// 		],
+		// 		currency: 'COP',
+		// 		value: this.props.data.price,
+		// 	})
+		// });
+
+
+		fbq('track', 'ViewContent', {
+			content_ids: this.props.data.product_global_id,
+			content_name: this.props.data.product_global_title,
+			product_group: this.props.data.type,
+			content_type: 'product',
+			contents: [
+				{
+					id: this.props.data.product_global_id,
+					quantity: 1,
+				},
+			],
+			currency: 'COP',
+			value: this.props.data.price,
+		})
 
 		this.loadQuestions();
 		// dataLayer.push({ ecommerce: null });

@@ -7,22 +7,39 @@ import SocketChat from '../components/Services/socket';
 import SocketUser from '../components/Services/socketuser';
 import KieroSocketChat from '../components/Services/kierochat-socket';
 export default function MyApp({ Component, pageProps}) {
-	const router = useRouter()
-	useEffect(() => {
-		import('react-facebook-pixel')
-		.then((x) => x.default)
-		.then((ReactPixel) => {
-			ReactPixel.init('217430273456334') // facebookPixelId
-			ReactPixel.pageView()
-			router.events.on('routeChangeComplete', () => {
-				ReactPixel.pageView()
-				ReactPixel.track("ViewContent")
-			})
-		})
-	}, [router.events])
+	// const router = useRouter()
+	// useEffect(() => {
+	// 	import('react-facebook-pixel')
+	// 	.then((x) => x.default)
+	// 	.then((ReactPixel) => {
+	// 		ReactPixel.init('217430273456334') // facebookPixelId
+	// 		ReactPixel.pageView()
+	// 		router.events.on('routeChangeComplete', () => {
+	// 			ReactPixel.pageView()
+	// 			ReactPixel.track("ViewContent")
+	// 		})
+	// 	})
+	// }, [router.events])
 
 	return (
 		<>
+		<script
+			dangerouslySetInnerHTML={{ __html: `
+					!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+					n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+					n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+					t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+					document,'script','https://connect.facebook.net/en_US/fbevents.js');
+					fbq('init', '217430273456334');
+					fbq('track', 'PageView');
+				`}}
+			/>
+			<noscript>
+				<img height="1" width="1" style={{display:"none"}} src="https://www.facebook.com/tr?id=pixelID&ev=PageView&noscript=1"
+			/>
+			</noscript>
+
+
 		{/* <!--  Clickcease.com tracking--> */}
 			<script 
 				dangerouslySetInnerHTML={{
