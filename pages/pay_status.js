@@ -19,12 +19,41 @@ function PayStatus({ data, u_data }) {
   const [params, setparams] = useState([])
 
   React.useEffect(() => {
+
+      function whenWindowFbq() {
+        return new Promise(function (resolve, reject) {
+              (function waitForFbq(){
+                  if (typeof(window.fbq) == "function" ) return resolve();
+                  setTimeout(waitForFbq, 300);
+              })();
+          });
+      };
+
       const paramsUrl = router.query
       setparams(paramsUrl);
       if(paramsUrl.extra4!==undefined) {
           var listValue = paramsUrl.extra4.split("~")
           if(localStorage.getItem('referenceCode')!=paramsUrl.referenceCode){
               if(paramsUrl.lapResponseCode == "APPROVED"){
+                
+                  whenWindowFbq().then(() => {
+                    window.fbq('track','Purchase',{
+                                        'content_ids': listValue[1],
+                                        'content_name': listValue[0],
+                                        'product_group': listValue[4],
+                                        'content_type': 'product',
+                                        'content_category': listValue[4],
+                                        'contents': [{
+                                                'id': listValue[1],
+                                                'quantity': paramsUrl.extra3.toString(),
+                                              }],
+                                        'currency': 'COP',
+                                        'value': listValue[2],
+                                        'payment_type':'pse',
+                                        'num_items': paramsUrl.extra3.toString()
+                                      })
+                  });
+
                   dataLayer.push({
                       event: 'purchase',
                       'ecommerce': {
