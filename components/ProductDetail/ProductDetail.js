@@ -196,6 +196,7 @@ class ProductDetail extends Component {
 		};
 
 		_learnq.push(["track", "Viewed Product", item]);
+		console.log(_learnq)
 		// gtag('event', 'view_item', {
 		// 						"items": [
 		// 									{
