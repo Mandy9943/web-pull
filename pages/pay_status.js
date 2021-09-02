@@ -20,14 +20,14 @@ function PayStatus({ data, u_data }) {
 
   React.useEffect(() => {
 
-      function whenWindowFbq() {
-        return new Promise(function (resolve, reject) {
-              (function waitForFbq(){
-                  if (typeof(window.fbq) == "function" ) return resolve();
-                  setTimeout(waitForFbq, 300);
-              })();
-          });
-      };
+      // function whenWindowFbq() {
+      //   return new Promise(function (resolve, reject) {
+      //         (function waitForFbq(){
+      //             if (typeof(window.fbq) == "function" ) return resolve();
+      //             setTimeout(waitForFbq, 300);
+      //         })();
+      //     });
+      // };
 
       const paramsUrl = router.query
       setparams(paramsUrl);
@@ -104,6 +104,26 @@ function PayStatus({ data, u_data }) {
               }
 
               else if(paramsUrl.lapResponseCode != "DECLINED" || "APPROVED"){
+
+                  fbq('track','pending_transaction', {
+                      transaction: {
+                          'transaction_id': paramsUrl.transactionId,
+                          'affiliation': 'SpiceStock',
+                          'revenue': paramsUrl.TX_VALUE.toString(),
+                          'tax':paramsUrl.TX_TAX.toString(),
+                          'shipping': '0',
+                        },
+                      products: [{
+                          'name': listValue[0],
+                          'id': listValue[1],
+                          'price': listValue[2],
+                          'brand': listValue[3],
+                          'category': listValue[4],
+                          'quantity': paramsUrl.extra3.toString()                            // Optional fields may be omitted or set to empty string.
+                      }
+                      ]
+                  })
+
                   dataLayer.push({
                       event:'pending_transaction',
                       ecommerce: {
