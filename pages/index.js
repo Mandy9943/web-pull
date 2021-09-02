@@ -93,6 +93,9 @@ export default class Index extends Component {
                         }` }}>
 
                     </script>
+                    <script
+                        async type="text/javascript"
+                        src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=Sr8j85"></script>
 
                 </Head>
                   {/* Google Tag Manager (noscript) */}
