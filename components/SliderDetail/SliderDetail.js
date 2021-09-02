@@ -43,7 +43,7 @@ export default class SliderDetail extends Component {
         return (
             <div className="SliderDetail">
                 <section className="mobil">
-                    <Slider autoplay={3000}>
+                    <Slider autoplay={10000}>
                         {images.map((slide, index) =>
                         <div key={index}>
                             <img src={getImgUrl(slide.url,1000)} />

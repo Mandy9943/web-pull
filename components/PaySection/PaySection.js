@@ -103,43 +103,60 @@ class PaySection extends Component {
         // 	let resultDataLayerBeginCheckout = beginCheckoutGooleDataLayerG4(dataLayerBeginCheckout);
 
         // 	dataLayer.push(resultDataLayerBeginCheckout);
-        if (typeof window !== 'undefined') {
-            if (window.fbq != null) {
-                window.fbq('track', 'InitiateCheckout', {
-                    content_ids: this.props.props.data.product_global_id,
-                    content_name: this.props.props.data.product_global_title,
-                    product_group: this.props.props.data.type,
-                    content_type: 'product',
-                    content_category: this.props.props.data.breadcum[0].name,
-                    contents: [
-                        {
-                            id: this.props.props.data.product_global_id,
-                            quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
-                        },
-                    ],
-                    currency: 'COP',
-                    value: this.props.props.data.price,
-                    num_items: this.state.cantidad == 0 ? 1 : this.state.cantidad,
-                });
-            } else {
-                fbq('track', 'InitiateCheckout', {
-                    content_ids: this.props.props.data.product_global_id,
-                    content_name: this.props.props.data.product_global_title,
-                    product_group: this.props.props.data.type,
-                    content_type: 'product',
-                    content_category: this.props.props.data.breadcum[0].name,
-                    contents: [
-                        {
-                            id: this.props.props.data.product_global_id,
-                            quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
-                        },
-                    ],
-                    currency: 'COP',
-                    value: this.props.props.data.price,
-                    num_items: this.state.cantidad == 0 ? 1 : this.state.cantidad,
-                });
-            }
-        }
+        // if (typeof window !== 'undefined') {
+        //     if (window.fbq != null) {
+        //         window.fbq('track', 'InitiateCheckout', {
+        //             content_ids: this.props.props.data.product_global_id,
+        //             content_name: this.props.props.data.product_global_title,
+        //             product_group: this.props.props.data.type,
+        //             content_type: 'product',
+        //             content_category: this.props.props.data.breadcum[0].name,
+        //             contents: [
+        //                 {
+        //                     id: this.props.props.data.product_global_id,
+        //                     quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
+        //                 },
+        //             ],
+        //             currency: 'COP',
+        //             value: this.props.props.data.price,
+        //             num_items: this.state.cantidad == 0 ? 1 : this.state.cantidad,
+        //         });
+        //     } else {
+        //         fbq('track', 'InitiateCheckout', {
+        //             content_ids: this.props.props.data.product_global_id,
+        //             content_name: this.props.props.data.product_global_title,
+        //             product_group: this.props.props.data.type,
+        //             content_type: 'product',
+        //             content_category: this.props.props.data.breadcum[0].name,
+        //             contents: [
+        //                 {
+        //                     id: this.props.props.data.product_global_id,
+        //                     quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
+        //                 },
+        //             ],
+        //             currency: 'COP',
+        //             value: this.props.props.data.price,
+        //             num_items: this.state.cantidad == 0 ? 1 : this.state.cantidad,
+        //         });
+        //     }
+        // }
+
+        fbq('track', 'InitiateCheckout', {
+            content_ids: this.props.props.data.product_global_id,
+            content_name: this.props.props.data.product_global_title,
+            product_group: this.props.props.data.type,
+            content_type: 'product',
+            content_category: this.props.props.data.breadcum[0].name,
+            contents: [
+                {
+                    id: this.props.props.data.product_global_id,
+                    quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
+                },
+            ],
+            currency: 'COP',
+            value: this.props.props.data.price,
+            num_items: this.state.cantidad == 0 ? 1 : this.state.cantidad,
+        });
 
 
 
@@ -354,12 +371,78 @@ class PaySection extends Component {
             });
             return dataCategory.join(' / ');
         };
+        
         dataLayer.push({
             event: 'checkout',
             ecommerce: {
                 checkout: {
+                    currencyCode: 'COP',
                     actionField: {
-                        step: 1
+                        step: 1,
+                    },
+                    products: [
+                        {
+                            name: this.props.props.data.product_global_title, // Name or ID is required.
+                            id: this.props.props.data.product_global_id,
+                            price: this.props.props.data.price,
+                            brand: this.props.props.data.brand,
+                            category: concatCategories(),
+                            url:
+                                'https://kiero.co/detalle/' +
+                                this.props.props.data.product_global_id +
+                                '_' +
+                                this.props.props.data.product_global_title
+                                    .replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+                                    .replaceAll('//', '%2F')
+                                    .replaceAll('%', '')
+                                    .replaceAll(/['"]+/g, '')
+                                    .split(' ')
+                                    .join('-'),
+                            quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
+                        },
+                    ],
+                },
+            },
+            // 	'eventCallback': function(){
+            //  	window.location = '/pagar/' + id + '/' + quantity;
+            //  }
+        });
+    }
+    checkoutOption = () =>{
+        const concatCategories = () => {
+            var dataCategory = [];
+            this.props.props.data.breadcum.forEach((prod, index) => {
+                dataCategory.push(prod.name);
+            });
+            return dataCategory.join(' / ');
+        };
+
+        // Facebook Pixel
+        fbq('track', 'InitiateCheckout', {
+            content_ids: this.props.props.data.product_global_id,
+            content_name: this.props.props.data.product_global_title,
+            product_group: this.props.props.data.type,
+            content_type: 'product',
+            content_category: concatCategories(),
+            contents: [
+                {
+                    id: this.props.props.data.product_global_id,
+                    quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
+                },
+            ],
+            currency: 'COP',
+            value: this.props.props.data.price,
+            num_items: this.state.cantidad == 0 ? 1 : this.state.cantidad,
+        });
+
+        // GAnalytics
+        dataLayer.push({
+            event: 'checkout',
+            ecommerce: {
+                checkout: {
+                    currencyCode: 'COP',
+                    actionField: {
+                        step: 2, 'option':'form_complete'
                     },
                     products: [
                         {
@@ -390,18 +473,6 @@ class PaySection extends Component {
         });
     }
 
-    checkoutOption = () =>{
-        dataLayer.push({
-            event:'checkoutOption',
-            ecommerce:{
-                checkout_option:{
-                    actionField:{
-                        step: 2, option:'form_complete'
-                    }
-                }
-            }
-        })
-    }
 
     handleFormValue = (e) => {
         let {name, value} = e.target;
@@ -879,5 +950,6 @@ class PaySection extends Component {
         );
     }
 }
+
 
 export default PaySection;

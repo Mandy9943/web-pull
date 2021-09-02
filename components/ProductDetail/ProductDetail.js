@@ -15,7 +15,6 @@ import Logo2 from '../../assets/img/logo-social1.png';
 import { RecommendedProducts } from '../RecommendedProducts';
 import { getProductDetail } from '../../services/productsApi';
 import { withRouter } from 'next/router';
-import ReactPixelFacebook from '../../pages/_app';
 
 import dynamic from 'next/dynamic';
 
@@ -52,6 +51,49 @@ class ProductDetail extends Component {
 		this.reLoadData = this.reLoadData.bind(this);
 	}
 	componentDidMount() {
+
+		// function whenWindowFbq() {
+		// 	return new Promise(function (resolve, reject) {
+		// 				(function waitForFbq(){
+		// 						if (typeof(window.fbq) == "function" ) return resolve();
+		// 						setTimeout(waitForFbq, 300);
+		// 				})();
+		// 		});
+		// };
+
+		// whenWindowFbq().then(() => {
+		// 	window.fbq('track', 'ViewContent', {
+		// 		content_ids: this.props.data.product_global_id,
+		// 		content_name: this.props.data.product_global_title,
+		// 		product_group: this.props.data.type,
+		// 		content_type: 'product',
+		// 		contents: [
+		// 			{
+		// 				id: this.props.data.product_global_id,
+		// 				quantity: 1,
+		// 			},
+		// 		],
+		// 		currency: 'COP',
+		// 		value: this.props.data.price,
+		// 	})
+		// });
+
+
+		fbq('track', 'ViewContent', {
+			content_ids: this.props.data.product_global_id,
+			content_name: this.props.data.product_global_title,
+			product_group: this.props.data.type,
+			content_type: 'product',
+			contents: [
+				{
+					id: this.props.data.product_global_id,
+					quantity: 1,
+				},
+			],
+			currency: 'COP',
+			value: this.props.data.price,
+		})
+
 		this.loadQuestions();
 		// dataLayer.push({ ecommerce: null });
 		// console.log('propiedades', this.props);
@@ -175,41 +217,6 @@ class ProductDetail extends Component {
 		// 						]
 		//  			 });
 
-		if (typeof window !== 'undefined') {
-			setTimeout(() => {
-				if (window.fbq != null) {
-					window.fbq('track', 'ViewContent', {
-						content_ids: this.props.data.product_global_id,
-						content_name: this.props.data.product_global_title,
-						product_group: this.props.data.type,
-						content_type: 'product',
-						contents: [
-							{
-								id: this.props.data.product_global_id,
-								quantity: 1,
-							},
-						],
-						currency: 'COP',
-						value: this.props.data.price,
-					});
-				} else {
-					fbq('track', 'ViewContent', {
-						content_ids: this.props.data.product_global_id,
-						content_name: this.props.data.product_global_title,
-						product_group: this.props.data.type,
-						content_type: 'product',
-						contents: [
-							{
-								id: this.props.data.product_global_id,
-								quantity: 1,
-							},
-						],
-						currency: 'COP',
-						value: this.props.data.price,
-					});
-				}
-			}, 3000);
-		}
 	}
 
 	async reLoadData(pgid) {

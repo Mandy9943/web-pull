@@ -19,71 +19,151 @@ function PayStatus({ data, u_data }) {
   const [params, setparams] = useState([])
 
   React.useEffect(() => {
+
+      // function whenWindowFbq() {
+      //   return new Promise(function (resolve, reject) {
+      //         (function waitForFbq(){
+      //             if (typeof(window.fbq) == "function" ) return resolve();
+      //             setTimeout(waitForFbq, 300);
+      //         })();
+      //     });
+      // };
+
       const paramsUrl = router.query
-      setparams(paramsUrl)
+      setparams(paramsUrl);
       if(paramsUrl.extra4!==undefined) {
           var listValue = paramsUrl.extra4.split("~")
+          if(localStorage.getItem('referenceCode')!=paramsUrl.referenceCode){
+              if(paramsUrl.lapResponseCode == "APPROVED"){
+                    fbq('track','Purchase',{
+                                          'content_ids': listValue[1],
+                                          'content_name': listValue[0],
+                                          'product_group': listValue[4],
+                                          'content_type': 'product',
+                                          'content_category': listValue[4],
+                                          'contents': [{
+                                                  'id': listValue[1],
+                                                  'quantity': paramsUrl.extra3.toString(),
+                                                }],
+                                          'currency': 'COP',
+                                          'value': listValue[2],
+                                          'payment_type':'pse',
+                                          'num_items': paramsUrl.extra3.toString()
+                                        })
+                  // whenWindowFbq().then(() => {
+                  //   window.fbq('track','Purchase',{
+                  //                       'content_ids': listValue[1],
+                  //                       'content_name': listValue[0],
+                  //                       'product_group': listValue[4],
+                  //                       'content_type': 'product',
+                  //                       'content_category': listValue[4],
+                  //                       'contents': [{
+                  //                               'id': listValue[1],
+                  //                               'quantity': paramsUrl.extra3.toString(),
+                  //                             }],
+                  //                       'currency': 'COP',
+                  //                       'value': listValue[2],
+                  //                       'payment_type':'pse',
+                  //                       'num_items': paramsUrl.extra3.toString()
+                  //                     })
+                  // });
 
-          if(paramsUrl.lapResponseCode == "APPROVED"){
-              dataLayer.push({
-                  event: 'purchase',
-                  'ecommerce': {
-                      'purchase': {
-                          'actionField': {
-                              'id': paramsUrl.transactionId,                         // Transaction ID. Required for purchases and refunds.
-                              'affiliation': 'SpiceStock',
-                              'revenue': paramsUrl.TX_VALUE.toString(),                     // Total transaction value (incl. tax and shipping)
-                              'tax':paramsUrl.TX_TAX.toString(),
-                              'shipping': '0',
-                              //'coupon': 'SUMMER_SALE'
-                          },
-                          'products': [{                            // List of productFieldObjects.
-                              'name': listValue[0],     // Name or ID is required.
-                              'id': listValue[1],
-                              'price': listValue[2],
-                              'brand': listValue[3],
-                              'category': listValue[4],
-                              'quantity': listValue[5]
-                          }]
-                      }
-                  }
-              });
-          }
-
-          else if(paramsUrl.lapResponseCode != "DECLINED"){
-              dataLayer.push({
-                  event:'pending_transaction',
-                  ecommerce: {
-                      pending_transaction: {
-                          actionField: {
-                              'id': paramsUrl.transactionId,                         // Transaction ID. Required for purchases and refunds.
-                              'affiliation': 'SpiceStock',
-                              'revenue': paramsUrl.TX_VALUE.toString(),                     // Total transaction value (incl. tax and shipping)
-                              'tax':paramsUrl.TX_TAX.toString(),
-                              'shipping': '0',
-                              //'coupon': 'SUMMER_SALE'
-                          },
-                          products: [{                            // List of productFieldObjects.
-                              'name': listValue[0],     // Name or ID is required.
-                              'id': listValue[1],
-                              'price': listValue[2],
-                              'brand': listValue[3],
-                              'category': listValue[4],
-                              'quantity': listValue[5]                            // Optional fields may be omitted or set to empty string.
+                  dataLayer.push({
+                      event: 'purchase',
+                      'ecommerce': {
+                          'purchase': {
+                              'actionField': {
+                                  'id': paramsUrl.transactionId,                         // Transaction ID. Required for purchases and refunds.
+                                  'affiliation': 'SpiceStock',
+                                  'revenue': paramsUrl.TX_VALUE.toString(),                     // Total transaction value (incl. tax and shipping)
+                                  'tax':paramsUrl.TX_TAX.toString(),
+                                  'shipping': '0',
+                                  'aw_merchant_id': '450067839',
+                                  'aw_feed_country': 'CO',
+                                  'aw_feed_language': 'ES',
+                                  //'coupon': 'SUMMER_SALE'
+                                  "items": [
+                                    {
+                                      "id": listValue[1],
+                                      "quantity": paramsUrl.extra3.toString(),
+                                      "price": listValue[2]
+                                    }
+                                  ]
+                                },
+                              'products': [{                            // List of productFieldObjects.
+                                  'name': listValue[0],     // Name or ID is required.
+                                  'id': listValue[1],
+                                  'price': listValue[2],
+                                  'brand': listValue[3],
+                                  'category': listValue[4],
+                                  'quantity': paramsUrl.extra3.toString()
+                              }]
                           }
-                          ]
                       }
-                  }
-              });
-          }
+                  });
+              }
 
+              else if(paramsUrl.lapResponseCode != "DECLINED" || "APPROVED"){
+
+                  fbq('track','pending_transaction', {
+                      transaction: {
+                          'transaction_id': paramsUrl.transactionId,
+                          'affiliation': 'SpiceStock',
+                          'revenue': paramsUrl.TX_VALUE.toString(),
+                          'tax':paramsUrl.TX_TAX.toString(),
+                          'shipping': '0',
+                        },
+                      products: [{
+                          'name': listValue[0],
+                          'id': listValue[1],
+                          'price': listValue[2],
+                          'brand': listValue[3],
+                          'category': listValue[4],
+                          'quantity': paramsUrl.extra3.toString()                            // Optional fields may be omitted or set to empty string.
+                      }
+                      ]
+                  })
+
+                  dataLayer.push({
+                      event:'pending_transaction',
+                      ecommerce: {
+                          pending_transaction: {
+                              actionField: {
+                                  'id': paramsUrl.transactionId,                         // Transaction ID. Required for purchases and refunds.
+                                  'affiliation': 'SpiceStock',
+                                  'revenue': paramsUrl.TX_VALUE.toString(),                     // Total transaction value (incl. tax and shipping)
+                                  'tax':paramsUrl.TX_TAX.toString(),
+                                  'shipping': '0',
+                                  'aw_merchant_id': '450067839',
+                                  'aw_feed_country': 'CO',
+                                  'aw_feed_language': 'ES',
+                                  "items": [
+                                    {
+                                      "id": listValue[1],
+                                      "quantity": paramsUrl.extra3.toString(),
+                                      "price": listValue[2]
+                                    }
+                                  ]
+                                },
+                              products: [{                            // List of productFieldObjects.
+                                  'name': listValue[0],     // Name or ID is required.
+                                  'id': listValue[1],
+                                  'price': listValue[2],
+                                  'brand': listValue[3],
+                                  'category': listValue[4],
+                                  'quantity': paramsUrl.extra3.toString()                            // Optional fields may be omitted or set to empty string.
+                              }
+                              ]
+                          }
+                      }
+                  });
+              }
+          }
+          localStorage.setItem('referenceCode',paramsUrl.referenceCode);
       }
   }, [router.query]);
 
-
-
-
-
+    console.log(params)
   return (
     <div className="order-page">
       <Head>
