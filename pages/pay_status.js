@@ -105,7 +105,7 @@ function PayStatus({ data, u_data }) {
 
               else if(paramsUrl.lapResponseCode != "DECLINED" || "APPROVED"){
 
-                  fbq('trackCustom','pending_transaction', {
+                  fbq('trackCustom','Pending Purchase', {
                     'id': paramsUrl.transactionId,
                     'content_ids': listValue[1],
                     'content_name': listValue[0],
