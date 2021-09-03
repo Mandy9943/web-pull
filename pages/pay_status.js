@@ -36,6 +36,7 @@ function PayStatus({ data, u_data }) {
           if(localStorage.getItem('referenceCode')!=paramsUrl.referenceCode){
               if(paramsUrl.lapResponseCode == "APPROVED"){
                     fbq('track','Purchase',{
+                                          'id': paramsUrl.transactionId,
                                           'content_ids': listValue[1],
                                           'content_name': listValue[0],
                                           'product_group': listValue[4],
@@ -47,7 +48,7 @@ function PayStatus({ data, u_data }) {
                                                 }],
                                           'currency': 'COP',
                                           'value': listValue[2],
-                                          'payment_type':'pse',
+                                          'payment_type': paramsUrl.lapPaymentMethodType.toString(),
                                           'num_items': paramsUrl.extra3.toString()
                                         })
                   // whenWindowFbq().then(() => {
@@ -105,23 +106,20 @@ function PayStatus({ data, u_data }) {
 
               else if(paramsUrl.lapResponseCode != "DECLINED" || "APPROVED"){
 
-                  fbq('track','pending_transaction', {
-                      transaction: {
-                          'transaction_id': paramsUrl.transactionId,
-                          'affiliation': 'SpiceStock',
-                          'revenue': paramsUrl.TX_VALUE.toString(),
-                          'tax':paramsUrl.TX_TAX.toString(),
-                          'shipping': '0',
-                        },
-                      products: [{
-                          'name': listValue[0],
+                  fbq('trackCustom','Pending Purchase', {
+                    'id': paramsUrl.transactionId,
+                    'content_ids': listValue[1],
+                    'content_name': listValue[0],
+                    'content_type': 'product',
+                    'content_category': listValue[4],
+                    'contents': [{
                           'id': listValue[1],
-                          'price': listValue[2],
-                          'brand': listValue[3],
-                          'category': listValue[4],
-                          'quantity': paramsUrl.extra3.toString()                            // Optional fields may be omitted or set to empty string.
-                      }
-                      ]
+                          'quantity': paramsUrl.extra3.toString(),
+                        }],
+                    'currency': 'COP',
+                    'value': listValue[2],
+                    'payment_type': paramsUrl.lapPaymentMethodType.toString(),
+                    'num_items': paramsUrl.extra3.toString()                    
                   })
 
                   dataLayer.push({

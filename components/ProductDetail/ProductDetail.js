@@ -15,8 +15,20 @@ import Logo2 from '../../assets/img/logo-social1.png';
 import { RecommendedProducts } from '../RecommendedProducts';
 import { getProductDetail } from '../../services/productsApi';
 import { withRouter } from 'next/router';
+import {KlaviyoClient} from '../../lib/functions.js';
 
 import dynamic from 'next/dynamic';
+
+
+KlaviyoClient.public.identify({
+	email: 'pizza.dave@mailinator.com',
+	properties: {
+		$first_name: 'Pizza',
+		$last_name: 'Dave',
+		favoriteFood: 'Pad thai'
+	},
+	post: true //defaults to false
+});
 
 // import Nav from '../Common/Nav';
 // import DetailImg from '../DetailImg';
@@ -255,6 +267,7 @@ class ProductDetail extends Component {
 				console.error(error);
 			});
 	};
+	
 	render() {
 		// let DataForPixel = {
 		// 	'content_ids': this.props.data.product_global_id,
