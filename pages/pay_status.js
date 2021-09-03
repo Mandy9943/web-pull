@@ -107,6 +107,7 @@ function PayStatus({ data, u_data }) {
 
                   fbq('trackCustom','pending_transaction', {
                     'id': paramsUrl.transactionId,
+                    'content_ids': listValue[1],
                     'content_name': listValue[0],
                     'content_type': 'product',
                     'content_category': listValue[4],
