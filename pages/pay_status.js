@@ -36,6 +36,7 @@ function PayStatus({ data, u_data }) {
           if(localStorage.getItem('referenceCode')!=paramsUrl.referenceCode){
               if(paramsUrl.lapResponseCode == "APPROVED"){
                     fbq('track','Purchase',{
+                                          'id': paramsUrl.transactionId,
                                           'content_ids': listValue[1],
                                           'content_name': listValue[0],
                                           'product_group': listValue[4],
