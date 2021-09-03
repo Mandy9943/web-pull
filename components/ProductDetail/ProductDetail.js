@@ -63,13 +63,13 @@ class ProductDetail extends Component {
 		this.reLoadData = this.reLoadData.bind(this);
 	}
 	componentDidMount() {
-		console.log('entro')
-		const script = document.createElement("script");
-
-		script.src = "//static.klaviyo.com/onsite/js/klaviyo.js?company_id=Sr8j85";
-		script.async = true;
-
-		document.body.appendChild(script);
+		// console.log('entro')
+		// const script = document.createElement("script");
+		//
+		// script.src = "//static.klaviyo.com/onsite/js/klaviyo.js?company_id=Sr8j85";
+		// script.async = true;
+		//
+		// document.body.appendChild(script);
 
 
 		// function whenWindowFbq() {
@@ -193,30 +193,30 @@ class ProductDetail extends Component {
 			},
 		});
 
-		var _learnq = _learnq || [];
-		console.log(this.props.data)
-		var item = {
-			"ProductName": this.props.data.product_global_title,
-			"ProductID": this.props.data.product_global_id,
-			"SKU": this.props.data.sku,
-			"Categories": concatCategories(),
-			"ImageURL": this.state.mdata.images[0].url,
-			"URL": 'https://kiero.co/detalle/' +
-				this.props.data.product_global_id +
-				'_' +
-				this.props.data.product_global_title
-					.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-					.replace('//', '%2F')
-					.replace('%', '')
-					.replaceAll(/['"]+/g, '')
-					.split(' ')
-					.join('-'),
-			"Brand": this.props.data.brand,
-			"Price": this.props.data.price
-		};
-
-		_learnq.push(["track", "Viewed Product", item]);
-		console.log(_learnq)
+		// var _learnq = _learnq || [];
+		// console.log(this.props.data)
+		// var item = {
+		// 	"ProductName": this.props.data.product_global_title,
+		// 	"ProductID": this.props.data.product_global_id,
+		// 	"SKU": this.props.data.sku,
+		// 	"Categories": concatCategories(),
+		// 	"ImageURL": this.state.mdata.images[0].url,
+		// 	"URL": 'https://kiero.co/detalle/' +
+		// 		this.props.data.product_global_id +
+		// 		'_' +
+		// 		this.props.data.product_global_title
+		// 			.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+		// 			.replace('//', '%2F')
+		// 			.replace('%', '')
+		// 			.replaceAll(/['"]+/g, '')
+		// 			.split(' ')
+		// 			.join('-'),
+		// 	"Brand": this.props.data.brand,
+		// 	"Price": this.props.data.price
+		// };
+		//
+		// _learnq.push(["track", "Viewed Product", item]);
+		// console.log(_learnq)
 		// gtag('event', 'view_item', {
 		// 						"items": [
 		// 									{
