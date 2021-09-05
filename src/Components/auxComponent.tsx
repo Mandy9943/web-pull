@@ -1,7 +1,7 @@
 import Commentary from "../container/containerCommentary";
 import SquareText from "../container/containerSquareText";
 import changeSquareTextDisplay from "../redux/actions/squareTextAction";
-import { IApplicationState } from "../Redux/store";
+import { IApplicationState } from "../redux/store";
 import { useSelector, useDispatch } from "react-redux";
 
 /* Deberia posicionarse la etiqueta Commentary sobre SquareText */
