@@ -1,24 +1,23 @@
-import  ISubmitAction  from '../types/SubmitState/ISubmitAction';
-import  ISubmitState  from '../types/SubmitState/ISubmitState';
-
+import ISubmitAction from "../types/SubmitState/ISubmitAction";
+import ISubmitState from "../types/SubmitState/ISubmitState";
 
 const initialSubmitState: ISubmitState = {
-  message:""
-}
+  message: "",
+};
 
-
-const submitReducer = (state: ISubmitState = initialSubmitState, action: ISubmitAction) => {
+const submitReducer = (
+  state: ISubmitState = initialSubmitState,
+  action: ISubmitAction
+) => {
   switch (action.type) {
     case "CHANGE_MESSAGE": {
       state.message = action.payloadS;
-      return {...state};
+      return { ...state };
     }
     default: {
-      return {...state};
+      return { ...state };
     }
   }
-}
+};
 
 export default submitReducer;
-
-

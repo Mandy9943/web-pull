@@ -1,9 +1,9 @@
 import { combineReducers, createStore } from "redux";
-import optionDisplayReducer from "./Reducers/optionReducer";
+import optionDisplayReducer from "./reducers/optionReducer";
 import IOptionState from "./types/OptionState/IOptionState";
-import squareTextDisplayReducer from "./Reducers/squareTextReducer";
+import squareTextDisplayReducer from "./reducers/squareTextReducer";
 import ISquareTextState from "./types/SquareTesxtState/ISquareTextState";
-import submitReducer from "./Reducers/submitReducer";
+import submitReducer from "./reducers/submitReducer";
 import ISubmitState from "./types/SubmitState/ISubmitState";
 import { useMemo } from "react";
 

@@ -1,4 +1,4 @@
-import Background from "../src/Components/containerBackground";
+import Background from "../src/container/containerBackground";
 
 function App() {
   return (
