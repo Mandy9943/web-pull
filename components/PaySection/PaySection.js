@@ -15,6 +15,7 @@ import Select from '../Common/SelectDropdown/Select';
 import Spinner from '../Common/Spinner';
 import Checkbox from '@material-ui/core/Checkbox';
 import Modal from '../Common/Modal/Modal';
+import {KlaviyoClient} from "../../lib/functions";
 
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import { Button, Modal } from 'react-bootstrap';
@@ -99,9 +100,7 @@ class PaySection extends Component {
         // 		});
         // 		return dataLayerBeginCheckout;
         // 	}
-
         // 	let resultDataLayerBeginCheckout = beginCheckoutGooleDataLayerG4(dataLayerBeginCheckout);
-
         // 	dataLayer.push(resultDataLayerBeginCheckout);
         // if (typeof window !== 'undefined') {
         //     if (window.fbq != null) {
@@ -406,6 +405,44 @@ class PaySection extends Component {
             // 	'eventCallback': function(){
             //  	window.location = '/pagar/' + id + '/' + quantity;
             //  }
+        });
+        var item = {
+            currencyCode: 'COP',
+            actionField: {
+                step: 1,
+            },
+            products: [
+                {
+                    name: this.props.props.data.product_global_title, // Name or ID is required.
+                    id: this.props.props.data.product_global_id,
+                    price: this.props.props.data.price,
+                    brand: this.props.props.data.brand,
+                    category: concatCategories(),
+                    url:
+                        'https://kiero.co/detalle/' +
+                        this.props.props.data.product_global_id +
+                        '_' +
+                        this.props.props.data.product_global_title
+                            .replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+                            .replaceAll('//', '%2F')
+                            .replaceAll('%', '')
+                            .replaceAll(/['"]+/g, '')
+                            .split(' ')
+                            .join('-'),
+                    quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
+                },
+            ],
+        };
+        console.log(this.state);
+        console.log(this.props);
+        KlaviyoClient.public.track({
+            event: 'Checkout',
+            email: this.state.email,
+            properties: {
+                items: [
+                    item
+                ]
+            }
         });
     }
     checkoutOption = () =>{
