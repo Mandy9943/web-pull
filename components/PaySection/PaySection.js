@@ -61,6 +61,15 @@ class PaySection extends Component {
 	};
 
     componentDidMount() {
+        
+        //// Obtener el cid establecido por google
+        // Ejemplo de como lo recomienda Google
+        // ga(function(tracker) {
+        //     var clientId = tracker.get('clientId');
+        // });
+        this.clientId = typeof(ga) == 'function' && typeof(ga.getAll) == 'function' ? ga.getAll()[0].get('clientId') : "";
+        ////
+        
         if (this.props.m_pgid) return;
 
         this.loadData();
@@ -699,6 +708,11 @@ class PaySection extends Component {
                             value={this.props.props.data.user.user_id}
                         />
                         <input name="extra3" type="hidden" value={quantity}/>
+                        <input
+                            name="extra5"
+                            type="hidden"
+                            value={this.clientId}
+                        />
                         <input
                             name="responseUrl"
                             type="hidden"
