@@ -15,7 +15,7 @@ import Logo2 from '../../assets/img/logo-social1.png';
 import { RecommendedProducts } from '../RecommendedProducts';
 import { getProductDetail } from '../../services/productsApi';
 import { withRouter } from 'next/router';
-import {KlaviyoClient} from '../../lib/functions.js';
+// import {KlaviyoClient} from '../../lib/functions.js';
 
 import dynamic from 'next/dynamic';
 

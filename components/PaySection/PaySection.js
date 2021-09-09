@@ -406,45 +406,46 @@ class PaySection extends Component {
             //  	window.location = '/pagar/' + id + '/' + quantity;
             //  }
         });
-        var item = {
-            currencyCode: 'COP',
-            actionField: {
-                step: 1,
-            },
-            products: [
-                {
-                    name: this.props.props.data.product_global_title, // Name or ID is required.
-                    id: this.props.props.data.product_global_id,
-                    price: this.props.props.data.price,
-                    brand: this.props.props.data.brand,
-                    category: concatCategories(),
-                    url:
-                        'https://kiero.co/detalle/' +
-                        this.props.props.data.product_global_id +
-                        '_' +
-                        this.props.props.data.product_global_title
-                            .replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-                            .replaceAll('//', '%2F')
-                            .replaceAll('%', '')
-                            .replaceAll(/['"]+/g, '')
-                            .split(' ')
-                            .join('-'),
-                    quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
-                },
-            ],
-        };
-        console.log(this.state);
-        console.log(this.props);
-        KlaviyoClient.public.track({
-            event: 'Checkout',
-            email: this.state.email,
-            properties: {
-                items: [
-                    item
-                ]
-            }
-        });
+        // var item = {
+        //     currencyCode: 'COP',
+        //     actionField: {
+        //         step: 1,
+        //     },
+        //     products: [
+        //         {
+        //             name: this.props.props.data.product_global_title, // Name or ID is required.
+        //             id: this.props.props.data.product_global_id,
+        //             price: this.props.props.data.price,
+        //             brand: this.props.props.data.brand,
+        //             category: concatCategories(),
+        //             url:
+        //                 'https://kiero.co/detalle/' +
+        //                 this.props.props.data.product_global_id +
+        //                 '_' +
+        //                 this.props.props.data.product_global_title
+        //                     .replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+        //                     .replaceAll('//', '%2F')
+        //                     .replaceAll('%', '')
+        //                     .replaceAll(/['"]+/g, '')
+        //                     .split(' ')
+        //                     .join('-'),
+        //             quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
+        //         },
+        //     ],
+        // };
+        // console.log(this.state);
+        // console.log(this.props);
+        // KlaviyoClient.public.track({
+        //     event: 'Checkout',
+        //     email: this.state.email,
+        //     properties: {
+        //         items: [
+        //             item
+        //         ]
+        //     }
+        // });
     }
+
     checkoutOption = () =>{
         const concatCategories = () => {
             var dataCategory = [];
