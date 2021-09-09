@@ -229,15 +229,15 @@ class ProductDetail extends Component {
 			"Brand": this.props.data.brand,
 			"Price": this.props.data.price
 		};
-		KlaviyoClient.public.track({
-			event: 'Viewed Product',
-			email: 'jxrenas21990@gmail.com',
-			properties: {
-				items: [
-					item
-				]
-			}
-		});
+		// KlaviyoClient.public.track({
+		// 	event: 'Viewed Product',
+		// 	email: 'jxrenas21990@gmail.com',
+		// 	properties: {
+		// 		items: [
+		// 			item
+		// 		]
+		// 	}
+		// });
 
 	}
 
