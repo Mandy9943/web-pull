@@ -32,6 +32,10 @@ function PayStatus({ data, u_data }) {
       const paramsUrl = router.query
       setparams(paramsUrl);
       if(paramsUrl.extra4!==undefined) {
+
+          const extra3 = JSON.parse(paramsUrl.extra3.toString())
+          const quantity = extra3.qty
+
           var listValue = paramsUrl.extra4.split("~")
           if(localStorage.getItem('referenceCode')!=paramsUrl.referenceCode){
               if(paramsUrl.lapResponseCode == "APPROVED"){
@@ -44,12 +48,12 @@ function PayStatus({ data, u_data }) {
                                           'content_category': listValue[4],
                                           'contents': [{
                                                   'id': listValue[1],
-                                                  'quantity': paramsUrl.extra3.toString(),
+                                                  'quantity': quantity,
                                                 }],
                                           'currency': 'COP',
                                           'value': listValue[2],
                                           'payment_type': paramsUrl.lapPaymentMethodType.toString(),
-                                          'num_items': paramsUrl.extra3.toString()
+                                          'num_items': quantity
                                         })
                   // whenWindowFbq().then(() => {
                   //   window.fbq('track','Purchase',{
@@ -60,12 +64,12 @@ function PayStatus({ data, u_data }) {
                   //                       'content_category': listValue[4],
                   //                       'contents': [{
                   //                               'id': listValue[1],
-                  //                               'quantity': paramsUrl.extra3.toString(),
+                  //                               'quantity': quantity,
                   //                             }],
                   //                       'currency': 'COP',
                   //                       'value': listValue[2],
                   //                       'payment_type':'pse',
-                  //                       'num_items': paramsUrl.extra3.toString()
+                  //                       'num_items': quantity
                   //                     })
                   // });
 
@@ -86,7 +90,7 @@ function PayStatus({ data, u_data }) {
                                   "items": [
                                     {
                                       "id": listValue[1],
-                                      "quantity": paramsUrl.extra3.toString(),
+                                      "quantity": quantity,
                                       "price": listValue[2]
                                     }
                                   ]
@@ -97,7 +101,7 @@ function PayStatus({ data, u_data }) {
                                   'price': listValue[2],
                                   'brand': listValue[3],
                                   'category': listValue[4],
-                                  'quantity': paramsUrl.extra3.toString()
+                                  'quantity': quantity
                               }]
                           }
                       }
@@ -114,12 +118,12 @@ function PayStatus({ data, u_data }) {
                     'content_category': listValue[4],
                     'contents': [{
                           'id': listValue[1],
-                          'quantity': paramsUrl.extra3.toString(),
+                          'quantity': quantity,
                         }],
                     'currency': 'COP',
                     'value': listValue[2],
                     'payment_type': paramsUrl.lapPaymentMethodType.toString(),
-                    'num_items': paramsUrl.extra3.toString()                    
+                    'num_items': quantity                    
                   })
 
                   dataLayer.push({
@@ -138,7 +142,7 @@ function PayStatus({ data, u_data }) {
                                   "items": [
                                     {
                                       "id": listValue[1],
-                                      "quantity": paramsUrl.extra3.toString(),
+                                      "quantity": quantity,
                                       "price": listValue[2]
                                     }
                                   ]
@@ -149,7 +153,7 @@ function PayStatus({ data, u_data }) {
                                   'price': listValue[2],
                                   'brand': listValue[3],
                                   'category': listValue[4],
-                                  'quantity': paramsUrl.extra3.toString()                            // Optional fields may be omitted or set to empty string.
+                                  'quantity': quantity                            // Optional fields may be omitted or set to empty string.
                               }
                               ]
                           }

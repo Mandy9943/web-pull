@@ -602,6 +602,7 @@ class PaySection extends Component {
     render() {
         // console.log(this.state);
         var quantity = this.state.cantidad === 0 ? 1 : this.state.cantidad;
+        var extra3 = JSON.stringify({qty: quantity, cid: this.clientId});
         var md5 = require('md5');
         var ref_code = 'kieroco-' + new Date().getTime();
         var signature = md5(
@@ -707,12 +708,7 @@ class PaySection extends Component {
                             type="hidden"
                             value={this.props.props.data.user.user_id}
                         />
-                        <input name="extra3" type="hidden" value={quantity}/>
-                        <input
-                            name="extra5"
-                            type="hidden"
-                            value={this.clientId}
-                        />
+                        <input name="extra3" type="hidden" value={extra3}/>
                         <input
                             name="responseUrl"
                             type="hidden"
