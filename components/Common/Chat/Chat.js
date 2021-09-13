@@ -15,7 +15,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Moment from 'react-moment';
 import 'moment-timezone';
 import 'moment/locale/es-mx';
-import AutoScroll from '@brianmcallister/react-auto-scroll';
+// import AutoScroll from '@brianmcallister/react-auto-scroll';
 
 class Chat extends Component {
 	// chatContainer = React.createRef();

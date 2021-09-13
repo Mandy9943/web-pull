@@ -29,6 +29,10 @@ function PayStatus({ data, u_data }) {
       const paramsUrl = router.query
       setparams(paramsUrl);
       if(paramsUrl.extra4!==undefined) {
+
+          const extra3 = JSON.parse(paramsUrl.extra3.toString())
+          const quantity = extra3.qty
+
           var listValue = paramsUrl.extra4.split("~")
           if(localStorage.getItem('referenceCode')!=paramsUrl.referenceCode){
               if(paramsUrl.lapResponseCode == "APPROVED"){
@@ -41,12 +45,12 @@ function PayStatus({ data, u_data }) {
                                           'content_category': listValue[4],
                                           'contents': [{
                                                   'id': listValue[1],
-                                                  'quantity': paramsUrl.extra3.toString(),
+                                                  'quantity': quantity,
                                                 }],
                                           'currency': 'COP',
                                           'value': listValue[2],
                                           'payment_type': paramsUrl.lapPaymentMethodType.toString(),
-                                          'num_items': paramsUrl.extra3.toString()
+                                          'num_items': quantity
                                         })
                   // whenWindowFbq().then(() => {
                   //   window.fbq('track','Purchase',{
@@ -57,56 +61,46 @@ function PayStatus({ data, u_data }) {
                   //                       'content_category': listValue[4],
                   //                       'contents': [{
                   //                               'id': listValue[1],
-                  //                               'quantity': paramsUrl.extra3.toString(),
+                  //                               'quantity': quantity,
                   //                             }],
                   //                       'currency': 'COP',
                   //                       'value': listValue[2],
                   //                       'payment_type':'pse',
-                  //                       'num_items': paramsUrl.extra3.toString()
+                  //                       'num_items': quantity
                   //                     })
                   // });
-                  var item =  {
-                      'actionField': {
-                          'id': paramsUrl.transactionId,                         // Transaction ID. Required for purchases and refunds.
-                          'affiliation': 'SpiceStock',
-                          'revenue': paramsUrl.TX_VALUE.toString(),                     // Total transaction value (incl. tax and shipping)
-                          'tax':paramsUrl.TX_TAX.toString(),
-                          'shipping': '0',
-                          'aw_merchant_id': '450067839',
-                          'aw_feed_country': 'CO',
-                          'aw_feed_language': 'ES',
-                          //'coupon': 'SUMMER_SALE'
-                          "items": [
-                              {
-                                  "id": listValue[1],
-                                  "quantity": paramsUrl.extra3.toString(),
-                                  "price": listValue[2]
-                              }
-                          ]
-                      },
-                      'products': [{                            // List of productFieldObjects.
-                          'name': listValue[0],     // Name or ID is required.
-                          'id': listValue[1],
-                          'price': listValue[2],
-                          'brand': listValue[3],
-                          'category': listValue[4],
-                          'quantity': paramsUrl.extra3.toString()
-                      }]
-                  };
+
                   dataLayer.push({
                       event: 'purchase',
                       'ecommerce': {
-                          'purchase': item
-                      }
-                  });
-
-                  KlaviyoClient.public.track({
-                      event: 'purchase',
-                      email: Cookies.get('email'),
-                      properties: {
-                          items: [
-                              item
-                          ]
+                          'purchase': {
+                              'actionField': {
+                                  'id': paramsUrl.transactionId,                         // Transaction ID. Required for purchases and refunds.
+                                  'affiliation': 'SpiceStock',
+                                  'revenue': paramsUrl.TX_VALUE.toString(),                     // Total transaction value (incl. tax and shipping)
+                                  'tax':paramsUrl.TX_TAX.toString(),
+                                  'shipping': '0',
+                                  'aw_merchant_id': '450067839',
+                                  'aw_feed_country': 'CO',
+                                  'aw_feed_language': 'ES',
+                                  //'coupon': 'SUMMER_SALE'
+                                  "items": [
+                                    {
+                                      "id": listValue[1],
+                                      "quantity": paramsUrl.extra3.toString(),
+                                      "price": listValue[2]
+                                    }
+                                  ]
+                                },
+                              'products': [{                            // List of productFieldObjects.
+                                  'name': listValue[0],     // Name or ID is required.
+                                  'id': listValue[1],
+                                  'price': listValue[2],
+                                  'brand': listValue[3],
+                                  'category': listValue[4],
+                                  'quantity': quantity
+                              }]
+                          }
                       }
                   });
               }
@@ -121,12 +115,12 @@ function PayStatus({ data, u_data }) {
                     'content_category': listValue[4],
                     'contents': [{
                           'id': listValue[1],
-                          'quantity': paramsUrl.extra3.toString(),
+                          'quantity': quantity,
                         }],
                     'currency': 'COP',
                     'value': listValue[2],
                     'payment_type': paramsUrl.lapPaymentMethodType.toString(),
-                    'num_items': paramsUrl.extra3.toString()                    
+                    'num_items': quantity
                   })
                     var item = {
                         actionField: {
@@ -141,7 +135,7 @@ function PayStatus({ data, u_data }) {
                             "items": [
                                 {
                                     "id": listValue[1],
-                                    "quantity": paramsUrl.extra3.toString(),
+                                    "quantity": quantity,
                                     "price": listValue[2]
                                 }
                             ]
@@ -152,7 +146,7 @@ function PayStatus({ data, u_data }) {
                             'price': listValue[2],
                             'brand': listValue[3],
                             'category': listValue[4],
-                            'quantity': paramsUrl.extra3.toString()                            // Optional fields may be omitted or set to empty string.
+                            'quantity': quantity                            // Optional fields may be omitted or set to empty string.
                         }
                         ]
                     };
