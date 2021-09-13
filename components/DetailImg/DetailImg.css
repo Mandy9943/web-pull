@@ -107,13 +107,16 @@
 		);
 		background: linear-gradient(
 			to bottom,
-			rgba(44, 44, 44, 0.726) 0%,
-			rgba(44, 44, 44, 0.212) 47%,
+			rgba(44, 44, 44, 0.826) 0%,
+			rgba(44, 44, 44, 0.512) 47%,
 			rgba(44, 44, 44, 0.055) 81%,
 			rgba(44, 44, 44, 0) 100%
 		);
-		padding: 10px 10px 40px;
+		text-shadow: 1px 1px 2px black;
+		padding: 10px 10px 30px;
 		color: white;
+		font-weight: 500;
+
 	}
 	.gallery-responsive .back-button svg {
 		color: #cf0a2c;

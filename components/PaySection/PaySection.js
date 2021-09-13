@@ -859,8 +859,8 @@ class PaySection extends Component {
 
                     <h3 className="price-pay-product-detail-oldprice">
                         ${' '}
-                        {(this.props.price * 1.3)
-                            ? (this.props.price * 1.3)
+                        {(this.props.price * 1.428571428571429)
+                            ? (this.props.price * 1.428571428571429)
                                 .toString()
                                 .split('.')[0]
                                 .replace(/(.)(?=(\d{3})+$)/g, '$1.')
