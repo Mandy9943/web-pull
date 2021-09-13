@@ -15,7 +15,8 @@ import Logo2 from '../../assets/img/logo-social1.png';
 import { RecommendedProducts } from '../RecommendedProducts';
 import { getProductDetail } from '../../services/productsApi';
 import { withRouter } from 'next/router';
-// import {KlaviyoClient} from '../../lib/functions.js';
+import {KlaviyoClient} from '../../lib/functions.js';
+import Cookies from 'js-cookie';
 
 import dynamic from 'next/dynamic';
 
@@ -229,15 +230,16 @@ class ProductDetail extends Component {
 			"Brand": this.props.data.brand,
 			"Price": this.props.data.price
 		};
-		// KlaviyoClient.public.track({
-		// 	event: 'Viewed Product',
-		// 	email: 'jxrenas21990@gmail.com',
-		// 	properties: {
-		// 		items: [
-		// 			item
-		// 		]
-		// 	}
-		// });
+		if(Cookies.get('email')!==undefined)
+		KlaviyoClient.public.track({
+			event: 'Viewed Product',
+			email: Cookies.get('email'),
+			properties: {
+				items: [
+					item
+				]
+			}
+		});
 
 	}
 
