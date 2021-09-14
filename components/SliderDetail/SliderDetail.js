@@ -26,6 +26,7 @@ export default class SliderDetail extends Component {
     render() {
 
         let images = this.props.img;
+        console.log("imagenes", images)
         images[images.length-1] = {url:images[images.length-1].url,
             slider: 'slider',
             previousButton: 'previousButton',

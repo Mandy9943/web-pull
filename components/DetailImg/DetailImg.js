@@ -24,7 +24,6 @@ class Detail extends Component {
   render() {
     let url = "/categoria/" + this.props.category;
 
-    console.log(this.props)
     return (
       <>
         <div className="wrap-gallery">
