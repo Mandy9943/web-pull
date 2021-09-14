@@ -6,20 +6,20 @@ import GeneralChat from '../components/generalChat/index.js';
 import SocketChat from '../components/Services/socket';
 import SocketUser from '../components/Services/socketuser';
 import KieroSocketChat from '../components/Services/kierochat-socket';
+import Cookies from 'js-cookie';
+
 export default function MyApp({ Component, pageProps}) {
-	// const router = useRouter()
-	// useEffect(() => {
-	// 	import('react-facebook-pixel')
-	// 	.then((x) => x.default)
-	// 	.then((ReactPixel) => {
-	// 		ReactPixel.init('217430273456334') // facebookPixelId
-	// 		ReactPixel.pageView()
-	// 		router.events.on('routeChangeComplete', () => {
-	// 			ReactPixel.pageView()
-	// 			ReactPixel.track("ViewContent")
-	// 		})
-	// 	})
-	// }, [router.events])
+	
+	useEffect(() => {
+		function getGLCID() {
+				var match = /gclid=([^&#]*)/.exec(window.location.search);
+				return match ? match[1] : "";
+		}
+		var gclid = getGLCID();
+		if(gclid){
+				Cookies.set('gclid', gclid, { expires: 90 });
+		}
+	}, [])
 
 	return (
 		<>
@@ -67,48 +67,6 @@ export default function MyApp({ Component, pageProps}) {
 									gtag('config', 'GTM-TXNXPM7', { page_path: window.location.pathname });
 								
 							`
-				}}
-			/>
-			<script
-				dangerouslySetInnerHTML={{
-				__html: `
-
-					function createCookie(name,value,days) {
-						if (days) {
-							var date = new Date();
-							date.setTime(date.getTime()+(days*24*60*60*1000));
-							var expires = "; expires="+date.toGMTString();
-						}
-						else var expires = "";
-						document.cookie = name+"="+value+expires+"; path=/";
-					}
-					
-					function readCookie(name) {
-						var nameEQ = name + "=";
-						var ca = document.cookie.split(';');
-						for(var i=0;i < ca.length;i++) {
-							var c = ca[i];
-							while (c.charAt(0)==' ') c = c.substring(1,c.length);
-							if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-						}
-						return null;
-					}
-
-					function getGLCID() {
-							var match = /gclid=([^&#]*)/.exec(window.location.search);
-							return match[1];
-					}
-
-					//window.onload = () => {
-						var gclid = getGLCID();
-
-						if(gclid){
-							alert(gclid);
-							createCookie('gclid', gclid, 90);
-						}
-					//};
-									
-					`
 				}}
 			/>
 			<SocketChat />
