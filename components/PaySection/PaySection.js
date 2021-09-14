@@ -15,6 +15,7 @@ import Select from '../Common/SelectDropdown/Select';
 import Spinner from '../Common/Spinner';
 import Checkbox from '@material-ui/core/Checkbox';
 import Modal from '../Common/Modal/Modal';
+import Cookies from 'js-cookie';
 
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import { Button, Modal } from 'react-bootstrap';
@@ -68,6 +69,7 @@ class PaySection extends Component {
         //     var clientId = tracker.get('clientId');
         // });
         this.clientId = typeof(ga) == 'function' && typeof(ga.getAll) == 'function' ? ga.getAll()[0].get('clientId') : "";
+        this.gclid = Cookies.get('gclid');
         ////
         
         if (this.props.m_pgid) return;
@@ -602,7 +604,7 @@ class PaySection extends Component {
     render() {
         // console.log(this.state);
         var quantity = this.state.cantidad === 0 ? 1 : this.state.cantidad;
-        var extra3 = JSON.stringify({qty: quantity, cid: this.clientId});
+        var extra3 = JSON.stringify({qty: quantity, cid: this.clientId, gclid: this.gclid});
         var md5 = require('md5');
         var ref_code = 'kieroco-' + new Date().getTime();
         var signature = md5(
