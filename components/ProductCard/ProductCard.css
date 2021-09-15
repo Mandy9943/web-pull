@@ -89,6 +89,9 @@
 	.producto-card .product-card-img{
 		height: 110px;
 	}
+	.CardInPerfil .product-card-img {
+		height: 100px;
+	}
 }
 
 @media (min-width: 801px){
@@ -121,6 +124,9 @@
 }
 
 @media (min-width: 1600px) {
+	.CardInPerfil .product-card-img {
+		height: 190px !important;
+	}
 	.producto-card .product-card-img img {
 		min-height: 10vw;
 	}

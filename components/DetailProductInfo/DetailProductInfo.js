@@ -147,7 +147,7 @@ class DetailProductInfo extends Component {
 
 				<Accordion className="showGuide">
 								<AccordionSummary
-									expandIcon={<ExpandMoreIcon />}
+									expandIcon={<ExpandMoreIcon style={{color:'#CF0A2C !important'}}/>}
 									aria-controls="panel1a-content"
 									id="panel1a-header"
 								>
