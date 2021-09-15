@@ -7,11 +7,8 @@ import Footer from "../components/Common/Footer/Footer";
 import './sass/order.css';
 import favicon from "../assets/img/favicon.svg";
 import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faCheck, faWindowClose, faHourglassHalf
-
-} from "@fortawesome/free-solid-svg-icons";
+import Cookies from 'js-cookie';
+import {KlaviyoClient} from "../lib/functions";
 
 function PayStatus({ data, u_data }) {
   const router = useRouter()
@@ -90,7 +87,7 @@ function PayStatus({ data, u_data }) {
                                   "items": [
                                     {
                                       "id": listValue[1],
-                                      "quantity": quantity,
+                                      "quantity": paramsUrl.extra3.toString(),
                                       "price": listValue[2]
                                     }
                                   ]
@@ -123,40 +120,50 @@ function PayStatus({ data, u_data }) {
                     'currency': 'COP',
                     'value': listValue[2],
                     'payment_type': paramsUrl.lapPaymentMethodType.toString(),
-                    'num_items': quantity                    
+                    'num_items': quantity
                   })
-
+                    var item = {
+                        actionField: {
+                            'id': paramsUrl.transactionId,                         // Transaction ID. Required for purchases and refunds.
+                            'affiliation': 'SpiceStock',
+                            'revenue': paramsUrl.TX_VALUE.toString(),                     // Total transaction value (incl. tax and shipping)
+                            'tax':paramsUrl.TX_TAX.toString(),
+                            'shipping': '0',
+                            'aw_merchant_id': '450067839',
+                            'aw_feed_country': 'CO',
+                            'aw_feed_language': 'ES',
+                            "items": [
+                                {
+                                    "id": listValue[1],
+                                    "quantity": quantity,
+                                    "price": listValue[2]
+                                }
+                            ]
+                        },
+                        products: [{                            // List of productFieldObjects.
+                            'name': listValue[0],     // Name or ID is required.
+                            'id': listValue[1],
+                            'price': listValue[2],
+                            'brand': listValue[3],
+                            'category': listValue[4],
+                            'quantity': quantity                            // Optional fields may be omitted or set to empty string.
+                        }
+                        ]
+                    };
                   dataLayer.push({
                       event:'pending_transaction',
                       ecommerce: {
-                          pending_transaction: {
-                              actionField: {
-                                  'id': paramsUrl.transactionId,                         // Transaction ID. Required for purchases and refunds.
-                                  'affiliation': 'SpiceStock',
-                                  'revenue': paramsUrl.TX_VALUE.toString(),                     // Total transaction value (incl. tax and shipping)
-                                  'tax':paramsUrl.TX_TAX.toString(),
-                                  'shipping': '0',
-                                  'aw_merchant_id': '450067839',
-                                  'aw_feed_country': 'CO',
-                                  'aw_feed_language': 'ES',
-                                  "items": [
-                                    {
-                                      "id": listValue[1],
-                                      "quantity": quantity,
-                                      "price": listValue[2]
-                                    }
-                                  ]
-                                },
-                              products: [{                            // List of productFieldObjects.
-                                  'name': listValue[0],     // Name or ID is required.
-                                  'id': listValue[1],
-                                  'price': listValue[2],
-                                  'brand': listValue[3],
-                                  'category': listValue[4],
-                                  'quantity': quantity                            // Optional fields may be omitted or set to empty string.
-                              }
-                              ]
-                          }
+                          pending_transaction: item
+                      }
+                  });
+
+                  KlaviyoClient.public.track({
+                      event: 'pending_transaction',
+                      email: Cookies.get('email'),
+                      properties: {
+                          items: [
+                              item
+                          ]
                       }
                   });
               }

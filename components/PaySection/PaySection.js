@@ -15,7 +15,8 @@ import Select from '../Common/SelectDropdown/Select';
 import Spinner from '../Common/Spinner';
 import Checkbox from '@material-ui/core/Checkbox';
 import Modal from '../Common/Modal/Modal';
-import Cookies from 'js-cookie';
+import {KlaviyoClient} from "../../lib/functions";
+import Cookies from "js-cookie";
 
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import { Button, Modal } from 'react-bootstrap';
@@ -110,9 +111,7 @@ class PaySection extends Component {
         // 		});
         // 		return dataLayerBeginCheckout;
         // 	}
-
         // 	let resultDataLayerBeginCheckout = beginCheckoutGooleDataLayerG4(dataLayerBeginCheckout);
-
         // 	dataLayer.push(resultDataLayerBeginCheckout);
         // if (typeof window !== 'undefined') {
         //     if (window.fbq != null) {
@@ -382,43 +381,55 @@ class PaySection extends Component {
             });
             return dataCategory.join(' / ');
         };
-        
+        var item = {
+            currencyCode: 'COP',
+            actionField: {
+                step: 1,
+            },
+            products: [
+                {
+                    name: this.props.props.data.product_global_title, // Name or ID is required.
+                    id: this.props.props.data.product_global_id,
+                    price: this.props.props.data.price,
+                    brand: this.props.props.data.brand,
+                    category: concatCategories(),
+                    url:
+                        'https://kiero.co/detalle/' +
+                        this.props.props.data.product_global_id +
+                        '_' +
+                        this.props.props.data.product_global_title
+                            .replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+                            .replaceAll('//', '%2F')
+                            .replaceAll('%', '')
+                            .replaceAll(/['"]+/g, '')
+                            .split(' ')
+                            .join('-'),
+                    quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
+                },
+            ],
+        };
         dataLayer.push({
             event: 'checkout',
             ecommerce: {
-                checkout: {
-                    currencyCode: 'COP',
-                    actionField: {
-                        step: 1,
-                    },
-                    products: [
-                        {
-                            name: this.props.props.data.product_global_title, // Name or ID is required.
-                            id: this.props.props.data.product_global_id,
-                            price: this.props.props.data.price,
-                            brand: this.props.props.data.brand,
-                            category: concatCategories(),
-                            url:
-                                'https://kiero.co/detalle/' +
-                                this.props.props.data.product_global_id +
-                                '_' +
-                                this.props.props.data.product_global_title
-                                    .replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-                                    .replaceAll('//', '%2F')
-                                    .replaceAll('%', '')
-                                    .replaceAll(/['"]+/g, '')
-                                    .split(' ')
-                                    .join('-'),
-                            quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
-                        },
-                    ],
-                },
+                checkout: item,
             },
             // 	'eventCallback': function(){
             //  	window.location = '/pagar/' + id + '/' + quantity;
             //  }
         });
+
+        if(Cookies.get('email')!==undefined)
+        KlaviyoClient.public.track({
+            event: 'Checkout',
+            email: Cookies.get('email'),
+            properties: {
+                items: [
+                    item
+                ]
+            }
+        });
     }
+
     checkoutOption = () =>{
         const concatCategories = () => {
             var dataCategory = [];
@@ -445,43 +456,55 @@ class PaySection extends Component {
             value: this.props.props.data.price,
             num_items: this.state.cantidad == 0 ? 1 : this.state.cantidad,
         });
-
+        var item = {
+            currencyCode: 'COP',
+            actionField: {
+                step: 2, 'option':'form_complete'
+            },
+            products: [
+                {
+                    name: this.props.props.data.product_global_title, // Name or ID is required.
+                    id: this.props.props.data.product_global_id,
+                    price: this.props.props.data.price,
+                    brand: this.props.props.data.brand,
+                    category: concatCategories(),
+                    url:
+                        'https://kiero.co/detalle/' +
+                        this.props.props.data.product_global_id +
+                        '_' +
+                        this.props.props.data.product_global_title
+                            .replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+                            .replaceAll('//', '%2F')
+                            .replaceAll('%', '')
+                            .replaceAll(/['"]+/g, '')
+                            .split(' ')
+                            .join('-'),
+                    quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
+                },
+            ],
+        };
         // GAnalytics
         dataLayer.push({
-            event: 'checkout',
+            event: 'checkoutOption',
             ecommerce: {
-                checkout: {
-                    currencyCode: 'COP',
-                    actionField: {
-                        step: 2, 'option':'form_complete'
-                    },
-                    products: [
-                        {
-                            name: this.props.props.data.product_global_title, // Name or ID is required.
-                            id: this.props.props.data.product_global_id,
-                            price: this.props.props.data.price,
-                            brand: this.props.props.data.brand,
-                            category: concatCategories(),
-                            url:
-                                'https://kiero.co/detalle/' +
-                                this.props.props.data.product_global_id +
-                                '_' +
-                                this.props.props.data.product_global_title
-                                    .replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-                                    .replaceAll('//', '%2F')
-                                    .replaceAll('%', '')
-                                    .replaceAll(/['"]+/g, '')
-                                    .split(' ')
-                                    .join('-'),
-                            quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
-                        },
-                    ],
-                },
+                checkout: item,
             },
             // 	'eventCallback': function(){
             //  	window.location = '/pagar/' + id + '/' + quantity;
             //  }
         });
+
+        if(Cookies.get('email')!==undefined)
+            KlaviyoClient.public.track({
+                event: 'checkoutOption',
+                email: Cookies.get('email'),
+                properties: {
+                    items: [
+                        item
+                    ]
+                }
+            });
+
     }
 
 
@@ -714,8 +737,8 @@ class PaySection extends Component {
                         <input
                             name="responseUrl"
                             type="hidden"
-                            // value={"https://kieroapi.org/pay_status?extra4=" +
-                            value={"https://kiero.co/pay_status?extra4="+
+                             value={"https://kieroapi.org/pay_status?extra4=" +
+                            // value={"https://kiero.co/pay_status?extra4="+
                             this.props.props.data.title + '~' +
                             this.props.props.data.product_id + '~' +
                             this.props.props.data.price + '~' +
@@ -727,8 +750,8 @@ class PaySection extends Component {
                         <input
                             name="confirmationUrl"
                             type="hidden"
-                            value="https://api.kieroapi.net/payuComplete"
-                            // value="https://api.kieroapi.org/payuComplete"
+                            // value="https://api.kieroapi.net/payuComplete"
+                            value="https://api.kieroapi.org/payuComplete"
                         />
                         <input
                             className="button-finish-payu"

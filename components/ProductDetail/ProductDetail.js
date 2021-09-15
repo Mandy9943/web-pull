@@ -16,19 +16,12 @@ import { RecommendedProducts } from '../RecommendedProducts';
 import { getProductDetail } from '../../services/productsApi';
 import { withRouter } from 'next/router';
 import {KlaviyoClient} from '../../lib/functions.js';
+import Cookies from 'js-cookie';
 
 import dynamic from 'next/dynamic';
 
 
-KlaviyoClient.public.identify({
-	email: 'pizza.dave@mailinator.com',
-	properties: {
-		$first_name: 'Pizza',
-		$last_name: 'Dave',
-		favoriteFood: 'Pad thai'
-	},
-	post: true //defaults to false
-});
+
 
 // import Nav from '../Common/Nav';
 // import DetailImg from '../DetailImg';
@@ -195,25 +188,6 @@ class ProductDetail extends Component {
 
 		// var _learnq = _learnq || [];
 		// console.log(this.props.data)
-		// var item = {
-		// 	"ProductName": this.props.data.product_global_title,
-		// 	"ProductID": this.props.data.product_global_id,
-		// 	"SKU": this.props.data.sku,
-		// 	"Categories": concatCategories(),
-		// 	"ImageURL": this.state.mdata.images[0].url,
-		// 	"URL": 'https://kiero.co/detalle/' +
-		// 		this.props.data.product_global_id +
-		// 		'_' +
-		// 		this.props.data.product_global_title
-		// 			.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-		// 			.replace('//', '%2F')
-		// 			.replace('%', '')
-		// 			.replaceAll(/['"]+/g, '')
-		// 			.split(' ')
-		// 			.join('-'),
-		// 	"Brand": this.props.data.brand,
-		// 	"Price": this.props.data.price
-		// };
 		//
 		// _learnq.push(["track", "Viewed Product", item]);
 		// console.log(_learnq)
@@ -237,6 +211,35 @@ class ProductDetail extends Component {
 		// 									}
 		// 						]
 		//  			 });
+		var item = {
+			"ProductName": this.props.data.product_global_title,
+			"ProductID": this.props.data.product_global_id,
+			"SKU": this.props.data.sku,
+			"Categories": concatCategories(),
+			"ImageURL": this.state.mdata.images[0].url,
+			"URL": 'https://kiero.co/detalle/' +
+				this.props.data.product_global_id +
+				'_' +
+				this.props.data.product_global_title
+					.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+					.replace('//', '%2F')
+					.replace('%', '')
+					.replaceAll(/['"]+/g, '')
+					.split(' ')
+					.join('-'),
+			"Brand": this.props.data.brand,
+			"Price": this.props.data.price
+		};
+		if(Cookies.get('email')!==undefined)
+		KlaviyoClient.public.track({
+			event: 'Viewed Product',
+			email: Cookies.get('email'),
+			properties: {
+				items: [
+					item
+				]
+			}
+		});
 
 	}
 
