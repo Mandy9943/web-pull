@@ -79,7 +79,7 @@ class PaySection extends Component {
         this.gclid = Cookies.get('gclid');
         if (!this.gclid) {
             var match = /gclid=([^&#]*)/.exec(window.location.search);
-			this.gclid = match ? match[1] : null;
+			this.gclid = match ? match[1] : undefined;
         }
 
         //////
