@@ -64,14 +64,25 @@ class PaySection extends Component {
 
     componentDidMount() {
         
-        //// Obtener el cid establecido por google
-        // Ejemplo de como lo recomienda Google
-        // ga(function(tracker) {
-        //     var clientId = tracker.get('clientId');
-        // });
-        this.clientId = typeof(ga) == 'function' && typeof(ga.getAll) == 'function' ? ga.getAll()[0].get('clientId') : "";
+        //////
+        // this.clientId = typeof(ga) == 'function' && typeof(ga.getAll) == 'function' ? ga.getAll()[0].get('clientId') : "";
+        // this.gclid = Cookies.get('gclid');
+        
+        // clientId
+        var gaCookie = Cookies.get('_ga');
+        if (gaCookie) {
+           var gaSplit = gaCookie.split('.');
+           this.clientId = gaSplit[2] + "." + gaSplit[3]; 
+        }
+
+        // GCLID
         this.gclid = Cookies.get('gclid');
-        ////
+        if (!this.gclid) {
+            var match = /gclid=([^&#]*)/.exec(window.location.search);
+			this.gclid = match ? match[1] : null;
+        }
+
+        //////
         
         if (this.props.m_pgid) return;
 
