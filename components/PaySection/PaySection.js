@@ -683,7 +683,7 @@ class PaySection extends Component {
         // console.log(this.state);
         var quantity = this.state.cantidad === 0 ? 1 : this.state.cantidad;
         var fullName = this.handleFormatName(this.state.user);
-        var extra3= JSON.stringify({qty: quantity, cid: this.state.clientId, gclid: this.state.gclid});
+        var extra3= JSON.stringify({qty: quantity, cid: this.state.clientId, gclid: this.state.gclid,  nme: fullName});
         var md5 = require('md5');
         var ref_code = 'kieroco-' + new Date().getTime();
         var signature = md5(
