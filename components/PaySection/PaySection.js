@@ -40,6 +40,9 @@ class PaySection extends Component {
 			validForm: true,
 			disabledButton: true,
 			termsOfService: '',
+            display:'none',
+            gclid:'',
+            clientId:''
 		};
 	}
 
@@ -63,26 +66,28 @@ class PaySection extends Component {
 	};
 
     componentDidMount() {
-        
         //////
         // this.clientId = typeof(ga) == 'function' && typeof(ga.getAll) == 'function' ? ga.getAll()[0].get('clientId') : "";
         // this.gclid = Cookies.get('gclid');
-        
-        // clientId
-        var gaCookie = Cookies.get('_ga');
-        if (gaCookie) {
-           var gaSplit = gaCookie.split('.');
-           this.clientId = gaSplit[2] + "." + gaSplit[3]; 
-        }
-
-        // GCLID
-        this.gclid = Cookies.get('gclid');
-        if (!this.gclid) {
-            var match = /gclid=([^&#]*)/.exec(window.location.search);
-			this.gclid = match ? match[1] : undefined;
-        }
-
-        //////
+        const dataInterval = setInterval(function(){
+            if(!this.clientId && !this.gclid ){
+                // clientId
+                var gaCookie = Cookies.get('_ga');
+                if (gaCookie) {
+                var gaSplit = gaCookie.split('.');
+                this.clientId = gaSplit[2] + "." + gaSplit[3]; 
+                }
+                // GCLID
+                this.gclid = Cookies.get('gclid');
+                if (!this.gclid) {
+                    var match = /gclid=([^&#]*)/.exec(window.location.search);
+                    this.gclid = match ? match[1] : undefined;
+                }
+                //////
+            } else {
+                clearInterval(dataInterval)
+            }
+        },200)
         
         if (this.props.m_pgid) return;
 
@@ -265,10 +270,10 @@ class PaySection extends Component {
         this.setState({cantidad: event.target.value});
     };
 
-    renderPayButtonSection = () => {
+    renderPayButtonSection = (dataExtra3) => {
         // const btnEnabled = <button type="submit" onClick={() => this.go(this.props.pgid)}>Comprar</button>;
         const btnEnabled = (
-            <button type="submit" onClick={() => this.renderPayu()}>
+            <button type="submit" onClick={() => this.validateDataGoogle(dataExtra3)}>
                 Comprar
             </button>
         );
@@ -540,9 +545,27 @@ class PaySection extends Component {
         this.validateForm();
     };
 
-    renderPayu = () => {
-        this.checkout();
+  
 
+    validateDataGoogle = (dataExtra3) => {
+        var dataGoogle = JSON.parse(dataExtra3)
+        this.setState({display: 'flex'});
+        var awaitGoogle = setInterval(function(){
+            
+            // !dataGoogle.cid && !dataGoogle.gclid ? console.log("no hay",dataGoogle) : console.log("si hay",dataGoogle)
+            if(dataGoogle.cid && dataGoogle.gclid){
+                console.log(dataExtra3)
+                renderPayu()
+                clearInterval(awaitGoogle)
+            } else {
+                console.log('noentra',dataExtra3)
+            }
+        },300)
+    }
+    
+    renderPayu = () => {
+        this.setState({display: 'none'});
+        this.checkout();
         this.setState({modalAddr: true});
     }
     // randomPayReference = (length, chars) => {
@@ -748,8 +771,8 @@ class PaySection extends Component {
                         <input
                             name="responseUrl"
                             type="hidden"
-                             value={"https://kieroapi.org/pay_status?extra4=" +
-                            // value={"https://kiero.co/pay_status?extra4="+
+                            //  value={"https://kieroapi.org/pay_status?extra4=" +
+                            value={"https://kiero.co/pay_status?extra4="+
                             this.props.props.data.title + '~' +
                             this.props.props.data.product_id + '~' +
                             this.props.props.data.price + '~' +
@@ -850,6 +873,12 @@ class PaySection extends Component {
         );
         return (
             <div className="pay">
+                <div className="containerBackDropLoader" style={{display:this.state.display}}>
+                    <div className="containerLoader">
+                        <Spinner style={{height:"100px !important"}}/>
+                        <p>Validando información de compra</p>
+                    </div>
+                </div>
                 <div className="pay-item">
                     <h1 className="title-pay-product-detail">{this.props.title.substr(0, 60)} </h1>
                     {/* <div className="productFavIcon2">
@@ -914,7 +943,7 @@ class PaySection extends Component {
                     )}
                 </div>
 
-                {this.renderPayButtonSection()}
+                {this.renderPayButtonSection(extra3)}
                 {/* {this.renderWompi()} */}
                 {/* <form aria-hidden="true">
 								<script
