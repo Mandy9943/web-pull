@@ -12,9 +12,16 @@ export default class ProductsSlider extends Component {
 		super(props);
 		this.state = {
 			data: [],
+			className: 'producto-card'
 		};
 	}
 	componentDidMount() {
+
+		
+		const sliderContentProductDetail = document.querySelector('.containerProductDetail');
+		sliderContentProductDetail ? this.setState({ className:'CardInPerfil producto-card' }) : this.setState({ className:'producto-card' })
+	
+
 		getProductsBasic(this.props.category, 25).then((response) => {
 			let data = [];
 			let product;
@@ -96,10 +103,13 @@ export default class ProductsSlider extends Component {
 			// 	"items": gtagSlidersUniversal
 			// })
 		});
+		
+	
 	}
+	
 
 	render() {
-		// console.log(this.state)
+		
 		let productList = [];
 		let productListMobile = [];
 		let tmpList = [];
@@ -127,6 +137,7 @@ export default class ProductsSlider extends Component {
 					title={this.state.data[i].title}
 					category={this.state.data[i].category}
 					brand={this.state.data[i].brand}
+					className={this.state.className}
 				/>
 			);
 
@@ -169,6 +180,7 @@ export default class ProductsSlider extends Component {
 					title={this.state.data[i].title}
 					category={this.state.data[i].category}
 					brand={this.state.data[i].brand}
+					className={this.state.className}
 				/>
 			);
 		}

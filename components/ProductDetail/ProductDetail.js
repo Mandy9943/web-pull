@@ -290,7 +290,7 @@ class ProductDetail extends Component {
 		// console.log(this.state.mdata)
 		// console.log("data")
 		return (
-			<div>
+			<div className="containerProductDetail">
 				<Nav
 					user={u_data.user}
 					jwt={u_data.jwt}
