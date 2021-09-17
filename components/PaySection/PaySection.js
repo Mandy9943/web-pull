@@ -65,15 +65,6 @@ class PaySection extends Component {
     componentDidMount() {
         
         //////
-        // this.clientId = typeof(ga) == 'function' && typeof(ga.getAll) == 'function' ? ga.getAll()[0].get('clientId') : "";
-        // this.gclid = Cookies.get('gclid');
-        
-        // clientId
-        var gaCookie = Cookies.get('_ga');
-        if (gaCookie) {
-           var gaSplit = gaCookie.split('.');
-           this.clientId = gaSplit[2] + "." + gaSplit[3]; 
-        }
 
         // GCLID
         this.gclid = Cookies.get('gclid');
@@ -636,6 +627,19 @@ class PaySection extends Component {
 	}
 
     render() {
+
+        //////
+        // this.clientId = typeof(ga) == 'function' && typeof(ga.getAll) == 'function' ? ga.getAll()[0].get('clientId') : "";
+        // this.gclid = Cookies.get('gclid');
+        
+        // clientId
+        var gaCookie = Cookies.get('_ga');
+        if (gaCookie) {
+           var gaSplit = gaCookie.split('.');
+           this.clientId = gaSplit[2] + "." + gaSplit[3]; 
+        }
+
+        //////
         // console.log(this.state);
         var quantity = this.state.cantidad === 0 ? 1 : this.state.cantidad;
         var fullName = this.handleFormatName(this.state.user);
