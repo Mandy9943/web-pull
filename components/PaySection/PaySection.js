@@ -66,6 +66,8 @@ class PaySection extends Component {
 	};
 
     componentDidMount() {
+        var clientId = this.state.clientId;
+        var gclid = this.state.gclid
         //////
         // this.clientId = typeof(ga) == 'function' && typeof(ga.getAll) == 'function' ? ga.getAll()[0].get('clientId') : "";
         // this.gclid = Cookies.get('gclid');
@@ -84,10 +86,21 @@ class PaySection extends Component {
                     this.gclid = match ? match[1] : undefined;
                 }
                 //////
+                console.log("nada que pasa",clientId,gclid)
             } else {
+                console.log("paso")
+                dataGoogleAds(this.clientId,this.gclid)
                 clearInterval(dataInterval)
             }
         },200)
+
+        const dataGoogleAds = (clid, gclId) => {
+            this.setState({
+                gclid:gclId,
+                clientId:clid
+            })
+            console.log(this.state.gclid, this.state.clientId)
+        }
         
         if (this.props.m_pgid) return;
 
@@ -270,10 +283,10 @@ class PaySection extends Component {
         this.setState({cantidad: event.target.value});
     };
 
-    renderPayButtonSection = (dataExtra3) => {
+    renderPayButtonSection = () => {
         // const btnEnabled = <button type="submit" onClick={() => this.go(this.props.pgid)}>Comprar</button>;
         const btnEnabled = (
-            <button type="submit" onClick={() => this.validateDataGoogle(dataExtra3)}>
+            <button type="submit" onClick={() => this.validateDataGoogle()}>
                 Comprar
             </button>
         );
@@ -547,18 +560,18 @@ class PaySection extends Component {
 
   
 
-    validateDataGoogle = (dataExtra3) => {
-        var dataGoogle = JSON.parse(dataExtra3)
+    validateDataGoogle = () => {
         this.setState({display: 'flex'});
+        var clientId = this.state.clientId;
+        var gclid = this.state.gclid
+        console.log(clientId,gclid)
         var awaitGoogle = setInterval(function(){
-            
-            // !dataGoogle.cid && !dataGoogle.gclid ? console.log("no hay",dataGoogle) : console.log("si hay",dataGoogle)
-            if(dataGoogle.cid && dataGoogle.gclid){
-                console.log(dataExtra3)
-                renderPayu()
-                clearInterval(awaitGoogle)
+            if( clientId == '' && gclid == ''){
+                console.log('noentra','client: ',clientId,'gclid: ',gclid)
             } else {
-                console.log('noentra',dataExtra3)
+                // renderPayu()
+                console.log('entra','client: ',clientId,'gclid: ',gclid)
+                clearInterval(awaitGoogle)
             }
         },300)
     }
@@ -661,7 +674,7 @@ class PaySection extends Component {
     render() {
         // console.log(this.state);
         var quantity = this.state.cantidad === 0 ? 1 : this.state.cantidad;
-        var extra3 = JSON.stringify({qty: quantity, cid: this.clientId, gclid: this.gclid});
+        var extra3= JSON.stringify({qty: quantity, cid: this.state.clientId, gclid: this.state.gclid});
         var md5 = require('md5');
         var ref_code = 'kieroco-' + new Date().getTime();
         var signature = md5(
@@ -772,7 +785,7 @@ class PaySection extends Component {
                             name="responseUrl"
                             type="hidden"
                             //  value={"https://kieroapi.org/pay_status?extra4=" +
-                            value={"https://kiero.co/pay_status?extra4="+
+                            value={"https://kiero.co/pay_status ?extra4="+
                             this.props.props.data.title + '~' +
                             this.props.props.data.product_id + '~' +
                             this.props.props.data.price + '~' +
@@ -943,7 +956,7 @@ class PaySection extends Component {
                     )}
                 </div>
 
-                {this.renderPayButtonSection(extra3)}
+                {this.renderPayButtonSection()}
                 {/* {this.renderWompi()} */}
                 {/* <form aria-hidden="true">
 								<script
