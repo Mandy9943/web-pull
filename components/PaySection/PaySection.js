@@ -638,7 +638,8 @@ class PaySection extends Component {
     render() {
         // console.log(this.state);
         var quantity = this.state.cantidad === 0 ? 1 : this.state.cantidad;
-        var extra3 = JSON.stringify({qty: quantity, cid: this.clientId, gclid: this.gclid});
+        var fullName = this.handleFormatName(this.state.user);
+        var extra3 = JSON.stringify({qty: quantity, nme: fullName, cid: this.clientId, gclid: this.gclid});
         var md5 = require('md5');
         var ref_code = 'kieroco-' + new Date().getTime();
         var signature = md5(
@@ -737,7 +738,7 @@ class PaySection extends Component {
                         <input name="shippingCountry" type="hidden" value="CO"/>
                         <input name="shippingCity" type="hidden" value={this.state.city}/>
                         <input name="shippingAddress" type="hidden" value={this.state.address}/>
-                        <input name="payerFullName" type="hidden" value={this.handleFormatName(this.state.user)}/>
+                        <input name="payerFullName" type="hidden" value={fullName}/>
                         <input name="extra1" type="hidden" value={this.props.props.data.product_id}/>
                         <input
                             name="extra2"
