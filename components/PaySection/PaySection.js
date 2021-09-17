@@ -844,7 +844,6 @@ class PaySection extends Component {
                             name="Submit"
                             type="submit"
                             value="Continuar con la transacción"
-                            onClick={console.log(this.state)}
                         />
                     </form>
                     {/*<button style={{ background:'#cf0a2c', color:'white'}} onClick={() => this.validateForm()}>Continuar con la transacción</button>*/}
