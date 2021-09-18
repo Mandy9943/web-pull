@@ -919,7 +919,7 @@ class PaySection extends Component {
                 <div className="containerBackDropLoader" style={{display:this.state.display}}>
                     <div className="containerLoader">
                         <Spinner style={{height:"100px !important"}}/>
-                        <p>Validando información de compra</p>
+                        {/* <p>Validando información de compra</p> */}
                     </div>
                 </div>
                 <div className="pay-item">
