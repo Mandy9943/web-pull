@@ -285,6 +285,22 @@
 	padding: 20px 10px;
 }
 
+.section-pay-type .section-pay-type-items div{
+	min-height: 50px;
+	height:auto;
+    position: relative;
+}
+
+.section-pay-type .section-pay-type-items div img{
+	max-width: 100%;
+    position: absolute;
+    margin: auto;
+    inset: 0px;
+    height: auto !important;
+    max-height: 100% !important;
+    min-height: auto !important;
+}
+
 .section-pay-send {
 	padding: 20px;
 	border-top: 0.5px solid #e2e2e2;

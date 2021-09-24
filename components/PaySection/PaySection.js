@@ -17,7 +17,6 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Modal from '../Common/Modal/Modal';
 import {KlaviyoClient} from "../../lib/functions";
 import Cookies from "js-cookie";
-import TextField from '@material-ui/core/TextField';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import { Button, Modal } from 'react-bootstrap';
 
@@ -724,7 +723,8 @@ class PaySection extends Component {
                         width: 'calc(100% - 2px)',
                         padding: 8,
                         border:' 0.5px solid #b8b8b8',
-                        borderRadius: 5
+                        borderRadius: 5,
+                        appearance: 'auto !important'
                     }}
                     onChange={this.handleFormValue}>
                         <option hidden defaultValue >Seleccionar tipo de identificación</option>
