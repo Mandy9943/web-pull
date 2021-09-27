@@ -728,14 +728,8 @@ class PaySection extends Component {
                         name="lastName"
                     />
                    </div>
-                    <select name="typeIdentification" style={{
-                        margin: '5px 0px',
-                        outline: 'none',
-                        width: 'calc(100% - 2px)',
-                        padding: 8,
-                        border:' 0.5px solid #b8b8b8',
-                        borderRadius: 5,
-                        appearance: 'auto !important'
+                    <select name="typeIdentification" className="typeIdentification" style={{
+                        
                     }}
                     onChange={this.handleFormValue}>
                         <option hidden defaultValue >Seleccionar tipo de identificación</option>
