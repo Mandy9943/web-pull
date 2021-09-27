@@ -398,7 +398,8 @@ class PaySection extends Component {
             // this.setState({modalAddr: false})
             this.setState({disabledButton: false, validForm: true});
             // this.renderWompi()
-            this.checkoutOption();
+            // this.checkoutOption();
+            this.checkout();
 
 
         }
@@ -449,10 +450,9 @@ class PaySection extends Component {
             //  }
         });
 
-        if(Cookies.get('email')!==undefined)
         KlaviyoClient.public.track({
             event: 'Checkout',
-            email: Cookies.get('email'),
+            email: this.state.email,
             properties: {
                 items: [
                     item
@@ -673,7 +673,7 @@ class PaySection extends Component {
 
        const renderPayu = () => {
             this.setState({display: 'none'});
-            this.checkout();
+
             this.setState({modalAddr: true});
         }
         //////
