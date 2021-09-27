@@ -17,7 +17,6 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Modal from '../Common/Modal/Modal';
 import {KlaviyoClient} from "../../lib/functions";
 import Cookies from "js-cookie";
-
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import { Button, Modal } from 'react-bootstrap';
 
@@ -40,6 +39,11 @@ class PaySection extends Component {
 			validForm: true,
 			disabledButton: true,
 			termsOfService: '',
+            identification:'',
+            typeIdentification:'',
+            display:'none',
+            gclid:'',
+            clientId:''
 		};
 	}
 
@@ -58,22 +62,43 @@ class PaySection extends Component {
 				city: '',
 				address: '',
 				termsOfService: '',
+                identification:'',
+                typeIdentification:''
 			});
 		}, 2000);
 	};
 
     componentDidMount() {
+        //////
+        // this.clientId = typeof(ga) == 'function' && typeof(ga.getAll) == 'function' ? ga.getAll()[0].get('clientId') : "";
+        // this.gclid = Cookies.get('gclid');
+        const dataInterval = setInterval(function(){
+            if(!this.clientId && !this.gclid ){
+                // clientId
+                var gaCookie = Cookies.get('_ga');
+                if (gaCookie) {
+                var gaSplit = gaCookie.split('.');
+                this.clientId = gaSplit[2] + "." + gaSplit[3]; 
+                }
+                // GCLID
+                this.gclid = Cookies.get('gclid');
+                if (!this.gclid) {
+                    var match = /gclid=([^&#]*)/.exec(window.location.search);
+                    this.gclid = match ? match[1] : undefined;
+                }
+                //////
+            } else {
+                dataGoogleAds(this.clientId,this.gclid)
+                clearInterval(dataInterval)
+            }
+        },200)
         
-        //////
-
-        // GCLID
-        this.gclid = Cookies.get('gclid');
-        if (!this.gclid) {
-            var match = /gclid=([^&#]*)/.exec(window.location.search);
-			this.gclid = match ? match[1] : undefined;
+        const dataGoogleAds = (clid, gclId) => {
+            this.setState({
+                gclid:gclId,
+                clientId:clid
+            })
         }
-
-        //////
         
         if (this.props.m_pgid) return;
 
@@ -256,10 +281,10 @@ class PaySection extends Component {
         this.setState({cantidad: event.target.value});
     };
 
-    renderPayButtonSection = () => {
+    renderPayButtonSection = (renderPayu) => {
         // const btnEnabled = <button type="submit" onClick={() => this.go(this.props.pgid)}>Comprar</button>;
         const btnEnabled = (
-            <button type="submit" onClick={() => this.renderPayu()}>
+            <button type="submit" onClick={() => this.validateDataGoogle(renderPayu)}>
                 Comprar
             </button>
         );
@@ -335,13 +360,15 @@ class PaySection extends Component {
     }
 
     validateForm = () => {
-        const {user, email, mobile_phone, city, address, termsOfService} = this.state;
+        const {user, email, mobile_phone, city, address, termsOfService, identification, typeIdentification} = this.state;
         if (
             !user ||
             !email ||
             !mobile_phone ||
             !city ||
-            !address
+            !address ||
+            !identification ||
+            !typeIdentification
             // !region ||
             // !neighborhood
         ) {
@@ -354,13 +381,15 @@ class PaySection extends Component {
     };
 
     validateFormFinal = () => {
-        const {user, email, mobile_phone, city, address, termsOfService} = this.state;
+        const {user, email, mobile_phone, city, address, termsOfService, identification, typeIdentification} = this.state;
         if (
             !user ||
             !email ||
             !mobile_phone ||
             !city ||
-            !address
+            !address ||
+            !identification ||
+            !typeIdentification
             // !region ||
             // !neighborhood
         ) {
@@ -369,8 +398,7 @@ class PaySection extends Component {
             // this.setState({modalAddr: false})
             this.setState({disabledButton: false, validForm: true});
             // this.renderWompi()
-            // this.checkoutOption();
-            this.checkout();
+            this.checkoutOption();
 
 
         }
@@ -424,7 +452,7 @@ class PaySection extends Component {
         if(Cookies.get('email')!==undefined)
         KlaviyoClient.public.track({
             event: 'Checkout',
-            email: this.state.email,
+            email: Cookies.get('email'),
             properties: {
                 items: [
                     item
@@ -520,7 +548,7 @@ class PaySection extends Component {
         if (name === 'city') {
             this.validateText(name, value);
         }
-        if (name === 'user' || name === 'email' || name === 'address') {
+        if (name === 'user' || name === 'email' || name === 'address'|| name === 'identification' || name == 'typeIdentification') {
             this.setState({[name]: value});
         }
         if (name === 'terms') {
@@ -529,13 +557,27 @@ class PaySection extends Component {
             });
             console.elog;
         }
+        console.log(this.state.typeIdentification)
         this.validateForm();
     };
 
-    renderPayu = () => {
-        // this.checkout();
+  
 
-        this.setState({modalAddr: true});
+    validateDataGoogle = callBack => {
+        this.setState({display: 'flex'});
+        let awaitGoogle = setInterval(() =>{
+            if (document.readyState === 'complete') {
+                let clientId = this.state.clientId;
+                let gclid = this.state.gclid
+                // The page is fully loaded
+                if( clientId == '' && gclid == ''){
+                    null
+                } else {
+                    callBack()
+                    clearInterval(awaitGoogle)
+                }
+              }
+        },300)
     }
     // randomPayReference = (length, chars) => {
     // 	var result = '';
@@ -629,22 +671,18 @@ class PaySection extends Component {
 
     render() {
 
+       const renderPayu = () => {
+            this.setState({display: 'none'});
+            this.checkout();
+            this.setState({modalAddr: true});
+        }
         //////
         // this.clientId = typeof(ga) == 'function' && typeof(ga.getAll) == 'function' ? ga.getAll()[0].get('clientId') : "";
         // this.gclid = Cookies.get('gclid');
-        
-        // clientId
-        var gaCookie = Cookies.get('_ga');
-        if (gaCookie) {
-           var gaSplit = gaCookie.split('.');
-           this.clientId = gaSplit[2] + "." + gaSplit[3]; 
-        }
-
-        //////
         // console.log(this.state);
         var quantity = this.state.cantidad === 0 ? 1 : this.state.cantidad;
         var fullName = this.handleFormatName(this.state.user);
-        var extra3 = JSON.stringify({qty: quantity, nme: fullName, cid: this.clientId, gclid: this.gclid});
+        var extra3= JSON.stringify({qty: quantity, cid: this.state.clientId, gclid: this.state.gclid,  nme: fullName});
         var md5 = require('md5');
         var ref_code = 'kieroco-' + new Date().getTime();
         var signature = md5(
@@ -678,6 +716,28 @@ class PaySection extends Component {
                         onChange={this.handleFormValue}
                         placeholder="Nombres"
                         name="user"
+                    />
+                    <select name="typeIdentification" style={{
+                        margin: '5px 0px',
+                        outline: 'none',
+                        width: 'calc(100% - 2px)',
+                        padding: 8,
+                        border:' 0.5px solid #b8b8b8',
+                        borderRadius: 5,
+                        appearance: 'auto !important'
+                    }}
+                    onChange={this.handleFormValue}>
+                        <option hidden defaultValue >Seleccionar tipo de identificación</option>
+                        <option value="ti">Tarjeta Identidad</option>
+                        <option value="cc">Cédula</option>
+                        <option value="ce">Cédula extranjería</option>
+                        <option value="pa">Pasaporte</option>
+                    </select>
+                     <input
+                        value={this.state.identification}
+                        onChange={this.handleFormValue}
+                        placeholder="Número identificación"
+                        name="identification"
                     />
                     <input
                         value={this.state.email}
@@ -754,8 +814,8 @@ class PaySection extends Component {
                         <input
                             name="responseUrl"
                             type="hidden"
-                             value={"https://kieroapi.org/pay_status?extra4=" +
-                            // value={"https://kiero.co/pay_status?extra4="+
+                            //  value={"https://kieroapi.org/pay_status?extra4=" +
+                            value={"https://kiero.co/pay_status ?extra4="+
                             this.props.props.data.title + '~' +
                             this.props.props.data.product_id + '~' +
                             this.props.props.data.price + '~' +
@@ -791,7 +851,7 @@ class PaySection extends Component {
                 <div
                     style={{
                         display: 'flex',
-                        top: 295,
+                        top: 395,
                         borderRadius: '10px',
                         padding: '10px 0px',
                         backgroundColor: '#f3f3f3',
@@ -856,6 +916,12 @@ class PaySection extends Component {
         );
         return (
             <div className="pay">
+                <div className="containerBackDropLoader" style={{display:this.state.display}}>
+                    <div className="containerLoader">
+                        <Spinner style={{height:"100px !important"}}/>
+                        {/* <p>Validando información de compra</p> */}
+                    </div>
+                </div>
                 <div className="pay-item">
                     <h1 className="title-pay-product-detail">{this.props.title.substr(0, 60)} </h1>
                     {/* <div className="productFavIcon2">
@@ -920,7 +986,7 @@ class PaySection extends Component {
                     )}
                 </div>
 
-                {this.renderPayButtonSection()}
+                {this.renderPayButtonSection(renderPayu)}
                 {/* {this.renderWompi()} */}
                 {/* <form aria-hidden="true">
 								<script

@@ -1,3 +1,41 @@
+.containerBackDropLoader{
+	position: fixed;
+    width: 100%;
+    min-height: 100vh;
+    z-index: 50;
+    background: rgba(0 , 0, 0, 0.8);
+    left: 0;
+    top: 0;
+    display: flex;
+}
+.containerBackDropLoader .containerLoader{
+	display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+}
+.containerBackDropLoader .containerLoader p{
+	font-weight: bold;
+    color: white;
+    font-size: 3vh;
+}
+/* .containerBackDropLoader .containerLoader .element-spinner{
+	width:60px !important;
+	height:60px !important;
+}
+.containerBackDropLoader .containerLoader .element-spinner div{
+	-webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border: 6px solid;
+    border-radius: 50%;
+    -webkit-animation: element-spinner 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    animation: element-spinner 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #CF0A2C transparent transparent transparent;
+} */
 .pay {
 	padding: 20px 0px;
 	background: white;
@@ -245,6 +283,22 @@
 
 .section-pay-type .section-pay-type-items {
 	padding: 20px 10px;
+}
+
+.section-pay-type .section-pay-type-items div{
+	min-height: 50px;
+	height:auto;
+    position: relative;
+}
+
+.section-pay-type .section-pay-type-items div img{
+	max-width: 100%;
+    position: absolute;
+    margin: auto;
+    inset: 0px;
+    height: auto !important;
+    max-height: 100% !important;
+    min-height: auto !important;
 }
 
 .section-pay-send {
