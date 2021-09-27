@@ -551,7 +551,7 @@ class PaySection extends Component {
         if (name === 'city') {
             this.validateText(name, value);
         }
-        if (name === 'user' || lastName === 'lastName' || name === 'email' || name === 'address'|| name === 'identification' || name == 'typeIdentification') {
+        if (name === 'user' || name === 'lastName' || name === 'email' || name === 'address'|| name === 'identification' || name == 'typeIdentification') {
             this.setState({[name]: value});
         }
         if (name === 'terms') {
