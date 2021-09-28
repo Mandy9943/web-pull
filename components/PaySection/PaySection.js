@@ -456,7 +456,7 @@ class PaySection extends Component {
             email: this.state.email,
             properties: {
                 first_name: this.state.user,
-                last_name: '',
+                last_name: this.state.lastName,
                 phone_number: this.state.mobile_phone
             },
             post: true //defaults to false
