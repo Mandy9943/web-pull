@@ -371,7 +371,7 @@ class ProductDetail extends Component {
 									<h4>Medios de pago</h4>
 								</div>
 								<div className="section-pay-type-items">
-									<p>Tarjetas de crédito</p>
+									<p>Tarjetas de crédito - Hasta 36 cuotas</p>
 									<div>
 										<img src={PayCredit} />
 									</div>
@@ -399,6 +399,12 @@ class ProductDetail extends Component {
 									<p>
 										Es el servicio de kiero que permite recibir tus productos de forma
 										rapida y segura
+									</p>
+									<p>
+										*Este producto viene desde Estados Unidos
+									</p>
+									<p>
+										*(Entrega de 3 a 9 hábiles) *Envío gratis
 									</p>
 								</div>
 							</div>

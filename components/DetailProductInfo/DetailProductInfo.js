@@ -170,7 +170,7 @@ class DetailProductInfo extends Component {
 		{handleInformation(this.props.desciption)}
 	</div>
 	<section className="characteristics-web no-movil">
-		<div className="info-shops edit">
+		<div className="info-shops edit" style={{marginLeft:'0px !important'}}>
 			<a>
 				<p style={{ fontSize: '16px' }}>Características</p>
 			</a>
@@ -191,7 +191,7 @@ class DetailProductInfo extends Component {
 		<br />
 		*Este producto viene desde Estados Unidos
 		<br />
-		*(Entrega de 3 a 7 hábiles) *Envío gratis
+		*(Entrega de 3 a 9 hábiles) *Envío gratis
 		<br />
 		<br />
 		{/* <p className="accent">ME RETRACTÉ DE MI COMPRA!</p>
@@ -220,7 +220,7 @@ asumir el valor del retorno a una de las direcciones que se le indicará, el val
 						{handleInformation(this.props.desciption)}
 					</div>
 					<section className="characteristics-web no-movil">
-						<div className="info-shops edit">
+						<div className="info-shops edit" style={{marginLeft:'0px !important'}}>
 							<a>
 								<p className="title-section accent">Características</p>
 							</a>
@@ -241,7 +241,7 @@ asumir el valor del retorno a una de las direcciones que se le indicará, el val
 						<br />
 						*Este producto viene desde Estados Unidos
 						<br />
-						*(Entrega de 3 a 7 hábiles) *Envío gratis
+						*(Entrega de 3 a 9 hábiles) *Envío gratis
 						<br />
 						<br />
 						{/* <p className="accent">ME RETRACTÉ DE MI COMPRA!</p>

@@ -35,6 +35,7 @@ class PaySection extends Component {
 			region: '',
 			address: '',
 			neighborhood: '',
+            lastName: '',
 			dataTransaction: [],
 			validForm: true,
 			disabledButton: true,
@@ -360,7 +361,7 @@ class PaySection extends Component {
     }
 
     validateForm = () => {
-        const {user, email, mobile_phone, city, address, termsOfService, identification, typeIdentification} = this.state;
+        const {user, lastName, email, mobile_phone, city, address, termsOfService, identification, typeIdentification} = this.state;
         if (
             !user ||
             !email ||
@@ -368,7 +369,8 @@ class PaySection extends Component {
             !city ||
             !address ||
             !identification ||
-            !typeIdentification
+            !typeIdentification ||
+            !lastName
             // !region ||
             // !neighborhood
         ) {
@@ -381,7 +383,7 @@ class PaySection extends Component {
     };
 
     validateFormFinal = () => {
-        const {user, email, mobile_phone, city, address, termsOfService, identification, typeIdentification} = this.state;
+        const {user, lastName, email, mobile_phone, city, address, termsOfService, identification, typeIdentification} = this.state;
         if (
             !user ||
             !email ||
@@ -389,7 +391,8 @@ class PaySection extends Component {
             !city ||
             !address ||
             !identification ||
-            !typeIdentification
+            !typeIdentification ||
+            !lastName
             // !region ||
             // !neighborhood
         ) {
@@ -556,7 +559,7 @@ class PaySection extends Component {
         if (name === 'city') {
             this.validateText(name, value);
         }
-        if (name === 'user' || name === 'email' || name === 'address'|| name === 'identification' || name == 'typeIdentification') {
+        if (name === 'user' || name === 'lastName' || name === 'email' || name === 'address'|| name === 'identification' || name == 'typeIdentification') {
             this.setState({[name]: value});
         }
         if (name === 'terms') {
@@ -719,20 +722,22 @@ class PaySection extends Component {
                     Por favor agregue los datos de envío
                 </p>
                 <div style={{width: '300px', margin: '0 auto'}}>
-                    <input
+                   <div className="containerUserName">
+                   <input
                         value={this.state.user}
                         onChange={this.handleFormValue}
                         placeholder="Nombres"
                         name="user"
                     />
-                    <select name="typeIdentification" style={{
-                        margin: '5px 0px',
-                        outline: 'none',
-                        width: 'calc(100% - 2px)',
-                        padding: 8,
-                        border:' 0.5px solid #b8b8b8',
-                        borderRadius: 5,
-                        appearance: 'auto !important'
+                     <input
+                        value={this.state.lastName}
+                        onChange={this.handleFormValue}
+                        placeholder="Apellidos"
+                        name="lastName"
+                    />
+                   </div>
+                    <select name="typeIdentification" className="typeIdentification" style={{
+                        
                     }}
                     onChange={this.handleFormValue}>
                         <option hidden defaultValue >Seleccionar tipo de identificación</option>
@@ -1015,7 +1020,7 @@ class PaySection extends Component {
                         <FontAwesomeIcon icon={faAngleRight}/>
                     </div>
                     <div className="section-pay-type-items">
-                        <p>Tarjetas de crédito</p>
+                        <p>Tarjetas de crédito - Hasta 36 cuotas</p>
                         <div>
                             <img src={PayCredit}/>
                         </div>
