@@ -449,7 +449,15 @@ class PaySection extends Component {
             //  	window.location = '/pagar/' + id + '/' + quantity;
             //  }
         });
-
+        KlaviyoClient.public.identify({
+            email: this.state.email,
+            properties: {
+                first_name: this.state.user,
+                last_name: '',
+                phone_number: this.state.mobile_phone
+            },
+            post: true //defaults to false
+        });
         KlaviyoClient.public.track({
             event: 'Checkout',
             email: this.state.email,
