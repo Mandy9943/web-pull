@@ -149,7 +149,7 @@ export const searchFilters = (ots, level, category) => {
 		if (category !== '') params.append('category', category);
 
 		let endpoint = filtersApi + `?ots=${ots}`;
-		if (params.toString().length) endpoint = endpoint + '&' + params.toString();
+		// if (params.toString().length) endpoint = endpoint + '&' + params.toString();
 		return apiget(endpoint);
 	} catch (error) {
 		return error;

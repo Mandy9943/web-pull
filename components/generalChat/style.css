@@ -1,6 +1,7 @@
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
     display: none;
-}
+} */
+
 @media (min-width: 415px) {
     .buttonChat-NoWeb{
         display: none !important;

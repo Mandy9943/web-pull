@@ -15,10 +15,10 @@ import "./PrincipalSlider.css";
 import ProductCard from "../ProductCard";
 
 let slides = [
-    { url: BannerImg1 },
-    {url: BannerImg2},
-    {url: BannerImg3},
-    {url: BannerImg4},
+    { url: BannerImg1 , href:'/categoria/Computadoras%20y%20accesorios'},
+    {url: BannerImg2, href:'/categoria/Belleza'},
+    {url: BannerImg3, href:'/categoria/Instrumentos%20musicales'},
+    {url: BannerImg4, href: '/categoria/Salud'},
     { url: BannerImg5,
         slider: 'slider',
         previousButton: 'previousButton',
@@ -31,15 +31,16 @@ let slides = [
         current: 'current',
         next: 'next',
         animateIn: 'animateIn',
-        animateOut: 'animateOut'
+        animateOut: 'animateOut',
+        href:'/categoria/Deportes%20y%20fitness'
     },
 ];
 
 let slidesMobil = [
-    { url: BannerMobil1 },
-    { url: BannerMobil2 },
-    { url: BannerMobil3 },
-    { url: BannerMobil4 },
+    { url: BannerMobil1, href:'/categoria/Computadoras%20y%20accesorios'},
+    { url: BannerMobil2, href:'/categoria/Belleza'},
+    { url: BannerMobil3, href:'/categoria/Bebés'},
+    { url: BannerMobil4, href:'/categoria/Electrónica,%20audio%20y%20video'},
     { url: BannerMobil5,
         slider: 'slider',
         previousButton: 'previousButton',
@@ -52,8 +53,8 @@ let slidesMobil = [
         current: 'current',
         next: 'next',
         animateIn: 'animateIn',
-        animateOut: 'animateOut'
-    },
+        animateOut: 'animateOut', 
+        href:'/categoria/Deportes%20y%20fitness'},
 ];
 
 export default class PrincipalSlider extends Component {
@@ -96,17 +97,17 @@ export default class PrincipalSlider extends Component {
                 <section className="desktop">
                     <Slider autoplay={4000}>
                         {slides.map((slide, index) =>
-                        <div key={index}>
+                        <a href={slide.href} key={index}>
                             <img src={slide.url} />
-                        </div>)}
+                        </a>)}
                     </Slider>
                 </section>
                 <section className="mobil">
                     <Slider autoplay={4000}>
                         {slidesMobil.map((slide, index) =>
-                        <div key={index}>
+                        <a href={slide.href} key={index}>
                             <img src={slide.url} />
-                        </div>)}
+                        </a>)}
                     </Slider>
                 </section>
             </div>

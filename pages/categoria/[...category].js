@@ -205,11 +205,10 @@ function Results({ data, session }) {
             if (e.estructure[i] === 1) {
                 if (e.links[bannerNo - 1] !== "") {
                     structure.push(
-                        <Link href={"/categoria/[category]"} as={"/categoria/" + e.links[bannerNo - 1]} >
-                            <a className="tickets">
-                                <img alt={category_name} key={i} className="banner-principal" src={e.image_path + (bannerNo++) + ".jpg"} />
-                            </a>
-                        </Link>
+                        // <Link href={"/categoria/[category]"} as={"/categoria/" + e.links[bannerNo - 1]} ></Link>
+                        <a className="tickets" href={"/categoria/" + e.links[bannerNo - 1]}  >
+                                <img alt={category_name} key={i + 1} className="banner-principal" src={e.image_path + (bannerNo++) + ".jpg"} />
+                        </a>
                     )
                 } else {
                     structure.push(<img alt={category_name} key={i} className="banner-principal" src={e.image_path + (bannerNo++) + ".jpg"} />)
@@ -262,17 +261,14 @@ function Results({ data, session }) {
                     <Nav jwt={session.jwt} user={session.user} home={true} authenticated={session.authenticated} />
                     <section className="content">
                         <div className="breadcrumb">
-                            <Link href="/">
-                                <a>
+                            <Link href="/"><a>
                                     Inicio
-                                </a>
-                            </Link>
+                            </a></Link>
                             <FontAwesomeIcon icon={faAngleRight} />
-                            <Link href="/categoria/[category]" as={"/categoria/" + category_name}>
-                                <a>
+                            {/* <Link href="/categoria/[category]" as={"/categoria/" + category_name}> */}
+                            <a href={"/categoria/" + category_name} >
                                     {category_name}
-                                </a>
-                            </Link>
+                            </a>
                         </div>
                         {
                             structure

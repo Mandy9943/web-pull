@@ -94,10 +94,10 @@ class Question extends Component {
             <div className="">
               <form className="wrap-question-input" style={{display: 'contents !important'}}>
               
-              <Link href="/login">inicia sesión
-              </Link> o 
-              <Link href="/registro"> regístrate
-              </Link> para realizar una pregúnta al vendedor.
+              <Link href="/login"><a>inicia sesión
+              </a></Link> o 
+              <Link href="/registro"><a> regístrate
+              </a></Link> para realizar una pregúnta al vendedor.
               </form>
             </div>
         }

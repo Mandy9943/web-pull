@@ -22,6 +22,8 @@ function SendDetail() {
             <h4><strong>Tipo de envío</strong></h4>
             <br />
             <span className="check"><FontAwesomeIcon icon={faTruck} /> Envíos gratis</span>
+            <br />
+            <span className="check">{'✓'}</span> Entrega de 3 a 9 días hábiles
         </div>
     );
 }

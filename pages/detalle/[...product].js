@@ -62,6 +62,8 @@ function Product({ data, u_data }) {
 					property="og:url"
 					content={`https://kiero.co/detalle/${data.product_id}_${data.title
 						.replace(/[^\w\s\/]/gi, '')
+						.replace('//', '%2F')
+						.replace('%', '')
 						.split(' ')
 						.join('-')}`}
 				/>
@@ -127,7 +129,7 @@ function Product({ data, u_data }) {
 export async function getServerSideProps(context) {
 	// Fetch data from external API
 	let temp_p = String(context.params.product).split('_');
-	const id_product = temp_p[0];
+	const id_product = JSON.parse(temp_p[0]);
 
 	const res = await getProductDetail(id_product, {
 		params: { is_variant: false, product_global_id: id_product },

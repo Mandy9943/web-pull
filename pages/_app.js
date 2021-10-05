@@ -76,7 +76,7 @@ export default function MyApp({ Component, pageProps}) {
 			<SocketUser />
 			<KieroSocketChat />
 			<Component {...pageProps} />
-			<GeneralChat />
+			{/* <GeneralChat /> */}
 		</>
 	);
 }

@@ -189,12 +189,8 @@ export default class Nav extends Component {
 							<h5>Bienvenido</h5>
 							<p>Crea tu cuenta o inicia sesión</p>
 							<section className="actions">
-								<Link href="/login">
-									<a className="main-button">iniciar sesion</a>
-								</Link>
-								<Link href="/registro">
-									<a className="main-button">Registrarse</a>
-								</Link>
+								<Link href="/login"><a className="main-button">iniciar sesion</a></Link>
+								<Link href="/registro"><a className="main-button">Registrarse</a></Link>
 							</section>
 						</>
 					) : (
@@ -202,19 +198,16 @@ export default class Nav extends Component {
 							<img src="https://recap-project.eu/wp-content/uploads/2017/02/default-user.jpg" />
 							<span className="user-name">
 								<h5>Bienvenido</h5>
-								<p>{this.props.user}</p>
+								<p>{this.props.user.replace(/%20/g, ' ')}</p>
 							</span>
 						</section>
 					)}
 					<hr />
-					<Link href="/cuenta">
-						<a>
+					<Link href="/cuenta"><a>
 							<FontAwesomeIcon icon={faHome} /> <p>Inicio </p>
-						</a>
-					</Link>
+					</a></Link>
 					{authenticated ? (
-						<Link href="/notificaciones">
-							<a>
+						<Link href="/notificaciones"><a>
 								<FontAwesomeIcon icon={faBell} />
 								<p className="noti">
 									Notificaciones
@@ -224,21 +217,16 @@ export default class Nav extends Component {
 										</span>
 									) : null}
 								</p>
-							</a>
-						</Link>
+						</a></Link>
 					) : null}
-					<Link href="/lista_categorias">
-						<a>
+					<Link href="/lista_categorias"><a>
 							<FontAwesomeIcon icon={faAlignLeft} /> <p>Categorías</p>
-						</a>
-					</Link>
+					</a></Link>
 					{/*<Link href="#"><a><FontAwesomeIcon icon={faArrowDown} /> <p>Descarga la app</p></a></Link>*/}
 					<hr />
-					<Link href="/ayuda">
-						<a>
+					<Link href="/ayuda"><a>
 							<FontAwesomeIcon icon={faQuestion} /> <p>Ayuda / PQR</p>
-						</a>
-					</Link>
+					</a></Link>
 					{authenticated ? (
 						<a
 							style={{ cursor: 'pointer' }}
@@ -299,12 +287,8 @@ export default class Nav extends Component {
 							{!authenticated && (
 								<div className="user-menu">
 									<ul>
-										<Link href="/login">
-											<a>Iniciar sesión</a>
-										</Link>
-										<Link href="/registro">
-											<a>Registrarse</a>
-										</Link>
+										<Link href="/login"><a>Iniciar sesión</a></Link>
+										<Link href="/registro"><a>Registrarse</a></Link>
 									</ul>
 								</div>
 							)}
@@ -312,9 +296,7 @@ export default class Nav extends Component {
 								<div className="user-menu" onBlur={this.menuBlur}>
 									<ul>
 										<span>
-											<Link href="/ayuda">
-												<a className="bell">Ayuda / PQR</a>
-											</Link>
+											<Link href="/ayuda"><a className="bell">Ayuda / PQR</a></Link>
 											<a className="bell" onClick={() => this.showHideNotification()}>
 												<FontAwesomeIcon icon={faBell} />
 												{this.state.notifications.length > 0 ? (
@@ -325,7 +307,7 @@ export default class Nav extends Component {
 											</a>
 										</span>
 										<a onClick={() => this.showHideMenu()} className="user-icon">
-											<FontAwesomeIcon icon={faUser} /> {this.props.user}{' '}
+											<FontAwesomeIcon icon={faUser} /> {this.props.user.replace(/%20/g, ' ')}{' '}
 											<FontAwesomeIcon icon={faAngleDown} />
 										</a>
 										<section
@@ -335,59 +317,47 @@ export default class Nav extends Component {
 										>
 											<h5>
 												<FontAwesomeIcon className="icon" icon={faUser} />
-												<b className="name"> Hola, {this.props.user}</b> Bienvenido a
+												<b className="name"> Hola, {this.props.user.replace(/%20/g, ' ')}</b> Bienvenido a
 												Kiero Marketplace
 											</h5>
 											<section className="options">
 												<hr />
-												<Link href="/cuenta">
-													<a className="items">
+												<Link href="/cuenta"><a className="items">
 														{' '}
 														<FontAwesomeIcon icon={faUser} />
 														Mi cuenta
-													</a>
-												</Link>
+												</a></Link>
 												{this.props.role === 'user' && (
-													<Link href="/cuenta#compras">
-														<a className="items">
+													<Link href="/cuenta#compras"><a className="items">
 															{' '}
 															<FontAwesomeIcon icon={faShoppingBag} />
 															Compras
-														</a>
-													</Link>
+													</a></Link>
 												)}
 												{this.props.role === 'vendedor' && (
-													<Link href="/cuenta#ventas">
-														<a className="items">
+													<Link href="/cuenta#ventas"><a className="items">
 															{' '}
 															<FontAwesomeIcon icon={faTag} />
 															Ventas
-														</a>
-													</Link>
+													</a></Link>
 												)}
-												<Link href="/cuenta">
-													<a className="items">
+												<Link href="/cuenta"><a className="items">
 														{' '}
 														<FontAwesomeIcon icon={faServer} />
 														Resumen
-													</a>
-												</Link>
+												</a></Link>
 												{this.props.role === 'user' && (
-													<Link href="/cuenta#facturacion">
-														<a className="items">
+													<Link href="/cuenta#facturacion"><a className="items">
 															{' '}
 															<FontAwesomeIcon icon={faMoneyBillWave} />
 															Facturacion
-														</a>
-													</Link>
+													</a></Link>
 												)}
-												<Link href="/cuenta#opciones">
-													<a className="items">
+												<Link href="/cuenta#opciones"><a className="items">
 														{' '}
 														<FontAwesomeIcon icon={faCog} />
 														Mis datos
-													</a>
-												</Link>
+												</a></Link>
 												<hr />
 												<a
 													style={{ cursor: 'pointer' }}
@@ -421,11 +391,9 @@ export default class Nav extends Component {
 													<br />
 												</b>
 											)}
-											<Link href={'/cuenta'}>
-												<a>
+											<Link href={'/cuenta'}><a>
 													<h4 className="see-all">Ver todas las notificaciones</h4>
-												</a>
-											</Link>
+											</a></Link>
 										</section>
 									</ul>
 								</div>
@@ -445,42 +413,37 @@ export default class Nav extends Component {
 											</li>
 										</ul>
 									</section>
-									<Link href="/categoria/[category]" as="/categoria/Bebés">
-										<a>Bebés</a>
-									</Link>
-									<Link href="/categoria/[category]" as="/categoria/Belleza">
-										<a>Belleza</a>
-									</Link>
-									<Link
-										href="/categoria/[category]"
-										as="/categoria/Cámaras, fotografía y video"
-									>
-										<a>Cámaras</a>
-									</Link>
-									<Link href="/categoria/[category]" as="/categoria/Electrodomésticos">
-										<a>Electrodomésticos</a>
-									</Link>
-									<Link
-										href="/categoria/[category]"
-										as="/categoria/Electrónica, Audio y Video"
-									>
-										<a>Electrónica</a>
-									</Link>
-									<Link href="/categoria/[category]" as="/categoria/Hogar">
-										<a>Hogar</a>
-									</Link>
-									<Link href="/categoria/[category]" as="/categoria/Juguetes y juegos">
-										<a>Juguetes</a>
-									</Link>
-									<Link
-										href="/categoria/[category]"
-										as="/categoria/Consolas y videojuegos"
-									>
-										<a>Videojuegos</a>
-									</Link>
-									<Link href="/categoria/[category]" as="/categoria/Salud">
-										<a>Salud</a>
-									</Link>
+									<a href="/categoria/Bebés" >
+										Bebés
+									</a>
+									<a href="/categoria/Belleza" >
+										Belleza
+									</a>
+									<a
+										// href="/categoria/[category]" as="/categoria/Cámaras, fotografía y video"
+										href="/categoria/Cámaras, fotografía y video">
+										Cámaras
+									</a>
+									<a href="/categoria/Electrodomésticos">
+										Electrodomésticos
+									</a>
+									<a
+										href="/categoria/Electrónica, Audio y Video">
+										Electrónica
+									</a>
+									<a href="/categoria/Hogar">
+										Hogar
+									</a>
+									<a href="/categoria/Juguetes y juegos">
+										Juguetes
+									</a>
+									<a
+										href="/categoria/Consolas y videojuegos">
+										Videojuegos
+									</a>
+									<a href="/categoria/Salud">
+										Salud
+									</a>
 								</ul>
 							</div>
 						</div>

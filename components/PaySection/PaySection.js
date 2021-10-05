@@ -894,16 +894,12 @@ class PaySection extends Component {
                             }}
                         >
                             Antes de continuar debes aceptar los
-                            <Link href="/terminos">
-                                <a target="_blank" style={{
+                            <Link href="/terminos"> <a target="_blank" style={{
                                     color: '#007BFF',
-                                }}> términos, condiciones </a>
-                            </Link> y
-                            <Link href="/privacidad">
-                                <a target="_blank" style={{
+                                }}> términos, condiciones </a></Link> y
+                            <Link href="/privacidad"><a target="_blank" style={{
                                     color: '#007BFF',
-                                }}> política de privacidad </a>
-                            </Link>de KieroMarketplace
+                                }}> política de privacidad </a></Link>de KieroMarketplace
                         </div>
                     </div>
                 </div>
@@ -948,20 +944,20 @@ class PaySection extends Component {
                 {/* <div className="pay-item">
 					<Rating productId={this.props.pid}/>
 				</div> */}
-                <div className="pay-item-oldprice">
+                <div className="pay-item-oldprice" >
 
                     <h3 className="price-pay-product-detail-oldprice">
                         ${' '}
-                        {(this.props.price * 1.428571428571429)
+                        {(this.props.price)
                             ? (this.props.price * 1.428571428571429)
                                 .toString()
                                 .split('.')[0]
                                 .replace(/(.)(?=(\d{3})+$)/g, '$1.')
                             : ' ... '}
-                    </h3> <p className="price-pay-product-detail-oldprice-discount">&nbsp; -30%</p>
+                    </h3> <p className="price-pay-product-detail-oldprice-discount" style={{color:'#0acf47'}} >&nbsp; -30% OFF</p>
                 </div>
                 <div className="pay-item">
-                    <h3 className="price-pay-product-detail">
+                    <h3 className="price-pay-product-detail" style={{fontWeight: '300 !important'}}>
                         $
                         {this.props.price
                             ? this.props.price
@@ -978,6 +974,7 @@ class PaySection extends Component {
                         <span className="no-web">gratis</span> <FontAwesomeIcon icon={faTruck}/>
                     </h3>
                     <p>Nuestros productos son importados</p>
+                    <p>Entrega de 3 a 9 días hábiles</p>
 
                 </div>
                 {this.state.variantsSpinner ? (

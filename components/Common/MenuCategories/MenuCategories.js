@@ -68,9 +68,9 @@ class MenuCategories extends Component {
 									onMouseEnter={() => this.menuMouseEnter(i)}
 									onMouseLeave={this.menuMouseLeave}
 								>
-									<Link href={'/categoria/' + ccat.name}>
-										<a>{ccat.name}</a>
-									</Link>
+									<a href={'/categoria/' + ccat.name}>
+										{ccat.name}
+									</a>
 									<FontAwesomeIcon
 										onClick={() => this.menuMouseEnter(i)}
 										icon={faAngleRight}
@@ -95,18 +95,18 @@ class MenuCategories extends Component {
 									return (
 										<section className="sub-cat" key={i}>
 											{
-												<Link href={'/categoria/' + sl_cat.name}>
+												<a href={'/categoria/' + sl_cat.name}>
 													<h5>
 														<div className="subCatText">{sl_cat.name}</div>
 													</h5>
-												</Link>
+												</a>
 											}
 											{sl_cat.childs.map((tl_cat, i) => {
 												return (
-													<span>
-														<Link href={'/categoria/' + tl_cat.name}>
-															<a>{tl_cat.name}</a>
-														</Link>
+													<span key={i + 1}>
+														<a href={'/categoria/' + tl_cat.name}>
+															{tl_cat.name}
+														</a>
 													</span>
 												);
 											})}
