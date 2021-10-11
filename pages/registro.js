@@ -12,37 +12,36 @@ export default class registro extends Component {
 			return {};
 		}
 
-    static getInitialProps(ctx) {
-        if (redirectIfAuthenticated(ctx)) {
-            return {};
-        }
-
-        const success = getCookie("success", ctx.req);
-        if (success) {
-            removeCookie("success");
-        }
-        return {
-            success
-        };
-
-    }
-    render() {
-        const { success } = this.props;
-        return (
-            <div className="register-page">
-                <Head>
-                    <title>Kiero | Registro</title>
-                    <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
-                    <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
-                    <meta name="robots" content="index,follow" />
-                    <meta name="robots" content="noodp" />
-                    <meta name="robots" content="noydir" />
-                    <meta name="description" content="Descubre miles de productos al mejor precio. Envíos gratis
-                    a todo el país, encuentra lo que buscas en Kiero.co" />
-                    <link rel="icon" href={favicon} type="image/png" />
-                </Head>
-                <Register success={success}/>
-            </div>
-        )
-    }
+		const success = getCookie('success', ctx.req);
+		if (success) {
+			removeCookie('success');
+		}
+		return {
+			success,
+		};
+	}
+	render() {
+		const { success } = this.props;
+		return (
+			<div className="register-page">
+				<Head>
+					<title>Kiero | Registro</title>
+					<meta name="robots" content="noindex" />
+					<meta name="googlebot" content="noindex" />
+					<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+					<meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
+					<meta name="robots" content="index,follow" />
+					<meta name="robots" content="noodp" />
+					<meta name="robots" content="noydir" />
+					<meta
+						name="description"
+						content="Descubre miles de productos al mejor precio. Envíos gratis
+                    a todo el país, encuentra lo que buscas en Kiero.co"
+					/>
+					<link rel="icon" href={favicon} type="image/png" />
+				</Head>
+				<Register success={success} />
+			</div>
+		);
+	}
 }

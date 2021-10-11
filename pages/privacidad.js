@@ -4,22 +4,26 @@ import Privacity from './../components/Privacity';
 import favicon from '../assets/img/favicon.svg';
 
 export default function privacidad() {
-  return (
-    <div>
-      <Head>
-        <title>kiero | privacidad</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="robots" content="index,follow" />
-        <meta name="robots" content="noodp" />
-        <meta name="robots" content="noydir" />
-        <meta name="description" content="Descubre miles de productos al mejor precio. Envios gratis
-                    a todo el pais, encuentra lo que buscas en Kiero.co" />
-        <link rel="icon" href={favicon} type="image/png" />
-
-      </Head>
-      <Privacity />
-    </div>
-  );
+	return (
+		<div>
+			<Head>
+				<title>kiero | privacidad</title>
+				<meta name="robots" content="noindex" />
+				<meta name="googlebot" content="noindex" />
+				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+				<meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
+				<meta name="robots" content="index,follow" />
+				<meta name="robots" content="noodp" />
+				<meta name="robots" content="noydir" />
+				<meta
+					name="description"
+					content="Descubre miles de productos al mejor precio. Envios gratis
+                    a todo el pais, encuentra lo que buscas en Kiero.co"
+				/>
+				<link rel="icon" href={favicon} type="image/png" />
+			</Head>
+			<Privacity />
+		</div>
+	);
 }
