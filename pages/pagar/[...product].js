@@ -22,7 +22,7 @@ function plataforma_de_pago({ data, u_data, cantidad }) {
 				<meta name="googlebot" content="noindex" />
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 				<meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
-				<meta name="robots" content="index,follow" />
+
 				<meta name="robots" content="noodp" />
 				<meta name="robots" content="noydir" />
 				<meta
@@ -52,7 +52,7 @@ export async function getServerSideProps(context) {
 	const u_data = {
 		user: usr !== undefined ? usr : null,
 		authenticated: isAuthenticated(context),
-		dsi: {"dsi": 'eba0f5249a0955b944b3cb9e3d1d345d', "ui": 368},
+		dsi: { dsi: 'eba0f5249a0955b944b3cb9e3d1d345d', ui: 368 },
 		jwt: jwt ? jwt : '',
 	};
 
