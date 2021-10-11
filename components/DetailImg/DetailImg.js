@@ -21,13 +21,10 @@ class Detail extends Component {
     this.setState({ image: url });
   }
 
-<<<<<<< HEAD
-=======
   componentDidMount() {
     this.setState({ images: this.props.images.reverse() });
   }
 
->>>>>>> af5de16bdc8323059ab58345121ec161429ff691
   render() {
     let url = "/categoria/" + this.props.category;
     return (
