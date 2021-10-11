@@ -74,16 +74,7 @@ function Product({ data, u_data }) {
 				<meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
 				<meta name="robots" content="index,follow" />
 				<link rel="icon" href={favicon} type="image/png" />
-				<link
-					rel="canonical"
-					href={`https://kiero.co/detalle/${data.product_id}_${data.title
-						.replace(/[^\w\s\/]/gi, '')
-						.replace('//', '%2F')
-						.replace('%', '')
-						.split(' ')
-						.join('-')}`}
-				/>
-
+				
 				<script
 					type="application/json"
 					dangerouslySetInnerHTML={{

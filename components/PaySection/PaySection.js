@@ -684,8 +684,8 @@ class PaySection extends Component {
 
        const renderPayu = () => {
             this.setState({display: 'none'});
-
             this.setState({modalAddr: true});
+
         }
         //////
         // this.clientId = typeof(ga) == 'function' && typeof(ga.getAll) == 'function' ? ga.getAll()[0].get('clientId') : "";
@@ -894,12 +894,16 @@ class PaySection extends Component {
                             }}
                         >
                             Antes de continuar debes aceptar los
-                            <Link href="/terminos"> <a target="_blank" style={{
+                            <Link href="/terminos">
+                                <a target="_blank" style={{
                                     color: '#007BFF',
-                                }}> términos, condiciones </a></Link> y
-                            <Link href="/privacidad"><a target="_blank" style={{
+                                }}> términos, condiciones </a>
+                            </Link> y
+                            <Link href="/privacidad">
+                                <a target="_blank" style={{
                                     color: '#007BFF',
-                                }}> política de privacidad </a></Link>de KieroMarketplace
+                                }}> política de privacidad </a>
+                            </Link>de KieroMarketplace
                         </div>
                     </div>
                 </div>

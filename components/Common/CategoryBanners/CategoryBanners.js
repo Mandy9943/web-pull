@@ -50,6 +50,7 @@ class CategoryBanners extends Component {
 									<section key={i} className="item">
 										<a href={'/categoria/' + category}>
 											<img src={baseUrl + file} />
+											{/* <img src={'http://localhost' + file} /> */}
 										</a>
 									</section>
 								);
