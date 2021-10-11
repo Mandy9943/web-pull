@@ -4,11 +4,12 @@
 
 .SliderDetail .mobil {
   display: none;
+  min-height: 190px;
 }
 
 @media (max-width: 768px) {
   .SliderDetail .mobil {
-    display: block !important;
+    display: flex !important;
   }
   .SliderDetail .mobil .slider {
     height: auto;

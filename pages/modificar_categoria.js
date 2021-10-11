@@ -4,6 +4,7 @@ import ModifyCategory from '../components/Account/ModifyCategory/ModifyCategory'
 import favicon from '../assets/img/favicon.svg';
 
 export default function modificar_categoria() {
+<<<<<<< HEAD
 	return (
 		<div>
 			<Head>
@@ -43,4 +44,22 @@ export default function modificar_categoria() {
 			<ModifyCategory />
 		</div>
 	);
+=======
+    return (
+        <div>
+            <Head>
+                <title>Kiero | Modificar categoría</title>
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+                <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
+                <meta name="robots" content="index,follow" />
+                <meta name="robots" content="noodp" />
+                <meta name="robots" content="noydir" />
+                <meta name="description" content="Descubre miles de productos al mejor precio. Envios gratis
+                    a todo el pais, encuentra lo que buscas en Kiero.co" />
+                <link rel="icon" href={favicon} type="image/png" />
+            </Head>
+            <ModifyCategory />
+        </div>
+    )
+>>>>>>> af5de16bdc8323059ab58345121ec161429ff691
 }

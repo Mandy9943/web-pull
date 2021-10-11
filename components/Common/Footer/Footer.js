@@ -15,7 +15,7 @@ export default class Footer extends Component {
                     <div className="footer-tex">
                         <p>{this.getYear()} Kiero. Todos los derechos reservados.</p>
                         <ul>
-                            <Link href={url}><a target="_blank">www.sic.gov.co</a></Link>
+                            <a href={url} target="_blank">www.sic.gov.co</a>
                             <Link href="/terminos"><a>Términos y condiciones</a></Link>
                             <Link href="/privacidad"><a>Políticas de privacidad</a></Link>
                             <Link href="/contactanos_email"><a>Contáctanos</a></Link>
@@ -49,7 +49,7 @@ export default class Footer extends Component {
                             <Link href="/privacidad"><a>Políticas de privacidad</a></Link>
                             <Link href="/terminos"><a>Términos y condiciones</a></Link>
                             <Link href="/contactanos_email"><a>Contáctanos</a></Link>
-                            <Link href={url}><a target="_blank">www.sic.gov.co</a></Link>
+                            <a href={url} target="_blank">www.sic.gov.co</a>
                         </ul>
                         <p>{this.getYear()} Kiero. Todos los derechos reservados.</p>
                     </div>

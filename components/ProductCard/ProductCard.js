@@ -100,8 +100,9 @@ export default class ProductCard extends Component {
 		
 	}
 	render() {
+		
 		return (
-			<div className="producto-card" onClick={() => this.handleDataInfo(this.props)}>
+			<div className={this.props.className} onClick={() => this.handleDataInfo(this.props)}>
 				{/* <div className="productFavIcon3">
 					<Checkbox
 						style={{ color: '#CF0A2C' }}

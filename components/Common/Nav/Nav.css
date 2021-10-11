@@ -406,7 +406,7 @@
 	overflow: visible !important;
 	border-bottom-left-radius: 4px !important;
 	border-bottom-right-radius: 4px !important;
-	z-index: 2;
+	z-index: 999 !important;
 	box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24) !important;
 }
 

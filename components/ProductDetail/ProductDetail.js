@@ -15,9 +15,13 @@ import Logo2 from '../../assets/img/logo-social1.png';
 import { RecommendedProducts } from '../RecommendedProducts';
 import { getProductDetail } from '../../services/productsApi';
 import { withRouter } from 'next/router';
-import ReactPixelFacebook from '../../pages/_app';
+import {KlaviyoClient} from '../../lib/functions.js';
+import Cookies from 'js-cookie';
 
 import dynamic from 'next/dynamic';
+
+
+
 
 // import Nav from '../Common/Nav';
 // import DetailImg from '../DetailImg';
@@ -52,6 +56,57 @@ class ProductDetail extends Component {
 		this.reLoadData = this.reLoadData.bind(this);
 	}
 	componentDidMount() {
+		// console.log('entro')
+		// const script = document.createElement("script");
+		//
+		// script.src = "//static.klaviyo.com/onsite/js/klaviyo.js?company_id=Sr8j85";
+		// script.async = true;
+		//
+		// document.body.appendChild(script);
+
+
+		// function whenWindowFbq() {
+		// 	return new Promise(function (resolve, reject) {
+		// 				(function waitForFbq(){
+		// 						if (typeof(window.fbq) == "function" ) return resolve();
+		// 						setTimeout(waitForFbq, 300);
+		// 				})();
+		// 		});
+		// };
+
+		// whenWindowFbq().then(() => {
+		// 	window.fbq('track', 'ViewContent', {
+		// 		content_ids: this.props.data.product_global_id,
+		// 		content_name: this.props.data.product_global_title,
+		// 		product_group: this.props.data.type,
+		// 		content_type: 'product',
+		// 		contents: [
+		// 			{
+		// 				id: this.props.data.product_global_id,
+		// 				quantity: 1,
+		// 			},
+		// 		],
+		// 		currency: 'COP',
+		// 		value: this.props.data.price,
+		// 	})
+		// });
+
+
+		fbq('track', 'ViewContent', {
+			content_ids: this.props.data.product_global_id,
+			content_name: this.props.data.product_global_title,
+			product_group: this.props.data.type,
+			content_type: 'product',
+			contents: [
+				{
+					id: this.props.data.product_global_id,
+					quantity: 1,
+				},
+			],
+			currency: 'COP',
+			value: this.props.data.price,
+		})
+
 		this.loadQuestions();
 		// dataLayer.push({ ecommerce: null });
 		// console.log('propiedades', this.props);
@@ -131,6 +186,11 @@ class ProductDetail extends Component {
 			},
 		});
 
+		// var _learnq = _learnq || [];
+		// console.log(this.props.data)
+		//
+		// _learnq.push(["track", "Viewed Product", item]);
+		// console.log(_learnq)
 		// gtag('event', 'view_item', {
 		// 						"items": [
 		// 									{
@@ -151,42 +211,36 @@ class ProductDetail extends Component {
 		// 									}
 		// 						]
 		//  			 });
+		var item = {
+			"ProductName": this.props.data.product_global_title,
+			"ProductID": this.props.data.product_global_id,
+			"SKU": this.props.data.sku,
+			"Categories": concatCategories(),
+			"ImageURL": this.state.mdata.images[0].url,
+			"URL": 'https://kiero.co/detalle/' +
+				this.props.data.product_global_id +
+				'_' +
+				this.props.data.product_global_title
+					.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+					.replace('//', '%2F')
+					.replace('%', '')
+					.replaceAll(/['"]+/g, '')
+					.split(' ')
+					.join('-'),
+			"Brand": this.props.data.brand,
+			"Price": this.props.data.price
+		};
+		if(Cookies.get('email')!==undefined)
+		KlaviyoClient.public.track({
+			event: 'Viewed Product',
+			email: Cookies.get('email'),
+			properties: {
+				items: [
+					item
+				]
+			}
+		});
 
-		if (typeof window !== 'undefined') {
-			setTimeout(() => {
-				if (window.fbq != null) {
-					window.fbq('track', 'ViewContent', {
-						content_ids: this.props.data.product_global_id,
-						content_name: this.props.data.product_global_title,
-						product_group: this.props.data.type,
-						content_type: 'product',
-						contents: [
-							{
-								id: this.props.data.product_global_id,
-								quantity: 1,
-							},
-						],
-						currency: 'COP',
-						value: this.props.data.price,
-					});
-				} else {
-					fbq('track', 'ViewContent', {
-						content_ids: this.props.data.product_global_id,
-						content_name: this.props.data.product_global_title,
-						product_group: this.props.data.type,
-						content_type: 'product',
-						contents: [
-							{
-								id: this.props.data.product_global_id,
-								quantity: 1,
-							},
-						],
-						currency: 'COP',
-						value: this.props.data.price,
-					});
-				}
-			}, 3000);
-		}
 	}
 
 	async reLoadData(pgid) {
@@ -216,6 +270,7 @@ class ProductDetail extends Component {
 				console.error(error);
 			});
 	};
+	
 	render() {
 		// let DataForPixel = {
 		// 	'content_ids': this.props.data.product_global_id,
@@ -235,7 +290,7 @@ class ProductDetail extends Component {
 		// console.log(this.state.mdata)
 		// console.log("data")
 		return (
-			<div>
+			<div className="containerProductDetail">
 				<Nav
 					user={u_data.user}
 					jwt={u_data.jwt}
@@ -316,7 +371,7 @@ class ProductDetail extends Component {
 									<h4>Medios de pago</h4>
 								</div>
 								<div className="section-pay-type-items">
-									<p>Tarjetas de crédito</p>
+									<p>Tarjetas de crédito - Hasta 36 cuotas</p>
 									<div>
 										<img src={PayCredit} />
 									</div>
@@ -344,6 +399,12 @@ class ProductDetail extends Component {
 									<p>
 										Es el servicio de kiero que permite recibir tus productos de forma
 										rapida y segura
+									</p>
+									<p>
+										*Este producto viene desde Estados Unidos
+									</p>
+									<p>
+										*(Entrega de 3 a 9 hábiles) *Envío gratis
 									</p>
 								</div>
 							</div>
