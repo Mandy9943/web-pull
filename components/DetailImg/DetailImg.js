@@ -19,8 +19,6 @@ class Detail extends Component {
     this.setState({ image: url });
   }
 
-
-
   render() {
     let url = "/categoria/" + this.props.category;
 

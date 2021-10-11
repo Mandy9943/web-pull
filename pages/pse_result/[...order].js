@@ -27,6 +27,8 @@ function Product({ data, u_data }) {
 				/>
 				{/* End Google Tag Manager */}
         <title>Kiero | Resultado de compra </title>
+        <meta name="robots" content="noindex" />
+				<meta name="googlebot" content="noindex" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="robots" content="index,follow" />

@@ -16,7 +16,6 @@ export default function AddProducts(props) {
             home={false}
             authenticated={u_data.authenticated}
         />
-       Holaaaaaaaa
        <Footer/>
        <div className="footer-social">
           <Link href="//www.sic.gov.co">
