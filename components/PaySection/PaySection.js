@@ -828,7 +828,7 @@ class PaySection extends Component {
                             name="responseUrl"
                             type="hidden"
                             //  value={"https://kieroapi.org/pay_status?extra4=" +
-                            value={"https://kiero.co/pay_status ?extra4="+
+                            value={"https://kiero.co/pay_status?extra4="+
                             this.props.props.data.title + '~' +
                             this.props.props.data.product_id + '~' +
                             this.props.props.data.price + '~' +
