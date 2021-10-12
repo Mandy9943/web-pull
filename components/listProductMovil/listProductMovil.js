@@ -28,19 +28,27 @@ export default class listProductMovil extends Component {
 				? getImgUrl(product.image)
 				: 'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png';
 
-			const detail_link =
-				'/detalle/' +
-				product.product_id +
-				'_' +
-				product.title
-					.replace(/[^\w\s]/gi, '')
-					.split(' ')
-					.join('-');
+			// const detail_link =
+			// 	'/detalle/' +
+			// 	product.product_id +
+			// 	'_' +
+			// 	product.title
+			// 		.replace(/[^\w\s]/gi, '')
+			// 		.split(' ')
+			// 		.join('-');
 
 			return (
 				<div key={i} className="product-item-edit">
 					<div className="content">
-						<Link href={detail_link}>
+						<a href={'/detalle/' +
+										product.product_id +
+										'_' +
+										product.title
+											.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+											.replaceAll('//', '%2F')
+											.replace('%', '')
+											.split(' ')
+											.join('-')}>
 							<a>
 								<section className="product">
 									<div className="product-card-img">
@@ -63,7 +71,7 @@ export default class listProductMovil extends Component {
 									</section>
 								</section>
 							</a>
-						</Link>
+						</a>
 					</div>
 				</div>
 			);

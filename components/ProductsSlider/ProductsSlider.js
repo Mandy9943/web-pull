@@ -190,12 +190,16 @@ export default class ProductsSlider extends Component {
 				{!this.props.notitle && (
 					<h3 className="home-section-title">
 						Descubre productos de {this.props.category && this.props.category}
-						<Link
+						{/* <Link
 							href={'/categoria/[category]'}
 							as={this.props.category && '/categoria/' + this.props.category}
+						> */}
+						<a
+							className="accent"
+							href={this.props.category && '/categoria/' + this.props.category }
 						>
-							<a className="accent">Ver todos</a>
-						</Link>
+							Ver todos
+						</a>
 					</h3>
 				)}
 				<div className="slider-movil">

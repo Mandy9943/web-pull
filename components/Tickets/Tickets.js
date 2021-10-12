@@ -27,11 +27,9 @@ class Tickets extends Component {
     return (
       <div className="wrap-tickets">
         {dataTicket.map((item, i) => (
-          <Link key={i} href={"/categoria/" + linkTicket[i].url}>
-              <a className="tickets">
+          <a key={i} href={"/categoria/" + linkTicket[i].url } className="tickets">
                   <img src={item.url} />
-              </a>
-            </Link>
+            </a>
         ))}
       </div>
     );

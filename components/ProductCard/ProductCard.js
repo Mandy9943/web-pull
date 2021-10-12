@@ -110,9 +110,22 @@ export default class ProductCard extends Component {
 						checkedIcon={<Favorite />}
 					/>
 				</div> */}
-				<Link
-					href={'/detalle/[product]'}
-					as={
+				{/*<Link
+				href={'/detalle/[product]'}
+				as={
+					'/detalle/' +
+					this.props.product_id +
+					'_' +
+					this.props.title
+						.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+						.replace('//', '%2F')
+						.replace('%', '')
+						.split(' ')
+						.join('-')
+				}
+				>  */}
+				<a
+					href={
 						'/detalle/' +
 						this.props.product_id +
 						'_' +
@@ -124,7 +137,7 @@ export default class ProductCard extends Component {
 							.join('-')
 					}
 				>
-					<a>
+					
 						<div className="product-card-img">
 							<img
 								alt={this.props.title}
@@ -145,8 +158,7 @@ export default class ProductCard extends Component {
 								: '$ ... '}
 						</h3>
 						<h4 className="title">{this.props.title}</h4>
-					</a>
-				</Link>
+				</a>
 			</div>
 		);
 	}

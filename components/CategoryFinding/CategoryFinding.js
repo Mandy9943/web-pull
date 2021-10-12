@@ -10,16 +10,14 @@ class CategoryFinding extends Component {
 		// console.log(this.props.link_right);
 		return (
 			<div className="finding-category">
-				<Link href={'/categoria/[category]'} as={'/categoria/' + this.props.link_left}>
-					<a>
+				{/* <Link href={'/categoria/[category]'} as={'/categoria/' + this.props.link_left}> */}
+				<a href={'/categoria/' + this.props.link_left}>
 						<img src={this.props.img_left} alt={this.props.link_left} />
-					</a>
-				</Link>
-				<Link href={'/categoria/[category]'} as={'/categoria/' + this.props.link_right}>
-					<a>
+				</a>
+				{/* <Link href={'/categoria/[category]'} as={'/categoria/' + this.props.link_right}> */}
+				<a href={'/categoria/' + this.props.link_right} >
 						<img src={this.props.img_right} alt={this.props.link_right} />
-					</a>
-				</Link>
+				</a>
 			</div>
 		);
 	}

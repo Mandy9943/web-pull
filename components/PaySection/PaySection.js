@@ -684,16 +684,16 @@ class PaySection extends Component {
 
        const renderPayu = () => {
             this.setState({display: 'none'});
-
             this.setState({modalAddr: true});
+
         }
         //////
         // this.clientId = typeof(ga) == 'function' && typeof(ga.getAll) == 'function' ? ga.getAll()[0].get('clientId') : "";
         // this.gclid = Cookies.get('gclid');
         // console.log(this.state);
         var quantity = this.state.cantidad === 0 ? 1 : this.state.cantidad;
-        var fullName = this.handleFormatName(this.state.user);
-        var extra3= JSON.stringify({qty: quantity, cid: this.state.clientId, gclid: this.state.gclid,  nme: fullName});
+        var fullName = this.handleFormatName(this.state.user) + (this.state.lastName ? " " + this.handleFormatName(this.state.lastName) : "");
+        var extra3 = JSON.stringify({qty: quantity, cid: this.state.clientId, gclid: this.state.gclid, nme: fullName});
         var md5 = require('md5');
         var ref_code = 'kieroco-' + new Date().getTime();
         var signature = md5(
@@ -948,20 +948,20 @@ class PaySection extends Component {
                 {/* <div className="pay-item">
 					<Rating productId={this.props.pid}/>
 				</div> */}
-                <div className="pay-item-oldprice">
+                <div className="pay-item-oldprice" >
 
                     <h3 className="price-pay-product-detail-oldprice">
                         ${' '}
-                        {(this.props.price * 1.428571428571429)
+                        {(this.props.price)
                             ? (this.props.price * 1.428571428571429)
                                 .toString()
                                 .split('.')[0]
                                 .replace(/(.)(?=(\d{3})+$)/g, '$1.')
                             : ' ... '}
-                    </h3> <p className="price-pay-product-detail-oldprice-discount">&nbsp; -30%</p>
+                    </h3> <p className="price-pay-product-detail-oldprice-discount" style={{color:'#0acf47'}} >&nbsp; -30% OFF</p>
                 </div>
                 <div className="pay-item">
-                    <h3 className="price-pay-product-detail">
+                    <h3 className="price-pay-product-detail" style={{fontWeight: '300 !important'}}>
                         $
                         {this.props.price
                             ? this.props.price
@@ -978,6 +978,7 @@ class PaySection extends Component {
                         <span className="no-web">gratis</span> <FontAwesomeIcon icon={faTruck}/>
                     </h3>
                     <p>Nuestros productos son importados</p>
+                    <p>Entrega de 3 a 9 días hábiles</p>
 
                 </div>
                 {this.state.variantsSpinner ? (

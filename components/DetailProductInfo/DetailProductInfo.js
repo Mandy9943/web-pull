@@ -191,7 +191,7 @@ class DetailProductInfo extends Component {
 		<br />
 		*Este producto viene desde Estados Unidos
 		<br />
-		*(Entrega de 3 a 9 hábiles) *Envío gratis
+		*(Entrega de 3 a 9 días hábiles) *Envío gratis
 		<br />
 		<br />
 		{/* <p className="accent">ME RETRACTÉ DE MI COMPRA!</p>
@@ -241,7 +241,7 @@ asumir el valor del retorno a una de las direcciones que se le indicará, el val
 						<br />
 						*Este producto viene desde Estados Unidos
 						<br />
-						*(Entrega de 3 a 9 hábiles) *Envío gratis
+						*(Entrega de 3 a 9 días hábiles) *Envío gratis
 						<br />
 						<br />
 						{/* <p className="accent">ME RETRACTÉ DE MI COMPRA!</p>

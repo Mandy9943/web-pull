@@ -179,18 +179,18 @@ class ListCategory extends Component {
 					],
 				},
 			},
-			eventCallback: function () {
-				document.location =
-					'https://kiero.co/detalle/' +
-					data.product_id +
-					'_' +
-					data.title
-						.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-						.replaceAll('//', '%2F')
-						.replace('%', '')
-						.split(' ')
-						.join('-');
-			},
+			// eventCallback: function () {
+			// 	document.location =
+			// 		'https://kiero.co/detalle/' +
+			// 		data.product_id +
+			// 		'_' +
+			// 		data.title
+			// 			.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+			// 			.replaceAll('//', '%2F')
+			// 			.replace('%', '')
+			// 			.split(' ')
+			// 			.join('-');
+			// },
 		});
 
 		// window.location.href = '/detalle/' +
@@ -214,21 +214,30 @@ class ListCategory extends Component {
 						this.props.products.length > 0 &&
 						(this.props.format == 'grid'
 							? this.props.products.map((product, i) => (
-									<Link
-										href={'/detalle/[product]'}
-										as={
-											'/detalle/' +
-											product.product_id +
-											'_' +
-											product.title
-												.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-												.replaceAll('//', '%2F')
-												.replace('%', '')
-												.split(' ')
-												.join('-')
-										}
+									<a
+									 	// href={'/detalle/[product]'}
+										href={'/detalle/' +
+										product.product_id +
+										'_' +
+										product.title
+											.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+											.replaceAll('//', '%2F')
+											.replace('%', '')
+											.split(' ')
+											.join('-')}
+										// as={
+										// 	'/detalle/' +
+										// 	product.product_id +
+										// 	'_' +
+										// 	product.title
+										// 		.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+										// 		.replaceAll('//', '%2F')
+										// 		.replace('%', '')
+										// 		.split(' ')
+										// 		.join('-')
+										// }
+										key={i + 1}
 									>
-										<a key={i}>
 											{/* <div className="productFavIcon">
 											<Checkbox
 												style={{ color: '#CF0A2C' }}
@@ -237,9 +246,10 @@ class ListCategory extends Component {
 											/>
 										</div> */}
 											<div
-												className="d-flex"
+												className="d-flex formatCard"
 												key={i}
 												onClick={() => this.handleDataInfoSearch(product, i)}
+												style={{height:'100% !important'}}
 											>
 												<div className="temp-card">
 													<div className="product-card-img">
@@ -282,25 +292,34 @@ class ListCategory extends Component {
 													</div>
 												</div>
 											</div>
-										</a>
-									</Link>
+									</a>
 							  ))
 							: this.props.products.map((product, i) => (
-									<Link
-										href={'/detalle/[product]'}
-										as={
-											'/detalle/' +
-											product.product_id +
-											'_' +
-											product.title
-												.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-												.replaceAll('//', '%2F')
-												.replace('%', '')
-												.split(' ')
-												.join('-')
-										}
+									<a
+										// href={'/detalle/[product]'}
+										href={'/detalle/' +
+										product.product_id +
+										'_' +
+										product.title
+											.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+											.replaceAll('//', '%2F')
+											.replace('%', '')
+											.split(' ')
+											.join('-')}
+										// as={
+										// 	'/detalle/' +
+										// 	product.product_id +
+										// 	'_' +
+										// 	product.title
+										// 		.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+										// 		.replaceAll('//', '%2F')
+										// 		.replace('%', '')
+										// 		.split(' ')
+										// 		.join('-')
+										// }
+										key={i + 1} 
+										onClick={() => this.handleDataInfoSearch(product, i)}
 									>
-										<a key={i + 1} onClick={() => this.handleDataInfoSearch(product, i)}>
 											<div className="temp-list">
 												<div className="product-list-img">
 													<img
@@ -335,8 +354,7 @@ class ListCategory extends Component {
 													}
 												</div>
 											</div>
-										</a>
-									</Link>
+									</a>
 							  )))}
 				</div>
 

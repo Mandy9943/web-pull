@@ -19,6 +19,12 @@ export default function MyApp({ Component, pageProps}) {
 		if(gclid){
 				Cookies.set('gclid', gclid, { expires: 90 });
 		}
+		const canonicalPerPage = document.createElement("link");
+		canonicalPerPage.rel = 'canonical'
+		canonicalPerPage.href = window.location.href;
+		// canonicalPerPage.alt = "Logo Javascript";
+
+		document.head.appendChild(canonicalPerPage);
 	}, [])
 
 	return (
@@ -76,7 +82,7 @@ export default function MyApp({ Component, pageProps}) {
 			<SocketUser />
 			<KieroSocketChat />
 			<Component {...pageProps} />
-			<GeneralChat />
+			{/* <GeneralChat /> */}
 		</>
 	);
 }

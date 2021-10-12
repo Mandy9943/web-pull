@@ -56,6 +56,7 @@ class ProductDetail extends Component {
 		this.reLoadData = this.reLoadData.bind(this);
 	}
 	componentDidMount() {
+		// console.log("propiedades",this.props)
 		// console.log('entro')
 		// const script = document.createElement("script");
 		//
@@ -306,9 +307,10 @@ class ProductDetail extends Component {
 							{this.state.mdata.breadcum.map((item, i) => (
 								<div key={i}>
 									<FontAwesomeIcon icon={faAngleRight} />
-									<Link href="/categoria/[category]" as={'/categoria/' + item.name}>
-										<a>{item.name}</a>
-									</Link>
+									{/* <Link href="/categoria/[category]" as={'/categoria/' + item.name}> */}
+									<a href={'/categoria/' + item.name} >
+										{item.name}
+									</a>
 								</div>
 							))}
 						</div>
@@ -404,7 +406,10 @@ class ProductDetail extends Component {
 										*Este producto viene desde Estados Unidos
 									</p>
 									<p>
-										*(Entrega de 3 a 9 hábiles) *Envío gratis
+										*Envío gratis
+									</p>
+									<p>
+										*Entrega de 3 a 9 días hábiles 
 									</p>
 								</div>
 							</div>

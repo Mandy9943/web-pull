@@ -30,6 +30,12 @@ function Results({ data, session }) {
             "image_path": encodeURI("//kiero.co/images/resources/deportes y fitness/"), "enable": true
         },
 
+        // "deportes y fitness": {
+        //     "estructure": [1, 2, 3],
+        //     "links": ["Deportes%20y%20fitness", "Accesorios%20deportes%20y%20aire%20libre", "Entrenamiento-de-fitness", "Recreación%20en%20exteriores", "Deportes%20y%20acondicionamiento%20físico", "Tienda%20para%20fanáticos%20de%20los%20deportes"],
+        //     "image_path": encodeURI("//127.0.0.1/images/resources/deportes y fitness/"), "enable": true
+        // },
+
         "animales y mascotas": {
             "estructure": [1, 2, 3, 2, 3, 3, 2],
             "links": ["Animales%20y%20mascotas", "Suministros%20para%20perros", "Suministros%20para%20gatos", "Suministros%20para%20aves%20domésticas", "Alimentos%20para%20mascotas", "Centro%20de%20pulgas%20y%20garrapatas", "Suministros%20para%20peces", "Suministros%20para%20reptiles%20y%20anfibios", "Alimentos%20especiales%20para%20mascotas", "Productos%20para%20cumpleaños%20de%20mascotas", "Suministros%20de%20salud%20mascotas", "Cercado%20y%20contención%20mascotas", "Disfraces%20de%20halloween%20para%20mascotas", "Tecnología%20para%20mascotas", "Suministros%20para%20animales%20pequeños", "Suministros%20para%20caballos"],
@@ -205,11 +211,10 @@ function Results({ data, session }) {
             if (e.estructure[i] === 1) {
                 if (e.links[bannerNo - 1] !== "") {
                     structure.push(
-                        <Link href={"/categoria/[category]"} as={"/categoria/" + e.links[bannerNo - 1]} >
-                            <a className="tickets">
-                                <img alt={category_name} key={i} className="banner-principal" src={e.image_path + (bannerNo++) + ".jpg"} />
-                            </a>
-                        </Link>
+                        // <Link href={"/categoria/[category]"} as={"/categoria/" + e.links[bannerNo - 1]} ></Link>
+                        <a className="tickets" href={"/categoria/" + e.links[bannerNo - 1]}  >
+                                <img alt={category_name} key={i + 1} className="banner-principal" src={e.image_path + (bannerNo++) + ".jpg"} />
+                        </a>
                     )
                 } else {
                     structure.push(<img alt={category_name} key={i} className="banner-principal" src={e.image_path + (bannerNo++) + ".jpg"} />)
@@ -262,17 +267,14 @@ function Results({ data, session }) {
                     <Nav jwt={session.jwt} user={session.user} home={true} authenticated={session.authenticated} />
                     <section className="content">
                         <div className="breadcrumb">
-                            <Link href="/">
-                                <a>
+                            <Link href="/"><a>
                                     Inicio
-                                </a>
-                            </Link>
+                            </a></Link>
                             <FontAwesomeIcon icon={faAngleRight} />
-                            <Link href="/categoria/[category]" as={"/categoria/" + category_name}>
-                                <a>
+                            {/* <Link href="/categoria/[category]" as={"/categoria/" + category_name}> */}
+                            <a href={"/categoria/" + category_name} >
                                     {category_name}
-                                </a>
-                            </Link>
+                            </a>
                         </div>
                         {
                             structure
