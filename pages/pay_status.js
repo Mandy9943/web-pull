@@ -159,7 +159,7 @@ function PayStatus({ data, u_data }) {
 
                   KlaviyoClient.public.track({
                       event: 'pending_transaction',
-                      email: Cookies.get('email'),
+                      email: paramsUrl.buyerEmail,
                       properties: {
                           items: [
                               item
