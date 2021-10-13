@@ -404,8 +404,8 @@ class ProductDetail extends Component {
                     forma rapida y segura
                   </p>
                   <p>*Este producto viene desde Estados Unidos</p>
-                  <p>*Envío gratis</p>
                   <p>*Entrega de 3 a 9 días hábiles</p>
+                  <p>*Envío gratis</p>
                 </div>
               </div>
             </div>

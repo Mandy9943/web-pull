@@ -151,7 +151,7 @@ class DetailProductInfo extends Component {
 									aria-controls="panel1a-content"
 									id="panel1a-header"
 								>
-									<h4 className="title-section">Detalle del producto</h4>
+									<h2 className="title-section" style={{fontWeight:500}}>Detalle del producto</h2>
 								</AccordionSummary>
 								<AccordionDetails>
 									{/* {dataTest(this.state.dataguide)} */}
@@ -161,7 +161,7 @@ class DetailProductInfo extends Component {
 <div className="wrap-detail-info-movil">
 
 	<div className="item-detail-info">
-		<p>{this.props.product_name}</p>
+		<h2 className="title-section accent" > {this.props.product_name.substring(0,80)}</h2>
 		<br />
 		<br />
 		{handleDesciption(this.props.desciption)}
@@ -191,8 +191,9 @@ class DetailProductInfo extends Component {
 		<br />
 		*Este producto viene desde Estados Unidos
 		<br />
-		*(Entrega de 3 a 9 días hábiles) *Envío gratis
+		*(Entrega de 3 a 9 días hábiles) 
 		<br />
+		*Envío gratis
 		<br />
 		{/* <p className="accent">ME RETRACTÉ DE MI COMPRA!</p>
 <br />
@@ -209,9 +210,9 @@ asumir el valor del retorno a una de las direcciones que se le indicará, el val
 
 
 				<div className="wrap-detail-info">
-					<h3>Detalle del producto</h3>
+					<h2 style={{fontWeight:500}}>Detalle del producto</h2>
 					<div className="item-detail-info">
-						<p>{this.props.product_name}</p>
+						<h2 className="title-section accent" > {this.props.product_name.substring(0,80)}</h2>
 						<br />
 						<br />
 						{handleDesciption(this.props.desciption)}
@@ -241,8 +242,9 @@ asumir el valor del retorno a una de las direcciones que se le indicará, el val
 						<br />
 						*Este producto viene desde Estados Unidos
 						<br />
-						*(Entrega de 3 a 9 días hábiles) *Envío gratis
+						*(Entrega de 3 a 9 días hábiles) 
 						<br />
+						*Envío gratis
 						<br />
 						{/* <p className="accent">ME RETRACTÉ DE MI COMPRA!</p>
             <br />

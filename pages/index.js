@@ -33,8 +33,7 @@ export default class Index extends Component {
                     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
                     <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
                     <meta name="robots" content="index,follow" />
-                    <meta name="description" content="Descubre miles de productos al mejor precio. Envios
-                    gratis a todo el pais, encuentra lo que buscas en Kiero.co" />
+                    <meta name="description" content="En Kiero descubre miles de productos al mejor precio. Envios gratis a todo el pais, encuentra lo que buscas en Kiero" />
                     <meta name="Keywords" content="Tienda en Línea" />
                     <meta name="Title" content="Compra en Kiero.co - Marketplace" />
                     <meta name="apple-mobile-web-app-capable" content="yes" />

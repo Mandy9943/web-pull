@@ -53,7 +53,7 @@ function Product({ data, u_data }) {
 				/>
 				<meta
 					property="og:description"
-					content={`Encuentra ${
+					content={`${
 						data.title
 					} en Kiero.co - Descubre millones de productos online.
       Encuentra ${data.category ? data.category.name : ''} en Kiero.co`}

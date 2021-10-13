@@ -1,9 +1,7 @@
 import './ErrorPage.css'
 import BackImg from './img/bg.jpg'
-import { faFacebook } from "@fortawesome/free-solid-svg-icons";
-// import 'https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js'
-// import 'https://oss.maxcdn.com/respond/1.4.2/respond.min.js'
-// import './css/font-awesome.min.css'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFacebookF, faTwitter, faInstagram, faPinterestP, faLinkedinIn, faYoutube, faWhatsapp} from "@fortawesome/free-brands-svg-icons"
 
 export default function ErrorPage({ codError, msgError}) { 
 	const fb = "//www.facebook.com/KieroGroup/";
@@ -24,12 +22,15 @@ export default function ErrorPage({ codError, msgError}) {
 					</div>
 					<h2>{msgError}</h2>
 					<a href="/" className="home-btn">Ir a Kiero.co</a>
-					<a href="#" className="contact-btn">Contáctanos</a>
-					<div className="notfound-social">
-						<a href={fb}><i className="fa fa-facebook"></i></a>
-						<a href={tw}><i className="fa fa-twitter"></i></a>
-						<a href={pt}><i className="fa fa-pinterest"></i></a>
-						<a href={yt}><i className="fa fa-google-plus"></i></a>
+					<a href="/contactanos_email" className="contact-btn">Contáctanos</a>
+					<div className="notfound-social">	
+						<a  target="_blank" href={fb}><FontAwesomeIcon icon={faFacebookF} /></a>
+						<a  target="_blank" href={ig}><FontAwesomeIcon icon={faInstagram} /></a>
+						<a  target="_blank" href={tw}><FontAwesomeIcon icon={faTwitter} /></a>
+						<a  target="_blank" href={lk}><FontAwesomeIcon icon={faLinkedinIn} /></a>
+						<a  target="_blank" href={pt}><FontAwesomeIcon icon={faPinterestP} /></a>
+						<a  target="_blank" href={yt}><FontAwesomeIcon icon={faYoutube} /></a>
+						<a  target="_blank" href={ws}><FontAwesomeIcon icon={faWhatsapp} /></a>
 					</div>
 				</div>
 			</div>
