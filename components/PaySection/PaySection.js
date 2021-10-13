@@ -878,7 +878,7 @@ class PaySection extends Component {
               type="hidden"
               //  value={"https://kieroapi.org/pay_status?extra4=" +
               value={
-                "https://kiero.co/pay_status ?extra4=" +
+                "https://kiero.co/pay_status?extra4=" +
                 this.props.props.data.title +
                 "~" +
                 this.props.props.data.product_id +
@@ -1012,85 +1012,83 @@ class PaySection extends Component {
             {/* <p>Validando información de compra</p> */}
           </div>
         </div>
-        <div>
-          <div className="pay-item" id="top-pay-section">
-            <h1 className="title-pay-product-detail">
-              {this.props.title.substr(0, 60)}{" "}
-            </h1>
-            {/* <div className="productFavIcon2">
+        <div className="pay-item">
+          <h1 className="title-pay-product-detail">
+            {this.props.title.substr(0, 60)}{" "}
+          </h1>
+          {/* <div className="productFavIcon2">
 						<Checkbox
 							style={{ color: '#CF0A2C' }}
 							icon={<FavoriteBorder fontSize="large" />}
 							checkedIcon={<Favorite fontSize="large" />}
 						/>
 					</div> */}
-          </div>
-          {/* <div className="pay-item">
+        </div>
+        {/* <div className="pay-item">
 					<Rating productId={this.props.pid}/>
 				</div> */}
-          <div className="pay-item-oldprice">
-            <h3 className="price-pay-product-detail-oldprice">
-              ${" "}
-              {this.props.price
-                ? (this.props.price * 1.428571428571429)
-                    .toString()
-                    .split(".")[0]
-                    .replace(/(.)(?=(\d{3})+$)/g, "$1.")
-                : " ... "}
-            </h3>{" "}
-            <p
-              className="price-pay-product-detail-oldprice-discount"
-              style={{ color: "#0acf47" }}
-            >
-              &nbsp; -30% OFF
-            </p>
-          </div>
-          <div className="pay-item">
-            <h3
-              className="price-pay-product-detail"
-              style={{ fontWeight: "300 !important" }}
-            >
-              $
-              {this.props.price
-                ? this.props.price
-                    .toString()
-                    .split(".")[0]
-                    .replace(/(.)(?=(\d{3})+$)/g, "$1.")
-                : " ... "}
-            </h3>
-          </div>
-          <div className="pay-item info-pay-product-detail">
-            <h3>
-              <span className="no-movil">Kiero</span> envíos{" "}
-              <span className="no-web">gratis</span>{" "}
-              <FontAwesomeIcon icon={faTruck} />
-            </h3>
-            <p>Nuestros productos son importados</p>
-            <p>Entrega de 3 a 9 días hábiles</p>
-          </div>
-          {this.state.variantsSpinner ? (
-            <Spinner />
-          ) : (
-            <ProductVariants
-              id={this.props.pgid}
-              dimensions={this.state.dimensions}
-              select={this.handleSelect}
-            />
-          )}
-          <div className="clasecantidad">
-            {this.state.cantidad > 0 ? (
-              <div className="cantidad">
-                {"Haz Seleccionado la cantidad de " +
-                  this.state.cantidad +
-                  " articulos"}
-              </div>
-            ) : (
-              ""
-            )}
-          </div>
-
-          {this.renderPayButtonSection(renderPayu)}
+        <div className="pay-item-oldprice">
+          <h3 className="price-pay-product-detail-oldprice">
+            ${" "}
+            {this.props.price
+              ? (this.props.price * 1.428571428571429)
+                  .toString()
+                  .split(".")[0]
+                  .replace(/(.)(?=(\d{3})+$)/g, "$1.")
+              : " ... "}
+          </h3>{" "}
+          <p
+            className="price-pay-product-detail-oldprice-discount"
+            style={{ color: "#0acf47" }}
+          >
+            &nbsp; -30% OFF
+          </p>
         </div>
+        <div className="pay-item">
+          <h3
+            className="price-pay-product-detail"
+            style={{ fontWeight: "300 !important" }}
+          >
+            $
+            {this.props.price
+              ? this.props.price
+                  .toString()
+                  .split(".")[0]
+                  .replace(/(.)(?=(\d{3})+$)/g, "$1.")
+              : " ... "}
+          </h3>
+        </div>
+        <div className="pay-item info-pay-product-detail">
+          <h3>
+            <span className="no-movil">Kiero</span> envíos{" "}
+            <span className="no-web">gratis</span>{" "}
+            <FontAwesomeIcon icon={faTruck} />
+          </h3>
+          <p>Nuestros productos son importados</p>
+          <p>Entrega de 3 a 9 días hábiles</p>
+        </div>
+        {this.state.variantsSpinner ? (
+          <Spinner />
+        ) : (
+          <ProductVariants
+            id={this.props.pgid}
+            dimensions={this.state.dimensions}
+            select={this.handleSelect}
+          />
+        )}
+        <div className="clasecantidad">
+          {this.state.cantidad > 0 ? (
+            <div className="cantidad">
+              {"Haz Seleccionado la cantidad de " +
+                this.state.cantidad +
+                " articulos"}
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
+
+        {this.renderPayButtonSection(renderPayu)}
         {/* {this.renderWompi()} */}
         {/* <form aria-hidden="true">
 								<script
