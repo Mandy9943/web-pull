@@ -126,7 +126,10 @@ class Detail extends Component {
             </a>
           </Link>
           {/*NEED FIX THIS SHIT*/}
-          <SliderDetail img={this.state.images} />
+          <SliderDetail
+            img={this.state.images}
+            allowZoomModal={this.props.allowZoom}
+          />
         </div>
       </>
     );

@@ -5,6 +5,8 @@ import "./SliderDetail.css";
 import { getImgUrl } from "../../lib/config";
 import Spinner from "./../Common/Spinner";
 
+import Zoom from "react-medium-image-zoom";
+import "react-medium-image-zoom/dist/styles.css";
 let slidesMobil = [
   {
     slider: "slider",
@@ -71,7 +73,23 @@ export default class SliderDetail extends Component {
             <Slider autoplay={10000}>
               {images.map((slide, index) => (
                 <div key={index}>
-                  <img src={getImgUrl(slide.url, 1000)} />
+                  {this.props.allowZoomModal ? (
+                    <Zoom
+                      wrapStyle={{ width: "100%" }}
+                      overlayBgColorStart={"rgba(0, 0, 0, 0)"}
+                      overlayBgColorEnd={"rgba(0, 0, 0, 0.9)"}
+                    >
+                      <img
+                        src={getImgUrl(slide.url, 1000)}
+                        style={{ width: "100%" }}
+                      />
+                    </Zoom>
+                  ) : (
+                    <img
+                      src={getImgUrl(slide.url, 1000)}
+                      style={{ width: "100%" }}
+                    />
+                  )}
                 </div>
               ))}
             </Slider>
