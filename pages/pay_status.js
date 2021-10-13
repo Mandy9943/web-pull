@@ -172,7 +172,7 @@ function PayStatus({ data, u_data }) {
       }
   }, [router.query]);
 
-    console.log(params)
+    // console.log(params)
   return (
     <div className="order-page">
       <Head>

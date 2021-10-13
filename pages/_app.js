@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createElement } from 'react';
 import { useRouter } from 'next/router'
+import Head from "next/head";
 import '../styles.css';
-
-import GeneralChat from '../components/generalChat/index.js';
+// import GeneralChat from '../components/generalChat/index.js';
 import SocketChat from '../components/Services/socket';
 import SocketUser from '../components/Services/socketuser';
 import KieroSocketChat from '../components/Services/kierochat-socket';
 import Cookies from 'js-cookie';
 
 export default function MyApp({ Component, pageProps}) {
-	
+	const site = "kiero.co";
+	const canonicalURL = site + useRouter().asPath;
 	useEffect(() => {
 		function getGLCID() {
 				var match = /gclid=([^&#]*)/.exec(window.location.search);
@@ -19,17 +20,14 @@ export default function MyApp({ Component, pageProps}) {
 		if(gclid){
 				Cookies.set('gclid', gclid, { expires: 90 });
 		}
-		const canonicalPerPage = document.createElement("link");
-		canonicalPerPage.rel = 'canonical'
-		canonicalPerPage.href = window.location.href;
-		// canonicalPerPage.alt = "Logo Javascript";
-
-		document.head.appendChild(canonicalPerPage);
 	}, [])
 
 	return (
 		<>
 		
+		<Head>
+			<link rel="canonical" href={canonicalURL} />
+		</Head>
 		{/* Google Tag Manager */}
 		<script
 					dangerouslySetInnerHTML={{
