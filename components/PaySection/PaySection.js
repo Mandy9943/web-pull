@@ -503,7 +503,7 @@ class PaySection extends Component {
               .replaceAll(/['"]+/g, "")
               .split(" ")
               .join("-"),
-          image_url: this.props.props.data.image_url
+          image_url: this.props.props.data.images.length ? this.props.props.data.images[0].url : null
         }
       ]
     });
