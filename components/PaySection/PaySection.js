@@ -464,6 +464,21 @@ class PaySection extends Component {
       //  	window.location = '/pagar/' + id + '/' + quantity;
       //  }
     });
+
+    // Segment Identify method
+    // Link your users and their actions
+    // Reference: https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/#identify
+    analytics.identify(this.state.email, {
+      firstName: this.state.user,
+      lastName: this.state.lastName,
+      email: this.state.email,
+      phone: this.state.mobile_phone,
+      address: {
+        city: this.state.city,
+        street: this.state.address
+      }
+    });
+
     KlaviyoClient.public.identify({
       email: this.state.email,
       properties: {
