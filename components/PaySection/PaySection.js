@@ -479,6 +479,35 @@ class PaySection extends Component {
       }
     });
 
+    // Segment Checkout Started event
+    // User initiated the order process (a transaction is created)
+    // Reference: https://segment.com/docs/connections/spec/ecommerce/v2/
+    analytics.track("Checkout Started", {
+      affiliation: "SpiceStock",
+      revenue: this.props.props.data.price,
+      currency: 'COP',
+      products: [
+        {
+          product_id: this.props.props.data.product_global_id,
+          name: this.props.props.data.product_global_title,
+          price: this.props.props.data.price,
+          quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
+          category: concatCategories(),
+          url: "https://kiero.co/detalle/" +
+            this.props.props.data.product_global_id +
+            "_" +
+            this.props.props.data.product_global_title
+              .replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, "")
+              .replaceAll("//", "%2F")
+              .replaceAll("%", "")
+              .replaceAll(/['"]+/g, "")
+              .split(" ")
+              .join("-"),
+          image_url: this.props.props.data.image_url
+        }
+      ]
+    });
+
     KlaviyoClient.public.identify({
       email: this.state.email,
       properties: {
