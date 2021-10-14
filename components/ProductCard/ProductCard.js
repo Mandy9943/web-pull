@@ -53,6 +53,27 @@ export default class ProductCard extends Component {
 		// 		}
 		// 	}
 		// })
+
+		// Segment Product Clicked event
+		// Fire this event when a visitor clicks a product.
+		// Reference: https://segment.com/docs/connections/spec/ecommerce/v2/
+		analytics.track('Product Clicked', {
+			product_id: data.product_id,
+			category: data.category,
+			name: data.title,
+			brand: data.brand,
+			price: data.price,
+			currency: 'COP',
+			quantity: 1,
+			url: 'https://kiero.co/detalle/' + data.product_id + '_' + data.title
+						.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+						.replace('//', '%2F')
+						.replace('%', '')
+						.split(' ')
+						.join('-'),
+			image_url: data.url
+		});
+
 		dataLayer.push({
 			'event': 'productClick',
 			'ecommerce': {
