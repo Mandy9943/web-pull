@@ -23,12 +23,11 @@ class Tickets extends Component {
       { url: (this.props.link_center ? this.props.link_center : link1) },
       { url: (this.props.link_right ? this.props.link_right : link2) },
     ];
-
     return (
       <div className="wrap-tickets">
         {dataTicket.map((item, i) => (
-          <a key={i} href={"/categoria/" + linkTicket[i].url } className="tickets">
-                  <img src={item.url} />
+          <a key={i} href={"/categoria/" + linkTicket[i].url.replace(/ /g, "-").trim().toLowerCase() } className="tickets">
+                  <img src={item.url.replace(/-/g, " ")} />
             </a>
         ))}
       </div>

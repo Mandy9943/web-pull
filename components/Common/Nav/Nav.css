@@ -60,8 +60,8 @@
 	top: 0px;
 	right: 0px;
 	padding: 0 20px;
-	/* width: calc(100% - 40px); */
-	width:100%;	
+	width: calc(100% - 40px);
+	/* width:100%;	 */
 	background-color: #cf0a2c;
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -290,8 +290,8 @@
 
 .search-bar .icon {
 	position: absolute;
-	right: 15px;
-	/* right: 0; */
+	/* right: 15px; */
+	right: 0;
 	top: 6px;
 	width: 40px;
 	height: 30px;

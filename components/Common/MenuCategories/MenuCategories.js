@@ -44,6 +44,7 @@ class MenuCategories extends Component {
 	}
 
 	render() {
+		console.log(this.props)
 		let urlBanner = '//kiero.co/images/resources/categorias-menu/';
 		return (
 			<div className="wrap-menu-categories">
@@ -68,7 +69,7 @@ class MenuCategories extends Component {
 									onMouseEnter={() => this.menuMouseEnter(i)}
 									onMouseLeave={this.menuMouseLeave}
 								>
-									<a href={'/categoria/' + ccat.name}>
+									<a href={'/categoria/' + ccat.name.replace(/ /g, "-").trim().toLowerCase()}>
 										{ccat.name}
 									</a>
 									<FontAwesomeIcon
@@ -95,7 +96,8 @@ class MenuCategories extends Component {
 									return (
 										<section className="sub-cat" key={i}>
 											{
-												<a href={'/categoria/' + sl_cat.name}>
+												// <a href={'/categoria/' + sl_cat.name.replace(/^[, ]+|[, ]+$|[, ]+/g, "-").trim().toLowerCase()}>
+												<a href={'/categoria/' + sl_cat.name.replace(/ /g, "-").trim().toLowerCase()}>
 													<h5>
 														<div className="subCatText">{sl_cat.name}</div>
 													</h5>
@@ -104,7 +106,7 @@ class MenuCategories extends Component {
 											{sl_cat.childs.map((tl_cat, i) => {
 												return (
 													<span key={i + 1}>
-														<a href={'/categoria/' + tl_cat.name}>
+														<a href={'/categoria/' + tl_cat.name.replace(/ /g, "-").trim().toLowerCase()}>
 															{tl_cat.name}
 														</a>
 													</span>
