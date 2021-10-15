@@ -455,15 +455,60 @@ class PaySection extends Component {
         },
       ],
     };
-    dataLayer.push({
-      event: "checkout",
-      ecommerce: {
-        checkout: item,
-      },
-      // 	'eventCallback': function(){
-      //  	window.location = '/pagar/' + id + '/' + quantity;
-      //  }
+    
+    // dataLayer.push({
+    //   event: "checkout",
+    //   ecommerce: {
+    //     checkout: item,
+    //   },
+    //   // 	'eventCallback': function(){
+    //   //  	window.location = '/pagar/' + id + '/' + quantity;
+    //   //  }
+    // });
+
+    // Segment Identify method
+    // Link your users and their actions
+    // Reference: https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/#identify
+    analytics.identify(this.state.email, {
+      firstName: this.state.user,
+      lastName: this.state.lastName,
+      email: this.state.email,
+      phone: this.state.mobile_phone,
+      address: {
+        city: this.state.city,
+        street: this.state.address
+      }
     });
+
+    // Segment Checkout Started event
+    // User initiated the order process (a transaction is created)
+    // Reference: https://segment.com/docs/connections/spec/ecommerce/v2/
+    analytics.track("Checkout Started", {
+      affiliation: "SpiceStock",
+      revenue: this.props.props.data.price,
+      currency: 'COP',
+      products: [
+        {
+          product_id: this.props.props.data.product_global_id,
+          name: this.props.props.data.product_global_title,
+          price: this.props.props.data.price,
+          quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
+          category: concatCategories(),
+          url: "https://kiero.co/detalle/" +
+            this.props.props.data.product_global_id +
+            "_" +
+            this.props.props.data.product_global_title
+              .replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, "")
+              .replaceAll("//", "%2F")
+              .replaceAll("%", "")
+              .replaceAll(/['"]+/g, "")
+              .split(" ")
+              .join("-"),
+          image_url: this.props.props.data.images.length ? this.props.props.data.images[0].url : null
+        }
+      ]
+    });
+
     KlaviyoClient.public.identify({
       email: this.state.email,
       properties: {

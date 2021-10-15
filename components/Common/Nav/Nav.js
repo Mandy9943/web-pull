@@ -526,6 +526,13 @@ export default class Nav extends Component {
 
 	search = (ots = '') => {
 		if (this.state.value.length > 2) {
+
+			// Segment Products Searched event
+			// Reference: https://segment.com/docs/connections/spec/ecommerce/v2/
+			analytics.track('Products Searched', {
+				query: this.state.value
+			});
+
 			let url = '/busqueda/';
 			this.state.value !== undefined && ots === ''
 				? (url = url + this.state.value)

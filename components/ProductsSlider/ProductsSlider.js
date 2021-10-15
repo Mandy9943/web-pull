@@ -56,31 +56,49 @@ export default class ProductsSlider extends Component {
 			// 	}
 			// })
 			// dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
-			const dataLayerGoogleSlidersUniversal = response.data.results?.map((prod, index) => {
+			// const dataLayerGoogleSlidersUniversal = response.data.results?.map((prod, index) => {
+			// 	return {
+			// 		name: prod.title,
+			// 		id: prod.product_id,
+			// 		price: prod.price,
+			// 		brand: prod.brand,
+			// 		category: prod.category,
+			// 		list: 'Products Slider',
+			// 		// url:'https://kiero.co/detalle/' + prod.product_id + '_' + prod.title
+			// 		// 														.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+			// 		// 														.replace('//', '%2F')
+			// 		// 														.replace('%', '')
+			// 		// 														.split(' ')
+			// 		// 														.join('-'),
+			// 		position: index + 1
+			// 	};
+			// });
+			// dataLayer.push({
+			// 	event:'gtm.dom',
+			// 	ecommerce: {
+			// 		currencyCode: "COP",
+			// 		impressions:
+			// 			dataLayerGoogleSlidersUniversal
+			// 	}
+			// })
+
+			const product_list = response.data.results?.map((prod, index) => {
 				return {
 					name: prod.title,
-					id: prod.product_id,
+					product_id: prod.product_id,
 					price: prod.price,
 					brand: prod.brand,
 					category: prod.category,
-					list: 'Products Slider',
-					// url:'https://kiero.co/detalle/' + prod.product_id + '_' + prod.title
-					// 														.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-					// 														.replace('//', '%2F')
-					// 														.replace('%', '')
-					// 														.split(' ')
-					// 														.join('-'),
-					position: index + 1
+					position: index + 1,
 				};
 			});
-			dataLayer.push({
-				event:'gtm.dom',
-				ecommerce: {
-					currencyCode: "COP",
-					impressions:
-						dataLayerGoogleSlidersUniversal
-				}
-			})
+
+			analytics.track('Product List Viewed', {
+				list_id: 'productsSlider',
+				category: this.props.category,
+				products: product_list
+			});
+
 			// const gtagSlidersUniversal = response.data.results?.map((prod, index) => {
 			// 	return {
 			// 		name: prod.title,
