@@ -49,33 +49,51 @@ class ListCategory extends Component {
             //         dataLayerGoogleSearchResultsG4
             //     }
             // })dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
-			const dataLayerGoogleSearchUniversal = this.props.products?.map((prod, index) => {
+			// const dataLayerGoogleSearchUniversal = this.props.products?.map((prod, index) => {
+			// 	return {
+			// 		name: prod.title,
+			// 		id: prod.product_id,
+			// 		price: prod.price,
+			// 		brand: prod.brand,
+			// 		category: prod.category,
+			// 		list: 'Search Result',
+			// 		// url:
+			// 		// 	'https://kiero.co/detalle/' +
+			// 		// 	prod.product_id +
+			// 		// 	'_' +
+			// 		// 	prod.title
+			// 		// 		.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+			// 		// 		.replaceAll('//', '%2F')
+			// 		// 		.replace('%', '')
+			// 		// 		.split(' ')
+			// 		// 		.join('-'),
+			// 		position: index + 1,
+			// 	};
+			// });
+
+			// dataLayer.push({
+			// 	event:'gtm.dom',
+			// 	ecommerce: {
+			// 		currencyCode: 'COP',
+			// 		impressions: dataLayerGoogleSearchUniversal,
+			// 	},
+			// });
+
+			const product_list = this.props.products?.map((prod, index) => {
 				return {
 					name: prod.title,
-					id: prod.product_id,
+					product_id: prod.product_id,
 					price: prod.price,
 					brand: prod.brand,
 					category: prod.category,
-					list: 'Search Result',
-					// url:
-					// 	'https://kiero.co/detalle/' +
-					// 	prod.product_id +
-					// 	'_' +
-					// 	prod.title
-					// 		.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-					// 		.replaceAll('//', '%2F')
-					// 		.replace('%', '')
-					// 		.split(' ')
-					// 		.join('-'),
 					position: index + 1,
 				};
 			});
-			dataLayer.push({
-				event:'gtm.dom',
-				ecommerce: {
-					currencyCode: 'COP',
-					impressions: dataLayerGoogleSearchUniversal,
-				},
+
+			analytics.track('Product List Viewed', {
+				list_id: 'listCategory',
+				category: this.props.category,
+				products: product_list
 			});
 
 			// const gtagSearchResultsUniversal = this.props.products?.map((prod, index) => {

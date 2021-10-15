@@ -455,15 +455,16 @@ class PaySection extends Component {
         },
       ],
     };
-    dataLayer.push({
-      event: "checkout",
-      ecommerce: {
-        checkout: item,
-      },
-      // 	'eventCallback': function(){
-      //  	window.location = '/pagar/' + id + '/' + quantity;
-      //  }
-    });
+    
+    // dataLayer.push({
+    //   event: "checkout",
+    //   ecommerce: {
+    //     checkout: item,
+    //   },
+    //   // 	'eventCallback': function(){
+    //   //  	window.location = '/pagar/' + id + '/' + quantity;
+    //   //  }
+    // });
 
     // Segment Identify method
     // Link your users and their actions
