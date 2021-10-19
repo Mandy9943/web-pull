@@ -74,41 +74,44 @@ export default class ProductCard extends Component {
 			image_url: data.url
 		});
 
-		dataLayer.push({
-			'event': 'productClick',
-			'ecommerce': {
-				"click": {
-					"actionField": {
-									"list": "Search Results"
-									},
-					'products': 
-							[{
-								'name':data.title,
-								'id':data.product_id,
-								'brand':data.brand,
-								'category':data.category,
-								'position':data.index,
-								"quantity": 5,
-								'price':data.price,
-								'url':'https://kiero.co/detalle/' + data.product_id + '_' + data.title
-																								.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-																								.replace('//', '%2F')
-																								.replace('%', '')
-																								.split(' ')
-																								.join('-'),
+		// console.log(data);
+
+		// dataLayer.push({
+		// 	'event': 'productClick',
+		// 	'ecommerce': {
+		// 		"click": {
+		// 			"actionField": {
+		// 							"list": "Search Results"
+		// 							},
+		// 			'products': 
+		// 					[{
+		// 						'name':data.title,
+		// 						'id':data.product_id,
+		// 						'brand':data.brand,
+		// 						'category':data.category,
+		// 						'position':data.index,
+		// 						"quantity": 5,
+		// 						'price':data.price,
+		// 						'url':'https://kiero.co/detalle/' + data.product_id + '_' + data.title
+		// 																						.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+		// 																						.replace('//', '%2F')
+		// 																						.replace('%', '')
+		// 																						.split(' ')
+		// 																						.join('-'),
 								
-						}]
-				}
-			},
-			// 'eventCallback': function(){
-			// 	document.location = 'https://kiero.co/detalle/' + data.product_id + '_' + data.title
-			// 	.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-			// 	.replace('//', '%2F')
-			// 	.replace('%', '')
-			// 	.split(' ')
-			// 	.join('-')
-			// } 
-		})
+		// 				}]
+		// 		}
+		// 	},
+		// 	// 'eventCallback': function(){
+		// 	// 	document.location = 'https://kiero.co/detalle/' + data.product_id + '_' + data.title
+		// 	// 	.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+		// 	// 	.replace('//', '%2F')
+		// 	// 	.replace('%', '')
+		// 	// 	.split(' ')
+		// 	// 	.join('-')
+		// 	// } 
+		// })
+
 		// window.location.href = '/detalle/' +
 		// data.product_id +
 		// '_' +

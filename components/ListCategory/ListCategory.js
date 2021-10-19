@@ -175,49 +175,75 @@ class ListCategory extends Component {
 		// 		}
 		// 	}
 		// });
-		dataLayer.push({
-			event: 'productClick',
-			ecommerce: {
-				click: {
-					actionField: {
-						list: 'Search Results',
-					},
-					products: [
-						{
-							name: data.title,
-							id: data.product_id,
-							brand: data.brand,
-							category: data.category,
-							position: data.index,
-							quantity: 5,
-							price: data.price,
-							url:
-								'https://kiero.co/detalle/' +
-								data.product_id +
-								'_' +
-								data.title
-									.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-									.replaceAll('//', '%2F')
-									.replace('%', '')
-									.split(' ')
-									.join('-'),
-						},
-					],
-				},
-			},
-			// eventCallback: function () {
-			// 	document.location =
-			// 		'https://kiero.co/detalle/' +
-			// 		data.product_id +
-			// 		'_' +
-			// 		data.title
-			// 			.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-			// 			.replaceAll('//', '%2F')
-			// 			.replace('%', '')
-			// 			.split(' ')
-			// 			.join('-');
-			// },
-		});
+
+		// dataLayer.push({
+		// 	event: 'productClick',
+		// 	ecommerce: {
+		// 		click: {
+		// 			actionField: {
+		// 				list: 'Search Results',
+		// 			},
+		// 			products: [
+		// 				{
+		// 					name: data.title,
+		// 					id: data.product_id,
+		// 					brand: data.brand,
+		// 					category: data.category,
+		// 					position: data.index,
+		// 					quantity: 5,
+		// 					price: data.price,
+		// 					url:
+		// 						'https://kiero.co/detalle/' +
+		// 						data.product_id +
+		// 						'_' +
+		// 						data.title
+		// 							.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+		// 							.replaceAll('//', '%2F')
+		// 							.replace('%', '')
+		// 							.split(' ')
+		// 							.join('-'),
+		// 				},
+		// 			],
+		// 		},
+		// 	},
+
+		// 	// eventCallback: function () {
+		// 	// 	document.location =
+		// 	// 		'https://kiero.co/detalle/' +
+		// 	// 		data.product_id +
+		// 	// 		'_' +
+		// 	// 		data.title
+		// 	// 			.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+		// 	// 			.replaceAll('//', '%2F')
+		// 	// 			.replace('%', '')
+		// 	// 			.split(' ')
+		// 	// 			.join('-');
+		// 	// },
+		// });
+
+		var productClickedData = {
+			product_id: data.product_id,
+			category: data.category,
+			name: data.title,
+			brand: data.brand,
+			price: data.price,
+			quantity: 1,
+			position: data.index,
+			url: 'https://kiero.co/detalle/' +
+						data.product_id +
+						'_' +
+						data.title
+							.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+							.replaceAll('//', '%2F')
+							.replace('%', '')
+							.split(' ')
+							.join('-'),
+			image_url: data.image
+		}
+
+		console.log(productClickedData);
+
+		analytics.track('Product Clicked', productClickedData);
 
 		// window.location.href = '/detalle/' +
 		// data.product_id +
