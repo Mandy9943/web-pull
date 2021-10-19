@@ -98,6 +98,7 @@ class ListCategory extends Component {
 			});
 
 			analytics.track('Product List Viewed', {
+				nonInteraction: 1,
 				list_id: 'listCategory',
 				category: this.props.category,
 				products: product_list
