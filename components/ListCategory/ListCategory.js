@@ -87,6 +87,13 @@ class ListCategory extends Component {
 					brand: prod.brand,
 					category: prod.category,
 					position: index + 1,
+					url:'https://kiero.co/detalle/' + prod.product_id + '_' + prod.title
+																												.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+																												.replace('//', '%2F')
+																												.replace('%', '')
+																												.split(' ')
+																												.join('-'),
+					image_url: prod.image
 				};
 			});
 
