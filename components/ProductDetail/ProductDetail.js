@@ -153,37 +153,63 @@ class ProductDetail extends Component {
       return dataCategory.join(" / ");
     };
 
-    dataLayer.push({
-      event: "gtm.dom",
-      ecommerce: {
-        detail: {
-          actionField: {
-            list: this.props.data.category.name,
-          },
-          products: [
-            {
-              name: this.props.data.product_global_title, // Name or ID is required.
-              id: this.props.data.product_global_id,
-              price: this.props.data.price,
-              brand: this.props.data.brand,
-              category: concatCategories(),
-              url:
-                "https://kiero.co/detalle/" +
-                this.props.data.product_global_id +
-                "_" +
-                this.props.data.product_global_title
-                  .replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, "")
-                  .replace("//", "%2F")
-                  .replace("%", "")
-                  .replaceAll(/['"]+/g, "")
-                  .split(" ")
-                  .join("-"),
-              position: 1,
-            },
-          ],
-        },
-      },
-    });
+    // dataLayer.push({
+    //   event: "gtm.dom",
+    //   ecommerce: {
+    //     detail: {
+    //       actionField: {
+    //         list: this.props.data.category.name,
+    //       },
+    //       products: [
+    //         {
+    //           name: this.props.data.product_global_title, // Name or ID is required.
+    //           id: this.props.data.product_global_id,
+    //           price: this.props.data.price,
+    //           brand: this.props.data.brand,
+    //           category: concatCategories(),
+    //           url:
+    //             "https://kiero.co/detalle/" +
+    //             this.props.data.product_global_id +
+    //             "_" +
+    //             this.props.data.product_global_title
+    //               .replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, "")
+    //               .replace("//", "%2F")
+    //               .replace("%", "")
+    //               .replaceAll(/['"]+/g, "")
+    //               .split(" ")
+    //               .join("-"),
+    //           position: 1,
+    //         },
+    //       ],
+    //     },
+    //   },
+    // });
+
+    var productViewedData = {
+      product_id: this.props.data.product_global_id,
+      category: concatCategories(),
+      name: this.props.data.product_global_title,
+      brand: this.props.data.brand,
+      price: this.props.data.price,
+      currency: 'COP',
+      url:
+      "https://kiero.co/detalle/" +
+      this.props.data.product_global_id +
+      "_" +
+      this.props.data.product_global_title
+        .replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, "")
+        .replace("//", "%2F")
+        .replace("%", "")
+        .replaceAll(/['"]+/g, "")
+        .split(" ")
+        .join("-"),
+      image_url: this.props.data.images[0].url,
+      value: this.props.data.price
+    }
+
+    analytics.track('Product Viewed', productViewedData);
+
+    // console.log(productViewedData)
 
     // var _learnq = _learnq || [];
     // console.log(this.props.data)
