@@ -61,7 +61,7 @@ export default class lista_categorias extends Component {
 
 
     render() {
-        console.log(this.state.categories);
+        // console.log(this.state.categories);
 
         return (
             <div>

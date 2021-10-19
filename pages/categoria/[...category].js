@@ -30,13 +30,13 @@ function Results({ data, session }) {
         //     "image_path": encodeURI("//kiero.co/images/resources/deportes y fitness/"), "enable": true
         // },
 
-        "deportes-y-fitness": {
+        "deportes y fitness": {
             "estructure": [1, 2, 3],
             "links": ["Deportes-y-fitness", "Accesorios-deportes-y-aire-libre", "Entrenamiento-de-fitness", "Recreación-en-exteriores", "Deportes-y-acondicionamiento-físico", "Tienda-para-fanáticos-de-los-deportes"],
             "image_path": encodeURI("//127.0.0.1/images/resources/deportes y fitness/"), "enable": true
         },
 
-        "animales-y-mascotas": {
+        "animales y mascotas": {
             "estructure": [1, 2, 3, 2, 3, 3, 2],
             "links": ["Animales-y-mascotas", "Suministros-para-perros", "Suministros-para-gatos", "Suministros-para-aves-domésticas", "Alimentos-para-mascotas", "Centro-de-pulgas-y-garrapatas", "Suministros-para-peces", "Suministros-para-reptiles-y-anfibios", "Alimentos-especiales-para-mascotas", "Productos-para-cumpleaños-de-mascotas", "Suministros-de-salud-mascotas", "Cercado-y-contención-mascotas", "Disfraces-de-halloween-para-mascotas", "Tecnología-para-mascotas", "Suministros-para-animales-pequeños", "Suministros-para-caballos"],
             "image_path": encodeURI("//127.0.0.1/images/resources/animales y mascotas/"), "enable": true
@@ -54,20 +54,20 @@ function Results({ data, session }) {
             "image_path": encodeURI("//127.0.0.1/images/resources/belleza/"), "enable": true
         },
 
-        "cámaras,-fotografía-y-video": {
+        "cámaras, fotografía y video": {
             "estructure": [1, 2, 3, 3, 3, 2, 1],
             "links": ["Cámaras,-fotografía-y-video", "Binoculares,-telescopios-y-óptica", "Accesorios-para-cámara,-foto-y-video", "Estuches-y-bolsas-para-cámaras", "Cámaras-de-vigilancia-simuladas", "Flash-de-cámara", "Cámaras-digitales", "Fotografía-cinematográfica", "Iluminación-y-estudio-para-cámaras", "Equipo-de-video", "Impresoras-y-escáneres", "Trípodes-y-monopie-de-cámara", "Cámaras-de-fotografía-subacuático", "Cámaras-de-vigilancia-y-seguridad", "Videocámaras-y-lentes-de-cámara"],
             "image_path": encodeURI("//127.0.0.1/images/resources/camaras, fotografia y video/"), "enable": true
         },
 
 
-        "celulares-y-accesorios": {
+        "celulares y accesorios": {
             "estructure": [1, 2],
             "links": ["Celulares-y-accesorios", "Celulares", "Accesorios-para-celulares"],
             "image_path": encodeURI("//127.0.0.1/images/resources/celulares y accesorios/"), "enable": true
         },
 
-        "consolas-y-videojuegos": {
+        "consolas y videojuegos": {
             "estructure": [1, 2, 3, 3, 3, 1],
             "links": ["Consolas-y-videojuegos", "Juegos,-consolas-y-accesorios-PlayStation-4", "Xbox-One", "Nintendo Switch", "Juegos-y-accesorios-de-PC", "Juegos-y-accesorios-para-Mac", "Nintendo-3DS-y-2DS", "PlayStation-Vita", "Sistemas-heredados, juegos-retro", "Accesorios-de-Xbox-Serie-X", "Accesorios-realidad-virtual-independientes", "Juegos-de-Xbox-Serie-X-&-S", "Microconsolas-de-videojuegos"],
             "image_path": encodeURI("//127.0.0.1/images/resources/consolas y videojuegos/"), "enable": true
@@ -334,6 +334,7 @@ function Results({ data, session }) {
 export async function getServerSideProps(context) {
     const data = {
         "type": "category",
+        // "search": String(context.params.category),
         "search": String(context.params.category).replace(/-/g, ' '),
         "params": {
             "items_per_page": searchItemsPerPage,
