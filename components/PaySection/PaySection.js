@@ -480,33 +480,14 @@ class PaySection extends Component {
       }
     });
 
-    // Segment Checkout Started event
-    // User initiated the order process (a transaction is created)
+    // Segment Checkout Step Completed event
+    // Fire this event whenever a checkout step is completed.
     // Reference: https://segment.com/docs/connections/spec/ecommerce/v2/
-    analytics.track("Checkout Started", {
-      affiliation: "SpiceStock",
-      revenue: this.props.props.data.price,
-      currency: 'COP',
-      products: [
-        {
-          product_id: this.props.props.data.product_global_id,
-          name: this.props.props.data.product_global_title,
-          price: this.props.props.data.price,
-          quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
-          category: concatCategories(),
-          url: "https://kiero.co/detalle/" +
-            this.props.props.data.product_global_id +
-            "_" +
-            this.props.props.data.product_global_title
-              .replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, "")
-              .replaceAll("//", "%2F")
-              .replaceAll("%", "")
-              .replaceAll(/['"]+/g, "")
-              .split(" ")
-              .join("-"),
-          image_url: this.props.props.data.images.length ? this.props.props.data.images[0].url : null
-        }
-      ]
+    analytics.track("Checkout Step Completed", {
+      // checkout_id: '50314b8e9bcf000000000000',	// Checkout transaction ID
+      step: 2,
+      shipping_method:	'None', //	String representing the shipping method chosen
+      payment_method:	'Payu'	// representing the payment method chosen
     });
 
     KlaviyoClient.public.identify({
@@ -581,16 +562,17 @@ class PaySection extends Component {
         },
       ],
     };
-    // GAnalytics
-    dataLayer.push({
-      event: "checkoutOption",
-      ecommerce: {
-        checkout: item,
-      },
-      // 	'eventCallback': function(){
-      //  	window.location = '/pagar/' + id + '/' + quantity;
-      //  }
-    });
+
+    // // GAnalytics
+    // dataLayer.push({
+    //   event: "checkoutOption",
+    //   ecommerce: {
+    //     checkout: item,
+    //   },
+    //   // 	'eventCallback': function(){
+    //   //  	window.location = '/pagar/' + id + '/' + quantity;
+    //   //  }
+    // });
 
     if (Cookies.get("email") !== undefined)
       KlaviyoClient.public.track({
@@ -742,6 +724,84 @@ class PaySection extends Component {
     const renderPayu = () => {
       this.setState({ display: "none" });
       this.setState({ modalAddr: true });
+
+      const concatCategories = () => {
+        var dataCategory = [];
+        this.props.props.data.breadcum.forEach((prod, index) => {
+          dataCategory.push(prod.name);
+        });
+        return dataCategory.join(" / ");
+      };
+
+      var item = {
+        currencyCode: "COP",
+        actionField: {
+          step: 2,
+          option: "form_complete",
+        },
+        products: [
+          {
+            name: this.props.props.data.product_global_title, // Name or ID is required.
+            id: this.props.props.data.product_global_id,
+            price: this.props.props.data.price,
+            brand: this.props.props.data.brand,
+            category: concatCategories(),
+            url:
+              "https://kiero.co/detalle/" +
+              this.props.props.data.product_global_id +
+              "_" +
+              this.props.props.data.product_global_title
+                .replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, "")
+                .replaceAll("//", "%2F")
+                .replaceAll("%", "")
+                .replaceAll(/['"]+/g, "")
+                .split(" ")
+                .join("-"),
+            quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
+          },
+        ],
+      };
+
+      var quantity = this.state.cantidad == 0 ? 1 : this.state.cantidad
+
+      var checkoutStartedValues = {
+        // order_id: '50314b8e9bcf000000000000',
+        affiliation: 'SpiceStock',
+        value: this.props.props.data.price * quantity,
+        revenue: this.props.props.data.price * quantity,
+        shipping: 0,
+        tax: 0,
+        discount: 0,
+        // coupon: 'hasbros',
+        currency: 'COP',
+        products: [
+          {
+            product_id: this.props.props.data.product_global_id,
+            // sku: '45790-32',
+            name: this.props.props.data.product_global_title,
+            price: this.props.props.data.price,
+            quantity: quantity,
+            category: concatCategories(),
+            url:
+              "https://kiero.co/detalle/" +
+              this.props.props.data.product_global_id +
+              "_" +
+              this.props.props.data.product_global_title
+                .replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, "")
+                .replaceAll("//", "%2F")
+                .replaceAll("%", "")
+                .replaceAll(/['"]+/g, "")
+                .split(" ")
+                .join("-"),
+                image_url: this.props.props.data.images.length ? this.props.props.data.images[0].url : null
+          }
+        ]
+      };
+
+      // console.log(checkoutStartedValues);
+
+      analytics.track('Checkout Started', checkoutStartedValues);
+
     };
     //////
     // this.clientId = typeof(ga) == 'function' && typeof(ga.getAll) == 'function' ? ga.getAll()[0].get('clientId') : "";
