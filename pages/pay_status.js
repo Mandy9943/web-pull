@@ -70,39 +70,39 @@ function PayStatus({ data, u_data }) {
                   //                     })
                   // });
 
-                  dataLayer.push({
-                      event: 'purchase',
-                      'ecommerce': {
-                          'purchase': {
-                              'actionField': {
-                                  'id': paramsUrl.transactionId,                         // Transaction ID. Required for purchases and refunds.
-                                  'affiliation': 'SpiceStock',
-                                  'revenue': paramsUrl.TX_VALUE.toString(),                     // Total transaction value (incl. tax and shipping)
-                                  'tax':paramsUrl.TX_TAX.toString(),
-                                  'shipping': '0',
-                                  'aw_merchant_id': '450067839',
-                                  'aw_feed_country': 'CO',
-                                  'aw_feed_language': 'ES',
-                                  //'coupon': 'SUMMER_SALE'
-                                  "items": [
-                                    {
-                                      "id": listValue[1],
-                                      "quantity": paramsUrl.extra3.toString(),
-                                      "price": listValue[2]
-                                    }
-                                  ]
-                                },
-                              'products': [{                            // List of productFieldObjects.
-                                  'name': listValue[0],     // Name or ID is required.
-                                  'id': listValue[1],
-                                  'price': listValue[2],
-                                  'brand': listValue[3],
-                                  'category': listValue[4],
-                                  'quantity': quantity
-                              }]
-                          }
-                      }
-                  });
+                  // dataLayer.push({
+                  //     event: 'purchase',
+                  //     'ecommerce': {
+                  //         'purchase': {
+                  //             'actionField': {
+                  //                 'id': paramsUrl.transactionId,                         // Transaction ID. Required for purchases and refunds.
+                  //                 'affiliation': 'SpiceStock',
+                  //                 'revenue': paramsUrl.TX_VALUE.toString(),                     // Total transaction value (incl. tax and shipping)
+                  //                 'tax':paramsUrl.TX_TAX.toString(),
+                  //                 'shipping': '0',
+                  //                 'aw_merchant_id': '450067839',
+                  //                 'aw_feed_country': 'CO',
+                  //                 'aw_feed_language': 'ES',
+                  //                 //'coupon': 'SUMMER_SALE'
+                  //                 "items": [
+                  //                   {
+                  //                     "id": listValue[1],
+                  //                     "quantity": paramsUrl.extra3.toString(),
+                  //                     "price": listValue[2]
+                  //                   }
+                  //                 ]
+                  //               },
+                  //             'products': [{                            // List of productFieldObjects.
+                  //                 'name': listValue[0],     // Name or ID is required.
+                  //                 'id': listValue[1],
+                  //                 'price': listValue[2],
+                  //                 'brand': listValue[3],
+                  //                 'category': listValue[4],
+                  //                 'quantity': quantity
+                  //             }]
+                  //         }
+                  //     }
+                  // });
               }
 
               else if(paramsUrl.lapResponseCode != "DECLINED" || "APPROVED"){
@@ -150,12 +150,13 @@ function PayStatus({ data, u_data }) {
                         }
                         ]
                     };
-                  dataLayer.push({
-                      event:'pending_transaction',
-                      ecommerce: {
-                          pending_transaction: item
-                      }
-                  });
+                    
+                  // dataLayer.push({
+                  //     event:'pending_transaction',
+                  //     ecommerce: {
+                  //         pending_transaction: item
+                  //     }
+                  // });
 
                   KlaviyoClient.public.track({
                       event: 'pending_transaction',
