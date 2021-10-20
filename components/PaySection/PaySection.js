@@ -781,6 +781,7 @@ class PaySection extends Component {
             name: this.props.props.data.product_global_title,
             price: this.props.props.data.price,
             quantity: quantity,
+            brand: this.props.props.data.brand,
             category: concatCategories(),
             url:
               "https://kiero.co/detalle/" +
