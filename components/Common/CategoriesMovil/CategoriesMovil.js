@@ -25,7 +25,7 @@ class CategoriesMovil extends Component {
         <div className="menu-list">
           {this.props.categories.map((cat, i) => {
               return <span className="item" key={i}>
-                <a href={"/categoria/" + cat.name.replace(/ /g, "-").trim().toLowerCase()}>{cat.name}
+                <a href={"/categoria/" + cat.name.replace(/^[, ]+|[, ]+$|[, ]+/g, "-").trim().toLowerCase()}>{cat.name}
                 </a></span>
             })
           }

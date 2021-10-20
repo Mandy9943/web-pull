@@ -17,6 +17,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Modal from "../Common/Modal/Modal";
 import { KlaviyoClient } from "../../lib/functions";
 import Cookies from "js-cookie";
+import {handleFormatName} from '../../lib/functions'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import { Button, Modal } from 'react-bootstrap';
 
@@ -626,9 +627,9 @@ class PaySection extends Component {
         termsOfService:
           this.state.termsOfService === 2 ? 1 : !this.state.termsOfService,
       });
-      console.elog;
+      // console.elog;
     }
-    console.log(this.state.typeIdentification);
+    // console.log(this.state.typeIdentification);
     this.validateForm();
   };
 
@@ -734,9 +735,6 @@ class PaySection extends Component {
   // 				addPaymentDataWompi('/DataWompiTransaction', dataTransaction);
   // 		  });
   // };
-  handleFormatName = (str) => {
-    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-  };
 
   render() {
     const renderPayu = () => {
@@ -749,9 +747,9 @@ class PaySection extends Component {
     // console.log(this.state);
     var quantity = this.state.cantidad === 0 ? 1 : this.state.cantidad;
     var fullName =
-      this.handleFormatName(this.state.user) +
+      handleFormatName(this.state.user) +
       (this.state.lastName
-        ? " " + this.handleFormatName(this.state.lastName)
+        ? " " + handleFormatName(this.state.lastName)
         : "");
     var extra3 = JSON.stringify({
       qty: quantity,

@@ -69,7 +69,7 @@ export default class CategoriesImgMenu extends Component {
                                 <p>Belleza y cuidado Personal</p>
                             </div>
                         </a>
-                        <a href="/categoria/cámaras-y-accesorios" className="categories-img">
+                        <a href="/categoria/camaras-fotografia-y-video" className="categories-img">
                         <div className="item">
                                 <p className="categories-menu-icon">
                                     <FontAwesomeIcon icon={faCameraRetro} />
@@ -125,7 +125,7 @@ export default class CategoriesImgMenu extends Component {
                                 <p>Electrodomésticos</p>
                             </div>
                         </a>
-                        <a href="/categoria/electrónica,-audio-y-video" className="categories-img no-movil">
+                        <a href="/categoria/electrónica-audio-y-video" className="categories-img no-movil">
                             <div className="item">
                                 <p className="categories-menu-icon">
                                     <FontAwesomeIcon icon={faHeadphones} />
@@ -175,7 +175,7 @@ export default class CategoriesImgMenu extends Component {
                                     <p>Juegos y juguetes</p>
                                 </div>
                             </a>
-                            <a cla href="categoria/libros,-revistas,-comics"ssName="categories-img no-movil">
+                            <a cla href="categoria/libros"ssName="categories-img no-movil">
                                 <div className="item">
                                     <p className="categories-menu-icon">
                                         <img src={libros} />

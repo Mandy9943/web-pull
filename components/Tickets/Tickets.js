@@ -27,7 +27,7 @@ class Tickets extends Component {
       <div className="wrap-tickets">
         {dataTicket.map((item, i) => (
           <a key={i} href={"/categoria/" + linkTicket[i].url.replace(/ /g, "-").trim().toLowerCase() } className="tickets">
-                  <img src={item.url.replace(/-/g, " ")} />
+                  <img src={item.url.replace(/^[, ]+|[, ]+$|[, ]+/g, "").trim()} />
             </a>
         ))}
       </div>

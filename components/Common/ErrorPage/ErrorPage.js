@@ -1,4 +1,4 @@
-import './ErrorPage.css'
+import './ErrorPageNew.css'
 import BackImg from './img/bg.jpg'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebookF, faTwitter, faInstagram, faPinterestP, faLinkedinIn, faYoutube, faWhatsapp} from "@fortawesome/free-brands-svg-icons"

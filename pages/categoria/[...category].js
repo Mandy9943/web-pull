@@ -15,6 +15,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTruck, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import favicon from "../../assets/img/favicon.svg";
 import {searchItemsPerPage} from "../../lib/config";
+import {handleFormatName} from '../../lib/functions'
 
 
 
@@ -30,7 +31,7 @@ function Results({ data, session }) {
         //     "image_path": encodeURI("//kiero.co/images/resources/deportes y fitness/"), "enable": true
         // },
 
-        "deportes y fitness": {
+        "Deportes y fitness": {
             "estructure": [1, 2, 3],
             "links": ["Deportes-y-fitness", "Accesorios-deportes-y-aire-libre", "Entrenamiento-de-fitness", "Recreación-en-exteriores", "Deportes-y-acondicionamiento-físico", "Tienda-para-fanáticos-de-los-deportes"],
             "image_path": encodeURI("//127.0.0.1/images/resources/deportes y fitness/"), "enable": true
@@ -54,9 +55,9 @@ function Results({ data, session }) {
             "image_path": encodeURI("//127.0.0.1/images/resources/belleza/"), "enable": true
         },
 
-        "cámaras, fotografía y video": {
+        "cámaras fotografía y video": {
             "estructure": [1, 2, 3, 3, 3, 2, 1],
-            "links": ["Cámaras,-fotografía-y-video", "Binoculares,-telescopios-y-óptica", "Accesorios-para-cámara,-foto-y-video", "Estuches-y-bolsas-para-cámaras", "Cámaras-de-vigilancia-simuladas", "Flash-de-cámara", "Cámaras-digitales", "Fotografía-cinematográfica", "Iluminación-y-estudio-para-cámaras", "Equipo-de-video", "Impresoras-y-escáneres", "Trípodes-y-monopie-de-cámara", "Cámaras-de-fotografía-subacuático", "Cámaras-de-vigilancia-y-seguridad", "Videocámaras-y-lentes-de-cámara"],
+            "links": ["Cámaras-fotografía-y-video", "Binoculares-telescopios-y-óptica", "Accesorios-para-cámara-foto-y-video", "Estuches-y-bolsas-para-cámaras", "Cámaras-de-vigilancia-simuladas", "Flash-de-cámara", "Cámaras-digitales", "Fotografía-cinematográfica", "Iluminación-y-estudio-para-cámaras", "Equipo-de-video", "Impresoras-y-escáneres", "Trípodes-y-monopie-de-cámara", "Cámaras-de-fotografía-subacuático", "Cámaras-de-vigilancia-y-seguridad", "Videocámaras-y-lentes-de-cámara"],
             "image_path": encodeURI("//127.0.0.1/images/resources/camaras, fotografia y video/"), "enable": true
         },
 
@@ -69,13 +70,13 @@ function Results({ data, session }) {
 
         "consolas y videojuegos": {
             "estructure": [1, 2, 3, 3, 3, 1],
-            "links": ["Consolas-y-videojuegos", "Juegos,-consolas-y-accesorios-PlayStation-4", "Xbox-One", "Nintendo Switch", "Juegos-y-accesorios-de-PC", "Juegos-y-accesorios-para-Mac", "Nintendo-3DS-y-2DS", "PlayStation-Vita", "Sistemas-heredados, juegos-retro", "Accesorios-de-Xbox-Serie-X", "Accesorios-realidad-virtual-independientes", "Juegos-de-Xbox-Serie-X-&-S", "Microconsolas-de-videojuegos"],
+            "links": ["Consolas-y-videojuegos", "Juegos-consolas-y-accesorios-PlayStation-4", "Xbox-One", "Nintendo Switch", "Juegos-y-accesorios-de-PC", "Juegos-y-accesorios-para-Mac", "Nintendo-3DS-y-2DS", "PlayStation-Vita", "Sistemas-heredados, juegos-retro", "Accesorios-de-Xbox-Serie-X", "Accesorios-realidad-virtual-independientes", "Juegos-de-Xbox-Serie-X-&-S", "Microconsolas-de-videojuegos"],
             "image_path": encodeURI("//127.0.0.1/images/resources/consolas y videojuegos/"), "enable": true
         },
 
-        "electrónica, audio y video": {
+        "electrónica audio y video": {
             "estructure": [1, 2, 3, 3, 2, 3, 3, 1],
-            "links": ["Electrónica,-audio-y-video", "Televisión-y-video", "Accesorios-y-suministros-de-electrónica", "Contenedores-de-almacenamiento-baterías", "Componentes-electrónicos", "Dispositivos-y-accesorios-de-Amazon", "Electrónica-para-carros-y-vehículos", "Lectores-de-libros-digitales-y-accesorios", "GPS,-buscadores-y-accesorios", "Otros-accesorios-de-electrónica", "Equipo-de-seguridad-y-vigilancia", "Baterías,-cargadores-y-accesorios-hogar", "Proyectores-de-vídeo", "Plan-de-servicio-computadora-electrónica", "Portapilas-y-soportes", "Transformadores-de-aislamiento", "Unidades-de-distribución-energía", "Tecnología-vestible"],
+            "links": ["Electrónica-audio-y-video", "Televisión-y-video", "Accesorios-y-suministros-de-electrónica", "Contenedores-de-almacenamiento-baterías", "Componentes-electrónicos", "Dispositivos-y-accesorios-de-Amazon", "Electrónica-para-carros-y-vehículos", "Lectores-de-libros-digitales-y-accesorios", "GPS-buscadores-y-accesorios", "Otros-accesorios-de-electrónica", "Equipo-de-seguridad-y-vigilancia", "Baterías-cargadores-y-accesorios-hogar", "Proyectores-de-vídeo", "Plan-de-servicio-computadora-electrónica", "Portapilas-y-soportes", "Transformadores-de-aislamiento", "Unidades-de-distribución-energía", "Tecnología-vestible"],
             "image_path": encodeURI("//127.0.0.1/images/resources/electronica audio y video/"), "enable": true
         },
 
@@ -95,20 +96,20 @@ function Results({ data, session }) {
 
         "hogar": {
             "estructure": [1, 2, 3, 3, 2, 3, 3, 2, 3, 3, 3, 2, 1],
-            "links": ["Hogar", "Productos-de-baño-hogar", "Set-de-toallas-y-toallones-de-baño", "Funda-decorativa-para-almohada-de-niño", "Alfombras-y-tapetes-para-el-hogar", "Aspiradoras-y-cuidado-de-pisos", "Cubrecamas-o-mantas-para-cuartos", "Cortinas,-ganchos-y-forros-de-ducha", "Artículos-de-uso-doméstico", "Calefacción,-enfriamiento-y-calidad-del-aire", "Ropa-de-cama-doméstico", "Cubrecolchones", "Difusores-y-fragancias-para-el-hogar", "Entrepaños-flotantespara-el-hogar", "Equipos-para-café-té-y-exprés", "Espejos", "Mejoras-del-hogar", "Colecciones-de-ropa-de-cama", "Muebles-para-el-hogar", "Obras-de-arte-y-material-decorativo", "Organizador-almacenamiento-en-el-hogar", "Controladores-de-riego-automático", "Protectores-y-cubrealmohadas", "Relojes-de-hogar", "Tienda-infantil-para-el-hogar", "Otros-productos-hogar", "Suministros-de-papelería-y-envoltura-de-regalos", "Suministros-para-eventos-y-fiestas", "Cocina-y-comedor", "Decoración-de-temporada", "Accesorios-decorativos"],
+            "links": ["Hogar", "Productos-de-baño-hogar", "Set-de-toallas-y-toallones-de-baño", "Funda-decorativa-para-almohada-de-niño", "Alfombras-y-tapetes-para-el-hogar", "Aspiradoras-y-cuidado-de-pisos", "Cubrecamas-o-mantas-para-cuartos", "Cortinas-ganchos-y-forros-de-ducha", "Artículos-de-uso-doméstico", "Calefacción-enfriamiento-y-calidad-del-aire", "Ropa-de-cama-doméstico", "Cubrecolchones", "Difusores-y-fragancias-para-el-hogar", "Entrepaños-flotantespara-el-hogar", "Equipos-para-café-té-y-exprés", "Espejos", "Mejoras-del-hogar", "Colecciones-de-ropa-de-cama", "Muebles-para-el-hogar", "Obras-de-arte-y-material-decorativo", "Organizador-almacenamiento-en-el-hogar", "Controladores-de-riego-automático", "Protectores-y-cubrealmohadas", "Relojes-de-hogar", "Tienda-infantil-para-el-hogar", "Otros-productos-hogar", "Suministros-de-papelería-y-envoltura-de-regalos", "Suministros-para-eventos-y-fiestas", "Cocina-y-comedor", "Decoración-de-temporada", "Accesorios-decorativos"],
             "image_path": encodeURI("//127.0.0.1/images/resources/hogar/"), "enable": true
         },
 
 
         "instrumentos musicales": {
             "estructure": [1, 2, 3, 3, 2, 3, 1],
-            "links": ["Instrumentos-musicales", "Instrumentos-musicales-de-banda-y-orquesta", "Bajos-musicales", "Música-electrónica,-DJ-y-karaoke", "Equipo-de-grabación-de-estudio", "Guitarras", "Accesorios-para-instrumentos-musicales", "Micrófonos-de-grabación-y-accesorios", "Equipo-de-escenario-y-sonido-en-vivo", "Instrumentos-musicales-de-cuerda", "Tambores-y-percusiones", "Ukeleles,-mandolinas-y-banjos", "Instrumentos-musicales-de-viento-y-madera", "Amplificadores-y-efectos", "Teclados-y-MIDI"],
+            "links": ["Instrumentos-musicales", "Instrumentos-musicales-de-banda-y-orquesta", "Bajos-musicales", "Música-electrónica-DJ-y-karaoke", "Equipo-de-grabación-de-estudio", "Guitarras", "Accesorios-para-instrumentos-musicales", "Micrófonos-de-grabación-y-accesorios", "Equipo-de-escenario-y-sonido-en-vivo", "Instrumentos-musicales-de-cuerda", "Tambores-y-percusiones", "Ukeleles-mandolinas-y-banjos", "Instrumentos-musicales-de-viento-y-madera", "Amplificadores-y-efectos", "Teclados-y-MIDI"],
             "image_path": encodeURI("//127.0.0.1/images/resources/instrumentos musicales/"), "enable": true
         },
 
         "juguetes y juegos": {
             "estructure": [1, 2, 3, 3, 2, 3, 3, 2, 1],
-            "links": ["Juguetes-y-juegos", "Juguetes-y-deportes-al-aire-libre", "Juguetes-de-aprendizaje-y-educación", "Artículos-para-fiesta", "Bicicletas,-triciclos-y-carritos", "Juguetes-y-juegos-coleccionables", "Figuras-y-sets-de-juegos", "Juegos-y-accesorios", "Juegos-de-imitación", "Juguetes-novedosos-y-de-broma", "Juguetes-para-bebés-y-niños-pequeños", "Vehículos-de-juguete-y-control-remoto", "Muebles,-decoración-y-almacenamiento-niños", "Muñecas-y-accesorios", "Pasatiempos", "Juguetes-y-animales-de-peluche", "Rompecabezas", "Juguetes-electrónicos", "Juguetes-de-construcción", "Títeres-y-teatros-de-títeres"],
+            "links": ["Juguetes-y-juegos", "Juguetes-y-deportes-al-aire-libre", "Juguetes-de-aprendizaje-y-educación", "Artículos-para-fiesta", "Bicicletas-triciclos-y-carritos", "Juguetes-y-juegos-coleccionables", "Figuras-y-sets-de-juegos", "Juegos-y-accesorios", "Juegos-de-imitación", "Juguetes-novedosos-y-de-broma", "Juguetes-para-bebés-y-niños-pequeños", "Vehículos-de-juguete-y-control-remoto", "Muebles-decoración-y-almacenamiento-niños", "Muñecas-y-accesorios", "Pasatiempos", "Juguetes-y-animales-de-peluche", "Rompecabezas", "Juguetes-electrónicos", "Juguetes-de-construcción", "Títeres-y-teatros-de-títeres"],
             "image_path": encodeURI("//127.0.0.1/images/resources/juguetes y juegos/"), "enable": true
         },
 
@@ -129,15 +130,15 @@ function Results({ data, session }) {
         //     "links": ["Ropa,-calzados-y-accesorios", "Ropa-para-mujeres", "Moda-para-hombres", "Moda-para-niñas", "Moda-para-niños", "Ropa-para-bebés", "Ropa-y-zapatos-para-niños-"],
         //     "image_path": encodeURI("//127.0.0.1/images/resources/ropa/"), "enable": true
         // },
-        "ropa, calzado y accesorios": {
+        "ropa calzado y accesorios": {
             "estructure": [1, 2, 3, 3, 2, 1],
-            "links": ["Ropa,-calzado-y-accesorios", "Moda-para-hombres", "Moda-para-mujeres", "Tiendas-para-niñas", "Disfraces-y-accesorios-para-todo-género", "Accesorios para zapatos y relojes", "Ropa-para-bebés", "Novedades-y-de-uso-especial", "Uniformes,-trabajo-y-seguridad", "Moda-para-niños", "Moda-para-niñas", "Equipaje-y-equipo-de-viaje"],
+            "links": ["Ropa-calzado-y-accesorios", "Moda-para-hombres", "Moda-para-mujeres", "Tiendas-para-niñas", "Disfraces-y-accesorios-para-todo-género", "Accesorios para zapatos y relojes", "Ropa-para-bebés", "Novedades-y-de-uso-especial", "Uniformes-trabajo-y-seguridad", "Moda-para-niños", "Moda-para-niñas", "Equipaje-y-equipo-de-viaje"],
             "image_path": encodeURI("//127.0.0.1/images/resources/ropa calzado y accesorios/"), "enable": true
         },
 
         "vehículos": {
             "estructure": [1, 2, 3, 3, 2, 3, 3, 1],
-            "links": ["Vehículos", "Accesorios-exteriores-para-carro", "Accesorios-interiores-para-carro", "Neumáticos-y-rines-para-carro", "Aceites-y-fluidos-para-carro", "Cuidado-de-carro-y-moto", "Equipo-de-carros-comerciales-y-uso-pesado", "Luces,-bombillas-e-indicadores", "Motos,-accesorios-y-piezas", "Piezas-de-repuestos-para-carro", "Herramientas-para-carro", "Otros-accesorios-de-vehículos", "Piezas-y-repuestos-para-caravanas", "Pintura-y-suministros-de-pintura-carro", "Artículos-para-aficionados-de-vehículos", "Accesorios-para-remolques", "Electrónica-y-accesorios-para-carros", "Repuestos-y-accesorios-rendimiento-carro"],
+            "links": ["Vehículos", "Accesorios-exteriores-para-carro", "Accesorios-interiores-para-carro", "Neumáticos-y-rines-para-carro", "Aceites-y-fluidos-para-carro", "Cuidado-de-carro-y-moto", "Equipo-de-carros-comerciales-y-uso-pesado", "Luces-bombillas-e-indicadores", "Motos-accesorios-y-piezas", "Piezas-de-repuestos-para-carro", "Herramientas-para-carro", "Otros-accesorios-de-vehículos", "Piezas-y-repuestos-para-caravanas", "Pintura-y-suministros-de-pintura-carro", "Artículos-para-aficionados-de-vehículos", "Accesorios-para-remolques", "Electrónica-y-accesorios-para-carros", "Repuestos-y-accesorios-rendimiento-carro"],
             "image_path": encodeURI("//127.0.0.1/images/resources/vehiculos/"), "enable": true
         },
         "computadoras y accesorios": {
@@ -154,13 +155,13 @@ function Results({ data, session }) {
 
         "industria y científico": {
             "estructure": [1, 2, 3, 3, 2, 3, 3, 2, 3, 3, 2, 1],
-            "links": ["industria y científico", "Accesorios-y-equipos-de-tiendas-minoristas", "Cintas,-adhesivos-y-sellantes", "Productos-de-laboratorio-y-ciencias", "Equipo-industrial", "Equipo-y-suministros-para-servicio", "Filtración-industrial", "Herramientas-de-corte", "Herramientas-eléctricas-y-de-mano", "Productos-de-iluminación-comercial", "Industrial-y-eléctrico", "Materias-primas", "Hidráulica,-neumática-y-plomería", "Higiene-y-seguridad-laboral", "Productos-abrasivos-y-de-acabado", "Medición-y-test-industrial", "Productos-de-laboratorio-y-ciencias", "Señalización-digital", "Sujetadores", "Productos-para-manipulación-de-materiales", "Productos-de-puertas-comerciales", "Productos-de-transmisión-de-energía", "Robótica", "Suministros-de-empaque-y-envío", "Suministros-de-limpieza-y-saneamiento", "Suministros-médicos-profesionales", "Productos-para-impresión-3D", "Suministros-dentales-profesionales"],
+            "links": ["industria y científico", "Accesorios-y-equipos-de-tiendas-minoristas", "Cintas-adhesivos-y-sellantes", "Productos-de-laboratorio-y-ciencias", "Equipo-industrial", "Equipo-y-suministros-para-servicio", "Filtración-industrial", "Herramientas-de-corte", "Herramientas-eléctricas-y-de-mano", "Productos-de-iluminación-comercial", "Industrial-y-eléctrico", "Materias-primas", "Hidráulica-neumática-y-plomería", "Higiene-y-seguridad-laboral", "Productos-abrasivos-y-de-acabado", "Medición-y-test-industrial", "Productos-de-laboratorio-y-ciencias", "Señalización-digital", "Sujetadores", "Productos-para-manipulación-de-materiales", "Productos-de-puertas-comerciales", "Productos-de-transmisión-de-energía", "Robótica", "Suministros-de-empaque-y-envío", "Suministros-de-limpieza-y-saneamiento", "Suministros-médicos-profesionales", "Productos-para-impresión-3D", "Suministros-dentales-profesionales"],
             "image_path": encodeURI("//127.0.0.1/images/resources/industria y científico/"), "enable": true
         },
         
          "artes y manualidades": {
             "estructure": [1, 2, 3, 3, 2, 1],
-            "links": ["Artes-y-manualidades", "Artes-y-manualidades-para-niños", "Materiales-para-arte-y-manualidades", "Almacenamiento-de-materiales-de-arte", "Cuentas-y-adornos,-elaboración-bisutería", "Productos-de-costura", "Telas-para-manualidades", "Suministro-de-punto-y-ganchillo", "Suministros-para-álbumes-de-recortes", "Artículos-para-pintura,-dibujo-y-arte", "Suministros-de-grabado", "Suministros-de-tejido-y-costura"],
+            "links": ["Artes-y-manualidades", "Artes-y-manualidades-para-niños", "Materiales-para-arte-y-manualidades", "Almacenamiento-de-materiales-de-arte", "Cuentas-y-adornos-elaboración-bisutería", "Productos-de-costura", "Telas-para-manualidades", "Suministro-de-punto-y-ganchillo", "Suministros-para-álbumes-de-recortes", "Artículos-para-pintura-dibujo-y-arte", "Suministros-de-grabado", "Suministros-de-tejido-y-costura"],
             "image_path": encodeURI("//127.0.0.1/images/resources/artes y manualidades/"), "enable": true
 
         },
@@ -195,7 +196,7 @@ function Results({ data, session }) {
         
          "jardín y exteriores": {
             "estructure": [1, 2, 3, 2, 1],
-            "links": ["Jardín-y-exteriores", "Herramientas-eléctricas-para-exterior", "Calefacción-exterior", "Almacenamiento-y-vivienda-al-aire-libre", "Cuidado-del-césped", "Generadores-y-energía-portátil", "Albercas,-jacuzzis-y-suministros", "Agricultura-urbana-y-ganadería", "Patio,-césped-y-jardín"],
+            "links": ["Jardín-y-exteriores", "Herramientas-eléctricas-para-exterior", "Calefacción-exterior", "Almacenamiento-y-vivienda-al-aire-libre", "Cuidado-del-césped", "Generadores-y-energía-portátil", "Albercas-jacuzzis-y-suministros", "Agricultura-urbana-y-ganadería", "Patio-césped-y-jardín"],
             "image_path": encodeURI("//127.0.0.1/images/resources/jardin y exteriores/"), "enable": true
         }
     }
@@ -205,28 +206,28 @@ function Results({ data, session }) {
     const e = complete[category_name];
 
     if (category_name in complete) {
-        console.log(category_name);
+        // console.log(category_name);
         let bannerNo = 1;
         for (let i = 0; i < e.estructure.length; i++) {
             if (e.estructure[i] === 1) {
                 if (e.links[bannerNo - 1] !== "") {
                     structure.push(
                         // <Link href={"/categoria/[category]"} as={"/categoria/" + e.links[bannerNo - 1]} ></Link>
-                        <a className="tickets" href={"/categoria/" + e.links[bannerNo - 1].replace(/ /g, "-").trim().toLowerCase()}  >
-                                <img alt={category_name} key={i + 1} className="banner-principal" src={e.image_path + (bannerNo++) + ".jpg"} />
+                        <a className="tickets" href={"/categoria/" + e.links[bannerNo - 1].replace(/^[, ]+|[, ]+$|[, ]+/g, "-").trim().toLowerCase()}  >
+                                <img alt={category_name} key={i + 1} className="banner-principal" src={e.image_path.replace(/^[, ]+|[, ]+$|[, ]+/g, "").trim() + (bannerNo++) + ".jpg"} />
                         </a>
                     )
                 } else {
-                    structure.push(<img alt={category_name} key={i} className="banner-principal" src={e.image_path + (bannerNo++) + ".jpg"} />)
+                    structure.push(<img alt={category_name} key={i} className="banner-principal" src={e.image_path.replace(/^[, ]+|[, ]+$|[, ]+/g, "").trim() + (bannerNo++) + ".jpg"} />)
                 }
             } else if (e.estructure[i] === 2) {
-                structure.push(<CategoryFinding key={i} img_left={e.image_path + (bannerNo++) + ".jpg"} link_left={e.links[bannerNo - 2]}
-                    img_right={e.image_path + (bannerNo++) + ".jpg"} link_right={e.links[bannerNo - 2]} />);
+                structure.push(<CategoryFinding key={i} img_left={e.image_path.replace(/^[, ]+|[, ]+$|[, ]+/g, "").trim() + (bannerNo++) + ".jpg"} link_left={e.links[bannerNo - 2]}
+                    img_right={e.image_path.replace(/^[, ]+|[, ]+$|[, ]+/g, "").trim() + (bannerNo++) + ".jpg"} link_right={e.links[bannerNo - 2]} />);
             } else if (e.estructure[i] === 3) {
                 structure.push(<Tickets key={i}
-                    img_left={e.image_path + (bannerNo++) + ".jpg"} link_left={e.links[bannerNo - 2]}
-                    img_center={e.image_path + (bannerNo++) + ".jpg"} link_center={e.links[bannerNo - 2]}
-                    img_right={e.image_path + (bannerNo++) + ".jpg"} link_right={e.links[bannerNo - 2]} />)
+                    img_left={e.image_path.replace(/^[, ]+|[, ]+$|[, ]+/g, "").trim() + (bannerNo++) + ".jpg"} link_left={e.links[bannerNo - 2]}
+                    img_center={e.image_path.replace(/^[, ]+|[, ]+$|[, ]+/g, "").trim() + (bannerNo++) + ".jpg"} link_center={e.links[bannerNo - 2]}
+                    img_right={e.image_path.replace(/^[, ]+|[, ]+$|[, ]+/g, "").trim() + (bannerNo++) + ".jpg"} link_right={e.links[bannerNo - 2]} />)
             }
         }
 
@@ -236,9 +237,9 @@ function Results({ data, session }) {
                 <Head>
                     <title>Kiero | Categorías</title>
                     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-                    <title>Compra en Kiero.co Marketplace | {category_name}</title>
-                    <meta name="Title" content={"Compra en Kiero.co Marketplace | " + category_name} />
-                    <meta name="Description" content={"KIERO.CO Marketplace | Encuentra " + category_name + " en Kiero.co - Descubre millones de productos online"} />
+                    <title>Compra en Kiero.co Marketplace | {handleFormatName(category_name)}</title>
+                    <meta name="Title" content={"Compra en Kiero.co Marketplace | " + handleFormatName(category_name)} />
+                    <meta name="Description" content={"KIERO.CO Marketplace | Encuentra " + handleFormatName(category_name) + " en Kiero.co - Descubre millones de productos online"} />
                     <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
                     <meta name="robots" content="index,follow" />
                     <meta name="robots" content="noodp" />
@@ -247,13 +248,13 @@ function Results({ data, session }) {
                     <meta name="apple-mobile-web-app-capable" content="yes" />
                     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
                     <meta name="google" content="notranslate" />
-                    <meta name="twitter: card" content={"Encuentra todo lo relacionado con productos de " + category_name + " en kiero.co"} />
+                    <meta name="twitter: card" content={"Encuentra todo lo relacionado con productos de " + handleFormatName(category_name) + " en kiero.co"} />
                     <meta name="twitter: site" content="@kierogroup1" />
                     <meta name="twitter: title" content=" Compra en Kiero todo lo encuentras en nuestra Tienda Online" />
-                    <meta name="twitter: description" contenido={"Envíos gratis en Colombia - Encuentra productos de " + category_name + " en Kiero.co - Descubre millones de productos online."} />
+                    <meta name="twitter: description" contenido={"Envíos gratis en Colombia - Encuentra productos de " + handleFormatName(category_name) + " en Kiero.co - Descubre millones de productos online."} />
                     <meta name="twitter: image" content="https://kiero.co/_next/static/images/banners-apk-911388a7cee05467bbd92b4b573820ab.jpg" />
-                    <meta property="og:title" content={"Compra " + category_name + " en Kiero.co Encuentra los mejore de " + category_name +"en Kiero.co"} />
-                    <meta property="og:description" content={"Envíos gratis en Colombia - Encuentra productos de " + category_name + " en Kiero.co - Descubre millones de productos online."} />
+                    <meta property="og:title" content={"Compra " + handleFormatName(category_name) + " en Kiero.co Encuentra los mejores productos de " + handleFormatName(category_name) +"en Kiero.co"} />
+                    <meta property="og:description" content={"Envíos gratis en Colombia - Encuentra productos de " + handleFormatName(category_name) + " en Kiero.co - Descubre millones de productos online."} />
                     <meta property="og:url" content="url de listado" />
                     <meta property='og:locale' content='es_ES' />
                     <meta property='og:type' content='website' />
@@ -296,9 +297,9 @@ function Results({ data, session }) {
                 <Head>
                     <title>Kiero | Categorías</title>
                     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-                    <title>Compra en Kiero.co Marketplace | {category_name}</title>
-                    <meta name="Title" content={"Compra en Kiero.co Marketplace | " + category_name} />
-                    <meta name="Description" content={"KIERO.CO Marketplace | Encuentra " + category_name + " en Kiero.co - Descubre millones de productos online"} />
+                    <title>Compra en Kiero.co Marketplace | {handleFormatName(category_name)}</title>
+                    <meta name="Title" content={"Compra en Kiero.co Marketplace | " + handleFormatName(category_name)} />
+                    <meta name="Description" content={"KIERO.CO Marketplace | Encuentra " + handleFormatName(category_name) + " en Kiero.co - Descubre millones de productos online"} />
                     <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
                     <meta name="robots" content="index,follow" />
                     <meta name="robots" content="noodp" />
@@ -307,13 +308,13 @@ function Results({ data, session }) {
                     <meta name="apple-mobile-web-app-capable" content="yes" />
                     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
                     <meta name="google" content="notranslate" />
-                    <meta name="twitter: card" content={"Encuentra todo lo relacionado con productos de " + category_name + " en kiero.co"} />
+                    <meta name="twitter: card" content={"Encuentra todo lo relacionado con productos de " + handleFormatName(category_name) + " en kiero.co"} />
                     <meta name="twitter: site" content="@kierogroup1" />
                     <meta name="twitter: title" content=" Compra en Kiero todo lo encuentras en nuestra Tienda Online" />
-                    <meta name="twitter: description" contenido={"Envíos gratis en Colombia - Encuentra productos de " + category_name + " en Kiero.co - Descubre millones de productos online."} />
+                    <meta name="twitter: description" contenido={"Envíos gratis en Colombia - Encuentra productos de " + handleFormatName(category_name) + " en Kiero.co - Descubre millones de productos online."} />
                     <meta name="twitter: image" content="https://kiero.co/_next/static/images/banners-apk-911388a7cee05467bbd92b4b573820ab.jpg" />
-                    <meta property="og:title" content={"Compra " + category_name + " en Kiero.co Compra Portatiles y accesorios en Kiero.co "} />
-                    <meta property="og:description" content={"Encuentra " + category_name + " en Kiero.co - Descubre millones de p roductos online. Encuentra Portatiles y accesorios en Kiero.co "} />
+                    <meta property="og:title" content={"Compra " + handleFormatName(category_name) + " en Kiero.co Compra Portatiles y accesorios en Kiero.co "} />
+                    <meta property="og:description" content={"Encuentra " + handleFormatName(category_name) + " en Kiero.co - Descubre millones de p roductos online. Encuentra Portatiles y accesorios en Kiero.co "} />
                     <meta property="og:url" content="url de listado" />
                     <meta property='og:locale' content='es_ES' />
                     <meta property='og:type' content='website' />
@@ -323,7 +324,7 @@ function Results({ data, session }) {
                     <link rel="icon" href={favicon} type="image/png" />
                 </Head>
                 <Category data={data} user_data={session} page={page} path={currentPath}/>
-                {console.log("category",data)}
+                {/* {console.log("category",data)} */}
             </div>
         )
     }
