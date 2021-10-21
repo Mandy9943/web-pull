@@ -50,7 +50,7 @@ class CategoryBanners extends Component {
 									<section key={i} className="item">
 										<a href={'/categoria/' + category.replace(/^[, ]+|[, ]+$|[, ]+/g, "-").trim().toLowerCase()}>
 											{/* <img src={baseUrl + file} /> */}
-											<img src={'http://localhost' + file} />
+											<img src={'http://localhost' + file} alt={category.replace(/-/g, " ")}/>
 										</a>
 									</section>
 								);

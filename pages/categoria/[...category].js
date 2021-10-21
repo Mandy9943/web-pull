@@ -31,7 +31,7 @@ function Results({ data, session }) {
         //     "image_path": encodeURI("//kiero.co/images/resources/deportes y fitness/"), "enable": true
         // },
 
-        "Deportes y fitness": {
+        "deportes y fitness": {
             "estructure": [1, 2, 3],
             "links": ["Deportes-y-fitness", "Accesorios-deportes-y-aire-libre", "Entrenamiento-de-fitness", "Recreación-en-exteriores", "Deportes-y-acondicionamiento-físico", "Tienda-para-fanáticos-de-los-deportes"],
             "image_path": encodeURI("//127.0.0.1/images/resources/deportes y fitness/"), "enable": true
@@ -60,7 +60,6 @@ function Results({ data, session }) {
             "links": ["Cámaras-fotografía-y-video", "Binoculares-telescopios-y-óptica", "Accesorios-para-cámara-foto-y-video", "Estuches-y-bolsas-para-cámaras", "Cámaras-de-vigilancia-simuladas", "Flash-de-cámara", "Cámaras-digitales", "Fotografía-cinematográfica", "Iluminación-y-estudio-para-cámaras", "Equipo-de-video", "Impresoras-y-escáneres", "Trípodes-y-monopie-de-cámara", "Cámaras-de-fotografía-subacuático", "Cámaras-de-vigilancia-y-seguridad", "Videocámaras-y-lentes-de-cámara"],
             "image_path": encodeURI("//127.0.0.1/images/resources/camaras, fotografia y video/"), "enable": true
         },
-
 
         "celulares y accesorios": {
             "estructure": [1, 2],
@@ -92,14 +91,11 @@ function Results({ data, session }) {
             "image_path": encodeURI("//127.0.0.1/images/resources/herramientas/"), "enable": true
         },
 
-
-
         "hogar": {
             "estructure": [1, 2, 3, 3, 2, 3, 3, 2, 3, 3, 3, 2, 1],
             "links": ["Hogar", "Productos-de-baño-hogar", "Set-de-toallas-y-toallones-de-baño", "Funda-decorativa-para-almohada-de-niño", "Alfombras-y-tapetes-para-el-hogar", "Aspiradoras-y-cuidado-de-pisos", "Cubrecamas-o-mantas-para-cuartos", "Cortinas-ganchos-y-forros-de-ducha", "Artículos-de-uso-doméstico", "Calefacción-enfriamiento-y-calidad-del-aire", "Ropa-de-cama-doméstico", "Cubrecolchones", "Difusores-y-fragancias-para-el-hogar", "Entrepaños-flotantespara-el-hogar", "Equipos-para-café-té-y-exprés", "Espejos", "Mejoras-del-hogar", "Colecciones-de-ropa-de-cama", "Muebles-para-el-hogar", "Obras-de-arte-y-material-decorativo", "Organizador-almacenamiento-en-el-hogar", "Controladores-de-riego-automático", "Protectores-y-cubrealmohadas", "Relojes-de-hogar", "Tienda-infantil-para-el-hogar", "Otros-productos-hogar", "Suministros-de-papelería-y-envoltura-de-regalos", "Suministros-para-eventos-y-fiestas", "Cocina-y-comedor", "Decoración-de-temporada", "Accesorios-decorativos"],
             "image_path": encodeURI("//127.0.0.1/images/resources/hogar/"), "enable": true
         },
-
 
         "instrumentos musicales": {
             "estructure": [1, 2, 3, 3, 2, 3, 1],
@@ -112,7 +108,6 @@ function Results({ data, session }) {
             "links": ["Juguetes-y-juegos", "Juguetes-y-deportes-al-aire-libre", "Juguetes-de-aprendizaje-y-educación", "Artículos-para-fiesta", "Bicicletas-triciclos-y-carritos", "Juguetes-y-juegos-coleccionables", "Figuras-y-sets-de-juegos", "Juegos-y-accesorios", "Juegos-de-imitación", "Juguetes-novedosos-y-de-broma", "Juguetes-para-bebés-y-niños-pequeños", "Vehículos-de-juguete-y-control-remoto", "Muebles-decoración-y-almacenamiento-niños", "Muñecas-y-accesorios", "Pasatiempos", "Juguetes-y-animales-de-peluche", "Rompecabezas", "Juguetes-electrónicos", "Juguetes-de-construcción", "Títeres-y-teatros-de-títeres"],
             "image_path": encodeURI("//127.0.0.1/images/resources/juguetes y juegos/"), "enable": true
         },
-
 
         "relojes y joyería": {
             "estructure": [1, 2, 2, 2],
@@ -141,17 +136,18 @@ function Results({ data, session }) {
             "links": ["Vehículos", "Accesorios-exteriores-para-carro", "Accesorios-interiores-para-carro", "Neumáticos-y-rines-para-carro", "Aceites-y-fluidos-para-carro", "Cuidado-de-carro-y-moto", "Equipo-de-carros-comerciales-y-uso-pesado", "Luces-bombillas-e-indicadores", "Motos-accesorios-y-piezas", "Piezas-de-repuestos-para-carro", "Herramientas-para-carro", "Otros-accesorios-de-vehículos", "Piezas-y-repuestos-para-caravanas", "Pintura-y-suministros-de-pintura-carro", "Artículos-para-aficionados-de-vehículos", "Accesorios-para-remolques", "Electrónica-y-accesorios-para-carros", "Repuestos-y-accesorios-rendimiento-carro"],
             "image_path": encodeURI("//127.0.0.1/images/resources/vehiculos/"), "enable": true
         },
+
         "computadoras y accesorios": {
             "estructure": [1, 2, 3, 3, 2, 1],
             "links": ["Computadoras-y-Accesorios", "Computadoras-y-tabletas", "Monitores-de-computadoras", "Componentes-para-computadoras", "Almacenamiento-de-datos-para-computador", "Accesorios-para-tablets", "Piezas-y-repuestos-para-tablets", "Garantías-de-equipos-informáticos", "Servidores-para-computadora", "Dispositivos-para-redes-de-computadoras", "Accesorios-y-periféricos-informáticos", "Accesorios-para-laptop"],
             "image_path": encodeURI("//127.0.0.1/images/resources/computadoras y accesorios/"), "enable": true
         },
+
         "salud": {
             "estructure": [1, 2, 3, 3],
             "links": ["Salud", "Cuidado-de-la-salud", "Equipo-y-suministros-médicos", "Cuidado-de-bebés-y-niños", "Productos-de-bienestar-y-relajación", "Productos-para-cuidado-de-los-ojos", "Nutrición-deportiva", "Productos-relacionados-con-el-tabaco", "Vitaminas-y-suplementos-dietéticos"],
             "image_path": encodeURI("//127.0.0.1/images/resources/salud/"), "enable": true
         },
-
 
         "industria y científico": {
             "estructure": [1, 2, 3, 3, 2, 3, 3, 2, 3, 3, 2, 1],
@@ -163,35 +159,30 @@ function Results({ data, session }) {
             "estructure": [1, 2, 3, 3, 2, 1],
             "links": ["Artes-y-manualidades", "Artes-y-manualidades-para-niños", "Materiales-para-arte-y-manualidades", "Almacenamiento-de-materiales-de-arte", "Cuentas-y-adornos-elaboración-bisutería", "Productos-de-costura", "Telas-para-manualidades", "Suministro-de-punto-y-ganchillo", "Suministros-para-álbumes-de-recortes", "Artículos-para-pintura-dibujo-y-arte", "Suministros-de-grabado", "Suministros-de-tejido-y-costura"],
             "image_path": encodeURI("//127.0.0.1/images/resources/artes y manualidades/"), "enable": true
-
         },
         
          "artesanías y productos hechos a mano": {
             "estructure": [1, 2, 1],
             "links": ["Artesanías-y-productos-hechos-a-mano", "Artículos-hechos-a-mano-para-boda", "Decoración-hogar-hecha-a-mano", "Utensilios-para-hornear-hechos-a-mano"],
             "image_path": encodeURI("//127.0.0.1/images/resources/artesanias y productos hechos a manos/"), "enable": true
-             
-     },
+        },
         
          "coleccionables y bellas artes": {
             "estructure": [1, 2, 3, 3],
             "links": ["Coleccionables-y-bellas-artes", "Arte-coleccionable-y-bellas-artes", "Artículos-de-deportes-coleccionables", "Accesorios-coleccionables-de-hockey", "Accesorios-recuerdos-históricos-y-políticos", "Cascos-coleccionables-de-fútbol", "Entretenimiento-coleccionable", "Monedas-coleccionables", "Tarjetas-coleccionables-de-béisbol"],
             "image_path": encodeURI("//127.0.0.1/images/resources/coleccionables y bellas artes/"), "enable": true
-             
-     },
+        },
         
          "libros": {
             "estructure": [1, 2, 3, 3, 3, 2, 3, 3, 3, 2, 3, 3, 1],
             "links": ["Libros", "Libros-de-autoayuda", "Libros-de-calendarios", "Libros-de-adolescente-y-jóvenes", "Libros-de-artesanía-hobbies-y-hogar", "Libros-de-arte-y-fotografía", "Libros-de-biografías-y-memorias", "Libros-de-ciencia-ficción-y-fantasía", "Libros-de-ciencia-y-matemáticas", "Libros-de-cómics-y-novelas-gráficas", "Libros-de-crianza-y-relaciones", "Libros-de-cristianismo", "Libros-de-computadoras-y-tecnología", "Libros-de-negocios-e-inversiones", "Libros-deportes-y-tiempo-libre", "Libros-de-educación-y-enseñanza", "Libros-de-LGBTQ", "Libros-de-humor-y-entretenimiento", "Libros-de-ingeniería-y-transportes", "Libros-derecho", "Libros-de-medicina-y-médicos", "Libros-de-viaje", "Libros-de-misterio-thriller-y-suspenso", "Libros-de-recetas-comida-y-vino", "Libros-de-infantil-y-juvenil", "Libros-de-política-y-ciencias-sociales", "Libros-de-preparación-para-pruebas", "Libros-de-referencias", "Libros-de-religión-y-espiritualidad", "Libros-de-romance", "Libros-de-salud-fitness-y-dieta", "Libros-de-literatura-y-ficción"],
             "image_path": encodeURI("//127.0.0.1/images/resources/libros/"), "enable": true
-             
          },
         
          "productos y suministros de oficina": {
             "estructure": [1, 2, 1],
             "links": ["Productos-y-suministros-de-oficina", "Electrónicos-de-oficina", "Productos-de-oficina", "Suministros-escolares-y-de-oficina"],
             "image_path": encodeURI("//127.0.0.1/images/resources/productos y suministros de oficina/"), "enable": true
-             
          },
         
          "jardín y exteriores": {
@@ -200,6 +191,7 @@ function Results({ data, session }) {
             "image_path": encodeURI("//127.0.0.1/images/resources/jardin y exteriores/"), "enable": true
         }
     }
+    
     let category_name = data.search.toLowerCase();
 
     let structure = [];
