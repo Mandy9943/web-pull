@@ -19,6 +19,7 @@ import { KlaviyoClient } from "../../lib/functions";
 import Cookies from "js-cookie";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import { Button, Modal } from 'react-bootstrap';
+import CryptoJS from 'crypto-js';
 
 class PaySection extends Component {
   constructor(props) {
@@ -610,7 +611,7 @@ class PaySection extends Component {
       });
       console.elog;
     }
-    console.log(this.state.typeIdentification);
+    //console.log(this.state.typeIdentification);
     this.validateForm();
   };
 
@@ -814,12 +815,30 @@ class PaySection extends Component {
       (this.state.lastName
         ? " " + this.handleFormatName(this.state.lastName)
         : "");
+
+    // const hmacSha1 = async function calcHMac(data, key = 'abc') {
+    //     var textEncoder = new TextEncoder()
+    //     var key = await window.crypto.subtle.importKey('raw', textEncoder.encode(key), {name: 'HMAC', hash: 'SHA-1'},true, ['sign']);        
+    //     var hmac = await window.crypto.subtle.sign('HMAC', key, textEncoder.encode(data));
+    //     return Array.prototype.map.call(new Uint8Array(hmac), x => ('00' + x.toString(16)).slice(-2)).join('');
+    // }
+
+    // hmacSha1(this.state.identification).then(function(result) {
+    //   // do something with result
+    // });
+
+    var hmacID = CryptoJS.HmacSHA1(this.state.identification, 'abc').toString(CryptoJS.enc.Hex)
+
     var extra3 = JSON.stringify({
       qty: quantity,
       cid: this.state.clientId,
       gclid: this.state.gclid,
       nme: fullName,
+      id: hmacID
     });
+
+    // console.log(hmacID)
+
     var md5 = require("md5");
     var ref_code = "kieroco-" + new Date().getTime();
     var signature = md5(
