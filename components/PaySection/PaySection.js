@@ -30,6 +30,7 @@ class PaySection extends Component {
       variantsSpinner: props.m_pgid ? false : true,
       modalAddr: false,
       user: "",
+      user_id: "",
       email: "",
       mobile_phone: "",
       city: "",
@@ -470,7 +471,7 @@ class PaySection extends Component {
     // Segment Identify method
     // Link your users and their actions
     // Reference: https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/#identify
-    analytics.identify(this.state.email, {
+    analytics.identify(this.state.user_id, {
       firstName: this.state.user,
       lastName: this.state.lastName,
       email: this.state.email,
@@ -828,6 +829,8 @@ class PaySection extends Component {
     // });
 
     var hmacID = CryptoJS.HmacSHA1(this.state.identification, 'abc').toString(CryptoJS.enc.Hex)
+
+    this.state.user_id = hmacID
 
     var extra3 = JSON.stringify({
       qty: quantity,
