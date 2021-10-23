@@ -63,6 +63,7 @@
     "react-image-magnify": "^2.7.4",
     "react-input-color": "^4.0.0",
     "react-items-carousel": "^2.8.0",
+    "react-loading-skeleton": "^3.0.1",
     "react-medium-image-zoom": "^4.3.5",
     "react-moment": "^1.1.1",
     "react-multi-carousel": "^2.5.5",

@@ -175,7 +175,7 @@ export default class CategoriesImgMenu extends Component {
                                     <p>Juegos y juguetes</p>
                                 </div>
                             </a>
-                            <a cla href="categoria/libros"ssName="categories-img no-movil">
+                            <a href="categoria/libros" className="categories-img no-movil">
                                 <div className="item">
                                     <p className="categories-menu-icon">
                                         <img src={libros} />
@@ -183,7 +183,7 @@ export default class CategoriesImgMenu extends Component {
                                     <p>Libros, revistas y comics</p>
                                 </div>
                             </a>
-                            <a cla href="/categoria/música"ssName="categories-img no-movil">
+                            <a href="/categoria/música" className="categories-img no-movil">
                                 <div className="item">
                                     <p className="categories-menu-icon">
                                         <img src={musica} />

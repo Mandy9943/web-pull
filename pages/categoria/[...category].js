@@ -206,20 +206,20 @@ function Results({ data, session }) {
                     structure.push(
                         // <Link href={"/categoria/[category]"} as={"/categoria/" + e.links[bannerNo - 1]} ></Link>
                         <a className="tickets" href={"/categoria/" + e.links[bannerNo - 1].replace(/^[, ]+|[, ]+$|[, ]+/g, "-").trim().toLowerCase()}  >
-                                <img alt={category_name} key={i + 1} className="banner-principal" src={e.image_path.replace(/^[, ]+|[, ]+$|[, ]+/g, "").trim() + (bannerNo++) + ".jpg"} />
+                                <img alt={category_name} key={i + 1} className="banner-principal" src={e.image_path.replace(/^[, ]+|[, ]+$|[, ]+/g, "").trim() + (bannerNo++) + ".webp"} />
                         </a>
                     )
                 } else {
-                    structure.push(<img alt={category_name} key={i} className="banner-principal" src={e.image_path.replace(/^[, ]+|[, ]+$|[, ]+/g, "").trim() + (bannerNo++) + ".jpg"} />)
+                    structure.push(<img alt={category_name} key={i} className="banner-principal" src={e.image_path.replace(/^[, ]+|[, ]+$|[, ]+/g, "").trim() + (bannerNo++) + ".webp"} />)
                 }
             } else if (e.estructure[i] === 2) {
-                structure.push(<CategoryFinding key={i} img_left={e.image_path.replace(/^[, ]+|[, ]+$|[, ]+/g, "").trim() + (bannerNo++) + ".jpg"} link_left={e.links[bannerNo - 2]}
-                    img_right={e.image_path.replace(/^[, ]+|[, ]+$|[, ]+/g, "").trim() + (bannerNo++) + ".jpg"} link_right={e.links[bannerNo - 2]} />);
+                structure.push(<CategoryFinding key={i} img_left={e.image_path.replace(/^[, ]+|[, ]+$|[, ]+/g, "").trim() + (bannerNo++) + ".webp"} link_left={e.links[bannerNo - 2]}
+                    img_right={e.image_path.replace(/^[, ]+|[, ]+$|[, ]+/g, "").trim() + (bannerNo++) + ".webp"} link_right={e.links[bannerNo - 2]} />);
             } else if (e.estructure[i] === 3) {
                 structure.push(<Tickets key={i}
-                    img_left={e.image_path.replace(/^[, ]+|[, ]+$|[, ]+/g, "").trim() + (bannerNo++) + ".jpg"} link_left={e.links[bannerNo - 2]}
-                    img_center={e.image_path.replace(/^[, ]+|[, ]+$|[, ]+/g, "").trim() + (bannerNo++) + ".jpg"} link_center={e.links[bannerNo - 2]}
-                    img_right={e.image_path.replace(/^[, ]+|[, ]+$|[, ]+/g, "").trim() + (bannerNo++) + ".jpg"} link_right={e.links[bannerNo - 2]} />)
+                    img_left={e.image_path.replace(/^[, ]+|[, ]+$|[, ]+/g, "").trim() + (bannerNo++) + ".webp"} link_left={e.links[bannerNo - 2]}
+                    img_center={e.image_path.replace(/^[, ]+|[, ]+$|[, ]+/g, "").trim() + (bannerNo++) + ".webp"} link_center={e.links[bannerNo - 2]}
+                    img_right={e.image_path.replace(/^[, ]+|[, ]+$|[, ]+/g, "").trim() + (bannerNo++) + ".webp"} link_right={e.links[bannerNo - 2]} />)
             }
         }
 

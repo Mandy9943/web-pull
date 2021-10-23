@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import TicketImg1 from "../../assets/img/tickets-img/banner-computacion.jpg";
-import TicketImg2 from "../../assets/img/tickets-img/banner-bebes.jpg";
-import TicketImg3 from "../../assets/img/tickets-img/banner-hogar.jpg";
+import TicketImg1 from "../../assets/img/tickets-img/banner-computacion.webp";
+import TicketImg2 from "../../assets/img/tickets-img/banner-bebes.webp";
+import TicketImg3 from "../../assets/img/tickets-img/banner-hogar.webp";
 import "./Tickets.css";
 import Link from "next/link";
 
 class Tickets extends Component {
   render() {
 
-    let link0 = "Computadoras%20y%20Accesorios";
+    let link0 = "Computadoras-y-Accesorios";
     let link1 = "Bebés";
     let link2 = "Hogar";
 
@@ -27,7 +27,7 @@ class Tickets extends Component {
       <div className="wrap-tickets">
         {dataTicket.map((item, i) => (
           <a key={i} href={"/categoria/" + linkTicket[i].url.replace(/ /g, "-").trim().toLowerCase() } className="tickets">
-                  <img src={item.url.replace(/^[, ]+|[, ]+$|[, ]+/g, "").trim()} alt={linkTicket[i].url.replace(/-/g, " ")}/>
+                  <img src={item.url} alt={linkTicket[i].url.replace(/-/g, " ")}/>
             </a>
         ))}
       </div>

@@ -127,7 +127,6 @@ export const searchProducts = (
 		let endpoint2 = categoryApi + `/${categoryNameOts}?size=${size}&page=${page}`;
 		let endpoint = type === 'search' ? endpoint1 : endpoint2;
 		if (params.toString().length) endpoint = endpoint + '&' + params.toString();
-		console.log("consulta api",decodeURI(endpoint) , "ots", categoryNameOts, "REVISAR LA Ñ", "parámetros", params)
 		return apiget(decodeURI(endpoint));
 	} catch (error) {
 		return error;
