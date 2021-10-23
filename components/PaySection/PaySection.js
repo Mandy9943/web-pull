@@ -20,6 +20,7 @@ import Cookies from "js-cookie";
 import {handleFormatName} from '../../lib/functions'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import { Button, Modal } from 'react-bootstrap';
+import CryptoJS from 'crypto-js';
 
 class PaySection extends Component {
   constructor(props) {
@@ -30,6 +31,7 @@ class PaySection extends Component {
       variantsSpinner: props.m_pgid ? false : true,
       modalAddr: false,
       user: "",
+      user_id: "",
       email: "",
       mobile_phone: "",
       city: "",
@@ -470,7 +472,7 @@ class PaySection extends Component {
     // Segment Identify method
     // Link your users and their actions
     // Reference: https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/#identify
-    analytics.identify(this.state.email, {
+    analytics.identify(this.state.user_id, {
       firstName: this.state.user,
       lastName: this.state.lastName,
       email: this.state.email,
@@ -611,7 +613,7 @@ class PaySection extends Component {
       });
       // console.elog;
     }
-    // console.log(this.state.typeIdentification);
+    //console.log(this.state.typeIdentification);
     this.validateForm();
   };
 
@@ -812,12 +814,32 @@ class PaySection extends Component {
       (this.state.lastName
         ? " " + handleFormatName(this.state.lastName)
         : "");
+
+    // const hmacSha1 = async function calcHMac(data, key = 'abc') {
+    //     var textEncoder = new TextEncoder()
+    //     var key = await window.crypto.subtle.importKey('raw', textEncoder.encode(key), {name: 'HMAC', hash: 'SHA-1'},true, ['sign']);        
+    //     var hmac = await window.crypto.subtle.sign('HMAC', key, textEncoder.encode(data));
+    //     return Array.prototype.map.call(new Uint8Array(hmac), x => ('00' + x.toString(16)).slice(-2)).join('');
+    // }
+
+    // hmacSha1(this.state.identification).then(function(result) {
+    //   // do something with result
+    // });
+
+    var hmacID = CryptoJS.HmacSHA1(this.state.identification, 'abc').toString(CryptoJS.enc.Hex)
+
+    this.state.user_id = hmacID
+
     var extra3 = JSON.stringify({
       qty: quantity,
       cid: this.state.clientId,
       gclid: this.state.gclid,
       nme: fullName,
+      id: hmacID
     });
+
+    // console.log(hmacID)
+
     var md5 = require("md5");
     var ref_code = "kieroco-" + new Date().getTime();
     var signature = md5(
