@@ -28,7 +28,7 @@ class Info extends Component {
             <h3>Envíos</h3>
             <p>
               Envío gratis en todos nuestros productos con un tiempo de entrega de 3
-              a 7 días hábiles.
+              a 9 días hábiles.
             </p>
           </div>
           <div className="info-item only-desktop">

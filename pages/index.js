@@ -31,32 +31,26 @@ export default class Index extends Component {
 					<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 					<meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
 
-					<meta
-						name="description"
-						content="Descubre miles de productos al mejor precio. Envios
-                    gratis a todo el pais, encuentra lo que buscas en Kiero.co"
-					/>
-					<meta name="Keywords" content="Tienda en Línea" />
-					<meta name="Title" content="Compra en Kiero.co - Marketplace" />
-					<meta name="apple-mobile-web-app-capable" content="yes" />
-					<meta
-						name="apple-mobile-web-app-status-bar-style"
-						content="black-translucent"
-					/>
-					<meta
-						name="twitter: card"
-						content="https://kiero.co/_next/static/images/logo-kiero-
-                    8bcc295b260198657f0395231376ca1a.png"
-					/>
-					<meta name="twitter: site" content="@kierogroup1" />
-					<meta
-						name="twitter: title"
-						content=" Compra en Kiero todo lo encuentras en nuestra
-                    Tienda Online"
-					/>
-					<meta
-						name="twitter: description"
-						contenido=" Envíos gratis en Colombia, productos para
+    render() {
+        return (
+            <div className="home">
+                <Head>
+              
+                    <title>Kiero en Colombia | Compra en linea y envío gratis </title>
+                    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+                    <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
+                    <meta name="robots" content="index,follow" />
+                    <meta name="description" content="En Kiero descubre miles de productos al mejor precio. Envios gratis a todo el pais, encuentra lo que buscas en Kiero" />
+                    <meta name="Keywords" content="Tienda en Línea" />
+                    <meta name="Title" content="Compra en Kiero.co - Marketplace" />
+                    <meta name="apple-mobile-web-app-capable" content="yes" />
+                    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+                    <meta name="twitter: card" content="https://kiero.co/_next/static/images/logo-kiero-
+                    8bcc295b260198657f0395231376ca1a.png" />
+                    <meta name="twitter: site" content="@kierogroup1" />
+                    <meta name="twitter: title" content=" Compra en Kiero todo lo encuentras en nuestra
+                    Tienda Online" />
+                    <meta name="twitter: description" contenido=" Envíos gratis en Colombia, productos para
                     Bebés, Belleza, Cámaras y accesorios, Electrodomésticos, Electrónica, Hogar y muebles y mucho más."
 					/>
 					<meta

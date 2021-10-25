@@ -257,7 +257,7 @@ class Terms extends Component {
               -Actualmente no es posible elegir una hora y fecha de entrega de los productos ya que el aliado logístico cuenta con unas rutas programadas para las entregas y estas pueden variar, a través de la página de la transportadora y el número de guía o rastreo suministrado, podrás hacer seguimiento a tu paquete y saber la fecha estimada en que el transportista te visitará para hacer entrega de tu pedido.
             </p>
             <p className="terms-paragraph">
-              -El tiempo estimado de entrega para los productos internacionales es de 3 a 7 días hábiles, el Marketplace brindará información sobre la transportadora y el número de guía o seguimiento para que el comprador pueda hacer rastreo de su producto.
+              -El tiempo estimado de entrega para los productos internacionales es de 3 a 9 días hábiles, el Marketplace brindará información sobre la transportadora y el número de guía o seguimiento para que el comprador pueda hacer rastreo de su producto.
             </p>
             <p className="terms-paragraph">
              -La política del Marketplace no contempla el pago del producto contra entrega por seguridad tanto del cliente como del personal al servicio del operador logístico.

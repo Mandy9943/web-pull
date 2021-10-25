@@ -204,7 +204,7 @@ class Filter extends Component {
 					<div className="filter-group categories">
 						<div className="filter-container">
 							<div className="content-left">
-								<span className="ots">{this.props.search}</span>
+								<span className="ots">{this.props.search.replace(/-/g,' ').trim()}</span>
 								{this.props.isSearch && (
 									<span className="breadcrumb">
 										{this.props.treeSelectedCategory.map((item, i) => (

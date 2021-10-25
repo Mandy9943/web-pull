@@ -2,6 +2,10 @@
   margin-bottom: 50px;
 }
 
+.wrapImgExplorer{
+  display:contents
+}
+
 .explorer .home-section-title {
   color: #111111;
   margin-bottom: 10px;
@@ -28,6 +32,7 @@
   background: #ffffff;
   height: 100%;
   max-height: 400px;
+  min-height: 250px
 }
 
 .explorer .content-explorer .main-img img {
@@ -43,6 +48,12 @@
   -ms-grid-rows: (1fr)[2];
       grid-template-rows: repeat(2, 1fr);
   grid-gap: 10px;
+}
+
+.explorer .content-explorer .group-img .wrapImgExplorer .loaderSkeleton {
+  width: 100%;
+  height: 100%;
+  max-height: 187px;
 }
 
 .explorer .content-explorer .group-img .wrapImgExplorer img {
@@ -68,6 +79,13 @@
     height: 100%;
     max-height: 340px;
   }
+
+   .explorer .content-explorer .group-img .wrapImgExplorer .loaderSkeleton{
+    width: 100%;
+    height: 100%;
+    max-height: 150px;
+   }
+
   .explorer .content-explorer .group-img .wrapImgExplorer img {
     width: 100%;
     height: 100%;
@@ -102,6 +120,11 @@
     -ms-grid-rows: (1fr)[2];
         grid-template-rows: repeat(2, 1fr);
   }
+ 
+   .explorer .content-explorer .group-img .wrapImgExplorer .loaderSkeleton{
+     max-height: inherit;
+   }
+  
   .explorer .content-explorer .group-img .wrapImgExplorer img {
     max-height: inherit;
   }

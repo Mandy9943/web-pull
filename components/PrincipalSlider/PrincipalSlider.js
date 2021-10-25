@@ -1,63 +1,74 @@
 import React, { Component } from 'react';
 import Slider from 'react-animated-slider';
 import 'react-animated-slider/build/horizontal.css';
-import BannerImg1 from "../../assets/img/banners/banner-grande-v2-10col-03.jpg";
-import BannerImg2 from "../../assets/img/banners/banner-grande-v2-10col-04.jpg";
-import BannerImg3 from "../../assets/img/banners/banner-grande-v2-10col-05.jpg";
-import BannerImg4 from "../../assets/img/banners/banner-grande-v2-10col-06.jpg";
-import BannerImg5 from "../../assets/img/banners/banner-grande-v2-10col-07.jpg";
-import BannerMobil1 from "../../assets/img/bannerCelular/banners-apk.jpg";
-import BannerMobil2 from "../../assets/img/bannerCelular/banners-apk5.jpg";
-import BannerMobil3 from "../../assets/img/bannerCelular/banners-apk2.jpg";
-import BannerMobil4 from "../../assets/img/bannerCelular/banners-apk3.jpg";
-import BannerMobil5 from "../../assets/img/bannerCelular/banners-apk4.jpg";
+import BannerImg1 from "../../assets/img/banners/banner-grande-v2-10col-03.webp";
+import BannerImg2 from "../../assets/img/banners/banner-grande-v2-10col-04.webp";
+import BannerImg3 from "../../assets/img/banners/banner-grande-v2-10col-05.webp";
+import BannerImg4 from "../../assets/img/banners/banner-grande-v2-10col-06.webp";
+import BannerImg5 from "../../assets/img/banners/banner-grande-v2-10col-07.webp";
+import BannerMobil1 from "../../assets/img/bannerCelular/banners-apk.webp";
+import BannerMobil2 from "../../assets/img/bannerCelular/banners-apk5.webp";
+import BannerMobil3 from "../../assets/img/bannerCelular/banners-apk2.webp";
+import BannerMobil4 from "../../assets/img/bannerCelular/banners-apk3.webp";
+import BannerMobil5 from "../../assets/img/bannerCelular/banners-apk4.webp";
 import "./PrincipalSlider.css";
 import ProductCard from "../ProductCard";
+import Spinner from "./../Common/Spinner";
 
-let slides = [
-    { url: BannerImg1 },
-    {url: BannerImg2},
-    {url: BannerImg3},
-    {url: BannerImg4},
-    { url: BannerImg5,
-        slider: 'slider',
-        previousButton: 'previousButton',
-        nextButton: 'nextButton',
-        buttonDisabled: 'disabled',
-        track: 'track',
-        slide: 'slide',
-        hidden: 'hidden',
-        previous: 'previous',
-        current: 'current',
-        next: 'next',
-        animateIn: 'animateIn',
-        animateOut: 'animateOut'
-    },
-];
 
-let slidesMobil = [
-    { url: BannerMobil1 },
-    { url: BannerMobil2 },
-    { url: BannerMobil3 },
-    { url: BannerMobil4 },
-    { url: BannerMobil5,
-        slider: 'slider',
-        previousButton: 'previousButton',
-        nextButton: 'nextButton',
-        buttonDisabled: 'disabled',
-        track: 'track',
-        slide: 'slide',
-        hidden: 'hidden',
-        previous: 'previous',
-        current: 'current',
-        next: 'next',
-        animateIn: 'animateIn',
-        animateOut: 'animateOut'
-    },
-];
 
 export default class PrincipalSlider extends Component {
-
+    constructor(props) {
+        super(props);
+        this.state = {
+            slides: [],
+            slidesMobil: []
+        }
+    }
+    componentDidMount() {
+        this.setState({slides : [
+            { url: BannerImg1 , href:'/categoria/Computadoras-y-accesorios'},
+            {url: BannerImg2, href:'/categoria/Belleza'},
+            {url: BannerImg3, href:'/categoria/Instrumentos-musicales'},
+            {url: BannerImg4, href: '/categoria/Salud'},
+            { url: BannerImg5,
+                slider: 'slider',
+                previousButton: 'previousButton',
+                nextButton: 'nextButton',
+                buttonDisabled: 'disabled',
+                track: 'track',
+                slide: 'slide',
+                hidden: 'hidden',
+                previous: 'previous',
+                current: 'current',
+                next: 'next',
+                animateIn: 'animateIn',
+                animateOut: 'animateOut',
+                href:'/categoria/Deportes-y-fitness'
+            },
+        ],
+        
+        slidesMobil : [
+            { url: BannerMobil1, href:'/categoria/Computadoras-y-accesorios'},
+            { url: BannerMobil2, href:'/categoria/Belleza'},
+            { url: BannerMobil3, href:'/categoria/Bebés'},
+            { url: BannerMobil4, href:'/categoria/Electrónica-audio-y-video'},
+            { url: BannerMobil5,
+                slider: 'slider',
+                previousButton: 'previousButton',
+                nextButton: 'nextButton',
+                buttonDisabled: 'disabled',
+                track: 'track',
+                slide: 'slide',
+                hidden: 'hidden',
+                previous: 'previous',
+                current: 'current',
+                next: 'next',
+                animateIn: 'animateIn',
+                animateOut: 'animateOut', 
+                href:'/categoria/Deportes-y-fitness'},
+        ]})
+    }
     render() {
         /*
         console.log(this.props)
@@ -90,23 +101,22 @@ export default class PrincipalSlider extends Component {
             }
         }
         */
-
         return (
             <div className="principal-slider">
                 <section className="desktop">
                     <Slider autoplay={4000}>
-                        {slides.map((slide, index) =>
-                        <div key={index}>
-                            <img src={slide.url} />
-                        </div>)}
+                        {this.state.slides.length > 1 ? this.state.slides.map((slide, index) =>
+                        <a href={slide.href} key={index}>
+                            <img alt={slide.url.replace(/-/g, ' ')} src={slide.url} />
+                        </a>) : <div style={{position:'absolute !important', left:0, right:0, top:0, bottom:0 }}><Spinner/></div>}
                     </Slider>
                 </section>
                 <section className="mobil">
                     <Slider autoplay={4000}>
-                        {slidesMobil.map((slide, index) =>
-                        <div key={index}>
-                            <img src={slide.url} />
-                        </div>)}
+                        {this.state.slidesMobil.length > 1 ? this.state.slidesMobil.map((slide, index) =>
+                        <a href={slide.href} key={index}>
+                            <img alt={slide.url.replace(/-/g, ' ')} src={slide.url} />
+                        </a>) : <div style={{position:'absolute !important', left:0, right:0, top:0, bottom:0 }}><Spinner/></div>}
                     </Slider>
                 </section>
             </div>

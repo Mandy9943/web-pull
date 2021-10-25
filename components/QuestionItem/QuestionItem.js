@@ -35,9 +35,7 @@ class QuestionItem extends Component {
 				) : null}
 				<footer className="footer-question no-web">
 					<span>Publicación #{this.props.product_id}</span>{' '}
-					<Link href="/ayuda">
-						<a>¿Necesitas ayuda?</a>
-					</Link>
+					<Link href="/ayuda"><a>¿Necesitas ayuda?</a></Link>
 				</footer>
 			</div>
 		);

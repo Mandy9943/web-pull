@@ -6,79 +6,76 @@ import { getData } from '../services/userApi';
 import favicon from '../assets/img/favicon.svg';
 
 export default class lista_categorias extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			modal2: false,
-			showCategories: false,
-			categories: [],
-			showMenu: false,
-		};
-	}
 
-	changeSearcherValue = (event) => {
-		this.setState({ query: event.target.value });
-	};
+    constructor(props) {
+        super(props);
+        this.state = {
+            modal2: false,
+            showCategories: false,
+            categories: [],
+            showMenu: false,
+        }
+    }
 
-	handleChange = (e) => {
-		this.setState({ query: e.target.value });
-	};
+    changeSearcherValue = (event) => {
+        this.setState({ query: event.target.value })
+    }
 
-	toggleModal = (modal) => {
-		const newState = { ...this.state };
-		newState[`modal${modal}`] = !newState[`modal${modal}`] ? true : false;
-		this.setState(newState);
-	};
 
-	showHideMenu = () => {
-		this.setState({ showMenu: !this.state.showMenu });
-	};
+    handleChange = (e) => {
+        this.setState({ query: e.target.value })
+    }
 
-	menuBlur = () => {
-		setTimeout(() => this.setState({ showMenu: false }), 200);
-	};
+    toggleModal = (modal) => {
+        const newState = { ...this.state };
+        newState[`modal${modal}`] = !newState[`modal${modal}`] ? true : false;
+        this.setState(newState);
+    }
 
-	componentDidMount() {
-		// getData("/getMenuCategories")
-		getData('/getCategoriesForMenu').then((response) => {
-			this.setState({ categories: response.data });
-		});
-	}
+    showHideMenu = () => {
+        this.setState({ showMenu: !this.state.showMenu })
+    }
 
-	mouseEnter = () => {
-		this.setState({ showCategories: true });
-	};
+    menuBlur = () => {
+        setTimeout(() => this.setState({ showMenu: false }), 200);
+    }
 
-	mouseLeave = () => {
-		this.setState({ showCategories: false });
-	};
+    componentDidMount() {
+        // getData("/getMenuCategories")
+        getData("/getCategoriesForMenu")
+            .then((response) => {
+                this.setState({ categories: response.data });
+            });
+    }
 
-	render() {
-		console.log(this.state.categories);
+    mouseEnter = () => {
+        this.setState({ showCategories: true });
+    }
 
-		return (
-			<div>
-				<Head>
-					<title>Kiero | Categorias</title>
+    mouseLeave = () => {
+        this.setState({ showCategories: false });
+    }
 
-					<meta name="viewport" content="initial-scale=1.0, width=device-width" />
-					<meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
 
-					<meta name="robots" content="noodp" />
-					<meta name="robots" content="noydir" />
-					<meta
-						name="description"
-						content="Descubre miles de productos al mejor precio. Envios gratis
-                    a todo el pais, encuentra lo que buscas en Kiero.co"
-					/>
-					<link rel="icon" href={favicon} type="image/png" />
-				</Head>
-				<CategoriesMovil
-					toggle={this.mouseLeave}
-					num="2"
-					categories={this.state.categories}
-				/>
-			</div>
-		);
-	}
+    render() {
+        // console.log(this.state.categories);
+
+        return (
+            <div>
+                <Head>
+                    <title>Kiero | Categorias</title>
+                    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+                    <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
+                    <meta name="robots" content="index,follow" />
+                    <meta name="robots" content="noodp" />
+                    <meta name="robots" content="noydir" />
+                    <meta name="description" content="Descubre miles de productos al mejor precio. Envios gratis
+                    a todo el pais, encuentra lo que buscas en Kiero.co" />
+                    <link rel="icon" href={favicon} type="image/png" />
+                </Head>
+                <CategoriesMovil toggle={this.mouseLeave} num="2" categories={this.state.categories} />
+            </div>
+        )
+    }
+    
 }

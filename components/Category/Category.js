@@ -215,9 +215,9 @@ class Category extends Component {
 		// 	console.log('dataProducts', response.data.results);
 		// 	console.log()
 		// });
-
 		let products = searchProducts(
-			this.props.data.type,
+			'search',
+			// this.props.data.type,
 			this.props.data.params.items_per_page,
 			page,
 			this.props.data.search,
@@ -229,7 +229,7 @@ class Category extends Component {
 			categoryLevel
 		);
 
-		products.then((response) => {
+		products.then((response) => { 
 			this.setState({
 				products: response.data.results,
 				totalPages: Math.ceil(
@@ -241,6 +241,7 @@ class Category extends Component {
 	}
 
 	loadAllFilters(level = '', category = '') {
+		
 		let filters = searchFilters(this.props.data.search, level, category);
 
 		filters.then((response) => {
@@ -397,7 +398,6 @@ class Category extends Component {
 						totalItems={this.state.totalItems}
 						onSelectCategory={this.onSelectCategory}
 					/>
-
 					<ListCategory
 						sendToFilters={this.sendToFilters}
 						format={this.state.format}

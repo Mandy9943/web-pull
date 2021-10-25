@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createElement } from 'react';
 import { useRouter } from 'next/router'
+import Head from "next/head";
 import '../styles.css';
-
-import GeneralChat from '../components/generalChat/index.js';
+// import GeneralChat from '../components/generalChat/index.js';
 import SocketChat from '../components/Services/socket';
 import SocketUser from '../components/Services/socketuser';
 import KieroSocketChat from '../components/Services/kierochat-socket';
 import Cookies from 'js-cookie';
 
 export default function MyApp({ Component, pageProps}) {
-	
+	const site = "kiero.co";
+	const canonicalURL = site + useRouter().asPath;
 	useEffect(() => {
 		function getGLCID() {
 				var match = /gclid=([^&#]*)/.exec(window.location.search);
@@ -24,6 +25,9 @@ export default function MyApp({ Component, pageProps}) {
 	return (
 		<>
 		
+		<Head>
+			<link rel="canonical" href={canonicalURL} />
+		</Head>
 		{/* Google Tag Manager */}
 		<script
 					dangerouslySetInnerHTML={{
@@ -38,6 +42,16 @@ export default function MyApp({ Component, pageProps}) {
 				dangerouslySetInnerHTML={{
 						__html: `<iframe src="https://kiero.co/gtm.js" height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
 				}}
+		/>
+
+	 {/* Ref: https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/quickstart/ */}
+		<script
+					dangerouslySetInnerHTML={{
+						__html: `!function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="EJTw0k2D4p4adMxwngG0r2wjOmGUDfMN";;analytics.SNIPPET_VERSION="4.15.3";
+						analytics.load("EJTw0k2D4p4adMxwngG0r2wjOmGUDfMN");
+						analytics.page();
+						}}();`,
+					}}
 		/>
 
 		<script
@@ -76,7 +90,7 @@ export default function MyApp({ Component, pageProps}) {
 			<SocketUser />
 			<KieroSocketChat />
 			<Component {...pageProps} />
-			<GeneralChat />
+			{/* <GeneralChat /> */}
 		</>
 	);
 }

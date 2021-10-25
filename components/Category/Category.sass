@@ -1,21 +1,30 @@
 .search
-    position: absolute
-    left: 0
-    right: 0
-    bottom: 0
-    top: 0
-    display: grid
-    grid-template-rows: auto 1fr auto
-    font-family: 'Montserrat', sans-serif;
+  position: absolute
+  left: 0
+  right: 0
+  bottom: 0
+  top: 0
+  display: -ms-grid
+  display: grid
+  -ms-grid-rows: auto auto 1fr auto
+  grid-template-rows: auto auto 1fr auto
+  font-family: 'Montserrat', sans-serif
+  overflow-x: hidden
+
 .search-content
-    display: flex
-    width: 80%
-    margin: 30px auto
+  display: -webkit-box
+  display: -ms-flexbox
+  display: flex
+  width: 80%
+  margin: 0 auto 30px auto
 
 @media (max-width: 768px)
-    .search-content
-        flex-direction: column
-        margin: auto
-        margin-top: 0;
-        margin-bottom: 30px
-        width: 100%
+  .search-content
+    -webkit-box-orient: vertical
+    -webkit-box-direction: normal
+    -ms-flex-direction: column
+    flex-direction: column
+    margin: auto
+    margin-top: 0
+    margin-bottom: 30px
+    width: 100%

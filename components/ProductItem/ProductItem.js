@@ -81,8 +81,8 @@ export default class ProductItem extends Component {
 				<p className="detail-date">{product.created_since.split('.')[0]}</p>
 				{/*NEED FIX*/}
 				<div className="content">
-					<Link href={detail_link}>
-						<a>
+					<a href={detail_link}>
+						
 							<section className="product">
 								<div className="product-card-img">
 									<img alt={product.title} src={getImgUrlMinMin(image_url)} />
@@ -99,8 +99,8 @@ export default class ProductItem extends Component {
 									</h3>
 								</section>
 							</section>
-						</a>
-					</Link>
+						
+					</a>
 
 					{this.props.mode == 'sell' ? (
 						<section className="info">
@@ -111,15 +111,15 @@ export default class ProductItem extends Component {
 									: ' - '}
 							</p>
 							<p className="phone-client"> {this.props.order.user.phone}</p>
-							<Link href={'/chat/' + this.props.order.order_id}>
-								<a> Enviar mensaje </a>
-							</Link>
+							<a href={'/chat/' + this.props.order.order_id}>
+								 Enviar mensaje 
+							</a>
 						</section>
 					) : (
 						<section className="info">
-							<Link href={detail_link}>
-								<a> Detalle de compra</a>
-							</Link>
+							<a href={detail_link}>
+								Detalle de compra
+							</a>
 							<p>Vendedor:</p>
 							<p>
 								{product.user.name
@@ -127,9 +127,9 @@ export default class ProductItem extends Component {
 									: ' - '}
 							</p>
 							<p className="phone-client"> {product.user.phone}</p>
-							<Link href={'/chat/' + this.props.order.order_id}>
-								<a> Enviar mensaje</a>
-							</Link>
+							<a href={'/chat/' + this.props.order.order_id}>
+								 Enviar mensaje
+							</a>
 						</section>
 					)}
 				</div>

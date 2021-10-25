@@ -64,12 +64,12 @@ export default class Home extends Component {
 						category={{
 							father0: 'Electrodomésticos',
 							father1: 'Computación',
-							img0: 'banner-electrodomesticos.jpg',
-							img1: 'banner-computacion.jpg',
+							img0: 'banner-electrodomesticos.webp',
+							img1: 'banner-computacion.webp',
 							sub1: 'Aspiradoras',
-							url1: 'categoria/Aspiradoras domésticas',
+							url1: 'categoria/Aspiradoras-domésticas',
 							sub2: 'Monitores',
-							url2: 'categoria/Monitores de computadoras',
+							url2: 'categoria/Monitores-de-computadoras',
 						}}
 					/>
 					<ProductsSlider category={'Juguetes y juegos'} />
@@ -79,12 +79,12 @@ export default class Home extends Component {
 						category={{
 							father0: 'Deportes',
 							father1: 'Electrónica',
-							img0: 'banner-deportes.jpg',
-							img1: 'banner-drones.jpg',
-							sub1: 'Bicicletas de carretera',
+							img0: 'banner-deportes.webp',
+							img1: 'banner-drones.webp',
+							sub1: 'Bicicletas-de-carretera',
 							url1: 'categoria/Bicicletas',
 							sub2: 'Drones',
-							url2: 'categoria/Cuadricópteros drones y accesorios',
+							url2: 'categoria/Cuadricópteros-drones-y-accesorios',
 						}}
 					/>
 					<Explorer />

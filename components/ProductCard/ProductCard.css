@@ -26,7 +26,7 @@
 	margin: auto;
 	color: #111111;
 	font-size: 12px;
-	font-weight: 600;
+	font-weight: 400;
 	font-family: 'Montserrat', sans-serif;
 	opacity: 0;
 	visibility: hidden;
@@ -96,7 +96,7 @@
 
 @media (min-width: 801px){
 	.producto-card .product-card-img{
-		height: 160px;
+		height: 150px;
 	}
 }
 

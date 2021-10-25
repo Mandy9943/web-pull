@@ -11,190 +11,185 @@ import Cookies from 'js-cookie';
 import { KlaviyoClient } from '../lib/functions';
 
 function PayStatus({ data, u_data }) {
-	const router = useRouter();
+  const router = useRouter()
 
-	const [params, setparams] = useState([]);
+  const [params, setparams] = useState([])
 
-	React.useEffect(() => {
-		// function whenWindowFbq() {
-		//   return new Promise(function (resolve, reject) {
-		//         (function waitForFbq(){
-		//             if (typeof(window.fbq) == "function" ) return resolve();
-		//             setTimeout(waitForFbq, 300);
-		//         })();
-		//     });
-		// };
+  React.useEffect(() => {
 
-		const paramsUrl = router.query;
-		setparams(paramsUrl);
-		if (paramsUrl.extra4 !== undefined) {
-			const extra3 = JSON.parse(paramsUrl.extra3.toString());
-			const quantity = extra3.qty;
+      // function whenWindowFbq() {
+      //   return new Promise(function (resolve, reject) {
+      //         (function waitForFbq(){
+      //             if (typeof(window.fbq) == "function" ) return resolve();
+      //             setTimeout(waitForFbq, 300);
+      //         })();
+      //     });
+      // };
 
-			var listValue = paramsUrl.extra4.split('~');
-			if (localStorage.getItem('referenceCode') != paramsUrl.referenceCode) {
-				if (paramsUrl.lapResponseCode == 'APPROVED') {
-					fbq('track', 'Purchase', {
-						id: paramsUrl.transactionId,
-						content_ids: listValue[1],
-						content_name: listValue[0],
-						product_group: listValue[4],
-						content_type: 'product',
-						content_category: listValue[4],
-						contents: [
-							{
-								id: listValue[1],
-								quantity: quantity,
-							},
-						],
-						currency: 'COP',
-						value: listValue[2],
-						payment_type: paramsUrl.lapPaymentMethodType.toString(),
-						num_items: quantity,
-					});
-					// whenWindowFbq().then(() => {
-					//   window.fbq('track','Purchase',{
-					//                       'content_ids': listValue[1],
-					//                       'content_name': listValue[0],
-					//                       'product_group': listValue[4],
-					//                       'content_type': 'product',
-					//                       'content_category': listValue[4],
-					//                       'contents': [{
-					//                               'id': listValue[1],
-					//                               'quantity': quantity,
-					//                             }],
-					//                       'currency': 'COP',
-					//                       'value': listValue[2],
-					//                       'payment_type':'pse',
-					//                       'num_items': quantity
-					//                     })
-					// });
+      const paramsUrl = router.query
+      setparams(paramsUrl);
+      if(paramsUrl.extra4!==undefined) {
 
-					dataLayer.push({
-						event: 'purchase',
-						ecommerce: {
-							purchase: {
-								actionField: {
-									id: paramsUrl.transactionId, // Transaction ID. Required for purchases and refunds.
-									affiliation: 'SpiceStock',
-									revenue: paramsUrl.TX_VALUE.toString(), // Total transaction value (incl. tax and shipping)
-									tax: paramsUrl.TX_TAX.toString(),
-									shipping: '0',
-									aw_merchant_id: '450067839',
-									aw_feed_country: 'CO',
-									aw_feed_language: 'ES',
-									//'coupon': 'SUMMER_SALE'
-									items: [
-										{
-											id: listValue[1],
-											quantity: paramsUrl.extra3.toString(),
-											price: listValue[2],
-										},
-									],
-								},
-								products: [
-									{
-										// List of productFieldObjects.
-										name: listValue[0], // Name or ID is required.
-										id: listValue[1],
-										price: listValue[2],
-										brand: listValue[3],
-										category: listValue[4],
-										quantity: quantity,
-									},
-								],
-							},
-						},
-					});
-				} else if (paramsUrl.lapResponseCode != 'DECLINED' || 'APPROVED') {
-					fbq('trackCustom', 'Pending Purchase', {
-						id: paramsUrl.transactionId,
-						content_ids: listValue[1],
-						content_name: listValue[0],
-						content_type: 'product',
-						content_category: listValue[4],
-						contents: [
-							{
-								id: listValue[1],
-								quantity: quantity,
-							},
-						],
-						currency: 'COP',
-						value: listValue[2],
-						payment_type: paramsUrl.lapPaymentMethodType.toString(),
-						num_items: quantity,
-					});
-					var item = {
-						actionField: {
-							id: paramsUrl.transactionId, // Transaction ID. Required for purchases and refunds.
-							affiliation: 'SpiceStock',
-							revenue: paramsUrl.TX_VALUE.toString(), // Total transaction value (incl. tax and shipping)
-							tax: paramsUrl.TX_TAX.toString(),
-							shipping: '0',
-							aw_merchant_id: '450067839',
-							aw_feed_country: 'CO',
-							aw_feed_language: 'ES',
-							items: [
-								{
-									id: listValue[1],
-									quantity: quantity,
-									price: listValue[2],
-								},
-							],
-						},
-						products: [
-							{
-								// List of productFieldObjects.
-								name: listValue[0], // Name or ID is required.
-								id: listValue[1],
-								price: listValue[2],
-								brand: listValue[3],
-								category: listValue[4],
-								quantity: quantity, // Optional fields may be omitted or set to empty string.
-							},
-						],
-					};
-					dataLayer.push({
-						event: 'pending_transaction',
-						ecommerce: {
-							pending_transaction: item,
-						},
-					});
+          const extra3 = JSON.parse(paramsUrl.extra3.toString())
+          const quantity = extra3.qty
 
-					KlaviyoClient.public.track({
-						event: 'pending_transaction',
-						email: Cookies.get('email'),
-						properties: {
-							items: [item],
-						},
-					});
-				}
-			}
-			localStorage.setItem('referenceCode', paramsUrl.referenceCode);
-		}
-	}, [router.query]);
+          var listValue = paramsUrl.extra4.split("~")
+          if(localStorage.getItem('referenceCode')!=paramsUrl.referenceCode){
+              if(paramsUrl.lapResponseCode == "APPROVED"){
+                    fbq('track','Purchase',{
+                                          'id': paramsUrl.transactionId,
+                                          'content_ids': listValue[1],
+                                          'content_name': listValue[0],
+                                          'product_group': listValue[4],
+                                          'content_type': 'product',
+                                          'content_category': listValue[4],
+                                          'contents': [{
+                                                  'id': listValue[1],
+                                                  'quantity': quantity,
+                                                }],
+                                          'currency': 'COP',
+                                          'value': listValue[2],
+                                          'payment_type': paramsUrl.lapPaymentMethodType.toString(),
+                                          'num_items': quantity
+                                        })
+                  // whenWindowFbq().then(() => {
+                  //   window.fbq('track','Purchase',{
+                  //                       'content_ids': listValue[1],
+                  //                       'content_name': listValue[0],
+                  //                       'product_group': listValue[4],
+                  //                       'content_type': 'product',
+                  //                       'content_category': listValue[4],
+                  //                       'contents': [{
+                  //                               'id': listValue[1],
+                  //                               'quantity': quantity,
+                  //                             }],
+                  //                       'currency': 'COP',
+                  //                       'value': listValue[2],
+                  //                       'payment_type':'pse',
+                  //                       'num_items': quantity
+                  //                     })
+                  // });
 
-	console.log(params);
-	return (
-		<div className="order-page">
-			<Head>
-				<title>Kiero | Resultado de compra </title>
+                  // dataLayer.push({
+                  //     event: 'purchase',
+                  //     'ecommerce': {
+                  //         'purchase': {
+                  //             'actionField': {
+                  //                 'id': paramsUrl.transactionId,                         // Transaction ID. Required for purchases and refunds.
+                  //                 'affiliation': 'SpiceStock',
+                  //                 'revenue': paramsUrl.TX_VALUE.toString(),                     // Total transaction value (incl. tax and shipping)
+                  //                 'tax':paramsUrl.TX_TAX.toString(),
+                  //                 'shipping': '0',
+                  //                 'aw_merchant_id': '450067839',
+                  //                 'aw_feed_country': 'CO',
+                  //                 'aw_feed_language': 'ES',
+                  //                 //'coupon': 'SUMMER_SALE'
+                  //                 "items": [
+                  //                   {
+                  //                     "id": listValue[1],
+                  //                     "quantity": paramsUrl.extra3.toString(),
+                  //                     "price": listValue[2]
+                  //                   }
+                  //                 ]
+                  //               },
+                  //             'products': [{                            // List of productFieldObjects.
+                  //                 'name': listValue[0],     // Name or ID is required.
+                  //                 'id': listValue[1],
+                  //                 'price': listValue[2],
+                  //                 'brand': listValue[3],
+                  //                 'category': listValue[4],
+                  //                 'quantity': quantity
+                  //             }]
+                  //         }
+                  //     }
+                  // });
+              }
 
-				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
-				<meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
+              else if(paramsUrl.lapResponseCode != "DECLINED" || "APPROVED"){
 
-				<meta name="robots" content="noodp" />
-				<meta name="robots" content="noydir" />
-				<meta
-					name="description"
-					content="Descubre miles de productos al mejor precio. Envios gratis a todo el pais, encuentra lo que buscas en Kiero.co"
-				/>
-				<meta name="Keywords" content="Tienda en Línea" />
-				<link rel="icon" href={favicon} type="image/png" />
-			</Head>
-			<Header />
+                  fbq('trackCustom','Pending Purchase', {
+                    'id': paramsUrl.transactionId,
+                    'content_ids': listValue[1],
+                    'content_name': listValue[0],
+                    'content_type': 'product',
+                    'content_category': listValue[4],
+                    'contents': [{
+                          'id': listValue[1],
+                          'quantity': quantity,
+                        }],
+                    'currency': 'COP',
+                    'value': listValue[2],
+                    'payment_type': paramsUrl.lapPaymentMethodType.toString(),
+                    'num_items': quantity
+                  })
+                    var item = {
+                        actionField: {
+                            'id': paramsUrl.transactionId,                         // Transaction ID. Required for purchases and refunds.
+                            'affiliation': 'SpiceStock',
+                            'revenue': paramsUrl.TX_VALUE.toString(),                     // Total transaction value (incl. tax and shipping)
+                            'tax':paramsUrl.TX_TAX.toString(),
+                            'shipping': '0',
+                            'aw_merchant_id': '450067839',
+                            'aw_feed_country': 'CO',
+                            'aw_feed_language': 'ES',
+                            "items": [
+                                {
+                                    "id": listValue[1],
+                                    "quantity": quantity,
+                                    "price": listValue[2]
+                                }
+                            ]
+                        },
+                        products: [{                            // List of productFieldObjects.
+                            'name': listValue[0],     // Name or ID is required.
+                            'id': listValue[1],
+                            'price': listValue[2],
+                            'brand': listValue[3],
+                            'category': listValue[4],
+                            'quantity': quantity                            // Optional fields may be omitted or set to empty string.
+                        }
+                        ]
+                    };
+                    
+                  // dataLayer.push({
+                  //     event:'pending_transaction',
+                  //     ecommerce: {
+                  //         pending_transaction: item
+                  //     }
+                  // });
 
-			{/* <div className="container-success">
+                  KlaviyoClient.public.track({
+                      event: 'pending_transaction',
+                      email: paramsUrl.buyerEmail,
+                      properties: {
+                          items: [
+                              item
+                          ]
+                      }
+                  });
+              }
+          }
+          localStorage.setItem('referenceCode',paramsUrl.referenceCode);
+      }
+  }, [router.query]);
+
+    // console.log(params)
+  return (
+    <div className="order-page">
+      <Head>
+        <title>Kiero | Resultado de compra </title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="robots" content="index,follow" />
+        <meta name="robots" content="noodp" />
+        <meta name="robots" content="noydir" />
+        <meta name="description" content="Descubre miles de productos al mejor precio. Envios gratis a todo el pais, encuentra lo que buscas en Kiero.co" />
+        <meta name="Keywords" content="Tienda en Línea" />
+        <link rel="icon" href={favicon} type="image/png" />
+      </Head>
+      <Header />
+    
+      {/* <div className="container-success">
         
       </div>  */}
 			<section className="order-content">

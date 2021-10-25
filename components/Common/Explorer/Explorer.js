@@ -1,35 +1,36 @@
 import React, { Component } from "react";
 import Link from "next/link";
-import CategoryImg from "../../../assets/img/category-img/category-tools.jpg";
+import CategoryImg from "../../../assets/img/category-img/category-tools.webp";
 import "./Explorer.css";
 import { getProductsBasic } from "../../../services/productsApi";
 import { getImgUrl } from "../../../lib/config"
 
 
 
-import accesorios from "../../../assets/img/category-img/category-accesorios.jpg"
-import accesoriosvehiculos from "../../../assets/img/category-img/category-accesoriosvehiculos.jpg"
-import bebes from "../../../assets/img/category-img/category-bebes.jpg"
-import belleza from "../../../assets/img/category-img/category-belleza.jpg"
-import camaras from "../../../assets/img/category-img/category-camaras.jpg"
-import celulares from "../../../assets/img/category-img/category-celulares.jpg"
-import coleccionables from "../../../assets/img/category-img/category-coleccionables.jpg"
-import computacion from "../../../assets/img/category-img/category-computacion.jpg"
-import deportes from "../../../assets/img/category-img/category-deportes.jpg"
-import electrodomesticos from "../../../assets/img/category-img/category-electrodomesticos.jpg"
-import electronica from "../../../assets/img/category-img/category-electronica.jpg"
-import herramientas from "../../../assets/img/category-img/category-herramientas.jpg"
-import hogar from "../../../assets/img/category-img/category-hogar.jpg"
-import instrumentos from "../../../assets/img/category-img/category-instrumentos.jpg"
-import juguetes from "../../../assets/img/category-img/category-juguetes.jpg"
-import libros from "../../../assets/img/category-img/category-libros.jpg"
-import mascotas from "../../../assets/img/category-img/category-mascotas.jpg"
-import musica from "../../../assets/img/category-img/category-musica.jpg"
-import oficina from "../../../assets/img/category-img/category-oficina.jpg"
-import relojesjoyas from "../../../assets/img/category-img/category-relojesjoyas.jpg"
-import salud from "../../../assets/img/category-img/category-salud.jpg"
-import videojuegos from "../../../assets/img/category-img/category-videojuegos.jpg"
-
+import accesorios from "../../../assets/img/category-img/category-accesorios.webp"
+import accesoriosvehiculos from "../../../assets/img/category-img/category-accesoriosvehiculos.webp"
+import bebes from "../../../assets/img/category-img/category-bebes.webp"
+import belleza from "../../../assets/img/category-img/category-belleza.webp"
+import camaras from "../../../assets/img/category-img/category-camaras.webp"
+import celulares from "../../../assets/img/category-img/category-celulares.webp"
+import coleccionables from "../../../assets/img/category-img/category-coleccionables.webp"
+import computacion from "../../../assets/img/category-img/category-computacion.webp"
+import deportes from "../../../assets/img/category-img/category-deportes.webp"
+import electrodomesticos from "../../../assets/img/category-img/category-electrodomesticos.webp"
+import electronica from "../../../assets/img/category-img/category-electronica.webp"
+import herramientas from "../../../assets/img/category-img/category-herramientas.webp"
+import hogar from "../../../assets/img/category-img/category-hogar.webp"
+import instrumentos from "../../../assets/img/category-img/category-instrumentos.webp"
+import juguetes from "../../../assets/img/category-img/category-juguetes.webp"
+import libros from "../../../assets/img/category-img/category-libros.webp"
+import mascotas from "../../../assets/img/category-img/category-mascotas.webp"
+import musica from "../../../assets/img/category-img/category-musica.webp"
+import oficina from "../../../assets/img/category-img/category-oficina.webp"
+import relojesjoyas from "../../../assets/img/category-img/category-relojesjoyas.webp"
+import salud from "../../../assets/img/category-img/category-salud.webp"
+import videojuegos from "../../../assets/img/category-img/category-videojuegos.webp"
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 
 class Explorer extends Component {
@@ -53,11 +54,11 @@ class Explorer extends Component {
         {name:"Vehículos", image: accesoriosvehiculos},
         {name:"Bebés", image: bebes},
         {name:"Belleza", image: belleza},
-        {name:"Cámaras y accesorios", image: camaras},
-        {name:"Celulares y Teléfonos", image: celulares},
-        {name:"Coleccionables", image: coleccionables},
+        {name:"Cámaras fotografia y video", image: camaras},
+        {name:"Celulares y accesorios", image: celulares},
+        {name:"Coleccionables y bellas artes", image: coleccionables},
         {name:"Computadoras y Accesorios", image: computacion},
-        {name:"Deporte", image: deportes},
+        {name:"Deportes y fitness", image: deportes},
         {name:"Electrodomésticos", image: electrodomesticos},
         {name:"Electrónica, Audio y Video", image: electronica},
         {name:"Herramientas", image: herramientas},
@@ -91,21 +92,28 @@ class Explorer extends Component {
   render() {
     return (
         <div className="explorer">
-        <h3 className="home-section-title">Encuentra los mejores productos de {this.state.categoryName} <Link href={"/categoria/"+this.state.categoryName}><a className="accent">Ver todos</a></Link></h3>
+        <h3 className="home-section-title">Encuentra los mejores productos de {this.state.categoryName} <a className="accent" href={"/categoria/"+this.state.categoryName.replace(/ /g, '-').toLowerCase()}> Ver todos</a></h3>
         <div className="content-explorer">
           <div className="main-img">
-                <Link href={"/categoria/"+this.state.categoryName}>
-                  <a><img alt={this.state.categoryName} src={this.state.exploreImage} /></a>
-                </Link>
+                <a href={"/categoria/"+this.state.categoryName.replace(/ /g, '-').toLowerCase()}>
+                  {this.state.exploreImage ? <img alt={this.state.categoryName} src={this.state.exploreImage} /> : <Skeleton style={{height:'100%'}}/>}
+                </a>
           </div>
           <div className="group-img">
-            {this.state.data.map((item, i) => (
-              <div className="wrapImgExplorer" key={i}>
-                <Link href={"/detalle/"+item.product_id+"_"+item.title.replace(/[^\w\s]/gi, '').split(" ").join("-")} ><a>
-                  <img alt={item.title} src={ getImgUrlMin(item.image) } /></a>
-                </Link>
-              </div>
-            ))}
+            {!this.state.exploreImage ? <div className="wrapImgExplorer">
+              <Skeleton className="loaderSkeleton"/>
+              <Skeleton className="loaderSkeleton"/>
+              <Skeleton className="loaderSkeleton"/>
+              <Skeleton className="loaderSkeleton"/>
+            </div> :
+              this.state.data.map((item, i) => (
+                <div className="wrapImgExplorer" key={i}>
+                  <a href={"/detalle/"+item.product_id+"_"+item.title.replace(/[^\w\s]/gi, '').split(" ").join("-")} >
+                    <img alt={item.title} src={ item.image } />
+                  </a>
+                </div>
+            ))
+          }
           </div>
         </div>
       </div>

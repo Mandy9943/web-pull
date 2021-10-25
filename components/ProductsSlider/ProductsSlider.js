@@ -56,31 +56,57 @@ export default class ProductsSlider extends Component {
 			// 	}
 			// })
 			// dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
-			const dataLayerGoogleSlidersUniversal = response.data.results?.map((prod, index) => {
+			// const dataLayerGoogleSlidersUniversal = response.data.results?.map((prod, index) => {
+			// 	return {
+			// 		name: prod.title,
+			// 		id: prod.product_id,
+			// 		price: prod.price,
+			// 		brand: prod.brand,
+			// 		category: prod.category,
+			// 		list: 'Products Slider',
+			// 		// url:'https://kiero.co/detalle/' + prod.product_id + '_' + prod.title
+			// 		// 														.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+			// 		// 														.replace('//', '%2F')
+			// 		// 														.replace('%', '')
+			// 		// 														.split(' ')
+			// 		// 														.join('-'),
+			// 		position: index + 1
+			// 	};
+			// });
+			// dataLayer.push({
+			// 	event:'gtm.dom',
+			// 	ecommerce: {
+			// 		currencyCode: "COP",
+			// 		impressions:
+			// 			dataLayerGoogleSlidersUniversal
+			// 	}
+			// })
+
+			const product_list = response.data.results?.map((prod, index) => {
 				return {
 					name: prod.title,
-					id: prod.product_id,
+					product_id: prod.product_id,
 					price: prod.price,
 					brand: prod.brand,
 					category: prod.category,
-					list: 'Products Slider',
-					// url:'https://kiero.co/detalle/' + prod.product_id + '_' + prod.title
-					// 														.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-					// 														.replace('//', '%2F')
-					// 														.replace('%', '')
-					// 														.split(' ')
-					// 														.join('-'),
-					position: index + 1
+					position: index + 1,
+					url: 'https://kiero.co/detalle/' + prod.product_id + '_' + prod.title
+																			.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+																			.replace('//', '%2F')
+																			.replace('%', '')
+																			.split(' ')
+																			.join('-'),
+					image_url: prod.image
 				};
 			});
-			dataLayer.push({
-				event:'gtm.dom',
-				ecommerce: {
-					currencyCode: "COP",
-					impressions:
-						dataLayerGoogleSlidersUniversal
-				}
-			})
+
+			analytics.track('Product List Viewed', {
+				nonInteraction: 1,
+				list_id: 'productsSlider',
+				category: this.props.category,
+				products: product_list
+			});
+
 			// const gtagSlidersUniversal = response.data.results?.map((prod, index) => {
 			// 	return {
 			// 		name: prod.title,
@@ -190,12 +216,16 @@ export default class ProductsSlider extends Component {
 				{!this.props.notitle && (
 					<h3 className="home-section-title">
 						Descubre productos de {this.props.category && this.props.category}
-						<Link
+						{/* <Link
 							href={'/categoria/[category]'}
 							as={this.props.category && '/categoria/' + this.props.category}
+						> */}
+						<a
+							className="accent"
+							href={this.props.category && '/categoria/' + this.props.category }
 						>
-							<a className="accent">Ver todos</a>
-						</Link>
+							Ver todos
+						</a>
 					</h3>
 				)}
 				<div className="slider-movil">
