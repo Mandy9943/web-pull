@@ -16,8 +16,7 @@ function Product({ data, u_data }) {
 			<Head>
 				{/*<script type="text/javascript" src="https://checkout.wompi.co/widget.js"></script>*/}
 				<title>Kiero.co | {data.title.substring(0, 60)}</title>
-				<meta name="robots" content="noindex" />
-				<meta name="googlebot" content="noindex" />
+
 				<meta
 					name="viewport"
 					content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"

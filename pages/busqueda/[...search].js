@@ -14,8 +14,7 @@ function Results({ data, session }) {
 		<div>
 			<Head>
 				<title>Kiero | {data.search}</title>
-				<meta name="robots" content="noindex" />
-				<meta name="googlebot" content="noindex" />
+
 				<meta
 					name="Description"
 					content="KIERO.CO MARKETPLACE | Encuentra más productos de{category_name}"

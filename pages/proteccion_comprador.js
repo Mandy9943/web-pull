@@ -8,8 +8,7 @@ export default function proteccion_comprador() {
 		<div>
 			<Head>
 				<title>Kiero | Protection al Comprador</title>
-				<meta name="robots" content="noindex" />
-				<meta name="googlebot" content="noindex" />
+
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 				<meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
 

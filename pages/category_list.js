@@ -25,8 +25,7 @@ export default class category_list extends Component {
 				<Head>
 					{/*NEED FIX THIS SHIT colocar nombre de la categoria a mostrar*/}
 					<title>Compra en Kiero.co Marketplace | "category_name"</title>
-					<meta name="robots" content="noindex" />
-					<meta name="googlebot" content="noindex" />
+
 					<meta name="Title" content="Compra en Kiero.co Marketplace | category_name" />
 					<meta
 						name="Description"
