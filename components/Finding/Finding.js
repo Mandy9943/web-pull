@@ -11,8 +11,8 @@ class Finding extends Component {
 
   render() {
 
-    // let CategoryImg = "//kiero.co/images/resources/finding-banner/";
-    let CategoryImg = "//localhost/images/resources/finding-banner/";
+    let CategoryImg = "//kiero.co/images/resources/finding-banner/";
+    // let CategoryImg = "//localhost/images/resources/finding-banner/";
     
     return (
       <div className="wrap-finding">

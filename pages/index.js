@@ -29,7 +29,7 @@ export default class Index extends Component {
             <div className="home">
                 <Head>
               
-                    <title>Kiero en Colombia | Compra en linea y envio gratis </title>
+                    <title>Kiero en Colombia | Compra en linea y envío gratis </title>
                     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
                     <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
                     <meta name="robots" content="index,follow" />
