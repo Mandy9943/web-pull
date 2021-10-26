@@ -82,30 +82,43 @@ export default class ProductsSlider extends Component {
 			// 	}
 			// })
 
-			const product_list = response.data.results?.map((prod, index) => {
-				return {
-					name: prod.title,
-					product_id: prod.product_id,
-					price: prod.price,
-					brand: prod.brand,
-					category: prod.category,
-					position: index + 1,
-					url: 'https://kiero.co/detalle/' + prod.product_id + '_' + prod.title
-																			.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-																			.replace('//', '%2F')
-																			.replace('%', '')
-																			.split(' ')
-																			.join('-'),
-					image_url: prod.image
-				};
-			});
+			// const product_list = response.data.results?.map((prod, index) => {
+			// 	return {
+			// 		name: prod.title,
+			// 		product_id: prod.product_id,
+			// 		price: prod.price,
+			// 		brand: prod.brand,
+			// 		category: prod.category,
+			// 		position: index + 1,
+			// 		url: 'https://kiero.co/detalle/' + prod.product_id + '_' + prod.title
+			// 																.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+			// 																.replace('//', '%2F')
+			// 																.replace('%', '')
+			// 																.split(' ')
+			// 																.join('-'),
+			// 		image_url: prod.image
+			// 	};
+			// });
 
-			analytics.track('Product List Viewed', {
-				nonInteraction: 1,
-				list_id: 'productsSlider',
-				category: this.props.category,
-				products: product_list
-			});
+			// // Send the event in smaller chunks 
+			// // TODO: Are all the products seen by the user? If not we should send only those viewed.
+			// // and send the others when the user push the slider.
+			// let temporary, chunk = 5;
+			// for (let i = 0, j = product_list.length; i < j; i += chunk) {
+			// 		temporary = product_list.slice(i, i + chunk);
+
+			// 		let productsSliderViewed = {
+			// 			nonInteraction: 1,
+			// 			list_id: 'productsSlider ' + i + ' - ' + (i+chunk),
+			// 			category: this.props.category,
+			// 			products: temporary
+			// 		}
+
+			// 		console.log(productsSliderViewed)
+
+			// 		//analytics.track('Product List Viewed', productsSliderViewed);
+
+			// }
 
 			// const gtagSlidersUniversal = response.data.results?.map((prod, index) => {
 			// 	return {
@@ -177,6 +190,47 @@ export default class ProductsSlider extends Component {
 			}
 		}
 
+		// All products (We maybe use this array in mobile version slide change)
+		this.state.product_list = this.state.data?.map((prod, index) => {
+			return {
+				name: prod.title,
+				product_id: prod.product_id,
+				price: prod.price,
+				brand: prod.brand,
+				category: prod.category,
+				position: index + 1,
+				url: 'https://kiero.co/detalle/' + prod.product_id + '_' + prod.title
+																		.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+																		.replace('//', '%2F')
+																		.replace('%', '')
+																		.split(' ')
+																		.join('-'),
+				image_url: prod.image
+			};
+		});
+
+		// Slide products (Prepare an array of 5 products for each slide)
+		this.state.products_slide = [];
+		let chunk = 5;
+		for (let i = 0, j = this.state.product_list.length; i < j; i += chunk) {
+			this.state.products_slide[i/5] = this.state.product_list.slice(i, i + chunk);
+		}
+
+		// Send first five products shown
+		if (this.state.products_slide.length) {
+
+			let productsSliderViewed = {
+				nonInteraction: 1,
+				list_id: 'productsSlider ' + 0,
+				category: this.props.category,
+				products: this.state.products_slide[0]
+			}
+			
+			// console.log(productsSliderViewed)
+
+			analytics.track('Product List Viewed', productsSliderViewed);
+		}
+
 		if (tmpList.length > 0) {
 			// console.log(tmpList);
 			productList.push(
@@ -231,7 +285,25 @@ export default class ProductsSlider extends Component {
 				<div className="slider-movil">
 					<section className="content-products-slider">{productListMobile}</section>
 				</div>
-				<Slider autoplay={false}>{productList}</Slider>
+				<Slider onSlideChange={
+
+						event => {
+								//console.log(event.slideIndex)
+
+								// Send current slider products
+								let productsSliderViewed = {
+									nonInteraction: 1,
+									list_id: 'productsSlider ' + event.slideIndex,
+									category: this.props.category,
+									products: this.state.products_slide[event.slideIndex]
+								}
+								
+								// console.log(productsSliderViewed)
+
+								analytics.track('Product List Viewed', productsSliderViewed);
+
+						}
+					} autoplay={false}>{productList}</Slider>
 			</div>
 		);
 	}
