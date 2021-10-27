@@ -19,6 +19,8 @@ import { KlaviyoClient } from "../../lib/functions.js";
 import Cookies from "js-cookie";
 
 import dynamic from "next/dynamic";
+import {signUp} from "../../lib/auth";
+import {createleadClient} from "../../lib/zoho";
 
 // import Nav from '../Common/Nav';
 // import DetailImg from '../DetailImg';
@@ -256,7 +258,7 @@ class ProductDetail extends Component {
       Brand: this.props.data.brand,
       Price: this.props.data.price,
     };
-    if (Cookies.get("email") !== undefined)
+    if (Cookies.get("email") !== undefined){
       KlaviyoClient.public.track({
         event: "Viewed Product",
         email: Cookies.get("email"),
@@ -264,8 +266,17 @@ class ProductDetail extends Component {
           items: [item],
         },
       });
-  }
+      this.createlead(item);
+    }
 
+
+
+
+  }
+  async createlead(item) {
+    console.log(item)
+    const error = await createleadClient(item['ProductName']);
+  }
   async reLoadData(pgid) {
     // Esta funcion se llama cuando se encuentra un match de variantes
     const router = this.props.router;
