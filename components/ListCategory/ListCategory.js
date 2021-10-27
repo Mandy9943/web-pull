@@ -97,12 +97,22 @@ class ListCategory extends Component {
 				};
 			});
 
-			analytics.track('Product List Viewed', {
-				nonInteraction: 1,
-				list_id: 'listCategory',
-				category: this.props.category,
-				products: product_list
-			});
+			let temporary, chunk = 4;
+			for (let i = 0, j = product_list.length; i < j; i += chunk) {
+					temporary = product_list.slice(i, i + chunk);
+
+					const productListViewed = {
+						nonInteraction: 1,
+						list_id: 'listCategory', // ' + i/chunk, // + ' - ' + (i+chunk),
+						category: this.props.category,
+						products: temporary
+					};
+
+					//console.log(productListViewed)
+		
+					analytics.track('Product List Viewed', productListViewed);
+
+			}
 
 			// const gtagSearchResultsUniversal = this.props.products?.map((prod, index) => {
             //     return {
