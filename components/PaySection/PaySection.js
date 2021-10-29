@@ -411,7 +411,8 @@ class PaySection extends Component {
 
 																							// console.log(dataTransaction)
 
-																							addPaymentDataWompi("/DataWompiTransaction", dataTransaction);
+																							addPaymentDataWompi("/
+																							", dataTransaction);
 
 																						})
 	}
