@@ -1,5 +1,32 @@
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
     display: none;
+} */
+
+@media (min-width: 415px) {
+    .buttonChat-NoWeb{
+        display: none !important;
+    }
+    .buttonChat-Web svg{
+        padding-right: 10px;
+    }
+    .buttonChat-Web{
+        display: flex !important;
+    }
+}
+@media (max-width: 414px) {
+    .buttonChat-NoWeb{
+        display: flex !important;
+        height:65px !important;
+        width:65px !important;
+        border-radius: 50% !important;
+    }
+    .buttonChat-NoWeb svg{
+        width: 2em !important;
+        height: 2em !important;
+    }
+    .buttonChat-Web{
+        display: none !important;
+    }
 }
 .hiddenChat{
     display:none !important
@@ -17,9 +44,6 @@
     font-family: 'Montserrat', sans-serif !important;
     z-index:10;
     /* display:none !important; */
-}
-.buttonChat svg{
-    padding-right: 10px;
 }
 .containerChats{
     height: 450px;

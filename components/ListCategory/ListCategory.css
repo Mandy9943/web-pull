@@ -228,10 +228,10 @@
 
 @media (max-width: 768px) {
 	.grid {
-		-ms-grid-columns: (1fr) [2];
+		-ms-grid-columns: 1fr 2fr;
 		grid-template-columns: repeat(2, 1fr);
-		width: 100%;
-		margin: 1%;
+		width: 98%;
+		margin: auto;
 		grid-gap: 10px;
 	}
 
@@ -278,6 +278,9 @@
 }
 .d-flex {
 	display: flex;
+}
+.formatCard{
+	height:100% !important;
 }
 
 /*# sourceMappingURL=ListCategory.css.map */

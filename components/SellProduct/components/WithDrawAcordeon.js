@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function WithdrawAcordeon({ switchedWithdraw, setSwitchedWithdraw }) {
+export default function WithDrawAcordeon({ switchedWithdraw, setSwitchedWithdraw }) {
 	const classes = useStyles();
 
 	const [expandedWithdraw, setExpandedWithdraw] = useState(false);

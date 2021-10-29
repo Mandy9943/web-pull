@@ -1,14 +1,15 @@
 .SliderDetail {
-  margin-botton: 50px;
+  margin-bottom: 20px;
 }
 
 .SliderDetail .mobil {
   display: none;
+  min-height: 190px;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
   .SliderDetail .mobil {
-    display: block !important;
+    display: flex !important;
   }
   .SliderDetail .mobil .slider {
     height: auto;

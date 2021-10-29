@@ -7,6 +7,7 @@ import WarrantyDetail from './WarrantyDetail';
 import SendDetail from './SendDetail';
 import {sendQuestionSocketChat} from "../../components/Services/kierochat-socket"
 import swal from 'sweetalert';
+import Link from 'next/link';
 
 class Question extends Component {
 
@@ -91,9 +92,12 @@ class Question extends Component {
 
         { !this.props.user_data.authenticated && 
             <div className="">
-              <form className="wrap-question-input">
-
-                Inicia sesión o registrate para realizar una pregúnta al vendedor.
+              <form className="wrap-question-input" style={{display: 'contents !important'}}>
+              
+              <Link href="/login"><a>inicia sesión
+              </a></Link> o 
+              <Link href="/registro"><a> regístrate
+              </a></Link> para realizar una pregúnta al vendedor.
               </form>
             </div>
         }

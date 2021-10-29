@@ -20,7 +20,7 @@ class CategoryBanners extends Component {
 	}
 
 	componentDidMount() {
-		getFront('/getBanners/' + this.props.category).then((response) => {
+		getFront('/getBanners/' + this.props.category.replace(/-/g, ' ')).then((response) => {
 			if (response.data.files.length > 0) {
 				this.setState({ loadedBanners: true, files: response.data.files });
 			} else {
@@ -48,8 +48,9 @@ class CategoryBanners extends Component {
 
 								return (
 									<section key={i} className="item">
-										<a href={'/categoria/' + category}>
-											<img src={baseUrl + file} />
+										<a href={'/categoria/' + category.replace(/^[, ]+|[, ]+$|[, ]+/g, "-").trim().toLowerCase()}>
+											<img src={baseUrl + file} alt={category.replace(/-/g, " ")} />
+											{/* // <img src={'http://localhost' + file} alt={category.replace(/-/g, " ")}/> */}
 										</a>
 									</section>
 								);

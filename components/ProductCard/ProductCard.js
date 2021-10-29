@@ -53,41 +53,65 @@ export default class ProductCard extends Component {
 		// 		}
 		// 	}
 		// })
-		dataLayer.push({
-			'event': 'productClick',
-			'ecommerce': {
-				"click": {
-					"actionField": {
-									"list": "Search Results"
-									},
-					'products': 
-							[{
-								'name':data.title,
-								'id':data.product_id,
-								'brand':data.brand,
-								'category':data.category,
-								'position':data.index,
-								"quantity": 5,
-								'price':data.price,
-								'url':'https://kiero.co/detalle/' + data.product_id + '_' + data.title
-																								.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-																								.replace('//', '%2F')
-																								.replace('%', '')
-																								.split(' ')
-																								.join('-'),
+
+		// Segment Product Clicked event
+		// Fire this event when a visitor clicks a product.
+		// Reference: https://segment.com/docs/connections/spec/ecommerce/v2/
+		analytics.track('Product Clicked', {
+			product_id: data.product_id,
+			category: data.category,
+			name: data.title,
+			brand: data.brand,
+			price: data.price,
+			currency: 'COP',
+			quantity: 1,
+			url: 'https://kiero.co/detalle/' + data.product_id + '_' + data.title
+						.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+						.replace('//', '%2F')
+						.replace('%', '')
+						.split(' ')
+						.join('-'),
+			image_url: data.url
+		});
+
+		// console.log(data);
+
+		// dataLayer.push({
+		// 	'event': 'productClick',
+		// 	'ecommerce': {
+		// 		"click": {
+		// 			"actionField": {
+		// 							"list": "Search Results"
+		// 							},
+		// 			'products': 
+		// 					[{
+		// 						'name':data.title,
+		// 						'id':data.product_id,
+		// 						'brand':data.brand,
+		// 						'category':data.category,
+		// 						'position':data.index,
+		// 						"quantity": 5,
+		// 						'price':data.price,
+		// 						'url':'https://kiero.co/detalle/' + data.product_id + '_' + data.title
+		// 																						.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+		// 																						.replace('//', '%2F')
+		// 																						.replace('%', '')
+		// 																						.split(' ')
+		// 																						.join('-'),
 								
-						}]
-				}
-			},
-			// 'eventCallback': function(){
-			// 	document.location = 'https://kiero.co/detalle/' + data.product_id + '_' + data.title
-			// 	.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-			// 	.replace('//', '%2F')
-			// 	.replace('%', '')
-			// 	.split(' ')
-			// 	.join('-')
-			// } 
-		})
+		// 				}]
+		// 		}
+		// 	},
+		// 	// 'eventCallback': function(){
+		// 	// 	document.location = 'https://kiero.co/detalle/' + data.product_id + '_' + data.title
+		// 	// 	.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+		// 	// 	.replace('//', '%2F')
+		// 	// 	.replace('%', '')
+		// 	// 	.split(' ')
+		// 	// 	.join('-')
+		// 	// } 
+		// })
+
 		// window.location.href = '/detalle/' +
 		// data.product_id +
 		// '_' +
@@ -100,8 +124,9 @@ export default class ProductCard extends Component {
 		
 	}
 	render() {
+		
 		return (
-			<div className="producto-card" onClick={() => this.handleDataInfo(this.props)}>
+			<div className={this.props.className} onClick={() => this.handleDataInfo(this.props)}>
 				{/* <div className="productFavIcon3">
 					<Checkbox
 						style={{ color: '#CF0A2C' }}
@@ -109,9 +134,22 @@ export default class ProductCard extends Component {
 						checkedIcon={<Favorite />}
 					/>
 				</div> */}
-				<Link
-					href={'/detalle/[product]'}
-					as={
+				{/*<Link
+				href={'/detalle/[product]'}
+				as={
+					'/detalle/' +
+					this.props.product_id +
+					'_' +
+					this.props.title
+						.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+						.replace('//', '%2F')
+						.replace('%', '')
+						.split(' ')
+						.join('-')
+				}
+				>  */}
+				<a
+					href={
 						'/detalle/' +
 						this.props.product_id +
 						'_' +
@@ -123,7 +161,7 @@ export default class ProductCard extends Component {
 							.join('-')
 					}
 				>
-					<a>
+					
 						<div className="product-card-img">
 							<img
 								alt={this.props.title}
@@ -144,8 +182,7 @@ export default class ProductCard extends Component {
 								: '$ ... '}
 						</h3>
 						<h4 className="title">{this.props.title}</h4>
-					</a>
-				</Link>
+				</a>
 			</div>
 		);
 	}

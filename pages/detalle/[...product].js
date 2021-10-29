@@ -1,28 +1,21 @@
 import React from 'react';
 import Head from 'next/head';
-import Detail from '../../components/ProductDetail';
+// import Detail from '../../components/ProductDetail';
 import { getProductDetail } from '../../services/productsApi';
 import { getUser, isAuthenticated, getJwt } from '../../lib/auth';
 import favicon from '../../assets/img/favicon.svg';
+import dynamic from 'next/dynamic';
+
+const Detail = dynamic(() => import('../../components/ProductDetail'),{loading: ()=> <p>loading...</p> });
 
 function Product({ data, u_data }) {
 	return (
 		<div>
 			<Head>
-				{/* Google Tag Manager */}
-				<script
-					dangerouslySetInnerHTML={{
-						__html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-                    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-                    })(window,document,'script','dataLayer','GTM-TXNXPM7');`,
-					}}
-				/>
-				{/* End Google Tag Manager */}
-				<script type="text/javascript" src="https://checkout.wompi.co/widget.js"></script>
+				{/*<script type="text/javascript" src="https://checkout.wompi.co/widget.js"></script>*/}
 				<title>Kiero.co | {data.title.substring(0,60)}</title>
-				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+				<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+				<meta name="MobileOptimized" content="360"/> 
 				<meta
 					name="Description"
 					content={`KIERO.CO MARKETPLACE | Compralo en Kiero ${data.title} a ${
@@ -60,7 +53,7 @@ function Product({ data, u_data }) {
 				/>
 				<meta
 					property="og:description"
-					content={`Encuentra ${
+					content={`${
 						data.title
 					} en Kiero.co - Descubre millones de productos online.
       Encuentra ${data.category ? data.category.name : ''} en Kiero.co`}
@@ -69,6 +62,8 @@ function Product({ data, u_data }) {
 					property="og:url"
 					content={`https://kiero.co/detalle/${data.product_id}_${data.title
 						.replace(/[^\w\s\/]/gi, '')
+						.replace('//', '%2F')
+						.replace('%', '')
 						.split(' ')
 						.join('-')}`}
 				/>
@@ -79,16 +74,7 @@ function Product({ data, u_data }) {
 				<meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
 				<meta name="robots" content="index,follow" />
 				<link rel="icon" href={favicon} type="image/png" />
-				<link
-					rel="canonical"
-					href={`https://kiero.co/detalle/${data.product_id}_${data.title
-						.replace(/[^\w\s\/]/gi, '')
-						.replace('//', '%2F')
-						.replace('%', '')
-						.split(' ')
-						.join('-')}`}
-				/>
-
+				
 				<script
 					type="application/json"
 					dangerouslySetInnerHTML={{
@@ -118,14 +104,12 @@ function Product({ data, u_data }) {
 						}),
 					}}
 				></script>
+				{/*<script*/}
+				{/*	async type="text/javascript"*/}
+				{/*	src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=Sr8j85"*/}
+				{/*></script>*/}
+
 			</Head>
-			{/* Google Tag Manager (noscript) */}
-			<noscript
-				dangerouslySetInnerHTML={{
-					__html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TXNXPM7" height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
-				}}
-			/>
-			{/* End Google Tag Manager (noscript) */}
 			<Detail user_data={u_data} data={data} />
 
 		</div>
@@ -136,7 +120,7 @@ function Product({ data, u_data }) {
 export async function getServerSideProps(context) {
 	// Fetch data from external API
 	let temp_p = String(context.params.product).split('_');
-	const id_product = temp_p[0];
+	const id_product = JSON.parse(temp_p[0]);
 
 	const res = await getProductDetail(id_product, {
 		params: { is_variant: false, product_global_id: id_product },

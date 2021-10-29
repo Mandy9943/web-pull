@@ -1,169 +1,377 @@
+.containerBackDropLoader
+  position: fixed
+  width: 100%
+  min-height: 100vh
+  z-index: 50
+  background: rgba(0, 0, 0, 0.8)
+  left: 0
+  top: 0
+  display: flex
+
+  .containerLoader
+    display: flex
+    align-items: center
+    flex-direction: column
+    margin: auto
+
+    p
+      font-weight: bold
+      color: white
+      font-size: 3vh
+
+.containerUserName
+  display: flex
+
+  input
+    margin-right: 3px !important
+
+.typeIdentification
+	appearance: auto !important
+	margin: 5px 0px
+	outline: none
+	width: calc(100% - 2px)
+	padding: 8px
+	border:0.5px solid #b8b8b8
+	border-radius: 5px
+
+/* .containerBackDropLoader .containerLoader .element-spinner{
+ *	width:60px !important;
+ *	height:60px !important;
+ *}
+ *.containerBackDropLoader .containerLoader .element-spinner div{
+ *	-webkit-box-sizing: border-box;
+ *    box-sizing: border-box;
+ *    display: block;
+ *    position: absolute;
+ *    width: 60px;
+ *    height: 60px;
+ *    border: 6px solid;
+ *    border-radius: 50%;
+ *    -webkit-animation: element-spinner 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+ *    animation: element-spinner 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+ *    border-color: #CF0A2C transparent transparent transparent;
+ *}
+
 .pay
-    padding: 20px 0px
-    background: white
-    border-bottom: 0.5px solid #e2e2e2
-    border-top: 0.5px solid #e2e2e2
-    border-right: 0.5px solid #e2e2e2
+  padding: 20px 0px
+  background: white
+  border-bottom: 0.5px solid #e2e2e2
+  border-top: 0.5px solid #e2e2e2
+  border-right: 0.5px solid #e2e2e2
+
 .pay-img
-    display: -ms-grid !important
-    display: grid !important
-    -ms-grid-columns: min-content auto
-    grid-template-columns: -webkit-min-content auto
-    grid-template-columns: min-content auto
-    position: relative
-    margin-bottom: 15px
-    justify-content: normal !important
-    img
-        height: 38px !important
-        margin: auto
-        margin-bottom: 4px
-    .pay-section-img
-        margin-left: 0 !important
-    a
-        position: absolute
-        bottom: -10px
-        left: 19px
+  display: -ms-grid !important
+  display: grid !important
+  -ms-grid-columns: min-content auto
+  grid-template-columns: -webkit-min-content auto
+  grid-template-columns: min-content auto
+  position: relative
+  margin-bottom: 15px
+  justify-content: normal !important
+
+.clasecantidad
+  margin: 5px 20px
+  margin-top: 20px 10px
+
+.cantidad
+  border: 1px inset
+  padding: 5px
+  border-radius: 5px
+  border-color: #cf0a2c
+  font-size: 15px
+  text-align: center
+  background: #cf0a2c
+  color: #ffff
+
+.pay-img
+  img
+    height: 38px !important
+    margin: auto
+    margin-bottom: 4px
+
+  .pay-section-img
+    margin-left: 0 !important
+
+  a
+    position: absolute
+    bottom: -10px
+    left: 19px
+
 .pay-item
-    padding: 10px 20px
-    color: #565555
-    font-size: 14px
-    img
-        width: auto
-        height: 50px
-    button
-        margin: 20px auto;
-        background: #CF0A2C
-        color: white
-        width: 80%
-        @media (max-width: 700px)
-            width: 100%
-    .select-icon
-        position: relative
-        width: fit-content
-        .icon-select
-            position: absolute
-            right: 15px
-            top: 11px
-            color: #CF0A2C
-        select
-            padding: 10px
-            border-radius: 5px
-            outline: none !important
-            border: 0.3px solid #111111
-            width: 195px !important
-            &:focus
-                outline: none !important
-            option
-                margin: 10px 0 !important
-        select:focus 
-            outline: none
+  display: flex
+  padding: 5px 20px 10px 20px
+  color: #111111
+  font-size: 14px
+
+  /* align-items: center;
+  justify-content: space-between
+  flex-direction: column
+
+.pay-item-oldprice
+  display: flex
+  padding: 10px 20px 0px 20px
+  color: #111111
+  font-size: 14px
+
+  /* align-items: center;
+  flex-direction: row
+
+.pay-item
+  img
+    width: auto
+    height: 50px
+
+  button
+    /* margin-top: 20px;
+    background: #cf0a2c
+    color: white
+    width: 80%
+    margin: 10px auto
+    font-weight: 500
+
+.button-finish-payu
+  /* margin-top: 20px;
+  background: #cf0a2c
+  color: white
+  width: auto
+  font-weight: 500
+  margin: 0
+  font-size: 15px
+  display: flex
+  justify-content: center
+
+@media (max-width: 700px)
+  .pay-item button
+    width: 100%
+
+.pay-item .select-icon
+  position: relative
+  display: flex
+  flex-direction: column
+
+  /*width: -webkit-fit-content;
+  /*width: -moz-fit-content;
+  /*width: fit-content;
+
+  .icon-select
+    position: absolute
+    right: 15px
+    top: 11px
+    color: #cf0a2c
+
+  select
+    padding: 8px
+    border-radius: 5px
+    outline: none !important
+    border: 0.31px solid #acacac
+    width: 260px !important
+    background-color: #ffff
+
+    &:focus
+      outline: none !important
+
+    option
+      margin: 10px 0 !important
+
+    &:focus
+      outline: none
 
 .title-pay-product-detail
-    font-size: 20px
-    font-weight: 600
-    color: #565555
+  font-size: 20px
+  font-weight: 600
+  color: #111111
+  line-break: anywhere
+
 .price-pay-product-detail
-    font-size: 36px
-    color: #565555
-    @media (max-width: 700px)
-        color: #111111
-        font-weight: 600
-        font-family: 'Open Sans', sans-serif;
+  color: #111111
+  font-size: 36px
+  font-weight: 600
+  font-family: 'Roboto', sans-serif
+
+.price-pay-product-detail-oldprice
+  color: #646464
+  font-size: 15px
+  font-weight: 400
+  font-family: 'Roboto', sans-serif
+  text-decoration: line-through
+
+.price-pay-product-detail-oldprice-discount
+  color: #cf0a2c
+  font-size: 15px
+  font-weight: 500
+  font-family: 'Roboto', sans-serif
+
+@media (max-width: 700px)
+  .price-pay-product-detail
+    color: #111111
+    font-weight: 600
+    font-family: 'Roboto', sans-serif
+
 .info-pay-product-detail
-    h3
-        color: #CF0A2C
-        margin-bottom: 5px
-        font-22px
-        text-transform: capitalize
-    p
-        font-size: 15px
-        margin-bottom: 5px
-        color: #111111
-    .no-web
-        margin-right: 15px
-    .icon-right
-        margin-left: 12%
+  h3
+    color: #cf0a2c
+    margin-bottom: 5px
+    text-transform: capitalize
+
+  p
+    font-size: 13px
+    -webkit-text-size-adjust: none
+    margin-bottom: 5px
+    color: #111111
+
+  .no-web
+    margin-right: 15px
+
+  .icon-right
+    margin-left: 12%
+
 .pay-section-img
-    width: 100%
+  width: 100%
+
 .section-pay-type
-    border-top: 0.5px solid #e2e2e2
-    &.pay-movil
-        background: white !important
-    padding: 20px
-    img
-        width: auto
-        height: 50px
-    .section-pay-type-title
-        display: grid
-        grid-template-columns: 1fr auto
-        grid-gap: 15px
-        margin: 10px 0
-        text-align: left
-        h4
-            color: #111111
-            font-size: 17px
-            font-weight: 600
-        svg
-            color: #CF0A2C
-    .main-button
-        width: 100%
-        p
-            margin: 0 !important
-            color: white !important
+  border-top: 0.5px solid #e2e2e2
+  padding: 20px
+
+  &.pay-movil
+    background: white !important
+
+  img
+    width: auto
+    height: 44px
+    /*padding-right: 10%
+
+  .section-pay-type-title
+    display: -ms-grid
+    display: grid
+    -ms-grid-columns: 1fr auto
+    grid-template-columns: 1fr auto
+    grid-gap: 15px
+    margin: 10px 0
+    text-align: left
+
+    h4
+      color: #111111
+      font-size: 15px
+      -webkit-text-size-adjust: none
+      font-weight: 500
+
+    svg
+      color: #cf0a2c
+
+  .main-button
+    width: 100%
+
     p
-        margin: 10px 0px
-        color: #111111
-        font-size: 16px
-    .section-pay-type-items
-        padding: 20px 10px
+      margin: 0 !important
+      color: white !important
+
+  p
+    margin: 10px 0px
+    color: #111111
+    font-size: 14px
+    -webkit-text-size-adjust: none
+
+  .section-pay-type-items
+    padding: 20px 10px
+
+    div
+      min-height: 50px
+      height: auto
+      position: relative
+
+      img
+        max-width: 100%
+        position: absolute
+        margin: auto
+        inset: 0px
+        height: auto !important
+        max-height: 100% !important
+        min-height: auto !important
+
 .section-pay-send
-    padding: 20px
-    border-top: 0.5px solid #e2e2e2
-    .section-pay-send-title
-        display: grid
-        grid-template-columns: auto 1fr
-        grid-gap: 15px
-        margin: 20px 0px
-        color: #111111
-        font-size: 16px
-        svg
-            color: #CF0A2C
-            position: relative
-            top: 2px
-    .section-pay-send-subtitle
-        display: grid
-        grid-template-columns: auto 1fr
-        grid-gap: 15px
-        color: #CF0A2C
-        font-size: 15px
-        p
-            align-self: center
-        svg
-            font-size: 20px
-    .section-pay-send-description
-        margin: 20px 0px
-        color: #111111
-        font-size: 15px
+  padding: 20px
+  border-top: 0.5px solid #e2e2e2
+
+  .section-pay-send-title
+    display: -ms-grid
+    display: grid
+    -ms-grid-columns: auto 1fr
+    grid-template-columns: auto 1fr
+    grid-gap: 15px
+    margin: 20px 0px
+    color: #111111
+    font-size: 16px
+
+    svg
+      color: #cf0a2c
+      position: relative
+      top: 2px
+
+  .section-pay-send-subtitle
+    display: -ms-grid
+    display: grid
+    -ms-grid-columns: auto 1fr
+    grid-template-columns: auto 1fr
+    grid-gap: 15px
+    color: #cf0a2c
+    font-size: 14px
+
+    p
+      -ms-flex-item-align: center
+      -ms-grid-row-align: center
+      align-self: center
+
+#crossIcon
+  background-color: #cf0a2c
+  width: 20px
+  height: 20px
+  color: white
+
+  &:hover
+    background-color: white
+    color: #cf0a2c
+
+.section-pay-send
+  .section-pay-send-subtitle svg
+    font-size: 20px
+    -webkit-text-size-adjust: none
+
+  .section-pay-send-description
+    margin: 20px 0px
+    color: #111111
+    font-size: 15px
+    -webkit-text-size-adjust: none
+
 .section-pay-wrap-seller
-    border-top: 0.5px solid #e2e2e2
-    padding: 20px
+  border-top: 0.5px solid #e2e2e2
+  padding: 20px
+
 @media (max-width: 768px)
-    .pay
-        border-right: 0px
-        border-bottom: 0px
-        margin-bottom: 30px
-        padding: 0
-        border-top: 0
-    .section-pay-send
-        background: white
-    .section-pay-send-title
-        h4
-            font-weight: 600
-    .section-pay-send-subtitle
-        p  
-            font-weight: 400
-    .info-pay-product-detail
-        h3
-            font-size: 22px
+  .pay
+    border-right: 0px
+    border-bottom: 0px
+    margin-bottom: 5px
+    padding: 0
+    border-top: 0
 
+  .section-pay-send
+    background: white
 
+  .section-pay-send-title h4
+    font-weight: 500
+    font-size: 15px
+    -webkit-text-size-adjust: none
+
+  .section-pay-send-subtitle p
+    font-weight: 400
+    -webkit-text-size-adjust: none
+
+  .info-pay-product-detail h3
+    font-size: 15px
+    -webkit-text-size-adjust: none
+
+  .section-pay-send .section-pay-send-description
+    margin: 20px 0px
+    color: #111111
+    font-size: 14px
+    -webkit-text-size-adjust: none

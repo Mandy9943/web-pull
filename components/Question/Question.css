@@ -5,8 +5,9 @@
 
 .wrap-question h3 {
 	color: #111111;
-	font-size: 18px;
-	font-weight: 600;
+	font-size: 15px;
+	font-weight: 500;
+	-webkit-text-size-adjust: none;
 }
 
 .wrap-question-buttons {
@@ -25,6 +26,7 @@
 	padding: 5px;
 	background-color: #bdbdbd;
 	border: none;
+	-webkit-text-size-adjust: none;
 }
 
 .wrap-question-buttons .button-question-product-detail:hover {
@@ -99,6 +101,8 @@
 	.wrap-question-input {
 		display: inline-block;
 		width: 95%;
+		font-size: 14px;
+		-webkit-text-size-adjust: none;
 	}
 	.wrap-question-buttons {
 		display: -ms-grid;

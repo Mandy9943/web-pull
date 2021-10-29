@@ -1,6 +1,6 @@
 .home-content {
   margin: 0px auto;
-  width: 70%;
+  width: 80% !important;
 }
 
 .home-section-title {
@@ -23,13 +23,14 @@
 }
 
 .footer-social img:last-child {
-  margin-left: 30px;
+  margin-left: 20px !important;
+  margin-top: 5px !important;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 925px) {
   .home-content {
     margin: 0px auto;
-    width: 100%;
+    width: 100% !important;
     overflow-x: hidden;
   }
   .footer-social {

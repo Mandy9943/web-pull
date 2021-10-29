@@ -7,6 +7,7 @@ import { faTruck } from '@fortawesome/free-solid-svg-icons';
 import logo from '../../assets/img/logo-kiero.png';
 import ubication from '../../assets/img/iconos/UBICACIÓN-01.svg';
 import { getSellerByProduct } from '../../services/productsApi';
+import UserProfile from '../../assets/img/default-user.jpg'
 
 function SellerInfo({ productId }) {
 	const [seller, setSeller] = useState();
@@ -37,7 +38,7 @@ function SellerInfo({ productId }) {
 						alt={seller?.name}
 						src={
 							!seller?.photo
-								? 'https://recap-project.eu/wp-content/uploads/2017/02/default-user.jpg'
+								? UserProfile
 								: seller.photo
 						}
 					/>
@@ -78,9 +79,7 @@ function SellerInfo({ productId }) {
 				</div>
 			))}
 
-			<Link href={'/'}>
-				<a className="link-more-products">{'Mira más productos de este vendedor'}</a>
-			</Link>
+			<Link href={'/'}><a className="link-more-products">{'Mira más productos de este vendedor'}</a></Link>
 		</>
 	);
 }

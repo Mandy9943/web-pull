@@ -18,7 +18,7 @@ class Info extends Component {
             </p>
             <h3>Contacto</h3>
             <p>
-              Sobre dudas, quejas y reclamos +57 (1) 5800817 (4) 604 6458 EXT 1103
+              Sobre dudas, quejas y reclamos +57 (4) 604 6458
             </p>
           </div>
           <div className="info-item">
@@ -28,7 +28,7 @@ class Info extends Component {
             <h3>Envíos</h3>
             <p>
               Envío gratis en todos nuestros productos con un tiempo de entrega de 3
-              a 7 días hábiles.
+              a 9 días hábiles.
             </p>
           </div>
           <div className="info-item only-desktop">

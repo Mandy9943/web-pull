@@ -59,8 +59,9 @@ export const getVariantAvailable = (id_product, params) => {
 };
 
 export const getRecommendProducts = (category) => {
+	let categoryName = category.replace(/-/g, ' ')
 	try {
-		let endpoint = '/search/category/' + category + '?size=' + 20;
+		let endpoint = '/search/category/' + categoryName + '?size=' + 20;
 		let data = sget(endpoint);
 		return data;
 	} catch (error) {
@@ -110,30 +111,32 @@ export const searchProducts = (
 	order_by = '',
 	level = ''
 ) => {
+	let categoryName = category.replace(/-/g, ' ')
+	let categoryNameOts = ots.replace(/-/g, ' ')
 	try {
 		const params = new URLSearchParams();
-
-		if (ots !== '') params.append('ots', ots);
+		if (categoryNameOts !== '') params.append('ots', categoryNameOts);
 		if (brand !== '') params.append('brand', brand);
 		if (price !== '') params.append('price', price);
-		if (category !== '') params.append('category', category);
+		if (categoryName !== '') params.append('category', categoryName);
 		if (sort_by !== '') params.append('sort_by', sort_by);
 		if (order_by !== '') params.append('order_by', order_by);
 		if (level !== '') params.append('level', level);
 
 		let endpoint1 = productsApi + `?size=${size}&page=${page}`;
-		let endpoint2 = categoryApi + `/${ots}?size=${size}&page=${page}`;
+		let endpoint2 = categoryApi + `/${categoryNameOts}?size=${size}&page=${page}`;
 		let endpoint = type === 'search' ? endpoint1 : endpoint2;
 		if (params.toString().length) endpoint = endpoint + '&' + params.toString();
-		return apiget(endpoint);
+		return apiget(decodeURI(endpoint));
 	} catch (error) {
 		return error;
 	}
 };
 
 export const searchSuggestions = (size, ots) => {
+	let categoryNameOts = ots.replace(/-/g, ' ')
 	try {
-		let endpoint = suggestionsApi + `?size=${size}&ots=${ots}`;
+		let endpoint = suggestionsApi + `?size=${size}&ots=${categoryNameOts}`;
 		return apiget(endpoint);
 	} catch (error) {
 		return error;
@@ -141,14 +144,16 @@ export const searchSuggestions = (size, ots) => {
 };
 
 export const searchFilters = (ots, level, category) => {
+	let categoryNameOts = ots.replace(/-/g, ' ')
+	let categoryName = category.replace(/-/g, ' ')
 	try {
 		const params = new URLSearchParams();
 		// console.log('level', level);
 		if (level !== '') params.append('level', level);
-		if (category !== '') params.append('category', category);
+		if (categoryName !== '') params.append('category', categoryName);
 
-		let endpoint = filtersApi + `?ots=${ots}`;
-		if (params.toString().length) endpoint = endpoint + '&' + params.toString();
+		let endpoint = filtersApi + `?ots=${categoryNameOts}`;
+		// if (params.toString().length) endpoint = endpoint + '&' + params.toString();
 		return apiget(endpoint);
 	} catch (error) {
 		return error;
@@ -156,8 +161,9 @@ export const searchFilters = (ots, level, category) => {
 };
 
 export const getProductsBasic = (category, limit) => {
+	let categoryName = category.replace(/-/g, ' ')
 	try {
-		let endpoint = '/search/category/' + category + '?size=' + limit;
+		let endpoint = '/search/category/' + categoryName + '?size=' + limit;
 		let data = sget(endpoint);
 		return data;
 	} catch (error) {

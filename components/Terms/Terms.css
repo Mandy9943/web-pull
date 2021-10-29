@@ -20,4 +20,9 @@
   font-weight: 600;
   margin-bottom: 20px;
 }
+@media (max-width: 768px) {
+  .terms-wrap-content {
+    margin: 40px 5%;
+  }
+}
 /*# sourceMappingURL=Terms.css.map */

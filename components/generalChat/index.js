@@ -31,7 +31,7 @@ export default function GeneralChat() {
 		generalsocketchat.on('response_open_chat', function (msg) {
 			Cookies.set('roomId', msg.room_id);
 			Cookies.set('room', msg.room);
-			console.log('validando sala', msg.room, msg);
+			// console.log('validando sala', msg.room, msg);
 			setLoading(true);
 			setTimeout(() => {
 				//aqui puedes poner un loader que diga "sala validada, espere mientras creamos su sala" y luego ejecutas el handleOpenChat
@@ -48,10 +48,10 @@ export default function GeneralChat() {
 		//El segundo mensaje identifica si la sala ya fue cerrada por el asesor o no (get-chat)
 
 		generalsocketchat.on('notifications', function (msg) {
-			console.log('notificación', msg);
+			// console.log('notificación', msg);
 			if (msg.error == true && msg.type == 'open-chat') {
 				// setDataError(msg.error);
-				console.log('hay un error');
+				// console.log('hay un error');
 			}
 			if (msg.type == 'get-chat' && msg.archive == true) {
 				Cookies.remove('roomId');
@@ -296,9 +296,12 @@ export default function GeneralChat() {
 
 				{handleRenderButton()}
 			</div>
-			<Fab className="buttonChat" variant="extended" onClick={handleOpenChat}>
+			<Fab className="buttonChat buttonChat-Web" variant="extended" onClick={handleOpenChat}>
 				<SmsIcon />
 				Hablar con un asesor
+			</Fab>
+			<Fab className="buttonChat buttonChat-NoWeb" variant="extended" onClick={handleOpenChat}>
+				<SmsIcon />
 			</Fab>
 		</>
 	);
