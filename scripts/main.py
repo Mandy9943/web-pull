@@ -53,14 +53,14 @@ def crear_sitemap(list_of_urls, tipo, limite):
 
     lastmod_date = datetime.now().strftime('%Y-%m-%d')
 
-    for i in tqdm(new_df, desc=f"Generando sitemaps de {tipo}"):  # For each URL in the list of URLs ...
+    for i in tqdm(new_df, desc="Generando sitemaps de {0}".format(tipo)):  # For each URL in the list of URLs ...
         i.loc[:, 'lastmod'] = lastmod_date  # ... add Lastmod date
         i.loc[:, 'changefreq'] = 'never'  # ... add changefreq
         i.loc[:, 'priority'] = '1.0'  # ... add priority
 
         sitemap_output = template.render(pages=i.itertuples())
 
-        filename = f"sitemap/sitemap-{tipo}-{str(i.iloc[0, 1])}.xml"
+        filename = "sitemap/sitemap-{0}-{1}.xml".format(tipo, str(i.iloc[0, 1]))
         if not os.path.exists("sitemap"):
             os.makedirs("sitemap")
 
@@ -125,22 +125,22 @@ def conectar():
         xml = "<?xml version='1.0' encoding='UTF-8'?>" + "<sitemapindex xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>"
         lastmod_date = datetime.now().strftime('%Y-%m-%d')
         for i in tqdm(range(math.ceil(tamano_producto / limite)), desc='Agregando el indice del producto'):
-            xml += f'''
+            xml += '''
             <sitemap>
-               <loc>https://www.kiero.co/sitemap/sitemap-producto-{i}.xml.gz</loc>
-		        <lastmod>{lastmod_date}</lastmod>
-            </sitemap>'''
+               <loc>https://www.kiero.co/sitemap/sitemap-producto-{0}.xml.gz</loc>
+		        <lastmod>{1}</lastmod>
+            </sitemap>'''.format(i, lastmod_date)
         for i in tqdm(range(math.ceil(tamano_categoria / limite)), desc='Agregando el indice del la categoría'):
-            xml += f'''
+            xml += '''
                     <sitemap>
-                       <loc>https://www.kiero.co/sitemap/sitemap-categoria-{i}.xml.gz</loc>
-        		        <lastmod>{lastmod_date}</lastmod>
-                    </sitemap>'''
+                       <loc>https://www.kiero.co/sitemap/sitemap-categoria-{0}.xml.gz</loc>
+        		        <lastmod>{1}</lastmod>
+                    </sitemap>'''.format(i, lastmod_date)
         xml += '</sitemapindex>'
 
         formatter = xmlformatter.Formatter(indent="1", indent_char="\t", encoding_output="UTF-8", preserve=["literal"])
         xml = formatter.format_string(xml)
-        filename = f"sitemap/sitemap-index.xml"
+        filename = "sitemap/sitemap-index.xml"
         if not os.path.exists("sitemap"):
             os.makedirs("sitemap")
         # Write the File to Your Working Folder
