@@ -29,7 +29,7 @@ def config(archivo='.env', seccion='postgresql'):
         raise Exception('Secccion {0} no encontrada en el archivo {1}'.format(seccion, archivo))
 
 
-def crear_sitemap(list_of_urls, tipo, limite):
+def crear_sitemap(list_of_urls, tipo, limite, posicion):
     list_of_urls.loc[:, 'name'] = ''
 
     new_df = [list_of_urls[i:i + limite] for i in range(0, list_of_urls.shape[0], limite)]
@@ -53,14 +53,14 @@ def crear_sitemap(list_of_urls, tipo, limite):
 
     lastmod_date = datetime.now().strftime('%Y-%m-%d')
 
-    for i in tqdm(new_df, desc="Generando sitemaps de {0}".format(tipo)):  # For each URL in the list of URLs ...
+    for i in new_df:  # For each URL in the list of URLs ...
         i.loc[:, 'lastmod'] = lastmod_date  # ... add Lastmod date
         i.loc[:, 'changefreq'] = 'never'  # ... add changefreq
         i.loc[:, 'priority'] = '1.0'  # ... add priority
 
         sitemap_output = template.render(pages=i.itertuples())
 
-        filename = "sitemap/sitemap-{0}-{1}.xml".format(tipo, str(i.iloc[0, 1]))
+        filename = "sitemap/sitemap-{0}-{1}.xml".format(tipo, posicion)
         if not os.path.exists("sitemap"):
             os.makedirs("sitemap")
 
@@ -72,26 +72,44 @@ def crear_sitemap(list_of_urls, tipo, limite):
 def conexion_producto(cur, limite):
     # Ejecución de una consulta para obtener las rutas amigables de los productos
     print('Obteniendo las url amigables para productos')
-    sql = 'select product_id, title from url_amigable_productos where status > 0;'
-    df = pd.read_sql(sql, cur)
-    tqdm.pandas(desc="Descargando los productos")
-    df.progress_apply(lambda x: x)
-
-    df['url'] = "https://kiero.co/detalle/" + df['product_id'].apply(str) + "_" + df['title'] + "/"
-    crear_sitemap(df[['url']], 'producto', limite)
-    return df.shape[0]
+    posicion = 0
+    cantidad = 0
+    tamanho = 1
+    while tamanho > 0:
+        sql = 'select product_id, title from url_amigable_productos where status > 0 offset {0} ROWS FETCH NEXT {1} ROWS ONLY;'.format(
+            posicion * limite, limite);
+        df = pd.read_sql(sql, cur)
+        tamanho = df.shape[0]
+        if tamanho > 0:
+            tqdm.pandas(desc="Descargando los productos {0}".format(posicion))
+            df.progress_apply(lambda x: x)
+            df['url'] = "https://kiero.co/detalle/" + df['product_id'].apply(str) + "_" + df['title'] + "/"
+            cantidad += tamanho
+            posicion += 1
+            crear_sitemap(df[['url']], 'producto', limite, posicion - 1)
+    return cantidad
 
 
 def conexion_categoria(cur, limite):
     # Ejecución de una consulta para obtener las rutas amigables de los productos
     print('Obteniendo las url amigables para categorias')
-    sql = 'select replace from url_amigable_categoria;'
-    df = pd.read_sql(sql, cur)
-    tqdm.pandas(desc="Descargando las categorias")
-    df.progress_apply(lambda x: x)
-    df['url'] = "https://kiero.co/categoria/" + df['replace'] + "/"
-    crear_sitemap(df[['url']], 'categoria', limite)
-    return df.shape[0]
+    posicion = 0
+    cantidad = 0
+    tamanho = 1
+    while tamanho > 0:
+        sql = 'select replace from url_amigable_categoria offset {0} ROWS FETCH NEXT {1} ROWS ONLY;'.format(
+            posicion * limite, limite)
+        df = pd.read_sql(sql, cur)
+        tamanho = df.shape[0]
+        if tamanho > 0:
+            tqdm.pandas(desc="Descargando las categorias de la pagina {0}".format(posicion))
+            df.progress_apply(lambda x: x)
+            df['url'] = "https://kiero.co/categoria/" + df['replace'] + "/"
+            cantidad += tamanho
+            posicion += 1
+            crear_sitemap(df[['url']], 'categoria', limite, posicion - 1)
+
+    return cantidad
 
 
 # Para obtener y trabajar los datos de la base de datos
@@ -127,13 +145,13 @@ def conectar():
         for i in tqdm(range(math.ceil(tamano_producto / limite)), desc='Agregando el indice del producto'):
             xml += '''
             <sitemap>
-               <loc>https://www.kiero.co/sitemap/sitemap-producto-{0}.xml.gz</loc>
-		        <lastmod>{1}</lastmod>
+               <loc>https://kiero.co/sitemap/sitemap-producto-{0}.xml.gz</loc>
+                <lastmod>{1}</lastmod>
             </sitemap>'''.format(i, lastmod_date)
         for i in tqdm(range(math.ceil(tamano_categoria / limite)), desc='Agregando el indice del la categoría'):
             xml += '''
                     <sitemap>
-                       <loc>https://www.kiero.co/sitemap/sitemap-categoria-{0}.xml.gz</loc>
+                       <loc>https://kiero.co/sitemap/sitemap-categoria-{0}.xml.gz</loc>
         		        <lastmod>{1}</lastmod>
                     </sitemap>'''.format(i, lastmod_date)
         xml += '</sitemapindex>'
