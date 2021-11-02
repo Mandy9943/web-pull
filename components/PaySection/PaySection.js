@@ -283,7 +283,8 @@ class PaySection extends Component {
   renderPayButtonSection = (renderPayu) => {
     // const btnEnabled = <button type="submit" onClick={() => this.go(this.props.pgid)}>Comprar</button>;
     const btnEnabled = (
-      <button type="submit" onClick={() => this.validateDataGoogle(renderPayu)}>
+      // // <button type="submit" onClick={() => this.validateDataGoogle(renderPayu)}>
+      <button type="submit" onClick={() => renderPayu()}>
         Comprar
       </button>
     );
