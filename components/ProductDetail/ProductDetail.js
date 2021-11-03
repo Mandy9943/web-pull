@@ -274,8 +274,25 @@ class ProductDetail extends Component {
 
   }
   async createlead(item) {
-    console.log(item)
-    const error = await createleadClient(item['ProductName']);
+    var data = {
+      first_name:Cookies.get("name"),
+      city: "",
+      address:"",
+      email:Cookies.get("email"),
+      second_email:"",
+      phone:"",
+      second_phone:"",
+      last_name:Cookies.get("last_name"),
+      type_id:"",
+      num_id:"",
+      id:Cookies.get("user_id"),
+      country:"",
+      lead_type:"",
+      category:"",
+      sub_category:"",
+      price_product:item['price']
+    }
+    const error = await createleadClient(data);
   }
   async reLoadData(pgid) {
     // Esta funcion se llama cuando se encuentra un match de variantes

@@ -1,17 +1,10 @@
-import { post } from "../lib/request";
+import { post_test } from "../lib/request";
 
 export const createlead = async (
-  name,
+  data,
 ) => {
-  
   try {
-    const response = await post("/create_lead_zoho", {
-      name: name,
-      last_name: last_name,
-      email: email,
-      username: email,
-      password: password,
-    });
+    const response = await post_test("/create_lead_zoho", data);
     return response;
   } catch (error) {
     return error.response && error.response.status === 422
