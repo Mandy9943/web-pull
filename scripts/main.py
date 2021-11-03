@@ -173,7 +173,7 @@ def conectar():
         filename = "sitemap/sitemap-index.xml"
         if not os.path.exists("sitemap"):
             os.makedirs("sitemap")
-        # Write the File to Your Working Folder
+
         print("Guardando todos los indices")
         with open(filename, 'wb') as f:
             f.write(xml)
