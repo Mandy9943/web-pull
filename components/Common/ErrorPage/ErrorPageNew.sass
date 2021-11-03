@@ -1,14 +1,14 @@
 #notfound
   position: relative
-  min-height: 100vh
+  height: 100vh
   width: 100%
   display: flex
   align-items: center
   justify-content: center
   background-color: #d00a2d
-  padding-top: 100px
 
   .notfoundWrapper
+    padding-top: 180px
     height: 500px
     display: flex
 
@@ -67,9 +67,8 @@
 
 @media only screen and (max-width: 1000px)
   #notfound
-    padding-top: 0px
-
     .notfoundWrapper
+      padding-top: 0px
       flex-direction: column
       height: auto
 
@@ -91,33 +90,6 @@
       .notfoundTitle
         font-size: 40px
 
-@media only screen and (max-width: 540px)
-  #notfound
-    padding-top: 30px
-
-    .notfoundWrapper
-      align-items: center
-
-      .notfoundImg
-        position: relative
-        height: 200px
-        margin-right: 0
-
-        .imgContent
-          width: 100%
-          justify-content: center
-          display: flex
-
-        img
-          height: 400px
-
-    .notfoundInfo
-      padding: 50px 0 0px 0px
-      width: 90%
-
-      .notfoundTitle
-        font-size: 30px
-
       .notfoundLinks
         display: flex
         justify-content: center
@@ -126,3 +98,34 @@
 
     .notfoundLinks .notfoundLink button
       margin: 10px 10px
+
+@media only screen and (max-width: 540px)
+  #notfound
+    .notfoundWrapper
+      align-items: center
+      padding-top: 30px
+
+      .notfoundImg
+        position: relative
+        height: 180px
+        margin-right: 0
+
+        .imgContent
+          width: 100%
+          justify-content: center
+          display: flex
+          top: 0px
+
+        img
+          height: 300px
+
+    .notfoundInfo
+      padding: 10px 0 0px 0px
+      width: 90%
+
+      .notfoundTitle
+        font-size: 35px
+        margin-bottom: 15px
+
+      .notfoundDescription
+        margin-bottom: 30px
