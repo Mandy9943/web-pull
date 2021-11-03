@@ -287,7 +287,7 @@ class ProductDetail extends Component {
       num_id:"",
       id:Cookies.get("user_id"),
       country:"",
-      lead_type:"",
+      lead_type:"Usuario Registrado que Accedió a los Detalles del Producto",
       category:"",
       sub_category:"",
       price_product:item['price']
