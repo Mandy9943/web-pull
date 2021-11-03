@@ -62,7 +62,7 @@ function Product({ data, u_data }) {
 				/>
 				<meta
 					property="og:url"
-					content={`https://kiero.co${handleFormatUrl(data.product_id,data.title)}`}
+					content={`https://kiero.co${handleFormatUrl(data.product_id, data.title)}`}
 				/>
 				<meta property="og:locale" content="es_ES" />
 				<meta property="og:type" content="WebSite" />

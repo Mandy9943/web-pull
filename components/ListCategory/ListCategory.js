@@ -9,6 +9,7 @@ import CategoryBanners from '../Common/CategoryBanners/CategoryBanners';
 import Checkbox from '@material-ui/core/Checkbox';
 import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
+import {handleFormatUrl} from '../../lib/functions'
 
 class ListCategory extends Component {
 
@@ -41,12 +42,7 @@ class ListCategory extends Component {
 							brand: prod.brand,
 							category: prod.category,
 							position: index,
-							url:'https://kiero.co/detalle/' + prod.product_id + '_' + prod.title
-																														.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-																														.replace('//', '%2F')
-																														.replace('%', '')
-																														.split(' ')
-																														.join('-'),
+							url:'https://kiero.co' + handleFormatUrl(prod.product_id, prod.title),
 							image_url: prod.image
 						};
 			
@@ -322,15 +318,7 @@ class ListCategory extends Component {
 			price: data.price,
 			quantity: 1,
 			position: data.index,
-			url: 'https://kiero.co/detalle/' +
-						data.product_id +
-						'_' +
-						data.title
-							.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-							.replaceAll('//', '%2F')
-							.replace('%', '')
-							.split(' ')
-							.join('-'),
+			url: 'https://kiero.co' + handleFormatUrl(data.product_id, data.title),
 			image_url: data.image
 		}
 
@@ -359,15 +347,7 @@ class ListCategory extends Component {
 							? this.props.products.map((product, i) => (
 									<a
 									 	// href={'/detalle/[product]'}
-										href={'/detalle/' +
-										product.product_id +
-										'_' +
-										product.title
-											.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-											.replaceAll('//', '%2F')
-											.replace('%', '')
-											.split(' ')
-											.join('-')}
+										href={handleFormatUrl(product.product_id, product.title)}
 										// as={
 										// 	'/detalle/' +
 										// 	product.product_id +
@@ -441,15 +421,7 @@ class ListCategory extends Component {
 							: this.props.products.map((product, i) => (
 									<a
 										// href={'/detalle/[product]'}
-										href={'/detalle/' +
-										product.product_id +
-										'_' +
-										product.title
-											.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-											.replaceAll('//', '%2F')
-											.replace('%', '')
-											.split(' ')
-											.join('-')}
+										href={handleFormatUrl(product.product_id, product.title)}
 										// as={
 										// 	'/detalle/' +
 										// 	product.product_id +
