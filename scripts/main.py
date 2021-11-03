@@ -1,5 +1,6 @@
 import gzip
 import math
+import re
 import shutil
 from configparser import ConfigParser
 from tqdm import tqdm
@@ -27,6 +28,16 @@ def config(archivo='.env', seccion='postgresql'):
         return db
     else:
         raise Exception('Secccion {0} no encontrada en el archivo {1}'.format(seccion, archivo))
+
+
+def tratar_url(url):
+    traduccion = ''.maketrans('ãàáäâáèéëêìíïîõòóöôùúüûñç·/_,:;', 'aaaaaaeeeeiiiiooooouuuunc------')
+    new_url = url.lower().translate(traduccion)
+    new_url = new_url[0].upper() + str(new_url[1:]).lower()
+    new_url = re.sub(r'\W+', "-", new_url)
+    if new_url[-1] == '-':
+        new_url = new_url[:-1]
+    return new_url
 
 
 def crear_sitemap(list_of_urls, tipo, limite, posicion):
@@ -83,6 +94,7 @@ def conexion_producto(cur, limite):
         if tamanho > 0:
             tqdm.pandas(desc="Descargando los productos {0}".format(posicion))
             df.progress_apply(lambda x: x)
+            df['title'] = df['title'].apply(lambda x: tratar_url(str(x)))
             df['url'] = "https://kiero.co/detalle/" + df['product_id'].apply(str) + "_" + df['title'] + "/"
             cantidad += tamanho
             posicion += 1
