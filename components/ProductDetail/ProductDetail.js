@@ -273,7 +273,7 @@ class ProductDetail extends Component {
 
 
   }
-  async createlead(item) {
+  async createlead() {
     var data = {
       first_name:Cookies.get("name"),
       city: "",
@@ -290,7 +290,7 @@ class ProductDetail extends Component {
       lead_type:"Usuario Registrado que Accedió a los Detalles del Producto",
       category:"",
       sub_category:"",
-      price_product:item['price']
+      price_product:this.props.data.price
     }
     const error = await createleadClient(data);
   }

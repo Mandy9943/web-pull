@@ -21,6 +21,7 @@ import {handleFormatName} from '../../lib/functions'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import { Button, Modal } from 'react-bootstrap';
 import CryptoJS from 'crypto-js';
+import {createleadClient} from "../../lib/zoho";
 
 class PaySection extends Component {
   constructor(props) {
@@ -424,6 +425,7 @@ class PaySection extends Component {
   };
 
   checkout = () => {
+
     const concatCategories = () => {
       var dataCategory = [];
       this.props.props.data.breadcum.forEach((prod, index) => {
@@ -509,6 +511,9 @@ class PaySection extends Component {
         items: [item],
       },
     });
+
+    this.createlead(this.props,2);
+
   };
 
   checkoutOption = () => {
@@ -618,6 +623,9 @@ class PaySection extends Component {
   };
 
   validateDataGoogle = (callBack) => {
+    if (Cookies.get("email") !== undefined){
+      this.createlead(this.props,1);
+    }
     this.setState({ display: "flex" });
     let awaitGoogle = setInterval(() => {
       if (document.readyState === "complete") {
@@ -632,6 +640,7 @@ class PaySection extends Component {
         }
       }
     }, 300);
+
   };
   // randomPayReference = (length, chars) => {
   // 	var result = '';
@@ -719,6 +728,32 @@ class PaySection extends Component {
   // 				addPaymentDataWompi('/DataWompiTransaction', dataTransaction);
   // 		  });
   // };
+
+  async createlead(item,step) {
+    if(step===2){
+
+    }
+    var data = {
+      first_name:Cookies.get("name"),
+      city: this.state.city,
+      address:this.state.address,
+      email:Cookies.get("email"),
+      second_email:this.state.email,
+      phone:this.state.mobile_phone,
+      second_phone:"",
+      last_name:Cookies.get("last_name"),
+      type_id:this.state.typeIdentification,
+      num_id:this.state.identification,
+      id:Cookies.get("user_id"),
+      country:"CO",
+      lead_type: step===1 ? "Usuario Registrado que Presionó el Botón Comprar" : "Usuario Invitado (Y Usuario Registrado) que Presionó el botón de Continuar con la transacción",
+      category:"",
+      sub_category:"",
+      price_product:item.price
+    }
+    const error = await createleadClient(data);
+  }
+
 
   render() {
     const renderPayu = () => {
