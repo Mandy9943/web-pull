@@ -11,130 +11,213 @@ import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 
 class ListCategory extends Component {
+
 	constructor(props) {
 		super(props);
 	}
+
 	componentDidMount(){
-	
+
+		//console.log('Mounted')
+
 		var awaitProducts = setInterval(function(){
-            var dataProducts = document.getElementsByClassName('temp-card');
-            if(dataProducts.length){
-                layerGoogle()
-                clearInterval(awaitProducts)
-            }
-        },300)
-        const layerGoogle = () => {
-            // dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
-            // const dataLayerGoogleSearchResultsG4 = this.props.products?.map((prod, index) => {
-            //     return {
-            //         item_name: prod.title,
-            //         item_id: prod.product_id,
-            //         price: prod.price,
-            //         item_brand: prod.brand,
-            //         item_category: prod.category,
-            //         item_list_name: 'Search Results',
-            //         url:'https://kiero.co/detalle/' + prod.product_id + '_' + prod.title
-            //                                                                 .replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-            //                                                                 .replace('//', '%2F')
-            //                                                                 .replace('%', '')
-            //                                                                 .split(' ')
-            //                                                                 .join('-'),
-            //         index: index, 
-            //     };
-            // });
-            // dataLayer.push({
-            //     'event': 'view_item_list',
-            //     'ecommerce': {
-            //     'items': 
-            //         dataLayerGoogleSearchResultsG4
-            //     }
-            // })dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
-			// const dataLayerGoogleSearchUniversal = this.props.products?.map((prod, index) => {
+					var dataProducts = document.getElementsByClassName('temp-card');
+					if(dataProducts.length){
+							// layerGoogle()
+							startObserving()
+							clearInterval(awaitProducts)
+					}
+        },
+			300)
+
+			const startObserving = () => {
+
+				function sendToSegment(prod, index) {
+		
+					let product = {
+							name: prod.title,
+							product_id: prod.product_id,
+							price: prod.price,
+							brand: prod.brand,
+							category: prod.category,
+							position: index,
+							url:'https://kiero.co/detalle/' + prod.product_id + '_' + prod.title
+																														.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+																														.replace('//', '%2F')
+																														.replace('%', '')
+																														.split(' ')
+																														.join('-'),
+							image_url: prod.image
+						};
+			
+					const productListViewed = {
+						// nonInteraction: 1,
+						list_id: 'listCategory', // + ' RODOLFO_TESTING_FRONT',
+						category: props.category,
+						products: product
+					};
+			
+					// console.log(productListViewed)
+			
+					analytics.track('Product List Viewed', productListViewed);
+			
+				}
+		
+				// console.log('startObserving')
+
+				let props = this.props
+		
+				const boxElList = document.querySelectorAll('.d-flex.formatCard')
+				if (boxElList.length) {
+					
+					let options = {
+						// root: document.querySelector('#scrollArea'),
+						rootMargin: '0px',
+						threshold: 1.0
+					}
+		
+					let callback = function(entries, observer) {
+						entries.forEach(entry => {
+							// Cada entry describe un cambio en la intersección para
+							// un elemento observado
+							//   entry.boundingClientRect
+							//   entry.intersectionRatio
+							//   entry.intersectionRect
+							//   entry.isIntersecting
+							//   entry.rootBounds
+							if (entry.isIntersecting) {
+								// console.log('Observer')
+								// console.log(entry.target.dataset.index)
+								//console.log(props.products[entry.target.dataset.index])
+								sendToSegment(props.products[entry.target.dataset.index], entry.target.dataset.index)
+								observer.unobserve(entry.target)					
+							}
+						});
+		
+					};
+					
+					let observer = new IntersectionObserver(callback, options);
+		
+					// Declares what to observe, and observes its properties
+					boxElList.forEach((el) => {
+							observer.observe(el);
+					})
+					
+				}
+			}
+
+      //   const layerGoogle = () => {
+      //       // dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
+      //       // const dataLayerGoogleSearchResultsG4 = this.props.products?.map((prod, index) => {
+      //       //     return {
+      //       //         item_name: prod.title,
+      //       //         item_id: prod.product_id,
+      //       //         price: prod.price,
+      //       //         item_brand: prod.brand,
+      //       //         item_category: prod.category,
+      //       //         item_list_name: 'Search Results',
+      //       //         url:'https://kiero.co/detalle/' + prod.product_id + '_' + prod.title
+      //       //                                                                 .replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+      //       //                                                                 .replace('//', '%2F')
+      //       //                                                                 .replace('%', '')
+      //       //                                                                 .split(' ')
+      //       //                                                                 .join('-'),
+      //       //         index: index, 
+      //       //     };
+      //       // });
+      //       // dataLayer.push({
+      //       //     'event': 'view_item_list',
+      //       //     'ecommerce': {
+      //       //     'items': 
+      //       //         dataLayerGoogleSearchResultsG4
+      //       //     }
+      //       // })dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
+			// // const dataLayerGoogleSearchUniversal = this.props.products?.map((prod, index) => {
+			// // 	return {
+			// // 		name: prod.title,
+			// // 		id: prod.product_id,
+			// // 		price: prod.price,
+			// // 		brand: prod.brand,
+			// // 		category: prod.category,
+			// // 		list: 'Search Result',
+			// // 		// url:
+			// // 		// 	'https://kiero.co/detalle/' +
+			// // 		// 	prod.product_id +
+			// // 		// 	'_' +
+			// // 		// 	prod.title
+			// // 		// 		.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+			// // 		// 		.replaceAll('//', '%2F')
+			// // 		// 		.replace('%', '')
+			// // 		// 		.split(' ')
+			// // 		// 		.join('-'),
+			// // 		position: index + 1,
+			// // 	};
+			// // });
+
+			// // dataLayer.push({
+			// // 	event:'gtm.dom',
+			// // 	ecommerce: {
+			// // 		currencyCode: 'COP',
+			// // 		impressions: dataLayerGoogleSearchUniversal,
+			// // 	},
+			// // });
+
+			// const product_list = this.props.products?.map((prod, index) => {
 			// 	return {
 			// 		name: prod.title,
-			// 		id: prod.product_id,
+			// 		product_id: prod.product_id,
 			// 		price: prod.price,
 			// 		brand: prod.brand,
 			// 		category: prod.category,
-			// 		list: 'Search Result',
-			// 		// url:
-			// 		// 	'https://kiero.co/detalle/' +
-			// 		// 	prod.product_id +
-			// 		// 	'_' +
-			// 		// 	prod.title
-			// 		// 		.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-			// 		// 		.replaceAll('//', '%2F')
-			// 		// 		.replace('%', '')
-			// 		// 		.split(' ')
-			// 		// 		.join('-'),
 			// 		position: index + 1,
+			// 		url:'https://kiero.co/detalle/' + prod.product_id + '_' + prod.title
+			// 																									.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+			// 																									.replace('//', '%2F')
+			// 																									.replace('%', '')
+			// 																									.split(' ')
+			// 																									.join('-'),
+			// 		image_url: prod.image
 			// 	};
 			// });
 
-			// dataLayer.push({
-			// 	event:'gtm.dom',
-			// 	ecommerce: {
-			// 		currencyCode: 'COP',
-			// 		impressions: dataLayerGoogleSearchUniversal,
-			// 	},
-			// });
+			// let temporary, chunk = 4;
+			// for (let i = 0, j = product_list.length; i < j; i += chunk) {
+			// 		temporary = product_list.slice(i, i + chunk);
 
-			const product_list = this.props.products?.map((prod, index) => {
-				return {
-					name: prod.title,
-					product_id: prod.product_id,
-					price: prod.price,
-					brand: prod.brand,
-					category: prod.category,
-					position: index + 1,
-					url:'https://kiero.co/detalle/' + prod.product_id + '_' + prod.title
-																												.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-																												.replace('//', '%2F')
-																												.replace('%', '')
-																												.split(' ')
-																												.join('-'),
-					image_url: prod.image
-				};
-			});
+			// 		const productListViewed = {
+			// 			nonInteraction: 1,
+			// 			list_id: 'listCategory', // ' + i/chunk, // + ' - ' + (i+chunk),
+			// 			category: this.props.category,
+			// 			products: temporary
+			// 		};
 
-			let temporary, chunk = 4;
-			for (let i = 0, j = product_list.length; i < j; i += chunk) {
-					temporary = product_list.slice(i, i + chunk);
-
-					const productListViewed = {
-						nonInteraction: 1,
-						list_id: 'listCategory', // ' + i/chunk, // + ' - ' + (i+chunk),
-						category: this.props.category,
-						products: temporary
-					};
-
-					//console.log(productListViewed)
+			// 		//console.log(productListViewed)
 		
-					analytics.track('Product List Viewed', productListViewed);
+			// 		analytics.track('Product List Viewed', productListViewed);
 
-			}
+			// }
 
-			// const gtagSearchResultsUniversal = this.props.products?.map((prod, index) => {
-            //     return {
-            //         name: prod.title,
-            //         id: prod.product_id,
-            //         price: prod.price,
-            //         brand: prod.brand,
-            //         category: prod.category,
-            //         list_name: 'Search Results',
-            //         url:'https://kiero.co/detalle/' + prod.product_id + '_' + prod.title
-            //                                                                 .replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-            //                                                                 .replace('//', '%2F')
-            //                                                                 .replace('%', '')
-            //                                                                 .split(' ')
-            //                                                                 .join('-'),
-			// 		list_position: index, 
-			// 		quantity: 5
-            //     };
-            // });
+			// // const gtagSearchResultsUniversal = this.props.products?.map((prod, index) => {
+      //       //     return {
+      //       //         name: prod.title,
+      //       //         id: prod.product_id,
+      //       //         price: prod.price,
+      //       //         brand: prod.brand,
+      //       //         category: prod.category,
+      //       //         list_name: 'Search Results',
+      //       //         url:'https://kiero.co/detalle/' + prod.product_id + '_' + prod.title
+      //       //                                                                 .replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+      //       //                                                                 .replace('//', '%2F')
+      //       //                                                                 .replace('%', '')
+      //       //                                                                 .split(' ')
+      //       //                                                                 .join('-'),
+			// // 		list_position: index, 
+			// // 		quantity: 5
+      //       //     };
+      //       // });
 
-			// gtag('event', 'view_item_list', {'items': gtagSearchResultsUniversal})
-        }
+			// // gtag('event', 'view_item_list', {'items': gtagSearchResultsUniversal})
+      //   }
 	}
 	handleDataInfoSearch = (data, index)=> {
 		// gtag('event', 'select_content', {
@@ -307,6 +390,7 @@ class ListCategory extends Component {
 										</div> */}
 											<div
 												className="d-flex formatCard"
+												data-index={i}
 												key={i}
 												onClick={() => this.handleDataInfoSearch(product, i)}
 												style={{height:'100% !important'}}
