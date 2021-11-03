@@ -6,9 +6,9 @@
   align-items: center;
   justify-content: center;
   background-color: #d00a2d;
-  padding-top: 100px;
 }
 #notfound .notfoundWrapper {
+  padding-top: 180px;
   height: 500px;
   display: flex;
 }
@@ -74,10 +74,8 @@
 /* Responsive */
 
 @media only screen and (max-width: 1000px) {
-  #notfound {
-    padding-top: 0px;
-  }
   #notfound .notfoundWrapper {
+    padding-top: 0px;
     flex-direction: column;
     height: auto;
   }
@@ -110,11 +108,9 @@
   }
 }
 @media only screen and (max-width: 540px) {
-  #notfound {
-    padding-top: 30px;
-  }
   #notfound .notfoundWrapper {
     align-items: center;
+    padding-top: 30px;
   }
   #notfound .notfoundWrapper .notfoundImg {
     position: relative;
