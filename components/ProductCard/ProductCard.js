@@ -5,6 +5,7 @@ import './ProductCard.css';
 import Checkbox from '@material-ui/core/Checkbox';
 import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
+import {handleFormatUrl} from '../../lib/functions'
 
 export default class ProductCard extends Component {
 	handleDataInfo(data){
@@ -65,12 +66,7 @@ export default class ProductCard extends Component {
 			price: data.price,
 			currency: 'COP',
 			quantity: 1,
-			url: 'https://kiero.co/detalle/' + data.product_id + '_' + data.title
-						.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-						.replace('//', '%2F')
-						.replace('%', '')
-						.split(' ')
-						.join('-'),
+			url: 'https://kiero.co'+ handleFormatUrl(data.product_id, data.title) ,
 			image_url: data.url
 		});
 
@@ -124,7 +120,7 @@ export default class ProductCard extends Component {
 		
 	}
 	render() {
-		
+		console.log(this.props.title, handleFormatUrl(this.props.product_id, this.props.title))
 		return (
 			<div className={this.props.className} onClick={() => this.handleDataInfo(this.props)}>
 				{/* <div className="productFavIcon3">
@@ -149,17 +145,7 @@ export default class ProductCard extends Component {
 				}
 				>  */}
 				<a
-					href={
-						'/detalle/' +
-						this.props.product_id +
-						'_' +
-						this.props.title
-							.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-							.replace('//', '%2F')
-							.replace('%', '')
-							.split(' ')
-							.join('-')
-					}
+					href={handleFormatUrl(this.props.product_id, this.props.title)}
 				>
 					
 						<div className="product-card-img">

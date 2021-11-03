@@ -7,7 +7,6 @@ import Logo1 from '../../assets/img/logo-social.png';
 import Logo2 from '../../assets/img/logo-social1.png';
 
 import dynamic from 'next/dynamic';
-
 // import Nav from "../Common/Nav/Nav";
 // import PrincipalSlider from './../PrincipalSlider';
 // import Payment from './../PaymentBar';

@@ -251,8 +251,6 @@ class ListCategory extends Component {
 			image_url: data.image
 		}
 
-		console.log(productClickedData);
-
 		analytics.track('Product Clicked', productClickedData);
 
 		// window.location.href = '/detalle/' +

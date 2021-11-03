@@ -17,7 +17,7 @@ import { getProductDetail } from "../../services/productsApi";
 import { withRouter } from "next/router";
 import { KlaviyoClient } from "../../lib/functions.js";
 import Cookies from "js-cookie";
-
+import {handleFormatUrl} from '../../lib/functions'
 import dynamic from "next/dynamic";
 
 // import Nav from '../Common/Nav';
@@ -193,16 +193,7 @@ class ProductDetail extends Component {
       price: this.props.data.price,
       currency: 'COP',
       url:
-      "https://kiero.co/detalle/" +
-      this.props.data.product_global_id +
-      "_" +
-      this.props.data.product_global_title
-        .replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, "")
-        .replace("//", "%2F")
-        .replace("%", "")
-        .replaceAll(/['"]+/g, "")
-        .split(" ")
-        .join("-"),
+      "https://kiero.co" + handleFormatUrl(this.props.data.product_global_id,this.props.data.product_global_title),
       image_url: this.props.data.images[0].url,
       value: this.props.data.price
     }
@@ -243,16 +234,7 @@ class ProductDetail extends Component {
       Categories: concatCategories(),
       ImageURL: this.state.mdata.images[0].url,
       URL:
-        "https://kiero.co/detalle/" +
-        this.props.data.product_global_id +
-        "_" +
-        this.props.data.product_global_title
-          .replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, "")
-          .replace("//", "%2F")
-          .replace("%", "")
-          .replaceAll(/['"]+/g, "")
-          .split(" ")
-          .join("-"),
+      "https://kiero.co" + handleFormatUrl(this.props.data.product_global_id,this.props.data.product_global_title),
       Brand: this.props.data.brand,
       Price: this.props.data.price,
     };

@@ -64,7 +64,7 @@ class Detail extends Component {
   };
 
   render() {
-    let url = "/categoria/" + this.props.category;
+    let url = "/categoria/" + this.props.category.replace(/ /g, "-").toLowerCase();
     return (
       <>
         <div className="wrap-gallery">
@@ -120,11 +120,9 @@ class Detail extends Component {
           </div>
         </div>
         <div className="gallery-responsive">
-          <Link href={url}>
-            <a className="back-button">
+            <a className="back-button" href={url}>
               <FontAwesomeIcon icon={faAngleLeft} /> Ir al listado
             </a>
-          </Link>
           {/*NEED FIX THIS SHIT*/}
           <SliderDetail
             img={this.state.images}
