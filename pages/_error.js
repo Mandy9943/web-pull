@@ -6,11 +6,11 @@ function Error({ statusCode }) {
     const msgError = statusCode == 404 ? 'Lo sentimos , no logramos encontrar lo que buscas.': 'Perdón, ha ocurrido un problema por nuestra parte, te invitamos a regresar a la página principal';
     
     return (
-      <p>
+      <>
         {statusCode
           ? <PageError codError={statusCode} msgError={msgError}/>
           : 'An error occurred on client'}
-      </p>
+      </>
     )
   }
   

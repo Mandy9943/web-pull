@@ -1,14 +1,14 @@
 #notfound {
   position: relative;
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #d00a2d;
-  padding-top: 100px;
 }
 #notfound .notfoundWrapper {
+  padding-top: 180px;
   height: 500px;
   display: flex;
 }
@@ -74,10 +74,8 @@
 /* Responsive */
 
 @media only screen and (max-width: 1000px) {
-  #notfound {
-    padding-top: 0px;
-  }
   #notfound .notfoundWrapper {
+    padding-top: 0px;
     flex-direction: column;
     height: auto;
   }
@@ -110,28 +108,34 @@
   }
 }
 @media only screen and (max-width: 540px) {
-  #notfound {
-    padding-top: 30px;
-  }
   #notfound .notfoundWrapper {
     align-items: center;
+    padding-top: 30px;
   }
   #notfound .notfoundWrapper .notfoundImg {
     position: relative;
-    height: 200px;
+    height: 180px;
     margin-right: 0;
   }
   #notfound .notfoundWrapper .notfoundImg .imgContent {
     width: 100%;
     justify-content: center;
     display: flex;
+    top: 0px;
   }
   #notfound .notfoundWrapper .notfoundImg img {
-    height: 400px;
+    height: 300px;
   }
   #notfound .notfoundInfo {
-    padding: 50px 0 0px 0px;
+    padding: 10px 0 0px 0px;
 
     width: 90%;
+  }
+  #notfound .notfoundInfo .notfoundTitle {
+    font-size: 35px;
+    margin-bottom: 15px;
+  }
+  #notfound .notfoundInfo .notfoundDescription {
+    margin-bottom: 30px;
   }
 }
