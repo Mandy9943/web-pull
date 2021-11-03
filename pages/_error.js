@@ -1,7 +1,10 @@
 import PageError from '../components/Common/ErrorPage'
- 
+
+
 function Error({ statusCode }) {
-    const msgError = statusCode == 404 ? 'Perdón, la página que buscas no se puede encontrar, te invitamos a regresar a la página principal' : 'Perdón, ha ocurrido un problema por nuestra parte, te invitamos a regresar a la página principal'
+    
+    const msgError = statusCode == 404 ? 'Lo sentimos , no logramos encontrar lo que buscas.': 'Perdón, ha ocurrido un problema por nuestra parte, te invitamos a regresar a la página principal';
+    
     return (
       <p>
         {statusCode
