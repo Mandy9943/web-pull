@@ -11,7 +11,7 @@ class Finding extends Component {
 
   render() {
 
-    let CategoryImg = "//kiero.co/images/resources/finding-banner/";
+    let CategoryImg = "https://kiero.co/images/resources/finding-banner/";
     // let CategoryImg = "//localhost/images/resources/finding-banner/";
     
     return (
@@ -19,7 +19,7 @@ class Finding extends Component {
         <div className="content-finding">
           <div className="finding">
             <div className="wrap-img">
-              <img src={CategoryImg + this.props.category.img0} alt={this.props.category.img0} />
+              <img loading="lazy" src={CategoryImg + this.props.category.img0} alt={this.props.category.img0} />
             </div>
             <div className="wrap-info">
               <p className="category-text">{this.props.category.father0}</p>
@@ -29,7 +29,7 @@ class Finding extends Component {
           </div>
           <div className="finding">
             <div className="wrap-img">
-              <img src={CategoryImg + this.props.category.img1} alt={this.props.category.img1} />
+              <img loading="lazy"  src={CategoryImg + this.props.category.img1} alt={this.props.category.img1} />
             </div>
             <div className="wrap-info">
               <p className="category-text">{this.props.category.father1}</p>

@@ -107,7 +107,7 @@ export default class PrincipalSlider extends Component {
                     <Slider autoplay={4000}>
                         {this.state.slides.length > 1 ? this.state.slides.map((slide, index) =>
                         <a href={slide.href} key={index}>
-                            <img alt={slide.url.replace(/-/g, ' ')} src={slide.url} />
+                            <img loading="lazy"  alt={slide.url.replace(/-/g, ' ')} src={slide.url} />
                         </a>) : <div style={{position:'absolute !important', left:0, right:0, top:0, bottom:0 }}><Spinner/></div>}
                     </Slider>
                 </section>
@@ -115,7 +115,7 @@ export default class PrincipalSlider extends Component {
                     <Slider autoplay={4000}>
                         {this.state.slidesMobil.length > 1 ? this.state.slidesMobil.map((slide, index) =>
                         <a href={slide.href} key={index}>
-                            <img alt={slide.url.replace(/-/g, ' ')} src={slide.url} />
+                            <img loading="lazy"  alt={slide.url.replace(/-/g, ' ')} src={slide.url} />
                         </a>) : <div style={{position:'absolute !important', left:0, right:0, top:0, bottom:0 }}><Spinner/></div>}
                     </Slider>
                 </section>

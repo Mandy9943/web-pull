@@ -75,6 +75,7 @@ class Detail extends Component {
                   <img
                     // src={'https://api.kieroapi.net/img/v1/'+ img.product_id + '?img=' + encodeURIComponent(img.url)}
                     src={getImgUrlMinMin(img.url)}
+                    loading="lazy"
                     alt={this.props.product_name + " " + i}
                     className="size-img-list"
                     onMouseEnter={() => {
@@ -115,7 +116,7 @@ class Detail extends Component {
                 }}
               />
             ) : (
-              <img src={this.state.image} className="size-img-main" />
+              <img loading="lazy" alt={this.props.product_name} src={this.state.image} className="size-img-main" />
             )}
           </div>
         </div>

@@ -378,6 +378,7 @@ class ListCategory extends Component {
 												<div className="temp-card">
 													<div className="product-card-img">
 														<img
+															loading="lazy"
 															alt={product.title}
 															src={'https://api.kieroapi.net/img/v1/'+ product.product_id + '?img=' + encodeURIComponent(product.image)}
 															// src={getImgUrl(product.image)}
@@ -439,6 +440,7 @@ class ListCategory extends Component {
 											<div className="temp-list">
 												<div className="product-list-img">
 													<img
+														loading="lazy"
 														alt={product.title}
 														src={'https://api.kieroapi.net/img/v1/'+ product.product_id + '?img=' + encodeURIComponent(product.image)}
 														// src={getImgUrl(product.image)}

@@ -18,6 +18,7 @@ import Modal from "../Common/Modal/Modal";
 import { KlaviyoClient } from "../../lib/functions";
 import Cookies from "js-cookie";
 import {handleFormatName} from '../../lib/functions'
+import {handleFormatUrl} from '../../lib/functions'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import { Button, Modal } from 'react-bootstrap';
 import CryptoJS from 'crypto-js';
@@ -445,16 +446,7 @@ class PaySection extends Component {
           brand: this.props.props.data.brand,
           category: concatCategories(),
           url:
-            "https://kiero.co/detalle/" +
-            this.props.props.data.product_global_id +
-            "_" +
-            this.props.props.data.product_global_title
-              .replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, "")
-              .replaceAll("//", "%2F")
-              .replaceAll("%", "")
-              .replaceAll(/['"]+/g, "")
-              .split(" ")
-              .join("-"),
+            "https://kiero.co" + handleFormatUrl(this.props.props.data.product_global_id, this.props.props.data.product_global_title),
           quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
         },
       ],
@@ -552,16 +544,7 @@ class PaySection extends Component {
           brand: this.props.props.data.brand,
           category: concatCategories(),
           url:
-            "https://kiero.co/detalle/" +
-            this.props.props.data.product_global_id +
-            "_" +
-            this.props.props.data.product_global_title
-              .replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, "")
-              .replaceAll("//", "%2F")
-              .replaceAll("%", "")
-              .replaceAll(/['"]+/g, "")
-              .split(" ")
-              .join("-"),
+            "https://kiero.co" + handleFormatUrl(this.props.props.data.product_global_id, this.props.props.data.product_global_title),
           quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
         },
       ],
@@ -748,16 +731,7 @@ class PaySection extends Component {
             brand: this.props.props.data.brand,
             category: concatCategories(),
             url:
-              "https://kiero.co/detalle/" +
-              this.props.props.data.product_global_id +
-              "_" +
-              this.props.props.data.product_global_title
-                .replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, "")
-                .replaceAll("//", "%2F")
-                .replaceAll("%", "")
-                .replaceAll(/['"]+/g, "")
-                .split(" ")
-                .join("-"),
+              "https://kiero.co" + handleFormatUrl(this.props.props.data.product_global_id, this.props.props.data.product_global_title),
             quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
           },
         ],
@@ -785,17 +759,8 @@ class PaySection extends Component {
             brand: this.props.props.data.brand,
             category: concatCategories(),
             url:
-              "https://kiero.co/detalle/" +
-              this.props.props.data.product_global_id +
-              "_" +
-              this.props.props.data.product_global_title
-                .replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, "")
-                .replaceAll("//", "%2F")
-                .replaceAll("%", "")
-                .replaceAll(/['"]+/g, "")
-                .split(" ")
-                .join("-"),
-                image_url: this.props.props.data.images.length ? this.props.props.data.images[0].url : null
+              "https://kiero.co" + handleFormatUrl(this.props.props.data.product_global_id, this.props.props.data.product_global_title),
+            image_url: this.props.props.data.images.length ? this.props.props.data.images[0].url : null
           }
         ]
       };
@@ -1078,6 +1043,7 @@ class PaySection extends Component {
               Antes de continuar debes aceptar los
               <Link href="/terminos">
                 <a
+                  rel="noopener noreferrer"
                   target="_blank"
                   style={{
                     color: "#007BFF",
@@ -1090,6 +1056,7 @@ class PaySection extends Component {
               y
               <Link href="/privacidad">
                 <a
+                  rel="noopener noreferrer"
                   target="_blank"
                   style={{
                     color: "#007BFF",
@@ -1238,15 +1205,15 @@ class PaySection extends Component {
           <div className="section-pay-type-items">
             <p>Tarjetas de crédito - Hasta 36 cuotas</p>
             <div>
-              <img src={PayCredit} />
+              <img loading="lazy" alt="pagos por tarjeta de crédito" src={PayCredit} />
             </div>
             <p>Efectivo en puntos de pago</p>
             <div>
-              <img src={PayOnline} />
+              <img loading="lazy" alt="pagos por pse" src={PayOnline} />
             </div>
             <p>Transferencia desde tu banco</p>
             <div>
-              <img src={PayTransfer} />
+              <img loading="lazy" alt="pagos por transferencia" src={PayTransfer} />
             </div>
           </div>
         </div>

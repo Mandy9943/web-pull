@@ -96,7 +96,7 @@ export default class SecundarySlider extends Component {
                     {this.state.slides.length > 1 ? this.state.slides.map((slide, index) =>
                         <div key={index}>
                             <a href={slide.enlace.replace(/ /g, '-').toLocaleLowerCase()}>
-                                    <img src={slide.url} alt={slide.enlace} />
+                                    <img loading="lazy" src={slide.url} alt={slide.enlace} />
                             </a>
                         </div> 
                     ): <div style={{position:'absolute !important', left:0, right:0, top:0, bottom:0 }}><Spinner/></div>}

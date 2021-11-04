@@ -97,16 +97,12 @@ export default class Home extends Component {
 				{/*<Social />*/}
 				<Footer />
 				<div className="footer-social">
-					<Link href={'//sic.gov.co'}>
-						<a target="_blank">
-							<img alt="sic.gov.co" src={Logo1} />
-						</a>
-					</Link>
-					<Link href={'//sic.gov.co'}>
-						<a target="_blank">
-							<img alt="sic.gov.co" src={Logo2} />
-						</a>
-					</Link>
+					<a href="https://www.sic.gov.co" rel="noopener noreferrer" target="_blank">
+						<img loading="lazy" alt="Superintendencia de Industria y Comercio" src={Logo1} />
+					</a>
+					<a href="https://www.sic.gov.co" rel="noopener noreferrer" target="_blank">
+						<img loading="lazy" alt="Superintendencia de Industria y Comercio" src={Logo2} />
+					</a>
 				</div>
 			</div>
 		);

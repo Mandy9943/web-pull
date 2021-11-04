@@ -45,7 +45,7 @@ class MenuCategories extends Component {
 
 	render() {
 		// console.log(this.props)
-		let urlBanner = '//kiero.co/images/resources/categorias-menu/';
+		let urlBanner = 'https>//kiero.co/images/resources/categorias-menu/';
 		// let urlBanner = '//localhost/images/resources/categorias-menu/';
 		return (
 			<div className="wrap-menu-categories">
@@ -86,11 +86,11 @@ class MenuCategories extends Component {
 							<section className="title-sub">
 								<span>{this.props.categories[this.state.selectedCategory].name}</span>
 
-								<img alt={this.state.selectedCategory} src={urlBanner + this.state.selectedCategory + '/1.webp'} />
-								<img alt={this.state.selectedCategory} src={urlBanner + this.state.selectedCategory + '/2.webp'} />
-								<img alt={this.state.selectedCategory} src={urlBanner + this.state.selectedCategory + '/3.webp'} />
-								<img alt={this.state.selectedCategory} src={urlBanner + this.state.selectedCategory + '/4.webp'} />
-								<img alt={this.state.selectedCategory} src={urlBanner + this.state.selectedCategory + '/5.webp'} />
+								<img loading="lazy" alt={this.state.selectedCategory} src={urlBanner + this.state.selectedCategory + '/1.webp'} />
+								<img loading="lazy" alt={this.state.selectedCategory} src={urlBanner + this.state.selectedCategory + '/2.webp'} />
+								<img loading="lazy" alt={this.state.selectedCategory} src={urlBanner + this.state.selectedCategory + '/3.webp'} />
+								<img loading="lazy" alt={this.state.selectedCategory} src={urlBanner + this.state.selectedCategory + '/4.webp'} />
+								<img loading="lazy" alt={this.state.selectedCategory} src={urlBanner + this.state.selectedCategory + '/5.webp'} />
 							</section>
 							{this.props.categories[this.state.selectedCategory].childs.map(
 								(sl_cat, i) => {

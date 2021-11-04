@@ -14,7 +14,7 @@ export default function ErrorPage({ codError, msgError }) {
         <div className="notfoundImg">
           <div className="imgContent">
 
-          <img src={ImgError}/>
+          <img loading="lazy" alt="error page kiero.co" src={ImgError}/>
           </div>
         </div>
         <div className="notfoundInfo">

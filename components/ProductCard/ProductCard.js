@@ -66,7 +66,7 @@ export default class ProductCard extends Component {
 			price: data.price,
 			currency: 'COP',
 			quantity: 1,
-			url: 'https://kiero.co'+ handleFormatUrl(data.product_id, data.title) ,
+			url: 'https://kiero.co'+ handleFormatUrl(data.product_id, data.title),
 			image_url: data.url
 		});
 
@@ -120,7 +120,6 @@ export default class ProductCard extends Component {
 		
 	}
 	render() {
-		console.log(this.props.title, handleFormatUrl(this.props.product_id, this.props.title))
 		return (
 			<div className={this.props.className} onClick={() => this.handleDataInfo(this.props)}>
 				{/* <div className="productFavIcon3">
@@ -144,12 +143,10 @@ export default class ProductCard extends Component {
 						.join('-')
 				}
 				>  */}
-				<a
-					href={handleFormatUrl(this.props.product_id, this.props.title)}
-				>
-					
+				<a  href={handleFormatUrl(this.props.product_id, this.props.title)}>
 						<div className="product-card-img">
 							<img
+								loading="lazy"
 								alt={this.props.title}
 								src={
 									this.props.url

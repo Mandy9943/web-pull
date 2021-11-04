@@ -4,6 +4,7 @@ import CategoryImg from "../../../assets/img/category-img/category-tools.webp";
 import "./Explorer.css";
 import { getProductsBasic } from "../../../services/productsApi";
 import { getImgUrl } from "../../../lib/config"
+import {handleFormatUrl} from '../../../lib/functions'
 
 
 
@@ -96,20 +97,21 @@ class Explorer extends Component {
         <div className="content-explorer">
           <div className="main-img">
                 <a href={"/categoria/"+this.state.categoryName.replace(/ /g, '-').toLowerCase()}>
-                  {this.state.exploreImage ? <img alt={this.state.categoryName} src={this.state.exploreImage} /> : <Skeleton style={{height:'100%'}}/>}
+                  {this.state.exploreImage ? <img loading="lazy" alt={this.state.categoryName} src={this.state.exploreImage} /> : <Skeleton style={{height:'100%'}}/>}
                 </a>
           </div>
           <div className="group-img">
-            {!this.state.exploreImage ? <div className="wrapImgExplorer">
-              <Skeleton className="loaderSkeleton"/>
-              <Skeleton className="loaderSkeleton"/>
-              <Skeleton className="loaderSkeleton"/>
-              <Skeleton className="loaderSkeleton"/>
-            </div> :
+            {!this.state.exploreImage ? 
+              <div className="wrapImgExplorer">
+                <Skeleton className="loaderSkeleton"/>
+                <Skeleton className="loaderSkeleton"/>
+                <Skeleton className="loaderSkeleton"/>
+                <Skeleton className="loaderSkeleton"/>
+              </div> :
               this.state.data.map((item, i) => (
                 <div className="wrapImgExplorer" key={i}>
-                  <a href={"/detalle/"+item.product_id+"_"+item.title.replace(/[^\w\s]/gi, '').split(" ").join("-")} >
-                    <img alt={item.title} src={ item.image } />
+                  <a href={handleFormatUrl(item.product_id, item.title)} >
+                    <img loading="lazy" alt={item.title} src={ item.image } />
                   </a>
                 </div>
             ))

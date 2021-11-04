@@ -58,6 +58,7 @@ function SellerInfo({ productId }) {
 			{seller?.products.map((item, index) => (
 				<div className="seller-products" key={index}>
 					<img
+						alt={'foto de vendedor ' + seller?.name + seller?.last_name}
 						src={
 							item.images.length > 0
 								? item.images[0].url

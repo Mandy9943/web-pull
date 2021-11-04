@@ -37,17 +37,17 @@ class PaymentBar extends Component {
         </div>
         <div className="payment-way-content">
           <h4><b>Tarjetas de crédito</b></h4>
-          <img  className="payment-way-img" src={CreditCard} alt="Tarjetas de credito" />
+          <img loading="lazy"  className="payment-way-img" src={CreditCard} alt="Tarjetas de credito" />
           <p className="sub-title">
             El banco incluirá los intereses de las cuotas en el resumen de tu
             tarjeta
           </p>
           <h4><b>Transferencia desde tu banco</b></h4>
-          <img className="payment-way-img2" src={BankTransfer} alt="TRansferencia bancaria" />
+          <img loading="lazy" className="payment-way-img2" src={BankTransfer} alt="TRansferencia bancaria" />
           <h4><b>Pago con efectivo</b></h4>
-          <img className="payment-way-img-cash" src={PayEfecty} alt="Pago online con EFECTY" />
-          <img className="payment-way-img-cash" src={PayBaloto} alt="Pago online con BALOTO" />
-          <img className="payment-way-img-cash" src={PaySured} alt="Pago online con SURED" />
+          <img loading="lazy" className="payment-way-img-cash" src={PayEfecty} alt="Pago online con EFECTY" />
+          <img loading="lazy" className="payment-way-img-cash" src={PayBaloto} alt="Pago online con BALOTO" />
+          <img loading="lazy" className="payment-way-img-cash" src={PaySured} alt="Pago online con SURED" />
            <br/><br/>
           <p className="payment-way-footer-p">
           Cuando efectúes tu compra, te brindaremos las instrucciones para que sepas cómo y dónde pagar.
