@@ -175,6 +175,7 @@ def conectar():
             os.makedirs("sitemap")
 
         print("Guardando todos los indices")
+        # Creando fichero de sitemap-index.xml
         with open(filename, 'wb') as f:
             f.write(xml)
             f.close()
