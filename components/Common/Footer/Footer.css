@@ -54,3 +54,117 @@
     width: 150px;
   }
 }
+
+.footerRed {
+  padding: 20px;
+  width: calc(100% - 40px);
+  /* width:100%; */
+  background-color: #cf0a2c;
+  height: auto !important;
+  margin: 0 !important;
+}
+
+.footerRed .footerRed-movil {
+  display: none;
+}
+
+.footerRed-content {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 3fr 1fr;
+  grid-template-columns: 3fr 1fr;
+  margin: 0px auto;
+  width: 80%;
+}
+
+.footerRed-tex {
+  color: #f59d9d;
+  font-size: 14px;
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
+  align-self: center;
+}
+
+.footerRed-tex p {
+  color: #f59d9d !important;
+}
+
+.footerRed-tex ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 20px;
+}
+
+.footerRed-tex ul a {
+  margin-right: 20px;
+  color: #f3f3f3;
+}
+
+.footerRed-download {
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
+  align-self: center;
+}
+
+.footerRed-download .download-app {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 5fr;
+  grid-template-columns: 1fr 5fr;
+  grid-gap: 10px;
+  float: right;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 12px;
+}
+
+.footerRed-download .download-app img.phone-img {
+  float: left;
+  height: 30px;
+}
+
+.footerRed-download .download-app p {
+  color: #cf0a2c;
+  font-size: 20px;
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
+  align-self: center;
+}
+
+@media (max-width: 700px) {
+  .footerRed {
+    padding: 0px 20px 20px 20px !important;
+  }
+  .footerRed .footerRed-content {
+    display: none;
+  }
+  .footerRed .footerRed-movil {
+    display: -ms-grid !important;
+    display: grid !important;
+    -ms-grid-columns: auto;
+    grid-template-columns: auto;
+    /*grid-template-rows: 1fr 1fr*/
+    width: auto;
+  }
+  .footerRed .footerRed-movil .footerRed-download {
+    margin: auto;
+  }
+  .footerRed .footerRed-movil .footerRed-tex ul {
+    margin-top: 15px;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+  }
+  .footerRed .footerRed-movil .footerRed-tex ul a {
+    font-size: 14px;
+    margin-bottom: 15px;
+    -webkit-text-size-adjust: none;
+  }
+  .footerRed .footerRed-movil .footerRed-tex ul p {
+    font-size: 15px;
+    -webkit-text-size-adjust: none;
+  }
+}
+/*# sourceMappingURL=Footer.css.map */
