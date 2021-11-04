@@ -1,73 +1,75 @@
+#footerWrapper
+  padding: 42px 0 0 0
+
 .footer
-    padding: 20px
-    width: calc(100% - 40px)
-    // width:100%
-    background-color: #CF0A2C
-    height:auto !important
-    margin:0 !important
-    .footer-movil
-            display: none
+  width: 100%
+  padding: 30px 0 60px 0
+  position: relative
+  border: 1px solid #dadada
+  background-color: #ececec
 
+  .buttonWrapper
+    position: absolute
+    top: -42px
+    width: 100%
+    display: flex
+    justify-content: center
 
-.footer-content
-    display: grid
-    grid-template-columns: 3fr 1fr
-    margin: 0px auto
-    width: 80%
+    .button
+      display: flex
+      align-items: center
+      justify-content: center
+      height: 32px
+      padding: 4px 12px
+      background-color: #ececec
+      border-top: 1px solid #dadada
+      border-left: 1px solid #dadada
+      border-right: 1px solid #dadada
+      border-bottom: 1px solid #ececec
+      border-radius: 4px 4px 0 0
 
-.footer-tex
-    color: #F59D9D
-    font-size: 14px
-    align-self: center
-    p
-        color: #F59D9D !important
-    ul
-        display: flex
-        margin-top: 20px
-        a
-            margin-right: 20px
-            color: #F3F3F3
+      .info
+        margin-right: 8px
 
-.footer-download
-    align-self: center
-    .download-app
-        display: grid
-        grid-template-columns: 1fr 5fr
-        grid-gap: 10px
-        float: right
-        padding: 10px
-        background-color: #fff
-        border-radius: 12px
-        img.phone-img
-            float: left
-            height: 30px
-        p
-            color: #CF0A2C
-            font-size: 20px
-            align-self: center
+  .footerContentWrapper
+    width: 75%
+    margin: 0 auto
 
-@media(max-width:700px)
-    .footer
-        padding: 0px 20px 20px 20px !important
-        .footer-content
-            display: none
-        .footer-movil
-            display: grid !important
-            grid-template-columns: auto
-            /*grid-template-rows: 1fr 1fr*/
-            width: auto
-            .footer-download
-                margin: auto
-            .footer-tex ul
-                margin-top: 15px
-                display: grid
-                grid-template-columns: 1fr 1fr
-                a
-                    font-size: 15px
-                    margin-bottom: 15px
-                p                    
-                    font-size: 15px
+    .rigths
+      margin-bottom: 35px
+      color: #9a9a9a
 
+    .footerContent
+      width: 100%
+      display: flex
+      justify-content: space-between
+      flex-wrap: wrap
 
+  .footerContent .footerElement
+    margin: 0 30px 20px 0
 
+.noMargin
+  margin: 0 !important
 
+.footer .footerContent .footerElement
+  h3
+    margin-bottom: 20px
+    font-weight: 600
+    font-size: 16px
+
+  .footerLinks
+    display: flex
+    flex-direction: column
+
+    .footerLink
+      color: gray
+      margin-bottom: 7px
+      font-size: 14px
+
+@media only screen and (max-width: 875px)
+  .footer .footerContent
+    width: 85%
+
+@media only screen and (max-width: 600px)
+  .footer .footerContent .footerElement
+    width: 150px
