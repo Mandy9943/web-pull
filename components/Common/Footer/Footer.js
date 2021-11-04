@@ -5,6 +5,11 @@ import Phone from "../../../assets/img/phone.png";
 import "./Footer.css";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
+const fb = "//www.facebook.com/KieroGroup/";
+const ig = "//www.instagram.com/kierogroup";
+const tw = "//twitter.com/KIEROGROUP1";
+const yt = "//www.youtube.com/user/KieroGroup";
+
 export default class Footer extends Component {
   getYear() {
     return new Date().getFullYear();
@@ -22,9 +27,9 @@ export default class Footer extends Component {
                   <h3>Acerca de </h3>
                   <div className="footerLinks">
                     <Link href="/about">
-                      <a className="footerLink">Sobre kiero</a>
+                      <a className="footerLink">Sobre Kiero</a>
                     </Link>
-                    <Link href="/blog">
+                    <Link href="//novedades.kiero.co/">
                       <a className="footerLink">Prensa</a>
                     </Link>
                   </div>
@@ -32,33 +37,28 @@ export default class Footer extends Component {
                 <div className="footerElement">
                   <h3>Metodos de pago </h3>
                   <div className="footerLinks">
-                    <Link href="/about">
-                      <a className="footerLink">Deposito Bancario</a>
-                    </Link>
-                    <Link href="/blog">
-                      <a className="footerLink">Efectivo</a>
-                    </Link>
-                    <Link href="/blog">
-                      <a className="footerLink">Visa</a>
-                    </Link>
-                    <Link href="/blog">
-                      <a className="footerLink">Master Card</a>
-                    </Link>
+                    <span className="footerLink">Deposito Bancario</span>
+
+                    <span className="footerLink">Efectivo</span>
+
+                    <span className="footerLink">Visa</span>
+
+                    <span className="footerLink">Master Card</span>
                   </div>
                 </div>
                 <div className="footerElement">
                   <h3>Redes Sociales </h3>
                   <div className="footerLinks">
-                    <Link href="/about">
+                    <Link href={fb}>
                       <a className="footerLink">Facebook</a>
                     </Link>
-                    <Link href="/blog">
+                    <Link href={tw}>
                       <a className="footerLink">Twitter</a>
                     </Link>
-                    <Link href="/blog">
+                    <Link href={ig}>
                       <a className="footerLink">Instagram</a>
                     </Link>
-                    <Link href="/blog">
+                    <Link href={yt}>
                       <a className="footerLink">Youtube</a>
                     </Link>
                   </div>
@@ -66,10 +66,10 @@ export default class Footer extends Component {
                 <div className="footerElement ">
                   <h3>Mi cuenta </h3>
                   <div className="footerLinks">
-                    <Link href="/about">
+                    <Link href="/login">
                       <a className="footerLink">Ingresar</a>
                     </Link>
-                    <Link href="/blog">
+                    <Link href="/registro">
                       <a className="footerLink">Registrarse</a>
                     </Link>
                   </div>
