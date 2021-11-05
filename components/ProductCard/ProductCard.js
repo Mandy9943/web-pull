@@ -1,10 +1,6 @@
-import React, { Component } from 'react';
-import Link from 'next/link';
-import CardImg from '../../assets/img/cards-img/kohgsdfRecurso28.png';
+import React, {Component} from 'react';
 import './ProductCard.css';
-import Checkbox from '@material-ui/core/Checkbox';
-import Favorite from '@material-ui/icons/Favorite';
-import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
+import Spinner from "../Common/Spinner";
 
 export default class ProductCard extends Component {
 	handleDataInfo(data){
@@ -71,7 +67,8 @@ export default class ProductCard extends Component {
 						.replace('%', '')
 						.split(' ')
 						.join('-'),
-			image_url: data.url
+			image_url: data.url,
+
 		});
 
 		// console.log(data);
@@ -163,7 +160,8 @@ export default class ProductCard extends Component {
 				>
 					
 						<div className="product-card-img">
-							<img
+							<Spinner/>
+							<img loading="lazy"
 								alt={this.props.title}
 								src={
 									this.props.url
