@@ -33,10 +33,8 @@ def config(archivo='.env', seccion='postgresql'):
 def tratar_url(url):
     traduccion = ''.maketrans('ãàáäâáèéëêìíïîõòóöôùúüûñç·/_,:;', 'aaaaaaeeeeiiiiooooouuuunc------')
     new_url = url.lower().translate(traduccion)
-    new_url = new_url[0].upper() + str(new_url[1:]).lower()
+    new_url = new_url.capitalize()
     new_url = re.sub(r'\W+', "-", new_url)
-    if new_url[-1] == '-':
-        new_url = new_url[:-1]
     return new_url
 
 
@@ -75,9 +73,9 @@ def crear_sitemap(list_of_urls, tipo, limite, posicion):
         if not os.path.exists("sitemap"):
             os.makedirs("sitemap")
 
-        f = gzip.open(filename + '.gz', 'wt')
-        f.write(sitemap_output)
-        f.close()
+        with  gzip.open(filename + '.gz', 'wt') as f:
+            f.write(sitemap_output)
+            f.close()
 
 
 def conexion_producto(cur, limite):
@@ -88,7 +86,7 @@ def conexion_producto(cur, limite):
     tamanho = 1
     while tamanho > 0:
         sql = 'select product_id, title from url_amigable_productos where status > 0 offset {0} ROWS FETCH NEXT {1} ROWS ONLY;'.format(
-            posicion * limite, limite);
+            posicion * limite, limite)
         df = pd.read_sql(sql, cur)
         tamanho = df.shape[0]
         if tamanho > 0:
@@ -116,6 +114,7 @@ def conexion_categoria(cur, limite):
         if tamanho > 0:
             tqdm.pandas(desc="Descargando las categorias de la pagina {0}".format(posicion))
             df.progress_apply(lambda x: x)
+            df['replace'] = df['replace'].apply(lambda x: tratar_url(str(x)))
             df['url'] = "https://kiero.co/categoria/" + df['replace'] + "/"
             cantidad += tamanho
             posicion += 1
@@ -142,7 +141,7 @@ def conectar():
 
         # Limpiando las carpetas del sitemaps
         if os.path.exists("sitemap"):
-            shutil.rmtree("sitemap")
+            shutil.rmtree("sitemap", True)
 
         tamano_categoria = conexion_categoria(conexion, limite)
         tamano_producto = conexion_producto(conexion, limite)
