@@ -16,6 +16,7 @@ import { faTruck, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import favicon from "../../assets/img/favicon.svg";
 import {searchItemsPerPage} from "../../lib/config";
 import {handleFormatName} from '../../lib/functions'
+import Image from 'next/image';
 
 
 
@@ -212,11 +213,11 @@ function Results({ data, session }) {
                     structure.push(
                         // <Link href={"/categoria/[category]"} as={"/categoria/" + e.links[bannerNo - 1]} ></Link>
                         <a className="tickets" href={"/categoria/" + e.links[bannerNo - 1].replace(/^[, ]+|[, ]+$|[, ]+/g, "-").trim().toLowerCase()}  >
-                                <img loading="lazy" alt={category_name} key={i + 1} className="banner-principal" src={e.image_path.replace(/^[, ]+|[, ]+$|[, ]+/g, "").trim() + (bannerNo++) + ".webp"} />
+                                <Image layout='fill' alt={category_name} key={i + 1} className="banner-principal" src={e.image_path.replace(/^[, ]+|[, ]+$|[, ]+/g, "").trim() + (bannerNo++) + ".webp"} />
                         </a>
                     )
                 } else {
-                    structure.push(<img loading="lazy" alt={category_name} key={i} className="banner-principal" src={e.image_path.replace(/^[, ]+|[, ]+$|[, ]+/g, "").trim() + (bannerNo++) + ".webp"} />)
+                    structure.push(<Image layout='fill' alt={category_name} key={i} className="banner-principal" src={e.image_path.replace(/^[, ]+|[, ]+$|[, ]+/g, "").trim() + (bannerNo++) + ".webp"} />)
                 }
             } else if (e.estructure[i] === 2) {
                 structure.push(<CategoryFinding key={i} img_left={e.image_path.replace(/^[, ]+|[, ]+$|[, ]+/g, "").trim() + (bannerNo++) + ".webp"} link_left={e.links[bannerNo - 2]}
@@ -282,8 +283,8 @@ function Results({ data, session }) {
                     </section>
                     <Footer />
                     <div className="footer-social">
-                        <Link href={url}><a target="_blank"><img loading="lazy" alt={url} src={Logo1} /></a></Link>
-                        <Link href={url}><a target="_blank"><img loading="lazy" alt={url} src={Logo2} /></a></Link>
+                        <Link href={url}><a target="_blank"><Image layout="fill" alt={url} src={Logo1} /></a></Link>
+                        <Link href={url}><a target="_blank"><Image layout="fill" alt={url} src={Logo2} /></a></Link>
                     </div>
                 </div>
             </>

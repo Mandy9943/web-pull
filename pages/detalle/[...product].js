@@ -20,7 +20,7 @@ function Product({ data, u_data }) {
 				<meta name="MobileOptimized" content="360"/> 
 				<meta
 					name="Description"
-					content={`KIERO.CO MARKETPLACE | Compralo en Kiero ${data.title} a ${
+					content={`Kiero.co | Compralo en Kiero ${data.title.substring(0,160)} a ${
 						data.price
 					} - Envío
       gratis - Encuentra más productos de ${data.category ? data.category.name : ''}`}
@@ -56,7 +56,7 @@ function Product({ data, u_data }) {
 				<meta
 					property="og:description"
 					content={`${
-						data.title
+						data.title.substring(0,160)
 					} en Kiero.co - Descubre millones de productos online.
       Encuentra ${data.category ? data.category.name : ''} en Kiero.co`}
 				/>

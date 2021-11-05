@@ -14,6 +14,7 @@ import BannerMobil5 from "../../assets/img/bannerCelular/banners-apk4.webp";
 import "./PrincipalSlider.css";
 import ProductCard from "../ProductCard";
 import Spinner from "./../Common/Spinner";
+import Image from 'next/image'
 
 
 
@@ -107,7 +108,7 @@ export default class PrincipalSlider extends Component {
                     <Slider autoplay={4000}>
                         {this.state.slides.length > 1 ? this.state.slides.map((slide, index) =>
                         <a href={slide.href} key={index}>
-                            <img loading="lazy"  alt={slide.url.replace(/-/g, ' ')} src={slide.url} />
+                            <Image layout="fill"  alt={slide.url.replace(/-/g, ' ')} src={slide.url} />
                         </a>) : <div style={{position:'absolute !important', left:0, right:0, top:0, bottom:0 }}><Spinner/></div>}
                     </Slider>
                 </section>
@@ -115,7 +116,7 @@ export default class PrincipalSlider extends Component {
                     <Slider autoplay={4000}>
                         {this.state.slidesMobil.length > 1 ? this.state.slidesMobil.map((slide, index) =>
                         <a href={slide.href} key={index}>
-                            <img loading="lazy"  alt={slide.url.replace(/-/g, ' ')} src={slide.url} />
+                            <Image layout="fill"  alt={slide.url.replace(/-/g, ' ')} src={slide.url} />
                         </a>) : <div style={{position:'absolute !important', left:0, right:0, top:0, bottom:0 }}><Spinner/></div>}
                     </Slider>
                 </section>

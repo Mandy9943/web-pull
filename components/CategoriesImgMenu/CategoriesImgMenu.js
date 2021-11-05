@@ -250,7 +250,7 @@ export default class CategoriesImgMenu extends Component {
                                 </div>
                             </a>
                     </div>
-                    <Link href="lista_categorias"><a className="main-button"><p>Ver más</p></a></Link>
+                    <Link href={{ pathname:"/lista_categorias"}}><a className="main-button"><p>Ver más</p></a></Link>
             </div>
         )
     }

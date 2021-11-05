@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTruck } from '@fortawesome/free-solid-svg-icons';
 import { parse } from '@fortawesome/fontawesome-svg-core';
 import {handleFormatUrl} from '../../lib/functions'
+import Image from 'next/image';
 
 export default class listProductMovil extends Component {
 	constructor(props) {
@@ -46,7 +47,7 @@ export default class listProductMovil extends Component {
 							<a>
 								<section className="product">
 									<div className="product-card-img">
-										<img src={image_url} loading="lazy" alt={product.title} />
+										<Image src={image_url} layout='fill' alt={product.title} />
 									</div>
 									<section className="description">
 										<h3>{product.title}</h3>

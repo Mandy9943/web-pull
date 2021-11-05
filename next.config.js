@@ -24,18 +24,28 @@ module.exports = {
 const withCSS = require('@zeit/next-css');
 const withSass = require('@zeit/next-sass');
 const withImages = require('next-images');
+const withOptimizedImages = require('next-optimized-images');
 
-module.exports = withCSS( withSass( withImages({
+module.exports = withOptimizedImages( withCSS( withSass( {
+  responsive: {
+    adapter: require('responsive-loader/sharp')
+  },
   module: {
       rules: [
           {
-              test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/i,
+              test: /\.(webp|png|jpg|gif|svg|eot|ttf|woff|woff2)$/i,
               use: [
                   {
-                      loader: 'file-loader',
+                    loader: [
+                      'file-loader',
+                      'webp-loader'
+                    ]
                   },
               ],
           },
       ],
   },
+  images: {
+    domains: ['kiero.co', 'api.kieroapi.net', 'images-na.ssl-images-amazon.com']
+  }
 })));

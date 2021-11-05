@@ -15,7 +15,7 @@ import logo from "../../assets/img/redes/logo.png";
 class News extends Component {
   render() {
     const fb = "//www.facebook.com/KieroGroup/";
-    const ig = "//www.instagram.com/kierogroup";
+    const ig = "//www.instagram.com/kiero.co";
     const tw = "//twitter.com/KIEROGROUP1";
     const lk = "//www.linkedin.com/in/kiero-group-15a6a7190/";
     const pt = "//co.pinterest.com/novedadeskiero/pins";

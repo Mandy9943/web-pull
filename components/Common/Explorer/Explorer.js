@@ -5,9 +5,7 @@ import "./Explorer.css";
 import { getProductsBasic } from "../../../services/productsApi";
 import { getImgUrl } from "../../../lib/config"
 import {handleFormatUrl} from '../../../lib/functions'
-
-
-
+import Spinner from "../Spinner";
 import accesorios from "../../../assets/img/category-img/category-accesorios.webp"
 import accesoriosvehiculos from "../../../assets/img/category-img/category-accesoriosvehiculos.webp"
 import bebes from "../../../assets/img/category-img/category-bebes.webp"
@@ -32,6 +30,7 @@ import salud from "../../../assets/img/category-img/category-salud.webp"
 import videojuegos from "../../../assets/img/category-img/category-videojuegos.webp"
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import Image from 'next/image';
 
 
 class Explorer extends Component {
@@ -97,7 +96,7 @@ class Explorer extends Component {
         <div className="content-explorer">
           <div className="main-img">
                 <a href={"/categoria/"+this.state.categoryName.replace(/ /g, '-').toLowerCase()}>
-                  {this.state.exploreImage ? <img loading="lazy" alt={this.state.categoryName} src={this.state.exploreImage} /> : <Skeleton style={{height:'100%'}}/>}
+                  {this.state.exploreImage ? <Image layout="fill" alt={this.state.categoryName} src={this.state.exploreImage} /> : <Skeleton style={{height:'100%'}}/>}
                 </a>
           </div>
           <div className="group-img">
@@ -111,7 +110,8 @@ class Explorer extends Component {
               this.state.data.map((item, i) => (
                 <div className="wrapImgExplorer" key={i}>
                   <a href={handleFormatUrl(item.product_id, item.title)} >
-                    <img loading="lazy" alt={item.title} src={ item.image } />
+                    <Spinner/>
+                    <Image layout="fill" alt={item.title} src={ item.image } />
                   </a>
                 </div>
             ))

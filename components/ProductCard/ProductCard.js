@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
-import CardImg from '../../assets/img/cards-img/kohgsdfRecurso28.png';
+import CardImg from '../../assets/img/banners/news/1.jpg';
 import './ProductCard.css';
 import Checkbox from '@material-ui/core/Checkbox';
 import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
-import {handleFormatUrl} from '../../lib/functions'
+import {handleFormatUrl} from '../../lib/functions';
+import Image from 'next/image';
+import Spinner from "./../Common/Spinner";
 
 export default class ProductCard extends Component {
 	handleDataInfo(data){
@@ -145,7 +147,23 @@ export default class ProductCard extends Component {
 				>  */}
 				<a  href={handleFormatUrl(this.props.product_id, this.props.title)}>
 						<div className="product-card-img">
-							<img
+							<Spinner/>
+							<Image
+								src={this.props.url}
+								alt={this.props.title}
+								layout='fill'
+								placeholder="blur"
+								/>
+						{/* <picture>
+							<source
+								srcSet={require('https://kiero.co/_next/static/images/kieroweb-db5d710263ceb06f6eb6c4ed06b64782.png?webp')}
+								type="image/webp"
+							/>
+							<img loading="lazy" src='https://kiero.co/_next/static/images/kieroweb-db5d710263ceb06f6eb6c4ed06b64782.png'
+								 />
+						</picture> */}
+							{/* <img
+							
 								loading="lazy"
 								alt={this.props.title}
 								src={
@@ -153,7 +171,7 @@ export default class ProductCard extends Component {
 										? this.props.url
 										: 'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png'
 								}
-							/>
+							/> */}
 						</div>
 						<button>Envío gratis</button>
 						<h3>

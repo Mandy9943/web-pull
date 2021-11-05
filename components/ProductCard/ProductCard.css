@@ -70,8 +70,9 @@
 }
 
 .producto-card .product-card-img img {
-	width: auto;
+	width: auto !important;
     max-width: 100%;
+	min-width: auto !important;
     height: auto !important;
     max-height: 100% !important;
     position: absolute;

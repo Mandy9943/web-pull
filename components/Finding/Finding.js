@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Link from "next/link";
 import "./Finding.css";
+import Image from 'next/image';
 
 class Finding extends Component {
 
@@ -19,7 +20,7 @@ class Finding extends Component {
         <div className="content-finding">
           <div className="finding">
             <div className="wrap-img">
-              <img loading="lazy" src={CategoryImg + this.props.category.img0} alt={this.props.category.img0} />
+              <Image layout="fill" src={CategoryImg + this.props.category.img0} alt={this.props.category.img0} />
             </div>
             <div className="wrap-info">
               <p className="category-text">{this.props.category.father0}</p>
@@ -29,7 +30,7 @@ class Finding extends Component {
           </div>
           <div className="finding">
             <div className="wrap-img">
-              <img loading="lazy"  src={CategoryImg + this.props.category.img1} alt={this.props.category.img1} />
+              <Image layout="fill"  src={CategoryImg + this.props.category.img1} alt={this.props.category.img1} />
             </div>
             <div className="wrap-info">
               <p className="category-text">{this.props.category.father1}</p>

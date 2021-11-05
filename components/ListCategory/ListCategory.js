@@ -10,6 +10,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import {handleFormatUrl} from '../../lib/functions'
+import Image from 'next/image';
 
 class ListCategory extends Component {
 
@@ -377,8 +378,9 @@ class ListCategory extends Component {
 											>
 												<div className="temp-card">
 													<div className="product-card-img">
-														<img
-															loading="lazy"
+														<Spinner/>
+														<Image
+															layout="fill"
 															alt={product.title}
 															src={'https://api.kieroapi.net/img/v1/'+ product.product_id + '?img=' + encodeURIComponent(product.image)}
 															// src={getImgUrl(product.image)}
@@ -439,8 +441,9 @@ class ListCategory extends Component {
 									>
 											<div className="temp-list">
 												<div className="product-list-img">
-													<img
-														loading="lazy"
+													<Spinner/>
+													<Image
+														layout="fill"
 														alt={product.title}
 														src={'https://api.kieroapi.net/img/v1/'+ product.product_id + '?img=' + encodeURIComponent(product.image)}
 														// src={getImgUrl(product.image)}

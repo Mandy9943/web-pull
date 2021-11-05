@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import Spinner from "./../Common/Spinner";
 import ReactImageMagnify from "react-image-magnify";
+import Image from 'next/image';
 
 class Detail extends Component {
   constructor(props) {
@@ -72,10 +73,10 @@ class Detail extends Component {
             {this.state.images && this.state.images.length ? (
               this.state.images.slice(0, 5).map((img, i) =>
                 i < 5 ? (
-                  <img
+                  <Image
                     // src={'https://api.kieroapi.net/img/v1/'+ img.product_id + '?img=' + encodeURIComponent(img.url)}
                     src={getImgUrlMinMin(img.url)}
-                    loading="lazy"
+                    layout='fill'
                     alt={this.props.product_name + " " + i}
                     className="size-img-list"
                     onMouseEnter={() => {
@@ -116,7 +117,7 @@ class Detail extends Component {
                 }}
               />
             ) : (
-              <img loading="lazy" alt={this.props.product_name} src={this.state.image} className="size-img-main" />
+              <Image layout="fill" alt={this.props.product_name} src={this.state.image} className="size-img-main" />
             )}
           </div>
         </div>
@@ -126,6 +127,7 @@ class Detail extends Component {
             </a>
           {/*NEED FIX THIS SHIT*/}
           <SliderDetail
+            alt={this.props.product_name}
             img={this.state.images}
             allowZoomModal={this.props.allowZoom}
           />
