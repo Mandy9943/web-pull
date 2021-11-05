@@ -59,6 +59,18 @@
 	box-shadow: 0 25px 20px 0 rgba(0, 0, 0, 0.16), 0 -1px 2px 0 rgba(0, 0, 0, 0.1);
 }
 
+.product-card-img .spinner-container{
+	position: absolute;
+	right: 0;
+	left: 0;
+}
+
+.product-list-img .spinner-container{
+	position: absolute;
+	right: 0;
+	left: 0;
+}
+
 .temp-card .product-card-img {
 	z-index: 0;
 	position: relative;

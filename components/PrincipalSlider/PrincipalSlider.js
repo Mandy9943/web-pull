@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Slider from 'react-animated-slider';
 import 'react-animated-slider/build/horizontal.css';
 import BannerImg1 from "../../assets/img/banners/banner-grande-v2-10col-03.webp";
@@ -12,7 +12,10 @@ import BannerMobil3 from "../../assets/img/bannerCelular/banners-apk2.webp";
 import BannerMobil4 from "../../assets/img/bannerCelular/banners-apk3.webp";
 import BannerMobil5 from "../../assets/img/bannerCelular/banners-apk4.webp";
 import "./PrincipalSlider.css";
+import ProductCard from "../ProductCard";
 import Spinner from "./../Common/Spinner";
+import Image from 'next/image'
+
 
 
 export default class PrincipalSlider extends Component {
@@ -105,7 +108,7 @@ export default class PrincipalSlider extends Component {
                     <Slider autoplay={4000}>
                         {this.state.slides.length > 1 ? this.state.slides.map((slide, index) =>
                         <a href={slide.href} key={index}>
-                            <img alt={slide.url.replace(/-/g, ' ')} src={slide.url} loading='lazy'/>
+                            <Image layout="fill"  alt={slide.url.replace(/-/g, ' ')} src={slide.url} />
                         </a>) : <div style={{position:'absolute !important', left:0, right:0, top:0, bottom:0 }}><Spinner/></div>}
                     </Slider>
                 </section>
@@ -113,7 +116,7 @@ export default class PrincipalSlider extends Component {
                     <Slider autoplay={4000}>
                         {this.state.slidesMobil.length > 1 ? this.state.slidesMobil.map((slide, index) =>
                         <a href={slide.href} key={index}>
-                            <img alt={slide.url.replace(/-/g, ' ')} src={slide.url} loading='lazy'/>
+                            <Image layout="fill"  alt={slide.url.replace(/-/g, ' ')} src={slide.url} />
                         </a>) : <div style={{position:'absolute !important', left:0, right:0, top:0, bottom:0 }}><Spinner/></div>}
                     </Slider>
                 </section>

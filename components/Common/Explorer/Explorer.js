@@ -1,6 +1,12 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
+import Link from "next/link";
+import CategoryImg from "../../../assets/img/category-img/category-tools.webp";
 import "./Explorer.css";
-import {getProductsBasic} from "../../../services/productsApi";
+import { getProductsBasic } from "../../../services/productsApi";
+import { getImgUrl } from "../../../lib/config"
+import {handleFormatUrl} from '../../../lib/functions'
+import Spinner from "../Spinner";
+import accesorios from "../../../assets/img/category-img/category-accesorios.webp"
 import accesoriosvehiculos from "../../../assets/img/category-img/category-accesoriosvehiculos.webp"
 import bebes from "../../../assets/img/category-img/category-bebes.webp"
 import belleza from "../../../assets/img/category-img/category-belleza.webp"
@@ -15,13 +21,16 @@ import herramientas from "../../../assets/img/category-img/category-herramientas
 import hogar from "../../../assets/img/category-img/category-hogar.webp"
 import instrumentos from "../../../assets/img/category-img/category-instrumentos.webp"
 import juguetes from "../../../assets/img/category-img/category-juguetes.webp"
+import libros from "../../../assets/img/category-img/category-libros.webp"
 import mascotas from "../../../assets/img/category-img/category-mascotas.webp"
+import musica from "../../../assets/img/category-img/category-musica.webp"
 import oficina from "../../../assets/img/category-img/category-oficina.webp"
 import relojesjoyas from "../../../assets/img/category-img/category-relojesjoyas.webp"
 import salud from "../../../assets/img/category-img/category-salud.webp"
 import videojuegos from "../../../assets/img/category-img/category-videojuegos.webp"
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import Image from 'next/image';
 
 
 class Explorer extends Component {
@@ -83,34 +92,32 @@ class Explorer extends Component {
   render() {
     return (
         <div className="explorer">
-            <h3 className="home-section-title">Encuentra los mejores productos de {this.state.categoryName} <a
-                className="accent" href={"/categoria/" + this.state.categoryName.replace(/ /g, '-').toLowerCase()}> Ver
-                todos</a></h3>
-            <div className="content-explorer">
-                <div className="main-img">
-                    <a href={"/categoria/" + this.state.categoryName.replace(/ /g, '-').toLowerCase()}>
-                        {this.state.exploreImage ?
-                            <img alt={this.state.categoryName} src={this.state.exploreImage} loading='lazy'/>
-                            : <Skeleton style={{height: '100%'}}/>}
-                    </a>
+        <h3 className="home-section-title">Encuentra los mejores productos de {this.state.categoryName} <a className="accent" href={"/categoria/"+this.state.categoryName.replace(/ /g, '-').toLowerCase()}> Ver todos</a></h3>
+        <div className="content-explorer">
+          <div className="main-img">
+                <a href={"/categoria/"+this.state.categoryName.replace(/ /g, '-').toLowerCase()}>
+                  {this.state.exploreImage ? <Image layout="fill" alt={this.state.categoryName} src={this.state.exploreImage} /> : <Skeleton style={{height:'100%'}}/>}
+                </a>
+          </div>
+          <div className="group-img">
+            {!this.state.exploreImage ?
+              <div className="wrapImgExplorer">
+                <Skeleton className="loaderSkeleton"/>
+                <Skeleton className="loaderSkeleton"/>
+                <Skeleton className="loaderSkeleton"/>
+                <Skeleton className="loaderSkeleton"/>
+              </div> :
+              this.state.data.map((item, i) => (
+                <div className="wrapImgExplorer" key={i}>
+                  <a href={handleFormatUrl(item.product_id, item.title)} >
+                    <Spinner/>
+                    <Image layout="fill" alt={item.title} src={ item.image } />
+                  </a>
                 </div>
-                <div className="group-img">
-                    {!this.state.exploreImage ? <div className="wrapImgExplorer">
-                            <Skeleton className="loaderSkeleton"/>
-                            <Skeleton className="loaderSkeleton"/>
-                            <Skeleton className="loaderSkeleton"/>
-                            <Skeleton className="loaderSkeleton"/>
-                        </div> :
-                        this.state.data.map((item, i) => (
-                            <div className="wrapImgExplorer" key={i}>
-                                <a href={"/detalle/" + item.product_id + "_" + item.title.replace(/[^\w\s]/gi, '').split(" ").join("-")}>
-                                    <img alt={item.title} src={item.image}/>
-                                </a>
-                            </div>
-                        ))
-                    }
-                </div>
-            </div>
+            ))
+          }
+          </div>
+        </div>
       </div>
     );
   }

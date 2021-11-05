@@ -19,7 +19,7 @@ function PaymentDetail() {
                 Los pagos efectuados por estos medios serán acreditados
                 inmediatamente. Además de que no generan costos adicionales.</p>
             
-            <img className="pay-online-question" src={PayOnline} />
+            <img loading="lazy" alt='pagos por pse' className="pay-online-question" src={PayOnline} />
             
             
             <h4><strong>Desde la banca en línea</strong></h4>
@@ -28,11 +28,11 @@ function PaymentDetail() {
                 las instrucciones necesarias. Estos pagos serán acreditados de
                 forma inmediata. No generan costos adicionales.</p>
             
-            <img className="pay-transfer-question" src={PayTransfer} />
+            <img loading="lazy" alt='pagos por transferencia' className="pay-transfer-question" src={PayTransfer} />
             
             <h4><strong>Tarjeta de crédito</strong></h4>
             <p>El banco incluirá los intereses de las cuotas en el resumen de tu tarjeta</p>
-            <img className="pay-credit-question" src={PayCredit} />
+            <img loading="lazy" alt='pagos por tarjeta de crédito' className="pay-credit-question" src={PayCredit} />
         </div>
     );
 }

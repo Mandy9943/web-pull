@@ -21,12 +21,13 @@ import BannerImg16 from "../../assets/img/banners/news/16.webp";
 import BannerImg17 from "../../assets/img/banners/news/17.webp";
 import "./SecundarySlider.css";
 import Spinner from "./../Common/Spinner";
+import Image from 'next/image'
 
 let link1 = "/categoria/Hogar";
 let link2 = "/categoria/Electrodomésticos";
 let link3 = "/categoria/Bebés";
 let link4 = "/categoria/Belleza";
-let link5 = "/categoria/Cámaras fotografia y video";
+let link5 = "/categoria/Cámaras fotografía y video";
 let link6 = "/categoria/Electrónica Audio y Video";
 let link7 = "/categoria/Consolas y videojuegos";
 let link8 = "/categoria/Deportes y fitness";
@@ -96,7 +97,7 @@ export default class SecundarySlider extends Component {
                     {this.state.slides.length > 1 ? this.state.slides.map((slide, index) =>
                         <div key={index}>
                             <a href={slide.enlace.replace(/ /g, '-').toLocaleLowerCase()}>
-                                    <img src={slide.url} alt={slide.enlace} />
+                                    <Image layout='fill' src={slide.url} alt={slide.enlace} />
                             </a>
                         </div> 
                     ): <div style={{position:'absolute !important', left:0, right:0, top:0, bottom:0 }}><Spinner/></div>}

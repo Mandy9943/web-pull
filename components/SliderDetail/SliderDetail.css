@@ -2,6 +2,14 @@
   margin-bottom: 20px;
 }
 
+.imageProduct div div{
+  width: 100%;
+}
+
+.imgZoom{
+  width: 100% !important;
+}
+
 .SliderDetail .mobil {
   display: none;
   min-height: 190px;
