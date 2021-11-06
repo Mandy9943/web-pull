@@ -31,7 +31,8 @@ export default class ProductCardFinding extends React.Component {
         let productList = this.state.data.map(function(product, i) {
             let url = "";
             if(product.image){
-                url = getImgUrl(product.image);
+                url = 'https://api.kieroapi.net/img/v1/'+ product.product_id + '?img=' + encodeURIComponent(product.image)
+                //url = getImgUrl(product.image);
             }else{
                 url = "https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png";
             }

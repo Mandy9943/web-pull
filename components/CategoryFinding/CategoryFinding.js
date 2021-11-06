@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
 import './NoFinding.css';
+import Image from 'next/image';
 
 class CategoryFinding extends Component {
 	render() {
@@ -12,11 +13,11 @@ class CategoryFinding extends Component {
 			<div className="finding-category">
 				{/* <Link href={'/categoria/[category]'} as={'/categoria/' + this.props.link_left}> */}
 				<a href={'/categoria/' + this.props.link_left.replace(/ /g, "-").toLowerCase()}>
-						<img src={this.props.img_left} alt={this.props.link_left.replace(/-/g, ' ')} />
+						<Image layout="fill" src={this.props.img_left} alt={this.props.link_left.replace(/-/g, ' ')} />
 				</a>
 				{/* <Link href={'/categoria/[category]'} as={'/categoria/' + this.props.link_right}> */}
 				<a href={'/categoria/' + this.props.link_right.replace(/ /g, "-").toLowerCase()} >
-						<img src={this.props.img_right} alt={this.props.link_right.replace(/-/g, ' ')} />
+						<Image layout="fill" src={this.props.img_right} alt={this.props.link_right.replace(/-/g, ' ')} />
 				</a>
 			</div>
 		);

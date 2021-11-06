@@ -71,6 +71,7 @@ export default function OrderDetail({ item, close, updateState }) {
           <main>
             <div className="card-img">
               <img
+                loading="lazy"
                 alt="Foto del usuario"
                 src={getProductImgs(item.data.user.photo)}
               />
@@ -102,6 +103,7 @@ export default function OrderDetail({ item, close, updateState }) {
           <main>
             <div className="card-img">
               <img
+                loading="lazy"
                 alt="Foto del producto"
                 src={
                   item.data.product.imagescsv &&

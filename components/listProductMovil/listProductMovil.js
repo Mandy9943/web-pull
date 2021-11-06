@@ -6,6 +6,8 @@ import { getImgUrl } from '../../lib/config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTruck } from '@fortawesome/free-solid-svg-icons';
 import { parse } from '@fortawesome/fontawesome-svg-core';
+import {handleFormatUrl} from '../../lib/functions'
+import Image from 'next/image';
 
 export default class listProductMovil extends Component {
 	constructor(props) {
@@ -25,7 +27,8 @@ export default class listProductMovil extends Component {
 	render() {
 		const productList = this.state.products.map((product, i) => {
 			let image_url = product.image
-				? getImgUrl(product.image)
+				//? getImgUrl(product.image)
+				? 'https://api.kieroapi.net/img/v1/'+ product.product_id + '?img=' + encodeURIComponent(product.image)
 				: 'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png';
 
 			// const detail_link =
@@ -40,19 +43,11 @@ export default class listProductMovil extends Component {
 			return (
 				<div key={i} className="product-item-edit">
 					<div className="content">
-						<a href={'/detalle/' +
-										product.product_id +
-										'_' +
-										product.title
-											.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-											.replaceAll('//', '%2F')
-											.replace('%', '')
-											.split(' ')
-											.join('-')}>
+						<a href={handleFormatUrl(product.product_id, product.title)}>
 							<a>
 								<section className="product">
 									<div className="product-card-img">
-										<img src={image_url} alt={product.title} />
+										<Image src={image_url} layout='fill' alt={product.title} />
 									</div>
 									<section className="description">
 										<h3>{product.title}</h3>

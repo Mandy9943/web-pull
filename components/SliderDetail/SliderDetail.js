@@ -4,7 +4,7 @@ import "react-animated-slider/build/horizontal.css";
 import "./SliderDetail.css";
 import { getImgUrl } from "../../lib/config";
 import Spinner from "./../Common/Spinner";
-
+import Image from 'next/image';
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 let slidesMobil = [
@@ -72,22 +72,25 @@ export default class SliderDetail extends Component {
           ) : (
             <Slider autoplay={10000}>
               {images.map((slide, index) => (
-                <div key={index}>
+                <div className="imageProduct" key={index}>
                   {this.props.allowZoomModal ? (
                     <Zoom
                       wrapStyle={{ width: "100%" }}
                       overlayBgColorStart={"rgba(0, 0, 0, 0)"}
                       overlayBgColorEnd={"rgba(0, 0, 0, 0.9)"}
                     >
-                      <img
+                      <Image
+                        className="imgZoom"
+                        layout='fill'
+                        alt={this.props.alt}
                         src={getImgUrl(slide.url, 1000)}
-                        style={{ width: "100%" }}
                       />
                     </Zoom>
                   ) : (
-                    <img
+                    <Image
+                      layout='fill'
+                      alt={this.props.alt}
                       src={getImgUrl(slide.url, 1000)}
-                      style={{ width: "100%" }}
                     />
                   )}
                 </div>

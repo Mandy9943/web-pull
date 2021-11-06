@@ -35,7 +35,12 @@
   min-height: 250px
 }
 
-.explorer .content-explorer .main-img img {
+.explorer .content-explorer .main-img div{
+  height: 100%;
+  display: flex;
+}
+
+.explorer .content-explorer .main-img div img {
   width: 100%;
   max-height: 400px;
 }
@@ -56,10 +61,21 @@
   max-height: 187px;
 }
 
+.explorer .content-explorer .group-img .wrapImgExplorer a{
+  display:flex;
+  background: white;
+}
+
+.explorer .content-explorer .group-img .wrapImgExplorer div{
+  display:contents;
+}
 .explorer .content-explorer .group-img .wrapImgExplorer img {
-  width: 100%;
+  width: auto !important;
+  min-width: 50px;
   height: 100%;
   max-height: 187px;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 @media (max-width: 1025px) {
