@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
-import CardImg from '../../assets/img/cards-img/kohgsdfRecurso28.png';
+import CardImg from '../../assets/img/banners/news/1.jpg';
 import './ProductCard.css';
 import Checkbox from '@material-ui/core/Checkbox';
 import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
+import {handleFormatUrl} from '../../lib/functions';
+import Image from 'next/image';
+import Spinner from "./../Common/Spinner";
 
 export default class ProductCard extends Component {
 	handleDataInfo(data){
@@ -65,12 +68,7 @@ export default class ProductCard extends Component {
 			price: data.price,
 			currency: 'COP',
 			quantity: 1,
-			url: 'https://kiero.co/detalle/' + data.product_id + '_' + data.title
-						.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-						.replace('//', '%2F')
-						.replace('%', '')
-						.split(' ')
-						.join('-'),
+			url: 'https://kiero.co'+ handleFormatUrl(data.product_id, data.title),
 			image_url: data.url
 		});
 
@@ -124,7 +122,6 @@ export default class ProductCard extends Component {
 		
 	}
 	render() {
-		
 		return (
 			<div className={this.props.className} onClick={() => this.handleDataInfo(this.props)}>
 				{/* <div className="productFavIcon3">
@@ -148,29 +145,33 @@ export default class ProductCard extends Component {
 						.join('-')
 				}
 				>  */}
-				<a
-					href={
-						'/detalle/' +
-						this.props.product_id +
-						'_' +
-						this.props.title
-							.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-							.replace('//', '%2F')
-							.replace('%', '')
-							.split(' ')
-							.join('-')
-					}
-				>
-					
+				<a  href={handleFormatUrl(this.props.product_id, this.props.title)}>
 						<div className="product-card-img">
-							<img
+							<Spinner/>
+							<Image
+								src={this.props.url}
+								alt={this.props.title}
+								layout='fill'
+								placeholder="blur"
+								/>
+						{/* <picture>
+							<source
+								srcSet={require('https://kiero.co/_next/static/images/kieroweb-db5d710263ceb06f6eb6c4ed06b64782.png?webp')}
+								type="image/webp"
+							/>
+							<img loading="lazy" src='https://kiero.co/_next/static/images/kieroweb-db5d710263ceb06f6eb6c4ed06b64782.png'
+								 />
+						</picture> */}
+							{/* <img
+							
+								loading="lazy"
 								alt={this.props.title}
 								src={
 									this.props.url
 										? this.props.url
 										: 'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png'
 								}
-							/>
+							/> */}
 						</div>
 						<button>Envío gratis</button>
 						<h3>

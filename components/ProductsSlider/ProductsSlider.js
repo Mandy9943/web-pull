@@ -6,6 +6,7 @@ import { getProductsBasic } from '../../services/productsApi';
 import Success from '../Login/Success';
 import { getImgUrl } from '../../lib/config';
 import Slider from 'react-animated-slider';
+import {handleFormatUrl} from '../../lib/functions'
 
 export default class ProductsSlider extends Component {
 	constructor(props) {
@@ -199,12 +200,7 @@ export default class ProductsSlider extends Component {
 				brand: prod.brand,
 				category: prod.category,
 				position: index + 1,
-				url: 'https://kiero.co/detalle/' + prod.product_id + '_' + prod.title
-																		.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-																		.replace('//', '%2F')
-																		.replace('%', '')
-																		.split(' ')
-																		.join('-'),
+				url: 'https://kiero.co' + handleFormatUrl(prod.product_id, prod.title) ,
 				image_url: prod.image
 			};
 		});

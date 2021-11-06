@@ -5,6 +5,8 @@ import { faTruck } from '@fortawesome/free-solid-svg-icons';
 import './CategoryBanners.css';
 import { baseUrl } from '../../../lib/config';
 import { getFront } from '../../../lib/request';
+import Image from 'next/image';
+import Spinner from '../Spinner'
 
 class CategoryBanners extends Component {
 	constructor(props) {
@@ -48,8 +50,9 @@ class CategoryBanners extends Component {
 
 								return (
 									<section key={i} className="item">
-										<a href={'/categoria/' + category.replace(/^[, ]+|[, ]+$|[, ]+/g, "-").trim().toLowerCase()}>
-											<img src={baseUrl + file} alt={category.replace(/-/g, " ")} />
+										<a href={'/categoria/' + category.replace(/^[, ]+|[, ]+$|[, ]+/g, "-").trim().toLowerCase()} className="miniCardCategory">
+											{/* <Spinner/> */}
+											<Image layout='fill' src={baseUrl + file} alt={category.replace(/-/g, " ")} />
 											{/* // <img src={'http://localhost' + file} alt={category.replace(/-/g, " ")}/> */}
 										</a>
 									</section>

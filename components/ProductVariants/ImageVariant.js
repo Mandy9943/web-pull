@@ -25,6 +25,7 @@ export default function SelectVariant({dimensions, select, name}) {
 
                     return (
                         <img
+                            loading='lazy'
                             key={index}
                             data-value={item.value}
                             data-available={item.available}

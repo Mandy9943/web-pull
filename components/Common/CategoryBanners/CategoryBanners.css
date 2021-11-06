@@ -21,6 +21,16 @@
 
 }
 
+.miniCardCategory .spinner-container{
+  position:absolute;
+  left:0;
+  right:0;
+}
+
+.miniCardCategory div img{
+  z-index: 100;
+}
+
 .category-banners .group-category .item {
   background: white;
   -webkit-box-shadow: 0px 3px 6px #11111129;

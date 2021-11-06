@@ -44,7 +44,7 @@ export default class NotificationItem extends Component {
 				<a>
 					<div className="notification-item">
 						<div className="notification-item-img">
-							<img src={this.props.data.image} />
+							<img loading="lazy" alt='notificaciones kiero.co' src={this.props.data.image} />
 						</div>
 						<section className="description">
 							<span className="small-text">{title}</span>

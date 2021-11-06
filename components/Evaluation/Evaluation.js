@@ -34,7 +34,7 @@ export default class Evaluation extends Component {
                             <h1>Ya tienes tu Portátil Premium 2020 HP 15 15,6" HD pantalla táctil Premium...</h1>
                         </section>
                     </section>
-                        <img src="https://picsum.photos/100" />
+                        <img loading="lazy" alt='evaluation kiero.co' src="https://picsum.photos/100" />
                     <Link href="#"><a className="main-button"><p>Tu opinión es importante</p></a></Link>
                 </section>
                 <Footer />

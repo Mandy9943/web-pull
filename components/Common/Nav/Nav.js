@@ -195,7 +195,7 @@ export default class Nav extends Component {
 						</>
 					) : (
 						<section className="user-perfil">
-							<img src="https://recap-project.eu/wp-content/uploads/2017/02/default-user.jpg" />
+							<img loading="lazy"  alt="foto usuario kiero.co" src="https://recap-project.eu/wp-content/uploads/2017/02/default-user.jpg" />
 							<span className="user-name">
 								<h5>Bienvenido</h5>
 								<p>{this.props.user.replace(/%20/g, ' ')}</p>

@@ -9,7 +9,7 @@ export default class FooterMovil extends Component {
         return (
             <div className="FooterMovil no-web">
                 <section className="download">
-                    <img alt="Kiero.co" src={LogoKiero} />{/*<span> ¡Compra y vende con la app!</span>*/}
+                    <img loading="lazy" alt="Kiero.co" src={LogoKiero} />{/*<span> ¡Compra y vende con la app!</span>*/}
                 </section>
                 <section className="menu-items">
                     {/*NEED ACTION*/}
