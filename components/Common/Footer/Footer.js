@@ -4,6 +4,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Phone from "../../../assets/img/phone.png";
 import "./Footer.css";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import {
+  faFacebook,
+  faInstagram,
+  faTwitter,
+  faYoutube,
+} from "@fortawesome/free-brands-svg-icons";
+
+import PayCredit from "../../../assets/img/pay-credit.png";
+import PayOnline from "../../../assets/img/pay-online.png";
+import PayTransfer from "../../../assets/img/pay-transfer.jpg";
 
 const fb = "//www.facebook.com/KieroGroup/";
 const ig = "//www.instagram.com/kierogroup";
@@ -34,35 +44,6 @@ export default class Footer extends Component {
                     </Link>
                   </div>
                 </div>
-                <div className="footerElement">
-                  <h3>Metodos de pago </h3>
-                  <div className="footerLinks">
-                    <span className="footerLink">Deposito Bancario</span>
-
-                    <span className="footerLink">Efectivo</span>
-
-                    <span className="footerLink">Visa</span>
-
-                    <span className="footerLink">Master Card</span>
-                  </div>
-                </div>
-                <div className="footerElement">
-                  <h3>Redes Sociales </h3>
-                  <div className="footerLinks">
-                    <Link href={fb}>
-                      <a className="footerLink">Facebook</a>
-                    </Link>
-                    <Link href={tw}>
-                      <a className="footerLink">Twitter</a>
-                    </Link>
-                    <Link href={ig}>
-                      <a className="footerLink">Instagram</a>
-                    </Link>
-                    <Link href={yt}>
-                      <a className="footerLink">Youtube</a>
-                    </Link>
-                  </div>
-                </div>
                 <div className="footerElement ">
                   <h3>Mi cuenta </h3>
                   <div className="footerLinks">
@@ -71,6 +52,61 @@ export default class Footer extends Component {
                     </Link>
                     <Link href="/registro">
                       <a className="footerLink">Registrarse</a>
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="footerElement">
+                  <h3>Metodos de pago </h3>
+                  <div className="footerLinks">
+                    <div className="footerPayWrapper">
+                      <span className="footerPay">
+                        <img src={PayCredit} alt="Tarjetas de crédito" />
+                      </span>
+                      <span className="footerPay">
+                        <img src={PayOnline} alt="Efectivo en puntos de pago" />
+                      </span>
+                      <span className="footerPay">
+                        <img
+                          src={PayTransfer}
+                          alt="Transferencia desde tu banco"
+                        />
+                      </span>
+                    </div>
+
+                    {/* <span className="footerLink">Efectivo</span>
+
+                    <span className="footerLink">Visa</span>
+
+                    <span className="footerLink">Master Card</span> */}
+                  </div>
+                </div>
+                <div className="footerElement">
+                  <h3>Redes Sociales </h3>
+                  <div className="footerLinks social">
+                    <Link href={fb}>
+                      <a className="footerLink">
+                        {" "}
+                        <FontAwesomeIcon icon={faFacebook} size="3x" />
+                      </a>
+                    </Link>
+                    <Link href={tw}>
+                      <a className="footerLink">
+                        {" "}
+                        <FontAwesomeIcon icon={faTwitter} />
+                      </a>
+                    </Link>
+                    <Link href={ig}>
+                      <a className="footerLink">
+                        {" "}
+                        <FontAwesomeIcon icon={faInstagram} />
+                      </a>
+                    </Link>
+                    <Link href={yt}>
+                      <a className="footerLink">
+                        {" "}
+                        <FontAwesomeIcon icon={faYoutube} />
+                      </a>
                     </Link>
                   </div>
                 </div>

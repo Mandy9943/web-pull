@@ -33,23 +33,50 @@
     margin-bottom: 20px
     font-weight: 600
     font-size: 16px
+    text-align: center
 
   .footerLinks
     display: flex
     flex-direction: column
 
-    .footerLink
-      color: gray
-      margin-bottom: 7px
-      font-size: 14px
+    .footerPayWrapper
+      display: flex
+      flex-direction: column
+      align-items: center
+
+    .footerPay
+      height: 50px
+
+      img
+        height: 100%
+
+  .social
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+
+  .footerLinks .footerLink
+    color: gray
+    margin-bottom: 7px
+    font-size: 14px
+
+  .social .footerLink svg
+    width: 20px
+    height: 20px
 
 @media only screen and (max-width: 875px)
   .footer .footerContent
     width: 85%
 
-@media only screen and (max-width: 600px)
-  .footer .footerContent .footerElement
-    width: 150px
+@media only screen and (max-width: 800px)
+  .footer
+    .footerContent .footerElement
+      width: 220px
+      text-align: center
+      margin: 0 0 20px 0
+
+    .footerContentWrapper .footerContent
+      justify-content: center
 
 .footerRed
   padding: 20px

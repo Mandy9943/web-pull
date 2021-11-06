@@ -33,15 +33,36 @@
   margin-bottom: 20px;
   font-weight: 600;
   font-size: 16px;
+  text-align: center;
 }
 .footer .footerContent .footerElement .footerLinks {
   display: flex;
   flex-direction: column;
 }
+.footer .footerContent .footerElement .footerLinks .footerPayWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.footer .footerContent .footerElement .footerLinks .footerPay {
+  height: 50px;
+}
+.footer .footerContent .footerElement .footerLinks .footerPay img {
+  height: 100%;
+}
+.footer .footerContent .footerElement .social {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 .footer .footerContent .footerElement .footerLinks .footerLink {
   color: gray;
   margin-bottom: 7px;
   font-size: 14px;
+}
+.footer .footerContent .footerElement .social .footerLink svg {
+  width: 20px;
+  height: 20px;
 }
 
 @media only screen and (max-width: 875px) {
@@ -49,9 +70,14 @@
     width: 85%;
   }
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
   .footer .footerContent .footerElement {
-    width: 150px;
+    width: 220px;
+    text-align: center;
+    margin: 0 0 20px 0;
+  }
+  .footer .footerContentWrapper .footerContent {
+    justify-content: center;
   }
 }
 
