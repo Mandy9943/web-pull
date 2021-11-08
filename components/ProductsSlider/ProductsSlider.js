@@ -191,41 +191,41 @@ export default class ProductsSlider extends Component {
 			}
 		}
 
-		// All products (We maybe use this array in mobile version slide change)
-		this.state.product_list = this.state.data?.map((prod, index) => {
-			return {
-				name: prod.title,
-				product_id: prod.product_id,
-				price: prod.price,
-				brand: prod.brand,
-				category: prod.category,
-				position: index + 1,
-				url: 'https://kiero.co' + handleFormatUrl(prod.product_id, prod.title) ,
-				image_url: prod.image
-			};
-		});
+		// // All products (We maybe use this array in mobile version slide change)
+		// this.state.product_list = this.state.data?.map((prod, index) => {
+		// 	return {
+		// 		name: prod.title,
+		// 		product_id: prod.product_id,
+		// 		price: prod.price,
+		// 		brand: prod.brand,
+		// 		category: prod.category,
+		// 		position: index + 1,
+		// 		url: 'https://kiero.co' + handleFormatUrl(prod.product_id, prod.title) ,
+		// 		image_url: prod.image
+		// 	};
+		// });
 
-		// Slide products (Prepare an array of 5 products for each slide)
-		this.state.products_slide = [];
-		let chunk = 5;
-		for (let i = 0, j = this.state.product_list.length; i < j; i += chunk) {
-			this.state.products_slide[i/5] = this.state.product_list.slice(i, i + chunk);
-		}
+		// // Slide products (Prepare an array of 5 products for each slide)
+		// this.state.products_slide = [];
+		// let chunk = 5;
+		// for (let i = 0, j = this.state.product_list.length; i < j; i += chunk) {
+		// 	this.state.products_slide[i/5] = this.state.product_list.slice(i, i + chunk);
+		// }
 
-		// Send first five products shown
-		if (this.state.products_slide.length) {
+		// // Send first five products shown
+		// if (this.state.products_slide.length) {
 
-			let productsSliderViewed = {
-				nonInteraction: 1,
-				list_id: 'productsSlider ' + 0,
-				category: this.props.category,
-				products: this.state.products_slide[0]
-			}
+		// 	let productsSliderViewed = {
+		// 		nonInteraction: 1,
+		// 		list_id: 'productsSlider ' + 0,
+		// 		category: this.props.category,
+		// 		products: this.state.products_slide[0]
+		// 	}
 			
-			// console.log(productsSliderViewed)
+		// 	// console.log(productsSliderViewed)
 
-			analytics.track('Product List Viewed', productsSliderViewed);
-		}
+		// 	analytics.track('Product List Viewed', productsSliderViewed);
+		// }
 
 		if (tmpList.length > 0) {
 			// console.log(tmpList);
@@ -281,25 +281,7 @@ export default class ProductsSlider extends Component {
 				<div className="slider-movil">
 					<section className="content-products-slider">{productListMobile}</section>
 				</div>
-				<Slider onSlideChange={
-
-						event => {
-								//console.log(event.slideIndex)
-
-								// Send current slider products
-								let productsSliderViewed = {
-									nonInteraction: 1,
-									list_id: 'productsSlider ' + event.slideIndex,
-									category: this.props.category,
-									products: this.state.products_slide[event.slideIndex]
-								}
-								
-								// console.log(productsSliderViewed)
-
-								analytics.track('Product List Viewed', productsSliderViewed);
-
-						}
-					} autoplay={false}>{productList}</Slider>
+				<Slider autoplay={false}>{productList}</Slider>
 			</div>
 		);
 	}

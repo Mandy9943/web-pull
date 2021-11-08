@@ -10,6 +10,78 @@ import Image from 'next/image';
 import Spinner from "./../Common/Spinner";
 
 export default class ProductCard extends Component {
+
+	constructor(props) {
+		super(props)
+		this.rootRef = React.createRef()
+	}
+
+	sendToSegment = () => {
+		
+		let product = {
+				name: this.props.title,
+				product_id: this.props.product_id,
+				price: this.props.price,
+				brand: this.props.brand,
+				category: this.props.category,
+				position: this.props.index,
+				url: 'https://kiero.co'+ handleFormatUrl(this.props.product_id, this.props.title),
+				image_url: this.props.url
+			};
+
+		const productListViewed = {
+			// nonInteraction: 1,
+			list_id: 'productsSlider', // + ' RODOLFO_TESTING_FRONT',
+			category: this.props.category,
+			products: product
+		};
+
+		// console.log(productListViewed)
+
+		analytics.track('Product List Viewed', productListViewed);
+
+	}
+
+	callbackFunction = (entries) => {
+		entries.forEach((entry) => {
+			if (entry.isIntersecting) {
+				// console.log(entry.target.parentElement.classList.contains('hidden'))
+				if (!entry.target.parentElement.classList.contains('hidden')) {
+					// console.log(this.props.price)
+					// console.log(entry.target.parentElement)
+					// console.log(this.rootRef.current.parentElement)
+					this.sendToSegment()
+					this.observer.unobserve(this.rootRef.current)
+				}				
+			}
+		});
+	};
+
+	componentDidUpdate() {
+
+		console.log('Updated');
+
+	}
+
+	componentDidMount() {
+
+		// console.log('Mounted')
+		// console.log(this.props.className)
+		// console.log(this.rootRef.current.parentElement)
+
+		let options = {
+			// root: document.getElementsByClassName('slider')[0], // this.rootRef.current.parentElement,
+			rootMargin: '0px',
+			threshold: 0.80
+		}
+
+		this.observer = new IntersectionObserver(
+			this.callbackFunction,
+			options
+		);
+		if (this.rootRef.current) this.observer.observe(this.rootRef.current);
+	}
+
 	handleDataInfo(data){
 		
 		// gtag('event', 'select_content', {
@@ -123,7 +195,7 @@ export default class ProductCard extends Component {
 	}
 	render() {
 		return (
-			<div className={this.props.className} onClick={() => this.handleDataInfo(this.props)}>
+			<div ref={this.rootRef} className={this.props.className} onClick={() => this.handleDataInfo(this.props)}>
 				{/* <div className="productFavIcon3">
 					<Checkbox
 						style={{ color: '#CF0A2C' }}
