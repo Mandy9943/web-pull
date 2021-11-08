@@ -870,7 +870,17 @@ class PaySection extends Component {
       cid: this.state.clientId,
       gclid: this.state.gclid,
       nme: fullName,
-      id: hmacID
+      id: hmacID,
+      url_product:"https://kiero.co/detalle/" +
+          this.props.props.data.product_global_id +
+          "_" +
+          this.props.props.data.product_global_title
+              .replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, "")
+              .replaceAll("//", "%2F")
+              .replaceAll("%", "")
+              .replaceAll(/['"]+/g, "")
+              .split(" ")
+              .join("-")
     });
 
     // console.log(hmacID)
