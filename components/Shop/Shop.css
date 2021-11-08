@@ -13,8 +13,8 @@
 .summary-content .user-account-container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 4fr ;
-  grid-template-columns: 1fr 4fr ;
+  -ms-grid-columns: 1fr 4fr;
+  grid-template-columns: 1fr 4fr;
   grid-gap: 30px;
   margin: auto;
   width: 80%;
@@ -67,8 +67,8 @@
   .user-account-menu-item
   .user-account-accordion
   p {
-      margin-top: 10px;
-      font-size: 14px;
+  margin-top: 10px;
+  font-size: 14px;
 }
 
 .summary-content
@@ -191,7 +191,7 @@
     grid-template-columns: 1fr 1fr;
   }
   .footer-social img {
-    width: 80%;
+    width: 80% !important;
     margin: auto !important;
   }
 }

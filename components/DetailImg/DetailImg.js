@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import Spinner from "./../Common/Spinner";
 import ReactImageMagnify from "react-image-magnify";
-import Image from 'next/image';
+import Image from "next/image";
 
 class Detail extends Component {
   constructor(props) {
@@ -65,7 +65,8 @@ class Detail extends Component {
   };
 
   render() {
-    let url = "/categoria/" + this.props.category.replace(/ /g, "-").toLowerCase();
+    let url =
+      "/categoria/" + this.props.category.replace(/ /g, "-").toLowerCase();
     return (
       <>
         <div className="wrap-gallery">
@@ -73,17 +74,19 @@ class Detail extends Component {
             {this.state.images && this.state.images.length ? (
               this.state.images.slice(0, 5).map((img, i) =>
                 i < 5 ? (
-                  <Image
-                    // src={'https://api.kieroapi.net/img/v1/'+ img.product_id + '?img=' + encodeURIComponent(img.url)}
-                    src={getImgUrlMinMin(img.url)}
-                    layout='fill'
-                    alt={this.props.product_name + " " + i}
-                    className="size-img-list"
-                    onMouseEnter={() => {
-                      this.showImage(img.url);
-                    }}
-                    key={i}
-                  />
+                  <div className="anullProperties">
+                    <Image
+                      // src={'https://api.kieroapi.net/img/v1/'+ img.product_id + '?img=' + encodeURIComponent(img.url)}
+                      src={getImgUrlMinMin(img.url)}
+                      layout="fill"
+                      alt={this.props.product_name + " " + i}
+                      className="size-img-list"
+                      onMouseEnter={() => {
+                        this.showImage(img.url);
+                      }}
+                      key={i}
+                    />
+                  </div>
                 ) : null
               )
             ) : (
@@ -117,14 +120,21 @@ class Detail extends Component {
                 }}
               />
             ) : (
-              <Image layout="fill" alt={this.props.product_name} src={this.state.image} className="size-img-main" />
+              <div className="anullProperties">
+                <Image
+                  layout="fill"
+                  alt={this.props.product_name}
+                  src={this.state.image}
+                  className="size-img-main"
+                />
+              </div>
             )}
           </div>
         </div>
         <div className="gallery-responsive">
-            <a className="back-button" href={url}>
-              <FontAwesomeIcon icon={faAngleLeft} /> Ir al listado
-            </a>
+          <a className="back-button" href={url}>
+            <FontAwesomeIcon icon={faAngleLeft} /> Ir al listado
+          </a>
           {/*NEED FIX THIS SHIT*/}
           <SliderDetail
             alt={this.props.product_name}

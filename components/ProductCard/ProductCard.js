@@ -1,137 +1,138 @@
-import React, { Component } from 'react';
-import Link from 'next/link';
-import CardImg from '../../assets/img/banners/news/1.jpg';
-import './ProductCard.css';
-import Checkbox from '@material-ui/core/Checkbox';
-import Favorite from '@material-ui/icons/Favorite';
-import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
-import {handleFormatUrl} from '../../lib/functions';
-import Image from 'next/image';
+import React, { Component } from "react";
+import Link from "next/link";
+import CardImg from "../../assets/img/banners/news/1.jpg";
+import "./ProductCard.css";
+import Checkbox from "@material-ui/core/Checkbox";
+import Favorite from "@material-ui/icons/Favorite";
+import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
+import { handleFormatUrl } from "../../lib/functions";
+import Image from "next/image";
 import Spinner from "./../Common/Spinner";
 
 export default class ProductCard extends Component {
-	handleDataInfo(data){
-		
-		// gtag('event', 'select_content', {
-		// 	"content_type": "product",
-		// 	"items": [
-		// 				{
-		// 					"id": data.product_id,
-		// 					"name": data.title,
-		// 					"list_name": "Search Results",
-		// 					"brand": data.brand,
-		// 					"category": data.category,
-		// 					"list_position":data.index,
-		// 					"quantity": 5,
-		// 					'price':data.price,
-		// 					'url':'https://kiero.co/detalle/' + data.product_id + '_' + data.title
-		// 																					.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-		// 																					.replace('//', '%2F')
-		// 																					.replace('%', '')
-		// 																					.split(' ')
-		// 																					.join('-'),
-		// 				}
-		// 			]
-		// });
-		// dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
-		// dataLayer.push({
-		// 	'event': 'select_item',
-		// 	'ecommerce': {
-		// 	'items': 
-		// 		{
-		// 			'item_name':data.title,
-		// 			'item_id':data.product_id,
-		// 			'item_brand':data.brand,
-		// 			'item_category':data.category,
-		// 			'item_list_name':'ListCategory',
-		// 			'index':data.index,
-		// 			"quantity": 5,
-		// 			'price':data.price,
-		// 			'url':'https://kiero.co/detalle/' + data.product_id + '_' + data.title
-		// 																			.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-		// 																			.replace('//', '%2F')
-		// 																			.replace('%', '')
-		// 																			.split(' ')
-		// 																			.join('-'),
-		// 		}
-		// 	}
-		// })
+  handleDataInfo(data) {
+    // gtag('event', 'select_content', {
+    // 	"content_type": "product",
+    // 	"items": [
+    // 				{
+    // 					"id": data.product_id,
+    // 					"name": data.title,
+    // 					"list_name": "Search Results",
+    // 					"brand": data.brand,
+    // 					"category": data.category,
+    // 					"list_position":data.index,
+    // 					"quantity": 5,
+    // 					'price':data.price,
+    // 					'url':'https://kiero.co/detalle/' + data.product_id + '_' + data.title
+    // 																					.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+    // 																					.replace('//', '%2F')
+    // 																					.replace('%', '')
+    // 																					.split(' ')
+    // 																					.join('-'),
+    // 				}
+    // 			]
+    // });
+    // dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
+    // dataLayer.push({
+    // 	'event': 'select_item',
+    // 	'ecommerce': {
+    // 	'items':
+    // 		{
+    // 			'item_name':data.title,
+    // 			'item_id':data.product_id,
+    // 			'item_brand':data.brand,
+    // 			'item_category':data.category,
+    // 			'item_list_name':'ListCategory',
+    // 			'index':data.index,
+    // 			"quantity": 5,
+    // 			'price':data.price,
+    // 			'url':'https://kiero.co/detalle/' + data.product_id + '_' + data.title
+    // 																			.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+    // 																			.replace('//', '%2F')
+    // 																			.replace('%', '')
+    // 																			.split(' ')
+    // 																			.join('-'),
+    // 		}
+    // 	}
+    // })
 
-		// Segment Product Clicked event
-		// Fire this event when a visitor clicks a product.
-		// Reference: https://segment.com/docs/connections/spec/ecommerce/v2/
-		analytics.track('Product Clicked', {
-			product_id: data.product_id,
-			category: data.category,
-			name: data.title,
-			brand: data.brand,
-			price: data.price,
-			currency: 'COP',
-			quantity: 1,
-			url: 'https://kiero.co'+ handleFormatUrl(data.product_id, data.title),
-			image_url: data.url
-		});
+    // Segment Product Clicked event
+    // Fire this event when a visitor clicks a product.
+    // Reference: https://segment.com/docs/connections/spec/ecommerce/v2/
+    analytics.track("Product Clicked", {
+      product_id: data.product_id,
+      category: data.category,
+      name: data.title,
+      brand: data.brand,
+      price: data.price,
+      currency: "COP",
+      quantity: 1,
+      url: "https://kiero.co" + handleFormatUrl(data.product_id, data.title),
+      image_url: data.url,
+    });
 
-		// console.log(data);
+    // console.log(data);
 
-		// dataLayer.push({
-		// 	'event': 'productClick',
-		// 	'ecommerce': {
-		// 		"click": {
-		// 			"actionField": {
-		// 							"list": "Search Results"
-		// 							},
-		// 			'products': 
-		// 					[{
-		// 						'name':data.title,
-		// 						'id':data.product_id,
-		// 						'brand':data.brand,
-		// 						'category':data.category,
-		// 						'position':data.index,
-		// 						"quantity": 5,
-		// 						'price':data.price,
-		// 						'url':'https://kiero.co/detalle/' + data.product_id + '_' + data.title
-		// 																						.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-		// 																						.replace('//', '%2F')
-		// 																						.replace('%', '')
-		// 																						.split(' ')
-		// 																						.join('-'),
-								
-		// 				}]
-		// 		}
-		// 	},
-		// 	// 'eventCallback': function(){
-		// 	// 	document.location = 'https://kiero.co/detalle/' + data.product_id + '_' + data.title
-		// 	// 	.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-		// 	// 	.replace('//', '%2F')
-		// 	// 	.replace('%', '')
-		// 	// 	.split(' ')
-		// 	// 	.join('-')
-		// 	// } 
-		// })
+    // dataLayer.push({
+    // 	'event': 'productClick',
+    // 	'ecommerce': {
+    // 		"click": {
+    // 			"actionField": {
+    // 							"list": "Search Results"
+    // 							},
+    // 			'products':
+    // 					[{
+    // 						'name':data.title,
+    // 						'id':data.product_id,
+    // 						'brand':data.brand,
+    // 						'category':data.category,
+    // 						'position':data.index,
+    // 						"quantity": 5,
+    // 						'price':data.price,
+    // 						'url':'https://kiero.co/detalle/' + data.product_id + '_' + data.title
+    // 																						.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+    // 																						.replace('//', '%2F')
+    // 																						.replace('%', '')
+    // 																						.split(' ')
+    // 																						.join('-'),
 
-		// window.location.href = '/detalle/' +
-		// data.product_id +
-		// '_' +
-		// data.title
-		// 	.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-		// 	.replace('//', '%2F')
-		// 	.replace('%', '')
-		// 	.split(' ')
-		// 	.join('-')
-		
-	}
-	render() {
-		return (
-			<div className={this.props.className} onClick={() => this.handleDataInfo(this.props)}>
-				{/* <div className="productFavIcon3">
+    // 				}]
+    // 		}
+    // 	},
+    // 	// 'eventCallback': function(){
+    // 	// 	document.location = 'https://kiero.co/detalle/' + data.product_id + '_' + data.title
+    // 	// 	.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+    // 	// 	.replace('//', '%2F')
+    // 	// 	.replace('%', '')
+    // 	// 	.split(' ')
+    // 	// 	.join('-')
+    // 	// }
+    // })
+
+    // window.location.href = '/detalle/' +
+    // data.product_id +
+    // '_' +
+    // data.title
+    // 	.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+    // 	.replace('//', '%2F')
+    // 	.replace('%', '')
+    // 	.split(' ')
+    // 	.join('-')
+  }
+  render() {
+    return (
+      <div
+        className={this.props.className}
+        onClick={() => this.handleDataInfo(this.props)}
+      >
+        {/* <div className="productFavIcon3">
 					<Checkbox
 						style={{ color: '#CF0A2C' }}
 						icon={<FavoriteBorder />} 
 						checkedIcon={<Favorite />}
 					/>
 				</div> */}
-				{/*<Link
+        {/*<Link
 				href={'/detalle/[product]'}
 				as={
 					'/detalle/' +
@@ -145,16 +146,18 @@ export default class ProductCard extends Component {
 						.join('-')
 				}
 				>  */}
-				<a  href={handleFormatUrl(this.props.product_id, this.props.title)}>
-						<div className="product-card-img">
-							<Spinner/>
-							<Image
-								src={this.props.url}
-								alt={this.props.title}
-								layout='fill'
-								placeholder="blur"
-								/>
-						{/* <picture>
+        <a href={handleFormatUrl(this.props.product_id, this.props.title)}>
+          <div className="product-card-img">
+            <Spinner />
+            <div className="anullProperties">
+              <Image
+                src={this.props.url}
+                alt={this.props.title}
+                layout="fill"
+                placeholder="blur"
+              />
+            </div>
+            {/* <picture>
 							<source
 								srcSet={require('https://kiero.co/_next/static/images/kieroweb-db5d710263ceb06f6eb6c4ed06b64782.png?webp')}
 								type="image/webp"
@@ -162,7 +165,7 @@ export default class ProductCard extends Component {
 							<img loading="lazy" src='https://kiero.co/_next/static/images/kieroweb-db5d710263ceb06f6eb6c4ed06b64782.png'
 								 />
 						</picture> */}
-							{/* <img
+            {/* <img
 							
 								loading="lazy"
 								alt={this.props.title}
@@ -172,19 +175,19 @@ export default class ProductCard extends Component {
 										: 'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png'
 								}
 							/> */}
-						</div>
-						<button>Envío gratis</button>
-						<h3>
-							${' '}
-							{this.props.price
-								? String(this.props.price)
-										.split('.')[0]
-										.replace(/(.)(?=(\d{3})+$)/g, '$1.')
-								: '$ ... '}
-						</h3>
-						<h4 className="title">{this.props.title}</h4>
-				</a>
-			</div>
-		);
-	}
+          </div>
+          <button>Envío gratis</button>
+          <h3>
+            ${" "}
+            {this.props.price
+              ? String(this.props.price)
+                  .split(".")[0]
+                  .replace(/(.)(?=(\d{3})+$)/g, "$1.")
+              : "$ ... "}
+          </h3>
+          <h4 className="title">{this.props.title}</h4>
+        </a>
+      </div>
+    );
+  }
 }

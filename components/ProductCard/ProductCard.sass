@@ -26,7 +26,7 @@
     color: #111111
     font-size: 12px
     font-weight: 400
-    font-family: 'Montserrat', sans-serif
+    font-family: "Montserrat", sans-serif
     opacity: 0
     visibility: hidden
     -webkit-transition: 0.1s ease-out
@@ -40,7 +40,7 @@
     transition-timing-function: linear
 
   .product-card-img
-    padding-bottom: 0px
+    padding-bottom: 0px !important
     border-bottom: 1px solid #f2f2f2
     position: relative
     display: flex
@@ -53,12 +53,12 @@
       min-width: auto !important
       height: auto !important
       max-height: 100% !important
-      position: absolute
-      margin: auto
-      top: 0
-      left: 0
-      bottom: 0
-      right: 0
+      position: absolute !important
+      margin: auto !important
+      top: 0 !important
+      left: 0 !important
+      bottom: 0 !important
+      right: 0 !important
       min-height: auto !important
 
   button
@@ -82,8 +82,8 @@
     margin-bottom: 7px
     color: #111111
     font-size: 17px
-    font-family: 'Roboto', sans-serif
-    font-weight: 300
+    font-family: "Roboto", sans-serif
+    font-weight: 500
 
 @media (min-width: 700px)
   .producto-card:hover
@@ -106,6 +106,9 @@
   .producto-card .product-card-img
     height: 110px
 
+  .CardInPerfil .product-card-img
+    height: 100px
+
 @media (min-width: 801px)
   .producto-card .product-card-img
     height: 150px
@@ -127,6 +130,9 @@
     height: 190px
 
 @media (min-width: 1600px)
+  .CardInPerfil .product-card-img
+    height: 190px !important
+
   .producto-card .product-card-img
     img
       min-height: 10vw
@@ -160,3 +166,5 @@
 @media (max-width: 375px)
   .producto-card h3
     font-size: 16px
+
+/*# sourceMappingURL=ProductCard.css.map

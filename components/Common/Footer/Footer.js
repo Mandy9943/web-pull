@@ -16,7 +16,7 @@ import PayOnline from "../../../assets/img/pay-online.png";
 import PayTransfer from "../../../assets/img/pay-transfer.jpg";
 
 const fb = "//www.facebook.com/KieroGroup/";
-const ig = "//www.instagram.com/kierogroup";
+const ig = "https://www.instagram.com/kiero.co/";
 const tw = "//twitter.com/KIEROGROUP1";
 const yt = "//www.youtube.com/user/KieroGroup";
 
@@ -57,7 +57,7 @@ export default class Footer extends Component {
                 </div>
 
                 <div className="footerElement">
-                  <h3>Metodos de pago </h3>
+                  <h3>Métodos de pago </h3>
                   <div className="footerLinks">
                     <div className="footerPayWrapper">
                       <span className="footerPay">
