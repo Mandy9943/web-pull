@@ -12,15 +12,14 @@ export default class ProductsSlider extends Component {
 		super(props);
 		this.state = {
 			data: [],
-			className: 'producto-card'
+			className: 'producto-card',
 		};
 	}
 	componentDidMount() {
-
-		
 		const sliderContentProductDetail = document.querySelector('.containerProductDetail');
-		sliderContentProductDetail ? this.setState({ className:'CardInPerfil producto-card' }) : this.setState({ className:'producto-card' })
-	
+		sliderContentProductDetail
+			? this.setState({ className: 'CardInPerfil producto-card' })
+			: this.setState({ className: 'producto-card' });
 
 		getProductsBasic(this.props.category, 25).then((response) => {
 			let data = [];
@@ -51,7 +50,7 @@ export default class ProductsSlider extends Component {
 			// dataLayer.push({
 			// 	'event': 'view_item_list',
 			// 	'ecommerce': {
-			// 	'items': 
+			// 	'items':
 			// 		dataLayerGoogleSlidersG4
 			// 	}
 			// })
@@ -90,13 +89,17 @@ export default class ProductsSlider extends Component {
 					brand: prod.brand,
 					category: prod.category,
 					position: index + 1,
-					url: 'https://kiero.co/detalle/' + prod.product_id + '_' + prod.title
-																			.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-																			.replace('//', '%2F')
-																			.replace('%', '')
-																			.split(' ')
-																			.join('-'),
-					image_url: prod.image
+					url:
+						'https://kiero.co/detalle/' +
+						prod.product_id +
+						'_' +
+						prod.title
+							.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+							.replace('//', '%2F')
+							.replace('%', '')
+							.split(' ')
+							.join('-'),
+					image_url: prod.image,
 				};
 			});
 
@@ -104,7 +107,7 @@ export default class ProductsSlider extends Component {
 				nonInteraction: 1,
 				list_id: 'productsSlider',
 				category: this.props.category,
-				products: product_list
+				products: product_list,
 			});
 
 			// const gtagSlidersUniversal = response.data.results?.map((prod, index) => {
@@ -129,13 +132,9 @@ export default class ProductsSlider extends Component {
 			// 	"items": gtagSlidersUniversal
 			// })
 		});
-		
-	
 	}
-	
 
 	render() {
-		
 		let productList = [];
 		let productListMobile = [];
 		let tmpList = [];
@@ -151,10 +150,15 @@ export default class ProductsSlider extends Component {
 			// }
 			// console.log( encodeURIComponent(this.state.data[i].image), "imagen:", '?img=' + this.state.data[i].image)
 
-			let newUrl = 'https://api.kieroapi.net/img/v1/'+ this.state.data[i].product_id + '?img=' + encodeURIComponent(this.state.data[i].image)
+			let newUrl =
+				'https://api.kieroapi.net/img/v1/' +
+				this.state.data[i].product_id +
+				'?img=' +
+				encodeURIComponent(this.state.data[i].image);
 			// console.log(this.state.data[i].image)
 			tmpList.push(
 				<ProductCard
+					productSpent={this.props.productSpent}
 					key={skid++}
 					index={skid++}
 					price={this.state.data[i].price}
@@ -194,9 +198,14 @@ export default class ProductsSlider extends Component {
 			// 	url =
 			// 		'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png';
 			// }
-			let newUrl = 'https://api.kieroapi.net/img/v1/'+ this.state.data[i].product_id + '?img=' + encodeURIComponent(this.state.data[i].image)
+			let newUrl =
+				'https://api.kieroapi.net/img/v1/' +
+				this.state.data[i].product_id +
+				'?img=' +
+				encodeURIComponent(this.state.data[i].image);
 			productListMobile.push(
 				<ProductCard
+					productSpent={this.props.productSpent}
 					style={{ padding: '30px' }}
 					key={skid++}
 					index={skid++}
@@ -222,7 +231,7 @@ export default class ProductsSlider extends Component {
 						> */}
 						<a
 							className="accent"
-							href={this.props.category && '/categoria/' + this.props.category }
+							href={this.props.category && '/categoria/' + this.props.category}
 						>
 							Ver todos
 						</a>

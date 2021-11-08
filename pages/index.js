@@ -1,35 +1,28 @@
-import React from 'react';
+import React from "react";
 import Head from 'next/head';
-import Home from '../components/Home';
-import { Component } from 'react';
-import PropTypes from 'prop-types';
-import { isAuthenticated, getUser, getJwt, getRole } from '../lib/auth';
-import favicon from '../assets/img/favicon.svg';
+import Home from "../components/Home";
+import { Component } from "react";
+import PropTypes from "prop-types";
+import {isAuthenticated, getUser, getJwt, getRole} from "../lib/auth";
+import favicon from "../assets/img/favicon.svg";
 // import 'bootstrap/dist/css/bootstrap.css'
 
+
 export default class Index extends Component {
-	static propTypes = {
-		user: PropTypes.string,
-		authenticated: PropTypes.bool,
-	};
 
-	static async getInitialProps(ctx) {
-		return {
-			user: getUser(ctx),
-			role: getRole(ctx),
-			jwt: getJwt(ctx),
-			authenticated: isAuthenticated(ctx),
-		};
-	}
+    static propTypes = {
+        user: PropTypes.string,
+        authenticated: PropTypes.bool
+    };
 
-	render() {
-		return (
-			<div className="home">
-				<Head>
-					<title>Kiero | Compra Online</title>
-
-					<meta name="viewport" content="initial-scale=1.0, width=device-width" />
-					<meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
+    static async getInitialProps(ctx) {
+        return {
+            user: getUser(ctx),
+            role: getRole(ctx),
+            jwt: getJwt(ctx),
+            authenticated: isAuthenticated(ctx)
+        };
+    }
 
     render() {
         return (
@@ -52,35 +45,21 @@ export default class Index extends Component {
                     Tienda Online" />
                     <meta name="twitter: description" contenido=" Envíos gratis en Colombia, productos para
                     Bebés, Belleza, Cámaras y accesorios, Electrodomésticos, Electrónica, Hogar y muebles y mucho más."
-					/>
-					<meta
-						name="twitter: image"
-						content="https://kiero.co/_next/static/images/banners-
-                    apk-911388a7cee05467bbd92b4b573820ab.jpg"
-					/>
-					<meta property="og:type" content="sitio web" />
-					<meta
-						property="og:title"
-						content="Compra en kiero.co todo lo encuentras en nuestra
-                    tienda online "
-					/>
-					<meta
-						property="og:description"
-						content="Envíos gratis en Colombia, productos para
+                    />
+                    <meta name="twitter: image" content="https://kiero.co/_next/static/images/banners-
+                    apk-911388a7cee05467bbd92b4b573820ab.jpg" />
+                    <meta property="og:type" content="sitio web" />
+                    <meta property="og:title" content="Compra en kiero.co todo lo encuentras en nuestra
+                    tienda online " />
+                    <meta property="og:description" content="Envíos gratis en Colombia, productos para
                     Bebés, Belleza, Cámaras y accesorios, Electrodomésticos, Electrónica, Hogar y muebles y mucho más.
-                    "
-					/>
-					<meta property="og:url" content="https://www.kiero.co/" />
-					<meta
-						property="og:image"
-						content="https://kiero.co/_next/static/images/banners-apk-
-                    911388a7cee05467bbd92b4b573820ab.jpg"
-					/>
-					<link rel="icon" href={favicon} type="image/png" />
-					<script
-						type="application/ld+json"
-						dangerouslySetInnerHTML={{
-							__html: `{
+                    " />
+                    <meta property="og:url" content="https://www.kiero.co/" />
+                    <meta property="og:image" content="https://kiero.co/_next/static/images/banners-apk-
+                    911388a7cee05467bbd92b4b573820ab.jpg" />
+                    <link rel="icon" href={favicon} type="image/png" />
+                    <script type="application/ld+json" 
+                    dangerouslySetInnerHTML={{ __html: `{
                         "@context": "https://schema.org",
                         "@type": "WebSite",
                         "name": "Kiero Marketplace",
@@ -99,12 +78,13 @@ export default class Index extends Component {
                         "https://www.youtube.com/user/KieroGroup",
                         "https://co.pinterest.com/novedadeskiero/pins/"
                         ]
-                        }`,
-						}}
-					></script>
-				</Head>
-				<Home user_data={this.props} />
-			</div>
-		);
-	}
+                        }` }}>
+
+                    </script>
+
+                </Head>
+                <Home user_data={this.props} />
+            </div>
+        );
+    }
 }

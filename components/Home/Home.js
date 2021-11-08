@@ -56,8 +56,8 @@ export default class Home extends Component {
 				<PrincipalSlider />
 				<div className="home-content">
 					<Payment />
-					<ProductsSlider category={'Computadoras y tabletas'} />
-					<ProductsSlider category={'Cosméticos y maquillaje'} />
+					<ProductsSlider productSpent='product-spent-home' category={'Computadoras y tabletas'} />
+					<ProductsSlider productSpent='product-spent-home' category={'Cosméticos y maquillaje'} />
 					<SecundarySlider />
 					<LoginMovil user={u_data.user} authenticated={u_data.authenticated} />
 					<Finding
@@ -72,9 +72,9 @@ export default class Home extends Component {
 							url2: 'categoria/Monitores-de-computadoras',
 						}}
 					/>
-					<ProductsSlider category={'Juguetes y juegos'} />
+					<ProductsSlider productSpent='product-spent-home' category={'Juguetes y juegos'} />
 					<Explorer />
-					<ProductsSlider category={'Bebés'} />
+					<ProductsSlider productSpent='product-spent-home' category={'Bebés'} />
 					<Finding
 						category={{
 							father0: 'Deportes',
@@ -88,7 +88,7 @@ export default class Home extends Component {
 						}}
 					/>
 					<Explorer />
-					<ProductsSlider category={'Animales y Mascotas'} />
+					<ProductsSlider productSpent='product-spent-home' category={'Animales y Mascotas'} />
 					<ListProductMovil jwt={u_data.jwt} />
 					<CategoriesImgMenu />
 					<Tickets />
@@ -99,12 +99,12 @@ export default class Home extends Component {
 				<Footer />
 				<div className="footer-social">
 					<Link href={'//sic.gov.co'}>
-						<a target="_blank">
+						<a rel="noopener noreferrer">
 							<img alt="sic.gov.co" src={Logo1} />
 						</a>
 					</Link>
 					<Link href={'//sic.gov.co'}>
-						<a target="_blank">
+						<a rel="noopener noreferrer">
 							<img alt="sic.gov.co" src={Logo2} />
 						</a>
 					</Link>

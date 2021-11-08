@@ -7,8 +7,7 @@ import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 
 export default class ProductCard extends Component {
-	handleDataInfo(data){
-		
+	handleDataInfo(data) {
 		// gtag('event', 'select_content', {
 		// 	"content_type": "product",
 		// 	"items": [
@@ -34,7 +33,7 @@ export default class ProductCard extends Component {
 		// dataLayer.push({
 		// 	'event': 'select_item',
 		// 	'ecommerce': {
-		// 	'items': 
+		// 	'items':
 		// 		{
 		// 			'item_name':data.title,
 		// 			'item_id':data.product_id,
@@ -65,13 +64,17 @@ export default class ProductCard extends Component {
 			price: data.price,
 			currency: 'COP',
 			quantity: 1,
-			url: 'https://kiero.co/detalle/' + data.product_id + '_' + data.title
-						.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-						.replace('//', '%2F')
-						.replace('%', '')
-						.split(' ')
-						.join('-'),
-			image_url: data.url
+			url:
+				'https://kiero.co/detalle/' +
+				data.product_id +
+				'_' +
+				data.title
+					.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+					.replace('//', '%2F')
+					.replace('%', '')
+					.split(' ')
+					.join('-'),
+			image_url: data.url,
 		});
 
 		// console.log(data);
@@ -83,7 +86,7 @@ export default class ProductCard extends Component {
 		// 			"actionField": {
 		// 							"list": "Search Results"
 		// 							},
-		// 			'products': 
+		// 			'products':
 		// 					[{
 		// 						'name':data.title,
 		// 						'id':data.product_id,
@@ -98,7 +101,7 @@ export default class ProductCard extends Component {
 		// 																						.replace('%', '')
 		// 																						.split(' ')
 		// 																						.join('-'),
-								
+
 		// 				}]
 		// 		}
 		// 	},
@@ -109,7 +112,7 @@ export default class ProductCard extends Component {
 		// 	// 	.replace('%', '')
 		// 	// 	.split(' ')
 		// 	// 	.join('-')
-		// 	// } 
+		// 	// }
 		// })
 
 		// window.location.href = '/detalle/' +
@@ -121,12 +124,13 @@ export default class ProductCard extends Component {
 		// 	.replace('%', '')
 		// 	.split(' ')
 		// 	.join('-')
-		
 	}
 	render() {
-		
 		return (
-			<div className={this.props.className} onClick={() => this.handleDataInfo(this.props)}>
+			<div
+				className={this.props.className}
+				onClick={() => this.handleDataInfo(this.props)}
+			>
 				{/* <div className="productFavIcon3">
 					<Checkbox
 						style={{ color: '#CF0A2C' }}
@@ -161,27 +165,28 @@ export default class ProductCard extends Component {
 							.join('-')
 					}
 				>
-					
-						<div className="product-card-img">
-							<img
-								alt={this.props.title}
-								src={
-									this.props.url
-										? this.props.url
-										: 'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png'
-								}
-							/>
-						</div>
-						<button>Envío gratis</button>
-						<h3>
-							${' '}
-							{this.props.price
-								? String(this.props.price)
-										.split('.')[0]
-										.replace(/(.)(?=(\d{3})+$)/g, '$1.')
-								: '$ ... '}
-						</h3>
-						<h4 className="title">{this.props.title}</h4>
+					<div className="product-card-img">
+						<div className={this.props.productSpent}>Agotado</div>
+						<img
+							style={{ opacity: '0.25' }}
+							alt={this.props.title}
+							src={
+								this.props.url
+									? this.props.url
+									: 'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png'
+							}
+						/>
+					</div>
+					<button>Envío gratis</button>
+					<h3 className="product-no-stock">
+						${' '}
+						{this.props.price
+							? String(this.props.price)
+									.split('.')[0]
+									.replace(/(.)(?=(\d{3})+$)/g, '$1.')
+							: '$ ... '}
+					</h3>
+					<h4 className="title">{this.props.title}</h4>
 				</a>
 			</div>
 		);

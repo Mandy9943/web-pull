@@ -32,6 +32,7 @@ export async function getServerSideProps(context) {
 	let jwt = getJwt(context);
 	const res = await getOrderDetails(context.params.order, jwt);
 	const data = await res.data;
+	console.log(context);
 
 	return { props: { data: data, jwt: jwt } };
 }
