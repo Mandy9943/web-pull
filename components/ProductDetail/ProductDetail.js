@@ -342,7 +342,6 @@ class ProductDetail extends Component {
               {/* <RecommendedProducts category={this.state.mdata.category.name} /> */}
               <div className="home-content slider-recommends">
                 <ProductsSlider
-					productSpent="product-spent-detail"
                   category={
                     this.state.mdata.category
                       ? this.state.mdata.category.name

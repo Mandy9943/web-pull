@@ -1,103 +1,126 @@
 .listProductMovil
-    margin-bottom: 15px
-    background-color: #FFFFFF
-    border: 0.5px solid #BEBEBE
-    border-bottom: 0.5px solid #BEBEBE
-    border-radius:  5px
-    display: none
-    box-shadow: 0px 3px 3px #11111129
-    h3
-        padding: 15px
-        color: #111111
-        font-size: 16px
-        font-weight: 600
-    a.send
-        padding: 15px
-        color: #CF0A2C
-        font-size: 14px
-        display: block
-        border-top: 0.5px solid #BEBEBE
-    
+  margin-bottom: 15px
+  background-color: #ffffff
+  border: 0.5px solid #bebebe
+  border-bottom: 0.5px solid #bebebe
+  border-radius: 5px
+  display: none
+  -webkit-box-shadow: 0px 3px 3px #11111129
+  box-shadow: 0px 3px 3px #11111129
+
+  h3
+    padding: 15px
+    color: #111111
+    font-size: 16px
+    font-weight: 600
+
+  a.send
+    padding: 15px
+    color: #cf0a2c
+    font-size: 14px
+    display: block
+    border-top: 0.5px solid #bebebe
+
 .product-item-edit
-    padding: 20px
-    width: auto
-    background-color: #FFFFFF
-    border-radius: 0
-    height: fit-content;
-    border: 0.5px solid #BEBEBE
-    border-bottom: none
-    border-left: none
-    border-right: none
-    &:last-child
-        border-bottom: 0.5px solid #BEBEBE
-    .content
-    .product
-        display: grid
-        grid-template-columns: auto 1fr
-        .product-card-img
-        img
-            max-width: 150px
-            height: auto
-            max-height: 84px
-        .description
-            align-self: end;
-            h3
-                padding: 0 0 0 15px
-                font-size: 13px
-                color:  #111111
-            h3.price
-                color: #111111
-                font-size: 18px
-            span
-                color: #DF1616
-                padding: 5px 0 0 15px
-                display: block;
-    .info
-        text-align: right;
+  padding: 20px
+  width: auto
+  background-color: #ffffff
+  border-radius: 0
+  height: -webkit-fit-content
+  height: -moz-fit-content
+  height: fit-content
+  border: 0.5px solid #bebebe
+  border-bottom: none
+  border-left: none
+  border-right: none
 
-    
-@media (max-width:700px)
-    .listProductMovil
+  &:last-child
+    border-bottom: 0.5px solid #bebebe
+
+  .product
+    display: -ms-grid
+    display: grid
+    -ms-grid-columns: auto 1fr
+    grid-template-columns: auto 1fr
+
+    img
+      max-width: 150px !important
+      height: auto !important
+      max-height: 84px !important
+      padding-left: 10px !important
+
+    .description
+      -ms-flex-item-align: end
+      -ms-grid-row-align: end
+      align-self: end
+
+      h3
+        padding: 0 0 0 15px
+        font-size: 13px
+        color: #111111
+
+        &.price
+          color: #111111
+          font-size: 18px
+
+      span
+        color: #df1616
+        padding: 5px 0 0 15px
         display: block
-        margin: 15px
-        h3
-            color: #111111
-            margin-bottom: 15px
-        .product-item-edit 
-            width: auto
-            padding: 15px 10px 15px 0px
-            .content
-                padding: 0
-                grid-template-columns: auto;
-                .description
-                    h3
-                        white-space: initial !important;
-                        display: -webkit-box;
-                        -webkit-line-clamp: 3
-                        -webkit-box-orient: vertical  
-                        overflow: hidden
-                        font-size: 13px
-                        font-weight: 400
-                    .price
-                        font-size: 13px
-                        font-weight: 700
-                    span
-                        font-size: 13px
-                        font-weight: 400
-                        svg
-                            margin-right: 10px
-                .actions
-                    a
-                        width: 80% !important
-                        margin: 7.5px auto!important
-                   
 
+  .info
+    text-align: right
 
-@media (max-width:375px)
-    .product-item-edit 
-        width: 80%;
-        padding: 15px;
-        margin: 15px auto;
-        .content
-            padding: 0 
-                
+@media (max-width: 700px)
+  .listProductMovil
+    display: block
+    margin: 15px
+
+    h3
+      color: #111111
+      margin-bottom: 15px
+
+    .product-item-edit
+      width: auto
+      padding: 15px 10px 15px 0px
+
+      .content
+        padding: 0
+        -ms-grid-columns: auto
+        grid-template-columns: auto
+
+        .description
+          h3
+            white-space: initial !important
+            display: -webkit-box
+            -webkit-line-clamp: 3
+            -webkit-box-orient: vertical
+            overflow: hidden
+            font-size: 13px
+            font-weight: 400
+
+          .price
+            font-size: 15px
+            font-weight: 700
+
+          span
+            font-size: 13px
+            font-weight: 400
+
+            svg
+              margin-right: 10px
+
+        .actions a
+          width: 80% !important
+          margin: 7.5px auto !important
+
+@media (max-width: 375px)
+  .product-item-edit
+    width: 80%
+    padding: 15px
+    margin: 15px auto
+
+    .content
+      padding: 0
+
+/*# sourceMappingURL=listProductMovil.css.map

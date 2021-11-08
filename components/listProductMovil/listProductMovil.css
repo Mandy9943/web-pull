@@ -1,12 +1,12 @@
 .listProductMovil {
   margin-bottom: 15px;
-  background-color: #FFFFFF;
-  border: 0.5px solid #BEBEBE;
-  border-bottom: 0.5px solid #BEBEBE;
+  background-color: #ffffff;
+  border: 0.5px solid #bebebe;
+  border-bottom: 0.5px solid #bebebe;
   border-radius: 5px;
   display: none;
   -webkit-box-shadow: 0px 3px 3px #11111129;
-          box-shadow: 0px 3px 3px #11111129;
+  box-shadow: 0px 3px 3px #11111129;
 }
 
 .listProductMovil h3 {
@@ -18,48 +18,48 @@
 
 .listProductMovil a.send {
   padding: 15px;
-  color: #CF0A2C;
+  color: #cf0a2c;
   font-size: 14px;
   display: block;
-  border-top: 0.5px solid #BEBEBE;
+  border-top: 0.5px solid #bebebe;
 }
 
 .product-item-edit {
   padding: 20px;
   width: auto;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 0;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  border: 0.5px solid #BEBEBE;
+  border: 0.5px solid #bebebe;
   border-bottom: none;
   border-left: none;
   border-right: none;
 }
 
 .product-item-edit:last-child {
-  border-bottom: 0.5px solid #BEBEBE;
+  border-bottom: 0.5px solid #bebebe;
 }
 
 .product-item-edit .product {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: auto 1fr;
-      grid-template-columns: auto 1fr;
+  grid-template-columns: auto 1fr;
 }
 
 .product-item-edit .product img {
-  max-width: 150px;
-  height: auto;
-  max-height: 84px;
-  padding-left: 10px;
+  max-width: 150px !important;
+  height: auto !important;
+  max-height: 84px !important;
+  padding-left: 10px !important;
 }
 
 .product-item-edit .product .description {
   -ms-flex-item-align: end;
-      -ms-grid-row-align: end;
-      align-self: end;
+  -ms-grid-row-align: end;
+  align-self: end;
 }
 
 .product-item-edit .product .description h3 {
@@ -74,7 +74,7 @@
 }
 
 .product-item-edit .product .description span {
-  color: #DF1616;
+  color: #df1616;
   padding: 5px 0 0 15px;
   display: block;
 }
@@ -99,7 +99,7 @@
   .listProductMovil .product-item-edit .content {
     padding: 0;
     -ms-grid-columns: auto;
-        grid-template-columns: auto;
+    grid-template-columns: auto;
   }
   .listProductMovil .product-item-edit .content .description h3 {
     white-space: initial !important;

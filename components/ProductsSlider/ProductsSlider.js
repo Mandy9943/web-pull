@@ -168,7 +168,7 @@ export default class ProductsSlider extends Component {
 			// console.log(this.state.data[i].image)
 			tmpList.push(
 				<ProductCard
-					productSpent={this.props.productSpent}
+					statusProduct={0}
 					key={skid++}
 					index={skid++}
 					price={this.state.data[i].price}
@@ -251,7 +251,7 @@ export default class ProductsSlider extends Component {
 				encodeURIComponent(this.state.data[i].image);
 			productListMobile.push(
 				<ProductCard
-					productSpent={this.props.productSpent}
+					statusProduct={0}
 					style={{ padding: '30px' }}
 					key={skid++}
 					index={skid++}
