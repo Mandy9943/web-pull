@@ -72,6 +72,21 @@
 
 .product-no-stock {
 	text-decoration: line-through;
+	}
+
+.producto-card .product-card-img img {
+	width: auto !important;
+    max-width: 100%;
+	min-width: auto !important;
+    height: auto !important;
+    max-height: 100% !important;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    min-height: auto !important;
 }
 
 .product-spent-home {

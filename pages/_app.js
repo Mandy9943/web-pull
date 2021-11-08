@@ -9,7 +9,7 @@ import KieroSocketChat from '../components/Services/kierochat-socket';
 import Cookies from 'js-cookie';
 
 export default function MyApp({ Component, pageProps}) {
-	const site = "kiero.co";
+	const site = "https://kiero.co";
 	const canonicalURL = site + useRouter().asPath;
 	useEffect(() => {
 		function getGLCID() {
@@ -28,7 +28,7 @@ export default function MyApp({ Component, pageProps}) {
 		<Head>
 			<link rel="canonical" href={canonicalURL} />
 		</Head>
-		{/* Google Tag Manager */}
+		{/* Google Tag Manager
 		<script
 					dangerouslySetInnerHTML={{
 						__html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -42,7 +42,7 @@ export default function MyApp({ Component, pageProps}) {
 				dangerouslySetInnerHTML={{
 						__html: `<iframe src="https://kiero.co/gtm.js" height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
 				}}
-		/>
+		/> */}
 
 	 {/* Ref: https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/quickstart/ */}
 		<script

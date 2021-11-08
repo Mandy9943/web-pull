@@ -3,6 +3,7 @@ import TicketImg1 from "../../assets/img/tickets-img/banner-computacion.webp";
 import TicketImg2 from "../../assets/img/tickets-img/banner-bebes.webp";
 import TicketImg3 from "../../assets/img/tickets-img/banner-hogar.webp";
 import "./Tickets.css";
+import Image from 'next/image';
 import Link from "next/link";
 
 class Tickets extends Component {
@@ -27,7 +28,7 @@ class Tickets extends Component {
       <div className="wrap-tickets">
         {dataTicket.map((item, i) => (
           <a key={i} href={"/categoria/" + linkTicket[i].url.replace(/ /g, "-").trim().toLowerCase() } className="tickets">
-                  <img src={item.url} alt={linkTicket[i].url.replace(/-/g, " ")}/>
+                  <Image layout="fill" src={item.url} alt={linkTicket[i].url.replace(/-/g, " ")}/>
             </a>
         ))}
       </div>

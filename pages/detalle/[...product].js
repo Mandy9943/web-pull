@@ -5,12 +5,14 @@ import { getProductDetail } from '../../services/productsApi';
 import { getUser, isAuthenticated, getJwt } from '../../lib/auth';
 import favicon from '../../assets/img/favicon.svg';
 import dynamic from 'next/dynamic';
+import {handleFormatUrl} from '../../lib/functions'
 
 const Detail = dynamic(() => import('../../components/ProductDetail'), {
 	loading: () => <p>loading...</p>,
 });
 
 function Product({ data, u_data }) {
+	//console.log(handleFormatUrl(14234, "muñeca,hóla,///@?___ññññ///béébé---hola si cmo estás?"))
 	return (
 		<div>
 			<Head>
@@ -24,7 +26,7 @@ function Product({ data, u_data }) {
 				<meta name="MobileOptimized" content="360" />
 				<meta
 					name="Description"
-					content={`KIERO.CO MARKETPLACE | Compralo en Kiero ${data.title} a ${
+					content={`Kiero.co | Compralo en Kiero ${data.title.substring(0,160)} a ${
 						data.price
 					} - Envío
       gratis - Encuentra más productos de ${data.category ? data.category.name : ''}`}
@@ -63,18 +65,13 @@ function Product({ data, u_data }) {
 				<meta
 					property="og:description"
 					content={`${
-						data.title
+						data.title.substring(0,160)
 					} en Kiero.co - Descubre millones de productos online.
       Encuentra ${data.category ? data.category.name : ''} en Kiero.co`}
 				/>
 				<meta
 					property="og:url"
-					content={`https://kiero.co/detalle/${data.product_id}_${data.title
-						.replace(/[^\w\s\/]/gi, '')
-						.replace('//', '%2F')
-						.replace('%', '')
-						.split(' ')
-						.join('-')}`}
+					content={`https://kiero.co${handleFormatUrl(data.product_id, data.title)}`}
 				/>
 				<meta property="og:locale" content="es_ES" />
 				<meta property="og:type" content="WebSite" />
