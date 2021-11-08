@@ -10,51 +10,124 @@ import Image from "next/image";
 import Spinner from "./../Common/Spinner";
 
 export default class ProductCard extends Component {
-  handleDataInfo(data) {
-    // gtag('event', 'select_content', {
-    // 	"content_type": "product",
-    // 	"items": [
-    // 				{
-    // 					"id": data.product_id,
-    // 					"name": data.title,
-    // 					"list_name": "Search Results",
-    // 					"brand": data.brand,
-    // 					"category": data.category,
-    // 					"list_position":data.index,
-    // 					"quantity": 5,
-    // 					'price':data.price,
-    // 					'url':'https://kiero.co/detalle/' + data.product_id + '_' + data.title
-    // 																					.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-    // 																					.replace('//', '%2F')
-    // 																					.replace('%', '')
-    // 																					.split(' ')
-    // 																					.join('-'),
-    // 				}
-    // 			]
-    // });
-    // dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
-    // dataLayer.push({
-    // 	'event': 'select_item',
-    // 	'ecommerce': {
-    // 	'items':
-    // 		{
-    // 			'item_name':data.title,
-    // 			'item_id':data.product_id,
-    // 			'item_brand':data.brand,
-    // 			'item_category':data.category,
-    // 			'item_list_name':'ListCategory',
-    // 			'index':data.index,
-    // 			"quantity": 5,
-    // 			'price':data.price,
-    // 			'url':'https://kiero.co/detalle/' + data.product_id + '_' + data.title
-    // 																			.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-    // 																			.replace('//', '%2F')
-    // 																			.replace('%', '')
-    // 																			.split(' ')
-    // 																			.join('-'),
-    // 		}
-    // 	}
-    // })
+
+	constructor(props) {
+		super(props)
+		this.rootRef = React.createRef()
+	}
+
+	sendToSegment = () => {
+		
+		let product = {
+				name: this.props.title,
+				product_id: this.props.product_id,
+				price: this.props.price,
+				brand: this.props.brand,
+				category: this.props.category,
+				position: this.props.index,
+				url: 'https://kiero.co'+ handleFormatUrl(this.props.product_id, this.props.title),
+				image_url: this.props.url
+			};
+
+		const productListViewed = {
+			// nonInteraction: 1,
+			list_id: 'productsSlider', // + ' RODOLFO_TESTING_FRONT',
+			category: this.props.category,
+			products: product
+		};
+
+		// console.log(productListViewed)
+
+		analytics.track('Product List Viewed', productListViewed);
+
+	}
+
+	callbackFunction = (entries) => {
+		entries.forEach((entry) => {
+			if (entry.isIntersecting) {
+				// console.log(entry.target.parentElement.classList.contains('hidden'))
+				if (!entry.target.parentElement.classList.contains('hidden')) {
+					// console.log(this.props.price)
+					// console.log(entry.target.parentElement)
+					// console.log(this.rootRef.current.parentElement)
+					this.sendToSegment()
+					this.observer.unobserve(this.rootRef.current)
+				}				
+			}
+		});
+	};
+
+	componentDidUpdate() {
+
+		// console.log('Updated');
+
+	}
+
+	componentDidMount() {
+
+		// console.log('Mounted')
+		// console.log(this.props.className)
+		// console.log(this.rootRef.current.parentElement)
+
+		let options = {
+			// root: document.getElementsByClassName('slider')[0], // this.rootRef.current.parentElement,
+			rootMargin: '0px',
+			threshold: 0.80
+		}
+
+		this.observer = new IntersectionObserver(
+			this.callbackFunction,
+			options
+		);
+		if (this.rootRef.current) this.observer.observe(this.rootRef.current);
+	}
+
+	handleDataInfo(data){
+		
+		// gtag('event', 'select_content', {
+		// 	"content_type": "product",
+		// 	"items": [
+		// 				{
+		// 					"id": data.product_id,
+		// 					"name": data.title,
+		// 					"list_name": "Search Results",
+		// 					"brand": data.brand,
+		// 					"category": data.category,
+		// 					"list_position":data.index,
+		// 					"quantity": 5,
+		// 					'price':data.price,
+		// 					'url':'https://kiero.co/detalle/' + data.product_id + '_' + data.title
+		// 																					.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+		// 																					.replace('//', '%2F')
+		// 																					.replace('%', '')
+		// 																					.split(' ')
+		// 																					.join('-'),
+		// 				}
+		// 			]
+		// });
+		// dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
+		// dataLayer.push({
+		// 	'event': 'select_item',
+		// 	'ecommerce': {
+		// 	'items': 
+		// 		{
+		// 			'item_name':data.title,
+		// 			'item_id':data.product_id,
+		// 			'item_brand':data.brand,
+		// 			'item_category':data.category,
+		// 			'item_list_name':'ListCategory',
+		// 			'index':data.index,
+		// 			"quantity": 5,
+		// 			'price':data.price,
+		// 			'url':'https://kiero.co/detalle/' + data.product_id + '_' + data.title
+		// 																			.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+		// 																			.replace('//', '%2F')
+		// 																			.replace('%', '')
+		// 																			.split(' ')
+		// 																			.join('-'),
+		// 		}
+		// 	}
+		// })
 
     // Segment Product Clicked event
     // Fire this event when a visitor clicks a product.
@@ -119,12 +192,11 @@ export default class ProductCard extends Component {
 		// 	.split(' ')
 		// 	.join('-')
 	}
+	
 	render() {
+
 		return (
-			<div
-				className={this.props.className}
-				onClick={() => this.handleDataInfo(this.props)}
-			>
+			<div ref={this.rootRef} className={this.props.className} onClick={() => this.handleDataInfo(this.props)}>
 				{/* <div className="productFavIcon3">
 					<Checkbox
 						style={{ color: '#CF0A2C' }}
@@ -155,7 +227,7 @@ export default class ProductCard extends Component {
 								alt={this.props.title}
 								layout='fill'
 								placeholder="blur"
-								/>
+							/>
 								{/* <picture>
 									<source
 										srcSet={require('https://kiero.co/_next/static/images/kieroweb-db5d710263ceb06f6eb6c4ed06b64782.png?webp')}
@@ -182,7 +254,7 @@ export default class ProductCard extends Component {
 												alt={this.props.title}
 												layout='fill'
 												placeholder="blur"
-												/>		
+											/>		
 									</div>}
 						
           <button>Envío gratis</button>
