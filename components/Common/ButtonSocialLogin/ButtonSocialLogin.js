@@ -65,7 +65,7 @@ class ButtonGoogle extends Component {
     render() {
         return (
             <button className="button buttonGoogle loginBtn loginBtn--google" ref="googleLoginBtn" data-onsuccess={this.onSignIn}>
-              <img alt="Google" src={gg}/>  <p>Continua con Google</p>
+              <img loading="lazy" alt="Google" src={gg}/>  <p>Continua con Google</p>
             </button>
         )
     }
@@ -142,7 +142,7 @@ class ButtonFacebook extends Component {
                             callback={responseFacebook}
                             >
 
-               <img alt="Facebook" src={fb}/> <p>Continua con Facebook</p>
+               <img loading="lazy" alt="Facebook" src={fb}/> <p>Continua con Facebook</p>
             </FacebookLogin>
             </>
         )

@@ -17,7 +17,7 @@ import { getProductDetail } from "../../services/productsApi";
 import { withRouter } from "next/router";
 import { KlaviyoClient } from "../../lib/functions.js";
 import Cookies from "js-cookie";
-
+import {handleFormatUrl} from '../../lib/functions'
 import dynamic from "next/dynamic";
 import {signUp} from "../../lib/auth";
 import {createleadClient} from "../../lib/zoho";
@@ -195,16 +195,7 @@ class ProductDetail extends Component {
       price: this.props.data.price,
       currency: 'COP',
       url:
-      "https://kiero.co/detalle/" +
-      this.props.data.product_global_id +
-      "_" +
-      this.props.data.product_global_title
-        .replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, "")
-        .replace("//", "%2F")
-        .replace("%", "")
-        .replaceAll(/['"]+/g, "")
-        .split(" ")
-        .join("-"),
+      "https://kiero.co" + handleFormatUrl(this.props.data.product_global_id, this.props.data.product_global_title),
       image_url: this.props.data.images[0].url,
       value: this.props.data.price
     }
@@ -245,16 +236,7 @@ class ProductDetail extends Component {
       Categories: concatCategories(),
       ImageURL: this.state.mdata.images[0].url,
       URL:
-        "https://kiero.co/detalle/" +
-        this.props.data.product_global_id +
-        "_" +
-        this.props.data.product_global_title
-          .replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, "")
-          .replace("//", "%2F")
-          .replace("%", "")
-          .replaceAll(/['"]+/g, "")
-          .split(" ")
-          .join("-"),
+      "https://kiero.co" + handleFormatUrl(this.props.data.product_global_id, this.props.data.product_global_title),
       Brand: this.props.data.brand,
       Price: this.props.data.price,
     };
@@ -337,7 +319,7 @@ class ProductDetail extends Component {
     // };
     // <ReactPixelFacebook type={'ViewContent'} data={DataForPixel}/>
     const u_data = this.props.user_data;
-    let url = "//www.sic.gov.co";
+    let urlSic = "https://www.sic.gov.co";
     // console.log(this.state.mdata)
     // console.log("data")
     return (
@@ -430,15 +412,15 @@ class ProductDetail extends Component {
                 <div className="section-pay-type-items">
                   <p>Tarjetas de crédito - Hasta 36 cuotas</p>
                   <div>
-                    <img src={PayCredit} />
+                    <img loading="lazy" alt='pagos por tarjeta de crédito' src={PayCredit} />
                   </div>
                   <p>Efectivo en puntos de pago</p>
                   <div>
-                    <img src={PayOnline} />
+                    <img loading="lazy" alt='pagos por pse' src={PayOnline} />
                   </div>
                   <p>Transferencia desde tu banco</p>
                   <div>
-                    <img src={PayTransfer} />
+                    <img loading="lazy" alt='pagos por transferencia' src={PayTransfer} />
                   </div>
                 </div>
               </div>
@@ -501,16 +483,12 @@ class ProductDetail extends Component {
 
         <Footer />
         <div className="footer-social">
-          <Link href={url}>
-            <a target="_blank">
-              <img src={Logo1} />
+            <a href={urlSic} rel="noopener noreferrer" target="_blank">
+              <img loading="lazy" alt="Superintendencia de Industria y Comercio" src={Logo1} />
             </a>
-          </Link>
-          <Link href={url}>
-            <a target="_blank">
-              <img src={Logo2} />
+            <a href={urlSic} rel="noopener noreferrer" target="_blank">
+              <img loading="lazy" alt="Superintendencia de Industria y Comercio" src={Logo2} />
             </a>
-          </Link>
         </div>
       </div>
     );

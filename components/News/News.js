@@ -15,7 +15,7 @@ import logo from "../../assets/img/redes/logo.png";
 class News extends Component {
   render() {
     const fb = "//www.facebook.com/KieroGroup/";
-    const ig = "//www.instagram.com/kierogroup";
+    const ig = "//www.instagram.com/kiero.co";
     const tw = "//twitter.com/KIEROGROUP1";
     const lk = "//www.linkedin.com/in/kiero-group-15a6a7190/";
     const pt = "//co.pinterest.com/novedadeskiero/pins";
@@ -28,48 +28,32 @@ class News extends Component {
       <div className="News">
         <section className="content">
           <section className="title">
-            <Link href={news}>
-              <a target="_blank">
-                <img alt="Kiero.co" src={logo} className="logo" />
+              <a href={news} target="_blank" rel="noopener noreferrer">
+                <img loading="lazy" alt="Kiero.co" src={logo} className="logo" />
               </a>
-            </Link>
           </section>
           <section className="icons">
-            <Link href={fb}>
-              <a target="_blank">
-                <img alt={fb} src={src} />
+              <a href={fb} target="_blank" rel="noopener noreferrer">
+                <img loading="lazy" alt={fb} src={src} />
               </a>
-            </Link>
-            <Link href={ig}>
-              <a target="_blank">
-                <img alt={ig} src={src1} />
+              <a href={ig} target="_blank" rel="noopener noreferrer">
+                <img loading="lazy" alt={ig} src={src1} />
               </a>
-            </Link>
-            <Link href={lk}>
-              <a target="_blank">
-                <img alt={lk} src={src3} />
+              <a href={lk} target="_blank" rel="noopener noreferrer">
+                <img loading="lazy" alt={lk} src={src3} />
               </a>
-            </Link>
-            <Link href={ws}>
-              <a target="_blank">
-                <img alt={ws} src={src7} />
+              <a href={ws} target="_blank" rel="noopener noreferrer">
+                <img loading="lazy" alt={ws} src={src7} />
               </a>
-            </Link>
-            <Link href={tw}>
-              <a target="_blank">
-                <img alt={tw} src={src2} />
+              <a href={tw} target="_blank" rel="noopener noreferrer">
+                <img loading="lazy" alt={tw} src={src2} />
               </a>
-            </Link>
-            <Link href={yt}>
-              <a target="_blank">
-                <img alt={yt} src={src5} />
+              <a href={yt} target="_blank" rel="noopener noreferrer">
+                <img loading="lazy" alt={yt} src={src5} />
               </a>
-            </Link>
-            <Link href={pt}>
-              <a target="_blank">
-                <img alt={pt} src={src4} />
+              <a href={pt} target="_blank" rel="noopener noreferrer">
+                <img loading="lazy" alt={pt} src={src4} />
               </a>
-            </Link>
           </section>
         </section>
       </div>

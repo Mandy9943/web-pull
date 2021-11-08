@@ -189,7 +189,7 @@
 	font-size: 20px;
 	font-weight: 600;
 	color: #111111;
-	line-break: anywhere;
+	word-break: break-word;
 }
 
 .price-pay-product-detail {

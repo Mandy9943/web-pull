@@ -9,8 +9,8 @@ export default function Logo() {
         <div className="logo">
             <Link href="/">
                 <a>
-                    <img alt="Kiero.co" className="logo-img logo-movil" src={LogoMovil} />
-                    <img alt="Kiero.co" className="logo-img logo-web" src={LogoWeb} />
+                    <img alt="Kiero en Colombia | Compra en linea y envío gratis" className="logo-img logo-movil" src={LogoMovil} />
+                    <img alt="Kiero en Colombia | Compra en linea y envío gratis" className="logo-img logo-web" src={LogoWeb} />
                 </a>
             </Link>
         </div>

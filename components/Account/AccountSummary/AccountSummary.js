@@ -5,6 +5,7 @@ import { faComment, faBell } from "@fortawesome/free-solid-svg-icons";
 import { getData } from "../../../services/userApi"
 import Link from "next/link";
 import { getImgUrl } from "../../../lib/config";
+import {handleFormatUrl} from '../../../lib/functions'
 
 
 class AccountSummary extends Component {
@@ -42,12 +43,12 @@ class AccountSummary extends Component {
                       <div key={i} className="question">
                           <h5>{answer.user.name + " " + answer.user.last_name} Te hizo una pregunta en:</h5>
                           <div className='item-question'>
-                          <img alt={answer.product.title} src={answer.product.images.length > 0 && getImgUrl(answer.product.images[0].url)}/>
+                          <img loading="lazy" alt={answer.product.title} src={answer.product.images.length > 0 && getImgUrl(answer.product.images[0].url)}/>
                               <section className="text">
                                   <p className="title">{answer.product.title}</p>
-                                  <Link
-                                      href={"/detalle/" + answer.product.product_id + "_" + answer.product.title.replace(/[^\w\s]/gi, '').split(" ").join("-")}><a
-                                      className="responses">Ver respuesta</a></Link>
+                                  <a
+                                      href={handleFormatUrl(answer.product.product_id, answer.product.title)}
+                                      className="responses">Ver respuesta</a>
                               </section>
                           </div>
                       </div>
@@ -71,7 +72,7 @@ class AccountSummary extends Component {
                   <img alt={question.product.title} src={question.product.images.length>0 && getImgUrl(question.product.images[0].url)}/>
                 <section className="text">
                 <p className="title">{question.product.title}</p>
-                <Link href={"/detalle/"+question.product.product_id+"_"+question.product.title.replace(/[^\w\s]/gi, '').split(" ").join("-")}><a className="responses">Ver respuesta</a></Link>
+                <a href={handleFormatUrl(question.product.product_id, question.product.title)} className="responses">Ver respuesta</a>
                 </section>
               </div>
             </div>

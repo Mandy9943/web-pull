@@ -8,7 +8,7 @@ class AccountDetailPurchase extends Component {
     return (
       <div>
         <div className="account-detail-purchase-header">
-          <p>ruta > ruta</p>
+          <p>ruta</p>
           <h3>Compra #47328636</h3>
           <h4>Entregado</h4>
         </div>

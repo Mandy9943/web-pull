@@ -9,7 +9,7 @@ import KieroSocketChat from '../components/Services/kierochat-socket';
 import Cookies from 'js-cookie';
 
 export default function MyApp({ Component, pageProps}) {
-	const site = "https://kiero.co/";
+	const site = "https://kiero.co";
 	const canonicalURL = site + useRouter().asPath;
 	useEffect(() => {
 		function getGLCID() {

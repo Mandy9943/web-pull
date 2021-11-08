@@ -17,8 +17,8 @@ class loginMovil extends Component {
       {!authenticated &&
         <section className="login-home-movil no-web">
           <h5>Crea tu cuenta y descrubre los mejores productos</h5>
-          <Link href="/registro"><a className="main-button"><p>Registrarse</p></a></Link>
-          <Link href="/login"><a>Ya tienes cuenta? <span>Iniciar sesión</span></a></Link>
+            <Link href="/registro"><a className="main-button"><p>Registrarse</p></a></Link>
+            <Link href="/login"><a>Ya tienes cuenta? <span>Iniciar sesión</span></a></Link>
         </section>
       }
         </>
