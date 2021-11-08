@@ -87,7 +87,7 @@ export default class ProductItem extends Component {
 									</h3>
 									<h3 className="product-stock">
 										{product.stock
-											? 'Disponibles ' + product.stock
+											? 'Disponibles ' + product.stock3
 											: 'No hay disponibles'}
 									</h3>
 								</section>

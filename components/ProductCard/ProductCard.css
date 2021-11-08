@@ -67,7 +67,12 @@
 	display: flex;
 	align-items: center;
 	align-content: center;
+	justify-content: center;
 }
+
+.product-no-stock {
+	text-decoration: line-through;
+	}
 
 .producto-card .product-card-img img {
 	width: auto !important;
@@ -84,10 +89,42 @@
     min-height: auto !important;
 }
 
+.product-spent-home {
+	z-index: 1;
+	color: #cf0a2c;
+	    font-size: 100%;
+	position: absolute;
+}
 
+@media (max-width: 380px) {
+	.product-spent-home {
+		    font-size: 100%;
+	}
+}
 
-@media (min-width: 700px){
-	.producto-card .product-card-img{
+.product-spent-detail{
+	z-index: 1;
+	color: #cf0a2c;
+	    font-size: 100%;
+	position: absolute;
+}
+
+.producto-card .product-card-img img {
+	width: auto;
+	max-width: 100%;
+	height: auto !important;
+	max-height: 100% !important;
+	position: absolute;
+	margin: auto;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	min-height: auto !important;
+}
+
+@media (min-width: 700px) {
+	.producto-card .product-card-img {
 		height: 110px;
 	}
 	.CardInPerfil .product-card-img {
@@ -95,8 +132,8 @@
 	}
 }
 
-@media (min-width: 801px){
-	.producto-card .product-card-img{
+@media (min-width: 801px) {
+	.producto-card .product-card-img {
 		height: 150px;
 	}
 }
@@ -107,19 +144,19 @@
 	}
 }
 @media (min-width: 926px) {
-	.producto-card .product-card-img  {
+	.producto-card .product-card-img {
 		height: 100px;
 	}
 }
 
 @media (min-width: 1150px) {
-	.producto-card .product-card-img  {
+	.producto-card .product-card-img {
 		height: 150px;
 	}
 }
 
 @media (min-width: 1360px) {
-	.producto-card .product-card-img  {
+	.producto-card .product-card-img {
 		height: 190px;
 	}
 }
@@ -131,7 +168,7 @@
 	.producto-card .product-card-img img {
 		min-height: 10vw;
 	}
-	.producto-card .product-card-img  {
+	.producto-card .product-card-img {
 		height: 260px;
 	}
 }
@@ -142,14 +179,14 @@
 	}
 }
 
-@media (max-width: 699px){
-	.producto-card .product-card-img{
+@media (max-width: 699px) {
+	.producto-card .product-card-img {
 		height: 170px;
 	}
 }
 
-@media( max-width:489px){
-	.producto-card .product-card-img{
+@media (max-width: 489px) {
+	.producto-card .product-card-img {
 		height: 120px;
 	}
 }
@@ -160,8 +197,8 @@
 	}
 }
 
-@media (max-width:380px){
-	.producto-card .product-card-img{
+@media (max-width: 380px) {
+	.producto-card .product-card-img {
 		height: 80px;
 	}
 }

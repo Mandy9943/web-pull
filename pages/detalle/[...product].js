@@ -7,7 +7,9 @@ import favicon from '../../assets/img/favicon.svg';
 import dynamic from 'next/dynamic';
 import {handleFormatUrl} from '../../lib/functions'
 
-const Detail = dynamic(() => import('../../components/ProductDetail'),{loading: ()=> <p>loading...</p> });
+const Detail = dynamic(() => import('../../components/ProductDetail'), {
+	loading: () => <p>loading...</p>,
+});
 
 function Product({ data, u_data }) {
 	//console.log(handleFormatUrl(14234, "muñeca,hóla,///@?___ññññ///béébé---hola si cmo estás?"))
@@ -15,9 +17,13 @@ function Product({ data, u_data }) {
 		<div>
 			<Head>
 				{/*<script type="text/javascript" src="https://checkout.wompi.co/widget.js"></script>*/}
-				<title>Kiero.co | {data.title.substring(0,60)}</title>
-				<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-				<meta name="MobileOptimized" content="360"/> 
+				<title>Kiero.co | {data.title.substring(0, 60)}</title>
+
+				<meta
+					name="viewport"
+					content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+				/>
+				<meta name="MobileOptimized" content="360" />
 				<meta
 					name="Description"
 					content={`Kiero.co | Compralo en Kiero ${data.title.substring(0,160)} a ${
@@ -26,7 +32,10 @@ function Product({ data, u_data }) {
       gratis - Encuentra más productos de ${data.category ? data.category.name : ''}`}
 				/>
 				<meta name="Keywords" content={`${data.title}`} />
-				<meta name="Title" content={`Kiero.co -${data.title.substring(0,60)} a ${data.price}`} />
+				<meta
+					name="Title"
+					content={`Kiero.co -${data.title.substring(0, 60)} a ${data.price}`}
+				/>
 				<meta name="apple-mobile-web-app-capable" content="yes" />
 				<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 				<meta name="google" content="notranslate" />
@@ -69,7 +78,7 @@ function Product({ data, u_data }) {
 				<meta property="og:site_name" content="Kiero.co" />
 				<meta property="og:image" content={`${data.images[0].url}`} />
 				<meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
-				<meta name="robots" content="index,follow" />
+
 				<link rel="icon" href={favicon} type="image/png" />
 				
 				<script
@@ -105,10 +114,8 @@ function Product({ data, u_data }) {
 				{/*	async type="text/javascript"*/}
 				{/*	src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=Sr8j85"*/}
 				{/*></script>*/}
-
 			</Head>
 			<Detail user_data={u_data} data={data} />
-
 		</div>
 	);
 }

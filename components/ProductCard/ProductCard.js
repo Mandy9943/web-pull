@@ -10,8 +10,7 @@ import Image from 'next/image';
 import Spinner from "./../Common/Spinner";
 
 export default class ProductCard extends Component {
-	handleDataInfo(data){
-		
+	handleDataInfo(data) {
 		// gtag('event', 'select_content', {
 		// 	"content_type": "product",
 		// 	"items": [
@@ -37,7 +36,7 @@ export default class ProductCard extends Component {
 		// dataLayer.push({
 		// 	'event': 'select_item',
 		// 	'ecommerce': {
-		// 	'items': 
+		// 	'items':
 		// 		{
 		// 			'item_name':data.title,
 		// 			'item_id':data.product_id,
@@ -81,7 +80,7 @@ export default class ProductCard extends Component {
 		// 			"actionField": {
 		// 							"list": "Search Results"
 		// 							},
-		// 			'products': 
+		// 			'products':
 		// 					[{
 		// 						'name':data.title,
 		// 						'id':data.product_id,
@@ -96,7 +95,7 @@ export default class ProductCard extends Component {
 		// 																						.replace('%', '')
 		// 																						.split(' ')
 		// 																						.join('-'),
-								
+
 		// 				}]
 		// 		}
 		// 	},
@@ -107,7 +106,7 @@ export default class ProductCard extends Component {
 		// 	// 	.replace('%', '')
 		// 	// 	.split(' ')
 		// 	// 	.join('-')
-		// 	// } 
+		// 	// }
 		// })
 
 		// window.location.href = '/detalle/' +
@@ -119,11 +118,13 @@ export default class ProductCard extends Component {
 		// 	.replace('%', '')
 		// 	.split(' ')
 		// 	.join('-')
-		
 	}
 	render() {
 		return (
-			<div className={this.props.className} onClick={() => this.handleDataInfo(this.props)}>
+			<div
+				className={this.props.className}
+				onClick={() => this.handleDataInfo(this.props)}
+			>
 				{/* <div className="productFavIcon3">
 					<Checkbox
 						style={{ color: '#CF0A2C' }}
@@ -147,6 +148,7 @@ export default class ProductCard extends Component {
 				>  */}
 				<a  href={handleFormatUrl(this.props.product_id, this.props.title)}>
 						<div className="product-card-img">
+						<div className={this.props.productSpent}>Agotado</div>
 							<Spinner/>
 							<Image
 								src={this.props.url}

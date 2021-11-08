@@ -151,12 +151,12 @@ export default class Summary extends Component {
 				<Footer />
 				<div className="footer-social">
 					<Link href={url}>
-						<a target="_blank">
+						<a rel="noopener noreferrer">
 							<img src={Logo1} />
 						</a>
 					</Link>
 					<Link href={url}>
-						<a target="_blank">
+						<a rel="noopener noreferrer">
 							<img src={Logo2} />
 						</a>
 					</Link>

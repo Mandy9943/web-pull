@@ -332,28 +332,27 @@ function Results({ data, session }) {
 }
 
 export async function getServerSideProps(context) {
-    const data = {
-        "type": "category",
-        // "search": String(context.params.category),
-        "search": String(context.params.category).replace(/-/g, ' '),
-        "params": {
-            "items_per_page": searchItemsPerPage,
-            "price_range": "",
-            "order": "desc"
-        }
-    }
+	const data = {
+		type: 'category',
+		// "search": String(context.params.category),
+		search: String(context.params.category).replace(/-/g, ' '),
+		params: {
+			items_per_page: searchItemsPerPage,
+			price_range: '',
+			order: 'desc',
+		},
+	};
 
-    let usr = getUser(context);
-    let jwt = getJwt(context);
+	let usr = getUser(context);
+	let jwt = getJwt(context);
 
-    const session = {
-        user: (usr !== undefined ? usr : null),
-        authenticated: isAuthenticated(context),
-        jwt: (jwt !== undefined ? jwt : null),
-    }
+	const session = {
+		user: usr !== undefined ? usr : null,
+		authenticated: isAuthenticated(context),
+		jwt: jwt !== undefined ? jwt : null,
+	};
 
-    return { props: { data, session } }
+	return { props: { data, session } };
 }
 
-
-export default Results
+export default Results;

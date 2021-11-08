@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Link from "next/link";
-import Phone from "../../../assets/img/phone.png";
-import "./Footer.css";
+import Link from 'next/link';
+import Phone from '../../../assets/img/phone.png';
+import './Footer.css';
 
 export default class Footer extends Component {
     getYear() {
@@ -31,10 +31,10 @@ export default class Footer extends Component {
                             </a>
                         </Link>
                     </div>*/}
-                </div>
-                
-                <div className="footer-content footer-movil">
-                    {/*
+				</div>
+
+				<div className="footer-content footer-movil">
+					{/*
                     <div className="footer-download">
                         <Link href="#">
                             <a className="download-app">
