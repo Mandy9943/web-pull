@@ -73,6 +73,7 @@
 
 .category-list .content .tickets img {
   width: 100% !important;
+  max-height: 300px !important;
 }
 
 .category-list .footer {
