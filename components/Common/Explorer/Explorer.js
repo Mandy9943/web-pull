@@ -107,7 +107,7 @@ class Explorer extends Component {
                 this.state.categoryName.replace(/ /g, "-").toLowerCase()
               }
             >
-              {this.state.exploreImage ? (
+              {!this.state.exploreImage ? (
                 <div className="anullProperties">
                   <Image
                     layout="fill"

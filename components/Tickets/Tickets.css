@@ -29,6 +29,7 @@
 .tickets div {
   width: 100%;
   display: contents;
+  display: flex !important;
 }
 
 .tickets div img {
