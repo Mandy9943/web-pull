@@ -1,5 +1,6 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import "./Imagen.css"
+import Spinner from "../Spinner";
 
 /**
  * Componente encargado para el trabajo con las imágenes
@@ -8,11 +9,22 @@ import "./Imagen.css"
  *
  */
 const Imagen = ({...props}) => {
-    const [loading, SetLoading] = useState(false)
+    const [loading, setLoading] = useState(false)
+
+    const handleLoad = (e) => {
+        setLoading(true)
+    }
 
     return (
         <React.Fragment>
-            <img loading="lazy" decoding="async" alt={props.alt} {...props}/>
+            <img
+                loading="lazy"
+                decoding="async"
+                alt={props.alt}
+                data-src={props.src}
+                onLoad={handleLoad}
+                {...props}/>
+            {!loading ? <Spinner/> : null}
         </React.Fragment>
     )
 }
