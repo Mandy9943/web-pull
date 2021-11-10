@@ -35,17 +35,17 @@ class PaymentBar extends Component {
         const content1 = (
             <>
                 <div className="header-modal">
-                    <h3 className="texto-metodo"><b>Más metodos de pago</b></h3>
+                    <h3 className="texto-metodo"><b>Más métodos de pago</b></h3>
                 </div>
                 <div className="payment-way-content">
                     <h4><b>Tarjetas de crédito</b></h4>
-                    <img loading="lazy" className="payment-way-img" src={CreditCard} alt="Tarjetas de credito"/>
+                    <img loading="lazy" className="payment-way-img" src={CreditCard} alt="Tarjetas de crédito"/>
                     <p className="sub-title">
                         El banco incluirá los intereses de las cuotas en el resumen de tu
                         tarjeta
                     </p>
                     <h4><b>Transferencia desde tu banco</b></h4>
-                    <img loading="lazy" className="payment-way-img2" src={BankTransfer} alt="TRansferencia bancaria"/>
+                    <img loading="lazy" className="payment-way-img2" src={BankTransfer} alt="Transferencia bancaria"/>
                     <h4><b>Pago con efectivo</b></h4>
                     <img loading="lazy" className="payment-way-img-cash" src={PayEfecty} alt="Pago online con EFECTY"/>
                     <img loading="lazy" className="payment-way-img-cash" src={PayBaloto} alt="Pago online con BALOTO"/>
@@ -60,7 +60,7 @@ class PaymentBar extends Component {
         const content2 = (
             <>
                 <div className="header-modal">
-                    <h3 className="texto-metodo">Consignacion desde tu banco</h3>
+                    <h3 className="texto-metodo">Consignación desde tu banco</h3>
                 </div>
                 <div className="bank-transfer-content">
                     <h4>Consignación Bancaria</h4>
