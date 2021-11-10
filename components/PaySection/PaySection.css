@@ -1,37 +1,37 @@
-.containerBackDropLoader{
+.containerBackDropLoader {
 	position: fixed;
-    width: 100%;
-    min-height: 100vh;
-    z-index: 50;
-    background: rgba(0 , 0, 0, 0.8);
-    left: 0;
-    top: 0;
-    display: flex;
-}
-.containerBackDropLoader .containerLoader{
+	width: 100%;
+	min-height: 100vh;
+	z-index: 50;
+	background: rgba(0, 0, 0, 0.8);
+	left: 0;
+	top: 0;
 	display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin: auto;
 }
-.containerBackDropLoader .containerLoader p{
+.containerBackDropLoader .containerLoader {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	margin: auto;
+}
+.containerBackDropLoader .containerLoader p {
 	font-weight: bold;
-    color: white;
-    font-size: 3vh;
+	color: white;
+	font-size: 3vh;
 }
-.containerUserName{
-	display:flex;
+.containerUserName {
+	display: flex;
 }
-.containerUserName input{
+.containerUserName input {
 	margin-right: 3px !important;
 }
-.typeIdentification{
+.typeIdentification {
 	appearance: auto !important;
 	margin: 5px 0px;
 	outline: none;
 	width: calc(100% - 2px);
 	padding: 8px;
-	border:0.5px solid #b8b8b8;
+	border: 0.5px solid #b8b8b8;
 	border-radius: 5px;
 }
 /* .containerBackDropLoader .containerLoader .element-spinner{
@@ -198,6 +198,15 @@
 	font-weight: 600;
 	font-family: 'Roboto', sans-serif;
 }
+
+.price-pay-product-detai-nostock {
+	color: #111111;
+	font-size: 36px;
+	font-weight: 600;
+	font-family: 'Roboto', sans-serif;
+	text-decoration: line-through;
+}
+
 .price-pay-product-detail-oldprice {
 	color: #646464;
 	font-size: 15px;
@@ -301,20 +310,20 @@
 	padding: 20px 10px;
 }
 
-.section-pay-type .section-pay-type-items div{
+.section-pay-type .section-pay-type-items div {
 	min-height: 50px;
-	height:auto;
-    position: relative;
+	height: auto;
+	position: relative;
 }
 
-.section-pay-type .section-pay-type-items div img{
+.section-pay-type .section-pay-type-items div img {
 	max-width: 100%;
-    position: absolute;
-    margin: auto;
-    inset: 0px;
-    height: auto !important;
-    max-height: 100% !important;
-    min-height: auto !important;
+	position: absolute;
+	margin: auto;
+	inset: 0px;
+	height: auto !important;
+	max-height: 100% !important;
+	min-height: auto !important;
 }
 
 .section-pay-send {
@@ -415,4 +424,4 @@
 		-webkit-text-size-adjust: none;
 	}
 }
-/*# sourceMappingURL=PaySection.css.map */
+
