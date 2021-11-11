@@ -117,10 +117,8 @@ export default class PrincipalSlider extends Component {
                                 <a href={slide.href} key={index}>
                                     <div className="anullProperties">
                                         <Imagen
-                                            layout="fill"
                                             alt={slide.url.replace(/-/g, " ")}
                                             src={slide.url}
-                                            loading="lazy"
                                         />
                                     </div>
                                 </a>
