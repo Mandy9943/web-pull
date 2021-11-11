@@ -8,6 +8,7 @@ import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import {handleFormatUrl} from "../../lib/functions";
 import Image from "next/image";
 import Spinner from "./../Common/Spinner";
+import Imagen from "../Common/Imagen/Imagen";
 
 export default class ProductCard extends Component {
 
@@ -59,15 +60,15 @@ export default class ProductCard extends Component {
 
     componentDidUpdate() {
 
-        console.log('Updated');
+        // console.log('Updated');
 
     }
 
     componentDidMount() {
 
-        console.log('Mounted')
-        console.log(this.props.className)
-        console.log(this.rootRef.current.parentElement)
+        // console.log('Mounted')
+        // console.log(this.props.className)
+        // console.log(this.rootRef.current.parentElement)
 
         let options = {
             // root: document.getElementsByClassName('slider')[0], // this.rootRef.current.parentElement,
@@ -221,12 +222,9 @@ export default class ProductCard extends Component {
                 <a href={handleFormatUrl(this.props.product_id, this.props.title)}>
                     {this.props.statusProduct === 1 ?
                         <div className="product-card-img">
-                            <Spinner/>
-                            <Image
+                            <Imagen spinner={true}
                                 src={this.props.url}
                                 alt={this.props.title}
-                                layout='fill'
-                                placeholder="blur"
                             />
                             {/* <picture>
 									<source
@@ -249,11 +247,9 @@ export default class ProductCard extends Component {
                         </div> :
                         <div className="product-card-img spentProduct">
                             <div className='product-spent-home'>Agotado</div>
-                            <Image
+                            <Imagen spinner={true}
                                 src={this.props.url}
                                 alt={this.props.title}
-                                layout='fill'
-                                placeholder="blur"
                             />
                         </div>}
 
