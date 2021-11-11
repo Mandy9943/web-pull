@@ -102,15 +102,7 @@ export default class SecundarySlider extends Component {
               </div>
             ))
           ) : (
-            <div className="secundary-spinnerWrapper"
-           /*    style={{
-                position: "absolute !important",
-                left: 0,
-                right: 0,
-                top: 0,
-                bottom: 0,
-              }} */
-            >
+            <div className="secundary-spinnerWrapper">
               <Spinner />
             </div>
           )}
