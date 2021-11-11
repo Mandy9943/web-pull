@@ -1,9 +1,13 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import "./Imagen.css"
 import Spinner from "../Spinner";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 /**
  * Componente encargado para el trabajo con las imágenes
+ *
+ * Para que salga el Spinner en el cargando la imagen defina spinner={true} sino saldra Skeleton
  *
  * @version 1.0
  *
@@ -15,6 +19,13 @@ const Imagen = ({...props}) => {
         setLoading(true)
     }
 
+    const getAnimate = () => {
+        if (props.spinner) {
+            return <Spinner/>
+        } else {
+            return <Skeleton/>
+        }
+    }
     return (
         <React.Fragment>
             <img
@@ -24,7 +35,7 @@ const Imagen = ({...props}) => {
                 data-src={props.src}
                 onLoad={handleLoad}
                 {...props}/>
-            {!loading ? <Spinner/> : null}
+            {!loading ? getAnimate() : null}
         </React.Fragment>
     )
 }
