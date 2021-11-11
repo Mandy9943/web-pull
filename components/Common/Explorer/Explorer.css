@@ -100,6 +100,10 @@
     max-height: 150px;
   }
 
+  .explorer .content-explorer .main-img a .skeleton {
+    height: 100%;
+  }
+
   .explorer .content-explorer .group-img .wrapImgExplorer img {
     width: 100% !important;
     height: 100% !important;

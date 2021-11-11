@@ -116,7 +116,7 @@ class Explorer extends Component {
                   />
                 </div>
               ) : (
-                <Skeleton style={{ height: "100%" }} />
+                <Skeleton className="skeleton" />
               )}
             </a>
           </div>
