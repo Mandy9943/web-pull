@@ -76,6 +76,10 @@
   margin: 0 auto !important;
 }
 
+.Skeleton{
+  
+}
+
 @media (max-width: 1025px) {
   .explorer .home-section-title {
     font-size: 16px !important;
@@ -98,6 +102,10 @@
     width: 100%;
     height: 100%;
     max-height: 150px;
+  }
+
+  .explorer .content-explorer .main-img a .skeleton{
+    height: 100%;
   }
 
   .explorer .content-explorer .group-img .wrapImgExplorer img {

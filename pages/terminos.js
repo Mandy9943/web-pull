@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Terms from './../components/Terms';
 import favicon from '../assets/img/favicon.svg';
 
+
 export default function terminos() {
 	return (
 		<div>
