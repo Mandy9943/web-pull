@@ -16,11 +16,6 @@ import Spinner from "../Common/Spinner";
 import Checkbox from "@material-ui/core/Checkbox";
 import Modal from "../Common/Modal/Modal";
 import {handleFormatName, handleFormatUrl, KlaviyoClient} from "../../lib/functions";
-import Cookies from "js-cookie";
-import {handleFormatName} from '../../lib/functions'
-import {handleFormatUrl} from '../../lib/functions'
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import { Button, Modal } from 'react-bootstrap';
 import CryptoJS from 'crypto-js';
 import {createleadClient} from "../../lib/zoho";
 
