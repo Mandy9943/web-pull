@@ -1,91 +1,155 @@
 .explorer
-    margin-bottom: 50px
-    .home-section-title
-        color: #111111
-        .accent
-            margin-left: 5px;
-            white-space: nowrap;
-    .content-explorer
-        display: grid
-        grid-template-columns: 1fr 2fr
-        grid-gap: 20px
-        .main-img
-            //flex: 1
-            img
-                width: 100%
-                height: 100%
-                max-height: 400px
-                min-height: 250px
-        .group-img
-            //flex: 2
-            display: grid
-            grid-template-columns: repeat(4,1fr)
-            grid-template-rows: repeat(2,1fr)
-            grid-gap: 20px
-            .wrapImgExplorer
-                img
-                    width: 100%
-                    height: 100%
-                    max-height: 187px
+  margin-bottom: 50px
 
+.wrapImgExplorer
+  display: contents
+
+.explorer
+  .home-section-title
+    color: #111111
+    margin-bottom: 10px
+
+    .accent
+      margin-left: 5px
+      white-space: nowrap
+      font-size: 14px
+      font-weight: 500
+
+  .content-explorer
+    display: -ms-grid
+    display: grid
+    -ms-grid-columns: 1fr 2fr
+    grid-template-columns: 1fr 2fr
+    grid-gap: 10px
+
+    .main-img
+      width: 100%
+      background: #ffffff
+      height: 100%
+      max-height: 400px
+      min-height: 250px
+
+      .skeleton
+        height: 100%
+
+      div
+        height: 100%
+        display: flex
+
+        img
+          width: 100% !important
+          max-height: 400px !important
+
+    .group-img
+      display: -ms-grid
+      display: grid
+      -ms-grid-columns: repeat(4, 1fr)
+      grid-template-columns: repeat(4, 1fr)
+      -ms-grid-rows: repeat(2, 1fr)
+      grid-template-rows: repeat(2, 1fr)
+      grid-gap: 10px
+
+      .wrapImgExplorer
+        .loaderSkeleton
+          width: 100%
+          height: 100%
+          max-height: 187px
+
+        a
+          display: flex
+          background: white
+
+        div
+          display: contents
+
+        img
+          width: auto !important
+          min-width: 50px !important
+          height: 100% !important
+          max-height: 187px !important
+          max-width: 100% !important
+          margin: 0 auto !important
 
 @media (max-width: 1025px)
-    .explorer
-        .home-section-title
-            font-size: 16px !important
-            color: #111111
-            margin-bottom: 15px
-            font-weight: 400
-            .accent
-                margin-left: 10px;
-                white-space: nowrap;
-                font-size: 13px !important
-        .content-explorer
-            .main-img
-                img
-                    width: 100%
-                    height: 100%
-                    max-height: 340px
-            .group-img
-                .wrapImgExplorer
-                    img
-                        width: 100%
-                        height: 100%
-                        max-height: 150px
+  .explorer
+    .home-section-title
+      font-size: 16px !important
+      color: #111111
+      margin-bottom: 15px
+      font-weight: 400
+
+      .accent
+        margin-left: 10px
+        white-space: nowrap
+        font-size: 13px !important
+
+    .content-explorer
+      .main-img img
+        width: 100% !important
+        height: 100% !important
+        max-height: 340px !important
+
+      .group-img .wrapImgExplorer
+        .loaderSkeleton
+          width: 100%
+          height: 100%
+          max-height: 150px
+
+        img
+          width: 100% !important
+          height: 100% !important
+          max-height: 150px !important
 
 @media (max-width: 800px)
-    .explorer
-        .content-explorer
-            display: grid
-            grid-template-columns: 1fr
-            grid-template-rows: 0fr 1fr
-            grid-gap: 15px
-            .main-img
-                flex: 1
-                margin: 0px
-                img
-                    max-height: inherit;
-            .group-img
-                display: grid
-                grid-template-columns: repeat(2,1fr)
-                grid-template-rows: repeat(2,1fr)
-                .wrapImgExplorer
-                    img
-                        max-height: inherit;
-    .wrapImgExplorer:nth-child(n+5)
-        display: none
+  .explorer .content-explorer
+    display: -ms-grid
+    display: grid
+    -ms-grid-columns: 1fr
+    grid-template-columns: 1fr
+    -ms-grid-rows: 0fr 1fr
+    grid-template-rows: 0fr 1fr
+    grid-gap: 10px
 
+    .main-img
+      -webkit-box-flex: 1
+      -ms-flex: 1
+      flex: 1
+      margin: 0px
 
+      img
+        max-height: inherit !important
 
-@media(max-width:700px)
-    .explorer
-        margin: 15px 15px 50px 15px
-        .home-section-title
-            display: none
-            color: #111111
-            margin-bottom: 15px
-            font-weight: 400
-            .accent
-                margin-left: 10px;
-                white-space: nowrap;
-                font-size: 13px !important
+    .group-img
+      display: -ms-grid
+      display: grid
+      -ms-grid-columns: repeat(2, 1fr)
+      grid-template-columns: repeat(2, 1fr)
+      -ms-grid-rows: repeat(2, 1fr)
+      grid-template-rows: repeat(2, 1fr)
+
+      .wrapImgExplorer
+        .loaderSkeleton
+          max-height: inherit
+
+        img
+          max-height: inherit !important
+
+  .wrapImgExplorer:nth-child(n + 5)
+    display: none
+
+@media (max-width: 700px)
+  .explorer
+    margin: 15px 15px 50px 15px
+
+    .home-section-title
+      display: none
+      color: #111111
+      margin-bottom: 15px
+      font-weight: 400
+
+      .accent
+        margin-left: 10px
+        white-space: nowrap
+        font-size: 13px !important
+
+/*# sourceMappingURL=Explorer.css.map

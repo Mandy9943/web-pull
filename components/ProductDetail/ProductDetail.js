@@ -33,159 +33,156 @@ import {createleadClient} from "../../lib/zoho";
 // import ProductCardFinding from './../Common/ProductCardFinding';
 // import Footer from '../Common/Footer';
 
-const Nav = dynamic(() => import("../Common/Nav/Nav"));
-const DetailImg = dynamic(() => import("../DetailImg"));
-const Pay = dynamic(() => import("./../PaySection"));
-const ProductsSlider = dynamic(() => import("./../ProductsSlider"));
-const Detail = dynamic(() => import("./../DetailProductInfo"));
-const Question = dynamic(() => import("./../Question"));
-const QuestionItem = dynamic(() => import("./../QuestionItem"));
-const Seller = dynamic(() => import("./../SellerInfo"));
-const ProductCardFinding = dynamic(() =>
-  import("./../Common/ProductCardFinding")
-);
-const Footer = dynamic(() => import("../Common/Footer"));
+const Nav = dynamic(() => import('../Common/Nav/Nav'));
+const DetailImg = dynamic(() => import('../DetailImg'));
+const Pay = dynamic(() => import('./../PaySection'));
+const ProductsSlider = dynamic(() => import('./../ProductsSlider'));
+const Detail = dynamic(() => import('./../DetailProductInfo'));
+const Question = dynamic(() => import('./../Question'));
+const QuestionItem = dynamic(() => import('./../QuestionItem'));
+const Seller = dynamic(() => import('./../SellerInfo'));
+const ProductCardFinding = dynamic(() => import('./../Common/ProductCardFinding'));
+const Footer = dynamic(() => import('../Common/Footer'));
 
 class ProductDetail extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      questions: [],
-      mdata: this.props.data,
-      m_pgid:
-        props.data.variants.length == 0 || props.data.is_variant ? true : false,
-    };
-    this.reLoadData = this.reLoadData.bind(this);
-  }
-  componentDidMount() {
-    // console.log("propiedades",this.props)
-    // console.log('entro')
-    // const script = document.createElement("script");
-    //
-    // script.src = "//static.klaviyo.com/onsite/js/klaviyo.js?company_id=Sr8j85";
-    // script.async = true;
-    //
-    // document.body.appendChild(script);
+	constructor(props) {
+		super(props);
+		this.state = {
+			questions: [],
+			mdata: this.props.data,
+			m_pgid: props.data.variants.length == 0 || props.data.is_variant ? true : false,
+		};
+		this.reLoadData = this.reLoadData.bind(this);
+	}
+	componentDidMount() {
+		// console.log("propiedades",this.props)
+		// console.log('entro')
+		// const script = document.createElement("script");
+		//
+		// script.src = "//static.klaviyo.com/onsite/js/klaviyo.js?company_id=Sr8j85";
+		// script.async = true;
+		//
+		// document.body.appendChild(script);
 
-    // function whenWindowFbq() {
-    // 	return new Promise(function (resolve, reject) {
-    // 				(function waitForFbq(){
-    // 						if (typeof(window.fbq) == "function" ) return resolve();
-    // 						setTimeout(waitForFbq, 300);
-    // 				})();
-    // 		});
-    // };
+		// function whenWindowFbq() {
+		// 	return new Promise(function (resolve, reject) {
+		// 				(function waitForFbq(){
+		// 						if (typeof(window.fbq) == "function" ) return resolve();
+		// 						setTimeout(waitForFbq, 300);
+		// 				})();
+		// 		});
+		// };
 
-    // whenWindowFbq().then(() => {
-    // 	window.fbq('track', 'ViewContent', {
-    // 		content_ids: this.props.data.product_global_id,
-    // 		content_name: this.props.data.product_global_title,
-    // 		product_group: this.props.data.type,
-    // 		content_type: 'product',
-    // 		contents: [
-    // 			{
-    // 				id: this.props.data.product_global_id,
-    // 				quantity: 1,
-    // 			},
-    // 		],
-    // 		currency: 'COP',
-    // 		value: this.props.data.price,
-    // 	})
-    // });
+		// whenWindowFbq().then(() => {
+		// 	window.fbq('track', 'ViewContent', {
+		// 		content_ids: this.props.data.product_global_id,
+		// 		content_name: this.props.data.product_global_title,
+		// 		product_group: this.props.data.type,
+		// 		content_type: 'product',
+		// 		contents: [
+		// 			{
+		// 				id: this.props.data.product_global_id,
+		// 				quantity: 1,
+		// 			},
+		// 		],
+		// 		currency: 'COP',
+		// 		value: this.props.data.price,
+		// 	})
+		// });
 
-    fbq("track", "ViewContent", {
-      content_ids: this.props.data.product_global_id,
-      content_name: this.props.data.product_global_title,
-      product_group: this.props.data.type,
-      content_type: "product",
-      contents: [
-        {
-          id: this.props.data.product_global_id,
-          quantity: 1,
-        },
-      ],
-      currency: "COP",
-      value: this.props.data.price,
-    });
+		fbq('track', 'ViewContent', {
+			content_ids: this.props.data.product_global_id,
+			content_name: this.props.data.product_global_title,
+			product_group: this.props.data.type,
+			content_type: 'product',
+			contents: [
+				{
+					id: this.props.data.product_global_id,
+					quantity: 1,
+				},
+			],
+			currency: 'COP',
+			value: this.props.data.price,
+		});
 
-    this.loadQuestions();
-    // dataLayer.push({ ecommerce: null });
-    // console.log('propiedades', this.props);
-    // let dataLayerProductDetailG4 = {
-    // 	'event': 'view_item',
-    // 	'ecommerce': {
-    // 	'items':
-    // 				[{
-    // 					'item_name': this.props.data.product_global_title, // Name or ID is required.
-    // 					'item_id': this.props.data.product_global_id,
-    // 					'price': this.props.data.price,
-    // 					'item_brand': this.props.data.brand,
-    // 					'url':'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
-    // 																					.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-    // 																					.replace('//', '%2F')
-    // 																					.replace('%', '')
-    // 																					.split(' ')
-    // 																					.join('-'),
-    // 			}],
+		this.loadQuestions();
+		// dataLayer.push({ ecommerce: null });
+		// console.log('propiedades', this.props);
+		// let dataLayerProductDetailG4 = {
+		// 	'event': 'view_item',
+		// 	'ecommerce': {
+		// 	'items':
+		// 				[{
+		// 					'item_name': this.props.data.product_global_title, // Name or ID is required.
+		// 					'item_id': this.props.data.product_global_id,
+		// 					'price': this.props.data.price,
+		// 					'item_brand': this.props.data.brand,
+		// 					'url':'https://kiero.co/detalle/' + this.props.data.product_global_id + '_' + this.props.data.product_global_title
+		// 																					.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+		// 																					.replace('//', '%2F')
+		// 																					.replace('%', '')
+		// 																					.split(' ')
+		// 																					.join('-'),
+		// 			}],
 
-    // 	'currency': 'COP'
-    // 	}
-    // }
+		// 	'currency': 'COP'
+		// 	}
+		// }
 
-    // const productDetailGooleDataLayerG4 = (dataLayerProductDetailG4) => {
-    // 	this.props.data.breadcum.forEach((prod, index) => {
-    // 		let keyCategory = `item_category${index + 1}`;
-    // 		let valueNameCategory = prod.name;
-    // 		dataLayerProductDetailG4['ecommerce']['items'][keyCategory] = valueNameCategory;
-    // 	});
-    // 	return dataLayerProductDetailG4;
-    // }
+		// const productDetailGooleDataLayerG4 = (dataLayerProductDetailG4) => {
+		// 	this.props.data.breadcum.forEach((prod, index) => {
+		// 		let keyCategory = `item_category${index + 1}`;
+		// 		let valueNameCategory = prod.name;
+		// 		dataLayerProductDetailG4['ecommerce']['items'][keyCategory] = valueNameCategory;
+		// 	});
+		// 	return dataLayerProductDetailG4;
+		// }
 
-    // let resultDataLayerProductDetailG4 = productDetailGooleDataLayerG4(dataLayerProductDetailG4);
+		// let resultDataLayerProductDetailG4 = productDetailGooleDataLayerG4(dataLayerProductDetailG4);
 
-    // dataLayer.push(resultDataLayerProductDetailG4);
+		// dataLayer.push(resultDataLayerProductDetailG4);
 
-    // dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
+		// dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
 
-    const concatCategories = () => {
-      var dataCategory = [];
-      this.props.data.breadcum.forEach((prod, index) => {
-        dataCategory.push(prod.name);
-      });
-      return dataCategory.join(" / ");
-    };
+		const concatCategories = () => {
+			var dataCategory = [];
+			this.props.data.breadcum.forEach((prod, index) => {
+				dataCategory.push(prod.name);
+			});
+			return dataCategory.join(' / ');
+		};
 
-    // dataLayer.push({
-    //   event: "gtm.dom",
-    //   ecommerce: {
-    //     detail: {
-    //       actionField: {
-    //         list: this.props.data.category.name,
-    //       },
-    //       products: [
-    //         {
-    //           name: this.props.data.product_global_title, // Name or ID is required.
-    //           id: this.props.data.product_global_id,
-    //           price: this.props.data.price,
-    //           brand: this.props.data.brand,
-    //           category: concatCategories(),
-    //           url:
-    //             "https://kiero.co/detalle/" +
-    //             this.props.data.product_global_id +
-    //             "_" +
-    //             this.props.data.product_global_title
-    //               .replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, "")
-    //               .replace("//", "%2F")
-    //               .replace("%", "")
-    //               .replaceAll(/['"]+/g, "")
-    //               .split(" ")
-    //               .join("-"),
-    //           position: 1,
-    //         },
-    //       ],
-    //     },
-    //   },
-    // });
+		// dataLayer.push({
+		//   event: "gtm.dom",
+		//   ecommerce: {
+		//     detail: {
+		//       actionField: {
+		//         list: this.props.data.category.name,
+		//       },
+		//       products: [
+		//         {
+		//           name: this.props.data.product_global_title, // Name or ID is required.
+		//           id: this.props.data.product_global_id,
+		//           price: this.props.data.price,
+		//           brand: this.props.data.brand,
+		//           category: concatCategories(),
+		//           url:
+		//             "https://kiero.co/detalle/" +
+		//             this.props.data.product_global_id +
+		//             "_" +
+		//             this.props.data.product_global_title
+		//               .replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, "")
+		//               .replace("//", "%2F")
+		//               .replace("%", "")
+		//               .replaceAll(/['"]+/g, "")
+		//               .split(" ")
+		//               .join("-"),
+		//           position: 1,
+		//         },
+		//       ],
+		//     },
+		//   },
+		// });
 
     var productViewedData = {
       product_id: this.props.data.product_global_id,
@@ -200,9 +197,9 @@ class ProductDetail extends Component {
       value: this.props.data.price
     }
 
-    analytics.track('Product Viewed', productViewedData);
+		analytics.track('Product Viewed', productViewedData);
 
-    // console.log(productViewedData)
+		// console.log(productViewedData)
 
     // var _learnq = _learnq || [];
     // console.log(this.props.data)
@@ -240,7 +237,7 @@ class ProductDetail extends Component {
       Brand: this.props.data.brand,
       Price: this.props.data.price,
     };
-    if (Cookies.get("email") !== undefined){
+    if (Cookies.get("email") !== undefined)
       KlaviyoClient.public.track({
         event: "Viewed Product",
         email: Cookies.get("email"),
@@ -251,10 +248,6 @@ class ProductDetail extends Component {
       this.createlead(item);
     }
 
-
-
-
-  }
   async createlead() {
     var data = {
       first_name:Cookies.get("name"),
@@ -465,21 +458,19 @@ class ProductDetail extends Component {
             </div>
             {/* <QuestionItem product_id={this.state.mdata.product_id} q questions={this.state.questions} /> */}
 
-            {/* <Explorer />
+						{/* <Explorer />
           </section>
             
           <section className='no-movil'>
             <Explorer /> */}
-          </section>
-          <section className="advertising-movil no-movil no-web">
-            <ProductCardFinding
-              notitle={"true"}
-              category={
-                this.state.mdata.category ? this.state.mdata.category.name : ""
-              }
-            />
-          </section>
-        </div>
+					</section>
+					<section className="advertising-movil no-movil no-web">
+						<ProductCardFinding
+							notitle={'true'}
+							category={this.state.mdata.category ? this.state.mdata.category.name : ''}
+						/>
+					</section>
+				</div>
 
         <Footer />
         <div className="footer-social">

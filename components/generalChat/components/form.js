@@ -66,6 +66,7 @@ function Form({ logedIn, validateRoom }) {
 			generalsocketchat.emit('open-chat', _json);
 		}
 	}
+	
 	const handleValidateFormLogin = () =>{
 		let date = new Date();
 

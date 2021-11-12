@@ -1,12 +1,9 @@
 import React from 'react';
 import Head from 'next/head';
-import CategoriesMovil from "../components/Common/CategoriesMovil/CategoriesMovil";
-import { Component } from "react";
-import { getData } from "../services/userApi";
-import favicon from "../assets/img/favicon.svg";
-
-
-
+import CategoriesMovil from '../components/Common/CategoriesMovil/CategoriesMovil';
+import { Component } from 'react';
+import { getData } from '../services/userApi';
+import favicon from '../assets/img/favicon.svg';
 
 export default class lista_categorias extends Component {
 

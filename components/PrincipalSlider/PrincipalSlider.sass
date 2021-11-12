@@ -1,79 +1,101 @@
 .principal-slider
+  .desktop
+    display: block
+
+    .slider
+      height: auto
+      padding-bottom: 20%
+      margin: auto
+
+      .previousButton
+        left: 0px
+        padding: 50px 20px
+        background: white
+        -webkit-box-shadow: 0px 3px 6px #11111129
+        box-shadow: 0px 3px 6px #11111129
+
+        svg
+          fill: #cf0a2c !important
+
+          polygon
+            fill: #cf0a2c !important
+
+      .nextButton
+        right: 0px
+        padding: 50px 20px
+        background: white
+        -webkit-box-shadow: 0px 3px 6px #11111129
+        box-shadow: 0px 3px 6px #11111129
+
+        svg
+          fill: #cf0a2c !important
+
+          polygon
+            fill: #cf0a2c !important
+
+      .slide
+        height: auto
+        overflow: hidden
+        text-align: center
+
+        img
+          width: 80% !important
+
+  .mobil
+    display: none
+
+  .pricipal-spinnerWrapper
+    position: absolute !important
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+
+@media (max-width: 500px)
+  .principal-slider
     .desktop
-        display: block
-        .slider
-            height: auto
-            padding-bottom: 23%
-            margin: auto
-            .previousButton
-                left: 0px
-                padding: 50px 20px
-                background: white
-                box-shadow: 0px 3px 6px #11111129;
-                svg
-                    fill: #CF0A2C !important
-                    polygon
-                        fill: #CF0A2C !important
-            .nextButton
-                right: 0px
-                padding: 50px 20px
-                background: white
-                box-shadow: 0px 3px 6px #11111129;
-                svg
-                    fill: #CF0A2C !important
-                    polygon
-                        fill: #CF0A2C !important
-            .slide
-                height: auto
-                overflow: hidden
-                text-align: center
-                img
-                    width: 90%
+      display: none !important
+
     .mobil
-        display: none
+      display: block !important
 
-@media(max-width:500px)
-    .principal-slider
-        .desktop
-            display: none !important
-        .mobil
-            display: block !important 
-            .slider
-                padding-bottom: 63%
-                display: block
-                height: auto
-                img
-                    width: 100% !important
-                .previousButton
-                    display: none
-                .nextButton
-                    display: none
+      .slider
+        padding-bottom: 60%
+        display: block
+        height: auto
 
-@media(max-width:400px)
-    .principal-slider
-        .desktop
-            display: none !important
-        .mobil
-            display: block !important 
-            .slider
-                padding-bottom: 63%
-                display: block !important
-                height: auto
-                img
-                    width: 100% !important
-                .previousButton
-                    display: none
-                .nextButton
-                    display: none
+        img
+          width: 100% !important
 
-@media(max-width:1100px)
-    .principal-slider
-        .desktop
-            .slider
-                padding-bottom: 23%
-                display: block !important 
-                height: auto
-                .previousButton
-                    display: none
-                .nextButton
-                    display: none
+        .previousButton, .nextButton
+          display: none
+
+@media (max-width: 400px)
+  .principal-slider
+    .desktop
+      display: none !important
+
+    .mobil
+      display: block !important
+
+      .slider
+        padding-bottom: 63%
+        display: block !important
+        height: auto
+
+        img
+          width: 100% !important
+
+        .previousButton, .nextButton
+          display: none
+
+@media (max-width: 1100px)
+  .principal-slider .desktop .slider
+    padding-bottom: 22%
+    display: block !important
+    height: auto
+
+    .previousButton, .nextButton
+      display: none
+
+/*# sourceMappingURL=PrincipalSlider.css.map
