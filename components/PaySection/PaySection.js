@@ -18,6 +18,7 @@ import Modal from "../Common/Modal/Modal";
 import {handleFormatName, handleFormatUrl, KlaviyoClient} from "../../lib/functions";
 import CryptoJS from 'crypto-js';
 import {createleadClient} from "../../lib/zoho";
+import Cookies from "js-cookie";
 
 class PaySection extends Component {
   constructor(props) {
@@ -821,7 +822,7 @@ class PaySection extends Component {
     // });
 
     var hmacID = CryptoJS.HmacSHA1(this.state.identification, 'abc').toString(CryptoJS.enc.Hex)
-
+      console.log(this.props.props.data)
     this.state.user_id = hmacID
 
         var extra3 = JSON.stringify({
@@ -833,14 +834,22 @@ class PaySection extends Component {
             url_product: "https://kiero.co/detalle/" +
                 this.props.props.data.product_global_id +
                 "_" +
-                this.props.props.data.product_global_title
-                    .replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, "")
-                    .replaceAll("//", "%2F")
-                    .replaceAll("%", "")
-                    .replaceAll(/['"]+/g, "")
+                this.props.props.data.product_global_title.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, "")
+                    .replace("//", "%2F")
+                    .replace("%", "")
+                    .replace(/['"]+/g, "")
                     .split(" ")
                     .join("-")
         });
+        console.log("https://kiero.co/detalle/" +
+            this.props.props.data.product_global_id +
+            "_" +
+            this.props.props.data.product_global_title.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, "")
+                .replace("//", "%2F")
+                .replace("%", "")
+                .replace(/['"]+/g, "")
+                .split(" ")
+                .join("-"))
 
     // console.log(hmacID)
 
