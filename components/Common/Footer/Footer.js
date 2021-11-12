@@ -7,7 +7,10 @@ import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
   faInstagram,
+  faLinkedin,
+  faPinterest,
   faTwitter,
+  faWhatsapp,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
 
@@ -15,10 +18,13 @@ import PayCredit from "../../../assets/img/pay-credit.png";
 import PayOnline from "../../../assets/img/pay-online.png";
 import PayTransfer from "../../../assets/img/pay-transfer.jpg";
 
-const fb = "//www.facebook.com/KieroGroup/";
+const fb = "https://www.facebook.com/KieroMarketplaceColombia/";
 const ig = "https://www.instagram.com/kiero.co/";
-const tw = "//twitter.com/KIEROGROUP1";
-const yt = "//www.youtube.com/user/KieroGroup";
+const tw = "https://twitter.com/kiero_co";
+const yt = "https://www.youtube.com/channel/UCckOshPpIgdMvVEdKgLUz6g";
+const pt = "https://co.pinterest.com/Kiero_Marketplace/_created/";
+const lk = "https://www.linkedin.com/company/kiero-marketplace";
+const wh = "https://wa.me/+573128246497";
 
 export default class Footer extends Component {
   getYear() {
@@ -84,30 +90,65 @@ export default class Footer extends Component {
                 <div className="footerElement">
                   <h3>Redes Sociales </h3>
                   <div className="footerLinks social">
-                    <Link href={fb}>
-                      <a className="footerLink">
-                        {" "}
-                        <FontAwesomeIcon icon={faFacebook} size="3x" />
-                      </a>
-                    </Link>
-                    <Link href={tw}>
-                      <a className="footerLink">
-                        {" "}
-                        <FontAwesomeIcon icon={faTwitter} />
-                      </a>
-                    </Link>
-                    <Link href={ig}>
-                      <a className="footerLink">
-                        {" "}
-                        <FontAwesomeIcon icon={faInstagram} />
-                      </a>
-                    </Link>
-                    <Link href={yt}>
-                      <a className="footerLink">
-                        {" "}
-                        <FontAwesomeIcon icon={faYoutube} />
-                      </a>
-                    </Link>
+                    <a
+                      className="footerLink"
+                      href={fb}
+                      rel="noopener noreferrer"
+                    >
+                      {" "}
+                      <FontAwesomeIcon icon={faFacebook} size="3x" />
+                    </a>
+
+                    <a
+                      className="footerLink"
+                      href={tw}
+                      rel="noopener noreferrer"
+                    >
+                      {" "}
+                      <FontAwesomeIcon icon={faTwitter} />
+                    </a>
+
+                    <a
+                      className="footerLink"
+                      href={ig}
+                      rel="noopener noreferrer"
+                    >
+                      {" "}
+                      <FontAwesomeIcon icon={faInstagram} />
+                    </a>
+
+                    <a
+                      className="footerLink"
+                      href={yt}
+                      rel="noopener noreferrer"
+                    >
+                      {" "}
+                      <FontAwesomeIcon icon={faYoutube} />
+                    </a>
+                    <a
+                      className="footerLink"
+                      href={lk}
+                      rel="noopener noreferrer"
+                    >
+                      {" "}
+                      <FontAwesomeIcon icon={faLinkedin} />
+                    </a>
+                    <a
+                      className="footerLink"
+                      href={wh}
+                      rel="noopener noreferrer"
+                    >
+                      {" "}
+                      <FontAwesomeIcon icon={faWhatsapp} />
+                    </a>
+                    <a
+                      className="footerLink"
+                      href={pt}
+                      rel="noopener noreferrer"
+                    >
+                      {" "}
+                      <FontAwesomeIcon icon={faPinterest} />
+                    </a>
                   </div>
                 </div>
               </div>
