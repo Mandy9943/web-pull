@@ -1,4 +1,4 @@
-import { post_test } from "../lib/request";
+import { post } from "../lib/request";
 
 export const createlead = async (
   data,
