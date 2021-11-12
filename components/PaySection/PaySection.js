@@ -15,10 +15,14 @@ import Select from "../Common/SelectDropdown/Select";
 import Spinner from "../Common/Spinner";
 import Checkbox from "@material-ui/core/Checkbox";
 import Modal from "../Common/Modal/Modal";
-import {handleFormatName, handleFormatUrl, KlaviyoClient} from "../../lib/functions";
+import { KlaviyoClient } from "../../lib/functions";
+import Cookies from "js-cookie";
+import {handleFormatName} from '../../lib/functions'
+import {handleFormatUrl} from '../../lib/functions'
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import { Button, Modal } from 'react-bootstrap';
 import CryptoJS from 'crypto-js';
 import {createleadClient} from "../../lib/zoho";
-import Cookies from "js-cookie";
 
 class PaySection extends Component {
   constructor(props) {
@@ -822,7 +826,7 @@ class PaySection extends Component {
     // });
 
     var hmacID = CryptoJS.HmacSHA1(this.state.identification, 'abc').toString(CryptoJS.enc.Hex)
-      console.log(this.props.props.data)
+
     this.state.user_id = hmacID
 
         var extra3 = JSON.stringify({
@@ -834,22 +838,14 @@ class PaySection extends Component {
             url_product: "https://kiero.co/detalle/" +
                 this.props.props.data.product_global_id +
                 "_" +
-                this.props.props.data.product_global_title.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, "")
+                this.props.props.data.product_global_title
+                    .replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, "")
                     .replace("//", "%2F")
                     .replace("%", "")
                     .replace(/['"]+/g, "")
                     .split(" ")
                     .join("-")
         });
-        console.log("https://kiero.co/detalle/" +
-            this.props.props.data.product_global_id +
-            "_" +
-            this.props.props.data.product_global_title.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, "")
-                .replace("//", "%2F")
-                .replace("%", "")
-                .replace(/['"]+/g, "")
-                .split(" ")
-                .join("-"))
 
     // console.log(hmacID)
 

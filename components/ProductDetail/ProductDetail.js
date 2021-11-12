@@ -237,7 +237,7 @@ class ProductDetail extends Component {
       Brand: this.props.data.brand,
       Price: this.props.data.price,
     };
-    if (Cookies.get("email") !== undefined){
+    if (Cookies.get("email") !== undefined)
       KlaviyoClient.public.track({
         event: "Viewed Product",
         email: Cookies.get("email"),
@@ -248,10 +248,6 @@ class ProductDetail extends Component {
       this.createlead(item);
     }
 
-
-
-
-  }
   async createlead() {
     var data = {
       first_name:Cookies.get("name"),
@@ -462,7 +458,7 @@ class ProductDetail extends Component {
             </div>
             {/* <QuestionItem product_id={this.state.mdata.product_id} q questions={this.state.questions} /> */}
 
-            {/* <Explorer />
+						{/* <Explorer />
           </section>
             
           <section className='no-movil'>
