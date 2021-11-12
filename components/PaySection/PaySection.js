@@ -22,6 +22,7 @@ import {handleFormatUrl} from '../../lib/functions'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import { Button, Modal } from 'react-bootstrap';
 import CryptoJS from 'crypto-js';
+import {createleadClient} from "../../lib/zoho";
 
 class PaySection extends Component {
   constructor(props) {
@@ -485,23 +486,26 @@ class PaySection extends Component {
       payment_method:	'Payu'	// representing the payment method chosen
     });
 
-    KlaviyoClient.public.identify({
-      email: this.state.email,
-      properties: {
-        first_name: this.state.user,
-        last_name: this.state.lastName,
-        phone_number: this.state.mobile_phone,
-      },
-      post: true, //defaults to false
-    });
-    KlaviyoClient.public.track({
-      event: "Checkout",
-      email: this.state.email,
-      properties: {
-        items: [item],
-      },
-    });
-  };
+        KlaviyoClient.public.identify({
+            email: this.state.email,
+            properties: {
+                first_name: this.state.user,
+                last_name: this.state.lastName,
+                phone_number: this.state.mobile_phone,
+            },
+            post: true, //defaults to false
+        });
+        KlaviyoClient.public.track({
+            event: "Checkout",
+            email: this.state.email,
+            properties: {
+                items: [item],
+            },
+        });
+
+        this.createlead(this.props, 2);
+
+    };
 
   checkoutOption = () => {
     const concatCategories = () => {
@@ -600,113 +604,143 @@ class PaySection extends Component {
     this.validateForm();
   };
 
-  validateDataGoogle = (callBack) => {
-    this.setState({ display: "flex" });
-    let awaitGoogle = setInterval(() => {
-      if (document.readyState === "complete") {
-        let clientId = this.state.clientId;
-        let gclid = this.state.gclid;
-        // The page is fully loaded
-        if (clientId == "" && gclid == "") {
-          null;
-        } else {
-          callBack();
-          clearInterval(awaitGoogle);
+    validateDataGoogle = (callBack) => {
+        if (Cookies.get("email") !== undefined) {
+            this.createlead(this.props, 1);
         }
-      }
-    }, 300);
-  };
-  // randomPayReference = (length, chars) => {
-  // 	var result = '';
-  // 	for (var i = length; i > 0; --i)
-  // 		result += chars[Math.round(Math.random() * (chars.length - 1))];
-  // 	return result;
-  // };
-  //
-  // renderWompi = () => {
-  // 	// let userLogin = Cookies.get('user_id');
-  // 	// let date = new Date();
-  // 	let marketId = this.props.props.data.store_id;
-  // 	let productId = this.props.props.data.product_global_id;
-  // 	let quantity = this.state.cantidad == 0 ? 1 : this.state.cantidad;
-  // 	let priceToCalc = this.props.price.toString().split('.')[0];
-  // 	let price = this.props.price.toString().split('.')[0] + '00';
-  // 	// console.log(this.padLeadingZeros(parseInt(this.props.price) , 1) )
-  // 	let checkout = new WidgetCheckout({
-  // 		currency: 'COP',
-  // 		amountInCents: price * quantity,
-  // 		reference: this.randomPayReference(
-  // 			32,
-  // 			'0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' +
-  // 				price * quantity +
-  // 				this.props.props.data.product_global_id
-  // 		),
-  // 		// publicKey: 'pub_test_pYoEwV7Vh2UjsXGhNQ5JEYWa1LnXKj9r',
-  // 		publicKey: 'pub_prod_6SqAXiHbJoIQH2e9I85GgxA1Gmd9he20',
-  // 		redirectUrl:
-  // 			'https://kiero.co/detalle/' +
-  // 			this.props.props.data.product_global_id +
-  // 			'_' +
-  // 			this.props.props.data.product_global_title
-  // 				.replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-  // 				.replaceAll('//', '%2F')
-  // 				.replaceAll('%', '')
-  // 				.replaceAll(/['"]+/g, '')
-  // 				.split(' ')
-  // 				.join('-'),
-  // 		shippingAddress: {
-  // 			country: 'CO',
-  // 			city: this.state.city == '' ? 'null' : this.state.city,
-  // 			phoneNumber: this.state.mobile_phone == '' ? 'null' : this.state.mobile_phone,
-  // 			region: this.state.region == '' ? 'null' : this.state.region,
-  // 			addressLine1:
-  // 				this.state.neighborhood == ''
-  // 					? 'null'
-  // 					: this.state.address + ' Barrio ' + this.state.neighborhood,
-  // 		},
-  // 	});
-  //
-  // 	this.state.user == '' ||
-  // 	this.state.email == '' ||
-  // 	this.state.mobile_phone == '' ||
-  // 	this.state.city == '' ||
-  // 	this.state.region == '' ||
-  // 	this.state.address == '' ||
-  // 	this.state.neighborhood == ''
-  // 		? this.setState({ modalAddr: true })
-  // 		: checkout.open(function (result) {
-  // 				var transaction = result.transaction;
-  // 				// console.log('Transaction ID: ', transaction.id)
-  // 				// console.log('Transaction object: ', transaction)
-  // 				let dataTransaction = {
-  // 					transactionId: transaction.id,
-  // 					transactionReference: transaction.reference,
-  // 					paymentMethod: transaction.paymentMethodType,
-  // 					userIdentificationType: transaction.billingData.legalIdType,
-  // 					userIdentification: transaction.billingData.legalId,
-  // 					userName: transaction.customerData.fullName,
-  // 					emailAddres: transaction.customerEmail,
-  // 					userMobilePhone: transaction.customerData.phoneNumber,
-  // 					cityAddress: transaction.shippingAddress.city,
-  // 					regionAddress: transaction.shippingAddress.region,
-  // 					userAddress: transaction.shippingAddress.addressLine1,
-  // 					quantity: quantity,
-  // 					productId: productId,
-  // 					price: parseInt(priceToCalc),
-  // 					total: parseInt(priceToCalc * quantity),
-  // 					marketId: marketId,
-  // 				};
-  //
-  // 				// console.log(dataTransaction)
-  //
-  // 				addPaymentDataWompi('/DataWompiTransaction', dataTransaction);
-  // 		  });
-  // };
+        this.setState({display: "flex"});
+        let awaitGoogle = setInterval(() => {
+            if (document.readyState === "complete") {
+                let clientId = this.state.clientId;
+                let gclid = this.state.gclid;
+                // The page is fully loaded
+                if (clientId == "" && gclid == "") {
+                    null;
+                } else {
+                    callBack();
+                    clearInterval(awaitGoogle);
+                }
+            }
+        }, 300);
 
-  render() {
-    const renderPayu = () => {
-      this.setState({ display: "none" });
-      this.setState({ modalAddr: true });
+    };
+    // randomPayReference = (length, chars) => {
+    // 	var result = '';
+    // 	for (var i = length; i > 0; --i)
+    // 		result += chars[Math.round(Math.random() * (chars.length - 1))];
+    // 	return result;
+    // };
+    //
+    // renderWompi = () => {
+    // 	// let userLogin = Cookies.get('user_id');
+    // 	// let date = new Date();
+    // 	let marketId = this.props.props.data.store_id;
+    // 	let productId = this.props.props.data.product_global_id;
+    // 	let quantity = this.state.cantidad == 0 ? 1 : this.state.cantidad;
+    // 	let priceToCalc = this.props.price.toString().split('.')[0];
+    // 	let price = this.props.price.toString().split('.')[0] + '00';
+    // 	// console.log(this.padLeadingZeros(parseInt(this.props.price) , 1) )
+    // 	let checkout = new WidgetCheckout({
+    // 		currency: 'COP',
+    // 		amountInCents: price * quantity,
+    // 		reference: this.randomPayReference(
+    // 			32,
+    // 			'0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' +
+    // 				price * quantity +
+    // 				this.props.props.data.product_global_id
+    // 		),
+    // 		// publicKey: 'pub_test_pYoEwV7Vh2UjsXGhNQ5JEYWa1LnXKj9r',
+    // 		publicKey: 'pub_prod_6SqAXiHbJoIQH2e9I85GgxA1Gmd9he20',
+    // 		redirectUrl:
+    // 			'https://kiero.co/detalle/' +
+    // 			this.props.props.data.product_global_id +
+    // 			'_' +
+    // 			this.props.props.data.product_global_title
+    // 				.replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+    // 				.replaceAll('//', '%2F')
+    // 				.replaceAll('%', '')
+    // 				.replaceAll(/['"]+/g, '')
+    // 				.split(' ')
+    // 				.join('-'),
+    // 		shippingAddress: {
+    // 			country: 'CO',
+    // 			city: this.state.city == '' ? 'null' : this.state.city,
+    // 			phoneNumber: this.state.mobile_phone == '' ? 'null' : this.state.mobile_phone,
+    // 			region: this.state.region == '' ? 'null' : this.state.region,
+    // 			addressLine1:
+    // 				this.state.neighborhood == ''
+    // 					? 'null'
+    // 					: this.state.address + ' Barrio ' + this.state.neighborhood,
+    // 		},
+    // 	});
+    //
+    // 	this.state.user == '' ||
+    // 	this.state.email == '' ||
+    // 	this.state.mobile_phone == '' ||
+    // 	this.state.city == '' ||
+    // 	this.state.region == '' ||
+    // 	this.state.address == '' ||
+    // 	this.state.neighborhood == ''
+    // 		? this.setState({ modalAddr: true })
+    // 		: checkout.open(function (result) {
+    // 				var transaction = result.transaction;
+    // 				// console.log('Transaction ID: ', transaction.id)
+    // 				// console.log('Transaction object: ', transaction)
+    // 				let dataTransaction = {
+    // 					transactionId: transaction.id,
+    // 					transactionReference: transaction.reference,
+    // 					paymentMethod: transaction.paymentMethodType,
+    // 					userIdentificationType: transaction.billingData.legalIdType,
+    // 					userIdentification: transaction.billingData.legalId,
+    // 					userName: transaction.customerData.fullName,
+    // 					emailAddres: transaction.customerEmail,
+    // 					userMobilePhone: transaction.customerData.phoneNumber,
+    // 					cityAddress: transaction.shippingAddress.city,
+    // 					regionAddress: transaction.shippingAddress.region,
+    // 					userAddress: transaction.shippingAddress.addressLine1,
+    // 					quantity: quantity,
+    // 					productId: productId,
+    // 					price: parseInt(priceToCalc),
+    // 					total: parseInt(priceToCalc * quantity),
+    // 					marketId: marketId,
+    // 				};
+    //
+    // 				// console.log(dataTransaction)
+    //
+    // 				addPaymentDataWompi('/DataWompiTransaction', dataTransaction);
+    // 		  });
+    // };
+
+    async createlead(item, step) {
+        if (step === 2) {
+
+        }
+        var data = {
+            first_name: Cookies.get("name"),
+            city: this.state.city,
+            address: this.state.address,
+            email: Cookies.get("email"),
+            second_email: this.state.email,
+            phone: this.state.mobile_phone,
+            second_phone: "",
+            last_name: Cookies.get("last_name"),
+            type_id: this.state.typeIdentification,
+            num_id: this.state.identification,
+            id: Cookies.get("user_id"),
+            country: "CO",
+            lead_type: step === 1 ? "Usuario Registrado que Presionó el Botón Comprar" : "Usuario Invitado (Y Usuario Registrado) que Presionó el botón de Continuar con la transacción",
+            category: "",
+            sub_category: "",
+            price_product: item.price
+        }
+        const error = await createleadClient(data);
+    }
+
+
+    render() {
+        const renderPayu = () => {
+            this.setState({display: "none"});
+            this.setState({modalAddr: true});
 
       const concatCategories = () => {
         var dataCategory = [];
@@ -795,13 +829,23 @@ class PaySection extends Component {
 
     this.state.user_id = hmacID
 
-    var extra3 = JSON.stringify({
-      qty: quantity,
-      cid: this.state.clientId,
-      gclid: this.state.gclid,
-      nme: fullName,
-      id: hmacID
-    });
+        var extra3 = JSON.stringify({
+            qty: quantity,
+            cid: this.state.clientId,
+            gclid: this.state.gclid,
+            nme: fullName,
+            id: hmacID,
+            url_product: "https://kiero.co/detalle/" +
+                this.props.props.data.product_global_id +
+                "_" +
+                this.props.props.data.product_global_title
+                    .replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, "")
+                    .replace("//", "%2F")
+                    .replace("%", "")
+                    .replace(/['"]+/g, "")
+                    .split(" ")
+                    .join("-")
+        });
 
     // console.log(hmacID)
 

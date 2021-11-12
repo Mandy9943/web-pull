@@ -19,6 +19,8 @@ import { KlaviyoClient } from "../../lib/functions.js";
 import Cookies from "js-cookie";
 import {handleFormatUrl} from '../../lib/functions'
 import dynamic from "next/dynamic";
+import {signUp} from "../../lib/auth";
+import {createleadClient} from "../../lib/zoho";
 
 // import Nav from '../Common/Nav';
 // import DetailImg from '../DetailImg';
@@ -243,35 +245,57 @@ class ProductDetail extends Component {
           items: [item],
         },
       });
+      this.createlead(item);
+    }
+
+  async createlead() {
+    var data = {
+      first_name:Cookies.get("name"),
+      city: "",
+      address:"",
+      email:Cookies.get("email"),
+      second_email:"",
+      phone:"",
+      second_phone:"",
+      last_name:Cookies.get("last_name"),
+      type_id:"",
+      num_id:"",
+      id:Cookies.get("user_id"),
+      country:"",
+      lead_type:"Usuario Registrado que Accedió a los Detalles del Producto",
+      category:"",
+      sub_category:"",
+      price_product:this.props.data.price
+    }
+    const error = await createleadClient(data);
+  }
+  async reLoadData(pgid) {
+    // Esta funcion se llama cuando se encuentra un match de variantes
+    const router = this.props.router;
+    const res = await getProductDetail(this.state.mdata.product_id, {
+      params: { is_variant: true, product_global_id: pgid },
+    });
+
+    const data = await res.data;
+    this.setState({
+      mdata: data.data,
+      m_pgid: true,
+    });
+
+    // https://stackoverflow.com/a/62947231/7771926  <--- reference
+    let url = `/detalle/${this.state.mdata.product_id}?is_variant=true&product_global_id=${pgid}`;
+    this.props.router.push("/detalle/[...product]", url, { shallow: true });
   }
 
-	async reLoadData(pgid) {
-		// Esta funcion se llama cuando se encuentra un match de variantes
-		const router = this.props.router;
-		const res = await getProductDetail(this.state.mdata.product_id, {
-			params: { is_variant: true, product_global_id: pgid },
-		});
-
-		const data = await res.data;
-		this.setState({
-			mdata: data.data,
-			m_pgid: true,
-		});
-
-		// https://stackoverflow.com/a/62947231/7771926  <--- reference
-		let url = `/detalle/${this.state.mdata.product_id}?is_variant=true&product_global_id=${pgid}`;
-		this.props.router.push('/detalle/[...product]', url, { shallow: true });
-	}
-
-	loadQuestions = () => {
-		getData('/getQuestions/' + this.props.data.product_id)
-			.then((response) => {
-				this.setState({ questions: response.data });
-			})
-			.catch((error) => {
-				console.error(error);
-			});
-	};
+  loadQuestions = () => {
+    getData("/getQuestions/" + this.props.data.product_id)
+      .then((response) => {
+        this.setState({ questions: response.data });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   render() {
     // let DataForPixel = {
