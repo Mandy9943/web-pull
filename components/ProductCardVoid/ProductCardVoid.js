@@ -3,7 +3,7 @@ import kiero_logo from "../../assets/img/kiero.png";
 import React from "react";
 import '../ProductCard/ProductCard.css'
 
-const ProductCardVacio = () => {
+const ProductCardVoid = () => {
     return (
         <div className="producto-card">
             <div className="product-card-img">
@@ -17,4 +17,4 @@ const ProductCardVacio = () => {
     )
 }
 
-export default ProductCardVacio;
+export default ProductCardVoid;
