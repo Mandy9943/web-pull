@@ -19,8 +19,6 @@ export default class ProductsSlider extends Component {
             data: [],
             className: 'producto-card'
         };
-
-
     }
 
     componentDidMount() {
