@@ -1,303 +1,287 @@
-import React, { Component, useState } from "react";
-import Link from "next/link";
-import Error from 'next/error'
-import Nav from "../Common/Nav/Nav";
-import Footer from "../Common/Footer/Footer";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faAngleRight,
-  faAngleDown,
-  faBars,
-} from "@fortawesome/free-solid-svg-icons";
-import "./Shop.css";
-import Sidebar from "../Sidebar/Sidebar";
-import Logo1 from "../../assets/img/logo-social.png";
-import Logo2 from "../../assets/img/logo-social1.png";
-import RightSideBar from "./RightSideBar/RightSideBar";
+import React, { Component, useState } from 'react';
+import Link from 'next/link';
+import Error from 'next/error';
+import Nav from '../Common/Nav/Nav';
+import Footer from '../Common/Footer/Footer';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleRight, faAngleDown, faBars } from '@fortawesome/free-solid-svg-icons';
+import './Shop.css';
+import Sidebar from '../Sidebar/Sidebar';
+import Logo1 from '../../assets/img/logo-social.png';
+import Logo2 from '../../assets/img/logo-social1.png';
+import RightSideBar from './RightSideBar/RightSideBar';
 // import ShopCrumble from "./Common/ShopCrumble/ShopCrumble";
-import ShopStart from "./ShopStart/ShopStart";
-import ShopEdit from "./ShopEdit/ShopEdit";
-import ShopEditScreen from "./ShopEditScreen";
-import ShopEditMenu from "./ShopEditMenu";
-import ShopAnalytics from "./ShopAnalytics";
-import ShopEditDomain from "./ShopEditDomain";
-import ShopEditDataStorage from './ShopEditDataStorage'
-import { findKeyValueInArr } from '../../lib/functions'
+import ShopStart from './ShopStart/ShopStart';
+import ShopEdit from './ShopEdit/ShopEdit';
+import ShopEditScreen from './ShopEditScreen';
+import ShopEditMenu from './ShopEditMenu';
+import ShopAnalytics from './ShopAnalytics';
+import ShopEditDomain from './ShopEditDomain';
+import ShopEditDataStorage from './ShopEditDataStorage';
+import { findKeyValueInArr } from '../../lib/functions';
 import { update_store } from '../../services/storeApi';
 
 export default class Shop extends Component {
-  constructor(props) {
-    super(props);
+	constructor(props) {
+		super(props);
 
-    this.configMenu = [
-      { text: 'Menu', key: 'menu', cb: this.showSection },
-      { text: 'Dominio web', key: 'domain', cb: this.showSection },
-      { text: 'Datos de la tienda', key: 'stdata', cb: this.showSection },
-      { text: 'Whatapp', key: 'ws', cb: this.showSection },
-      { text: 'Marketing', key: 'marketing', cb: this.showSection }
-    ];
+		this.configMenu = [
+			{ text: 'Menu', key: 'menu', cb: this.showSection },
+			{ text: 'Dominio web', key: 'domain', cb: this.showSection },
+			{ text: 'Datos de la tienda', key: 'stdata', cb: this.showSection },
+			{ text: 'Whatapp', key: 'ws', cb: this.showSection },
+			{ text: 'Marketing', key: 'marketing', cb: this.showSection },
+		];
 
-    // let store_data = this.props.store_data.data[0];
+		// let store_data = this.props.store_data.data[0];
 
-    let store_data = this.props.store_data.data[0];
+		let store_data = this.props.store_data.data[0];
 
+		this.state = {
+			// Store related states
+			store_name: store_data.store.business_name,
+			store_domain: store_data.domain,
+			store_status: store_data.store.status,
 
-    this.state = {
-      // Store related states
-      store_name: store_data.store.business_name,
-      store_domain: store_data.domain,
-      store_status: store_data.store.status,
+			//Store Design
+			store_design: {
+				st_design_header_backgroundimage: store_data.design.header.background_img,
+				st_design_header_title_color: store_data.design.header.title.color,
+				st_design_header_title_font_family: store_data.design.header.title.font_family,
+				st_design_header_subtitle_text: store_data.design.header.subtitle.text,
+				st_design_st_design_header_subtitle_font_family:
+					store_data.design.header.subtitle.font_family,
+				st_design_main_background_color: store_data.design.main.background_color,
+				st_design_footer_background_color: store_data.design.footer.background_color,
+				st_design_st_design_footer_copyright: store_data.design.footer.copyright,
+				st_design_footer_logo: store_data.design.footer.logo,
+			},
 
-      //Store Design
-      store_design: {
-        st_design_header_backgroundimage: store_data.design.header.background_img,
-        st_design_header_title_color: store_data.design.header.title.color,
-        st_design_header_title_font_family: store_data.design.header.title.font_family,
-        st_design_header_subtitle_text : store_data.design.header.subtitle.text,
-        st_design_st_design_header_subtitle_font_family: store_data.design.header.subtitle.font_family,
-        st_design_main_background_color: store_data.design.main.background_color,
-        st_design_footer_background_color: store_data.design.footer.background_color,
-        st_design_st_design_footer_copyright: store_data.design.footer.copyright,
-        st_design_footer_logo: store_data.design.footer.logo,
-      },
+			// Other states
+			userName: this.props.user_data.user,
+			accordionMyData: true,
+			closeMyData: true,
+			iconMyData: true,
+			userAccountIconMyData: faAngleRight,
+			closeSidebar: true,
+			display: {
+				start: true,
+				edit: false,
+				menu: false,
+				domain: false,
+				stdata: false,
+				ws: false,
+				marketing: false,
+				analytics: false,
+			},
+			show_edit_section: 'main', // Mostrar 'theme' o 'color'
+			subtitulo: '',
+		};
+	}
 
+	accordionMyData = () => {
+		this.setState({
+			closeMyData: !this.state.closeMyData,
+			iconMyData: !this.state.iconMyData,
+		});
+		if (this.state.iconMyData === true) {
+			this.setState({
+				userAccountIconMyData: faAngleDown,
+			});
+		} else if (this.state.icon1MyData === false) {
+			this.setState({
+				userAccountIconMyData: faAngleRight,
+			});
+		}
+	};
 
+	toggleModal = (modal) => {
+		const newState = { ...this.state };
+		newState[`modal${modal}`] = !newState[`modal${modal}`] ? true : false;
+		this.setState(newState);
+	};
 
-      // Other states
-      userName: this.props.user_data.user,
-      accordionMyData: true,
-      closeMyData: true,
-      iconMyData: true,
-      userAccountIconMyData: faAngleRight,
-      closeSidebar: true,
-      display: {
-        start: true,
-        edit: false,
-        menu: false,
-        domain: false,
-        stdata: false,
-        ws: false,
-        marketing: false,
-        analytics: false
-      },
-      show_edit_section: "main",  // Mostrar 'theme' o 'color'
-      subtitulo: ""
-    };
-  }
+	getActiveSection = () => {
+		let sections = this.state.display;
+		for (let section in sections) {
+			if (sections[section] === true) {
+				return section;
+			}
+		}
+		return 'start';
+	};
 
+	setDesignValues = (name, value) => {
+		this.setState([{ [name]: value }]);
+	};
 
+	showSection = (section, e) => {
+		// Basicamente recorre el objeto display y determina el estado
+		// al cual se desea pasar
+		this.setState((prev) => {
+			let display_arr = Object.entries(prev.display).map((item) => {
+				return [item[0], item[0] === section];
+			});
 
-  accordionMyData = () => {
-    this.setState({
-      closeMyData: !this.state.closeMyData,
-      iconMyData: !this.state.iconMyData,
-    });
-    if (this.state.iconMyData === true) {
-      this.setState({
-        userAccountIconMyData: faAngleDown,
-      });
-    } else if (this.state.icon1MyData === false) {
-      this.setState({
-        userAccountIconMyData: faAngleRight,
-      });
-    }
-  };
+			return { display: Object.fromEntries(display_arr) };
+		});
+	};
 
-  toggleModal = (modal) => {
-    const newState = { ...this.state };
-    newState[`modal${modal}`] = !newState[`modal${modal}`] ? true : false;
-    this.setState(newState);
-  };
+	CloseSidebar = () => {
+		this.setState({
+			closeSidebar: !this.state.closeSidebar,
+		});
+		console.info('si ejecuta y cambia el estado ' + this.state.closeSidebar);
+	};
 
-  getActiveSection = () => {
-    let sections = this.state.display;
-    for (let section in sections) {
-      if (sections[section] === true) {
-        return section;
-      }
-    }
-    return "start";
-  };
+	setEditSection = (section) => {
+		switch (section) {
+			case 'theme':
+				this.setState({ show_edit_section: 'theme' });
+				break;
+			case 'color':
+				this.setState({ show_edit_section: 'color' });
+				break;
+			case 'edit':
+				this.setState({ show_edit_section: 'edit' });
+				break;
+			default:
+				this.setState({ show_edit_section: 'main' });
+		}
+	};
 
-  setDesignValues = (name, value) => {
-    
-    
-    this.setState([{[name] : value}] )
-   
-  }
+	onSaveDomain = async (new_domain) => {
+		update_store(this.state.store_domain, this.props.user_data.jwt, {
+			domain: new_domain,
+		});
+	};
 
-  showSection = (section, e) => {
-    // Basicamente recorre el objeto display y determina el estado
-    // al cual se desea pasar
-    this.setState(prev => {
-      let display_arr = Object.entries(prev.display).map(item => {
-        return [item[0], item[0] === section]
-      });
+	onQuickConfig = async (data) => {
+		update_store(this.state.store_domain, this.props.user_data.jwt, { design: data });
+	};
 
-      return { display: Object.fromEntries(display_arr) };
-    });
-  };
+	render() {
+		if (this.props.store_data.code !== 200) {
+			return <Error statusCode={this.props.store_data.code} />;
+		}
 
-  CloseSidebar = () => {
-    this.setState({
-      closeSidebar: !this.state.closeSidebar,
-    });
-    console.info("si ejecuta y cambia el estado " + this.state.closeSidebar);
-  };
+		let u_data = this.props.user_data;
 
-  setEditSection = (section) => {
-    switch (section) {
-      case 'theme':
-        this.setState({ show_edit_section: 'theme' })
-        break;
-      case 'color':
-        this.setState({ show_edit_section: 'color' })
-        break;
-      case 'edit':
-        this.setState({ show_edit_section: 'edit' })
-        break;
-      default:
-        this.setState({ show_edit_section: "main" })
-    }
-  }
+		let url = '//www.sic.gov.co';
 
-  onSaveDomain = async (new_domain) => {
-    update_store(this.state.store_domain, this.props.user_data.jwt, { domain: new_domain })
-  }
+		return (
+			<div className="summary-content">
+				<div className="summary-botton" onClick={() => this.CloseSidebar()}>
+					<FontAwesomeIcon icon={faBars} />
+				</div>
 
-  onQuickConfig = async (data) => {
-    update_store(this.state.store_domain, this.props.user_data.jwt, { design: data })
-  }
+				<Nav
+					jwt={u_data.jwt}
+					cb={this.showSection}
+					user_data={u_data}
+					user={u_data.user}
+					home={false}
+					authenticated={u_data.authenticated}
+				/>
+				<div
+					className={
+						this.state.closeSidebar
+							? 'user-account-container'
+							: ' user-account-container show-sidebar'
+					}
+				>
+					<Sidebar user_data={u_data} cb={this.showSection} />
 
-  render() {
-    if (this.props.store_data.code !== 200) {
-      return <Error statusCode={this.props.store_data.code} />
-    }
+					{this.state.display.start && (
+						<ShopStart
+							store_name={this.state.store_name}
+							store_domain={this.state.store_domain}
+							store_status={this.state.store_status}
+							cb={this.showSection}
+							quick_config={this.onQuickConfig}
+						/>
+					)}
 
-    let u_data = this.props.user_data;
+					{this.state.display.edit && (
+						<>
+							<ShopEdit
+								cb={this.showSection}
+								section_edit={this.state.show_edit_section}
+								data={this.props.store_data.data[0]}
+								store_design={this.state.store_design}
+								st_design_header_subtitle_text={this.state.st_design_header_subtitle_text}
+							/>
+							<RightSideBar
+								cb={this.showSection}
+								setEditSection={this.setEditSection}
+								section_edit={this.state.show_edit_section}
+								menu={this.configMenu}
+								store_design={this.state.store_design}
+								setDesignValues={this.setDesignValues}
+							/>
+						</>
+					)}
 
-    let url = "//www.sic.gov.co";
+					{this.state.display.menu && (
+						<ShopEditScreen
+							cb={this.showSection}
+							section={findKeyValueInArr('key', 'menu', this.configMenu)}
+						>
+							<ShopEditMenu cb={this.showSection} />
+						</ShopEditScreen>
+					)}
 
-    return (
-      <div className="summary-content">
-        <div className="summary-botton" onClick={() => this.CloseSidebar()}>
-          <FontAwesomeIcon icon={faBars} />
-        </div>
+					{this.state.display.domain && (
+						<ShopEditScreen
+							cb={this.showSection}
+							section={{ text: 'Dominio Web', key: 'domain' }}
+						>
+							<ShopEditDomain
+								cb={this.showSection}
+								saveDomain={this.onSaveDomain}
+								store_domain={this.state.store_domain}
+							/>
+						</ShopEditScreen>
+					)}
+					{this.state.display.stdata && (
+						<ShopEditScreen
+							cb={this.showSection}
+							section={{ text: 'Datos de la tienda', key: 'stdata' }}
+						>
+							<ShopEditDataStorage
+								cb={this.showSection}
+								saveDomain={this.onSaveDomain}
+								store_name={this.state.store_name}
+								store_design={this.state.store_design}
+								quick_config={this.onQuickConfig}
+							/>
+						</ShopEditScreen>
+					)}
 
-        <Nav
-          jwt={u_data.jwt}
-          cb={this.showSection}
-          user_data={u_data}
-          user={u_data.user}
-          home={false}
-          authenticated={u_data.authenticated}
-        />
-        <div
-          className={
-            this.state.closeSidebar
-              ? "user-account-container"
-              : " user-account-container show-sidebar"
-          }
-        >
-          <Sidebar user_data={u_data} cb={this.showSection} />
+					{this.state.display.analytics && (
+						<ShopEditScreen
+							cb={this.showSection}
+							section={{ text: 'Google analytics', key: 'analytics' }}
+						>
+							<ShopAnalytics cb={this.showSection} />
+						</ShopEditScreen>
+					)}
+				</div>
 
-          {this.state.display.start &&
-            <ShopStart
-              store_name={this.state.store_name}
-              store_domain={this.state.store_domain}
-              store_status={this.state.store_status}
-              cb={this.showSection}
-              quick_config={this.onQuickConfig}
-            />
-
-          }
-
-          {this.state.display.edit &&
-            <>
-              <ShopEdit
-                cb={this.showSection}
-                section_edit={this.state.show_edit_section}
-                data={this.props.store_data.data[0]}
-                store_design={this.state.store_design}
-                st_design_header_subtitle_text={this.state.st_design_header_subtitle_text}
-              />
-              <RightSideBar
-                cb={this.showSection}
-                setEditSection={this.setEditSection}
-                section_edit={this.state.show_edit_section}
-                menu={this.configMenu}
-                store_design={this.state.store_design}
-                setDesignValues={this.setDesignValues}
-              />
-            </>
-          }
-
-          {this.state.display.menu &&
-            <ShopEditScreen
-              cb={this.showSection}
-              section={findKeyValueInArr('key', 'menu', this.configMenu)}
-            >
-              <ShopEditMenu
-                cb={this.showSection}
-              />
-            </ShopEditScreen>
-          }
-
-          {this.state.display.domain &&
-            <ShopEditScreen
-              cb={this.showSection}
-              section={{ text: "Dominio Web", key: "domain" }}
-            >
-              <ShopEditDomain
-                cb={this.showSection}
-                saveDomain={this.onSaveDomain}
-                store_domain={this.state.store_domain}
-              />
-            </ShopEditScreen>
-          }
-          {this.state.display.stdata &&
-            <ShopEditScreen
-              cb={this.showSection}
-              section={{ text: "Datos de la tienda", key: "stdata" }}
-            >
-              <ShopEditDataStorage
-                cb={this.showSection}
-                saveDomain={this.onSaveDomain}
-                store_name={this.state.store_name}
-                store_design={this.state.store_design}
-                quick_config={this.onQuickConfig}
-              />
-            </ShopEditScreen>
-          }
-
-          {this.state.display.analytics &&
-            <ShopEditScreen
-              cb={this.showSection}
-              section={{ text: "Google analytics", key: "analytics" }}
-            >
-              <ShopAnalytics
-                cb={this.showSection}
-              />
-            </ShopEditScreen>
-          }
-
-
-        </div>
-
-        <Footer />
-        <div className="footer-social">
-          <Link href={url}>
-            <a target="_blank">
-              <img src={Logo1} />
-            </a>
-          </Link>
-          <Link href={url}>
-            <a target="_blank">
-              <img src={Logo2} />
-            </a>
-          </Link>
-        </div>
-      </div>
-    );
-  }
+				<Footer />
+				<div className="footer-social">
+					<Link href={url}>
+						<a rel="noopener noreferrer">
+							<img src={Logo1} />
+						</a>
+					</Link>
+					<Link href={url}>
+						<a rel="noopener noreferrer">
+							<img src={Logo2} />
+						</a>
+					</Link>
+				</div>
+			</div>
+		);
+	}
 }

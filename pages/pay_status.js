@@ -1,14 +1,14 @@
-import React, {useState} from "react";
-import { useRouter,  } from "next/router";
-import Head from "next/head";
-import { getUser, isAuthenticated, getJwt } from "../lib/auth";
-import Header from "../components/Common/Header/Header";
-import Footer from "../components/Common/Footer/Footer";
+import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+import Head from 'next/head';
+import { getUser, isAuthenticated, getJwt } from '../lib/auth';
+import Header from '../components/Common/Header/Header';
+import Footer from '../components/Common/Footer/Footer';
 import './sass/order.css';
-import favicon from "../assets/img/favicon.svg";
-import Link from "next/link";
+import favicon from '../assets/img/favicon.svg';
+import Link from 'next/link';
 import Cookies from 'js-cookie';
-import {KlaviyoClient} from "../lib/functions";
+import { KlaviyoClient } from '../lib/functions';
 
 function PayStatus({ data, u_data }) {
   const router = useRouter()
@@ -192,34 +192,46 @@ function PayStatus({ data, u_data }) {
       {/* <div className="container-success">
         
       </div>  */}
-      <section className="order-content">
-        
-        <section className="info">
-          <h3 className="title">DATOS DE RESULTADO</h3>
-          {/* <span className="user-id">USERID: <strong>{data.user_id}</strong></span> */}
-          <span>Referencia de pago: <strong>{params.referenceCode}</strong></span>
-          <span>SELLERID: <strong>{params.extra2}</strong></span>
-          <span>Método de pago: <strong>{params.lapPaymentMethodType}</strong></span>
-          <span>Estado del pago:<strong>{params.lapResponseCode == "APPROVED" ? "APROBADO" : params.lapResponseCode == "DECLINED" ? "RECHAZADO" : "PENDIENTE"}</strong> </span>
-          {/* <span>Total a pagar: <strong>{params.cus} </strong></span> */}
-          <span className="name-product">Nombre del producto: <strong>{params.description}</strong></span>
-        </section>
-      
-      </section>
-      <div className="go-purchases-link">
-         <Link href="/">
-          <a>
-              <p>Ir a compras</p>
-          </a>
-        </Link>
-      </div>
-        
-      <Footer />
-    </div>
-  );
+			<section className="order-content">
+				<section className="info">
+					<h3 className="title">DATOS DE RESULTADO</h3>
+					{/* <span className="user-id">USERID: <strong>{data.user_id}</strong></span> */}
+					<span>
+						Referencia de pago: <strong>{params.referenceCode}</strong>
+					</span>
+					<span>
+						SELLERID: <strong>{params.extra2}</strong>
+					</span>
+					<span>
+						Método de pago: <strong>{params.lapPaymentMethodType}</strong>
+					</span>
+					<span>
+						Estado del pago:
+						<strong>
+							{params.lapResponseCode == 'APPROVED'
+								? 'APROBADO'
+								: params.lapResponseCode == 'DECLINED'
+								? 'RECHAZADO'
+								: 'PENDIENTE'}
+						</strong>{' '}
+					</span>
+					{/* <span>Total a pagar: <strong>{params.cus} </strong></span> */}
+					<span className="name-product">
+						Nombre del producto: <strong>{params.description}</strong>
+					</span>
+				</section>
+			</section>
+			<div className="go-purchases-link">
+				<Link href="/">
+					<a>
+						<p>Ir a compras</p>
+					</a>
+				</Link>
+			</div>
+
+			<Footer />
+		</div>
+	);
 }
 
-
-
-
-export default PayStatus
+export default PayStatus;

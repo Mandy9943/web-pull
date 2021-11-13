@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import Link from 'next/link';
-import CardImg from '../../assets/img/banners/news/1.jpg';
-import './ProductCard.css';
-import Checkbox from '@material-ui/core/Checkbox';
-import Favorite from '@material-ui/icons/Favorite';
-import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
-import {handleFormatUrl} from '../../lib/functions';
-import Image from 'next/image';
+import React, { Component } from "react";
+import Link from "next/link";
+import CardImg from "../../assets/img/banners/news/1.jpg";
+import "./ProductCard.css";
+import Checkbox from "@material-ui/core/Checkbox";
+import Favorite from "@material-ui/icons/Favorite";
+import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
+import { handleFormatUrl } from "../../lib/functions";
+import Image from "next/image";
 import Spinner from "./../Common/Spinner";
 
 export default class ProductCard extends Component {
@@ -59,7 +59,7 @@ export default class ProductCard extends Component {
 
 	componentDidUpdate() {
 
-		console.log('Updated');
+		// console.log('Updated');
 
 	}
 
@@ -129,22 +129,22 @@ export default class ProductCard extends Component {
 		// 	}
 		// })
 
-		// Segment Product Clicked event
-		// Fire this event when a visitor clicks a product.
-		// Reference: https://segment.com/docs/connections/spec/ecommerce/v2/
-		analytics.track('Product Clicked', {
-			product_id: data.product_id,
-			category: data.category,
-			name: data.title,
-			brand: data.brand,
-			price: data.price,
-			currency: 'COP',
-			quantity: 1,
-			url: 'https://kiero.co'+ handleFormatUrl(data.product_id, data.title),
-			image_url: data.url
-		});
+    // Segment Product Clicked event
+    // Fire this event when a visitor clicks a product.
+    // Reference: https://segment.com/docs/connections/spec/ecommerce/v2/
+    analytics.track("Product Clicked", {
+      product_id: data.product_id,
+      category: data.category,
+      name: data.title,
+      brand: data.brand,
+      price: data.price,
+      currency: "COP",
+      quantity: 1,
+      url: "https://kiero.co" + handleFormatUrl(data.product_id, data.title),
+      image_url: data.url,
+    });
 
-		// console.log(data);
+    // console.log(data);
 
 		// dataLayer.push({
 		// 	'event': 'productClick',
@@ -153,7 +153,7 @@ export default class ProductCard extends Component {
 		// 			"actionField": {
 		// 							"list": "Search Results"
 		// 							},
-		// 			'products': 
+		// 			'products':
 		// 					[{
 		// 						'name':data.title,
 		// 						'id':data.product_id,
@@ -168,7 +168,7 @@ export default class ProductCard extends Component {
 		// 																						.replace('%', '')
 		// 																						.split(' ')
 		// 																						.join('-'),
-								
+
 		// 				}]
 		// 		}
 		// 	},
@@ -179,7 +179,7 @@ export default class ProductCard extends Component {
 		// 	// 	.replace('%', '')
 		// 	// 	.split(' ')
 		// 	// 	.join('-')
-		// 	// } 
+		// 	// }
 		// })
 
 		// window.location.href = '/detalle/' +
@@ -191,9 +191,10 @@ export default class ProductCard extends Component {
 		// 	.replace('%', '')
 		// 	.split(' ')
 		// 	.join('-')
-		
 	}
+	
 	render() {
+
 		return (
 			<div ref={this.rootRef} className={this.props.className} onClick={() => this.handleDataInfo(this.props)}>
 				{/* <div className="productFavIcon3">
@@ -203,7 +204,7 @@ export default class ProductCard extends Component {
 						checkedIcon={<Favorite />}
 					/>
 				</div> */}
-				{/*<Link
+        {/*<Link
 				href={'/detalle/[product]'}
 				as={
 					'/detalle/' +
@@ -218,6 +219,7 @@ export default class ProductCard extends Component {
 				}
 				>  */}
 				<a  href={handleFormatUrl(this.props.product_id, this.props.title)}>
+					{this.props.statusProduct == 1 ? 
 						<div className="product-card-img">
 							<Spinner/>
 							<Image
@@ -225,38 +227,48 @@ export default class ProductCard extends Component {
 								alt={this.props.title}
 								layout='fill'
 								placeholder="blur"
-								/>
-						{/* <picture>
-							<source
-								srcSet={require('https://kiero.co/_next/static/images/kieroweb-db5d710263ceb06f6eb6c4ed06b64782.png?webp')}
-								type="image/webp"
 							/>
-							<img loading="lazy" src='https://kiero.co/_next/static/images/kieroweb-db5d710263ceb06f6eb6c4ed06b64782.png'
-								 />
-						</picture> */}
-							{/* <img
-							
-								loading="lazy"
-								alt={this.props.title}
-								src={
-									this.props.url
-										? this.props.url
-										: 'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png'
-								}
-							/> */}
-						</div>
-						<button>Envío gratis</button>
-						<h3>
-							${' '}
-							{this.props.price
-								? String(this.props.price)
-										.split('.')[0]
-										.replace(/(.)(?=(\d{3})+$)/g, '$1.')
-								: '$ ... '}
-						</h3>
-						<h4 className="title">{this.props.title}</h4>
-				</a>
-			</div>
-		);
-	}
+								{/* <picture>
+									<source
+										srcSet={require('https://kiero.co/_next/static/images/kieroweb-db5d710263ceb06f6eb6c4ed06b64782.png?webp')}
+										type="image/webp"
+									/>
+									<img loading="lazy" src='https://kiero.co/_next/static/images/kieroweb-db5d710263ceb06f6eb6c4ed06b64782.png'
+										/>
+								</picture> */}
+					{/* <img
+									
+										loading="lazy"
+										alt={this.props.title}
+										src={
+											this.props.url
+												? this.props.url
+												: 'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png'
+										}
+									/> */}
+						</div> 	:  
+									<div className="product-card-img spentProduct">
+										<div className='product-spent-home'>Agotado</div>
+											<Image
+												src={this.props.url}
+												alt={this.props.title}
+												layout='fill'
+												placeholder="blur"
+											/>		
+									</div>}
+						
+          <button>Envío gratis</button>
+          <h3 className={this.props.statusProduct == 1 ? "" : 'product-no-stock'}>
+            ${" "}
+            {this.props.price
+              ? String(this.props.price)
+                  .split(".")[0]
+                  .replace(/(.)(?=(\d{3})+$)/g, "$1.")
+              : "$ ... "}
+          </h3>
+          <h4 className="title">{this.props.title}</h4>
+        </a>
+      </div>
+    );
+  }
 }

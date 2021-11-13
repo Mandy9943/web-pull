@@ -314,26 +314,25 @@ class PaySection extends Component {
           };
         }
       }
-
-      return qty_options.values.length > 0 ? (
-        <div className="pay-item">
-          <section className="select-icon">
-            <Select
-              items={qty_options}
-              showDefault={false}
-              onSelect={(qnt) => {
-                this.setState({ cantidad: qnt });
-              }}
-            />
-          </section>
-          {btnEnabled}
-        </div>
-      ) : (
-        <div className="pay-item info-pay-product-detail">
-          <h3>Sin unidades disponibles.</h3>
-          {btnDisabled}
-        </div>
-      );
+      return this.props.props.data.status && qty_options.values.length > 0 ? (
+				<div className="pay-item">
+					<section className="select-icon">
+						<Select
+							items={qty_options}
+							showDefault={false}
+							onSelect={(qnt) => {
+								this.setState({ cantidad: qnt });
+							}}
+						/>
+					</section>
+					{btnEnabled}
+				</div>
+			) : (
+				<div className="pay-item info-pay-product-detail">
+					<h3>Sin unidades disponibles.</h3>
+					{btnDisabled}
+				</div>
+			);
     } else {
       return (
         <div className="pay-item">
@@ -1146,19 +1145,37 @@ class PaySection extends Component {
           </p>
         </div>
         <div className="pay-item">
-          <h3
-            className="price-pay-product-detail"
-            style={{ fontWeight: "300 !important" }}
-          >
-            $
-            {this.props.price
-              ? this.props.price
-                  .toString()
-                  .split(".")[0]
-                  .replace(/(.)(?=(\d{3})+$)/g, "$1.")
-              : " ... "}
-          </h3>
-        </div>
+					{this.props.props.data.status ? (
+						<h3
+							className="price-pay-product-detail"
+							style={{ fontWeight: '300 !important' }}
+						>
+							$
+							{this.props.price
+								? this.props.price
+										.toString()
+										.split('.')[0]
+										.replace(/(.)(?=(\d{3})+$)/g, '$1.')
+								: ' ... '}
+						</h3>
+					) : (
+						<div>
+							<h3
+								className="price-pay-product-detai-nostock"
+								style={{ fontWeight: '300 !important' }}
+							>
+								$
+								{this.props.price
+									? this.props.price
+											.toString()
+											.split('.')[0]
+											.replace(/(.)(?=(\d{3})+$)/g, '$1.')
+									: ' ... '}
+							</h3>
+							<span>(Producto no disponible)</span>
+						</div>
+					)}
+				</div>
         <div className="pay-item info-pay-product-detail">
           <h3>
             <span className="no-movil">Kiero</span> envíos{" "}

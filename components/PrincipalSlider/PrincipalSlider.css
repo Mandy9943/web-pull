@@ -13,15 +13,15 @@
   padding: 50px 20px;
   background: white;
   -webkit-box-shadow: 0px 3px 6px #11111129;
-          box-shadow: 0px 3px 6px #11111129;
+  box-shadow: 0px 3px 6px #11111129;
 }
 
 .principal-slider .desktop .slider .previousButton svg {
-  fill: #CF0A2C !important;
+  fill: #cf0a2c !important;
 }
 
 .principal-slider .desktop .slider .previousButton svg polygon {
-  fill: #CF0A2C !important;
+  fill: #cf0a2c !important;
 }
 
 .principal-slider .desktop .slider .nextButton {
@@ -29,15 +29,15 @@
   padding: 50px 20px;
   background: white;
   -webkit-box-shadow: 0px 3px 6px #11111129;
-          box-shadow: 0px 3px 6px #11111129;
+  box-shadow: 0px 3px 6px #11111129;
 }
 
 .principal-slider .desktop .slider .nextButton svg {
-  fill: #CF0A2C !important;
+  fill: #cf0a2c !important;
 }
 
 .principal-slider .desktop .slider .nextButton svg polygon {
-  fill: #CF0A2C !important;
+  fill: #cf0a2c !important;
 }
 
 .principal-slider .desktop .slider .slide {
@@ -47,11 +47,19 @@
 }
 
 .principal-slider .desktop .slider .slide img {
-  width: 80%;
+  width: 80% !important;
 }
 
 .principal-slider .mobil {
   display: none;
+}
+
+.principal-spinnerWrapper{
+  position: absolute !important;
+  top:0;
+  bottom:0;
+  left:0;
+  right: 0;
 }
 
 @media (max-width: 500px) {
@@ -113,4 +121,6 @@
     display: none;
   }
 }
+
+
 /*# sourceMappingURL=PrincipalSlider.css.map */

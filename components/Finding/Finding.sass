@@ -1,62 +1,106 @@
 .wrap-finding
-    margin-bottom: 50px
+  margin-bottom: 50px
+
 .content-finding
-    display: grid
-    grid-template-columns: repeat(2,1fr)
-    grid-gap: 20px
+  display: -ms-grid
+  display: grid
+  -ms-grid-columns: repeat(2, 1fr)
+  grid-template-columns: repeat(2, 1fr)
+  grid-gap: 20px
+
 .finding
-    //width: 49%
-    display: flex
-    justify-content: space-between
-    background: white
-    padding: 10px
-    box-sizing: border-box
-    .no-finding
-        display: none
-        img
-            width: 100%
-.wrap-img
-    width: 100%
-    display: flex
-    justify-content: center
-    align-items: center
+  display: -webkit-box
+  display: -ms-flexbox
+  display: flex
+  -webkit-box-pack: justify
+  -ms-flex-pack: justify
+  justify-content: space-between
+  background: white
+  padding: 10px
+  -webkit-box-sizing: border-box
+  box-sizing: border-box
+
+  .no-finding
+    display: none
+
     img
-        width: 100%
-        max-height: 100%
+      width: 100% !important
+
+.wrap-img
+  width: 100%
+  display: -webkit-box
+  display: -ms-flexbox
+  display: flex
+  -webkit-box-pack: center
+  -ms-flex-pack: center
+  justify-content: center
+  -webkit-box-align: center
+  -ms-flex-align: center
+  align-items: center
+
+  img
+    width: 100% !important
+    max-height: 100% !important
+
 .wrap-info
-    width: 100%
-    margin-left: 10px
-    display: flex
-    justify-content: center
-    align-items: flex-start
-    flex-direction: column
+  width: 100%
+  margin-left: 10px
+  display: -webkit-box
+  display: -ms-flexbox
+  display: flex
+  -webkit-box-pack: center
+  -ms-flex-pack: center
+  justify-content: center
+  -webkit-box-align: start
+  -ms-flex-align: start
+  align-items: flex-start
+  -webkit-box-orient: vertical
+  -webkit-box-direction: normal
+  -ms-flex-direction: column
+  flex-direction: column
+
+  .category-text
+    color: #111111
+    font-size: 18px
+
+  .finding-title
+    font-size: 27px
+    color: #111111
+
+  a
+    width: auto
+    background: #cf0a2c
+    color: white
+    border-radius: 2px
+    margin: 5px 0px
+    padding: 10px
+    cursor: pointer
+    font-size: 16px
+
+@media (max-width: 600px)
+  .wrap-info
     .category-text
-        color: #111111
-        font-size: 18px
+      font-size: 14px
+
     .finding-title
-        font-size: 27px
-        color: #111111
-    @media (max-width:600px)
-        .category-text
-            font-size: 14px
-        .finding-title
-            font-size: 18px
-            font-weight: 500
-    a
-        width: auto
-        background: #CF0A2C
-        color: white
-        border-radius: 2px
-        margin: 5px 0px;
-        padding: 10px;
-        cursor: pointer;
-        font-size: 18px;
+      font-size: 18px
+      font-weight: 500
+
 @media (max-width: 800px)
-    .wrap-finding
-        margin: 15px
-        flex-direction: column
-        .home-section-title
-            display: none
-        .content-finding
-            grid-template-columns: repeat(1, 1fr)
-            grid-template-rows: repeat(2,1fr)
+  .wrap-finding
+    margin: 15px
+    -webkit-box-orient: vertical
+    -webkit-box-direction: normal
+    -ms-flex-direction: column
+    flex-direction: column
+
+    .home-section-title
+      display: none
+
+    .content-finding
+      -ms-grid-columns: repeat(1, 1fr)
+      grid-template-columns: repeat(1, 1fr)
+      -ms-grid-rows: repeat(2, 1fr)
+      grid-template-rows: repeat(2, 1fr)
+
+/*# sourceMappingURL=Finding.css.map

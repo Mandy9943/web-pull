@@ -13,15 +13,14 @@ export default class ProductsSlider extends Component {
 		super(props);
 		this.state = {
 			data: [],
-			className: 'producto-card'
+			className: 'producto-card',
 		};
 	}
 	componentDidMount() {
-
-		
 		const sliderContentProductDetail = document.querySelector('.containerProductDetail');
-		sliderContentProductDetail ? this.setState({ className:'CardInPerfil producto-card' }) : this.setState({ className:'producto-card' })
-	
+		sliderContentProductDetail
+			? this.setState({ className: 'CardInPerfil producto-card' })
+			: this.setState({ className: 'producto-card' });
 
 		getProductsBasic(this.props.category, 25).then((response) => {
 			let data = [];
@@ -52,7 +51,7 @@ export default class ProductsSlider extends Component {
 			// dataLayer.push({
 			// 	'event': 'view_item_list',
 			// 	'ecommerce': {
-			// 	'items': 
+			// 	'items':
 			// 		dataLayerGoogleSlidersG4
 			// 	}
 			// })
@@ -143,13 +142,9 @@ export default class ProductsSlider extends Component {
 			// 	"items": gtagSlidersUniversal
 			// })
 		});
-		
-	
 	}
-	
 
 	render() {
-		
 		let productList = [];
 		let productListMobile = [];
 		let tmpList = [];
@@ -165,10 +160,15 @@ export default class ProductsSlider extends Component {
 			// }
 			// console.log( encodeURIComponent(this.state.data[i].image), "imagen:", '?img=' + this.state.data[i].image)
 
-			let newUrl = 'https://api.kieroapi.net/img/v1/'+ this.state.data[i].product_id + '?img=' + encodeURIComponent(this.state.data[i].image)
+			let newUrl =
+				'https://api.kieroapi.net/img/v1/' +
+				this.state.data[i].product_id +
+				'?img=' +
+				encodeURIComponent(this.state.data[i].image);
 			// console.log(this.state.data[i].image)
 			tmpList.push(
 				<ProductCard
+					statusProduct={1}
 					key={skid++}
 					index={skid++}
 					price={this.state.data[i].price}
@@ -244,9 +244,14 @@ export default class ProductsSlider extends Component {
 			// 	url =
 			// 		'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png';
 			// }
-			let newUrl = 'https://api.kieroapi.net/img/v1/'+ this.state.data[i].product_id + '?img=' + encodeURIComponent(this.state.data[i].image)
+			let newUrl =
+				'https://api.kieroapi.net/img/v1/' +
+				this.state.data[i].product_id +
+				'?img=' +
+				encodeURIComponent(this.state.data[i].image);
 			productListMobile.push(
 				<ProductCard
+					statusProduct={1}
 					style={{ padding: '30px' }}
 					key={skid++}
 					index={skid++}
@@ -272,7 +277,7 @@ export default class ProductsSlider extends Component {
 						> */}
 						<a
 							className="accent"
-							href={this.props.category && '/categoria/' + this.props.category }
+							href={this.props.category && '/categoria/' + this.props.category}
 						>
 							Ver todos
 						</a>

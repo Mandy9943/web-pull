@@ -6,9 +6,9 @@
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 4fr 2fr 1fr 2fr;
-      grid-template-columns: 4fr 2fr 1fr 2fr;
+  grid-template-columns: 4fr 2fr 1fr 2fr;
   -webkit-box-shadow: 0px 3px 6px #11111129;
-          box-shadow: 0px 3px 6px #11111129;
+  box-shadow: 0px 3px 6px #11111129;
   background: white;
   border: 0.5px solid #11111129;
   border-bottom: 0;
@@ -52,14 +52,14 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
-.option-list .option:nth-last-child(-n+4) {
+.option-list .option:nth-last-child(-n + 4) {
   border-bottom: 0 !important;
 }
 
@@ -72,7 +72,7 @@
   position: absolute;
   top: auto;
   right: 15px;
-  color: #CF0A2C;
+  color: #cf0a2c;
 }
 
 .option-list .id .actions {
@@ -115,16 +115,16 @@
   display: grid;
 }
 
-.option-list:nth-child(0n+1) {
+.option-list:nth-child(0n + 1) {
   border-radius: 5px 5px 0 0;
 }
 
-.option-list:nth-child(0n+1) h5 {
+.option-list:nth-child(0n + 1) h5 {
   display: -ms-grid;
   display: grid;
 }
 
-.option-list:nth-last-child(-n+1) {
+.option-list:nth-last-child(-n + 1) {
   border-bottom: 0.5px solid #11111129;
   border-radius: 0 0 5px 5px;
 }
@@ -147,19 +147,19 @@
 }
 
 .product .product-card-img {
-  margin-right: 15px;
+  margin-right: 15px !important;
 }
 
 .product .product-card-img img {
-  width: 52px;
-  height: 45px;
+  width: 52px !important;
+  height: 45px !important;
 }
 
 @media (max-width: 700px) {
   .option-list {
     padding: 0;
     -ms-grid-columns: 40% 2fr 1fr 2fr;
-        grid-template-columns: 40% 2fr 1fr 2fr;
+    grid-template-columns: 40% 2fr 1fr 2fr;
   }
   .option-list .option {
     text-align: center;
@@ -171,7 +171,7 @@
     text-align: left;
   }
   .option-list .product .product-card-img {
-    margin-right: 5px;
+    margin-right: 5px !important;
   }
   .option-list .id .icon-action {
     right: 10px;
