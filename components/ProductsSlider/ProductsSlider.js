@@ -148,15 +148,7 @@ export default class ProductsSlider extends Component {
         });
     }
 
-    getUrlProducto = async (str) => {
-        const response = await axios({
-            method: 'get',
-            url: str,
-            responseType: 'stream'
-        });
-        console.log(response.headers['content-type'])
-        return response.headers['content-type'] === "application/json" ? kiero_logo : response.response;
-    }
+
 
     render() {
         let productList = [];
@@ -199,7 +191,7 @@ export default class ProductsSlider extends Component {
                     key={skid++}
                     index={skid++}
                     price={this.state.data[i].price}
-                    url={this.getUrlProducto(newUrl)}
+                    url={newUrl}
                     product_id={this.state.data[i].product_id}
                     title={this.state.data[i].title}
                     category={this.state.data[i].category}

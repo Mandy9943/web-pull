@@ -6,15 +6,27 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Favorite from "@material-ui/icons/Favorite";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import {handleFormatUrl} from "../../lib/functions";
-import Image from "next/image";
-import Spinner from "./../Common/Spinner";
 import Imagen from "../Common/Imagen/Imagen";
+import axios from "axios";
+import kiero_logo from "../../assets/img/kiero.png";
 
 export default class ProductCard extends Component {
+    state = {
+        image_url: this.props.url
+    }
 
     constructor(props) {
         super(props)
         this.rootRef = React.createRef()
+        axios({
+            method: 'get',
+            url: this.state.image_url,
+        }).then(resp => {
+            if (resp.headers['content-type'] === "application/json") {
+                this.setState({image_url: kiero_logo})
+            }
+
+        });
     }
 
     sendToSegment = () => {
@@ -27,7 +39,7 @@ export default class ProductCard extends Component {
             category: this.props.category,
             position: this.props.index,
             url: 'https://kiero.co' + handleFormatUrl(this.props.product_id, this.props.title),
-            image_url: this.props.url
+            image_url: this.state.image_url
         };
 
         const productListViewed = {
@@ -59,15 +71,16 @@ export default class ProductCard extends Component {
     };
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        // console.log("Updated")
+        // console.log("Updated", prevProps, prevState, snapshot)
     }
 
     componentDidMount() {
 
-        console.log('Mounted')
-        console.log(this.props.className)
-        console.log(this.props.url)
+        // console.log('Mounted')
+        // console.log(this.props.className)
+        // console.log(this.props.url)
         // console.log(this.rootRef.current.parentElement)
+
 
         let options = {
             // root: document.getElementsByClassName('slider')[0], // this.rootRef.current.parentElement,
@@ -141,7 +154,7 @@ export default class ProductCard extends Component {
             currency: "COP",
             quantity: 1,
             url: "https://kiero.co" + handleFormatUrl(data.product_id, data.title),
-            image_url: data.url,
+            image_url: this.state.image_url,
         });
 
         // console.log(data);
@@ -194,8 +207,6 @@ export default class ProductCard extends Component {
     }
 
     render() {
-        console.log(this.props.url)
-
         return (
             <div ref={this.rootRef} className={this.props.className} onClick={() => this.handleDataInfo(this.props)}>
                 {/* <div className="productFavIcon3">
@@ -223,7 +234,7 @@ export default class ProductCard extends Component {
                     {this.props.statusProduct === 1 ?
                         <div className="product-card-img">
                             <Imagen spinner={true}
-                                    src={this.props.url}
+                                    src={this.state.image_url}
                                     alt={this.props.title}
                             />
                             {/* <picture>
@@ -248,7 +259,7 @@ export default class ProductCard extends Component {
                         <div className="product-card-img spentProduct">
                             <div className='product-spent-home'>Agotado</div>
                             <Imagen spinner={true}
-                                    src={this.props.url}
+                                    src={this.state.image_url}
                                     alt={this.props.title}
                             />
                         </div>}
