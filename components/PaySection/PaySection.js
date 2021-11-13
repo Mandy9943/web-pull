@@ -769,6 +769,13 @@ class PaySection extends Component {
 
       analytics.track('Checkout Started', checkoutStartedValues);
 
+      analytics.track('Checkout Step Viewed', {
+        // checkout_id: '50314b8e9bcf000000000000',
+        step: 1,
+        shipping_method:	'None', //	String representing the shipping method chosen
+        payment_method:	'Payu'	// representing the payment method chosen
+      });
+
     };
     //////
     // this.clientId = typeof(ga) == 'function' && typeof(ga.getAll) == 'function' ? ga.getAll()[0].get('clientId') : "";
