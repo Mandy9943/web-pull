@@ -4,11 +4,8 @@ import ProductCard from '../ProductCard/ProductCard';
 import './ProductsSlider.css';
 import {getProductsBasic} from '../../services/productsApi';
 import Success from '../Login/Success';
-import {isJson} from '../../lib/config';
 import Slider from 'react-animated-slider';
 import {handleFormatUrl} from '../../lib/functions'
-import kiero_logo from '../../assets/img/kiero.png'
-import axios from 'axios';
 
 
 export default class ProductsSlider extends Component {
@@ -149,7 +146,6 @@ export default class ProductsSlider extends Component {
     }
 
 
-
     render() {
         let productList = [];
         let productListMobile = [];
@@ -171,20 +167,6 @@ export default class ProductsSlider extends Component {
                 this.state.data[i].product_id +
                 '?img=' +
                 encodeURIComponent(this.state.data[i].image);
-            // if (this.state.data[i].product_id === 46794294) {
-            //     console.log(newUrl)
-            //     axios({
-            //         method: 'get',
-            //         url: newUrl,
-            //         responseType: 'stream'
-            //     })
-            //         .then((response) => {
-            //             console.log(response)
-            //         });
-            //     console.log(newUrl)
-            //
-            // }
-
             tmpList.push(
                 <ProductCard
                     statusProduct={1}
