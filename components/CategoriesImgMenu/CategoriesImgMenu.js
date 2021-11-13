@@ -65,7 +65,7 @@ export default class CategoriesImgMenu extends Component {
                         <a href="/categoria/belleza" className="categories-img">
                             <div className="item">
                                 <p className="categories-menu-icon">
-                                    <Imagen alt="belleza" src={belleza}/></p>
+                                    <Imagen limpio={true} alt="belleza" src={belleza}/></p>
                                 <p>Belleza y cuidado Personal</p>
                             </div>
                         </a>
@@ -88,7 +88,7 @@ export default class CategoriesImgMenu extends Component {
                         <a href="/categoria/coleccionables" className="categories-img no-movil">
                             <div className="item">
                                 <p className="categories-menu-icon">
-                                    <Imagen src={hobbies} alt="Coleccionables y hobbies"/>
+                                    <Imagen limpio={true} src={hobbies} alt="Coleccionables y hobbies"/>
                                 </p>
                                 <p>Coleccionables y hobbies</p>
                             </div>
@@ -120,7 +120,7 @@ export default class CategoriesImgMenu extends Component {
                         <a href="/categoria/electrodomésticos" className="categories-img no-movil">
                             <div className="item">
                                 <p className="categories-menu-icon">
-                                    <Imagen alt="Electrodomésticos" src={Electrodomesticos}/>
+                                    <Imagen limpio={true} alt="Electrodomésticos" src={Electrodomesticos}/>
                                 </p>
                                 <p>Electrodomésticos</p>
                             </div>
@@ -136,7 +136,7 @@ export default class CategoriesImgMenu extends Component {
                         <a href="/categoria/herramientas" className="categories-img no-movil">
                             <div className="item">
                                 <p className="categories-menu-icon">
-                                    <Imagen src={herramientas} alt="Herramientas y construcción"/>
+                                    <Imagen limpio={true} src={herramientas} alt="Herramientas y construcción"/>
                                 </p>
                                 <p>Herramientas y construcción</p>
                             </div>
@@ -178,7 +178,7 @@ export default class CategoriesImgMenu extends Component {
                         <a href="categoria/libros" className="categories-img no-movil">
                             <div className="item">
                                 <p className="categories-menu-icon">
-                                    <Imagen src={libros} alt="Libros, revistas y comics"/>
+                                    <Imagen limpio={true} src={libros} alt="Libros, revistas y comics"/>
                                 </p>
                                 <p>Libros, revistas y comics</p>
                             </div>
@@ -186,7 +186,7 @@ export default class CategoriesImgMenu extends Component {
                         <a href="/categoria/música" className="categories-img no-movil">
                             <div className="item">
                                 <p className="categories-menu-icon">
-                                    <Imagen src={musica} alt="Música"/>
+                                    <Imagen limpio={true} src={musica} alt="Música"/>
                                 </p>
                                 <p>Música</p>
                             </div>
@@ -194,7 +194,7 @@ export default class CategoriesImgMenu extends Component {
                         <a href="/categoria/relojes-y-joyería" className="categories-img no-movil">
                             <div className="item">
                                 <p className="categories-menu-icon">
-                                    <Imagen src={relojes} alt="Relojes y joyas"/>
+                                    <Imagen limpio={true} src={relojes} alt="Relojes y joyas"/>
                                 </p>
                                 <p>Relojes y joyas</p>
                             </div>
@@ -202,7 +202,7 @@ export default class CategoriesImgMenu extends Component {
                         <a href="/categoria/ropa" className="categories-img no-movil">
                             <div className="item">
                                 <p className="categories-menu-icon">
-                                    <Imagen src={ropa} alt="Relojes y joyas"/>
+                                    <Imagen limpio={true} src={ropa} alt="Relojes y joyas"/>
                                 </p>
                                 <p>Ropa, zapatos y accesorios</p>
                             </div>
@@ -245,7 +245,7 @@ export default class CategoriesImgMenu extends Component {
                     <a href="/categoria/belleza" className="categories-img">
                         <div className="item">
                             <p className="categories-menu-icon">
-                                <Imagen alt="Belleza y cuidado personal" src={belleza}/></p>
+                                <Imagen limpio={true} alt="Belleza y cuidado personal" src={belleza}/></p>
                             <p>Belleza y cuidado personal</p>
                         </div>
                     </a>

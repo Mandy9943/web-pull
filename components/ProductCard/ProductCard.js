@@ -58,16 +58,15 @@ export default class ProductCard extends Component {
         });
     };
 
-    componentDidUpdate() {
-
-        // console.log('Updated');
-
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        // console.log("Updated")
     }
 
     componentDidMount() {
 
-        // console.log('Mounted')
-        // console.log(this.props.className)
+        console.log('Mounted')
+        console.log(this.props.className)
+        console.log(this.props.url)
         // console.log(this.rootRef.current.parentElement)
 
         let options = {
@@ -195,6 +194,7 @@ export default class ProductCard extends Component {
     }
 
     render() {
+        console.log(this.props.url)
 
         return (
             <div ref={this.rootRef} className={this.props.className} onClick={() => this.handleDataInfo(this.props)}>
@@ -223,8 +223,8 @@ export default class ProductCard extends Component {
                     {this.props.statusProduct === 1 ?
                         <div className="product-card-img">
                             <Imagen spinner={true}
-                                src={this.props.url}
-                                alt={this.props.title}
+                                    src={this.props.url}
+                                    alt={this.props.title}
                             />
                             {/* <picture>
 									<source
@@ -248,8 +248,8 @@ export default class ProductCard extends Component {
                         <div className="product-card-img spentProduct">
                             <div className='product-spent-home'>Agotado</div>
                             <Imagen spinner={true}
-                                src={this.props.url}
-                                alt={this.props.title}
+                                    src={this.props.url}
+                                    alt={this.props.title}
                             />
                         </div>}
 

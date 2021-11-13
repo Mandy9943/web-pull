@@ -9,10 +9,12 @@ import "react-loading-skeleton/dist/skeleton.css";
  *
  * Para que salga el Spinner en el cargando la imagen defina spinner={true} sino saldra Skeleton
  *
+ * Para desactivar el spinner o skeleton pasar el atributo limpio = {true}
+ *
  * @version 1.0
  *
  */
-const Imagen = ({...props}) => {
+const Imagen = ({spinner, limpio, ...props}) => {
     const [loading, setLoading] = useState(false)
 
     const handleLoad = (e) => {
@@ -20,7 +22,10 @@ const Imagen = ({...props}) => {
     }
 
     const getAnimate = () => {
-        if (props.spinner) {
+        if (limpio === true) {
+            return null;
+        }
+        if (spinner === true) {
             return <Spinner/>
         } else {
             return <Skeleton/>

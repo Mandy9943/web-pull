@@ -4,9 +4,12 @@ import ProductCard from '../ProductCard/ProductCard';
 import './ProductsSlider.css';
 import {getProductsBasic} from '../../services/productsApi';
 import Success from '../Login/Success';
-import {getImgUrl} from '../../lib/config';
+import {isJson} from '../../lib/config';
 import Slider from 'react-animated-slider';
 import {handleFormatUrl} from '../../lib/functions'
+import kiero_logo from '../../assets/img/kiero.png'
+import axios from 'axios';
+
 
 export default class ProductsSlider extends Component {
     constructor(props) {
@@ -145,6 +148,16 @@ export default class ProductsSlider extends Component {
         });
     }
 
+    getUrlProducto = async (str) => {
+        const response = await axios({
+            method: 'get',
+            url: str,
+            responseType: 'stream'
+        });
+        console.log(response.headers['content-type'])
+        return response.headers['content-type'] === "application/json" ? kiero_logo : response.response;
+    }
+
     render() {
         let productList = [];
         let productListMobile = [];
@@ -166,14 +179,27 @@ export default class ProductsSlider extends Component {
                 this.state.data[i].product_id +
                 '?img=' +
                 encodeURIComponent(this.state.data[i].image);
-            // console.log(this.state.data[i].image)
+            // if (this.state.data[i].product_id === 46794294) {
+            //     console.log(newUrl)
+            //     axios({
+            //         method: 'get',
+            //         url: newUrl,
+            //         responseType: 'stream'
+            //     })
+            //         .then((response) => {
+            //             console.log(response)
+            //         });
+            //     console.log(newUrl)
+            //
+            // }
+
             tmpList.push(
                 <ProductCard
                     statusProduct={1}
                     key={skid++}
                     index={skid++}
                     price={this.state.data[i].price}
-                    url={newUrl}
+                    url={this.getUrlProducto(newUrl)}
                     product_id={this.state.data[i].product_id}
                     title={this.state.data[i].title}
                     category={this.state.data[i].category}
@@ -181,7 +207,6 @@ export default class ProductsSlider extends Component {
                     className={this.state.className}
                 />
             );
-
             if ((i + 1) % 5 === 0 && i > 0) {
                 productList.push(
                     <section key={kid++} className="test">
@@ -190,6 +215,7 @@ export default class ProductsSlider extends Component {
                 );
                 tmpList = [];
             }
+
         }
 
         // // All products (We maybe use this array in mobile version slide change)
