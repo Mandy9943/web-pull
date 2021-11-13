@@ -6,6 +6,10 @@ import {getProductsBasic} from '../../services/productsApi';
 import Success from '../Login/Success';
 import Slider from 'react-animated-slider';
 import {handleFormatUrl} from '../../lib/functions'
+import Imagen from "../Common/Imagen/Imagen";
+import kiero_logo from "../../assets/img/kiero.png";
+import Skeleton from "react-loading-skeleton"
+import ProductCardVacio from "../ProductoCardVacio/ProductoCardVacio";
 
 
 export default class ProductsSlider extends Component {
@@ -13,8 +17,10 @@ export default class ProductsSlider extends Component {
         super(props);
         this.state = {
             data: [],
-            className: 'producto-card',
+            className: 'producto-card'
         };
+
+
     }
 
     componentDidMount() {
@@ -147,6 +153,13 @@ export default class ProductsSlider extends Component {
 
 
     render() {
+
+        // LLenar un arreglo de productos vacios
+        let productListVacio = []
+        for (let i = 0; i < 10; i++) {
+            productListVacio.push(<ProductCardVacio/>)
+        }
+
         let productList = [];
         let productListMobile = [];
         let tmpList = [];
@@ -287,7 +300,15 @@ export default class ProductsSlider extends Component {
                 <div className="slider-movil">
                     <section className="content-products-slider">{productListMobile}</section>
                 </div>
-                <Slider autoplay={false}>{productList}</Slider>
+                {!productList.length ? (
+                    <Slider autoplay={false}>
+                        <section className="test">
+                            {productListVacio}
+                        </section>
+                    </Slider>
+                ) : (
+                    <Slider autoplay={false}>{productList}</Slider>
+                )}
             </div>
         );
     }
