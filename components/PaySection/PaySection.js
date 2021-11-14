@@ -283,6 +283,9 @@ class PaySection extends Component {
   };
 
   renderPayButtonSection = (renderPayu) => {
+    if (Cookies.get("email") !== undefined) {
+      this.createlead(this.props, 1);
+    }
     // const btnEnabled = <button type="submit" onClick={() => this.go(this.props.pgid)}>Comprar</button>;
     const btnEnabled = (
       // // <button type="submit" onClick={() => this.validateDataGoogle(renderPayu)}>
@@ -605,9 +608,7 @@ class PaySection extends Component {
   };
 
     validateDataGoogle = (callBack) => {
-        if (Cookies.get("email") !== undefined) {
-            this.createlead(this.props, 1);
-        }
+
         this.setState({display: "flex"});
         let awaitGoogle = setInterval(() => {
             if (document.readyState === "complete") {
