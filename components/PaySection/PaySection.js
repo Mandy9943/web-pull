@@ -283,9 +283,7 @@ class PaySection extends Component {
   };
 
   renderPayButtonSection = (renderPayu) => {
-    if (Cookies.get("email") !== undefined) {
-      this.createlead(this.props, 1);
-    }
+
     // const btnEnabled = <button type="submit" onClick={() => this.go(this.props.pgid)}>Comprar</button>;
     const btnEnabled = (
       // // <button type="submit" onClick={() => this.validateDataGoogle(renderPayu)}>
@@ -742,6 +740,9 @@ class PaySection extends Component {
         const renderPayu = () => {
             this.setState({display: "none"});
             this.setState({modalAddr: true});
+          if (Cookies.get("email") !== undefined) {
+            this.createlead(this.props, 1);
+          }
 
       const concatCategories = () => {
         var dataCategory = [];
