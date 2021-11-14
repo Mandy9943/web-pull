@@ -4,11 +4,25 @@
 	padding: 40px;
 	color: #111111;
 }
+.wrap-detail-info h2{
+	font-weight: 500;
+}
 
 .wrap-detail-info h4 {
 	font-size: 20px;
 	font-weight: 600;
 	color: #111111;
+}
+
+.detail-infoSeller-wrapp .info-section{
+	margin: 1px 0px;
+	font-size: 16px;
+}
+
+.infoLink{
+	font-size: 16px;
+	color: #2810c0;
+	font-weight: 600;
 }
 
 .item-detail-info {
@@ -22,7 +36,7 @@
 
 .title-section {
 	font-size: 17px;
-	font-weight: 500;
+	font-weight: 700;
 	-webkit-text-size-adjust: none;
 	word-break: break-word;
 }
@@ -146,6 +160,15 @@
 .showGuide {
 	display: none;
 }
+
+.accent{
+	font-size: 16px;
+}
+
+.detail-expandMore{
+	color:#CF0A2C !important;
+}
+
 @media (max-width: 700px) {
 	.wrap-detail-info-movil {
 		padding: 0px;
