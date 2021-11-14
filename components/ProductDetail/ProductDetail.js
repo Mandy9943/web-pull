@@ -245,7 +245,7 @@ class ProductDetail extends Component {
           items: [item],
         },
       });
-      // this.createlead(item);
+      this.createlead(item);
     }
 
   async createlead() {
