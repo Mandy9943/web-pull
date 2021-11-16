@@ -3,15 +3,13 @@ import Link from "next/link";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTruck} from "@fortawesome/free-solid-svg-icons";
 import "./ListCategory.css";
-import {getImgUrl} from "../../lib/config";
+import {getImgProduct} from "../../lib/config";
 import Spinner from "../Common/Spinner";
 import CategoryBanners from "../Common/CategoryBanners/CategoryBanners";
-import Checkbox from "@material-ui/core/Checkbox";
-import Favorite from "@material-ui/icons/Favorite";
-import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import {handleFormatUrl} from "../../lib/functions";
-import Image from "next/image";
 import Imagen from "../Common/Imagen/Imagen";
+import ProductCardList from "./ProductCardList";
+import ProductCardGrid from "./ProductCardGrid";
 
 class ListCategory extends Component {
     constructor(props) {
@@ -334,8 +332,8 @@ class ListCategory extends Component {
     };
 
     render() {
-        const Class = this.props.format === "grid" ? "grid" : "list";
         const {props} = this;
+        const Class = props.format === "grid" ? "grid" : "list";
         return (
             <div className="wrap-list-category">
                 <CategoryBanners category={props.category}/>
@@ -344,147 +342,10 @@ class ListCategory extends Component {
                     {props?.products?.length > 0 &&
                     (props.format === "grid"
                         ? props.products.map((product, i) => (
-                            <a
-                                // href={'/detalle/[product]'}
-                                href={handleFormatUrl(product.product_id, product.title)}
-                                // as={
-                                // 	'/detalle/' +
-                                // 	product.product_id +
-                                // 	'_' +
-                                // 	product.title
-                                // 		.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-                                // 		.replaceAll('//', '%2F')
-                                // 		.replace('%', '')
-                                // 		.split(' ')
-                                // 		.join('-')
-                                // }
-                                key={i + 1}
-                            >
-                                {/* <div className="productFavIcon">
-											<Checkbox
-												style={{ color: '#CF0A2C' }}
-												icon={<FavoriteBorder />}
-												checkedIcon={<Favorite />}
-											/>
-										</div> */}
-                                <div
-                                    className="d-flex formatCard"
-                                    data-index={i}
-                                    key={i}
-                                    onClick={() => this.handleDataInfoSearch(product, i)}
-                                    style={{height: "100% !important"}}
-                                >
-                                    <div className="temp-card">
-                                        <div className="product-card-img">
-                                            <div className="anullProperties">
-                                                <Imagen spinner={true}
-                                                        alt={product.title}
-                                                        src={
-                                                            "https://api.kieroapi.net/img/v1/" +
-                                                            product.product_id +
-                                                            "?img=" +
-                                                            encodeURIComponent(product.image)
-                                                        }
-                                                    // src={getImgUrl(product.image)}
-                                                        className="img"
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="product-card-description-box">
-                                            <h2>
-                                                {" "}
-                                                $
-                                                {product.price
-                                                    ? String(product.price)
-                                                        .split(".")[0]
-                                                        .replace(/(.)(?=(\d{3})+$)/g, "$1.")
-                                                    : "$ ... "}
-                                            </h2>
-                                            <h4>{product.brand} </h4>
-                                            <div className="product-card-description">
-                                                <p>
-                                                    {product.title.substr(0, 60) +
-                                                    (product.title.length > 60 ? "..." : ".")}
-                                                </p>
-                                                {/* {parseInt(product.is_prime) ? ( */}
-                                                <div className="kiero-envios-card">
-                                                    <div className="kiero-envios-card-icon">
-                                                        <FontAwesomeIcon icon={faTruck}/>
-                                                    </div>
-                                                    <div>Envío gratis</div>
-                                                </div>
-                                                {
-                                                    // ) : (
-                                                    // 	''
-                                                    // )}
-                                                }
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
+                            <ProductCardGrid product={product} i={i} handleDataInfoSearch={this.handleDataInfoSearch}/>
                         ))
                         : props.products.map((product, i) => (
-                            <a
-                                // href={'/detalle/[product]'}
-                                href={handleFormatUrl(product.product_id, product.title)}
-                                // as={
-                                // 	'/detalle/' +
-                                // 	product.product_id +
-                                // 	'_' +
-                                // 	product.title
-                                // 		.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-                                // 		.replaceAll('//', '%2F')
-                                // 		.replace('%', '')
-                                // 		.split(' ')
-                                // 		.join('-')
-                                // }
-                                key={i + 1}
-                                onClick={() => this.handleDataInfoSearch(product, i)}
-                            >
-                                <div className="temp-list">
-                                    <div className="product-list-img">
-                                        <div className="anullProperties">
-                                            <Imagen
-                                                spinner={true}
-                                                alt={product.title}
-                                                src={
-                                                    "https://api.kieroapi.net/img/v1/" +
-                                                    product.product_id +
-                                                    "?img=" +
-                                                    encodeURIComponent(product.image)
-                                                }
-                                                // src={getImgUrl(product.image)}
-                                                className="img"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="product-list-description-box">
-                                        <h2>
-                                            ${" "}
-                                            {product.price
-                                                ? String(product.price)
-                                                    .split(".")[0]
-                                                    .replace(/(.)(?=(\d{3})+$)/g, "$1.")
-                                                : "$ ... "}{" "}
-                                        </h2>
-                                        <h4>{product.brand}</h4>
-                                        <p>{product.title}</p>
-                                        {/* {parseInt(product.is_prime) ? ( */}
-                                        <div className="kiero-envios-card">
-                                            <div className="kiero-envios-card-icon">
-                                                <FontAwesomeIcon icon={faTruck}/>
-                                            </div>
-                                            <div>Envío gratis</div>
-                                        </div>
-                                        {
-                                            // ) : (
-                                            // 	''
-                                            // )}
-                                        }
-                                    </div>
-                                </div>
-                            </a>
+                            <ProductCardList product={product} i={i} handleDataInfoSearch={this.handleDataInfoSearch}/>
                         )))}
                 </div>
 

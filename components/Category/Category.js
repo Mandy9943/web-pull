@@ -132,7 +132,7 @@ class Category extends Component {
             }
         });
 
-        if (tmp_filters.indexOf(new_val) == -1) {
+        if (tmp_filters.indexOf(new_val) === -1) {
             tmp_filters.push(new_val);
         }
 
@@ -343,7 +343,7 @@ class Category extends Component {
             })
             .then(() => {
                 if (this.state.categoryLevel === '') {
-                    this.setState({existsCategoryMenu: false});
+                    this.setState({exisctsCategoryMenu: false});
                 } else {
                     if (this.state.categoryLevel === 0) {
                         this.setState({
