@@ -51,7 +51,7 @@ class ListCategory extends Component {
 
                 // console.log(productListViewed)
 
-                analytics.track("Product List Viewed", productListViewed);
+                // analytics.track("Product List Viewed", productListViewed);
             }
 
             // console.log('startObserving')
@@ -305,20 +305,22 @@ class ListCategory extends Component {
         // 	// 			.join('-');
         // 	// },
         // });
+        // Para evitar consultas innecesarias en develop
+        if (process.env.NODE_ENV === "production") {
+            var productClickedData = {
+                product_id: data.product_id,
+                category: data.category,
+                name: data.title,
+                brand: data.brand,
+                price: data.price,
+                quantity: 1,
+                position: data.index,
+                url: "https://kiero.co" + handleFormatUrl(data.product_id, data.title),
+                image_url: data.image,
+            };
+            analytics.track("Product Clicked", productClickedData);
 
-        var productClickedData = {
-            product_id: data.product_id,
-            category: data.category,
-            name: data.title,
-            brand: data.brand,
-            price: data.price,
-            quantity: 1,
-            position: data.index,
-            url: "https://kiero.co" + handleFormatUrl(data.product_id, data.title),
-            image_url: data.image,
-        };
-
-        analytics.track("Product Clicked", productClickedData);
+        }
 
         // window.location.href = '/detalle/' +
         // data.product_id +
