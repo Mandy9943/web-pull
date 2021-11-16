@@ -79,11 +79,13 @@ class ListCategory extends Component {
                             // console.log('Observer')
                             // console.log(entry.target.dataset.index)
                             //console.log(props.products[entry.target.dataset.index])
-                            sendToSegment(
-                                props.products[entry.target.dataset.index],
-                                entry.target.dataset.index
-                            );
-                            observer.unobserve(entry.target);
+                            if (process.env.NODE_ENV === "production") {
+                                sendToSegment(
+                                    props.products[entry.target.dataset.index],
+                                    entry.target.dataset.index
+                                );
+                                observer.unobserve(entry.target);
+                            }
                         }
                     });
                 };
@@ -360,8 +362,30 @@ class ListCategory extends Component {
                                 Lo sentimos, no logramos encontrar lo que buscas.
                             </div>
                         ) : (
-                            <div className="spinner" style={{marginTop: 200}}>
-                                <Spinner/>
+                            <div className={Class}>
+                                {props.format === "grid" ? (
+                                    <React.Fragment>
+                                        <ProductCardGrid empty={true}/>
+                                        <ProductCardGrid empty={true}/>
+                                        <ProductCardGrid empty={true}/>
+                                        <ProductCardGrid empty={true}/>
+                                        <ProductCardGrid empty={true}/>
+                                        <ProductCardGrid empty={true}/>
+                                        <ProductCardGrid empty={true}/>
+                                        <ProductCardGrid empty={true}/>
+                                    </React.Fragment>) : (
+                                    <React.Fragment>
+                                        <ProductCardList empty={true}/>
+                                        <ProductCardList empty={true}/>
+                                        <ProductCardList empty={true}/>
+                                        <ProductCardList empty={true}/>
+                                        <ProductCardList empty={true}/>
+                                        <ProductCardList empty={true}/>
+                                        <ProductCardList empty={true}/>
+                                        <ProductCardList empty={true}/>
+                                    </React.Fragment>
+                                )
+                                }
                             </div>
                         )}
                     </div>
