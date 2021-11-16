@@ -7,6 +7,7 @@ import {baseUrl} from "../../../lib/config";
 import {getFront} from "../../../lib/request";
 import Image from "next/image";
 import Spinner from "../Spinner";
+import Imagen from "../Imagen/Imagen";
 
 class CategoryBanners extends Component {
     constructor(props) {
