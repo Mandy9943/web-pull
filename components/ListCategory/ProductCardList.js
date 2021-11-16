@@ -11,7 +11,7 @@ const ProductCardList = ({product, i, ...props}) => {
         <div>
             <a
                 href={handleFormatUrl(product.product_id, product.title)}
-                key={i + 1}
+
                 onClick={() => props.handleDataInfoSearch(product, i)}
             >
                 <div className="temp-list">

@@ -155,7 +155,7 @@ export default class ProductsSlider extends Component {
         // LLenar un arreglo de productos vacios
         let productListVacio = []
         for (let i = 0; i < 10; i++) {
-            productListVacio.push(<ProductCardVoid/>)
+            productListVacio.push(<ProductCardVoid key={i}/>)
         }
 
         let productList = [];

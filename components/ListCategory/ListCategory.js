@@ -342,10 +342,12 @@ class ListCategory extends Component {
                     {props?.products?.length > 0 &&
                     (props.format === "grid"
                         ? props.products.map((product, i) => (
-                            <ProductCardGrid product={product} i={i} handleDataInfoSearch={this.handleDataInfoSearch}/>
+                            <ProductCardGrid key={i} product={product} i={i}
+                                             handleDataInfoSearch={this.handleDataInfoSearch}/>
                         ))
                         : props.products.map((product, i) => (
-                            <ProductCardList product={product} i={i} handleDataInfoSearch={this.handleDataInfoSearch}/>
+                            <ProductCardList key={i} product={product} i={i}
+                                             handleDataInfoSearch={this.handleDataInfoSearch}/>
                         )))}
                 </div>
 

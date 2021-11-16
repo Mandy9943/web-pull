@@ -11,12 +11,12 @@ const ProductCardList = ({product, i, ...props}) => {
     return (
         <a
             href={handleFormatUrl(product.product_id, product.title)}
-            key={i + 1}
+
         >
             <div
                 className="d-flex formatCard"
                 data-index={i}
-                key={i}
+
                 onClick={() => props.handleDataInfoSearch(product, i)}
                 style={{height: "100% !important"}}
             >
