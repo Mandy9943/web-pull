@@ -733,10 +733,10 @@ class PaySection extends Component {
             price_product: item.price,
             product_title:this.props.props.data.product_global_title,
             product_description:this.props.props.data.description,
-            product_id:this.props.props.data.product_id,
+            product_id:toString(this.props.data.product_id),
             product_link:'',
             product_brand:this.props.props.data.brand,
-            category_id:this.props.props.data.category_id,
+            category_id:toString(this.props.props.data.category_id),
         }
         const error = await createleadClient(data);
     }
