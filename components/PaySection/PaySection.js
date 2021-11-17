@@ -768,7 +768,7 @@ class PaySection extends Component {
 
       analytics.track('Checkout Started', checkoutStartedValues);
 
-      analytics.track('Checkout Step Viewed', {
+      analytics.track('Checkout Step Completed', {
         // checkout_id: '50314b8e9bcf000000000000',
         step: 1,
         shipping_method:	'None', //	String representing the shipping method chosen
