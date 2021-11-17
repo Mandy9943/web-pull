@@ -265,7 +265,13 @@ class ProductDetail extends Component {
       lead_type:"Usuario Registrado que Accedió a los Detalles del Producto",
       category:"",
       sub_category:"",
-      price_product:this.props.data.price
+      price_product:this.props.data.price,
+      product_title:this.props.data.product_global_title,
+      product_description:this.props.data.description,
+      product_id:this.props.data.product_id,
+      product_link:'',
+      product_brand:this.props.data.brand,
+      category_id:this.props.data.category_id,
     }
     const error = await createleadClient(data);
   }
