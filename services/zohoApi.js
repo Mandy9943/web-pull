@@ -4,6 +4,7 @@ export const createlead = async (
   data,
 ) => {
   try {
+    console.log(data);
     const response = await post_test("/create_lead_zoho", data);
     return response;
   } catch (error) {
