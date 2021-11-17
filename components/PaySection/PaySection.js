@@ -730,7 +730,13 @@ class PaySection extends Component {
             lead_type: step === 1 ? "Usuario Registrado que Presionó el Botón Comprar" : "Usuario Invitado (Y Usuario Registrado) que Presionó el botón de Continuar con la transacción",
             category: "",
             sub_category: "",
-            price_product: item.price
+            price_product: item.price,
+            product_title:this.props.props.data.product_global_title,
+            product_description:this.props.props.data.description,
+            product_id:this.props.props.data.product_id,
+            product_link:'',
+            product_brand:this.props.props.data.brand,
+            category_id:this.props.props.data.category_id,
         }
         const error = await createleadClient(data);
     }
