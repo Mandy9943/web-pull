@@ -2,6 +2,7 @@ node_modules
 .map
 .next
 .next/
+_next/
 .idea
 .prettierrc
 
