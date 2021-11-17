@@ -271,7 +271,7 @@ class ProductDetail extends Component {
       product_id:toString(this.props.data.product_id),
       product_link:'',
       product_brand:this.props.data.brand,
-      category_id:this.props.data.category_id,
+      category_id:toString(this.props.data.category_id),
     }
     const error = await createleadClient(data);
   }
