@@ -268,7 +268,7 @@ class ProductDetail extends Component {
       price_product:this.props.data.price,
       product_title:this.props.data.product_global_title,
       product_description:this.props.data.description,
-      product_id:this.props.data.product_id,
+      product_id:toString(this.props.data.product_id),
       product_link:'',
       product_brand:this.props.data.brand,
       category_id:this.props.data.category_id,
