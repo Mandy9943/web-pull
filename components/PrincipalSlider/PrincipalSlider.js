@@ -15,7 +15,6 @@ import "./PrincipalSlider.css";
 import ProductCard from "../ProductCard";
 import Spinner from "./../Common/Spinner";
 import Image from "next/image";
-import Imagen from "../Common/Imagen/Imagen";
 
 export default class PrincipalSlider extends Component {
     constructor(props) {
@@ -116,7 +115,8 @@ export default class PrincipalSlider extends Component {
                             this.state.slides.map((slide, index) => (
                                 <a href={slide.href} key={index}>
                                     <div className="anullProperties">
-                                        <Imagen
+                                        <Image
+                                            layout="fill"
                                             alt={slide.url.replace(/-/g, " ")}
                                             src={slide.url}
                                         />
@@ -144,7 +144,8 @@ export default class PrincipalSlider extends Component {
                             this.state.slidesMobil.map((slide, index) => (
                                 <a href={slide.href} key={index}>
                                     <div className="anullProperties">
-                                        <Imagen
+                                        <Image
+                                            layout="fill"
                                             alt={slide.url.replace(/-/g, " ")}
                                             src={slide.url}
                                         />
