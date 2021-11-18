@@ -249,6 +249,7 @@ class ProductDetail extends Component {
     }
 
   async createlead() {
+	  console.log(this.props.data)
     var data = {
       first_name:Cookies.get("name"),
       city: "",
@@ -263,13 +264,14 @@ class ProductDetail extends Component {
       id:Cookies.get("user_id"),
       country:"",
       lead_type:"Usuario Registrado que Accedió a los Detalles del Producto",
-      category:"",
+      category:this.props.data.category.name,
       sub_category:"",
       price_product:this.props.data.price,
       product_title:this.props.data.product_global_title,
       product_description:this.props.data.description,
       product_id:String(this.props.data.product_id),
       product_link:'',
+      product_image:this.props.data.images[0].url,
       product_brand:this.props.data.brand,
       category_id:String(this.props.data.category_id),
     }
