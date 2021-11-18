@@ -47,6 +47,7 @@ class PaySection extends Component {
       termsOfService: "",
       identification: "",
       typeIdentification: "",
+      typeIdentificationName: "",
       display: "none",
       gclid: "",
       clientId: "",
@@ -593,6 +594,9 @@ class PaySection extends Component {
       name == "typeIdentification"
     ) {
       this.setState({ [name]: value });
+      if (name == "typeIdentification")
+      this.setState({ ['typeIdentificationName']: e.target.options[e.target.selectedIndex].text });
+
     }
     if (name === "terms") {
       this.setState({
@@ -711,7 +715,8 @@ class PaySection extends Component {
     // };
 
     async createlead(item, step) {
-
+        console.log(this.state);
+        console.log(item);
         var data = {
             first_name: Cookies.get("name"),
             city: this.state.city,
@@ -721,21 +726,21 @@ class PaySection extends Component {
             phone: this.state.mobile_phone,
             second_phone: "",
             last_name: Cookies.get("last_name"),
-            type_id: this.state.typeIdentification,
+            type_id: this.state.typeIdentificationName,
             num_id: this.state.identification,
             id: Cookies.get("user_id"),
             country: "CO",
             lead_type: step === 1 ? "Usuario Registrado que Presionó el Botón Comprar" : "Usuario Invitado (Y Usuario Registrado) que Presionó el botón de Continuar con la transacción",
-            category: this.props.data.category.name,
+            category: item.props.data.category.name,
             sub_category: "",
             price_product: item.price,
-            product_title:this.props.props.data.product_global_title,
-            product_description:this.props.props.data.description,
-            product_id:String(item.product_global_id),
+            product_title:item.props.data.product_global_title,
+            product_description:item.props.data.description,
+            product_id:String(item.props.data.product_global_id),
             product_link:'',
-            product_image:this.props.data.images[0].url,
-            product_brand:this.props.props.data.brand,
-            category_id:String(this.props.props.data.category_id),
+            product_image:item.props.data.images[0].url,
+            product_brand:item.props.data.brand,
+            category_id:String(item.props.data.category_id),
         }
 
         const error = await createleadClient(data);
