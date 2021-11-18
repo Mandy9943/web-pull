@@ -268,6 +268,20 @@ asumir el valor del retorno a una de las direcciones que se le indicará, el val
           </section>
         </div>
         <section className="guarantee no-web">
+          <div>
+            <Link href="/refund_and_return_policy">
+              <a className="infoLink">Refund policy</a>
+            </Link>
+          </div>
+          <div>
+            <Link href="/refund_and_return_policy">
+              <a className="infoLink">Política de reembolso</a>
+            </Link>
+          </div>
+          <br />
+          <br />
+          <p className="title-section accent seller-name">SPICE STOCK LLC.</p>
+          <br />
           <h5>Garantía</h5>
           <span className="title">Compra protegida</span>
           <span className="sub-title">
