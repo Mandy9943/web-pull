@@ -711,9 +711,7 @@ class PaySection extends Component {
     // };
 
     async createlead(item, step) {
-        if (step === 2) {
 
-        }
         var data = {
             first_name: Cookies.get("name"),
             city: this.state.city,
@@ -733,10 +731,10 @@ class PaySection extends Component {
             price_product: item.price,
             product_title:this.props.props.data.product_global_title,
             product_description:this.props.props.data.description,
-            product_id:toString(this.props.data.product_global_id),
+            product_id:String(item.product_global_id),
             product_link:'',
             product_brand:this.props.props.data.brand,
-            category_id:toString(this.props.props.data.category_id),
+            category_id:String(this.props.props.data.category_id),
         }
 
         const error = await createleadClient(data);
