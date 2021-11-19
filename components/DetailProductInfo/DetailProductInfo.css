@@ -1,29 +1,46 @@
 .wrap-detail-info {
   border-top: 0.5px solid #e2e2e2;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   padding: 40px;
   color: #111111;
+}
+.wrap-detail-info h2 {
+  font-weight: 500;
 }
 
 .wrap-detail-info h4 {
   font-size: 20px;
   font-weight: 600;
   color: #111111;
+}
 
+.detail-infoSeller-wrapp .info-section {
+  margin: 1px 0px;
+  font-size: 16px;
+}
+
+.infoLink {
+  font-size: 16px;
+  color: #2810c0;
+  font-weight: 600;
 }
 
 .item-detail-info {
   margin-bottom: 20px;
 }
 
-.justifyText{
+.justifyText {
   text-align: justify !important;
+  word-break: break-word;
 }
+
 .title-section {
   font-size: 17px;
   font-weight: 500;
   -webkit-text-size-adjust: none;
+  word-break: break-word;
 }
+
 .item-detail-info:nth-child(2) {
   margin-top: 20px;
 }
@@ -41,41 +58,53 @@
   line-break: anywhere;
 }
 
-.characteristics, .guarantee, .characteristics-web {
-  font-family: 'Montserrat', sans-serif;
+.characteristics,
+.guarantee,
+.characteristics-web {
+  font-family: "Montserrat", sans-serif;
   padding: 20px;
   border-bottom: 0.5px solid #e2e2e2;
   background: white;
 }
 
-.characteristics .edit, .guarantee .edit, .characteristics-web .edit {
+.characteristics .edit,
+.guarantee .edit,
+.characteristics-web .edit {
   -ms-grid-columns: 1fr auto;
-      grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr auto;
   font-size: 16px;
   -webkit-text-size-adjust: none;
 }
 
-.characteristics .info, .guarantee .info, .characteristics-web .info {
+.characteristics .info,
+.guarantee .info,
+.characteristics-web .info {
   display: -ms-grid;
   display: grid;
   -webkit-text-size-adjust: none;
   -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
 }
 
-.characteristics .info .item, .guarantee .info .item, .characteristics-web .info .item {
+.characteristics .info .item,
+.guarantee .info .item,
+.characteristics-web .info .item {
   display: -ms-grid;
   display: grid;
   margin-top: 15px;
 }
 
-.characteristics .info .item .title, .guarantee .info .item .title, .characteristics-web .info .item .title {
+.characteristics .info .item .title,
+.guarantee .info .item .title,
+.characteristics-web .info .item .title {
   font-size: 13px;
   -webkit-text-size-adjust: none;
   color: #111111;
 }
 
-.characteristics .info .item .sub-title, .guarantee .info .item .sub-title, .characteristics-web .info .item .sub-title {
+.characteristics .info .item .sub-title,
+.guarantee .info .item .sub-title,
+.characteristics-web .info .item .sub-title {
   font-size: 14px;
   font-weight: 400;
   color: #111111;
@@ -88,7 +117,8 @@
   border: none;
 }
 
-.characteristics-web .info-shops, .characteristics-web .edit {
+.characteristics-web .info-shops,
+.characteristics-web .edit {
   font-size: 20px;
 }
 
@@ -127,9 +157,21 @@
   -webkit-text-size-adjust: none;
   font-size: 15px;
 }
-.showGuide{
+.showGuide {
   display: none;
 }
+
+.accent {
+  font-size: 17px;
+}
+.seller-name {
+  font-weight: 600;
+}
+
+.detail-expandMore {
+  color: #cf0a2c !important;
+}
+
 @media (max-width: 700px) {
   .wrap-detail-info-movil {
     padding: 0px;
@@ -137,7 +179,7 @@
   .wrap-detail-info {
     display: none;
   }
-  .showGuide{
+  .showGuide {
     width: 100%;
     display: initial;
   }
@@ -151,7 +193,7 @@
     -webkit-text-size-adjust: none;
     color: #111111;
   }
-  .justifyText{
+  .justifyText {
     text-align: justify !important;
     font-size: 13px;
     -webkit-text-size-adjust: none;
@@ -166,20 +208,19 @@
     -webkit-text-size-adjust: none;
     color: #111111;
     font-size: 14px !important;
-    font-weight:500;
+    font-weight: 500;
   }
   .guarantee .sub-title {
     display: block;
     color: #111111;
     -webkit-text-size-adjust: none;
-    font-size: 13px  !important;
+    font-size: 13px !important;
   }
   .item-detail-info p {
     margin-bottom: 10px;
-    font-size: 14px  !important;
+    font-size: 14px !important;
     -webkit-text-size-adjust: none;
     color: #111111;
   }
-  
 }
 /*# sourceMappingURL=DetailProductInfo.css.map */

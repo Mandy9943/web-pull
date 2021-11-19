@@ -3,6 +3,7 @@ import Link from 'next/link';
 import CardImg from '../../assets/img/cards-img/kohgsdfRecurso28.png';
 import './ProductItem.css';
 import { getImgUrl } from '../../lib/config';
+import {handleFormatUrl} from '../../lib/functions'
 
 export default class ProductItem extends Component {
 	constructor(props) {
@@ -11,15 +12,7 @@ export default class ProductItem extends Component {
 
 	render() {
 		const product = this.props.order.product;
-		console.log(product.user.name);
-		const detail_link =
-			'/detalle/' +
-			product.product_id +
-			'_' +
-			product.title
-				.replace(/[^\w\s]/gi, '')
-				.split(' ')
-				.join('-');
+		const detail_link = handleFormatUrl(product.product_id, product.title);
 		let image_url =
 			product.images[0] && product.images[0].url !== ''
 				? getImgUrl(product.images[0].url,1000)
@@ -85,7 +78,7 @@ export default class ProductItem extends Component {
 						
 							<section className="product">
 								<div className="product-card-img">
-									<img alt={product.title} src={getImgUrlMinMin(image_url)} />
+									<img loading="lazy" alt={product.title} src={getImgUrlMinMin(image_url)} />
 								</div>
 								<section className="description">
 									<h3>{product.title ? product.title : ' - '}</h3>
@@ -94,7 +87,7 @@ export default class ProductItem extends Component {
 									</h3>
 									<h3 className="product-stock">
 										{product.stock
-											? 'Disponibles ' + product.stock
+											? 'Disponibles ' + product.stock3
 											: 'No hay disponibles'}
 									</h3>
 								</section>

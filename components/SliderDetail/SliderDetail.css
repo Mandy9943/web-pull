@@ -2,6 +2,14 @@
   margin-bottom: 20px;
 }
 
+.imageProduct div div {
+  width: 100%;
+}
+
+.anullProperties .imgZoom {
+  width: 100% !important;
+}
+
 .SliderDetail .mobil {
   display: none;
   min-height: 190px;
@@ -19,7 +27,8 @@
   .SliderDetail .mobil .slider img {
     width: 100% !important;
   }
-  .SliderDetail .mobil .slider .previousButton, .SliderDetail .mobil .slider .nextButton {
+  .SliderDetail .mobil .slider .previousButton,
+  .SliderDetail .mobil .slider .nextButton {
     display: none;
   }
 }

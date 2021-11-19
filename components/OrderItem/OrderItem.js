@@ -61,6 +61,7 @@ export default function OrderItem({
         <section className="order">
           <div className="order-card-img">
             <img
+              loading="lazy"
               alt="Foto del producto"
               src={
                 item.data.product.imagescsv &&

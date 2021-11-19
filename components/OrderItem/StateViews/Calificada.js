@@ -28,6 +28,7 @@ export default function Calificada({ item, toggle, showModal, user }) {
 				<div className="vendor-reputation">
 					<section className="info">
 						<img
+							loading="lazy"
 							alt="Foto del vendedor"
 							src={detailData.data.seller.photo}
 							width="65"
@@ -48,6 +49,7 @@ export default function Calificada({ item, toggle, showModal, user }) {
 					<br />
 					<section className="info">
 						<img
+							loading="lazy"
 							alt="Foto del producto"
 							src={detailData.data.product.images[0].url}
 							width="65"
@@ -67,6 +69,7 @@ export default function Calificada({ item, toggle, showModal, user }) {
 							<section className="thumbnails">
 								{detailData.rate_purchase_data.images_rate_purchase.map((url, i) => (
 									<img
+										loading="lazy"
 										src={url}
 										key={i}
 										width="65"

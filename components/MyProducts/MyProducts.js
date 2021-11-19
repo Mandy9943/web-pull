@@ -11,6 +11,7 @@ import { faSearch, faThList, faEllipsisV } from '@fortawesome/free-solid-svg-ico
 import Pagination from '../Common/Pagination/Pagination';
 import Spinner from '../Common/Spinner';
 import Modal from '../Common/Modal/Modal';
+import {handleFormatUrl} from '../../lib/functions'
 
 export default class MyProducts extends Component {
 	constructor(props) {
@@ -131,21 +132,14 @@ export default class MyProducts extends Component {
 				? getImgUrl(product.images[0].url)
 				: 'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png';
 
-			const detail_link =
-				'/detalle/' +
-				product.product_id +
-				'_' +
-				product.title
-					.replace(/[^\w\s]/gi, '')
-					.split(' ')
-					.join('-');
+			const detail_link = handleFormatUrl(product.product_id, product.title);
 
 			return (
 				<div key={i} className="option-list">
 					<h5>Producto</h5> <h5>Categoria</h5> <h5>Fecha</h5> <h5>Id product</h5>
 					<div className="option product">
 						<div className="product-card-img">
-							<img alt={product.title} src={image_url} />{' '}
+							<img loading={lazy} alt={product.title} src={image_url} />{' '}
 						</div>
 						<h3>{product.title}</h3>
 					</div>
@@ -171,15 +165,13 @@ export default class MyProducts extends Component {
 								this.state.optionPanel[i] === true ? 'actions active' : 'actions'
 							}
 						>
-							<Link
+							{/* <Link
 								href={'publicacion/[product]'}
 								as={'publicacion/' + product.product_id}
-							>
-								<a>Modificar</a>
-							</Link>
-							<Link href={'/detalle/[product]'} as={detail_link}>
-								<a>Ver publicación</a>
-							</Link>
+							> */}
+								<a href={'publicacion/' + product.product_id}>Modificar</a>
+							{/* <Link href={'/detalle/[product]'} as={detail_link}> */}
+								<a href={detail_link}>Ver publicación</a>
 							<a
 								style={{ cursor: 'pointer' }}
 								onClick={(e) =>
@@ -188,9 +180,8 @@ export default class MyProducts extends Component {
 							>
 								{product.status === 1 ? 'Pausar' : 'Activar'}
 							</a>
-							<Link href={'/detalle/[product]'} as={detail_link}>
-								<a>Ayuda</a>
-							</Link>
+							{/* <Link href={'/detalle/[product]'} as={detail_link}> */}
+								<a href={detail_link}>Ayuda</a>
 						</section>
 					</div>
 				</div>

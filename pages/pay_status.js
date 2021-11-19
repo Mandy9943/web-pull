@@ -1,14 +1,14 @@
-import React, {useState} from "react";
-import { useRouter,  } from "next/router";
-import Head from "next/head";
-import { getUser, isAuthenticated, getJwt } from "../lib/auth";
-import Header from "../components/Common/Header/Header";
-import Footer from "../components/Common/Footer/Footer";
+import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+import Head from 'next/head';
+import { getUser, isAuthenticated, getJwt } from '../lib/auth';
+import Header from '../components/Common/Header/Header';
+import Footer from '../components/Common/Footer/Footer';
 import './sass/order.css';
-import favicon from "../assets/img/favicon.svg";
-import Link from "next/link";
+import favicon from '../assets/img/favicon.svg';
+import Link from 'next/link';
 import Cookies from 'js-cookie';
-import {KlaviyoClient} from "../lib/functions";
+// import { KlaviyoClient } from '../lib/functions';
 
 function PayStatus({ data, u_data }) {
   const router = useRouter()
@@ -122,34 +122,34 @@ function PayStatus({ data, u_data }) {
                     'payment_type': paramsUrl.lapPaymentMethodType.toString(),
                     'num_items': quantity
                   })
-                    var item = {
-                        actionField: {
-                            'id': paramsUrl.transactionId,                         // Transaction ID. Required for purchases and refunds.
-                            'affiliation': 'SpiceStock',
-                            'revenue': paramsUrl.TX_VALUE.toString(),                     // Total transaction value (incl. tax and shipping)
-                            'tax':paramsUrl.TX_TAX.toString(),
-                            'shipping': '0',
-                            'aw_merchant_id': '450067839',
-                            'aw_feed_country': 'CO',
-                            'aw_feed_language': 'ES',
-                            "items": [
-                                {
-                                    "id": listValue[1],
-                                    "quantity": quantity,
-                                    "price": listValue[2]
-                                }
-                            ]
-                        },
-                        products: [{                            // List of productFieldObjects.
-                            'name': listValue[0],     // Name or ID is required.
-                            'id': listValue[1],
-                            'price': listValue[2],
-                            'brand': listValue[3],
-                            'category': listValue[4],
-                            'quantity': quantity                            // Optional fields may be omitted or set to empty string.
-                        }
-                        ]
-                    };
+                    // var item = {
+                    //     actionField: {
+                    //         'id': paramsUrl.transactionId,                         // Transaction ID. Required for purchases and refunds.
+                    //         'affiliation': 'SpiceStock',
+                    //         'revenue': paramsUrl.TX_VALUE.toString(),                     // Total transaction value (incl. tax and shipping)
+                    //         'tax':paramsUrl.TX_TAX.toString(),
+                    //         'shipping': '0',
+                    //         'aw_merchant_id': '450067839',
+                    //         'aw_feed_country': 'CO',
+                    //         'aw_feed_language': 'ES',
+                    //         "items": [
+                    //             {
+                    //                 "id": listValue[1],
+                    //                 "quantity": quantity,
+                    //                 "price": listValue[2]
+                    //             }
+                    //         ]
+                    //     },
+                    //     products: [{                            // List of productFieldObjects.
+                    //         'name': listValue[0],     // Name or ID is required.
+                    //         'id': listValue[1],
+                    //         'price': listValue[2],
+                    //         'brand': listValue[3],
+                    //         'category': listValue[4],
+                    //         'quantity': quantity                            // Optional fields may be omitted or set to empty string.
+                    //     }
+                    //     ]
+                    // };
                     
                   // dataLayer.push({
                   //     event:'pending_transaction',
@@ -158,15 +158,15 @@ function PayStatus({ data, u_data }) {
                   //     }
                   // });
 
-                  KlaviyoClient.public.track({
-                      event: 'pending_transaction',
-                      email: paramsUrl.buyerEmail,
-                      properties: {
-                          items: [
-                              item
-                          ]
-                      }
-                  });
+                  // KlaviyoClient.public.track({
+                  //     event: 'pending_transaction',
+                  //     email: paramsUrl.buyerEmail,
+                  //     properties: {
+                  //         items: [
+                  //             item
+                  //         ]
+                  //     }
+                  // });
               }
           }
           localStorage.setItem('referenceCode',paramsUrl.referenceCode);
@@ -192,34 +192,46 @@ function PayStatus({ data, u_data }) {
       {/* <div className="container-success">
         
       </div>  */}
-      <section className="order-content">
-        
-        <section className="info">
-          <h3 className="title">DATOS DE RESULTADO</h3>
-          {/* <span className="user-id">USERID: <strong>{data.user_id}</strong></span> */}
-          <span>Referencia de pago: <strong>{params.referenceCode}</strong></span>
-          <span>SELLERID: <strong>{params.extra2}</strong></span>
-          <span>Método de pago: <strong>{params.lapPaymentMethodType}</strong></span>
-          <span>Estado del pago:<strong>{params.lapResponseCode == "APPROVED" ? "APROBADO" : params.lapResponseCode == "DECLINED" ? "RECHAZADO" : "PENDIENTE"}</strong> </span>
-          {/* <span>Total a pagar: <strong>{params.cus} </strong></span> */}
-          <span className="name-product">Nombre del producto: <strong>{params.description}</strong></span>
-        </section>
-      
-      </section>
-      <div className="go-purchases-link">
-         <Link href="/">
-          <a>
-              <p>Ir a compras</p>
-          </a>
-        </Link>
-      </div>
-        
-      <Footer />
-    </div>
-  );
+			<section className="order-content">
+				<section className="info">
+					<h3 className="title">DATOS DE RESULTADO</h3>
+					{/* <span className="user-id">USERID: <strong>{data.user_id}</strong></span> */}
+					<span>
+						Referencia de pago: <strong>{params.referenceCode}</strong>
+					</span>
+					<span>
+						SELLERID: <strong>{params.extra2}</strong>
+					</span>
+					<span>
+						Método de pago: <strong>{params.lapPaymentMethodType}</strong>
+					</span>
+					<span>
+						Estado del pago:
+						<strong>
+							{params.lapResponseCode == 'APPROVED'
+								? 'APROBADO'
+								: params.lapResponseCode == 'DECLINED'
+								? 'RECHAZADO'
+								: 'PENDIENTE'}
+						</strong>{' '}
+					</span>
+					{/* <span>Total a pagar: <strong>{params.cus} </strong></span> */}
+					<span className="name-product">
+						Nombre del producto: <strong>{params.description}</strong>
+					</span>
+				</section>
+			</section>
+			<div className="go-purchases-link">
+				<Link href="/">
+					<a>
+						<p>Ir a compras</p>
+					</a>
+				</Link>
+			</div>
+
+			<Footer />
+		</div>
+	);
 }
 
-
-
-
-export default PayStatus
+export default PayStatus;

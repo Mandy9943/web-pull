@@ -84,6 +84,7 @@ class Filter extends Component {
 			fromPrice: pattern.test(value) ? value : value.slice(0, -1),
 		});
 	}
+	
 	validateToPrice(event) {
 		const { name, value } = event.target;
 		const pattern = new RegExp('^[0-9]*$');

@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
-import Link from 'next/link';
-import './Home.css';
-import Social from './../SocialBar';
-import ProductCardFinding from '../Common/ProductCardFinding/ProductCardFinding';
-import Logo1 from '../../assets/img/logo-social.png';
-import Logo2 from '../../assets/img/logo-social1.png';
+import React, { Component } from "react";
+import Link from "next/link";
+import "./Home.css";
+import Social from "./../SocialBar";
+import ProductCardFinding from "../Common/ProductCardFinding/ProductCardFinding";
+import Logo1 from "../../assets/img/logo-social.png";
+import Logo2 from "../../assets/img/logo-social1.png";
 
-import dynamic from 'next/dynamic';
-
+import dynamic from "next/dynamic";
 // import Nav from "../Common/Nav/Nav";
 // import PrincipalSlider from './../PrincipalSlider';
 // import Payment from './../PaymentBar';
@@ -23,26 +22,27 @@ import dynamic from 'next/dynamic';
 // import News from './../News';
 // import Footer from '../Common/Footer';
 
-const Nav = dynamic(() => import('../Common/Nav/Nav'));
-const PrincipalSlider = dynamic(() => import('./../PrincipalSlider'));
-const Payment = dynamic(() => import('./../PaymentBar'));
-const ProductsSlider = dynamic(() => import('./../ProductsSlider'));
-const SecundarySlider = dynamic(() => import('./../SecundarySlider'));
-const LoginMovil = dynamic(() => import('./../LoginMovil'));
-const Finding = dynamic(() => import('./../Finding'));
-const Explorer = dynamic(() => import('./../Common/Explorer'));
-const ListProductMovil = dynamic(() => import('./../listProductMovil/listProductMovil'));
-const CategoriesImgMenu = dynamic(() => import('./../CategoriesImgMenu'));
-const Tickets = dynamic(() => import('./../Tickets'));
-const Info = dynamic(() => import('./../Info'));
-const News = dynamic(() => import('./../News'));
-const Footer = dynamic(() => import('../Common/Footer'));
+const Nav = dynamic(() => import("../Common/Nav/Nav"));
+const PrincipalSlider = dynamic(() => import("./../PrincipalSlider"));
+const Payment = dynamic(() => import("./../PaymentBar"));
+const ProductsSlider = dynamic(() => import("./../ProductsSlider"));
+const SecundarySlider = dynamic(() => import("./../SecundarySlider"));
+const LoginMovil = dynamic(() => import("./../LoginMovil"));
+const Finding = dynamic(() => import("./../Finding"));
+const Explorer = dynamic(() => import("./../Common/Explorer"));
+const ListProductMovil = dynamic(() =>
+  import("./../listProductMovil/listProductMovil")
+);
+const CategoriesImgMenu = dynamic(() => import("./../CategoriesImgMenu"));
+const Tickets = dynamic(() => import("./../Tickets"));
+const Info = dynamic(() => import("./../Info"));
+const Footer = dynamic(() => import("../Common/Footer"));
 
 export default class Home extends Component {
-	render() {
-		//console.log(this.props.user_data)
-		let u_data = this.props.user_data;
-		let authenticated = this.props.authenticated;
+  render() {
+    //console.log(this.props.user_data)
+    let u_data = this.props.user_data;
+    let authenticated = this.props.authenticated;
 
 		return (
 			<div className="container">
@@ -94,20 +94,16 @@ export default class Home extends Component {
 					<Tickets />
 				</div>
 				<Info />
-				<News />
+				{/* <News /> */}
 				{/*<Social />*/}
 				<Footer />
 				<div className="footer-social">
-					<Link href={'//sic.gov.co'}>
-						<a target="_blank">
-							<img alt="sic.gov.co" src={Logo1} />
-						</a>
-					</Link>
-					<Link href={'//sic.gov.co'}>
-						<a target="_blank">
-							<img alt="sic.gov.co" src={Logo2} />
-						</a>
-					</Link>
+					<a href="https://www.sic.gov.co" rel="noopener noreferrer" target="_blank">
+						<img loading="lazy" alt="Superintendencia de Industria y Comercio" src={Logo1} />
+					</a>
+					<a href="https://www.sic.gov.co" rel="noopener noreferrer" target="_blank">
+						<img loading="lazy" alt="Superintendencia de Industria y Comercio" src={Logo2} />
+					</a>
 				</div>
 			</div>
 		);

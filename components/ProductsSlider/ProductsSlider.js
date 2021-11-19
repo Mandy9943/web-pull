@@ -6,21 +6,21 @@ import { getProductsBasic } from '../../services/productsApi';
 import Success from '../Login/Success';
 import { getImgUrl } from '../../lib/config';
 import Slider from 'react-animated-slider';
+import {handleFormatUrl} from '../../lib/functions'
 
 export default class ProductsSlider extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			data: [],
-			className: 'producto-card'
+			className: 'producto-card',
 		};
 	}
 	componentDidMount() {
-
-		
 		const sliderContentProductDetail = document.querySelector('.containerProductDetail');
-		sliderContentProductDetail ? this.setState({ className:'CardInPerfil producto-card' }) : this.setState({ className:'producto-card' })
-	
+		sliderContentProductDetail
+			? this.setState({ className: 'CardInPerfil producto-card' })
+			: this.setState({ className: 'producto-card' });
 
 		getProductsBasic(this.props.category, 25).then((response) => {
 			let data = [];
@@ -51,7 +51,7 @@ export default class ProductsSlider extends Component {
 			// dataLayer.push({
 			// 	'event': 'view_item_list',
 			// 	'ecommerce': {
-			// 	'items': 
+			// 	'items':
 			// 		dataLayerGoogleSlidersG4
 			// 	}
 			// })
@@ -82,30 +82,43 @@ export default class ProductsSlider extends Component {
 			// 	}
 			// })
 
-			const product_list = response.data.results?.map((prod, index) => {
-				return {
-					name: prod.title,
-					product_id: prod.product_id,
-					price: prod.price,
-					brand: prod.brand,
-					category: prod.category,
-					position: index + 1,
-					url: 'https://kiero.co/detalle/' + prod.product_id + '_' + prod.title
-																			.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-																			.replace('//', '%2F')
-																			.replace('%', '')
-																			.split(' ')
-																			.join('-'),
-					image_url: prod.image
-				};
-			});
+			// const product_list = response.data.results?.map((prod, index) => {
+			// 	return {
+			// 		name: prod.title,
+			// 		product_id: prod.product_id,
+			// 		price: prod.price,
+			// 		brand: prod.brand,
+			// 		category: prod.category,
+			// 		position: index + 1,
+			// 		url: 'https://kiero.co/detalle/' + prod.product_id + '_' + prod.title
+			// 																.replace(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+			// 																.replace('//', '%2F')
+			// 																.replace('%', '')
+			// 																.split(' ')
+			// 																.join('-'),
+			// 		image_url: prod.image
+			// 	};
+			// });
 
-			analytics.track('Product List Viewed', {
-				nonInteraction: 1,
-				list_id: 'productsSlider',
-				category: this.props.category,
-				products: product_list
-			});
+			// // Send the event in smaller chunks 
+			// // TODO: Are all the products seen by the user? If not we should send only those viewed.
+			// // and send the others when the user push the slider.
+			// let temporary, chunk = 5;
+			// for (let i = 0, j = product_list.length; i < j; i += chunk) {
+			// 		temporary = product_list.slice(i, i + chunk);
+
+			// 		let productsSliderViewed = {
+			// 			nonInteraction: 1,
+			// 			list_id: 'productsSlider ' + i + ' - ' + (i+chunk),
+			// 			category: this.props.category,
+			// 			products: temporary
+			// 		}
+
+			// 		console.log(productsSliderViewed)
+
+			// 		//analytics.track('Product List Viewed', productsSliderViewed);
+
+			// }
 
 			// const gtagSlidersUniversal = response.data.results?.map((prod, index) => {
 			// 	return {
@@ -129,13 +142,9 @@ export default class ProductsSlider extends Component {
 			// 	"items": gtagSlidersUniversal
 			// })
 		});
-		
-	
 	}
-	
 
 	render() {
-		
 		let productList = [];
 		let productListMobile = [];
 		let tmpList = [];
@@ -151,10 +160,15 @@ export default class ProductsSlider extends Component {
 			// }
 			// console.log( encodeURIComponent(this.state.data[i].image), "imagen:", '?img=' + this.state.data[i].image)
 
-			let newUrl = 'https://api.kieroapi.net/img/v1/'+ this.state.data[i].product_id + '?img=' + encodeURIComponent(this.state.data[i].image)
+			let newUrl =
+				'https://api.kieroapi.net/img/v1/' +
+				this.state.data[i].product_id +
+				'?img=' +
+				encodeURIComponent(this.state.data[i].image);
 			// console.log(this.state.data[i].image)
 			tmpList.push(
 				<ProductCard
+					statusProduct={1}
 					key={skid++}
 					index={skid++}
 					price={this.state.data[i].price}
@@ -177,6 +191,42 @@ export default class ProductsSlider extends Component {
 			}
 		}
 
+		// // All products (We maybe use this array in mobile version slide change)
+		// this.state.product_list = this.state.data?.map((prod, index) => {
+		// 	return {
+		// 		name: prod.title,
+		// 		product_id: prod.product_id,
+		// 		price: prod.price,
+		// 		brand: prod.brand,
+		// 		category: prod.category,
+		// 		position: index + 1,
+		// 		url: 'https://kiero.co' + handleFormatUrl(prod.product_id, prod.title) ,
+		// 		image_url: prod.image
+		// 	};
+		// });
+
+		// // Slide products (Prepare an array of 5 products for each slide)
+		// this.state.products_slide = [];
+		// let chunk = 5;
+		// for (let i = 0, j = this.state.product_list.length; i < j; i += chunk) {
+		// 	this.state.products_slide[i/5] = this.state.product_list.slice(i, i + chunk);
+		// }
+
+		// // Send first five products shown
+		// if (this.state.products_slide.length) {
+
+		// 	let productsSliderViewed = {
+		// 		nonInteraction: 1,
+		// 		list_id: 'productsSlider ' + 0,
+		// 		category: this.props.category,
+		// 		products: this.state.products_slide[0]
+		// 	}
+			
+		// 	// console.log(productsSliderViewed)
+
+		// 	analytics.track('Product List Viewed', productsSliderViewed);
+		// }
+
 		if (tmpList.length > 0) {
 			// console.log(tmpList);
 			productList.push(
@@ -194,9 +244,14 @@ export default class ProductsSlider extends Component {
 			// 	url =
 			// 		'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png';
 			// }
-			let newUrl = 'https://api.kieroapi.net/img/v1/'+ this.state.data[i].product_id + '?img=' + encodeURIComponent(this.state.data[i].image)
+			let newUrl =
+				'https://api.kieroapi.net/img/v1/' +
+				this.state.data[i].product_id +
+				'?img=' +
+				encodeURIComponent(this.state.data[i].image);
 			productListMobile.push(
 				<ProductCard
+					statusProduct={1}
 					style={{ padding: '30px' }}
 					key={skid++}
 					index={skid++}
@@ -222,7 +277,7 @@ export default class ProductsSlider extends Component {
 						> */}
 						<a
 							className="accent"
-							href={this.props.category && '/categoria/' + this.props.category }
+							href={this.props.category && '/categoria/' + this.props.category}
 						>
 							Ver todos
 						</a>

@@ -15,12 +15,14 @@ import Select from "../Common/SelectDropdown/Select";
 import Spinner from "../Common/Spinner";
 import Checkbox from "@material-ui/core/Checkbox";
 import Modal from "../Common/Modal/Modal";
-import { KlaviyoClient } from "../../lib/functions";
+// import { KlaviyoClient } from "../../lib/functions";
 import Cookies from "js-cookie";
 import {handleFormatName} from '../../lib/functions'
+import {handleFormatUrl} from '../../lib/functions'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import { Button, Modal } from 'react-bootstrap';
 import CryptoJS from 'crypto-js';
+import {createleadClient} from "../../lib/zoho";
 
 class PaySection extends Component {
   constructor(props) {
@@ -45,6 +47,7 @@ class PaySection extends Component {
       termsOfService: "",
       identification: "",
       typeIdentification: "",
+      typeIdentificationName: "",
       display: "none",
       gclid: "",
       clientId: "",
@@ -281,9 +284,11 @@ class PaySection extends Component {
   };
 
   renderPayButtonSection = (renderPayu) => {
+
     // const btnEnabled = <button type="submit" onClick={() => this.go(this.props.pgid)}>Comprar</button>;
     const btnEnabled = (
-      <button type="submit" onClick={() => this.validateDataGoogle(renderPayu)}>
+      // // <button type="submit" onClick={() => this.validateDataGoogle(renderPayu)}>
+      <button type="submit" onClick={() => renderPayu()}>
         Comprar
       </button>
     );
@@ -312,26 +317,25 @@ class PaySection extends Component {
           };
         }
       }
-
-      return qty_options.values.length > 0 ? (
-        <div className="pay-item">
-          <section className="select-icon">
-            <Select
-              items={qty_options}
-              showDefault={false}
-              onSelect={(qnt) => {
-                this.setState({ cantidad: qnt });
-              }}
-            />
-          </section>
-          {btnEnabled}
-        </div>
-      ) : (
-        <div className="pay-item info-pay-product-detail">
-          <h3>Sin unidades disponibles.</h3>
-          {btnDisabled}
-        </div>
-      );
+      return this.props.props.data.status && qty_options.values.length > 0 ? (
+				<div className="pay-item">
+					<section className="select-icon">
+						<Select
+							items={qty_options}
+							showDefault={false}
+							onSelect={(qnt) => {
+								this.setState({ cantidad: qnt });
+							}}
+						/>
+					</section>
+					{btnEnabled}
+				</div>
+			) : (
+				<div className="pay-item info-pay-product-detail">
+					<h3>Sin unidades disponibles.</h3>
+					{btnDisabled}
+				</div>
+			);
     } else {
       return (
         <div className="pay-item">
@@ -444,16 +448,7 @@ class PaySection extends Component {
           brand: this.props.props.data.brand,
           category: concatCategories(),
           url:
-            "https://kiero.co/detalle/" +
-            this.props.props.data.product_global_id +
-            "_" +
-            this.props.props.data.product_global_title
-              .replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, "")
-              .replaceAll("//", "%2F")
-              .replaceAll("%", "")
-              .replaceAll(/['"]+/g, "")
-              .split(" ")
-              .join("-"),
+            "https://kiero.co" + handleFormatUrl(this.props.props.data.product_global_id, this.props.props.data.product_global_title),
           quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
         },
       ],
@@ -493,22 +488,22 @@ class PaySection extends Component {
       payment_method:	'Payu'	// representing the payment method chosen
     });
 
-    KlaviyoClient.public.identify({
-      email: this.state.email,
-      properties: {
-        first_name: this.state.user,
-        last_name: this.state.lastName,
-        phone_number: this.state.mobile_phone,
-      },
-      post: true, //defaults to false
-    });
-    KlaviyoClient.public.track({
-      event: "Checkout",
-      email: this.state.email,
-      properties: {
-        items: [item],
-      },
-    });
+    // KlaviyoClient.public.identify({
+    //   email: this.state.email,
+    //   properties: {
+    //     first_name: this.state.user,
+    //     last_name: this.state.lastName,
+    //     phone_number: this.state.mobile_phone,
+    //   },
+    //   post: true, //defaults to false
+    // });
+    // KlaviyoClient.public.track({
+    //   event: "Checkout",
+    //   email: this.state.email,
+    //   properties: {
+    //     items: [item],
+    //   },
+    // });
   };
 
   checkoutOption = () => {
@@ -551,16 +546,7 @@ class PaySection extends Component {
           brand: this.props.props.data.brand,
           category: concatCategories(),
           url:
-            "https://kiero.co/detalle/" +
-            this.props.props.data.product_global_id +
-            "_" +
-            this.props.props.data.product_global_title
-              .replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, "")
-              .replaceAll("//", "%2F")
-              .replaceAll("%", "")
-              .replaceAll(/['"]+/g, "")
-              .split(" ")
-              .join("-"),
+            "https://kiero.co" + handleFormatUrl(this.props.props.data.product_global_id, this.props.props.data.product_global_title),
           quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
         },
       ],
@@ -577,14 +563,14 @@ class PaySection extends Component {
     //   //  }
     // });
 
-    if (Cookies.get("email") !== undefined)
-      KlaviyoClient.public.track({
-        event: "checkoutOption",
-        email: Cookies.get("email"),
-        properties: {
-          items: [item],
-        },
-      });
+    // if (Cookies.get("email") !== undefined)
+    //   KlaviyoClient.public.track({
+    //     event: "checkoutOption",
+    //     email: Cookies.get("email"),
+    //     properties: {
+    //       items: [item],
+    //     },
+    //   });
   };
 
   handleFormValue = (e) => {
@@ -605,6 +591,9 @@ class PaySection extends Component {
       name == "typeIdentification"
     ) {
       this.setState({ [name]: value });
+      if (name == "typeIdentification")
+      this.setState({ ['typeIdentificationName']: e.target.options[e.target.selectedIndex].text });
+
     }
     if (name === "terms") {
       this.setState({
@@ -617,113 +606,151 @@ class PaySection extends Component {
     this.validateForm();
   };
 
-  validateDataGoogle = (callBack) => {
-    this.setState({ display: "flex" });
-    let awaitGoogle = setInterval(() => {
-      if (document.readyState === "complete") {
-        let clientId = this.state.clientId;
-        let gclid = this.state.gclid;
-        // The page is fully loaded
-        if (clientId == "" && gclid == "") {
-          null;
-        } else {
-          callBack();
-          clearInterval(awaitGoogle);
-        }
-      }
-    }, 300);
-  };
-  // randomPayReference = (length, chars) => {
-  // 	var result = '';
-  // 	for (var i = length; i > 0; --i)
-  // 		result += chars[Math.round(Math.random() * (chars.length - 1))];
-  // 	return result;
-  // };
-  //
-  // renderWompi = () => {
-  // 	// let userLogin = Cookies.get('user_id');
-  // 	// let date = new Date();
-  // 	let marketId = this.props.props.data.store_id;
-  // 	let productId = this.props.props.data.product_global_id;
-  // 	let quantity = this.state.cantidad == 0 ? 1 : this.state.cantidad;
-  // 	let priceToCalc = this.props.price.toString().split('.')[0];
-  // 	let price = this.props.price.toString().split('.')[0] + '00';
-  // 	// console.log(this.padLeadingZeros(parseInt(this.props.price) , 1) )
-  // 	let checkout = new WidgetCheckout({
-  // 		currency: 'COP',
-  // 		amountInCents: price * quantity,
-  // 		reference: this.randomPayReference(
-  // 			32,
-  // 			'0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' +
-  // 				price * quantity +
-  // 				this.props.props.data.product_global_id
-  // 		),
-  // 		// publicKey: 'pub_test_pYoEwV7Vh2UjsXGhNQ5JEYWa1LnXKj9r',
-  // 		publicKey: 'pub_prod_6SqAXiHbJoIQH2e9I85GgxA1Gmd9he20',
-  // 		redirectUrl:
-  // 			'https://kiero.co/detalle/' +
-  // 			this.props.props.data.product_global_id +
-  // 			'_' +
-  // 			this.props.props.data.product_global_title
-  // 				.replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-  // 				.replaceAll('//', '%2F')
-  // 				.replaceAll('%', '')
-  // 				.replaceAll(/['"]+/g, '')
-  // 				.split(' ')
-  // 				.join('-'),
-  // 		shippingAddress: {
-  // 			country: 'CO',
-  // 			city: this.state.city == '' ? 'null' : this.state.city,
-  // 			phoneNumber: this.state.mobile_phone == '' ? 'null' : this.state.mobile_phone,
-  // 			region: this.state.region == '' ? 'null' : this.state.region,
-  // 			addressLine1:
-  // 				this.state.neighborhood == ''
-  // 					? 'null'
-  // 					: this.state.address + ' Barrio ' + this.state.neighborhood,
-  // 		},
-  // 	});
-  //
-  // 	this.state.user == '' ||
-  // 	this.state.email == '' ||
-  // 	this.state.mobile_phone == '' ||
-  // 	this.state.city == '' ||
-  // 	this.state.region == '' ||
-  // 	this.state.address == '' ||
-  // 	this.state.neighborhood == ''
-  // 		? this.setState({ modalAddr: true })
-  // 		: checkout.open(function (result) {
-  // 				var transaction = result.transaction;
-  // 				// console.log('Transaction ID: ', transaction.id)
-  // 				// console.log('Transaction object: ', transaction)
-  // 				let dataTransaction = {
-  // 					transactionId: transaction.id,
-  // 					transactionReference: transaction.reference,
-  // 					paymentMethod: transaction.paymentMethodType,
-  // 					userIdentificationType: transaction.billingData.legalIdType,
-  // 					userIdentification: transaction.billingData.legalId,
-  // 					userName: transaction.customerData.fullName,
-  // 					emailAddres: transaction.customerEmail,
-  // 					userMobilePhone: transaction.customerData.phoneNumber,
-  // 					cityAddress: transaction.shippingAddress.city,
-  // 					regionAddress: transaction.shippingAddress.region,
-  // 					userAddress: transaction.shippingAddress.addressLine1,
-  // 					quantity: quantity,
-  // 					productId: productId,
-  // 					price: parseInt(priceToCalc),
-  // 					total: parseInt(priceToCalc * quantity),
-  // 					marketId: marketId,
-  // 				};
-  //
-  // 				// console.log(dataTransaction)
-  //
-  // 				addPaymentDataWompi('/DataWompiTransaction', dataTransaction);
-  // 		  });
-  // };
+    validateDataGoogle = (callBack) => {
 
-  render() {
-    const renderPayu = () => {
-      this.setState({ display: "none" });
-      this.setState({ modalAddr: true });
+        this.setState({display: "flex"});
+        let awaitGoogle = setInterval(() => {
+            if (document.readyState === "complete") {
+                let clientId = this.state.clientId;
+                let gclid = this.state.gclid;
+                // The page is fully loaded
+                if (clientId == "" && gclid == "") {
+                    null;
+                } else {
+                    callBack();
+                    clearInterval(awaitGoogle);
+                }
+            }
+        }, 300);
+
+    };
+    // randomPayReference = (length, chars) => {
+    // 	var result = '';
+    // 	for (var i = length; i > 0; --i)
+    // 		result += chars[Math.round(Math.random() * (chars.length - 1))];
+    // 	return result;
+    // };
+    //
+    // renderWompi = () => {
+    // 	// let userLogin = Cookies.get('user_id');
+    // 	// let date = new Date();
+    // 	let marketId = this.props.props.data.store_id;
+    // 	let productId = this.props.props.data.product_global_id;
+    // 	let quantity = this.state.cantidad == 0 ? 1 : this.state.cantidad;
+    // 	let priceToCalc = this.props.price.toString().split('.')[0];
+    // 	let price = this.props.price.toString().split('.')[0] + '00';
+    // 	// console.log(this.padLeadingZeros(parseInt(this.props.price) , 1) )
+    // 	let checkout = new WidgetCheckout({
+    // 		currency: 'COP',
+    // 		amountInCents: price * quantity,
+    // 		reference: this.randomPayReference(
+    // 			32,
+    // 			'0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' +
+    // 				price * quantity +
+    // 				this.props.props.data.product_global_id
+    // 		),
+    // 		// publicKey: 'pub_test_pYoEwV7Vh2UjsXGhNQ5JEYWa1LnXKj9r',
+    // 		publicKey: 'pub_prod_6SqAXiHbJoIQH2e9I85GgxA1Gmd9he20',
+    // 		redirectUrl:
+    // 			'https://kiero.co/detalle/' +
+    // 			this.props.props.data.product_global_id +
+    // 			'_' +
+    // 			this.props.props.data.product_global_title
+    // 				.replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
+    // 				.replaceAll('//', '%2F')
+    // 				.replaceAll('%', '')
+    // 				.replaceAll(/['"]+/g, '')
+    // 				.split(' ')
+    // 				.join('-'),
+    // 		shippingAddress: {
+    // 			country: 'CO',
+    // 			city: this.state.city == '' ? 'null' : this.state.city,
+    // 			phoneNumber: this.state.mobile_phone == '' ? 'null' : this.state.mobile_phone,
+    // 			region: this.state.region == '' ? 'null' : this.state.region,
+    // 			addressLine1:
+    // 				this.state.neighborhood == ''
+    // 					? 'null'
+    // 					: this.state.address + ' Barrio ' + this.state.neighborhood,
+    // 		},
+    // 	});
+    //
+    // 	this.state.user == '' ||
+    // 	this.state.email == '' ||
+    // 	this.state.mobile_phone == '' ||
+    // 	this.state.city == '' ||
+    // 	this.state.region == '' ||
+    // 	this.state.address == '' ||
+    // 	this.state.neighborhood == ''
+    // 		? this.setState({ modalAddr: true })
+    // 		: checkout.open(function (result) {
+    // 				var transaction = result.transaction;
+    // 				// console.log('Transaction ID: ', transaction.id)
+    // 				// console.log('Transaction object: ', transaction)
+    // 				let dataTransaction = {
+    // 					transactionId: transaction.id,
+    // 					transactionReference: transaction.reference,
+    // 					paymentMethod: transaction.paymentMethodType,
+    // 					userIdentificationType: transaction.billingData.legalIdType,
+    // 					userIdentification: transaction.billingData.legalId,
+    // 					userName: transaction.customerData.fullName,
+    // 					emailAddres: transaction.customerEmail,
+    // 					userMobilePhone: transaction.customerData.phoneNumber,
+    // 					cityAddress: transaction.shippingAddress.city,
+    // 					regionAddress: transaction.shippingAddress.region,
+    // 					userAddress: transaction.shippingAddress.addressLine1,
+    // 					quantity: quantity,
+    // 					productId: productId,
+    // 					price: parseInt(priceToCalc),
+    // 					total: parseInt(priceToCalc * quantity),
+    // 					marketId: marketId,
+    // 				};
+    //
+    // 				// console.log(dataTransaction)
+    //
+    // 				addPaymentDataWompi('/DataWompiTransaction', dataTransaction);
+    // 		  });
+    // };
+
+    async createlead(item, step) {
+        console.log(this.state);
+        console.log(item);
+        var data = {
+            first_name: Cookies.get("name"),
+            city: this.state.city,
+            address: this.state.address,
+            email: Cookies.get("email"),
+            second_email: this.state.email,
+            phone: this.state.mobile_phone,
+            second_phone: "",
+            last_name: Cookies.get("last_name"),
+            type_id: this.state.typeIdentificationName,
+            num_id: this.state.identification,
+            id: Cookies.get("user_id"),
+            country: "CO",
+            lead_type: step === 1 ? "Usuario Registrado que Presionó el Botón Comprar" : "Usuario Invitado (Y Usuario Registrado) que Presionó el botón de Continuar con la transacción",
+            category: item.props.data.category.name,
+            sub_category: "",
+            price_product: item.price,
+            product_title:item.props.data.product_global_title,
+            product_description:item.props.data.description,
+            product_id:String(item.props.data.product_global_id),
+            product_link:'',
+            product_image:item.props.data.images[0].url,
+            product_brand:item.props.data.brand,
+            category_id:String(item.props.data.category_id),
+        }
+
+        const error = await createleadClient(data);
+    }
+
+
+    render() {
+        const renderPayu = () => {
+            this.setState({display: "none"});
+            this.setState({modalAddr: true});
+          if (Cookies.get("email") !== undefined) {
+            this.createlead(this.props, 1);
+          }
 
       const concatCategories = () => {
         var dataCategory = [];
@@ -747,16 +774,7 @@ class PaySection extends Component {
             brand: this.props.props.data.brand,
             category: concatCategories(),
             url:
-              "https://kiero.co/detalle/" +
-              this.props.props.data.product_global_id +
-              "_" +
-              this.props.props.data.product_global_title
-                .replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, "")
-                .replaceAll("//", "%2F")
-                .replaceAll("%", "")
-                .replaceAll(/['"]+/g, "")
-                .split(" ")
-                .join("-"),
+              "https://kiero.co" + handleFormatUrl(this.props.props.data.product_global_id, this.props.props.data.product_global_title),
             quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
           },
         ],
@@ -784,17 +802,8 @@ class PaySection extends Component {
             brand: this.props.props.data.brand,
             category: concatCategories(),
             url:
-              "https://kiero.co/detalle/" +
-              this.props.props.data.product_global_id +
-              "_" +
-              this.props.props.data.product_global_title
-                .replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, "")
-                .replaceAll("//", "%2F")
-                .replaceAll("%", "")
-                .replaceAll(/['"]+/g, "")
-                .split(" ")
-                .join("-"),
-                image_url: this.props.props.data.images.length ? this.props.props.data.images[0].url : null
+              "https://kiero.co" + handleFormatUrl(this.props.props.data.product_global_id, this.props.props.data.product_global_title),
+            image_url: this.props.props.data.images.length ? this.props.props.data.images[0].url : null
           }
         ]
       };
@@ -802,6 +811,13 @@ class PaySection extends Component {
       // console.log(checkoutStartedValues);
 
       analytics.track('Checkout Started', checkoutStartedValues);
+
+      analytics.track('Checkout Step Completed', {
+        // checkout_id: '50314b8e9bcf000000000000',
+        step: 1,
+        shipping_method:	'None', //	String representing the shipping method chosen
+        payment_method:	'Payu'	// representing the payment method chosen
+      });
 
     };
     //////
@@ -830,13 +846,13 @@ class PaySection extends Component {
 
     this.state.user_id = hmacID
 
-    var extra3 = JSON.stringify({
-      qty: quantity,
-      cid: this.state.clientId,
-      gclid: this.state.gclid,
-      nme: fullName,
-      id: hmacID
-    });
+        var extra3 = JSON.stringify({
+            qty: quantity,
+            cid: this.state.clientId,
+            gclid: this.state.gclid,
+            nme: fullName,
+            id: hmacID
+        });
 
     // console.log(hmacID)
 
@@ -1077,6 +1093,7 @@ class PaySection extends Component {
               Antes de continuar debes aceptar los
               <Link href="/terminos">
                 <a
+                  rel="noopener noreferrer"
                   target="_blank"
                   style={{
                     color: "#007BFF",
@@ -1089,6 +1106,7 @@ class PaySection extends Component {
               y
               <Link href="/privacidad">
                 <a
+                  rel="noopener noreferrer"
                   target="_blank"
                   style={{
                     color: "#007BFF",
@@ -1171,19 +1189,37 @@ class PaySection extends Component {
           </p>
         </div>
         <div className="pay-item">
-          <h3
-            className="price-pay-product-detail"
-            style={{ fontWeight: "300 !important" }}
-          >
-            $
-            {this.props.price
-              ? this.props.price
-                  .toString()
-                  .split(".")[0]
-                  .replace(/(.)(?=(\d{3})+$)/g, "$1.")
-              : " ... "}
-          </h3>
-        </div>
+					{this.props.props.data.status ? (
+						<h3
+							className="price-pay-product-detail"
+							style={{ fontWeight: '300 !important' }}
+						>
+							$
+							{this.props.price
+								? this.props.price
+										.toString()
+										.split('.')[0]
+										.replace(/(.)(?=(\d{3})+$)/g, '$1.')
+								: ' ... '}
+						</h3>
+					) : (
+						<div>
+							<h3
+								className="price-pay-product-detai-nostock"
+								style={{ fontWeight: '300 !important' }}
+							>
+								$
+								{this.props.price
+									? this.props.price
+											.toString()
+											.split('.')[0]
+											.replace(/(.)(?=(\d{3})+$)/g, '$1.')
+									: ' ... '}
+							</h3>
+							<span>(Producto no disponible)</span>
+						</div>
+					)}
+				</div>
         <div className="pay-item info-pay-product-detail">
           <h3>
             <span className="no-movil">Kiero</span> envíos{" "}
@@ -1237,15 +1273,15 @@ class PaySection extends Component {
           <div className="section-pay-type-items">
             <p>Tarjetas de crédito - Hasta 36 cuotas</p>
             <div>
-              <img src={PayCredit} />
+              <img loading="lazy" alt="pagos por tarjeta de crédito" src={PayCredit} />
             </div>
             <p>Efectivo en puntos de pago</p>
             <div>
-              <img src={PayOnline} />
+              <img loading="lazy" alt="pagos por pse" src={PayOnline} />
             </div>
             <p>Transferencia desde tu banco</p>
             <div>
-              <img src={PayTransfer} />
+              <img loading="lazy" alt="pagos por transferencia" src={PayTransfer} />
             </div>
           </div>
         </div>
