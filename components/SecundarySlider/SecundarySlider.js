@@ -22,6 +22,7 @@ import BannerImg17 from "../../assets/img/banners/news/17.webp";
 import "./SecundarySlider.css";
 import Spinner from "./../Common/Spinner";
 import Image from "next/image";
+import Imagen from "../Common/Imagen/Imagen";
 
 let link1 = "/categoria/Hogar";
 let link2 = "/categoria/Electrodomésticos";
@@ -96,7 +97,7 @@ export default class SecundarySlider extends Component {
               <div key={index}>
                 <a href={slide.enlace.replace(/ /g, "-").toLocaleLowerCase()}>
                   <div className="anullProperties">
-                    <Image layout="fill" src={slide.url} alt={slide.enlace} />
+                    <Imagen src={slide.url} alt={slide.enlace} />
                   </div>
                 </a>
               </div>

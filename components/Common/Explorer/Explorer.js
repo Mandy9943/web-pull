@@ -30,7 +30,7 @@ import salud from "../../../assets/img/category-img/category-salud.webp";
 import videojuegos from "../../../assets/img/category-img/category-videojuegos.webp";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import Image from "next/image";
+import Imagen from "../Imagen/Imagen";
 
 class Explorer extends Component {
   constructor(props) {
@@ -109,8 +109,7 @@ class Explorer extends Component {
             >
               {this.state.exploreImage ? (
                 <div className="anullProperties">
-                  <Image
-                    layout="fill"
+                  <Imagen
                     alt={this.state.categoryName}
                     src={this.state.exploreImage}
                   />
@@ -134,7 +133,7 @@ class Explorer extends Component {
                   <a href={handleFormatUrl(item.product_id, item.title)}>
                     <Spinner />
                     <div className="anullProperties">
-                      <Image layout="fill" alt={item.title} src={item.image} />
+                      <Imagen alt={item.title} src={item.image} />
                     </div>
                   </a>
                 </div>

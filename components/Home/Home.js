@@ -5,6 +5,7 @@ import Social from "./../SocialBar";
 import ProductCardFinding from "../Common/ProductCardFinding/ProductCardFinding";
 import Logo1 from "../../assets/img/logo-social.png";
 import Logo2 from "../../assets/img/logo-social1.png";
+import Image from "next/image"
 
 import dynamic from "next/dynamic";
 import Imagen from "../Common/Imagen/Imagen";
@@ -94,16 +95,16 @@ export default class Home extends Component {
                     <CategoriesImgMenu/>
                     <Tickets/>
                 </div>
-                <Info/>
+                {/*<Info/>*/}
                 {/*<News/>*/}
                 {/*/!*<Social />*!/*/}
                 <Footer/>
                 <div className="footer-social">
                     <a href="https://www.sic.gov.co" rel="noopener noreferrer" target="_blank">
-                        <Imagen alt="Superintendencia de Industria y Comercio" src={Logo1}/>
+                        <Imagen limpio={true} alt="Superintendencia de Industria y Comercio" src={Logo1}/>
                     </a>
                     <a href="https://www.sic.gov.co" rel="noopener noreferrer" target="_blank">
-                        <Imagen alt="Superintendencia de Industria y Comercio" src={Logo2}/>
+                        <Imagen limpio={true} alt="Superintendencia de Industria y Comercio" src={Logo2}/>
                     </a>
                 </div>
             </div>

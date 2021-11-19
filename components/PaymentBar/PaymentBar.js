@@ -13,7 +13,7 @@ import {
     faPlusCircle,
     faMoneyBillAlt,
 } from "@fortawesome/free-solid-svg-icons";
-import Imagen from "../Common/Imagen/Imagen";
+import Image from "next/image";
 
 class PaymentBar extends Component {
     constructor(props) {
@@ -40,17 +40,17 @@ class PaymentBar extends Component {
                 </div>
                 <div className="payment-way-content">
                     <h4><b>Tarjetas de crédito</b></h4>
-                    <Imagen className="payment-way-img" src={CreditCard} alt="Tarjetas de crédito"/>
+                    <img className="payment-way-img" src={CreditCard} alt="Tarjetas de crédito"/>
                     <p className="sub-title">
                         El banco incluirá los intereses de las cuotas en el resumen de tu
                         tarjeta
                     </p>
                     <h4><b>Transferencia desde tu banco</b></h4>
-                    <Imagen className="payment-way-img2" src={BankTransfer} alt="Transferencia bancaria"/>
+                    <img className="payment-way-img2" src={BankTransfer} alt="Transferencia bancaria"/>
                     <h4><b>Pago con efectivo</b></h4>
-                    <Imagen className="payment-way-img-cash" src={PayEfecty} alt="Pago online con EFECTY"/>
-                    <Imagen className="payment-way-img-cash" src={PayBaloto} alt="Pago online con BALOTO"/>
-                    <Imagen className="payment-way-img-cash" src={PaySured} alt="Pago online con SURED"/>
+                    <img className="payment-way-img-cash" src={PayEfecty} alt="Pago online con EFECTY"/>
+                    <img className="payment-way-img-cash" src={PayBaloto} alt="Pago online con BALOTO"/>
+                    <img className="payment-way-img-cash" src={PaySured} alt="Pago online con SURED"/>
                     <br/><br/>
                     <p className="payment-way-footer-p">
                         Cuando efectúes tu compra, te brindaremos las instrucciones para que sepas cómo y dónde pagar.

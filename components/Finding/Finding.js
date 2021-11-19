@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import Link from "next/link";
 import "./Finding.css";
-import Image from "next/image";
 import Imagen from "../Common/Imagen/Imagen";
 
 class Finding extends Component {

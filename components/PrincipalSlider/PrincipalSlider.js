@@ -14,7 +14,7 @@ import BannerMobil5 from "../../assets/img/bannerCelular/banners-apk4.webp";
 import "./PrincipalSlider.css";
 import ProductCard from "../ProductCard";
 import Spinner from "./../Common/Spinner";
-import Image from "next/image";
+import Imagen from "../Common/Imagen/Imagen";
 
 export default class PrincipalSlider extends Component {
   constructor(props) {
@@ -113,8 +113,7 @@ export default class PrincipalSlider extends Component {
               this.state.slides.map((slide, index) => (
                 <a href={slide.href} key={index}>
                   <div className="anullProperties">
-                    <Image
-                      layout="fill"
+                    <Imagen
                       alt={slide.url.replace(/-/g, " ")}
                       src={slide.url}
                     />
@@ -134,8 +133,7 @@ export default class PrincipalSlider extends Component {
               this.state.slidesMobil.map((slide, index) => (
                 <a href={slide.href} key={index}>
                   <div className="anullProperties">
-                    <Image
-                      layout="fill"
+                    <Imagen
                       alt={slide.url.replace(/-/g, " ")}
                       src={slide.url}
                     />

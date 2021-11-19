@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
-import "./Imagen.css"
 import Spinner from "../Spinner";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import Image from "next/image";
 
 /**
  * Componente encargado para el trabajo con las imágenes
@@ -33,13 +33,19 @@ const Imagen = ({spinner, limpio, ...props}) => {
     }
     return (
         <React.Fragment>
-            <img
-                loading="lazy"
-                decoding="async"
-                alt={props.alt}
-                data-src={props.src}
-                onLoad={handleLoad}
-                {...props}/>
+            {!limpio ? (
+                <Image
+                    layout="fill"
+                    alt={props.alt}
+                    onLoad={handleLoad}
+                    src={props.src}
+                    className={props.className}
+                />
+            ) : (
+                <img src="props.src" alt="props.alt" {...props}/>
+            )
+            }
+
             {!loading ? getAnimate() : null}
         </React.Fragment>
     )
