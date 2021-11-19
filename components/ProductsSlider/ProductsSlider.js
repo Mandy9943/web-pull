@@ -10,6 +10,7 @@ import Imagen from "../Common/Imagen/Imagen";
 import kiero_logo from "../../assets/img/kiero.png";
 import Skeleton from "react-loading-skeleton"
 import ProductCardVoid from "../ProductCardVoid/ProductCardVoid";
+import {getImgProduct} from "../../lib/config";
 
 
 export default class ProductsSlider extends Component {
@@ -173,11 +174,7 @@ export default class ProductsSlider extends Component {
             // }
             // console.log( encodeURIComponent(this.state.data[i].image), "imagen:", '?img=' + this.state.data[i].image)
 
-            let newUrl =
-                'https://api.kieroapi.net/img/v1/' +
-                this.state.data[i].product_id +
-                '?img=' +
-                encodeURIComponent(this.state.data[i].image);
+            let newUrl = getImgProduct(this.state.data[i])
             tmpList.push(
                 <ProductCard
                     statusProduct={1}
@@ -256,11 +253,7 @@ export default class ProductsSlider extends Component {
             // 	url =
             // 		'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png';
             // }
-            let newUrl =
-                'https://api.kieroapi.net/img/v1/' +
-                this.state.data[i].product_id +
-                '?img=' +
-                encodeURIComponent(this.state.data[i].image);
+            let newUrl = getImgProduct(this.state.data[i])
             productListMobile.push(
                 <ProductCard
                     statusProduct={1}
