@@ -248,6 +248,7 @@ export default class Nav extends Component {
 							<Logo />
 							<div className="search-bar">
 								<Autocomplete
+									aria-activedescendant='data'
 									getItemValue={(item) => item.text}
 									suggestionsMenuId="search-suggestions"
 									items={suggestions}
@@ -286,10 +287,10 @@ export default class Nav extends Component {
 							</div>
 							{!authenticated && (
 								<div className="user-menu">
-									<ul>
+									
 										<Link href="/login"><a>Iniciar sesión</a></Link>
 										<Link href="/registro"><a>Registrarse</a></Link>
-									</ul>
+									
 								</div>
 							)}
 							{authenticated && (
