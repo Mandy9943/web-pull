@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import Slider from "react-animated-slider";
 import Link from "next/link";
 import "react-animated-slider/build/horizontal.css";
@@ -22,7 +22,6 @@ import BannerImg17 from "../../assets/img/banners/news/17.webp";
 import "./SecundarySlider.css";
 import Spinner from "./../Common/Spinner";
 import Image from "next/image";
-import Imagen from "../Common/Imagen/Imagen";
 
 let link1 = "/categoria/Hogar";
 let link2 = "/categoria/Electrodomésticos";
@@ -43,81 +42,72 @@ let link16 = "/categoria/Vehículos";
 let link17 = "/categoria/Salud";
 
 export default class SecundarySlider extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            slides: [],
-        };
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      slides: [],
+    };
+  }
 
-    componentDidMount() {
-        this.setState({
-            slides: [
-                {url: BannerImg1, enlace: link1},
-                {url: BannerImg2, enlace: link2},
-                {url: BannerImg3, enlace: link3},
-                {url: BannerImg4, enlace: link4},
-                {url: BannerImg5, enlace: link5},
-                {url: BannerImg6, enlace: link6},
-                {url: BannerImg7, enlace: link7},
-                {url: BannerImg8, enlace: link8},
-                {url: BannerImg9, enlace: link9},
-                {url: BannerImg10, enlace: link10},
-                {url: BannerImg11, enlace: link11},
-                {url: BannerImg12, enlace: link12},
-                {url: BannerImg13, enlace: link13},
-                {url: BannerImg14, enlace: link14},
-                {url: BannerImg15, enlace: link15},
-                {url: BannerImg16, enlace: link16},
-                {
-                    url: BannerImg17,
-                    enlace: link17,
-                    slider: "slider",
-                    previousButton: "previousButton",
-                    nextButton: "nextButton",
-                    buttonDisabled: "disabled",
-                    track: "track",
-                    slide: "slide",
-                    hidden: "hidden",
-                    previous: "previous",
-                    current: "current",
-                    next: "next",
-                    animateIn: "animateIn",
-                    animateOut: "animateOut",
-                },
-            ],
-        });
-    }
-
-    render() {
-        return (
-            <div className="secundary-slider no-movil">
-                <Slider autoplay={3000}>
-                    {this.state.slides.length > 1 ? (
-                        this.state.slides.map((slide, index) => (
-                            <div key={index}>
-                                <a href={slide.enlace.replace(/ /g, "-").toLocaleLowerCase()}>
-                                    <div className="anullProperties">
-                                        <Imagen src={slide.url} alt={slide.enlace}/>
-                                    </div>
-                                </a>
-                            </div>
-                        ))
-                    ) : (
-                        <div
-                            style={{
-                                position: "absolute !important",
-                                left: 0,
-                                right: 0,
-                                top: 0,
-                                bottom: 0,
-                            }}
-                        >
-                            <Spinner/>
-                        </div>
-                    )}
-                </Slider>
+  componentDidMount() {
+    this.setState({
+      slides: [
+        { url: BannerImg1, enlace: link1 },
+        { url: BannerImg2, enlace: link2 },
+        { url: BannerImg3, enlace: link3 },
+        { url: BannerImg4, enlace: link4 },
+        { url: BannerImg5, enlace: link5 },
+        { url: BannerImg6, enlace: link6 },
+        { url: BannerImg7, enlace: link7 },
+        { url: BannerImg8, enlace: link8 },
+        { url: BannerImg9, enlace: link9 },
+        { url: BannerImg10, enlace: link10 },
+        { url: BannerImg11, enlace: link11 },
+        { url: BannerImg12, enlace: link12 },
+        { url: BannerImg13, enlace: link13 },
+        { url: BannerImg14, enlace: link14 },
+        { url: BannerImg15, enlace: link15 },
+        { url: BannerImg16, enlace: link16 },
+        {
+          url: BannerImg17,
+          enlace: link17,
+          slider: "slider",
+          previousButton: "previousButton",
+          nextButton: "nextButton",
+          buttonDisabled: "disabled",
+          track: "track",
+          slide: "slide",
+          hidden: "hidden",
+          previous: "previous",
+          current: "current",
+          next: "next",
+          animateIn: "animateIn",
+          animateOut: "animateOut",
+        },
+      ],
+    });
+  }
+  render() {
+    return (
+      <div className="secundary-slider no-movil">
+        <Slider autoplay={3000}>
+          {this.state.slides.length > 1 ? (
+            this.state.slides.map((slide, index) => (
+              <div key={index}>
+                <a href={slide.enlace.replace(/ /g, "-").toLocaleLowerCase()}>
+                  <div className="anullProperties">
+                    <Image layout="fill" src={slide.url} alt={slide.enlace} />
+                  </div>
+                </a>
+              </div>
+            ))
+          ) : (
+            <div className="secundary-spinnerWrapper">
+              <Spinner />
             </div>
-        );
-    }
+          )}
+        </Slider>
+      </div>
+    );
+  }
 }
