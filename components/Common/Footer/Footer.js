@@ -16,10 +16,13 @@ import PayOnline from "../../../assets/img/pay-online.png";
 import PayTransfer from "../../../assets/img/pay-transfer.jpg";
 import Imagen from "../Imagen/Imagen";
 
-const fb = "//www.facebook.com/KieroGroup/";
+const fb = "https://www.facebook.com/KieroMarketplaceColombia/";
 const ig = "https://www.instagram.com/kiero.co/";
-const tw = "//twitter.com/KIEROGROUP1";
-const yt = "//www.youtube.com/user/KieroGroup";
+const tw = "https://twitter.com/kiero_co";
+const yt = "https://www.youtube.com/channel/UCckOshPpIgdMvVEdKgLUz6g";
+const pt = "https://co.pinterest.com/Kiero_Marketplace/_created/";
+const lk = "https://www.linkedin.com/company/kiero-marketplace";
+const wh = "https://wa.me/+573128246497";
 
 export default class Footer extends Component {
     getYear() {

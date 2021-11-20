@@ -528,14 +528,22 @@ export default class Nav extends Component {
         );
     }
 
-    search = (ots = '') => {
-        if (this.state?.value?.length > 2) {
+	search = (ots = '') => {
+		if (this.state.value.length > 2) {
+			// // Segment Products Searched event
+			// // Reference: https://segment.com/docs/connections/spec/ecommerce/v2/
+			// analytics.track('Products Searched', {
+			// 	query: this.state.value
+			// });
 
-            // Segment Products Searched event
-            // Reference: https://segment.com/docs/connections/spec/ecommerce/v2/
-            analytics.track('Products Searched', {
-                query: this.state.value
-            });
+			let query = encodeURI(this.state.value)
+			analytics.page({
+				path: '/busqueda',
+				referrer: '',
+				search: '?busqueda=' + query,
+				title: 'Kiero | ' + this.state.value,
+				url: 'https://kiero.co/busqueda?busqueda=' + query
+			});
 
             let url = '/busqueda/';
             this.state.value !== undefined && ots === ''

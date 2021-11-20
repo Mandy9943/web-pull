@@ -8,7 +8,7 @@ import './sass/order.css';
 import favicon from '../assets/img/favicon.svg';
 import Link from 'next/link';
 import Cookies from 'js-cookie';
-import { KlaviyoClient } from '../lib/functions';
+// import { KlaviyoClient } from '../lib/functions';
 
 function PayStatus({ data, u_data }) {
   const router = useRouter()
@@ -122,34 +122,34 @@ function PayStatus({ data, u_data }) {
                     'payment_type': paramsUrl.lapPaymentMethodType.toString(),
                     'num_items': quantity
                   })
-                    var item = {
-                        actionField: {
-                            'id': paramsUrl.transactionId,                         // Transaction ID. Required for purchases and refunds.
-                            'affiliation': 'SpiceStock',
-                            'revenue': paramsUrl.TX_VALUE.toString(),                     // Total transaction value (incl. tax and shipping)
-                            'tax':paramsUrl.TX_TAX.toString(),
-                            'shipping': '0',
-                            'aw_merchant_id': '450067839',
-                            'aw_feed_country': 'CO',
-                            'aw_feed_language': 'ES',
-                            "items": [
-                                {
-                                    "id": listValue[1],
-                                    "quantity": quantity,
-                                    "price": listValue[2]
-                                }
-                            ]
-                        },
-                        products: [{                            // List of productFieldObjects.
-                            'name': listValue[0],     // Name or ID is required.
-                            'id': listValue[1],
-                            'price': listValue[2],
-                            'brand': listValue[3],
-                            'category': listValue[4],
-                            'quantity': quantity                            // Optional fields may be omitted or set to empty string.
-                        }
-                        ]
-                    };
+                    // var item = {
+                    //     actionField: {
+                    //         'id': paramsUrl.transactionId,                         // Transaction ID. Required for purchases and refunds.
+                    //         'affiliation': 'SpiceStock',
+                    //         'revenue': paramsUrl.TX_VALUE.toString(),                     // Total transaction value (incl. tax and shipping)
+                    //         'tax':paramsUrl.TX_TAX.toString(),
+                    //         'shipping': '0',
+                    //         'aw_merchant_id': '450067839',
+                    //         'aw_feed_country': 'CO',
+                    //         'aw_feed_language': 'ES',
+                    //         "items": [
+                    //             {
+                    //                 "id": listValue[1],
+                    //                 "quantity": quantity,
+                    //                 "price": listValue[2]
+                    //             }
+                    //         ]
+                    //     },
+                    //     products: [{                            // List of productFieldObjects.
+                    //         'name': listValue[0],     // Name or ID is required.
+                    //         'id': listValue[1],
+                    //         'price': listValue[2],
+                    //         'brand': listValue[3],
+                    //         'category': listValue[4],
+                    //         'quantity': quantity                            // Optional fields may be omitted or set to empty string.
+                    //     }
+                    //     ]
+                    // };
                     
                   // dataLayer.push({
                   //     event:'pending_transaction',
@@ -158,15 +158,15 @@ function PayStatus({ data, u_data }) {
                   //     }
                   // });
 
-                  KlaviyoClient.public.track({
-                      event: 'pending_transaction',
-                      email: paramsUrl.buyerEmail,
-                      properties: {
-                          items: [
-                              item
-                          ]
-                      }
-                  });
+                  // KlaviyoClient.public.track({
+                  //     event: 'pending_transaction',
+                  //     email: paramsUrl.buyerEmail,
+                  //     properties: {
+                  //         items: [
+                  //             item
+                  //         ]
+                  //     }
+                  // });
               }
           }
           localStorage.setItem('referenceCode',paramsUrl.referenceCode);

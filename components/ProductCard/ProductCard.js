@@ -230,14 +230,16 @@ export default class ProductCard extends Component {
 						.join('-')
 				}
 				>  */}
-                <a href={handleFormatUrl(this.props.product_id, this.props.title)}>
-                    {this.props.statusProduct === 1 ?
-                        <div className="product-card-img">
-                            <Imagen spinner={true}
-                                    src={this.state.image_url}
-                                    alt={this.props.title}
-                            />
-                            {/* <picture>
+				<a  href={handleFormatUrl(this.props.product_id, this.props.title)}>
+					{this.props.statusProduct == 1 ? 
+						<div className="product-card-img">
+							{/* <Spinner/> */}
+							<Imagen
+								src={this.props.url}
+								alt={this.props.title}
+								placeholder="blur"
+							/>
+								{/* <picture>
 									<source
 										srcSet={require('https://kiero.co/_next/static/images/kieroweb-db5d710263ceb06f6eb6c4ed06b64782.png?webp')}
 										type="image/webp"
