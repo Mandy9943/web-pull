@@ -98,6 +98,6 @@
       "compiler": "bit.envs/compilers/react-typescript@3.0.0"
     },
     "componentsDefaultDirectory": "components/{name}",
-    "packageManager": "npm"
+    "packageManager": "npm yarn"
   }
 }
