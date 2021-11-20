@@ -12,6 +12,8 @@ import Image from "next/image";
  * Para desactivar el spinner o skeleton pasar el atributo limpio = {true}
  *
  * @version 1.0
+ * @param spinner
+ * @param limpio
  *
  */
 const Imagen = ({spinner, limpio, ...props}) => {
@@ -40,6 +42,7 @@ const Imagen = ({spinner, limpio, ...props}) => {
                     onLoad={handleLoad}
                     src={props.src}
                     className={props.className}
+                    placeholder={props.placeholder}
                 />
             ) : (
                 <img src="props.src" alt="props.alt" {...props}/>

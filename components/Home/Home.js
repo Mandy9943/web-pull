@@ -95,7 +95,7 @@ export default class Home extends Component {
                     <CategoriesImgMenu/>
                     <Tickets/>
                 </div>
-                {/*<Info/>*/}
+                <Info/>
                 {/*<News/>*/}
                 {/*/!*<Social />*!/*/}
                 <Footer/>
