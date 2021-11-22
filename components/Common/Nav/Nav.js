@@ -30,8 +30,9 @@ import Autocomplete from 'react-autocomplete-2';
 import { searchSuggestions } from '../../../services/productsApi';
 import { suggestionQuantity } from '../../../lib/config';
 import { signOut } from '../../../lib/auth';
+import Router, { withRouter } from 'next/router'
 
-export default class Nav extends Component {
+class Nav extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -414,37 +415,51 @@ export default class Nav extends Component {
 											</li>
 										</ul>
 									</section>
-									<a href="/categoria/Bebés" >
-										Bebés
-									</a>
-									<a href="/categoria/Belleza" >
-										Belleza
-									</a>
-									<a
-										// href="/categoria/[category]" as="/categoria/Cámaras, fotografía y video"
-										href="/categoria/Cámaras-fotografía-y-video">
-										Cámaras
-									</a>
-									<a href="/categoria/Electrodomésticos">
-										Electrodomésticos
-									</a>
-									<a
-										href="/categoria/Electrónica-Audio-y-Video">
-										Electrónica
-									</a>
-									<a href="/categoria/Hogar">
-										Hogar
-									</a>
-									<a href="/categoria/Juguetes-y-juegos">
-										Juguetes
-									</a>
-									<a
-										href="/categoria/Consolas-y-videojuegos">
-										Videojuegos
-									</a>
-									<a href="/categoria/Salud">
-										Salud
-									</a>
+									<Link href={"/categoria/[...category]"} as="/categoria/Bebés" >
+										<a>
+											Bebés
+										</a>
+									</Link>
+									<Link href={"/categoria/[...category]"} as="/categoria/Belleza" >
+										<a>
+											Belleza
+										</a>
+									</Link>
+									<Link href={"/categoria/[...category]"} as="/categoria/Cámaras-fotografía-y-video">
+										<a>
+											Cámaras
+										</a>
+									</Link>
+									<Link href={"/categoria/[...category]"} as="/categoria/Electrodomésticos">
+										<a>
+											Electrodomésticos
+										</a>
+									</Link>
+									<Link href={"/categoria/[...category]"} as="/categoria/Electrónica-Audio-y-Video">
+										<a>
+											Electrónica
+										</a>
+									</Link>
+									<Link href={"/categoria/[...category]"} as="/categoria/Hogar">
+										<a>
+											Hogar
+										</a>
+									</Link>
+									<Link href={"/categoria/[...category]"} as="/categoria/Juguetes-y-juegos">
+										<a>
+											Juguetes
+										</a>
+									</Link>
+									<Link href={"/categoria/[...category]"} as="/categoria/Consolas-y-videojuegos">
+										<a>
+											Videojuegos
+										</a>
+									</Link>
+									<Link href={"/categoria/[...category]"} as="/categoria/Salud">
+										<a>
+											Salud
+										</a>
+									</Link>
 								</ul>
 							</div>
 						</div>
@@ -454,12 +469,17 @@ export default class Nav extends Component {
 							<Logo />
 							<div className="search-bar">
 								<Autocomplete
+									aria-activedescendant='data'
 									getItemValue={(item) => item.text}
 									suggestionsMenuId="search-suggestions"
 									items={suggestions}
 									renderItem={(item, isHighlighted) => (
-										<div className="suggestion-item" style={{ background: 'white' }}>
-											{item.text}
+										<div
+											className="suggestion-item"
+											aria-selected={isHighlighted}
+											style={{ background: isHighlighted ? '#ddd' : 'white' }}
+										>
+											<span dangerouslySetInnerHTML={{ __html: item.text }} />
 										</div>
 									)}
 									value={this.state.value}
@@ -546,7 +566,9 @@ export default class Nav extends Component {
 			this.state.value !== undefined && ots === ''
 				? (url = url + this.state.value)
 				: (url = url + ots);
-			location.href = url;
+			document.location = url;
 		}
 	};
 }
+
+export default withRouter(Nav)

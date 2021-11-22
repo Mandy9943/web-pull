@@ -15,6 +15,7 @@ import "./PrincipalSlider.css";
 import ProductCard from "../ProductCard";
 import Spinner from "./../Common/Spinner";
 import Image from "next/image";
+import Link from 'next/link';
 
 export default class PrincipalSlider extends Component {
   constructor(props) {
@@ -111,15 +112,19 @@ export default class PrincipalSlider extends Component {
           <Slider autoplay={4000}>
             {this.state.slides.length > 1 ? (
               this.state.slides.map((slide, index) => (
-                <a href={slide.href} key={index}>
-                  <div className="anullProperties">
-                    <Image
-                      layout="fill"
-                      alt={slide.url.replace(/-/g, " ")}
-                      src={slide.url}
-                    />
-                  </div>
-                </a>
+                <div key={index}>
+                  <Link href={"/categoria/[...category]"} as={slide.href} >
+                      <a>
+                          <div className="anullProperties">
+                            <Image
+                              layout="fill"
+                              alt={slide.url.replace(/-/g, " ")}
+                              src={slide.url}
+                            />
+                        </div>  
+                      </a>
+                  </Link>
+                </div>
               ))
             ) : (
               <div className="principal-spinnerWrapper">
@@ -132,15 +137,19 @@ export default class PrincipalSlider extends Component {
           <Slider autoplay={4000}>
             {this.state.slidesMobil.length > 1 ? (
               this.state.slidesMobil.map((slide, index) => (
-                <a href={slide.href} key={index}>
-                  <div className="anullProperties">
-                    <Image
-                      layout="fill"
-                      alt={slide.url.replace(/-/g, " ")}
-                      src={slide.url}
-                    />
-                  </div>
-                </a>
+                <div key={index}>
+                  <Link href={"/categoria/[...category]"} as={slide.href} >
+                      <a>
+                          <div className="anullProperties">
+                            <Image
+                              layout="fill"
+                              alt={slide.url.replace(/-/g, " ")}
+                              src={slide.url}
+                            />
+                        </div>  
+                      </a>
+                  </Link>
+                </div>
               ))
             ) : (
               <div className="principal-spinnerWrapper">
