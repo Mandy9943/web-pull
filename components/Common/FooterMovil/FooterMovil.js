@@ -18,7 +18,7 @@ export default class FooterMovil extends Component {
                     <Link href="#"><a>Historial</a></Link>
                     <Link href="#"><a>Favoritos</a></Link>
                     <Link href="#"><a>Categorìas</a></Link>
-                    <Link href="https://shops.kiero.co/"><a>KieroShops</a></Link>
+                    <Link href="https://shops.kiero.co/"  rel="noopener noreferrer"><a>KieroShops</a></Link>
                     <Link href="/ayuda"><a>Ayuda / PQR</a></Link>
                 </section>
                 {/*NEED FIX THIS SHIT*/}

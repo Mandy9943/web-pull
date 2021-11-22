@@ -15,7 +15,7 @@ import Logo2 from "../../assets/img/logo-social1.png";
 import { RecommendedProducts } from "../RecommendedProducts";
 import { getProductDetail } from "../../services/productsApi";
 import { withRouter } from "next/router";
-import { KlaviyoClient } from "../../lib/functions.js";
+// import { KlaviyoClient } from "../../lib/functions.js";
 import Cookies from "js-cookie";
 import {handleFormatUrl} from '../../lib/functions'
 import dynamic from "next/dynamic";
@@ -226,30 +226,29 @@ class ProductDetail extends Component {
     // 									}
     // 						]
     //  			 });
-    var item = {
-      ProductName: this.props.data.product_global_title,
-      ProductID: this.props.data.product_global_id,
-      SKU: this.props.data.sku,
-      Categories: concatCategories(),
-      ImageURL: this.state.mdata.images[0].url,
-      URL:
-      "https://kiero.co" + handleFormatUrl(this.props.data.product_global_id, this.props.data.product_global_title),
-      Brand: this.props.data.brand,
-      Price: this.props.data.price,
-    };
-    if (Cookies.get("email") !== undefined)
-      KlaviyoClient.public.track({
-        event: "Viewed Product",
-        email: Cookies.get("email"),
-        properties: {
-          items: [item],
-        },
-      });
-      this.createlead(item);
-    }
+    // var item = {
+    //   ProductName: this.props.data.product_global_title,
+    //   ProductID: this.props.data.product_global_id,
+    //   SKU: this.props.data.sku,
+    //   Categories: concatCategories(),
+    //   ImageURL: this.state.mdata.images[0].url,
+    //   URL:
+    //   "https://kiero.co" + handleFormatUrl(this.props.data.product_global_id, this.props.data.product_global_title),
+    //   Brand: this.props.data.brand,
+    //   Price: this.props.data.price,
+    // };
+    // if (Cookies.get("email") !== undefined)
+    //   KlaviyoClient.public.track({
+    //     event: "Viewed Product",
+    //     email: Cookies.get("email"),
+    //     properties: {
+    //       items: [item],
+    //     },
+    //   });
+  }
 
   async createlead() {
-	  console.log(this.props.data)
+	  // console.log(this.props.data)
     var data = {
       first_name:Cookies.get("name"),
       city: "",

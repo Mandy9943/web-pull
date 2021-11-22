@@ -15,7 +15,7 @@ import Select from "../Common/SelectDropdown/Select";
 import Spinner from "../Common/Spinner";
 import Checkbox from "@material-ui/core/Checkbox";
 import Modal from "../Common/Modal/Modal";
-import { KlaviyoClient } from "../../lib/functions";
+// import { KlaviyoClient } from "../../lib/functions";
 import Cookies from "js-cookie";
 import {handleFormatName} from '../../lib/functions'
 import {handleFormatUrl} from '../../lib/functions'
@@ -488,26 +488,23 @@ class PaySection extends Component {
       payment_method:	'Payu'	// representing the payment method chosen
     });
 
-        KlaviyoClient.public.identify({
-            email: this.state.email,
-            properties: {
-                first_name: this.state.user,
-                last_name: this.state.lastName,
-                phone_number: this.state.mobile_phone,
-            },
-            post: true, //defaults to false
-        });
-        KlaviyoClient.public.track({
-            event: "Checkout",
-            email: this.state.email,
-            properties: {
-                items: [item],
-            },
-        });
-
-        this.createlead(this.props, 2);
-
-    };
+    // KlaviyoClient.public.identify({
+    //   email: this.state.email,
+    //   properties: {
+    //     first_name: this.state.user,
+    //     last_name: this.state.lastName,
+    //     phone_number: this.state.mobile_phone,
+    //   },
+    //   post: true, //defaults to false
+    // });
+    // KlaviyoClient.public.track({
+    //   event: "Checkout",
+    //   email: this.state.email,
+    //   properties: {
+    //     items: [item],
+    //   },
+    // });
+  };
 
   checkoutOption = () => {
     const concatCategories = () => {
@@ -566,14 +563,14 @@ class PaySection extends Component {
     //   //  }
     // });
 
-    if (Cookies.get("email") !== undefined)
-      KlaviyoClient.public.track({
-        event: "checkoutOption",
-        email: Cookies.get("email"),
-        properties: {
-          items: [item],
-        },
-      });
+    // if (Cookies.get("email") !== undefined)
+    //   KlaviyoClient.public.track({
+    //     event: "checkoutOption",
+    //     email: Cookies.get("email"),
+    //     properties: {
+    //       items: [item],
+    //     },
+    //   });
   };
 
   handleFormValue = (e) => {
@@ -814,6 +811,13 @@ class PaySection extends Component {
       // console.log(checkoutStartedValues);
 
       analytics.track('Checkout Started', checkoutStartedValues);
+
+      analytics.track('Checkout Step Completed', {
+        // checkout_id: '50314b8e9bcf000000000000',
+        step: 1,
+        shipping_method:	'None', //	String representing the shipping method chosen
+        payment_method:	'Payu'	// representing the payment method chosen
+      });
 
     };
     //////

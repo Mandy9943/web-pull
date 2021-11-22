@@ -369,7 +369,6 @@ class ListCategory extends Component {
                       data-index={i}
                       key={i}
                       onClick={() => this.handleDataInfoSearch(product, i)}
-                      style={{ height: "100% !important" }}
                     >
                       <div className="temp-card">
                         <div className="product-card-img">
@@ -495,7 +494,7 @@ class ListCategory extends Component {
                 Lo sentimos, no logramos encontrar lo que buscas.
               </div>
             ) : (
-              <div className="spinner" style={{ marginTop: 200 }}>
+              <div className="spinner">
                 <Spinner />
               </div>
             )}

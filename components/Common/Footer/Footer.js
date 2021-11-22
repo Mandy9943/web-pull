@@ -4,10 +4,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Phone from "../../../assets/img/phone.png";
 import "./Footer.css";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import Image from 'next-images'
 import {
   faFacebook,
   faInstagram,
+  faLinkedin,
+  faPinterest,
   faTwitter,
+  faWhatsapp,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
 
@@ -15,10 +19,13 @@ import PayCredit from "../../../assets/img/pay-credit.png";
 import PayOnline from "../../../assets/img/pay-online.png";
 import PayTransfer from "../../../assets/img/pay-transfer.jpg";
 
-const fb = "//www.facebook.com/KieroGroup/";
+const fb = "https://www.facebook.com/KieroMarketplaceColombia/";
 const ig = "https://www.instagram.com/kiero.co/";
-const tw = "//twitter.com/KIEROGROUP1";
-const yt = "//www.youtube.com/user/KieroGroup";
+const tw = "https://twitter.com/kiero_co";
+const yt = "https://www.youtube.com/channel/UCckOshPpIgdMvVEdKgLUz6g";
+const pt = "https://co.pinterest.com/Kiero_Marketplace/_created/";
+const lk = "https://www.linkedin.com/company/kiero-marketplace";
+const wh = "https://wa.me/+573128246497";
 
 export default class Footer extends Component {
   getYear() {
@@ -61,13 +68,20 @@ export default class Footer extends Component {
                   <div className="footerLinks">
                     <div className="footerPayWrapper">
                       <span className="footerPay">
-                        <img src={PayCredit} alt="Tarjetas de crédito" />
-                      </span>
-                      <span className="footerPay">
-                        <img src={PayOnline} alt="Efectivo en puntos de pago" />
+                        <img
+                          loading="lazy" 
+                          src={PayCredit} 
+                          alt="Tarjetas de crédito" />
                       </span>
                       <span className="footerPay">
                         <img
+                          loading="lazy" 
+                          src={PayOnline} 
+                          alt="Efectivo en puntos de pago" />
+                      </span>
+                      <span className="footerPay">
+                        <img
+                          loading="lazy"
                           src={PayTransfer}
                           alt="Transferencia desde tu banco"
                         />
@@ -84,30 +98,72 @@ export default class Footer extends Component {
                 <div className="footerElement">
                   <h3>Redes Sociales </h3>
                   <div className="footerLinks social">
-                    <Link href={fb}>
-                      <a className="footerLink">
-                        {" "}
-                        <FontAwesomeIcon icon={faFacebook} size="3x" />
-                      </a>
-                    </Link>
-                    <Link href={tw}>
-                      <a className="footerLink">
-                        {" "}
-                        <FontAwesomeIcon icon={faTwitter} />
-                      </a>
-                    </Link>
-                    <Link href={ig}>
-                      <a className="footerLink">
-                        {" "}
-                        <FontAwesomeIcon icon={faInstagram} />
-                      </a>
-                    </Link>
-                    <Link href={yt}>
-                      <a className="footerLink">
-                        {" "}
-                        <FontAwesomeIcon icon={faYoutube} />
-                      </a>
-                    </Link>
+                    <a
+                      aria-label='Facebook Kiero'
+                      className="footerLink"
+                      href={fb}
+                      rel="noopener noreferrer"
+                    >
+                      {" "}
+                      <FontAwesomeIcon icon={faFacebook} size="3x" />
+                    </a>
+
+                    <a
+                      aria-label='Twitter Kiero'
+                      className="footerLink"
+                      href={tw}
+                      rel="noopener noreferrer"
+                    >
+                      {" "}
+                      <FontAwesomeIcon icon={faTwitter} />
+                    </a>
+
+                    <a
+                      aria-label='Instagram Kiero'
+                      className="footerLink"
+                      href={ig}
+                      rel="noopener noreferrer"
+                    >
+                      {" "}
+                      <FontAwesomeIcon icon={faInstagram} />
+                    </a>
+
+                    <a
+                      aria-label='YouTube Kiero'
+                      className="footerLink"
+                      href={yt}
+                      rel="noopener noreferrer"
+                    >
+                      {" "}
+                      <FontAwesomeIcon icon={faYoutube} />
+                    </a>
+                    <a
+                      aria-label='Linkedin Kiero'
+                      className="footerLink"
+                      href={lk}
+                      rel="noopener noreferrer"
+                    >
+                      {" "}
+                      <FontAwesomeIcon icon={faLinkedin} />
+                    </a>
+                    <a
+                      aria-label='Whatsapp Kiero'
+                      className="footerLink"
+                      href={wh}
+                      rel="noopener noreferrer"
+                    >
+                      {" "}
+                      <FontAwesomeIcon icon={faWhatsapp} />
+                    </a>
+                    <a
+                      aria-label='Pinterest Kiero' 
+                      className="footerLink"
+                      href={pt}
+                      rel="noopener noreferrer"
+                    >
+                      {" "}
+                      <FontAwesomeIcon icon={faPinterest} />
+                    </a>
                   </div>
                 </div>
               </div>
@@ -119,7 +175,7 @@ export default class Footer extends Component {
             <div className="footerRed-tex">
               <p>{this.getYear()} Kiero. Todos los derechos reservados.</p>
               <ul>
-                <a href={url} target="_blank">
+                <a href={url} target="_blank"  rel="noopener noreferrer">
                   www.sic.gov.co
                 </a>
                 <Link href="/terminos">
@@ -171,7 +227,7 @@ export default class Footer extends Component {
                 <Link href="/contactanos_email">
                   <a>Contáctanos</a>
                 </Link>
-                <a href={url} target="_blank">
+                <a href={url} target="_blank"  rel="noopener noreferrer">
                   www.sic.gov.co
                 </a>
               </ul>

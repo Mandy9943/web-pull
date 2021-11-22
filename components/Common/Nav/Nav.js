@@ -248,6 +248,7 @@ export default class Nav extends Component {
 							<Logo />
 							<div className="search-bar">
 								<Autocomplete
+									aria-activedescendant='data'
 									getItemValue={(item) => item.text}
 									suggestionsMenuId="search-suggestions"
 									items={suggestions}
@@ -286,10 +287,10 @@ export default class Nav extends Component {
 							</div>
 							{!authenticated && (
 								<div className="user-menu">
-									<ul>
+									
 										<Link href="/login"><a>Iniciar sesión</a></Link>
 										<Link href="/registro"><a>Registrarse</a></Link>
-									</ul>
+									
 								</div>
 							)}
 							{authenticated && (
@@ -526,11 +527,19 @@ export default class Nav extends Component {
 
 	search = (ots = '') => {
 		if (this.state.value.length > 2) {
+			// // Segment Products Searched event
+			// // Reference: https://segment.com/docs/connections/spec/ecommerce/v2/
+			// analytics.track('Products Searched', {
+			// 	query: this.state.value
+			// });
 
-			// Segment Products Searched event
-			// Reference: https://segment.com/docs/connections/spec/ecommerce/v2/
-			analytics.track('Products Searched', {
-				query: this.state.value
+			let query = encodeURI(this.state.value)
+			analytics.page({
+				path: '/busqueda',
+				referrer: '',
+				search: '?busqueda=' + query,
+				title: 'Kiero | ' + this.state.value,
+				url: 'https://kiero.co/busqueda?busqueda=' + query
 			});
 
 			let url = '/busqueda/';
