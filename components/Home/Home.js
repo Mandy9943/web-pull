@@ -7,7 +7,7 @@ import Logo1 from "../../assets/img/logo-social.png";
 import Logo2 from "../../assets/img/logo-social1.png";
 
 import dynamic from "next/dynamic";
-// import Nav from "../Common/Nav/Nav";
+import Nav from "../Common/Nav/Nav";
 // import PrincipalSlider from './../PrincipalSlider';
 // import Payment from './../PaymentBar';
 // import ProductsSlider from './../ProductsSlider';
@@ -22,7 +22,7 @@ import dynamic from "next/dynamic";
 // import News from './../News';
 // import Footer from '../Common/Footer';
 
-const Nav = dynamic(() => import("../Common/Nav/Nav"));
+// const Nav = dynamic(() => import("../Common/Nav/Nav"));
 const PrincipalSlider = dynamic(() => import("./../PrincipalSlider"));
 const Payment = dynamic(() => import("./../PaymentBar"));
 const ProductsSlider = dynamic(() => import("./../ProductsSlider"));
@@ -67,9 +67,9 @@ export default class Home extends Component {
 							img0: 'banner-electrodomesticos.webp',
 							img1: 'banner-computacion.webp',
 							sub1: 'Aspiradoras',
-							url1: 'categoria/Aspiradoras-domésticas',
+							url1: '/categoria/Aspiradoras-domésticas',
 							sub2: 'Monitores',
-							url2: 'categoria/Monitores-de-computadoras',
+							url2: '/categoria/Monitores-de-computadoras',
 						}}
 					/>
 					<ProductsSlider category={'Juguetes y juegos'} />
@@ -82,9 +82,9 @@ export default class Home extends Component {
 							img0: 'banner-deportes.webp',
 							img1: 'banner-drones.webp',
 							sub1: 'Bicicletas-de-carretera',
-							url1: 'categoria/Bicicletas',
+							url1: '/categoria/Bicicletas',
 							sub2: 'Drones',
-							url2: 'categoria/Cuadricópteros-drones-y-accesorios',
+							url2: '/categoria/Cuadricópteros-drones-y-accesorios',
 						}}
 					/>
 					<Explorer />

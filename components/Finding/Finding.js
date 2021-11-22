@@ -28,11 +28,12 @@ class Finding extends Component {
             <div className="wrap-info">
               <p className="category-text">{this.props.category.father0}</p>
               <h3 className="finding-title">{this.props.category.sub1}</h3>
-              <a
-                href={this.props.category.url1.replace(/ /g, "-").toLowerCase()}
+              <Link
+                href={"/categoria/[...category]"}
+                as={this.props.category.url1.replace(/ /g, "-").toLowerCase()}
               >
-                Ver más
-              </a>
+                <a>Ver más</a>
+              </Link>
             </div>
           </div>
           <div className="finding">
@@ -48,11 +49,12 @@ class Finding extends Component {
             <div className="wrap-info">
               <p className="category-text">{this.props.category.father1}</p>
               <h3 className="finding-title">{this.props.category.sub2}</h3>
-              <a
-                href={this.props.category.url2.replace(/ /g, "-").toLowerCase()}
+              <Link
+                href={"/categoria/[...category]"}
+                as={this.props.category.url2.replace(/ /g, "-").toLowerCase()}
               >
-                Ver más
-              </a>
+                <a>Ver más</a>
+              </Link>
             </div>
           </div>
         </div>

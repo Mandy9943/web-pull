@@ -94,11 +94,13 @@ export default class SecundarySlider extends Component {
           {this.state.slides.length > 1 ? (
             this.state.slides.map((slide, index) => (
               <div key={index}>
-                <a href={slide.enlace.replace(/ /g, "-").toLocaleLowerCase()}>
-                  <div className="anullProperties">
-                    <Image layout="fill" src={slide.url} alt={slide.enlace} />
-                  </div>
-                </a>
+                <Link href={"/categoria/[...category]"} as={slide.enlace.replace(/ /g, "-").toLocaleLowerCase()}>
+                  <a>
+                    <div className="anullProperties">
+                      <Image layout="fill" src={slide.url} alt={slide.enlace} />
+                    </div>
+                  </a>
+                </Link>
               </div>
             ))
           ) : (

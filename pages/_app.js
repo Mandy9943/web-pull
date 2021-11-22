@@ -1,5 +1,5 @@
 import React, { useState, useEffect, createElement } from 'react';
-import { useRouter } from 'next/router'
+import Router,{ useRouter } from 'next/router'
 import Head from "next/head";
 import '../styles.css';
 // import GeneralChat from '../components/generalChat/index.js';
@@ -9,6 +9,24 @@ import KieroSocketChat from '../components/Services/kierochat-socket';
 import Cookies from 'js-cookie';
 
 export default function MyApp({ Component, pageProps}) {
+
+    const routeChange = () => {
+      // Temporary fix to avoid flash of unstyled content
+      // during route transitions. Keep an eye on this
+      // issue and remove this code when resolved:
+      // https://github.com/vercel/next.js/issues/17464
+
+      const tempFix = () => {
+        const allStyleElems = document.querySelectorAll('style[media="x"]');
+        allStyleElems.forEach((elem) => {
+          elem.removeAttribute("media");
+        });
+      };
+      tempFix();
+    };
+
+   Router.events.on("routeChangeComplete", routeChange );
+   Router.events.on("routeChangeStart", routeChange );
 	const site = "https://kiero.co";
 	const canonicalURL = site + useRouter().asPath;
 	useEffect(() => {

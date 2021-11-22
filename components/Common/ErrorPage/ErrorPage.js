@@ -6,7 +6,6 @@ import { useRouter } from 'next/router';
 export default function ErrorPage({ codError, msgError }) {
 
   const router = useRouter();
-  console.log();
   return (
     <>
       <div id="notfound">
