@@ -47,7 +47,6 @@ export default class listProductMovil extends Component {
         <div key={i} className="product-item-edit">
           <div className="content">
             <a href={handleFormatUrl(product.product_id, product.title)}>
-              <a>
                 <section className="product">
                   <div className="product-card-img">
                     <div className="anullProperties">
@@ -74,7 +73,6 @@ export default class listProductMovil extends Component {
                     </span>
                   </section>
                 </section>
-              </a>
             </a>
           </div>
         </div>

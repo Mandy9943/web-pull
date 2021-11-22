@@ -27,21 +27,20 @@ const withOptimizedImages = require("next-optimized-images");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const TerserPlugin = require('terser-webpack-plugin');
 const withSourceMaps = require('@zeit/next-source-maps')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
 
 module.exports = withSourceMaps (withOptimizedImages(
                                     withCSS(
                                       withSass({
-                                        webpack(config, options) {
-                                          config.optimization.minimizer = [];
-                                          config.optimization.minimizer.push(new OptimizeCSSAssetsPlugin({}));
-
-                                      return config;
-                                      },
                                       mode: 'production',
                                       optimization: {
-                                                      minimizer: [new TerserPlugin({ 
-                                                                                      parallel: true,})],
-                                                                                  },
+                                                      minimizer: [
+                                                                    new TerserPlugin({ parallel: true,}),
+                                                                    new OptimizeCSSAssetsPlugin({})
+                                                                ],
+                                                      },
+                                                                      
                                         swcMinify: true,
                                         sourceMap: true,
                                         compress: true,
@@ -56,6 +55,7 @@ module.exports = withSourceMaps (withOptimizedImages(
                                                 {
                                                   loader: ["file-loader", "webp-loader"],
                                                 },
+                                                [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
                                               ],
                                             },
                                           ],

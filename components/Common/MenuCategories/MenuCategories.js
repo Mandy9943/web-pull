@@ -71,8 +71,9 @@ class MenuCategories extends Component {
                   onMouseEnter={() => this.menuMouseEnter(i)}
                   onMouseLeave={this.menuMouseLeave}
                 >
-                  <a
-                    href={
+                  <Link
+                    href={"/categoria/[...category]"}
+                    as={
                       "/categoria/" +
                       ccat.name
                         .replace(/^[, ]+|[, ]+$|[, ]+/g, "-")
@@ -80,8 +81,8 @@ class MenuCategories extends Component {
                         .toLowerCase()
                     }
                   >
-                    {ccat.name}
-                  </a>
+                    <a>{ccat.name}</a>
+                  </Link>
                   <FontAwesomeIcon
                     onClick={() => this.menuMouseEnter(i)}
                     icon={faAngleRight}
@@ -140,8 +141,9 @@ class MenuCategories extends Component {
                   return (
                     <section className="sub-cat" key={i}>
                       {
-                        <a
-                          href={
+                        <Link
+                          href={"/categoria/[...category]"}
+                          as={
                             "/categoria/" +
                             sl_cat.name
                               .replace(/^[, ]+|[, ]+$|[, ]+/g, "-")
@@ -150,16 +152,19 @@ class MenuCategories extends Component {
                           }
                         >
                           {/* <a href={'/categoria/' + sl_cat.name.replace(/ /g, "-").trim().toLowerCase()}> */}
+                          <a>
                           <h5>
                             <div className="subCatText">{sl_cat.name}</div>
                           </h5>
-                        </a>
+                          </a>
+                        </Link>
                       }
                       {sl_cat.childs.map((tl_cat, i) => {
                         return (
                           <span key={i + 1}>
-                            <a
-                              href={
+                            <Link
+                              href={"/categoria/[...category]"}
+                              as={
                                 "/categoria/" +
                                 tl_cat.name
                                   .replace(/^[, ]+|[, ]+$|[, ]+/g, "-")
@@ -167,8 +172,8 @@ class MenuCategories extends Component {
                                   .toLowerCase()
                               }
                             >
-                              {tl_cat.name}
-                            </a>
+                              <a>{tl_cat.name}</a>
+                            </Link>
                           </span>
                         );
                       })}
