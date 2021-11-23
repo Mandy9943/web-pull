@@ -1,12 +1,12 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import Link from "next/link";
 import "./listProductMovil.css";
-import {updateProduct, getProductsBasic} from "../../services/productsApi";
-import {getImgUrl} from "../../lib/config";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faTruck} from "@fortawesome/free-solid-svg-icons";
-import {parse} from "@fortawesome/fontawesome-svg-core";
-import {handleFormatUrl} from "../../lib/functions";
+import { updateProduct, getProductsBasic } from "../../services/productsApi";
+import { getImgUrl } from "../../lib/config";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTruck } from "@fortawesome/free-solid-svg-icons";
+import { parse } from "@fortawesome/fontawesome-svg-core";
+import { handleFormatUrl } from "../../lib/functions";
 import Imagen from "../Common/Imagen/Imagen";
 
 export default class listProductMovil extends Component {
@@ -20,7 +20,7 @@ export default class listProductMovil extends Component {
 
     componentDidMount() {
         getProductsBasic("Computación", 5).then((response) => {
-            this.setState({products: response.data.results});
+            this.setState({ products: response.data.results });
         });
     }
 
@@ -47,33 +47,32 @@ export default class listProductMovil extends Component {
                 <div key={i} className="product-item-edit">
                     <div className="content">
                         <a href={handleFormatUrl(product.product_id, product.title)}>
-                            <a>
-                                <section className="product">
-                                    <div className="product-card-img">
-                                        <div className="anullProperties">
-                                            <Imagen
-                                                src={image_url}
-                                                alt={product.title}
-                                            />
-                                        </div>
+                            <section className="product">
+                                <div className="product-card-img">
+                                    <div className="anullProperties">
+                                        <Image
+                                            src={image_url}
+                                            layout="fill"
+                                            alt={product.title}
+                                        />
                                     </div>
-                                    <section className="description">
-                                        <h3>{product.title}</h3>
-                                        <h3 className="price">
-                                            ${" "}
-                                            {product.price
-                                                ? String(product.price)
-                                                    .split(".")[0]
-                                                    .replace(/(.)(?=(\d{3})+$)/g, "$1.")
-                                                : "$ ... "}
-                                        </h3>
-                                        <span>
-                      <FontAwesomeIcon icon={faTruck}/>
-                      Envío gratis
-                    </span>
-                                    </section>
+                                </div>
+                                <section className="description">
+                                    <h3>{product.title}</h3>
+                                    <h3 className="price">
+                                        ${" "}
+                                        {product.price
+                                            ? String(product.price)
+                                                .split(".")[0]
+                                                .replace(/(.)(?=(\d{3})+$)/g, "$1.")
+                                            : "$ ... "}
+                                    </h3>
+                                    <span>
+                                        <FontAwesomeIcon icon={faTruck} />
+                                        Envío gratis
+                                    </span>
                                 </section>
-                            </a>
+                            </section>
                         </a>
                     </div>
                 </div>

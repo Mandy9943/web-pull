@@ -632,30 +632,34 @@ function Results({ data, session }) {
         if (e.links[bannerNo - 1] !== "") {
           structure.push(
             // <Link href={"/categoria/[category]"} as={"/categoria/" + e.links[bannerNo - 1]} ></Link>
-            <a
-              className="tickets"
-              href={
+            <Link
+              key={i}
+              href={"/categoria/[...category]"}
+              as={
                 "/categoria/" +
                 e.links[bannerNo - 1]
                   .replace(/^[, ]+|[, ]+$|[, ]+/g, "-")
                   .trim()
                   .toLowerCase()
               }
+
             >
-              <div className="anullProperties">
-                <Image
-                  layout="fill"
-                  alt={category_name}
-                  key={i + 1}
-                  className="banner-principal"
-                  src={
-                    e.image_path.replace(/^[, ]+|[, ]+$|[, ]+/g, "").trim() +
-                    bannerNo++ +
-                    ".webp"
-                  }
-                />
-              </div>
-            </a>
+              <a className="tickets">
+                <div className="anullProperties">
+                  <Image
+                    layout="fill"
+                    alt={category_name}
+                    key={i + 1}
+                    className="banner-principal"
+                    src={
+                      e.image_path.replace(/^[, ]+|[, ]+$|[, ]+/g, "").trim() +
+                      bannerNo++ +
+                      ".webp"
+                    }
+                  />
+                </div>
+              </a>
+            </Link>
           );
         } else {
           structure.push(

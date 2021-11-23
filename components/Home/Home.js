@@ -8,8 +8,7 @@ import Logo2 from "../../assets/img/logo-social1.png";
 import Image from "next/image"
 
 import dynamic from "next/dynamic";
-import Imagen from "../Common/Imagen/Imagen";
-// import Nav from "../Common/Nav/Nav";
+import Nav from "../Common/Nav/Nav";
 // import PrincipalSlider from './../PrincipalSlider';
 // import Payment from './../PaymentBar';
 // import ProductsSlider from './../ProductsSlider';
@@ -24,7 +23,7 @@ import Imagen from "../Common/Imagen/Imagen";
 // import News from './../News';
 // import Footer from '../Common/Footer';
 
-const Nav = dynamic(() => import("../Common/Nav/Nav"));
+// const Nav = dynamic(() => import("../Common/Nav/Nav"));
 const PrincipalSlider = dynamic(() => import("./../PrincipalSlider"));
 const Payment = dynamic(() => import("./../PaymentBar"));
 const ProductsSlider = dynamic(() => import("./../ProductsSlider"));
@@ -46,68 +45,68 @@ export default class Home extends Component {
         let u_data = this.props.user_data;
         let authenticated = this.props.authenticated;
 
-        return (
-            <div className="container">
-                <Nav
-                    user={u_data.user}
-                    role={u_data.role}
-                    jwt={u_data.jwt}
-                    home={true}
-                    authenticated={u_data.authenticated}
-                />
-                <PrincipalSlider/>
-                <div className="home-content">
-                    <Payment/>
-                    {/* {/* <ProductsSlider category={'Computadoras y tabletas'}/> */}
-                    <ProductsSlider category={'Cosméticos y maquillaje'}/>
-                    <SecundarySlider/>
-                    <LoginMovil user={u_data.user} authenticated={u_data.authenticated}/>
-                    <Finding
-                        category={{
-                            father0: 'Electrodomésticos',
-                            father1: 'Computación',
-                            img0: 'banner-electrodomesticos.webp',
-                            img1: 'banner-computacion.webp',
-                            sub1: 'Aspiradoras',
-                            url1: 'categoria/Aspiradoras-domésticas',
-                            sub2: 'Monitores',
-                            url2: 'categoria/Monitores-de-computadoras',
-                        }}
-                    />
-                    <ProductsSlider category={'Juguetes y juegos'}/>
-                    <Explorer/>
-                    <ProductsSlider category={'Bebés'}/>
-                    <Finding
-                        category={{
-                            father0: 'Deportes',
-                            father1: 'Electrónica',
-                            img0: 'banner-deportes.webp',
-                            img1: 'banner-drones.webp',
-                            sub1: 'Bicicletas-de-carretera',
-                            url1: 'categoria/Bicicletas',
-                            sub2: 'Drones',
-                            url2: 'categoria/Cuadricópteros-drones-y-accesorios',
-                        }}
-                    />
-                    <Explorer/>
-                    <ProductsSlider category={'Animales y Mascotas'}/>
-                    <ListProductMovil jwt={u_data.jwt}/>
-                    <CategoriesImgMenu/>
-                    <Tickets/> */}
-                </div>
-                {/* <Info/> */}
-                {/*<News/>*/}
-                {/*/!*<Social />*!/*/}
-                {/* <Footer/> */}
-                {/* <div className="footer-social">
-                    <a href="https://www.sic.gov.co" rel="noopener noreferrer" target="_blank">
-                        <Imagen limpio={true} alt="Superintendencia de Industria y Comercio" src={Logo1}/>
-                    </a>
-                    <a href="https://www.sic.gov.co" rel="noopener noreferrer" target="_blank">
-                        <Imagen limpio={true} alt="Superintendencia de Industria y Comercio" src={Logo2}/>
-                    </a>
-                </div> */}
-            </div>
-        );
-    }
+		return (
+			<div className="container">
+				<Nav
+					user={u_data.user}
+					role={u_data.role}
+					jwt={u_data.jwt}
+					home={true}
+					authenticated={u_data.authenticated}
+				/>
+				<PrincipalSlider />
+				<div className="home-content">
+					<Payment />
+					<ProductsSlider category={'Computadoras y tabletas'} />
+					<ProductsSlider category={'Cosméticos y maquillaje'} />
+					<SecundarySlider />
+					<LoginMovil user={u_data.user} authenticated={u_data.authenticated} />
+					<Finding
+						category={{
+							father0: 'Electrodomésticos',
+							father1: 'Computación',
+							img0: 'banner-electrodomesticos.webp',
+							img1: 'banner-computacion.webp',
+							sub1: 'Aspiradoras',
+							url1: '/categoria/Aspiradoras-domésticas',
+							sub2: 'Monitores',
+							url2: '/categoria/Monitores-de-computadoras',
+						}}
+					/>
+					<ProductsSlider category={'Juguetes y juegos'} />
+					<Explorer />
+					<ProductsSlider category={'Bebés'} />
+					<Finding
+						category={{
+							father0: 'Deportes',
+							father1: 'Electrónica',
+							img0: 'banner-deportes.webp',
+							img1: 'banner-drones.webp',
+							sub1: 'Bicicletas-de-carretera',
+							url1: '/categoria/Bicicletas',
+							sub2: 'Drones',
+							url2: '/categoria/Cuadricópteros-drones-y-accesorios',
+						}}
+					/>
+					<Explorer />
+					<ProductsSlider category={'Animales y Mascotas'} />
+					<ListProductMovil jwt={u_data.jwt} />
+					<CategoriesImgMenu />
+					<Tickets />
+				</div>
+				<Info />
+				{/* <News /> */}
+				{/*<Social />*/}
+				<Footer />
+				<div className="footer-social">
+					<a href="https://www.sic.gov.co" rel="noopener noreferrer" target="_blank">
+						<img loading="lazy" alt="Superintendencia de Industria y Comercio" src={Logo1} />
+					</a>
+					<a href="https://www.sic.gov.co" rel="noopener noreferrer" target="_blank">
+						<img loading="lazy" alt="Superintendencia de Industria y Comercio" src={Logo2} />
+					</a>
+				</div>
+			</div>
+		);
+	}
 }

@@ -18,33 +18,36 @@ class Tickets extends Component {
             {url: this.props.img_right ? this.props.img_right : TicketImg3},
         ];
 
-        const linkTicket = [
-            {url: this.props.link_left ? this.props.link_left : link0},
-            {url: this.props.link_center ? this.props.link_center : link1},
-            {url: this.props.link_right ? this.props.link_right : link2},
-        ];
-        return (
-            <div className="wrap-tickets">
-                {dataTicket.map((item, i) => (
-                    <a
-                        key={i}
-                        href={
-                            "/categoria/" +
-                            linkTicket[i].url.replace(/ /g, "-").trim().toLowerCase()
-                        }
-                        className="tickets"
-                    >
-                        <div className="anullProperties">
-                            <Imagen
-                                src={item.url}
-                                alt={linkTicket[i].url.replace(/-/g, " ")}
-                            />
-                        </div>
-                    </a>
-                ))}
-            </div>
-        );
-    }
+    const linkTicket = [
+      { url: this.props.link_left ? this.props.link_left : link0 },
+      { url: this.props.link_center ? this.props.link_center : link1 },
+      { url: this.props.link_right ? this.props.link_right : link2 },
+    ];
+    return (
+      <div className="wrap-tickets">
+        {dataTicket.map((item, i) => (
+          <Link
+            href={"/categoria/[...category]"}
+            key={i}
+            as={
+              "/categoria/" +
+              linkTicket[i].url.replace(/ /g, "-").trim().toLowerCase()
+            }
+          >
+            <a className="tickets">
+              <div className="anullProperties">
+                <Image
+                  layout="fill"
+                  src={item.url}
+                  alt={linkTicket[i].url.replace(/-/g, " ")}
+                />
+              </div>
+            </a>
+          </Link>
+        ))}
+      </div>
+    );
+  }
 }
 
 export default Tickets;

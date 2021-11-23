@@ -244,62 +244,53 @@ export default class ProductsSlider extends Component {
             );
         }
 
-        for (let i = 0; i < this.state.data.length; i++) {
-            // let url = '';
-            // if (this.state.data[i].image) {
-            // 	url = getImgUrl(this.state.data[i].image);
-            // } else {
-            // 	url =
-            // 		'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png';
-            // }
-            let newUrl = getImgProduct(this.state.data[i])
-            productListMobile.push(
-                <ProductCard
-                    statusProduct={1}
-                    style={{ padding: '30px' }}
-                    key={skid++}
-                    index={skid++}
-                    price={this.state.data[i].price}
-                    url={newUrl}
-                    product_id={this.state.data[i].product_id}
-                    title={this.state.data[i].title}
-                    category={this.state.data[i].category}
-                    brand={this.state.data[i].brand}
-                    className={this.state.className}
-                />
-            );
-        }
-
-        return (
-            <div className="products-slider">
-                {!this.props.notitle && (
-                    <h3 className="home-section-title">
-                        Descubre productos de {this.props.category && this.props.category}
-                        {/* <Link
-							href={'/categoria/[category]'}
-							as={this.props.category && '/categoria/' + this.props.category}
-						> */}
-                        <a
-                            className="accent"
-                            href={this.props.category && '/categoria/' + this.props.category}
-                        >
-                            Ver todos
-                        </a>
-                    </h3>
-                )}
-                <div className="slider-movil">
-                    <section className="content-products-slider">{productListMobile}</section>
-                </div>
-                {!productList.length ? (
-                    <Slider autoplay={false}>
-                        <section className="test">
-                            {productListVacio}
-                        </section>
-                    </Slider>
-                ) : (
-                    <Slider autoplay={false}>{productList}</Slider>
-                )}
-            </div>
-        );
-    }
+		for (let i = 0; i < this.state.data.length; i++) {
+			// let url = '';
+			// if (this.state.data[i].image) {
+			// 	url = getImgUrl(this.state.data[i].image);
+			// } else {
+			// 	url =
+			// 		'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png';
+			// }
+			let newUrl =
+				'https://api.kieroapi.net/img/v1/' +
+				this.state.data[i].product_id +
+				'?img=' +
+				encodeURIComponent(this.state.data[i].image);
+			productListMobile.push(
+				<ProductCard
+					statusProduct={1}
+					style={{ padding: '30px' }}
+					key={skid++}
+					index={skid++}
+					price={this.state.data[i].price}
+					url={newUrl}
+					product_id={this.state.data[i].product_id}
+					title={this.state.data[i].title}
+					category={this.state.data[i].category}
+					brand={this.state.data[i].brand}
+					className={this.state.className}
+				/>
+			);
+		}
+		return (
+			<div className="products-slider">
+				{!this.props.notitle && (
+					<h3 className="home-section-title">
+						Descubre productos de {this.props.category && this.props.category}
+						<Link
+							href={"/categoria/[...category]"}
+							as={this.props.category && '/categoria/' + this.props.category.replace(/ /g, "-").toLowerCase()}
+						>
+							<a className="accent">Ver todos</a>
+						</Link>
+					</h3>
+				)}
+				<div className="slider-movil">
+					<section className="content-products-slider">{productListMobile}</section>
+				</div>
+				<Slider autoplay={false}>{productList}</Slider>
+			</div>
+		);
+	}
 }
