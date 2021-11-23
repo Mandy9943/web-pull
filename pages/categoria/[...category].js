@@ -642,7 +642,6 @@ function Results({ data, session }) {
                   .trim()
                   .toLowerCase()
               }
-
             >
               <a className="tickets">
                 <div className="anullProperties">
@@ -881,8 +880,11 @@ function Results({ data, session }) {
             name="Description"
             content={
               "KIERO.CO Marketplace | Encuentra " +
-              handleFormatName(category_name) +
-              " en Kiero.co - Descubre millones de productos online"
+              handleFormatName(category_name).substring(0, 40) +
+              " en Kiero.co - Descubre millones de productos online".substring(
+                0,
+                159
+              )
             }
           />
           <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
