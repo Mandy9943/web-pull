@@ -21,14 +21,14 @@ import "./CategoriesImgMenu.css";
 import Button from "../Common/Button/Button";
 import belleza from "../../assets/img/iconosHome/BELLEZA.svg";
 import hobbies from "../../assets/img/iconosHome/chess-queen-solid.svg";
-import Electrodomesticos from "../../assets/img/iconosHome/blender-solid.svg";
+import Electrodomésticos from "../../assets/img/iconosHome/blender-solid.svg";
 import herramientas from "../../assets/img/iconosHome/tools-solid.svg";
 import libros from "../../assets/img/iconosHome/book-solid.svg";
 import musica from "../../assets/img/iconosHome/music-solid.svg";
 import relojes from "../../assets/img/iconosHome/clock-regular.svg";
 import ropa from "../../assets/img/iconosHome/tshirt-solid.svg";
 import Slider from 'react-animated-slider';
-import Imagen from "../Common/Imagen/Imagen";
+
 
 
 export default class CategoriesImgMenu extends Component {

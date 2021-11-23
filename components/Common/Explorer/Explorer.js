@@ -30,7 +30,7 @@ import salud from "../../../assets/img/category-img/category-salud.webp";
 import videojuegos from "../../../assets/img/category-img/category-videojuegos.webp";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import Imagen from "../Imagen/Imagen";
+import Image from "next/image";
 
 class Explorer extends Component {
   constructor(props) {
@@ -110,8 +110,8 @@ class Explorer extends Component {
                 this.state.categoryName.replace(/ /g, "-").toLowerCase()
               }
             >
-             <a>
-              {this.state.exploreImage ? (
+              <a>
+                {this.state.exploreImage ? (
                   <div className="anullProperties">
                     <Image
                       layout="fill"
@@ -122,7 +122,7 @@ class Explorer extends Component {
                 ) : (
                   <Skeleton className="skeleton" />
                 )}
-             </a>
+              </a>
             </Link>
           </div>
           <div className="group-img">
