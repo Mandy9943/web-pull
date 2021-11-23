@@ -233,11 +233,11 @@ export default class ProductCard extends Component {
 				<a  href={handleFormatUrl(this.props.product_id, this.props.title)}>
 					{this.props.statusProduct == 1 ? 
 						<div className="product-card-img">
-							{/* <Spinner/> */}
 							<Imagen
-								src={this.props.url}
-								alt={this.props.title}
-								placeholder="blur"
+                                src={this.state.image_url}
+                                alt={this.props.title}
+                                spinner={true}
+								// placeholder="blur"
 							/>
 								{/* <picture>
 									<source

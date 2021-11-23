@@ -1,16 +1,16 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Link from 'next/link';
 import ProductCard from '../ProductCard/ProductCard';
 import './ProductsSlider.css';
-import {getProductsBasic} from '../../services/productsApi';
+import { getProductsBasic } from '../../services/productsApi';
 import Success from '../Login/Success';
 import Slider from 'react-animated-slider';
-import {handleFormatUrl} from '../../lib/functions'
+import { handleFormatUrl } from '../../lib/functions'
 import Imagen from "../Common/Imagen/Imagen";
 import kiero_logo from "../../assets/img/kiero.png";
 import Skeleton from "react-loading-skeleton"
 import ProductCardVoid from "../ProductCardVoid/ProductCardVoid";
-import {getImgProduct} from "../../lib/config";
+import { getImgProduct } from "../../lib/config";
 
 
 export default class ProductsSlider extends Component {
@@ -25,8 +25,8 @@ export default class ProductsSlider extends Component {
     componentDidMount() {
         const sliderContentProductDetail = document.querySelector('.containerProductDetail');
         sliderContentProductDetail
-            ? this.setState({className: 'CardInPerfil producto-card'})
-            : this.setState({className: 'producto-card'});
+            ? this.setState({ className: 'CardInPerfil producto-card' })
+            : this.setState({ className: 'producto-card' });
 
         getProductsBasic(this.props.category, 25).then((response) => {
             let data = [];
@@ -35,7 +35,7 @@ export default class ProductsSlider extends Component {
             for (product in response.data.results) {
                 data.push(response.data.results[product]);
             }
-            this.setState({data});
+            this.setState({ data });
             // dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
             // const dataLayerGoogleSlidersG4 = response.data.results?.map((prod, index) => {
             // 	return {
@@ -156,7 +156,7 @@ export default class ProductsSlider extends Component {
         // LLenar un arreglo de productos vacios
         let productListVacio = []
         for (let i = 0; i < 10; i++) {
-            productListVacio.push(<ProductCardVoid key={i}/>)
+            productListVacio.push(<ProductCardVoid key={i} />)
         }
 
         let productList = [];
@@ -174,14 +174,13 @@ export default class ProductsSlider extends Component {
             // }
             // console.log( encodeURIComponent(this.state.data[i].image), "imagen:", '?img=' + this.state.data[i].image)
 
-            let newUrl = getImgProduct(this.state.data[i])
             tmpList.push(
                 <ProductCard
                     statusProduct={1}
                     key={skid++}
                     index={skid++}
                     price={this.state.data[i].price}
-                    url={newUrl}
+                    url={getImgProduct(this.state.data[i])}
                     product_id={this.state.data[i].product_id}
                     title={this.state.data[i].title}
                     category={this.state.data[i].category}
@@ -257,7 +256,7 @@ export default class ProductsSlider extends Component {
             productListMobile.push(
                 <ProductCard
                     statusProduct={1}
-                    style={{padding: '30px'}}
+                    style={{ padding: '30px' }}
                     key={skid++}
                     index={skid++}
                     price={this.state.data[i].price}

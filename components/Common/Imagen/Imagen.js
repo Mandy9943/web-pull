@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import Spinner from "../Spinner";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -16,10 +16,11 @@ import Image from "next/image";
  * @param limpio
  *
  */
-const Imagen = ({spinner, limpio, ...props}) => {
+const Imagen = ({ spinner, limpio, ...props }) => {
     const [loading, setLoading] = useState(false)
 
     const handleLoad = (e) => {
+        console.log("Cargando imagen")
         setLoading(true)
     }
 
@@ -28,9 +29,9 @@ const Imagen = ({spinner, limpio, ...props}) => {
             return null;
         }
         if (spinner === true) {
-            return <Spinner/>
+            return <Spinner />
         } else {
-            return <Skeleton/>
+            return <Skeleton />
         }
     }
     return (
@@ -45,7 +46,7 @@ const Imagen = ({spinner, limpio, ...props}) => {
                     placeholder={props.placeholder}
                 />
             ) : (
-                <img src="props.src" alt="props.alt" {...props}/>
+                <img src="props.src" alt="props.alt" {...props} />
             )
             }
 

@@ -58,7 +58,7 @@ export default class Home extends Component {
                 <PrincipalSlider/>
                 <div className="home-content">
                     <Payment/>
-                    <ProductsSlider category={'Computadoras y tabletas'}/>
+                    {/* {/* <ProductsSlider category={'Computadoras y tabletas'}/> */}
                     <ProductsSlider category={'Cosméticos y maquillaje'}/>
                     <SecundarySlider/>
                     <LoginMovil user={u_data.user} authenticated={u_data.authenticated}/>
@@ -93,20 +93,20 @@ export default class Home extends Component {
                     <ProductsSlider category={'Animales y Mascotas'}/>
                     <ListProductMovil jwt={u_data.jwt}/>
                     <CategoriesImgMenu/>
-                    <Tickets/>
+                    <Tickets/> */}
                 </div>
-                <Info/>
+                {/* <Info/> */}
                 {/*<News/>*/}
                 {/*/!*<Social />*!/*/}
-                <Footer/>
-                <div className="footer-social">
+                {/* <Footer/> */}
+                {/* <div className="footer-social">
                     <a href="https://www.sic.gov.co" rel="noopener noreferrer" target="_blank">
                         <Imagen limpio={true} alt="Superintendencia de Industria y Comercio" src={Logo1}/>
                     </a>
                     <a href="https://www.sic.gov.co" rel="noopener noreferrer" target="_blank">
                         <Imagen limpio={true} alt="Superintendencia de Industria y Comercio" src={Logo2}/>
                     </a>
-                </div>
+                </div> */}
             </div>
         );
     }
