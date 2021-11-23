@@ -1,11 +1,11 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import Link from "next/link";
 import CardImg from "../../assets/img/banners/news/1.jpg";
 import "./ProductCard.css";
 import Checkbox from "@material-ui/core/Checkbox";
 import Favorite from "@material-ui/icons/Favorite";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
-import {handleFormatUrl} from "../../lib/functions";
+import { handleFormatUrl } from "../../lib/functions";
 import Imagen from "../Common/Imagen/Imagen";
 import axios from "axios";
 import kiero_logo from "../../assets/img/kiero.png";
@@ -23,7 +23,7 @@ export default class ProductCard extends Component {
             url: this.state.image_url,
         }).then(resp => {
             if (resp.headers['content-type'] === "application/json") {
-                this.setState({image_url: kiero_logo})
+                this.setState({ image_url: kiero_logo })
             }
 
         });
@@ -230,16 +230,16 @@ export default class ProductCard extends Component {
 						.join('-')
 				}
 				>  */}
-				<a  href={handleFormatUrl(this.props.product_id, this.props.title)}>
-					{this.props.statusProduct == 1 ? 
-						<div className="product-card-img">
-							<Imagen
+                <a href={handleFormatUrl(this.props.product_id, this.props.title)}>
+                    {this.props.statusProduct == 1 ?
+                        <div className="product-card-img">
+                            <Imagen
                                 src={this.state.image_url}
                                 alt={this.props.title}
                                 spinner={true}
-								// placeholder="blur"
-							/>
-								{/* <picture>
+                            // placeholder="blur"
+                            />
+                            {/* <picture>
 									<source
 										srcSet={require('https://kiero.co/_next/static/images/kieroweb-db5d710263ceb06f6eb6c4ed06b64782.png?webp')}
 										type="image/webp"
@@ -261,8 +261,8 @@ export default class ProductCard extends Component {
                         <div className="product-card-img spentProduct">
                             <div className='product-spent-home'>Agotado</div>
                             <Imagen spinner={true}
-                                    src={this.state.image_url}
-                                    alt={this.props.title}
+                                src={this.state.image_url}
+                                alt={this.props.title}
                             />
                         </div>}
 
