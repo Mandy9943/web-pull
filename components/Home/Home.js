@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import Link from "next/link";
 import "./Home.css";
 import Social from "./../SocialBar";
@@ -32,7 +32,7 @@ const LoginMovil = dynamic(() => import("./../LoginMovil"));
 const Finding = dynamic(() => import("./../Finding"));
 const Explorer = dynamic(() => import("./../Common/Explorer"));
 const ListProductMovil = dynamic(() =>
-    import("./../listProductMovil/listProductMovil")
+	import("./../listProductMovil/listProductMovil")
 );
 const CategoriesImgMenu = dynamic(() => import("./../CategoriesImgMenu"));
 const Tickets = dynamic(() => import("./../Tickets"));
@@ -40,10 +40,10 @@ const Info = dynamic(() => import("./../Info"));
 const Footer = dynamic(() => import("../Common/Footer"));
 
 export default class Home extends Component {
-    render() {
-        //console.log(this.props.user_data)
-        let u_data = this.props.user_data;
-        let authenticated = this.props.authenticated;
+	render() {
+		//console.log(this.props.user_data)
+		let u_data = this.props.user_data;
+		let authenticated = this.props.authenticated;
 
 		return (
 			<div className="container">
