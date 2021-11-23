@@ -478,14 +478,24 @@ class PaySection extends Component {
       }
     });
 
-    // Segment Checkout Step Completed event
+    // Segment Checkout Step Viewed/Completed events
     // Fire this event whenever a checkout step is completed.
     // Reference: https://segment.com/docs/connections/spec/ecommerce/v2/
-    analytics.track("Checkout Step Completed", {
+
+    analytics.track("Checkout Step Viewed", {
       // checkout_id: '50314b8e9bcf000000000000',	// Checkout transaction ID
       step: 2,
       shipping_method:	'None', //	String representing the shipping method chosen
       payment_method:	'Payu'	// representing the payment method chosen
+    }).then(() => {
+
+      analytics.track("Checkout Step Completed", {
+        // checkout_id: '50314b8e9bcf000000000000',	// Checkout transaction ID
+        step: 2,
+        shipping_method:	'None', //	String representing the shipping method chosen
+        payment_method:	'Payu'	// representing the payment method chosen
+      });
+
     });
 
     // KlaviyoClient.public.identify({
@@ -810,15 +820,29 @@ class PaySection extends Component {
 
       // console.log(checkoutStartedValues);
 
-      analytics.track('Checkout Started', checkoutStartedValues);
+      // Segment Checkout Step Viewed/Completed events
+      // Fire this event whenever a checkout step is completed.
+      // Reference: https://segment.com/docs/connections/spec/ecommerce/v2/
 
-      analytics.track('Checkout Step Completed', {
-        // checkout_id: '50314b8e9bcf000000000000',
-        step: 1,
-        shipping_method:	'None', //	String representing the shipping method chosen
-        payment_method:	'Payu'	// representing the payment method chosen
+      analytics.track('Checkout Started', checkoutStartedValues).then(() => {
+
+        analytics.track("Checkout Step Viewed", {
+          // checkout_id: '50314b8e9bcf000000000000',	// Checkout transaction ID
+          step: 1,
+          //shipping_method:	'None', //	String representing the shipping method chosen
+          //payment_method:	'Payu'	// representing the payment method chosen
+        }).then(() => {
+
+          analytics.track('Checkout Step Completed', {
+            // checkout_id: '50314b8e9bcf000000000000',
+            step: 1,
+            //shipping_method:	'None', //	String representing the shipping method chosen
+            //payment_method:	'Payu'	// representing the payment method chosen
+          });
+
+        });
+
       });
-
     };
     //////
     // this.clientId = typeof(ga) == 'function' && typeof(ga.getAll) == 'function' ? ga.getAll()[0].get('clientId') : "";
