@@ -45,9 +45,9 @@ class PaySection extends Component {
       validForm: true,
       disabledButton: true,
       termsOfService: "",
-      identification: "",
-      typeIdentification: "",
-      typeIdentificationName: "",
+      identification: "0",
+      typeIdentification: "0T",
+      typeIdentificationName: "0TN",
       display: "none",
       gclid: "",
       clientId: "",
@@ -931,7 +931,7 @@ class PaySection extends Component {
               name="lastName"
             />
           </div>
-          <select
+          {/* <select
             name="typeIdentification"
             className="typeIdentification"
             style={{}}
@@ -944,13 +944,13 @@ class PaySection extends Component {
             <option value="cc">Cédula</option>
             <option value="ce">Cédula extranjería</option>
             <option value="pa">Pasaporte</option>
-          </select>
-          <input
+          </select> */}
+          {/* <input
             value={this.state.identification}
             onChange={this.handleFormValue}
             placeholder="Número identificación"
             name="identification"
-          />
+          /> */}
           <input
             value={this.state.email}
             onChange={this.handleFormValue}
@@ -1086,7 +1086,7 @@ class PaySection extends Component {
         <div
           style={{
             display: "flex",
-            top: 395,
+            top: 310,
             borderRadius: "10px",
             padding: "10px 0px",
             backgroundColor: "#f3f3f3",

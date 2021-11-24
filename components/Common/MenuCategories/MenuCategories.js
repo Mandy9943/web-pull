@@ -141,28 +141,27 @@ class MenuCategories extends Component {
                   return (
                     <section className="sub-cat" key={i}>
                       {
-                        <Link
-                          href={"/categoria/[...category]"}
-                          as={
-                            "/categoria/" +
-                            sl_cat.name
-                              .replace(/^[, ]+|[, ]+$|[, ]+/g, "-")
-                              .trim()
-                              .toLowerCase()
-                          }
-                        >
-                          {/* <a href={'/categoria/' + sl_cat.name.replace(/ /g, "-").trim().toLowerCase()}> */}
-                          <a>
+                        // <Link
+                        //   href={"/categoria/[...category]"}
+                        //   as={
+                        //     "/categoria/" +
+                        //     sl_cat.name
+                        //       .replace(/^[, ]+|[, ]+$|[, ]+/g, "-")
+                        //       .trim()
+                        //       .toLowerCase()
+                        //   }
+                        // >
+                          <a href={'/categoria/' + sl_cat.name.replace(/ /g, "-").trim().toLowerCase()}> 
                           <h5>
                             <div className="subCatText">{sl_cat.name}</div>
                           </h5>
                           </a>
-                        </Link>
+                        // </Link>
                       }
                       {sl_cat.childs.map((tl_cat, i) => {
                         return (
                           <span key={i + 1}>
-                            <Link
+                            {/* <Link
                               href={"/categoria/[...category]"}
                               as={
                                 "/categoria/" +
@@ -171,9 +170,17 @@ class MenuCategories extends Component {
                                   .trim()
                                   .toLowerCase()
                               }
-                            >
-                              <a>{tl_cat.name}</a>
-                            </Link>
+                            > */}
+                              <a  href={
+                                        "/categoria/" +
+                                        tl_cat.name
+                                          .replace(/^[, ]+|[, ]+$|[, ]+/g, "-")
+                                          .trim()
+                                          .toLowerCase()
+                                      }>
+                                {tl_cat.name}
+                              </a>
+                            {/* </Link> */}
                           </span>
                         );
                       })}

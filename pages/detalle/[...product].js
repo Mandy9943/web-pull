@@ -12,8 +12,6 @@ const Detail = dynamic(() => import('../../components/ProductDetail'), {
 });
 
 function Product({ data, u_data }) {
-	console.log(data)
-	//console.log(handleFormatUrl(14234, "muñeca,hóla,///@?___ññññ///béébé---hola si cmo estás?"))
 	return (
 		<div>
 			<Head>
