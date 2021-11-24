@@ -1,7 +1,7 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import Link from "next/link";
 import "./Finding.css";
-import Imagen from "../Common/Imagen/Imagen";
+import Image from "next/image"
 
 class Finding extends Component {
     constructor(props) {
@@ -18,9 +18,11 @@ class Finding extends Component {
                     <div className="finding">
                         <div className="wrap-img">
                             <div className="anullProperties">
-                                <Imagen
+                                <Image
                                     src={CategoryImg + this.props.category.img0}
                                     alt={this.props.category.img0}
+                                    layout="fill"
+                                    placeholder="skeleton"
                                 />
                             </div>
                         </div>
@@ -37,9 +39,11 @@ class Finding extends Component {
                     <div className="finding">
                         <div className="wrap-img">
                             <div className="anullProperties">
-                                <Imagen
+                                <Image
                                     src={CategoryImg + this.props.category.img1}
                                     alt={this.props.category.img1}
+                                    layout="fill"
+                                    placeholder="skeleton"
                                 />
                             </div>
                         </div>
