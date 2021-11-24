@@ -1,14 +1,14 @@
 import React from 'react'
-import {handleFormatUrl} from "../../lib/functions";
-import Imagen from "../Common/Imagen/Imagen";
-import {getImgProduct} from "../../lib/config";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faTruck} from "@fortawesome/free-solid-svg-icons";
+import { handleFormatUrl } from "../../lib/functions";
+import { getImgProduct } from "../../lib/config";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTruck } from "@fortawesome/free-solid-svg-icons";
 import "./ListCategory.css";
 import kiero_logo from "../../assets/img/kiero.png";
+import Image from "next/image"
 
 
-const ProductCardList = ({product, i, ...props}) => {
+const ProductCardGrid = ({ product, i, ...props }) => {
 
     if (props.empty !== true) {
         return (
@@ -21,15 +21,17 @@ const ProductCardList = ({product, i, ...props}) => {
                     data-index={i}
 
                     onClick={() => props.handleDataInfoSearch(product, i)}
-                    style={{height: "100% !important"}}
+                    style={{ height: "100% !important" }}
                 >
                     <div className="temp-card">
                         <div className="product-card-img">
                             <div className="anullProperties">
-                                <Imagen spinner={true}
-                                        alt={product.title}
-                                        src={getImgProduct(product)}
-                                        className="img"
+                                <Image
+                                    layout="fill"
+                                    alt={product.title}
+                                    src={getImgProduct(product)}
+                                    className="img"
+                                    placeholder="blur"
                                 />
                             </div>
                         </div>
@@ -47,12 +49,12 @@ const ProductCardList = ({product, i, ...props}) => {
                             <div className="product-card-description">
                                 <p>
                                     {product.title.substr(0, 60) +
-                                    (product.title.length > 60 ? "..." : ".")}
+                                        (product.title.length > 60 ? "..." : ".")}
                                 </p>
                                 {/* {parseInt(product.is_prime) ? ( */}
                                 <div className="kiero-envios-card">
                                     <div className="kiero-envios-card-icon">
-                                        <FontAwesomeIcon icon={faTruck}/>
+                                        <FontAwesomeIcon icon={faTruck} />
                                     </div>
                                     <div>Envío gratis</div>
                                 </div>
@@ -65,14 +67,16 @@ const ProductCardList = ({product, i, ...props}) => {
     } else {
         return (
             <a href="#">
-                <div className="d-flex formatCard" style={{height: "100% !important"}}>
+                <div className="d-flex formatCard" style={{ height: "100% !important" }}>
                     <div className="temp-card">
                         <div className="product-card-img">
                             <div className="anullProperties">
-                                <Imagen spinner={true}
-                                        alt=" "
-                                        src={kiero_logo}
-                                        className="img"
+                                <Image
+                                    placeholder="blur"
+                                    layout="fill"
+                                    alt=" "
+                                    src={kiero_logo}
+                                    className="img"
                                 />
                             </div>
                         </div>
@@ -81,7 +85,7 @@ const ProductCardList = ({product, i, ...props}) => {
                             <div className="product-card-description">
                                 <div className="kiero-envios-card">
                                     <div className="kiero-envios-card-icon">
-                                        <FontAwesomeIcon icon={faTruck}/>
+                                        <FontAwesomeIcon icon={faTruck} />
                                     </div>
                                     <div>Cargando producto</div>
                                 </div>
@@ -94,4 +98,4 @@ const ProductCardList = ({product, i, ...props}) => {
     }
 }
 
-export default ProductCardList
+export default ProductCardGrid
