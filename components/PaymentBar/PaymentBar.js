@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import Modal from "./../Common/Modal";
 import CreditCard from "../../assets/img/pay-credit.png";
 import BankTransfer from "../../assets/img/pay-transfer.jpg";
@@ -7,13 +7,12 @@ import PayBaloto from "../../assets/img/pay-cash-baloto.png";
 import PaySured from "../../assets/img/pay-cash-sured.png";
 import "./PaymentBar.css";
 import Slider from 'react-animated-slider';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faUniversity,
     faPlusCircle,
     faMoneyBillAlt,
 } from "@fortawesome/free-solid-svg-icons";
-import Image from "next/image";
 
 class PaymentBar extends Component {
     constructor(props) {
@@ -27,7 +26,7 @@ class PaymentBar extends Component {
     }
 
     toggleModal(modal) {
-        const newState = {...this.state};
+        const newState = { ...this.state };
         newState[`modal${modal}`] = !newState[`modal${modal}`];
         this.setState(newState);
     }
@@ -40,18 +39,18 @@ class PaymentBar extends Component {
                 </div>
                 <div className="payment-way-content">
                     <h4><b>Tarjetas de crédito</b></h4>
-                    <img className="payment-way-img" src={CreditCard} alt="Tarjetas de crédito"/>
+                    <img className="payment-way-img" src={CreditCard} alt="Tarjetas de crédito" />
                     <p className="sub-title">
                         El banco incluirá los intereses de las cuotas en el resumen de tu
                         tarjeta
                     </p>
                     <h4><b>Transferencia desde tu banco</b></h4>
-                    <img className="payment-way-img2" src={BankTransfer} alt="Transferencia bancaria"/>
+                    <img className="payment-way-img2" src={BankTransfer} alt="Transferencia bancaria" />
                     <h4><b>Pago con efectivo</b></h4>
-                    <img className="payment-way-img-cash" src={PayEfecty} alt="Pago online con EFECTY"/>
-                    <img className="payment-way-img-cash" src={PayBaloto} alt="Pago online con BALOTO"/>
-                    <img className="payment-way-img-cash" src={PaySured} alt="Pago online con SURED"/>
-                    <br/><br/>
+                    <img className="payment-way-img-cash" src={PayEfecty} alt="Pago online con EFECTY" />
+                    <img className="payment-way-img-cash" src={PayBaloto} alt="Pago online con BALOTO" />
+                    <img className="payment-way-img-cash" src={PaySured} alt="Pago online con SURED" />
+                    <br /><br />
                     <p className="payment-way-footer-p">
                         Cuando efectúes tu compra, te brindaremos las instrucciones para que sepas cómo y dónde pagar.
                     </p>
@@ -99,7 +98,7 @@ class PaymentBar extends Component {
             <>
                 <div className="payment no-movil">
                     {this.state.modal1 ? (
-                        <Modal toggle={this.toggleModal} num="1" content={content1} button/>
+                        <Modal toggle={this.toggleModal} num="1" content={content1} button />
                     ) : null}
                     <div
                         className="payment-block"
@@ -108,13 +107,13 @@ class PaymentBar extends Component {
                         }}
                     >
                         <p className="payments-icon payments-item-block">
-                            <FontAwesomeIcon icon={faPlusCircle}/>
+                            <FontAwesomeIcon icon={faPlusCircle} />
                         </p>
                         <p className="payments-item-block">Más medios de pago</p>
                         <p className="payments-item-block sub">Ver más</p>
                     </div>
                     {this.state.modal2 ? (
-                        <Modal toggle={this.toggleModal} num="2" content={content2}/>
+                        <Modal toggle={this.toggleModal} num="2" content={content2} />
                     ) : null}
                     <div
                         className="payment-block"
@@ -123,13 +122,13 @@ class PaymentBar extends Component {
                         }}
                     >
                         <p className="payments-icon payments-item-block">
-                            <FontAwesomeIcon icon={faUniversity}/>
+                            <FontAwesomeIcon icon={faUniversity} />
                         </p>
                         <p className="payments-item-block">Transferencia bancaria</p>
                         <p className="payments-item-block sub">Ver más</p>
                     </div>
                     {this.state.modal3 ? (
-                        <Modal toggle={this.toggleModal} num="3" content={content3}/>
+                        <Modal toggle={this.toggleModal} num="3" content={content3} />
                     ) : null}
                     <div
                         className="payment-block"
@@ -138,7 +137,7 @@ class PaymentBar extends Component {
                         }}
                     >
                         <p className="payments-icon payments-item-block">
-                            <FontAwesomeIcon icon={faMoneyBillAlt}/>
+                            <FontAwesomeIcon icon={faMoneyBillAlt} />
                         </p>
                         <p className="payments-item-block">Paga en efectivo</p>
                         <p className="payments-item-block sub">Ver más</p>
@@ -147,14 +146,14 @@ class PaymentBar extends Component {
                 {/*payments-movil*/}
                 <div className="payment payment-movil no-web">
                     {this.state.modal1 ? (
-                        <Modal toggle={this.toggleModal} num="1" content={content1} button/>
+                        <Modal toggle={this.toggleModal} num="1" content={content1} button />
                     ) : null}
 
                     {this.state.modal2 ? (
-                        <Modal toggle={this.toggleModal} num="2" content={content2}/>
+                        <Modal toggle={this.toggleModal} num="2" content={content2} />
                     ) : null}
                     {this.state.modal3 ? (
-                        <Modal toggle={this.toggleModal} num="3" content={content3}/>
+                        <Modal toggle={this.toggleModal} num="3" content={content3} />
                     ) : null}
 
                     <Slider autoplay={5000}>
@@ -162,27 +161,27 @@ class PaymentBar extends Component {
                             this.toggleModal(1);
                         }}>
                             <p className="payments-icon payments-item-block">
-                                <FontAwesomeIcon icon={faPlusCircle}/>
+                                <FontAwesomeIcon icon={faPlusCircle} />
                             </p>
                             <p className="payments-item-block">Más medios de pago</p>
                             <p className="payments-item-block sub">Ver más</p>
                         </div>
                         <div
                             className="payment-block" onClick={() => {
-                            this.toggleModal(2);
-                        }}>
+                                this.toggleModal(2);
+                            }}>
                             <p className="payments-icon payments-item-block">
-                                <FontAwesomeIcon icon={faUniversity}/>
+                                <FontAwesomeIcon icon={faUniversity} />
                             </p>
                             <p className="payments-item-block">Transferencia bancaria</p>
                             <p className="payments-item-block sub">Ver más</p>
                         </div>
                         <div
                             className="payment-block" onClick={() => {
-                            this.toggleModal(3);
-                        }}>
+                                this.toggleModal(3);
+                            }}>
                             <p className="payments-icon payments-item-block">
-                                <FontAwesomeIcon icon={faMoneyBillAlt}/>
+                                <FontAwesomeIcon icon={faMoneyBillAlt} />
                             </p>
                             <p className="payments-item-block">Paga en efectivo</p>
                             <p className="payments-item-block sub">Ver más</p>
