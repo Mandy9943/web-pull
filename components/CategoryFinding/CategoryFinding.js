@@ -12,14 +12,18 @@ class CategoryFinding extends Component {
     return (
       <div className="finding-category">
         {/* <Link href={'/categoria/[category]'} as={'/categoria/' + this.props.link_left}> */}
-        <Link
+        {/* <Link
           href={"/categoria/[...category]"}
           as={
             "/categoria/" +
             this.props.link_left.replace(/ /g, "-").toLowerCase()
           }
-        >
-         <a>
+        > */}
+         <a
+           href={
+            "/categoria/" +
+            this.props.link_left.replace(/ /g, "-").toLowerCase()
+          }>
           <div className="anullProperties">
               <Image
                 layout="fill"
@@ -28,16 +32,20 @@ class CategoryFinding extends Component {
               />
             </div>
          </a>
-        </Link>
+        {/* </Link> */}
         {/* <Link href={'/categoria/[category]'} as={'/categoria/' + this.props.link_right}> */}
-        <Link
+        {/* <Link
           href={"/categoria/[...category]"}
           as={
             "/categoria/" +
             this.props.link_right.replace(/ /g, "-").toLowerCase()
           }
-        >
-          <a>
+        > */}
+          <a
+           href={
+            "/categoria/" +
+            this.props.link_right.replace(/ /g, "-").toLowerCase()
+          }>
             <div className="anullProperties">
               <Image
                 layout="fill"
@@ -46,7 +54,7 @@ class CategoryFinding extends Component {
               />
             </div>
           </a>
-        </Link>
+        {/* </Link> */}
       </div>
     );
   }
