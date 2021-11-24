@@ -30,46 +30,46 @@ const withSourceMaps = require('@zeit/next-source-maps')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 
-module.exports = withSourceMaps (withOptimizedImages(
-                                    withCSS(
-                                      withSass({
-                                      mode: 'production',
-                                      optimization: {
-                                                      minimizer: [
-                                                                    new TerserPlugin({ parallel: true,}),
-                                                                    new OptimizeCSSAssetsPlugin({})
-                                                                ],
-                                                      },
-                                                                      
-                                        swcMinify: true,
-                                        sourceMap: true,
-                                        compress: true,
-                                        responsive: {
-                                          adapter: require("responsive-loader/sharp"),
-                                        },
-                                        module: {
-                                          rules: [
-                                            {
-                                              test: /\.(webp|png|jpg|gif|svg|eot|ttf|woff|woff2)$/i,
-                                              use: [
-                                                {
-                                                  loader: ["file-loader", "webp-loader"],
-                                                },
-                                                [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
-                                              ],
-                                            },
-                                          ],
-                                        },
-                                        images: {
-                                          domains: [
-                                            "kiero.co",
-                                            "api.kieroapi.net",
-                                            "images-na.ssl-images-amazon.com",
-                                            "localhost",
-                                            "127.0.0.1",
-                                          ],
-                                        },
-                                      })
-                                    )
-                                  )
-                                );
+module.exports = withSourceMaps(withOptimizedImages(
+  withCSS(
+    withSass({
+      mode: 'production',
+      optimization: {
+        minimizer: [
+          new TerserPlugin({ parallel: true, }),
+          new OptimizeCSSAssetsPlugin({})
+        ],
+      },
+
+      swcMinify: true,
+      sourceMap: true,
+      compress: true,
+      responsive: {
+        adapter: require("responsive-loader/sharp"),
+      },
+      module: {
+        rules: [
+          {
+            test: /\.(webp|png|jpg|gif|svg|eot|ttf|woff|woff2)$/i,
+            use: [
+              {
+                loader: ["file-loader", "webp-loader"],
+              },
+              [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
+            ],
+          },
+        ],
+      },
+      images: {
+        domains: [
+          "kiero.co",
+          "api.kieroapi.net",
+          "images-na.ssl-images-amazon.com",
+          "localhost",
+          "127.0.0.1",
+        ],
+      },
+    })
+  )
+)
+);
