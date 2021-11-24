@@ -6,9 +6,9 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Favorite from "@material-ui/icons/Favorite";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import { handleFormatUrl } from "../../lib/functions";
-import Imagen from "../Common/Imagen/Imagen";
 import axios from "axios";
 import kiero_logo from "../../assets/img/kiero.png";
+import Image from "next/image"
 
 export default class ProductCard extends Component {
     state = {
@@ -233,11 +233,11 @@ export default class ProductCard extends Component {
                 <a href={handleFormatUrl(this.props.product_id, this.props.title)}>
                     {this.props.statusProduct == 1 ?
                         <div className="product-card-img">
-                            <Imagen
+                            <Image
                                 src={this.state.image_url}
                                 alt={this.props.title}
-                                spinner={true}
-                            // placeholder="blur"
+                                placeholder="skeleton"
+                                layout="fill"
                             />
                             {/* <picture>
 									<source
@@ -260,9 +260,11 @@ export default class ProductCard extends Component {
                         </div> :
                         <div className="product-card-img spentProduct">
                             <div className='product-spent-home'>Agotado</div>
-                            <Imagen spinner={true}
+                            <Image
                                 src={this.state.image_url}
                                 alt={this.props.title}
+                                placeholder="skeleton"
+                                layout="fill"
                             />
                         </div>}
 
