@@ -1,73 +1,76 @@
 import React from 'react'
-import { handleFormatUrl } from "../../lib/functions";
-import { getImgProduct } from "../../lib/config";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTruck } from "@fortawesome/free-solid-svg-icons";
+import {handleFormatUrl} from "../../lib/functions";
+import {getImgProduct} from "../../lib/config";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faTruck} from "@fortawesome/free-solid-svg-icons";
 import "./ListCategory.css";
 import kiero_logo from "../../assets/img/kiero.png";
 import Image from "next/image"
+import Link from "next/link";
 
 
-const ProductCardGrid = ({ product, i, ...props }) => {
+const ProductCardGrid = ({product, i, ...props}) => {
 
     if (props.empty !== true) {
         return (
-            <a
-                href={handleFormatUrl(product.product_id, product.title)}
-
+            <Link
+                href={'/detalle/[...product]'}
+                as={handleFormatUrl(product.product_id, product.title)}
+                key={i + 1}
             >
-                <div
-                    className="d-flex formatCard"
-                    data-index={i}
-
-                    onClick={() => props.handleDataInfoSearch(product, i)}
-                    style={{ height: "100% !important" }}
-                >
-                    <div className="temp-card">
-                        <div className="product-card-img">
-                            <div className="anullProperties">
-                                <Image
-                                    layout="fill"
-                                    alt={product.title}
-                                    src={getImgProduct(product)}
-                                    className="img"
-                                    placeholder="blur"
-                                />
+                <a>
+                    <div
+                        className="d-flex formatCard"
+                        data-index={i}
+                        onClick={() => props.handleDataInfoSearch(product, i)}
+                        style={{height: "100% !important"}}
+                    >
+                        <div className="temp-card">
+                            <div className="product-card-img">
+                                <div className="anullProperties">
+                                    <Image
+                                        layout="fill"
+                                        alt={product.title}
+                                        src={getImgProduct(product)}
+                                        className="img"
+                                        placeholder="blur"
+                                    />
+                                </div>
                             </div>
-                        </div>
-                        <div className="product-card-description-box">
-                            <h2>
-                                {" "}
-                                $
-                                {product.price
-                                    ? String(product.price)
-                                        .split(".")[0]
-                                        .replace(/(.)(?=(\d{3})+$)/g, "$1.")
-                                    : "$ ... "}
-                            </h2>
-                            <h4>{product.brand} </h4>
-                            <div className="product-card-description">
-                                <p>
-                                    {product.title.substr(0, 60) +
+                            <div className="product-card-description-box">
+                                <h2>
+                                    {" "}
+                                    $
+                                    {product.price
+                                        ? String(product.price)
+                                            .split(".")[0]
+                                            .replace(/(.)(?=(\d{3})+$)/g, "$1.")
+                                        : "$ ... "}
+                                </h2>
+                                <h4>{product.brand} </h4>
+                                <div className="product-card-description">
+                                    <p>
+                                        {product.title.substr(0, 60) +
                                         (product.title.length > 60 ? "..." : ".")}
-                                </p>
-                                {/* {parseInt(product.is_prime) ? ( */}
-                                <div className="kiero-envios-card">
-                                    <div className="kiero-envios-card-icon">
-                                        <FontAwesomeIcon icon={faTruck} />
+                                    </p>
+                                    {/* {parseInt(product.is_prime) ? ( */}
+                                    <div className="kiero-envios-card">
+                                        <div className="kiero-envios-card-icon">
+                                            <FontAwesomeIcon icon={faTruck}/>
+                                        </div>
+                                        <div>Envío gratis</div>
                                     </div>
-                                    <div>Envío gratis</div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </a>
+                </a>
+            </Link>
         )
     } else {
         return (
             <a href="#">
-                <div className="d-flex formatCard" style={{ height: "100% !important" }}>
+                <div className="d-flex formatCard" style={{height: "100% !important"}}>
                     <div className="temp-card">
                         <div className="product-card-img">
                             <div className="anullProperties">
@@ -85,7 +88,7 @@ const ProductCardGrid = ({ product, i, ...props }) => {
                             <div className="product-card-description">
                                 <div className="kiero-envios-card">
                                     <div className="kiero-envios-card-icon">
-                                        <FontAwesomeIcon icon={faTruck} />
+                                        <FontAwesomeIcon icon={faTruck}/>
                                     </div>
                                     <div>Cargando producto</div>
                                 </div>
