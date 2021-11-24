@@ -1,12 +1,12 @@
 import React from 'react'
-import {handleFormatUrl} from "../../lib/functions";
-import Imagen from "../Common/Imagen/Imagen";
-import {getImgProduct} from "../../lib/config";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faTruck} from "@fortawesome/free-solid-svg-icons";
+import { handleFormatUrl } from "../../lib/functions";
+import { getImgProduct } from "../../lib/config";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTruck } from "@fortawesome/free-solid-svg-icons";
 import "./ListCategory.css";
+import Image from "next/image"
 
-const ProductCardList = ({product, i, ...props}) => {
+const ProductCardList = ({ product, i, ...props }) => {
     return (
         <div>
             <a
@@ -17,8 +17,8 @@ const ProductCardList = ({product, i, ...props}) => {
                 <div className="temp-list">
                     <div className="product-list-img">
                         <div className="anullProperties">
-                            <Imagen
-                                spinner={true}
+                            <Image
+                                layout="fill"
                                 alt={product.title}
                                 src={getImgProduct(product)}
                                 className="img"
@@ -39,7 +39,7 @@ const ProductCardList = ({product, i, ...props}) => {
                         {/* {parseInt(product.is_prime) ? ( */}
                         <div className="kiero-envios-card">
                             <div className="kiero-envios-card-icon">
-                                <FontAwesomeIcon icon={faTruck}/>
+                                <FontAwesomeIcon icon={faTruck} />
                             </div>
                             <div>Envío gratis</div>
                         </div>
