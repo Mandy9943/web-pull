@@ -242,7 +242,7 @@ class Nav extends Component {
         );
 
         return (
-            <>
+            <React.Fragment>
                 <div className="nav">
                     <div className="nav-content desktop-nav">
                         <div className="nav-top">
@@ -541,7 +541,7 @@ class Nav extends Component {
                 {this.state.modalLogout ? (
                     <Modal toggle={this.toggleModalLogout} content={contentLogoutComp} button />
                 ) : null}
-            </>
+            </React.Fragment>
         );
     }
 
