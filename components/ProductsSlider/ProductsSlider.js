@@ -6,11 +6,11 @@ import { getProductsBasic } from '../../services/productsApi';
 import Success from '../Login/Success';
 import Slider from 'react-animated-slider';
 import { handleFormatUrl } from '../../lib/functions'
-import Imagen from "../Common/Imagen/Imagen";
 import kiero_logo from "../../assets/img/kiero.png";
 import Skeleton from "react-loading-skeleton"
 import ProductCardVoid from "../ProductCardVoid/ProductCardVoid";
 import { getImgProduct } from "../../lib/config";
+import Image from "next/image"
 
 
 export default class ProductsSlider extends Component {
