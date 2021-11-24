@@ -252,11 +252,6 @@ export default class ProductsSlider extends Component {
             // 	url =
             // 		'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png';
             // }
-            let newUrl =
-                'https://api.kieroapi.net/img/v1/' +
-                this.state.data[i].product_id +
-                '?img=' +
-                encodeURIComponent(this.state.data[i].image);
             productListMobile.push(
                 <ProductCard
                     statusProduct={1}
@@ -264,7 +259,7 @@ export default class ProductsSlider extends Component {
                     key={skid++}
                     index={skid++}
                     price={this.state.data[i].price}
-                    url={newUrl}
+                    url={getImgProduct(this.state.data[i])}
                     product_id={this.state.data[i].product_id}
                     title={this.state.data[i].title}
                     category={this.state.data[i].category}

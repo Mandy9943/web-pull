@@ -9,24 +9,22 @@ import { handleFormatUrl } from "../../lib/functions";
 import axios from "axios";
 import kiero_logo from "../../assets/img/kiero.png";
 import Image from "next/image"
+import { getImgProduct } from "../../lib/config";
 
 export default class ProductCard extends Component {
-    state = {
-        image_url: this.props.url
-    }
 
     constructor(props) {
         super(props)
         this.rootRef = React.createRef()
-        axios({
-            method: 'get',
-            url: this.state.image_url,
-        }).then(resp => {
-            if (resp.headers['content-type'] === "application/json") {
-                this.setState({ image_url: kiero_logo })
-            }
+        // axios({
+        //     method: 'get',
+        //     url: this.state.image_url,
+        // }).then(resp => {
+        //     if (resp.headers['content-type'] === "application/json") {
+        //         this.setState({ image_url: kiero_logo })
+        //     }
 
-        });
+        // });
     }
 
     sendToSegment = () => {
@@ -39,7 +37,7 @@ export default class ProductCard extends Component {
             category: this.props.category,
             position: this.props.index,
             url: 'https://kiero.co' + handleFormatUrl(this.props.product_id, this.props.title),
-            image_url: this.state.image_url
+            image_url: this.props.url
         };
 
         const productListViewed = {
@@ -154,7 +152,7 @@ export default class ProductCard extends Component {
             currency: "COP",
             quantity: 1,
             url: "https://kiero.co" + handleFormatUrl(data.product_id, data.title),
-            image_url: this.state.image_url,
+            image_url: getImgProduct(data),
         });
 
         // console.log(data);
@@ -234,7 +232,7 @@ export default class ProductCard extends Component {
                     {this.props.statusProduct == 1 ?
                         <div className="product-card-img">
                             <Image
-                                src={this.state.image_url}
+                                src={this.props.url}
                                 alt={this.props.title}
                                 placeholder="skeleton"
                                 layout="fill"
@@ -261,7 +259,7 @@ export default class ProductCard extends Component {
                         <div className="product-card-img spentProduct">
                             <div className='product-spent-home'>Agotado</div>
                             <Image
-                                src={this.state.image_url}
+                                src={this.props.url}
                                 alt={this.props.title}
                                 placeholder="skeleton"
                                 layout="fill"
