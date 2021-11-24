@@ -11,6 +11,7 @@ import Favorite from "@material-ui/icons/Favorite";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import { handleFormatUrl } from "../../lib/functions";
 import Image from "next/image";
+import ProductCardGrid from "./ProductCardGrid";
 
 class ListCategory extends Component {
   constructor(props) {
@@ -337,8 +338,7 @@ class ListCategory extends Component {
         <CategoryBanners category={this.props.category} />
 
         <div className={Class}>
-          {this.props.products &&
-            this.props.products.length > 0 &&
+          {this.props?.products?.length > 0 &&
             (this.props.format == "grid"
               ? this.props.products.map((product, i) => (
                 <Link
@@ -353,64 +353,7 @@ class ListCategory extends Component {
 												checkedIcon={<Favorite />}
 											/>
 										</div> */}
-                  <a>
-                    <div
-                      className="d-flex formatCard"
-                      data-index={i}
-                      key={i}
-                      onClick={() => this.handleDataInfoSearch(product, i)}
-                    >
-                      <div className="temp-card">
-                        <div className="product-card-img">
-                          {/* <Spinner /> */}
-                          <div className="anullProperties">
-                            <Image
-                              layout="fill"
-                              alt={product.title}
-                              src={
-                                "https://api.kieroapi.net/img/v1/" +
-                                product.product_id +
-                                "?img=" +
-                                encodeURIComponent(product.image)
-                              }
-                              // src={getImgUrl(product.image)}
-                              className="img"
-                            />
-                          </div>
-                        </div>
-                        <div className="product-card-description-box">
-                          <h2>
-                            {" "}
-                            $
-                            {product.price
-                              ? String(product.price)
-                                .split(".")[0]
-                                .replace(/(.)(?=(\d{3})+$)/g, "$1.")
-                              : "$ ... "}
-                          </h2>
-                          <h4>{product.brand} </h4>
-                          <div className="product-card-description">
-                            <p>
-                              {product.title.substr(0, 60) +
-                                (product.title.length > 60 ? "..." : ".")}
-                            </p>
-                            {/* {parseInt(product.is_prime) ? ( */}
-                            <div className="kiero-envios-card">
-                              <div className="kiero-envios-card-icon">
-                                <FontAwesomeIcon icon={faTruck} />
-                              </div>
-                              <div>Envío gratis</div>
-                            </div>
-                            {
-                              // ) : (
-                              // 	''
-                              // )}
-                            }
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </a>
+                  <ProductCardGrid product={product} i={i} handleDataInfoSearch={this.handleDataInfoSearch} />
                 </Link>
               ))
               : this.props.products.map((product, i) => (
