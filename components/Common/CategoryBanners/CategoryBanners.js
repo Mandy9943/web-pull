@@ -1,18 +1,17 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import Link from "next/link";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faTruck} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTruck } from "@fortawesome/free-solid-svg-icons";
 import "./CategoryBanners.css";
-import {baseUrl} from "../../../lib/config";
-import {getFront} from "../../../lib/request";
+import { baseUrl } from "../../../lib/config";
+import { getFront } from "../../../lib/request";
 import Image from "next/image";
 import Spinner from "../Spinner";
-import Imagen from "../Imagen/Imagen";
 
 class CategoryBanners extends Component {
     constructor(props) {
         super(props);
-        this.state = {loadedBanners: false};
+        this.state = { loadedBanners: false };
     }
 
     formatFiles(arrFiles) {
@@ -26,9 +25,9 @@ class CategoryBanners extends Component {
         getFront("/getBanners/" + this.props.category.replace(/-/g, " ")).then(
             (response) => {
                 if (response.data.files.length > 0) {
-                    this.setState({loadedBanners: true, files: response.data.files});
+                    this.setState({ loadedBanners: true, files: response.data.files });
                 } else {
-                    this.setState({loadedBanners: false, files: []});
+                    this.setState({ loadedBanners: false, files: [] });
                 }
             }
         );
@@ -63,10 +62,11 @@ class CategoryBanners extends Component {
                                         >
                                             {/* <Spinner/> */}
                                             <div className="anullProperties">
-                                                <Imagen
-                                                    limpio={true}
+                                                <Image
+                                                    layout="fill"
                                                     src={baseUrl + file}
                                                     alt={category.replace(/-/g, " ")}
+                                                    placeholder="blur"
                                                 />
                                             </div>
                                             {/* // <img src={'http://localhost' + file} alt={category.replace(/-/g, " ")}/> */}
