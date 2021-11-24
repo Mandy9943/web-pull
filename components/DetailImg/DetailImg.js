@@ -1,10 +1,10 @@
-import React, { Component, createRef } from "react";
+import React, {Component, createRef} from "react";
 import "./DetailImg.css";
 import SliderDetail from "./../SliderDetail";
-import { getImgUrl } from "../../lib/config";
+import {getImgUrl} from "../../lib/config";
 import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faAngleLeft} from "@fortawesome/free-solid-svg-icons";
 import Spinner from "./../Common/Spinner";
 import ReactImageMagnify from "react-image-magnify";
 import Image from "next/image"
@@ -25,12 +25,12 @@ class Detail extends Component {
     mainImage = createRef(null);
 
     showImage(url) {
-        this.setState({ image: url }, this.findMarginWidthForZoomImage);
+        this.setState({image: url}, this.findMarginWidthForZoomImage);
     }
 
     componentDidMount() {
         this.findMarginWidthForZoomImage();
-        this.setState({ images: this.props.images.reverse() });
+        this.setState({images: this.props.images.reverse()});
 
         window.addEventListener("resize", this.findMarginWidthForZoomImage);
     }
@@ -92,7 +92,7 @@ class Detail extends Component {
                                 ) : null
                             )
                         ) : (
-                            <Spinner />
+                            <Spinner/>
                         )}
                     </div>
                     <div className="main-image" ref={this.mainImage}>
@@ -135,7 +135,7 @@ class Detail extends Component {
                 </div>
                 <div className="gallery-responsive">
                     <a className="back-button" href={url}>
-                        <FontAwesomeIcon icon={faAngleLeft} /> Ir al listado
+                        <FontAwesomeIcon icon={faAngleLeft}/> Ir al listado
                     </a>
                     {/*NEED FIX THIS SHIT*/}
                     <SliderDetail
