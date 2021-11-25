@@ -8,4 +8,5 @@ package-lock.json
 _next/
 .idea
 .prettierrc
+_next
 
