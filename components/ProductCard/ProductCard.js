@@ -23,7 +23,7 @@ export default class ProductCard extends Component {
 				product_id: this.props.product_id,
 				price: this.props.price,
 				brand: this.props.brand,
-				category: this.props.category,
+				category: 'fullname' in this.props ? this.props.fullname : this.props.category,
 				position: this.props.index,
 				url: 'https://kiero.co'+ handleFormatUrl(this.props.product_id, this.props.title),
 				image_url: this.props.url
@@ -32,7 +32,7 @@ export default class ProductCard extends Component {
 		const productListViewed = {
 			// nonInteraction: 1,
 			list_id: 'productsSlider', // + ' RODOLFO_TESTING_FRONT',
-			category: this.props.category,
+			category: 'fullname' in this.props ? this.props.fullname : this.props.category,
 			products: product
 		};
 
@@ -134,7 +134,7 @@ export default class ProductCard extends Component {
     // Reference: https://segment.com/docs/connections/spec/ecommerce/v2/
     analytics.track("Product Clicked", {
       product_id: data.product_id,
-      category: data.category,
+      category: data.fullname,
       name: data.title,
       brand: data.brand,
       price: data.price,
