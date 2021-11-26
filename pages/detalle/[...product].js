@@ -19,14 +19,13 @@ function Product({ data, u_data }) {
       <Head>
         {/*<script type="text/javascript" src="https://checkout.wompi.co/widget.js"></script>*/}
         <title>Kiero.co | {data.title.substring(0, 60)}</title>
-
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
         />
-        <meta name="MobileOptimized" content="360" />
+        <meta name="mobileOptimized" content="360" />
         <meta
-          name="Description"
+          name="description"
           content={`Kiero.co | Compralo en Kiero ${data.title.substring(
             0,
             60
@@ -35,9 +34,9 @@ function Product({ data, u_data }) {
         data.category ? data.category.name : ""
       }`.substring(0, 159)}
         />
-        <meta name="Keywords" content={`${data.title}`} />
+        <meta name="keywords" content={`${data.title}`} />
         <meta
-          name="Title"
+          name="title"
           content={`Kiero.co -${data.title.substring(0, 60)} a ${data.price}`}
         />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -92,7 +91,7 @@ function Product({ data, u_data }) {
 
         <link rel="icon" href={favicon} type="image/png" />
 
-        <script
+        {/* <script
           type="application/json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
@@ -120,7 +119,7 @@ function Product({ data, u_data }) {
               },
             }),
           }}
-        ></script>
+        ></script> */}
         {/*<script*/}
         {/*	async type="text/javascript"*/}
         {/*	src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=Sr8j85"*/}
