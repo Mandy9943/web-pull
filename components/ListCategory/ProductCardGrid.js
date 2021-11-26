@@ -71,7 +71,7 @@ const ProductCardGrid = ({product, i, ...props}) => {
         return (
             <a href="#">
                 <div className="d-flex formatCard" style={{height: "100% !important"}}>
-                    <div className="temp-card">
+                    <div className="temp-card-void">
                         <div className="product-card-img">
                             <div className="anullProperties">
                                 <Image
