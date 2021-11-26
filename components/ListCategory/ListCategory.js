@@ -336,6 +336,10 @@ class ListCategory extends Component {
 
     render() {
         const Class = this.props.format === "grid" ? "grid" : "list";
+        let productListEmpty = []
+        for (let i = 0; i < 10; i++) {
+            productListEmpty.push(<ProductCardGrid empty={true}/>)
+        }
         return (
             <div className="wrap-list-category">
                 <CategoryBanners category={this.props.category}/>
@@ -361,8 +365,8 @@ class ListCategory extends Component {
                                 Lo sentimos, no logramos encontrar lo que buscas.
                             </div>
                         ) : (
-                            <div className="spinner">
-                                <Spinner/>
+                            <div className={Class}>
+                                {productListEmpty}
                             </div>
                         )}
                     </div>
