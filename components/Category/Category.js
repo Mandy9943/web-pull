@@ -10,11 +10,7 @@ import {
     searchProduct,
     getProductsBasic,
     searchProducts,
-<<<<<<< HEAD
-    searchFilters,
-=======
     searchFilters, getProductDetail,
->>>>>>> 474ac9b7482626e5314ae921ddba79e8cf655208
 } from '../../services/productsApi';
 import {categoryApi} from '../../lib/config';
 
@@ -75,6 +71,7 @@ class Category extends Component {
             //buscar nivel de la categoria
             let categoryLevel = this.searchCategoryLevel(this.props.data.search);
             categoryLevel.then((response) => {
+                // console.log(response)
                 this.setState({
                     categoryLevel: response.data.results.length > 0 ? response.data.level : '',
                 });
@@ -220,8 +217,8 @@ class Category extends Component {
         // 	console.log()
         // });
         searchProducts(
-            'search',
-            // this.props.data.type,
+            // 'search',
+            this.props.data.type,
             this.props.data.params.items_per_page,
             page,
             this.props.data.search,
@@ -230,7 +227,7 @@ class Category extends Component {
             category,
             sortBy,
             orderBy,
-            categoryLevel
+            this.state.categoryLevel
         ).then((response) => {
             let products = [];
             for (let resultsKey in response.data.results) {
@@ -350,17 +347,14 @@ class Category extends Component {
         let categoryLevel = this.searchCategoryLevel(node.key);
         categoryLevel
             .then((response) => {
+                // console.log("level",response);
                 this.setState({
                     categoryLevel: response.data.results.length > 0 ? response.data.level : '',
                 });
             })
             .then(() => {
                 if (this.state.categoryLevel === '') {
-<<<<<<< HEAD
-                    this.setState({exisctsCategoryMenu: false});
-=======
                     this.setState({existsCategoryMenu: false});
->>>>>>> 474ac9b7482626e5314ae921ddba79e8cf655208
                 } else {
                     if (this.state.categoryLevel === 0) {
                         this.setState({
