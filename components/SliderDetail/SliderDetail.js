@@ -1,55 +1,15 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import Slider from "react-animated-slider";
 import "react-animated-slider/build/horizontal.css";
 import "./SliderDetail.css";
-import { getImgUrl } from "../../lib/config";
+import {getImgUrl} from "../../lib/config";
 import Spinner from "./../Common/Spinner";
 import Image from "next/image";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
+
 let slidesMobil = [
-  {
-    slider: "slider",
-    previousButton: "previousButton",
-    nextButton: "nextButton",
-    buttonDisabled: "disabled",
-    track: "track",
-    slide: "slide",
-    hidden: "hidden",
-    previous: "previous",
-    current: "current",
-    next: "next",
-    animateIn: "animateIn",
-    animateOut: "animateOut",
-  },
-];
-
-export default class SliderDetail extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      imagesMovil: [],
-    };
-  }
-  // componentDidMount(){
-  //     this.setState({ imagesMovil: this.props.img });
-  //   };
-
-  render() {
-    let images = this.state.imagesMovil;
-    function whenImagesMovil() {
-      return new Promise(function (resolve, reject) {
-        (function waitForImagesMovil() {
-          if (!images.length) return resolve();
-          setTimeout(waitForImagesMovil, 300);
-        })();
-      });
-    }
-
-    whenImagesMovil().then(() => {
-      this.setState({ imagesMovil: this.props.img });
-      images = {
-        url: images.url,
+    {
         slider: "slider",
         previousButton: "previousButton",
         nextButton: "nextButton",
@@ -62,49 +22,92 @@ export default class SliderDetail extends Component {
         next: "next",
         animateIn: "animateIn",
         animateOut: "animateOut",
-      };
-    });
-    return (
-      <div className="SliderDetail">
-        <section className="mobil">
-          {!images.length ? (
-            <Spinner />
-          ) : (
-            <Slider autoplay={10000}>
-              {images.map((slide, index) => (
-                <div className="imageProduct" key={index}>
-                  {this.props.allowZoomModal ? (
-                    <Zoom
-                      wrapStyle={{ width: "100%" }}
-                      overlayBgColorStart={"rgba(0, 0, 0, 0)"}
-                      overlayBgColorEnd={"rgba(0, 0, 0, 0.9)"}
-                    >
-                      <div className="anullProperties">
-                        <Image
-                          className="imgZoom"
-                          layout="fill"
-                          alt={this.props.alt}
-                          src={getImgUrl(slide.url, 1000)}
-                        />
-                      </div>
-                    </Zoom>
-                  ) : (
-                    <div className="anullProperties">
-                      <Image
-                        layout="fill"
-                        alt={this.props.alt}
-                        src={getImgUrl(slide.url, 1000)}
-                      />
-                    </div>
-                  )}
-                </div>
-              ))}
-            </Slider>
-          )}
-        </section>
-      </div>
-    );
-  }
+    },
+];
+
+export default class SliderDetail extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            imagesMovil: [],
+        };
+    }
+
+    // componentDidMount(){
+    //     this.setState({ imagesMovil: this.props.img });
+    //   };
+
+    render() {
+        let images = this.state.imagesMovil;
+
+        function whenImagesMovil() {
+            return new Promise(function (resolve, reject) {
+                (function waitForImagesMovil() {
+                    if (!images.length) return resolve();
+                    setTimeout(waitForImagesMovil, 300);
+                })();
+            });
+        }
+
+        whenImagesMovil().then(() => {
+            this.setState({imagesMovil: this.props.img});
+            images = {
+                url: images.url,
+                slider: "slider",
+                previousButton: "previousButton",
+                nextButton: "nextButton",
+                buttonDisabled: "disabled",
+                track: "track",
+                slide: "slide",
+                hidden: "hidden",
+                previous: "previous",
+                current: "current",
+                next: "next",
+                animateIn: "animateIn",
+                animateOut: "animateOut",
+            };
+        });
+        return (
+            <div className="SliderDetail">
+                <section className="mobil">
+                    {!images.length ? (
+                        <Spinner/>
+                    ) : (
+                        <Slider autoplay={10000}>
+                            {images.map((slide, index) => (
+                                <div className="imageProduct" key={index}>
+                                    {this.props.allowZoomModal ? (
+                                        <Zoom
+                                            wrapStyle={{width: "100%"}}
+                                            overlayBgColorStart={"rgba(0, 0, 0, 0)"}
+                                            overlayBgColorEnd={"rgba(0, 0, 0, 0.9)"}
+                                        >
+                                            <div className="anullProperties">
+                                                <Image
+                                                    className="imgZoom"
+                                                    layout="fill"
+                                                    alt={this.props.alt}
+                                                    src={getImgUrl(slide.url, 1000)}
+                                                />
+                                            </div>
+                                        </Zoom>
+                                    ) : (
+                                        <div className="anullProperties">
+                                            <Image
+                                                layout="fill"
+                                                alt={this.props.alt}
+                                                src={getImgUrl(slide.url, 1000)}
+                                            />
+                                        </div>
+                                    )}
+                                </div>
+                            ))}
+                        </Slider>
+                    )}
+                </section>
+            </div>
+        );
+    }
 }
 
 // import React, { Component } from 'react';

@@ -5,6 +5,7 @@ package-lock.json
 .map
 .next
 .next/
+_next/
 .idea
 .prettierrc
 _next
