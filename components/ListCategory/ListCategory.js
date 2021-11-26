@@ -338,7 +338,7 @@ class ListCategory extends Component {
         const Class = this.props.format === "grid" ? "grid" : "list";
         let productListEmpty = []
         for (let i = 0; i < 10; i++) {
-            productListEmpty.push(<ProductCardGrid empty={true}/>)
+            productListEmpty.push(<ProductCardGrid empty={true} key={i}/>)
         }
         return (
             <div className="wrap-list-category">
@@ -377,3 +377,4 @@ class ListCategory extends Component {
 }
 
 export default ListCategory;
+
