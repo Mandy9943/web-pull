@@ -50,7 +50,7 @@ class ProductDetail extends Component {
 		this.state = {
 			questions: [],
 			mdata: this.props.data,
-			m_pgid: props.data.variants.length == 0 || props.data.is_variant ? true : false,
+			m_pgid: !!(props.data.variants.length === 0 || props.data.is_variant),
 		};
 		this.reLoadData = this.reLoadData.bind(this);
 	}

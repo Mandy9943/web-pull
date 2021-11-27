@@ -632,18 +632,27 @@ function Results({ data, session }) {
         if (e.links[bannerNo - 1] !== "") {
           structure.push(
             // <Link href={"/categoria/[category]"} as={"/categoria/" + e.links[bannerNo - 1]} ></Link>
-            <Link
-              key={i}
-              href={"/categoria/[...category]"}
-              as={
-                "/categoria/" +
-                e.links[bannerNo - 1]
-                  .replace(/^[, ]+|[, ]+$|[, ]+/g, "-")
-                  .trim()
-                  .toLowerCase()
-              }
-            >
-              <a className="tickets">
+            // <Link
+            //   key={i}
+            //   href={"/categoria/[...category]"}
+            //   as={
+            //     "/categoria/" +
+            //     e.links[bannerNo - 1]
+            //       .replace(/^[, ]+|[, ]+$|[, ]+/g, "-")
+            //       .trim()
+            //       .toLowerCase()
+            //   }
+            // >
+              <a 
+                key={i}
+                href={
+                      "/categoria/" +
+                      e.links[bannerNo - 1]
+                        .replace(/^[, ]+|[, ]+$|[, ]+/g, "-")
+                        .trim()
+                        .toLowerCase()
+                    } 
+                className="tickets">
                 <div className="anullProperties">
                   <Image
                     layout="fill"
@@ -658,7 +667,7 @@ function Results({ data, session }) {
                   />
                 </div>
               </a>
-            </Link>
+            // </Link>
           );
         } else {
           structure.push(
