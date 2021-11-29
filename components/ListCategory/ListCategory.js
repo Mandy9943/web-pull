@@ -38,7 +38,7 @@ class ListCategory extends Component {
                     product_id: prod.product_id,
                     price: prod.price,
                     brand: prod.brand,
-                    category: prod.category,
+                    category: prod.fullname,
                     position: index,
                     url:
                         "https://kiero.co" + handleFormatUrl(prod.product_id, prod.title),
@@ -48,7 +48,7 @@ class ListCategory extends Component {
                 const productListViewed = {
                     // nonInteraction: 1,
                     list_id: "listCategory", // + ' RODOLFO_TESTING_FRONT',
-                    category: props.category,
+                    category: props.fullname,
                     products: product,
                 };
 
@@ -311,7 +311,7 @@ class ListCategory extends Component {
 
         var productClickedData = {
             product_id: data.product_id,
-            category: data.category,
+            category: data.fullname,
             name: data.title,
             brand: data.brand,
             price: data.price,

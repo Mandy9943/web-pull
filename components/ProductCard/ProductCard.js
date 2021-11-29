@@ -23,31 +23,26 @@ export default class ProductCard extends Component {
         //     if (resp.headers['content-type'] === "application/json") {
         //         this.setState({ image_url: kiero_logo })
         //     }
-
-        // });
     }
+	sendToSegment = () => {
+		
+		let product = {
+				name: this.props.title,
+				product_id: this.props.product_id,
+				price: this.props.price,
+				brand: this.props.brand,
+				category: 'fullname' in this.props ? this.props.fullname : this.props.category,
+				position: this.props.index,
+				url: 'https://kiero.co'+ handleFormatUrl(this.props.product_id, this.props.title),
+				image_url: this.props.url
+			};
 
-    sendToSegment = () => {
-
-        let product = {
-            name: this.props.title,
-            product_id: this.props.product_id,
-            price: this.props.price,
-            brand: this.props.brand,
-            category: this.props.category,
-            position: this.props.index,
-            url: 'https://kiero.co' + handleFormatUrl(this.props.product_id, this.props.title),
-            image_url: this.props.url
-        };
-
-        const productListViewed = {
-            // nonInteraction: 1,
-            list_id: 'productsSlider', // + ' RODOLFO_TESTING_FRONT',
-            category: this.props.category,
-            products: product
-        };
-
-        // console.log(productListViewed)
+		const productListViewed = {
+			// nonInteraction: 1,
+			list_id: 'productsSlider', // + ' RODOLFO_TESTING_FRONT',
+			category: 'fullname' in this.props ? this.props.fullname : this.props.category,
+			products: product
+		};
 
         analytics.track('Product List Viewed', productListViewed);
 
@@ -145,7 +140,7 @@ export default class ProductCard extends Component {
         // Reference: https://segment.com/docs/connections/spec/ecommerce/v2/
         analytics.track("Product Clicked", {
             product_id: data.product_id,
-            category: data.category,
+            category: data.fullname,
             name: data.title,
             brand: data.brand,
             price: data.price,
