@@ -216,8 +216,8 @@ class Category extends Component {
 		// 	console.log()
 		// });
 		let products = searchProducts(
-			'search',
-			// this.props.data.type,
+			// 'search',
+			this.props.data.type,
 			this.props.data.params.items_per_page,
 			page,
 			this.props.data.search,
