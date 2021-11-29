@@ -353,7 +353,8 @@ class ListCategory extends Component {
 
                         ))
                         : this.props.products.map((product, i) => (
-                            < ProductCardList product={product} i={i} handleDataInfoSearch={this.handleDataInfoSearch} key={i}/>
+                            < ProductCardList product={product} i={i} handleDataInfoSearch={this.handleDataInfoSearch}
+                                              key={i}/>
                         )))
                     }
                 </div>
