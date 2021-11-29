@@ -4,38 +4,38 @@ import ProductCard from '../ProductCard/ProductCard';
 import './ProductsSlider.css';
 import {getProductDetail, getProductsBasic} from '../../services/productsApi';
 import Success from '../Login/Success';
-import {getImgUrl} from '../../lib/config';
 import Slider from 'react-animated-slider';
-import {handleFormatUrl} from '../../lib/functions'
+import { handleFormatUrl } from '../../lib/functions'
+import kiero_logo from "../../assets/img/kiero.png";
+import Skeleton from "react-loading-skeleton"
+import ProductCardVoid from "../ProductCardVoid/ProductCardVoid";
+import { getImgProduct } from "../../lib/config";
+import Image from "next/image"
+
 
 export default class ProductsSlider extends Component {
     constructor(props) {
         super(props);
         this.state = {
             data: [],
-            className: 'producto-card',
+            className: 'producto-card'
         };
     }
 
     componentDidMount() {
         const sliderContentProductDetail = document.querySelector('.containerProductDetail');
         sliderContentProductDetail
-            ? this.setState({className: 'CardInPerfil producto-card'})
-            : this.setState({className: 'producto-card'});
+            ? this.setState({ className: 'CardInPerfil producto-card' })
+            : this.setState({ className: 'producto-card' });
 
         getProductsBasic(this.props.category, 25).then((response) => {
             let data = [];
-            for (let product in response.data.results) {
-                let index_product = response.data.results[product]
-                getProductDetail(index_product.product_id).then(resp => {
-                    let data_product = resp.data.data
-                    if (data_product.status === 1 && data_product.stock > 0) {
-                        data.push(index_product);
-                    }
-                })
-
+            let product;
+            let i = 1;
+            for (product in response.data.results) {
+                data.push(response.data.results[product]);
             }
-            this.setState({data});
+            this.setState({ data });
             // dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
             // const dataLayerGoogleSlidersG4 = response.data.results?.map((prod, index) => {
             // 	return {
@@ -150,7 +150,15 @@ export default class ProductsSlider extends Component {
         });
     }
 
+
     render() {
+
+        // LLenar un arreglo de productos vacios
+        let productListVacio = []
+        for (let i = 0; i < 10; i++) {
+            productListVacio.push(<ProductCardVoid key={i} />)
+        }
+
         let productList = [];
         let productListMobile = [];
         let tmpList = [];
@@ -166,19 +174,13 @@ export default class ProductsSlider extends Component {
             // }
             // console.log( encodeURIComponent(this.state.data[i].image), "imagen:", '?img=' + this.state.data[i].image)
 
-            let newUrl =
-                'https://api.kieroapi.net/img/v1/' +
-                this.state.data[i].product_id +
-                '?img=' +
-                encodeURIComponent(this.state.data[i].image);
-            // console.log(this.state.data[i].image)
             tmpList.push(
                 <ProductCard
                     statusProduct={1}
                     key={skid++}
                     index={skid++}
                     price={this.state.data[i].price}
-                    url={newUrl}
+                    url={getImgProduct(this.state.data[i])}
                     product_id={this.state.data[i].product_id}
                     title={this.state.data[i].title}
                     category={this.state.data[i].category}
@@ -186,7 +188,6 @@ export default class ProductsSlider extends Component {
                     className={this.state.className}
                 />
             );
-
             if ((i + 1) % 5 === 0 && i > 0) {
                 productList.push(
                     <section key={kid++} className="test">
@@ -195,6 +196,7 @@ export default class ProductsSlider extends Component {
                 );
                 tmpList = [];
             }
+
         }
 
         // // All products (We maybe use this array in mobile version slide change)
@@ -250,19 +252,14 @@ export default class ProductsSlider extends Component {
             // 	url =
             // 		'https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png';
             // }
-            let newUrl =
-                'https://api.kieroapi.net/img/v1/' +
-                this.state.data[i].product_id +
-                '?img=' +
-                encodeURIComponent(this.state.data[i].image);
             productListMobile.push(
                 <ProductCard
                     statusProduct={1}
-                    style={{padding: '30px'}}
+                    style={{ padding: '30px' }}
                     key={skid++}
                     index={skid++}
                     price={this.state.data[i].price}
-                    url={newUrl}
+                    url={getImgProduct(this.state.data[i])}
                     product_id={this.state.data[i].product_id}
                     title={this.state.data[i].title}
                     category={this.state.data[i].category}
@@ -287,7 +284,19 @@ export default class ProductsSlider extends Component {
                 <div className="slider-movil">
                     <section className="content-products-slider">{productListMobile}</section>
                 </div>
-                <Slider autoplay={false}>{productList}</Slider>
+                {
+                    productList.length > 0 ? (
+                        <Slider autoplay={false}>{productList}</Slider>
+                    ) : (
+
+                        <Slider autoplay={false}>
+                            <section className="test">
+                                {productListVacio}
+                            </section>
+                        </Slider>
+
+                    )}
+
             </div>
         );
     }

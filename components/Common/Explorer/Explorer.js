@@ -110,8 +110,8 @@ class Explorer extends Component {
                 this.state.categoryName.replace(/ /g, "-").toLowerCase()
               }
             >
-             <a>
-              {this.state.exploreImage ? (
+              <a>
+                {this.state.exploreImage ? (
                   <div className="anullProperties">
                     <Image
                       layout="fill"
@@ -122,7 +122,7 @@ class Explorer extends Component {
                 ) : (
                   <Skeleton className="skeleton" />
                 )}
-             </a>
+              </a>
             </Link>
           </div>
           <div className="group-img">

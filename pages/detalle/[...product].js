@@ -51,7 +51,7 @@ function Product({ data, u_data }) {
 				/>
 				<meta
 					name="twitter: description"
-					contenido=" Envíos gratis en Colombia, productos para Bebés, Belleza, Cámaras y accesorios,
+					content=" Envíos gratis en Colombia, productos para Bebés, Belleza, Cámaras y accesorios,
       Electrodomésticos, Electrónica, Hogar y muebles y mucho más."
 				/>
 				<meta name="twitter: image" content={`${data.images[0].url}`} />
@@ -108,7 +108,7 @@ function Product({ data, u_data }) {
 							},
 						}),
 					}}
-				></script>
+				/>
 				{/*<script*/}
 				{/*	async type="text/javascript"*/}
 				{/*	src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=Sr8j85"*/}
