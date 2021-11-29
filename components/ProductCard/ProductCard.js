@@ -219,7 +219,7 @@ export default class ProductCard extends Component {
 				}
 				>  */}
 				<a  href={handleFormatUrl(this.props.product_id, this.props.title)}>
-					{this.props.statusProduct == 1 ? 
+					{this.props.statusProduct === 1 ?
 						<div className="product-card-img">
 							{/* <Spinner/> */}
 							<Image
@@ -258,7 +258,7 @@ export default class ProductCard extends Component {
 									</div>}
 						
           <button>Envío gratis</button>
-          <h3 className={this.props.statusProduct == 1 ? "" : 'product-no-stock'}>
+          <h3 className={this.props.statusProduct === 1 ? "" : 'product-no-stock'}>
             ${" "}
             {this.props.price
               ? String(this.props.price)
