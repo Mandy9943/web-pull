@@ -34,7 +34,7 @@ export default class ProductCard extends Component {
             product_id: this.props.product_id,
             price: this.props.price,
             brand: this.props.brand,
-            category: this.props.category,
+            category: 'fullname' in this.props ? this.props.fullname : this.props.category,
             position: this.props.index,
             url: 'https://kiero.co' + handleFormatUrl(this.props.product_id, this.props.title),
             image_url: this.props.url
@@ -42,8 +42,8 @@ export default class ProductCard extends Component {
 
         const productListViewed = {
             // nonInteraction: 1,
-            list_id: 'productsSlider', // + ' RODOLFO_TESTING_FRONT',
-            category: this.props.category,
+            list_id: 'productsSlider' + ' RODOLFO_TESTING_FRONT',
+            category: product.category,
             products: product
         };
 
