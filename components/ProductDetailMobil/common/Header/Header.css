@@ -1,0 +1,28 @@
+/* #HeaderProductDatailMobil * {
+  box-sizing: border-box;
+} */
+#HeaderProductDatailMobil {
+  width: 100%;
+  padding: 10px 20px 20px 20px;
+  box-sizing: border-box;
+}
+#HeaderProductDatailMobil .bredcumbs {
+  margin-bottom: 1.2rem;
+}
+#HeaderProductDatailMobil .title {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+#HeaderProductDatailMobil .titleText {
+  font: normal normal 800 18px/22px Montserrat;
+  letter-spacing: 0.45px;
+  color: #ffffff;
+  text-align: center;
+}
+#HeaderProductDatailMobil .bredItem {
+  margin-right: 4px;
+  font: normal normal 10px/13px Montserrat;
+  letter-spacing: 0px;
+  color: #ffffff;
+}

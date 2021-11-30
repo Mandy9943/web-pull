@@ -25,27 +25,6 @@
   max-width: 324px;
   border-radius: 5px;
 }
-#productDetailMobil .product-datail-skeleton {
-  height: 100%;
-  width: 100%;
-}
-#productDetailMobil .skeleton-envios {
-  height: 250px;
-  width: 100%;
-  margin-top: 100px;
-}
-#productDetailMobil .skeleton-pagos {
-  height: 200px;
-  width: 100%;
-}
-#productDetailMobil .skeleton-detalles {
-  height: 60px;
-  width: 100%;
-}
-#productDetailMobil .skeleton-others {
-  height: 400px;
-  width: 100%;
-}
 
 .mb {
   margin-bottom: 4px;

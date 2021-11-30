@@ -7,11 +7,17 @@ import favicon from "../../assets/img/favicon.svg";
 import dynamic from "next/dynamic";
 import { handleFormatUrl } from "../../lib/functions";
 import useResize from "../../lib/hooks/useResize";
-import ProductDetailMobil from "../../components/ProductDetailMobil/ProductDetailMobil";
+import SkeletonProductDatail from "../../components/ProductDetailMobil/common/SkeletonProductDatail/SkeletonProductDatail";
 
 const Detail = dynamic(() => import("../../components/ProductDetail"), {
   loading: () => <p>loading...</p>,
 });
+const ProductDetailMobil = dynamic(
+  () => import("../../components/ProductDetailMobil/ProductDetailMobil"),
+  {
+    loading: () => <SkeletonProductDatail />,
+  }
+);
 
 function Product({ data, u_data }) {
   const mobileView = useResize(768);
