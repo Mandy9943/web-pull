@@ -42,7 +42,7 @@ export default class ProductCard extends Component {
 
         const productListViewed = {
             // nonInteraction: 1,
-            list_id: 'productsSlider' + ' RODOLFO_TESTING_FRONT',
+            list_id: 'productsSlider', // + ' RODOLFO_TESTING_FRONT',
             category: product.category,
             products: product
         };

@@ -47,7 +47,7 @@ class ListCategory extends Component {
 
                 const productListViewed = {
                     // nonInteraction: 1,
-                    list_id: "listCategory" + ' RODOLFO_TESTING_FRONT',
+                    list_id: "listCategory", // + ' RODOLFO_TESTING_FRONT',
                     category: product.category,
                     products: product,
                 };
