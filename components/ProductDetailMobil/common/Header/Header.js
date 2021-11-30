@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import "./Header.css";
 const Header = ({ title, bredCumbs }) => {
-  console.log("bredCumbs", bredCumbs);
   return (
     <div id="HeaderProductDatailMobil">
       <div className="bredcumbs">
@@ -18,7 +17,9 @@ const Header = ({ title, bredCumbs }) => {
         <span className="bredItem">{bredCumbs[bredCumbs.length - 1].name}</span>
       </div>
       <div className="title">
-        <h2 className="titleText">{title}</h2>
+        <h2 className="titleText">
+          {title.length > 80 ? title.substr(0, 80) + "..." : title}
+        </h2>
       </div>
     </div>
   );
