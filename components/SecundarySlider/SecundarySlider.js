@@ -97,7 +97,7 @@ export default class SecundarySlider extends Component {
                 <Link href={"/categoria/[...category]"} as={slide.enlace.replace(/ /g, "-").toLocaleLowerCase()}>
                   <a>
                     <div className="anullProperties">
-                      <Image layout="fill" src={slide.url} alt={slide.enlace} />
+                      <Image layout="fill" src={slide.url} alt={slide.enlace} placeholder="skeleton" />
                     </div>
                   </a>
                 </Link>

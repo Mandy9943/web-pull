@@ -3,7 +3,7 @@ import Link from "next/link";
 import ProductCard from '../../ProductCard/ProductCard';
 import "./ProductCardFinding.css";
 import {getProductsBasic} from "../../../services/productsApi";
-import { getImgUrl } from "../../../lib/config"
+import {getImgProduct, getImgUrl} from "../../../lib/config"
 
 export default class ProductCardFinding extends React.Component {
 
@@ -22,31 +22,28 @@ export default class ProductCardFinding extends React.Component {
                 for (product in response.data.products) {
                     data.push(response.data.products[product]);
                 }
-                this.setState({ data });
+                this.setState({data});
             });
     }
 
-    render(){
+    render() {
 
-        let productList = this.state.data.map(function(product, i) {
-            let url = "";
-            if(product.image){
-                url = 'https://api.kieroapi.net/img/v1/'+ product.product_id + '?img=' + encodeURIComponent(product.image)
-                //url = getImgUrl(product.image);
-            }else{
-                url = "https://thednetworks.com/wp-content/uploads/2012/01/picture_not_available_400-300.png";
-            }
-            return <ProductCard key={i} price={product.price.split(",")[0]} product_id={product.product_id} url={url} title={product.title}/>;
+        let productList = this.state.data.map(function (product, i) {
+            return <ProductCard key={i} price={product.price.split(",")[0]} product_id={product.product_id}
+                                url={getImgProduct(product)} title={product.title}/>;
         });
 
         return (
             <div className="product-card-finding">
 
-                {!this.props.notitle && <h3 className="home-section-title">Encuentra los mejores productos en {this.props.category && this.props.category}<a href={this.props.category && "/categoria/"+this.props.category} className="accent">Ver todos</a></h3>}
+                {!this.props.notitle && <h3 className="home-section-title">Encuentra los mejores productos
+                    en {this.props.category && this.props.category}<a
+                        href={this.props.category && "/categoria/" + this.props.category} className="accent">Ver
+                        todos</a></h3>}
 
                 <div className="slider">
                     <div className="content-product-card-finding">
-                        { productList }
+                        {productList}
                     </div>
                 </div>
             </div>
