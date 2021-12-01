@@ -1,18 +1,44 @@
 #InfoProductDetailMovil {
-  color: #000;
+  opacity: 1;
+  border-top: 2px solid #e4e4e4;
+  border-bottom: 2px solid #e4e4e4;
+  width: 100%;
+  background: #fff;
+}
+
+#InfoProductDetailMovil .info {
   display: flex;
   align-items: center;
-  justify-content: center;
-  border-radius: 12px;
-  padding: 15px;
+  justify-items: center;
 }
 
-#InfoProductDetailMovil .card {
-  column-count: 2;
-  align-items: space-around;
+#InfoProductDetailMovil .info .icon {
+  flex: 1;
+  padding-left: 40px;
 }
 
-#InfoProductDetailMovil .icon {
+#InfoProductDetailMovil .info .icon svg {
+  width: 39px;
+  height: 31px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  opacity: 1;
   color: #d00a2d;
-  size: 15px;
+}
+#InfoProductDetailMovil .text {
+  flex: 1;
+  padding-right: 40px;
+}
+#InfoProductDetailMovil .text h3 {
+  text-align: left;
+  font: normal normal bold 14px/18px Montserrat;
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 1;
+}
+#InfoProductDetailMovil .text p {
+  text-align: left;
+  font: normal normal normal 12px/16px Montserrat;
+  letter-spacing: 0px;
+  color: #5f5f5f;
+  opacity: 1;
 }
