@@ -10,7 +10,7 @@ import {
     searchProduct,
     getProductsBasic,
     searchProducts,
-    searchFilters, getProductDetail,
+    searchFilters,
 } from '../../services/productsApi';
 import {categoryApi} from '../../lib/config';
 
@@ -216,7 +216,7 @@ class Category extends Component {
         // 	console.log('dataProducts', response.data.results);
         // 	console.log()
         // });
-        searchProducts(
+        let products = searchProducts(
             // 'search',
             this.props.data.type,
             this.props.data.params.items_per_page,
@@ -227,26 +227,17 @@ class Category extends Component {
             category,
             sortBy,
             orderBy,
-            this.state.categoryLevel
-        ).then((response) => {
-            let products = [];
-            for (let resultsKey in response.data.results) {
-                let product_index = response.data.results[resultsKey]
-                getProductDetail(product_index.product_id).then(resp => {
-                    let data_product = resp.data.data
-                    if (data_product.status === 1 && data_product.stock > 0) {
-                        products.push(product_index)
-                        this.setState({
-                            products: products,
-                            totalPages: Math.ceil(
-                                response.data.total / this.props.data.params.items_per_page
-                            ),
-                            totalItems: response.data.total,
-                        });
-                    }
-                })
-            }
+            categoryLevel
+        );
 
+        products.then((response) => {
+            this.setState({
+                products: response.data.results,
+                totalPages: Math.ceil(
+                    response.data.total / this.props.data.params.items_per_page
+                ),
+                totalItems: response.data.total,
+            });
         });
     }
 
@@ -354,7 +345,7 @@ class Category extends Component {
             })
             .then(() => {
                 if (this.state.categoryLevel === '') {
-                    this.setState({existsCategoryMenu: false});
+                    this.setState({exisctsCategoryMenu: false});
                 } else {
                     if (this.state.categoryLevel === 0) {
                         this.setState({

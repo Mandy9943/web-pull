@@ -23,26 +23,31 @@ export default class ProductCard extends Component {
         //     if (resp.headers['content-type'] === "application/json") {
         //         this.setState({ image_url: kiero_logo })
         //     }
-    }
-	sendToSegment = () => {
-		
-		let product = {
-				name: this.props.title,
-				product_id: this.props.product_id,
-				price: this.props.price,
-				brand: this.props.brand,
-				category: 'fullname' in this.props ? this.props.fullname : this.props.category,
-				position: this.props.index,
-				url: 'https://kiero.co'+ handleFormatUrl(this.props.product_id, this.props.title),
-				image_url: this.props.url
-			};
 
-		const productListViewed = {
-			// nonInteraction: 1,
-			list_id: 'productsSlider', // + ' RODOLFO_TESTING_FRONT',
-			category: 'fullname' in this.props ? this.props.fullname : this.props.category,
-			products: product
-		};
+        // });
+    }
+
+    sendToSegment = () => {
+
+        let product = {
+            name: this.props.title,
+            product_id: this.props.product_id,
+            price: this.props.price,
+            brand: this.props.brand,
+            category: 'fullname' in this.props ? this.props.fullname : this.props.category,
+            position: this.props.index,
+            url: 'https://kiero.co' + handleFormatUrl(this.props.product_id, this.props.title),
+            image_url: this.props.url
+        };
+
+        const productListViewed = {
+            // nonInteraction: 1,
+            list_id: 'productsSlider', // + ' RODOLFO_TESTING_FRONT',
+            category: product.category,
+            products: product
+        };
+
+        // console.log(productListViewed)
 
         analytics.track('Product List Viewed', productListViewed);
 
