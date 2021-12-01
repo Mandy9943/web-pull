@@ -1,0 +1,23 @@
+#CheckoutButton {
+  background: var(--unnamed-color-cf0a2c) 0% 0% no-repeat padding-box;
+  background: #cf0a2c 0% 0% no-repeat padding-box;
+  border-radius: 5px;
+  width: 100%;
+  color: white;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  position: relative;
+}
+#CheckoutButton .button-text {
+  font: normal normal 800 21px/25px Montserrat;
+  letter-spacing: 1.05px;
+  color: #f3f3f3;
+}
+#CheckoutButton .icon-shoping-cart {
+  position: absolute;
+  right: 30px;
+  font-size: 25px;
+}

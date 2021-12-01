@@ -1,0 +1,24 @@
+.swiperSliderDatailMobile {
+  height: 100%;
+  width: 100%;
+}
+
+.swiperSliderDatailMobile .swiper {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.swiperSliderDatailMobile .swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  height: 324px;
+  border-radius: 5px;
+}
+
+.swiperSliderDatailMobile .swiper-slide img {
+  display: block;
+  width: 100%;
+  border-radius: 5px;
+}
