@@ -10,23 +10,23 @@
   display: flex;
   align-items: center;
   justify-items: center;
+  padding-bottom: 15px;
 }
 
 #InfoProductDetailMovil .info .icon {
-  flex: 1;
-  padding-left: 40px;
+  flex: 0.3;
+  padding-left: 50px;
 }
 
 #InfoProductDetailMovil .info .icon svg {
-  width: 39px;
-  height: 31px;
   background: #ffffff 0% 0% no-repeat padding-box;
   opacity: 1;
   color: #d00a2d;
+  font-size: 47px !important;
 }
 #InfoProductDetailMovil .text {
   flex: 1;
-  padding-right: 40px;
+  padding-right: 20px;
 }
 #InfoProductDetailMovil .text h3 {
   text-align: left;
