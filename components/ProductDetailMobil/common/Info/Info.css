@@ -1,0 +1,18 @@
+#InfoProductDetailMovil {
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  padding: 15px;
+}
+
+#InfoProductDetailMovil .card {
+  column-count: 2;
+  align-items: space-around;
+}
+
+#InfoProductDetailMovil .icon {
+  color: #d00a2d;
+  size: 15px;
+}
