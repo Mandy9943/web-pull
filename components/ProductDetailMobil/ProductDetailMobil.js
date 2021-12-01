@@ -10,6 +10,7 @@ import SwiperSlider from "./common/SwiperSlider/SwipperSlider";
 
 import "./ProductDetailMobil.css";
 import Info from "./common/Info/Info";
+import PayMethod from "./common/PayMethod/PayMethod";
 
 const Nav = dynamic(() => import("../Common/Nav/Nav"));
 const Footer = dynamic(() => import("../Common/Footer"));
@@ -36,6 +37,7 @@ const ProductDetailMobil = ({ user_data, data }) => {
             </div>
             <CheckoutProduct price={data.price} stock={data.stock} />
             <Info />
+            <PayMethod />
             <Footer />
             <div className="footer-social ">
                 <a href={urlSic} rel="noopener noreferrer" target="_blank">
