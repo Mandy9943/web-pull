@@ -1,35 +1,30 @@
+#productDetailMobil .Nav {
+  position: relative;
+  z-index: 2;
+}
 #productDetailMobil .content-curve-shape {
-  height: 300px;
+  /* height: 300px; */
   width: 100%;
-  background: #d00a2d;
+  background: #fff;
   position: relative;
 }
-
-#productDetailMobil .content-curve-shape::after {
-  content: "";
+#productDetailMobil .content-curve-shape .curve-shape {
   position: relative;
-  left: -3rem;
-  /* padding * -1 */
-
-  /* padding - height/2 */
-  float: left;
-  display: block;
-  height: 4rem;
-  width: 100vw;
-  background: hsla(0, 0%, 100%, 0.5);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 70 500 60' preserveAspectRatio='none'%3E%3Crect x='0' y='0' width='500' height='500' style='stroke: none; fill: white;' /%3E%3Cpath d='M0,100 C150,200 350,0 500,100 L500,00 L0,0 Z' style='stroke: none; fill: RGB(208,10,45);'%3E%3C/path%3E%3C/svg%3E");
-  background-size: 100% 100%;
-  bottom: -1px;
+}
+#productDetailMobil .content-curve-shape .curve-shape img {
   position: absolute;
+  top: -140px;
   left: 0;
+  width: 100%;
 }
+#productDetailMobil .header-detail {
+  box-sizing: border-box;
+}
+
 #productDetailMobil .content-images {
   position: relative;
-
   width: 100%;
-  padding: 1px;
-  background: #fff;
-  padding-top: 130px;
+  padding-top: 300px;
 }
 #productDetailMobil .slider {
   position: absolute;
@@ -44,4 +39,20 @@
 
 .mb {
   margin-bottom: 4px;
+}
+
+@media only screen and (min-width: 450px) {
+  #productDetailMobil .content-curve-shape .curve-shape img {
+    top: -200px;
+  }
+}
+@media only screen and (min-width: 540px) {
+  #productDetailMobil .content-curve-shape .curve-shape img {
+    top: -300px;
+  }
+}
+@media only screen and (min-width: 620px) {
+  #productDetailMobil .content-curve-shape .curve-shape img {
+    top: -420px;
+  }
 }
