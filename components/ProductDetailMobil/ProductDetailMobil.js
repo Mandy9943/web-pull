@@ -27,12 +27,12 @@ const ProductDetailMobil = ({ user_data, data }) => {
                 authenticated={user_data.authenticated}
             />
             <div className="content-curve-shape">
-                <Header title={data.description} bredCumbs={data.breadcum} />
+                <Header title={data.title} bredCumbs={data.breadcum} />
             </div>
 
             <div className="content-images">
                 <div className="slider">
-                    <SwiperSlider images={data.images} />
+                    <SwiperSlider images={data.images} altImg={data.title}/>
                 </div>
             </div>
             <CheckoutProduct price={data.price} stock={data.stock} />
