@@ -1,5 +1,4 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-
 // Import Swiper styles
 import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.scss";
@@ -15,33 +14,33 @@ import SwiperCore, { EffectCoverflow, Pagination } from "swiper";
 SwiperCore.use([EffectCoverflow, Pagination]);
 
 const SwiperSlider = ({ images }) => {
-  return (
-    <div className="swiperSliderDatailMobile">
-      <Swiper
-        effect={"coverflow"}
-        grabCursor={true}
-        centeredSlides={true}
-        slidesPerView={"auto"}
-        coverflowEffect={{
-          rotate: 50,
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-          slideShadows: true,
-        }}
-        pagination={true}
-        className="mySwiper"
-      >
-        {images.map((image) => {
-          return (
-            <SwiperSlide key={image.file_id}>
-              <img src={image.url} alt="Producto de kiero" />
-            </SwiperSlide>
-          );
-        })}
-      </Swiper>
-    </div>
-  );
+    return (
+        <div className="swiperSliderDatailMobile">
+            <Swiper
+                effect={"coverflow"}
+                grabCursor={true}
+                centeredSlides={true}
+                slidesPerView={"auto"}
+                coverflowEffect={{
+                    rotate: 50,
+                    stretch: 0,
+                    depth: 100,
+                    modifier: 1,
+                    slideShadows: true,
+                }}
+                pagination={true}
+                className="mySwiper"
+            >
+                {images.map((image) => {
+                    return (
+                        <SwiperSlide key={image.file_id}>
+                            <img loading="lazy" src={image.url} alt="Producto de kiero" />
+                        </SwiperSlide>
+                    );
+                })}
+            </Swiper>
+        </div>
+    );
 };
 
 export default SwiperSlider;
