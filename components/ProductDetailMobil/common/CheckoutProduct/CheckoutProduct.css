@@ -4,7 +4,7 @@
 #CheckoutProductMobil {
   width: 100%;
   background: #fff;
-  padding: 20px;
+  padding: 25px;
   box-sizing: border-box;
 }
 #CheckoutProductMobil .price {
@@ -40,6 +40,12 @@
 }
 #CheckoutProductMobil .count .count-text {
   flex: 1;
+}
+#CheckoutProductMobil .count .count-text .no-avilable {
+  color: #cf0a2c;
+  font-weight: 700;
+  margin-top: 1px;
+  min-height: 17px;
 }
 #CheckoutProductMobil .count .count-text h3 {
   font: normal normal normal 18px/22px Montserrat;

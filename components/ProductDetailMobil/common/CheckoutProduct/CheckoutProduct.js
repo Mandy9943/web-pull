@@ -24,15 +24,23 @@ const CheckoutProduct = ({ price, stock }) => {
         <span className="percent">-30% OFF</span>
       </div>
       <div className="buyButton">
-        <CheckoutButton text="Comprar" />
+        <CheckoutButton
+          text="Comprar"
+          disabled={stock > 0 ? false : true}
+          onClick={() => alert("buy")}
+        />
       </div>
       <div className="count">
         <div className="count-text">
           <h3>Cantidad</h3>
-          <p>(Stock Disponible {stock})</p>
+          {stock > 0 ? (
+            <p>(Stock Disponible {stock})</p>
+          ) : (
+            <p className="no-avilable">(Stock Agotado)</p>
+          )}
         </div>
         <div className="count-counter">
-          <Counter />
+          <Counter stock={stock} />
         </div>
       </div>
     </div>
