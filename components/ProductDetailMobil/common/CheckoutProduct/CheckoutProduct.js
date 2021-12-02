@@ -24,7 +24,7 @@ const CheckoutProduct = ({ price, stock }) => {
         <span className="percent">-30% OFF</span>
       </div>
       <div className="buyButton">
-        <CheckoutButton text="Comprar" />
+        <CheckoutButton text="Comprar" onClick={() => alert("buy")} />
       </div>
       <div className="count">
         <div className="count-text">

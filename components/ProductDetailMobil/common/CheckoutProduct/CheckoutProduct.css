@@ -42,14 +42,30 @@
   flex: 1;
 }
 #CheckoutProductMobil .count .count-text h3 {
-  font: normal normal normal 18px/22px Montserrat;
-  letter-spacing: 0px;
+  /* Quantity Tag */
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  /* identical to box height */
+
   color: #5f5f5f;
 }
 #CheckoutProductMobil .count .count-text p {
-  font: normal normal 600 14px/18px Montserrat;
-  letter-spacing: 0px;
-  color: #000000;
+  /* Subheader 2 */
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 17px;
+  /* identical to box height */
+
+  /* Kiero Brand Red Color */
+
+  color: #cf0a2c;
 }
 #CheckoutProductMobil .count .count-counter {
   flex: 1;
