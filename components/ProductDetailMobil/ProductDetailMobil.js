@@ -40,7 +40,7 @@ const ProductDetailMobil = ({ user_data, data }) => {
         </div>
       </div>
 
-      <CheckoutProduct price={data.price} stock={data.stock} />
+      <CheckoutProduct price={data.price} stock={0} />
 
       <Footer />
       <div className="footer-social ">
