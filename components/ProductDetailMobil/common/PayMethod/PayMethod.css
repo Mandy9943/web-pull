@@ -13,13 +13,14 @@
     letter-spacing: 0;
     color: #000000;
     opacity: 1;
+    margin-right: auto;
 }
 
 #PayMethod .link {
     display: grid;
     grid-template-columns: repeat(3, 92px);
     grid-template-rows: repeat(2, 92px);
-    margin: 24px 0px;
+    margin: 24px 0;
 }
 
 #PayMethod .link img {
