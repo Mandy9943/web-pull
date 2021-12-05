@@ -45,3 +45,14 @@
     margin: 0 3px 18px 3px;
     color: #000000;
 }
+
+#Benefits .beneficio p {
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    color: #5D5D5D;
+
+}
