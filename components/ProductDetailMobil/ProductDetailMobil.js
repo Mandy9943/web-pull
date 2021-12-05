@@ -13,6 +13,7 @@ import "./ProductDetailMobil.css";
 import Info from "./common/Info/Info";
 import PayMethod from "./common/PayMethod/PayMethod";
 import Detail from "./common/Detail/Detail";
+import Description from "./common/Description/Description";
 
 const Nav = dynamic(() => import("../Common/Nav/Nav"));
 const Footer = dynamic(() => import("../Common/Footer"));
@@ -48,6 +49,7 @@ const ProductDetailMobil = ({user_data, data}) => {
             <Info/>
             <PayMethod/>
             <Detail product={data}/>
+            <Description product={data}/>
             <Footer/>
             <div className="footer-social ">
                 <a href={urlSic} rel="noopener noreferrer" target="_blank">

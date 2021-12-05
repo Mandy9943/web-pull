@@ -7,7 +7,7 @@ const Detail = ({product}) => {
     const [collapse, setCollapse] = useState(false);
     const [desglosar, setDesglosar] = useState(cerrado);
 
-    const handleOnClick = (e) => {
+    const handleOnClick = () => {
         (collapse === false) ? setDesglosar(abierto) : setDesglosar(cerrado)
         setCollapse(!collapse)
     }
@@ -25,11 +25,11 @@ const Detail = ({product}) => {
                     <h6>Color</h6><h5>{product.color !== null ? product.color : 'Ninguno'}</h5>
                     <h6>Modelo</h6><h5>{product.model}</h5>
                     <h6>Tamaño</h6><h5>{parseFloat(product.length).toFixed(2)}" - (
-                    {parseFloat(parseFloat(product.length) * 2.54).toFixed(1)}cm)</h5>
+                        {parseFloat(parseFloat(product.length) * 2.54).toFixed(1)}cm)</h5>
                     <h6>Ancho</h6><h5>{parseFloat(product.width).toFixed(2)}" - (
-                    {parseFloat(product.width * 2.54).toFixed(1)}cm)</h5>
+                        {parseFloat(product.width * 2.54).toFixed(1)}cm)</h5>
                     <h6>Peso</h6><h5>{parseFloat(product.weight).toFixed(2)} Lb -
-                    ( {parseFloat(parseFloat(product.weight) / 2.205).toFixed(1)}kg)</h5>
+                        ( {parseFloat(parseFloat(product.weight) / 2.205).toFixed(1)}kg)</h5>
 
                 </div>
             ) : null}
