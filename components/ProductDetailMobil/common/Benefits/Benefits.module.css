@@ -1,0 +1,47 @@
+#Benefits {
+    border-top: 2px solid #e4e4e4;
+    border-bottom: 2px solid #e4e4e4;
+    background: #fff;
+    transition: all 0.3s ease;
+    height: 1554px;
+    min-width: 325px;
+}
+
+#Benefits .beneficio {
+    margin: 35px 0 25px 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#Benefits .beneficio h1 {
+    font-family: Montserrat, sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 29px;
+    letter-spacing: 0;
+    text-align: center;
+    color: #000000;
+}
+
+#Benefits .beneficio h1 .red {
+    color: #CF0A2C;
+}
+
+#Benefits .beneficio img {
+    margin: 36px 0 24px 0;
+}
+
+#Benefits .beneficio h3 {
+    font-family: Montserrat, sans-serif;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 26px;
+    letter-spacing: 0;
+    text-align: center;
+    margin: 0 3px 18px 3px;
+    color: #000000;
+}

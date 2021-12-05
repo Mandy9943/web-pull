@@ -14,6 +14,7 @@ import Info from "./common/Info/Info";
 import PayMethod from "./common/PayMethod/PayMethod";
 import Detail from "./common/Detail/Detail";
 import Description from "./common/Description/Description";
+import Benefits from "./common/Benefits/Benefits";
 
 const Nav = dynamic(() => import("../Common/Nav/Nav"));
 const Footer = dynamic(() => import("../Common/Footer"));
@@ -50,6 +51,8 @@ const ProductDetailMobil = ({user_data, data}) => {
             <PayMethod/>
             <Detail product={data}/>
             <Description product={data}/>
+            {/*TODO: Primero va ofectas especiales*/}
+            <Benefits/>
             <Footer/>
             <div className="footer-social ">
                 <a href={urlSic} rel="noopener noreferrer" target="_blank">
