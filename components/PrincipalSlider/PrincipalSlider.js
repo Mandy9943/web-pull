@@ -114,15 +114,16 @@ export default class PrincipalSlider extends Component {
               this.state.slides.map((slide, index) => (
                 <div key={index}>
                   <Link href={"/categoria/[...category]"} as={slide.href} >
-                      <a>
-                          <div className="anullProperties">
-                            <Image
-                              layout="fill"
-                              alt={slide.url.replace(/-/g, " ")}
-                              src={slide.url}
-                            />
-                        </div>  
-                      </a>
+                    <a>
+                      <div className="anullProperties">
+                        <Image
+                          layout="fill"
+                          alt={slide.url.replace(/-/g, " ")}
+                          src={slide.url}
+                          placeholder="skeleton"
+                        />
+                      </div>
+                    </a>
                   </Link>
                 </div>
               ))
@@ -139,15 +140,16 @@ export default class PrincipalSlider extends Component {
               this.state.slidesMobil.map((slide, index) => (
                 <div key={index}>
                   <Link href={"/categoria/[...category]"} as={slide.href} >
-                      <a>
-                          <div className="anullProperties">
-                            <Image
-                              layout="fill"
-                              alt={slide.url.replace(/-/g, " ")}
-                              src={slide.url}
-                            />
-                        </div>  
-                      </a>
+                    <a>
+                      <div className="anullProperties">
+                        <Image
+                          layout="fill"
+                          alt={slide.url.replace(/-/g, " ")}
+                          src={slide.url}
+                          placeholder="skeleton"
+                        />
+                      </div>
+                    </a>
                   </Link>
                 </div>
               ))

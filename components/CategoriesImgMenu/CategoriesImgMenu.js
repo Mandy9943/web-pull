@@ -39,7 +39,7 @@ export default class CategoriesImgMenu extends Component {
                 <Slider autoplay={0}>
                     <div className="content-categories-img-menu no-movil">
                         <Link href={"/categoria/[...category]"} as="/categoria/vehículos">
-                            <a  className="categories-img no-movil">
+                            <a className="categories-img no-movil">
                                 <div className="item">
                                     <p className="categories-menu-icon">
                                         <FontAwesomeIcon icon={faCar} />
@@ -108,7 +108,7 @@ export default class CategoriesImgMenu extends Component {
                             </a>
                         </Link>
                         <Link href={"/categoria/[...category]"} as="/categoria/computación">
-                            <a  className="categories-img no-movil">
+                            <a className="categories-img no-movil">
                                 <div className="item">
                                     <p className="categories-menu-icon">
                                         <FontAwesomeIcon icon={faDesktop} />
@@ -158,7 +158,7 @@ export default class CategoriesImgMenu extends Component {
                             </a>
                         </Link>
                         <Link href={"/categoria/[...category]"} as="/categoria/herramientas">
-                            <a  className="categories-img no-movil">
+                            <a className="categories-img no-movil">
                                 <div className="item">
                                     <p className="categories-menu-icon">
                                         <img alt='Herramientas' loading="lazy" src={herramientas} />
@@ -177,132 +177,132 @@ export default class CategoriesImgMenu extends Component {
                                 </div>
                             </a>
                         </Link>
-                </div>
+                    </div>
                     <div className="content-categories-img-menu diferent-numbers no-movil">
-                            <Link href={"/categoria/[...category]"} as="/categoria/industria-y-científico" >
-                                <a className="categories-img no-movil">
-                                    <div className="item">
-                                        <p className="categories-menu-icon">
-                                            <FontAwesomeIcon icon={faBriefcase} />
-                                        </p>
-                                        <p>Industria y científico </p>
-                                    </div>
-                                </a>
-                            </Link>
-                            <Link href={"/categoria/[...category]"} as="/categoria/instrumentos-musicales" >
-                                <a className="categories-img no-movil">
-                                    <div className="item">
-                                        <p className="categories-menu-icon">
-                                            <FontAwesomeIcon icon={faDrum} />
-                                        </p>
-                                        <p>Instrumentos musicales</p>
-                                    </div>
-                                </a>
-                            </Link>
-                            <Link href={"/categoria/[...category]"} as="/categoria/juguetes">
-                                <a  className="categories-img no-movil">
-                                    <div className="item">
-                                        <p className="categories-menu-icon">
-                                            <FontAwesomeIcon icon={faDice} />
-                                        </p>
-                                        <p>Juegos y juguetes</p>
-                                    </div>
-                                </a>
-                            </Link>
-                            <Link href={"/categoria/[...category]"} as="/categoria/libros" >
-                                <a className="categories-img no-movil">
-                                    <div className="item">
-                                        <p className="categories-menu-icon">
-                                            <img alt='Libros' loading="lazy" src={libros} />
-                                        </p>
-                                        <p>Libros, revistas y comics</p>
-                                    </div>
-                                </a>
-                            </Link>
-                            <Link href={"/categoria/[...category]"} as="/categoria/música" >
-                                <a className="categories-img no-movil">
-                                    <div className="item">
-                                        <p className="categories-menu-icon">
-                                            <img alt='Musica' loading="lazy" src={musica} />
-                                        </p>
-                                        <p>Música</p>
-                                    </div>
-                                </a>
-                            </Link>
-                            <Link href={"/categoria/[...category]"} as="/categoria/relojes-y-joyería" >
-                                <a className="categories-img no-movil">
-                                    <div className="item">
-                                        <p className="categories-menu-icon">
-                                            <img alt='Relojes' loading="lazy" src={relojes} />
-                                        </p>
-                                        <p>Relojes y joyas</p>
-                                    </div>
-                                </a>
-                            </Link>
-                            <Link href={"/categoria/[...category]"} as="/categoria/ropa">
-                                <a  className="categories-img no-movil">
-                                    <div className="item">
-                                        <p className="categories-menu-icon">
-                                            <img alt='Ropa' loading="lazy" src={ropa} />
-                                        </p>
-                                        <p>Ropa, zapatos y accesorios</p>
-                                    </div>
-                                </a>
-                            </Link>
-                            <Link href={"/categoria/[...category]"} as="/categoria/salud" >
-                                <a className="categories-img no-movil">
-                                    <div className="item">
-                                        <p className="categories-menu-icon">
-                                            <FontAwesomeIcon icon={faFemale} />
-                                        </p>
-                                        <p>Salud y equipamiento médico</p>
-                                    </div>
-                                </a>
-                            </Link>
+                        <Link href={"/categoria/[...category]"} as="/categoria/industria-y-científico" >
+                            <a className="categories-img no-movil">
+                                <div className="item">
+                                    <p className="categories-menu-icon">
+                                        <FontAwesomeIcon icon={faBriefcase} />
+                                    </p>
+                                    <p>Industria y científico </p>
+                                </div>
+                            </a>
+                        </Link>
+                        <Link href={"/categoria/[...category]"} as="/categoria/instrumentos-musicales" >
+                            <a className="categories-img no-movil">
+                                <div className="item">
+                                    <p className="categories-menu-icon">
+                                        <FontAwesomeIcon icon={faDrum} />
+                                    </p>
+                                    <p>Instrumentos musicales</p>
+                                </div>
+                            </a>
+                        </Link>
+                        <Link href={"/categoria/[...category]"} as="/categoria/juguetes">
+                            <a className="categories-img no-movil">
+                                <div className="item">
+                                    <p className="categories-menu-icon">
+                                        <FontAwesomeIcon icon={faDice} />
+                                    </p>
+                                    <p>Juegos y juguetes</p>
+                                </div>
+                            </a>
+                        </Link>
+                        <Link href={"/categoria/[...category]"} as="/categoria/libros" >
+                            <a className="categories-img no-movil">
+                                <div className="item">
+                                    <p className="categories-menu-icon">
+                                        <img alt='Libros' loading="lazy" src={libros} />
+                                    </p>
+                                    <p>Libros, revistas y comics</p>
+                                </div>
+                            </a>
+                        </Link>
+                        <Link href={"/categoria/[...category]"} as="/categoria/música" >
+                            <a className="categories-img no-movil">
+                                <div className="item">
+                                    <p className="categories-menu-icon">
+                                        <img alt='Musica' loading="lazy" src={musica} />
+                                    </p>
+                                    <p>Música</p>
+                                </div>
+                            </a>
+                        </Link>
+                        <Link href={"/categoria/[...category]"} as="/categoria/relojes-y-joyería" >
+                            <a className="categories-img no-movil">
+                                <div className="item">
+                                    <p className="categories-menu-icon">
+                                        <img alt='Relojes' loading="lazy" src={relojes} />
+                                    </p>
+                                    <p>Relojes y joyas</p>
+                                </div>
+                            </a>
+                        </Link>
+                        <Link href={"/categoria/[...category]"} as="/categoria/ropa">
+                            <a className="categories-img no-movil">
+                                <div className="item">
+                                    <p className="categories-menu-icon">
+                                        <img alt='Ropa' loading="lazy" src={ropa} />
+                                    </p>
+                                    <p>Ropa, zapatos y accesorios</p>
+                                </div>
+                            </a>
+                        </Link>
+                        <Link href={"/categoria/[...category]"} as="/categoria/salud" >
+                            <a className="categories-img no-movil">
+                                <div className="item">
+                                    <p className="categories-menu-icon">
+                                        <FontAwesomeIcon icon={faFemale} />
+                                    </p>
+                                    <p>Salud y equipamiento médico</p>
+                                </div>
+                            </a>
+                        </Link>
                     </div>
                 </Slider>
-                    <div className="content-categories-img-menu no-web">
-                            <Link href={"/categoria/[...category]"} as="/categoria/vehículos" >
-                                <a className="categories-img">
-                                    <div className="item">
-                                        <p className="categories-menu-icon">
-                                            <FontAwesomeIcon icon={faCar} />
-                                        </p>
-                                        <p>Accesorios para vehículos</p>
-                                    </div>
-                                </a>
-                            </Link>
-                            <Link href={"/categoria/[...category]"} as="/categoria/animales-y-mascotas">
-                                <a  className="categories-img">
-                                    <div className="item">
-                                        <p className="categories-menu-icon">
-                                            <FontAwesomeIcon icon={faDog} />
-                                        </p>
-                                        <p>Animales y mascotas</p>
-                                    </div>
-                                </a>
-                            </Link>
-                            <Link href={"/categoria/[...category]"} as="/categoria/bebés" >
-                                <a className="categories-img">
-                                    <div className="item">
-                                        <p className="categories-menu-icon">
-                                            <FontAwesomeIcon icon={faBabyCarriage} />
-                                        </p>
-                                        <p>Bebés</p>
-                                    </div>
-                                </a>
-                            </Link>
-                            <Link href={"/categoria/[...category]"} as="/categoria/belleza">
-                                <a  className="categories-img">
-                                    <div className="item">
-                                        <p className="categories-menu-icon">
-                                            <img loading="lazy" alt="belleza" src={belleza} /></p>
-                                        <p>Belleza y cuidado personal</p>
-                                    </div>
-                                </a>
-                            </Link>
-                    </div>
-                    <Link href={"/lista_categorias"}><a className="main-button"><p>Ver más</p></a></Link>
+                <div className="content-categories-img-menu no-web">
+                    <Link href={"/categoria/[...category]"} as="/categoria/vehículos" >
+                        <a className="categories-img">
+                            <div className="item">
+                                <p className="categories-menu-icon">
+                                    <FontAwesomeIcon icon={faCar} />
+                                </p>
+                                <p>Accesorios para vehículos</p>
+                            </div>
+                        </a>
+                    </Link>
+                    <Link href={"/categoria/[...category]"} as="/categoria/animales-y-mascotas">
+                        <a className="categories-img">
+                            <div className="item">
+                                <p className="categories-menu-icon">
+                                    <FontAwesomeIcon icon={faDog} />
+                                </p>
+                                <p>Animales y mascotas</p>
+                            </div>
+                        </a>
+                    </Link>
+                    <Link href={"/categoria/[...category]"} as="/categoria/bebés" >
+                        <a className="categories-img">
+                            <div className="item">
+                                <p className="categories-menu-icon">
+                                    <FontAwesomeIcon icon={faBabyCarriage} />
+                                </p>
+                                <p>Bebés</p>
+                            </div>
+                        </a>
+                    </Link>
+                    <Link href={"/categoria/[...category]"} as="/categoria/belleza">
+                        <a className="categories-img">
+                            <div className="item">
+                                <p className="categories-menu-icon">
+                                    <img loading="lazy" alt="belleza" src={belleza} /></p>
+                                <p>Belleza y cuidado personal</p>
+                            </div>
+                        </a>
+                    </Link>
+                </div>
+                <Link href={"/lista_categorias"}><a className="main-button"><p>Ver más</p></a></Link>
             </div>
         )
     }
