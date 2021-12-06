@@ -34,16 +34,21 @@ const ProductDetailMobil = ({ user_data, data }) => {
           <img src={backGround} alt="Red background" />
         </div>
         <div className="header-detail">
-          <Header title={data.description} bredCumbs={data.breadcum} />
+          <Header title={data.title} bredCumbs={data.breadcum} />
         </div>
         <div className="content-images">
           <div className="slider">
-            <SwiperSlider images={data.images} altImg={data.title}/>
+            <SwiperSlider images={data.images} altImg={data.title} />
           </div>
         </div>
       </div>
 
-      <CheckoutProduct price={data.price} stock={0} />
+      <CheckoutProduct
+        price={data.price}
+        stock={data.status === 0 ? 0 : data.stock}
+      />
+      <Info />
+      <PayMethod />
 
       <Footer />
       <div className="footer-social ">
