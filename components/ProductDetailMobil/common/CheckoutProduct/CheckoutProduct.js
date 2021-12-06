@@ -13,7 +13,7 @@ const CheckoutProduct = ({price, stock, discount_percentage}) => {
                     .toString()
                     .split(".")[0]
                     .replace(/(.)(?=(\d{3})+$)/g, "$1.")
-            }  <h6>COP</h6>
+            }  <p>COP</p>
         </span>
             </div>
             <div className="discount">
