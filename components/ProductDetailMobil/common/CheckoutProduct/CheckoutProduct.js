@@ -8,12 +8,12 @@ const CheckoutProduct = ({price, stock, discount_percentage}) => {
         <div id="CheckoutProductMobil">
             <div className="price">
         <span>
-            {
+            $ {
                 (price - (price * parseFloat("0." + discount_percentage).toFixed(2)))
                     .toString()
                     .split(".")[0]
                     .replace(/(.)(?=(\d{3})+$)/g, "$1.")
-            }
+            }  <h6>COP</h6>
         </span>
             </div>
             <div className="discount">
