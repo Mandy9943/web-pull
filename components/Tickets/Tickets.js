@@ -26,22 +26,30 @@ class Tickets extends Component {
     return (
       <div className="wrap-tickets">
         {dataTicket.map((item, i) => (
-          <a
-            key={i}
-            href={
-              "/categoria/" +
-              linkTicket[i].url.replace(/ /g, "-").trim().toLowerCase()
-            }
-            className="tickets"
-          >
-            <div className="anullProperties">
-              <Image
-                layout="fill"
-                src={item.url}
-                alt={linkTicket[i].url.replace(/-/g, " ")}
-              />
-            </div>
-          </a>
+          // <Link
+          //   href={"/categoria/[...category]"}
+          //   key={i}
+          //   as={
+          //     "/categoria/" +
+          //     linkTicket[i].url.replace(/ /g, "-").trim().toLowerCase()
+          //   }
+          // >
+            <a 
+              key={i}
+              href={
+                "/categoria/" +
+                linkTicket[i].url.replace(/ /g, "-").trim().toLowerCase()
+              }
+              className="tickets">
+              <div className="anullProperties">
+                <Image
+                  layout="fill"
+                  src={item.url}
+                  alt={linkTicket[i].url.replace(/-/g, " ")}
+                />
+              </div>
+            </a>
+          // </Link>
         ))}
       </div>
     );

@@ -88,37 +88,42 @@ class Explorer extends Component {
       <div className="explorer">
         <h3 className="home-section-title">
           Encuentra los mejores productos de {this.state.categoryName}{" "}
-          <a
-            className="accent"
-            href={
+          <Link
+            href={"/categoria/[...category]"}
+            as={
               "/categoria/" +
               this.state.categoryName.replace(/ /g, "-").toLowerCase()
             }
           >
-            {" "}
-            Ver todos
-          </a>
+            <a className="accent">
+              {" "}
+              Ver todos
+            </a>
+          </Link>
         </h3>
         <div className="content-explorer">
           <div className="main-img">
-            <a
-              href={
+            <Link
+              href={"/categoria/[...category]"}
+              as={
                 "/categoria/" +
                 this.state.categoryName.replace(/ /g, "-").toLowerCase()
               }
             >
-              {this.state.exploreImage ? (
-                <div className="anullProperties">
-                  <Image
-                    layout="fill"
-                    alt={this.state.categoryName}
-                    src={this.state.exploreImage}
-                  />
-                </div>
-              ) : (
-                <Skeleton className="skeleton" />
-              )}
-            </a>
+              <a>
+                {this.state.exploreImage ? (
+                  <div className="anullProperties">
+                    <Image
+                      layout="fill"
+                      alt={this.state.categoryName}
+                      src={this.state.exploreImage}
+                    />
+                  </div>
+                ) : (
+                  <Skeleton className="skeleton" />
+                )}
+              </a>
+            </Link>
           </div>
           <div className="group-img">
             {!this.state.exploreImage ? (
@@ -131,12 +136,14 @@ class Explorer extends Component {
             ) : (
               this.state.data.map((item, i) => (
                 <div className="wrapImgExplorer" key={i}>
-                  <a href={handleFormatUrl(item.product_id, item.title)}>
-                    <Spinner />
-                    <div className="anullProperties">
-                      <Image layout="fill" alt={item.title} src={item.image} />
-                    </div>
-                  </a>
+                  <Link href={"/detalle/[...product]"} as={handleFormatUrl(item.product_id, item.title)}>
+                    <a>
+                      {/* <Spinner /> */}
+                      <div className="anullProperties">
+                        <Image layout="fill" alt={item.title} src={item.image} />
+                      </div>
+                    </a>
+                  </Link>
                 </div>
               ))
             )}

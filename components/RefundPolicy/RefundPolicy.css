@@ -1,0 +1,20 @@
+.RefundPolicy-wrap-content {
+  margin: 40px 20%;
+  color: #111111;
+}
+
+.RefundPolicy-title,
+.RefundPolicy-paragraph {
+  margin-bottom: 20px;
+}
+
+.RefundPolicy-title {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.RefundPolicy-list {
+  list-style: auto;
+  margin-left: 15px;
+}
+/*# sourceMappingURL=RefundPolicy.css.map */

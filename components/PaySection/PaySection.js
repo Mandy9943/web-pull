@@ -15,7 +15,7 @@ import Select from "../Common/SelectDropdown/Select";
 import Spinner from "../Common/Spinner";
 import Checkbox from "@material-ui/core/Checkbox";
 import Modal from "../Common/Modal/Modal";
-import { KlaviyoClient } from "../../lib/functions";
+// import { KlaviyoClient } from "../../lib/functions";
 import Cookies from "js-cookie";
 import {handleFormatName} from '../../lib/functions'
 import {handleFormatUrl} from '../../lib/functions'
@@ -45,9 +45,9 @@ class PaySection extends Component {
       validForm: true,
       disabledButton: true,
       termsOfService: "",
-      identification: "",
-      typeIdentification: "",
-      typeIdentificationName: "",
+      identification: "0",
+      typeIdentification: "0T",
+      typeIdentificationName: "0TN",
       display: "none",
       gclid: "",
       clientId: "",
@@ -478,36 +478,43 @@ class PaySection extends Component {
       }
     });
 
-    // Segment Checkout Step Completed event
+    // Segment Checkout Step Viewed/Completed events
     // Fire this event whenever a checkout step is completed.
     // Reference: https://segment.com/docs/connections/spec/ecommerce/v2/
-    analytics.track("Checkout Step Completed", {
+
+    analytics.track("Checkout Step Viewed", {
       // checkout_id: '50314b8e9bcf000000000000',	// Checkout transaction ID
       step: 2,
       shipping_method:	'None', //	String representing the shipping method chosen
       payment_method:	'Payu'	// representing the payment method chosen
+    }).then(() => {
+
+      analytics.track("Checkout Step Completed", {
+        // checkout_id: '50314b8e9bcf000000000000',	// Checkout transaction ID
+        step: 2,
+        shipping_method:	'None', //	String representing the shipping method chosen
+        payment_method:	'Payu'	// representing the payment method chosen
+      });
+
     });
 
-        KlaviyoClient.public.identify({
-            email: this.state.email,
-            properties: {
-                first_name: this.state.user,
-                last_name: this.state.lastName,
-                phone_number: this.state.mobile_phone,
-            },
-            post: true, //defaults to false
-        });
-        KlaviyoClient.public.track({
-            event: "Checkout",
-            email: this.state.email,
-            properties: {
-                items: [item],
-            },
-        });
-
-        this.createlead(this.props, 2);
-
-    };
+    // KlaviyoClient.public.identify({
+    //   email: this.state.email,
+    //   properties: {
+    //     first_name: this.state.user,
+    //     last_name: this.state.lastName,
+    //     phone_number: this.state.mobile_phone,
+    //   },
+    //   post: true, //defaults to false
+    // });
+    // KlaviyoClient.public.track({
+    //   event: "Checkout",
+    //   email: this.state.email,
+    //   properties: {
+    //     items: [item],
+    //   },
+    // });
+  };
 
   checkoutOption = () => {
     const concatCategories = () => {
@@ -566,14 +573,14 @@ class PaySection extends Component {
     //   //  }
     // });
 
-    if (Cookies.get("email") !== undefined)
-      KlaviyoClient.public.track({
-        event: "checkoutOption",
-        email: Cookies.get("email"),
-        properties: {
-          items: [item],
-        },
-      });
+    // if (Cookies.get("email") !== undefined)
+    //   KlaviyoClient.public.track({
+    //     event: "checkoutOption",
+    //     email: Cookies.get("email"),
+    //     properties: {
+    //       items: [item],
+    //     },
+    //   });
   };
 
   handleFormValue = (e) => {
@@ -813,8 +820,29 @@ class PaySection extends Component {
 
       // console.log(checkoutStartedValues);
 
-      analytics.track('Checkout Started', checkoutStartedValues);
+      // Segment Checkout Step Viewed/Completed events
+      // Fire this event whenever a checkout step is completed.
+      // Reference: https://segment.com/docs/connections/spec/ecommerce/v2/
 
+      analytics.track('Checkout Started', checkoutStartedValues).then(() => {
+
+        analytics.track("Checkout Step Viewed", {
+          // checkout_id: '50314b8e9bcf000000000000',	// Checkout transaction ID
+          step: 1,
+          //shipping_method:	'None', //	String representing the shipping method chosen
+          //payment_method:	'Payu'	// representing the payment method chosen
+        }).then(() => {
+
+          analytics.track('Checkout Step Completed', {
+            // checkout_id: '50314b8e9bcf000000000000',
+            step: 1,
+            //shipping_method:	'None', //	String representing the shipping method chosen
+            //payment_method:	'Payu'	// representing the payment method chosen
+          });
+
+        });
+
+      });
     };
     //////
     // this.clientId = typeof(ga) == 'function' && typeof(ga.getAll) == 'function' ? ga.getAll()[0].get('clientId') : "";
@@ -903,7 +931,7 @@ class PaySection extends Component {
               name="lastName"
             />
           </div>
-          <select
+          {/* <select
             name="typeIdentification"
             className="typeIdentification"
             style={{}}
@@ -916,13 +944,13 @@ class PaySection extends Component {
             <option value="cc">Cédula</option>
             <option value="ce">Cédula extranjería</option>
             <option value="pa">Pasaporte</option>
-          </select>
-          <input
+          </select> */}
+          {/* <input
             value={this.state.identification}
             onChange={this.handleFormValue}
             placeholder="Número identificación"
             name="identification"
-          />
+          /> */}
           <input
             value={this.state.email}
             onChange={this.handleFormValue}
@@ -1058,7 +1086,7 @@ class PaySection extends Component {
         <div
           style={{
             display: "flex",
-            top: 395,
+            top: 310,
             borderRadius: "10px",
             padding: "10px 0px",
             backgroundColor: "#f3f3f3",
