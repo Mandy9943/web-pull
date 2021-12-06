@@ -49,7 +49,8 @@ const ProductDetailMobil = ({user_data, data}) => {
             <CheckoutProduct
                 price={data.price}
                 stock={data.status === 0 ? 0 : data.stock}
-              />
+                discount_percentage={data.discount_percentage}
+            />
             <Info/>
             <PayMethod/>
             <Detail product={data}/>
