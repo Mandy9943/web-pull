@@ -1,48 +1,41 @@
 #PayMethod {
-  opacity: 1;
-  border-top: 2px solid #e4e4e4;
-  border-bottom: 2px solid #e4e4e4;
-  background: #fff;
+    border-top: 2px solid #e4e4e4;
+    border-bottom: 2px solid #e4e4e4;
+    background: #fff;
+    height: 222px;
+    min-width: 375px;
+    padding: 36px 25px;
 }
 
 #PayMethod .titulo h3 {
-  text-align: left;
-  font: normal normal bold 18px/22px Montserrat;
-  letter-spacing: 0px;
-  color: #000000;
-  opacity: 1;
+    text-align: left;
+    font: normal normal bold 18px/22px Montserrat;
+    letter-spacing: 0;
+    color: #000000;
+    opacity: 1;
+    margin-right: auto;
 }
 
 #PayMethod .link {
-  display: block;
-  align-items: center;
-  justify-items: center;
-  padding-bottom: 15px;
+    display: grid;
+    grid-template-columns: repeat(3, 92px);
+    grid-template-rows: repeat(2, 92px);
+    margin: 24px 0;
 }
 
-#PayMethod .link .PayCredit {
-  display: inline-block;
-  padding-bottom: 5px;
-}
-#PayMethod .link .PayCredit img {
-  width: 100%;
-}
-
-#PayMethod .link .PayOnline {
-  display: flex;
-  align-items: center;
-  justify-items: center;
+#PayMethod .link img {
+    width: 100%;
+    height: auto;
+    margin: 24px 24px;
+    max-width: 93px;
 }
 
-#PayMethod .link .PayOnline .payonline {
-  width: 100%;
-  height: 100%;
-  flex: 1;
-}
+@media (min-width: 750px) {
+    #PayMethod .link {
+        grid-template-columns: repeat(6, 92px);
+    }
 
-#PayMethod .link .PayOnline .pse {
-  width: 50%;
-  flex: 0.5;
-  position: relative;
-  margin-right: 18px;
+    #PayMethod {
+        height: 130px;
+    }
 }

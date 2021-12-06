@@ -12,59 +12,66 @@ import SwiperSlider from "./common/SwiperSlider/SwipperSlider";
 import "./ProductDetailMobil.css";
 import Info from "./common/Info/Info";
 import PayMethod from "./common/PayMethod/PayMethod";
+import Detail from "./common/Detail/Detail";
+import Description from "./common/Description/Description";
+import Benefits from "./common/Benefits/Benefits";
 
 const Nav = dynamic(() => import("../Common/Nav/Nav"));
 const Footer = dynamic(() => import("../Common/Footer"));
 
-const ProductDetailMobil = ({ user_data, data }) => {
-  let urlSic = "https://www.sic.gov.co";
-  console.log("data", data);
-  return (
-    <div id="productDetailMobil">
-      <div className="Nav">
-        <Nav
-          user={user_data.user}
-          jwt={user_data.jwt}
-          home={true}
-          authenticated={user_data.authenticated}
-        />
-      </div>
-      <div className="content-curve-shape">
-        <div className="curve-shape">
-          <img src={backGround} alt="Red background" />
-        </div>
-        <div className="header-detail">
-          <Header title={data.title} bredCumbs={data.breadcum} />
-        </div>
-        <div className="content-images">
-          <div className="slider">
-            <SwiperSlider images={data.images} altImg={data.title}/>
-          </div>
-        </div>
-      </div>
+const ProductDetailMobil = ({user_data, data}) => {
+    let urlSic = "https://www.sic.gov.co";
+    console.log("data", data);
+    return (
+        <div id="productDetailMobil">
+            <div className="Nav">
+                <Nav
+                    user={user_data.user}
+                    jwt={user_data.jwt}
+                    home={true}
+                    authenticated={user_data.authenticated}
+                />
+            </div>
+            <div className="content-curve-shape">
+                <div className="curve-shape">
+                    <img src={backGround} alt="Red background"/>
+                </div>
+                <div className="header-detail">
+                    <Header title={data.title} bredCumbs={data.breadcum}/>
+                </div>
+                <div className="content-images">
+                    <div className="slider">
+                        <SwiperSlider images={data.images} altImg={data.title}/>
+                    </div>
+                </div>
+            </div>
 
-      <CheckoutProduct price={data.price} stock={6} />
-      <Info />
-      <PayMethod />
-      <Footer />
-      <div className="footer-social ">
-        <a href={urlSic} rel="noopener noreferrer" target="_blank">
-          <img
-            loading="lazy"
-            alt="Superintendencia de Industria y Comercio"
-            src={Logo1}
-          />
-        </a>
-        <a href={urlSic} rel="noopener noreferrer" target="_blank">
-          <img
-            loading="lazy"
-            alt="Superintendencia de Industria y Comercio"
-            src={Logo2}
-          />
-        </a>
-      </div>
-    </div>
-  );
+            <CheckoutProduct price={data.price} stock={0}/>
+            <Info/>
+            <PayMethod/>
+            <Detail product={data}/>
+            <Description product={data}/>
+            {/*TODO: Primero va ofectas especiales*/}
+            <Benefits/>
+            <Footer/>
+            <div className="footer-social ">
+                <a href={urlSic} rel="noopener noreferrer" target="_blank">
+                    <img
+                        loading="lazy"
+                        alt="Superintendencia de Industria y Comercio"
+                        src={Logo1}
+                    />
+                </a>
+                <a href={urlSic} rel="noopener noreferrer" target="_blank">
+                    <img
+                        loading="lazy"
+                        alt="Superintendencia de Industria y Comercio"
+                        src={Logo2}
+                    />
+                </a>
+            </div>
+        </div>
+    );
 };
 
 export default ProductDetailMobil;

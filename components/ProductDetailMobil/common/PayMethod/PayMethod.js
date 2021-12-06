@@ -1,34 +1,28 @@
 import React from 'react';
-import PayCredit from "../../../../assets/img/pay-credit.png";
-import PayOnline from "../../../../assets/img/pay-online.png";
-import PayTransfer from "../../../../assets/img/pay-transfer.jpg";
+import visa from "../../../../assets/img/productDetail/visa@2x.png";
+import mastercard from "../../../../assets/img/productDetail/mastercard@2x.png";
+import american from "../../../../assets/img/productDetail/american-express@2x.png";
+import baloto from "../../../../assets/img/productDetail/baloto@2x.png";
+import pse from "../../../../assets/img/productDetail/pse@2x.png";
+import efecty from "../../../../assets/img/productDetail/efecty@2x.png";
 import "./PayMethod.css"
+
 const PayMethod = () => {
-	return (
-		<div id="PayMethod">
-			<div className="titulo">
-				<h3>Métodos de pago</h3>
-			</div>
-			<div className="link">
-				<div className="PayCredit">
-					<img
-						className="img"
-						src={PayCredit}
-						alt="Tarjetas de crédito" />
-				</div>
-				<div className="PayOnline">
-					<img
-						className="payonline"
-						src={PayOnline}
-						alt="Efectivo en puntos de pago" />
-					<img className="pse"
-						src={PayTransfer}
-						alt="Transferencia desde tu banco"
-					/>
-				</div>
-			</div>
-		</div>
-	);
+    return (
+        <div id="PayMethod">
+            <div className="titulo">
+                <h3>Métodos de pago</h3>
+            </div>
+            <div className="link">
+                <img loading="lazy" src={visa} alt="Tarjeta Visa"/>
+                <img loading="lazy" src={mastercard} alt="Tarjeta Mastercard"/>
+                <img loading="lazy" src={american} alt="Tarjeta American"/>
+                <img loading="lazy" src={baloto} alt="Baloto"/>
+                <img loading="lazy" src={pse} alt="PSE"/>
+                <img loading="lazy" src={efecty} alt="Efecty"/>
+            </div>
+        </div>
+    );
 }
 
 export default PayMethod;
