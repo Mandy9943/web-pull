@@ -517,6 +517,7 @@ class PaySection extends Component {
     //     items: [item],
     //   },
     // });
+    this.createlead(this.props, 2);
   };
 
   checkoutOption = () => {
