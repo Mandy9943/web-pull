@@ -34,7 +34,7 @@ const ProductDetailMobil = ({ user_data, data }) => {
           <img src={backGround} alt="Red background" />
         </div>
         <div className="header-detail">
-          <Header title={data.description} bredCumbs={data.breadcum} />
+          <Header title={data.title} bredCumbs={data.breadcum} />
         </div>
         <div className="content-images">
           <div className="slider">
@@ -43,8 +43,9 @@ const ProductDetailMobil = ({ user_data, data }) => {
         </div>
       </div>
 
-      <CheckoutProduct price={data.price} stock={0} />
-
+      <CheckoutProduct price={data.price} stock={6} />
+      <Info />
+      <PayMethod />
       <Footer />
       <div className="footer-social ">
         <a href={urlSic} rel="noopener noreferrer" target="_blank">
