@@ -390,6 +390,8 @@
   .mobil-nav .nav-botton {
     font-size: 25px;
   }
+
+
   .mobil-nav .nav-botton a {
     color: white;
   }
@@ -415,7 +417,7 @@
 @media (max-width: 365px) {
   .mobil-nav .nav-top input {
     text-overflow: ellipsis;
-    width: 195px;
+    width: 150px;
     padding-right: 40px;
   }
 }

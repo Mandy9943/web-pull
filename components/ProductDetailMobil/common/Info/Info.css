@@ -8,7 +8,6 @@
     "compras"
     "garantia";
     height: 282px;
-    min-width: 375px;
 }
 
 /*Definiciones de los areas*/
@@ -35,6 +34,11 @@
 #InfoProductDetailMovil .info .icon {
     padding-left: 50px;
     align-items: center;
+    margin-right: 20px;
+}
+
+.texte{
+    margin-left: -10px;
 }
 
 #InfoProductDetailMovil .info .icon img {

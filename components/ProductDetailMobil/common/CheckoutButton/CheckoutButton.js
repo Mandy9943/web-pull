@@ -4,6 +4,8 @@ import CartIcon from "../../../../assets/img/productDetail/CartIcon.svg";
 import React from "react";
 import Ripples from "react-ripples";
 import "./CheckoutButton.css";
+
+import Image from "next/image";
 const CheckoutButton = ({ text, disabled, onClick }) => {
   let buttonClass = [""];
   if (disabled) {
@@ -23,7 +25,16 @@ const CheckoutButton = ({ text, disabled, onClick }) => {
       >
         <span className="button-text">{text}</span>
         <span className="icon-shoping-cart">
-          <img src={CartIcon} alt="Shoping Cart" />
+        <div className='anullProperties'> 
+                <Image
+                    
+                    loading='lazy'
+                    src={CartIcon}
+                    alt='Shoping Cart'
+                    layout="fill"
+                />
+               </div> 
+         
         </span>
       </div>
     </Ripples>
