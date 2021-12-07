@@ -245,6 +245,18 @@ class ProductDetail extends Component {
     //       items: [item],
     //     },
     //   });
+        var item = {
+            ProductName: this.props.data.product_global_title,
+            ProductID: this.props.data.product_global_id,
+            SKU: this.props.data.sku,
+            Categories: concatCategories(),
+            ImageURL: this.state.mdata.images[0].url,
+            URL:
+                "https://kiero.co" + handleFormatUrl(this.props.data.product_global_id, this.props.data.product_global_title),
+            Brand: this.props.data.brand,
+            Price: this.props.data.price,
+        };
+        this.createlead(item);
   }
 
   async createlead() {
