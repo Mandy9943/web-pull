@@ -68,7 +68,7 @@ const ProductDetailMobil = ({ user_data, data }) => {
       {/*TODO: Primero va ofectas especiales*/}
       <Benefits />
       <Footer />
-      <div className="footer-social ">
+      <div className="footer-social">
         <a href={urlSic} rel="noopener noreferrer" target="_blank">
           <div className="anullProperties">
             <Image
