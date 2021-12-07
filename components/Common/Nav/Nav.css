@@ -311,6 +311,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: clip;
+  width: calc(100% - 20px);
 }
 
 .search-bar .icon {
@@ -391,7 +392,6 @@
     font-size: 25px;
   }
 
-
   .mobil-nav .nav-botton a {
     color: white;
   }
@@ -404,21 +404,6 @@
   }
   .search-bar .icon svg {
     top: 8px;
-  }
-}
-
-@media (max-width: 375px) {
-  .mobil-nav .nav-top input {
-    text-overflow: ellipsis;
-    width: 205px;
-    padding-right: 40px;
-  }
-}
-@media (max-width: 365px) {
-  .mobil-nav .nav-top input {
-    text-overflow: ellipsis;
-    width: 150px;
-    padding-right: 40px;
   }
 }
 

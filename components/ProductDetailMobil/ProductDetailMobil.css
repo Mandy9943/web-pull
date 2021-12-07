@@ -57,16 +57,16 @@
 
 @media only screen and (min-width: 450px) {
   #productDetailMobil .content-curve-shape .curve-shape img {
-    top: -200px;
+    top: -200px !important;
   }
 }
 @media only screen and (min-width: 540px) {
   #productDetailMobil .content-curve-shape .curve-shape img {
-    top: -300px;
+    top: -300px !important;
   }
 }
 @media only screen and (min-width: 620px) {
   #productDetailMobil .content-curve-shape .curve-shape img {
-    top: -420px;
+    top: -420px !important;
   }
 }
