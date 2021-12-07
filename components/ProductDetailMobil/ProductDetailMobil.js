@@ -18,6 +18,8 @@ const OfferSection = dynamic(() => import("./Common/OfferSection/OfferSection"),
   loading: () => <p>...</p> 
                                                                                   });
 import Benefits from "./common/Benefits/Benefits";
+import HelpCenter from "./common/HelpCenter/HelpCenter";
+import Subscription from "./common/Subscription/Subscription";
 
 const Nav = dynamic(() => import("../Common/Nav/Nav"));
 const Footer = dynamic(() => import("../Common/Footer"));
@@ -61,6 +63,9 @@ const ProductDetailMobil = ({user_data, data}) => {
             <OfferSection/>
             {/*TODO: Primero va ofectas especiales*/}
             <Benefits/>
+            {/*TODO: Productos Relacionados*/}
+            <HelpCenter/>
+            <Subscription/>
             <Footer/>
             <div className="footer-social ">
                 <a href={urlSic} rel="noopener noreferrer" target="_blank">
