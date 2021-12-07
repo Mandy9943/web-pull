@@ -14,6 +14,9 @@ import Info from "./common/Info/Info";
 import PayMethod from "./common/PayMethod/PayMethod";
 import Detail from "./common/Detail/Detail";
 import Description from "./common/Description/Description";
+const OfferSection = dynamic(() => import("./Common/OfferSection/OfferSection"),{
+  loading: () => <p>...</p> 
+                                                                                  });
 import Benefits from "./common/Benefits/Benefits";
 
 const Nav = dynamic(() => import("../Common/Nav/Nav"));
@@ -55,6 +58,7 @@ const ProductDetailMobil = ({user_data, data}) => {
             <PayMethod/>
             <Detail product={data}/>
             <Description product={data}/>
+            <OfferSection/>
             {/*TODO: Primero va ofectas especiales*/}
             <Benefits/>
             <Footer/>
