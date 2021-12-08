@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import "./RecommendedProducts.module.css"
 import {getProductsBasic} from "../../../../services/productsApi";
 import background from "../../../../assets/img/productDetail/trazado-12@2x.svg"
+import RecommendedProductsCard from "./RecommendedProductsCard";
 
 const RecommendedProducts = ({category}) => {
     const [products, setProducts] = useState([])
@@ -24,6 +25,8 @@ const RecommendedProducts = ({category}) => {
             </div>
             <div className="slider">
                 {/* TODO: Colocar el slider acá*/}
+                <RecommendedProductsCard product={products[0]}/>
+                <RecommendedProductsCard product={products[1]}/>
             </div>
         </div>
     );

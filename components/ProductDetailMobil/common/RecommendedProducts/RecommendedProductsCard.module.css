@@ -1,0 +1,85 @@
+#RecommendedProductsCard {
+    height: 400px;
+    margin: 0 16px;
+    position: static;
+}
+
+#RecommendedProductsCard .skeletonProductDetail {
+    background-color: rgba(0, 0, 0, .7) !important;
+    border-radius: 5px;
+}
+
+#RecommendedProductsCard .product {
+    display: flex;
+    flex-direction: column;
+}
+
+#RecommendedProductsCard .product img {
+    height: 154px;
+    width: 100%;
+    border-radius: 5px;
+    position: relative;
+}
+
+#RecommendedProductsCard .product h4 {
+    font-family: Montserrat, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0;
+    text-align: left;
+    position: relative;
+    padding-top: 15px;
+}
+
+#RecommendedProductsCard .product .price {
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 0.03em;
+    text-align: left;
+    position: relative;
+    padding-top: 31px;
+}
+
+#RecommendedProductsCard .product .price:after {
+    content: "COP";
+    font-size: 14px;
+    padding-left: 5px;
+}
+
+#RecommendedProductsCard .product .price:before {
+    content: "$";
+    font-size: 14px;
+    padding-right: 5px;
+}
+
+#RecommendedProductsCard .product .stock {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    width: auto;
+    padding-top: 21px;
+}
+
+#RecommendedProductsCard .product .stock h3 {
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 17px;
+    letter-spacing: 0;
+    text-align: center;
+    color: #969696;
+    padding-right: 17px;
+}
+
+#RecommendedProductsCard .product .stock img {
+    height: 42px;
+    width: 53px;
+}

@@ -1,6 +1,9 @@
 #RecommendedProducts {
-    height: 525px;
-    position: relative;
+    position: static;
+    width: 100%;
+    border-top: 2px solid #e4e4e4;
+    border-bottom: 2px solid #e4e4e4;
+
 }
 
 #RecommendedProducts img {
@@ -23,4 +26,13 @@
     line-height: 29px;
     text-align: center;
     color: #FFFFFF;
+}
+
+#RecommendedProducts .slider {
+    position: relative;
+    padding: 35px 25px 0 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-content: space-between;
 }
