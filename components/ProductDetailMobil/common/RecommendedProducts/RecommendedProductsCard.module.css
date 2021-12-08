@@ -1,7 +1,6 @@
 #RecommendedProductsCard {
-    height: 400px;
     margin: 0 16px;
-    position: static;
+    position: relative;
 }
 
 #RecommendedProductsCard .skeletonProductDetail {

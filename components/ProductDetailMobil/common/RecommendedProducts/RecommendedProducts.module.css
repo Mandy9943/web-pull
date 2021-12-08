@@ -3,79 +3,78 @@
     width: 100%;
     border-top: 2px solid #e4e4e4;
     border-bottom: 2px solid #e4e4e4;
-
 }
 
 #RecommendedProducts img {
-  position: absolute;
-  width: 100%;
+    position: absolute;
+    width: 100%;
 }
 
 #RecommendedProducts .cabecera {
-  position: relative;
-  padding: 30px 83px 35px 83px;
+    position: relative;
+    padding: 30px 83px 35px 83px;
 }
 
 #RecommendedProducts .cabecera h3 {
-  box-sizing: border-box;
-  position: relative;
-  font-family: Montserrat, sans-serif;
-  font-style: normal;
-  font-weight: 800;
-  font-size: 24px;
-  line-height: 29px;
-  text-align: center;
-  color: #ffffff;
+    box-sizing: border-box;
+    position: relative;
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    color: #ffffff;
 }
 
-#RecommendedProducts .swiper {
-  width: 100vw;
-  padding-top: 50px;
-  padding-bottom: 50px;
+#RecommendedProducts .slider .swiper-container {
+    height: 100% !important;
+    padding: 0 25px 0 25px !important;
+}
+
+#RecommendedProducts .slider .swiper-container .swiper-wrapper {
+
 }
 
 #RecommendedProducts .swiper-slide {
-  background-position: center;
-  background-size: cover;
-  /* width: 154px !important; */
-  height: 324px;
-  border-radius: 5px;
-  background: #ffffff;
+    background-size: cover;
+    border-radius: 5px;
+    background: #ffffff center;
+    width: 155px !important;
 }
 
 #RecommendedProducts .swiper-slide div img {
-  border-radius: 5px;
+    border-radius: 5px;
 }
 
 #RecommendedProducts .swiper-container .swiper-pagination-bullets {
-  position: absolute;
-  bottom: 0;
-  width: 300px;
-  left: 0;
-  right: 0;
-  margin: auto;
+    position: absolute;
+    bottom: 0;
+    width: 300px;
+    left: 0;
+    right: 0;
+    margin: auto;
 }
 
-.swiper-container-horizontal
-  > .swiper-pagination-bullets
-  .swiper-pagination-bullet {
-  width: calc(100% - 75%);
-  border-radius: 0 !important;
-  margin: 0 !important;
-  height: 2px;
-  background: black;
+.swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet {
+    width: calc(100% - 75%);
+    border-radius: 0 !important;
+    margin: 0 !important;
+    height: 2px;
+    background: #000000;
 }
 
 #RecommendedProducts .swiper-container {
-  margin-bottom: auto;
-  margin-top: 0;
-  height: 340px;
-  max-width: 500px;
+    margin-bottom: auto;
+    margin-top: 0;
+    height: 327px;
+    max-width: 500px;
 }
 
 #RecommendedProducts .swiper-container .swiper-pagination-bullets {
-  position: absolute;
-  bottom: 5px;
-  display: flex;
-  justify-content: center;
+    position: absolute;
+    bottom: 5px;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
 }
