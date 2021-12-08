@@ -47,9 +47,13 @@ export default class Footer extends Component {
                     <Link href="/about">
                       <a className="footerLink">Sobre Kiero</a>
                     </Link>
-                    <Link href="//novedades.kiero.co/">
-                      <a className="footerLink">Prensa</a>
-                    </Link>
+
+                    <a
+                      href="https://novedades.kiero.co/"
+                      className="footerLink"
+                    >
+                      Prensa
+                    </a>
                   </div>
                 </div>
                 <div className="footerElement ">
