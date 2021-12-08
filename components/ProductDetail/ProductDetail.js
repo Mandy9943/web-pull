@@ -256,7 +256,6 @@ class ProductDetail extends Component {
             Brand: this.props.data.brand,
             Price: this.props.data.price,
         };
-        console.log(this.props.data.product_global_title)
         this.createlead(item);
   }
 
