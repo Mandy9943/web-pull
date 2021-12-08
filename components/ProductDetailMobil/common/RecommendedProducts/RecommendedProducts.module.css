@@ -1,0 +1,26 @@
+#RecommendedProducts {
+    height: 525px;
+    position: relative;
+}
+
+#RecommendedProducts img {
+    position: absolute;
+    width: 100%;
+}
+
+#RecommendedProducts .cabecera {
+    position: relative;
+    padding: 30px 83px 35px 83px;
+}
+
+#RecommendedProducts .cabecera h3 {
+    box-sizing: border-box;
+    position: relative;
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    color: #FFFFFF;
+}

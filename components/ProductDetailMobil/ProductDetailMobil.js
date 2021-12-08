@@ -17,13 +17,14 @@ import Description from "./common/Description/Description";
 import Benefits from "./common/Benefits/Benefits";
 import HelpCenter from "./common/HelpCenter/HelpCenter";
 import Subscription from "./common/Subscription/Subscription";
+import RecommendedProducts from "./common/RecommendedProducts/RecommendedProducts";
 
 const Nav = dynamic(() => import("../Common/Nav/Nav"));
 const Footer = dynamic(() => import("../Common/Footer"));
 
 const ProductDetailMobil = ({user_data, data}) => {
     let urlSic = "https://www.sic.gov.co";
-    console.log("data", data);
+    // console.log("data", data);
     return (
         <div id="productDetailMobil">
             <div className="Nav">
@@ -59,7 +60,7 @@ const ProductDetailMobil = ({user_data, data}) => {
             <Description product={data}/>
             {/*TODO: Primero va ofectas especiales*/}
             <Benefits/>
-            {/*TODO: Productos Relacionados*/}
+            <RecommendedProducts category={data.category}/>
             <HelpCenter/>
             <Subscription/>
             <Footer/>
