@@ -246,7 +246,7 @@ class ProductDetail extends Component {
     //     },
     //   });
         var item = {
-            ProductName: this.props.data.product_global_title,
+            ProductName: this.props.data.product_global_title.slice(0,250),
             ProductID: this.props.data.product_global_id,
             SKU: this.props.data.sku,
             Categories: concatCategories(),
@@ -256,6 +256,7 @@ class ProductDetail extends Component {
             Brand: this.props.data.brand,
             Price: this.props.data.price,
         };
+        console.log(this.props.data.product_global_title)
         this.createlead(item);
   }
 

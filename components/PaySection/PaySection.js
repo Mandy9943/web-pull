@@ -723,8 +723,6 @@ class PaySection extends Component {
     // };
 
     async createlead(item, step) {
-        console.log(this.state);
-        console.log(item);
         var data = {
             first_name: Cookies.get("name"),
             city: this.state.city,
@@ -742,7 +740,7 @@ class PaySection extends Component {
             category: item.props.data.category.name,
             sub_category: "",
             price_product: item.price,
-            product_title:item.props.data.product_global_title,
+            product_title:item.props.data.product_global_title.slice(0,250),
             product_description:item.props.data.description,
             product_id:String(item.props.data.product_global_id),
             product_link:'',
