@@ -246,7 +246,7 @@ class ProductDetail extends Component {
     //     },
     //   });
         var item = {
-            ProductName: this.props.data.product_global_title,
+            ProductName: this.props.data.product_global_title.slice(0,250),
             ProductID: this.props.data.product_global_id,
             SKU: this.props.data.sku,
             Categories: concatCategories(),
@@ -256,6 +256,8 @@ class ProductDetail extends Component {
             Brand: this.props.data.brand,
             Price: this.props.data.price,
         };
+        console.log(item);
+        console.log(this.props);
         this.createlead(item);
   }
 
@@ -284,6 +286,8 @@ class ProductDetail extends Component {
       product_link:'',
       product_image:this.props.data.images[0].url,
       product_brand:this.props.data.brand,
+      product_category:String(this.props.data.category.name),
+      product_subcategory:String(this.props.data.category.name),
       category_id:String(this.props.data.category_id),
     }
     const error = await createleadClient(data);

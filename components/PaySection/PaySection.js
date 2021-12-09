@@ -745,20 +745,17 @@ class PaySection extends Component {
       num_id: this.state.identification,
       id: Cookies.get("user_id"),
       country: "CO",
-      lead_type:
-        step === 1
-          ? "Usuario Registrado que Presionó el Botón Comprar"
-          : "Usuario Invitado (Y Usuario Registrado) que Presionó el botón de Continuar con la transacción",
+      lead_type: step === 1 ? "Usuario Registrado que Presionó el Botón Comprar" : "Usuario Invitado (Y Usuario Registrado) que Presionó el botón de Continuar con la transacción",
       category: item.props.data.category.name,
       sub_category: "",
       price_product: item.price,
-      product_title: item.props.data.product_global_title,
-      product_description: item.props.data.description,
-      product_id: String(item.props.data.product_global_id),
-      product_link: "",
-      product_image: item.props.data.images[0].url,
-      product_brand: item.props.data.brand,
-      category_id: String(item.props.data.category_id),
+      product_title:item.props.data.product_global_title.slice(0,250),
+      product_description:item.props.data.description,
+      product_id:String(item.props.data.product_global_id),
+      product_link:'',
+      product_image:item.props.data.images[0].url,
+      product_brand:item.props.data.brand,
+      category_id:String(item.props.data.category_id),
     };
 
     const error = await createleadClient(data);
