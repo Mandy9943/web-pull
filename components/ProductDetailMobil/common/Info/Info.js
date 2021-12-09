@@ -6,14 +6,23 @@ import envios from "../../../../assets/img/productDetail/delivery-icon-@2x.svg"
 import compras from "../../../../assets/img/productDetail/union-2@2x.svg"
 import garantia from "../../../../assets/img/productDetail/union-3@2x.svg"
 
+import Image from "next/image";
 const Info = () => {
     return (
         <div id="InfoProductDetailMovil">
             <div className="info envios">
                 <div className="icon">
-                    <img src={envios} alt="Envios gratis" loading="lazy"/>
+                <div className='anullProperties'> 
+                <Image
+                    
+                    loading='lazy'
+                    src={envios}
+                    alt='Envios gratis'
+                    layout="fill"
+                />
+               </div> 
                 </div>
-                <div className="text">
+                <div className="text texte">
                     <h3>Envío Gratuito</h3>
                     <p>
                         Nuestros productos son importados.Entrega de 3 a 9 días hábiles.
@@ -22,7 +31,15 @@ const Info = () => {
             </div>
             <div className="info compras">
                 <div className="icon">
-                    <img src={compras} alt="Compra protegida" loading="lazy"/>
+                <div className='anullProperties'> 
+                <Image
+                    
+                    loading='lazy'
+                    src={compras}
+                    alt='Compra Protegida'
+                    layout="fill"
+                />
+               </div> 
                 </div>
                 <div className="text">
                     <h3>Compra Protegida</h3>
@@ -33,7 +50,15 @@ const Info = () => {
             </div>
             <div className="info garantia">
                 <div className="icon">
-                    <img src={garantia} alt="Garantía del Vendedor" loading="lazy"/>
+                <div className='anullProperties'> 
+                <Image
+                    
+                    loading='lazy'
+                    src={garantia}
+                    alt='Garantia del Vendedor'
+                    layout="fill"
+                />
+               </div>
                 </div>
                 <div className="text">
                     <h3>Garantía del Vendedor</h3>
