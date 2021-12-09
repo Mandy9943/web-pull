@@ -70,6 +70,7 @@ const ProductDetailMobil = ({ user_data, data }) => {
       <Description product={data} />
       {/*TODO: Primero va ofectas especiales*/}
       <Benefits />
+      <RecommendedProducts product={data} />
       <Footer />
       <div className="footer-social">
         <a href={urlSic} rel="noopener noreferrer" target="_blank">

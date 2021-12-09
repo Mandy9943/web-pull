@@ -1,14 +1,14 @@
-import React, {useEffect, useState} from "react";
-import {getProductsBasic} from "../../../../services/productsApi";
+import React, { useEffect, useState } from "react";
+import { getProductsBasic } from "../../../../services/productsApi";
 import background from "../../../../assets/img/productDetail/trazado-12@2x.svg";
 
-import {Swiper, SwiperSlide} from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.scss";
 
 // import Swiper core and required modules
-import SwiperCore, {Pagination} from "swiper";
+import SwiperCore, { Pagination } from "swiper";
 
 // install Swiper modules
 SwiperCore.use([Pagination]);
@@ -16,7 +16,7 @@ SwiperCore.use([Pagination]);
 import "./RecommendedProducts.module.css";
 import RecommendedProductsCard from "./RecommendedProductsCard";
 
-const RecommendedProducts = ({category}) => {
+const RecommendedProducts = ({ category }) => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
@@ -29,7 +29,7 @@ const RecommendedProducts = ({category}) => {
     }, []);
     return (
         <div id="RecommendedProducts">
-            <img src={background} alt="Red background"/>
+            <img src={background} alt="Red background" />
             <div className="cabecera">
                 <h3>Otros Productos Relacionados</h3>
             </div>
@@ -45,7 +45,7 @@ const RecommendedProducts = ({category}) => {
                     {products.map(product => {
                         return (
                             <SwiperSlide>
-                                <RecommendedProductsCard product={product}/>
+                                <RecommendedProductsCard product={product} />
                             </SwiperSlide>
                         )
                     })}
