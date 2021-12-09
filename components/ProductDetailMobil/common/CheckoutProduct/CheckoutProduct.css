@@ -1,87 +1,77 @@
 .ripple-effect-detail-mobile {
-    width: 100%;
+  width: 100%;
 }
 
 #CheckoutProductMobil {
-    width: 100%;
-    background: #fff;
-    padding: 25px;
-    box-sizing: border-box;
+  width: 100%;
+  background: #fff;
+  padding: 25px;
+  box-sizing: border-box;
 }
 
 #CheckoutProductMobil .price {
-    margin-bottom: 5px;
-
+  margin-bottom: 5px;
 }
 
 #CheckoutProductMobil .price span {
-    font: normal normal bold 24px/29px Montserrat;
-    letter-spacing: 1px;
-    color: #000000;
-    display: flex;
-    flex-direction: row;
+  font: normal normal bold 24px/29px Montserrat;
+  letter-spacing: 1px;
+  color: #000000;
+  display: flex;
+  flex-direction: row;
 }
 
 #CheckoutProductMobil .price span p {
-    font-family: Montserrat, sans-serif;
-    font-weight: 950;
-    font-size: 20px;
-    padding-top: 3px;
-    padding-left: 2px;
-    color: #000;
+  font-family: Montserrat, sans-serif;
+  font-weight: 950;
+  font-size: 20px;
+  padding-top: 3px;
+  padding-left: 2px;
+  color: #000;
 }
 
 #CheckoutProductMobil .discount {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
-
 #CheckoutProductMobil .discount .old-price {
-    font: normal normal normal 14px/18px Montserrat;
-    letter-spacing: 1px;
-    color: #5f5f5f;
-    text-decoration: line-through;
+  font: normal normal normal 14px/18px Montserrat;
+  letter-spacing: 1px;
+  color: #5f5f5f;
+  text-decoration: line-through;
 }
-
 #CheckoutProductMobil .discount .percent {
-    font: normal normal bold 14px/18px Montserrat;
-    letter-spacing: 0px;
-    color: #74c1d2;
-    margin-left: 10px;
-    text-transform: uppercase;
+  font: normal normal bold 14px/18px Montserrat;
+  letter-spacing: 0px;
+  color: #74c1d2;
+  margin-left: 10px;
+  text-transform: uppercase;
 }
-
 #CheckoutProductMobil .buyButton {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
-
 #CheckoutProductMobil .count {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
-
 #CheckoutProductMobil .count .count-text {
-    flex: 1;
+  flex: 1;
 }
-
 #CheckoutProductMobil .count .count-text .no-avilable {
-    color: #cf0a2c;
-    font-weight: 700;
-    margin-top: 1px;
-    min-height: 17px;
+  color: #cf0a2c;
+  font-weight: 700;
+  margin-top: 1px;
+  min-height: 17px;
 }
-
 #CheckoutProductMobil .count .count-text h3 {
-    font: normal normal normal 18px/22px Montserrat;
-    letter-spacing: 0px;
-    color: #5f5f5f;
+  font: normal normal normal 18px/22px Montserrat;
+  letter-spacing: 0px;
+  color: #5f5f5f;
 }
-
 #CheckoutProductMobil .count .count-text p {
-    font: normal normal 600 14px/18px Montserrat;
-    letter-spacing: 0px;
-    color: #000000;
+  font: normal normal 600 14px/18px Montserrat;
+  letter-spacing: 0px;
+  color: #000000;
 }
-
 #CheckoutProductMobil .count .count-counter {
   flex: 1;
   display: flex;

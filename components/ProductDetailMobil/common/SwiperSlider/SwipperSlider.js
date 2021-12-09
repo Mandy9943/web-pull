@@ -2,93 +2,118 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.scss";
-import Ripple from '@material/ripple'
-
 import "swiper/components/effect-coverflow/effect-coverflow.scss";
 import "swiper/components/pagination/pagination.scss";
 import "./SwiperSlider.css";
-import Image from 'next/image'
-import Skeleton from '@mui/material/Skeleton';
+import Image from "next/image";
+import Skeleton from "@mui/material/Skeleton";
 
 // import Swiper core and required modules
-import SwiperCore, {  EffectCoverflow, Pagination } from "swiper";
+import SwiperCore, { EffectCoverflow, Pagination } from "swiper";
 
 // install Swiper modules
-SwiperCore.use([ EffectCoverflow, Pagination]);
+SwiperCore.use([EffectCoverflow, Pagination]);
 
 const SwiperSlider = ({ images, altImg }) => {
-    return (
-        <div className="swiperSliderDatailMobile">
-           {!images.length ? 
-                 <Swiper
-                        loop= {true}
-                        speed= {400}
-                        autoplay={true}
-                        autoplay={{
-                            "delay": 2500,
-                            "disableOnInteraction": false
-                        }}
-                        effect={"coverflow"}
-                        grabCursor={true}
-                        centeredSlides={true}
-                        slidesPerView={"auto"}
-                        coverflowEffect={{
-                            rotate: 50,
-                            stretch: 15,
-                            depth: 50,
-                            modifier: 1,
-                            slideShadows: false,
-                        }}
-                        pagination={{
-                            "clickable": true
-                        }}
-                        className="mySwiper"
-                    >
-                         <SwiperSlide >
-                             <Skeleton variant="rectangular" width={300} height={324} className="skeletonProductDetail"  />
-                         </SwiperSlide>
-                         <SwiperSlide>
-                             <Skeleton variant="rectangular" width={300} height={324} className="skeletonProductDetail"  />
-                         </SwiperSlide>
-                         <SwiperSlide>
-                             <Skeleton variant="rectangular" width={300} height={324} className="skeletonProductDetail"  />
-                         </SwiperSlide>
-                 </Swiper> :
-                    <Swiper
-                        loop= {true}
-                        speed= {400}
-                        autoplay={true}
-                        autoplay={{
-                            "delay": 2500,
-                            "disableOnInteraction": false
-                        }}
-                        effect={"coverflow"}
-                        grabCursor={true}
-                        centeredSlides={true}
-                        slidesPerView={"auto"}
-                        coverflowEffect={{
-                            rotate: 50,
-                            stretch: 15,
-                            depth: 50,
-                            modifier: 1,
-                            slideShadows: false,
-                        }}
-                        pagination={{
-                            "clickable": true
-                        }}
-                        className="mySwiper"
-                    >
-                        {images.map((image) => {
-                            return (
-                                <SwiperSlide key={image.file_id} className="mdc-ripple-surface">
-                                    <Skeleton variant="rectangular" width={300} height={324} className="skeletonProductDetail"  />
-                                    <Image layout="fill" data-src={image.url} src={image.url} alt={"Producto de kiero " + altImg.substr(0, 80)}  />
-                                </SwiperSlide>
-                            );
-                        })}
-                    </Swiper>}
-        </div>
-    );
+  return (
+    <div className="swiperSliderDatailMobile">
+      {!images.length ? (
+        <Swiper
+          loop={true}
+          speed={400}
+          autoplay={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          effect={"coverflow"}
+          grabCursor={true}
+          centeredSlides={true}
+          slidesPerView={"auto"}
+          coverflowEffect={{
+            rotate: 50,
+            stretch: 15,
+            depth: 50,
+            modifier: 1,
+            slideShadows: false,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          className="mySwiper"
+        >
+          <SwiperSlide>
+            <Skeleton
+              variant="rectangular"
+              width={300}
+              height={324}
+              className="skeletonProductDetail"
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Skeleton
+              variant="rectangular"
+              width={300}
+              height={324}
+              className="skeletonProductDetail"
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Skeleton
+              variant="rectangular"
+              width={300}
+              height={324}
+              className="skeletonProductDetail"
+            />
+          </SwiperSlide>
+        </Swiper>
+      ) : (
+        <Swiper
+          loop={true}
+          speed={400}
+          autoplay={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          effect={"coverflow"}
+          grabCursor={true}
+          centeredSlides={true}
+          slidesPerView={"auto"}
+          coverflowEffect={{
+            rotate: 50,
+            stretch: 15,
+            depth: 50,
+            modifier: 1,
+            slideShadows: false,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          className="mySwiper"
+        >
+          {images.map((image) => {
+            return (
+              <SwiperSlide key={image.file_id} className="mdc-ripple-surface">
+                <Skeleton
+                  variant="rectangular"
+                  width={300}
+                  height={324}
+                  className="skeletonProductDetail"
+                />
+                <Image
+                  layout="fill"
+                  data-src={image.url}
+                  src={image.url}
+                  alt={"Producto de kiero " + altImg.substr(0, 80)}
+                />
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      )}
+    </div>
+  );
 };
 
 export default SwiperSlider;

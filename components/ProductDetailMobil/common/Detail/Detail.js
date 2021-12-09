@@ -23,7 +23,7 @@ const Detail = ({product}) => {
                     
                     loading='lazy'
                     src={desglosar}
-                    alt='Icono del desgrose'
+                    alt='Icono del desglose'
                     layout="fill"
                 />
                </div> 
@@ -32,7 +32,6 @@ const Detail = ({product}) => {
             {collapse === true ? (
                 <div className="detalles">
                     <h6>Marca</h6><h5>{product.brand}</h5>
-                    <h6>Tipo</h6><h5>{product.type}</h5>
                     <h6>Color</h6><h5>{product.color !== null ? product.color : 'Ninguno'}</h5>
                     <h6>Modelo</h6><h5>{product.model}</h5>
                     <h6>Tamaño</h6><h5>{parseFloat(product.length).toFixed(2)}" - (

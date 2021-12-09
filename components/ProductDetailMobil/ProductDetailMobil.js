@@ -20,6 +20,7 @@ const OfferSection = dynamic(() => import("./Common/OfferSection/OfferSection"),
 import Benefits from "./common/Benefits/Benefits";
 import HelpCenter from "./common/HelpCenter/HelpCenter";
 import Subscription from "./common/Subscription/Subscription";
+import RecommendedProducts from "./common/RecommendedProducts/RecommendedProducts";
 
 import Image from "next/image";
 
@@ -74,7 +75,7 @@ const ProductDetailMobil = ({ user_data, data }) => {
             <OfferSection/>
             {/*TODO: Primero va ofectas especiales*/}
             <Benefits/>
-            {/*TODO: Productos Relacionados*/}
+            <RecommendedProducts category={data.category} />
             <HelpCenter/>
             <Subscription/>
             <Footer/>
