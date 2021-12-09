@@ -3,6 +3,8 @@ import "./Detail.css"
 import cerrado from "../../../../assets/img/productDetail/icono-desplegar@2x.svg"
 import abierto from "../../../../assets/img/productDetail/l-nea-86@2x.svg"
 
+import Image from "next/image";
+
 const Detail = ({product}) => {
     const [collapse, setCollapse] = useState(false);
     const [desglosar, setDesglosar] = useState(cerrado);
@@ -16,7 +18,16 @@ const Detail = ({product}) => {
         <div id="DetailInfo" className={collapse === false ? "closed" : "open"}>
             <div className="titulo" onClick={handleOnClick}>
                 <h3>Detalles</h3>
-                <img src={desglosar} alt="Icono del desgrose"/>
+                <div className='anullProperties'> 
+                <Image
+                    
+                    loading='lazy'
+                    src={desglosar}
+                    alt='Icono del desgrose'
+                    layout="fill"
+                />
+               </div> 
+                
             </div>
             {collapse === true ? (
                 <div className="detalles">

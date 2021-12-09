@@ -1,57 +1,63 @@
 #Benefits {
-    border-top: 2px solid #e4e4e4;
-    border-bottom: 2px solid #e4e4e4;
-    background: #fff;
-    transition: all 0.3s ease;
-    min-width: 325px;
+  border-top: 2px solid #e4e4e4;
+  border-bottom: 2px solid #e4e4e4;
+  background: #fff;
+  transition: all 0.3s ease;
+  min-width: 320px;
+}
+
+.margin {
+  margin-top: 36px;
+  margin-bottom: 24px;
 }
 
 #Benefits .beneficio {
-    margin: 35px 0 25px 25px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  padding: 30px 10px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 #Benefits .beneficio h1 {
-    font-family: Montserrat, sans-serif;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 800;
-    line-height: 29px;
-    letter-spacing: 0;
-    text-align: center;
-    color: #000000;
+  font-family: Montserrat, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 29px;
+  letter-spacing: 0;
+  text-align: center;
+  color: #000000;
 }
 
 #Benefits .beneficio h1 .red {
-    color: #CF0A2C;
+  color: #cf0a2c;
 }
 
 #Benefits .beneficio img {
-    margin: 36px 0 24px 0;
+  margin: 36px 0 24px 0 !important;
+  width: 245px !important;
+  height: 227px !important;
 }
 
 #Benefits .beneficio h3 {
-    font-family: Montserrat, sans-serif;
-    font-size: 21px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 26px;
-    letter-spacing: 0;
-    text-align: center;
-    margin: 0 3px 18px 3px;
-    color: #000000;
+  font-family: Montserrat, sans-serif;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 26px;
+  letter-spacing: 0;
+  text-align: center;
+  margin: 0 3px 18px 3px;
+  color: #000000;
 }
 
 #Benefits .beneficio p {
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 21px;
-    text-align: center;
-    color: #5D5D5D;
-
+  font-family: Montserrat, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+  color: #5d5d5d;
 }

@@ -5,6 +5,7 @@
     height: auto;
     background: white;
     margin-top: 3.2px;
+    padding: 30px 10px;
 }
 
 .containerOffer .headerOffer{
@@ -28,10 +29,10 @@
 
 .titleOffer{
     position: absolute;
-    left: 18.67%;
-    right: 18.67%;
-    top: -80.62%;
-    bottom: -2.58%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
     font-family: Montserrat;
     font-style: normal;
     font-weight: 800;
@@ -41,7 +42,9 @@
     flex: none;
     order: 0;
     flex-grow: 0;
-    margin: 20px 10px;
+    margin: 20px 0px;
+    width: 100%;
+    text-align: center;
 }
 
 .contentOffer{
