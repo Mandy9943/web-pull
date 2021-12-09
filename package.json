@@ -90,7 +90,8 @@
     "sweetalert2-react-content": "^3.3.2",
     "swiper": "^6.8.4",
     "terser-webpack-plugin": "^5.2.5",
-    "webp-loader": "^0.6.0"
+    "webp-loader": "^0.6.0",
+    "yarn": "^1.22.17"
   },
   "devDependencies": {
     "clean-webpack-plugin": "^4.0.0",
