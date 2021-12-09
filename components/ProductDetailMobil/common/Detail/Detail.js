@@ -23,7 +23,7 @@ const Detail = ({product}) => {
                     
                     loading='lazy'
                     src={desglosar}
-                    alt='Icono del desgrose'
+                    alt='Icono del desglose'
                     layout="fill"
                 />
                </div> 

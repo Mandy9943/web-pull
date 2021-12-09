@@ -1,7 +1,7 @@
 import React from 'react';
 import "./Subscription.module.css"
 import recurso from "../../../../assets/img/productDetail/recurso-7-1@2x.svg"
-
+import Image from "next/image"
 const Subscription = () => {
     return (
         <div id="Subscription">
@@ -9,10 +9,12 @@ const Subscription = () => {
                 Mantente al día con nuestras mejores ofertas
             </h3>
             <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.
+                También odiamos el spam. Solo le enviaremos correos electrónicos si tenemos noticias increíbles, ofertas especiales o descuentos, u otras golosinas que valgan la pena.
             </p>
-            <img src={recurso} alt="Recurso"/>
-            <input type="email" placeholder="Correo"/>
+            <div className="anullProperties">
+                <Image layout="fill" src={recurso} alt="Recurso" />
+            </div>
+            <input type="email" placeholder="Correo" />
             <button onClick={() => alert('Clicked')}>SUSCRIBIRSE</button>
         </div>
     );

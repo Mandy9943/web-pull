@@ -72,7 +72,7 @@ const ProductDetailMobil = ({ user_data, data }) => {
       <Benefits />
       <RecommendedProducts category={data.category} />
       <HelpCenter />
-      {/* <Subscription /> */}
+      <Subscription />
       <Footer />
       <div className="footer-social">
         <a href={urlSic} rel="noopener noreferrer" target="_blank">
