@@ -83,5 +83,11 @@
 }
 
 #CheckoutProductMobil .count .count-counter {
+<<<<<<< HEAD
     flex: 1;
+=======
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+>>>>>>> cesar
 }
