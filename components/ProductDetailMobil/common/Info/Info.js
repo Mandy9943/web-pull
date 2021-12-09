@@ -1,5 +1,5 @@
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faTruck} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTruck } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import "./Info.css"
 import envios from "../../../../assets/img/productDetail/delivery-icon-@2x.svg"
@@ -12,15 +12,15 @@ const Info = () => {
         <div id="InfoProductDetailMovil">
             <div className="info envios">
                 <div className="icon">
-                <div className='anullProperties'> 
-                <Image
-                    
-                    loading='lazy'
-                    src={envios}
-                    alt='Envios gratis'
-                    layout="fill"
-                />
-               </div> 
+                    <div className='anullProperties'>
+                        <Image
+
+                            loading='lazy'
+                            src={envios}
+                            alt='Envios gratis'
+                            layout="fill"
+                        />
+                    </div>
                 </div>
                 <div className="text texte">
                     <h3>Envío Gratuito</h3>
@@ -31,15 +31,15 @@ const Info = () => {
             </div>
             <div className="info compras">
                 <div className="icon">
-                <div className='anullProperties'> 
-                <Image
-                    
-                    loading='lazy'
-                    src={compras}
-                    alt='Compra Protegida'
-                    layout="fill"
-                />
-               </div> 
+                    <div className='anullProperties'>
+                        <Image
+
+                            loading='lazy'
+                            src={compras}
+                            alt='Compra Protegida'
+                            layout="fill"
+                        />
+                    </div>
                 </div>
                 <div className="text">
                     <h3>Compra Protegida</h3>
@@ -50,15 +50,15 @@ const Info = () => {
             </div>
             <div className="info garantia">
                 <div className="icon">
-                <div className='anullProperties'> 
-                <Image
-                    
-                    loading='lazy'
-                    src={garantia}
-                    alt='Garantia del Vendedor'
-                    layout="fill"
-                />
-               </div>
+                    <div className='anullProperties'>
+                        <Image
+
+                            loading='lazy'
+                            src={garantia}
+                            alt='Garantia del Vendedor'
+                            layout="fill"
+                        />
+                    </div>
                 </div>
                 <div className="text">
                     <h3>Garantía del Vendedor</h3>
