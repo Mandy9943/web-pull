@@ -47,7 +47,7 @@ const FormProductDetail = ({ handleClose, open }) => {
                 {...register("firstName")}
                 className="fromProductDetail-textfields font-size"
                 margin="dense"
-                id="name"
+                id="firstName"
                 label="Nombres"
                 type="text"
                 variant="outlined"
@@ -59,7 +59,7 @@ const FormProductDetail = ({ handleClose, open }) => {
                 {...register("lastName")}
                 className="fromProductDetail-textfields font-size"
                 margin="dense"
-                id="name"
+                id="lastName"
                 label="Apellidos"
                 type="text"
                 variant="outlined"
@@ -72,7 +72,7 @@ const FormProductDetail = ({ handleClose, open }) => {
               {...register("email")}
               className="font-size"
               margin="dense"
-              id="name"
+              id="email"
               label="Correo"
               type="text"
               fullWidth
@@ -86,7 +86,7 @@ const FormProductDetail = ({ handleClose, open }) => {
               {...register("phoneNumber")}
               className="font-size"
               margin="dense"
-              id="name"
+              id="phoneNumber"
               label="Telefono Movil"
               type="text"
               fullWidth
@@ -99,7 +99,7 @@ const FormProductDetail = ({ handleClose, open }) => {
               {...register("city")}
               className="font-size"
               margin="dense"
-              id="name"
+              id="city"
               label="Ciudad"
               type="text"
               fullWidth
@@ -112,7 +112,7 @@ const FormProductDetail = ({ handleClose, open }) => {
               {...register("address")}
               className="font-size"
               margin="dense"
-              id="name"
+              id="address"
               label="Direccion"
               type="text"
               fullWidth
