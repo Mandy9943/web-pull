@@ -1,5 +1,3 @@
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CartIcon from "../../../../assets/img/productDetail/CartIcon.svg";
 import React from "react";
 import Ripples from "react-ripples";
