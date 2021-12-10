@@ -15,10 +15,10 @@ docker-build:
     - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
 
   script:
-    - ls 
+    - ls
     #Build images
     - if [ "$CI_COMMIT_BRANCH" == "master" ]; then
-        docker build -t kierogroup/service:${CI_PROJECT_NAME}-latest .;
+      docker build -t kierogroup/service:${CI_PROJECT_NAME}-latest .;
       fi
     - docker build -t kierogroup/service:${CI_PROJECT_NAME}-${CI_COMMIT_BRANCH}-${CI_COMMIT_SHORT_SHA} .
 
