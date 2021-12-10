@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import React from "react";
+import React, { useState } from "react";
 
 import Logo1 from "../../assets/img/logo-social.png";
 import Logo2 from "../../assets/img/logo-social1.png";
@@ -33,6 +33,7 @@ import RecommendedProducts from "./common/RecommendedProducts/RecommendedProduct
 import Image from "next/image";
 import useScrollY from "../../lib/hooks/useScrollY";
 import StickyPayButton from "./common/StickyPayButton/StickyPayButton";
+import WhatsappBanner from "./common/WhatsappBanner/WhatsappBanner";
 
 const Nav = dynamic(() => import("../Common/Nav/Nav"));
 const Footer = dynamic(() => import("../Common/Footer"));
@@ -40,9 +41,12 @@ const Footer = dynamic(() => import("../Common/Footer"));
 const ProductDetailMobil = ({ user_data, data }) => {
   let urlSic = "https://www.sic.gov.co";
   console.log("data", data);
-  const scrolled = useScrollY(700);
+  const [isWhatsappBanner, setIsWhatsappBanner] = useState(true);
+  const scrolledPayBuuton = useScrollY(700, false);
 
-  console.log(scrolled);
+  const handleCloseWhatsappBanner = () => {
+    setIsWhatsappBanner(false);
+  };
   return (
     <div id="productDetailMobil">
       <div className="Nav">
@@ -53,7 +57,8 @@ const ProductDetailMobil = ({ user_data, data }) => {
           authenticated={user_data.authenticated}
         />
       </div>
-      {scrolled && <StickyPayButton />}
+      {scrolledPayBuuton && <StickyPayButton />}
+      {isWhatsappBanner && <WhatsappBanner close={handleCloseWhatsappBanner} />}
 
       <div className="content-curve-shape">
         <div className="curve-shape">
