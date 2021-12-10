@@ -92,7 +92,8 @@
     "swiper": "^6.8.4",
     "terser-webpack-plugin": "^5.2.5",
     "webp-loader": "^0.6.0",
-    "yarn": "^1.22.17"
+    "yarn": "^1.22.17",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "clean-webpack-plugin": "^4.0.0",
