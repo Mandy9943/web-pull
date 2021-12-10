@@ -32,12 +32,17 @@ import RecommendedProducts from "./common/RecommendedProducts/RecommendedProduct
 
 import Image from "next/image";
 import useScrollY from "../../lib/hooks/useScrollY";
-import StickyPayButton from "./common/StickyPayButton/StickyPayButton";
+
 import WhatsappBanner from "./common/WhatsappBanner/WhatsappBanner";
-import FormProductDetail from "./common/formProductDetail/FormProductDetail";
 
 const Nav = dynamic(() => import("../Common/Nav/Nav"));
 const Footer = dynamic(() => import("../Common/Footer"));
+const FormProductDetail = dynamic(() =>
+  import("./common/formProductDetail/FormProductDetail")
+);
+const StickyPayButton = dynamic(() =>
+  import("./common/StickyPayButton/StickyPayButton")
+);
 
 const ProductDetailMobil = ({ user_data, data }) => {
   let urlSic = "https://www.sic.gov.co";
