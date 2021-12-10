@@ -6,8 +6,11 @@ import Ripples from "react-ripples";
 import "./CheckoutButton.css";
 
 import Image from "next/image";
-const CheckoutButton = ({ text, disabled, onClick }) => {
+const CheckoutButton = ({ text, disabled, onClick, rounded }) => {
   let buttonClass = [""];
+  if (rounded) {
+    buttonClass.push("roundedButton");
+  }
   if (disabled) {
     buttonClass.push("disableButton");
   }
@@ -25,16 +28,14 @@ const CheckoutButton = ({ text, disabled, onClick }) => {
       >
         <span className="button-text">{text}</span>
         <span className="icon-shoping-cart">
-        <div className='anullProperties'> 
-                <Image
-                    
-                    loading='lazy'
-                    src={CartIcon}
-                    alt='Shoping Cart'
-                    layout="fill"
-                />
-               </div> 
-         
+          <div className="anullProperties">
+            <Image
+              loading="lazy"
+              src={CartIcon}
+              alt="Shoping Cart"
+              layout="fill"
+            />
+          </div>
         </span>
       </div>
     </Ripples>
