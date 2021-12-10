@@ -109,6 +109,7 @@ export default class Footer extends Component {
                   <h3>Redes Sociales </h3>
                   <div className="footerLinks social">
                     <a
+                      target="_blank"
                       aria-label="Facebook Kiero"
                       className="footerLink"
                       href={fb}
@@ -119,6 +120,7 @@ export default class Footer extends Component {
                     </a>
 
                     <a
+                      target="_blank"
                       aria-label="Twitter Kiero"
                       className="footerLink"
                       href={tw}
@@ -129,6 +131,7 @@ export default class Footer extends Component {
                     </a>
 
                     <a
+                      target="_blank"
                       aria-label="Instagram Kiero"
                       className="footerLink"
                       href={ig}
@@ -139,6 +142,7 @@ export default class Footer extends Component {
                     </a>
 
                     <a
+                      target="_blank"
                       aria-label="YouTube Kiero"
                       className="footerLink"
                       href={yt}
@@ -148,6 +152,7 @@ export default class Footer extends Component {
                       <FontAwesomeIcon icon={faYoutube} />
                     </a>
                     <a
+                      target="_blank"
                       aria-label="Linkedin Kiero"
                       className="footerLink"
                       href={lk}
@@ -157,6 +162,7 @@ export default class Footer extends Component {
                       <FontAwesomeIcon icon={faLinkedin} />
                     </a>
                     <a
+                      target="_blank"
                       aria-label="Whatsapp Kiero"
                       className="footerLink"
                       href={wh}
@@ -166,6 +172,7 @@ export default class Footer extends Component {
                       <FontAwesomeIcon icon={faWhatsapp} />
                     </a>
                     <a
+                      target="_blank"
                       aria-label="Pinterest Kiero"
                       className="footerLink"
                       href={pt}

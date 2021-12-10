@@ -14,10 +14,17 @@
 }
 
 #RecommendedProductsCard .product img {
-  height: 154px;
-  width: 100%;
   border-radius: 5px;
   position: relative;
+}
+#RecommendedProductsCard .product .productImg {
+  height: 154px !important;
+  width: 100% !important;
+}
+
+#RecommendedProductsCard .product .irImg {
+  height: 42px !important;
+  width: 53px !important;
 }
 
 #RecommendedProductsCard .product h4 {
@@ -76,9 +83,4 @@
   text-align: center;
   color: #969696;
   padding-right: 17px;
-}
-
-#RecommendedProductsCard .product .stock img {
-  height: 42px;
-  width: 53px;
 }

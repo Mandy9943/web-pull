@@ -32,20 +32,33 @@ import RecommendedProducts from "./common/RecommendedProducts/RecommendedProduct
 
 import Image from "next/image";
 import useScrollY from "../../lib/hooks/useScrollY";
-import StickyPayButton from "./common/StickyPayButton/StickyPayButton";
+
 import WhatsappBanner from "./common/WhatsappBanner/WhatsappBanner";
 
 const Nav = dynamic(() => import("../Common/Nav/Nav"));
 const Footer = dynamic(() => import("../Common/Footer"));
+const FormProductDetail = dynamic(() =>
+  import("./common/formProductDetail/FormProductDetail")
+);
+const StickyPayButton = dynamic(() =>
+  import("./common/StickyPayButton/StickyPayButton")
+);
 
 const ProductDetailMobil = ({ user_data, data }) => {
   let urlSic = "https://www.sic.gov.co";
   console.log("data", data);
+  const [isForm, setIsForm] = useState(false);
   const [isWhatsappBanner, setIsWhatsappBanner] = useState(true);
   const scrolledPayBuuton = useScrollY(700, false);
 
   const handleCloseWhatsappBanner = () => {
     setIsWhatsappBanner(false);
+  };
+  const handleCloseForm = () => {
+    setIsForm(false);
+  };
+  const handleOpenForm = () => {
+    setIsForm(true);
   };
 
   let navClass = ["Nav"];
@@ -54,7 +67,9 @@ const ProductDetailMobil = ({ user_data, data }) => {
   }
   return (
     <div id="productDetailMobil">
-      {isWhatsappBanner && <WhatsappBanner close={handleCloseWhatsappBanner} />}
+      {isWhatsappBanner && (
+        <WhatsappBanner close={handleCloseWhatsappBanner} productId={"7741"} />
+      )}
       <div className={navClass.join(" ")}>
         <Nav
           user={user_data.user}
@@ -63,8 +78,10 @@ const ProductDetailMobil = ({ user_data, data }) => {
           authenticated={user_data.authenticated}
         />
       </div>
-      {scrolledPayBuuton && <StickyPayButton />}
-
+      {scrolledPayBuuton && !isForm && (
+        <StickyPayButton onClickBuy={handleOpenForm} />
+      )}
+      <FormProductDetail open={isForm} handleClose={handleCloseForm} />
       <div className="content-curve-shape">
         <div className="curve-shape">
           <div className="anullProperties">
@@ -91,6 +108,7 @@ const ProductDetailMobil = ({ user_data, data }) => {
       </div>
 
       <CheckoutProduct
+        onClickBuy={handleOpenForm}
         price={data.price}
         stock={data.status === 0 ? 0 : data.stock}
         discount_percentage={data.discount_percentage}
