@@ -74,7 +74,7 @@ const ProductDetailMobil = ({ user_data, data }) => {
             <PayMethod/>
             <Detail product={data}/>
             <Description product={data}/>
-            <OfferSection/>
+            <OfferSection productImg={data.images}/>
             {/*TODO: Primero va ofectas especiales*/}
             <Benefits/>
             <RecommendedProducts category={data.category} />

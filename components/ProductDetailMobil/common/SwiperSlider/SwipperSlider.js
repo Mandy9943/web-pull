@@ -92,7 +92,7 @@ const SwiperSlider = ({ images, altImg, type }) => {
             }
         </Swiper>
       </div> : 
-      <div className="swiperSliderDatailMobile">
+        <div className="swiperSliderDatailMobile">
           <Swiper 
             loop={true}
             pagination={true} 
@@ -101,7 +101,7 @@ const SwiperSlider = ({ images, altImg, type }) => {
               {/* <SwiperSlide>Slide 1</SwiperSlide>
               <SwiperSlide>Slide 2</SwiperSlide> */}
           </Swiper>
-          </div>
+        </div>
   );
 };
 

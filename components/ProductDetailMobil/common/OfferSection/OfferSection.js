@@ -1,6 +1,6 @@
 import React from 'react';
-import './OfferSection.module.css'
-// import SwipperSlider from '../SwiperSlider/SwipperSlider'
+import './OfferSection.module.css';
+import SwiperSlider from '../../common/SwiperSlider/SwipperSlider';
 const OfferSection = () => {
     return(
         <>
@@ -13,7 +13,7 @@ const OfferSection = () => {
                 </div>
                 <div className="contentOffer">
                     <p>Obtén descuentos en tu compra de <strong>2 o más productos</strong></p>
-                    {/* <SwipperSlider/> */}
+                    <SwiperSlider type={"OfferSection"}/>
                 </div>
            </div>
         </>

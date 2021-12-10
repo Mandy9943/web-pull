@@ -50,9 +50,9 @@ const RecommendedProducts = ({ category }) => {
           }}
           className="mySwiper"
         >
-          {products.map((product) => {
+          {products.map((product,i) => {
             return (
-              <SwiperSlide>
+              <SwiperSlide key={i}>
                 <RecommendedProductsCard product={product} />
               </SwiperSlide>
             );
