@@ -6,6 +6,9 @@
   position: relative;
   z-index: 2;
 }
+#productDetailMobil .Nav-mt {
+  margin-top: 50.4px;
+}
 
 #productDetailMobil .content-curve-shape {
   /* height: 300px; */
