@@ -73,7 +73,9 @@ const ProductDetailMobil = ({ user_data, data }) => {
           authenticated={user_data.authenticated}
         />
       </div>
-      {scrolledPayBuuton && <StickyPayButton onClickBuy={handleOpenForm} />}
+      {scrolledPayBuuton && !isForm && (
+        <StickyPayButton onClickBuy={handleOpenForm} />
+      )}
       <FormProductDetail open={isForm} handleClose={handleCloseForm} />
       <div className="content-curve-shape">
         <div className="curve-shape">
