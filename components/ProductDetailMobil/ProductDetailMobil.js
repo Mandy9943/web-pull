@@ -42,11 +42,18 @@ const Footer = dynamic(() => import("../Common/Footer"));
 const ProductDetailMobil = ({ user_data, data }) => {
   let urlSic = "https://www.sic.gov.co";
   console.log("data", data);
+  const [isForm, setIsForm] = useState(false);
   const [isWhatsappBanner, setIsWhatsappBanner] = useState(true);
   const scrolledPayBuuton = useScrollY(700, false);
 
   const handleCloseWhatsappBanner = () => {
     setIsWhatsappBanner(false);
+  };
+  const handleCloseForm = () => {
+    setIsForm(false);
+  };
+  const handleOpenForm = () => {
+    setIsForm(true);
   };
 
   let navClass = ["Nav"];
@@ -66,8 +73,8 @@ const ProductDetailMobil = ({ user_data, data }) => {
           authenticated={user_data.authenticated}
         />
       </div>
-      {scrolledPayBuuton && <StickyPayButton />}
-      <FormProductDetail open={true} />
+      {scrolledPayBuuton && <StickyPayButton onClickBuy={handleOpenForm} />}
+      <FormProductDetail open={isForm} handleClose={handleCloseForm} />
       <div className="content-curve-shape">
         <div className="curve-shape">
           <div className="anullProperties">
@@ -94,6 +101,7 @@ const ProductDetailMobil = ({ user_data, data }) => {
       </div>
 
       <CheckoutProduct
+        onClickBuy={handleOpenForm}
         price={data.price}
         stock={data.status === 0 ? 0 : data.stock}
         discount_percentage={data.discount_percentage}

@@ -3,51 +3,53 @@ import CheckoutButton from "../CheckoutButton/CheckoutButton";
 import Counter from "../Counter/Counter";
 import "./CheckoutProduct.css";
 
-const CheckoutProduct = ({price, stock, discount_percentage}) => {
-    return (
-        <div id="CheckoutProductMobil">
-            <div className="price">
+const CheckoutProduct = ({ price, stock, discount_percentage, onClickBuy }) => {
+  return (
+    <div id="CheckoutProductMobil">
+      <div className="price">
         <span>
-            $ {
-                (price - (price * parseFloat("0." + discount_percentage).toFixed(2)))
-                    .toString()
-                    .split(".")[0]
-                    .replace(/(.)(?=(\d{3})+$)/g, "$1.")
-            }  <p>COP</p>
+          ${" "}
+          {(price - price * parseFloat("0." + discount_percentage).toFixed(2))
+            .toString()
+            .split(".")[0]
+            .replace(/(.)(?=(\d{3})+$)/g, "$1.")}{" "}
+          <p>COP</p>
         </span>
-            </div>
-            <div className="discount">
+      </div>
+      <div className="discount">
         <span className="old-price">
           ${" "}
-            {price
-                .toString()
-                .split(".")[0]
-                .replace(/(.)(?=(\d{3})+$)/g, "$1.")}
+          {price
+            .toString()
+            .split(".")[0]
+            .replace(/(.)(?=(\d{3})+$)/g, "$1.")}
         </span>
-                <span className="percent">-{parseFloat(discount_percentage).toFixed(0)}% OFF</span>
-            </div>
-            <div className="buyButton">
-                <CheckoutButton
-                    text="Comprar"
-                    disabled={stock <= 0}
-                    onClick={() => alert("buy")}
-                />
-            </div>
-            <div className="count">
-                <div className="count-text">
-                    <h3>Cantidad</h3>
-                    {stock > 0 ? (
-                        <p>(Stock Disponible {stock})</p>
-                    ) : (
-                        <p className="no-avilable">(Stock Agotado)</p>
-                    )}
-                </div>
-                <div className="count-counter">
-                    <Counter stock={stock}/>
-                </div>
-            </div>
+        <span className="percent">
+          -{parseFloat(discount_percentage).toFixed(0)}% OFF
+        </span>
+      </div>
+      <div className="buyButton">
+        <CheckoutButton
+          text="Comprar"
+          disabled={stock <= 0}
+          onClick={onClickBuy}
+        />
+      </div>
+      <div className="count">
+        <div className="count-text">
+          <h3>Cantidad</h3>
+          {stock > 0 ? (
+            <p>(Stock Disponible {stock})</p>
+          ) : (
+            <p className="no-avilable">(Stock Agotado)</p>
+          )}
         </div>
-    );
+        <div className="count-counter">
+          <Counter stock={stock} />
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default CheckoutProduct;

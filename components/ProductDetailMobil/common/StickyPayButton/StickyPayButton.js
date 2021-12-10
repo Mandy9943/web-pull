@@ -1,10 +1,10 @@
 import React from "react";
 import CheckoutButton from "../CheckoutButton/CheckoutButton";
 import "./StickyPayButton.module.css";
-const StickyPayButton = () => {
+const StickyPayButton = ({ onClickBuy }) => {
   return (
     <div id="StickyPayButton">
-      <CheckoutButton rounded text="Comprar" />
+      <CheckoutButton rounded text="Comprar" onClick={onClickBuy} />
     </div>
   );
 };
