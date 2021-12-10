@@ -67,7 +67,7 @@ const ProductDetailMobil = ({ user_data, data }) => {
         />
       </div>
       {scrolledPayBuuton && <StickyPayButton />}
-      <FormProductDetail />
+      <FormProductDetail open={true} />
       <div className="content-curve-shape">
         <div className="curve-shape">
           <div className="anullProperties">
