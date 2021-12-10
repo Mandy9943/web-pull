@@ -12,7 +12,7 @@
 
 #RecommendedProducts .cabecera {
   position: relative;
-  padding: 30px 83px 35px 83px;
+  padding: 30px 0;
 }
 
 #RecommendedProducts .cabecera h3 {
@@ -25,9 +25,6 @@
   line-height: 29px;
   text-align: center;
   color: #ffffff;
-}
-
-#RecommendedProducts .slider .swiper-container .swiper-wrapper {
 }
 
 #RecommendedProducts .swiper-slide {

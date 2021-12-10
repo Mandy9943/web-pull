@@ -7,7 +7,7 @@ function RecommendedProductsCard({ product }) {
     return (
         <div id="RecommendedProductsCard">
             {product ? (
-                <React.Fragment>
+                <>
                     <div className="product">
                         <img src={product.image} alt={product.title.substr(0, 80)} />
                         <h4>{product.title.substr(0, 80)}</h4>
@@ -26,11 +26,11 @@ function RecommendedProductsCard({ product }) {
                             </a>
                         </div>
                     </div>
-                </React.Fragment>
+                </>
             ) : (
-                <React.Fragment>
+                <>
                     <Skeleton variant="rectangular" width={300} height={324} className="skeletonProductDetail" />
-                </React.Fragment>
+                </>
             )}
         </div>
     );

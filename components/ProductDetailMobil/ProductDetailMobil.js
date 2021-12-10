@@ -7,7 +7,9 @@ import backGround from "../../assets/img/productDetail/fondo-rojo-landing-view@2
 
 import CheckoutProduct from "./common/CheckoutProduct/CheckoutProduct";
 import Header from "./common/Header/Header";
-import SwiperSlider from "./common/SwiperSlider/SwipperSlider";
+const SwiperSlider = dynamic(() => import("./common/SwiperSlider/SwipperSlider"),{
+                                                                              loading: () => <p>...</p> 
+                                                                                  });
 
 import "./ProductDetailMobil.css";
 import Info from "./common/Info/Info";
@@ -15,7 +17,7 @@ import PayMethod from "./common/PayMethod/PayMethod";
 import Detail from "./common/Detail/Detail";
 import Description from "./common/Description/Description";
 const OfferSection = dynamic(() => import("./Common/OfferSection/OfferSection"),{
-  loading: () => <p>...</p> 
+                                                                              loading: () => <p>...</p> 
                                                                                   });
 import Benefits from "./common/Benefits/Benefits";
 import HelpCenter from "./common/HelpCenter/HelpCenter";
@@ -58,7 +60,7 @@ const ProductDetailMobil = ({ user_data, data }) => {
         </div>
         <div className="content-images">
           <div className="slider">
-            <SwiperSlider images={data.images} altImg={data.title} />
+            <SwiperSlider type={'HomeProduct'} images={data.images} altImg={data.title} />
           </div>
         </div>
       </div>
