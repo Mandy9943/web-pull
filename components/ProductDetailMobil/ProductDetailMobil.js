@@ -47,9 +47,15 @@ const ProductDetailMobil = ({ user_data, data }) => {
   const handleCloseWhatsappBanner = () => {
     setIsWhatsappBanner(false);
   };
+
+  let navClass = ["Nav"];
+  if (isWhatsappBanner) {
+    navClass.push("Nav-mt");
+  }
   return (
     <div id="productDetailMobil">
-      <div className="Nav">
+      {isWhatsappBanner && <WhatsappBanner close={handleCloseWhatsappBanner} />}
+      <div className={navClass.join(" ")}>
         <Nav
           user={user_data.user}
           jwt={user_data.jwt}
@@ -58,7 +64,6 @@ const ProductDetailMobil = ({ user_data, data }) => {
         />
       </div>
       {scrolledPayBuuton && <StickyPayButton />}
-      {isWhatsappBanner && <WhatsappBanner close={handleCloseWhatsappBanner} />}
 
       <div className="content-curve-shape">
         <div className="curve-shape">

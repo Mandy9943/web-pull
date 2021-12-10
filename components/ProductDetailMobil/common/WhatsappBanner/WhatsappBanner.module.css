@@ -3,13 +3,14 @@
   top: 0;
   left: 0;
   right: 0;
-  padding: 10px 20px;
-  background: #ff5e8d;
+  padding: 0 20px;
+  background: #f89090;
   color: white;
   display: flex;
   z-index: 999;
   align-items: center;
-  font-size: 14px;
+  font-size: 3.5vw;
+  height: 50px;
 }
 
 #WhatsappBanner .closeIcon {
@@ -27,5 +28,7 @@
 }
 #WhatsappBanner .info .whatsappIcon {
   margin: 0 15px;
-  font-size: 25px;
+  font-size: 6vw;
+  display: flex;
+  align-items: center;
 }
