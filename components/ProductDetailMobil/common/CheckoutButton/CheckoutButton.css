@@ -40,3 +40,6 @@
   background: #d6d6d6 !important;
   cursor: not-allowed;
 }
+#CheckoutButton.roundedButton {
+  border-radius: 50px;
+}
