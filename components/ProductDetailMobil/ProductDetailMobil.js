@@ -7,24 +7,32 @@ import backGround from "../../assets/img/productDetail/fondo-rojo-landing-view@2
 
 import CheckoutProduct from "./common/CheckoutProduct/CheckoutProduct";
 import Header from "./common/Header/Header";
-const SwiperSlider = dynamic(() => import("./common/SwiperSlider/SwipperSlider"),{
-                                                                              loading: () => <p>...</p> 
-                                                                                  });
+const SwiperSlider = dynamic(
+  () => import("./common/SwiperSlider/SwipperSlider"),
+  {
+    loading: () => <p>...</p>,
+  }
+);
 
 import "./ProductDetailMobil.css";
 import Info from "./common/Info/Info";
 import PayMethod from "./common/PayMethod/PayMethod";
 import Detail from "./common/Detail/Detail";
 import Description from "./common/Description/Description";
-const OfferSection = dynamic(() => import("./Common/OfferSection/OfferSection"),{
-                                                                              loading: () => <p>...</p> 
-                                                                                  });
+const OfferSection = dynamic(
+  () => import("./Common/OfferSection/OfferSection"),
+  {
+    loading: () => <p>...</p>,
+  }
+);
 import Benefits from "./common/Benefits/Benefits";
 import HelpCenter from "./common/HelpCenter/HelpCenter";
 import Subscription from "./common/Subscription/Subscription";
 import RecommendedProducts from "./common/RecommendedProducts/RecommendedProducts";
 
 import Image from "next/image";
+import useScrollY from "../../lib/hooks/useScrollY";
+import StickyPayButton from "./common/StickyPayButton/StickyPayButton";
 
 const Nav = dynamic(() => import("../Common/Nav/Nav"));
 const Footer = dynamic(() => import("../Common/Footer"));
@@ -32,18 +40,21 @@ const Footer = dynamic(() => import("../Common/Footer"));
 const ProductDetailMobil = ({ user_data, data }) => {
   let urlSic = "https://www.sic.gov.co";
   console.log("data", data);
+  const scrolled = useScrollY(700);
+
+  console.log(scrolled);
   return (
     <div id="productDetailMobil">
-      {
-        <div className="Nav">
-          <Nav
-            user={user_data.user}
-            jwt={user_data.jwt}
-            home={true}
-            authenticated={user_data.authenticated}
-          />
-        </div>
-      }
+      <div className="Nav">
+        <Nav
+          user={user_data.user}
+          jwt={user_data.jwt}
+          home={true}
+          authenticated={user_data.authenticated}
+        />
+      </div>
+      {scrolled && <StickyPayButton />}
+
       <div className="content-curve-shape">
         <div className="curve-shape">
           <div className="anullProperties">
@@ -60,27 +71,31 @@ const ProductDetailMobil = ({ user_data, data }) => {
         </div>
         <div className="content-images">
           <div className="slider">
-            <SwiperSlider type={'HomeProduct'} images={data.images} altImg={data.title} />
+            <SwiperSlider
+              type={"HomeProduct"}
+              images={data.images}
+              altImg={data.title}
+            />
           </div>
         </div>
       </div>
 
-            <CheckoutProduct
-                price={data.price}
-                stock={data.status === 0 ? 0 : data.stock}
-                discount_percentage={data.discount_percentage}
-            />
-            <Info/>
-            <PayMethod/>
-            <Detail product={data}/>
-            <Description product={data}/>
-            <OfferSection/>
-            {/*TODO: Primero va ofectas especiales*/}
-            <Benefits/>
-            <RecommendedProducts category={data.category} />
-            <HelpCenter/>
-            <Subscription/>
-            <Footer/>
+      <CheckoutProduct
+        price={data.price}
+        stock={data.status === 0 ? 0 : data.stock}
+        discount_percentage={data.discount_percentage}
+      />
+      <Info />
+      <PayMethod />
+      <Detail product={data} />
+      <Description product={data} />
+      <OfferSection />
+      {/*TODO: Primero va ofectas especiales*/}
+      <Benefits />
+      <RecommendedProducts category={data.category} />
+      <HelpCenter />
+      <Subscription />
+      <Footer />
       <div className="footer-social">
         <a href={urlSic} rel="noopener noreferrer" target="_blank">
           <div className="anullProperties">
