@@ -22,7 +22,6 @@ const SwiperSlider = ({ images, altImg, type }) => {
         <Swiper
           loop={true}
           speed={400}
-          autoplay={true}
           autoplay={{
             delay: 2500,
             disableOnInteraction: false,
