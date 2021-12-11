@@ -20,12 +20,7 @@ const HelpCenter = () => {
       <div className="titulo" onClick={handleOnClick}>
         <h3>Centro de Ayuda</h3>
         <div className="anullProperties">
-          <Image
-            loading="lazy"
-            alt="Icono del desgrose"
-            src={desglosar}
-            layout="fill"
-          />
+          <Image alt="Icono del desgrose" src={desglosar} layout="fill" />
         </div>
       </div>
 
@@ -36,7 +31,6 @@ const HelpCenter = () => {
               <h3>Preguntas Frecuentes</h3>
               <div className="anullProperties">
                 <Image
-                  loading="lazy"
                   alt="Preguntas Frecuentes"
                   src={pregunta}
                   layout="fill"
@@ -47,7 +41,6 @@ const HelpCenter = () => {
               <h3>Ayuda Profesional Del Equipo Kiero</h3>
               <div className="anullProperties">
                 <Image
-                  loading="lazy"
                   alt="Ayuda Profesional Del Equipo Kiero"
                   src={ayuda}
                   layout="fill"
@@ -58,7 +51,6 @@ const HelpCenter = () => {
               <h3>Refund Policy</h3>
               <div className="anullProperties">
                 <Image
-                  loading="lazy"
                   alt="Refund Policy"
                   src={refund}
                   layout="fill"
