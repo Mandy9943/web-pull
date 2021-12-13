@@ -514,6 +514,7 @@ class PaySection extends Component {
     //     items: [item],
     //   },
     // });
+
     this.createlead(this.props, 2);
   };
 
@@ -723,18 +724,42 @@ class PaySection extends Component {
     // };
 
     async createlead(item, step) {
+      var name = this.state.user;
+      var email = this.state.email;
+      var last_name = this.state.lastName;
+      var user_id = this.state.user_id;
+      if(Cookies.hasOwnProperty("name")){
+          if(Cookies.get("name")!=undefined){
+              name = Cookies.get("name");
+          }
+      }
+      if(Cookies.hasOwnProperty("email")){
+        if(Cookies.get("email")!=undefined){
+          email = Cookies.get("email");
+        }
+      }
+      if(Cookies.hasOwnProperty("last_name")){
+        if(Cookies.get("last_name")!=undefined){
+          last_name = Cookies.get("last_name");
+        }
+      }
+      if(Cookies.hasOwnProperty("user_id")){
+        if(Cookies.get("user_id")!=undefined){
+          user_id = Cookies.get("user_id");
+        }
+      }
         var data = {
-            first_name: Cookies.get("name"),
+            first_name: name,
             city: this.state.city,
             address: this.state.address,
-            email: Cookies.get("email"),
+            email: email,
             second_email: this.state.email,
             phone: this.state.mobile_phone,
             second_phone: "",
-            last_name: Cookies.get("last_name"),
+            last_name: last_name,
             type_id: this.state.typeIdentificationName,
             num_id: this.state.identification,
-            id: Cookies.get("user_id"),
+            id: user_id,
             country: "CO",
             lead_type: step === 1 ? "Usuario Registrado que Presionó el Botón Comprar" : "Usuario Invitado (Y Usuario Registrado) que Presionó el botón de Continuar con la transacción",
             category: item.props.data.category.name,
@@ -748,7 +773,6 @@ class PaySection extends Component {
             product_brand:item.props.data.brand,
             category_id:String(item.props.data.category_id),
         }
-
         const error = await createleadClient(data);
     }
 
