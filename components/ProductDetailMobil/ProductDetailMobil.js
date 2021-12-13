@@ -117,6 +117,7 @@ const ProductDetailMobil = ({ user_data, data }) => {
       <PayMethod />
       <Detail product={data} />
       <Description product={data} />
+      <SwiperSlider type="OfferSection" />
       <OfferSection />
       {/*TODO: Primero va ofectas especiales*/}
       <Benefits />
