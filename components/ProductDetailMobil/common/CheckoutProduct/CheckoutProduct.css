@@ -9,14 +9,24 @@
   box-sizing: border-box;
 }
 
-#CheckoutProductMobil .price {
-  margin-bottom: 5px;
+#CheckoutProductMobil .productPrice {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 17.5px;
 }
 
 #CheckoutProductMobil .price span {
-  font: normal normal bold 24px/29px Montserrat;
-  letter-spacing: 1px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 34px;
+  letter-spacing: 0.05em;
+
+  /* Black */
+
   color: #000000;
+
   display: flex;
   flex-direction: row;
 }
@@ -31,7 +41,9 @@
 }
 
 #CheckoutProductMobil .discount {
-  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 #CheckoutProductMobil .discount .old-price {
   font: normal normal normal 14px/18px Montserrat;
@@ -40,10 +52,21 @@
   text-decoration: line-through;
 }
 #CheckoutProductMobil .discount .percent {
-  font: normal normal bold 14px/18px Montserrat;
-  letter-spacing: 0px;
-  color: #74c1d2;
-  margin-left: 10px;
+  /* Header 1 */
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 22px;
+  /* identical to box height */
+
+  letter-spacing: 0.02em;
+
+  /* Discount Blue */
+
+  color: #1fc2e6;
+
   text-transform: uppercase;
 }
 #CheckoutProductMobil .buyButton {

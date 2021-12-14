@@ -27,17 +27,10 @@ const SwiperSlider = ({ images, altImg, type }) => {
           delay: 2500,
           disableOnInteraction: false,
         }}
-        effect={"coverflow"}
-        grabCursor={true}
+        slidesPerView={1}
+        slidesPerGroup={1}
         centeredSlides={true}
         slidesPerView={"auto"}
-        coverflowEffect={{
-          rotate: 50,
-          stretch: 15,
-          depth: 50,
-          modifier: 1,
-          slideShadows: false,
-        }}
         pagination={{
           clickable: true,
         }}
@@ -48,24 +41,21 @@ const SwiperSlider = ({ images, altImg, type }) => {
             <SwiperSlide>
               <Skeleton
                 variant="rectangular"
-                width={300}
-                height={324}
+                height={325}
                 className="skeletonProductDetail"
               />
             </SwiperSlide>
             <SwiperSlide>
               <Skeleton
                 variant="rectangular"
-                width={300}
-                height={324}
+                height={325}
                 className="skeletonProductDetail"
               />
             </SwiperSlide>
             <SwiperSlide>
               <Skeleton
                 variant="rectangular"
-                width={300}
-                height={324}
+                height={325}
                 className="skeletonProductDetail"
               />
             </SwiperSlide>
@@ -76,8 +66,7 @@ const SwiperSlider = ({ images, altImg, type }) => {
               <SwiperSlide key={image.file_id} className="mdc-ripple-surface">
                 <Skeleton
                   variant="rectangular"
-                  width={300}
-                  height={324}
+                  height={325}
                   className="skeletonProductDetail"
                 />
                 <Image
