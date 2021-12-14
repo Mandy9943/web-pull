@@ -40,9 +40,9 @@ const CheckoutProduct = ({ price, stock, discount_percentage, onClickBuy }) => {
       </div>
       <div className="count">
         <div className="count-text">
-          <h3>Cantidad</h3>
+          <h3>Solo quedan</h3>
           {stock > 0 ? (
-            <p>(Stock Disponible {stock})</p>
+            <p>{stock} en stock </p>
           ) : (
             <p className="no-avilable">(Stock Agotado)</p>
           )}
@@ -50,6 +50,13 @@ const CheckoutProduct = ({ price, stock, discount_percentage, onClickBuy }) => {
         <div className="count-counter">
           <Counter stock={stock} />
         </div>
+      </div>
+      <div className="purchased">
+        <p>
+          {" "}
+          <span className="number">31</span> Personas han comprado este producto
+          recientemente.
+        </p>
       </div>
     </div>
   );

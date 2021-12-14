@@ -75,8 +75,11 @@
 #CheckoutProductMobil .count {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 31px;
 }
 #CheckoutProductMobil .count .count-text {
+  border-left: 2px solid #5d5d5d;
+  padding-left: 17px;
   flex: 1;
 }
 #CheckoutProductMobil .count .count-text .no-avilable {
@@ -86,17 +89,51 @@
   min-height: 17px;
 }
 #CheckoutProductMobil .count .count-text h3 {
-  font: normal normal normal 18px/22px Montserrat;
-  letter-spacing: 0px;
-  color: #5f5f5f;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.03em;
+
+  /* Dark Gray */
+
+  color: #5d5d5d;
 }
 #CheckoutProductMobil .count .count-text p {
-  font: normal normal 600 14px/18px Montserrat;
-  letter-spacing: 0px;
-  color: #000000;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.03em;
+
+  /* Dark Gray */
+
+  color: #5d5d5d;
 }
 #CheckoutProductMobil .count .count-counter {
   flex: 1;
   display: flex;
   justify-content: flex-end;
+}
+#CheckoutProductMobil .purchased {
+  /* Breadcrumbs */
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+
+  /* Discount Blue */
+
+  color: #5d5d5d;
+
+  text-align: center;
+}
+
+#CheckoutProductMobil .purchased .number {
+  color: #1fc2e6;
+  font-weight: 800;
 }
