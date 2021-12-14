@@ -53,6 +53,7 @@ const FormProductDetail = ({ handleClose, open }) => {
                 variant="outlined"
                 color="secondary"
                 error={errors.firstName}
+                helperText={errors?.firstName?.message}
                 required
               />
               <TextField
@@ -65,6 +66,7 @@ const FormProductDetail = ({ handleClose, open }) => {
                 variant="outlined"
                 color="secondary"
                 error={errors.lastName}
+                helperText={errors?.lastName?.message}
                 required
               />
             </div>
@@ -93,6 +95,7 @@ const FormProductDetail = ({ handleClose, open }) => {
               variant="outlined"
               color="secondary"
               error={errors.phoneNumber}
+              helperText={errors?.phoneNumber?.message}
               required
             />
             <TextField
@@ -106,6 +109,7 @@ const FormProductDetail = ({ handleClose, open }) => {
               variant="outlined"
               color="secondary"
               error={errors.city}
+              helperText={errors?.city?.message}
               required
             />
             <TextField
