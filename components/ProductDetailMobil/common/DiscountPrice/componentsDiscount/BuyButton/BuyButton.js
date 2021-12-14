@@ -1,10 +1,9 @@
-import CartIcon from "../../../../assets/img/productDetail/CartIcon.svg";
 import React, { useState } from "react";
 import Ripples from "react-ripples";
-import "./CheckoutButton.css";
+import "./BuyButton.css";
 
-import Image from "next/image";
-const CheckoutButton = ({ text, disabled, onClick, rounded ,notShowCar}) => {
+
+const CheckoutButton = ({ text, disabled, onClick, rounded}) => {
   let buttonClass = [""];
   if (rounded) {
     buttonClass.push("roundedButton");
@@ -26,16 +25,6 @@ const CheckoutButton = ({ text, disabled, onClick, rounded ,notShowCar}) => {
         onClick={handleOnClick}
       >
         <span className="button-text">{text}</span>
-        {notShowCar ? (<div/>):(<span className="icon-shoping-cart">
-          <div className="anullProperties">
-            <Image
-              loading="lazy"
-              src={CartIcon}
-              alt="Shoping Cart"
-              layout="fill"
-            />
-          </div>
-        </span>)}
       </div>
     </Ripples>
   );

@@ -1,0 +1,46 @@
+
+
+.containerDiscount{
+    display: flex;
+    flex-direction: row;
+    padding: 0px 20px;
+    background-color: white;
+}
+
+.containerDiscount .wrapperDiscount{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerDiscount .wrapperPercent{
+    flex-direction: column;
+    margin-top: 33px;
+    margin-bottom: 23px;
+}
+
+.containerDiscount .wrapperPercent .percentDiscount{
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 68.26px;
+    color:#1FC2E5;
+}
+
+.containerDiscount .wrapperPercent .textDiscount{
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 21.94px;
+    color:#1FC2E5;
+}
+
+.containerDiscount .wrapperImage{
+    flex-direction: row;
+}
+
+.containerDiscount .wrapperImage .cantDiscount{
+    font-size: 32px;
+    margin-left: 0px;
+    font-weight: 800;
+    color: #5F5F5F;
+}
