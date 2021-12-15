@@ -1,6 +1,8 @@
 .swiperSliderDatailMobile {
   height: 100%;
   width: 100%;
+  padding-bottom: 44px ;
+  background-color: white;
 }
 
 .swiperSliderDatailMobile .swiper {
@@ -24,7 +26,7 @@
 .swiperSliderDatailMobile .swiper-container .swiper-pagination-bullets {
   position: absolute;
   bottom: 0;
-  width: 300px;
+  width: 200px;
   left: 0;
   right: 0;
   margin: auto;
@@ -54,4 +56,6 @@
 }
 .swiperSliderDatailMobile .mySwiper2 {
   width: 100vw;
+  height: 512px;
 }
+

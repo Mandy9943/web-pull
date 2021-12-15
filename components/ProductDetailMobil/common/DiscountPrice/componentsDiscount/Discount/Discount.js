@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import Logo1 from "../../../../../../assets/img/redes/fb.png";
+import Logo1 from "../../../../../../assets/img/venom.jpg";
 import "./Discount.css"
 
 const Discount = () => {
@@ -11,14 +11,16 @@ const Discount = () => {
                 <p className="textDiscount">DESCUENTO</p>
             </div>
             <div className=" wrapperDiscount wrapperImage">
-               <div className="anullProperties">
-               <Image
-                     loading="lazy"
-                     alt="Red background"
-                     src={Logo1}
-                     layout="fill"    
-                />
-               </div>
+                <div className="wrapperAnullProperties">
+                <div className="anullProperties">
+                    <Image
+                        loading="lazy"
+                        alt="Red background"
+                        src={Logo1}
+                        layout="fill" 
+                    />
+                 </div>
+                </div>
                <p className="cantDiscount">x2</p>
             </div>
         </div>

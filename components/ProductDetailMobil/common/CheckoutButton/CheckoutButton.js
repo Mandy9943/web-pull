@@ -4,10 +4,13 @@ import Ripples from "react-ripples";
 import "./CheckoutButton.css";
 
 import Image from "next/image";
-const CheckoutButton = ({ text, disabled, onClick, rounded ,notShowCar}) => {
+const CheckoutButton = ({ text, disabled, onClick, rounded ,notShowCar,secundary}) => {
   let buttonClass = [""];
   if (rounded) {
     buttonClass.push("roundedButton");
+  }if(secundary){
+    buttonClass.push("secundaryColor");
+    buttonClass.push("secundaryHeight");
   }
   if (disabled) {
     buttonClass.push("disableButton");
@@ -26,7 +29,7 @@ const CheckoutButton = ({ text, disabled, onClick, rounded ,notShowCar}) => {
         onClick={handleOnClick}
       >
         <span className="button-text">{text}</span>
-        {notShowCar ? (<div/>):(<span className="icon-shoping-cart">
+        {!notShowCar && (<span className="icon-shoping-cart">
           <div className="anullProperties">
             <Image
               loading="lazy"

@@ -43,3 +43,13 @@
 #CheckoutButton.roundedButton {
   border-radius: 50px;
 }
+#CheckoutButton.secundaryColor {
+  background-color:#74C1D2 !important;
+}
+
+#CheckoutButton.secundaryHeight {
+  height: 48px;
+}
+
+
+

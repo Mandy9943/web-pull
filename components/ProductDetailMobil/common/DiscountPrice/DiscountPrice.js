@@ -1,9 +1,10 @@
 import react from "react";
+import CheckoutButton from "../CheckoutButton/CheckoutButton";
 import OfferSection from "../OfferSection/OfferSection";
 import Discount from "./componentsDiscount/Discount/Discount";
 import DivindingLine from "./componentsDiscount/DivindingLine/DivindingLine";
 import PriceSaving from "./componentsDiscount/PriceSaving/PriceSaving";
-import BuyButton from "./componentsDiscount/BuyButton/BuyButton";
+
 import "./DiscountPrice.css"
 const DiscountPrice = () => {
     return(
@@ -13,14 +14,12 @@ const DiscountPrice = () => {
             <DivindingLine/>
             <PriceSaving/>
             <div className="widthButton">
-                <BuyButton
+                <CheckoutButton
                     text="Comprar"
                     rounded
+                    secundary
+                    notShowCar
                 />
-            </div>
-            <div className="wrapperButtons">
-                <div></div>
-                <div></div>
             </div>
         </div>
     );

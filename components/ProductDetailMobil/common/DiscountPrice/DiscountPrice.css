@@ -1,24 +1,9 @@
-.widthButton{
+.containerDiscountPrice{
+  padding-bottom: 30px;
+}
+ .containerDiscountPrice .widthButton{
     padding: 0 20px;
     background-color: white;
-    padding-bottom: 22px;
+    padding-bottom: 100px;
 }
-
-.wrapperButtons{
-    display: flex;
-    background-color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 20px;
-}
-
-.wrapperButtons div{
-    width: 8px;
-    height: 8px;
-    border-radius: 50px;
-    background-color: #D6D6D6; 
-    margin: 0px 10px;
-}
-
 

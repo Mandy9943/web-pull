@@ -120,7 +120,9 @@ const ProductDetailMobil = ({ user_data, data }) => {
       <PayMethod />
       <Detail product={data} />
       <Description product={data} />
-      <DiscountPrice/>
+      <SwiperSlider
+        type={"show"}
+      />
       <Benefits />
       <RecommendedProducts category={data.category} />
       <HelpCenter />
