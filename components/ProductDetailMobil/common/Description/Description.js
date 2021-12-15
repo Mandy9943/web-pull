@@ -1,5 +1,5 @@
 import React, {useState} from "react"
-import "./Description.css"
+import "./Description.module.css"
 import cerrado from "../../../../assets/img/productDetail/icono-desplegar@2x.svg";
 import abierto from "../../../../assets/img/productDetail/l-nea-86@2x.svg";
 

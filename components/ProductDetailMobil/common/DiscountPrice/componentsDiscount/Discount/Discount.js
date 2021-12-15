@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Logo1 from "../../../../../../assets/img/venom.jpg";
-import "./Discount.css"
+import "./Discount.module.css"
 
 const Discount = () => {
     return(

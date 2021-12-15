@@ -5,7 +5,7 @@ import american from "../../../../assets/img/productDetail/american-express@2x.p
 import baloto from "../../../../assets/img/productDetail/baloto@2x.png";
 import pse from "../../../../assets/img/productDetail/pse@2x.png";
 import efecty from "../../../../assets/img/productDetail/efecty@2x.png";
-import "./PayMethod.css";
+import "./PayMethod.module.css";
 
 import Image from "next/image";
 import { fill } from "lodash";

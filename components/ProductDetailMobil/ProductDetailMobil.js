@@ -7,7 +7,6 @@ import backGround from "../../assets/img/productDetail/fondo-rojo-landing-view@2
 
 import CheckoutProduct from "./common/CheckoutProduct/CheckoutProduct";
 import Header from "./common/Header/Header";
-import DiscountPrice from "./common/DiscountPrice/DiscountPrice";
 
 const SwiperSlider = dynamic(
   () => import("./common/SwiperSlider/SwipperSlider"),
@@ -16,7 +15,7 @@ const SwiperSlider = dynamic(
   }
 );
 
-import "./ProductDetailMobil.css";
+import "./ProductDetailMobil.module.css";
 import Info from "./common/Info/Info";
 import PayMethod from "./common/PayMethod/PayMethod";
 import Detail from "./common/Detail/Detail";

@@ -1,7 +1,7 @@
 import CartIcon from "../../../../assets/img/productDetail/CartIcon.svg";
 import React, { useState } from "react";
 import Ripples from "react-ripples";
-import "./CheckoutButton.css";
+import "./CheckoutButton.module.css";
 
 import Image from "next/image";
 const CheckoutButton = ({ text, disabled, onClick, rounded ,notShowCar,secundary}) => {

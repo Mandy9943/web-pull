@@ -1,5 +1,5 @@
 import React from "react";
-import "./PriceSaving.css";
+import "./PriceSaving.module.css";
 
 
 const PriceSaving = () => {

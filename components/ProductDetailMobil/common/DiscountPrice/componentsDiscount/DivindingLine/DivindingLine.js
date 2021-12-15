@@ -1,5 +1,5 @@
 import React from "react";
-import "./DivindingLine.css"
+import "./DivindingLine.module.css"
 
 const DivindingLine = () => {
     return(

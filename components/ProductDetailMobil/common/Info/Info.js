@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTruck } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
-import "./Info.css"
+import "./Info.module.css"
 import envios from "../../../../assets/img/productDetail/delivery-icon-@2x.svg"
 import compras from "../../../../assets/img/productDetail/union-2@2x.svg"
 import garantia from "../../../../assets/img/productDetail/union-3@2x.svg"

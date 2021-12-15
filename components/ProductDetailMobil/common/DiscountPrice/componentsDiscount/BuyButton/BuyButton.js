@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Ripples from "react-ripples";
-import "./BuyButton.css";
+import "./BuyButton.module.css";
 
 
 const CheckoutButton = ({ text, disabled, onClick, rounded}) => {

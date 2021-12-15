@@ -1,7 +1,7 @@
 import React from "react";
 import CheckoutButton from "../CheckoutButton/CheckoutButton";
 import Counter from "../Counter/Counter";
-import "./CheckoutProduct.css";
+import "./CheckoutProduct.module.css";
 
 const CheckoutProduct = ({ price, stock, discount_percentage, onClickBuy }) => {
   return (
