@@ -23,7 +23,6 @@ const SwiperSlider = ({ images, altImg, type }) => {
       <Swiper
         loop={true}
         speed={400}
-        autoplay={true}
         spaceBetween={16}
         autoplay={{
           delay: 2500,
@@ -87,10 +86,10 @@ const SwiperSlider = ({ images, altImg, type }) => {
     <div className="swiperSliderDatailMobile">
       <Swiper pagination={true} className="mySwiper2">
         <SwiperSlide>
-          <DiscountPrice/>
+          <DiscountPrice />
         </SwiperSlide>
         <SwiperSlide>
-          <DiscountPrice/>
+          <DiscountPrice />
         </SwiperSlide>
       </Swiper>
     </div>
