@@ -145,7 +145,7 @@ export default class ProductCard extends Component {
         // Reference: https://segment.com/docs/connections/spec/ecommerce/v2/
         analytics.track("Product Clicked", {
             product_id: data.product_id,
-            category: data.category,
+            category: data.fullname,
             name: data.title,
             brand: data.brand,
             price: data.price,

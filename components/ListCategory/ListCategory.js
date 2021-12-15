@@ -52,7 +52,7 @@ class ListCategory extends Component {
                     products: product,
                 };
 
-                console.log(product)
+                // console.log(product)
 
                 analytics.track("Product List Viewed", productListViewed);
             }
@@ -378,3 +378,4 @@ class ListCategory extends Component {
 }
 
 export default ListCategory;
+

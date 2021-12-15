@@ -1,0 +1,64 @@
+import React from "react";
+import Skeleton from "@mui/material/Skeleton";
+import "./RecommendedProductsCard.module.css";
+import button from "../../../../assets/img/productDetail/component-4@2x.svg";
+import Image from "next/image";
+function RecommendedProductsCard({ product }) {
+  return (
+    <div id="RecommendedProductsCard">
+      {product ? (
+        <>
+          <div className="product">
+            <div className="anullProperties">
+              <Image
+                loading="lazy"
+                src={product.image}
+                alt={product.title.substr(0, 80)}
+                layout="fill"
+                className="productImg"
+              />
+            </div>
+
+            <h4>{product.title.substr(0, 80)}</h4>
+            <h3 className="price">
+              {product.price
+                .toString()
+                .split(".")[0]
+                .replace(/(.)(?=(\d{3})+$)/g, "$1.")}
+            </h3>
+            <div className="stock">
+              <h3>Cantidad en stock: 6</h3>
+              <a
+                href="#"
+                onClick={() => {
+                  alert("Ir al producto!");
+                }}
+              >
+                <div className="anullProperties">
+                  <Image
+                    loading="lazy"
+                    src={button}
+                    alt="Ir"
+                    layout="fill"
+                    className="irImg"
+                  />
+                </div>
+              </a>
+            </div>
+          </div>
+        </>
+      ) : (
+        <>
+          <Skeleton
+            variant="rectangular"
+            width={300}
+            height={324}
+            className="skeletonProductDetail"
+          />
+        </>
+      )}
+    </div>
+  );
+}
+
+export default RecommendedProductsCard;
