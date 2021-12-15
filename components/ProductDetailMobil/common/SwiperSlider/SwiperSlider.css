@@ -1,6 +1,8 @@
 .swiperSliderDatailMobile {
   height: 100%;
   width: 100%;
+  padding-bottom: 44px;
+  background-color: white;
 }
 
 .swiperSliderDatailMobile .swiper {
@@ -24,20 +26,27 @@
 .swiperSliderDatailMobile .swiper-container .swiper-pagination-bullets {
   position: absolute;
   bottom: 0;
-  width: 300px;
+  width: 200px;
   left: 0;
   right: 0;
   margin: auto;
 }
 
-.swiper-container-horizontal
+.swiperSliderDatailMobile
+  .swiper-container-horizontal.mySwiper
   > .swiper-pagination-bullets
   .swiper-pagination-bullet {
   width: calc(100% - 75%);
   border-radius: 0 !important;
   margin: 0 !important;
   height: 2px;
-  background: black;
+  background: #5d5d5d;
+}
+.swiperSliderDatailMobile
+  .swiper-container-horizontal.mySwiper2
+  > .swiper-pagination-bullets
+  .swiper-pagination-bullet {
+  background: #5f5f5f;
 }
 
 .swiperSliderDatailMobile .swiper-container {
@@ -54,4 +63,5 @@
 }
 .swiperSliderDatailMobile .mySwiper2 {
   width: 100vw;
+  height: 512px;
 }

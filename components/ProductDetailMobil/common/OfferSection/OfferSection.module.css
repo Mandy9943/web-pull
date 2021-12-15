@@ -1,59 +1,35 @@
 .containerOffer{
-    display: flex;
-    flex-direction: column;
     width: 100%;
     height: auto;
     background: white;
-    margin-top: 3.2px;
-    padding: 30px 10px;
 }
 
 .containerOffer .headerOffer{
-    position: relative;
-}
-
-.containerOffer .headerOffer .backgroundOffer{
-    position: absolute;
-    left: -22%;
-    right: -23.73%;
-    top: 34.62%;
-    bottom: 0%;
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: 900;
-    font-size: 56px;
-    line-height: 68px;
-    /* Background Gray */
-    color: #F3F3F3;
-    width: 200%;
+    height: 34px;
+    padding: 48px 25px 20px 25px;
 }
 
 .titleOffer{
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
     font-family: Montserrat;
     font-style: normal;
-    font-weight: 800;
-    font-size: 25px;
-    line-height: 29px;
+    font-weight: 900;
+    font-size: 28px;
+    line-height: 34.13px;
     color: #CF0A2C;
     flex: none;
     order: 0;
     flex-grow: 0;
-    margin: 20px 0px;
     width: 100%;
     text-align: center;
 }
 
 .contentOffer{
-    margin:60px auto auto
+    margin:0px auto;
+    padding: 8px 29px 10px 29px;
 }
 
 .contentOffer p{
-    width: calc(100% - 24%);
+    max-width: 320px;
     font-family: Montserrat;
     font-style: normal;
     font-weight: bold;

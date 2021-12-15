@@ -12,6 +12,7 @@ import Skeleton from "@mui/material/Skeleton";
 // import Swiper core and required modules
 import SwiperCore, { EffectCoverflow, Pagination } from "swiper";
 import OfferSection from "../OfferSection/OfferSection";
+import DiscountPrice from "../DiscountPrice/DiscountPrice";
 
 // install Swiper modules
 SwiperCore.use([EffectCoverflow, Pagination]);
@@ -84,12 +85,12 @@ const SwiperSlider = ({ images, altImg, type }) => {
     </div>
   ) : (
     <div className="swiperSliderDatailMobile">
-      <Swiper loop={true} pagination={true} className="mySwiper2">
+      <Swiper pagination={true} className="mySwiper2">
         <SwiperSlide>
-          <OfferSection />
+          <DiscountPrice/>
         </SwiperSlide>
         <SwiperSlide>
-          <OfferSection />
+          <DiscountPrice/>
         </SwiperSlide>
       </Swiper>
     </div>

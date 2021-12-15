@@ -48,7 +48,7 @@ const RecommendedProducts = ({ category }) => {
               spaceBetween: 16,
             },
           }}
-          className="mySwiper"
+          className="recomendedSwiper"
         >
           {products.map((product) => {
             return (
