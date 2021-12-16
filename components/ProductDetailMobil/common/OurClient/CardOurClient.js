@@ -8,7 +8,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import "./OurClient.module.css";
 
-const CardOurClient = (props) => {
+const CardOurClient = ({ client }) => {
+  const stars = [];
+  for (let i = 0; i < client.star; i++) {
+    stars.push(<FontAwesomeIcon icon={faStar} />);
+  }
+
   return (
     <div className="card">
       <picture>
@@ -18,31 +23,21 @@ const CardOurClient = (props) => {
       </picture>
       <div className="texto">
         <div className="autor">
-          <p> Rodovaldo G. </p>
+          <p> {client.name} </p>
           <div className="anullProperties">
             <Image src={cert} layout="fill" alt="Certified" />
           </div>
         </div>
         <div className="localization">
-          <p> Santa Marta </p>
+          <p> {client.location} </p>
           <div className="anullProperties">
             <Image src={location} alt="localization" layout="fill" />
           </div>
         </div>
-        <div className="clasification">
-          <FontAwesomeIcon icon={faStar} />
-          <FontAwesomeIcon icon={faStar} />
-          <FontAwesomeIcon icon={faStar} />
-          <FontAwesomeIcon icon={faStar} />
-          <FontAwesomeIcon icon={faStar} />
-        </div>
+        <div className="clasification">{stars}</div>
         <div className="comment">
-          <h5>Lorem ipsum quam dolor nuet nigma</h5>
-          <p>
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-            nonummy nibh euismod tincidunt ut laoreet dolore magna. Lorem ipsum
-            dolor ...
-          </p>
+          <h5>{client.H}</h5>
+          <p>{client.P.substring(0, 80)} ...</p>
         </div>
         <footer>
           <div className="separator" />
