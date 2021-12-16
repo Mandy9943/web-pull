@@ -14,7 +14,6 @@
 #DetailInfo .open {
     height: 601px;
     width: auto;
-
 }
 
 #DetailInfo .titulo {
@@ -65,3 +64,21 @@
     margin-left: auto;
     margin-bottom: 16px;
 }
+
+#DetailInfo footer img {
+    grid-area: arrow;
+}
+
+#DetailInfo footer {
+    align-items: center;
+    justify-content: center;
+    display: grid;
+    grid-template-areas: "arrow";
+    width: 64.5vw;
+    padding-top: 25px;
+}
+
+#DetailInfo footer img {
+    padding-left: 65px !important;
+}
+
