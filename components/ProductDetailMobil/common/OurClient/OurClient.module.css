@@ -1,197 +1,196 @@
 #OurClient {
-    background-color: #fff;
-    padding: 20px 25px;
-    border-top: 2px solid #e4e4e4;
-    border-bottom: 2px solid #e4e4e4;
+  background-color: #fff;
+  padding: 20px 25px;
+  border-top: 2px solid #e4e4e4;
+  border-bottom: 2px solid #e4e4e4;
 }
 
 #OurClient header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 #OurClient header .left {
-
 }
 
 #OurClient header .left h4 {
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 22px;
-    letter-spacing: 0.03em;
-    color: #000000;
+  font-family: Montserrat, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0.03em;
+  color: #000000;
 }
 
 #OurClient header .left h4 .company {
-    color: #CF0A2C;
-    display: inline-block;
+  color: #cf0a2c;
+  display: inline-block;
 }
 
 #OurClient header .left .clasification {
-    display: flex;
-    padding-top: 7px;
+  display: flex;
+  padding-top: 7px;
 }
 
 #OurClient header .left .clasification svg {
-    color: #74DEF5;
-    height: 16px;
-    width: 16px;
+  color: #74def5;
+  height: 16px;
+  width: 16px;
 }
 
 #OurClient header .left .clasification p {
-    padding-left: 11px;
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 16px;
-    color: #5D5D5D;
+  padding-left: 11px;
+  font-family: Montserrat, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  color: #5d5d5d;
 }
 
 #OurClient article {
-    display: grid;
-    padding-top: 25px;
-    grid-template-columns: repeat(auto-fit, minmax(155px, 1fr))
+  display: grid;
+  padding-top: 25px;
+  grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(155px, 1fr));
 }
 
 #OurClient article .card {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    flex-direction: column;
-    box-shadow: 0 2px 25px rgba(0, 0, 0, 0.1);
-    margin: 0 7px 12px 0;
-    border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 0 2px 25px rgba(0, 0, 0, 0.1);
+  margin: 0 7px 12px 0;
+  border-radius: 15px;
 }
 
 #OurClient article .card picture {
-
+  width: auto ;
+  height: auto ;
+  top: 0;
 }
 
 #OurClient article .card .texto {
-    padding: 0 11px;
+  padding: 0 11px;
 }
 
 #OurClient article .card picture img {
-    border-radius: 15px 15px 0 0 !important;
-    width: 100% !important;
-    height: 100% !important;
+  border-radius: 15px 15px 0 0 !important;
+  width: 100% !important;
+  height: 100% !important;
 }
 
 #OurClient article .card .autor {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-bottom: 4px;
-
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 4px;
 }
 
 #OurClient article .card .autor p {
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 18px;
-    color: #5D5D5D;
-    padding-right: 18px;
+  font-family: Montserrat, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  color: #5d5d5d;
+  padding-right: 18px;
+  text-align: left;
 }
 
 #OurClient article .card .localization {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 8px;
 }
 
 #OurClient article .card .localization p {
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 10px;
-    line-height: 12px;
-    letter-spacing: 0.02em;
-    color: #969696;
+  font-family: Montserrat, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: 0.02em;
+  color: #969696;
 }
 
 #OurClient article .card .clasification svg {
-    color: #74DEF5;
-    width: 12px;
-    height: 12px;
-    padding-right: 4px;
-    padding-bottom: 15px;
+  color: #74def5;
+  width: 12px;
+  height: 12px;
+  padding-right: 4px;
+  padding-bottom: 15px;
 }
 
 #OurClient article .card .comment {
-
 }
 
 #OurClient article .card .comment h5 {
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 15px;
-    color: #000000;
-    padding-bottom: 10px;
+  font-family: Montserrat, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  color: #000000;
+  padding-bottom: 10px;
 }
 
 #OurClient article .card .comment p {
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 11px;
-    line-height: 16px;
-    color: #5D5D5D;
+  font-family: Montserrat, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 16px;
+  color: #5d5d5d;
 }
 
 #OurClient article .card .texto footer {
-    display: grid;
-    align-items: center;
-    justify-content: space-between;
-    grid-template-areas:
-    "separator imagen"
-
+  display: grid;
+  align-items: center;
+  justify-content: space-between;
+  grid-template-areas: "separator imagen";
 }
 
 #OurClient article .card .texto footer .separator {
-    grid-area: separator;
+  grid-area: separator;
 }
 
 #OurClient article .card .texto footer img {
-    grid-area: imagen;
+  grid-area: imagen;
 }
 
 #OurClient .footer_our {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
 }
 
 #OurClient .footer_our button {
-    background: #FFFFFF;
-    border: 2px solid #CF0A2C;
-    box-sizing: border-box;
-    border-radius: 25px;
-    width: 136px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 12px;
-    line-height: 15px;
-    letter-spacing: 0.1em;
-    color: #CF0A2C;
+  background: #ffffff;
+  border: 2px solid #cf0a2c;
+  box-sizing: border-box;
+  border-radius: 25px;
+  width: 136px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Montserrat, sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0.1em;
+  color: #cf0a2c;
 }
 
 #OurClient .footer_our button:hover {
-    background: #CF0A2C;
-    border: 2px solid #FFFFFF;
-    color: #FFFFFF;
+  background: #cf0a2c;
+  border: 2px solid #ffffff;
+  color: #ffffff;
 }
