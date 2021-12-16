@@ -38,6 +38,7 @@ import useScrollY from "../../lib/hooks/useScrollY";
 
 import WhatsappBanner from "./common/WhatsappBanner/WhatsappBanner";
 import CheckoutButton from "./common/CheckoutButton/CheckoutButton";
+import OurClient from "./common/OurClient/OurClient";
 
 const Nav = dynamic(() => import("../Common/Nav/Nav"));
 const Footer = dynamic(() => import("../Common/Footer"));
@@ -93,11 +94,7 @@ const ProductDetailMobil = ({ user_data, data }) => {
       <div className="content-curve-shape">
         <div className="curve-shape">
           <div className="anullProperties">
-            <Image
-              alt="Red background"
-              src={backGround}
-              layout="fill"
-            />
+            <Image alt="Red background" src={backGround} layout="fill" />
           </div>
         </div>
         <div className="header-detail">
@@ -124,10 +121,9 @@ const ProductDetailMobil = ({ user_data, data }) => {
       <PayMethod />
       <Detail product={data} />
       <Description product={data} />
-      <SwiperSlider
-        type={"show"}
-      />
-        <SellerInfo />
+      <OurClient />
+      {/*<SwiperSlider type={"show"} />*/}
+      <SellerInfo />
       <Benefits />
       <RecommendedProducts category={data.category} />
       <HelpCenter />
