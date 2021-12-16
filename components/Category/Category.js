@@ -230,10 +230,10 @@ class Category extends Component {
       this.props.data.search,
       brand,
       price,
-      category ? category : this.state.categoryName,
+      category ? category : this.props.data.type === 'category' ? this.state.categoryName : category,
       sortBy,
       orderBy,
-      this.state.categoryLevel
+      this.state.categoryLevel 
     );
 
     products.then((response) => {

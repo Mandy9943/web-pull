@@ -113,7 +113,6 @@ export const searchProducts = (
 ) => {
     let categoryName = category.replace(/-/g, ' ')
     let categoryNameOts = ots.replace(/-/g, ' ')
-    let categoryName2 = ots.replace(/-/g, ' ')
     try {
         const params = new URLSearchParams();
         if (categoryNameOts !== '') params.append('ots', categoryNameOts);
