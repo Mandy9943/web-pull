@@ -1,0 +1,50 @@
+#OurClient {
+    background-color: #fff;
+    padding: 20px 25px;
+}
+
+#OurClient header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#OurClient header .left {
+
+}
+
+#OurClient header .left h4 {
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.03em;
+    color: #000000;
+}
+
+#OurClient header .left h4 .company {
+    color: #CF0A2C;
+    display: inline-block;
+}
+
+#OurClient header .left .clasification {
+    display: flex;
+    padding-top: 7px;
+}
+
+#OurClient header .left .clasification svg {
+    color: #74DEF5;
+    height: 16px;
+    width: 16px;
+}
+
+#OurClient header .left .clasification p {
+    padding-left: 11px;
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+    color: #5D5D5D;
+}
