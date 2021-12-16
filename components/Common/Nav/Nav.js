@@ -592,13 +592,13 @@ class Nav extends Component {
             )}
           </div>
         </div>
-{/*         {this.state.showCategories ? (
+        {this.state.showCategories ? (
           <MenuCategories
             toggle={this.mouseLeave}
             num="2"
             categories={this.state.categories}
           />
-        ) : null} */}
+        ) : null}
 
         {this.state.modalLogout ? (
           <Modal
