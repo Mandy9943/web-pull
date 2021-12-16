@@ -7,6 +7,7 @@ import backGround from "../../assets/img/productDetail/fondo-rojo-landing-view@2
 
 import CheckoutProduct from "./common/CheckoutProduct/CheckoutProduct";
 import Header from "./common/Header/Header";
+import DiscountPrice from "./common/DiscountPrice/DiscountPrice";
 
 const SwiperSlider = dynamic(
   () => import("./common/SwiperSlider/SwipperSlider"),
@@ -36,6 +37,7 @@ import Image from "next/image";
 import useScrollY from "../../lib/hooks/useScrollY";
 
 import WhatsappBanner from "./common/WhatsappBanner/WhatsappBanner";
+import CheckoutButton from "./common/CheckoutButton/CheckoutButton";
 
 const Nav = dynamic(() => import("../Common/Nav/Nav"));
 const Footer = dynamic(() => import("../Common/Footer"));
@@ -123,7 +125,10 @@ const ProductDetailMobil = ({ user_data, data }) => {
       <Detail product={data} />
       <Description product={data} />
       <OfferSection />
-      <SellerInfo/>
+      <SellerInfo />
+      <SwiperSlider
+        type={"show"}
+      />
       <Benefits />
       <RecommendedProducts category={data.category} />
       <HelpCenter />
