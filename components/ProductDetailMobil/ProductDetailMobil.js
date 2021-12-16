@@ -49,7 +49,7 @@ const StickyPayButton = dynamic(() =>
 
 const ProductDetailMobil = ({ user_data, data }) => {
   let urlSic = "https://www.sic.gov.co";
-  console.log("data", data);
+  // console.log("data", data);
   const [isForm, setIsForm] = useState(false);
   const [isWhatsappBanner, setIsWhatsappBanner] = useState(true);
   const scrolledPayBuuton = useScrollY(700, false);
@@ -120,9 +120,7 @@ const ProductDetailMobil = ({ user_data, data }) => {
       <PayMethod />
       <Detail product={data} />
       <Description product={data} />
-      <SwiperSlider
-        type={"show"}
-      />
+      <SwiperSlider type={"show"} />
       <Benefits />
       <RecommendedProducts category={data.category} />
       <HelpCenter />

@@ -15,6 +15,7 @@ SwiperCore.use([Pagination]);
 
 import "./RecommendedProducts.module.css";
 import RecommendedProductsCard from "./RecommendedProductsCard";
+import DivindingLine from "../DivindingLine/DivindingLine";
 
 const RecommendedProducts = ({ category }) => {
   const [products, setProducts] = useState([]);
@@ -29,24 +30,25 @@ const RecommendedProducts = ({ category }) => {
   }, []);
   return (
     <div id="RecommendedProducts">
-      <img src={background} alt="Red background" />
       <div className="cabecera">
-        <h3>Otros Productos Relacionados</h3>
+        <DivindingLine
+          color="#CF0A2C"
+          height="3px"
+          width="122px"
+          margin="auto auto 10px auto"
+        />
+        <h3>OTROS TAMBIÉN </h3>
+        <h3>COMPRARON</h3>
       </div>
       <div className="slider">
         <Swiper
           slidesPerView={1}
-          slidesPerGroup={1}
-          spaceBetween={16}
+          spaceBetween={30}
+          freeMode={true}
+          centeredSlides={true}
+          // loop={true}
           pagination={{
             clickable: true,
-          }}
-          breakpoints={{
-            359: {
-              slidesPerView: 2,
-              slidesPerGroup: 2,
-              spaceBetween: 16,
-            },
           }}
           className="recomendedSwiper"
         >
