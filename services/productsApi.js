@@ -129,7 +129,7 @@ export const searchProducts = (
         let endpoint2 = categoryApi2 + `?&size=${size}&page=${page}`;
         let endpoint = type === 'search' ? endpoint1 : endpoint2;
         if (params.toString().length) endpoint = endpoint + '&' + params.toString();
-        console.log(endpoint)
+        // console.log(endpoint)
         return apiget(decodeURI(endpoint));
     } catch (error) {
         return error;
