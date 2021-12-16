@@ -37,6 +37,7 @@ class Category extends Component {
       totalItems: "",
       treeSelectedCategory: [],
       existsCategoryMenu: true,
+      categoryName: this.props.data.search,
       categoryLevel: "",
     };
   }
@@ -229,10 +230,10 @@ class Category extends Component {
       this.props.data.search,
       brand,
       price,
-      category,
+      category ? category : this.state.categoryName,
       sortBy,
       orderBy,
-      categoryLevel
+      this.state.categoryLevel
     );
 
     products.then((response) => {
