@@ -1,13 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import spice from "../../../../assets/img/seller/spice.jpeg";
 import cert from "../../../../assets/img/productDetail/Certified Icon.svg";
 import ok from "../../../../assets/img/productDetail/Positive Round Checkbox Icon.svg";
 import Image from "next/image";
 import "./SellerInfo.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar, faTruck } from "@fortawesome/free-solid-svg-icons";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 const SellerInfo = () => {
+  const [conteo, setConteo] = useState(0);
+  useEffect(() => {
+    let start = 0;
+    const end = 547;
+    if (start === end) return;
+    let totalmilSecDur = 30;
+    let incrementTime = (totalmilSecDur / end) * 1000;
+    let timer = setInterval(() => {
+      start += 1;
+      setConteo(start);
+      if (start === end) clearInterval(timer);
+    }, incrementTime);
+  }, conteo);
   return (
     <section id="SellerInfo">
       <header>
@@ -35,7 +48,7 @@ const SellerInfo = () => {
         <div className="separator" />
         <div className="info">
           <div className="block">
-            <h3>543</h3>
+            <h3>{conteo}</h3>
             <p>Ventas en los últimos 2 meses</p>
           </div>
           <div className="block">

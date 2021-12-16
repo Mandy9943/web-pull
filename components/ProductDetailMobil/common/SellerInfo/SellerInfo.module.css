@@ -119,8 +119,8 @@
 #SellerInfo footer .info .block {
     display: flex;
     flex-direction: column;
-    align-content: center;
-    /*justify-content: center;*/
+    align-items: center;
+    justify-content: center;
     height: 49px;
 }
 
