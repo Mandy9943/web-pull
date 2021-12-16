@@ -1,6 +1,8 @@
 #OurClient {
     background-color: #fff;
     padding: 20px 25px;
+    border-top: 2px solid #e4e4e4;
+    border-bottom: 2px solid #e4e4e4;
 }
 
 #OurClient header {
@@ -47,4 +49,149 @@
     font-size: 12px;
     line-height: 16px;
     color: #5D5D5D;
+}
+
+#OurClient article {
+    display: grid;
+    padding-top: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(155px, 1fr))
+}
+
+#OurClient article .card {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 0 2px 25px rgba(0, 0, 0, 0.1);
+    margin: 0 7px 12px 0;
+    border-radius: 15px;
+}
+
+#OurClient article .card picture {
+
+}
+
+#OurClient article .card .texto {
+    padding: 0 11px;
+}
+
+#OurClient article .card picture img {
+    border-radius: 15px 15px 0 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+#OurClient article .card .autor {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 4px;
+
+}
+
+#OurClient article .card .autor p {
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    color: #5D5D5D;
+    padding-right: 18px;
+}
+
+#OurClient article .card .localization {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 8px;
+}
+
+#OurClient article .card .localization p {
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 12px;
+    letter-spacing: 0.02em;
+    color: #969696;
+}
+
+#OurClient article .card .clasification svg {
+    color: #74DEF5;
+    width: 12px;
+    height: 12px;
+    padding-right: 4px;
+    padding-bottom: 15px;
+}
+
+#OurClient article .card .comment {
+
+}
+
+#OurClient article .card .comment h5 {
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+    color: #000000;
+    padding-bottom: 10px;
+}
+
+#OurClient article .card .comment p {
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 16px;
+    color: #5D5D5D;
+}
+
+#OurClient article .card .texto footer {
+    display: grid;
+    align-items: center;
+    justify-content: space-between;
+    grid-template-areas:
+    "separator imagen"
+
+}
+
+#OurClient article .card .texto footer .separator {
+    grid-area: separator;
+}
+
+#OurClient article .card .texto footer img {
+    grid-area: imagen;
+}
+
+#OurClient .footer_our {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+#OurClient .footer_our button {
+    background: #FFFFFF;
+    border: 2px solid #CF0A2C;
+    box-sizing: border-box;
+    border-radius: 25px;
+    width: 136px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 0.1em;
+    color: #CF0A2C;
+}
+
+#OurClient .footer_our button:hover {
+    background: #CF0A2C;
+    border: 2px solid #FFFFFF;
+    color: #FFFFFF;
 }

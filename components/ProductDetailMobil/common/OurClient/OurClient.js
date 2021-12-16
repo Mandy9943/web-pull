@@ -5,6 +5,7 @@ import "./OurClient.module.css";
 import Image from "next/image";
 import abierto from "../../../../assets/img/productDetail/l-nea-86@2x.svg";
 import cerrado from "../../../../assets/img/productDetail/icono-desplegar@2x.svg";
+import CardOurClient from "./CardOurClient";
 
 const OurClient = (props) => {
   let count_opinion = 123;
@@ -37,6 +38,19 @@ const OurClient = (props) => {
           </div>
         </div>
       </header>
+      {collapse === true ? (
+        <>
+          <article>
+            <CardOurClient />
+            <CardOurClient />
+            <CardOurClient />
+            <CardOurClient />
+          </article>
+          <div className="footer_our">
+            <button>VER MÁS</button>
+          </div>
+        </>
+      ) : null}
     </section>
   );
 };
