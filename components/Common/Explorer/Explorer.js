@@ -4,7 +4,7 @@ import CategoryImg from "../../../assets/img/category-img/category-tools.webp";
 import "./Explorer.css";
 import { getProductsBasic } from "../../../services/productsApi";
 import { getImgUrl } from "../../../lib/config";
-import { handleFormatUrl } from "../../../lib/functions";
+import { handleFormatUrl, handleFormatName } from "../../../lib/functions";
 import Spinner from "../Spinner";
 import accesorios from "../../../assets/img/category-img/category-accesorios.webp";
 import accesoriosvehiculos from "../../../assets/img/category-img/category-accesoriosvehiculos.webp";
@@ -49,7 +49,7 @@ class Explorer extends Component {
       { name: "Vehículos", image: accesoriosvehiculos },
       { name: "Bebés", image: bebes },
       { name: "Belleza", image: belleza },
-      { name: "Cámaras fotografia y video", image: camaras },
+      { name: "Cámaras, fotografía y video", image: camaras },
       { name: "Celulares y accesorios", image: celulares },
       { name: "Coleccionables y bellas artes", image: coleccionables },
       { name: "Computadoras y Accesorios", image: computacion },
@@ -59,9 +59,9 @@ class Explorer extends Component {
       { name: "Herramientas", image: herramientas },
       { name: "Hogar", image: hogar },
       { name: "Instrumentos musicales", image: instrumentos },
-      { name: "Juguetes", image: juguetes },
+      { name: "Juguetes y juegos", image: juguetes },
       //{name:"Libros, Revistas y Comics", image: libros},
-      { name: "Animales y Mascotas", image: mascotas },
+      { name: "Animales y mascotas", image: mascotas },
       //{name:"Música", image: musica},
       { name: "Oficina", image: oficina },
       { name: "Relojes Y Joyería", image: relojesjoyas },
@@ -69,7 +69,7 @@ class Explorer extends Component {
       { name: "Consolas y videojuegos", image: videojuegos },
     ];
 
-    getProductsBasic(category[categoryRandom].name, 8).then((response) => {
+    getProductsBasic(handleFormatName(category[categoryRandom].name.replace(/,/g,'')), 8).then((response) => {
       let data = [];
       let product;
       for (product in response.data.results) {
