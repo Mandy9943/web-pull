@@ -1,0 +1,54 @@
+#PayMethod {
+    border-bottom: 2px solid #e4e4e4;
+    background: #fff;
+    height: 222px;
+    padding: 36px 25px 0 25px;
+}
+
+#PayMethod .titulo {
+    padding-bottom: 12px;
+}
+
+#PayMethod .titulo h3 {
+    text-align: left;
+    font: normal normal bold 18px/22px Montserrat;
+    letter-spacing: 0;
+    color: #000000;
+    opacity: 1;
+    margin-right: auto;
+}
+
+#PayMethod .link {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(92px, 1fr));
+    justify-content: center;
+
+}
+
+#PayMethod .link img {
+    width: auto !important;
+    height: 45px !important;
+    padding: 12px 12px 12px 0 !important;
+}
+
+#PayMethod .link .anullProperties {
+    display: flex;
+    align-items: center;
+    margin: auto;
+}
+
+@media (min-width: 750px) {
+    #PayMethod .link {
+        grid-template-columns: repeat(6, 92px);
+    }
+
+    #PayMethod {
+        height: 130px;
+    }
+}
+
+@media (max-width: 350px) {
+    #PayMethod {
+        padding: 36px 10px;
+    }
+}

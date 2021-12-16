@@ -1,9 +1,10 @@
 import React, {useState} from "react"
-import "./Description.css"
+import "./Description.module.css"
 import cerrado from "../../../../assets/img/productDetail/icono-desplegar@2x.svg";
 import abierto from "../../../../assets/img/productDetail/l-nea-86@2x.svg";
 
 import Image from "next/image"
+import arrow from "../../../../assets/img/productDetail/arrow-down@2x.svg";
 
 function Description({product}) {
     const [collapse, setCollapse] = useState(false);
@@ -33,6 +34,16 @@ function Description({product}) {
                     <p className="texto">
                         {product.information}
                     </p>
+                    <footer>
+                        <div className="anullProperties">
+                            <Image
+                                src={arrow}
+                                layout="fill"
+                                alt="Flecha abajo"
+                                onClick={handleOnClick}
+                            />
+                        </div>
+                    </footer>
                 </div>
             ) : null}
         </div>

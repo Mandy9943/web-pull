@@ -30,6 +30,11 @@
     padding: 30px 25px 0 30px;
 }
 
+#SellerInfo picture div img {
+    height: 5rem !important;
+    width: 100% !important;
+}
+
 #SellerInfo picture h4 {
     font-family: Montserrat, sans-serif;
     font-style: normal;
@@ -116,7 +121,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 5px 0 4px;
     height: 49px;
 }
 
@@ -128,6 +132,8 @@
     letter-spacing: 0;
     text-align: center;
     color: #5D5D5D;
+    padding-bottom: 4px;
+    padding-top: 10px;
 }
 
 #SellerInfo footer .info .block p {
@@ -141,6 +147,7 @@
     color: #000000;
     padding-left: 12px;
     padding-right: 12px;
+
 }
 
 #SellerInfo footer .info .block .anullProperties div {

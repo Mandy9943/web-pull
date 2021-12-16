@@ -47,7 +47,8 @@
   margin: auto;
 }
 
-.swiper-container-horizontal
+#RecommendedProducts
+  .swiper-container-horizontal.recomendedSwiper
   > .swiper-pagination-bullets
   .swiper-pagination-bullet {
   width: calc(100% - 75%);

@@ -33,95 +33,99 @@ const FormProductDetail = ({handleClose, open}) => {
         resolver: yupResolver(formSchema),
     });
 
-    const onSubmit = (data) => console.log(data);
-    return (
-        <div>
-            <FormDialog open={open} handleClose={handleClose}>
-                <form onSubmit={handleSubmit(onSubmit)} id="FormProductDetail">
-                    <p className="formProductDetail-title">
-                        Por favor agregue los datos de envío
-                    </p>
-                    <div className="form-wrapper">
-                        <div className="fromProductDetail-wrapper-textfields">
-                            <TextField
-                                {...register("firstName")}
-                                className="fromProductDetail-textfields font-size"
-                                margin="dense"
-                                id="firstName"
-                                label="Nombres"
-                                type="text"
-                                variant="outlined"
-                                color="secondary"
-                                error={errors.firstName}
-                                required
-                            />
-                            <TextField
-                                {...register("lastName")}
-                                className="fromProductDetail-textfields font-size"
-                                margin="dense"
-                                id="lastName"
-                                label="Apellidos"
-                                type="text"
-                                variant="outlined"
-                                color="secondary"
-                                error={errors.lastName}
-                                required
-                            />
-                        </div>
-                        <TextField
-                            {...register("email")}
-                            className="font-size"
-                            margin="dense"
-                            id="email"
-                            label="Correo"
-                            type="text"
-                            fullWidth
-                            variant="outlined"
-                            color="secondary"
-                            error={errors.email}
-                            helperText={errors?.email?.message}
-                            required
-                        />
-                        <TextField
-                            {...register("phoneNumber")}
-                            className="font-size"
-                            margin="dense"
-                            id="phoneNumber"
-                            label="Telefono Movil"
-                            type="text"
-                            fullWidth
-                            variant="outlined"
-                            color="secondary"
-                            error={errors.phoneNumber}
-                            required
-                        />
-                        <TextField
-                            {...register("city")}
-                            className="font-size"
-                            margin="dense"
-                            id="city"
-                            label="Ciudad"
-                            type="text"
-                            fullWidth
-                            variant="outlined"
-                            color="secondary"
-                            error={errors.city}
-                            required
-                        />
-                        <TextField
-                            {...register("address")}
-                            className="font-size"
-                            margin="dense"
-                            id="address"
-                            label="Direccion"
-                            type="text"
-                            fullWidth
-                            color="secondary"
-                            variant="outlined"
-                            error={errors.address}
-                            helperText={errors?.address?.message}
-                            required
-                        />
+  const onSubmit = (data) => console.log(data);
+  return (
+    <div>
+      <FormDialog open={open} handleClose={handleClose}>
+        <form onSubmit={handleSubmit(onSubmit)} id="FormProductDetail">
+          <p className="formProductDetail-title">
+            Por favor agregue los datos de envío
+          </p>
+          <div className="form-wrapper">
+            <div className="fromProductDetail-wrapper-textfields">
+              <TextField
+                {...register("firstName")}
+                className="fromProductDetail-textfields font-size"
+                margin="dense"
+                id="firstName"
+                label="Nombres"
+                type="text"
+                variant="outlined"
+                color="secondary"
+                error={errors.firstName}
+                helperText={errors?.firstName?.message}
+                required
+              />
+              <TextField
+                {...register("lastName")}
+                className="fromProductDetail-textfields font-size"
+                margin="dense"
+                id="lastName"
+                label="Apellidos"
+                type="text"
+                variant="outlined"
+                color="secondary"
+                error={errors.lastName}
+                helperText={errors?.lastName?.message}
+                required
+              />
+            </div>
+            <TextField
+              {...register("email")}
+              className="font-size"
+              margin="dense"
+              id="email"
+              label="Correo"
+              type="text"
+              fullWidth
+              variant="outlined"
+              color="secondary"
+              error={errors.email}
+              helperText={errors?.email?.message}
+              required
+            />
+            <TextField
+              {...register("phoneNumber")}
+              className="font-size"
+              margin="dense"
+              id="phoneNumber"
+              label="Telefono Movil"
+              type="text"
+              fullWidth
+              variant="outlined"
+              color="secondary"
+              error={errors.phoneNumber}
+              helperText={errors?.phoneNumber?.message}
+              required
+            />
+            <TextField
+              {...register("city")}
+              className="font-size"
+              margin="dense"
+              id="city"
+              label="Ciudad"
+              type="text"
+              fullWidth
+              variant="outlined"
+              color="secondary"
+              error={errors.city}
+              helperText={errors?.city?.message}
+              required
+            />
+            <TextField
+              {...register("address")}
+              className="font-size"
+              margin="dense"
+              id="address"
+              label="Direccion"
+              type="text"
+              fullWidth
+              color="secondary"
+              variant="outlined"
+              error={errors.address}
+              helperText={errors?.address?.message}
+              required
+            />
 
                         <div className="wrapper-checkbox">
                             <Controller

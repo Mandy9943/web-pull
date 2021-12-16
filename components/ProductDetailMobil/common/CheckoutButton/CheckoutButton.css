@@ -41,5 +41,15 @@
   cursor: not-allowed;
 }
 #CheckoutButton.roundedButton {
-  border-radius: 50px;
+  border-radius: 40px;
 }
+#CheckoutButton.secundaryColor {
+  background-color:#74C1D2 !important;
+}
+
+#CheckoutButton.secundaryHeight {
+  height: 48px;
+}
+
+
+

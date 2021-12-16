@@ -43,3 +43,16 @@
     text-align: justify;
     margin: 0 25px 25px 25px;
 }
+
+#Description footer {
+    align-items: center;
+    justify-content: center;
+    display: grid;
+    grid-template-areas: "arrow";
+    width: 64.5vw;
+    padding-top: 25px;
+}
+
+#Description footer img {
+    padding-left: 65px !important;
+}
