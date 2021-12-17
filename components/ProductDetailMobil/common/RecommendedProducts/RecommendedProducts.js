@@ -42,7 +42,7 @@ const RecommendedProducts = ({ category }) => {
       </div>
       <div className="slider">
         <Swiper
-          slidesPerView={1}
+          slidesPerView={1.4}
           spaceBetween={30}
           freeMode={true}
           centeredSlides={true}
