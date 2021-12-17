@@ -86,16 +86,6 @@ const ProductDetailMobil = ({ user_data, data }) => {
       )}
       <FormProductDetail open={isForm} handleClose={handleCloseForm} />
       <div className="content-curve-shape">
-        <div className="curve-shape">
-          <div className="anullProperties">
-            <Image
-              loading="lazy"
-              alt="Red background"
-              src={backGround}
-              layout="fill"
-            />
-          </div>
-        </div>
         <div className="header-detail">
           <Header title={data.title} bredCumbs={data.breadcum} />
         </div>
