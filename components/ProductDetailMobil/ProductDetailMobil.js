@@ -38,7 +38,9 @@ import useScrollY from "../../lib/hooks/useScrollY";
 
 import WhatsappBanner from "./common/WhatsappBanner/WhatsappBanner";
 import CheckoutButton from "./common/CheckoutButton/CheckoutButton";
-import OurClient from "./common/OurClient/OurClient";
+const OutClient = dynamic(() => import("./common/OurClient/OurClient"), {
+  loading: () => <p>...</p>,
+});
 
 const Nav = dynamic(() => import("../Common/Nav/Nav"));
 const Footer = dynamic(() => import("../Common/Footer"));
