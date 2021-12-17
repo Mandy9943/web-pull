@@ -55,7 +55,7 @@ const SellerInfo = dynamic(() => import("./common/SellerInfo/SellerInfo"), {
 
 const ProductDetailMobil = ({ user_data, data }) => {
   let urlSic = "https://www.sic.gov.co";
-  console.log("data", data);
+  // console.log("data", data);
   const [isForm, setIsForm] = useState(false);
   const [isWhatsappBanner, setIsWhatsappBanner] = useState(true);
   const scrolledPayBuuton = useScrollY(700, false);
@@ -92,11 +92,6 @@ const ProductDetailMobil = ({ user_data, data }) => {
       )}
       <FormProductDetail open={isForm} handleClose={handleCloseForm} />
       <div className="content-curve-shape">
-        <div className="curve-shape">
-          <div className="anullProperties">
-            <Image alt="Red background" src={backGround} layout="fill" />
-          </div>
-        </div>
         <div className="header-detail">
           <Header title={data.title} bredCumbs={data.breadcum} />
         </div>
@@ -122,8 +117,7 @@ const ProductDetailMobil = ({ user_data, data }) => {
       <Detail product={data} />
       <Description product={data} />
       <OurClient />
-      {/*<SwiperSlider type={"show"} />*/}
-      <SellerInfo />
+      <SwiperSlider type={"show"} />
       <Benefits />
       <RecommendedProducts category={data.category} />
       <HelpCenter />
