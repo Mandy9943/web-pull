@@ -1,19 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import review from "../../../../assets/img/review/Great Mower For The Price_0.jpg";
 import cert from "../../../../assets/img/productDetail/Certified Icon.svg";
 import location from "../../../../assets/img/productDetail/Location Icon.svg";
-import icon from "../../../../assets/img/productDetail/Maximize Icon.svg";
+import iconopen from "../../../../assets/img/productDetail/Maximize Icon.svg";
+import iconcerrado from "../../../../assets/img/productDetail/Minimize Icon.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import "./OurClient.module.css";
 
 const CardOurClient = ({ client }) => {
+  const [comment, setComment] = useState(false);
+  const [icon, setIcon] = useState(iconopen);
   const stars = [];
   for (let i = 0; i < client.star; i++) {
     stars.push(<FontAwesomeIcon icon={faStar} />);
   }
-
+  const handleOnClickComment = (e) => {
+    comment === false ? setIcon(iconopen) : setIcon(iconcerrado);
+    setComment(!comment);
+  };
   return (
     <div className="card">
       <picture>
@@ -37,12 +43,21 @@ const CardOurClient = ({ client }) => {
         <div className="clasification">{stars}</div>
         <div className="comment">
           <h5>{client.H}</h5>
-          <p>{client.P.substring(0, 80)} ...</p>
+          {comment === false ? (
+            <p>{client.P.substring(0, 80)} ...</p>
+          ) : (
+            <p>{client.P}.</p>
+          )}
         </div>
         <footer>
           <div className="separator" />
           <div className="anullProperties">
-            <Image src={icon} layout="fill" alt="mini" />
+            <Image
+              src={icon}
+              layout="fill"
+              alt="mini"
+              onClick={handleOnClickComment}
+            />
           </div>
         </footer>
       </div>
