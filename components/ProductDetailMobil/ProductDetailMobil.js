@@ -21,6 +21,7 @@ import Info from "./common/Info/Info";
 import PayMethod from "./common/PayMethod/PayMethod";
 import Detail from "./common/Detail/Detail";
 import Description from "./common/Description/Description";
+
 const OfferSection = dynamic(
   () => import("./common/OfferSection/OfferSection"),
   {
@@ -37,15 +38,20 @@ import useScrollY from "../../lib/hooks/useScrollY";
 
 import WhatsappBanner from "./common/WhatsappBanner/WhatsappBanner";
 import CheckoutButton from "./common/CheckoutButton/CheckoutButton";
+import OurClient from "./common/OurClient/OurClient";
 
 const Nav = dynamic(() => import("../Common/Nav/Nav"));
 const Footer = dynamic(() => import("../Common/Footer"));
 const FormProductDetail = dynamic(() =>
-  import("./common/formProductDetail/FormProductDetail")
+  import("./common/formProductDetail/formProductDetail")
 );
 const StickyPayButton = dynamic(() =>
   import("./common/StickyPayButton/StickyPayButton")
 );
+
+const SellerInfo = dynamic(() => import("./common/SellerInfo/SellerInfo"), {
+  loading: () => <p>...</p>,
+});
 
 const ProductDetailMobil = ({ user_data, data }) => {
   let urlSic = "https://www.sic.gov.co";
@@ -71,10 +77,7 @@ const ProductDetailMobil = ({ user_data, data }) => {
   return (
     <div id="productDetailMobil">
       {isWhatsappBanner && (
-        <WhatsappBanner
-          close={handleCloseWhatsappBanner}
-          productId={data.product_id}
-        />
+        <WhatsappBanner close={handleCloseWhatsappBanner} productId={data.product_global_id} />
       )}
       <div className={navClass.join(" ")}>
         <Nav
@@ -113,6 +116,7 @@ const ProductDetailMobil = ({ user_data, data }) => {
       <PayMethod />
       <Detail product={data} />
       <Description product={data} />
+      <OurClient />
       <SwiperSlider type={"show"} />
       <Benefits />
       <RecommendedProducts category={data.category} />

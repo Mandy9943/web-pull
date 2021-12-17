@@ -188,7 +188,7 @@ class DetailProductInfo extends Component {
                                         {handleWeight(this.props.weight)}
                                     </div>
                                     <br/>
-                                    <p className="accent">SPICESTOCK</p> <br/>
+                                    <p className="accent">SPICE STOCK SAS</p> <br/>
                                     *Este producto viene desde Estados Unidos
                                     <br/>
                                     *(Entrega de 3 a 9 días hábiles)
@@ -252,11 +252,10 @@ asumir el valor del retorno a una de las direcciones que se le indicará, el val
                         <br/>
                         <div className="detail-infoSeller-wrapp">
                             <p className="title-section accent seller-name">
-                                SPICE STOCK LLC.
+                                SPICE STOCK SAS.
                             </p>
                             <br/>
-                            <p className="info-section">Vendedor Internacional</p>
-                            <p className="info-section">Ubicación Estados Unidos</p>
+                            <p className="info-section">Spice Stock SAS, actúa solo como intermediaro o gestor entre un cliente nacional que hace una compra y un proveedor en el extranjero que comercializa el producto</p><br></br>
                             <p className="info-section">
                                 Este producto viene desde Estados Unidos
                             </p>
@@ -282,7 +281,7 @@ asumir el valor del retorno a una de las direcciones que se le indicará, el val
                     </div>
                     <br/>
                     <br/>
-                    <p className="title-section accent seller-name">SPICE STOCK LLC.</p>
+                    <p className="title-section accent seller-name">SPICE STOCK SAS.</p>
                     <br/>
                     <h5>Garantía</h5>
                     <span className="title">Compra protegida</span>

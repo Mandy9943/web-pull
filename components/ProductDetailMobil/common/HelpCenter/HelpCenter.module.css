@@ -5,55 +5,58 @@
 }
 
 #HelpCenter .closed {
-  height: 72px;
+    height: 72px;
 }
 
 #HelpCenter .open {
-  height: 343px;
+    height: 343px;
 }
 
 #HelpCenter .titulo {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 76px;
-  cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 76px;
+    cursor: pointer;
 }
 
 #HelpCenter .titulo h3 {
-  font-family: Montserrat, sans-serif;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 21px;
-  line-height: 26px;
-  color: #000000;
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 21px;
+    line-height: 26px;
+    color: #000000;
 }
 
 #HelpCenter .detalles {
-  padding-top: 25px;
+    padding-top: 25px;
 }
 
 #HelpCenter .detalles a {
-  display: grid;
-  justify-content: space-between;
-  align-content: center;
-  grid-template-columns: 209px auto;
-  padding-bottom: 46px;
+    display: grid;
+    justify-content: space-between;
+    align-items: center;
+    grid-template-columns: 209px auto;
+    padding: 0 54px 46px 0;
+}
+
+#HelpCenter .detalles a:visited {
+    text-decoration-line: none;
 }
 
 #HelpCenter .detalles a h3 {
-  font-family: Montserrat, sans-serif;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 22px;
-  letter-spacing: 0;
-  text-align: left;
-  color: #233ad4;
-  text-decoration-line: underline;
+    font-family: Montserrat, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 0;
+    text-align: left;
+    color: #233ad4;
+    text-decoration-line: none;
 }
 
 #HelpCenter .detalles a img {
-  padding-right: 25px !important;
-  width: 36px !important;
+    width: 36px !important;
 }

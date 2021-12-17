@@ -4,6 +4,7 @@ import Counter from "../Counter/Counter";
 import "./CheckoutProduct.css";
 
 const CheckoutProduct = ({ price, stock, discount_percentage, onClickBuy }) => {
+  let count = Math.ceil(Math.random() * 50);
   return (
     <div id="CheckoutProductMobil">
       <div className="productPrice">
@@ -54,8 +55,8 @@ const CheckoutProduct = ({ price, stock, discount_percentage, onClickBuy }) => {
       <div className="purchased">
         <p>
           {" "}
-          <span className="number">31</span> Personas han comprado este producto
-          recientemente.
+          <span className="number">{count}</span> Personas han comprado este
+          producto recientemente.
         </p>
       </div>
     </div>
