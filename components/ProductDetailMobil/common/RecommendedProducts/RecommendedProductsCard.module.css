@@ -1,6 +1,6 @@
 #RecommendedProductsCard {
-  margin: 0 16px;
   position: relative;
+  width: 240px !important;
 }
 
 #RecommendedProductsCard .skeletonProductDetail {
@@ -18,8 +18,8 @@
   position: relative;
 }
 #RecommendedProductsCard .product .productImg {
-  height: 154px !important;
-  width: 100% !important;
+  height: 240px !important;
+  width: 240px !important;
 }
 
 #RecommendedProductsCard .product .irImg {
@@ -28,39 +28,64 @@
 }
 
 #RecommendedProductsCard .product h4 {
-  font-family: Montserrat, sans-serif;
+  margin-top: 10px;
+  /* Body 2 */
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
   font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
   line-height: 16px;
-  letter-spacing: 0;
-  text-align: left;
-  position: relative;
-  padding-top: 15px;
+  /* or 133% */
+
+  /* Dark Gray */
+
+  color: #5d5d5d;
 }
 
-#RecommendedProductsCard .product .price {
-  font-family: Montserrat, sans-serif;
-  font-size: 16px;
+#RecommendedProductsCard .product .priceSection {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+#RecommendedProductsCard .product .priceSection .price {
+  font-family: Montserrat;
   font-style: normal;
-  font-weight: 700;
-  line-height: 20px;
-  letter-spacing: 0.03em;
-  text-align: left;
-  position: relative;
-  padding-top: 31px;
-}
+  font-weight: bold;
+  font-size: 21px;
+  line-height: 26px;
+  /* identical to box height */
 
-#RecommendedProductsCard .product .price:after {
-  content: "COP";
-  font-size: 14px;
-  padding-left: 5px;
+  letter-spacing: 0.03em;
+
+  color: #000000;
+}
+#RecommendedProductsCard .product .priceSection .discount {
+  /* Subheader 1 */
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 20px;
+  /* identical to box height */
+
+  text-align: right;
+  letter-spacing: 0.03em;
+
+  /* Discount Blue */
+
+  color: #1fc2e6;
 }
 
 #RecommendedProductsCard .product .price:before {
   content: "$";
-  font-size: 14px;
-  padding-right: 5px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 21px;
+  line-height: 26px;
+  margin-right: 5px;
 }
 
 #RecommendedProductsCard .product .stock {
