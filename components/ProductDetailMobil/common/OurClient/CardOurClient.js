@@ -11,7 +11,7 @@ import "./OurClient.module.css";
 
 const CardOurClient = ({ client }) => {
   const [comment, setComment] = useState(false);
-  const [icon, setIcon] = useState(iconopen);
+  const [icons, setIcon] = useState(iconopen);
   const stars = [];
   for (let i = 0; i < client.star; i++) {
     stars.push(<FontAwesomeIcon icon={faStar} />);
@@ -53,7 +53,7 @@ const CardOurClient = ({ client }) => {
           <div className="separator" />
           <div className="anullProperties">
             <Image
-              src={icon}
+              src={icons}
               layout="fill"
               alt="mini"
               onClick={handleOnClickComment}
