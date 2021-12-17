@@ -16,7 +16,7 @@ const WhatsappBanner = ({ close, productId }) => {
         </span>
         <span>
           <a
-            href={`https://wa.me/573128246497/?text=Hola estoy interesado sobre el producto “https://kiero.co/detalle/${productId}`}
+            href={`https://wa.me/573128246497/?text=Hola estoy interesado sobre el producto “https://kiero.co/detalle/${productId}“ y quiero saber más información, me pueden ayudar`}
           >
             +57 312 0246497
           </a>
