@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import React, { useState } from "react";
+import {handleFormatUrl} from "../../lib/functions"
 
 import Logo1 from "../../assets/img/logo-social.png";
 import Logo2 from "../../assets/img/logo-social1.png";
@@ -77,7 +78,7 @@ const ProductDetailMobil = ({ user_data, data }) => {
   return (
     <div id="productDetailMobil">
       {isWhatsappBanner && (
-        <WhatsappBanner close={handleCloseWhatsappBanner} productId={"7741"} />
+        <WhatsappBanner close={handleCloseWhatsappBanner} productLink={handleFormatUrl(data.product_global_id, data.title)} />
       )}
       <div className={navClass.join(" ")}>
         <Nav

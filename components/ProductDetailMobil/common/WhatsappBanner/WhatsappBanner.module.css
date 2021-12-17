@@ -13,6 +13,14 @@
   height: 50px;
 }
 
+#WhatsappBanner .linkToWhatsapp{
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: white;
+}
+
 #WhatsappBanner .closeIcon {
   margin-left: 10px;
   font-size: 20px;
