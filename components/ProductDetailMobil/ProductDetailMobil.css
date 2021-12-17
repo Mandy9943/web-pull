@@ -17,32 +17,20 @@
   position: relative;
 }
 
-#productDetailMobil .content-curve-shape .curve-shape {
-  position: relative;
-}
-
-#productDetailMobil .content-curve-shape .curve-shape img {
-  position: absolute !important;
-  top: -100px !important;
-  left: 0 !important;
-  width: 100% !important;
-}
 
 #productDetailMobil .header-detail {
   box-sizing: border-box;
 }
 
 #productDetailMobil .content-images {
-  position: relative;
+ 
   width: 100%;
   padding: 1px;
   background: #fff;
   /* padding-top: 130px; */
-  margin-top: 335px;
+ 
 }
 #productDetailMobil .content-images .slider {
-  position: absolute;
-  bottom: 0;
   height: 345px;
   width: 100%;
   display: flex;
