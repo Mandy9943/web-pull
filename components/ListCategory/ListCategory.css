@@ -112,7 +112,8 @@
 }
 
 .temp-card .product-card-img img {
-    width: auto !important;
+    /* width: auto !important; */
+    width:clamp(110px, 80%, 100%) !important;
     height: auto !important;
     display: block !important;
     margin: auto !important;
@@ -126,7 +127,8 @@
 }
 
 .temp-card-void .product-card-img img {
-    width: auto !important;
+    /* width: auto !important; */
+    width:clamp(110px, 80%, 100%) !important;
     height: auto !important;
     display: block !important;
     margin: auto !important;
