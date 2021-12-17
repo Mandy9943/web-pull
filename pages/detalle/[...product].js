@@ -134,8 +134,8 @@ function Product({ data, u_data }) {
         {/*></script>*/}
       </Head>
       {mobileView ? (
-        //  <Detail user_data={u_data} data={data} />
-        <ProductDetailMobil user_data={u_data} data={data} />
+         <Detail user_data={u_data} data={data} />
+        // <ProductDetailMobil user_data={u_data} data={data} />
       ) : (
         <Detail user_data={u_data} data={data} />
       )}
