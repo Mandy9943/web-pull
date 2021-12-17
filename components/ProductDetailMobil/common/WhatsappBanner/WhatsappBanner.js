@@ -3,7 +3,7 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import "./WhatsappBanner.module.css";
-const WhatsappBanner = ({ close, productLink }) => {
+const WhatsappBanner = ({ close, productId }) => {
   return (
     <div id="WhatsappBanner">
       <div className="closeIcon" onClick={close}>
@@ -13,7 +13,7 @@ const WhatsappBanner = ({ close, productLink }) => {
       <a
             rel="noopener noreferrer"
             target="_blank"
-            href={`https://wa.me/573128246497/?text=Hola estoy interesado sobre el producto “https://kiero.co${productLink}"`}
+            href={`https://wa.me/573128246497/?text=Hola estoy interesado sobre el producto “https://kiero.co/detalle/${productId}" y quiero saber mas informacion, me pueden ayudar?`}
             className="linkToWhatsapp"
           >
       <div className="info">
