@@ -79,7 +79,7 @@ const ProductDetailMobil = ({ user_data, data }) => {
   return (
     <div id="productDetailMobil">
       {isWhatsappBanner && (
-        <WhatsappBanner close={handleCloseWhatsappBanner} productId={"7741"} />
+        <WhatsappBanner close={handleCloseWhatsappBanner} productId={data.product_global_id} />
       )}
       <div className={navClass.join(" ")}>
         <Nav

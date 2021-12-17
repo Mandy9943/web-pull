@@ -30,7 +30,7 @@ const SellerInfo = () => {
         <div className="anullProperties">
           <Image src={spice} layout="fill" alt="Imagen del vendedor" />
         </div>
-        <h4>Spice Stock LLC.</h4>
+        <h4>Spice Stock SAS.</h4>
       </picture>
       <div className="certificate">
         <div className="anullProperties">

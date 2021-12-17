@@ -42,7 +42,7 @@ function SellerInfo({ productId }) {
 				</div>
 				<div className="info-profile-seller">
 					<p>
-						Spice Stock LLC.
+						Spice Stock SAS.
 					</p>
 				</div>
 				{seller?.leader && (

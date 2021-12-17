@@ -9,19 +9,23 @@ const WhatsappBanner = ({ close, productId }) => {
       <div className="closeIcon" onClick={close}>
         <FontAwesomeIcon icon={faTimes} />
       </div>
+      
+      <a
+            rel="noopener noreferrer"
+            target="_blank"
+            href={`https://wa.me/573128246497/?text=Hola estoy interesado sobre el producto “https://kiero.co/detalle/${productId}" y quiero saber mas informacion, me pueden ayudar?`}
+            className="linkToWhatsapp"
+          >
       <div className="info">
         <span>Ayuda en linea</span>
         <span className="whatsappIcon">
           <FontAwesomeIcon icon={faWhatsapp} />
         </span>
         <span>
-          <a
-            href={`https://wa.me/573128246497/?text=Hola estoy interesado sobre el producto “https://kiero.co/detalle/${productId}`}
-          >
             +57 312 0246497
-          </a>
         </span>
       </div>
+          </a>
     </div>
   );
 };

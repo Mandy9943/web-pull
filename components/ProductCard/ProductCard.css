@@ -82,7 +82,8 @@
 }
 
 .producto-card .product-card-img img {
-  width: auto !important;
+  /* width: auto !important; */
+  width:clamp(110px, 80%, 100%) !important;
   max-width: 100%;
   min-width: auto !important;
   height: auto !important;
