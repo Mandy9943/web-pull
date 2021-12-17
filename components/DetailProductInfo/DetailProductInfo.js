@@ -188,7 +188,7 @@ class DetailProductInfo extends Component {
                                         {handleWeight(this.props.weight)}
                                     </div>
                                     <br/>
-                                    <p className="accent">SPICESTOCK</p> <br/>
+                                    <p className="accent">SPICE STOCK SAS</p> <br/>
                                     *Este producto viene desde Estados Unidos
                                     <br/>
                                     *(Entrega de 3 a 9 días hábiles)
