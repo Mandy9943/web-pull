@@ -42,7 +42,7 @@ function SellerInfo({ productId }) {
 				</div>
 				<div className="info-profile-seller">
 					<p>
-						Spice Stock LLC.
+						Spice Stock SAS.
 					</p>
 				</div>
 				{seller?.leader && (
@@ -78,8 +78,9 @@ function SellerInfo({ productId }) {
 			))} */}
 
 			<div className='seller-info'>
-				<p>Vendedor Internacional</p>
-				<p>Ubicación Estados Unidos</p>
+				<p>Este producto viene de Estados Unidos</p>
+				<p>Entrega de 3 a 9 días hábiles</p>
+				<p className="title-section accent info-section">Envio Gratis</p>
 			</div>
 			<Link href={'/'}><a className="link-more">Mira más productos de este vendedor</a></Link>
 		</>

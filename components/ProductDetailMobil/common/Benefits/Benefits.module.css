@@ -1,63 +1,68 @@
 #Benefits {
-  border-top: 2px solid #e4e4e4;
-  border-bottom: 2px solid #e4e4e4;
-  background: #fff;
-  transition: all 0.3s ease;
-  min-width: 320px;
+    border-top: 2px solid #e4e4e4;
+    border-bottom: 2px solid #e4e4e4;
+    background: #fff;
+    transition: all 0.3s ease;
+    min-width: 320px;
 }
 
 .margin {
-  margin-top: 36px;
-  margin-bottom: 24px;
+    margin-top: 36px;
+    margin-bottom: 24px;
 }
 
 #Benefits .beneficio {
-  padding: 30px 10px; 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+    padding: 30px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 #Benefits .beneficio h1 {
-  font-family: Montserrat, sans-serif;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 800;
-  line-height: 29px;
-  letter-spacing: 0;
-  text-align: center;
-  color: #000000;
+    font-family: Montserrat, sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    line-height: 29px;
+    text-align: center;
+    color: #000000;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    display: inline-block;
+    padding-bottom: 25px;
 }
 
 #Benefits .beneficio h1 .red {
-  color: #cf0a2c;
+    color: #cf0a2c;
+    display: inline;
 }
 
 #Benefits .beneficio img {
-  margin: 36px 0 24px 0 !important;
-  width: 245px !important;
-  height: 227px !important;
+    margin: 36px 0 0px 0 !important;
+    width: 245px !important;
+    height: 227px !important;
 }
 
 #Benefits .beneficio h3 {
-  font-family: Montserrat, sans-serif;
-  font-size: 21px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 26px;
-  letter-spacing: 0;
-  text-align: center;
-  margin: 0 3px 18px 3px;
-  color: #000000;
+    font-family: Montserrat, sans-serif;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 26px;
+    letter-spacing: 0;
+    text-align: center;
+    margin: 0 3px 18px 3px;
+    color: #000000;
 }
 
 #Benefits .beneficio p {
-  font-family: Montserrat, sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 21px;
-  text-align: center;
-  color: #5d5d5d;
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    color: #5d5d5d;
+    width: 90%;
 }

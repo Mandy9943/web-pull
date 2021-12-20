@@ -3,7 +3,7 @@
     border-bottom: 2px solid #e4e4e4;
     background: #fff;
     transition: all 0.3s ease;
-    padding: 25px;
+    padding: 10px 25px;
 }
 
 #DetailInfo .closed {
@@ -14,7 +14,6 @@
 #DetailInfo .open {
     height: 601px;
     width: auto;
-
 }
 
 #DetailInfo .titulo {
@@ -38,23 +37,25 @@
 #DetailInfo .detalles {
     display: grid;
     align-items: center;
-    justify-content: space-around;
-    margin-right: 25px;
-    grid-template-columns: 1fr 1fr;
 }
 
-#DetailInfo .detalles h6 {
+#DetailInfo .detalles .detailContainer{
+    display: flex;
+    
+}
+
+#DetailInfo .detalles .detailContainer h6 {
     font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 12px;
     line-height: 16px;
     color: #5D5D5D;
-    margin-right: auto;
     margin-bottom: 16px;
+    max-width: 134px;
 }
 
-#DetailInfo .detalles h5 {
+#DetailInfo .detalles .detailContainer h5 {
     font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: 500;
@@ -62,6 +63,24 @@
     line-height: 15px;
     letter-spacing: 0.02em;
     color: #000000;
-    margin-left: auto;
     margin-bottom: 16px;
+    
 }
+
+#DetailInfo footer img {
+    grid-area: arrow;
+}
+
+#DetailInfo footer {
+    align-items: center;
+    justify-content: center;
+    display: grid;
+    grid-template-areas: "arrow";
+    width: 64.5vw;
+    padding-top: 25px;
+}
+
+#DetailInfo footer img {
+    padding-left: 65px !important;
+}
+

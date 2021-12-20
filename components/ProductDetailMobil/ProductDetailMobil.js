@@ -8,6 +8,7 @@ import backGround from "../../assets/img/productDetail/fondo-rojo-landing-view@2
 import CheckoutProduct from "./common/CheckoutProduct/CheckoutProduct";
 import Header from "./common/Header/Header";
 
+
 const SwiperSlider = dynamic(
   () => import("./common/SwiperSlider/SwipperSlider"),
   {
@@ -20,6 +21,7 @@ import Info from "./common/Info/Info";
 import PayMethod from "./common/PayMethod/PayMethod";
 import Detail from "./common/Detail/Detail";
 import Description from "./common/Description/Description";
+
 const OfferSection = dynamic(
   () => import("./common/OfferSection/OfferSection"),
   {
@@ -36,19 +38,25 @@ import useScrollY from "../../lib/hooks/useScrollY";
 
 import WhatsappBanner from "./common/WhatsappBanner/WhatsappBanner";
 import CheckoutButton from "./common/CheckoutButton/CheckoutButton";
+import OurClient from "./common/OurClient/OurClient";
+import { divide } from "lodash";
 
 const Nav = dynamic(() => import("../Common/Nav/Nav"));
 const Footer = dynamic(() => import("../Common/Footer"));
 const FormProductDetail = dynamic(() =>
-  import("./common/formProductDetail/FormProductDetail")
+  import("./common/formProductDetail/formProductDetail")
 );
 const StickyPayButton = dynamic(() =>
   import("./common/StickyPayButton/StickyPayButton")
 );
 
+const SellerInfo = dynamic(() => import("./common/SellerInfo/SellerInfo"), {
+  loading: () => <p>...</p>,
+});
+
 const ProductDetailMobil = ({ user_data, data }) => {
   let urlSic = "https://www.sic.gov.co";
-  console.log("data", data);
+  // console.log("data", data);
   const [isForm, setIsForm] = useState(false);
   const [isWhatsappBanner, setIsWhatsappBanner] = useState(true);
   const scrolledPayBuuton = useScrollY(700, false);
@@ -70,7 +78,7 @@ const ProductDetailMobil = ({ user_data, data }) => {
   return (
     <div id="productDetailMobil">
       {isWhatsappBanner && (
-        <WhatsappBanner close={handleCloseWhatsappBanner} productId={"7741"} />
+        <WhatsappBanner close={handleCloseWhatsappBanner} productId={data.product_global_id} />
       )}
       <div className={navClass.join(" ")}>
         <Nav
@@ -85,16 +93,6 @@ const ProductDetailMobil = ({ user_data, data }) => {
       )}
       <FormProductDetail open={isForm} handleClose={handleCloseForm} />
       <div className="content-curve-shape">
-        <div className="curve-shape">
-          <div className="anullProperties">
-            <Image
-              loading="lazy"
-              alt="Red background"
-              src={backGround}
-              layout="fill"
-            />
-          </div>
-        </div>
         <div className="header-detail">
           <Header title={data.title} bredCumbs={data.breadcum} />
         </div>
@@ -115,13 +113,10 @@ const ProductDetailMobil = ({ user_data, data }) => {
         stock={data.status === 0 ? 0 : data.stock}
         discount_percentage={data.discount_percentage}
       />
-      <Info />
-      <PayMethod />
       <Detail product={data} />
       <Description product={data} />
-      <SwiperSlider
-        type={"show"}
-      />
+      <OurClient />
+      <SwiperSlider type={"show"} />
       <Benefits />
       <RecommendedProducts category={data.category} />
       <HelpCenter />

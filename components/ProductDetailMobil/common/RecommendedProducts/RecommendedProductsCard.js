@@ -4,6 +4,7 @@ import "./RecommendedProductsCard.module.css";
 import button from "../../../../assets/img/productDetail/component-4@2x.svg";
 import Image from "next/image";
 function RecommendedProductsCard({ product }) {
+  console.log("product", product);
   return (
     <div id="RecommendedProductsCard">
       {product ? (
@@ -18,33 +19,16 @@ function RecommendedProductsCard({ product }) {
                 className="productImg"
               />
             </div>
-
-            <h4>{product.title.substr(0, 80)}</h4>
-            <h3 className="price">
-              {product.price
-                .toString()
-                .split(".")[0]
-                .replace(/(.)(?=(\d{3})+$)/g, "$1.")}
-            </h3>
-            <div className="stock">
-              <h3>Cantidad en stock: 6</h3>
-              <a
-                href="#"
-                onClick={() => {
-                  alert("Ir al producto!");
-                }}
-              >
-                <div className="anullProperties">
-                  <Image
-                    loading="lazy"
-                    src={button}
-                    alt="Ir"
-                    layout="fill"
-                    className="irImg"
-                  />
-                </div>
-              </a>
+            <div className="priceSection">
+              <h3 className="price">
+                {product.price
+                  .toString()
+                  .split(".")[0]
+                  .replace(/(.)(?=(\d{3})+$)/g, "$1.")}
+              </h3>
+              <span className="discount">- 10%</span>
             </div>
+            <h4>{product.title.substr(0, 80)}</h4>
           </div>
         </>
       ) : (

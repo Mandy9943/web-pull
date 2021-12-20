@@ -4,13 +4,21 @@
   left: 0;
   right: 0;
   padding: 0 20px;
-  background: #f89090;
+  background: #3ada96;
   color: white;
   display: flex;
   z-index: 999;
   align-items: center;
   font-size: 3.5vw;
   height: 50px;
+}
+
+#WhatsappBanner .linkToWhatsapp{
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: white;
 }
 
 #WhatsappBanner .closeIcon {

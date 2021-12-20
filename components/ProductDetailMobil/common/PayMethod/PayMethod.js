@@ -8,7 +8,6 @@ import efecty from "../../../../assets/img/productDetail/efecty@2x.png";
 import "./PayMethod.module.css";
 
 import Image from "next/image";
-import { fill } from "lodash";
 
 const PayMethod = () => {
   return (
@@ -17,48 +16,42 @@ const PayMethod = () => {
         <h3>Métodos de pago</h3>
       </div>
       <div className="link ">
+
+        <div className="imgContainer">
         <div className="anullProperties">
-          <Image
-            className="min"
-            loading="lazy"
-            src={visa}
-            alt="Tarjeta Visa"
-            layout="fill"
-          />
+          <Image src={visa} alt="Tarjeta Visa" layout="fill" />
+        </div>
+        </div>
+        <div className="imgContainer">
+        <div className="anullProperties">
+          <Image src={mastercard} alt="Tarjeta Mastercard" layout="fill" />
+        </div>
         </div>
 
+        <div className="imgContainer">
         <div className="anullProperties">
-          <Image
-            loading="lazy"
-            src={mastercard}
-            alt="Tarjeta Mastercard"
-            layout="fill"
-          />
+          <Image src={american} alt="Tarjeta American" layout="fill" />
+        </div>
         </div>
 
+        <div className="imgContainer">
         <div className="anullProperties">
-          <Image
-            loading="lazy"
-            src={american}
-            alt="Tarjeta American"
-            layout="fill"
-          />
+          <Image src={baloto} alt="Baloto" layout="fill" />
         </div>
+        </div>
+
+        <div className="imgContainer">
         <div className="anullProperties">
-          <Image loading="lazy" src={baloto} alt="Baloto" layout="fill" />
+          <Image src={pse} alt="PSE" layout="fill" />
         </div>
+        </div>
+
+        <div className="imgContainer">
         <div className="anullProperties">
-          <Image loading="lazy" src={pse} alt="PSE" layout="fill" />
+          <Image src={efecty} alt="Efecty" layout="fill" />
         </div>
-        <div className="anullProperties">
-          <Image loading="lazy" src={efecty} alt="Efecty" layout="fill" />
         </div>
-        {/* <img loading="lazy" src={visa} alt="Tarjeta Visa" />
-        <img loading="lazy" src={mastercard} alt="Tarjeta Mastercard" />
-        <img loading="lazy" src={american} alt="Tarjeta American" />
-        <img loading="lazy" src={baloto} alt="Baloto" />
-        <img loading="lazy" src={pse} alt="PSE" />
-        <img loading="lazy" src={efecty} alt="Efecty" /> */}
+
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import {get, post, postForm, putForm, sget, apiget, apiget2} from '../lib/request';
-import {categoryApi, filtersApi, productsApi, suggestionsApi} from '../lib/config';
+import {categoryApi, categoryApi2, filtersApi, productsApi, suggestionsApi} from '../lib/config';
 
 const getDataJWT = (endpoint, jwt) => {
     try {
@@ -121,13 +121,14 @@ export const searchProducts = (
         if (categoryName !== '') params.append('category', categoryName);
         if (sort_by !== '') params.append('sort_by', sort_by);
         if (order_by !== '') params.append('order_by', order_by);
-        if (level !== '') params.append('level', level);
+        if (level !== '') params.append('level', level === 0 ? 1 : level);
 
         let endpoint1 = productsApi + `?size=${size}&page=${page}`;
-        let endpoint2 = categoryApi + `/${categoryNameOts}?size=${size}&page=${page}`;
+        // let endpoint2 = categoryApi + `/${categoryNameOts}?size=${size}&page=${page}`;
+        let endpoint2 = categoryApi2 + `?&size=${size}&page=${page}`;
         let endpoint = type === 'search' ? endpoint1 : endpoint2;
         if (params.toString().length) endpoint = endpoint + '&' + params.toString();
-        // console.log(endpoint,categoryNameOts,brand,price,categoryName,sort_by,order_by,level)
+        // console.log(endpoint)
         return apiget(decodeURI(endpoint));
     } catch (error) {
         return error;
