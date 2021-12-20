@@ -20,9 +20,9 @@ const SwiperSlider = ({ images, altImg, type }) => {
   return type === "HomeProduct" ? (
     <div className="swiperSliderDatailMobile">
      <Swiper
-        loop={true}
+        loop={true} 
         speed={400}
-        autoplay={true}
+       
         autoplay={{
           delay: 2500,
           disableOnInteraction: false,
@@ -41,6 +41,7 @@ const SwiperSlider = ({ images, altImg, type }) => {
         pagination={{
           clickable: true,
         }}
+        spaceBetween={16}
         className="mySwiper"
       >
         {!images.length ? (

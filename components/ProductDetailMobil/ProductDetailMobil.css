@@ -24,7 +24,7 @@
 
 #productDetailMobil .content-images {
  
-  width: 100%;
+  width: 100vw;
   padding: 1px;
   background: #fff;
   /* padding-top: 130px; */
