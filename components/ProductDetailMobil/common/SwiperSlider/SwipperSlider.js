@@ -20,18 +20,25 @@ SwiperCore.use([EffectCoverflow, Pagination]);
 const SwiperSlider = ({ images, altImg, type }) => {
   return type === "HomeProduct" ? (
     <div className="swiperSliderDatailMobile">
-      <Swiper
+     <Swiper
         loop={true}
         speed={400}
-        spaceBetween={16}
+        autoplay={true}
         autoplay={{
           delay: 2500,
           disableOnInteraction: false,
         }}
-        slidesPerView={1}
-        slidesPerGroup={1}
+        effect={"coverflow"}
+        grabCursor={true}
         centeredSlides={true}
         slidesPerView={"auto"}
+        coverflowEffect={{
+          rotate: 50,
+          stretch: 15,
+          depth: 50,
+          modifier: 1,
+          slideShadows: false,
+        }}
         pagination={{
           clickable: true,
         }}
