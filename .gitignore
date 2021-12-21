@@ -10,4 +10,5 @@ _next/
 .prettierrc
 _next
 .vscode
+.eslintcache
 

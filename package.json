@@ -8,16 +8,9 @@
     "build": "next build",
     "start": "next start",
     "export": "next build & next export -o build",
-    "lint": "eslint services --fix && pretty-quick --staged",
+    "lint": "eslint services --cache --fix && pretty-quick --staged",
     "prepare": "husky install",
-    "pre-commit": "eslint services --fix && pretty-quick --staged && git add .",
-    "prettier": "prettier --write "
-  },
-  "lint-staged": {
-    "**/*.{js,jsx,json,css}": [
-      "prettier --write",
-      "git add ."
-    ]
+    "pre-commit": "npm run lint && git add ."
   },
   "keywords": [],
   "author": "",
