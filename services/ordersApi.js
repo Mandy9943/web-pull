@@ -1,4 +1,4 @@
-import { sget, putForm, put } from "../lib/request";
+import { sget, put } from "../lib/request";
 
 export const getOrderId = (order_id, jwt) => {
   try {

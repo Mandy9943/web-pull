@@ -25,8 +25,7 @@ const Info = () => {
         <div className="text texte">
           <h3>Envío Gratuito</h3>
           <p>
-            Nuestros productos son importados.
- Entrega de 3 a 9 días hábiles.
+            Nuestros productos son importados. Entrega de 3 a 9 días hábiles.
           </p>
         </div>
       </div>

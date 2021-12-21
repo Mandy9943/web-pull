@@ -1,9 +1,8 @@
 .swiperSliderDatailMobile {
   height: 100%;
   width: 100%;
-  padding-bottom: 90px ;
+  padding-bottom: 90px;
   background-color: white;
-
 }
 
 .swiperSliderDatailMobile .swiper {
@@ -66,4 +65,3 @@
   width: 100vw;
   height: 512px;
 }
-

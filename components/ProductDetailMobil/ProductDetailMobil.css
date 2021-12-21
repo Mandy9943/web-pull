@@ -35,7 +35,7 @@
 #productDetailMobil .content-images {
   position: relative;
   width: 100%;
-  padding: 1px;
+  padding: 0px !important;
   background: #fff;
   /* padding-top: 130px; */
   margin-top: 335px;

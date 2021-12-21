@@ -59,7 +59,6 @@ const CheckoutProduct = ({ price, stock, discount_percentage, onClickBuy }) => {
           producto recientemente.
         </p>
       </div>
-      
     </div>
   );
 };

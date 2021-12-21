@@ -38,27 +38,27 @@ const Detail = ({ product }) => {
             <h5>{product.model}</h5>
           </div>
           <div className="detailContainer">
-          <h6>Tamaño</h6>
-          <h5>
-            {parseFloat(product.length).toFixed(2)}" - (
-            {parseFloat(parseFloat(product.length) * 2.54).toFixed(1)}cm)
-          </h5>
-          </div>    
-          <div className="detailContainer">
-          <h6>Ancho</h6>
-          <h5>
-            {parseFloat(product.width).toFixed(2)}" - (
-            {parseFloat(product.width * 2.54).toFixed(1)}cm)
-          </h5>
+            <h6>Tamaño</h6>
+            <h5>
+              {parseFloat(product.length).toFixed(2)}&#34 - (
+              {parseFloat(parseFloat(product.length) * 2.54).toFixed(1)}cm)
+            </h5>
           </div>
           <div className="detailContainer">
-          <h6>Peso</h6>
-          <h5>
-            {parseFloat(product.weight).toFixed(2)} Lb - ({" "}
-            {parseFloat(parseFloat(product.weight) / 2.205).toFixed(1)}kg)
-          </h5>
-          </div>  
- 
+            <h6>Ancho</h6>
+            <h5>
+              {parseFloat(product.width).toFixed(2)}&#34 - (
+              {parseFloat(product.width * 2.54).toFixed(1)}cm)
+            </h5>
+          </div>
+          <div className="detailContainer">
+            <h6>Peso</h6>
+            <h5>
+              {parseFloat(product.weight).toFixed(2)} Lb - ({" "}
+              {parseFloat(parseFloat(product.weight) / 2.205).toFixed(1)}kg)
+            </h5>
+          </div>
+
           <footer>
             <div className="anullProperties">
               <Image

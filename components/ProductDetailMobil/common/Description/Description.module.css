@@ -1,61 +1,60 @@
 #Description {
-    border-top: 2px solid #e4e4e4;
-    border-bottom: 2px solid #e4e4e4;
-    background: #fff;
-    transition: all 0.3s ease;
-    padding: 10px 25px;
+  border-top: 2px solid #e4e4e4;
+  border-bottom: 2px solid #e4e4e4;
+  background: #fff;
+  transition: all 0.3s ease;
+  padding: 10px 25px;
 }
 
 #Description .closed {
-    height: 76px;
-    width: auto;
+  height: 76px;
+  width: auto;
 }
 
 #Description .open {
-    height: 601px;
-    width: auto;
+  height: 601px;
+  width: auto;
 }
 
-#Description .detalles{
-    margin-top: 20px;
+#Description .detalles {
+  margin-top: 20px;
 }
 
 #Description .titulo {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 76px;
-    cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 76px;
+  cursor: pointer;
 }
 
 #Description .titulo h3 {
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 21px;
-    line-height: 26px;
-    color: #000000;
+  font-family: Montserrat, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 21px;
+  line-height: 26px;
+  color: #000000;
 }
 
 #Description .detalles .texto {
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 21px;
-    color: #5F5F5F;
-    
+  font-family: Montserrat, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 21px;
+  color: #5f5f5f;
 }
 
 #Description footer {
-    align-items: center;
-    justify-content: center;
-    display: grid;
-    grid-template-areas: "arrow";
-    width: 64.5vw;
-    height: 79px;
+  align-items: center;
+  justify-content: center;
+  display: grid;
+  grid-template-areas: "arrow";
+  width: 64.5vw;
+  height: 79px;
 }
 
 #Description footer img {
-    padding-left: 65px !important;
+  padding-left: 65px !important;
 }

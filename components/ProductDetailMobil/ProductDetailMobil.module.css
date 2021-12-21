@@ -17,18 +17,15 @@
   position: relative;
 }
 
-
 #productDetailMobil .header-detail {
   box-sizing: border-box;
 }
 
 #productDetailMobil .content-images {
- 
   width: 100vw;
-  padding: 1px;
+  /* padding: 1px; */
   background: #fff;
   /* padding-top: 130px; */
- 
 }
 #productDetailMobil .content-images .slider {
   height: 345px;
@@ -39,7 +36,7 @@
   box-sizing: border-box;
 }
 
-.caca{
+.caca {
   background-color: white;
   border: none;
   margin-top: -10px;

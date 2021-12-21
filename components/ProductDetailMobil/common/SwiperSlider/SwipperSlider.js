@@ -19,10 +19,9 @@ SwiperCore.use([EffectCoverflow, Pagination]);
 const SwiperSlider = ({ images, altImg, type }) => {
   return type === "HomeProduct" ? (
     <div className="swiperSliderDatailMobile">
-     <Swiper
-        loop={true} 
+      <Swiper
+        loop={true}
         speed={400}
-       
         autoplay={{
           delay: 2500,
           disableOnInteraction: false,
@@ -73,7 +72,8 @@ const SwiperSlider = ({ images, altImg, type }) => {
               <SwiperSlide key={image.file_id} className="mdc-ripple-surface">
                 <Skeleton
                   variant="rectangular"
-                  height={300}
+                  height={290}
+                  width={290}
                   className="skeletonProductDetail"
                 />
                 <Image
@@ -103,8 +103,6 @@ const SwiperSlider = ({ images, altImg, type }) => {
 };
 
 export default SwiperSlider;
-
-
 
 /* import React from "react";
 

@@ -1,63 +1,63 @@
 #Subscription {
-    background: #f3f3f3;
-    padding: 25px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  background: #f3f3f3;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 #Subscription h3 {
-    font-family: Montserrat, sans-serif;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 800;
-    line-height: 29px;
-    letter-spacing: 0;
-    text-align: center;
-    padding-top: 18px;
-    color: #5f5f5f;
+  font-family: Montserrat, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 29px;
+  letter-spacing: 0;
+  text-align: center;
+  padding-top: 18px;
+  color: #5f5f5f;
 }
 
 #Subscription p {
-    padding-top: 24px;
-    font-family: Montserrat, sans-serif;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 20px;
-    letter-spacing: 0;
-    text-align: center;
-    color: #5f5f5f;
+  padding-top: 24px;
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0;
+  text-align: center;
+  color: #5f5f5f;
 }
 
 #Subscription .anullProperties img {
-    padding-top: 10px !important;
-    width: 100% !important;
-    height: 211px !important;
+  padding-top: 10px !important;
+  width: 100% !important;
+  height: 211px !important;
 }
 
 #Subscription input {
-    height: 15px;
-    border-radius: 0;
-    font-size: 16px;
-    padding: 17px 0px 18px 18px;
-    color: #555151;
-    border: none;
-    margin-top: 31px;
+  height: 15px;
+  border-radius: 0;
+  font-size: 16px;
+  padding: 17px 0px 18px 18px;
+  color: #555151;
+  border: none;
+  margin-top: 31px;
 }
 
 #Subscription button {
-    background-color: #cf0a2c;
-    margin-top: 25px;
-    height: 68px;
-    font-family: Montserrat, sans-serif;
-    font-size: 21px;
-    font-style: normal;
-    font-weight: 800;
-    line-height: 26px;
-    letter-spacing: 0.05em;
-    text-align: center;
-    color: #ffffff;
-    border-radius: 40px;
+  background-color: #cf0a2c;
+  margin-top: 25px;
+  height: 68px;
+  font-family: Montserrat, sans-serif;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 26px;
+  letter-spacing: 0.05em;
+  text-align: center;
+  color: #ffffff;
+  border-radius: 40px;
 }
