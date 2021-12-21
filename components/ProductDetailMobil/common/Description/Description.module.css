@@ -16,6 +16,10 @@
     width: auto;
 }
 
+#Description .detalles{
+    margin-top: 20px;
+}
+
 #Description .titulo {
     display: flex;
     justify-content: space-between;
@@ -40,8 +44,7 @@
     font-size: 14px;
     line-height: 21px;
     color: #5F5F5F;
-    text-align: justify;
-    margin: 0 25px 25px 25px;
+    
 }
 
 #Description footer {
@@ -50,7 +53,7 @@
     display: grid;
     grid-template-areas: "arrow";
     width: 64.5vw;
-    padding-top: 25px;
+    height: 79px;
 }
 
 #Description footer img {

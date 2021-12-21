@@ -1,131 +1,123 @@
 #InfoProductDetailMovil {
-    border-top: 2px solid #e4e4e4;
-    border-bottom: 2px solid #e4e4e4;
-    background: #fff;
-    display: grid;
-    grid-template-areas:
-    "header"
+
+  background: #fff;
+  display: grid;
+  grid-template-areas:
     "envios"
     "compras"
     "garantia";
-    height: 282px;
+  
 }
 
 /*Definiciones de los areas*/
 
-#InfoProductDetailMovil .envios {
-    grid-area: envios;
+/* #InfoProductDetailMovil .envios {
+  grid-area: envios;
 }
 
 #InfoProductDetailMovil .compras {
-    grid-area: compras;
+  grid-area: compras;
 }
 
 #InfoProductDetailMovil .garantia {
-    grid-area: garantia;
+  grid-area: garantia;
+}
+ */
+
+#InfoProductDetailMovil .title{
+  margin: 24px 0px;
+  width: 100%;
+  padding: 0px 25px !important;
 }
 
-#InfoProductDetailMovil header {
-    grid-area: header;
+#InfoProductDetailMovil .title h4{
+  display: flex;
+  font-size: 18px;
+  font-family: Montserrat, sans-serif;
+ font-style: normal;
+ font-weight: bold;
+}
+
+#InfoProductDetailMovil .title h4 .company{
+  margin-left: 4px;
+  color: #CF0A2C;
 }
 
 #InfoProductDetailMovil .info {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  align-items: center;
+  margin-bottom: 28px;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  padding: 0px 30px;
+}
+#InfoProductDetailMovil .info .car{
+  margin-left: -4px;
 }
 
+
 #InfoProductDetailMovil .info .icon {
-    padding-left: 50px;
-    align-items: center;
-    margin-right: 20px;
+  align-items: center;
+  margin-right: 27px;
 }
 
 .texte {
-    margin-left: -10px;
+  margin-left: -10px;
 }
 
 #InfoProductDetailMovil .info .icon img {
-    padding-right: 27px;
-    padding-bottom: 12px;
-    height: 38px;
+  padding-bottom: 12px;
+  height: 38px;
 }
 
-#InfoProductDetailMovil .text {
-    flex: 1;
-    padding-right: 50px;
+#InfoProductDetailMovil .info .text {
+  flex: 1;
+  padding-right: 80px;
 }
 
 #InfoProductDetailMovil .text h3 {
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 14px;
-    line-height: 17px;
-    color: #000000;
-    margin: 4px 0;
+  font-family: Montserrat, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+  margin: 4px 0;
 }
 
 #InfoProductDetailMovil .text p {
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 16px;
-    color: #5d5d5d;
-    text-align: left;
+  /* Body 2 */
+  font-family: Montserrat, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  color: #5d5d5d;
 }
 
 /*Modo tablet*/
 @media (min-width: 750px) {
-    #InfoProductDetailMovil {
-        grid-template-areas:
-                "header header header"
-                "envios compras garantia";
-        height: 150px;
-        padding-top: 47px;
-        padding-left: 47px;
-    }
+  #InfoProductDetailMovil {
+    grid-template-areas: "envios compras garantia";
+    height: 150px;
+    padding-top: 47px;
+    padding-left: 47px;
+  }
 
-    #InfoProductDetailMovil .text {
-        padding-right: 50px;
-    }
+  #InfoProductDetailMovil .text {
+    padding-right: 50px;
+  }
 
-    #InfoProductDetailMovil .info .icon {
-        padding-left: 50px;
-    }
+  #InfoProductDetailMovil .info .icon {
+    padding-left: 50px;
+  }
 
-    #InfoProductDetailMovil .info {
-        display: inline-block;
-        padding-bottom: 15px;
-    }
-
-    #InfoProductDetailMovil .info .icon img {
-        padding-left: 0;
-        padding-right: 110px;
-    }
-}
-
-#InfoProductDetailMovil header {
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    padding-left: 25px;
-    padding-right: 25px;
-}
-
-#InfoProductDetailMovil header h4 {
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 22px;
-    letter-spacing: 0.03em;
-    color: #000000;
-}
-
-#InfoProductDetailMovil header h4 .company {
-    color: #CF0A2C;
+  #InfoProductDetailMovil .info {
     display: inline-block;
+    padding-bottom: 15px;
+  }
+  #InfoProductDetailMovil .info .icon img {
+    padding-left: 0;
+    padding-right: 110px;
+  }
 }

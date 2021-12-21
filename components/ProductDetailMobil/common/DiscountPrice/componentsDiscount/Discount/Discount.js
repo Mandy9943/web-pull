@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import "./Discount.css";
+import "./Discount.module.css";
 
 const Discount = () => {
   return (

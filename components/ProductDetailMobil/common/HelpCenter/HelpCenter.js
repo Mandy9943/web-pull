@@ -24,8 +24,8 @@ const HelpCenter = () => {
         </div>
       </div>
 
-      <div className="detalles">
         {collapse === true ? (
+      <div className="detalles">
           <React.Fragment>
             <a href="#">
               <h3>Preguntas Frecuentes</h3>
@@ -59,8 +59,8 @@ const HelpCenter = () => {
               </div>
             </a>
           </React.Fragment>
-        ) : null}
       </div>
+        ) : null}
     </div>
   );
 };

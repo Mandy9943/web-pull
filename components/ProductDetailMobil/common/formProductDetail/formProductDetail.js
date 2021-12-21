@@ -7,7 +7,7 @@ import {
 } from "@material-ui/core";
 import React from "react";
 import FormDialog from "./components/FormDialog/FormDialog";
-import "./formProductDetail.css";
+import "./formProductDetail.module.css";
 import Link from "next/link";
 import {Controller, useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";

@@ -1,7 +1,7 @@
 #HelpCenter {
   background: #fff;
   transition: all 0.3s ease;
-  padding: 25px;
+  padding: 10px 25px;
 }
 
 #HelpCenter .closed {

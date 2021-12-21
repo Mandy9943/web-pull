@@ -2,7 +2,7 @@ import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { useEffect } from "react";
-import "./Counter.css";
+import "./Counter.module.css";
 const Counter = ({ onCount, stock }) => {
   const [count, setCount] = useState(stock === 0 ? stock : 1);
   const handleAdd = () => {

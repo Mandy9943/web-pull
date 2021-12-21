@@ -5,6 +5,7 @@
     flex-direction: row;
     padding: 0px 20px;
     background-color: white;
+    padding-bottom: 20px;
 }
 
 .containerDiscount .wrapperDiscount{
@@ -16,12 +17,11 @@
 
 .containerDiscount .wrapperPercent{
     flex-direction: column;
-    margin-top: 33px;
-    margin-bottom: 23px;
+  
 }
 
 .containerDiscount .wrapperPercent .percentDiscount{
-    font-size: 56px;
+    font-size:  56px;
     font-weight: 800;
     line-height: 68.26px;
     color:#1FC2E5;
@@ -30,6 +30,7 @@
 .containerDiscount .wrapperPercent .textDiscount{
     font-size: 18px;
     font-weight: 800;
+    font-weight: bold;
     line-height: 21.94px;
     color:#1FC2E5;
 }
