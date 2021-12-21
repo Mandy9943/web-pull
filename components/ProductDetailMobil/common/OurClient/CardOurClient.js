@@ -1,31 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import review from "../../../../assets/img/review/Great Mower For The Price_0.jpg";
 import cert from "../../../../assets/img/productDetail/Certified Icon.svg";
 import location from "../../../../assets/img/productDetail/Location Icon.svg";
 import iconopen from "../../../../assets/img/productDetail/Maximize Icon.svg";
-import iconcerrado from "../../../../assets/img/productDetail/Minimize Icon.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import "./OurClient.module.css";
 
-const CardOurClient = ({ client }) => {
-  const [comment, setComment] = useState(false);
-  const [showCard, setShowCard] = useState(false);
-  const [icons, setIcon] = useState(iconopen);
+const CardOurClient = ({ client, handleOnClickComment }) => {
   const stars = [];
   for (let i = 0; i < client.star; i++) {
     stars.push(<FontAwesomeIcon icon={faStar} />);
   }
-  const handleOnClickComment = (e) => {
-    comment === false ? setIcon(iconopen) : setIcon(iconcerrado);
-    setComment(!comment);
-  };
 
-  const handleShowCard = () => {
-    alert("Click");
-    return <div>Hola mundo</div>;
-  };
   return (
     <div className="card">
       <picture>
@@ -49,11 +37,7 @@ const CardOurClient = ({ client }) => {
         <div className="clasification">{stars}</div>
         <div className="comment">
           <h5>{client.H}</h5>
-          {comment === false ? (
-            <p>{client.P.substring(0, 80)} ...</p>
-          ) : (
-            <p>{client.P}.</p>
-          )}
+          <p>{client.P.substring(0, 80)} ...</p>
         </div>
         <footer>
           <div className="separator" />

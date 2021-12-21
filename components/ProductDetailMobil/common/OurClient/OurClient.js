@@ -7,12 +7,19 @@ import abierto from "../../../../assets/img/productDetail/l-nea-86@2x.svg";
 import cerrado from "../../../../assets/img/productDetail/icono-desplegar@2x.svg";
 import CardOurClient from "./CardOurClient";
 import review from "./review";
+import SwiperCardOurClient from "./SwiperCardOurClient";
 
 const OurClient = () => {
   const lista = review();
   let count_opinion = lista.length;
   const [collapse, setCollapse] = useState(false);
   const [desglosar, setDesglosar] = useState(cerrado);
+  const [comment, setComment] = useState(false);
+  const [clientShow, setClientShow] = useState(null);
+  const handleOnClickComment = (client) => {
+    setComment(!comment);
+    setClientShow(client);
+  };
 
   const handleOnClick = () => {
     collapse === false ? setDesglosar(abierto) : setDesglosar(cerrado);
@@ -44,8 +51,17 @@ const OurClient = () => {
         <React.Fragment>
           <article>
             {lista.map((client, i) => {
-              return <CardOurClient key={i} client={client} />;
+              return (
+                <CardOurClient
+                  key={i}
+                  client={client}
+                  handleOnClickComment={handleOnClickComment}
+                />
+              );
             })}
+            {clientShow !== null ? (
+              <SwiperCardOurClient client={clientShow} comment={comment} />
+            ) : null}
           </article>
           <div className="footer_our">
             <button>VER MÁS</button>
