@@ -1,8 +1,8 @@
 #PayMethod {
-  border-top: 2px solid #e4e4e4;
+
   border-bottom: 2px solid #e4e4e4;
   background: #fff;
-  padding: 0px 25px;
+  padding: 36px 25px 0 25px;
 }
 
 #PayMethod .titulo h3 {
@@ -12,7 +12,7 @@
   color: #000000;
   opacity: 1;
   margin-right: auto;
-  margin-top: 36px;
+  
 }
 
 #PayMethod .link {

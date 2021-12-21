@@ -77,7 +77,7 @@
     display: grid;
     grid-template-areas: "arrow";
     width: 64.5vw;
-    padding-top: 25px;
+    height: 79px;
 }
 
 #DetailInfo footer img {
