@@ -9,4 +9,5 @@ _next/
 .idea
 .prettierrc
 _next
+.vscode
 
