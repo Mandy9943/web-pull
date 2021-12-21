@@ -121,5 +121,11 @@
     },
     "componentsDefaultDirectory": "components/{name}",
     "packageManager": "npm yarn"
+  },
+  "husky": {
+    "hook": {
+      "pre-commit": "yarn pre-commit",
+      "pre-push": "yarn pre-commit"
+    }
   }
 }
