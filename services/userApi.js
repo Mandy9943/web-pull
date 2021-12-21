@@ -1,13 +1,6 @@
 import { get, post, put, rDelete, postWompi } from "../lib/request";
 
-export const createUser = async (
-  name,
-  last_name,
-  email,
-  password,
-  password_confirmation
-) => {
-  
+export const createUser = async (name, last_name, email, password) => {
   try {
     const response = await post("/register", {
       name: name,
@@ -74,7 +67,7 @@ export const recoverPass = async (email) => {
 
 export const resetPassword = async (password, token) => {
   try {
-    const response = await post("/resetPassword", {
+    await post("/resetPassword", {
       token: token,
       password: password,
     });
@@ -205,7 +198,7 @@ export const getDSI = async (jwt) => {
 
 export const changeUsername = async (data, jwt) => {
   try {
-    const response = await put(
+    await put(
       "/changeUserName ",
       {
         new_name: data,
@@ -220,7 +213,7 @@ export const changeUsername = async (data, jwt) => {
 
 export const anulateAccount = async (data, jwt) => {
   try {
-    const response = await rDelete("/anulate_account ", data, jwt);
+    await rDelete("/anulate_account ", data, jwt);
     return true;
   } catch (error) {
     return "Ha ocurrido un error en el servidor!";

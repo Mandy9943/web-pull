@@ -70,10 +70,10 @@ module.exports = withSourceMaps(
             "127.0.0.1",
           ],
         },
-        "**/*.js?(x)": (filenames) =>
-          `next lint --fix --file ${filenames
-            .map((file) => file.split(process.cwd())[1])
-            .join(" --file ")}`,
+        // "**/*.js?(x)": (filenames) =>
+        //   `next lint --fix --file ${filenames
+        //     .map((file) => file.split(process.cwd())[1])
+        //     .join(" --file ")}`,
 
         eslint: {
           dirs: ["services"], // Solo consultar en "services"

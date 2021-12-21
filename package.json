@@ -8,13 +8,13 @@
     "build": "next build",
     "start": "next start",
     "export": "next build & next export -o build",
-    "lint": "lint-staged",
+    "lint": "eslint services --fix && pretty-quick --staged",
     "prepare": "husky install",
-    "pre-commit": "pretty-quick --staged && lint-staged && git add .",
+    "pre-commit": "eslint services --fix && pretty-quick --staged && git add .",
     "prettier": "prettier --write "
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,json,css}": [
+    "**/*.{js,jsx,json,css}": [
       "prettier --write",
       "git add ."
     ]
@@ -129,8 +129,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn pre-commit",
-      "pre-push": "yarn pre-commit"
+      "pre-commit": "npm run pre-commit",
+      "pre-push": "npm run  pre-commit"
     }
   }
 }
