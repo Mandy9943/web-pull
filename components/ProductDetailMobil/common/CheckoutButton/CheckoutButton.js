@@ -40,12 +40,7 @@ const CheckoutButton = ({
         {!notShowCar && (
           <span className="icon-shoping-cart">
             <div className="anullProperties">
-              <Image
-                loading="lazy"
-                src={CartIcon}
-                alt="Shoping Cart"
-                layout="fill"
-              />
+              <Image src={CartIcon} alt="Shoping Cart" layout="fill" />
             </div>
           </span>
         )}
