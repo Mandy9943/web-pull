@@ -5,7 +5,7 @@ const DivindingLine = ({
   color = "#D6D6D6",
   width = "90%",
   height = "2px",
-  margin = "0px",
+  margin = "auto",
 }) => {
   return (
     <div
