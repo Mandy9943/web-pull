@@ -38,7 +38,7 @@ import useScrollY from "../../lib/hooks/useScrollY";
 
 import WhatsappBanner from "./common/WhatsappBanner/WhatsappBanner";
 import CheckoutButton from "./common/CheckoutButton/CheckoutButton";
-const OutClient = dynamic(() => import("./common/OurClient/OurClient"), {
+const OurClient = dynamic(() => import("./common/OurClient/OurClient"), {
   loading: () => <p>...</p>,
 });
 

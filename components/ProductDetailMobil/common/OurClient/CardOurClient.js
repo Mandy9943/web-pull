@@ -11,6 +11,7 @@ import "./OurClient.module.css";
 
 const CardOurClient = ({ client }) => {
   const [comment, setComment] = useState(false);
+  const [showCard, setShowCard] = useState(false);
   const [icons, setIcon] = useState(iconopen);
   const stars = [];
   for (let i = 0; i < client.star; i++) {
@@ -19,6 +20,11 @@ const CardOurClient = ({ client }) => {
   const handleOnClickComment = (e) => {
     comment === false ? setIcon(iconopen) : setIcon(iconcerrado);
     setComment(!comment);
+  };
+
+  const handleShowCard = () => {
+    alert("Click");
+    return <div>Hola mundo</div>;
   };
   return (
     <div className="card">
@@ -53,7 +59,7 @@ const CardOurClient = ({ client }) => {
           <div className="separator" />
           <div className="anullProperties">
             <Image
-              src={icons}
+              src={iconopen}
               layout="fill"
               alt="mini"
               onClick={handleOnClickComment}

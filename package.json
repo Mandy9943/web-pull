@@ -7,7 +7,12 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "export": "next build & next export -o build"
+    "export": "next build & next export -o build",
+    "lint": "next lint",
+    "fixed": "next lint --fix",
+    "prepare": "husky install",
+    "pre-commit": "pretty-quick --staged && next lint --fix && git add .",
+    "prettier": "prettier --write "
   },
   "keywords": [],
   "author": "",
@@ -101,7 +106,14 @@
     "file-loader": "^6.0.0",
     "next-purgecss": "^4.0.0",
     "prettier": "^2.5.1",
-    "prop-types": "^15.7.2"
+    "prop-types": "^15.7.2",
+    "eslint": "8.4.1",
+    "eslint-config-next": "12.0.7",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.1.2",
+    "pretty-quick": "^3.1.2"
   },
   "bit": {
     "env": {
