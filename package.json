@@ -123,7 +123,7 @@
     "packageManager": "npm yarn"
   },
   "husky": {
-    "hook": {
+    "hooks": {
       "pre-commit": "yarn pre-commit",
       "pre-push": "yarn pre-commit"
     }
