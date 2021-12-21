@@ -49,7 +49,7 @@ const SwiperCardOurClient = ({ client, comment, setComment }) => {
               <div className="clasification">{stars}</div>
               <div className="comment">
                 <h5>{client.H}</h5>
-                <p>{client.P.substring(0, 80)} ...</p>
+                <p>{client.P}</p>
               </div>
             </div>
           </div>
