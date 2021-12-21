@@ -1,84 +1,85 @@
 #DetailInfo {
-    border-top: 2px solid #e4e4e4;
-    border-bottom: 2px solid #e4e4e4;
-    background: #fff;
-    transition: all 0.3s ease;
-    padding: 10px 25px;
+  border-top: 2px solid #e4e4e4;
+  border-bottom: 2px solid #e4e4e4;
+  background: #fff;
+  transition: all 0.3s ease;
+  padding: 10px 25px;
 }
 
 #DetailInfo .closed {
-    height: 76px;
-    width: auto;
+  height: 76px;
+  width: auto;
 }
 
 #DetailInfo .open {
-    height: 601px;
-    width: auto;
+  height: 601px;
+  width: auto;
 }
 
 #DetailInfo .titulo {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 76px;
-    cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 76px;
+  cursor: pointer;
 }
 
 #DetailInfo .titulo h3 {
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 21px;
-    line-height: 26px;
-    color: #000000;
-    margin-right: auto;
+  font-family: Montserrat, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 21px;
+  line-height: 26px;
+  color: #000000;
+  margin-right: auto;
 }
 
 #DetailInfo .detalles {
-    display: grid;
-    align-items: center;
-    justify-content: space-around;
-    margin-right: 25px;
-    grid-template-columns: 1fr 1fr;
+  display: grid;
+  align-items: center;
 }
 
-#DetailInfo .detalles h6 {
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 16px;
-    color: #5D5D5D;
-    margin-right: auto;
-    margin-bottom: 16px;
+#DetailInfo .detalles .detailContainer {
+  display: flex;
 }
 
-#DetailInfo .detalles h5 {
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 15px;
-    letter-spacing: 0.02em;
-    color: #000000;
-    margin-left: auto;
-    margin-bottom: 16px;
+#DetailInfo .detalles .detailContainer h6 {
+  font-family: Montserrat, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  color: #5d5d5d;
+  margin-bottom: 16px;
+  flex-grow: 1;
+}
+
+#DetailInfo .detalles .detailContainer h5 {
+  font-family: Montserrat, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0.02em;
+  color: #000000;
+  margin-bottom: 16px;
+  flex-grow: 1;
+  max-width: 146px;
 }
 
 #DetailInfo footer img {
-    grid-area: arrow;
+  grid-area: arrow;
 }
 
 #DetailInfo footer {
-    align-items: center;
-    justify-content: center;
-    display: grid;
-    grid-template-areas: "arrow";
-    width: 64.5vw;
-    padding-top: 25px;
+  align-items: center;
+  justify-content: center;
+  display: grid;
+  grid-template-areas: "arrow";
+  width: 64.5vw;
+  height: 79px;
 }
 
 #DetailInfo footer img {
-    padding-left: 65px !important;
+  padding-left: 65px !important;
 }
-

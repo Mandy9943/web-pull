@@ -1,7 +1,7 @@
 import React from "react";
 
 import Skeleton from "react-loading-skeleton";
-import "./SkeletonProductDatail.css";
+import "./SkeletonProductDatail.module.css";
 
 const SkeletonProductDatail = () => {
   return (

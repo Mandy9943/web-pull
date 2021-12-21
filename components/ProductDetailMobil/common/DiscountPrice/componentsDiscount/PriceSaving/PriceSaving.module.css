@@ -38,7 +38,7 @@
 .containerPriceSaving .wrapperOtherPrices .savingPrice {
   font-size: 12px;
   color: #cf0a2c;
-  font-weight: bold;
+  font-weight: 500;
   position: static;
   width: 104px;
 }

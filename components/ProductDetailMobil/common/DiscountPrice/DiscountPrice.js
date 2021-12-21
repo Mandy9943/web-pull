@@ -5,7 +5,7 @@ import Discount from "./componentsDiscount/Discount/Discount";
 import DivindingLine from "../DivindingLine/DivindingLine";
 import PriceSaving from "./componentsDiscount/PriceSaving/PriceSaving";
 
-import "./DiscountPrice.css";
+import "./DiscountPrice.module.css";
 const DiscountPrice = () => {
   return (
     <div className="containerDiscountPrice">
