@@ -41,7 +41,6 @@
 
 #DetailInfo .detalles .detailContainer{
     display: flex;
-    
 }
 
 #DetailInfo .detalles .detailContainer h6 {
@@ -52,7 +51,7 @@
     line-height: 16px;
     color: #5D5D5D;
     margin-bottom: 16px;
-    max-width: 134px;
+    flex-grow: 1;
 }
 
 #DetailInfo .detalles .detailContainer h5 {
@@ -64,7 +63,8 @@
     letter-spacing: 0.02em;
     color: #000000;
     margin-bottom: 16px;
-    
+    flex-grow: 1;
+    max-width: 146px;
 }
 
 #DetailInfo footer img {

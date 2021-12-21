@@ -39,6 +39,11 @@
   box-sizing: border-box;
 }
 
+.caca{
+  background-color: white;
+  border: none;
+  margin-top: -10px;
+}
 
 #productDetailMobil .footer-social {
   width: 80%;

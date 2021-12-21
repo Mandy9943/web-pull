@@ -113,11 +113,14 @@ const ProductDetailMobil = ({ user_data, data }) => {
         stock={data.status === 0 ? 0 : data.stock}
         discount_percentage={data.discount_percentage}
       />
+    
+      <Info/>
+      <PayMethod/>
       <Detail product={data} />
       <Description product={data} />
       <OurClient />
       <SwiperSlider type={"show"} />
-      <Benefits />
+      <Benefits/>
       <RecommendedProducts category={data.category} />
       <HelpCenter />
       <Subscription />
