@@ -1,7 +1,7 @@
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import "./Header.css";
+import "./Header.module.css";
 const Header = ({ title, bredCumbs }) => {
   return (
     <div id="HeaderProductDatailMobil">

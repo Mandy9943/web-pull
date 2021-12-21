@@ -39,7 +39,7 @@
 }
 
 #Benefits .beneficio img {
-    margin: 36px 0 24px 0 !important;
+    margin: 36px 0 0px 0 !important;
     width: 245px !important;
     height: 227px !important;
 }
@@ -64,4 +64,5 @@
     line-height: 21px;
     text-align: center;
     color: #5d5d5d;
+    width: 90%;
 }

@@ -5,7 +5,6 @@ import benefit_02 from "../../../../assets/img/productDetail/02-benefit@2x.svg";
 import benefit_03 from "../../../../assets/img/productDetail/03-benefit@2x.svg";
 import benefit_04 from "../../../../assets/img/productDetail/Best Support 4 Graphic.svg";
 import benefit_05 from "../../../../assets/img/productDetail/Best Discounts 05 Graphic.svg";
-
 import Image from "next/image";
 
 const Benefits = () => {

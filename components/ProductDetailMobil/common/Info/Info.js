@@ -11,18 +11,18 @@ import Image from "next/image";
 const Info = () => {
   return (
     <div id="InfoProductDetailMovil">
-      <header>
+      <div className="info title">
         <h4>
-          Porqué Comprar con <div className="company">Kiero</div>
+          Porqué Comprar con <p className="company">Kiero</p>
         </h4>
-      </header>
+      </div>
       <div className="info envios">
-        <div className="icon">
+        <div className="icon car">
           <div className="anullProperties">
             <Image src={envios} alt="Envios gratis" layout="fill" />
           </div>
         </div>
-        <div className="text">
+        <div className="text texte">
           <h3>Envío Gratuito</h3>
           <p>
             Nuestros productos son importados.

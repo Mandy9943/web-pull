@@ -7,12 +7,12 @@
     "envios"
     "compras"
     "garantia";
-  
+  height: 282px;
 }
 
 /*Definiciones de los areas*/
 
-/* #InfoProductDetailMovil .envios {
+#InfoProductDetailMovil .envios {
   grid-area: envios;
 }
 
@@ -23,42 +23,18 @@
 #InfoProductDetailMovil .garantia {
   grid-area: garantia;
 }
- */
-
-#InfoProductDetailMovil .title{
-  margin: 24px 0px;
-  width: 100%;
-}
-
-#InfoProductDetailMovil .title h4{
-  display: flex;
-  font-size: 18px;
-  font-family: Montserrat, sans-serif;
- font-style: normal;
- font-weight: bold;
-}
-
-#InfoProductDetailMovil .title h4 .company{
-  margin-left: 4px;
-  color: #CF0A2C;
-}
 
 #InfoProductDetailMovil .info {
   display: flex;
   align-items: center;
-  margin-bottom: 28px;
+  justify-content: space-around;
   grid-template-columns: repeat(3, 1fr);
-  width: 100%;
-  padding: 0px 33px;
 }
-#InfoProductDetailMovil .info .car{
-  margin-left: -4px;
-}
-
 
 #InfoProductDetailMovil .info .icon {
+  padding-left: 50px;
   align-items: center;
-  margin-right: 27px;
+  margin-right: 20px;
 }
 
 .texte {
@@ -66,13 +42,14 @@
 }
 
 #InfoProductDetailMovil .info .icon img {
+  padding-right: 27px;
   padding-bottom: 12px;
   height: 38px;
 }
 
-#InfoProductDetailMovil .info .text {
+#InfoProductDetailMovil .text {
   flex: 1;
-  padding-right: 80px;
+  padding-right: 50px;
 }
 
 #InfoProductDetailMovil .text h3 {

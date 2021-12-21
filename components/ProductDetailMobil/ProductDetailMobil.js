@@ -7,7 +7,7 @@ import backGround from "../../assets/img/productDetail/fondo-rojo-landing-view@2
 
 import CheckoutProduct from "./common/CheckoutProduct/CheckoutProduct";
 import Header from "./common/Header/Header";
-import DiscountPrice from "./common/DiscountPrice/DiscountPrice";
+
 
 const SwiperSlider = dynamic(
   () => import("./common/SwiperSlider/SwipperSlider"),
@@ -16,7 +16,7 @@ const SwiperSlider = dynamic(
   }
 );
 
-import "./ProductDetailMobil.css";
+import "./ProductDetailMobil.module.css";
 import Info from "./common/Info/Info";
 import PayMethod from "./common/PayMethod/PayMethod";
 import Detail from "./common/Detail/Detail";
@@ -39,6 +39,7 @@ import useScrollY from "../../lib/hooks/useScrollY";
 import WhatsappBanner from "./common/WhatsappBanner/WhatsappBanner";
 import CheckoutButton from "./common/CheckoutButton/CheckoutButton";
 import OurClient from "./common/OurClient/OurClient";
+import { divide } from "lodash";
 
 const Nav = dynamic(() => import("../Common/Nav/Nav"));
 const Footer = dynamic(() => import("../Common/Footer"));
@@ -112,13 +113,14 @@ const ProductDetailMobil = ({ user_data, data }) => {
         stock={data.status === 0 ? 0 : data.stock}
         discount_percentage={data.discount_percentage}
       />
-      <Info />
-      <PayMethod />
+    
+      <Info/>
+      <PayMethod/>
       <Detail product={data} />
       <Description product={data} />
       <OurClient />
       <SwiperSlider type={"show"} />
-      <Benefits />
+      <Benefits/>
       <RecommendedProducts category={data.category} />
       <HelpCenter />
       <Subscription />

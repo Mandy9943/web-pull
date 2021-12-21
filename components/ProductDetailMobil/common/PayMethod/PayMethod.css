@@ -2,29 +2,33 @@
   border-top: 2px solid #e4e4e4;
   border-bottom: 2px solid #e4e4e4;
   background: #fff;
-  padding: 0px 25px;
+  height: 222px;
+  padding: 36px 25px;
 }
 
 #PayMethod .titulo h3 {
   text-align: left;
-  font: normal normal bold 18px Montserrat;
+  font: normal normal bold 18px/22px Montserrat;
   letter-spacing: 0;
   color: #000000;
   opacity: 1;
   margin-right: auto;
-  margin-top: 36px;
 }
 
 #PayMethod .link {
   display: grid;
-  grid-template-columns: repeat(3, 107px);
-  grid-template-rows: repeat(2, 72px);
-  padding: 0px 0px;
-  margin: 24px 0px;
+  grid-template-columns: repeat(3, 92px);
+  grid-template-rows: repeat(2, 92px);
+  margin: 24px 0;
+  justify-content:center
 }
 
+.size {
+  width: 93px;
+  height: 40px;
+}    
 
-#PayMethod .link .imgContainer img {
+#PayMethod .link img {
   width: 100% !important;
   height: auto !important;
   margin: auto !important;
@@ -32,7 +36,16 @@
 }
 
 
+#PayMethod .link .anullProperties {
+  display: flex;
+  align-items: center;
+  margin: auto;
+}
+
 @media (min-width: 750px) {
+  #PayMethod .link {
+    grid-template-columns: repeat(6, 92px);
+  }
 
   #PayMethod {
     height: 130px;
@@ -40,13 +53,6 @@
 }
 @media (max-width: 350px) {
   #PayMethod {
-    padding: 0px 10px;
-  }
-  #PayMethod .link {
-    display: grid;
-    grid-template-columns: repeat(3, 97px);
-    grid-template-rows: repeat(2, 72px);
-    padding: 0px 0px;
-    margin: 24px 0px;
+    padding: 36px 10px;
   }
 }

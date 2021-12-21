@@ -5,7 +5,7 @@ import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.scss";
 import "swiper/components/effect-coverflow/effect-coverflow.scss";
 import "swiper/components/pagination/pagination.scss";
-import "./SwiperSlider.css";
+import "./SwiperSlider.module.css";
 import Image from "next/image";
 import Skeleton from "@mui/material/Skeleton";
 
