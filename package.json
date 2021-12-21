@@ -10,7 +10,7 @@
     "export": "next build & next export -o build",
     "lint": "lint-staged",
     "prepare": "husky install",
-    "pre-commit": "pretty-quick --staged && lint-staged --config lint-staged.js && git add .",
+    "pre-commit": "pretty-quick --staged && lint-staged && git add .",
     "prettier": "prettier --write "
   },
   "lint-staged": {
