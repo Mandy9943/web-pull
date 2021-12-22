@@ -12,6 +12,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import "./OurClient.module.css";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+// Import Swiper styles
+import "swiper/swiper-bundle.min.css";
+import "swiper/swiper.scss";
+import "swiper/components/effect-coverflow/effect-coverflow.scss";
+import "swiper/components/pagination/pagination.scss";
+
+// import Swiper core and required modules
+import SwiperCore, { EffectCoverflow, Pagination } from "swiper";
+
+// install Swiper modules
+SwiperCore.use([EffectCoverflow, Pagination]);
+
 const SwiperCardOurClient = ({ client, comment, setComment }) => {
   console.log("card on client");
   const stars = [];
@@ -42,29 +55,65 @@ const SwiperCardOurClient = ({ client, comment, setComment }) => {
                   }}
                 />
               </div>
-              <div className="anullProperties">
+              <Swiper
+                pagination={{
+                  clickable: true,
+                }}
+                className="swiperOurClients"
+              >
+                <SwiperSlide>
+                  <div className="anullProperties">
+                    <Image
+                      src={review}
+                      alt="Review"
+                      layout="fill"
+                      className="header"
+                    />
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className="anullProperties">
+                    <Image
+                      src={review}
+                      alt="Review"
+                      layout="fill"
+                      className="header"
+                    />
+                  </div>
+                </SwiperSlide>
+              </Swiper>
+              {/* <div className="anullProperties">
                 <Image
                   src={review}
                   alt="Review"
                   layout="fill"
                   className="header"
                 />
-              </div>
+              </div> */}
             </picture>
             <div className="texto">
-              <div className="autor">
-                <p> {client.name} </p>
-                <div className="anullProperties">
-                  <Image src={cert} layout="fill" alt="Certified" />
+              <div className="topHeader">
+                <div className="autor">
+                  <p> {client.name} </p>
+                </div>
+                <div className="localization">
+                  <p> {client.location} </p>
+                  <div className="locationImage">
+                    <div className="anullProperties">
+                      <Image src={location} alt="localization" layout="fill" />
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="localization">
-                <p> {client.location} </p>
-                <div className="anullProperties">
-                  <Image src={location} alt="localization" layout="fill" />
+              <div className="bottomHeader">
+                <div className="clasification">{stars}</div>
+                <div className="certification">
+                  <p> Compra Verificada </p>
+                  <div className="anullProperties">
+                    <Image src={cert} layout="fill" alt="Certified" />
+                  </div>
                 </div>
               </div>
-              <div className="clasification">{stars}</div>
               <div className="comment">
                 <h5>{client.H}</h5>
                 <p>{client.P}</p>
