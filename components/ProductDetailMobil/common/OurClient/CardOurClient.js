@@ -15,7 +15,7 @@ const CardOurClient = ({ client, handleOnClickComment }) => {
   }
 
   return (
-    <div className="card">
+    <div id="CardOurClient" className="card">
       <picture>
         <div className="anullProperties">
           <Image src={review} alt="Review" layout="fill" />
@@ -46,7 +46,7 @@ const CardOurClient = ({ client, handleOnClickComment }) => {
               src={iconopen}
               layout="fill"
               alt="mini"
-              onClick={handleOnClickComment}
+              onClick={() => handleOnClickComment(client)}
             />
           </div>
         </footer>

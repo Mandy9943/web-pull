@@ -59,9 +59,13 @@ const OurClient = () => {
                 />
               );
             })}
-            {clientShow !== null ? (
-              <SwiperCardOurClient client={clientShow} comment={comment} />
-            ) : null}
+            {clientShow !== null && (
+              <SwiperCardOurClient
+                client={clientShow}
+                comment={comment}
+                setComment={setComment}
+              />
+            )}
           </article>
           <div className="footer_our">
             <button>VER MÁS</button>
