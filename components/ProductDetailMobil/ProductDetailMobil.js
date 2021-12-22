@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import Logo1 from "../../assets/img/logo-social.png";
 import Logo2 from "../../assets/img/logo-social1.png";
@@ -35,6 +35,8 @@ import RecommendedProducts from "./common/RecommendedProducts/RecommendedProduct
 import Image from "next/image";
 import useScrollY from "../../lib/hooks/useScrollY";
 
+import {concatCategories, sendProductViewed} from "../../lib/functions";
+
 import WhatsappBanner from "./common/WhatsappBanner/WhatsappBanner";
 // import CheckoutButton from "./common/CheckoutButton/CheckoutButton";
 const OurClient = dynamic(() => import("./common/OurClient/OurClient"), {
@@ -56,6 +58,11 @@ const SellerInfo = dynamic(() => import("./common/SellerInfo/SellerInfo"), {
 const ProductDetailMobil = ({ user_data, data }) => {
   let urlSic = "https://www.sic.gov.co";
   // console.log("data", data);
+
+  useEffect(() => {
+    sendProductViewed(data)
+  }, [data]);
+
   const [isForm, setIsForm] = useState(false);
   const [isWhatsappBanner, setIsWhatsappBanner] = useState(true);
   const scrolledPayButton = useScrollY(700, false);
