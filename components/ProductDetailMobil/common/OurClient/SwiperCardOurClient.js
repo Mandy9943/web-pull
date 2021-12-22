@@ -20,61 +20,59 @@ const SwiperCardOurClient = ({ client, comment, setComment }) => {
   }
   return (
     <div id="SwiperCardOurClient">
-      {client?.name ? (
-        <SwipeableDrawer
-          anchor="bottom"
-          open={comment}
-          onClose={() => setComment(false)}
-          onOpen={() => {}}
-          className="swipe"
-          transitionDuration={700}
-        >
-          <article>
-            <div className="card">
-              <picture>
+      <SwipeableDrawer
+        anchor="bottom"
+        open={comment}
+        onClose={() => setComment(false)}
+        onOpen={() => {}}
+        className="swipe"
+        transitionDuration={700}
+      >
+        <article>
+          <div className="card">
+            <picture>
+              <div className="anullProperties">
+                <Image
+                  src={iconcerrar}
+                  alt="Cerrar"
+                  layout="fill"
+                  className="close"
+                  onClick={() => {
+                    setComment(false);
+                  }}
+                />
+              </div>
+              <div className="anullProperties">
+                <Image
+                  src={review}
+                  alt="Review"
+                  layout="fill"
+                  className="header"
+                />
+              </div>
+            </picture>
+            <div className="texto">
+              <div className="autor">
+                <p> {client.name} </p>
                 <div className="anullProperties">
-                  <Image
-                    src={iconcerrar}
-                    alt="Cerrar"
-                    layout="fill"
-                    className="close"
-                    onClick={() => {
-                      setComment(false);
-                    }}
-                  />
-                </div>
-                <div className="anullProperties">
-                  <Image
-                    src={review}
-                    alt="Review"
-                    layout="fill"
-                    className="header"
-                  />
-                </div>
-              </picture>
-              <div className="texto">
-                <div className="autor">
-                  <p> {client.name} </p>
-                  <div className="anullProperties">
-                    <Image src={cert} layout="fill" alt="Certified" />
-                  </div>
-                </div>
-                <div className="localization">
-                  <p> {client.location} </p>
-                  <div className="anullProperties">
-                    <Image src={location} alt="localization" layout="fill" />
-                  </div>
-                </div>
-                <div className="clasification">{stars}</div>
-                <div className="comment">
-                  <h5>{client.H}</h5>
-                  <p>{client.P}</p>
+                  <Image src={cert} layout="fill" alt="Certified" />
                 </div>
               </div>
+              <div className="localization">
+                <p> {client.location} </p>
+                <div className="anullProperties">
+                  <Image src={location} alt="localization" layout="fill" />
+                </div>
+              </div>
+              <div className="clasification">{stars}</div>
+              <div className="comment">
+                <h5>{client.H}</h5>
+                <p>{client.P}</p>
+              </div>
             </div>
-          </article>
-        </SwipeableDrawer>
-      ) : null}
+          </div>
+        </article>
+      </SwipeableDrawer>
     </div>
   );
 };

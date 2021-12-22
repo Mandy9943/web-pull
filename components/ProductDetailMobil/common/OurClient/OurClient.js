@@ -15,7 +15,13 @@ const OurClient = () => {
   const [collapse, setCollapse] = useState(false);
   const [desglosar, setDesglosar] = useState(cerrado);
   const [comment, setComment] = useState(false);
-  const [clientShow, setClientShow] = useState(null);
+  const [clientShow, setClientShow] = useState({
+    star: 0,
+    name: "",
+    location: "",
+    H: "",
+    P: "",
+  });
   const handleOnClickComment = (client) => {
     setComment(!comment);
     setClientShow(client);
@@ -59,13 +65,12 @@ const OurClient = () => {
                 />
               );
             })}
-            {clientShow !== null && (
-              <SwiperCardOurClient
-                client={clientShow}
-                comment={comment}
-                setComment={setComment}
-              />
-            )}
+
+            <SwiperCardOurClient
+              client={clientShow}
+              comment={comment}
+              setComment={setComment}
+            />
           </article>
           <div className="footer_our">
             <button>VER MÁS</button>
