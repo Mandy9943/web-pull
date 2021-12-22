@@ -97,6 +97,8 @@ const SwiperSlider = ({ images, altImg, type, price, stock, discount_percentage 
             discountPercentage={10}
             stock={stock}
             quantityProduct={2}
+            altImg={altImg}
+            images={images}
             discountPercentageBd={discount_percentage}
           />
         </SwiperSlide>
@@ -106,6 +108,8 @@ const SwiperSlider = ({ images, altImg, type, price, stock, discount_percentage 
             discountPercentage={15}
             stock={stock}
             quantityProduct={3}
+            altImg={altImg}
+            images={images}
             discountPercentageBd={discount_percentage}
           />
         </SwiperSlide>

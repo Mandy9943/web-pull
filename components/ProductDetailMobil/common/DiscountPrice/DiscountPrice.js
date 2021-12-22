@@ -6,32 +6,24 @@ import DivindingLine from "../DivindingLine/DivindingLine";
 import PriceSaving from "./componentsDiscount/PriceSaving/PriceSaving";
 
 import "./DiscountPrice.module.css";
-const DiscountPrice = ({priceProduct, discountPercentage, stock, discountPercentageBd, quantityProduct} ) => {
-  const [finalPrice, setFinalPrice] = useState(0)
-  useEffect(() => {
-    let dataPrice = priceProduct - (priceProduct * ((parseInt(discountPercentageBd ) + discountPercentage) / 100))
-        dataPrice = ~~dataPrice
-    let totalPrice = (priceProduct - dataPrice) * quantityProduct
-    setFinalPrice(totalPrice
-                    .toString()
-                    .split(".")[0]
-                    .replace(/(.)(?=(\d{3})+$)/g, "$1.")
-                  )
-            console.log(dataPrice)
-            },[finalPrice])
+const DiscountPrice = ({priceProduct, discountPercentage, stock, quantityProduct, images, altImg} ) => {
   return (
     <div className="containerDiscountPrice">
       <OfferSection />
-      <Discount />
+      <Discount
+        quantityProduct={quantityProduct}
+        discountPercentage={discountPercentage}
+        images={images}
+        altImg={altImg}
+      />
       <DivindingLine />
       <PriceSaving 
         priceProduct={priceProduct}
         discountPercentage={discountPercentage}
-        finalPrice={finalPrice}
-        // savingPrice={dataPrice}
+        quantityProduct={quantityProduct}
       />
       <div className="widthButton">
-        <CheckoutButton text="Comprar" rounded secundary notShowCar />
+        {stock <= 0 ? <CheckoutButton text="SIN STOCK" rounded notShowCar disabled/> : <CheckoutButton text="Comprar" rounded secundary notShowCar />}
       </div>
     </div>
   );
