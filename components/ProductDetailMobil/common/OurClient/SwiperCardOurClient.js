@@ -27,6 +27,7 @@ const SwiperCardOurClient = ({ client, comment, setComment }) => {
           onClose={() => setComment(false)}
           onOpen={() => {}}
           className="swipe"
+          transitionDuration={700}
         >
           <article>
             <div className="card">

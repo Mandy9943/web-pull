@@ -203,7 +203,7 @@
   height: 100vh !important;
   overflow-y: scroll !important;
   margin: 0 !important;
-  background: transparent !important;
+  background-color: #fff !important;
 }
 
 .swipe article {
