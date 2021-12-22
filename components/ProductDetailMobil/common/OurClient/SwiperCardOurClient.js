@@ -13,6 +13,7 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import "./OurClient.module.css";
 
 const SwiperCardOurClient = ({ client, comment, setComment }) => {
+  console.log("card on client");
   const stars = [];
   for (let i = 0; i < client.star; i++) {
     stars.push(<FontAwesomeIcon icon={faStar} />);
