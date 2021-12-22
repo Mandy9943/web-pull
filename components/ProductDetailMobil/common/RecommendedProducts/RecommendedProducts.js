@@ -55,7 +55,7 @@ const RecommendedProducts = ({ category }) => {
           {products.map((product,i) => {
             return (
               <SwiperSlide key={i}>
-                <RecommendedProductsCard product={product} />
+                <RecommendedProductsCard product={product} index={i}/>
               </SwiperSlide>
             );
           })}
