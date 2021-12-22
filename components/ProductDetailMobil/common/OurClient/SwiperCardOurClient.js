@@ -4,7 +4,7 @@ import React from "react";
 import review from "../../../../assets/img/review/Great Mower For The Price_0.jpg";
 import cert from "../../../../assets/img/productDetail/Certified Icon.svg";
 import location from "../../../../assets/img/productDetail/Location Icon.svg";
-import iconopen from "../../../../assets/img/productDetail/Maximize Icon.svg";
+import iconcerrar from "../../../../assets/img/productDetail/Minimize Icon.svg";
 
 import Image from "next/image";
 
@@ -19,7 +19,7 @@ const SwiperCardOurClient = ({ client, comment, setComment }) => {
     stars.push(<FontAwesomeIcon icon={faStar} />);
   }
   return (
-    <div>
+    <div id="SwiperCardOurClient">
       {client?.name ? (
         <SwipeableDrawer
           anchor="bottom"
@@ -28,32 +28,50 @@ const SwiperCardOurClient = ({ client, comment, setComment }) => {
           onOpen={() => {}}
           className="swipe"
         >
-          <div className="card">
-            <picture>
-              <div className="anullProperties">
-                <Image src={review} alt="Review" layout="fill" />
-              </div>
-            </picture>
-            <div className="texto">
-              <div className="autor">
-                <p> {client.name} </p>
+          <article>
+            <div className="card">
+              <picture>
                 <div className="anullProperties">
-                  <Image src={cert} layout="fill" alt="Certified" />
+                  <Image
+                    src={iconcerrar}
+                    alt="Cerrar"
+                    layout="fill"
+                    className="close"
+                    onClick={() => {
+                      setComment(false);
+                    }}
+                  />
                 </div>
-              </div>
-              <div className="localization">
-                <p> {client.location} </p>
                 <div className="anullProperties">
-                  <Image src={location} alt="localization" layout="fill" />
+                  <Image
+                    src={review}
+                    alt="Review"
+                    layout="fill"
+                    className="header"
+                  />
                 </div>
-              </div>
-              <div className="clasification">{stars}</div>
-              <div className="comment">
-                <h5>{client.H}</h5>
-                <p>{client.P}</p>
+              </picture>
+              <div className="texto">
+                <div className="autor">
+                  <p> {client.name} </p>
+                  <div className="anullProperties">
+                    <Image src={cert} layout="fill" alt="Certified" />
+                  </div>
+                </div>
+                <div className="localization">
+                  <p> {client.location} </p>
+                  <div className="anullProperties">
+                    <Image src={location} alt="localization" layout="fill" />
+                  </div>
+                </div>
+                <div className="clasification">{stars}</div>
+                <div className="comment">
+                  <h5>{client.H}</h5>
+                  <p>{client.P}</p>
+                </div>
               </div>
             </div>
-          </div>
+          </article>
         </SwipeableDrawer>
       ) : null}
     </div>

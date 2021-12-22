@@ -68,9 +68,9 @@
 }
 
 #OurClient article .card picture {
-  width: auto;
-  height: auto;
-  top: 0;
+  width: 100%;
+  height: 100%;
+  position: static;
 }
 
 #OurClient article .card .texto {
@@ -193,4 +193,112 @@
   background: #cf0a2c;
   border: 2px solid #ffffff;
   color: #ffffff;
+}
+
+/*SwiperCardOurClient section*/
+
+.MuiDrawer-paperAnchorBottom {
+  width: 100vw;
+  top: 0 !important;
+  height: 100vh !important;
+  overflow-y: scroll !important;
+  margin: 0 !important;
+  background: transparent !important;
+}
+
+.swipe article {
+  display: grid;
+  background-color: #fff;
+  grid-template-columns: repeat(auto-fill, 1fr);
+}
+
+.swipe .card picture {
+  width: auto;
+  height: auto;
+  top: 0 !important;
+}
+
+.swipe .card .texto {
+  padding: 0 11px;
+}
+
+.swipe article .card picture .header {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.swipe article .card picture .close {
+  width: 25px !important;
+  height: 25px !important;
+  position: fixed !important;
+  z-index: 999 !important;
+  right: 14px !important;
+  color: #ffffff;
+  top: 14px !important;
+  cursor: pointer !important;
+}
+
+.swipe article .card .autor {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 4px;
+}
+
+.swipe article .card .autor p {
+  font-family: Montserrat, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  color: #5d5d5d;
+  padding-right: 18px;
+  text-align: left;
+}
+
+.swipe article .card .localization {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 8px;
+}
+
+.swipe article .card .localization p {
+  font-family: Montserrat, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: 0.02em;
+  color: #969696;
+}
+
+.swipe article .card .clasification svg {
+  color: #74def5;
+  width: 12px;
+  height: 12px;
+  padding-right: 4px;
+  padding-bottom: 15px;
+}
+
+.swipe article .card .comment {
+}
+
+.swipe article .card .comment h5 {
+  font-family: Montserrat, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  color: #000000;
+  padding-bottom: 10px;
+}
+
+.swipe article .card .comment p {
+  font-family: Montserrat, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 16px;
+  color: #5d5d5d;
 }
