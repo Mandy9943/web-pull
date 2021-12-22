@@ -67,7 +67,7 @@ const SwiperCardOurClient = ({ client, comment, setComment }) => {
                       src={review}
                       alt="Review"
                       layout="fill"
-                      className="header"
+                      className="headerOurClients"
                     />
                   </div>
                 </SwiperSlide>
@@ -77,7 +77,7 @@ const SwiperCardOurClient = ({ client, comment, setComment }) => {
                       src={review}
                       alt="Review"
                       layout="fill"
-                      className="header"
+                      className="headerOurClients"
                     />
                   </div>
                 </SwiperSlide>
