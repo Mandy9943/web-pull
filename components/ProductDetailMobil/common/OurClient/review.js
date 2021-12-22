@@ -40,6 +40,23 @@ const review = () => {
       P: "Esta fogata tiene una gran relación calidad-precio por el dinero gastado. Es perfecto... no. Y con el apoyo del equipo de Kiero a buscar un a lo más barato no pudo pasar esta oportunidad. La pintura en los puntos calientes se quemará pero a quién le importa la cosa seguirá siendo de color negro. La mayoría de las partes metálicas son delgadas, excepto el tazón y la rejilla, que tienen el mismo grosor que una parrilla de barbacoa. Si solo buscas algo para encender fuego no puedes equivocarte.",
       img: null,
     },
+    {
+      name: "Miguel Moreno",
+      star: 4,
+      category: "Jardín",
+      product: "Outdoor Firepit",
+      location: "El Encanto, Colombia",
+      H: "¡Fácil de configurar y usar!",
+      P: "¡Buen tamaño! No viene montado, pero fue fácil. Lo armé en 10 minutos y las instrucciones son solo imágenes.",
+      img: null,
+    },
+    {
+      name: "Tomas Velasco",
+      star: 5,
+      location: "Tarapacá, Colombia",
+      H: "Gran pozo de fuego pequeño por el precio",
+      P: "Me encantan mis pequeños fuegos artificiales Perfecto para mis necesidades. Montaje muy sencillo. A la nieta incluso le encanta",
+    },
   ];
 };
 

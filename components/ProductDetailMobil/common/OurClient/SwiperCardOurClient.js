@@ -82,14 +82,6 @@ const SwiperCardOurClient = ({ client, comment, setComment }) => {
                   </div>
                 </SwiperSlide>
               </Swiper>
-              {/* <div className="anullProperties">
-                <Image
-                  src={review}
-                  alt="Review"
-                  layout="fill"
-                  className="header"
-                />
-              </div> */}
             </picture>
             <div className="texto">
               <div className="topHeader">

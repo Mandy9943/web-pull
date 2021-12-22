@@ -244,11 +244,13 @@
   display: flex;
   justify-content: space-between;
 }
+
 .swipe article .card .bottomHeader {
   display: flex;
   justify-content: space-between;
   margin-bottom: 22px;
 }
+
 .swipe article .card .autor {
   /* Subheader 1 */
 
@@ -263,6 +265,7 @@
 
   color: #969696;
 }
+
 .swipe article .card .autor p {
   font-family: Montserrat, sans-serif;
   font-style: normal;
@@ -279,6 +282,7 @@
   align-items: center;
   justify-content: space-between;
 }
+
 .swipe article .card .certification {
   display: flex;
   align-items: center;
@@ -300,6 +304,7 @@
   color: #969696;
   margin-right: 10px;
 }
+
 .swipe article .card .certification p {
   font-family: Montserrat;
   font-style: normal;
@@ -357,10 +362,12 @@
 
   color: #5d5d5d;
 }
+
 .swipe .swiper {
   width: 100%;
   height: 100%;
 }
+
 .swipe .swiper-container {
   overflow: initial !important;
 }
