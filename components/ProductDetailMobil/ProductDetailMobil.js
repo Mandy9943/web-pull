@@ -21,12 +21,6 @@ import PayMethod from "./common/PayMethod/PayMethod";
 import Detail from "./common/Detail/Detail";
 import Description from "./common/Description/Description";
 
-// const OfferSection = dynamic(
-//   () => import("./common/OfferSection/OfferSection"),
-//   {
-//     loading: () => <p>...</p>,
-//   }
-// );
 import Benefits from "./common/Benefits/Benefits";
 import HelpCenter from "./common/HelpCenter/HelpCenter";
 import Subscription from "./common/Subscription/Subscription";
@@ -59,6 +53,7 @@ const ProductDetailMobil = ({ user_data, data }) => {
   const [isForm, setIsForm] = useState(false);
   const [isWhatsappBanner, setIsWhatsappBanner] = useState(true);
   const scrolledPayButton = useScrollY(700, false);
+  const [priceWithPercentage, setPriceWithPercentage] = useState(1)
 
   const handleCloseWhatsappBanner = () => {
     setIsWhatsappBanner(false);
@@ -121,7 +116,14 @@ const ProductDetailMobil = ({ user_data, data }) => {
       <Detail product={data} />
       <Description product={data} />
       <OurClient />
-      <SwiperSlider type={"show"} />
+      <SwiperSlider 
+        type={"specialOffer"} 
+        price={data.price}
+        images={data.images}
+        altImg={data.title}
+        stock={data.status === 0 ? 0 : data.stock}
+        discount_percentage={data.discount_percentage}
+      />
       <SellerInfo />
       <RecommendedProducts category={data.category} />
       <Benefits />

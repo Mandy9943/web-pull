@@ -1,6 +1,5 @@
 import React from 'react';
 import './OfferSection.module.css';
-import SwiperSlider from '../../common/SwiperSlider/SwipperSlider';
 const OfferSection = () => {
     return (
         <>
