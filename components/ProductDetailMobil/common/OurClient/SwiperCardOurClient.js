@@ -4,6 +4,7 @@ import React from "react";
 import review from "../../../../assets/img/review/Great Mower For The Price_0.jpg";
 import cert from "../../../../assets/img/productDetail/Certified Icon.svg";
 import location from "../../../../assets/img/productDetail/Location Icon.svg";
+import iconcerrar from "../../../../assets/img/productDetail/Minimize Icon.svg";
 
 import Image from "next/image";
 
@@ -31,7 +32,23 @@ const SwiperCardOurClient = ({ client, comment, setComment }) => {
             <div className="card">
               <picture>
                 <div className="anullProperties">
-                  <Image src={review} alt="Review" layout="fill" />
+                  <Image
+                    src={iconcerrar}
+                    alt="Cerrar"
+                    layout="fill"
+                    className="close"
+                    onClick={() => {
+                      setComment(false);
+                    }}
+                  />
+                </div>
+                <div className="anullProperties">
+                  <Image
+                    src={review}
+                    alt="Review"
+                    layout="fill"
+                    className="header"
+                  />
                 </div>
               </picture>
               <div className="texto">

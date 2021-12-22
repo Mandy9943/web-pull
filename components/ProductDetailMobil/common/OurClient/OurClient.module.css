@@ -199,11 +199,10 @@
 
 .MuiDrawer-paperAnchorBottom {
   width: 100vw;
-  top: 1% !important;
-  height: auto !important;
+  top: 0 !important;
+  height: 100vh !important;
   overflow-y: scroll !important;
   margin: 0 !important;
-  border-radius: 15px 15px 0 0 !important;
   background: transparent !important;
 }
 
@@ -223,10 +222,20 @@
   padding: 0 11px;
 }
 
-.swipe article .card picture img {
-  border-radius: 15px 15px 0 0 !important;
+.swipe article .card picture .header {
   width: 100% !important;
   height: 100% !important;
+}
+
+.swipe article .card picture .close {
+  width: 25px !important;
+  height: 25px !important;
+  position: fixed !important;
+  z-index: 999 !important;
+  right: 14px !important;
+  color: #ffffff;
+  top: 14px !important;
+  cursor: pointer !important;
 }
 
 .swipe article .card .autor {
