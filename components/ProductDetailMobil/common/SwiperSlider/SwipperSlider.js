@@ -21,7 +21,7 @@ const SwiperSlider = ({ images, altImg, type, price, stock, discount_percentage 
     <div className="swiperSliderDatailMobile">
       <Swiper
         loop={true}
-        speed={400}
+        speed={200}
         autoplay={{
           delay: 2500,
           disableOnInteraction: false,
