@@ -6,7 +6,7 @@ import Image from "next/image";
 import abierto from "../../../../assets/img/productDetail/l-nea-86@2x.svg";
 import cerrado from "../../../../assets/img/productDetail/icono-desplegar@2x.svg";
 import CardOurClient from "./CardOurClient";
-import review from "./review";
+import review from "../../../../lib/review";
 import SwiperCardOurClient from "./SwiperCardOurClient";
 import { Button } from "@mui/material";
 
