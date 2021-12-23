@@ -48,12 +48,13 @@ const SellerInfo = dynamic(() => import("./common/SellerInfo/SellerInfo"), {
 });
 
 const ProductDetailMobil = ({ user_data, data }) => {
+  console.log(data);
   let urlSic = "https://www.sic.gov.co";
   // console.log("data", data);
   const [isForm, setIsForm] = useState(false);
   const [isWhatsappBanner, setIsWhatsappBanner] = useState(true);
   const scrolledPayButton = useScrollY(700, false);
-  const [priceWithPercentage, setPriceWithPercentage] = useState(1)
+  const [priceWithPercentage, setPriceWithPercentage] = useState(1);
 
   const handleCloseWhatsappBanner = () => {
     setIsWhatsappBanner(false);
@@ -115,9 +116,9 @@ const ProductDetailMobil = ({ user_data, data }) => {
       <PayMethod />
       <Detail product={data} />
       <Description product={data} />
-      <OurClient />
-      <SwiperSlider 
-        type={"specialOffer"} 
+      <OurClient category={data?.breadcum[0]?.name.substring(0, 8)} />
+      <SwiperSlider
+        type={"specialOffer"}
         price={data.price}
         images={data.images}
         altImg={data.title}
