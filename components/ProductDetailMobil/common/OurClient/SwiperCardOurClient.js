@@ -28,8 +28,10 @@ SwiperCore.use([EffectCoverflow, Pagination]);
 const SwiperCardOurClient = ({ client, comment, setComment }) => {
   console.log("card on client");
   const stars = [];
-  for (let i = 0; i < client.star; i++) {
-    stars.push(<FontAwesomeIcon icon={faStar} />);
+  if (client?.star) {
+    for (let i = 0; i < client.star; i++) {
+      stars.push(<FontAwesomeIcon icon={faStar} />);
+    }
   }
   return (
     <div id="SwiperCardOurClient">

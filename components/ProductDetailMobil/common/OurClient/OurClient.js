@@ -13,6 +13,7 @@ import { Button } from "@mui/material";
 const OurClient = ({ category }) => {
   const [countClient, setCountClient] = useState(4);
   const lista = review(category).slice(0, countClient);
+  // console.log({ lista, category });
   let count_opinion = lista.length;
   const [collapse, setCollapse] = useState(false);
   const [desglosar, setDesglosar] = useState(cerrado);

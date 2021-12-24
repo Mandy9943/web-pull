@@ -23,7 +23,7 @@ const CardOurClient = ({ client, handleOnClickComment }) => {
       </picture>
       <div className="texto">
         <div className="autor">
-          <p> {client.name} </p>
+          <p> {client?.name} </p>
           <div className="anullProperties">
             <Image src={cert} layout="fill" alt="Certified" />
           </div>

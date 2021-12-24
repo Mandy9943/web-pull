@@ -116,7 +116,7 @@ const ProductDetailMobil = ({ user_data, data }) => {
       <PayMethod />
       <Detail product={data} />
       <Description product={data} />
-      <OurClient category={data?.breadcum[0]?.name.substring(0, 8)} />
+      <OurClient category={data?.breadcum[0]?.name.substring(0, 7)} />
       <SwiperSlider
         type={"specialOffer"}
         price={data.price}
