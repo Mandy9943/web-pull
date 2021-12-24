@@ -12,6 +12,7 @@ import Link from "next/link";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import formSchema from "./Schema/schema";
+import {sendIdentifyEvent, createHmacSHA1} from "../../../../lib/functions.js";
 
 const FormProductDetail = ({ handleClose, open }) => {
   const {
@@ -33,7 +34,11 @@ const FormProductDetail = ({ handleClose, open }) => {
     resolver: yupResolver(formSchema),
   });
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (user) => {
+    // console.log('Data', data);
+    user.user_id = createHmacSHA1(user.identification);
+    sendIdentifyEvent(user);
+  };
   return (
     <div>
       <FormDialog open={open} handleClose={handleClose}>
@@ -191,7 +196,7 @@ const FormProductDetail = ({ handleClose, open }) => {
                 variant="contained"
                 disabled={dirtyFields === {} || !isValid}
               >
-                Continuar con la transacción
+                Continuar con la transacción1
               </Button>
             </div>
           </DialogActions>

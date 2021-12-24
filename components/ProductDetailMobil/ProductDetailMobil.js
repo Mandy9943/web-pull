@@ -7,6 +7,7 @@ import Logo2 from "../../assets/img/logo-social1.png";
 
 import CheckoutProduct from "./common/CheckoutProduct/CheckoutProduct";
 import Header from "./common/Header/Header";
+import {sendCheckoutStepViewed} from "../../lib/functions.js";
 
 const SwiperSlider = dynamic(
   () => import("./common/SwiperSlider/SwipperSlider"),
@@ -71,9 +72,11 @@ const ProductDetailMobil = ({ user_data, data }) => {
     setIsWhatsappBanner(false);
   };
   const handleCloseForm = () => {
+    sendCheckoutStepViewed(2);
     setIsForm(false);
   };
   const handleOpenForm = () => {
+    sendCheckoutStepViewed(1);
     setIsForm(true);
   };
 
