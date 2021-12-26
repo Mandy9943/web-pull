@@ -63,26 +63,20 @@ const SwiperCardOurClient = ({ client, comment, setComment }) => {
                 }}
                 className="swiperOurClients"
               >
-                <SwiperSlide>
-                  <div className="anullProperties">
-                    <Image
-                      src={review}
-                      alt="Review"
-                      layout="fill"
-                      className="headerOurClients"
-                    />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="anullProperties">
-                    <Image
-                      src={review}
-                      alt="Review"
-                      layout="fill"
-                      className="headerOurClients"
-                    />
-                  </div>
-                </SwiperSlide>
+                {client.product.img.map((img, index) => {
+                  return img.image === true ? (
+                    <SwiperSlide key={index}>
+                      <div className="anullProperties">
+                        <Image
+                          src={img.url}
+                          alt={client.product.name}
+                          layout="fill"
+                          className="headerOurClients"
+                        />
+                      </div>
+                    </SwiperSlide>
+                  ) : null;
+                })}
               </Swiper>
             </picture>
             <div className="texto">

@@ -392,3 +392,11 @@
   > .swiper-pagination-bullets {
   bottom: -20px;
 }
+
+/* section CardOurClient*/
+#CardOurClient picture .anullProperties {
+  height: 100% !important;
+}
+#CardOurClient picture .anullProperties img {
+  height: auto !important;
+}
