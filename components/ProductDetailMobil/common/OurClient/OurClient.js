@@ -10,9 +10,9 @@ import review from "../../../../lib/review";
 import SwiperCardOurClient from "./SwiperCardOurClient";
 import { Button } from "@mui/material";
 
-const OurClient = () => {
+const OurClient = ({ category }) => {
   const [countClient, setCountClient] = useState(4);
-  const lista = review().slice(0, countClient);
+  const lista = review(category).slice(0, countClient);
   let count_opinion = lista.length;
   const [collapse, setCollapse] = useState(false);
   const [desglosar, setDesglosar] = useState(cerrado);

@@ -202,6 +202,7 @@
   top: 0 !important;
   height: 100vh !important;
   overflow-y: scroll !important;
+  overflow-x: hidden !important;
   margin: 0 !important;
   background-color: #fff !important;
 }
@@ -390,4 +391,12 @@
   .swiper-container-horizontal.swiperOurClients
   > .swiper-pagination-bullets {
   bottom: -20px;
+}
+
+/* section CardOurClient*/
+#CardOurClient picture .anullProperties {
+  height: 100% !important;
+}
+#CardOurClient picture .anullProperties img {
+  height: auto !important;
 }

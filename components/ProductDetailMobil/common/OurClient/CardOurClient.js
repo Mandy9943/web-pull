@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import review from "../../../../assets/img/review/Great Mower For The Price_0.jpg";
 import cert from "../../../../assets/img/productDetail/Certified Icon.svg";
 import location from "../../../../assets/img/productDetail/Location Icon.svg";
 import iconopen from "../../../../assets/img/productDetail/Maximize Icon.svg";
@@ -18,12 +17,12 @@ const CardOurClient = ({ client, handleOnClickComment }) => {
     <div id="CardOurClient" className="card">
       <picture>
         <div className="anullProperties">
-          <Image src={review} alt="Review" layout="fill" />
+          <Image src={client.product.img[0].url} alt="Review" layout="fill" />
         </div>
       </picture>
       <div className="texto">
         <div className="autor">
-          <p> {client.name} </p>
+          <p> {client?.name} </p>
           <div className="anullProperties">
             <Image src={cert} layout="fill" alt="Certified" />
           </div>
