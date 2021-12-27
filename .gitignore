@@ -1,7 +1,14 @@
 node_modules
+node_modules_windows
+node_modules_linux
+package-lock.json
 .map
 .next
 .next/
+_next/
 .idea
 .prettierrc
+_next
+.vscode
+.eslintcache
 

@@ -1,0 +1,25 @@
+stages:
+  - build
+
+docker-build:
+  only:
+    - master
+    - develop
+
+  stage: build
+  image: docker:latest
+  services:
+    - docker:stable-dind
+
+  before_script:
+    - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+
+  script:
+    #Build images
+    - if [ "$CI_COMMIT_BRANCH" == "master" ]; then
+      docker build -t kierogroup/service:${CI_PROJECT_NAME}-latest .;
+      fi
+    - docker build -t kierogroup/service:${CI_PROJECT_NAME}-${CI_COMMIT_BRANCH}-${CI_COMMIT_SHORT_SHA} .
+
+    #Pushing containers
+    - docker push --all-tags kierogroup/service

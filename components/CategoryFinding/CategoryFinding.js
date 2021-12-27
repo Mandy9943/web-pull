@@ -12,35 +12,49 @@ class CategoryFinding extends Component {
     return (
       <div className="finding-category">
         {/* <Link href={'/categoria/[category]'} as={'/categoria/' + this.props.link_left}> */}
-        <a
-          href={
+        {/* <Link
+          href={"/categoria/[...category]"}
+          as={
             "/categoria/" +
             this.props.link_left.replace(/ /g, "-").toLowerCase()
           }
-        >
+        > */}
+         <a
+           href={
+            "/categoria/" +
+            this.props.link_left.replace(/ /g, "-").toLowerCase()
+          }>
           <div className="anullProperties">
-            <Image
-              layout="fill"
-              src={this.props.img_left}
-              alt={this.props.link_left.replace(/-/g, " ")}
-            />
-          </div>
-        </a>
+              <Image
+                layout="fill"
+                src={this.props.img_left}
+                alt={this.props.link_left.replace(/-/g, " ")}
+              />
+            </div>
+         </a>
+        {/* </Link> */}
         {/* <Link href={'/categoria/[category]'} as={'/categoria/' + this.props.link_right}> */}
-        <a
-          href={
+        {/* <Link
+          href={"/categoria/[...category]"}
+          as={
             "/categoria/" +
             this.props.link_right.replace(/ /g, "-").toLowerCase()
           }
-        >
-          <div className="anullProperties">
-            <Image
-              layout="fill"
-              src={this.props.img_right}
-              alt={this.props.link_right.replace(/-/g, " ")}
-            />
-          </div>
-        </a>
+        > */}
+          <a
+           href={
+            "/categoria/" +
+            this.props.link_right.replace(/ /g, "-").toLowerCase()
+          }>
+            <div className="anullProperties">
+              <Image
+                layout="fill"
+                src={this.props.img_right}
+                alt={this.props.link_right.replace(/-/g, " ")}
+              />
+            </div>
+          </a>
+        {/* </Link> */}
       </div>
     );
   }

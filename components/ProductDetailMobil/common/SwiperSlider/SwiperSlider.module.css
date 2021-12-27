@@ -1,0 +1,67 @@
+.swiperSliderDatailMobile {
+  height: 100%;
+  width: 100%;
+  padding-bottom: 90px;
+  background-color: white;
+}
+
+.swiperSliderDatailMobile .swiper {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.swiperSliderDatailMobile .swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  height: 324px;
+  border-radius: 5px;
+}
+
+.swiperSliderDatailMobile .swiper-slide div img {
+  border-radius: 5px;
+}
+
+.swiperSliderDatailMobile .swiper-container .swiper-pagination-bullets {
+  position: absolute;
+  bottom: 0;
+  width: 300px;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.swiperSliderDatailMobile
+  .swiper-container-horizontal.mySwiper
+  > .swiper-pagination-bullets
+  .swiper-pagination-bullet {
+  width: calc(100% - 75%);
+  border-radius: 0 !important;
+  margin: 0 !important;
+  height: 2px;
+  background: #5d5d5d;
+}
+.swiperSliderDatailMobile
+  .swiper-container-horizontal.mySwiper2
+  > .swiper-pagination-bullets
+  .swiper-pagination-bullet {
+  background: #5f5f5f;
+}
+
+.swiperSliderDatailMobile .swiper-container {
+  margin-bottom: auto;
+  margin-top: 0;
+  height: 340px;
+}
+
+.swiperSliderDatailMobile .swiper-container .swiper-pagination-bullets {
+  position: absolute;
+  bottom: 5px;
+  display: flex;
+  justify-content: center;
+}
+.swiperSliderDatailMobile .mySwiper2 {
+  width: 100vw;
+  height: 512px;
+}

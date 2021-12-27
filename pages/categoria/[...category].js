@@ -632,30 +632,42 @@ function Results({ data, session }) {
         if (e.links[bannerNo - 1] !== "") {
           structure.push(
             // <Link href={"/categoria/[category]"} as={"/categoria/" + e.links[bannerNo - 1]} ></Link>
-            <a
-              className="tickets"
-              href={
-                "/categoria/" +
-                e.links[bannerNo - 1]
-                  .replace(/^[, ]+|[, ]+$|[, ]+/g, "-")
-                  .trim()
-                  .toLowerCase()
-              }
-            >
-              <div className="anullProperties">
-                <Image
-                  layout="fill"
-                  alt={category_name}
-                  key={i + 1}
-                  className="banner-principal"
-                  src={
-                    e.image_path.replace(/^[, ]+|[, ]+$|[, ]+/g, "").trim() +
-                    bannerNo++ +
-                    ".webp"
-                  }
-                />
-              </div>
-            </a>
+            // <Link
+            //   key={i}
+            //   href={"/categoria/[...category]"}
+            //   as={
+            //     "/categoria/" +
+            //     e.links[bannerNo - 1]
+            //       .replace(/^[, ]+|[, ]+$|[, ]+/g, "-")
+            //       .trim()
+            //       .toLowerCase()
+            //   }
+            // >
+              <a 
+                key={i}
+                href={
+                      "/categoria/" +
+                      e.links[bannerNo - 1]
+                        .replace(/^[, ]+|[, ]+$|[, ]+/g, "-")
+                        .trim()
+                        .toLowerCase()
+                    } 
+                className="tickets">
+                <div className="anullProperties">
+                  <Image
+                    layout="fill"
+                    alt={category_name}
+                    key={i + 1}
+                    className="banner-principal"
+                    src={
+                      e.image_path.replace(/^[, ]+|[, ]+$|[, ]+/g, "").trim() +
+                      bannerNo++ +
+                      ".webp"
+                    }
+                  />
+                </div>
+              </a>
+            // </Link>
           );
         } else {
           structure.push(
@@ -877,8 +889,11 @@ function Results({ data, session }) {
             name="Description"
             content={
               "KIERO.CO Marketplace | Encuentra " +
-              handleFormatName(category_name) +
-              " en Kiero.co - Descubre millones de productos online"
+              handleFormatName(category_name).substring(0, 40) +
+              " en Kiero.co - Descubre millones de productos online".substring(
+                0,
+                159
+              )
             }
           />
           <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -960,10 +975,14 @@ function Results({ data, session }) {
 }
 
 export async function getServerSideProps(context) {
+  var dataFirstUpperCase = String(context.params.category).split("",1)
+  var dataCategoryName =  String(context.params.category).slice(1)
+  // console.log(String(dataFirstUpperCase[0].toUpperCase()) + dataCategoryName.replace(/-/g, " "))
   const data = {
     type: "category",
     // "search": String(context.params.category),
-    search: String(context.params.category).replace(/-/g, " "),
+    // search: String(context.params.category).replace(/-/g, " "),
+    search: String(dataFirstUpperCase[0].toUpperCase()) + dataCategoryName.replace(/-/g, " "),
     params: {
       items_per_page: searchItemsPerPage,
       price_range: "",

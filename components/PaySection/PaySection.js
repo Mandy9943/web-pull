@@ -17,12 +17,12 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Modal from "../Common/Modal/Modal";
 // import { KlaviyoClient } from "../../lib/functions";
 import Cookies from "js-cookie";
-import {handleFormatName} from '../../lib/functions'
-import {handleFormatUrl} from '../../lib/functions'
+import { handleFormatName } from "../../lib/functions";
+import { handleFormatUrl } from "../../lib/functions";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import { Button, Modal } from 'react-bootstrap';
-import CryptoJS from 'crypto-js';
-import {createleadClient} from "../../lib/zoho";
+import CryptoJS from "crypto-js";
+import { createleadClient } from "../../lib/zoho";
 
 class PaySection extends Component {
   constructor(props) {
@@ -45,9 +45,9 @@ class PaySection extends Component {
       validForm: true,
       disabledButton: true,
       termsOfService: "",
-      identification: "",
-      typeIdentification: "",
-      typeIdentificationName: "",
+      identification: "0",
+      typeIdentification: "0T",
+      typeIdentificationName: "0TN",
       display: "none",
       gclid: "",
       clientId: "",
@@ -284,7 +284,6 @@ class PaySection extends Component {
   };
 
   renderPayButtonSection = (renderPayu) => {
-
     // const btnEnabled = <button type="submit" onClick={() => this.go(this.props.pgid)}>Comprar</button>;
     const btnEnabled = (
       // // <button type="submit" onClick={() => this.validateDataGoogle(renderPayu)}>
@@ -318,24 +317,24 @@ class PaySection extends Component {
         }
       }
       return this.props.props.data.status && qty_options.values.length > 0 ? (
-				<div className="pay-item">
-					<section className="select-icon">
-						<Select
-							items={qty_options}
-							showDefault={false}
-							onSelect={(qnt) => {
-								this.setState({ cantidad: qnt });
-							}}
-						/>
-					</section>
-					{btnEnabled}
-				</div>
-			) : (
-				<div className="pay-item info-pay-product-detail">
-					<h3>Sin unidades disponibles.</h3>
-					{btnDisabled}
-				</div>
-			);
+        <div className="pay-item">
+          <section className="select-icon">
+            <Select
+              items={qty_options}
+              showDefault={false}
+              onSelect={(qnt) => {
+                this.setState({ cantidad: qnt });
+              }}
+            />
+          </section>
+          {btnEnabled}
+        </div>
+      ) : (
+        <div className="pay-item info-pay-product-detail">
+          <h3>Sin unidades disponibles.</h3>
+          {btnDisabled}
+        </div>
+      );
     } else {
       return (
         <div className="pay-item">
@@ -448,12 +447,16 @@ class PaySection extends Component {
           brand: this.props.props.data.brand,
           category: concatCategories(),
           url:
-            "https://kiero.co" + handleFormatUrl(this.props.props.data.product_global_id, this.props.props.data.product_global_title),
+            "https://kiero.co" +
+            handleFormatUrl(
+              this.props.props.data.product_global_id,
+              this.props.props.data.product_global_title
+            ),
           quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
         },
       ],
     };
-    
+
     // dataLayer.push({
     //   event: "checkout",
     //   ecommerce: {
@@ -474,18 +477,28 @@ class PaySection extends Component {
       phone: this.state.mobile_phone,
       address: {
         city: this.state.city,
-        street: this.state.address
-      }
+        street: this.state.address,
+      },
     });
 
-    // Segment Checkout Step Completed event
+    // Segment Checkout Step Viewed/Completed events
     // Fire this event whenever a checkout step is completed.
     // Reference: https://segment.com/docs/connections/spec/ecommerce/v2/
-    analytics.track("Checkout Step Completed", {
+
+    analytics.track("Checkout Step Viewed", {
       // checkout_id: '50314b8e9bcf000000000000',	// Checkout transaction ID
       step: 2,
       shipping_method:	'None', //	String representing the shipping method chosen
       payment_method:	'Payu'	// representing the payment method chosen
+    }).then(() => {
+
+      analytics.track("Checkout Step Completed", {
+        // checkout_id: '50314b8e9bcf000000000000',	// Checkout transaction ID
+        step: 2,
+        shipping_method:	'None', //	String representing the shipping method chosen
+        payment_method:	'Payu'	// representing the payment method chosen
+      });
+
     });
 
     // KlaviyoClient.public.identify({
@@ -504,6 +517,8 @@ class PaySection extends Component {
     //     items: [item],
     //   },
     // });
+
+    this.createlead(this.props, 2);
   };
 
   checkoutOption = () => {
@@ -546,7 +561,11 @@ class PaySection extends Component {
           brand: this.props.props.data.brand,
           category: concatCategories(),
           url:
-            "https://kiero.co" + handleFormatUrl(this.props.props.data.product_global_id, this.props.props.data.product_global_title),
+            "https://kiero.co" +
+            handleFormatUrl(
+              this.props.props.data.product_global_id,
+              this.props.props.data.product_global_title
+            ),
           quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
         },
       ],
@@ -592,8 +611,10 @@ class PaySection extends Component {
     ) {
       this.setState({ [name]: value });
       if (name == "typeIdentification")
-      this.setState({ ['typeIdentificationName']: e.target.options[e.target.selectedIndex].text });
-
+        this.setState({
+          ["typeIdentificationName"]:
+            e.target.options[e.target.selectedIndex].text,
+        });
     }
     if (name === "terms") {
       this.setState({
@@ -712,26 +733,48 @@ class PaySection extends Component {
     // };
 
     async createlead(item, step) {
-        console.log(this.state);
-        console.log(item);
+      var name = this.state.user;
+      var email = this.state.email;
+      var last_name = this.state.lastName;
+      var user_id = this.state.user_id;
+      if(Cookies.hasOwnProperty("name")){
+          if(Cookies.get("name")!=undefined){
+              name = Cookies.get("name");
+          }
+      }
+      if(Cookies.hasOwnProperty("email")){
+        if(Cookies.get("email")!=undefined){
+          email = Cookies.get("email");
+        }
+      }
+      if(Cookies.hasOwnProperty("last_name")){
+        if(Cookies.get("last_name")!=undefined){
+          last_name = Cookies.get("last_name");
+        }
+      }
+      if(Cookies.hasOwnProperty("user_id")){
+        if(Cookies.get("user_id")!=undefined){
+          user_id = Cookies.get("user_id");
+        }
+      }
         var data = {
-            first_name: Cookies.get("name"),
+            first_name: name,
             city: this.state.city,
             address: this.state.address,
-            email: Cookies.get("email"),
+            email: email,
             second_email: this.state.email,
             phone: this.state.mobile_phone,
             second_phone: "",
-            last_name: Cookies.get("last_name"),
+            last_name: last_name,
             type_id: this.state.typeIdentificationName,
             num_id: this.state.identification,
-            id: Cookies.get("user_id"),
+            id: user_id,
             country: "CO",
             lead_type: step === 1 ? "Usuario Registrado que Presionó el Botón Comprar" : "Usuario Invitado (Y Usuario Registrado) que Presionó el botón de Continuar con la transacción",
             category: item.props.data.category.name,
             sub_category: "",
             price_product: item.price,
-            product_title:item.props.data.product_global_title,
+            product_title:item.props.data.product_global_title.slice(0,250),
             product_description:item.props.data.description,
             product_id:String(item.props.data.product_global_id),
             product_link:'',
@@ -739,18 +782,17 @@ class PaySection extends Component {
             product_brand:item.props.data.brand,
             category_id:String(item.props.data.category_id),
         }
-
         const error = await createleadClient(data);
     }
 
 
-    render() {
-        const renderPayu = () => {
-            this.setState({display: "none"});
-            this.setState({modalAddr: true});
-          if (Cookies.get("email") !== undefined) {
-            this.createlead(this.props, 1);
-          }
+  render() {
+    const renderPayu = () => {
+      this.setState({ display: "none" });
+      this.setState({ modalAddr: true });
+      if (Cookies.get("email") !== undefined) {
+        this.createlead(this.props, 1);
+      }
 
       const concatCategories = () => {
         var dataCategory = [];
@@ -774,24 +816,28 @@ class PaySection extends Component {
             brand: this.props.props.data.brand,
             category: concatCategories(),
             url:
-              "https://kiero.co" + handleFormatUrl(this.props.props.data.product_global_id, this.props.props.data.product_global_title),
+              "https://kiero.co" +
+              handleFormatUrl(
+                this.props.props.data.product_global_id,
+                this.props.props.data.product_global_title
+              ),
             quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
           },
         ],
       };
 
-      var quantity = this.state.cantidad == 0 ? 1 : this.state.cantidad
+      var quantity = this.state.cantidad == 0 ? 1 : this.state.cantidad;
 
       var checkoutStartedValues = {
         // order_id: '50314b8e9bcf000000000000',
-        affiliation: 'SpiceStock',
+        affiliation: "SpiceStock",
         value: this.props.props.data.price * quantity,
         revenue: this.props.props.data.price * quantity,
         shipping: 0,
         tax: 0,
         discount: 0,
         // coupon: 'hasbros',
-        currency: 'COP',
+        currency: "COP",
         products: [
           {
             product_id: this.props.props.data.product_global_id,
@@ -802,23 +848,43 @@ class PaySection extends Component {
             brand: this.props.props.data.brand,
             category: concatCategories(),
             url:
-              "https://kiero.co" + handleFormatUrl(this.props.props.data.product_global_id, this.props.props.data.product_global_title),
-            image_url: this.props.props.data.images.length ? this.props.props.data.images[0].url : null
-          }
-        ]
+              "https://kiero.co" +
+              handleFormatUrl(
+                this.props.props.data.product_global_id,
+                this.props.props.data.product_global_title
+              ),
+            image_url: this.props.props.data.images.length
+              ? this.props.props.data.images[0].url
+              : null,
+          },
+        ],
       };
 
       // console.log(checkoutStartedValues);
 
-      analytics.track('Checkout Started', checkoutStartedValues);
+      // Segment Checkout Step Viewed/Completed events
+      // Fire this event whenever a checkout step is completed.
+      // Reference: https://segment.com/docs/connections/spec/ecommerce/v2/
 
-      analytics.track('Checkout Step Completed', {
-        // checkout_id: '50314b8e9bcf000000000000',
-        step: 1,
-        shipping_method:	'None', //	String representing the shipping method chosen
-        payment_method:	'Payu'	// representing the payment method chosen
+      analytics.track('Checkout Started', checkoutStartedValues).then(() => {
+
+        analytics.track("Checkout Step Viewed", {
+          // checkout_id: '50314b8e9bcf000000000000',	// Checkout transaction ID
+          step: 1,
+          //shipping_method:	'None', //	String representing the shipping method chosen
+          //payment_method:	'Payu'	// representing the payment method chosen
+        }).then(() => {
+
+          analytics.track('Checkout Step Completed', {
+            // checkout_id: '50314b8e9bcf000000000000',
+            step: 1,
+            //shipping_method:	'None', //	String representing the shipping method chosen
+            //payment_method:	'Payu'	// representing the payment method chosen
+          });
+
+        });
+
       });
-
     };
     //////
     // this.clientId = typeof(ga) == 'function' && typeof(ga.getAll) == 'function' ? ga.getAll()[0].get('clientId') : "";
@@ -827,13 +893,11 @@ class PaySection extends Component {
     var quantity = this.state.cantidad === 0 ? 1 : this.state.cantidad;
     var fullName =
       handleFormatName(this.state.user) +
-      (this.state.lastName
-        ? " " + handleFormatName(this.state.lastName)
-        : "");
+      (this.state.lastName ? " " + handleFormatName(this.state.lastName) : "");
 
     // const hmacSha1 = async function calcHMac(data, key = 'abc') {
     //     var textEncoder = new TextEncoder()
-    //     var key = await window.crypto.subtle.importKey('raw', textEncoder.encode(key), {name: 'HMAC', hash: 'SHA-1'},true, ['sign']);        
+    //     var key = await window.crypto.subtle.importKey('raw', textEncoder.encode(key), {name: 'HMAC', hash: 'SHA-1'},true, ['sign']);
     //     var hmac = await window.crypto.subtle.sign('HMAC', key, textEncoder.encode(data));
     //     return Array.prototype.map.call(new Uint8Array(hmac), x => ('00' + x.toString(16)).slice(-2)).join('');
     // }
@@ -842,17 +906,19 @@ class PaySection extends Component {
     //   // do something with result
     // });
 
-    var hmacID = CryptoJS.HmacSHA1(this.state.identification, 'abc').toString(CryptoJS.enc.Hex)
+    var hmacID = CryptoJS.HmacSHA1(this.state.identification, "abc").toString(
+      CryptoJS.enc.Hex
+    );
 
-    this.state.user_id = hmacID
+    this.state.user_id = hmacID;
 
-        var extra3 = JSON.stringify({
-            qty: quantity,
-            cid: this.state.clientId,
-            gclid: this.state.gclid,
-            nme: fullName,
-            id: hmacID
-        });
+    var extra3 = JSON.stringify({
+      qty: quantity,
+      cid: this.state.clientId,
+      gclid: this.state.gclid,
+      nme: fullName,
+      id: hmacID,
+    });
 
     // console.log(hmacID)
 
@@ -907,7 +973,7 @@ class PaySection extends Component {
               name="lastName"
             />
           </div>
-          <select
+          {/* <select
             name="typeIdentification"
             className="typeIdentification"
             style={{}}
@@ -920,13 +986,13 @@ class PaySection extends Component {
             <option value="cc">Cédula</option>
             <option value="ce">Cédula extranjería</option>
             <option value="pa">Pasaporte</option>
-          </select>
-          <input
+          </select> */}
+          {/* <input
             value={this.state.identification}
             onChange={this.handleFormValue}
             placeholder="Número identificación"
             name="identification"
-          />
+          /> */}
           <input
             value={this.state.email}
             onChange={this.handleFormValue}
@@ -977,7 +1043,7 @@ class PaySection extends Component {
             <input
               name="description"
               type="hidden"
-              value={this.props.props.data.title.substr(0, 250)}
+              value={this.props.props.data.title.substr(0, 159)}
             />
             <input name="referenceCode" type="hidden" value={ref_code} />
             <input
@@ -1062,7 +1128,7 @@ class PaySection extends Component {
         <div
           style={{
             display: "flex",
-            top: 395,
+            top: 310,
             borderRadius: "10px",
             padding: "10px 0px",
             backgroundColor: "#f3f3f3",
@@ -1189,37 +1255,37 @@ class PaySection extends Component {
           </p>
         </div>
         <div className="pay-item">
-					{this.props.props.data.status ? (
-						<h3
-							className="price-pay-product-detail"
-							style={{ fontWeight: '300 !important' }}
-						>
-							$
-							{this.props.price
-								? this.props.price
-										.toString()
-										.split('.')[0]
-										.replace(/(.)(?=(\d{3})+$)/g, '$1.')
-								: ' ... '}
-						</h3>
-					) : (
-						<div>
-							<h3
-								className="price-pay-product-detai-nostock"
-								style={{ fontWeight: '300 !important' }}
-							>
-								$
-								{this.props.price
-									? this.props.price
-											.toString()
-											.split('.')[0]
-											.replace(/(.)(?=(\d{3})+$)/g, '$1.')
-									: ' ... '}
-							</h3>
-							<span>(Producto no disponible)</span>
-						</div>
-					)}
-				</div>
+          {this.props.props.data.status ? (
+            <h3
+              className="price-pay-product-detail"
+              style={{ fontWeight: "300 !important" }}
+            >
+              $
+              {this.props.price
+                ? this.props.price
+                    .toString()
+                    .split(".")[0]
+                    .replace(/(.)(?=(\d{3})+$)/g, "$1.")
+                : " ... "}
+            </h3>
+          ) : (
+            <div>
+              <h3
+                className="price-pay-product-detai-nostock"
+                style={{ fontWeight: "300 !important" }}
+              >
+                $
+                {this.props.price
+                  ? this.props.price
+                      .toString()
+                      .split(".")[0]
+                      .replace(/(.)(?=(\d{3})+$)/g, "$1.")
+                  : " ... "}
+              </h3>
+              <span>(Producto no disponible)</span>
+            </div>
+          )}
+        </div>
         <div className="pay-item info-pay-product-detail">
           <h3>
             <span className="no-movil">Kiero</span> envíos{" "}
@@ -1273,7 +1339,11 @@ class PaySection extends Component {
           <div className="section-pay-type-items">
             <p>Tarjetas de crédito - Hasta 36 cuotas</p>
             <div>
-              <img loading="lazy" alt="pagos por tarjeta de crédito" src={PayCredit} />
+              <img
+                loading="lazy"
+                alt="pagos por tarjeta de crédito"
+                src={PayCredit}
+              />
             </div>
             <p>Efectivo en puntos de pago</p>
             <div>
@@ -1281,7 +1351,11 @@ class PaySection extends Component {
             </div>
             <p>Transferencia desde tu banco</p>
             <div>
-              <img loading="lazy" alt="pagos por transferencia" src={PayTransfer} />
+              <img
+                loading="lazy"
+                alt="pagos por transferencia"
+                src={PayTransfer}
+              />
             </div>
           </div>
         </div>

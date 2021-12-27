@@ -18,3 +18,13 @@
 -   pm2 start --name kiero.new npm -- start
 
 -   pm2 start file_server.py --name files_server --interpreter python3
+
+-   pm2 start yarn --name kieroDev -- start
+
+-   node version: 14.18.2
+
+-   npm version: 6.14.15
+
+-   yarn version: 1.22.10
+
+-   Si se ejecuta pm2, se debe ejecutar en modo root

@@ -50,7 +50,7 @@ class ProductDetail extends Component {
 		this.state = {
 			questions: [],
 			mdata: this.props.data,
-			m_pgid: props.data.variants.length == 0 || props.data.is_variant ? true : false,
+			m_pgid: !!(props.data.variants.length === 0 || props.data.is_variant),
 		};
 		this.reLoadData = this.reLoadData.bind(this);
 	}
@@ -245,6 +245,20 @@ class ProductDetail extends Component {
     //       items: [item],
     //     },
     //   });
+        var item = {
+            ProductName: this.props.data.product_global_title.slice(0,250),
+            ProductID: this.props.data.product_global_id,
+            SKU: this.props.data.sku,
+            Categories: concatCategories(),
+            ImageURL: this.state.mdata.images[0].url,
+            URL:
+                "https://kiero.co" + handleFormatUrl(this.props.data.product_global_id, this.props.data.product_global_title),
+            Brand: this.props.data.brand,
+            Price: this.props.data.price,
+        };
+        console.log(item);
+        console.log(this.props);
+        this.createlead(item);
   }
 
   async createlead() {
@@ -272,6 +286,8 @@ class ProductDetail extends Component {
       product_link:'',
       product_image:this.props.data.images[0].url,
       product_brand:this.props.data.brand,
+      product_category:String(this.props.data.category.name),
+      product_subcategory:String(this.props.data.category.name),
       category_id:String(this.props.data.category_id),
     }
     const error = await createleadClient(data);

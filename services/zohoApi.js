@@ -1,11 +1,8 @@
-import { post_test } from "../lib/request";
+import { post } from "../lib/request";
 
-export const createlead = async (
-  data,
-) => {
+export const createlead = async (data) => {
   try {
-    console.log(data);
-    const response = await post_test("/create_lead_zoho", data);
+    const response = await post("/create_lead_zoho", data);
     return response;
   } catch (error) {
     return error.response && error.response.status === 422
@@ -15,4 +12,3 @@ export const createlead = async (
       : "Error desconocido, intente nuevamente.";
   }
 };
-

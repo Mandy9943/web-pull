@@ -1,7 +1,5 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import "./Spinner.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 class Spinner extends Component {
   render() {
