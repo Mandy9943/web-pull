@@ -6,22 +6,18 @@ import Image from "next/image";
 import abierto from "../../../../assets/img/productDetail/l-nea-86@2x.svg";
 import cerrado from "../../../../assets/img/productDetail/icono-desplegar@2x.svg";
 import CardOurClient from "./CardOurClient";
-import review from "./review";
+import review from "../../../../lib/review";
 import SwiperCardOurClient from "./SwiperCardOurClient";
+import { Button } from "@mui/material";
 
-const OurClient = () => {
-  const lista = review();
+const OurClient = ({ category }) => {
+  const [countClient, setCountClient] = useState(4);
+  const lista = review(category).slice(0, countClient);
   let count_opinion = lista.length;
   const [collapse, setCollapse] = useState(false);
   const [desglosar, setDesglosar] = useState(cerrado);
   const [comment, setComment] = useState(false);
-  const [clientShow, setClientShow] = useState({
-    star: 0,
-    name: "",
-    location: "",
-    H: "",
-    P: "",
-  });
+  const [clientShow, setClientShow] = useState(lista[0]);
   const handleOnClickComment = (client) => {
     setComment(!comment);
     setClientShow(client);
@@ -73,7 +69,9 @@ const OurClient = () => {
             />
           </article>
           <div className="footer_our">
-            <button>VER MÁS</button>
+            <Button onClick={() => setCountClient(countClient + 2)}>
+              VER MÁS
+            </Button>
           </div>
         </React.Fragment>
       ) : null}

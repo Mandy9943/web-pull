@@ -1,7 +1,6 @@
 import { SwipeableDrawer } from "@material-ui/core";
 import React from "react";
 
-import review from "../../../../assets/img/review/Great Mower For The Price_0.jpg";
 import cert from "../../../../assets/img/productDetail/Certified Icon.svg";
 import location from "../../../../assets/img/productDetail/Location Icon.svg";
 import iconcerrar from "../../../../assets/img/productDetail/Minimize Icon.svg";
@@ -28,8 +27,10 @@ SwiperCore.use([EffectCoverflow, Pagination]);
 const SwiperCardOurClient = ({ client, comment, setComment }) => {
   console.log("card on client");
   const stars = [];
-  for (let i = 0; i < client.star; i++) {
-    stars.push(<FontAwesomeIcon icon={faStar} />);
+  if (client?.star) {
+    for (let i = 0; i < client.star; i++) {
+      stars.push(<FontAwesomeIcon icon={faStar} />);
+    }
   }
   return (
     <div id="SwiperCardOurClient">
@@ -61,35 +62,21 @@ const SwiperCardOurClient = ({ client, comment, setComment }) => {
                 }}
                 className="swiperOurClients"
               >
-                <SwiperSlide>
-                  <div className="anullProperties">
-                    <Image
-                      src={review}
-                      alt="Review"
-                      layout="fill"
-                      className="headerOurClients"
-                    />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="anullProperties">
-                    <Image
-                      src={review}
-                      alt="Review"
-                      layout="fill"
-                      className="headerOurClients"
-                    />
-                  </div>
-                </SwiperSlide>
+                {client.product.img.map((img, index) => {
+                  return img.image === true ? (
+                    <SwiperSlide key={index}>
+                      <div className="anullProperties">
+                        <Image
+                          src={img.url}
+                          alt={client.product.name}
+                          layout="fill"
+                          className="headerOurClients"
+                        />
+                      </div>
+                    </SwiperSlide>
+                  ) : null;
+                })}
               </Swiper>
-              {/* <div className="anullProperties">
-                <Image
-                  src={review}
-                  alt="Review"
-                  layout="fill"
-                  className="header"
-                />
-              </div> */}
             </picture>
             <div className="texto">
               <div className="topHeader">

@@ -17,6 +17,7 @@
   font-weight: 800;
   position: static;
   width: 203px;
+  text-align: center;
 }
 
 .containerPriceSaving .wrapperOtherPrices {
@@ -32,7 +33,7 @@
   color: #969696;
   font-weight: 500;
   position: static;
-  width: 134px;
+  width: auto;
 }
 
 .containerPriceSaving .wrapperOtherPrices .savingPrice {

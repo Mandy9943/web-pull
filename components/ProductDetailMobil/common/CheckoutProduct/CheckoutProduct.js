@@ -11,10 +11,9 @@ const CheckoutProduct = ({ price, stock, discount_percentage, onClickBuy }) => {
         <div className="price">
           <span>
             ${" "}
-            {(price - price * parseFloat("0." + discount_percentage).toFixed(2))
-              .toString()
-              .split(".")[0]
-              .replace(/(.)(?=(\d{3})+$)/g, "$1.")}{" "}
+            {(price).toString()
+                    .split(".")[0]
+                    .replace(/(.)(?=(\d{3})+$)/g, "$1.")}{" "}
             {/* <p>COP</p> */}
           </span>
         </div>
@@ -24,10 +23,10 @@ const CheckoutProduct = ({ price, stock, discount_percentage, onClickBuy }) => {
           </span>
           <span className="old-price">
             ${" "}
-            {price
-              .toString()
-              .split(".")[0]
-              .replace(/(.)(?=(\d{3})+$)/g, "$1.")}
+            {parseInt(price / (1 - parseFloat("." + discount_percentage).toFixed(2)))
+                                                                        .toString()
+                                                                        .split(".")[0]
+                                                                        .replace(/(.)(?=(\d{3})+$)/g, "$1.")}
           </span>
         </div>
       </div>

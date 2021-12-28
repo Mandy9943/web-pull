@@ -202,6 +202,7 @@
   top: 0 !important;
   height: 100vh !important;
   overflow-y: scroll !important;
+  overflow-x: hidden !important;
   margin: 0 !important;
   background-color: #fff !important;
 }
@@ -244,25 +245,23 @@
   display: flex;
   justify-content: space-between;
 }
+
 .swipe article .card .bottomHeader {
   display: flex;
   justify-content: space-between;
   margin-bottom: 22px;
 }
-.swipe article .card .autor {
-  /* Subheader 1 */
 
-  font-family: Montserrat;
+.swipe article .card .autor {
+  font-family: Montserrat, sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
   line-height: 20px;
   letter-spacing: 0.03em;
-
-  /* Medium Gray */
-
   color: #969696;
 }
+
 .swipe article .card .autor p {
   font-family: Montserrat, sans-serif;
   font-style: normal;
@@ -279,11 +278,11 @@
   align-items: center;
   justify-content: space-between;
 }
+
 .swipe article .card .certification {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  align-items: center;
 }
 
 .swipe article .card .locationImage img {
@@ -300,17 +299,14 @@
   color: #969696;
   margin-right: 10px;
 }
+
 .swipe article .card .certification p {
-  font-family: Montserrat;
+  font-family: Montserrat, sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 10px;
   line-height: 12px;
-
-  /* Discount Blue */
-
   color: #1fc2e6;
-
   margin-right: 10px;
 }
 
@@ -325,42 +321,31 @@
 }
 
 .swipe article .card .comment h5 {
-  /* Header 4 */
-
-  font-family: Montserrat;
+  font-family: Montserrat, sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 18px;
   line-height: 22px;
   letter-spacing: 0.03em;
-
-  /* Dark Gray */
-
   color: #5d5d5d;
-
   margin-bottom: 20px;
 }
 
 .swipe article .card .comment p {
-  /* Body 1 */
-
-  font-family: Montserrat;
+  font-family: Montserrat, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 21px;
-  /* or 150% */
-
   letter-spacing: 0.01em;
-
-  /* Dark Gray */
-
   color: #5d5d5d;
 }
+
 .swipe .swiper {
   width: 100%;
   height: 100%;
 }
+
 .swipe .swiper-container {
   overflow: initial !important;
 }
@@ -369,8 +354,6 @@
   text-align: center;
   font-size: 18px;
   background: #fff;
-
-  /* Center slide text vertically */
   display: -webkit-box;
   display: -ms-flexbox;
   display: -webkit-flex;
@@ -408,4 +391,12 @@
   .swiper-container-horizontal.swiperOurClients
   > .swiper-pagination-bullets {
   bottom: -20px;
+}
+
+/* section CardOurClient*/
+#CardOurClient picture .anullProperties {
+  height: 100% !important;
+}
+#CardOurClient picture .anullProperties img {
+  height: auto !important;
 }

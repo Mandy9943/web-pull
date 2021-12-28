@@ -21,12 +21,6 @@ import PayMethod from "./common/PayMethod/PayMethod";
 import Detail from "./common/Detail/Detail";
 import Description from "./common/Description/Description";
 
-// const OfferSection = dynamic(
-//   () => import("./common/OfferSection/OfferSection"),
-//   {
-//     loading: () => <p>...</p>,
-//   }
-// );
 import Benefits from "./common/Benefits/Benefits";
 import HelpCenter from "./common/HelpCenter/HelpCenter";
 import Subscription from "./common/Subscription/Subscription";
@@ -54,11 +48,13 @@ const SellerInfo = dynamic(() => import("./common/SellerInfo/SellerInfo"), {
 });
 
 const ProductDetailMobil = ({ user_data, data }) => {
+  console.log(data);
   let urlSic = "https://www.sic.gov.co";
   // console.log("data", data);
   const [isForm, setIsForm] = useState(false);
   const [isWhatsappBanner, setIsWhatsappBanner] = useState(true);
   const scrolledPayButton = useScrollY(700, false);
+  const [priceWithPercentage, setPriceWithPercentage] = useState(1);
 
   const handleCloseWhatsappBanner = () => {
     setIsWhatsappBanner(false);
@@ -120,8 +116,15 @@ const ProductDetailMobil = ({ user_data, data }) => {
       <PayMethod />
       <Detail product={data} />
       <Description product={data} />
-      <OurClient />
-      <SwiperSlider type={"show"} />
+      <OurClient category={data?.breadcum[0]?.name.substring(0, 7)} />
+      <SwiperSlider
+        type={"specialOffer"}
+        price={data.price}
+        images={data.images}
+        altImg={data.title}
+        stock={data.status === 0 ? 0 : data.stock}
+        discount_percentage={data.discount_percentage}
+      />
       <SellerInfo />
       <RecommendedProducts category={data.category} />
       <Benefits />
