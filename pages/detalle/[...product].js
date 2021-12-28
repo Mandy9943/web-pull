@@ -7,6 +7,8 @@ import dynamic from 'next/dynamic'
 import { handleFormatUrl } from '../../lib/functions'
 import useResize from '../../lib/hooks/useResize'
 import Loading from '../../components/Common/Loading/Loading'
+import { useAppDispatch } from '../../lib/hooks/redux'
+import { setData } from '../../redux/feature/pay/paySlice'
 const Detail = dynamic(() => import('../../components/ProductDetail'), {
   loading: () => <Loading />,
 })
@@ -15,12 +17,23 @@ const ProductDetailMobil = dynamic(() => import('../../components/ProductDetailM
 })
 
 function Product({ data, u_data }) {
+  const dispatch = useAppDispatch()
   const mobileView = useResize(768)
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     setIsLoading(false)
   }, [])
+
+  useEffect(() => {
+    dispatch(
+      setData({
+        category: data.category.name,
+        price: data.product_global_price,
+        img: data.images[0],
+      })
+    )
+  }, [data, dispatch])
 
   return (
     <div>

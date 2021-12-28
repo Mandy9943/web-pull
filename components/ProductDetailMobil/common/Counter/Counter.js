@@ -1,26 +1,30 @@
-import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
-import { useEffect } from "react";
-import "./Counter.module.css";
-const Counter = ({ onCount, stock }) => {
-  const [count, setCount] = useState(stock === 0 ? stock : 1);
+import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React, { useState } from 'react'
+import { useEffect } from 'react'
+import { useAppDispatch } from '../../../../lib/hooks/redux'
+import './Counter.module.css'
+
+import { setCount as setCountAction } from '../../../../redux/feature/pay/paySlice'
+
+const Counter = ({ stock }) => {
+  const dispatch = useAppDispatch()
+  const [count, setCount] = useState(stock === 0 ? stock : 1)
   const handleAdd = () => {
-    const limitCount = stock ?? 6;
+    const limitCount = stock ?? 6
     if (count < limitCount) {
-      setCount(count + 1);
+      setCount(count + 1)
     }
-  };
+  }
   const handleSub = () => {
     if (count > 0) {
-      setCount(count - 1);
+      setCount(count - 1)
     }
-  };
+  }
   useEffect(() => {
-    if (onCount) {
-      onCount(count);
-    }
-  }, [count]);
+    dispatch(setCountAction(count))
+  }, [count, dispatch])
+
   return (
     <div id="counter-detail-mobile">
       <span className="text">Cant.</span>
@@ -34,7 +38,7 @@ const Counter = ({ onCount, stock }) => {
         <FontAwesomeIcon icon={faPlus} />
       </span>
     </div>
-  );
-};
+  )
+}
 
-export default Counter;
+export default Counter
