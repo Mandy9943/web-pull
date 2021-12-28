@@ -22,13 +22,11 @@ module.exports = {
 
 const withCSS = require("@zeit/next-css");
 const withSass = require("@zeit/next-sass");
-const withImages = require("next-images");
 const withOptimizedImages = require("next-optimized-images");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const withSourceMaps = require("@zeit/next-source-maps");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = withSourceMaps(
   withOptimizedImages(
