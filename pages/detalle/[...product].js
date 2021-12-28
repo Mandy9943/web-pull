@@ -28,9 +28,12 @@ function Product({ data, u_data }) {
   useEffect(() => {
     dispatch(
       setData({
-        category: data.category.name,
+        category: data.category,
         price: data.product_global_price,
         img: data.images[0],
+        title: data.title,
+        product_id: data.product_global_id,
+        brand: data.brand,
       })
     )
   }, [data, dispatch])

@@ -4,6 +4,9 @@ const initialState = {
   category: '',
   price: 0,
   img: '',
+  product_id: 0,
+  title: '',
+  brand: '',
   count: 0,
 }
 
@@ -23,6 +26,9 @@ export const paySlice = createSlice({
       state.category = action.payload.category
       state.price = action.payload.price
       state.img = action.payload.img
+      state.product_id = action.payload.product_id
+      state.title = action.payload.title
+      state.brand = action.payload.brand
     },
   },
 })
