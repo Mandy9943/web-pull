@@ -30,9 +30,11 @@ const Counter = ({ onCount, stock }) => {
         </span>
       )}
       <span className="number">{count}</span>
-      <span className="plus-icon" onClick={handleAdd}>
-        <FontAwesomeIcon icon={faPlus} />
-      </span>
+      {!stock <= 1 ? (
+        <span className="sub-icon" onClick={handleAdd}>
+          <FontAwesomeIcon icon={faPlus} />
+        </span>
+      ) : null}
     </div>
   );
 };

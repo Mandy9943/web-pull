@@ -50,11 +50,9 @@ const SellerInfo = dynamic(() => import("./common/SellerInfo/SellerInfo"), {
 const ProductDetailMobil = ({ user_data, data }) => {
   console.log(data);
   let urlSic = "https://www.sic.gov.co";
-  // console.log("data", data);
   const [isForm, setIsForm] = useState(false);
   const [isWhatsappBanner, setIsWhatsappBanner] = useState(true);
   const scrolledPayButton = useScrollY(700, false);
-  const [priceWithPercentage, setPriceWithPercentage] = useState(1);
 
   const handleCloseWhatsappBanner = () => {
     setIsWhatsappBanner(false);
