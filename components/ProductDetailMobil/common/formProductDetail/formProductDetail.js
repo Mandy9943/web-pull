@@ -1,17 +1,11 @@
-import {
-  TextField,
-  Checkbox,
-  Button,
-  DialogActions,
-  FormControlLabel,
-} from "@material-ui/core";
-import React from "react";
-import FormDialog from "./components/FormDialog/FormDialog";
-import "./formProductDetail.module.css";
-import Link from "next/link";
-import { Controller, useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import formSchema from "./Schema/schema";
+import { TextField, Checkbox, Button, DialogActions, FormControlLabel } from '@material-ui/core'
+import React from 'react'
+import FormDialog from './components/FormDialog/FormDialog'
+import './formProductDetail.module.css'
+import Link from 'next/link'
+import { Controller, useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import formSchema from './Schema/schema'
 
 const FormProductDetail = ({ handleClose, open }) => {
   const {
@@ -21,30 +15,28 @@ const FormProductDetail = ({ handleClose, open }) => {
     formState: { errors, dirtyFields, isValid },
   } = useForm({
     defaultValues: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      phoneNumber: "",
-      city: "",
-      address: "",
+      firstName: '',
+      lastName: '',
+      email: '',
+      phoneNumber: '',
+      city: '',
+      address: '',
       agreePolicy: false,
     },
-    mode: "all",
+    mode: 'all',
     resolver: yupResolver(formSchema),
-  });
+  })
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = data => console.log(data)
   return (
     <div>
       <FormDialog open={open} handleClose={handleClose}>
         <form onSubmit={handleSubmit(onSubmit)} id="FormProductDetail">
-          <p className="formProductDetail-title">
-            Por favor agregue los datos de envío
-          </p>
+          <p className="formProductDetail-title">Por favor agregue los datos de envío</p>
           <div className="form-wrapper">
             <div className="fromProductDetail-wrapper-textfields">
               <TextField
-                {...register("firstName")}
+                {...register('firstName')}
                 className="fromProductDetail-textfields font-size"
                 margin="dense"
                 id="firstName"
@@ -57,7 +49,7 @@ const FormProductDetail = ({ handleClose, open }) => {
                 required
               />
               <TextField
-                {...register("lastName")}
+                {...register('lastName')}
                 className="fromProductDetail-textfields font-size"
                 margin="dense"
                 id="lastName"
@@ -71,7 +63,7 @@ const FormProductDetail = ({ handleClose, open }) => {
               />
             </div>
             <TextField
-              {...register("email")}
+              {...register('email')}
               className="font-size"
               margin="dense"
               id="email"
@@ -85,7 +77,7 @@ const FormProductDetail = ({ handleClose, open }) => {
               required
             />
             <TextField
-              {...register("phoneNumber")}
+              {...register('phoneNumber')}
               className="font-size"
               margin="dense"
               id="phoneNumber"
@@ -99,7 +91,7 @@ const FormProductDetail = ({ handleClose, open }) => {
               required
             />
             <TextField
-              {...register("city")}
+              {...register('city')}
               className="font-size"
               margin="dense"
               id="city"
@@ -113,7 +105,7 @@ const FormProductDetail = ({ handleClose, open }) => {
               required
             />
             <TextField
-              {...register("address")}
+              {...register('address')}
               className="font-size"
               margin="dense"
               id="address"
@@ -141,27 +133,23 @@ const FormProductDetail = ({ handleClose, open }) => {
                     required
                     label={
                       <p className="agreePolicy">
-                        Antes de continuar debes aceptar los{" "}
+                        Antes de continuar debes aceptar los{' '}
                         <Link href="/terminos">
                           <a>terminos</a>
                         </Link>
-                        ,{" "}
+                        ,{' '}
                         <Link href="/terminos">
                           <a>condiciones</a>
-                        </Link>{" "}
-                        y{" "}
+                        </Link>{' '}
+                        y{' '}
                         <Link href="/privacidad">
                           <a>política de privacidad</a>
-                        </Link>{" "}
+                        </Link>{' '}
                         de KieroMarketplace
                       </p>
                     }
                     control={
-                      <Checkbox
-                        {...field}
-                        checked={field.value}
-                        onChange={(e) => field.onChange(e.target.checked)}
-                      />
+                      <Checkbox {...field} checked={field.value} onChange={e => field.onChange(e.target.checked)} />
                     }
                   />
                 )}
@@ -198,7 +186,7 @@ const FormProductDetail = ({ handleClose, open }) => {
         </form>
       </FormDialog>
     </div>
-  );
-};
+  )
+}
 
-export default FormProductDetail;
+export default FormProductDetail

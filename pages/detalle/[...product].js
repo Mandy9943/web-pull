@@ -1,60 +1,43 @@
-import React, { useEffect, useState } from "react";
-import Head from "next/head";
-import { getProductDetail } from "../../services/productsApi";
-import { getUser, isAuthenticated, getJwt } from "../../lib/auth";
-import favicon from "../../assets/img/favicon.svg";
-import dynamic from "next/dynamic";
-import { handleFormatUrl } from "../../lib/functions";
-import useResize from "../../lib/hooks/useResize";
-import Loading from "../../components/Common/Loading/Loading";
-const Detail = dynamic(() => import("../../components/ProductDetail"), {
+import React, { useEffect, useState } from 'react'
+import Head from 'next/head'
+import { getProductDetail } from '../../services/productsApi'
+import { getUser, isAuthenticated, getJwt } from '../../lib/auth'
+import favicon from '../../assets/img/favicon.svg'
+import dynamic from 'next/dynamic'
+import { handleFormatUrl } from '../../lib/functions'
+import useResize from '../../lib/hooks/useResize'
+import Loading from '../../components/Common/Loading/Loading'
+const Detail = dynamic(() => import('../../components/ProductDetail'), {
   loading: () => <Loading />,
-});
-const ProductDetailMobil = dynamic(
-  () => import("../../components/ProductDetailMobil/ProductDetailMobil"),
-  {
-    loading: () => <Loading />,
-  }
-);
+})
+const ProductDetailMobil = dynamic(() => import('../../components/ProductDetailMobil/ProductDetailMobil'), {
+  loading: () => <Loading />,
+})
 
 function Product({ data, u_data }) {
-  const mobileView = useResize(768);
-  const [isLoading, setIsLoading] = useState(true);
+  const mobileView = useResize(768)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    setIsLoading(false);
-  }, []);
+    setIsLoading(false)
+  }, [])
 
   return (
     <div>
       <Head>
         {/*<script type="text/javascript" src="https://checkout.wompi.co/widget.js"></script>*/}
         <title>Kiero.co | {data.title.substring(0, 60)}</title>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta name="mobileOptimized" content="360" />
         <meta
           name="description"
-          content={`Kiero.co | Compralo en Kiero ${data.title.substring(
-            0,
-            60
-          )} a ${data.price} - Envío
-      gratis - Encuentra más productos de ${
-        data.category ? data.category.name : ""
-      }`.substring(0, 159)}
+          content={`Kiero.co | Compralo en Kiero ${data.title.substring(0, 60)} a ${data.price} - Envío
+      gratis - Encuentra más productos de ${data.category ? data.category.name : ''}`.substring(0, 159)}
         />
         <meta name="keywords" content={`${data.title}`} />
-        <meta
-          name="title"
-          content={`Kiero.co -${data.title.substring(0, 60)} a ${data.price}`}
-        />
+        <meta name="title" content={`Kiero.co -${data.title.substring(0, 60)} a ${data.price}`} />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta
-          name="apple-mobile-web-app-status-bar-style"
-          content="black-translucent"
-        />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="google" content="notranslate" />
         <meta
           name="twitter: card"
@@ -75,25 +58,14 @@ function Product({ data, u_data }) {
         <meta name="twitter: image" content={`${data.images[0].url}`} />
         <meta
           property="og:title"
-          content={`Compra en Kiero.co - Encuentra ${
-            data.category ? data.category.name : ""
-          } en Kiero.co`}
+          content={`Compra en Kiero.co - Encuentra ${data.category ? data.category.name : ''} en Kiero.co`}
         />
         <meta
           property="og:description"
-          content={`${data.title.substring(
-            0,
-            160
-          )} en Kiero.co - Descubre millones de productos online.
-      Encuentra ${data.category ? data.category.name : ""} en Kiero.co`}
+          content={`${data.title.substring(0, 160)} en Kiero.co - Descubre millones de productos online.
+      Encuentra ${data.category ? data.category.name : ''} en Kiero.co`}
         />
-        <meta
-          property="og:url"
-          content={`https://kiero.co${handleFormatUrl(
-            data.product_id,
-            data.title
-          )}`}
-        />
+        <meta property="og:url" content={`https://kiero.co${handleFormatUrl(data.product_id, data.title)}`} />
         <meta property="og:locale" content="es_ES" />
         <meta property="og:type" content="WebSite" />
         <meta property="og:site_name" content="Kiero.co" />
@@ -150,31 +122,32 @@ function Product({ data, u_data }) {
         </>
       )}
     </div>
-  );
+  )
 }
 
 // This gets called on every request
 export async function getServerSideProps(context) {
   // Fetch data from external API
-  let temp_p = String(context.params.product).split("_");
-  const id_product = JSON.parse(temp_p[0]);
+  let temp_p = String(context.params.product).split('_')
+
+  const id_product = JSON.parse(temp_p[0])
 
   const res = await getProductDetail(id_product, {
     params: { is_variant: false, product_global_id: id_product },
-  });
+  })
 
-  const data = await res.data;
+  const data = await res.data
 
-  let usr = getUser(context);
-  let jwt = getJwt(context);
+  let usr = getUser(context)
+  let jwt = getJwt(context)
 
   const u_data = {
     user: usr !== undefined ? usr : null,
     authenticated: isAuthenticated(context),
-    jwt: jwt ? jwt : "",
-  };
+    jwt: jwt ? jwt : '',
+  }
 
-  return { props: { data: data.data, u_data } };
+  return { props: { data: data.data, u_data } }
 }
 
-export default Product;
+export default Product

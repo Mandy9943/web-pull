@@ -1,1 +1,1 @@
-export { default } from "./MenuMessageAccount";
+export { default } from './MenuMessageAccount'
