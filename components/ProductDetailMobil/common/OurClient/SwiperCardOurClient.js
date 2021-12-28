@@ -29,7 +29,7 @@ const SwiperCardOurClient = ({ client, comment, setComment }) => {
   const stars = [];
   if (client?.star) {
     for (let i = 0; i < client.star; i++) {
-      stars.push(<FontAwesomeIcon icon={faStar} />);
+      stars.push(<FontAwesomeIcon icon={faStar} key={i} />);
     }
   }
   return (
