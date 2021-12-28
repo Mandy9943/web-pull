@@ -1,8 +1,11 @@
 #PayMethod {
-  border-top: 2px solid #e4e4e4;
   border-bottom: 2px solid #e4e4e4;
   background: #fff;
-  padding: 0px 25px;
+  padding: 36px 10px 0 10px;
+}
+
+#PayMethod .titulo{
+  padding-left: 3.5%;
 }
 
 #PayMethod .titulo h3 {
@@ -12,7 +15,6 @@
   color: #000000;
   opacity: 1;
   margin-right: auto;
-  margin-top: 36px;
 }
 
 #PayMethod .link {
@@ -21,8 +23,8 @@
   grid-template-rows: repeat(2, 72px);
   padding: 0px 0px;
   margin: 24px 0px;
+  justify-content: center;
 }
-
 
 #PayMethod .link .imgContainer img {
   width: 100% !important;
@@ -33,7 +35,6 @@
 
 
 @media (min-width: 750px) {
-
   #PayMethod {
     height: 130px;
   }

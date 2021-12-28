@@ -7,7 +7,10 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "export": "next build & next export -o build"
+    "export": "next build & next export -o build",
+    "lint": "eslint services --cache --fix && pretty-quick --staged",
+    "prepare": "husky install",
+    "pre-commit": "npm run lint && git add ."
   },
   "keywords": [],
   "author": "",
@@ -101,7 +104,14 @@
     "file-loader": "^6.0.0",
     "next-purgecss": "^4.0.0",
     "prettier": "^2.5.1",
-    "prop-types": "^15.7.2"
+    "prop-types": "^15.7.2",
+    "eslint": "8.4.1",
+    "eslint-config-next": "12.0.7",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.1.2",
+    "pretty-quick": "^3.1.2"
   },
   "bit": {
     "env": {
@@ -109,5 +119,10 @@
     },
     "componentsDefaultDirectory": "components/{name}",
     "packageManager": "npm yarn"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run pre-commit"
+    }
   }
 }

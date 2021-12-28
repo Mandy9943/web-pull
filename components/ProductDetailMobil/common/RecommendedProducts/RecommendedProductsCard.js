@@ -4,7 +4,6 @@ import "./RecommendedProductsCard.module.css";
 import button from "../../../../assets/img/productDetail/component-4@2x.svg";
 import Image from "next/image";
 function RecommendedProductsCard({ product }) {
-  console.log("product", product);
   return (
     <div id="RecommendedProductsCard">
       {product ? (

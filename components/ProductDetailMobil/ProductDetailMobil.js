@@ -3,11 +3,10 @@ import React, { useState } from "react";
 
 import Logo1 from "../../assets/img/logo-social.png";
 import Logo2 from "../../assets/img/logo-social1.png";
-import backGround from "../../assets/img/productDetail/fondo-rojo-landing-view@2x.svg";
+// import backGround from "../../assets/img/productDetail/fondo-rojo-landing-view@2x.svg";
 
 import CheckoutProduct from "./common/CheckoutProduct/CheckoutProduct";
 import Header from "./common/Header/Header";
-
 
 const SwiperSlider = dynamic(
   () => import("./common/SwiperSlider/SwipperSlider"),
@@ -22,12 +21,6 @@ import PayMethod from "./common/PayMethod/PayMethod";
 import Detail from "./common/Detail/Detail";
 import Description from "./common/Description/Description";
 
-const OfferSection = dynamic(
-  () => import("./common/OfferSection/OfferSection"),
-  {
-    loading: () => <p>...</p>,
-  }
-);
 import Benefits from "./common/Benefits/Benefits";
 import HelpCenter from "./common/HelpCenter/HelpCenter";
 import Subscription from "./common/Subscription/Subscription";
@@ -37,10 +30,10 @@ import Image from "next/image";
 import useScrollY from "../../lib/hooks/useScrollY";
 
 import WhatsappBanner from "./common/WhatsappBanner/WhatsappBanner";
-import CheckoutButton from "./common/CheckoutButton/CheckoutButton";
-import OurClient from "./common/OurClient/OurClient";
-import { divide } from "lodash";
-
+// import CheckoutButton from "./common/CheckoutButton/CheckoutButton";
+const OurClient = dynamic(() => import("./common/OurClient/OurClient"), {
+  loading: () => <p>...</p>,
+});
 const Nav = dynamic(() => import("../Common/Nav/Nav"));
 const Footer = dynamic(() => import("../Common/Footer"));
 const FormProductDetail = dynamic(() =>
@@ -55,11 +48,13 @@ const SellerInfo = dynamic(() => import("./common/SellerInfo/SellerInfo"), {
 });
 
 const ProductDetailMobil = ({ user_data, data }) => {
+  console.log(data);
   let urlSic = "https://www.sic.gov.co";
   // console.log("data", data);
   const [isForm, setIsForm] = useState(false);
   const [isWhatsappBanner, setIsWhatsappBanner] = useState(true);
-  const scrolledPayBuuton = useScrollY(700, false);
+  const scrolledPayButton = useScrollY(700, false);
+  const [priceWithPercentage, setPriceWithPercentage] = useState(1);
 
   const handleCloseWhatsappBanner = () => {
     setIsWhatsappBanner(false);
@@ -78,7 +73,10 @@ const ProductDetailMobil = ({ user_data, data }) => {
   return (
     <div id="productDetailMobil">
       {isWhatsappBanner && (
-        <WhatsappBanner close={handleCloseWhatsappBanner} productId={data.product_global_id} />
+        <WhatsappBanner
+          close={handleCloseWhatsappBanner}
+          productId={data.product_global_id}
+        />
       )}
       <div className={navClass.join(" ")}>
         <Nav
@@ -88,7 +86,7 @@ const ProductDetailMobil = ({ user_data, data }) => {
           authenticated={user_data.authenticated}
         />
       </div>
-      {scrolledPayBuuton && !isForm && (
+      {scrolledPayButton && !isForm && (
         <StickyPayButton onClickBuy={handleOpenForm} />
       )}
       <FormProductDetail open={isForm} handleClose={handleCloseForm} />
@@ -113,15 +111,23 @@ const ProductDetailMobil = ({ user_data, data }) => {
         stock={data.status === 0 ? 0 : data.stock}
         discount_percentage={data.discount_percentage}
       />
-    
-      <Info/>
-      <PayMethod/>
+
+      <Info />
+      <PayMethod />
       <Detail product={data} />
       <Description product={data} />
-      <OurClient />
-      <SwiperSlider type={"show"} />
-      <Benefits/>
+      <OurClient category={data?.breadcum[0]?.name.substring(0, 7)} />
+      <SwiperSlider
+        type={"specialOffer"}
+        price={data.price}
+        images={data.images}
+        altImg={data.title}
+        stock={data.status === 0 ? 0 : data.stock}
+        discount_percentage={data.discount_percentage}
+      />
+      <SellerInfo />
       <RecommendedProducts category={data.category} />
+      <Benefits />
       <HelpCenter />
       <Subscription />
       <Footer />

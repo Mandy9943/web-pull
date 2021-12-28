@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 .divindingLine{
     height: 2px;
@@ -5,3 +6,11 @@
     width: 90%;
     margin: 0px auto;
 }
+=======
+.divindingLine {
+  height: 2px;
+  background-color: #d6d6d6;
+  width: 90%;
+  margin: 0px auto;
+}
+>>>>>>> 46329215187ff447c3f29c80456d97842c2e6c20

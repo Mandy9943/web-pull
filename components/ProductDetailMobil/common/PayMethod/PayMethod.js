@@ -16,44 +16,42 @@ const PayMethod = () => {
         <h3>Métodos de pago</h3>
       </div>
       <div className="link ">
-
         <div className="imgContainer">
-        <div className="anullProperties">
-          <Image src={visa} alt="Tarjeta Visa" layout="fill" />
-        </div>
+          <div className="anullProperties">
+            <Image src={visa} alt="Tarjeta Visa" layout="fill" />
+          </div>
         </div>
         <div className="imgContainer">
-        <div className="anullProperties">
-          <Image src={mastercard} alt="Tarjeta Mastercard" layout="fill" />
-        </div>
-        </div>
-
-        <div className="imgContainer">
-        <div className="anullProperties">
-          <Image src={american} alt="Tarjeta American" layout="fill" />
+          <div className="anullProperties">
+            <Image src={mastercard} alt="Tarjeta Mastercard" layout="fill" />
+          </div>
         </div>
         </div>
 
         <div className="imgContainer">
-        <div className="anullProperties">
-          <Image src={baloto} alt="Baloto" layout="fill" />
-        </div>
-        </div>
-
-        <div className="imgContainer">
-        <div className="anullProperties">
-          <Image src={pse} alt="PSE" layout="fill" />
-        </div>
+          <div className="anullProperties">
+            <Image src={american} alt="Tarjeta American" layout="fill" />
+          </div>
         </div>
 
         <div className="imgContainer">
-        <div className="anullProperties">
-          <Image src={efecty} alt="Efecty" layout="fill" />
-        </div>
+          <div className="anullProperties">
+            <Image src={baloto} alt="Baloto" layout="fill" />
+          </div>
         </div>
 
-      </div>
-    </div>
+        <div className="imgContainer">
+          <div className="anullProperties">
+            <Image src={pse} alt="PSE" layout="fill" />
+          </div>
+        </div>
+
+        <div className="imgContainer">
+          <div className="anullProperties">
+            <Image src={efecty} alt="Efecty" layout="fill" />
+          </div>
+        </div>
+        </div>
   );
 };
 

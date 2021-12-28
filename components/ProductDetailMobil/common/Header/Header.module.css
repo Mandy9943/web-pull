@@ -9,7 +9,7 @@
 }
 #HeaderProductDatailMobil .bredcumbs {
   margin-bottom: 15px;
-  background-color: #CF0A2C;
+  background-color: #cf0a2c;
   padding: 0 25px;
   height: 28px;
   display: flex;
@@ -26,17 +26,17 @@
 #HeaderProductDatailMobil .titleText {
   /* Header 1 */
 
-font-family: Montserrat;
-font-style: normal;
-font-weight: 800;
-font-size: 18px;
-line-height: 22px;
-text-align: center;
-letter-spacing: 0.02em;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  letter-spacing: 0.02em;
 
-/* Black */
+  /* Black */
 
-color: #000000;
+  color: #000000;
 }
 #HeaderProductDatailMobil .bredItem {
   margin-right: 4px;
