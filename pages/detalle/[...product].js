@@ -1,26 +1,29 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
-// import Detail from '../../components/ProductDetail';
 import { getProductDetail } from "../../services/productsApi";
 import { getUser, isAuthenticated, getJwt } from "../../lib/auth";
 import favicon from "../../assets/img/favicon.svg";
 import dynamic from "next/dynamic";
 import { handleFormatUrl } from "../../lib/functions";
 import useResize from "../../lib/hooks/useResize";
-import SkeletonProductDatail from "../../components/ProductDetailMobil/common/SkeletonProductDatail/SkeletonProductDatail";
-
+import Loading from "../../components/Common/Loading/Loading";
 const Detail = dynamic(() => import("../../components/ProductDetail"), {
-  loading: () => <p>loading...</p>,
+  loading: () => <Loading />,
 });
 const ProductDetailMobil = dynamic(
   () => import("../../components/ProductDetailMobil/ProductDetailMobil"),
   {
-    loading: () => <SkeletonProductDatail />,
+    loading: () => <Loading />,
   }
 );
 
 function Product({ data, u_data }) {
   const mobileView = useResize(768);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setIsLoading(false);
+  }, []);
 
   return (
     <div>
@@ -133,11 +136,18 @@ function Product({ data, u_data }) {
         {/*	src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=Sr8j85"*/}
         {/*></script>*/}
       </Head>
-      {mobileView ? (
-        //  <Detail user_data={u_data} data={data} />
-        <ProductDetailMobil user_data={u_data} data={data} />
+
+      {isLoading ? (
+        <Loading />
       ) : (
-        <Detail user_data={u_data} data={data} />
+        <>
+          {mobileView ? (
+            //  <Detail user_data={u_data} data={data} />
+            <ProductDetailMobil user_data={u_data} data={data} />
+          ) : (
+            <Detail user_data={u_data} data={data} />
+          )}
+        </>
       )}
     </div>
   );
