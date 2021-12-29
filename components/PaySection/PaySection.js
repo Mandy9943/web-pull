@@ -17,12 +17,12 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Modal from "../Common/Modal/Modal";
 // import { KlaviyoClient } from "../../lib/functions";
 import Cookies from "js-cookie";
-import { handleFormatName } from "../../lib/functions";
+import { handleFormatName, sendCheckoutStepViewed } from "../../lib/functions";
 import { handleFormatUrl } from "../../lib/functions";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import { Button, Modal } from 'react-bootstrap';
-import CryptoJS from "crypto-js";
 import { createleadClient } from "../../lib/zoho";
+import {sendIdentifyEvent, createHmacSHA1} from "../../lib/functions.js";
 
 class PaySection extends Component {
   constructor(props) {
@@ -467,39 +467,50 @@ class PaySection extends Component {
     //   //  }
     // });
 
-    // Segment Identify method
-    // Link your users and their actions
-    // Reference: https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/#identify
-    analytics.identify(this.state.user_id, {
-      firstName: this.state.user,
-      lastName: this.state.lastName,
-      email: this.state.email,
-      phone: this.state.mobile_phone,
-      address: {
-        city: this.state.city,
-        street: this.state.address,
-      },
-    });
+    // TODO: Se debería cambiar 
+    // this.state.user -> this.state.firstName
+    // this.state.mobile_phone -> this.state.phoneNumber
+    sendIdentifyEvent(this.state)
 
-    // Segment Checkout Step Viewed/Completed events
-    // Fire this event whenever a checkout step is completed.
-    // Reference: https://segment.com/docs/connections/spec/ecommerce/v2/
+    // // Segment Identify method
+    // // Link your users and their actions
+    // // Reference: https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/#identify
+    // analytics.identify(this.state.user_id, {
+    //   firstName: this.state.user,
+    //   lastName: this.state.lastName,
+    //   email: this.state.email,
+    //   phone: this.state.mobile_phone,
+    //   address: {
+    //     city: this.state.city,
+    //     street: this.state.address,
+    //   },
+    // });
 
-    analytics
-      .track("Checkout Step Viewed", {
-        // checkout_id: '50314b8e9bcf000000000000',	// Checkout transaction ID
-        step: 2,
-        shipping_method: "None", //	String representing the shipping method chosen
-        payment_method: "Payu", // representing the payment method chosen
-      })
-      .then(() => {
-        analytics.track("Checkout Step Completed", {
-          // checkout_id: '50314b8e9bcf000000000000',	// Checkout transaction ID
-          step: 2,
-          shipping_method: "None", //	String representing the shipping method chosen
-          payment_method: "Payu", // representing the payment method chosen
-        });
-      });
+    sendCheckoutStepViewed(2);
+
+    // // Segment Checkout Step Viewed/Completed events
+    // // Fire this event whenever a checkout step is completed.
+    // // Reference: https://segment.com/docs/connections/spec/ecommerce/v2/
+
+    // analytics.track("Checkout Step Viewed", {
+    //   // checkout_id: '50314b8e9bcf000000000000',	// Checkout transaction ID
+    //   step: 2,
+    //   shipping_method:	'None', //	String representing the shipping method chosen
+    //   payment_method:	'Payu'	// representing the payment method chosen
+    // }).then(() => {
+
+    //   console.log("Checkout Step Viewed")
+
+    //   analytics.track("Checkout Step Completed", {
+    //     // checkout_id: '50314b8e9bcf000000000000',	// Checkout transaction ID
+    //     step: 2,
+    //     shipping_method:	'None', //	String representing the shipping method chosen
+    //     payment_method:	'Payu'	// representing the payment method chosen
+    //   });
+
+    //   console.log("Checkout Step Completed")
+
+    // });
 
     // KlaviyoClient.public.identify({
     //   email: this.state.email,
@@ -862,27 +873,38 @@ class PaySection extends Component {
 
       // console.log(checkoutStartedValues);
 
-      // Segment Checkout Step Viewed/Completed events
-      // Fire this event whenever a checkout step is completed.
-      // Reference: https://segment.com/docs/connections/spec/ecommerce/v2/
+      sendCheckoutStepViewed(1);
 
-      analytics.track("Checkout Started", checkoutStartedValues).then(() => {
-        analytics
-          .track("Checkout Step Viewed", {
-            // checkout_id: '50314b8e9bcf000000000000',	// Checkout transaction ID
-            step: 1,
-            //shipping_method:	'None', //	String representing the shipping method chosen
-            //payment_method:	'Payu'	// representing the payment method chosen
-          })
-          .then(() => {
-            analytics.track("Checkout Step Completed", {
-              // checkout_id: '50314b8e9bcf000000000000',
-              step: 1,
-              //shipping_method:	'None', //	String representing the shipping method chosen
-              //payment_method:	'Payu'	// representing the payment method chosen
-            });
-          });
-      });
+      // // Segment Checkout Step Viewed/Completed events
+      // // Fire this event whenever a checkout step is completed.
+      // // Reference: https://segment.com/docs/connections/spec/ecommerce/v2/
+
+      // analytics.track('Checkout Started', checkoutStartedValues).then(() => {
+
+      //   console.log('Checkout Started')
+
+      //   analytics.track("Checkout Step Viewed", {
+      //     // checkout_id: '50314b8e9bcf000000000000',	// Checkout transaction ID
+      //     step: 1,
+      //     //shipping_method:	'None', //	String representing the shipping method chosen
+      //     //payment_method:	'Payu'	// representing the payment method chosen
+      //   }).then(() => {
+
+      //     console.log("Checkout Step Viewed")
+
+      //     analytics.track('Checkout Step Completed', {
+      //       // checkout_id: '50314b8e9bcf000000000000',
+      //       step: 1,
+      //       //shipping_method:	'None', //	String representing the shipping method chosen
+      //       //payment_method:	'Payu'	// representing the payment method chosen
+      //     });
+
+      //     console.log("Checkout Step Completed")
+
+      //   });
+
+      // });
+
     };
     //////
     // this.clientId = typeof(ga) == 'function' && typeof(ga.getAll) == 'function' ? ga.getAll()[0].get('clientId') : "";
@@ -904,10 +926,7 @@ class PaySection extends Component {
     //   // do something with result
     // });
 
-    var hmacID = CryptoJS.HmacSHA1(this.state.identification, "abc").toString(
-      CryptoJS.enc.Hex
-    );
-
+    var hmacID = createHmacSHA1(this.state.identification);
     this.state.user_id = hmacID;
 
     var extra3 = JSON.stringify({

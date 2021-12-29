@@ -21,6 +21,7 @@ import {handleFormatUrl} from '../../lib/functions'
 import dynamic from "next/dynamic";
 import {signUp} from "../../lib/auth";
 import {createleadClient} from "../../lib/zoho";
+import {concatCategories, sendProductViewed} from "../../lib/functions";
 
 // import Nav from '../Common/Nav';
 // import DetailImg from '../DetailImg';
@@ -144,14 +145,6 @@ class ProductDetail extends Component {
 
 		// dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
 
-		const concatCategories = () => {
-			var dataCategory = [];
-			this.props.data.breadcum.forEach((prod, index) => {
-				dataCategory.push(prod.name);
-			});
-			return dataCategory.join(' / ');
-		};
-
 		// dataLayer.push({
 		//   event: "gtm.dom",
 		//   ecommerce: {
@@ -184,20 +177,7 @@ class ProductDetail extends Component {
 		//   },
 		// });
 
-    var productViewedData = {
-      product_id: this.props.data.product_global_id,
-      category: concatCategories(),
-      name: this.props.data.product_global_title,
-      brand: this.props.data.brand,
-      price: this.props.data.price,
-      currency: 'COP',
-      url:
-      "https://kiero.co" + handleFormatUrl(this.props.data.product_global_id, this.props.data.product_global_title),
-      image_url: this.props.data.images[0].url,
-      value: this.props.data.price
-    }
-
-		analytics.track('Product Viewed', productViewedData);
+    sendProductViewed(this.props.data)
 
 		// console.log(productViewedData)
 
@@ -249,15 +229,15 @@ class ProductDetail extends Component {
             ProductName: this.props.data.product_global_title.slice(0,250),
             ProductID: this.props.data.product_global_id,
             SKU: this.props.data.sku,
-            Categories: concatCategories(),
+            Categories: concatCategories(this.props.data),
             ImageURL: this.state.mdata.images[0].url,
             URL:
                 "https://kiero.co" + handleFormatUrl(this.props.data.product_global_id, this.props.data.product_global_title),
             Brand: this.props.data.brand,
             Price: this.props.data.price,
         };
-        console.log(item);
-        console.log(this.props);
+        // console.log(item);
+        // console.log(this.props);
         this.createlead(item);
   }
 

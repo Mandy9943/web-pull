@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import Logo1 from "../../assets/img/logo-social.png";
 import Logo2 from "../../assets/img/logo-social1.png";
@@ -7,6 +7,7 @@ import Logo2 from "../../assets/img/logo-social1.png";
 
 import CheckoutProduct from "./common/CheckoutProduct/CheckoutProduct";
 import Header from "./common/Header/Header";
+import {sendCheckoutStepViewed} from "../../lib/functions.js";
 
 import "./ProductDetailMobil.module.css";
 
@@ -52,6 +53,8 @@ const RecommendedProducts = dynamic(
   }
 );
 
+import {concatCategories, sendProductViewed} from "../../lib/functions";
+
 const WhatsappBanner = dynamic(
   () => import("./common/WhatsappBanner/WhatsappBanner"),
   {
@@ -77,6 +80,12 @@ const SellerInfo = dynamic(() => import("./common/SellerInfo/SellerInfo"), {
 
 const ProductDetailMobil = ({ user_data, data }) => {
   let urlSic = "https://www.sic.gov.co";
+  // console.log("data", data);
+
+  useEffect(() => {
+    sendProductViewed(data)
+  }, [data]);
+
   const [isForm, setIsForm] = useState(false);
   const [isWhatsappBanner, setIsWhatsappBanner] = useState(true);
   const scrolledPayButton = useScrollY(700, false);
@@ -85,9 +94,11 @@ const ProductDetailMobil = ({ user_data, data }) => {
     setIsWhatsappBanner(false);
   };
   const handleCloseForm = () => {
+    sendCheckoutStepViewed(2);
     setIsForm(false);
   };
   const handleOpenForm = () => {
+    sendCheckoutStepViewed(1);
     setIsForm(true);
   };
 

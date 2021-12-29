@@ -12,6 +12,7 @@ import Link from "next/link";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import formSchema from "./Schema/schema";
+import {sendIdentifyEvent, createHmacSHA1} from "../../../../lib/functions.js";
 import { useAppSelector } from "../../../../lib/hooks/redux";
 import { selectData } from "../../../../redux/feature/pay/paySlice";
 import { handleFormatName } from "../../../../lib/functions";
@@ -67,6 +68,14 @@ const FormProductDetail = ({ handleClose, open }) => {
     mode: "all",
     resolver: yupResolver(formSchema),
   });
+
+  const onSubmit = () => {
+    // console.log('Data', data);
+    let user = getValues();
+    user.user_id = createHmacSHA1(user.email);
+    sendIdentifyEvent(user);
+    handleClose();
+  };
 
   useEffect(() => {
     let clientId;
@@ -348,7 +357,7 @@ const FormProductDetail = ({ handleClose, open }) => {
             <DialogActions>
               <div className="FormDialog-button">
                 <Button
-                  onClick={handleClose}
+                  onClick={onSubmit}
                   type="submit"
                   color="secondary"
                   variant="contained"
