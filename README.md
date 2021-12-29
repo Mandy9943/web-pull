@@ -21,9 +21,9 @@
 
 -   pm2 start yarn --name kieroDev -- start
 
--   node version: 14.17.5
+-   node version: 14.18.2
 
--   npm version: 6.14.14
+-   npm version: 6.14.15
 
 -   yarn version: 1.22.10
 

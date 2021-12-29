@@ -5,31 +5,7 @@ import button from "../../../../assets/img/productDetail/component-4@2x.svg";
 import Image from "next/image";
 import {sendProductListViewed} from "../../../../lib/functions";
 
-function RecommendedProductsCard({ product, index }) {
-
-  const ref = useRef()
-  
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          sendProductListViewed(product, 
-                                index,
-                                'Recommended Products List')
-          observer.unobserve(ref.current)
-        }
-      },
-      {
-        root: null,
-        rootMargin: "0px",
-        threshold: 0.8
-      }
-    );
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-  }, [ref]);
-
+function RecommendedProductsCard({ product }) {
   return (
     <div id="RecommendedProductsCard" ref={ref}>
       {product ? (

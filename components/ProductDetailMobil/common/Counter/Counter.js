@@ -2,8 +2,13 @@ import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { useAppDispatch } from "../../../../lib/hooks/redux";
 import "./Counter.module.css";
-const Counter = ({ onCount, stock }) => {
+
+import { setCount as setCountAction } from "../../../../redux/feature/pay/paySlice";
+
+const Counter = ({ stock }) => {
+  const dispatch = useAppDispatch();
   const [count, setCount] = useState(stock === 0 ? stock : 1);
   const handleAdd = () => {
     const limitCount = stock ?? 6;
@@ -17,10 +22,9 @@ const Counter = ({ onCount, stock }) => {
     }
   };
   useEffect(() => {
-    if (onCount) {
-      onCount(count);
-    }
-  }, [count]);
+    dispatch(setCountAction(count));
+  }, [count, dispatch]);
+
   return (
     <div id="counter-detail-mobile">
       <span className="text">Cant.</span>
@@ -30,9 +34,11 @@ const Counter = ({ onCount, stock }) => {
         </span>
       )}
       <span className="number">{count}</span>
-      <span className="plus-icon" onClick={handleAdd}>
-        <FontAwesomeIcon icon={faPlus} />
-      </span>
+      {!stock <= 1 ? (
+        <span className="sub-icon" onClick={handleAdd}>
+          <FontAwesomeIcon icon={faPlus} />
+        </span>
+      ) : null}
     </div>
   );
 };

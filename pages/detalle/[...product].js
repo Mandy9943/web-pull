@@ -1,26 +1,45 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
-// import Detail from '../../components/ProductDetail';
 import { getProductDetail } from "../../services/productsApi";
 import { getUser, isAuthenticated, getJwt } from "../../lib/auth";
 import favicon from "../../assets/img/favicon.svg";
 import dynamic from "next/dynamic";
 import { handleFormatUrl } from "../../lib/functions";
 import useResize from "../../lib/hooks/useResize";
-import SkeletonProductDatail from "../../components/ProductDetailMobil/common/SkeletonProductDatail/SkeletonProductDatail";
-
+import Loading from "../../components/Common/Loading/Loading";
+import { useAppDispatch } from "../../lib/hooks/redux";
+import { setData } from "../../redux/feature/pay/paySlice";
 const Detail = dynamic(() => import("../../components/ProductDetail"), {
-  loading: () => <p>loading...</p>,
+  loading: () => <Loading />,
 });
 const ProductDetailMobil = dynamic(
   () => import("../../components/ProductDetailMobil/ProductDetailMobil"),
   {
-    loading: () => <SkeletonProductDatail />,
+    loading: () => <Loading />,
   }
 );
 
 function Product({ data, u_data }) {
+  const dispatch = useAppDispatch();
   const mobileView = useResize(768);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setIsLoading(false);
+  }, []);
+
+  useEffect(() => {
+    dispatch(
+      setData({
+        category: data.category,
+        price: data.product_global_price,
+        img: data.images[0],
+        title: data.title,
+        product_id: data.product_global_id,
+        brand: data.brand,
+      })
+    );
+  }, [data, dispatch]);
 
   return (
     <div>
@@ -133,11 +152,18 @@ function Product({ data, u_data }) {
         {/*	src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=Sr8j85"*/}
         {/*></script>*/}
       </Head>
-      {mobileView ? (
-        //  <Detail user_data={u_data} data={data} />
-        <ProductDetailMobil user_data={u_data} data={data} />
+
+      {isLoading ? (
+        <Loading />
       ) : (
-        <Detail user_data={u_data} data={data} />
+        <>
+          {mobileView ? (
+            //  <Detail user_data={u_data} data={data} />
+            <ProductDetailMobil user_data={u_data} data={data} />
+          ) : (
+            <Detail user_data={u_data} data={data} />
+          )}
+        </>
       )}
     </div>
   );
@@ -147,6 +173,7 @@ function Product({ data, u_data }) {
 export async function getServerSideProps(context) {
   // Fetch data from external API
   let temp_p = String(context.params.product).split("_");
+
   const id_product = JSON.parse(temp_p[0]);
 
   const res = await getProductDetail(id_product, {

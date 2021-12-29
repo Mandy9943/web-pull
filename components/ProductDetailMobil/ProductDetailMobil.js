@@ -9,6 +9,11 @@ import CheckoutProduct from "./common/CheckoutProduct/CheckoutProduct";
 import Header from "./common/Header/Header";
 import {sendCheckoutStepViewed} from "../../lib/functions.js";
 
+import "./ProductDetailMobil.module.css";
+
+import Image from "next/image";
+import useScrollY from "../../lib/hooks/useScrollY";
+
 const SwiperSlider = dynamic(
   () => import("./common/SwiperSlider/SwipperSlider"),
   {
@@ -16,29 +21,46 @@ const SwiperSlider = dynamic(
   }
 );
 
-import "./ProductDetailMobil.module.css";
-import Info from "./common/Info/Info";
-import PayMethod from "./common/PayMethod/PayMethod";
-import Detail from "./common/Detail/Detail";
-import Description from "./common/Description/Description";
+const Info = dynamic(() => import("./common/Info/Info"), {
+  loading: () => <p>...</p>,
+});
+const PayMethod = dynamic(() => import("./common/PayMethod/PayMethod"), {
+  loading: () => <p>...</p>,
+});
+const Detail = dynamic(() => import("./common/Detail/Detail"), {
+  loading: () => <p>...</p>,
+});
+const Description = dynamic(() => import("./common/Description/Description"), {
+  loading: () => <p>...</p>,
+});
 
-// const OfferSection = dynamic(
-//   () => import("./common/OfferSection/OfferSection"),
-//   {
-//     loading: () => <p>...</p>,
-//   }
-// );
-import Benefits from "./common/Benefits/Benefits";
-import HelpCenter from "./common/HelpCenter/HelpCenter";
-import Subscription from "./common/Subscription/Subscription";
-import RecommendedProducts from "./common/RecommendedProducts/RecommendedProducts";
-
-import Image from "next/image";
-import useScrollY from "../../lib/hooks/useScrollY";
+const Benefits = dynamic(() => import("./common/Benefits/Benefits"), {
+  loading: () => <p>...</p>,
+});
+const HelpCenter = dynamic(() => import("./common/HelpCenter/HelpCenter"), {
+  loading: () => <p>...</p>,
+});
+const Subscription = dynamic(
+  () => import("./common/Subscription/Subscription"),
+  {
+    loading: () => <p>...</p>,
+  }
+);
+const RecommendedProducts = dynamic(
+  () => import("./common/RecommendedProducts/RecommendedProducts"),
+  {
+    loading: () => <p>...</p>,
+  }
+);
 
 import {concatCategories, sendProductViewed} from "../../lib/functions";
 
-import WhatsappBanner from "./common/WhatsappBanner/WhatsappBanner";
+const WhatsappBanner = dynamic(
+  () => import("./common/WhatsappBanner/WhatsappBanner"),
+  {
+    loading: () => <p>...</p>,
+  }
+);
 // import CheckoutButton from "./common/CheckoutButton/CheckoutButton";
 const OurClient = dynamic(() => import("./common/OurClient/OurClient"), {
   loading: () => <p>...</p>,
@@ -130,8 +152,15 @@ const ProductDetailMobil = ({ user_data, data }) => {
       <PayMethod />
       <Detail product={data} />
       <Description product={data} />
-      <OurClient />
-      <SwiperSlider type={"show"} />
+      <OurClient category={data?.breadcum[0]?.name.substring(0, 7)} />
+      <SwiperSlider
+        type={"specialOffer"}
+        price={data.price}
+        images={data.images}
+        altImg={data.title}
+        stock={data.status === 0 ? 0 : data.stock}
+        discount_percentage={data.discount_percentage}
+      />
       <SellerInfo />
       <RecommendedProducts category={data.category} />
       <Benefits />
