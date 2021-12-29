@@ -73,7 +73,7 @@ def crear_sitemap(list_of_urls, tipo, limite, posicion):
         if not os.path.exists("sitemap"):
             os.makedirs("sitemap")
 
-        with  gzip.open(filename + '.gz', 'wt') as f:
+        with gzip.open(filename + '.gz', 'wt') as f:
             f.write(sitemap_output)
             f.close()
 
@@ -151,7 +151,13 @@ def conectar():
 
         # Creando fichero index
         print("Generando el index del sitemap-index.xml")
-        xml = "<?xml version='1.0' encoding='UTF-8'?>" + "<sitemapindex xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>"
+        xml = "<?xml version='1.0' encoding='UTF-8'?>" \
+              "<sitemapindex xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' " \
+              "xmlns='http://www.sitemaps.org/schemas/sitemap/0.9' " \
+              "xmlns:xhtml='http://www.w3.org/TR/xhtml11/xhtml11_schema.html' " \
+              "xsi:schemaLocation='http://www.sitemaps.org/schemas/sitemap/0.9 " \
+              "http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd " \
+              "http://www.w3.org/TR/xhtml11/xhtml11_schema.html http://www.w3.org/2002/08/xhtml/xhtml1-strict.xsd'> "
         lastmod_date = datetime.now().strftime('%Y-%m-%d')
         for i in tqdm(range(math.ceil(tamano_producto / limite)), desc='Agregando el indice del producto'):
             xml += '''
@@ -174,8 +180,8 @@ def conectar():
             os.makedirs("sitemap")
 
         print("Guardando todos los indices")
-        # Creando fichero de sitemap-index.xml
-        with open(filename, 'wb') as f:
+        # Creando fichero de sitemap-index.xml.gz
+        with gzip.open(filename + '.gz', 'wb') as f:
             f.write(xml)
             f.close()
 
