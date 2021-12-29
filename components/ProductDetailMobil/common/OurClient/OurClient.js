@@ -74,7 +74,9 @@ const OurClient = ({ category }) => {
                 VER MÁS
               </Button>
             ) : (
-              <Button onClick={() => setCountClient(4)}>VER MENOS</Button>
+              <a href="#OurClient">
+                <Button onClick={() => setCountClient(4)}>VER MENOS</Button>
+              </a>
             )}
           </div>
         </React.Fragment>

@@ -1,402 +1,401 @@
 #OurClient {
-  background-color: #fff;
-  padding: 20px 25px;
-  border-top: 2px solid #e4e4e4;
-  border-bottom: 4px solid #e4e4e4;
+    background-color: #fff;
+    padding: 20px 25px;
+    border-top: 2px solid #e4e4e4;
+    border-bottom: 4px solid #e4e4e4;
 }
 
 #OurClient header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 #OurClient header .left {
 }
 
 #OurClient header .left h4 {
-  font-family: Montserrat, sans-serif;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 18px;
-  line-height: 22px;
-  letter-spacing: 0.03em;
-  color: #000000;
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.03em;
+    color: #000000;
 }
 
 #OurClient header .left h4 .company {
-  color: #cf0a2c;
-  display: inline-block;
+    color: #cf0a2c;
+    display: inline-block;
 }
 
 #OurClient header .left .clasification {
-  display: flex;
-  padding-top: 7px;
+    display: flex;
+    padding-top: 7px;
 }
 
 #OurClient header .left .clasification svg {
-  color: #74def5;
-  height: 16px;
-  width: 16px;
+    color: #74def5;
+    height: 16px;
+    width: 16px;
 }
 
 #OurClient header .left .clasification p {
-  padding-left: 11px;
-  font-family: Montserrat, sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 12px;
-  line-height: 16px;
-  color: #5d5d5d;
+    padding-left: 11px;
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+    color: #5d5d5d;
 }
 
 #OurClient article {
-  display: grid;
-  padding-top: 25px;
-  grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
-  grid-template-rows: repeat(auto-fill, minmax(155px, 1fr));
+    margin-top: 25px;
+    column-width: 155px;
+    column-gap: 8px;
+    width: 100%;
 }
 
 #OurClient article .card {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  box-shadow: 0 2px 25px rgba(0, 0, 0, 0.1);
-  margin: 0 7px 12px 0;
-  border-radius: 15px;
+    box-shadow: 0 2px 25px rgba(0, 0, 0, 0.1);
+    margin: 0 7px 12px 0;
+    border-radius: 15px;
+    background: #FFFFFF;
+    display: inline-block;
 }
 
+
 #OurClient article .card picture {
-  width: 100%;
-  height: 100%;
-  position: static;
+    width: 100%;
+    height: auto;
+    position: static;
 }
 
 #OurClient article .card .texto {
-  padding: 0 11px;
+    margin: 0 11px;
 }
 
 #OurClient article .card picture img {
-  border-radius: 15px 15px 0 0 !important;
-  width: 100% !important;
-  height: 100% !important;
+    border-radius: 15px 15px 0 0 !important;
+    width: 100% !important;
+    height: auto !important;
 }
 
 #OurClient article .card .autor {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 4px;
 }
 
 #OurClient article .card .autor p {
-  font-family: Montserrat, sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 18px;
-  color: #5d5d5d;
-  padding-right: 18px;
-  text-align: left;
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    color: #5d5d5d;
+    padding-right: 18px;
+    text-align: left;
 }
 
 #OurClient article .card .localization {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 8px;
 }
 
 #OurClient article .card .localization p {
-  font-family: Montserrat, sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 10px;
-  line-height: 12px;
-  letter-spacing: 0.02em;
-  color: #969696;
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 12px;
+    letter-spacing: 0.02em;
+    color: #969696;
 }
 
 #OurClient article .card .clasification svg {
-  color: #74def5;
-  width: 12px;
-  height: 12px;
-  padding-right: 4px;
-  padding-bottom: 15px;
+    color: #74def5;
+    width: 12px;
+    height: 12px;
+    padding-right: 4px;
+    padding-bottom: 15px;
 }
 
 #OurClient article .card .comment {
 }
 
 #OurClient article .card .comment h5 {
-  font-family: Montserrat, sans-serif;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 12px;
-  line-height: 15px;
-  color: #000000;
-  padding-bottom: 10px;
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+    color: #000000;
+    padding-bottom: 10px;
 }
 
 #OurClient article .card .comment p {
-  font-family: Montserrat, sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 11px;
-  line-height: 16px;
-  color: #5d5d5d;
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 16px;
+    color: #5d5d5d;
 }
 
-#OurClient article .card .texto footer {
-  display: grid;
-  align-items: center;
-  justify-content: space-between;
-  grid-template-areas: "separator imagen";
+#OurClient article .card footer {
+    display: flex;
+    position: static;
+    align-items: end;
+    justify-content: end;
+    justify-items: end;
+    align-content: space-between;
+    bottom: 0;
+    margin-right: 9px;
+    width: 100%;
+    height: 100%;
 }
 
-#OurClient article .card .texto footer .separator {
-  grid-area: separator;
-}
-
-#OurClient article .card .texto footer img {
-  grid-area: imagen;
-}
 
 #OurClient .footer_our {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
 }
 
 #OurClient .footer_our button {
-  background: #ffffff;
-  border: 2px solid #cf0a2c;
-  box-sizing: border-box;
-  border-radius: 25px;
-  width: 136px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: Montserrat, sans-serif;
-  font-style: normal;
-  font-weight: 800;
-  font-size: 12px;
-  line-height: 15px;
-  letter-spacing: 0.1em;
-  color: #cf0a2c;
+    background: #ffffff;
+    border: 2px solid #cf0a2c;
+    box-sizing: border-box;
+    border-radius: 25px;
+    width: 136px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 0.1em;
+    color: #cf0a2c;
 }
 
 #OurClient .footer_our button:hover {
-  background: #cf0a2c;
-  border: 2px solid #ffffff;
-  color: #ffffff;
+    background: #cf0a2c;
+    border: 2px solid #ffffff;
+    color: #ffffff;
 }
 
 /*SwiperCardOurClient section*/
 
 .MuiDrawer-paperAnchorBottom {
-  width: 100vw;
-  top: 0 !important;
-  height: 100vh !important;
-  overflow-y: scroll !important;
-  overflow-x: hidden !important;
-  margin: 0 !important;
-  background-color: #fff !important;
+    width: 100vw;
+    top: 0 !important;
+    height: 100vh !important;
+    overflow-y: scroll !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+    background-color: #fff !important;
 }
 
 .swipe article {
-  display: grid;
-  background-color: #fff;
-  grid-template-columns: repeat(auto-fill, 1fr);
+    display: grid;
+    background-color: #fff;
+    grid-template-columns: repeat(auto-fill, 1fr);
 }
 
 .swipe .card picture {
-  width: auto;
-  height: auto;
-  top: 0 !important;
+    width: auto;
+    height: auto;
+    top: 0 !important;
 }
 
 .swipe .card .texto {
-  padding: 0 25px 50px 25px;
+    padding: 0 25px 50px 25px;
 }
 
 .swipe article .card picture .headerOurClients {
-  width: 100% !important;
-  height: 100% !important;
+    width: 100% !important;
+    height: 100% !important;
 }
 
 .swipe article .card picture .close {
-  width: 25px !important;
-  height: 25px !important;
-  position: fixed !important;
-  z-index: 999 !important;
-  right: 14px !important;
-  color: #ffffff;
-  top: 14px !important;
-  cursor: pointer !important;
+    width: 25px !important;
+    height: 25px !important;
+    position: fixed !important;
+    z-index: 999 !important;
+    right: 14px !important;
+    color: #ffffff;
+    top: 14px !important;
+    cursor: pointer !important;
 }
 
 .swipe article .card .topHeader {
-  margin-top: 40px;
-  margin-bottom: 8px;
-  display: flex;
-  justify-content: space-between;
+    margin-top: 40px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .swipe article .card .bottomHeader {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 22px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 22px;
 }
 
 .swipe article .card .autor {
-  font-family: Montserrat, sans-serif;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 20px;
-  letter-spacing: 0.03em;
-  color: #969696;
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.03em;
+    color: #969696;
 }
 
 .swipe article .card .autor p {
-  font-family: Montserrat, sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 18px;
-  color: #5d5d5d;
-  padding-right: 18px;
-  text-align: left;
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    color: #5d5d5d;
+    padding-right: 18px;
+    text-align: left;
 }
 
 .swipe article .card .localization {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .swipe article .card .certification {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .swipe article .card .locationImage img {
-  height: 16px !important;
+    height: 16px !important;
 }
 
 .swipe article .card .localization p {
-  font-family: Montserrat, sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 10px;
-  line-height: 12px;
-  letter-spacing: 0.02em;
-  color: #969696;
-  margin-right: 10px;
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 12px;
+    letter-spacing: 0.02em;
+    color: #969696;
+    margin-right: 10px;
 }
 
 .swipe article .card .certification p {
-  font-family: Montserrat, sans-serif;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 10px;
-  line-height: 12px;
-  color: #1fc2e6;
-  margin-right: 10px;
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 10px;
+    line-height: 12px;
+    color: #1fc2e6;
+    margin-right: 10px;
 }
 
 .swipe article .card .clasification svg {
-  color: #74def5;
-  width: 16px;
-  height: 16px;
-  padding-right: 4px;
+    color: #74def5;
+    width: 16px;
+    height: 16px;
+    padding-right: 4px;
 }
 
 .swipe article .card .comment {
 }
 
 .swipe article .card .comment h5 {
-  font-family: Montserrat, sans-serif;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 18px;
-  line-height: 22px;
-  letter-spacing: 0.03em;
-  color: #5d5d5d;
-  margin-bottom: 20px;
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.03em;
+    color: #5d5d5d;
+    margin-bottom: 20px;
 }
 
 .swipe article .card .comment p {
-  font-family: Montserrat, sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 21px;
-  letter-spacing: 0.01em;
-  color: #5d5d5d;
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0.01em;
+    color: #5d5d5d;
 }
 
 .swipe .swiper {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 .swipe .swiper-container {
-  overflow: initial !important;
+    overflow: initial !important;
 }
 
 .swipe .swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  width: 100% !important;
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    width: 100% !important;
 }
 
 .swipe .swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .swipe
-  .swiper-container-horizontal.swiperOurClients
-  > .swiper-pagination-bullets
-  .swiper-pagination-bullet {
-  width: calc(100% - 75%);
-  border-radius: 0 !important;
-  margin: 0 !important;
-  height: 2px;
-  background: #5d5d5d;
+.swiper-container-horizontal.swiperOurClients
+> .swiper-pagination-bullets
+.swiper-pagination-bullet {
+    width: calc(100% - 75%);
+    border-radius: 0 !important;
+    margin: 0 !important;
+    height: 2px;
+    background: #5d5d5d;
 }
 
 .swipe
-  .swiper-container-horizontal.swiperOurClients
-  > .swiper-pagination-bullets {
-  bottom: -20px;
+.swiper-container-horizontal.swiperOurClients
+> .swiper-pagination-bullets {
+    bottom: -20px;
 }
 
 /* section CardOurClient*/
 #CardOurClient picture .anullProperties {
-  height: 100% !important;
+    height: 100% !important;
 }
+
 #CardOurClient picture .anullProperties img {
-  height: auto !important;
+    height: auto !important;
 }
