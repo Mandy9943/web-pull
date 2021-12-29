@@ -76,7 +76,6 @@ const SellerInfo = dynamic(() => import("./common/SellerInfo/SellerInfo"), {
 });
 
 const ProductDetailMobil = ({ user_data, data }) => {
-  console.log(data);
   let urlSic = "https://www.sic.gov.co";
   const [isForm, setIsForm] = useState(false);
   const [isWhatsappBanner, setIsWhatsappBanner] = useState(true);

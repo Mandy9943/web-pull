@@ -55,7 +55,7 @@ const OurClient = ({ category }) => {
             {lista.map((client, i) => {
               return (
                 <CardOurClient
-                  key={i}
+                  key={i + 10}
                   client={client}
                   handleOnClickComment={handleOnClickComment}
                 />
@@ -69,9 +69,13 @@ const OurClient = ({ category }) => {
             />
           </article>
           <div className="footer_our">
-            <Button onClick={() => setCountClient(countClient + 2)}>
-              VER MÁS
-            </Button>
+            {countClient <= 4 ? (
+              <Button onClick={() => setCountClient(countClient + 2)}>
+                VER MÁS
+              </Button>
+            ) : (
+              <Button onClick={() => setCountClient(4)}>VER MENOS</Button>
+            )}
           </div>
         </React.Fragment>
       ) : null}

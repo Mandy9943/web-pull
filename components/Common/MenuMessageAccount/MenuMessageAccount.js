@@ -11,7 +11,7 @@ class MenuMessageAccount extends Component {
         <div className="chat-menu-wrap-subtitle">
           <h3>Vendedor</h3>
         </div>
-        <div class="chat-menu-item">
+        <div className="chat-menu-item">
           <div className="chat-menu-wrap-img">
             <img src="https://picsum.photos/100" />
           </div>
@@ -24,7 +24,7 @@ class MenuMessageAccount extends Component {
         <div className="chat-menu-wrap-subtitle">
           <h3>Entregado</h3>
         </div>
-        <div class="chat-menu-item">
+        <div className="chat-menu-item">
           <div className="chat-menu-wrap-img">
             <img src="https://picsum.photos/100" />
           </div>
