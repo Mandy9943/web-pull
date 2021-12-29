@@ -20,12 +20,15 @@ import "swiper/components/pagination/pagination.scss";
 
 // import Swiper core and required modules
 import SwiperCore, { EffectCoverflow, Pagination } from "swiper";
+import {
+  handleActivateBack,
+  handleDeactivateBack,
+} from "../../../../lib/functions";
 
 // install Swiper modules
 SwiperCore.use([EffectCoverflow, Pagination]);
 
 const SwiperCardOurClient = ({ client, comment, setComment }) => {
-  console.log("card on client");
   const stars = [];
   if (client?.star) {
     for (let i = 0; i < client.star; i++) {
@@ -37,8 +40,18 @@ const SwiperCardOurClient = ({ client, comment, setComment }) => {
       <SwipeableDrawer
         anchor="bottom"
         open={comment}
-        onClose={() => setComment(false)}
-        onOpen={() => {}}
+        onClose={() => {
+          setComment(false);
+          handleActivateBack();
+        }}
+        onOpen={() => {
+          setComment(true);
+          handleDeactivateBack(() => {
+            setComment(false);
+            handleActivateBack();
+            console.log("Activando el back");
+          });
+        }}
         className="swipe"
         transitionDuration={700}
       >
