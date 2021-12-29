@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "export": "next build & next export -o build",
-    "lint": "eslint services --cache --fix && pretty-quick --staged",
+    "lint": "eslint services lib/reviews --cache --fix && pretty-quick --staged",
     "prepare": "husky install",
     "pre-commit": "npm run lint && git add ."
   },
