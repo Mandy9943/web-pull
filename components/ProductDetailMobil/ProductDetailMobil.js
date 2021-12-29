@@ -8,6 +8,11 @@ import Logo2 from "../../assets/img/logo-social1.png";
 import CheckoutProduct from "./common/CheckoutProduct/CheckoutProduct";
 import Header from "./common/Header/Header";
 
+import "./ProductDetailMobil.module.css";
+
+import Image from "next/image";
+import useScrollY from "../../lib/hooks/useScrollY";
+
 const SwiperSlider = dynamic(
   () => import("./common/SwiperSlider/SwipperSlider"),
   {
@@ -15,21 +20,44 @@ const SwiperSlider = dynamic(
   }
 );
 
-import "./ProductDetailMobil.module.css";
-import Info from "./common/Info/Info";
-import PayMethod from "./common/PayMethod/PayMethod";
-import Detail from "./common/Detail/Detail";
-import Description from "./common/Description/Description";
+const Info = dynamic(() => import("./common/Info/Info"), {
+  loading: () => <p>...</p>,
+});
+const PayMethod = dynamic(() => import("./common/PayMethod/PayMethod"), {
+  loading: () => <p>...</p>,
+});
+const Detail = dynamic(() => import("./common/Detail/Detail"), {
+  loading: () => <p>...</p>,
+});
+const Description = dynamic(() => import("./common/Description/Description"), {
+  loading: () => <p>...</p>,
+});
 
-import Benefits from "./common/Benefits/Benefits";
-import HelpCenter from "./common/HelpCenter/HelpCenter";
-import Subscription from "./common/Subscription/Subscription";
-import RecommendedProducts from "./common/RecommendedProducts/RecommendedProducts";
+const Benefits = dynamic(() => import("./common/Benefits/Benefits"), {
+  loading: () => <p>...</p>,
+});
+const HelpCenter = dynamic(() => import("./common/HelpCenter/HelpCenter"), {
+  loading: () => <p>...</p>,
+});
+const Subscription = dynamic(
+  () => import("./common/Subscription/Subscription"),
+  {
+    loading: () => <p>...</p>,
+  }
+);
+const RecommendedProducts = dynamic(
+  () => import("./common/RecommendedProducts/RecommendedProducts"),
+  {
+    loading: () => <p>...</p>,
+  }
+);
 
-import Image from "next/image";
-import useScrollY from "../../lib/hooks/useScrollY";
-
-import WhatsappBanner from "./common/WhatsappBanner/WhatsappBanner";
+const WhatsappBanner = dynamic(
+  () => import("./common/WhatsappBanner/WhatsappBanner"),
+  {
+    loading: () => <p>...</p>,
+  }
+);
 // import CheckoutButton from "./common/CheckoutButton/CheckoutButton";
 const OurClient = dynamic(() => import("./common/OurClient/OurClient"), {
   loading: () => <p>...</p>,
