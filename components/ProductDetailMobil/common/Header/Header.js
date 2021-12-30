@@ -8,12 +8,12 @@ const Header = ({ title, bredCumbs }) => {
   if (bredCumbs?.length > 0) {
     bredCumbs.map((b) => {
       bredCumb.push(
-        <>
+        <React.Fragment key={b.name}>
           <span className="bredItem">
             <FontAwesomeIcon icon={faAngleRight} />
           </span>
           <span className="bredItem">{b.name}</span>
-        </>
+        </React.Fragment>
       );
     });
   }

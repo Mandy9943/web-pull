@@ -50,6 +50,7 @@ const SwiperCardOurClient = ({ client, comment, setComment }) => {
       <SwipeableDrawer
         anchor="bottom"
         open={comment}
+        onOpen={() => {}}
         onClose={() => {
           setComment(false);
           handleActivateBack();

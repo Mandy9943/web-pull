@@ -10,7 +10,7 @@ import "./OurClient.module.css";
 const CardOurClient = ({ client, handleOnClickComment }) => {
   const stars = [];
   for (let i = 0; i < client.star; i++) {
-    stars.push(<FontAwesomeIcon icon={faStar} />);
+    stars.push(<FontAwesomeIcon icon={faStar} key={i} />);
   }
 
   return (
