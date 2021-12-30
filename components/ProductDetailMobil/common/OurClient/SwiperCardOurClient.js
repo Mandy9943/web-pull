@@ -1,5 +1,5 @@
 import { SwipeableDrawer } from "@material-ui/core";
-import React from "react";
+import React, { useEffect } from "react";
 
 import cert from "../../../../assets/img/productDetail/Certified Icon.svg";
 import location from "../../../../assets/img/productDetail/Location Icon.svg";
@@ -35,6 +35,16 @@ const SwiperCardOurClient = ({ client, comment, setComment }) => {
       stars.push(<FontAwesomeIcon icon={faStar} key={i} />);
     }
   }
+
+  useEffect(() => {
+    if (comment === true) {
+      setComment(true);
+      handleDeactivateBack(() => {
+        setComment(false);
+        handleActivateBack();
+      });
+    }
+  }, [comment]);
   return (
     <div id="SwiperCardOurClient">
       <SwipeableDrawer
@@ -43,14 +53,6 @@ const SwiperCardOurClient = ({ client, comment, setComment }) => {
         onClose={() => {
           setComment(false);
           handleActivateBack();
-        }}
-        onOpen={() => {
-          setComment(true);
-          handleDeactivateBack(() => {
-            setComment(false);
-            handleActivateBack();
-            console.log("Activando el back");
-          });
         }}
         className="swipe"
         transitionDuration={700}
@@ -66,6 +68,7 @@ const SwiperCardOurClient = ({ client, comment, setComment }) => {
                   className="close"
                   onClick={() => {
                     setComment(false);
+                    handleActivateBack();
                   }}
                 />
               </div>
