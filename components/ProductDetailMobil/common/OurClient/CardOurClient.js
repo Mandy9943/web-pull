@@ -10,11 +10,11 @@ import "./OurClient.module.css";
 const CardOurClient = ({ client, handleOnClickComment }) => {
   const stars = [];
   for (let i = 0; i < client.star; i++) {
-    stars.push(<FontAwesomeIcon icon={faStar} />);
+    stars.push(<FontAwesomeIcon icon={faStar} key={i} />);
   }
 
   return (
-    <div id="CardOurClient" className="card">
+    <div className="card">
       <picture>
         <div className="anullProperties">
           <Image src={client.product.img[0].url} alt="Review" layout="fill" />
@@ -28,28 +28,27 @@ const CardOurClient = ({ client, handleOnClickComment }) => {
           </div>
         </div>
         <div className="localization">
-          <p> {client.location} </p>
+          <p> {client?.location} </p>
           <div className="anullProperties">
             <Image src={location} alt="localization" layout="fill" />
           </div>
         </div>
         <div className="clasification">{stars}</div>
         <div className="comment">
-          <h5>{client.H}</h5>
-          <p>{client.P.substring(0, 80)} ...</p>
+          <h5>{client?.H}</h5>
+          <p>{client?.P.substring(0, 80)} ...</p>
         </div>
-        <footer>
-          <div className="separator" />
-          <div className="anullProperties">
-            <Image
-              src={iconopen}
-              layout="fill"
-              alt="mini"
-              onClick={() => handleOnClickComment(client)}
-            />
-          </div>
-        </footer>
       </div>
+      <footer>
+        <div className="anullProperties">
+          <Image
+            src={iconopen}
+            layout="fill"
+            alt="mini"
+            onClick={() => handleOnClickComment(client)}
+          />
+        </div>
+      </footer>
     </div>
   );
 };

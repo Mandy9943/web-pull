@@ -52,10 +52,10 @@ const OurClient = ({ category }) => {
       {collapse === true ? (
         <React.Fragment>
           <article>
-            {lista.map((client, i) => {
+            {lista.map((client) => {
               return (
                 <CardOurClient
-                  key={i + 10}
+                  key={client.H}
                   client={client}
                   handleOnClickComment={handleOnClickComment}
                 />
@@ -74,7 +74,9 @@ const OurClient = ({ category }) => {
                 VER MÁS
               </Button>
             ) : (
-              <Button onClick={() => setCountClient(4)}>VER MENOS</Button>
+              <a href="#OurClient">
+                <Button onClick={() => setCountClient(4)}>VER MENOS</Button>
+              </a>
             )}
           </div>
         </React.Fragment>
