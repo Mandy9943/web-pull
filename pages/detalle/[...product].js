@@ -10,11 +10,13 @@ import Loading from "../../components/Common/Loading/Loading";
 import { useAppDispatch } from "../../lib/hooks/redux";
 import { setData } from "../../redux/feature/pay/paySlice";
 const Detail = dynamic(() => import("../../components/ProductDetail"), {
+  ssr: false,
   loading: () => <Loading />,
 });
 const ProductDetailMobil = dynamic(
   () => import("../../components/ProductDetailMobil/ProductDetailMobil"),
   {
+    ssr: false,
     loading: () => <Loading />,
   }
 );
@@ -171,6 +173,7 @@ function Product({ data, u_data }) {
 
 // This gets called on every request
 export async function getServerSideProps(context) {
+  console.log(context);
   // Fetch data from external API
   let temp_p = String(context.params.product).split("_");
 

@@ -7,7 +7,7 @@ import Logo2 from "../../assets/img/logo-social1.png";
 
 import CheckoutProduct from "./common/CheckoutProduct/CheckoutProduct";
 import Header from "./common/Header/Header";
-import {sendCheckoutStepViewed} from "../../lib/functions.js";
+import { sendCheckoutStepViewed } from "../../lib/functions.js";
 
 import "./ProductDetailMobil.module.css";
 
@@ -17,52 +17,63 @@ import useScrollY from "../../lib/hooks/useScrollY";
 const SwiperSlider = dynamic(
   () => import("./common/SwiperSlider/SwipperSlider"),
   {
+    ssr: false,
     loading: () => <p>...</p>,
   }
 );
 
 const Info = dynamic(() => import("./common/Info/Info"), {
+  ssr: false,
   loading: () => <p>...</p>,
 });
 const PayMethod = dynamic(() => import("./common/PayMethod/PayMethod"), {
+  ssr: false,
   loading: () => <p>...</p>,
 });
 const Detail = dynamic(() => import("./common/Detail/Detail"), {
+  ssr: false,
   loading: () => <p>...</p>,
 });
 const Description = dynamic(() => import("./common/Description/Description"), {
+  ssr: false,
   loading: () => <p>...</p>,
 });
 
 const Benefits = dynamic(() => import("./common/Benefits/Benefits"), {
+  ssr: false,
   loading: () => <p>...</p>,
 });
 const HelpCenter = dynamic(() => import("./common/HelpCenter/HelpCenter"), {
+  ssr: false,
   loading: () => <p>...</p>,
 });
 const Subscription = dynamic(
   () => import("./common/Subscription/Subscription"),
   {
+    ssr: false,
     loading: () => <p>...</p>,
   }
 );
 const RecommendedProducts = dynamic(
   () => import("./common/RecommendedProducts/RecommendedProducts"),
   {
+    ssr: false,
     loading: () => <p>...</p>,
   }
 );
 
-import {concatCategories, sendProductViewed} from "../../lib/functions";
+import { concatCategories, sendProductViewed } from "../../lib/functions";
 
 const WhatsappBanner = dynamic(
   () => import("./common/WhatsappBanner/WhatsappBanner"),
   {
+    ssr: false,
     loading: () => <p>...</p>,
   }
 );
 // import CheckoutButton from "./common/CheckoutButton/CheckoutButton";
 const OurClient = dynamic(() => import("./common/OurClient/OurClient"), {
+  ssr: false,
   loading: () => <p>...</p>,
 });
 const Nav = dynamic(() => import("../Common/Nav/Nav"));
@@ -75,6 +86,7 @@ const StickyPayButton = dynamic(() =>
 );
 
 const SellerInfo = dynamic(() => import("./common/SellerInfo/SellerInfo"), {
+  ssr: false,
   loading: () => <p>...</p>,
 });
 
@@ -83,7 +95,7 @@ const ProductDetailMobil = ({ user_data, data }) => {
   // console.log("data", data);
 
   useEffect(() => {
-    sendProductViewed(data)
+    sendProductViewed(data);
   }, [data]);
 
   const [isForm, setIsForm] = useState(false);
