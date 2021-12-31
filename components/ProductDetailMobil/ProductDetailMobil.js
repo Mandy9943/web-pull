@@ -58,6 +58,8 @@ const RecommendedProducts = dynamic(
 );
 
 import { sendProductViewed } from "../../lib/functions";
+import { openForm, selectIsFormOpen } from "../../redux/feature/pay/paySlice";
+import { useAppDispatch, useAppSelector } from "../../lib/hooks/redux";
 
 const WhatsappBanner = dynamic(
   () => import("./common/WhatsappBanner/WhatsappBanner"),
@@ -90,31 +92,34 @@ const ProductDetailMobil = ({ user_data, data }) => {
     sendProductViewed(data);
   }, [data]);
 
-  const [isForm, setIsForm] = useState(false);
+  // const [isForm, setIsForm] = useState(false);
   const [isWhatsappBanner, setIsWhatsappBanner] = useState(true);
   const scrolledPayButton = useScrollY(700, false);
 
+  const isForm = useAppSelector(selectIsFormOpen);
+  const dispatch = useAppDispatch();
   useEffect(() => {
     if (isForm === true) {
-      setIsForm(true);
+      dispatch(openForm(true));
       handleDeactivateBack(() => {
-        setIsForm(false);
+        dispatch(openForm(false));
         handleActivateBack();
       });
     }
   }, [isForm]);
 
-  const handleCloseWhatsappBanner = () => {
-    setIsWhatsappBanner(false);
-  };
   const handleCloseForm = () => {
     sendCheckoutStepViewed(2);
-    setIsForm(false);
+    dispatch(openForm(false));
+
     handleActivateBack();
   };
   const handleOpenForm = () => {
     sendCheckoutStepViewed(1);
-    setIsForm(true);
+    dispatch(openForm(true));
+  };
+  const handleCloseWhatsappBanner = () => {
+    setIsWhatsappBanner(false);
   };
 
   let navClass = ["Nav"];

@@ -16,7 +16,14 @@ import DiscountPrice from "../DiscountPrice/DiscountPrice";
 // install Swiper modules
 SwiperCore.use([EffectCoverflow, Pagination]);
 
-const SwiperSlider = ({ images, altImg, type, price, stock, discount_percentage }) => {
+const SwiperSlider = ({
+  images,
+  altImg,
+  type,
+  price,
+  stock,
+  discount_percentage,
+}) => {
   return type === "HomeProduct" ? (
     <div className="swiperSliderDatailMobile">
       <Swiper
@@ -92,8 +99,8 @@ const SwiperSlider = ({ images, altImg, type, price, stock, discount_percentage 
     <div className="swiperSliderDatailMobile">
       <Swiper pagination={true} className="mySwiper2">
         <SwiperSlide>
-          <DiscountPrice 
-            priceProduct={price}  
+          <DiscountPrice
+            priceProduct={price}
             discountPercentage={10}
             stock={stock}
             quantityProduct={2}
@@ -103,8 +110,8 @@ const SwiperSlider = ({ images, altImg, type, price, stock, discount_percentage 
           />
         </SwiperSlide>
         <SwiperSlide>
-          <DiscountPrice 
-            priceProduct={price}  
+          <DiscountPrice
+            priceProduct={price}
             discountPercentage={15}
             stock={stock}
             quantityProduct={3}
