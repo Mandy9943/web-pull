@@ -195,11 +195,9 @@
 /*SwiperCardOurClient section*/
 
 .MuiDrawer-paperAnchorBottom {
-    width: 100vw;
+    width: 100vw !important;
     top: 0 !important;
     height: 100vh !important;
-    overflow-y: scroll !important;
-    overflow-x: hidden !important;
     margin: 0 !important;
     background-color: #fff !important;
 }
@@ -208,6 +206,10 @@
     display: grid;
     background-color: #fff;
     grid-template-columns: repeat(auto-fill, 1fr);
+    overflow-y: scroll !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch !important;
 }
 
 .swipe .card picture {

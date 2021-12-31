@@ -70,9 +70,7 @@ const OurClient = ({ category }) => {
           </article>
           <div className="footer_our">
             {countClient <= 4 ? (
-              <Button onClick={() => setCountClient(countClient + 2)}>
-                VER MÁS
-              </Button>
+              <Button onClick={() => setCountClient(200)}>VER MÁS</Button>
             ) : (
               <a href="#OurClient">
                 <Button onClick={() => setCountClient(4)}>VER MENOS</Button>
