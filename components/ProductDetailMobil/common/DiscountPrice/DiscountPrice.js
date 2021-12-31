@@ -1,4 +1,3 @@
-import react, { useState, useEffect } from "react";
 import CheckoutButton from "../CheckoutButton/CheckoutButton";
 import OfferSection from "../OfferSection/OfferSection";
 import Discount from "./componentsDiscount/Discount/Discount";
@@ -6,13 +5,9 @@ import DivindingLine from "../DivindingLine/DivindingLine";
 import PriceSaving from "./componentsDiscount/PriceSaving/PriceSaving";
 
 import "./DiscountPrice.module.css";
-import { useAppDispatch, useAppSelector } from "../../../../lib/hooks/redux";
-import { openForm } from "../../../../redux/feature/pay/paySlice";
-import {
-  handleActivateBack,
-  handleDeactivateBack,
-  sendCheckoutStepViewed,
-} from "../../../../lib/functions";
+import { useAppDispatch } from "../../../../lib/hooks/redux";
+import { openForm, setCount } from "../../../../redux/feature/pay/paySlice";
+import { sendCheckoutStepViewed } from "../../../../lib/functions";
 const DiscountPrice = ({
   priceProduct,
   discountPercentage,
@@ -26,6 +21,7 @@ const DiscountPrice = ({
   const handleOpenForm = () => {
     sendCheckoutStepViewed(1);
     dispatch(openForm(true));
+    dispatch(setCount(quantityProduct));
   };
   return (
     <div className="containerDiscountPrice">

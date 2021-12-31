@@ -15,6 +15,7 @@ import formSchema from "./Schema/schema";
 import {
   sendIdentifyEvent,
   createHmacSHA1,
+  setDiscount,
 } from "../../../../lib/functions.js";
 import { useAppSelector } from "../../../../lib/hooks/redux";
 import { selectData } from "../../../../redux/feature/pay/paySlice";
@@ -137,9 +138,10 @@ const FormProductDetail = ({ handleClose, open }) => {
   var md5 = require("md5");
   var ref_code = "kieroco-" + new Date().getTime();
   var signature = md5(
-    `uzIc90bkpXj0aJDh22H67MRJnl~530932~${ref_code}~${
-      productData.price * quantity
-    }~COP`
+    `uzIc90bkpXj0aJDh22H67MRJnl~530932~${ref_code}~${setDiscount(
+      quantity,
+      productData.price
+    )}~COP`
   );
   return (
     <div>
@@ -311,7 +313,8 @@ const FormProductDetail = ({ handleClose, open }) => {
             <input
               name="amount"
               type="hidden"
-              value={quantity * productData.price}
+              /* value={quantity * productData.price} */
+              value={setDiscount(quantity, productData.price)}
             />
             <input name="tax" type="hidden" value="0" />
             <input name="taxReturnBase" type="hidden" value="0" />
