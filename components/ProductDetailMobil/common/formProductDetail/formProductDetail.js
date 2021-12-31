@@ -12,14 +12,18 @@ import Link from "next/link";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import formSchema from "./Schema/schema";
-import {sendIdentifyEvent, createHmacSHA1} from "../../../../lib/functions.js";
+import {
+  sendIdentifyEvent,
+  createHmacSHA1,
+} from "../../../../lib/functions.js";
 import { useAppSelector } from "../../../../lib/hooks/redux";
 import { selectData } from "../../../../redux/feature/pay/paySlice";
 import { handleFormatName } from "../../../../lib/functions";
 import CryptoJS from "crypto-js";
 import Cookies from "js-cookie";
 import { useEffect } from "react";
-import { getVariantAvailable } from "../../../../services/productsApi";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const FormProductDetail = ({ handleClose, open }) => {
   const productData = useAppSelector(selectData);
@@ -139,8 +143,11 @@ const FormProductDetail = ({ handleClose, open }) => {
   );
   return (
     <div>
-      <FormDialog open={open} handleClose={handleClose}>
+      <FormDialog open={open}>
         <div id="FormProductDetail">
+          <span className="closeButton" onClick={handleClose}>
+            <FontAwesomeIcon icon={faTimes} />
+          </span>
           <p className="formProductDetail-title">
             Por favor agregue los datos de envío
           </p>
