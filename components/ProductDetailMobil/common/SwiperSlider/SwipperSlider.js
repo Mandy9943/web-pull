@@ -29,6 +29,7 @@ const SwiperSlider = ({
       <Swiper
         loop={true}
         speed={200}
+        spaceBetween={20}
         autoplay={{
           delay: 2500,
           disableOnInteraction: false,
