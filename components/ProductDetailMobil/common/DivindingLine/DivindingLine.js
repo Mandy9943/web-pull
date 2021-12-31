@@ -15,7 +15,7 @@ const DivindingLine = ({
         height: height,
         margin: margin,
       }}
-    ></div>
+    />
   );
 };
 

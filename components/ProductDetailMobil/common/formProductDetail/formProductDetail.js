@@ -12,21 +12,23 @@ import Link from "next/link";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import formSchema from "./Schema/schema";
-import {sendIdentifyEvent, createHmacSHA1} from "../../../../lib/functions.js";
+import {
+  sendIdentifyEvent,
+  createHmacSHA1,
+} from "../../../../lib/functions.js";
 import { useAppSelector } from "../../../../lib/hooks/redux";
 import { selectData } from "../../../../redux/feature/pay/paySlice";
 import { handleFormatName } from "../../../../lib/functions";
 import CryptoJS from "crypto-js";
 import Cookies from "js-cookie";
 import { useEffect } from "react";
-import { getVariantAvailable } from "../../../../services/productsApi";
 
 const FormProductDetail = ({ handleClose, open }) => {
   const productData = useAppSelector(selectData);
   const [state, setState] = useState({
     cantidad: 0,
     dimensions: {},
-    variantsSpinner: productData.m_pgid ? false : true,
+    variantsSpinner: !productData.m_pgid,
     modalAddr: false,
     user: "",
     user_id: Cookies.get("user_id") || "",
@@ -83,15 +85,15 @@ const FormProductDetail = ({ handleClose, open }) => {
     const dataInterval = setInterval(function () {
       if (!clientId && !gclid) {
         // clientId
-        var gaCookie = Cookies.get("_ga");
+        const gaCookie = Cookies.get("_ga");
         if (gaCookie) {
-          var gaSplit = gaCookie.split(".");
+          const gaSplit = gaCookie.split(".");
           clientId = gaSplit[2] + "." + gaSplit[3];
         }
         // GCLID
         gclid = Cookies.get("gclid");
         if (!gclid) {
-          var match = /gclid=([^&#]*)/.exec(window.location.search);
+          const match = /gclid=([^&#]*)/.exec(window.location.search);
           gclid = match ? match[1] : undefined;
         }
         //////
@@ -119,10 +121,10 @@ const FormProductDetail = ({ handleClose, open }) => {
     handleFormatName(getValues().firstName) +
     (getValues().lastName ? " " + handleFormatName(getValues().lastName) : "");
 
-  var hmacID = CryptoJS.HmacSHA1(state.identification, "abc").toString(
+  const hmacID = CryptoJS.HmacSHA1(state.identification, "abc").toString(
     CryptoJS.enc.Hex
   );
-  var extra3 = JSON.stringify({
+  const extra3 = JSON.stringify({
     qty: quantity,
     cid: state.clientId,
     gclid: state.gclid,
@@ -130,9 +132,9 @@ const FormProductDetail = ({ handleClose, open }) => {
     id: hmacID,
   });
 
-  var md5 = require("md5");
-  var ref_code = "kieroco-" + new Date().getTime();
-  var signature = md5(
+  const md5 = require("md5");
+  const ref_code = "kieroco-" + new Date().getTime();
+  const signature = md5(
     `uzIc90bkpXj0aJDh22H67MRJnl~530932~${ref_code}~${
       productData.price * quantity
     }~COP`

@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import "./Discount.module.css";
 
-const Discount = ({quantityProduct, discountPercentage, images, altImg}) => {
+const Discount = ({ quantityProduct, discountPercentage, images, altImg }) => {
   return (
     <div className="containerDiscount">
       <div className="wrapperDiscount wrapperPercent">
@@ -12,11 +12,7 @@ const Discount = ({quantityProduct, discountPercentage, images, altImg}) => {
       <div className=" wrapperDiscount wrapperImage">
         <div className="wrapperAnullProperties">
           <div className="anullProperties">
-            <Image
-              alt={altImg}
-              src={images[0].url}
-              layout="fill"
-            />
+            <Image alt={altImg} src={images[0].url} layout="fill" />
           </div>
         </div>
         <p className="cantDiscount">x{quantityProduct}</p>
