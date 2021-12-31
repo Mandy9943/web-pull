@@ -55,21 +55,24 @@ const SwiperSlider = ({
             <SwiperSlide>
               <Skeleton
                 variant="rectangular"
-                height={300}
+                height={324}
+                width={300}
                 className="skeletonProductDetail"
               />
             </SwiperSlide>
             <SwiperSlide>
               <Skeleton
                 variant="rectangular"
-                height={300}
+                height={324}
+                width={300}
                 className="skeletonProductDetail"
               />
             </SwiperSlide>
             <SwiperSlide>
               <Skeleton
                 variant="rectangular"
-                height={300}
+                height={324}
+                width={300}
                 className="skeletonProductDetail"
               />
             </SwiperSlide>
@@ -80,8 +83,8 @@ const SwiperSlider = ({
               <SwiperSlide key={image.file_id} className="mdc-ripple-surface">
                 <Skeleton
                   variant="rectangular"
-                  height={290}
-                  width={290}
+                  height={324}
+                  width={300}
                   className="skeletonProductDetail"
                 />
                 <Image
