@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Ripples from "react-ripples";
 import "./BuyButton.module.css";
 

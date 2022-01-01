@@ -57,6 +57,7 @@ const SwiperCardOurClient = ({ client, comment, setComment }) => {
         }}
         className="swipe"
         transitionDuration={700}
+        disableBackdropTransition={true}
       >
         <article>
           <div className="card">
