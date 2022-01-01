@@ -5,7 +5,9 @@ import DivindingLine from "../DivindingLine/DivindingLine";
 import PriceSaving from "./componentsDiscount/PriceSaving/PriceSaving";
 
 import "./DiscountPrice.module.css";
-
+import { useAppDispatch } from "../../../../lib/hooks/redux";
+import { openForm, setCount } from "../../../../redux/feature/pay/paySlice";
+import { sendCheckoutStepViewed } from "../../../../lib/functions";
 const DiscountPrice = ({
   priceProduct,
   discountPercentage,
@@ -14,6 +16,13 @@ const DiscountPrice = ({
   images,
   altImg,
 }) => {
+  const dispatch = useAppDispatch();
+
+  const handleOpenForm = () => {
+    sendCheckoutStepViewed(1);
+    dispatch(openForm(true));
+    dispatch(setCount(quantityProduct));
+  };
   return (
     <div className="containerDiscountPrice">
       <OfferSection />
@@ -33,7 +42,13 @@ const DiscountPrice = ({
         {stock <= 0 ? (
           <CheckoutButton text="SIN STOCK" rounded notShowCar disabled />
         ) : (
-          <CheckoutButton text="Comprar" rounded secundary notShowCar />
+          <CheckoutButton
+            text="Comprar"
+            rounded
+            secundary
+            notShowCar
+            onClick={handleOpenForm}
+          />
         )}
       </div>
     </div>

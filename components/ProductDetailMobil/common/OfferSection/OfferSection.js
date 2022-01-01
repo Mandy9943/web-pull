@@ -1,6 +1,5 @@
 import React from "react";
 import "./OfferSection.module.css";
-
 const OfferSection = () => {
   return (
     <>

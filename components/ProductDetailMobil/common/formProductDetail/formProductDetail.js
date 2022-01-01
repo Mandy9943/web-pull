@@ -15,6 +15,7 @@ import formSchema from "./Schema/schema";
 import {
   sendIdentifyEvent,
   createHmacSHA1,
+  setDiscount,
 } from "../../../../lib/functions.js";
 import { useAppSelector } from "../../../../lib/hooks/redux";
 import { selectData } from "../../../../redux/feature/pay/paySlice";
@@ -22,6 +23,8 @@ import { handleFormatName } from "../../../../lib/functions";
 import CryptoJS from "crypto-js";
 import Cookies from "js-cookie";
 import { useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const FormProductDetail = ({ handleClose, open }) => {
   const productData = useAppSelector(selectData);
@@ -132,17 +135,21 @@ const FormProductDetail = ({ handleClose, open }) => {
     id: hmacID,
   });
 
-  const md5 = require("md5");
-  const ref_code = "kieroco-" + new Date().getTime();
-  const signature = md5(
-    `uzIc90bkpXj0aJDh22H67MRJnl~530932~${ref_code}~${
-      productData.price * quantity
-    }~COP`
+  var md5 = require("md5");
+  var ref_code = "kieroco-" + new Date().getTime();
+  var signature = md5(
+    `uzIc90bkpXj0aJDh22H67MRJnl~530932~${ref_code}~${setDiscount(
+      quantity,
+      productData.price
+    )}~COP`
   );
   return (
     <div>
-      <FormDialog open={open} handleClose={handleClose}>
+      <FormDialog open={open}>
         <div id="FormProductDetail">
+          <span className="closeButton" onClick={handleClose}>
+            <FontAwesomeIcon icon={faTimes} />
+          </span>
           <p className="formProductDetail-title">
             Por favor agregue los datos de envío
           </p>
@@ -306,7 +313,8 @@ const FormProductDetail = ({ handleClose, open }) => {
             <input
               name="amount"
               type="hidden"
-              value={quantity * productData.price}
+              /* value={quantity * productData.price} */
+              value={setDiscount(quantity, productData.price)}
             />
             <input name="tax" type="hidden" value="0" />
             <input name="taxReturnBase" type="hidden" value="0" />

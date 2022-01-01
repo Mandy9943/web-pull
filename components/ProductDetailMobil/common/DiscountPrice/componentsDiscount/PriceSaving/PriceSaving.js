@@ -1,12 +1,12 @@
 import React from "react";
-import { handleFormatNumber } from "../../../../../../lib/functions";
+import {
+  handleFormatNumber,
+  setDiscount,
+} from "../../../../../../lib/functions";
 import "./PriceSaving.module.css";
 
-const PriceSaving = ({ priceProduct, discountPercentage, quantityProduct }) => {
-  let PriceDiscount =
-    priceProduct *
-    quantityProduct *
-    (1 - parseFloat("." + discountPercentage).toFixed(2));
+const PriceSaving = ({ priceProduct, quantityProduct }) => {
+  let PriceDiscount = setDiscount(priceProduct, quantityProduct);
   let FirstPriceProduct = priceProduct * quantityProduct;
   let Saving = FirstPriceProduct - PriceDiscount;
   return (
