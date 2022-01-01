@@ -173,7 +173,6 @@ function Product({ data, u_data }) {
 
 // This gets called on every request
 export async function getServerSideProps(context) {
-  console.log(context);
   // Fetch data from external API
   let temp_p = String(context.params.product).split("_");
 
