@@ -51,13 +51,13 @@ const HelpCenter = dynamic(() => import("./common/HelpCenter/HelpCenter"), {
   ssr: false,
   loading: () => <p>...</p>,
 });
-const Subscription = dynamic(
-  () => import("./common/Subscription/Subscription"),
-  {
-    ssr: false,
-    loading: () => <p>...</p>,
-  }
-);
+// const Subscription = dynamic(
+//   () => import("./common/Subscription/Subscription"),
+//   {
+//     ssr: false,
+//     loading: () => <p>...</p>,
+//   }
+// );
 const RecommendedProducts = dynamic(
   () => import("./common/RecommendedProducts/RecommendedProducts"),
   {
@@ -197,7 +197,7 @@ const ProductDetailMobil = ({ user_data, data }) => {
       <RecommendedProducts category={data.category} />
       <Benefits />
       <HelpCenter />
-      <Subscription />
+      {/* <Subscription /> */}
       <Footer />
       <div className="footer-social">
         <a href={urlSic} rel="noopener noreferrer" target="_blank">

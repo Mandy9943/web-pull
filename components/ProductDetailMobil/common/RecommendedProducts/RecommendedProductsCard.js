@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Skeleton from "@mui/material/Skeleton";
 import "./RecommendedProductsCard.module.css";
+import button from "../../../../assets/img/productDetail/component-4@2x.svg";
 import Image from "next/image";
+import {
+  sendProductListViewed,
+  handleFormatUrl,
+} from "../../../../lib/functions";
 
 function RecommendedProductsCard({ product, index }) {
   const ref = useRef();
@@ -24,11 +29,18 @@ function RecommendedProductsCard({ product, index }) {
     }
   }, [index, product, ref]);
 
+  const redirectUrl = (productId, productName) => {
+    window.location.href = handleFormatUrl(productId, productName);
+  };
+
   return (
     <div id="RecommendedProductsCard" ref={ref}>
       {product ? (
         <>
-          <div className="product">
+          <div
+            className="product"
+            onClick={() => redirectUrl(product.product_id, product.title)}
+          >
             <div className="anullProperties">
               <Image
                 loading="lazy"

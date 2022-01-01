@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getProductsBasic } from "../../../../services/productsApi";
+import { handleFormatUrl } from "../../../../lib/functions";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles

@@ -27,7 +27,7 @@ const HelpCenter = () => {
       {collapse === true ? (
         <div className="detalles">
           <React.Fragment>
-            <a href="#">
+            {/* <a href="#">
               <h3>Preguntas Frecuentes</h3>
               <div className="anullProperties">
                 <Image
@@ -46,8 +46,8 @@ const HelpCenter = () => {
                   layout="fill"
                 />
               </div>
-            </a>
-            <a href="#">
+            </a> */}
+            <a href="/refund_and_return_policy">
               <h3>Refund Policy</h3>
               <div className="anullProperties">
                 <Image
