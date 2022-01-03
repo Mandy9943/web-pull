@@ -45,10 +45,11 @@ const SwiperCardOurClient = ({ client, comment, setComment }) => {
       });
     }
   }, [comment]);
+
   return (
     <div id="SwiperCardOurClient">
       <SwipeableDrawer
-        anchor="bottom"
+        anchor="right"
         open={comment}
         onOpen={() => {}}
         onClose={() => {
