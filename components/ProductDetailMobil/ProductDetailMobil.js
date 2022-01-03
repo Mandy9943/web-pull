@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 
 import Logo1 from "../../assets/img/logo-social.png";
 import Logo2 from "../../assets/img/logo-social1.png";
@@ -21,35 +21,28 @@ import useScrollY from "../../lib/hooks/useScrollY";
 const SwiperSlider = dynamic(
   () => import("./common/SwiperSlider/SwipperSlider"),
   {
-    ssr: false,
-    loading: () => <p>...</p>,
+    suspense: true,
   }
 );
 
 const Info = dynamic(() => import("./common/Info/Info"), {
-  ssr: false,
-  loading: () => <p>...</p>,
+  suspense: true,
 });
 const PayMethod = dynamic(() => import("./common/PayMethod/PayMethod"), {
-  ssr: false,
-  loading: () => <p>...</p>,
+  suspense: true,
 });
 const Detail = dynamic(() => import("./common/Detail/Detail"), {
-  ssr: false,
-  loading: () => <p>...</p>,
+  suspense: true,
 });
 const Description = dynamic(() => import("./common/Description/Description"), {
-  ssr: false,
-  loading: () => <p>...</p>,
+  suspense: true,
 });
 
 const Benefits = dynamic(() => import("./common/Benefits/Benefits"), {
-  ssr: false,
-  loading: () => <p>...</p>,
+  suspense: true,
 });
 const HelpCenter = dynamic(() => import("./common/HelpCenter/HelpCenter"), {
-  ssr: false,
-  loading: () => <p>...</p>,
+  suspense: true,
 });
 // const Subscription = dynamic(
 //   () => import("./common/Subscription/Subscription"),
@@ -61,8 +54,7 @@ const HelpCenter = dynamic(() => import("./common/HelpCenter/HelpCenter"), {
 const RecommendedProducts = dynamic(
   () => import("./common/RecommendedProducts/RecommendedProducts"),
   {
-    ssr: false,
-    loading: () => <p>...</p>,
+    suspense: true,
   }
 );
 
@@ -73,14 +65,12 @@ import { useAppDispatch, useAppSelector } from "../../lib/hooks/redux";
 const WhatsappBanner = dynamic(
   () => import("./common/WhatsappBanner/WhatsappBanner"),
   {
-    ssr: false,
-    loading: () => <p>...</p>,
+    suspense: true,
   }
 );
 // import CheckoutButton from "./common/CheckoutButton/CheckoutButton";
 const OurClient = dynamic(() => import("./common/OurClient/OurClient"), {
-  ssr: false,
-  loading: () => <p>...</p>,
+  suspense: true,
 });
 const Nav = dynamic(() => import("../Common/Nav/Nav"));
 const Footer = dynamic(() => import("../Common/Footer"));
@@ -92,8 +82,7 @@ const StickyPayButton = dynamic(() =>
 );
 
 const SellerInfo = dynamic(() => import("./common/SellerInfo/SellerInfo"), {
-  ssr: false,
-  loading: () => <p>...</p>,
+  suspense: true,
 });
 
 const ProductDetailMobil = ({ user_data, data }) => {
@@ -140,65 +129,67 @@ const ProductDetailMobil = ({ user_data, data }) => {
   }
   return (
     <div id="productDetailMobil">
-      {isWhatsappBanner && (
-        <WhatsappBanner
-          close={handleCloseWhatsappBanner}
-          productId={data.product_global_id}
-        />
-      )}
-      <div className={navClass.join(" ")}>
-        <Nav
-          user={user_data.user}
-          jwt={user_data.jwt}
-          home={true}
-          authenticated={user_data.authenticated}
-        />
-      </div>
-      {scrolledPayButton && !isForm && (
-        <StickyPayButton onClickBuy={handleOpenForm} />
-      )}
-      <FormProductDetail open={isForm} handleClose={handleCloseForm} />
-      <div className="content-curve-shape">
-        <div className="header-detail">
-          <Header title={data.title} bredCumbs={data.breadcum} />
+      <Suspense fallback={`loading`}>
+        {isWhatsappBanner && (
+          <WhatsappBanner
+            close={handleCloseWhatsappBanner}
+            productId={data.product_global_id}
+          />
+        )}
+        <div className={navClass.join(" ")}>
+          <Nav
+            user={user_data.user}
+            jwt={user_data.jwt}
+            home={true}
+            authenticated={user_data.authenticated}
+          />
         </div>
-        <div className="content-images">
-          <div className="slider">
-            <SwiperSlider
-              type={"HomeProduct"}
-              images={data.images}
-              altImg={data.title}
-            />
+        {scrolledPayButton && !isForm && (
+          <StickyPayButton onClickBuy={handleOpenForm} />
+        )}
+        <FormProductDetail open={isForm} handleClose={handleCloseForm} />
+        <div className="content-curve-shape">
+          <div className="header-detail">
+            <Header title={data.title} bredCumbs={data.breadcum} />
+          </div>
+          <div className="content-images">
+            <div className="slider">
+              <SwiperSlider
+                type={"HomeProduct"}
+                images={data.images}
+                altImg={data.title}
+              />
+            </div>
           </div>
         </div>
-      </div>
 
-      <CheckoutProduct
-        onClickBuy={handleOpenForm}
-        price={data.price}
-        stock={data.status === 0 ? 0 : data.stock}
-        discount_percentage={data.discount_percentage}
-      />
+        <CheckoutProduct
+          onClickBuy={handleOpenForm}
+          price={data.price}
+          stock={data.status === 0 ? 0 : data.stock}
+          discount_percentage={data.discount_percentage}
+        />
 
-      <Info />
-      <PayMethod />
-      <Detail product={data} />
-      <Description product={data} />
-      <OurClient category={data?.breadcum[0]?.name.substring(0, 7)} />
-      <SwiperSlider
-        type={"specialOffer"}
-        price={data.price}
-        images={data.images}
-        altImg={data.title}
-        stock={data.status === 0 ? 0 : data.stock}
-        discount_percentage={data.discount_percentage}
-      />
-      <SellerInfo />
-      <RecommendedProducts category={data.category} />
-      <Benefits />
-      <HelpCenter />
-      {/* <Subscription /> */}
-      <Footer />
+        <Info />
+        <PayMethod />
+        <Detail product={data} />
+        <Description product={data} />
+        <OurClient category={data?.breadcum[0]?.name.substring(0, 7)} />
+        <SwiperSlider
+          type={"specialOffer"}
+          price={data.price}
+          images={data.images}
+          altImg={data.title}
+          stock={data.status === 0 ? 0 : data.stock}
+          discount_percentage={data.discount_percentage}
+        />
+        <SellerInfo />
+        <RecommendedProducts category={data.category} />
+        <Benefits />
+        <HelpCenter />
+        {/* <Subscription /> */}
+        <Footer />
+      </Suspense>
       <div className="footer-social">
         <a href={urlSic} rel="noopener noreferrer" target="_blank">
           <div className="anullProperties">
