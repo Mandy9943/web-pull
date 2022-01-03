@@ -57,7 +57,7 @@ function RecommendedProductsCard({ product, index }) {
                   .split(".")[0]
                   .replace(/(.)(?=(\d{3})+$)/g, "$1.")}
               </h3>
-              <span className="discount">- 10%</span>
+              {/* <span className="discount">- 10%</span> */}
             </div>
             <h4>{product.title.substr(0, 80)}</h4>
           </div>

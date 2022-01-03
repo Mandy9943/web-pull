@@ -22,7 +22,7 @@ import { handleFormatUrl } from "../../lib/functions";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import { Button, Modal } from 'react-bootstrap';
 import { createleadClient } from "../../lib/zoho";
-import {sendIdentifyEvent, createHmacSHA1} from "../../lib/functions.js";
+import { sendIdentifyEvent, createHmacSHA1 } from "../../lib/functions.js";
 
 class PaySection extends Component {
   constructor(props) {
@@ -467,10 +467,10 @@ class PaySection extends Component {
     //   //  }
     // });
 
-    // TODO: Se debería cambiar 
+    // TODO: Se debería cambiar
     // this.state.user -> this.state.firstName
     // this.state.mobile_phone -> this.state.phoneNumber
-    sendIdentifyEvent(this.state)
+    sendIdentifyEvent(this.state);
 
     // // Segment Identify method
     // // Link your users and their actions
@@ -904,7 +904,6 @@ class PaySection extends Component {
       //   });
 
       // });
-
     };
     //////
     // this.clientId = typeof(ga) == 'function' && typeof(ga.getAll) == 'function' ? ga.getAll()[0].get('clientId') : "";
@@ -937,7 +936,7 @@ class PaySection extends Component {
       id: hmacID,
     });
 
-    // console.log(hmacID)
+    // console.log(extra3)
 
     var md5 = require("md5");
     var ref_code = "kieroco-" + new Date().getTime();
@@ -954,7 +953,6 @@ class PaySection extends Component {
     // 		this.state.cantidad == 0 ? 1 : this.state.cantidad * this.props.props.data.price +
     // 		'~COP'
     // );
-    // console.log(signature);
     const contentModalNewAddress = (
       <div
         style={{

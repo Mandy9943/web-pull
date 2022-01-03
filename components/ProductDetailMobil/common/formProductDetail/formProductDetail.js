@@ -34,7 +34,7 @@ const FormProductDetail = ({ handleClose, open }) => {
     variantsSpinner: !productData.m_pgid,
     modalAddr: false,
     user: "",
-    user_id: Cookies.get("user_id") || "",
+    user_id: Cookies.get("user_id") || 16,
     email: "",
     mobile_phone: "",
     city: "",
@@ -139,8 +139,8 @@ const FormProductDetail = ({ handleClose, open }) => {
   var ref_code = "kieroco-" + new Date().getTime();
   var signature = md5(
     `uzIc90bkpXj0aJDh22H67MRJnl~530932~${ref_code}~${setDiscount(
-      quantity,
-      productData.price
+      productData.price,
+      quantity
     )}~COP`
   );
   return (
@@ -314,7 +314,7 @@ const FormProductDetail = ({ handleClose, open }) => {
               name="amount"
               type="hidden"
               /* value={quantity * productData.price} */
-              value={setDiscount(quantity, productData.price)}
+              value={setDiscount(productData.price, quantity)}
             />
             <input name="tax" type="hidden" value="0" />
             <input name="taxReturnBase" type="hidden" value="0" />
