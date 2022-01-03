@@ -52,10 +52,10 @@ const OurClient = ({ category }) => {
       {collapse === true ? (
         <React.Fragment>
           <article>
-            {lista.map((client) => {
+            {lista.map((client, i) => {
               return (
                 <CardOurClient
-                  key={client.H}
+                  key={i}
                   client={client}
                   handleOnClickComment={handleOnClickComment}
                 />
