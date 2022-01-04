@@ -1,6 +1,8 @@
 .swiperSliderDatailMobile {
   height: 100%;
   width: 100%;
+  padding-bottom: 90px;
+  background-color: white;
 }
 
 .swiperSliderDatailMobile .swiper {
@@ -12,8 +14,8 @@
 .swiperSliderDatailMobile .swiper-slide {
   background-position: center;
   background-size: cover;
-  width: 100%;
-  height: 325px;
+  width: 300px;
+  height: 324px;
   border-radius: 5px;
 }
 
@@ -24,7 +26,7 @@
 .swiperSliderDatailMobile .swiper-container .swiper-pagination-bullets {
   position: absolute;
   bottom: 0;
-  width: 200px;
+  width: 300px;
   left: 0;
   right: 0;
   margin: auto;
@@ -62,4 +64,12 @@
 .swiperSliderDatailMobile .mySwiper2 {
   width: 100vw;
   height: 512px;
+}
+
+/* .swiperSliderDatailMobile .mySwiper .mdc-ripple-surface {
+  box-shadow: 0px 2px 5px 5px rgba(0, 0, 0, 0.185);
+} */
+.swiperSliderDatailMobile .mySwiper .swiper-slide-next,
+.swiper-slide-prev {
+  transform: none !important;
 }

@@ -1,20 +1,35 @@
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import "./Header.css";
+import Link from "next/link";
+import "./Header.module.css";
+
 const Header = ({ title, bredCumbs }) => {
+  const bredCumb = [];
+  if (bredCumbs?.length > 0) {
+    bredCumbs.map((b) => {
+      bredCumb.push(
+        <React.Fragment key={b.name}>
+          <span className="bredItem nextCategory">
+            <FontAwesomeIcon icon={faAngleRight} />
+          </span>
+          <Link
+            href="/categoria/[...category]"
+            as={"/categoria/" + b.name.replace(/ /g, "-")}
+          >
+            <a>
+              <span className="bredItem">{b.name}</span>
+            </a>
+          </Link>
+        </React.Fragment>
+      );
+    });
+  }
   return (
     <div id="HeaderProductDatailMobil">
       <div className="bredcumbs">
         <span className="bredItem">...</span>
-        <span className="bredItem">
-          <FontAwesomeIcon icon={faAngleRight} />
-        </span>
-        <span className="bredItem">{bredCumbs[bredCumbs.length - 2].name}</span>
-        <span className="bredItem">
-          <FontAwesomeIcon icon={faAngleRight} />
-        </span>
-        <span className="bredItem">{bredCumbs[bredCumbs.length - 1].name}</span>
+        {bredCumb}
       </div>
       <div className="title">
         <h2 className="titleText">

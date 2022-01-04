@@ -1,8 +1,6 @@
 import { post } from "../lib/request";
 
-export const createlead = async (
-  data,
-) => {
+export const createlead = async (data) => {
   try {
     const response = await post("/create_lead_zoho", data);
     return response;
@@ -14,4 +12,3 @@ export const createlead = async (
       : "Error desconocido, intente nuevamente.";
   }
 };
-

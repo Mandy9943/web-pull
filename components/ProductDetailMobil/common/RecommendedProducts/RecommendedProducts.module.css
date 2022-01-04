@@ -6,11 +6,10 @@
 
 #RecommendedProducts .cabecera {
   position: relative;
-  padding: 30px 0;
+  padding-bottom: 34.5px;
 }
 
 #RecommendedProducts .cabecera h3 {
-
   box-sizing: border-box;
   /* Header 3 */
 

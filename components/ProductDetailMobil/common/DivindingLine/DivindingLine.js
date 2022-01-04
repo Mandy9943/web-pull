@@ -1,11 +1,10 @@
 import React from "react";
-import "./DivindingLine.css";
 
 const DivindingLine = ({
   color = "#D6D6D6",
   width = "90%",
   height = "2px",
-  margin = "0px",
+  margin = "0px auto",
 }) => {
   return (
     <div
@@ -16,7 +15,7 @@ const DivindingLine = ({
         height: height,
         margin: margin,
       }}
-    ></div>
+    />
   );
 };
 

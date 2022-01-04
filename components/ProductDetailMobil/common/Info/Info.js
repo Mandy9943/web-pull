@@ -1,5 +1,3 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTruck } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import "./Info.module.css";
 import envios from "../../../../assets/img/productDetail/delivery-icon-@2x.svg";
@@ -11,22 +9,21 @@ import Image from "next/image";
 const Info = () => {
   return (
     <div id="InfoProductDetailMovil">
-      <header>
+      <div className="info title">
         <h4>
-          Porqué Comprar con <div className="company">Kiero</div>
+          Porqué Comprar con <p className="company">Kiero</p>
         </h4>
-      </header>
+      </div>
       <div className="info envios">
-        <div className="icon">
+        <div className="icon car">
           <div className="anullProperties">
             <Image src={envios} alt="Envios gratis" layout="fill" />
           </div>
         </div>
-        <div className="text">
+        <div className="text texte">
           <h3>Envío Gratuito</h3>
           <p>
-            Nuestros productos son importados.
- Entrega de 3 a 9 días hábiles.
+            Nuestros productos son importados. Entrega de 3 a 9 días hábiles.
           </p>
         </div>
       </div>

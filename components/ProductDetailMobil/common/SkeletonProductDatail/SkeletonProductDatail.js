@@ -1,12 +1,12 @@
 import React from "react";
 
 import Skeleton from "react-loading-skeleton";
-import "./SkeletonProductDatail.css";
+import "./SkeletonProductDatail.module.css";
 
 const SkeletonProductDatail = () => {
   return (
     <div className="skeleton-movil-product-datail">
-      <div className="content-curve-shape mb"></div>
+      <div className="content-curve-shape mb" />
       <div className="content">
         <div className="wrapper">
           <div className="product-img">

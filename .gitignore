@@ -9,4 +9,6 @@ _next/
 .idea
 .prettierrc
 _next
+.eslintcache
 
+pages/test.js

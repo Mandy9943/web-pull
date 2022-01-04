@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getProductsBasic } from "../../../../services/productsApi";
-import background from "../../../../assets/img/productDetail/trazado-12@2x.svg";
+import { handleFormatUrl } from "../../../../lib/functions";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
@@ -52,10 +52,10 @@ const RecommendedProducts = ({ category }) => {
           }}
           className="recomendedSwiper"
         >
-          {products.map((product,i) => {
+          {products.map((product, i) => {
             return (
               <SwiperSlide key={i}>
-                <RecommendedProductsCard product={product} />
+                <RecommendedProductsCard product={product} index={i} />
               </SwiperSlide>
             );
           })}

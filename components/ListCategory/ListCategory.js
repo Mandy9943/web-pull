@@ -13,6 +13,7 @@ import {handleFormatUrl} from "../../lib/functions";
 import Image from "next/image";
 import ProductCardGrid from "./ProductCardGrid";
 import ProductCardList from "./ProductCardList";
+import {sendProductListViewed} from "../../lib/functions";
 
 class ListCategory extends Component {
     constructor(props) {
@@ -32,32 +33,6 @@ class ListCategory extends Component {
         }, 300);
 
         const startObserving = () => {
-            function sendToSegment(prod, index) {
-                let product = {
-                    name: prod.title,
-                    product_id: prod.product_id,
-                    price: prod.price,
-                    brand: prod.brand,
-                    category: 'fullname' in prod ? prod.fullname : prod.category,
-                    position: index,
-                    url:
-                        "https://kiero.co" + handleFormatUrl(prod.product_id, prod.title),
-                    image_url: prod.image,
-                };
-
-                const productListViewed = {
-                    // nonInteraction: 1,
-                    list_id: "listCategory", // + ' RODOLFO_TESTING_FRONT',
-                    category: product.category,
-                    products: product,
-                };
-
-                // console.log(product)
-
-                analytics.track("Product List Viewed", productListViewed);
-            }
-
-            // console.log('startObserving')
 
             let props = this.props;
 
@@ -82,9 +57,10 @@ class ListCategory extends Component {
                             // console.log('Observer')
                             // console.log(entry.target.dataset.index)
                             //console.log(props.products[entry.target.dataset.index])
-                            sendToSegment(
+                            sendProductListViewed(
                                 props.products[entry.target.dataset.index],
-                                entry.target.dataset.index
+                                entry.target.dataset.index,
+                                "Category Products List"
                             );
                             observer.unobserve(entry.target);
                         }
@@ -320,6 +296,8 @@ class ListCategory extends Component {
             url: "https://kiero.co" + handleFormatUrl(data.product_id, data.title),
             image_url: data.image,
         };
+
+        console.log("Product Clicked - Category", productClickedData)
 
         analytics.track("Product Clicked", productClickedData);
 

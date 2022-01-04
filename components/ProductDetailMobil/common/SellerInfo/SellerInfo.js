@@ -20,7 +20,7 @@ const SellerInfo = () => {
       setConteo(start);
       if (start === end) clearInterval(timer);
     }, incrementTime);
-  }, conteo);
+  }, []);
   return (
     <section id="SellerInfo">
       <header>
@@ -34,7 +34,7 @@ const SellerInfo = () => {
       </picture>
       <div className="certificate">
         <div className="anullProperties">
-          <Image src={cert} layout="fill" />
+          <Image src={cert} layout="fill" alt="Certificado" />
         </div>
         <h6>Certificado de calidad</h6>
         <FontAwesomeIcon icon={faStar} />
@@ -49,19 +49,19 @@ const SellerInfo = () => {
         <div className="info">
           <div className="block">
             <h3>{conteo}</h3>
-            <p>Ventas en los últimos 2 meses</p>
+            <p>Ventas en los últimos 2 meses.</p>
           </div>
           <div className="block">
             <div className="anullProperties">
               <Image src={ok} alt="ok" layout="fill" />
             </div>
-            <p>Ventas en los últimos 2 meses</p>
+            <p>Brinda buena atención.</p>
           </div>
           <div className="block">
             <div className="anullProperties">
               <Image src={ok} alt="ok" layout="fill" />
             </div>
-            <p>Ventas en los últimos 2 meses</p>
+            <p>Entrega gratis y a tiempo.</p>
           </div>
         </div>
         <div className="separator" />
