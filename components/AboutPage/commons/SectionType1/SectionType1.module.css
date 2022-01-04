@@ -1,0 +1,122 @@
+.SectionType1Wrapper {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: white;
+  margin-top: 70px;
+  padding: 40px 0;
+}
+.SectionType1 {
+  width: 90%;
+  margin: auto;
+}
+.SectionType1 .imageSection {
+  border-radius: 15px;
+  height: 400px;
+  position: relative;
+}
+.SectionType1 .imageSection .imgContent {
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  display: flex;
+  padding: 15px 20px;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+}
+.SectionType1 .imageSection .imgContent .icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  margin-right: 20px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 800;
+  font-size: clamp(1rem, 2.5vw, 2rem);
+  /* identical to box height */
+
+  letter-spacing: 0.02em;
+
+  /* White */
+
+  color: #ffffff;
+}
+.SectionType1 .imageSection .imgContent .caption {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 800;
+  font-size: clamp(1rem, 2.5vw, 2rem);
+  /* identical to box height */
+
+  letter-spacing: 0.02em;
+
+  /* White */
+
+  color: #ffffff;
+  text-transform: uppercase;
+}
+.SectionType1 .textSection {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.SectionType1 .textSection .text {
+  width: 60%;
+}
+
+.SectionType1 .textSection .text .mySwiper2 {
+  width: 100%;
+}
+.SectionType1 .textSection .text .mySwiper2 .swiper-slide {
+  width: 100% !important;
+}
+
+.SectionType1
+  .textSection
+  .text
+  .swiper-container-horizontal.mySwiper2
+  > .swiper-pagination-bullets {
+  bottom: -2px;
+}
+
+.SectionType1
+  .textSection
+  .text
+  .swiper-container-horizontal.mySwiper2
+  > .swiper-pagination-bullets
+  .swiper-pagination-bullet {
+  background: #5f5f5f;
+}
+
+.SectionType1 .textSection .text p {
+  margin-bottom: 20px;
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  /* or 133% */
+
+  letter-spacing: 0.01em;
+
+  color: #000000;
+}
+
+@media (max-width: 800px) {
+  .SectionType1 .textSection .text {
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .SectionType1 .imageSection {
+    height: 200px;
+  }
+}
