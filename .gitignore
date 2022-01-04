@@ -9,7 +9,6 @@ _next/
 .idea
 .prettierrc
 _next
-.vscode
 .eslintcache
 
 pages/test.js
