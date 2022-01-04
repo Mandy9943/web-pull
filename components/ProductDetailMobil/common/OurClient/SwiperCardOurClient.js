@@ -20,6 +20,7 @@ import "swiper/components/pagination/pagination.scss";
 
 // import Swiper core and required modules
 import SwiperCore, { EffectCoverflow, Pagination } from "swiper";
+import { Slide, Dialog } from "@mui/material";
 import {
   handleActivateBack,
   handleDeactivateBack,
@@ -27,7 +28,9 @@ import {
 
 // install Swiper modules
 SwiperCore.use([EffectCoverflow, Pagination]);
-
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 const SwiperCardOurClient = ({ client, comment, setComment }) => {
   const stars = [];
   if (client?.star) {
@@ -48,17 +51,12 @@ const SwiperCardOurClient = ({ client, comment, setComment }) => {
 
   return (
     <div id="SwiperCardOurClient">
-      <SwipeableDrawer
-        anchor="right"
+      <Dialog
+        fullScreen
         open={comment}
-        onOpen={() => {}}
-        onClose={() => {
-          setComment(false);
-          handleActivateBack();
-        }}
+        onClose={setComment(false)}
+        TransitionComponent={Transition}
         className="swipe"
-        transitionDuration={700}
-        disableBackdropTransition={true}
       >
         <article>
           <div className="card">
@@ -83,13 +81,13 @@ const SwiperCardOurClient = ({ client, comment, setComment }) => {
               >
                 {client.product.img.map((img, index) => {
                   return img.image === true ? (
-                    <SwiperSlide key={index}>
+                    <SwiperSlide key={index} zoom={true}>
                       <div className="anullProperties">
                         <Image
                           src={img.url}
                           alt={client.product.name}
-                          layout="fill"
                           className="headerOurClients"
+                          layout="fill"
                         />
                       </div>
                     </SwiperSlide>
@@ -127,7 +125,7 @@ const SwiperCardOurClient = ({ client, comment, setComment }) => {
             </div>
           </div>
         </article>
-      </SwipeableDrawer>
+      </Dialog>
     </div>
   );
 };
