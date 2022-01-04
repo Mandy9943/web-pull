@@ -358,22 +358,22 @@
     object-fit: cover;
 }
 
-.swipe
-.swiper-container-horizontal.swiperOurClients
-> .swiper-pagination-bullets
-.swiper-pagination-bullet {
-    width: calc(100% - 75%);
-    border-radius: 0 !important;
-    margin: 0 !important;
-    height: 2px;
-    background: #5d5d5d;
-}
+/*.swipe*/
+/*.swiper-container-horizontal.swiperOurClients*/
+/*> .swiper-pagination-bullets*/
+/*.swiper-pagination-bullet {*/
+/*!*    width: calc(100% - 75%);*!*/
+/*!*    border-radius: 0 !important;*!*/
+/*!*    margin: 0 !important;*!*/
+/*!*    height: 2px;*!*/
+/*    background: #5d5d5d;*/
+/*}*/
 
-.swipe
-.swiper-container-horizontal.swiperOurClients
-> .swiper-pagination-bullets {
-    /*bottom: -20px;*/
-}
+/*!*.swipe*!*/
+/*!*.swiper-container-horizontal.swiperOurClients*!*/
+/*!*> .swiper-pagination-bullets {*!*/
+/*!*    !*bottom: -20px;*!*!*/
+/*!*}*!*/
 
 /*!* section CardOurClient*!*/
 #CardOurClient picture .anullProperties {

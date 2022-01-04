@@ -13,13 +13,12 @@ import "./OurClient.module.css";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
-import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.scss";
 import "swiper/components/effect-coverflow/effect-coverflow.scss";
-import "swiper/components/pagination/pagination.scss";
+import "swiper/components/scrollbar/scrollbar.scss";
 
 // import Swiper core and required modules
-import SwiperCore, { EffectCoverflow, Pagination } from "swiper";
+import SwiperCore, { EffectCoverflow, Scrollbar } from "swiper";
 import { Slide, Dialog } from "@mui/material";
 import {
   handleActivateBack,
@@ -27,7 +26,7 @@ import {
 } from "../../../../lib/functions";
 
 // install Swiper modules
-SwiperCore.use([EffectCoverflow, Pagination]);
+SwiperCore.use([Scrollbar, EffectCoverflow]);
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -73,12 +72,7 @@ const SwiperCardOurClient = ({ client, comment, setComment }) => {
                   }}
                 />
               </div>
-              <Swiper
-                pagination={{
-                  clickable: true,
-                }}
-                className="swiperOurClients"
-              >
+              <Swiper className="swiperOurClients" scrollbar={{}}>
                 {client.product.img.map((img, index) => {
                   return img.image === true ? (
                     <SwiperSlide key={index} zoom={true}>
