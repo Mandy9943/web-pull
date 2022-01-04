@@ -17,7 +17,7 @@ import {
 const OurClient = ({ category }) => {
   const [countClient, setCountClient] = useState(4);
   const lista = review(category).slice(0, countClient);
-  let count_opinion = lista.length;
+  let count_opinion = review(category).length;
   const [collapse, setCollapse] = useState(false);
   const [desglosar, setDesglosar] = useState(cerrado);
   const [comment, setComment] = useState(false);
