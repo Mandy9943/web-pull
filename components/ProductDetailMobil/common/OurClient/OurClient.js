@@ -83,7 +83,11 @@ const OurClient = ({ category }) => {
             />
           </article>
           <div className="footer_our">
-            <Button onClick={() => setCountClient(countClient + 4)}>
+            <Button
+              variant="outlined"
+              color="error"
+              onClick={() => setCountClient(countClient + 4)}
+            >
               VER MÁS
             </Button>
           </div>

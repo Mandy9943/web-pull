@@ -168,15 +168,10 @@
 }
 
 #OurClient .footer_our button {
-    background: #ffffff;
-    border: 2px solid #cf0a2c;
-    box-sizing: border-box;
     border-radius: 25px;
     width: 136px;
     height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border: 2px solid #cf0a2c;
     font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: 800;
@@ -186,11 +181,11 @@
     color: #cf0a2c;
 }
 
-#OurClient .footer_our button:hover {
-    background: #cf0a2c;
-    border: 2px solid #ffffff;
-    color: #ffffff;
-}
+/*#OurClient .footer_our button:hover {*/
+/*    background: #cf0a2c;*/
+/*    border: 2px solid #ffffff;*/
+/*    color: #ffffff;*/
+/*}*/
 
 /*SwiperCardOurClient section*/
 
