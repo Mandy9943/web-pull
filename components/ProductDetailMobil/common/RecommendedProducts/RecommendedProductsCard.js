@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import Skeleton from "@mui/material/Skeleton";
 import "./RecommendedProductsCard.module.css";
-import button from "../../../../assets/img/productDetail/component-4@2x.svg";
 import Image from "next/image";
 import {
   sendProductListViewed,
