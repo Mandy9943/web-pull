@@ -1,5 +1,4 @@
-import { SwipeableDrawer } from "@material-ui/core";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import cert from "../../../../assets/img/productDetail/Certified Icon.svg";
 import location from "../../../../assets/img/productDetail/Location Icon.svg";
@@ -13,52 +12,60 @@ import "./OurClient.module.css";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
-import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.scss";
 import "swiper/components/effect-coverflow/effect-coverflow.scss";
-import "swiper/components/pagination/pagination.scss";
+import "swiper/components/scrollbar/scrollbar.scss";
 
 // import Swiper core and required modules
-import SwiperCore, { EffectCoverflow, Pagination } from "swiper";
-import {
-  handleActivateBack,
-  handleDeactivateBack,
-} from "../../../../lib/functions";
+import SwiperCore, { EffectCoverflow, Scrollbar } from "swiper";
+import { Slide, Dialog } from "@mui/material";
 
 // install Swiper modules
-SwiperCore.use([EffectCoverflow, Pagination]);
-
+SwiperCore.use([Scrollbar, EffectCoverflow]);
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} timeout={1000} {...props} />;
+});
 const SwiperCardOurClient = ({ client, comment, setComment }) => {
   const stars = [];
+  const [open, setOpen] = useState(false);
   if (client?.star) {
     for (let i = 0; i < client.star; i++) {
       stars.push(<FontAwesomeIcon icon={faStar} key={i} />);
     }
   }
+  const onBackButtonEvent = (e) => {
+    e.preventDefault();
+    window.history.pushState(null, null, window.location.pathname);
+    setOpen(false);
+    setComment(false);
+    // console.log("Entrado a onBackButtonEvent ");
+  };
+  useEffect(() => {
+    setOpen(comment);
+    // console.log("Actualizado el comment setComment", { comment, setComment });
+  }, [comment, setComment]);
 
   useEffect(() => {
-    if (comment === true) {
-      setComment(true);
-      handleDeactivateBack(() => {
-        setComment(false);
-        handleActivateBack();
-      });
+    if (open === true) {
+      window.history.pushState(null, null, window.location.pathname);
+      window.addEventListener("popstate", onBackButtonEvent);
+      return () => {
+        window.removeEventListener("popstate", onBackButtonEvent);
+      };
     }
-  }, [comment]);
-
+    if (open === false) {
+      setComment(false);
+    }
+    // console.log("Actualizado el open", { open });
+  }, [open]);
   return (
     <div id="SwiperCardOurClient">
-      <SwipeableDrawer
-        anchor="right"
-        open={comment}
-        onOpen={() => {}}
-        onClose={() => {
-          setComment(false);
-          handleActivateBack();
-        }}
+      <Dialog
+        fullScreen
+        open={open}
+        onClose={() => {}}
+        TransitionComponent={Transition}
         className="swipe"
-        transitionDuration={700}
-        disableBackdropTransition={true}
       >
         <article>
           <div className="card">
@@ -70,26 +77,20 @@ const SwiperCardOurClient = ({ client, comment, setComment }) => {
                   layout="fill"
                   className="close"
                   onClick={() => {
-                    setComment(false);
-                    handleActivateBack();
+                    setOpen(false);
                   }}
                 />
               </div>
-              <Swiper
-                pagination={{
-                  clickable: true,
-                }}
-                className="swiperOurClients"
-              >
+              <Swiper className="swiperOurClients" scrollbar={{}}>
                 {client.product.img.map((img, index) => {
                   return img.image === true ? (
-                    <SwiperSlide key={index}>
+                    <SwiperSlide key={index} zoom={true}>
                       <div className="anullProperties">
                         <Image
                           src={img.url}
                           alt={client.product.name}
-                          layout="fill"
                           className="headerOurClients"
+                          layout="fill"
                         />
                       </div>
                     </SwiperSlide>
@@ -127,7 +128,7 @@ const SwiperCardOurClient = ({ client, comment, setComment }) => {
             </div>
           </div>
         </article>
-      </SwipeableDrawer>
+      </Dialog>
     </div>
   );
 };

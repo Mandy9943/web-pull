@@ -10,7 +10,7 @@ import axios from "axios";
 import kiero_logo from "../../assets/img/kiero.png";
 import Image from "next/image"
 import { getImgProduct } from "../../lib/config";
-import {sendProductListViewed} from "../../lib/functions";
+import {sendProductListViewed, sendProductClick} from "../../lib/functions";
 
 export default class ProductCard extends Component {
 
@@ -123,22 +123,8 @@ export default class ProductCard extends Component {
         // Fire this event when a visitor clicks a product.
         // Reference: https://segment.com/docs/connections/spec/ecommerce/v2/
         
-        var productClickedData = {
-            product_id: data.product_id,
-            category: data.fullname,
-            name: data.title,
-            brand: data.brand,
-            price: data.price,
-            currency: "COP",
-            quantity: 1,
-            url: "https://kiero.co" + handleFormatUrl(data.product_id, data.title),
-            image_url: getImgProduct(data),
-        }
+        sendProductClick(data);
         
-        analytics.track("Product Clicked - Card", productClickedData);
-
-        console.log("Product Clicked", productClickedData);
-
         // dataLayer.push({
         // 	'event': 'productClick',
         // 	'ecommerce': {

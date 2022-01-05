@@ -149,8 +149,9 @@
 
 #OurClient article .card footer {
     position: static;
-    margin:9px;
+    margin: 9px;
 }
+
 #OurClient article .card footer .anullProperties div {
     display: flex !important;
     width: 100% !important;
@@ -181,45 +182,31 @@
     color: #cf0a2c;
 }
 
-/*#OurClient .footer_our button:hover {*/
-/*    background: #cf0a2c;*/
-/*    border: 2px solid #ffffff;*/
-/*    color: #ffffff;*/
-/*}*/
-
 /*SwiperCardOurClient section*/
 
-.MuiDrawer-paperAnchorBottom {
-    width: 100vw !important;
-    top: 0 !important;
-    height: 100vh !important;
-    margin: 0 !important;
+.swipe {
     background-color: #fff !important;
 }
 
 .swipe article {
-    display: grid;
-    background-color: #fff;
-    grid-template-columns: repeat(auto-fill, 1fr);
     overflow-y: scroll !important;
     overflow-x: hidden !important;
     -webkit-overflow-scrolling: touch;
     overflow-scrolling: touch !important;
 }
 
-.swipe .card picture {
+.swipe article .card picture {
     width: auto;
     height: auto;
     top: 0 !important;
-}
-
-.swipe .card .texto {
-    padding: 0 25px 50px 25px;
+    background-color: #5d5d5d !important;
 }
 
 .swipe article .card picture .headerOurClients {
-    width: 100% !important;
-    height: 100% !important;
+    width: 100vw !important;
+    height:100% !important;
+    min-height: 100px !important;
+    max-height: 50vh !important;
 }
 
 .swipe article .card picture .close {
@@ -231,6 +218,10 @@
     color: #ffffff;
     top: 14px !important;
     cursor: pointer !important;
+}
+
+.swipe .card .texto {
+    padding: 0 25px 50px 25px;
 }
 
 .swipe article .card .topHeader {
@@ -370,10 +361,14 @@
     object-fit: cover;
 }
 
-.swipe
-.swiper-container-horizontal.swiperOurClients
-> .swiper-pagination-bullets
-.swiper-pagination-bullet {
+.swipe .swiperOurClients .swiper-scrollbar {
+    border-radius: 0 !important;
+    margin: 0 !important;
+    height: 2px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.swipe .swiperOurClients .swiper-scrollbar-drag {
     width: calc(100% - 75%);
     border-radius: 0 !important;
     margin: 0 !important;
@@ -381,13 +376,7 @@
     background: #5d5d5d;
 }
 
-.swipe
-.swiper-container-horizontal.swiperOurClients
-> .swiper-pagination-bullets {
-    bottom: -20px;
-}
-
-/* section CardOurClient*/
+/*!* section CardOurClient*!*/
 #CardOurClient picture .anullProperties {
     height: 100% !important;
 }
