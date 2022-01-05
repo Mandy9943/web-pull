@@ -28,17 +28,19 @@ const OurClient = ({ category }) => {
   };
 
   useEffect(() => {
-    if (collapse === true) {
-      setCollapse(true);
+    if (collapse === true && comment === false) {
       handleDeactivateBack(() => {
-        collapse === false ? setDesglosar(abierto) : setDesglosar(cerrado);
         setCollapse(false);
-        handleActivateBack();
       });
     }
+    if (collapse === false) {
+      handleActivateBack();
+    }
+    collapse === true ? setDesglosar(abierto) : setDesglosar(cerrado);
+    // console.log("Actualizado el collapse", { collapse });
   }, [collapse]);
+
   const handleOnClick = () => {
-    collapse === false ? setDesglosar(abierto) : setDesglosar(cerrado);
     setCollapse(!collapse);
   };
   return (
