@@ -114,73 +114,82 @@ class PaySection extends Component {
   go = (id) => {
     var quantity = this.state.cantidad == 0 ? 1 : this.state.cantidad;
 
-    // dataLayer.push({ ecommerce: null });
-    // let dataLayerBeginCheckout = {
-    // 	'event': 'begin_checkout',
-    // 	'ecommerce': {
-    // 		'items': [{
-    // 			'item_name': this.props.props.data.product_global_title, // Name or ID is required.
-    // 			'item_id': this.props.props.data.product_global_id,
-    // 			'price': this.props.props.data.price,
-    // 			'item_brand': this.props.props.data.brand,
-    // 			'quantity': this.state.cantidad == 0 ? 1 : this.state.cantidad,
-    // 			'url':'https://kiero.co/detalle/' + this.props.props.data.product_global_id + '_' + this.props.props.data.product_global_title
-    // 			.replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-    // 			.replaceAll('//', '%2F')
-    // 																							.replaceAll('%', '')
-    // 																							.replaceAll(/['"]+/g, '')
-    // 																							.split(' ')
-    // 																							.join('-'),
-    // 																						}]
-    // 																					}
-    // 	};
-    // 	const beginCheckoutGooleDataLayerG4 = (dataLayerBeginCheckout) => {
-    // 		this.props.props.data.breadcum.forEach((prod, index) => {
-    // 			let keyCategory = `item_category${index + 1}`;
-    // 			let valueNameCategory = prod.name;
-    // 			dataLayerBeginCheckout['ecommerce']['items'][0][keyCategory] = valueNameCategory;
-    // 		});
-    // 		return dataLayerBeginCheckout;
-    // 	}
-    // 	let resultDataLayerBeginCheckout = beginCheckoutGooleDataLayerG4(dataLayerBeginCheckout);
-    // 	dataLayer.push(resultDataLayerBeginCheckout);
-    // if (typeof window !== 'undefined') {
-    //     if (window.fbq != null) {
-    //         window.fbq('track', 'InitiateCheckout', {
-    //             content_ids: this.props.props.data.product_global_id,
-    //             content_name: this.props.props.data.product_global_title,
-    //             product_group: this.props.props.data.type,
-    //             content_type: 'product',
-    //             content_category: this.props.props.data.breadcum[0].name,
-    //             contents: [
-    //                 {
-    //                     id: this.props.props.data.product_global_id,
-    //                     quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
-    //                 },
-    //             ],
-    //             currency: 'COP',
-    //             value: this.props.props.data.price,
-    //             num_items: this.state.cantidad == 0 ? 1 : this.state.cantidad,
-    //         });
-    //     } else {
-    //         fbq('track', 'InitiateCheckout', {
-    //             content_ids: this.props.props.data.product_global_id,
-    //             content_name: this.props.props.data.product_global_title,
-    //             product_group: this.props.props.data.type,
-    //             content_type: 'product',
-    //             content_category: this.props.props.data.breadcum[0].name,
-    //             contents: [
-    //                 {
-    //                     id: this.props.props.data.product_global_id,
-    //                     quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
-    //                 },
-    //             ],
-    //             currency: 'COP',
-    //             value: this.props.props.data.price,
-    //             num_items: this.state.cantidad == 0 ? 1 : this.state.cantidad,
-    //         });
-    //     }
-    // }
+    dataLayer.push({ ecommerce: null });
+    let dataLayerBeginCheckout = {
+      event: "begin_checkout",
+      ecommerce: {
+        items: [
+          {
+            item_name: this.props.props.data.product_global_title, // Name or ID is required.
+            item_id: this.props.props.data.product_global_id,
+            price: this.props.props.data.price,
+            item_brand: this.props.props.data.brand,
+            quantity: quantity,
+            url:
+              "https://kiero.co/detalle/" +
+              this.props.props.data.product_global_id +
+              "_" +
+              this.props.props.data.product_global_title
+                .replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, "")
+                .replaceAll("//", "%2F")
+                .replaceAll("%", "")
+                .replaceAll(/['"]+/g, "")
+                .split(" ")
+                .join("-"),
+          },
+        ],
+      },
+    };
+    const beginCheckoutGooleDataLayerG4 = (dataLayerBeginCheckout) => {
+      this.props.props.data.breadcum.forEach((prod, index) => {
+        let keyCategory = `item_category${index + 1}`;
+        let valueNameCategory = prod.name;
+        dataLayerBeginCheckout["ecommerce"]["items"][0][keyCategory] =
+          valueNameCategory;
+      });
+      return dataLayerBeginCheckout;
+    };
+    let resultDataLayerBeginCheckout = beginCheckoutGooleDataLayerG4(
+      dataLayerBeginCheckout
+    );
+    dataLayer.push(resultDataLayerBeginCheckout);
+    if (typeof window !== "undefined") {
+      if (window.fbq != null) {
+        window.fbq("track", "InitiateCheckout", {
+          content_ids: this.props.props.data.product_global_id,
+          content_name: this.props.props.data.product_global_title,
+          product_group: this.props.props.data.type,
+          content_type: "product",
+          content_category: this.props.props.data.breadcum[0].name,
+          contents: [
+            {
+              id: this.props.props.data.product_global_id,
+              quantity: quantity,
+            },
+          ],
+          currency: "COP",
+          value: this.props.props.data.price,
+          num_items: quantity,
+        });
+      } else {
+        fbq("track", "InitiateCheckout", {
+          content_ids: this.props.props.data.product_global_id,
+          content_name: this.props.props.data.product_global_title,
+          product_group: this.props.props.data.type,
+          content_type: "product",
+          content_category: this.props.props.data.breadcum[0].name,
+          contents: [
+            {
+              id: this.props.props.data.product_global_id,
+              quantity: quantity,
+            },
+          ],
+          currency: "COP",
+          value: this.props.props.data.price,
+          num_items: quantity,
+        });
+      }
+    }
 
     fbq("track", "InitiateCheckout", {
       content_ids: this.props.props.data.product_global_id,
@@ -191,12 +200,12 @@ class PaySection extends Component {
       contents: [
         {
           id: this.props.props.data.product_global_id,
-          quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
+          quantity: quantity,
         },
       ],
       currency: "COP",
       value: this.props.props.data.price,
-      num_items: this.state.cantidad == 0 ? 1 : this.state.cantidad,
+      num_items: quantity,
     });
 
     // gtag('event', 'begin_checkout', {
@@ -486,7 +495,7 @@ class PaySection extends Component {
     //   },
     // });
 
-    sendCheckoutStepViewed(2);
+    sendCheckoutStepViewed(this.props.props.data, 2);
 
     // // Segment Checkout Step Viewed/Completed events
     // // Fire this event whenever a checkout step is completed.
@@ -837,43 +846,43 @@ class PaySection extends Component {
         ],
       };
 
-      var quantity = this.state.cantidad == 0 ? 1 : this.state.cantidad;
+      // var quantity = this.state.cantidad == 0 ? 1 : this.state.cantidad;
 
-      var checkoutStartedValues = {
-        // order_id: '50314b8e9bcf000000000000',
-        affiliation: "SpiceStock",
-        value: this.props.props.data.price * quantity,
-        revenue: this.props.props.data.price * quantity,
-        shipping: 0,
-        tax: 0,
-        discount: 0,
-        // coupon: 'hasbros',
-        currency: "COP",
-        products: [
-          {
-            product_id: this.props.props.data.product_global_id,
-            // sku: '45790-32',
-            name: this.props.props.data.product_global_title,
-            price: this.props.props.data.price,
-            quantity: quantity,
-            brand: this.props.props.data.brand,
-            category: concatCategories(),
-            url:
-              "https://kiero.co" +
-              handleFormatUrl(
-                this.props.props.data.product_global_id,
-                this.props.props.data.product_global_title
-              ),
-            image_url: this.props.props.data.images.length
-              ? this.props.props.data.images[0].url
-              : null,
-          },
-        ],
-      };
+      // var checkoutStartedValues = {
+      //   // order_id: '50314b8e9bcf000000000000',
+      //   affiliation: "SpiceStock",
+      //   value: this.props.props.data.price * quantity,
+      //   revenue: this.props.props.data.price * quantity,
+      //   shipping: 0,
+      //   tax: 0,
+      //   discount: 0,
+      //   // coupon: 'hasbros',
+      //   currency: "COP",
+      //   products: [
+      //     {
+      //       product_id: this.props.props.data.product_global_id,
+      //       // sku: '45790-32',
+      //       name: this.props.props.data.product_global_title,
+      //       price: this.props.props.data.price,
+      //       quantity: quantity,
+      //       brand: this.props.props.data.brand,
+      //       category: concatCategories(),
+      //       url:
+      //         "https://kiero.co" +
+      //         handleFormatUrl(
+      //           this.props.props.data.product_global_id,
+      //           this.props.props.data.product_global_title
+      //         ),
+      //       image_url: this.props.props.data.images.length
+      //         ? this.props.props.data.images[0].url
+      //         : null,
+      //     },
+      //   ],
+      // };
 
       // console.log(checkoutStartedValues);
 
-      sendCheckoutStepViewed(1);
+      sendCheckoutStepViewed(this.props.props.data, 1);
 
       // // Segment Checkout Step Viewed/Completed events
       // // Fire this event whenever a checkout step is completed.

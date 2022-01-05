@@ -19,7 +19,7 @@ const DiscountPrice = ({
   const dispatch = useAppDispatch();
 
   const handleOpenForm = () => {
-    sendCheckoutStepViewed(1);
+    // sendCheckoutStepViewed(1);
     dispatch(openForm(true));
     dispatch(setCount(quantityProduct));
   };

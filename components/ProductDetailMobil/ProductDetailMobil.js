@@ -110,13 +110,13 @@ const ProductDetailMobil = ({ user_data, data }) => {
   }, [isForm]);
 
   const handleCloseForm = () => {
-    sendCheckoutStepViewed(2);
+    sendCheckoutStepViewed(data, 2);
     dispatch(openForm(false));
 
     handleActivateBack();
   };
   const handleOpenForm = () => {
-    sendCheckoutStepViewed(1);
+    sendCheckoutStepViewed(data, 1);
     dispatch(openForm(true));
   };
   const handleCloseWhatsappBanner = () => {

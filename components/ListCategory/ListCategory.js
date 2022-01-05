@@ -13,7 +13,7 @@ import {handleFormatUrl} from "../../lib/functions";
 import Image from "next/image";
 import ProductCardGrid from "./ProductCardGrid";
 import ProductCardList from "./ProductCardList";
-import {sendProductListViewed} from "../../lib/functions";
+import { sendProductListViewed, sendProductClick } from "../../lib/functions";
 
 class ListCategory extends Component {
     constructor(props) {
@@ -285,21 +285,7 @@ class ListCategory extends Component {
         // 	// },
         // });
 
-        var productClickedData = {
-            product_id: data.product_id,
-            category: data.fullname,
-            name: data.title,
-            brand: data.brand,
-            price: data.price,
-            quantity: 1,
-            position: data.index,
-            url: "https://kiero.co" + handleFormatUrl(data.product_id, data.title),
-            image_url: data.image,
-        };
-
-        console.log("Product Clicked - Category", productClickedData)
-
-        analytics.track("Product Clicked", productClickedData);
+        sendProductClick(data);
 
         // window.location.href = '/detalle/' +
         // data.product_id +
