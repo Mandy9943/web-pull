@@ -1,4 +1,3 @@
-import { SwipeableDrawer } from "@material-ui/core";
 import React, { useEffect } from "react";
 
 import cert from "../../../../assets/img/productDetail/Certified Icon.svg";
@@ -28,7 +27,7 @@ import {
 // install Swiper modules
 SwiperCore.use([Scrollbar, EffectCoverflow]);
 const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
+  return <Slide direction="up" ref={ref} {...props} timeout={700} />;
 });
 const SwiperCardOurClient = ({ client, comment, setComment }) => {
   const stars = [];
