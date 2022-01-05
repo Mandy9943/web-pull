@@ -28,16 +28,14 @@ const OurClient = ({ category }) => {
   };
 
   useEffect(() => {
-    if (collapse === true && comment === false) {
+    if (collapse === true) {
       handleDeactivateBack(() => {
         setCollapse(false);
+        handleActivateBack();
       });
     }
-    if (collapse === false) {
-      handleActivateBack();
-    }
     collapse === true ? setDesglosar(abierto) : setDesglosar(cerrado);
-    // console.log("Actualizado el collapse", { collapse });
+    console.log("Actualizado el collapse", { collapse });
   }, [collapse]);
 
   const handleOnClick = () => {

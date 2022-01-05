@@ -32,7 +32,6 @@ class CategoryBanners extends Component {
       }
     );
   }
-
   render() {
     return (
       <div className="category-banners">

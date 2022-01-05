@@ -38,11 +38,11 @@ const SwiperCardOurClient = ({ client, comment, setComment }) => {
     window.history.pushState(null, null, window.location.pathname);
     setOpen(false);
     setComment(false);
-    // console.log("Entrado a onBackButtonEvent ");
+    console.log("Entrado a onBackButtonEvent ");
   };
   useEffect(() => {
     setOpen(comment);
-    // console.log("Actualizado el comment setComment", { comment, setComment });
+    console.log("Actualizado el comment setComment", { comment, setComment });
   }, [comment, setComment]);
 
   useEffect(() => {
@@ -56,7 +56,7 @@ const SwiperCardOurClient = ({ client, comment, setComment }) => {
     if (open === false) {
       setComment(false);
     }
-    // console.log("Actualizado el open", { open });
+    console.log("Actualizado el open", { open });
   }, [open]);
   return (
     <div id="SwiperCardOurClient">
