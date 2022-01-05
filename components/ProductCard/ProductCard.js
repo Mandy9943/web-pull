@@ -10,6 +10,7 @@ import axios from "axios";
 import kiero_logo from "../../assets/img/kiero.png";
 import Image from "next/image"
 import { getImgProduct } from "../../lib/config";
+import {sendProductListViewed} from "../../lib/functions";
 
 export default class ProductCard extends Component {
 
@@ -27,32 +28,6 @@ export default class ProductCard extends Component {
         // });
     }
 
-    sendToSegment = () => {
-
-        let product = {
-            name: this.props.title,
-            product_id: this.props.product_id,
-            price: this.props.price,
-            brand: this.props.brand,
-            category: 'fullname' in this.props ? this.props.fullname : this.props.category,
-            position: this.props.index,
-            url: 'https://kiero.co' + handleFormatUrl(this.props.product_id, this.props.title),
-            image_url: this.props.url
-        };
-
-        const productListViewed = {
-            // nonInteraction: 1,
-            list_id: 'productsSlider', // + ' RODOLFO_TESTING_FRONT',
-            category: product.category,
-            products: product
-        };
-
-        // console.log(productListViewed)
-
-        analytics.track('Product List Viewed', productListViewed);
-
-    }
-
     callbackFunction = (entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
@@ -61,7 +36,11 @@ export default class ProductCard extends Component {
                     // console.log(this.props.price)
                     // console.log(entry.target.parentElement)
                     // console.log(this.rootRef.current.parentElement)
-                    this.sendToSegment()
+                    sendProductListViewed(
+                        this.props,
+                        this.props.index,
+                        "Products List"
+                    )
                     this.observer.unobserve(this.rootRef.current)
                 }
             }
@@ -143,9 +122,10 @@ export default class ProductCard extends Component {
         // Segment Product Clicked event
         // Fire this event when a visitor clicks a product.
         // Reference: https://segment.com/docs/connections/spec/ecommerce/v2/
-        analytics.track("Product Clicked", {
+        
+        var productClickedData = {
             product_id: data.product_id,
-            category: data.category,
+            category: data.fullname,
             name: data.title,
             brand: data.brand,
             price: data.price,
@@ -153,9 +133,11 @@ export default class ProductCard extends Component {
             quantity: 1,
             url: "https://kiero.co" + handleFormatUrl(data.product_id, data.title),
             image_url: getImgProduct(data),
-        });
+        }
+        
+        analytics.track("Product Clicked - Card", productClickedData);
 
-        // console.log(data);
+        console.log("Product Clicked", productClickedData);
 
         // dataLayer.push({
         // 	'event': 'productClick',

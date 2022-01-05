@@ -69,7 +69,7 @@ const ProductCardGrid = ({product, i, ...props}) => {
         )
     } else {
         return (
-            <a href="#">
+            <a href="#" key={i + 2}>
                 <div className="d-flex formatCard" style={{height: "100% !important"}}>
                     <div className="temp-card-void">
                         <div className="product-card-img">

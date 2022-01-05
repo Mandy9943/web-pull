@@ -889,8 +889,11 @@ function Results({ data, session }) {
             name="Description"
             content={
               "KIERO.CO Marketplace | Encuentra " +
-              handleFormatName(category_name) +
-              " en Kiero.co - Descubre millones de productos online"
+              handleFormatName(category_name).substring(0, 40) +
+              " en Kiero.co - Descubre millones de productos online".substring(
+                0,
+                159
+              )
             }
           />
           <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -972,10 +975,14 @@ function Results({ data, session }) {
 }
 
 export async function getServerSideProps(context) {
+  var dataFirstUpperCase = String(context.params.category).split("",1)
+  var dataCategoryName =  String(context.params.category).slice(1)
+  // console.log(String(dataFirstUpperCase[0].toUpperCase()) + dataCategoryName.replace(/-/g, " "))
   const data = {
     type: "category",
     // "search": String(context.params.category),
-    search: String(context.params.category).replace(/-/g, " "),
+    // search: String(context.params.category).replace(/-/g, " "),
+    search: String(dataFirstUpperCase[0].toUpperCase()) + dataCategoryName.replace(/-/g, " "),
     params: {
       items_per_page: searchItemsPerPage,
       price_range: "",

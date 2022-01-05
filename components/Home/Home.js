@@ -89,7 +89,7 @@ export default class Home extends Component {
 						}}
 					/>
 					<Explorer />
-					<ProductsSlider category={'Animales y Mascotas'} />
+					<ProductsSlider category={'Animales y mascotas'} />
 					<ListProductMovil jwt={u_data.jwt} />
 					<CategoriesImgMenu />
 					<Tickets />
