@@ -35,7 +35,6 @@ const OurClient = ({ category }) => {
       });
     }
     collapse === true ? setDesglosar(abierto) : setDesglosar(cerrado);
-    console.log("Actualizado el collapse", { collapse });
   }, [collapse]);
 
   const handleOnClick = () => {
