@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import cert from "../../../../assets/img/productDetail/Certified Icon.svg";
 import location from "../../../../assets/img/productDetail/Location Icon.svg";
@@ -19,40 +19,51 @@ import "swiper/components/scrollbar/scrollbar.scss";
 // import Swiper core and required modules
 import SwiperCore, { EffectCoverflow, Scrollbar } from "swiper";
 import { Slide, Dialog } from "@mui/material";
-import {
-  handleActivateBack,
-  handleDeactivateBack,
-} from "../../../../lib/functions";
 
 // install Swiper modules
 SwiperCore.use([Scrollbar, EffectCoverflow]);
 const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} timeout={700} />;
+  return <Slide direction="up" ref={ref} timeout={1000} {...props} />;
 });
 const SwiperCardOurClient = ({ client, comment, setComment }) => {
   const stars = [];
+  const [open, setOpen] = useState(false);
   if (client?.star) {
     for (let i = 0; i < client.star; i++) {
       stars.push(<FontAwesomeIcon icon={faStar} key={i} />);
     }
   }
+  const onBackButtonEvent = (e) => {
+    e.preventDefault();
+    window.history.pushState(null, null, window.location.pathname);
+    setOpen(false);
+    setComment(false);
+    // console.log("Entrado a onBackButtonEvent ");
+  };
+  useEffect(() => {
+    setOpen(comment);
+    // console.log("Actualizado el comment setComment", { comment, setComment });
+  }, [comment, setComment]);
 
   useEffect(() => {
-    if (comment === true) {
-      setComment(true);
-      handleDeactivateBack(() => {
-        setComment(false);
-        handleActivateBack();
-      });
+    if (open === true) {
+      window.history.pushState(null, null, window.location.pathname);
+      window.addEventListener("popstate", onBackButtonEvent);
+      return () => {
+        window.removeEventListener("popstate", onBackButtonEvent);
+      };
     }
-  }, [comment]);
-
+    if (open === false) {
+      setComment(false);
+    }
+    // console.log("Actualizado el open", { open });
+  }, [open]);
   return (
     <div id="SwiperCardOurClient">
       <Dialog
         fullScreen
-        open={comment}
-        onClose={setComment(false)}
+        open={open}
+        onClose={() => {}}
         TransitionComponent={Transition}
         className="swipe"
       >
@@ -66,8 +77,7 @@ const SwiperCardOurClient = ({ client, comment, setComment }) => {
                   layout="fill"
                   className="close"
                   onClick={() => {
-                    setComment(false);
-                    handleActivateBack();
+                    setOpen(false);
                   }}
                 />
               </div>
