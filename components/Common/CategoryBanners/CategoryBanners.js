@@ -26,7 +26,6 @@ class CategoryBanners extends Component {
       (response) => {
         if (response.data.files.length > 0) {
           this.setState({ loadedBanners: true, files: response.data.files });
-          console.log(this.state.files);
         } else {
           this.setState({ loadedBanners: false, files: [] });
         }
