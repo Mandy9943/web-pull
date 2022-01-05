@@ -19,15 +19,11 @@ import "swiper/components/scrollbar/scrollbar.scss";
 // import Swiper core and required modules
 import SwiperCore, { EffectCoverflow, Scrollbar } from "swiper";
 import { Slide, Dialog } from "@mui/material";
-import {
-  handleActivateBack,
-  handleDeactivateBack,
-} from "../../../../lib/functions";
 
 // install Swiper modules
 SwiperCore.use([Scrollbar, EffectCoverflow]);
 const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} timeout={700} />;
+  return <Slide direction="up" ref={ref} timeout={1000} {...props} />;
 });
 const SwiperCardOurClient = ({ client, comment, setComment }) => {
   const stars = [];
