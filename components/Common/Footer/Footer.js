@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Phone from "../../../assets/img/phone.png";
 import "./Footer.css";
-import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
   faInstagram,
