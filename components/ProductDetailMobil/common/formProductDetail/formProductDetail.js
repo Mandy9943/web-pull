@@ -246,7 +246,6 @@ const FormProductDetail = ({ handleClose, open }) => {
                     margin="dense"
                     color="secondary"
                     error={errors.agreePolicy}
-                    helperText={errors?.agreePolicy?.message}
                     required
                     label={
                       <p className="agreePolicy">
