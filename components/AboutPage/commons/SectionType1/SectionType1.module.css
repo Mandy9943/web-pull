@@ -15,6 +15,7 @@
   position: relative;
 }
 .SectionType1 .imageSection .imgContent {
+  cursor: pointer;
   box-sizing: border-box;
   position: absolute;
   bottom: 15px;

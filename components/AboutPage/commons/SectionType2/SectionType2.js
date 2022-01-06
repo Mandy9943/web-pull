@@ -21,9 +21,9 @@ const SectionType2 = ({ imgSection, captionText, descriptionText }) => {
           backgroundColor: "gray",
         }}
       >
-        <div className="imgContent">
+        <div className="imgContent" onClick={handleToggle}>
           <p className="caption">{captionText}</p>
-          <span className="icon" onClick={handleToggle}>
+          <span className="icon">
             {showText ? (
               <FontAwesomeIcon icon={faAngleUp} />
             ) : (
