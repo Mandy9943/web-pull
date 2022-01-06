@@ -8,11 +8,6 @@
 } */
 
 .containerAbout .headerAbout {
-  background-color: gray;
-  background-image: url("/Img/about/BannerPrincipal.webp");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
   height: 600px;
   width: 100%;
 }
