@@ -12,11 +12,7 @@ import Link from "next/link";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import formSchema from "./Schema/schema";
-import {
-  sendIdentifyEvent,
-  createHmacSHA1,
-  setDiscount,
-} from "../../../../lib/functions.js";
+import { setDiscount } from "../../../../lib/functions.js";
 import { useAppSelector } from "../../../../lib/hooks/redux";
 import { selectData } from "../../../../redux/feature/pay/paySlice";
 import { handleFormatName } from "../../../../lib/functions";
@@ -75,10 +71,11 @@ const FormProductDetail = ({ handleClose, open }) => {
   });
 
   const onSubmit = () => {
-    // console.log('Data', data);
-    let user = getValues();
-    user.user_id = createHmacSHA1(user.email);
-    sendIdentifyEvent(user);
+    // --------klaviyo---------
+
+    // let user = getValues();
+    // user.user_id = createHmacSHA1(user.email);
+    // sendIdentifyEvent(user);
     handleClose();
   };
 
