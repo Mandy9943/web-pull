@@ -116,33 +116,33 @@ class Filter extends Component {
     let renderedPrices = [];
 
     const renderCategories = () => {
-      // let array = []
-      // this.state.renderCategories2.map((data, i) => {
-      //     let category = data.split("/");
-      //     category = category[category.length - 1];
-      //     if (!isNaN(category.substr(0, 1))) {
-      //       category = category.split(".")[1];
-      //     }
-      //     res_categories.push({
-      //                 items:null,
-      //                 key: category,
-      //                 label:category,
-      //                 level:0})
-      // })
-      // console.log(res_categories)
-      // return (
-      //     <>
-      //  <div className="tree-view_item">
-      //                       <span
-      //                         className="node"
-      //                         style={ { color: "#d00a2d", fontWeight: "600" }
-      //                         }
-      //                       >
-      //                         hola
-      //                       </span>
-      //                     </div>
-      //     </>
-      // )
+      let array = [];
+      this.state.renderCategories2.map((data, i) => {
+        let category = data.split("/");
+        category = category[category.length - 1];
+        if (!isNaN(category.substr(0, 1))) {
+          category = category.split(".")[1];
+        }
+        res_categories.push({
+          items: null,
+          key: category,
+          label: category,
+          level: 0,
+        });
+      });
+      console.log(res_categories);
+      return (
+        <>
+          <div className="tree-view_item">
+            <span
+              className="node"
+              style={{ color: "#d00a2d", fontWeight: "600" }}
+            >
+              hola
+            </span>
+          </div>
+        </>
+      );
     };
 
     if (this.props.data && this.props.data.categories) {
@@ -333,7 +333,7 @@ class Filter extends Component {
                   {res_categories.map((node, i) => {
                     return (
                       <div className="tree-view" key={node.label}>
-                        {/* {() => renderCategories()} */}
+                        {() => renderCategories()}
                         <div className="tree-view_item">
                           <span
                             className="node"
