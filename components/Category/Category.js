@@ -412,6 +412,7 @@ class Category extends Component {
             sortProducts={this.sortProducts}
             totalItems={this.state.totalItems}
             onSelectCategory={this.onSelectCategory}
+            category={this.props.data.search}
           />
           <ListCategory
             sendToFilters={this.sendToFilters}

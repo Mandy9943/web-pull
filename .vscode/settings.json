@@ -1,8 +1,27 @@
 {
-  "editor.formatOnSave": false,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "jest.autoRun": {
+    "watch": false,
+    "onSave": "test-file"
   },
-  "eslint.alwaysShowStatus": true,
-  "eslint.autoFixOnSave": true // Esta opción depende de la versión de VScode se puede activar o desactivar.
+  "search.exclude": {
+    "package-lock.json": true
+  },
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": [
+    "source.fixAll.eslint",
+    "source.addMissingImports",
+    "source.fixAll.eslint"
+  ],
+  // Multiple language settings for json and jsonc files
+  "[json][jsonc]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "eslint.alwaysShowStatus": true
 }

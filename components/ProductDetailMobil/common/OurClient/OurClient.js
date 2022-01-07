@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import "./OurClient.module.css";
@@ -10,10 +10,14 @@ import review from "../../../../lib/review";
 import SwiperCardOurClient from "./SwiperCardOurClient";
 import { Button } from "@mui/material";
 
+import {
+  handleActivateBack,
+  handleDeactivateBack,
+} from "../../../../lib/functions";
 const OurClient = ({ category }) => {
   const [countClient, setCountClient] = useState(4);
   const lista = review(category).slice(0, countClient);
-  let count_opinion = lista.length;
+  let count_opinion = review(category).length;
   const [collapse, setCollapse] = useState(false);
   const [desglosar, setDesglosar] = useState(cerrado);
   const [comment, setComment] = useState(false);
@@ -23,8 +27,17 @@ const OurClient = ({ category }) => {
     setClientShow(client);
   };
 
+  useEffect(() => {
+    if (collapse === true) {
+      handleDeactivateBack(() => {
+        setCollapse(false);
+        handleActivateBack();
+      });
+    }
+    collapse === true ? setDesglosar(abierto) : setDesglosar(cerrado);
+  }, [collapse]);
+
   const handleOnClick = () => {
-    collapse === false ? setDesglosar(abierto) : setDesglosar(cerrado);
     setCollapse(!collapse);
   };
   return (
@@ -69,13 +82,13 @@ const OurClient = ({ category }) => {
             />
           </article>
           <div className="footer_our">
-            {countClient <= 4 ? (
-              <Button onClick={() => setCountClient(200)}>VER MÁS</Button>
-            ) : (
-              <a href="#OurClient">
-                <Button onClick={() => setCountClient(4)}>VER MENOS</Button>
-              </a>
-            )}
+            <Button
+              variant="outlined"
+              color="error"
+              onClick={() => setCountClient(countClient + 4)}
+            >
+              VER MÁS
+            </Button>
           </div>
         </React.Fragment>
       ) : null}

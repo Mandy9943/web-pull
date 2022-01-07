@@ -17,7 +17,7 @@ const CardOurClient = ({ client, handleOnClickComment }) => {
     <div className="card">
       <picture>
         <div className="anullProperties">
-          <Image src={client.product.img[0].url} alt="Review" layout="fill" />
+          <Image src={client.img.url} alt="Review" layout="fill" />
         </div>
       </picture>
       <div className="texto">

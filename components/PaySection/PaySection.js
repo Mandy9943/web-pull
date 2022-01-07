@@ -22,7 +22,7 @@ import { handleFormatUrl } from "../../lib/functions";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import { Button, Modal } from 'react-bootstrap';
 import { createleadClient } from "../../lib/zoho";
-import {sendIdentifyEvent, createHmacSHA1} from "../../lib/functions.js";
+import { sendIdentifyEvent, createHmacSHA1 } from "../../lib/functions.js";
 
 class PaySection extends Component {
   constructor(props) {
@@ -114,73 +114,82 @@ class PaySection extends Component {
   go = (id) => {
     var quantity = this.state.cantidad == 0 ? 1 : this.state.cantidad;
 
-    // dataLayer.push({ ecommerce: null });
-    // let dataLayerBeginCheckout = {
-    // 	'event': 'begin_checkout',
-    // 	'ecommerce': {
-    // 		'items': [{
-    // 			'item_name': this.props.props.data.product_global_title, // Name or ID is required.
-    // 			'item_id': this.props.props.data.product_global_id,
-    // 			'price': this.props.props.data.price,
-    // 			'item_brand': this.props.props.data.brand,
-    // 			'quantity': this.state.cantidad == 0 ? 1 : this.state.cantidad,
-    // 			'url':'https://kiero.co/detalle/' + this.props.props.data.product_global_id + '_' + this.props.props.data.product_global_title
-    // 			.replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-    // 			.replaceAll('//', '%2F')
-    // 																							.replaceAll('%', '')
-    // 																							.replaceAll(/['"]+/g, '')
-    // 																							.split(' ')
-    // 																							.join('-'),
-    // 																						}]
-    // 																					}
-    // 	};
-    // 	const beginCheckoutGooleDataLayerG4 = (dataLayerBeginCheckout) => {
-    // 		this.props.props.data.breadcum.forEach((prod, index) => {
-    // 			let keyCategory = `item_category${index + 1}`;
-    // 			let valueNameCategory = prod.name;
-    // 			dataLayerBeginCheckout['ecommerce']['items'][0][keyCategory] = valueNameCategory;
-    // 		});
-    // 		return dataLayerBeginCheckout;
-    // 	}
-    // 	let resultDataLayerBeginCheckout = beginCheckoutGooleDataLayerG4(dataLayerBeginCheckout);
-    // 	dataLayer.push(resultDataLayerBeginCheckout);
-    // if (typeof window !== 'undefined') {
-    //     if (window.fbq != null) {
-    //         window.fbq('track', 'InitiateCheckout', {
-    //             content_ids: this.props.props.data.product_global_id,
-    //             content_name: this.props.props.data.product_global_title,
-    //             product_group: this.props.props.data.type,
-    //             content_type: 'product',
-    //             content_category: this.props.props.data.breadcum[0].name,
-    //             contents: [
-    //                 {
-    //                     id: this.props.props.data.product_global_id,
-    //                     quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
-    //                 },
-    //             ],
-    //             currency: 'COP',
-    //             value: this.props.props.data.price,
-    //             num_items: this.state.cantidad == 0 ? 1 : this.state.cantidad,
-    //         });
-    //     } else {
-    //         fbq('track', 'InitiateCheckout', {
-    //             content_ids: this.props.props.data.product_global_id,
-    //             content_name: this.props.props.data.product_global_title,
-    //             product_group: this.props.props.data.type,
-    //             content_type: 'product',
-    //             content_category: this.props.props.data.breadcum[0].name,
-    //             contents: [
-    //                 {
-    //                     id: this.props.props.data.product_global_id,
-    //                     quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
-    //                 },
-    //             ],
-    //             currency: 'COP',
-    //             value: this.props.props.data.price,
-    //             num_items: this.state.cantidad == 0 ? 1 : this.state.cantidad,
-    //         });
-    //     }
-    // }
+    dataLayer.push({ ecommerce: null });
+    let dataLayerBeginCheckout = {
+      event: "begin_checkout",
+      ecommerce: {
+        items: [
+          {
+            item_name: this.props.props.data.product_global_title, // Name or ID is required.
+            item_id: this.props.props.data.product_global_id,
+            price: this.props.props.data.price,
+            item_brand: this.props.props.data.brand,
+            quantity: quantity,
+            url:
+              "https://kiero.co/detalle/" +
+              this.props.props.data.product_global_id +
+              "_" +
+              this.props.props.data.product_global_title
+                .replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, "")
+                .replaceAll("//", "%2F")
+                .replaceAll("%", "")
+                .replaceAll(/['"]+/g, "")
+                .split(" ")
+                .join("-"),
+          },
+        ],
+      },
+    };
+    const beginCheckoutGooleDataLayerG4 = (dataLayerBeginCheckout) => {
+      this.props.props.data.breadcum.forEach((prod, index) => {
+        let keyCategory = `item_category${index + 1}`;
+        let valueNameCategory = prod.name;
+        dataLayerBeginCheckout["ecommerce"]["items"][0][keyCategory] =
+          valueNameCategory;
+      });
+      return dataLayerBeginCheckout;
+    };
+    let resultDataLayerBeginCheckout = beginCheckoutGooleDataLayerG4(
+      dataLayerBeginCheckout
+    );
+    dataLayer.push(resultDataLayerBeginCheckout);
+    if (typeof window !== "undefined") {
+      if (window.fbq != null) {
+        window.fbq("track", "InitiateCheckout", {
+          content_ids: this.props.props.data.product_global_id,
+          content_name: this.props.props.data.product_global_title,
+          product_group: this.props.props.data.type,
+          content_type: "product",
+          content_category: this.props.props.data.breadcum[0].name,
+          contents: [
+            {
+              id: this.props.props.data.product_global_id,
+              quantity: quantity,
+            },
+          ],
+          currency: "COP",
+          value: this.props.props.data.price,
+          num_items: quantity,
+        });
+      } else {
+        fbq("track", "InitiateCheckout", {
+          content_ids: this.props.props.data.product_global_id,
+          content_name: this.props.props.data.product_global_title,
+          product_group: this.props.props.data.type,
+          content_type: "product",
+          content_category: this.props.props.data.breadcum[0].name,
+          contents: [
+            {
+              id: this.props.props.data.product_global_id,
+              quantity: quantity,
+            },
+          ],
+          currency: "COP",
+          value: this.props.props.data.price,
+          num_items: quantity,
+        });
+      }
+    }
 
     fbq("track", "InitiateCheckout", {
       content_ids: this.props.props.data.product_global_id,
@@ -191,12 +200,12 @@ class PaySection extends Component {
       contents: [
         {
           id: this.props.props.data.product_global_id,
-          quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
+          quantity: quantity,
         },
       ],
       currency: "COP",
       value: this.props.props.data.price,
-      num_items: this.state.cantidad == 0 ? 1 : this.state.cantidad,
+      num_items: quantity,
     });
 
     // gtag('event', 'begin_checkout', {
@@ -467,10 +476,10 @@ class PaySection extends Component {
     //   //  }
     // });
 
-    // TODO: Se debería cambiar 
+    // TODO: Se debería cambiar
     // this.state.user -> this.state.firstName
     // this.state.mobile_phone -> this.state.phoneNumber
-    sendIdentifyEvent(this.state)
+    sendIdentifyEvent(this.state);
 
     // // Segment Identify method
     // // Link your users and their actions
@@ -486,7 +495,7 @@ class PaySection extends Component {
     //   },
     // });
 
-    sendCheckoutStepViewed(2);
+    sendCheckoutStepViewed(this.props.props.data, 2);
 
     // // Segment Checkout Step Viewed/Completed events
     // // Fire this event whenever a checkout step is completed.
@@ -766,6 +775,11 @@ class PaySection extends Component {
         user_id = Cookies.get("user_id");
       }
     }
+    if (this.props.data.rating !== undefined) {
+      var rating = toString(this.props.data.rating / 10);
+    } else {
+      rating = "N/A";
+    }
     var data = {
       first_name: name,
       city: this.state.city,
@@ -793,6 +807,9 @@ class PaySection extends Component {
       product_image: item.props.data.images[0].url,
       product_brand: item.props.data.brand,
       category_id: String(item.props.data.category_id),
+      product_category: String(this.props.data.breadcum[0].name),
+      product_subcategory: String(this.props.data.category.name),
+      rating: rating,
     };
     const error = await createleadClient(data);
   }
@@ -837,43 +854,43 @@ class PaySection extends Component {
         ],
       };
 
-      var quantity = this.state.cantidad == 0 ? 1 : this.state.cantidad;
+      // var quantity = this.state.cantidad == 0 ? 1 : this.state.cantidad;
 
-      var checkoutStartedValues = {
-        // order_id: '50314b8e9bcf000000000000',
-        affiliation: "SpiceStock",
-        value: this.props.props.data.price * quantity,
-        revenue: this.props.props.data.price * quantity,
-        shipping: 0,
-        tax: 0,
-        discount: 0,
-        // coupon: 'hasbros',
-        currency: "COP",
-        products: [
-          {
-            product_id: this.props.props.data.product_global_id,
-            // sku: '45790-32',
-            name: this.props.props.data.product_global_title,
-            price: this.props.props.data.price,
-            quantity: quantity,
-            brand: this.props.props.data.brand,
-            category: concatCategories(),
-            url:
-              "https://kiero.co" +
-              handleFormatUrl(
-                this.props.props.data.product_global_id,
-                this.props.props.data.product_global_title
-              ),
-            image_url: this.props.props.data.images.length
-              ? this.props.props.data.images[0].url
-              : null,
-          },
-        ],
-      };
+      // var checkoutStartedValues = {
+      //   // order_id: '50314b8e9bcf000000000000',
+      //   affiliation: "SpiceStock",
+      //   value: this.props.props.data.price * quantity,
+      //   revenue: this.props.props.data.price * quantity,
+      //   shipping: 0,
+      //   tax: 0,
+      //   discount: 0,
+      //   // coupon: 'hasbros',
+      //   currency: "COP",
+      //   products: [
+      //     {
+      //       product_id: this.props.props.data.product_global_id,
+      //       // sku: '45790-32',
+      //       name: this.props.props.data.product_global_title,
+      //       price: this.props.props.data.price,
+      //       quantity: quantity,
+      //       brand: this.props.props.data.brand,
+      //       category: concatCategories(),
+      //       url:
+      //         "https://kiero.co" +
+      //         handleFormatUrl(
+      //           this.props.props.data.product_global_id,
+      //           this.props.props.data.product_global_title
+      //         ),
+      //       image_url: this.props.props.data.images.length
+      //         ? this.props.props.data.images[0].url
+      //         : null,
+      //     },
+      //   ],
+      // };
 
       // console.log(checkoutStartedValues);
 
-      sendCheckoutStepViewed(1);
+      sendCheckoutStepViewed(this.props.props.data, 1);
 
       // // Segment Checkout Step Viewed/Completed events
       // // Fire this event whenever a checkout step is completed.
@@ -904,7 +921,6 @@ class PaySection extends Component {
       //   });
 
       // });
-
     };
     //////
     // this.clientId = typeof(ga) == 'function' && typeof(ga.getAll) == 'function' ? ga.getAll()[0].get('clientId') : "";
@@ -935,9 +951,10 @@ class PaySection extends Component {
       gclid: this.state.gclid,
       nme: fullName,
       id: hmacID,
+      last_name: this.state.lastName,
     });
 
-    // console.log(hmacID)
+    // console.log(extra3)
 
     var md5 = require("md5");
     var ref_code = "kieroco-" + new Date().getTime();
@@ -954,7 +971,6 @@ class PaySection extends Component {
     // 		this.state.cantidad == 0 ? 1 : this.state.cantidad * this.props.props.data.price +
     // 		'~COP'
     // );
-    // console.log(signature);
     const contentModalNewAddress = (
       <div
         style={{
