@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
-import { getProductDetail } from "../../services/productsApi";
+import { getProductDetail, getProductURL } from "../../services/productsApi";
 import { getUser, isAuthenticated, getJwt } from "../../lib/auth";
 import favicon from "../../assets/img/favicon.svg";
 import dynamic from "next/dynamic";
@@ -176,13 +176,25 @@ function Product({ data, u_data }) {
 export async function getServerSideProps(context) {
   // Fetch data from external API
   let temp_p = String(context.params.product).split("_");
-
   const id_product = JSON.parse(temp_p[0]);
-
+  if (temp_p.length < 2) {
+    const result = await getProductURL(id_product);
+    let data = await result.data;
+    if (!data) {
+      return {
+        notFound: true,
+      };
+    }
+    return {
+      redirect: {
+        destination: handleFormatUrl(id_product, data.data.asin),
+        permanent: false,
+      },
+    };
+  }
   const res = await getProductDetail(id_product, {
     params: { is_variant: false, product_global_id: id_product },
   });
-
   const data = await res.data;
 
   if (!data) {
