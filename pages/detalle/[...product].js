@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
-import { getProductDetail, getProductURL } from "../../services/productsApi";
+import { getProductDetail } from "../../services/productsApi";
 import { getUser, isAuthenticated, getJwt } from "../../lib/auth";
 import favicon from "../../assets/img/favicon.svg";
 import dynamic from "next/dynamic";
@@ -88,7 +88,7 @@ function Product({ data, u_data }) {
         />
         <meta
           name="twitter: description"
-          contenido=" Envíos gratis en Colombia, productos para Bebés, Belleza, Cámaras y accesorios,
+          content=" Envíos gratis en Colombia, productos para Bebés, Belleza, Cámaras y accesorios,
       Electrodomésticos, Electrónica, Hogar y muebles y mucho más."
         />
         <meta name="twitter: image" content={`${data.images[0].url}`} />
