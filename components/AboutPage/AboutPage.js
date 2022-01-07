@@ -59,8 +59,8 @@ const AboutPage = () => {
           imgSection={nuestrosTrabajdores}
           captionText={"Nuestros empleados"}
           descriptionText={[
-            ` Contamos con un capital humano altamente capacitado en lasúltimas tecnologías informáticas y de gestión para ofrecer elmejor servicio a las tiendas de terceros que comercializan susproductos en nuestro Marketplace y a sus clientes cuandonecesitan de nuestra ayuda.`,
-            `Además ofrecemos a nuestros empleados las mejores condicioneslaborales, donde se ofrecen oportunidades de trabajo concontratos por horas o a tiempo completo y para trabajo en lasede de la compañía o desde su casa, donde la empresa brindatodos los recursos para que el colaborador pueda desempeñar susfunciones de la forma más cómoda.`,
+            ` Contamos con un capital humano altamente capacitado en las últimas tecnologías informáticas y de gestión para ofrecer el mejor servicio a las tiendas de terceros que comercializan sus productos en nuestro Marketplace y a sus clientes cuando necesitan de nuestra ayuda.`,
+            `Además ofrecemos a nuestros empleados las mejores condiciones laborales, donde se ofrecen oportunidades de trabajo con contratos por horas o a tiempo completo y para trabajo en la sede de la compañía o desde su casa, donde la empresa brinda todos los recursos para que el colaborador pueda desempeñar sus funciones de la forma más cómoda.`,
           ]}
         />
         <SectionType1
