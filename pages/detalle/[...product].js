@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
-import { getProductDetail } from "../../services/productsApi";
+import { getProductDetail, getProductURL } from "../../services/productsApi";
 import { getUser, isAuthenticated, getJwt } from "../../lib/auth";
 import favicon from "../../assets/img/favicon.svg";
 import dynamic from "next/dynamic";
@@ -9,6 +9,7 @@ import useResize from "../../lib/hooks/useResize";
 import Loading from "../../components/Common/Loading/Loading";
 import { useAppDispatch } from "../../lib/hooks/redux";
 import { setData } from "../../redux/feature/pay/paySlice";
+
 const Detail = dynamic(() => import("../../components/ProductDetail"), {
   ssr: false,
   loading: () => <Loading />,
@@ -175,7 +176,6 @@ function Product({ data, u_data }) {
 export async function getServerSideProps(context) {
   // Fetch data from external API
   let temp_p = String(context.params.product).split("_");
-
   const id_product = JSON.parse(temp_p[0]);
 
   const res = await getProductDetail(id_product, {
@@ -183,6 +183,24 @@ export async function getServerSideProps(context) {
   });
 
   const data = await res.data;
+
+  if (!data) {
+    return {
+      notFound: true,
+    };
+  }
+
+  if (temp_p.length < 2) {
+    return {
+      redirect: {
+        destination: handleFormatUrl(
+          id_product,
+          data.data.product_global_title
+        ),
+        permanent: false,
+      },
+    };
+  }
 
   let usr = getUser(context);
   let jwt = getJwt(context);
