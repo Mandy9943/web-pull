@@ -1,14 +1,31 @@
 import Header from "../Common/Header";
 import "./AboutPage.css";
-import SectionType1 from "./commons/SectionType1/SectionType1";
-import SectionType2 from "./commons/SectionType2/SectionType2";
-import FooterSection from "./commons/FooterSection/FooterSection";
 import quienesSomos from "../../assets/img/imgAbout/QUIENESSOMOS.webp";
 import nuestrosTrabajdores from "../../assets/img/imgAbout//NuestrosTrabajadores.webp";
 import nuestrosClientes from "../../assets/img/imgAbout/NuestrosClientes.webp";
 import mision from "../../assets/img/imgAbout/Mision.webp";
 import vision from "../../assets/img/imgAbout/Vision.webp";
 import banner from "../../assets/img/imgAbout/BannerPrincipal.webp";
+import dynamic from "next/dynamic";
+
+const SectionType1 = dynamic(
+  () => import("./commons/SectionType1/SectionType1"),
+  {
+    suspense: true,
+  }
+);
+const SectionType2 = dynamic(
+  () => import("./commons/SectionType2/SectionType2"),
+  {
+    suspense: true,
+  }
+);
+const FooterSection = dynamic(
+  () => import("./commons/FooterSection/FooterSection"),
+  {
+    suspense: true,
+  }
+);
 
 const AboutPage = () => {
   return (
