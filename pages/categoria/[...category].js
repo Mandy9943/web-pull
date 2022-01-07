@@ -643,30 +643,31 @@ function Results({ data, session }) {
             //       .toLowerCase()
             //   }
             // >
-              <a 
-                key={i}
-                href={
-                      "/categoria/" +
-                      e.links[bannerNo - 1]
-                        .replace(/^[, ]+|[, ]+$|[, ]+/g, "-")
-                        .trim()
-                        .toLowerCase()
-                    } 
-                className="tickets">
-                <div className="anullProperties">
-                  <Image
-                    layout="fill"
-                    alt={category_name}
-                    key={i + 1}
-                    className="banner-principal"
-                    src={
-                      e.image_path.replace(/^[, ]+|[, ]+$|[, ]+/g, "").trim() +
-                      bannerNo++ +
-                      ".webp"
-                    }
-                  />
-                </div>
-              </a>
+            <a
+              key={i}
+              href={
+                "/categoria/" +
+                e.links[bannerNo - 1]
+                  .replace(/^[, ]+|[, ]+$|[, ]+/g, "-")
+                  .trim()
+                  .toLowerCase()
+              }
+              className="tickets"
+            >
+              <div className="anullProperties">
+                <Image
+                  layout="fill"
+                  alt={category_name}
+                  key={i + 1}
+                  className="banner-principal"
+                  src={
+                    e.image_path.replace(/^[, ]+|[, ]+$|[, ]+/g, "").trim() +
+                    bannerNo++ +
+                    ".webp"
+                  }
+                />
+              </div>
+            </a>
             // </Link>
           );
         } else {
@@ -975,14 +976,16 @@ function Results({ data, session }) {
 }
 
 export async function getServerSideProps(context) {
-  var dataFirstUpperCase = String(context.params.category).split("",1)
-  var dataCategoryName =  String(context.params.category).slice(1)
+  var dataFirstUpperCase = String(context.params.category).split("", 1);
+  var dataCategoryName = String(context.params.category).slice(1);
   // console.log(String(dataFirstUpperCase[0].toUpperCase()) + dataCategoryName.replace(/-/g, " "))
   const data = {
     type: "category",
     // "search": String(context.params.category),
     // search: String(context.params.category).replace(/-/g, " "),
-    search: String(dataFirstUpperCase[0].toUpperCase()) + dataCategoryName.replace(/-/g, " "),
+    search:
+      String(dataFirstUpperCase[0].toUpperCase()) +
+      dataCategoryName.replace(/-/g, " "),
     params: {
       items_per_page: searchItemsPerPage,
       price_range: "",

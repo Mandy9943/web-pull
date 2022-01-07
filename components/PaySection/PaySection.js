@@ -751,6 +751,7 @@ class PaySection extends Component {
   // };
 
   async createlead(item, step) {
+
     var name = this.state.user;
     var email = this.state.email;
     var last_name = this.state.lastName;
@@ -774,6 +775,12 @@ class PaySection extends Component {
       if (Cookies.get("user_id") != undefined) {
         user_id = Cookies.get("user_id");
       }
+    }
+    if(this.props.data.rating!==undefined){
+      var rating = toString(this.props.data.rating / 10);
+    }
+    else{
+      rating = 'N/A';
     }
     var data = {
       first_name: name,
@@ -802,6 +809,9 @@ class PaySection extends Component {
       product_image: item.props.data.images[0].url,
       product_brand: item.props.data.brand,
       category_id: String(item.props.data.category_id),
+      product_category: String(this.props.data.breadcum[0].name),
+      product_subcategory: String(this.props.data.category.name),
+      rating:rating
     };
     const error = await createleadClient(data);
   }
@@ -943,6 +953,7 @@ class PaySection extends Component {
       gclid: this.state.gclid,
       nme: fullName,
       id: hmacID,
+      last_name: this.state.lastName
     });
 
     // console.log(extra3)

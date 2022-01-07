@@ -103,8 +103,14 @@
     width: 100%;
   }
   .SectionType2 .imageSection .imgContent {
+    cursor: pointer;
     justify-content: flex-end;
     padding-bottom: 30px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .SectionType2 .imageSection .imgContent :focus {
+    outline-color: transparent;
+    outline-style: none;
   }
 
   .SectionType2 .imageSection .imgContent .icon {

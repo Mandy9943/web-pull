@@ -249,7 +249,12 @@ class ProductDetail extends Component {
   }
 
   async createlead() {
-    // console.log(this.props.data)
+    if(this.props.data.rating!==undefined){
+      var rating = toString(this.props.data.rating / 10);
+    }
+    else{
+      rating = 'N/A';
+    }
     var data = {
       first_name: Cookies.get("name"),
       city: "",
@@ -273,9 +278,10 @@ class ProductDetail extends Component {
       product_link: "",
       product_image: this.props.data.images[0].url,
       product_brand: this.props.data.brand,
-      product_category: String(this.props.data.category.name),
+      product_category: String(this.props.data.breadcum[0].name),
       product_subcategory: String(this.props.data.category.name),
       category_id: String(this.props.data.category_id),
+      rating:rating
     };
     const error = await createleadClient(data);
   }
