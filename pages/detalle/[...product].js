@@ -184,7 +184,7 @@ export async function getServerSideProps(context) {
 
   const data = await res.data;
 
-  if (!data) {
+  if (!data || data?.error === true) {
     return {
       notFound: true,
     };
