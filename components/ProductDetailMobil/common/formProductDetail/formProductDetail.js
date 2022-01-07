@@ -133,6 +133,7 @@ const FormProductDetail = ({ handleClose, open }) => {
     gclid: state.gclid,
     nme: fullName,
     id: hmacID,
+    last_name: getValues().lastName,
   });
 
   var md5 = require("md5");
