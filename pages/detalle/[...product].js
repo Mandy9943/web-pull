@@ -9,6 +9,7 @@ import useResize from "../../lib/hooks/useResize";
 import Loading from "../../components/Common/Loading/Loading";
 import { useAppDispatch } from "../../lib/hooks/redux";
 import { setData } from "../../redux/feature/pay/paySlice";
+
 const Detail = dynamic(() => import("../../components/ProductDetail"), {
   ssr: false,
   loading: () => <Loading />,
@@ -183,6 +184,12 @@ export async function getServerSideProps(context) {
   });
 
   const data = await res.data;
+
+  if (!data) {
+    return {
+      notFound: true,
+    };
+  }
 
   let usr = getUser(context);
   let jwt = getJwt(context);
