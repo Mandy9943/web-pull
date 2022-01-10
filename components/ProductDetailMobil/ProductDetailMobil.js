@@ -1,10 +1,9 @@
 import dynamic from "next/dynamic";
-import React, { useState, useEffect, Suspense } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 
 import Logo1 from "../../assets/img/logo-social.png";
 import Logo2 from "../../assets/img/logo-social1.png";
 // import backGround from "../../assets/img/productDetail/fondo-rojo-landing-view@2x.svg";
-
 import CheckoutProduct from "./common/CheckoutProduct/CheckoutProduct";
 import Header from "./common/Header/Header";
 import {
@@ -17,6 +16,9 @@ import "./ProductDetailMobil.module.css";
 
 import Image from "next/image";
 import useScrollY from "../../lib/hooks/useScrollY";
+import { sendProductViewed } from "../../lib/functions";
+import { openForm, selectIsFormOpen } from "../../redux/feature/pay/paySlice";
+import { useAppDispatch, useAppSelector } from "../../lib/hooks/redux";
 
 const SwiperSlider = dynamic(
   () => import("./common/SwiperSlider/SwipperSlider"),
@@ -57,10 +59,6 @@ const RecommendedProducts = dynamic(
     suspense: true,
   }
 );
-
-import { sendProductViewed } from "../../lib/functions";
-import { openForm, selectIsFormOpen } from "../../redux/feature/pay/paySlice";
-import { useAppDispatch, useAppSelector } from "../../lib/hooks/redux";
 
 const WhatsappBanner = dynamic(
   () => import("./common/WhatsappBanner/WhatsappBanner"),
