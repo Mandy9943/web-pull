@@ -83,7 +83,7 @@ const SellerInfo = dynamic(() => import("./common/SellerInfo/SellerInfo"), {
   suspense: true,
 });
 
-const ProductDetailMobil = ({ user_data, data }) => {
+const ProductDetailMobil = ({ user_data, data, userIp }) => {
   let urlSic = "https://www.sic.gov.co";
   // console.log("data", data);
 
@@ -145,7 +145,11 @@ const ProductDetailMobil = ({ user_data, data }) => {
         {scrolledPayButton && !isForm && (
           <StickyPayButton onClickBuy={handleOpenForm} />
         )}
-        <FormProductDetail open={isForm} handleClose={handleCloseForm} />
+        <FormProductDetail
+          open={isForm}
+          handleClose={handleCloseForm}
+          userIp={userIp}
+        />
         <div className="content-curve-shape">
           <div className="header-detail">
             <Header title={data.title} bredCumbs={data.breadcum} />

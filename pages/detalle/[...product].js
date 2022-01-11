@@ -22,7 +22,7 @@ const ProductDetailMobil = dynamic(
   }
 );
 
-function Product({ data, u_data }) {
+function Product({ data, u_data, userIp }) {
   const dispatch = useAppDispatch();
   const mobileView = useResize(768);
   const [isLoading, setIsLoading] = useState(true);
@@ -162,9 +162,13 @@ function Product({ data, u_data }) {
         <>
           {mobileView ? (
             //  <Detail user_data={u_data} data={data} />
-            <ProductDetailMobil user_data={u_data} data={data} />
+            <ProductDetailMobil
+              user_data={u_data}
+              data={data}
+              userIp={userIp}
+            />
           ) : (
-            <Detail user_data={u_data} data={data} />
+            <Detail user_data={u_data} data={data} userIp={userIp} />
           )}
         </>
       )}
@@ -174,6 +178,8 @@ function Product({ data, u_data }) {
 
 // This gets called on every request
 export async function getServerSideProps(context) {
+  const { req } = context;
+  const ipData = req.headers["x-real-ip"] || req.connection.remoteAddress;
   // Fetch data from external API
   let temp_p = String(context.params.product).split("_");
   const id_product = JSON.parse(temp_p[0]);
@@ -211,7 +217,7 @@ export async function getServerSideProps(context) {
     jwt: jwt ? jwt : "",
   };
 
-  return { props: { data: data.data, u_data } };
+  return { props: { data: data.data, u_data, userIp: ipData } };
 }
 
 export default Product;

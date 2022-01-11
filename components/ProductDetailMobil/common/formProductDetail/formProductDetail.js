@@ -23,7 +23,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 // import requestIp from "request-ip";
 
-const FormProductDetail = ({ handleClose, open }) => {
+const FormProductDetail = ({ handleClose, open, userIp }) => {
   const productData = useAppSelector(selectData);
   const [state, setState] = useState({
     cantidad: 0,
@@ -141,7 +141,7 @@ const FormProductDetail = ({ handleClose, open }) => {
     qty: quantity,
     cid: state.clientId,
     gclid: state.gclid,
-    ip: "",
+    ip: userIp,
     fbclid: state.fbclid,
     eventid:
       (Math.random() + 1).toString(36).substring(7) +
