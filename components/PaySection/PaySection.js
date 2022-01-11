@@ -776,8 +776,8 @@ class PaySection extends Component {
         user_id = Cookies.get("user_id");
       }
     }
-    if(this.props.data.rating!==undefined){
-      var rating = toString(this.props.data.rating / 10);
+    if(item.props.data.rating!==undefined){
+      var rating = toString(item.props.data.rating / 10);
     }
     else{
       rating = 'N/A';
@@ -809,8 +809,8 @@ class PaySection extends Component {
       product_image: item.props.data.images[0].url,
       product_brand: item.props.data.brand,
       category_id: String(item.props.data.category_id),
-      product_category: String(this.props.data.breadcum[0].name),
-      product_subcategory: String(this.props.data.category.name),
+      product_category: String(item.props.data.breadcum[0].name),
+      product_subcategory: String(item.props.data.category.name),
       rating:rating
     };
     const error = await createleadClient(data);
