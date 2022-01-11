@@ -84,8 +84,9 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
     let clientId;
     let gclid;
     let fbclid;
+    let fb_browser_id;
     const dataInterval = setInterval(function () {
-      if (!clientId && !gclid && !fbclid) {
+      if (!clientId && !gclid && !fbclid && !fb_browser_id) {
         // clientId
         const gaCookie = Cookies.get("_ga");
         if (gaCookie) {
@@ -107,6 +108,9 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
           fbclid = match ? match[1] : undefined;
         }
         //////
+        // fb_browser_id
+        fb_browser_id = Cookies.get("_fbp");
+        //////
       } else {
         dataGoogleAds(clientId, gclid);
         clearInterval(dataInterval);
@@ -117,6 +121,7 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
       setState({
         gclid: gclId,
         fbclid: fbclid,
+        fb_browser_id: fb_browser_id,
         clientId: clid,
       });
     };
@@ -143,6 +148,7 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
     gclid: state.gclid,
     ip: userIp,
     fbclid: state.fbclid,
+    fb_browser_id: state.fb_browser_id,
     eventid:
       (Math.random() + 1).toString(36).substring(7) +
       "." +
@@ -151,9 +157,9 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
     street: values.address,
     city: values.city,
     phone: values.phoneNumber,
-    e_url: window.location.href,
+    // e_url: window.location.href,
     id: hmacID,
-    last_name: getValues().lastName,
+    last_name: values.lastName,
   });
 
   console.log("extra3 formProductDetail", extra3);
