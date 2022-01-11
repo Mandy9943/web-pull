@@ -35,11 +35,26 @@ class Filter extends Component {
     this.toggleMenuFilter = this.toggleMenuFilter.bind(this);
   }
 
+  res_categories = [];
+
   componentDidMount() {
     getFront("/getBanners/" + this.props.category.replace(/-/g, " ")).then(
       (response) => {
         if (response.data.files.length > 0) {
           this.setState({ dataCategories: response.data.files });
+          this.state.dataCategories.map((data, i) => {
+            let category = data.split("/");
+            category = category[category.length - 1];
+            if (!isNaN(category.substr(0, 1))) {
+              category = category.split(".")[1];
+            }
+            this.res_categories.push({
+              items: null,
+              key: category,
+              label: category,
+              level: 0,
+            });
+          });
         } else {
           this.setState({ dataCategories: [] });
         }
@@ -112,13 +127,16 @@ class Filter extends Component {
   }
 
   render() {
-    let res_categories = [];
     let res_brands = [];
     let prices = [];
     let renderedPrices = [];
 
     if (this.props.data && this.props.data.categories) {
-      res_categories = this.props.data.categories;
+      this.res_categories = this.props.data.categories;
+
+      setTimeout(() => {
+        this.res_categories = [];
+      }, 5000);
     }
 
     // const renderCategories = () => {
@@ -314,10 +332,10 @@ class Filter extends Component {
               </div>
             </div>
             <div className="filter-title">Categorías</div>
-            {res_categories.length > 0 && (
+            {this.res_categories.length > 0 && (
               <>
                 <div ref={this.categories} className="filter-height-overflow">
-                  {res_categories.map((node, i) => {
+                  {this.res_categories.map((node, i) => {
                     return (
                       <div className="tree-view" key={node.label}>
                         {/* {()=>renderCategories()} */}
@@ -620,7 +638,7 @@ class Filter extends Component {
               <li>
                 <details className="responsive-dropdown">
                   <summary>Categoria</summary>
-                  {res_categories.map((item, index) => (
+                  {this.res_categories.map((item, index) => (
                     <div
                       key={index}
                       className="responsive-dropdown-item"
