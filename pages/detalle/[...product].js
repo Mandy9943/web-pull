@@ -4,7 +4,7 @@ import { getProductDetail } from "../../services/productsApi";
 import { getUser, isAuthenticated, getJwt } from "../../lib/auth";
 import favicon from "../../assets/img/favicon.svg";
 import dynamic from "next/dynamic";
-import { handleFormatUrl } from "../../lib/functions";
+import { createlead, handleFormatUrl } from "../../lib/functions";
 import useResize from "../../lib/hooks/useResize";
 import Loading from "../../components/Common/Loading/Loading";
 import { useAppDispatch } from "../../lib/hooks/redux";
@@ -35,12 +35,16 @@ function Product({ data, u_data }) {
       setData({
         category: data.category,
         price: data.product_global_price,
-        img: data.images[0],
+        img: data.images,
         title: data.title,
         product_id: data.product_global_id,
         brand: data.brand,
+        description: data.description,
+        category_id: data.category_id,
       })
     );
+
+    createlead(data, 1);
   }, [data, dispatch]);
 
   return (
