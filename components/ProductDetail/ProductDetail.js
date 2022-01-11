@@ -249,11 +249,10 @@ class ProductDetail extends Component {
   }
 
   async createlead() {
-    if(this.props.data.rating!==undefined){
+    if (this.props.data.rating !== undefined) {
       var rating = toString(this.props.data.rating / 10);
-    }
-    else{
-      rating = 'N/A';
+    } else {
+      rating = "N/A";
     }
     var data = {
       first_name: Cookies.get("name"),
@@ -281,7 +280,7 @@ class ProductDetail extends Component {
       product_category: String(this.props.data.breadcum[0].name),
       product_subcategory: String(this.props.data.category.name),
       category_id: String(this.props.data.category_id),
-      rating:rating
+      rating: rating,
     };
     const error = await createleadClient(data);
   }
