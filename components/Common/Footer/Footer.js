@@ -15,6 +15,7 @@ import {
 import PayCredit from "../../../assets/img/pay-credit.png";
 import PayOnline from "../../../assets/img/pay-online.png";
 import PayTransfer from "../../../assets/img/pay-transfer.jpg";
+import Image from "next/image";
 
 const fb = "https://www.facebook.com/KieroMarketplaceColombia/";
 const ig = "https://www.instagram.com/kiero.co/";
@@ -22,9 +23,7 @@ const tw = "https://twitter.com/kiero_co";
 const yt = "https://www.youtube.com/channel/UCckOshPpIgdMvVEdKgLUz6g";
 const pt = "https://co.pinterest.com/Kiero_Marketplace/_created/";
 const lk = "https://www.linkedin.com/company/kiero-marketplace";
-const wh = "https://wa.me/+573128246497";
-
-import Image from "next/image";
+const wh = "https://wa.me/+573226569293";
 
 export default class Footer extends Component {
   getYear() {

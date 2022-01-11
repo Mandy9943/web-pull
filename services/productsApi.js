@@ -1,25 +1,24 @@
 import {
+  apiget,
+  apiget2,
   get,
   post,
   postForm,
   putForm,
   sget,
-  apiget,
-  apiget2,
 } from "../lib/request";
 import {
   categoryApi2,
   filtersApi,
+  postProduct,
   productsApi,
   suggestionsApi,
-  postProduct,
 } from "../lib/config";
 
 export const getProducts8 = () => {
   try {
     let endpoint = "/getProducts";
-    let data = sget(endpoint);
-    return data;
+    return sget(endpoint);
   } catch (error) {
     return error;
   }
@@ -28,8 +27,7 @@ export const getProducts8 = () => {
 export const getProductDetail = (id_product, params = {}) => {
   try {
     let endpoint = "/variations/product_global/" + id_product;
-    let data = apiget2(endpoint, params);
-    return data;
+    return apiget2(endpoint, params);
   } catch (error) {
     return error;
   }
@@ -38,9 +36,7 @@ export const getProductDetail = (id_product, params = {}) => {
 export const getProductGlobalDetail = (id_product_global, params = {}) => {
   try {
     let endpoint = "/variations/product_global_shortcut/" + id_product_global;
-    let data = apiget2(endpoint, params);
-    // console.log(data);
-    return data;
+    return apiget2(endpoint, params);
   } catch (error) {
     return error;
   }
@@ -49,8 +45,7 @@ export const getProductGlobalDetail = (id_product_global, params = {}) => {
 export const getVariantAvailable = (id_product, params) => {
   try {
     let endpoint = "/variations/variantAvailable/" + id_product;
-    let data = apiget2(endpoint, params);
-    return data;
+    return apiget2(endpoint, params);
   } catch (error) {
     return error;
   }
@@ -60,8 +55,7 @@ export const getRecommendProducts = (category) => {
   let categoryName = category.replace(/-/g, " ");
   try {
     let endpoint = "/search/category/" + categoryName + "?size=" + 20;
-    let data = sget(endpoint);
-    return data;
+    return sget(endpoint);
   } catch (error) {
     return error;
   }
@@ -70,8 +64,7 @@ export const getRecommendProducts = (category) => {
 export const getRatingByProduct = (product) => {
   try {
     let endpoint = "/getRating/" + product;
-    let data = sget(endpoint);
-    return data;
+    return sget(endpoint);
   } catch (error) {
     return error;
   }
@@ -80,8 +73,7 @@ export const getRatingByProduct = (product) => {
 export const getSellerByProduct = (product) => {
   try {
     let endpoint = "/getSellerByIdProduct/" + product;
-    let data = sget(endpoint);
-    return data;
+    return sget(endpoint);
   } catch (error) {
     return error;
   }
@@ -90,8 +82,7 @@ export const getSellerByProduct = (product) => {
 export const searchProduct = (string) => {
   try {
     let endpoint = "https://dev.kieroapi.net/api/v1.0/search?keyword=" + string;
-    let data = apiget(endpoint);
-    return data;
+    return apiget(endpoint);
   } catch (error) {
     return error;
   }
@@ -164,8 +155,7 @@ export const getProductsBasic = (category, limit) => {
   let categoryName = category.replace(/-/g, " ");
   try {
     let endpoint = "/search/category/" + categoryName + "?size=" + limit;
-    let data = sget(endpoint);
-    return data;
+    return sget(endpoint);
   } catch (error) {
     return error;
   }
@@ -174,8 +164,7 @@ export const getProductsBasic = (category, limit) => {
 export const getCategories = () => {
   try {
     let endpoint = "/getCategories";
-    let data = get(endpoint);
-    return data;
+    return get(endpoint);
   } catch (error) {
     return error;
   }
@@ -183,8 +172,7 @@ export const getCategories = () => {
 
 export const saveProduct = (data, jwt) => {
   try {
-    let postFormData = postForm("/newProduct", data, jwt);
-    return postFormData;
+    return postForm("/newProduct", data, jwt);
   } catch (error) {
     return error;
   }
@@ -192,8 +180,7 @@ export const saveProduct = (data, jwt) => {
 
 export const updateProduct = (data, jwt) => {
   try {
-    let postFormData = putForm("/updateProduct", data, jwt);
-    return postFormData;
+    return putForm("/updateProduct", data, jwt);
   } catch (error) {
     return error;
   }
@@ -205,9 +192,7 @@ export const sendQuestion = (msg, product_id, jwt) => {
       question: msg,
       product_id: product_id,
     };
-    let data = post("/newQuestion", msgData, jwt);
-
-    return data;
+    return post("/newQuestion", msgData, jwt);
   } catch (error) {
     return error;
   }
@@ -219,9 +204,7 @@ export const sendAnswer = (msg, product_id, jwt) => {
       answer: msg,
       question_id: product_id,
     };
-    let data = post("/replyQuestion", msgData, jwt);
-
-    return data;
+    return post("/replyQuestion", msgData, jwt);
   } catch (error) {
     return error;
   }
@@ -230,8 +213,7 @@ export const sendAnswer = (msg, product_id, jwt) => {
 export const getOrderDetails = (order_id, jwt) => {
   try {
     let endpoint = "/getOrderDetails/" + order_id;
-    let data = sget(endpoint, jwt);
-    return data;
+    return sget(endpoint, jwt);
   } catch (error) {
     return error;
   }
@@ -239,8 +221,7 @@ export const getOrderDetails = (order_id, jwt) => {
 
 export const sellProduct = (jwt, info) => {
   try {
-    let data = postProduct("localhost:5000/publicate", info, jwt);
-    return data;
+    return postProduct("localhost:5000/publicate", info, jwt);
   } catch (error) {
     return error;
   }
@@ -249,6 +230,15 @@ export const sellProduct = (jwt, info) => {
 export const seeSelledProduct = (jwt, endpoint) => {
   try {
     return get(endpoint);
+  } catch (error) {
+    return error;
+  }
+};
+
+export const getProductURL = (id_product, params = {}) => {
+  try {
+    let endpoint = "/variations/product_url/" + id_product;
+    return apiget2(endpoint, params);
   } catch (error) {
     return error;
   }

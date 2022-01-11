@@ -21,8 +21,9 @@ import Cookies from "js-cookie";
 import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+// import requestIp from "request-ip";
 
-const FormProductDetail = ({ handleClose, open }) => {
+const FormProductDetail = ({ handleClose, open, userIp }) => {
   const productData = useAppSelector(selectData);
   const [state, setState] = useState({
     cantidad: 0,
@@ -104,8 +105,9 @@ const FormProductDetail = ({ handleClose, open }) => {
   useEffect(() => {
     let clientId;
     let gclid;
+    let fbclid;
     const dataInterval = setInterval(function () {
-      if (!clientId && !gclid) {
+      if (!clientId && !gclid && !fbclid) {
         // clientId
         const gaCookie = Cookies.get("_ga");
         if (gaCookie) {
@@ -119,6 +121,14 @@ const FormProductDetail = ({ handleClose, open }) => {
           gclid = match ? match[1] : undefined;
         }
         //////
+        // FBCLID
+        let _fbc = Cookies.get("_fbc");
+        fbclid = _fbc ? _fbc.slice(19) : undefined;
+        if (!fbclid) {
+          const match = /fbclid=([^&#]*)/.exec(window.location.search);
+          fbclid = match ? match[1] : undefined;
+        }
+        //////
       } else {
         dataGoogleAds(clientId, gclid);
         clearInterval(dataInterval);
@@ -128,6 +138,7 @@ const FormProductDetail = ({ handleClose, open }) => {
     const dataGoogleAds = (clid, gclId) => {
       setState({
         gclid: gclId,
+        fbclid: fbclid,
         clientId: clid,
       });
     };
@@ -139,9 +150,11 @@ const FormProductDetail = ({ handleClose, open }) => {
 
   const quantity = productData.count === 0 ? 1 : productData.count;
 
+  let values = getValues();
+
   const fullName =
-    handleFormatName(getValues().firstName) +
-    (getValues().lastName ? " " + handleFormatName(getValues().lastName) : "");
+    handleFormatName(values.firstName) +
+    (values.lastName ? " " + handleFormatName(values.lastName) : "");
 
   const hmacID = CryptoJS.HmacSHA1(state.identification, "abc").toString(
     CryptoJS.enc.Hex
@@ -150,10 +163,22 @@ const FormProductDetail = ({ handleClose, open }) => {
     qty: quantity,
     cid: state.clientId,
     gclid: state.gclid,
+    ip: userIp,
+    fbclid: state.fbclid,
+    eventid:
+      (Math.random() + 1).toString(36).substring(7) +
+      "." +
+      new Date().getTime(),
     nme: fullName,
+    street: values.address,
+    city: values.city,
+    phone: values.phoneNumber,
+    e_url: window.location.href,
     id: hmacID,
     last_name: getValues().lastName,
   });
+
+  console.log("extra3 formProductDetail", extra3);
 
   var md5 = require("md5");
   var ref_code = "kieroco-" + new Date().getTime();

@@ -9,6 +9,7 @@ import useResize from "../../lib/hooks/useResize";
 import Loading from "../../components/Common/Loading/Loading";
 import { useAppDispatch } from "../../lib/hooks/redux";
 import { setData } from "../../redux/feature/pay/paySlice";
+
 const Detail = dynamic(() => import("../../components/ProductDetail"), {
   ssr: false,
   loading: () => <Loading />,
@@ -21,7 +22,7 @@ const ProductDetailMobil = dynamic(
   }
 );
 
-function Product({ data, u_data }) {
+function Product({ data, u_data, userIp }) {
   const dispatch = useAppDispatch();
   const mobileView = useResize(768);
   const [isLoading, setIsLoading] = useState(true);
@@ -91,7 +92,7 @@ function Product({ data, u_data }) {
         />
         <meta
           name="twitter: description"
-          contenido=" Envíos gratis en Colombia, productos para Bebés, Belleza, Cámaras y accesorios,
+          content=" Envíos gratis en Colombia, productos para Bebés, Belleza, Cámaras y accesorios,
       Electrodomésticos, Electrónica, Hogar y muebles y mucho más."
         />
         <meta name="twitter: image" content={`${data.images[0].url}`} />
@@ -165,9 +166,13 @@ function Product({ data, u_data }) {
         <>
           {mobileView ? (
             //  <Detail user_data={u_data} data={data} />
-            <ProductDetailMobil user_data={u_data} data={data} />
+            <ProductDetailMobil
+              user_data={u_data}
+              data={data}
+              userIp={userIp}
+            />
           ) : (
-            <Detail user_data={u_data} data={data} />
+            <Detail user_data={u_data} data={data} userIp={userIp} />
           )}
         </>
       )}
@@ -177,9 +182,10 @@ function Product({ data, u_data }) {
 
 // This gets called on every request
 export async function getServerSideProps(context) {
+  const { req } = context;
+  const ipData = req.headers["x-real-ip"] || req.connection.remoteAddress;
   // Fetch data from external API
   let temp_p = String(context.params.product).split("_");
-
   const id_product = JSON.parse(temp_p[0]);
 
   const res = await getProductDetail(id_product, {
@@ -187,6 +193,24 @@ export async function getServerSideProps(context) {
   });
 
   const data = await res.data;
+
+  if (!data || data?.error === true) {
+    return {
+      notFound: true,
+    };
+  }
+
+  if (temp_p.length < 2) {
+    return {
+      redirect: {
+        destination: handleFormatUrl(
+          id_product,
+          data.data.product_global_title
+        ),
+        permanent: false,
+      },
+    };
+  }
 
   let usr = getUser(context);
   let jwt = getJwt(context);
@@ -197,7 +221,7 @@ export async function getServerSideProps(context) {
     jwt: jwt ? jwt : "",
   };
 
-  return { props: { data: data.data, u_data } };
+  return { props: { data: data.data, u_data, userIp: ipData } };
 }
 
 export default Product;
