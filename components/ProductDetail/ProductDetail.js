@@ -181,6 +181,7 @@ class ProductDetail extends Component {
     // });
 
     sendProductViewed(this.props.data);
+    console.log(this.props.data);
 
     // console.log(productViewedData)
 
