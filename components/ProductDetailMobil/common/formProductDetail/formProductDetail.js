@@ -12,7 +12,7 @@ import Link from "next/link";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import formSchema from "./Schema/schema";
-import { setDiscount } from "../../../../lib/functions.js";
+import { createlead, setDiscount } from "../../../../lib/functions.js";
 import { useAppSelector } from "../../../../lib/hooks/redux";
 import { selectData } from "../../../../redux/feature/pay/paySlice";
 import { handleFormatName } from "../../../../lib/functions";
@@ -77,6 +77,28 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
     // let user = getValues();
     // user.user_id = createHmacSHA1(user.email);
     // sendIdentifyEvent(user);
+    const userData = {
+      name: getValues().firstName,
+      email: getValues().email,
+      lastName: getValues().lastName,
+      user_id: state.user_id,
+      city: getValues().city,
+      address: getValues().address,
+      mobile_phone: getValues().phoneNumber,
+    };
+    const data = {
+      ...userData,
+      category: productData.category,
+      product_global_price: productData.price,
+      product_global_title: productData.title,
+      description: productData.description,
+      product_global_id: productData.product_id,
+      images: productData.img,
+      brand: productData.brand,
+      category_id: productData.category_id,
+    };
+
+    createlead(data, 2);
     handleClose();
   };
 

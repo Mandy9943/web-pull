@@ -1,29 +1,33 @@
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React from "react";
 import { useEffect } from "react";
-import { useAppDispatch } from "../../../../lib/hooks/redux";
+import { useAppDispatch, useAppSelector } from "../../../../lib/hooks/redux";
 import "./Counter.module.css";
 
-import { setCount as setCountAction } from "../../../../redux/feature/pay/paySlice";
+import {
+  selectCount,
+  setCount as setCountAction,
+} from "../../../../redux/feature/pay/paySlice";
 
 const Counter = ({ stock }) => {
   const dispatch = useAppDispatch();
-  const [count, setCount] = useState(stock === 0 ? stock : 1);
+  const count = useAppSelector(selectCount);
+
   const handleAdd = () => {
     const limitCount = stock ?? 6;
     if (count < limitCount) {
-      setCount(count + 1);
+      dispatch(setCountAction(count + 1));
     }
   };
   const handleSub = () => {
     if (count > 0) {
-      setCount(count - 1);
+      dispatch(setCountAction(count - 1));
     }
   };
   useEffect(() => {
-    dispatch(setCountAction(count));
-  }, [count, dispatch]);
+    dispatch(setCountAction(stock === 0 ? stock : 1));
+  }, [dispatch, stock]);
 
   return (
     <div id="counter-detail-mobile">
