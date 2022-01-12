@@ -141,6 +141,10 @@
   overflow: hidden;
 }
 
+.filter-height-overflow p:hover {
+  color: #cf0a2c;
+}
+
 .display-none {
   display: none;
 }
