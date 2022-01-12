@@ -10,6 +10,7 @@ _next/
 .prettierrc
 _next
 .vscode
+.eslintcache
 
 
 pages/test.js
