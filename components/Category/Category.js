@@ -339,7 +339,13 @@ class Category extends Component {
 
   onSelectCategory = (node, index) => {
     if (this.props.data.type === "category") {
-      redirect("/categoria/" + node.key);
+      window.location.href =
+        "/categoria/" +
+        node.key
+          .replace(/^[, ]+|[, ]+$|[, ]+/g, "-")
+          .trim()
+          .toLowerCase();
+      // redirect("/categoria/" + node.key);
       return;
     }
 
