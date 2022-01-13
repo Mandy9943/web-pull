@@ -31,6 +31,7 @@ class PaySection extends Component {
       cantidad: 0,
       dimensions: {},
       variantsSpinner: props.m_pgid ? false : true,
+      userIp: props.props.userIp,
       modalAddr: false,
       user: "",
       user_id: "",
@@ -50,6 +51,8 @@ class PaySection extends Component {
       typeIdentificationName: "0TN",
       display: "none",
       gclid: "",
+      fbclid: "",
+      fb_browser_id: "",
       clientId: "",
     };
   }
@@ -93,16 +96,34 @@ class PaySection extends Component {
           this.gclid = match ? match[1] : undefined;
         }
         //////
+        // FBCLID
+        let _fbc = Cookies.get("_fbc");
+        this.fbclid = _fbc ? _fbc.slice(19) : undefined;
+        if (!this.JSONfbclid) {
+          const match = /fbclid=([^&#]*)/.exec(window.location.search);
+          this.fbclid = match ? match[1] : undefined;
+        }
+        //////
+        // fb_browser_id
+        this.fb_browser_id = Cookies.get("_fbp");
+        //////
       } else {
-        dataGoogleAds(this.clientId, this.gclid);
+        dataGoogleAds(
+          this.clientId,
+          this.gclid,
+          this.fbclid,
+          this.fb_browser_id
+        );
         clearInterval(dataInterval);
       }
     }, 200);
 
-    const dataGoogleAds = (clid, gclId) => {
+    const dataGoogleAds = (clid, gclId, fbclid, fb_browser_id) => {
       this.setState({
         gclid: gclId,
         clientId: clid,
+        fbclid: fbclid,
+        fb_browser_id: fb_browser_id,
       });
     };
 
@@ -775,8 +796,8 @@ class PaySection extends Component {
         user_id = Cookies.get("user_id");
       }
     }
-    if (this.props.data.rating !== undefined) {
-      var rating = toString(this.props.data.rating / 10);
+    if (item.props.data.rating !== undefined) {
+      var rating = toString(item.props.data.rating / 10);
     } else {
       rating = "N/A";
     }
@@ -807,8 +828,8 @@ class PaySection extends Component {
       product_image: item.props.data.images[0].url,
       product_brand: item.props.data.brand,
       category_id: String(item.props.data.category_id),
-      product_category: String(this.props.data.breadcum[0].name),
-      product_subcategory: String(this.props.data.category.name),
+      product_category: String(item.props.data.breadcum[0].name),
+      product_subcategory: String(item.props.data.category.name),
       rating: rating,
     };
     const error = await createleadClient(data);
@@ -949,12 +970,23 @@ class PaySection extends Component {
       qty: quantity,
       cid: this.state.clientId,
       gclid: this.state.gclid,
+      ip: this.state.userIp,
+      fbclid: this.state.fbclid,
+      fb_browser_id: this.state.fb_browser_id,
+      eventid:
+        (Math.random() + 1).toString(36).substring(7) +
+        "." +
+        new Date().getTime(),
       nme: fullName,
+      street: this.state.address,
+      city: this.state.city,
+      phone: this.state.mobile_phone,
+      // e_url: window.location.href,
       id: hmacID,
       last_name: this.state.lastName,
     });
 
-    // console.log(extra3)
+    console.log("Desktop", extra3);
 
     var md5 = require("md5");
     var ref_code = "kieroco-" + new Date().getTime();

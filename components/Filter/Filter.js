@@ -24,6 +24,7 @@ class Filter extends Component {
       menuFilter: false,
       categorySize: 10,
       dataCategories: [],
+      fatherCategories: [],
     };
 
     this.brands = React.createRef();
@@ -47,6 +48,9 @@ class Filter extends Component {
             category = category[category.length - 1];
             if (!isNaN(category.substr(0, 1))) {
               category = category.split(".")[1];
+            }
+            if (this.props.data && this.props.data.categories) {
+              this.res_categories = this.props.data.categories;
             }
             this.res_categories.push({
               items: null,
@@ -132,28 +136,15 @@ class Filter extends Component {
     let renderedPrices = [];
 
     if (this.props.data && this.props.data.categories) {
-      this.res_categories = this.props.data.categories;
-
-      setTimeout(() => {
-        this.res_categories = [];
-      }, 5000);
+      this.props.data.categories.map((data, i) => {
+        this.res_categories.push({
+          items: data.items,
+          key: data.key,
+          label: data.label,
+          level: data.level,
+        });
+      });
     }
-
-    // const renderCategories = () => {
-    //     this.state.dataCategories.map((data, i) => {
-    //         let category = data.split("/");
-    //         category = category[category.length - 1];
-    //         if (!isNaN(category.substr(0, 1))) {
-    //           category = category.split(".")[1];
-    //         }
-    //         res_categories.push({
-    //                     items:null,
-    //                     key: category,
-    //                     label:category,
-    //                     level:0})
-    //     })
-    // }
-
     if (this.props.data && this.props.data.brands) {
       res_brands = this.props.data.brands;
     }
