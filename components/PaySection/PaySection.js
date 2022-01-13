@@ -17,7 +17,11 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Modal from "../Common/Modal/Modal";
 // import { KlaviyoClient } from "../../lib/functions";
 import Cookies from "js-cookie";
-import { handleFormatName, sendCheckoutStepViewed } from "../../lib/functions";
+import {
+  handleFormatName,
+  sendCheckoutStepViewed,
+  setDiscount,
+} from "../../lib/functions";
 import { handleFormatUrl } from "../../lib/functions";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import { Button, Modal } from 'react-bootstrap';
@@ -991,9 +995,10 @@ class PaySection extends Component {
     var md5 = require("md5");
     var ref_code = "kieroco-" + new Date().getTime();
     var signature = md5(
-      `uzIc90bkpXj0aJDh22H67MRJnl~530932~${ref_code}~${
-        this.props.props.data.price * quantity
-      }~COP`
+      `uzIc90bkpXj0aJDh22H67MRJnl~530932~${ref_code}~${setDiscount(
+        this.props.props.data.price,
+        quantity
+      )}~COP`
     );
 
     // (
@@ -1114,7 +1119,7 @@ class PaySection extends Component {
             <input
               name="amount"
               type="hidden"
-              value={quantity * this.props.props.data.price}
+              value={setDiscount(this.props.props.data.price, quantity)}
             />
             <input name="tax" type="hidden" value="0" />
             <input name="taxReturnBase" type="hidden" value="0" />
@@ -1306,18 +1311,24 @@ class PaySection extends Component {
         <div className="pay-item-oldprice">
           <h3 className="price-pay-product-detail-oldprice">
             ${" "}
-            {this.props.price
-              ? (this.props.price * 1.428571428571429)
-                  .toString()
-                  .split(".")[0]
-                  .replace(/(.)(?=(\d{3})+$)/g, "$1.")
-              : " ... "}
+            {parseInt(
+              this.props.price /
+                (1 -
+                  parseFloat(
+                    "." + this.props.props.data.discount_percentage
+                  ).toFixed(2))
+            )
+              .toString()
+              .split(".")[0]
+              .replace(/(.)(?=(\d{3})+$)/g, "$1.")}
           </h3>{" "}
           <p
             className="price-pay-product-detail-oldprice-discount"
             style={{ color: "#0acf47" }}
           >
-            &nbsp; -{this.props.props.data.discount_percentage}% OFF
+            &nbsp; -
+            {parseFloat(this.props.props.data.discount_percentage).toFixed(0)}%
+            OFF
           </p>
         </div>
         <div className="pay-item">
