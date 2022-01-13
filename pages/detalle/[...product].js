@@ -16,7 +16,10 @@ const Detail = dynamic(() => import("../../components/ProductDetail"), {
   loading: () => <Loading />,
 });
 const ProductDetailMobil = dynamic(
-  () => import("../../components/ProductDetailMobil/ProductDetailMobil"),
+  () =>
+    import(
+      "../../components/NewProductDetail/ProductDetailMobil/ProductDetailMobil"
+    ),
   {
     ssr: false,
     loading: () => <Loading />,
@@ -184,17 +187,18 @@ function Product({ data, u_data, userIp }) {
 
 // This gets called on every request
 export async function getServerSideProps(context) {
-  const { req } = context;
-  const ipData = req.headers["x-real-ip"] || req.connection.remoteAddress;
+  let { req } = context;
+  let { query } = context;
+  let ipData = req.headers["x-real-ip"] || req.connection.remoteAddress;
   // Fetch data from external API
   let temp_p = String(context.params.product).split("_");
-  const id_product = JSON.parse(temp_p[0]);
+  let id_product = JSON.parse(temp_p[0]);
 
   const res = await getProductDetail(id_product, {
     params: { is_variant: false, product_global_id: id_product },
   });
 
-  const data = await res.data;
+  let data = await res.data;
 
   if (!data || data?.error === true) {
     return {
@@ -202,22 +206,34 @@ export async function getServerSideProps(context) {
     };
   }
 
-  if (temp_p.length < 2) {
+  const addParamsUrl = (query) => {
+    delete query["product"];
+    return Object.keys(query)
+      .map((value) => `${value}=${encodeURIComponent(query[value])}`)
+      .join("&");
+  };
+
+  const dataUrl = (id, title, query) => {
+    delete query["product"];
+    if (JSON.stringify(query).length > 2) {
+      return handleFormatUrl(id, title) + "?" + addParamsUrl(query);
+    } else {
+      return handleFormatUrl(id, title);
+    }
+  };
+
+  if (JSON.stringify(temp_p).length <= 15) {
     return {
       redirect: {
-        destination: handleFormatUrl(
-          id_product,
-          data.data.product_global_title
-        ),
+        destination: dataUrl(id_product, data.data.product_global_title, query),
         permanent: false,
       },
     };
   }
-
   let usr = getUser(context);
   let jwt = getJwt(context);
 
-  const u_data = {
+  let u_data = {
     user: usr !== undefined ? usr : null,
     authenticated: isAuthenticated(context),
     jwt: jwt ? jwt : "",

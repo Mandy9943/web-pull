@@ -13,7 +13,7 @@
   height: 50px;
 }
 
-#WhatsappBanner .linkToWhatsapp{
+#WhatsappBanner .linkToWhatsapp {
   flex: 1;
   display: flex;
   justify-content: flex-end;
