@@ -1,0 +1,125 @@
+.SectionType2 {
+  width: 100%;
+  height: 590px;
+  overflow: auto;
+  box-sizing: border-box;
+
+  margin: auto;
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 50px;
+}
+.SectionType2 .imageSection {
+  border-radius: 10px 10px 0 0;
+  height: 320px;
+  position: relative;
+}
+.SectionType2 .imageSection .imgContent {
+  max-width: 350px;
+
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 15px;
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+
+  border-radius: 10px;
+}
+.SectionType2 .imageSection .imgContent .icon {
+  display: none;
+  margin-top: 15px;
+
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 2.5rem;
+  /* identical to box height */
+
+  letter-spacing: 0.02em;
+
+  /* White */
+
+  color: #ffffff;
+}
+.SectionType2 .imageSection .imgContent .caption {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 800;
+  font-size: clamp(1.8rem, 2.5vw, 2rem);
+  /* identical to box height */
+
+  letter-spacing: 0.02em;
+
+  /* White */
+
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.SectionType2 .textSection {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.SectionType2 .textSection .text {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 15px;
+}
+.SectionType2 .textSection .text p {
+  margin-bottom: 20px;
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  /* or 133% */
+
+  letter-spacing: 0.01em;
+
+  color: #000000;
+}
+
+.responsiveTextSection {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .SectionType2 {
+    height: auto;
+  }
+  .SectionType2 .textSection .text {
+    width: 100%;
+  }
+  .SectionType2 .imageSection .imgContent {
+    cursor: pointer;
+    justify-content: flex-end;
+    padding-bottom: 30px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .SectionType2 .imageSection .imgContent :focus {
+    outline-color: transparent;
+    outline-style: none;
+  }
+
+  .SectionType2 .imageSection .imgContent .icon {
+    display: flex;
+  }
+  .desktopTextSection {
+    display: none;
+  }
+  .responsiveTextSection {
+    display: block;
+  }
+}

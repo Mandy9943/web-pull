@@ -35,6 +35,8 @@ def tratar_url(url):
     new_url = url.lower().translate(traduccion)
     new_url = new_url.capitalize()
     new_url = re.sub(r'\W+', "-", new_url)
+    if len(new_url) > 80:
+        new_url = new_url[:80]
     return new_url
 
 

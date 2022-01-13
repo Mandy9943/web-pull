@@ -4,30 +4,36 @@ import { getProductDetail } from "../../services/productsApi";
 import { getUser, isAuthenticated, getJwt } from "../../lib/auth";
 import favicon from "../../assets/img/favicon.svg";
 import dynamic from "next/dynamic";
-import { handleFormatUrl } from "../../lib/functions";
+import { createlead, handleFormatUrl } from "../../lib/functions";
 import useResize from "../../lib/hooks/useResize";
 import Loading from "../../components/Common/Loading/Loading";
 import { useAppDispatch } from "../../lib/hooks/redux";
 import { setData } from "../../redux/feature/pay/paySlice";
+import { setNumber } from "../../redux/feature/whatsapp/whatsappReducer";
+
 const Detail = dynamic(() => import("../../components/ProductDetail"), {
   ssr: false,
   loading: () => <Loading />,
 });
 const ProductDetailMobil = dynamic(
-  () => import("../../components/ProductDetailMobil/ProductDetailMobil"),
+  () =>
+    import(
+      "../../components/NewProductDetail/ProductDetailMobil/ProductDetailMobil"
+    ),
   {
     ssr: false,
     loading: () => <Loading />,
   }
 );
 
-function Product({ data, u_data }) {
+function Product({ data, u_data, userIp }) {
   const dispatch = useAppDispatch();
   const mobileView = useResize(768);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setIsLoading(false);
+    dispatch(setNumber());
   }, []);
 
   useEffect(() => {
@@ -35,12 +41,16 @@ function Product({ data, u_data }) {
       setData({
         category: data.category,
         price: data.product_global_price,
-        img: data.images[0],
+        img: data.images,
         title: data.title,
         product_id: data.product_global_id,
         brand: data.brand,
+        description: data.description,
+        category_id: data.category_id,
       })
     );
+
+    createlead(data, 1);
   }, [data, dispatch]);
 
   return (
@@ -87,7 +97,7 @@ function Product({ data, u_data }) {
         />
         <meta
           name="twitter: description"
-          contenido=" Envíos gratis en Colombia, productos para Bebés, Belleza, Cámaras y accesorios,
+          content=" Envíos gratis en Colombia, productos para Bebés, Belleza, Cámaras y accesorios,
       Electrodomésticos, Electrónica, Hogar y muebles y mucho más."
         />
         <meta name="twitter: image" content={`${data.images[0].url}`} />
@@ -161,9 +171,13 @@ function Product({ data, u_data }) {
         <>
           {mobileView ? (
             //  <Detail user_data={u_data} data={data} />
-            <ProductDetailMobil user_data={u_data} data={data} />
+            <ProductDetailMobil
+              user_data={u_data}
+              data={data}
+              userIp={userIp}
+            />
           ) : (
-            <Detail user_data={u_data} data={data} />
+            <Detail user_data={u_data} data={data} userIp={userIp} />
           )}
         </>
       )}
@@ -173,27 +187,59 @@ function Product({ data, u_data }) {
 
 // This gets called on every request
 export async function getServerSideProps(context) {
+  let { req } = context;
+  let { query } = context;
+  let ipData = req.headers["x-real-ip"] || req.connection.remoteAddress;
   // Fetch data from external API
   let temp_p = String(context.params.product).split("_");
-
-  const id_product = JSON.parse(temp_p[0]);
+  let id_product = JSON.parse(temp_p[0]);
 
   const res = await getProductDetail(id_product, {
     params: { is_variant: false, product_global_id: id_product },
   });
 
-  const data = await res.data;
+  let data = await res.data;
 
+  if (!data || data?.error === true) {
+    return {
+      notFound: true,
+    };
+  }
+
+  const addParamsUrl = (query) => {
+    delete query["product"];
+    return Object.keys(query)
+      .map((value) => `${value}=${encodeURIComponent(query[value])}`)
+      .join("&");
+  };
+
+  const dataUrl = (id, title, query) => {
+    delete query["product"];
+    if (JSON.stringify(query).length > 2) {
+      return handleFormatUrl(id, title) + "?" + addParamsUrl(query);
+    } else {
+      return handleFormatUrl(id, title);
+    }
+  };
+
+  if (JSON.stringify(temp_p).length <= 15) {
+    return {
+      redirect: {
+        destination: dataUrl(id_product, data.data.product_global_title, query),
+        permanent: false,
+      },
+    };
+  }
   let usr = getUser(context);
   let jwt = getJwt(context);
 
-  const u_data = {
+  let u_data = {
     user: usr !== undefined ? usr : null,
     authenticated: isAuthenticated(context),
     jwt: jwt ? jwt : "",
   };
 
-  return { props: { data: data.data, u_data } };
+  return { props: { data: data.data, u_data, userIp: ipData } };
 }
 
 export default Product;

@@ -1,44 +1,76 @@
-.containerAbout header{
+/* .containerAbout header{
     position: relative;
-    min-height: 53vh;
+    height: 600px;
     width: 100%;
+} */
+/* 
+
+} */
+
+.containerAbout .headerAbout {
+  height: 600px;
+  width: 100%;
 }
 
-.containerAbout header img{
-    width: 100%;
-    max-width: 100%;
-    height: auto !important;
-    max-height: 100%! important;
-    position: absolute;
-    margin: auto;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    min-height: auto!important;
+.containerAbout .headerAbout img {
+  width: 100%;
+  max-width: 100%;
+  height: auto !important;
+  max-height: 100% !important;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  min-height: auto !important;
 }
 
-.containerAbout header .aboutText{
-    position: absolute;
-    margin: auto;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.containerAbout .headerAbout .aboutText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
-.containerAbout header .aboutText p{
-    text-align: center;
-    letter-spacing: 5px;
-    font-family: 'Montserrat';
-    font-weight: 900;
-    color: white;
-    font-size: 4vw;
+.containerAbout .headerAbout .aboutText p {
+  text-align: center;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 900;
+  font-size: clamp(15px, 3vw, 50px);
+
+  letter-spacing: 0.1em;
+
+  /* White */
+
+  color: #ffffff;
 }
 
-.containerAbout header .aboutText p:nth-child(2){
-    font-size: 7vw;
+.containerAbout .headerAbout .aboutText p:nth-child(2) {
+  font-size: 18vw;
+}
+
+.containerAbout .bottomSectionWrapper {
+  width: 100%;
+}
+.containerAbout .bottomSectionWrapper .bottomSection {
+  margin: auto;
+  padding-top: 80px;
+  width: 85%;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-column-gap: 40px;
+}
+
+@media (max-width: 900px) {
+  .containerAbout .bottomSectionWrapper .bottomSection {
+    grid-template-columns: auto;
+  }
+}
+@media (max-width: 425px) {
+  .containerAbout .headerAbout {
+    height: 80vh;
+  }
 }

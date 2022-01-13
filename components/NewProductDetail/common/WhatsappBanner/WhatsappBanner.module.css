@@ -1,0 +1,42 @@
+#WhatsappBanner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 0 20px;
+  background: #3ada96;
+  color: white;
+  display: flex;
+  z-index: 999;
+  align-items: center;
+  font-size: 3.5vw;
+  height: 50px;
+}
+
+#WhatsappBanner .linkToWhatsapp {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: white;
+}
+
+#WhatsappBanner .closeIcon {
+  margin-left: 10px;
+  font-size: 20px;
+}
+#WhatsappBanner .info {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+#WhatsappBanner .info a {
+  color: white;
+}
+#WhatsappBanner .info .whatsappIcon {
+  margin: 0 15px;
+  font-size: 6vw;
+  display: flex;
+  align-items: center;
+}

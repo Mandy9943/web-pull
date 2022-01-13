@@ -1,0 +1,81 @@
+.FooterSectionWrapper {
+  background-color: white;
+  width: 100%;
+  padding: 50px 0;
+  box-sizing: border-box;
+}
+.FooterSection {
+  width: 85%;
+  margin: auto;
+}
+.FooterSection .title {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.FooterSection .title h3 {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 2rem;
+
+  letter-spacing: 1px;
+
+  color: #000000;
+}
+.FooterSection .content {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column-gap: 40px;
+}
+
+.FooterSection .content .item {
+  margin-bottom: 90px;
+}
+.FooterSection .content .item .imgFooterContent {
+  display: flex;
+
+  margin-bottom: 30px;
+  width: 100%;
+}
+.FooterSection .content .item .imgFooterContent .anullProperties {
+  width: 100% !important;
+  height: fit-content !important;
+}
+.FooterSection .content .item .imgFooterContent img {
+  width: 100% !important;
+}
+
+.FooterSection .content .item .title2 {
+  margin-bottom: 15px;
+}
+.FooterSection .content .item .title2 h4 {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 22px;
+
+  /* identical to box height, or 133% */
+}
+.FooterSection .content .item .description {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+
+  /* or 150% */
+
+  color: #000000;
+}
+
+@media (max-width: 1200px) {
+  .FooterSection .content {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 600px) {
+  .FooterSection .content {
+    grid-template-columns: auto;
+  }
+}

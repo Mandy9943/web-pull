@@ -230,10 +230,14 @@ class Category extends Component {
       this.props.data.search,
       brand,
       price,
-      category ? category : this.props.data.type === 'category' ? this.state.categoryName : category,
+      category
+        ? category
+        : this.props.data.type === "category"
+        ? this.state.categoryName
+        : category,
       sortBy,
       orderBy,
-      this.state.categoryLevel 
+      this.state.categoryLevel
     );
 
     products.then((response) => {
@@ -335,7 +339,13 @@ class Category extends Component {
 
   onSelectCategory = (node, index) => {
     if (this.props.data.type === "category") {
-      redirect("/categoria/" + node.key);
+      window.location.href =
+        "/categoria/" +
+        node.key
+          .replace(/^[, ]+|[, ]+$|[, ]+/g, "-")
+          .trim()
+          .toLowerCase();
+      // redirect("/categoria/" + node.key);
       return;
     }
 
@@ -408,6 +418,7 @@ class Category extends Component {
             sortProducts={this.sortProducts}
             totalItems={this.state.totalItems}
             onSelectCategory={this.onSelectCategory}
+            category={this.props.data.search}
           />
           <ListCategory
             sendToFilters={this.sendToFilters}

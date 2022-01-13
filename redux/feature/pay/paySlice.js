@@ -1,12 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  category: "",
+  category: { name: "" },
   price: 0,
-  img: "",
+  img: [{ url: "" }],
   product_id: 0,
   title: "",
   brand: "",
+  description: "",
+  category_id: "",
   count: 0,
   isFormOpen: false,
 };
@@ -30,6 +32,8 @@ export const paySlice = createSlice({
       state.product_id = action.payload.product_id;
       state.title = action.payload.title;
       state.brand = action.payload.brand;
+      state.description = action.payload.description;
+      state.category_id = action.payload.category_id;
     },
     openForm: (state, action) => {
       state.isFormOpen = action.payload;

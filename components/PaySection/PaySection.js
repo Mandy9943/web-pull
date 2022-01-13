@@ -17,7 +17,11 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Modal from "../Common/Modal/Modal";
 // import { KlaviyoClient } from "../../lib/functions";
 import Cookies from "js-cookie";
-import { handleFormatName, sendCheckoutStepViewed } from "../../lib/functions";
+import {
+  handleFormatName,
+  sendCheckoutStepViewed,
+  setDiscount,
+} from "../../lib/functions";
 import { handleFormatUrl } from "../../lib/functions";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import { Button, Modal } from 'react-bootstrap';
@@ -31,6 +35,7 @@ class PaySection extends Component {
       cantidad: 0,
       dimensions: {},
       variantsSpinner: props.m_pgid ? false : true,
+      userIp: props.props.userIp,
       modalAddr: false,
       user: "",
       user_id: "",
@@ -50,6 +55,8 @@ class PaySection extends Component {
       typeIdentificationName: "0TN",
       display: "none",
       gclid: "",
+      fbclid: "",
+      fb_browser_id: "",
       clientId: "",
     };
   }
@@ -93,16 +100,34 @@ class PaySection extends Component {
           this.gclid = match ? match[1] : undefined;
         }
         //////
+        // FBCLID
+        let _fbc = Cookies.get("_fbc");
+        this.fbclid = _fbc ? _fbc.slice(19) : undefined;
+        if (!this.JSONfbclid) {
+          const match = /fbclid=([^&#]*)/.exec(window.location.search);
+          this.fbclid = match ? match[1] : undefined;
+        }
+        //////
+        // fb_browser_id
+        this.fb_browser_id = Cookies.get("_fbp");
+        //////
       } else {
-        dataGoogleAds(this.clientId, this.gclid);
+        dataGoogleAds(
+          this.clientId,
+          this.gclid,
+          this.fbclid,
+          this.fb_browser_id
+        );
         clearInterval(dataInterval);
       }
     }, 200);
 
-    const dataGoogleAds = (clid, gclId) => {
+    const dataGoogleAds = (clid, gclId, fbclid, fb_browser_id) => {
       this.setState({
         gclid: gclId,
         clientId: clid,
+        fbclid: fbclid,
+        fb_browser_id: fb_browser_id,
       });
     };
 
@@ -114,73 +139,82 @@ class PaySection extends Component {
   go = (id) => {
     var quantity = this.state.cantidad == 0 ? 1 : this.state.cantidad;
 
-    // dataLayer.push({ ecommerce: null });
-    // let dataLayerBeginCheckout = {
-    // 	'event': 'begin_checkout',
-    // 	'ecommerce': {
-    // 		'items': [{
-    // 			'item_name': this.props.props.data.product_global_title, // Name or ID is required.
-    // 			'item_id': this.props.props.data.product_global_id,
-    // 			'price': this.props.props.data.price,
-    // 			'item_brand': this.props.props.data.brand,
-    // 			'quantity': this.state.cantidad == 0 ? 1 : this.state.cantidad,
-    // 			'url':'https://kiero.co/detalle/' + this.props.props.data.product_global_id + '_' + this.props.props.data.product_global_title
-    // 			.replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-    // 			.replaceAll('//', '%2F')
-    // 																							.replaceAll('%', '')
-    // 																							.replaceAll(/['"]+/g, '')
-    // 																							.split(' ')
-    // 																							.join('-'),
-    // 																						}]
-    // 																					}
-    // 	};
-    // 	const beginCheckoutGooleDataLayerG4 = (dataLayerBeginCheckout) => {
-    // 		this.props.props.data.breadcum.forEach((prod, index) => {
-    // 			let keyCategory = `item_category${index + 1}`;
-    // 			let valueNameCategory = prod.name;
-    // 			dataLayerBeginCheckout['ecommerce']['items'][0][keyCategory] = valueNameCategory;
-    // 		});
-    // 		return dataLayerBeginCheckout;
-    // 	}
-    // 	let resultDataLayerBeginCheckout = beginCheckoutGooleDataLayerG4(dataLayerBeginCheckout);
-    // 	dataLayer.push(resultDataLayerBeginCheckout);
-    // if (typeof window !== 'undefined') {
-    //     if (window.fbq != null) {
-    //         window.fbq('track', 'InitiateCheckout', {
-    //             content_ids: this.props.props.data.product_global_id,
-    //             content_name: this.props.props.data.product_global_title,
-    //             product_group: this.props.props.data.type,
-    //             content_type: 'product',
-    //             content_category: this.props.props.data.breadcum[0].name,
-    //             contents: [
-    //                 {
-    //                     id: this.props.props.data.product_global_id,
-    //                     quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
-    //                 },
-    //             ],
-    //             currency: 'COP',
-    //             value: this.props.props.data.price,
-    //             num_items: this.state.cantidad == 0 ? 1 : this.state.cantidad,
-    //         });
-    //     } else {
-    //         fbq('track', 'InitiateCheckout', {
-    //             content_ids: this.props.props.data.product_global_id,
-    //             content_name: this.props.props.data.product_global_title,
-    //             product_group: this.props.props.data.type,
-    //             content_type: 'product',
-    //             content_category: this.props.props.data.breadcum[0].name,
-    //             contents: [
-    //                 {
-    //                     id: this.props.props.data.product_global_id,
-    //                     quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
-    //                 },
-    //             ],
-    //             currency: 'COP',
-    //             value: this.props.props.data.price,
-    //             num_items: this.state.cantidad == 0 ? 1 : this.state.cantidad,
-    //         });
-    //     }
-    // }
+    dataLayer.push({ ecommerce: null });
+    let dataLayerBeginCheckout = {
+      event: "begin_checkout",
+      ecommerce: {
+        items: [
+          {
+            item_name: this.props.props.data.product_global_title, // Name or ID is required.
+            item_id: this.props.props.data.product_global_id,
+            price: this.props.props.data.price,
+            item_brand: this.props.props.data.brand,
+            quantity: quantity,
+            url:
+              "https://kiero.co/detalle/" +
+              this.props.props.data.product_global_id +
+              "_" +
+              this.props.props.data.product_global_title
+                .replaceAll(/[^\w\s\&\/\\#,+()$~%.'":*?<>{}]/gi, "")
+                .replaceAll("//", "%2F")
+                .replaceAll("%", "")
+                .replaceAll(/['"]+/g, "")
+                .split(" ")
+                .join("-"),
+          },
+        ],
+      },
+    };
+    const beginCheckoutGooleDataLayerG4 = (dataLayerBeginCheckout) => {
+      this.props.props.data.breadcum.forEach((prod, index) => {
+        let keyCategory = `item_category${index + 1}`;
+        let valueNameCategory = prod.name;
+        dataLayerBeginCheckout["ecommerce"]["items"][0][keyCategory] =
+          valueNameCategory;
+      });
+      return dataLayerBeginCheckout;
+    };
+    let resultDataLayerBeginCheckout = beginCheckoutGooleDataLayerG4(
+      dataLayerBeginCheckout
+    );
+    dataLayer.push(resultDataLayerBeginCheckout);
+    if (typeof window !== "undefined") {
+      if (window.fbq != null) {
+        window.fbq("track", "InitiateCheckout", {
+          content_ids: this.props.props.data.product_global_id,
+          content_name: this.props.props.data.product_global_title,
+          product_group: this.props.props.data.type,
+          content_type: "product",
+          content_category: this.props.props.data.breadcum[0].name,
+          contents: [
+            {
+              id: this.props.props.data.product_global_id,
+              quantity: quantity,
+            },
+          ],
+          currency: "COP",
+          value: this.props.props.data.price,
+          num_items: quantity,
+        });
+      } else {
+        fbq("track", "InitiateCheckout", {
+          content_ids: this.props.props.data.product_global_id,
+          content_name: this.props.props.data.product_global_title,
+          product_group: this.props.props.data.type,
+          content_type: "product",
+          content_category: this.props.props.data.breadcum[0].name,
+          contents: [
+            {
+              id: this.props.props.data.product_global_id,
+              quantity: quantity,
+            },
+          ],
+          currency: "COP",
+          value: this.props.props.data.price,
+          num_items: quantity,
+        });
+      }
+    }
 
     fbq("track", "InitiateCheckout", {
       content_ids: this.props.props.data.product_global_id,
@@ -191,12 +225,12 @@ class PaySection extends Component {
       contents: [
         {
           id: this.props.props.data.product_global_id,
-          quantity: this.state.cantidad == 0 ? 1 : this.state.cantidad,
+          quantity: quantity,
         },
       ],
       currency: "COP",
       value: this.props.props.data.price,
-      num_items: this.state.cantidad == 0 ? 1 : this.state.cantidad,
+      num_items: quantity,
     });
 
     // gtag('event', 'begin_checkout', {
@@ -486,7 +520,7 @@ class PaySection extends Component {
     //   },
     // });
 
-    sendCheckoutStepViewed(2);
+    sendCheckoutStepViewed(this.props.props.data, 2);
 
     // // Segment Checkout Step Viewed/Completed events
     // // Fire this event whenever a checkout step is completed.
@@ -766,6 +800,11 @@ class PaySection extends Component {
         user_id = Cookies.get("user_id");
       }
     }
+    if (item.props.data.rating !== undefined) {
+      var rating = toString(item.props.data.rating / 10);
+    } else {
+      rating = "N/A";
+    }
     var data = {
       first_name: name,
       city: this.state.city,
@@ -793,6 +832,9 @@ class PaySection extends Component {
       product_image: item.props.data.images[0].url,
       product_brand: item.props.data.brand,
       category_id: String(item.props.data.category_id),
+      product_category: String(item.props.data.breadcum[0].name),
+      product_subcategory: String(item.props.data.category.name),
+      rating: rating,
     };
     const error = await createleadClient(data);
   }
@@ -837,43 +879,43 @@ class PaySection extends Component {
         ],
       };
 
-      var quantity = this.state.cantidad == 0 ? 1 : this.state.cantidad;
+      // var quantity = this.state.cantidad == 0 ? 1 : this.state.cantidad;
 
-      var checkoutStartedValues = {
-        // order_id: '50314b8e9bcf000000000000',
-        affiliation: "SpiceStock",
-        value: this.props.props.data.price * quantity,
-        revenue: this.props.props.data.price * quantity,
-        shipping: 0,
-        tax: 0,
-        discount: 0,
-        // coupon: 'hasbros',
-        currency: "COP",
-        products: [
-          {
-            product_id: this.props.props.data.product_global_id,
-            // sku: '45790-32',
-            name: this.props.props.data.product_global_title,
-            price: this.props.props.data.price,
-            quantity: quantity,
-            brand: this.props.props.data.brand,
-            category: concatCategories(),
-            url:
-              "https://kiero.co" +
-              handleFormatUrl(
-                this.props.props.data.product_global_id,
-                this.props.props.data.product_global_title
-              ),
-            image_url: this.props.props.data.images.length
-              ? this.props.props.data.images[0].url
-              : null,
-          },
-        ],
-      };
+      // var checkoutStartedValues = {
+      //   // order_id: '50314b8e9bcf000000000000',
+      //   affiliation: "SpiceStock",
+      //   value: this.props.props.data.price * quantity,
+      //   revenue: this.props.props.data.price * quantity,
+      //   shipping: 0,
+      //   tax: 0,
+      //   discount: 0,
+      //   // coupon: 'hasbros',
+      //   currency: "COP",
+      //   products: [
+      //     {
+      //       product_id: this.props.props.data.product_global_id,
+      //       // sku: '45790-32',
+      //       name: this.props.props.data.product_global_title,
+      //       price: this.props.props.data.price,
+      //       quantity: quantity,
+      //       brand: this.props.props.data.brand,
+      //       category: concatCategories(),
+      //       url:
+      //         "https://kiero.co" +
+      //         handleFormatUrl(
+      //           this.props.props.data.product_global_id,
+      //           this.props.props.data.product_global_title
+      //         ),
+      //       image_url: this.props.props.data.images.length
+      //         ? this.props.props.data.images[0].url
+      //         : null,
+      //     },
+      //   ],
+      // };
 
       // console.log(checkoutStartedValues);
 
-      sendCheckoutStepViewed(1);
+      sendCheckoutStepViewed(this.props.props.data, 1);
 
       // // Segment Checkout Step Viewed/Completed events
       // // Fire this event whenever a checkout step is completed.
@@ -928,22 +970,46 @@ class PaySection extends Component {
     var hmacID = createHmacSHA1(this.state.identification);
     this.state.user_id = hmacID;
 
-    var extra3 = JSON.stringify({
-      qty: quantity,
-      cid: this.state.clientId,
-      gclid: this.state.gclid,
-      nme: fullName,
+    const extra1 = JSON.stringify({
       id: hmacID,
+      street: this.state.address,
+      city: this.state.city,
+      user_id: this.props.props.data.user_id,
+      product_id: this.props.props.data.product_id,
     });
 
-    // console.log(extra3)
+    console.log("extra1 Desktop", extra1);
+
+    var extra2 = JSON.stringify({
+      qty: quantity,
+      ip: this.state.userIp,
+      fbclid: this.state.fbclid,
+      fb_browser_id: this.state.fb_browser_id,
+      eventid:
+        (Math.random() + 1).toString(36).substring(7) +
+        "." +
+        new Date().getTime(),
+    });
+
+    console.log("extra2 Desktop", extra2);
+
+    var extra3 = JSON.stringify({
+      cid: this.state.clientId,
+      gclid: this.state.gclid,
+      nme: this.state.user,
+      phone: this.state.mobile_phone,
+      last_name: this.state.lastName,
+    });
+
+    console.log("extrar3 Desktop", extra3);
 
     var md5 = require("md5");
     var ref_code = "kieroco-" + new Date().getTime();
     var signature = md5(
-      `uzIc90bkpXj0aJDh22H67MRJnl~530932~${ref_code}~${
-        this.props.props.data.price * quantity
-      }~COP`
+      `uzIc90bkpXj0aJDh22H67MRJnl~530932~${ref_code}~${setDiscount(
+        this.props.props.data.price,
+        quantity
+      )}~COP`
     );
 
     // (
@@ -1064,7 +1130,7 @@ class PaySection extends Component {
             <input
               name="amount"
               type="hidden"
-              value={quantity * this.props.props.data.price}
+              value={setDiscount(this.props.props.data.price, quantity)}
             />
             <input name="tax" type="hidden" value="0" />
             <input name="taxReturnBase" type="hidden" value="0" />
@@ -1085,16 +1151,8 @@ class PaySection extends Component {
               value={this.state.address}
             />
             <input name="payerFullName" type="hidden" value={fullName} />
-            <input
-              name="extra1"
-              type="hidden"
-              value={this.props.props.data.product_id}
-            />
-            <input
-              name="extra2"
-              type="hidden"
-              value={this.props.props.data.user.user_id}
-            />
+            <input name="extra1" type="hidden" value={extra1} />
+            <input name="extra2" type="hidden" value={extra2} />
             <input name="extra3" type="hidden" value={extra3} />
             <input
               name="responseUrl"
@@ -1226,6 +1284,7 @@ class PaySection extends Component {
         )}
       </div>
     );
+    console.log("item", this.props);
     return (
       <div className="pay">
         <div
@@ -1255,18 +1314,24 @@ class PaySection extends Component {
         <div className="pay-item-oldprice">
           <h3 className="price-pay-product-detail-oldprice">
             ${" "}
-            {this.props.price
-              ? (this.props.price * 1.428571428571429)
-                  .toString()
-                  .split(".")[0]
-                  .replace(/(.)(?=(\d{3})+$)/g, "$1.")
-              : " ... "}
+            {parseInt(
+              this.props.price /
+                (1 -
+                  parseFloat(
+                    "." + this.props.props.data.discount_percentage
+                  ).toFixed(2))
+            )
+              .toString()
+              .split(".")[0]
+              .replace(/(.)(?=(\d{3})+$)/g, "$1.")}
           </h3>{" "}
           <p
             className="price-pay-product-detail-oldprice-discount"
             style={{ color: "#0acf47" }}
           >
-            &nbsp; -30% OFF
+            &nbsp; -
+            {parseFloat(this.props.props.data.discount_percentage).toFixed(0)}%
+            OFF
           </p>
         </div>
         <div className="pay-item">
