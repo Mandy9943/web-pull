@@ -142,10 +142,19 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
   const hmacID = CryptoJS.HmacSHA1(state.identification, "abc").toString(
     CryptoJS.enc.Hex
   );
-  const extra3 = JSON.stringify({
+
+  const extra1 = JSON.stringify({
+    id: hmacID,
+    street: values.address,
+    city: values.city,
+    user_id: state.user_id,
+    product_id: productData.product_id,
+  });
+
+  console.log("extra1 Mobile", extra1);
+
+  const extra2 = JSON.stringify({
     qty: quantity,
-    cid: state.clientId,
-    gclid: state.gclid,
     ip: userIp,
     fbclid: state.fbclid,
     fb_browser_id: state.fb_browser_id,
@@ -153,16 +162,19 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
       (Math.random() + 1).toString(36).substring(7) +
       "." +
       new Date().getTime(),
-    nme: fullName,
-    street: values.address,
-    city: values.city,
+  });
+
+  console.log("extra2 Mobile", extra2);
+
+  const extra3 = JSON.stringify({
+    cid: state.clientId,
+    gclid: state.gclid,
+    nme: values.firstName,
     phone: values.phoneNumber,
-    // e_url: window.location.href,
-    id: hmacID,
     last_name: values.lastName,
   });
 
-  console.log("extra3 formProductDetail", extra3);
+  console.log("extra3 Mobile", extra3);
 
   var md5 = require("md5");
   var ref_code = "kieroco-" + new Date().getTime();
@@ -363,8 +375,8 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
               value={getValues().address}
             />
             <input name="payerFullName" type="hidden" value={fullName} />
-            <input name="extra1" type="hidden" value={productData.product_id} />
-            <input name="extra2" type="hidden" value={state.user_id} />
+            <input name="extra1" type="hidden" value={extra1} />
+            <input name="extra2" type="hidden" value={extra2} />
             <input name="extra3" type="hidden" value={extra3} />
             <input
               name="responseUrl"
