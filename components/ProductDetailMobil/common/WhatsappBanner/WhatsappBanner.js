@@ -2,9 +2,17 @@ import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+
 import "./WhatsappBanner.module.css";
+import { useAppSelector } from "../../../../lib/hooks/redux";
+import {
+  selectPretty,
+  selectFormat,
+} from "../../../../redux/feature/whatsapp/whatsappReducer";
 
 const WhatsappBanner = ({ close, productId }) => {
+  const pretty = useAppSelector(selectPretty);
+  const numberFormat = useAppSelector(selectFormat);
   return (
     <div id="WhatsappBanner">
       <div className="closeIcon" onClick={close}>
@@ -14,7 +22,7 @@ const WhatsappBanner = ({ close, productId }) => {
       <a
         rel="noopener noreferrer"
         target="_blank"
-        href={`https://wa.me/573226569293/?text=Hola estoy interesado sobre el producto “https://kiero.co/detalle/${productId}" y quiero saber más información, me pueden ayudar?`}
+        href={`https://wa.me/${numberFormat}/?text=Hola estoy interesado sobre el producto “https://kiero.co/detalle/${productId}" y quiero saber más información, me pueden ayudar?`}
         className="linkToWhatsapp"
       >
         <div className="info">
@@ -22,7 +30,7 @@ const WhatsappBanner = ({ close, productId }) => {
           <span className="whatsappIcon">
             <FontAwesomeIcon icon={faWhatsapp} />
           </span>
-          <span>+57 322 6569293</span>
+          <span>{pretty}</span>
         </div>
       </a>
     </div>
