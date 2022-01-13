@@ -1244,6 +1244,7 @@ class PaySection extends Component {
         )}
       </div>
     );
+    console.log("item", this.props);
     return (
       <div className="pay">
         <div
@@ -1284,7 +1285,7 @@ class PaySection extends Component {
             className="price-pay-product-detail-oldprice-discount"
             style={{ color: "#0acf47" }}
           >
-            &nbsp; -30% OFF
+            &nbsp; -{this.props.props.data.discount_percentage}% OFF
           </p>
         </div>
         <div className="pay-item">
