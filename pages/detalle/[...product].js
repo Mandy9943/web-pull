@@ -9,6 +9,7 @@ import useResize from "../../lib/hooks/useResize";
 import Loading from "../../components/Common/Loading/Loading";
 import { useAppDispatch } from "../../lib/hooks/redux";
 import { setData } from "../../redux/feature/pay/paySlice";
+import { setNumber } from "../../redux/feature/whatsapp/whatsappReducer";
 
 const Detail = dynamic(() => import("../../components/ProductDetail"), {
   ssr: false,
@@ -29,6 +30,7 @@ function Product({ data, u_data }) {
 
   useEffect(() => {
     setIsLoading(false);
+    dispatch(setNumber());
   }, []);
 
   useEffect(() => {
