@@ -5,6 +5,7 @@ import abierto from "../../../../assets/img/productDetail/l-nea-86@2x.svg";
 
 import Image from "next/image";
 import arrow from "../../../../assets/img/productDetail/arrow-down@2x.svg";
+import { Collapse } from "@mui/material";
 
 function Description({ product }) {
   const [collapse, setCollapse] = useState(false);
@@ -27,7 +28,7 @@ function Description({ product }) {
           />
         </div>
       </div>
-      {collapse === true ? (
+      <Collapse in={collapse === true}>
         <div className="detalles">
           <p className="texto">{product.information}</p>
           <footer>
@@ -41,7 +42,7 @@ function Description({ product }) {
             </div>
           </footer>
         </div>
-      ) : null}
+      </Collapse>
     </div>
   );
 }
