@@ -173,7 +173,7 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
     product_id: productData.product_id,
   });
 
-  console.log("extra1 Mobile", extra1);
+  // console.log("extra1 Mobile", extra1);
 
   const extra2 = JSON.stringify({
     qty: quantity,
@@ -186,7 +186,7 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
       new Date().getTime(),
   });
 
-  console.log("extra2 Mobile", extra2);
+  // console.log("extra2 Mobile", extra2);
 
   const extra3 = JSON.stringify({
     cid: state.clientId,
@@ -196,7 +196,7 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
     last_name: values.lastName,
   });
 
-  console.log("extra3 Mobile", extra3);
+  // console.log("extra3 Mobile", extra3);
 
   var md5 = require("md5");
   var ref_code = "kieroco-" + new Date().getTime();

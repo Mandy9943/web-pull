@@ -978,7 +978,7 @@ class PaySection extends Component {
       product_id: this.props.props.data.product_id,
     });
 
-    console.log("extra1 Desktop", extra1);
+    // console.log("extra1 Desktop", extra1);
 
     var extra2 = JSON.stringify({
       qty: quantity,
@@ -991,7 +991,7 @@ class PaySection extends Component {
         new Date().getTime(),
     });
 
-    console.log("extra2 Desktop", extra2);
+    // console.log("extra2 Desktop", extra2);
 
     var extra3 = JSON.stringify({
       cid: this.state.clientId,
@@ -1001,7 +1001,7 @@ class PaySection extends Component {
       last_name: this.state.lastName,
     });
 
-    console.log("extrar3 Desktop", extra3);
+    // console.log("extrar3 Desktop", extra3);
 
     var md5 = require("md5");
     var ref_code = "kieroco-" + new Date().getTime();
@@ -1284,7 +1284,7 @@ class PaySection extends Component {
         )}
       </div>
     );
-    console.log("item", this.props);
+    // console.log("item", this.props);
     return (
       <div className="pay">
         <div
