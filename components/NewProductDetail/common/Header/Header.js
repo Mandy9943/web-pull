@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import "./Header.module.css";
 
-const Header = ({ title, bredCumbs }) => {
+const Header = ({ title, bredCumbs, isDesktop }) => {
   const bredCumb = [];
   if (bredCumbs?.length > 0) {
     bredCumbs.map((b) => {
@@ -31,11 +31,13 @@ const Header = ({ title, bredCumbs }) => {
         <span className="bredItem">...</span>
         {bredCumb}
       </div>
-      <div className="title">
-        <h2 className="titleText">
-          {title.length > 80 ? title.substr(0, 80) + "..." : title}
-        </h2>
-      </div>
+      {!isDesktop && (
+        <div className="title">
+          <h2 className="titleText">
+            {title.length > 80 ? title.substr(0, 80) + "..." : title}
+          </h2>
+        </div>
+      )}
     </div>
   );
 };

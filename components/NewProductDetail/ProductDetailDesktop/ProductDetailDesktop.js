@@ -5,6 +5,7 @@ import FooterSocial from "../common/FooterSocial/FooterSocial";
 
 import "./ProductDetailDesktop.module.css";
 import dynamic from "next/dynamic";
+import Header from "../common/Header/Header";
 
 const Nav = dynamic(() => import("../../Common/Nav/Nav"));
 
@@ -21,6 +22,9 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
           home={true}
           authenticated={user_data.authenticated}
         />
+        <div className="header-detail">
+          <Header title={data.title} bredCumbs={data.breadcum} isDesktop />
+        </div>
         <FooterSocial />
       </Suspense>
     </div>
