@@ -1,49 +1,52 @@
 import dynamic from "next/dynamic";
 import React, { Suspense, useEffect, useState } from "react";
 
-import Logo1 from "../../assets/img/logo-social.png";
-import Logo2 from "../../assets/img/logo-social1.png";
-// import backGround from "../../assets/img/productDetail/fondo-rojo-landing-view@2x.svg";
-import CheckoutProduct from "./common/CheckoutProduct/CheckoutProduct";
-import Header from "./common/Header/Header";
+import Logo1 from "../../../assets/img/logo-social.png";
+import Logo2 from "../../../assets/img/logo-social1.png";
+// import backGround from "../../../assets/img/productDetail/fondo-rojo-landing-view@2x.svg";
+import CheckoutProduct from "../common/CheckoutProduct/CheckoutProduct";
+import Header from "../common/Header/Header";
 import {
   handleActivateBack,
   handleDeactivateBack,
   sendCheckoutStepViewed,
-} from "../../lib/functions.js";
+} from "../../../lib/functions.js";
 
 import "./ProductDetailMobil.module.css";
 
 import Image from "next/image";
-import useScrollY from "../../lib/hooks/useScrollY";
-import { sendProductViewed } from "../../lib/functions";
-import { openForm, selectIsFormOpen } from "../../redux/feature/pay/paySlice";
-import { useAppDispatch, useAppSelector } from "../../lib/hooks/redux";
+import useScrollY from "../../../lib/hooks/useScrollY";
+import { sendProductViewed } from "../../../lib/functions";
+import {
+  openForm,
+  selectIsFormOpen,
+} from "../../../redux/feature/pay/paySlice";
+import { useAppDispatch, useAppSelector } from "../../../lib/hooks/redux";
 
 const SwiperSlider = dynamic(
-  () => import("./common/SwiperSlider/SwipperSlider"),
+  () => import("../common/SwiperSlider/SwipperSlider"),
   {
     suspense: true,
   }
 );
 
-const Info = dynamic(() => import("./common/Info/Info"), {
+const Info = dynamic(() => import("../common/Info/Info"), {
   suspense: true,
 });
-const PayMethod = dynamic(() => import("./common/PayMethod/PayMethod"), {
+const PayMethod = dynamic(() => import("../common/PayMethod/PayMethod"), {
   suspense: true,
 });
-const Detail = dynamic(() => import("./common/Detail/Detail"), {
+const Detail = dynamic(() => import("../common/Detail/Detail"), {
   suspense: true,
 });
-const Description = dynamic(() => import("./common/Description/Description"), {
+const Description = dynamic(() => import("../common/Description/Description"), {
   suspense: true,
 });
 
-const Benefits = dynamic(() => import("./common/Benefits/Benefits"), {
+const Benefits = dynamic(() => import("../common/Benefits/Benefits"), {
   suspense: true,
 });
-const HelpCenter = dynamic(() => import("./common/HelpCenter/HelpCenter"), {
+const HelpCenter = dynamic(() => import("../common/HelpCenter/HelpCenter"), {
   suspense: true,
 });
 // const Subscription = dynamic(
@@ -54,32 +57,32 @@ const HelpCenter = dynamic(() => import("./common/HelpCenter/HelpCenter"), {
 //   }
 // );
 const RecommendedProducts = dynamic(
-  () => import("./common/RecommendedProducts/RecommendedProducts"),
+  () => import("../common/RecommendedProducts/RecommendedProducts"),
   {
     suspense: true,
   }
 );
 
 const WhatsappBanner = dynamic(
-  () => import("./common/WhatsappBanner/WhatsappBanner"),
+  () => import("../common/WhatsappBanner/WhatsappBanner"),
   {
     suspense: true,
   }
 );
 // import CheckoutButton from "./common/CheckoutButton/CheckoutButton";
-const OurClient = dynamic(() => import("./common/OurClient/OurClient"), {
+const OurClient = dynamic(() => import("../common/OurClient/OurClient"), {
   suspense: true,
 });
-const Nav = dynamic(() => import("../Common/Nav/Nav"));
-const Footer = dynamic(() => import("../Common/Footer"));
+const Nav = dynamic(() => import("../../Common/Nav/Nav"));
+const Footer = dynamic(() => import("../../Common/Footer"));
 const FormProductDetail = dynamic(() =>
-  import("./common/formProductDetail/formProductDetail")
+  import("../common/formProductDetail/formProductDetail")
 );
 const StickyPayButton = dynamic(() =>
-  import("./common/StickyPayButton/StickyPayButton")
+  import("../common/StickyPayButton/StickyPayButton")
 );
 
-const SellerInfo = dynamic(() => import("./common/SellerInfo/SellerInfo"), {
+const SellerInfo = dynamic(() => import("../common/SellerInfo/SellerInfo"), {
   suspense: true,
 });
 

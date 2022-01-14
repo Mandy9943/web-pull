@@ -17,7 +17,11 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Modal from "../Common/Modal/Modal";
 // import { KlaviyoClient } from "../../lib/functions";
 import Cookies from "js-cookie";
-import { handleFormatName, sendCheckoutStepViewed } from "../../lib/functions";
+import {
+  handleFormatName,
+  sendCheckoutStepViewed,
+  setDiscount,
+} from "../../lib/functions";
 import { handleFormatUrl } from "../../lib/functions";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import { Button, Modal } from 'react-bootstrap';
@@ -796,11 +800,10 @@ class PaySection extends Component {
         user_id = Cookies.get("user_id");
       }
     }
-    if(item.props.data.rating!==undefined){
+    if (item.props.data.rating !== undefined) {
       var rating = toString(item.props.data.rating / 10);
-    }
-    else{
-      rating = 'N/A';
+    } else {
+      rating = "N/A";
     }
     var data = {
       first_name: name,
@@ -839,7 +842,6 @@ class PaySection extends Component {
       product_link: item.props.data.product_link,
       weight: String(item.props.data.weight),
     };
-    console.log(data)
     const error = await createleadClient(data);
   }
 
@@ -974,10 +976,18 @@ class PaySection extends Component {
     var hmacID = createHmacSHA1(this.state.identification);
     this.state.user_id = hmacID;
 
-    var extra3 = JSON.stringify({
+    const extra1 = JSON.stringify({
+      id: hmacID,
+      street: this.state.address,
+      city: this.state.city,
+      user_id: this.props.props.data.user_id,
+      product_id: this.props.props.data.product_id,
+    });
+
+    console.log("extra1 Desktop", extra1);
+
+    var extra2 = JSON.stringify({
       qty: quantity,
-      cid: this.state.clientId,
-      gclid: this.state.gclid,
       ip: this.state.userIp,
       fbclid: this.state.fbclid,
       fb_browser_id: this.state.fb_browser_id,
@@ -985,23 +995,27 @@ class PaySection extends Component {
         (Math.random() + 1).toString(36).substring(7) +
         "." +
         new Date().getTime(),
-      nme: fullName,
-      street: this.state.address,
-      city: this.state.city,
+    });
+
+    console.log("extra2 Desktop", extra2);
+
+    var extra3 = JSON.stringify({
+      cid: this.state.clientId,
+      gclid: this.state.gclid,
+      nme: this.state.user,
       phone: this.state.mobile_phone,
-      // e_url: window.location.href,
-      id: hmacID,
       last_name: this.state.lastName,
     });
 
-    console.log("Desktop", extra3);
+    console.log("extrar3 Desktop", extra3);
 
     var md5 = require("md5");
     var ref_code = "kieroco-" + new Date().getTime();
     var signature = md5(
-      `uzIc90bkpXj0aJDh22H67MRJnl~530932~${ref_code}~${
-        this.props.props.data.price * quantity
-      }~COP`
+      `uzIc90bkpXj0aJDh22H67MRJnl~530932~${ref_code}~${setDiscount(
+        this.props.props.data.price,
+        quantity
+      )}~COP`
     );
 
     // (
@@ -1122,7 +1136,7 @@ class PaySection extends Component {
             <input
               name="amount"
               type="hidden"
-              value={quantity * this.props.props.data.price}
+              value={setDiscount(this.props.props.data.price, quantity)}
             />
             <input name="tax" type="hidden" value="0" />
             <input name="taxReturnBase" type="hidden" value="0" />
@@ -1143,16 +1157,8 @@ class PaySection extends Component {
               value={this.state.address}
             />
             <input name="payerFullName" type="hidden" value={fullName} />
-            <input
-              name="extra1"
-              type="hidden"
-              value={this.props.props.data.product_id}
-            />
-            <input
-              name="extra2"
-              type="hidden"
-              value={this.props.props.data.user.user_id}
-            />
+            <input name="extra1" type="hidden" value={extra1} />
+            <input name="extra2" type="hidden" value={extra2} />
             <input name="extra3" type="hidden" value={extra3} />
             <input
               name="responseUrl"
@@ -1313,18 +1319,24 @@ class PaySection extends Component {
         <div className="pay-item-oldprice">
           <h3 className="price-pay-product-detail-oldprice">
             ${" "}
-            {this.props.price
-              ? (this.props.price * 1.428571428571429)
-                  .toString()
-                  .split(".")[0]
-                  .replace(/(.)(?=(\d{3})+$)/g, "$1.")
-              : " ... "}
+            {parseInt(
+              this.props.price /
+                (1 -
+                  parseFloat(
+                    "." + this.props.props.data.discount_percentage
+                  ).toFixed(2))
+            )
+              .toString()
+              .split(".")[0]
+              .replace(/(.)(?=(\d{3})+$)/g, "$1.")}
           </h3>{" "}
           <p
             className="price-pay-product-detail-oldprice-discount"
             style={{ color: "#0acf47" }}
           >
-            &nbsp; -30% OFF
+            &nbsp; -
+            {parseFloat(this.props.props.data.discount_percentage).toFixed(0)}%
+            OFF
           </p>
         </div>
         <div className="pay-item">
