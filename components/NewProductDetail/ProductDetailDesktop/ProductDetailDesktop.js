@@ -21,6 +21,7 @@ import ProductImageDesk from "../common/ProductImageDesk/ProductImageDesk";
 import Description from "../common/Description/Description";
 import Detail from "../common/Detail/Detail";
 import OurClient from "../common/OurClient/OurClient";
+import CheckoutProductDesk from "../common/CheckoutProductDesk/CheckoutProductDesk";
 
 const Nav = dynamic(() => import("../../Common/Nav/Nav"));
 
@@ -33,6 +34,10 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
     dispatch(openForm(false));
 
     handleActivateBack();
+  };
+  const handleOpenForm = () => {
+    sendCheckoutStepViewed(data, 1);
+    dispatch(openForm(true));
   };
 
   useEffect(() => {
@@ -65,14 +70,13 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
               <OurClient category={data?.breadcum[0]?.name.substring(0, 7)} />
             </Grid>
             <Grid item xs={4}>
-              <div
-                style={{
-                  width: "100%",
-                  background: "white",
-                  height: "500px",
-                  borderRadius: "20px",
-                }}
-              ></div>
+              <CheckoutProductDesk
+                title={data.title}
+                onClickBuy={handleOpenForm}
+                price={data.price}
+                stock={data.status === 0 ? 0 : data.stock}
+                discount_percentage={data.discount_percentage}
+              />
             </Grid>
           </Grid>
         </Box>

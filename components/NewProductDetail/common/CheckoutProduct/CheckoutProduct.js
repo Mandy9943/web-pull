@@ -4,7 +4,7 @@ import Counter from "../Counter/Counter";
 import "./CheckoutProduct.module.css";
 
 const CheckoutProduct = ({ price, stock, discount_percentage, onClickBuy }) => {
-  let count = Math.ceil(Math.random() * 50);
+  const count = Math.ceil(Math.random() * 50);
   return (
     <div id="CheckoutProductMobil">
       <div className="productPrice">

@@ -37,6 +37,50 @@
 #WhatsappBanner .info .whatsappIcon {
   margin: 0 15px;
   font-size: 6vw;
+
+}
+#WhatsappBanner .info .number {
   display: flex;
-  align-items: center;
+  
+}
+#WhatsappBanner .info .number span {
+  display: flex;
+  align-items: center
+
+}
+
+@media (min-width: 768px) {
+  #WhatsappBanner {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: unset;
+    padding: 0 20px;
+    justify-content: space-between;
+    font-size: 14px;
+
+
+    border-radius: 0 0 10px 10px;
+  }
+
+  #WhatsappBanner .info {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+
+  #WhatsappBanner .info .whatsappIcon {
+ 
+    font-size: 22px;
+ 
+  }
+
+  #WhatsappBanner .info .number .tel {
+ 
+    text-decoration: underline;
+ 
+  }
 }

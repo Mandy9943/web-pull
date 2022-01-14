@@ -3,6 +3,9 @@
   background: #fff;
   padding: 36px 10px 0 10px;
 }
+.noBorder{
+  border: none !important;
+}
 
 #PayMethod .titulo {
   padding-left: 3.5%;
@@ -33,11 +36,7 @@
   max-width: 93px !important;
 }
 
-@media (min-width: 750px) {
-  #PayMethod {
-    height: 130px;
-  }
-}
+
 @media (max-width: 350px) {
   #PayMethod {
     padding: 0px 10px;
