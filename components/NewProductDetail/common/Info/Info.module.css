@@ -1,43 +1,33 @@
 #InfoProductDetail {
     background: #fff;
-    display: grid;
-    grid-template-areas:
-    "titulo"
-    "envios"
-    "compras"
-    "garantia";
+    padding: 24px 25px 0;
 }
 
 /*Definiciones de los areas*/
-#InfoProductDetail .envios {
+
+#InfoProductDetail .info .envios {
     grid-area: envios;
 }
 
-#InfoProductDetail .compras {
+#InfoProductDetail .info .compras {
     grid-area: compras;
 }
 
-#InfoProductDetail .garantia {
+#InfoProductDetail .info .garantia {
     grid-area: garantia;
 }
 
-#InfoProductDetail .title {
-    grid-area: titulo;
-}
-
 
 #InfoProductDetail .title {
-    margin: 24px 0px;
-    width: 100%;
-    padding: 0px 25px !important;
+    margin: 0 25px 25px 25px;
 }
 
 #InfoProductDetail .title h4 {
-    display: flex;
     font-size: 18px;
     font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
+    display: flex;
 }
 
 #InfoProductDetail .title h4 .company {
@@ -46,15 +36,23 @@
 }
 
 #InfoProductDetail .info {
+    display: grid;
+    grid-template-areas:
+    "envios"
+    "compras"
+    "garantia";
+}
+
+#InfoProductDetail .info > div {
     display: flex;
     align-items: center;
     margin-bottom: 28px;
     grid-template-columns: repeat(3, 1fr);
     width: 100%;
-    padding: 0px 30px;
+    padding: 0 30px;
 }
 
-#InfoProductDetail .info .car {
+#InfoProductDetail .info .envios {
     margin-left: -4px;
 }
 
@@ -63,13 +61,10 @@
     margin-right: 27px;
 }
 
-.texte {
-    margin-left: -10px;
-}
 
 #InfoProductDetail .info .icon img {
-    padding-bottom: 12px;
-    height: 38px;
+    padding-bottom: 12px !important;
+    height: 38px !important;
 }
 
 #InfoProductDetail .info .text {
@@ -88,7 +83,6 @@
 }
 
 #InfoProductDetail .text p {
-    /* Body 2 */
     font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: normal;
@@ -97,41 +91,56 @@
     color: #5d5d5d;
 }
 
-/*Modo tablet*/
+/* Modo tablet or desktop */
 @media (min-width: 750px) {
     #InfoProductDetail {
-        grid-template-areas:
-                "titulo titulo titulo"
-                "envios compras garantia";
-        height: auto;
-        border-radius: 20px 20px 0 0;
+        border-radius: 20px;
     }
 
-
-    #InfoProductDetail .text {
-        margin-right: 50px;
-    }
-
-    #InfoProductDetail .info .icon {
-        margin-left: 50px;
-    }
-
-    #InfoProductDetail .info {
-        display: inline-block;
-        margin-bottom: 15px;
+    #InfoProductDetail .title {
+        margin: 50px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     #InfoProductDetail .title h4 {
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        margin-top: 70px;
+        font-family: Montserrat, sans-serif;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 42px;
+        line-height: 51px;
+        letter-spacing: 0.02em;
+        color: #000000;
+    }
+
+    #InfoProductDetail .info {
+        grid-template-areas: "envios compras garantia";
+        padding-bottom: 90px;
+    }
+
+
+    #InfoProductDetail .text h3 {
+        font-family: Montserrat, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 21px;
+        line-height: 26px;
+        letter-spacing: 0.03em;
+        margin-bottom: 4px;
+    }
+
+    #InfoProductDetail .text p {
+        font-family: Montserrat, sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 21px;
+        line-height: 36px;
+        color: #5D5D5D;
     }
 
     #InfoProductDetail .info .icon img {
-        margin-left: 0;
-        margin-right: 110px;
+        margin-right: 20px !important;
+        height: 50px !important;
     }
-
-
 }

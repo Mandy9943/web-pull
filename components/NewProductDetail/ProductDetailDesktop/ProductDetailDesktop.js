@@ -26,8 +26,8 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
           {/* para la primera parte del contenedor */}
           <Info />
         </div>
-        <FooterSocial />
       </Suspense>
+      {/*<FooterSocial />*/}
     </div>
   );
 };
