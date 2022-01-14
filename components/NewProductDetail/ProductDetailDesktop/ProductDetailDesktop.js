@@ -20,6 +20,7 @@ import { Box, Grid } from "@mui/material";
 import ProductImageDesk from "../common/ProductImageDesk/ProductImageDesk";
 import Description from "../common/Description/Description";
 import Detail from "../common/Detail/Detail";
+import OurClient from "../common/OurClient/OurClient";
 
 const Nav = dynamic(() => import("../../Common/Nav/Nav"));
 
@@ -61,6 +62,7 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
               <ProductImageDesk images={data.images} altImg={data.title} />
               <Detail product={data} />
               <Description product={data} />
+              <OurClient category={data?.breadcum[0]?.name.substring(0, 7)} />
             </Grid>
             <Grid item xs={4}>
               <div
