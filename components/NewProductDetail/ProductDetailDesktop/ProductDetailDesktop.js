@@ -21,6 +21,9 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
           home={true}
           authenticated={user_data.authenticated}
         />
+        <div className="container">
+          {/* para la primera parte del contenedor */}
+        </div>
         <FooterSocial />
       </Suspense>
     </div>
