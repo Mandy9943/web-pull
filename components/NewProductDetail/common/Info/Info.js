@@ -8,7 +8,7 @@ import Image from "next/image";
 
 const Info = () => {
   return (
-    <div id="InfoProductDetailMovil">
+    <div id="InfoProductDetail">
       <div className="info title">
         <h4>
           Porqué Comprar con <p className="company">Kiero</p>

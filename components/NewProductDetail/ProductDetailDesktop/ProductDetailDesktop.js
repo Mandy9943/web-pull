@@ -5,6 +5,7 @@ import FooterSocial from "../common/FooterSocial/FooterSocial";
 
 import "./ProductDetailDesktop.module.css";
 import dynamic from "next/dynamic";
+import Info from "../common/Info/Info";
 
 const Nav = dynamic(() => import("../../Common/Nav/Nav"));
 
@@ -23,6 +24,7 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
         />
         <div className="container">
           {/* para la primera parte del contenedor */}
+          <Info />
         </div>
         <FooterSocial />
       </Suspense>
