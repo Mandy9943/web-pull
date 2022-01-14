@@ -11,14 +11,25 @@ import { useAppDispatch } from "../../lib/hooks/redux";
 import { setData } from "../../redux/feature/pay/paySlice";
 import { setNumber } from "../../redux/feature/whatsapp/whatsappReducer";
 
-const Detail = dynamic(() => import("../../components/ProductDetail"), {
-  ssr: false,
-  loading: () => <Loading />,
-});
+// // const Detail = dynamic(() => import("../../components/ProductDetail"), {
+//   ssr: false,
+//   loading: () => <Loading />,
+// });
 const ProductDetailMobil = dynamic(
   () =>
     import(
       "../../components/NewProductDetail/ProductDetailMobil/ProductDetailMobil"
+    ),
+  {
+    ssr: false,
+    loading: () => <Loading />,
+  }
+);
+
+const ProductDetailDesktop = dynamic(
+  () =>
+    import(
+      "../../components/NewProductDetail/ProductDetailDesktop/ProductDetailDesktop"
     ),
   {
     ssr: false,
@@ -177,7 +188,12 @@ function Product({ data, u_data, userIp }) {
               userIp={userIp}
             />
           ) : (
-            <Detail user_data={u_data} data={data} userIp={userIp} />
+            // <Detail user_data={u_data} data={data} userIp={userIp} />
+            <ProductDetailDesktop
+              user_data={u_data}
+              data={data}
+              userIp={userIp}
+            />
           )}
         </>
       )}

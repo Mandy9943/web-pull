@@ -1,8 +1,6 @@
 import dynamic from "next/dynamic";
 import React, { Suspense, useEffect, useState } from "react";
 
-import Logo1 from "../../../assets/img/logo-social.png";
-import Logo2 from "../../../assets/img/logo-social1.png";
 // import backGround from "../../../assets/img/productDetail/fondo-rojo-landing-view@2x.svg";
 import CheckoutProduct from "../common/CheckoutProduct/CheckoutProduct";
 import Header from "../common/Header/Header";
@@ -14,7 +12,6 @@ import {
 
 import "./ProductDetailMobil.module.css";
 
-import Image from "next/image";
 import useScrollY from "../../../lib/hooks/useScrollY";
 import { sendProductViewed } from "../../../lib/functions";
 import {
@@ -22,6 +19,7 @@ import {
   selectIsFormOpen,
 } from "../../../redux/feature/pay/paySlice";
 import { useAppDispatch, useAppSelector } from "../../../lib/hooks/redux";
+import FooterSocial from "../common/FooterSocial/FooterSocial";
 
 const SwiperSlider = dynamic(
   () => import("../common/SwiperSlider/SwipperSlider"),
@@ -87,7 +85,6 @@ const SellerInfo = dynamic(() => import("../common/SellerInfo/SellerInfo"), {
 });
 
 const ProductDetailMobil = ({ user_data, data, userIp }) => {
-  let urlSic = "https://www.sic.gov.co";
   // console.log("data", data);
 
   useEffect(() => {
@@ -195,28 +192,7 @@ const ProductDetailMobil = ({ user_data, data, userIp }) => {
         {/* <Subscription /> */}
         <Footer />
       </Suspense>
-      <div className="footer-social">
-        <a href={urlSic} rel="noopener noreferrer" target="_blank">
-          <div className="anullProperties">
-            <Image
-              loading="lazy"
-              alt="Superintendencia de Industria y Comercio"
-              src={Logo1}
-              layout="fill"
-            />
-          </div>
-        </a>
-        <a href={urlSic} rel="noopener noreferrer" target="_blank">
-          <div className="anullProperties">
-            <Image
-              loading="lazy"
-              alt="Superintencia de Industria y Comercio"
-              src={Logo2}
-              layout="fill"
-            />
-          </div>
-        </a>
-      </div>
+      <FooterSocial />
     </div>
   );
 };
