@@ -6,6 +6,8 @@ import FooterSocial from "../common/FooterSocial/FooterSocial";
 import "./ProductDetailDesktop.module.css";
 import dynamic from "next/dynamic";
 import Info from "../common/Info/Info";
+import RecommendedProducts from "../common/RecommendedProducts/RecommendedProducts";
+import Benefits from "../common/Benefits/Benefits";
 
 const Nav = dynamic(() => import("../../Common/Nav/Nav"));
 
@@ -21,6 +23,7 @@ const SellerInfo = dynamic(() => import("../common/SellerInfo/SellerInfo"), {
 });
 
 const ProductDetailDesktop = ({ user_data, data, userIp }) => {
+  console.log(data);
   useEffect(() => {
     sendProductViewed(data);
   }, [data]);
@@ -39,6 +42,12 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
           {/* TODO: ACA va el SpecialOffer  */}
           <SellerInfo />
         </div>
+        <RecommendedProducts
+          category={data.category}
+          spaceBetween={100}
+          lenProduct={12}
+        />
+        {/*<Benefits />*/}
       </Suspense>
       {/*<FooterSocial />*/}
     </div>

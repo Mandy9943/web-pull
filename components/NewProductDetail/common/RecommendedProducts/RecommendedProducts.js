@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { getProductsBasic } from "../../../../services/productsApi";
-import { handleFormatUrl } from "../../../../lib/functions";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
@@ -16,13 +15,18 @@ SwiperCore.use([Pagination]);
 import "./RecommendedProducts.module.css";
 import RecommendedProductsCard from "./RecommendedProductsCard";
 import DivindingLine from "../DivindingLine/DivindingLine";
+import PropTypes from "prop-types";
 
-const RecommendedProducts = ({ category }) => {
+const RecommendedProducts = ({
+  category,
+  spaceBetween = 30,
+  lenProduct = 10,
+}) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
     const getProducts = async () => {
-      await getProductsBasic(category.name, 10).then((r) => {
+      await getProductsBasic(category.name, lenProduct).then((r) => {
         setProducts(r.data.results);
       });
     };
@@ -37,16 +41,16 @@ const RecommendedProducts = ({ category }) => {
           width="122px"
           margin="auto auto 10px auto"
         />
-        <h3>OTROS TAMBIÉN </h3>
-        <h3>COMPRARON</h3>
+        <h3>OTROS TAMBIÉN</h3>
+        <h3> COMPRARON</h3>
       </div>
       <div className="slider">
         <Swiper
           slidesPerView={1.4}
-          spaceBetween={30}
+          spaceBetween={spaceBetween}
           freeMode={true}
           centeredSlides={true}
-          // loop={true}
+          loop={true}
           pagination={{
             clickable: true,
           }}
@@ -63,6 +67,12 @@ const RecommendedProducts = ({ category }) => {
       </div>
     </div>
   );
+};
+
+RecommendedProducts.prototype = {
+  category: PropTypes.string.isRequired,
+  spaceBetween: PropTypes.number,
+  lenProduct: PropTypes.number,
 };
 
 export default RecommendedProducts;

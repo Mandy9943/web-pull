@@ -14,6 +14,6 @@
     margin: 16px 100px 0 100px;
 }
 
-#ProductDetailDesktop .swiperSliderDetail .swiper-slide {
-
+#ProductDetailDesktop #RecommendedProducts {
+    /*margin-top: 80px;*/
 }
