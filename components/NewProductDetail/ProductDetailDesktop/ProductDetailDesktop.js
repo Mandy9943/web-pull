@@ -9,6 +9,17 @@ import Info from "../common/Info/Info";
 
 const Nav = dynamic(() => import("../../Common/Nav/Nav"));
 
+const SwiperSlider = dynamic(
+  () => import("../common/SwiperSlider/SwipperSlider"),
+  {
+    suspense: true,
+  }
+);
+
+const SellerInfo = dynamic(() => import("../common/SellerInfo/SellerInfo"), {
+  suspense: true,
+});
+
 const ProductDetailDesktop = ({ user_data, data, userIp }) => {
   useEffect(() => {
     sendProductViewed(data);
@@ -25,6 +36,8 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
         <div className="container">
           {/* para la primera parte del contenedor */}
           <Info />
+          {/* TODO: ACA va el SpecialOffer  */}
+          <SellerInfo />
         </div>
       </Suspense>
       {/*<FooterSocial />*/}

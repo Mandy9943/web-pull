@@ -1,7 +1,19 @@
 #ProductDetailDesktop {
     background-color: #E5E5E5;
+    overflow-x: hidden;
 }
 
 #ProductDetailDesktop .container {
     margin: 18px 100px 80px 100px;
+}
+
+#ProductDetailDesktop .container .specialOffer {
+    display: flex;
+    flex-wrap: wrap;
+    overflow-x: hidden;
+    margin: 16px 100px 0 100px;
+}
+
+#ProductDetailDesktop .swiperSliderDetail .swiper-slide {
+
 }
