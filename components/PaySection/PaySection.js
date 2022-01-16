@@ -824,7 +824,7 @@ class PaySection extends Component {
           : "Usuario Invitado (Y Usuario Registrado) que Presionó el botón de Continuar con la transacción",
       category: item.props.data.category.name,
       sub_category: item.props.data.sub_category,
-      price_product: item.price,
+      price_product: String(item.price),
       product_title: item.props.data.product_global_title.slice(0, 250),
       product_description: item.props.data.description,
       product_id: String(item.props.data.product_global_id),

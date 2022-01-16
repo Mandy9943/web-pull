@@ -13,7 +13,7 @@ import {
 import "./ProductDetailMobil.module.css";
 
 import useScrollY from "../../../lib/hooks/useScrollY";
-import { sendProductViewed } from "../../../lib/functions";
+import {createlead, sendProductViewed} from "../../../lib/functions";
 import {
   openForm,
   selectIsFormOpen,
@@ -94,7 +94,7 @@ const ProductDetailMobil = ({ user_data, data, userIp }) => {
   // const [isForm, setIsForm] = useState(false);
   const [isWhatsappBanner, setIsWhatsappBanner] = useState(true);
   const scrolledPayButton = useScrollY(700, false);
-
+  createlead(data, 1);
   const isForm = useAppSelector(selectIsFormOpen);
   const dispatch = useAppDispatch();
   useEffect(() => {
