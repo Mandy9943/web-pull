@@ -1,154 +1,280 @@
 #SellerInfo {
-  background: #fff;
-  transition: all 0.3s ease;
-  padding-top: 10px;
-}
-
-#SellerInfo header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#SellerInfo header h4 {
-  font-family: Montserrat, sans-serif;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 18px;
-  line-height: 22px;
-  letter-spacing: 0.03em;
-  color: #000000;
-  height: 22px;
-}
-
-#SellerInfo picture {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 30px 25px 0 30px;
-}
-
-#SellerInfo picture div img {
-  height: 5rem !important;
-  width: 100% !important;
-}
-
-#SellerInfo picture h4 {
-  font-family: Montserrat, sans-serif;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 18px;
-  line-height: 22px;
-  letter-spacing: 0.03em;
-  color: #5d5d5d;
-  padding-left: 22px;
-}
-
-#SellerInfo .certificate {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 31px;
-}
-
-#SellerInfo .certificate .anullProperties div {
-  align-items: center !important;
-  justify-content: center !important;
-  display: flex !important;
-}
-
-#SellerInfo .certificate .anullProperties div img {
-  padding-right: 7px !important;
-  height: 16px !important;
-  width: 16px !important;
-}
-
-#SellerInfo .certificate h6 {
-  font-family: Montserrat, sans-serif;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 12px;
-  line-height: 15px;
-  color: #1fc2e6;
-  padding-right: 28px;
-}
-
-#SellerInfo .certificate svg {
-  color: #1fc2e6;
-  padding-right: 3px;
-  height: 8px;
-  width: 8px;
+    background: #fff;
+    transition: all 0.3s ease;
+    padding-top: 10px;
+    display: grid;
+    grid-template-areas:
+                "header"
+                "picture"
+                "certificate"
+                "footer";
 }
 
 #SellerInfo footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 5px;
-  padding-bottom: 110px;
-  flex-direction: column;
+    grid-area: footer;
+}
+
+#SellerInfo picture {
+    grid-area: picture;
+}
+
+#SellerInfo .certificate {
+    grid-area: certificate;
+}
+
+#SellerInfo header {
+    grid-area: header;
+}
+
+#SellerInfo header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#SellerInfo header h4 {
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.03em;
+    color: #000000;
+    height: 22px;
+}
+
+#SellerInfo picture {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 30px 25px 0 30px;
+}
+
+#SellerInfo picture div img {
+    height: 5rem !important;
+    width: 100% !important;
+}
+
+#SellerInfo picture h4 {
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.03em;
+    color: #5d5d5d;
+    padding-left: 22px;
+}
+
+#SellerInfo .certificate {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 31px;
+}
+
+#SellerInfo .certificate .anullProperties div {
+    align-items: center !important;
+    justify-content: center !important;
+    display: flex !important;
+}
+
+#SellerInfo .certificate .anullProperties div img {
+    margin-right: 7px !important;
+    height: 16px !important;
+    width: 16px !important;
+}
+
+#SellerInfo .certificate h6 {
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+    color: #1fc2e6;
+    padding-right: 28px;
+}
+
+#SellerInfo .certificate svg {
+    color: #1fc2e6;
+    margin-right: 3px;
+    height: 8px;
+    width: 8px;
+}
+
+#SellerInfo footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 5px;
+    padding-bottom: 110px;
+    flex-direction: column;
 }
 
 #SellerInfo footer h3 {
-  font-family: Montserrat, sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 11px;
-  line-height: 16px;
-  color: #5d5d5d;
-  padding-bottom: 22px;
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 16px;
+    color: #5d5d5d;
+    margin-bottom: 22px;
 }
 
-#SellerInfo footer .separator {
-  position: static;
-  border: 1px solid #d1d1d1;
-  height: 0;
-  top: 0;
-  width: 74%;
+#SellerInfo footer hr {
+    position: static;
+    border: 1px solid #D1D1D1;
+    height: 0;
+    top: 0;
+    width: 74%;
 }
 
 #SellerInfo footer .info {
-  display: flex;
-  flex-direction: row;
-  padding-top: 11px;
-  height: 72px;
+    display: flex;
+    flex-direction: row;
+    padding-top: 11px;
+    height: 72px;
 }
 
 #SellerInfo footer .info .block {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 49px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 49px;
 }
 
 #SellerInfo footer .info .block h3 {
-  font-family: Montserrat, sans-serif;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 700;
-  letter-spacing: 0;
-  text-align: center;
-  color: #5d5d5d;
-  padding-bottom: 4px;
-  padding-top: 10px;
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-align: center;
+    color: #5d5d5d;
+    padding-bottom: 4px;
+    padding-top: 10px;
 }
 
 #SellerInfo footer .info .block p {
-  font-family: Montserrat, sans-serif;
-  font-size: 10px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 12px;
-  letter-spacing: 0.02em;
-  text-align: center;
-  color: #000000;
-  padding-left: 12px;
-  padding-right: 12px;
+    font-family: Montserrat, sans-serif;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 12px;
+    letter-spacing: 0.02em;
+    text-align: center;
+    color: #000000;
+    padding-left: 12px;
+    padding-right: 12px;
 }
 
 #SellerInfo footer .info .block .anullProperties div {
-  align-items: center !important;
-  justify-content: center !important;
-  display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    display: flex !important;
+}
+
+@media (min-width: 768px) {
+    #SellerInfo {
+        padding: 0 100px 0 100px;
+        margin-top: 16px;
+        border-radius: 20px;
+        grid-template-areas:
+                "header header header"
+                "picture certificate certificate"
+                "picture footer footer";
+    }
+
+
+    #SellerInfo header {
+        margin-top: 60px;
+        margin-bottom: 20px;
+    }
+
+    #SellerInfo header h4 {
+        font-style: normal;
+        font-weight: 800;
+        font-size: 42px;
+        line-height: 51px;
+        letter-spacing: 0.02em;
+    }
+
+    #SellerInfo picture {
+        display: flex;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: unset !important;
+    }
+
+    #SellerInfo picture .anullProperties img {
+        width: auto !important;
+        height: 148px !important;
+    }
+
+    #SellerInfo picture h4 {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 32px;
+        line-height: 39px;
+        letter-spacing: 0.03em;
+        color: #5D5D5D;
+    }
+
+    #SellerInfo .certificate {
+        margin-top: 73px;
+        margin-bottom: 11px;
+    }
+
+    #SellerInfo .certificate h6 {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 22px;
+        color: #1FC2E6;
+    }
+
+    #SellerInfo .certificate .anullProperties div img {
+        margin-right: 7px !important;
+        height: 14px !important;
+        width: 14px !important;
+    }
+    #SellerInfo footer hr {
+        width: 100%;
+        border: 1px solid #D1D1D1;
+    }
+
+    #SellerInfo footer h3 {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    #SellerInfo footer .info {
+        margin-top: 18px;
+        margin-bottom: 18px;
+    }
+
+    #SellerInfo footer .info .block h3 {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 32px;
+        line-height: 39px;
+        text-align: center;
+        letter-spacing: 0.03em;
+        padding: unset;
+        margin: unset;
+
+    }
+
+    #SellerInfo footer .info .block p {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 22px;
+        text-align: center;
+        margin: 5px 0 0 0;
+        padding: unset;
+    }
 }

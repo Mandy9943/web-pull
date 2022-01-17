@@ -45,7 +45,7 @@ const SellerInfo = () => {
       </div>
       <footer>
         <h3>Es uno de nuestros mejores vendedores</h3>
-        <div className="separator" />
+        <hr />
         <div className="info">
           <div className="block">
             <h3>{conteo}</h3>
@@ -64,7 +64,7 @@ const SellerInfo = () => {
             <p>Entrega gratis y a tiempo.</p>
           </div>
         </div>
-        <div className="separator" />
+        <hr />
       </footer>
     </section>
   );

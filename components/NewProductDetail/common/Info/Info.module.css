@@ -1,120 +1,146 @@
-#InfoProductDetailMovil {
-  background: #fff;
-  display: grid;
-  grid-template-areas:
+#InfoProductDetail {
+    background: #fff;
+    padding: 24px 25px 0;
+}
+
+/*Definiciones de los areas*/
+
+#InfoProductDetail .info .envios {
+    grid-area: envios;
+}
+
+#InfoProductDetail .info .compras {
+    grid-area: compras;
+}
+
+#InfoProductDetail .info .garantia {
+    grid-area: garantia;
+}
+
+
+#InfoProductDetail .title {
+    margin: 0 25px 25px 25px;
+}
+
+#InfoProductDetail .title h4 {
+    font-size: 18px;
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    display: flex;
+}
+
+#InfoProductDetail .title h4 .company {
+    margin-left: 4px;
+    color: #cf0a2c;
+}
+
+#InfoProductDetail .info {
+    display: grid;
+    grid-template-areas:
     "envios"
     "compras"
     "garantia";
 }
 
-/*Definiciones de los areas*/
-
-/* #InfoProductDetailMovil .envios {
-  grid-area: envios;
+#InfoProductDetail .info > div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 28px;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    padding: 0 30px;
 }
 
-#InfoProductDetailMovil .compras {
-  grid-area: compras;
+#InfoProductDetail .info .envios {
+    margin-left: -4px;
 }
 
-#InfoProductDetailMovil .garantia {
-  grid-area: garantia;
-}
- */
-
-#InfoProductDetailMovil .title {
-  margin: 24px 0px;
-  width: 100%;
-  padding: 0px 25px !important;
+#InfoProductDetail .info .icon {
+    align-items: center;
+    margin-right: 27px;
 }
 
-#InfoProductDetailMovil .title h4 {
-  display: flex;
-  font-size: 18px;
-  font-family: Montserrat, sans-serif;
-  font-style: normal;
-  font-weight: bold;
+
+#InfoProductDetail .info .icon img {
+    padding-bottom: 12px !important;
+    height: 38px !important;
 }
 
-#InfoProductDetailMovil .title h4 .company {
-  margin-left: 4px;
-  color: #cf0a2c;
+#InfoProductDetail .info .text {
+    flex: 1;
+    padding-right: 80px;
 }
 
-#InfoProductDetailMovil .info {
-  display: flex;
-  align-items: center;
-  margin-bottom: 28px;
-  grid-template-columns: repeat(3, 1fr);
-  width: 100%;
-  padding: 0px 30px;
-}
-#InfoProductDetailMovil .info .car {
-  margin-left: -4px;
+#InfoProductDetail .text h3 {
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    margin: 4px 0;
 }
 
-#InfoProductDetailMovil .info .icon {
-  align-items: center;
-  margin-right: 27px;
+#InfoProductDetail .text p {
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+    color: #5d5d5d;
 }
 
-.texte {
-  margin-left: -10px;
-}
-
-#InfoProductDetailMovil .info .icon img {
-  padding-bottom: 12px;
-  height: 38px;
-}
-
-#InfoProductDetailMovil .info .text {
-  flex: 1;
-  padding-right: 80px;
-}
-
-#InfoProductDetailMovil .text h3 {
-  font-family: Montserrat, sans-serif;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 17px;
-  color: #000000;
-  margin: 4px 0;
-}
-
-#InfoProductDetailMovil .text p {
-  /* Body 2 */
-  font-family: Montserrat, sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 12px;
-  line-height: 16px;
-  color: #5d5d5d;
-}
-
-/*Modo tablet*/
+/* Modo tablet or desktop */
 @media (min-width: 750px) {
-  #InfoProductDetailMovil {
-    grid-template-areas: "envios compras garantia";
-    height: 150px;
-    padding-top: 47px;
-    padding-left: 47px;
-  }
+    #InfoProductDetail {
+        border-radius: 20px;
+    }
 
-  #InfoProductDetailMovil .text {
-    padding-right: 50px;
-  }
+    #InfoProductDetail .title {
+        margin: 50px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-  #InfoProductDetailMovil .info .icon {
-    padding-left: 50px;
-  }
+    #InfoProductDetail .title h4 {
+        font-family: Montserrat, sans-serif;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 42px;
+        line-height: 51px;
+        letter-spacing: 0.02em;
+        color: #000000;
+    }
 
-  #InfoProductDetailMovil .info {
-    display: inline-block;
-    padding-bottom: 15px;
-  }
-  #InfoProductDetailMovil .info .icon img {
-    padding-left: 0;
-    padding-right: 110px;
-  }
+    #InfoProductDetail .info {
+        grid-template-areas: "envios compras garantia";
+        padding-bottom: 90px;
+    }
+
+
+    #InfoProductDetail .text h3 {
+        font-family: Montserrat, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 21px;
+        line-height: 26px;
+        letter-spacing: 0.03em;
+        margin-bottom: 4px;
+    }
+
+    #InfoProductDetail .text p {
+        font-family: Montserrat, sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 21px;
+        line-height: 36px;
+        color: #5D5D5D;
+    }
+
+    #InfoProductDetail .info .icon img {
+        margin-right: 20px !important;
+        height: 50px !important;
+    }
 }
