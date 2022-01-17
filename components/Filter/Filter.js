@@ -13,7 +13,7 @@ import {
   faTruck,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
-
+import { withRouter } from "next/router";
 class Filter extends Component {
   constructor(props) {
     super(props);
@@ -25,6 +25,8 @@ class Filter extends Component {
       categorySize: 10,
       dataCategories: [],
       fatherCategories: [],
+      pathName: true,
+      stateCategories: "",
     };
 
     this.brands = React.createRef();
@@ -35,13 +37,14 @@ class Filter extends Component {
     this.toggleMenuOrder = this.toggleMenuOrder.bind(this);
     this.toggleMenuFilter = this.toggleMenuFilter.bind(this);
   }
-
   res_categories = [];
-
   componentDidMount() {
+    this.props.router.pathname === "/categoria/[...category]"
+      ? this.setState({ pathName: true, stateCategories: false })
+      : this.setState({ pathName: false, stateCategories: true });
     getFront("/getBanners/" + this.props.category.replace(/-/g, " ")).then(
       (response) => {
-        if (response.data.files.length > 0) {
+        if (response.data.files.length > 0 && this.state.pathName === true) {
           this.setState({ dataCategories: response.data.files });
           this.state.dataCategories.map((data, i) => {
             let category = data.split("/");
@@ -135,16 +138,26 @@ class Filter extends Component {
     let prices = [];
     let renderedPrices = [];
 
-    // if (this.props.data && this.props.data.categories) {
-    //   this.props.data.categories.map((data, i) => {
-    //     this.res_categories.push({
-    //       items: data.items,
-    //       key: data.key,
-    //       label: data.label,
-    //       level: data.level,
-    //     });
-    //   });
-    // }
+    console.log(this.state.stateCategories);
+
+    if (
+      this.props.data &&
+      this.props.data.categories &&
+      this.state.pathName === false
+    ) {
+      this.props.data.categories.map((data, i) => {
+        if (this.state.stateCategories === true) {
+          this.res_categories.push({
+            items: data.items,
+            key: data.key,
+            label: data.label,
+            level: data.level,
+          });
+          this.setState({ stateCategories: false });
+        }
+      });
+    }
+
     if (this.props.data && this.props.data.brands) {
       res_brands = this.props.data.brands;
     }
@@ -323,7 +336,12 @@ class Filter extends Component {
               </div>
             </div>
             <div className="filter-title">
-              {this.state.dataCategories.length > 0 ? "Categorías" : null}
+              {this.state.dataCategories.length > 0 &&
+              this.state.pathName === true
+                ? "Categorías"
+                : this.state.pathName === false
+                ? "Categorias"
+                : null}
             </div>
             {this.res_categories.length > 0 && (
               <>
@@ -707,4 +725,4 @@ class Filter extends Component {
   }
 }
 
-export default Filter;
+export default withRouter(Filter);
