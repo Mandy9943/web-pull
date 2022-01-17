@@ -61,7 +61,7 @@ function Product({ data, u_data, userIp }) {
       })
     );
 
-    createlead(data, 1);
+    createlead(data, 3);
   }, [data, dispatch]);
 
   return (
