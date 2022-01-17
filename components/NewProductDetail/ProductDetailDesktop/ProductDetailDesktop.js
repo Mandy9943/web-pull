@@ -23,7 +23,7 @@ const SellerInfo = dynamic(() => import("../common/SellerInfo/SellerInfo"), {
 });
 
 const ProductDetailDesktop = ({ user_data, data, userIp }) => {
-  console.log(data);
+  console.log({ data, userIp });
   useEffect(() => {
     sendProductViewed(data);
   }, [data]);
@@ -42,12 +42,7 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
           {/* TODO: ACA va el SpecialOffer  */}
           <SellerInfo />
         </div>
-        <RecommendedProducts
-          category={data.category}
-          spaceBetween={100}
-          lenProduct={12}
-        />
-        {/*<Benefits />*/}
+        <Benefits />
       </Suspense>
       {/*<FooterSocial />*/}
     </div>
