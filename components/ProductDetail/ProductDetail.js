@@ -270,18 +270,28 @@ class ProductDetail extends Component {
       country: "",
       lead_type: "Usuario Registrado que Accedió a los Detalles del Producto",
       category: this.props.data.category.name,
-      sub_category: "",
+      sub_category: this.props.data.sub_category,
       price_product: this.props.data.price,
       product_title: this.props.data.product_global_title,
       product_description: this.props.data.description,
       product_id: String(this.props.data.product_id),
-      product_link: "",
       product_image: this.props.data.images[0].url,
       product_brand: this.props.data.brand,
       product_category: String(this.props.data.breadcum[0].name),
-      product_subcategory: String(this.props.data.category.name),
+      product_subcategory: String(this.props.data.sub_category),
       category_id: String(this.props.data.category_id),
       rating: rating,
+      cost_of_goods_sold: this.props.data.cost_of_goods_sold,
+      asin_link: this.props.data.asin_link,
+      gross_margin: this.props.data.gross_margin,
+      margin_percent: this.props.data.margin_percent,
+      product_link: this.props.data.product_link,
+      weight: this.props.data.weight,
+      gross_margin_percent: String(
+        parseFloat(
+          this.props.data.gross_margin / this.props.data.price
+        ).toFixed(2)
+      ),
     };
     const error = await createleadClient(data);
   }

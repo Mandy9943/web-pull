@@ -8,45 +8,49 @@ import Image from "next/image";
 
 const Info = () => {
   return (
-    <div id="InfoProductDetailMovil">
-      <div className="info title">
+    <div id="InfoProductDetail">
+      <div className="title">
         <h4>
           Porqué Comprar con <p className="company">Kiero</p>
         </h4>
       </div>
-      <div className="info envios">
-        <div className="icon car">
-          <div className="anullProperties">
-            <Image src={envios} alt="Envios gratis" layout="fill" />
+      <div className="info">
+        <div className="envios">
+          <div className="icon">
+            <div className="anullProperties">
+              <Image src={envios} alt="Envios gratis" layout="fill" />
+            </div>
+          </div>
+          <div className="text">
+            <h3>Envío Gratuito</h3>
+            <p>
+              Nuestros productos son importados. Entrega de 3 a 9 días hábiles.
+            </p>
           </div>
         </div>
-        <div className="text texte">
-          <h3>Envío Gratuito</h3>
-          <p>
-            Nuestros productos son importados. Entrega de 3 a 9 días hábiles.
-          </p>
-        </div>
-      </div>
-      <div className="info compras">
-        <div className="icon">
-          <div className="anullProperties">
-            <Image src={compras} alt="Compra Protegida" layout="fill" />
+        <div className="compras">
+          <div className="icon">
+            <div className="anullProperties">
+              <Image src={compras} alt="Compra Protegida" layout="fill" />
+            </div>
+          </div>
+          <div className="text">
+            <h3>Compra Protegida</h3>
+            <p>
+              En caso de que surja algún problema, te devolveremos el dinero.
+            </p>
           </div>
         </div>
-        <div className="text">
-          <h3>Compra Protegida</h3>
-          <p>En caso de que surja algún problema, te devolveremos el dinero.</p>
-        </div>
-      </div>
-      <div className="info garantia">
-        <div className="icon">
-          <div className="anullProperties">
-            <Image src={garantia} alt="Garantia del Vendedor" layout="fill" />
+        <div className="garantia">
+          <div className="icon">
+            <div className="anullProperties">
+              <Image src={garantia} alt="Garantia del Vendedor" layout="fill" />
+            </div>
           </div>
-        </div>
-        <div className="text">
-          <h3>Garantía del Vendedor</h3>
-          <p>Garantía por defecto de fábrica de (1) mes.</p>
+          <div className="text">
+            <h3>Garantía del Vendedor</h3>
+            <p>Garantía por defecto de fábrica de (1) mes.</p>
+          </div>
         </div>
       </div>
     </div>

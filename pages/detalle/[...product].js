@@ -26,6 +26,17 @@ const ProductDetailMobil = dynamic(
   }
 );
 
+const ProductDetailDesktop = dynamic(
+  () =>
+    import(
+      "../../components/NewProductDetail/ProductDetailDesktop/ProductDetailDesktop"
+    ),
+  {
+    ssr: false,
+    loading: () => <Loading />,
+  }
+);
+
 function Product({ data, u_data, userIp }) {
   const dispatch = useAppDispatch();
   const mobileView = useResize(768);
@@ -50,7 +61,7 @@ function Product({ data, u_data, userIp }) {
       })
     );
 
-    createlead(data, 1);
+    createlead(data, 3);
   }, [data, dispatch]);
 
   return (
@@ -178,6 +189,11 @@ function Product({ data, u_data, userIp }) {
             />
           ) : (
             <Detail user_data={u_data} data={data} userIp={userIp} />
+            // <ProductDetailDesktop
+            //   user_data={u_data}
+            //   data={data}
+            //   userIp={userIp}
+            // />
           )}
         </>
       )}
