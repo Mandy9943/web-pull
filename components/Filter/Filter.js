@@ -138,7 +138,7 @@ class Filter extends Component {
     let prices = [];
     let renderedPrices = [];
 
-    console.log(this.state.stateCategories);
+    // console.log(this.state.stateCategories);
 
     if (
       this.props.data &&
