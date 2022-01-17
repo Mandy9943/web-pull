@@ -842,7 +842,9 @@ class PaySection extends Component {
       product_link: item.props.data.product_link,
       weight: String(item.props.data.weight),
     };
+
     const error = await createleadClient(data);
+    console.log(error)
   }
 
   render() {

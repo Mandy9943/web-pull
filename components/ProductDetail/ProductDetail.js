@@ -255,7 +255,6 @@ class ProductDetail extends Component {
     } else {
       rating = "N/A";
     }
-    console.log(this.props.data);
     var data = {
       first_name: Cookies.get("name"),
       city: "",

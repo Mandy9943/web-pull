@@ -10,6 +10,7 @@ const initialState = {
   description: "",
   category_id: "",
   count: 0,
+  breadcum: "",
   isFormOpen: false,
 };
 
