@@ -49,9 +49,9 @@ class Filter extends Component {
             if (!isNaN(category.substr(0, 1))) {
               category = category.split(".")[1];
             }
-            if (this.props.data && this.props.data.categories) {
-              this.res_categories = this.props.data.categories;
-            }
+            // if (this.props.data && this.props.data.categories) {
+            //   this.res_categories = this.props.data.categories;
+            // }
             this.res_categories.push({
               items: null,
               key: category,
@@ -135,16 +135,16 @@ class Filter extends Component {
     let prices = [];
     let renderedPrices = [];
 
-    if (this.props.data && this.props.data.categories) {
-      this.props.data.categories.map((data, i) => {
-        this.res_categories.push({
-          items: data.items,
-          key: data.key,
-          label: data.label,
-          level: data.level,
-        });
-      });
-    }
+    // if (this.props.data && this.props.data.categories) {
+    //   this.props.data.categories.map((data, i) => {
+    //     this.res_categories.push({
+    //       items: data.items,
+    //       key: data.key,
+    //       label: data.label,
+    //       level: data.level,
+    //     });
+    //   });
+    // }
     if (this.props.data && this.props.data.brands) {
       res_brands = this.props.data.brands;
     }
@@ -322,7 +322,9 @@ class Filter extends Component {
                 </div>
               </div>
             </div>
-            <div className="filter-title">Categorías</div>
+            <div className="filter-title">
+              {this.state.dataCategories.length > 0 ? "Categorías" : null}
+            </div>
             {this.res_categories.length > 0 && (
               <>
                 <div ref={this.categories} className="filter-height-overflow">
