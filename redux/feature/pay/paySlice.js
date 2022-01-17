@@ -34,6 +34,7 @@ export const paySlice = createSlice({
       state.brand = action.payload.brand;
       state.description = action.payload.description;
       state.category_id = action.payload.category_id;
+      state.breadcum = action.payload.breadcum;
     },
     openForm: (state, action) => {
       state.isFormOpen = action.payload;

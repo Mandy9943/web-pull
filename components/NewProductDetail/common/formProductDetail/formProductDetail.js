@@ -115,7 +115,7 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
       product_brand: productData.brand,
       category_id: String(productData.category_id),
       product_category: productData.breadcum[0].name,
-      product_subcategory: String(productData.breadcum[0].sub_category),
+      product_subcategory: String(productData.sub_category),
       rating:rating,
       cost_of_goods_sold: String(productData.cost_of_goods_sold),
       asin_link: productData.asin_link,
