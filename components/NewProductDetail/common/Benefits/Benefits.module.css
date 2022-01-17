@@ -3,22 +3,12 @@
   background: #fff;
   transition: all 0.3s ease;
   min-width: 320px;
-}
-
-.margin {
-  margin-top: 36px;
-  margin-bottom: 24px;
-}
-
-#Benefits .beneficio {
-  padding: 110px 10px;
-  display: flex;
-  flex-direction: column;
+  display: grid;
   align-items: center;
   justify-content: center;
 }
 
-#Benefits .beneficio h1 {
+#Benefits h2 {
   font-family: Montserrat, sans-serif;
   font-size: 24px;
   font-style: normal;
@@ -29,12 +19,27 @@
   font-weight: 900;
   letter-spacing: 0.05em;
   display: inline-block;
-  padding-bottom: 25px;
+  margin-bottom: 25px;
+  margin-top: 35px;
 }
 
-#Benefits .beneficio h1 .red {
+#Benefits h2 .red {
   color: #cf0a2c;
   display: inline;
+}
+#Benefits .beneficio {
+  margin: 0 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#Benefits .beneficio .box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 #Benefits .beneficio img {
@@ -64,4 +69,57 @@
   text-align: center;
   color: #5d5d5d;
   width: 90%;
+}
+
+@media (min-width: 768px) {
+  #Benefits h2 {
+    margin-top: 110px;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 56px;
+    line-height: 68px;
+    text-align: center;
+    letter-spacing: 0.03em;
+    color: #000000;
+  }
+  #Benefits .beneficio {
+    flex-flow: row;
+    flex-wrap: wrap;
+  }
+  #Benefits .beneficio .box {
+    width: 562px;
+    height: 478px;
+    margin-top: 40px;
+  }
+
+  #Benefits .beneficio .box h3 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 39px;
+    text-align: center;
+    letter-spacing: 0.03em;
+  }
+
+  #Benefits .beneficio .box p {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 36px;
+    text-align: center;
+  }
+
+  #Benefits .beneficio .box img {
+    width: 305px !important;
+    height: 248px !important;
+  }
+
+  #Benefits .beneficio .box:nth-of-type(4) {
+    margin-top: 178px;
+    margin-bottom: 178px;
+  }
+  #Benefits .beneficio .box:nth-of-type(5) {
+    margin-top: 178px;
+    margin-bottom: 178px;
+  }
 }
