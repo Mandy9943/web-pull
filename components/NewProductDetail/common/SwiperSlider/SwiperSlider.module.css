@@ -1,17 +1,17 @@
-.swiperSliderDatailMobile {
+.swiperSliderDetail {
   height: 100%;
   width: 100%;
   padding-bottom: 90px;
   background-color: white;
 }
 
-.swiperSliderDatailMobile .swiper {
+.swiperSliderDetail .swiper {
   width: 100%;
   padding-top: 50px;
   padding-bottom: 50px;
 }
 
-.swiperSliderDatailMobile .swiper-slide {
+.swiperSliderDetail .swiper-slide {
   background-position: center;
   background-size: cover;
   width: 300px;
@@ -19,11 +19,11 @@
   border-radius: 5px;
 }
 
-.swiperSliderDatailMobile .swiper-slide div img {
+.swiperSliderDetail .swiper-slide div img {
   border-radius: 5px;
 }
 
-.swiperSliderDatailMobile .swiper-container .swiper-pagination-bullets {
+.swiperSliderDetail .swiper-container .swiper-pagination-bullets {
   position: absolute;
   bottom: 0;
   width: 300px;
@@ -32,8 +32,8 @@
   margin: auto;
 }
 
-.swiperSliderDatailMobile
-  .swiper-container-horizontal.mySwiper
+.swiperSliderDetail
+  .swiper-container-horizontal.HomeProduct
   > .swiper-pagination-bullets
   .swiper-pagination-bullet {
   width: calc(100% - 75%);
@@ -42,34 +42,34 @@
   height: 2px;
   background: #5d5d5d;
 }
-.swiperSliderDatailMobile
-  .swiper-container-horizontal.mySwiper2
+.swiperSliderDetail
+  .swiper-container-horizontal.specialOfferMovil
   > .swiper-pagination-bullets
   .swiper-pagination-bullet {
   background: #5f5f5f;
 }
 
-.swiperSliderDatailMobile .swiper-container {
+.swiperSliderDetail .swiper-container {
   margin-bottom: auto;
   margin-top: 0;
   height: 340px;
 }
 
-.swiperSliderDatailMobile .swiper-container .swiper-pagination-bullets {
+.swiperSliderDetail .swiper-container .swiper-pagination-bullets {
   position: absolute;
   bottom: 5px;
   display: flex;
   justify-content: center;
 }
-.swiperSliderDatailMobile .mySwiper2 {
+.swiperSliderDetail .specialOfferMovil {
   width: 100vw;
   height: 512px;
 }
 
-/* .swiperSliderDatailMobile .mySwiper .mdc-ripple-surface {
+/* .swiperSliderDetail .HomeProduct .mdc-ripple-surface {
   box-shadow: 0px 2px 5px 5px rgba(0, 0, 0, 0.185);
 } */
-.swiperSliderDatailMobile .mySwiper .swiper-slide-next,
+.swiperSliderDetail .HomeProduct .swiper-slide-next,
 .swiper-slide-prev {
   transform: none !important;
 }

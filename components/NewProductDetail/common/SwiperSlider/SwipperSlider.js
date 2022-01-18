@@ -24,8 +24,9 @@ const SwiperSlider = ({
   stock,
   discount_percentage,
 }) => {
-  return type === "HomeProduct" ? (
-    <div className="swiperSliderDatailMobile">
+  // Para usar en el HomeProduct del Product Detail Movil
+  const HomeProduct = (
+    <div className="swiperSliderDetail">
       <Swiper
         loop={true}
         speed={200}
@@ -48,7 +49,7 @@ const SwiperSlider = ({
         pagination={{
           clickable: true,
         }}
-        className="mySwiper"
+        className={type}
       >
         {!images.length ? (
           <>
@@ -99,9 +100,11 @@ const SwiperSlider = ({
         )}
       </Swiper>
     </div>
-  ) : (
-    <div className="swiperSliderDatailMobile">
-      <Swiper pagination={true} className="mySwiper2">
+  );
+  // Para el uso del specialOfferMovil en productDetailMobil
+  const specialOfferMovil = (
+    <div className="swiperSliderDetail">
+      <Swiper pagination={true} className={type}>
         <SwiperSlide>
           <DiscountPrice
             priceProduct={price}
@@ -127,6 +130,46 @@ const SwiperSlider = ({
       </Swiper>
     </div>
   );
+
+  // Para el uso del specialOfferMovil en productDetailMobil
+  const specialOffer = (
+    <div className="swiperSliderDetail">
+      <Swiper pagination={true} className={type}>
+        <SwiperSlide>
+          <DiscountPrice
+            priceProduct={price}
+            discountPercentage={10}
+            stock={stock}
+            quantityProduct={2}
+            altImg={altImg}
+            images={images}
+            discountPercentageBd={discount_percentage}
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <DiscountPrice
+            priceProduct={price}
+            discountPercentage={15}
+            stock={stock}
+            quantityProduct={3}
+            altImg={altImg}
+            images={images}
+            discountPercentageBd={discount_percentage}
+          />
+        </SwiperSlide>
+      </Swiper>
+    </div>
+  );
+
+  let render = <></>;
+  if (type === "HomeProduct") {
+    render = HomeProduct;
+  } else if (type === "specialOfferMovil") {
+    render = specialOfferMovil;
+  } else if (type === "specialOffer") {
+    render = specialOffer;
+  }
+  return render;
 };
 
 export default SwiperSlider;

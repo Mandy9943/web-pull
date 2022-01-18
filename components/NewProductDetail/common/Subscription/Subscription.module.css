@@ -1,14 +1,13 @@
 #Subscription {
   background: #f3f3f3;
-  padding: 25px;
+  font-family: Montserrat, sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-#Subscription h3 {
-  font-family: Montserrat, sans-serif;
+#Subscription .title h3 {
   font-size: 24px;
   font-style: normal;
   font-weight: 800;
@@ -19,9 +18,8 @@
   color: #5f5f5f;
 }
 
-#Subscription p {
+#Subscription .title p {
   padding-top: 24px;
-  font-family: Montserrat, sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -37,7 +35,7 @@
   height: 211px !important;
 }
 
-#Subscription input {
+#Subscription .button input {
   height: 15px;
   border-radius: 0;
   font-size: 16px;
@@ -47,11 +45,10 @@
   margin-top: 31px;
 }
 
-#Subscription button {
+#Subscription .button button {
   background-color: #cf0a2c;
   margin-top: 25px;
   height: 68px;
-  font-family: Montserrat, sans-serif;
   font-size: 21px;
   font-style: normal;
   font-weight: 800;
@@ -60,4 +57,72 @@
   text-align: center;
   color: #ffffff;
   border-radius: 40px;
+}
+
+@media (min-width: 768px) {
+  #Subscription {
+    display: grid;
+    margin-bottom: 0;
+    height: 879px;
+    grid-auto-rows: 1fr;
+    grid-template-areas:
+      "imagen titulo"
+      "imagen boton";
+  }
+  #Subscription .anullProperties {
+    grid-area: imagen;
+    width: 50vw;
+  }
+  #Subscription .anullProperties img {
+    padding-top: 10px !important;
+    width: 100% !important;
+    height: 400px !important;
+  }
+  #Subscription .title {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    grid-area: titulo;
+  }
+  #Subscription .title h3 {
+    font-style: normal;
+    font-weight: 800;
+    font-size: 42px;
+    line-height: 51px;
+    letter-spacing: 0.02em;
+    margin-right: 250px;
+  }
+  #Subscription .title p {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 21px;
+    line-height: 36px;
+    margin-right: 250px;
+  }
+  #Subscription .button {
+    grid-area: boton;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    align-content: flex-end;
+  }
+  #Subscription .button input {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    border-radius: 25px;
+    width: 599px;
+    height: 76px;
+    margin-right: 250px;
+  }
+
+  #Subscription .button button {
+    width: 599px;
+    height: 76px;
+    margin-bottom: 185px;
+    margin-right: 250px;
+  }
 }

@@ -47,13 +47,13 @@ const Benefits = dynamic(() => import("../common/Benefits/Benefits"), {
 const HelpCenter = dynamic(() => import("../common/HelpCenter/HelpCenter"), {
   suspense: true,
 });
-// const Subscription = dynamic(
-//   () => import("./common/Subscription/Subscription"),
-//   {
-//     ssr: false,
-//     loading: () => <p>...</p>,
-//   }
-// );
+const Subscription = dynamic(
+  () => import("../common/Subscription/Subscription"),
+  {
+    ssr: false,
+    loading: () => <p>...</p>,
+  }
+);
 const RecommendedProducts = dynamic(
   () => import("../common/RecommendedProducts/RecommendedProducts"),
   {
@@ -178,7 +178,7 @@ const ProductDetailMobil = ({ user_data, data, userIp }) => {
         <Description product={data} />
         <OurClient category={data?.breadcum[0]?.name.substring(0, 7)} />
         <SwiperSlider
-          type={"specialOffer"}
+          type={"specialOfferMovil"}
           price={data.price}
           images={data.images}
           altImg={data.title}
