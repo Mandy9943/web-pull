@@ -1,21 +1,22 @@
 #ProductDetailDesktop {
   background-color: #e5e5e5;
-  overflow-x: hidden;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
 }
 
 #ProductDetailDesktop .container {
-  margin: 18px 100px 80px 100px;
+  width: 80vw;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 #ProductDetailDesktop .container .specialOffer {
-  display: flex;
-  flex-wrap: wrap;
-  overflow-x: hidden;
-  margin: 16px 100px 0 100px;
-}
-
-#ProductDetailDesktop #RecommendedProducts {
-  /*margin-top: 80px;*/
 }
 
 #footerWrapper {
@@ -27,4 +28,3 @@
 .footer {
   border-top: unset !important;
 }
-

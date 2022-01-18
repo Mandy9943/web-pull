@@ -51,6 +51,16 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
           {/* para la primera parte del contenedor */}
           <Info />
           {/* TODO: ACA va el SpecialOffer  */}
+          <div className="specialOffer">
+            <SwiperSlider
+              type={"specialOffer"}
+              price={data.price}
+              images={data.images}
+              altImg={data.title}
+              stock={data.status === 0 ? 0 : data.stock}
+              discount_percentage={data.discount_percentage}
+            />
+          </div>
           <SellerInfo />
         </div>
         <Benefits />
