@@ -7,7 +7,6 @@ import "./ProductDetailDesktop.module.css";
 import dynamic from "next/dynamic";
 import Info from "../common/Info/Info";
 import RecommendedProducts from "../common/RecommendedProducts/RecommendedProducts";
-import Benefits from "../common/Benefits/Benefits";
 
 const Nav = dynamic(() => import("../../Common/Nav/Nav"));
 
@@ -22,6 +21,18 @@ const SellerInfo = dynamic(() => import("../common/SellerInfo/SellerInfo"), {
   suspense: true,
 });
 
+const Benefits = dynamic(() => import("../common/Benefits/Benefits"), {
+  suspense: true,
+});
+
+const Subscription = dynamic(
+  () => import("../common/Subscription/Subscription"),
+  {
+    ssr: false,
+    loading: () => <p>...</p>,
+  }
+);
+const Footer = dynamic(() => import("../../Common/Footer"));
 const ProductDetailDesktop = ({ user_data, data, userIp }) => {
   console.log({ data, userIp });
   useEffect(() => {
@@ -43,8 +54,10 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
           <SellerInfo />
         </div>
         <Benefits />
+        <Subscription />
       </Suspense>
-      {/*<FooterSocial />*/}
+      <Footer />
+      <FooterSocial />
     </div>
   );
 };

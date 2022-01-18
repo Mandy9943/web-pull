@@ -1,19 +1,30 @@
 #ProductDetailDesktop {
-    background-color: #E5E5E5;
-    overflow-x: hidden;
+  background-color: #e5e5e5;
+  overflow-x: hidden;
 }
 
 #ProductDetailDesktop .container {
-    margin: 18px 100px 80px 100px;
+  margin: 18px 100px 80px 100px;
 }
 
 #ProductDetailDesktop .container .specialOffer {
-    display: flex;
-    flex-wrap: wrap;
-    overflow-x: hidden;
-    margin: 16px 100px 0 100px;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-x: hidden;
+  margin: 16px 100px 0 100px;
 }
 
 #ProductDetailDesktop #RecommendedProducts {
-    /*margin-top: 80px;*/
+  /*margin-top: 80px;*/
 }
+
+#footerWrapper {
+  padding: 0 !important;
+  padding-top: 34px !important;
+  background-color: #fff !important;
+}
+
+.footer {
+  border-top: unset !important;
+}
+

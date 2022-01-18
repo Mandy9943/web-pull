@@ -87,8 +87,8 @@
     flex-wrap: wrap;
   }
   #Benefits .beneficio .box {
-    width: 562px;
-    height: 478px;
+    width: 592px;
+    height: 515px;
     margin-top: 40px;
   }
 
@@ -99,6 +99,7 @@
     line-height: 39px;
     text-align: center;
     letter-spacing: 0.03em;
+    margin-bottom: 25px;
   }
 
   #Benefits .beneficio .box p {
