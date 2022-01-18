@@ -13,7 +13,7 @@ import {
 import "./ProductDetailMobil.module.css";
 
 import useScrollY from "../../../lib/hooks/useScrollY";
-import {createlead, sendProductViewed} from "../../../lib/functions";
+import { createlead, sendProductViewed } from "../../../lib/functions";
 import {
   openForm,
   selectIsFormOpen,
@@ -189,7 +189,7 @@ const ProductDetailMobil = ({ user_data, data, userIp }) => {
         <RecommendedProducts category={data.category} />
         <Benefits />
         <HelpCenter />
-        <Subscription />
+        {/* <Subscription /> */}
         <Footer />
       </Suspense>
       <FooterSocial />
