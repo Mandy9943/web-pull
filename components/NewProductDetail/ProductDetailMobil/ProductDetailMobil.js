@@ -178,7 +178,7 @@ const ProductDetailMobil = ({ user_data, data, userIp }) => {
         <Description product={data} />
         <OurClient category={data?.breadcum[0]?.name.substring(0, 7)} />
         <SwiperSlider
-          type={"specialOffer"}
+          type={"specialOfferMovil"}
           price={data.price}
           images={data.images}
           altImg={data.title}

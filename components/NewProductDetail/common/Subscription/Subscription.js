@@ -10,7 +10,7 @@ const Subscription = () => {
   };
   const handleClick = (e) => {
     e.preventDefault();
-    alert("Clicked");
+    alert("Clicked", email);
     return 0;
   };
 
