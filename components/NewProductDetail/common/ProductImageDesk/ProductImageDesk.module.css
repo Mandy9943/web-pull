@@ -1,0 +1,45 @@
+.ProductImageDesk {
+  box-sizing: border-box;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  padding: 50px 4.5vw;
+  margin-bottom: 12px;
+}
+.ProductImageDesk .deskImages {
+  width: 30%;
+  display: inline-flex;
+  flex-wrap: wrap;
+  min-width: 150px;
+  padding: 30px 0;
+}
+.ProductImageDesk .deskImages .content {
+  flex: 0 0 44%;
+  margin: 0 3% 4% 3%;
+  cursor: pointer;
+}
+
+.ProductImageDesk .deskImages .content img {
+  width: 100% !important;
+  border-radius: 10px;
+}
+.ProductImageDesk .deskImages .selectedContent img {
+  border: 2px solid #cf0a2c !important;
+}
+
+.ProductImageDesk .actualImageWrapper {
+  width: 400px;
+  border-radius: 20px;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ProductImageDesk .actualImage img {
+  width: 100% !important;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+}

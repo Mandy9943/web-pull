@@ -9,9 +9,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-#OurClient header .left {
+  cursor: pointer;
 }
 
 #OurClient header .left h4 {
@@ -52,8 +50,6 @@
 
 #OurClient article {
   margin-top: 25px;
-  column-width: 130px;
-  column-gap: 8px;
   width: 100%;
 }
 
@@ -124,9 +120,6 @@
   padding-bottom: 15px;
 }
 
-#OurClient article .card .comment {
-}
-
 #OurClient article .card .comment h5 {
   font-family: Montserrat, sans-serif;
   font-style: normal;
@@ -158,6 +151,9 @@
   align-items: center !important;
   justify-content: end !important;
 }
+#OurClient article .card footer .anullProperties div img {
+  cursor: pointer;
+}
 
 #OurClient .footer_our {
   display: flex;
@@ -187,7 +183,6 @@
 }
 
 .swipe article {
-  overflow-y: scroll !important;
   overflow-x: hidden !important;
   -webkit-overflow-scrolling: touch;
   overflow-scrolling: touch !important;
@@ -300,9 +295,6 @@
   padding-right: 4px;
 }
 
-.swipe article .card .comment {
-}
-
 .swipe article .card .comment h5 {
   font-family: Montserrat, sans-serif;
   font-style: normal;
@@ -331,12 +323,13 @@
 
 .swipe .swiper-container {
   overflow: initial !important;
+  height: 50vh;
 }
 
 .swipe .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: #fff;
+  background-color: #979797;
   display: -webkit-box;
   display: -ms-flexbox;
   display: -webkit-flex;
@@ -364,6 +357,9 @@
   margin: 0 !important;
   height: 2px;
   background-color: rgba(0, 0, 0, 0.1);
+  left: 15% !important;
+  width: 70% !important;
+  bottom: -20px !important;
 }
 
 .swipe .swiperOurClients .swiper-scrollbar-drag {
@@ -381,4 +377,32 @@
 
 #CardOurClient picture .anullProperties img {
   height: auto !important;
+}
+
+@media (min-width: 768px) {
+  #OurClient {
+    border-radius: 10px;
+    margin-bottom: 12px;
+    border: none;
+  }
+
+  .swipe article .card picture .headerOurClients {
+    width: 80vw !important;
+    max-height: 70vh !important;
+  }
+  .swipe article .card picture .close {
+    position: absolute !important;
+    right: 40px !important;
+    top: 30px !important;
+  }
+
+  .swipe .swiper-slide {
+    height: auto;
+  }
+  .swipe .card .texto {
+    padding: 0 100px 50px 100px;
+  }
+  .swipe .swiper-container {
+    height: 70vh;
+  }
 }

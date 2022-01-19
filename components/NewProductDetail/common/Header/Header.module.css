@@ -15,7 +15,6 @@
   background-color: #cf0a2c;
   padding: 0 5%;
   width: 90%;
-  height: 28px;
   overflow-x: scroll;
   display: flex;
   align-items: center;
@@ -53,4 +52,24 @@
 }
 #HeaderProductDatailMobil .bredItem.nextCategory {
   margin-top: 5px;
+}
+
+@media (min-width: 768px) {
+  #HeaderProductDatailMobil {
+    margin-bottom: 15px;
+  }
+  #HeaderProductDatailMobil .bredcumbs {
+    padding-bottom: 16px;
+    position: static;
+    margin-bottom: 0px;
+    overflow-x: unset;
+  }
+  #HeaderProductDatailMobil .bredItem {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+  }
 }

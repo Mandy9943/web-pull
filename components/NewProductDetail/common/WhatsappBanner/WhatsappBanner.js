@@ -10,14 +10,16 @@ import {
   selectFormat,
 } from "../../../../redux/feature/whatsapp/whatsappReducer";
 
-const WhatsappBanner = ({ close, productId }) => {
+const WhatsappBanner = ({ close, productId, isDesktop }) => {
   const pretty = useAppSelector(selectPretty);
   const numberFormat = useAppSelector(selectFormat);
   return (
     <div id="WhatsappBanner">
-      <div className="closeIcon" onClick={close}>
-        <FontAwesomeIcon icon={faTimes} />
-      </div>
+      {!isDesktop && (
+        <div className="closeIcon" onClick={close}>
+          <FontAwesomeIcon icon={faTimes} />
+        </div>
+      )}
 
       <a
         rel="noopener noreferrer"
@@ -27,10 +29,12 @@ const WhatsappBanner = ({ close, productId }) => {
       >
         <div className="info">
           <span>Ayuda en linea</span>
-          <span className="whatsappIcon">
-            <FontAwesomeIcon icon={faWhatsapp} />
-          </span>
-          <span>{pretty}</span>
+          <div className="number">
+            <span className="whatsappIcon">
+              <FontAwesomeIcon icon={faWhatsapp} />
+            </span>
+            <span className="tel">{pretty}</span>
+          </div>
         </div>
       </a>
     </div>

@@ -9,9 +9,13 @@ import "./PayMethod.module.css";
 
 import Image from "next/image";
 
-const PayMethod = () => {
+const PayMethod = ({ isDektop }) => {
+  const payMethodClass = [""];
+  if (isDektop) {
+    payMethodClass.push("noBorder");
+  }
   return (
-    <div id="PayMethod">
+    <div id="PayMethod" className={payMethodClass.join(" ")}>
       <div className="titulo">
         <h3>Métodos de pago</h3>
       </div>

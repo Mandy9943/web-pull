@@ -1,7 +1,11 @@
 #PayMethod {
   border-bottom: 2px solid #e4e4e4;
   background: #fff;
-  padding: 36px 10px 0 10px;
+  padding: 36px 10px 0px 10px;
+  box-sizing: border-box;
+}
+.noBorder {
+  border: none !important;
 }
 
 #PayMethod .titulo {
@@ -19,11 +23,13 @@
 
 #PayMethod .link {
   display: grid;
-  grid-template-columns: repeat(3, 107px);
-  grid-template-rows: repeat(2, 72px);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  row-gap: 20px;
   padding: 0px 0px;
   margin: 24px 0px;
   justify-content: center;
+  box-sizing: border-box;
 }
 
 #PayMethod .link .imgContainer img {
@@ -33,14 +39,18 @@
   max-width: 93px !important;
 }
 
-@media (min-width: 750px) {
+@media (min-width: 768px) {
   #PayMethod {
-    height: 130px;
+    padding: 36px 0 20px;
+  }
+  #PayMethod .link .imgContainer {
+    display: flex;
+    justify-content: start;
   }
 }
 @media (max-width: 350px) {
   #PayMethod {
-    padding: 0px 10px;
+    padding: 0px 0px;
   }
   #PayMethod .link {
     display: grid;

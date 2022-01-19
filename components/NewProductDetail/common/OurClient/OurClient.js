@@ -8,12 +8,13 @@ import cerrado from "../../../../assets/img/productDetail/icono-desplegar@2x.svg
 import CardOurClient from "./CardOurClient";
 import review from "../../../../lib/review";
 import SwiperCardOurClient from "./SwiperCardOurClient";
-import { Button } from "@mui/material";
+import { Button, Collapse, Grid } from "@mui/material";
 
 import {
   handleActivateBack,
   handleDeactivateBack,
 } from "../../../../lib/functions";
+import { Box } from "@mui/system";
 const OurClient = ({ category }) => {
   const [countClient, setCountClient] = useState(4);
   const lista = review(category).slice(0, countClient);
@@ -62,19 +63,47 @@ const OurClient = ({ category }) => {
           </div>
         </div>
       </header>
-      {collapse === true ? (
+      <Collapse in={collapse === true}>
         <React.Fragment>
           <article>
-            {lista.map((client, i) => {
-              return (
-                <CardOurClient
-                  key={i}
-                  client={client}
-                  handleOnClickComment={handleOnClickComment}
-                />
-              );
-            })}
+            <Box sx={{ flexGrow: 1 }} width={"100%"}>
+              <Grid container spacing={2}>
+                <Grid item xs={6}>
+                  <div className="column">
+                    {lista.map((client, i) => {
+                      const render = i % 2 === 0 ? true : false;
 
+                      return (
+                        render && (
+                          <CardOurClient
+                            key={i}
+                            client={client}
+                            handleOnClickComment={handleOnClickComment}
+                          />
+                        )
+                      );
+                    })}
+                  </div>
+                </Grid>
+                <Grid item xs={6}>
+                  <div className="column">
+                    {lista.map((client, i) => {
+                      const render = i % 2 !== 0 ? true : false;
+
+                      return (
+                        render && (
+                          <CardOurClient
+                            key={i}
+                            client={client}
+                            handleOnClickComment={handleOnClickComment}
+                          />
+                        )
+                      );
+                    })}
+                  </div>
+                </Grid>
+              </Grid>
+            </Box>
             <SwiperCardOurClient
               client={clientShow}
               comment={comment}
@@ -91,7 +120,7 @@ const OurClient = ({ category }) => {
             </Button>
           </div>
         </React.Fragment>
-      ) : null}
+      </Collapse>
     </section>
   );
 };

@@ -5,6 +5,7 @@ import abierto from "../../../../assets/img/productDetail/l-nea-86@2x.svg";
 import arrow from "../../../../assets/img/productDetail/arrow-down@2x.svg";
 
 import Image from "next/image";
+import { Collapse } from "@mui/material";
 
 const Detail = ({ product }) => {
   const [collapse, setCollapse] = useState(false);
@@ -23,7 +24,7 @@ const Detail = ({ product }) => {
           <Image src={desglosar} alt="Icono del desglose" layout="fill" />
         </div>
       </div>
-      {collapse === true ? (
+      <Collapse in={collapse === true}>
         <div className="detalles">
           <div className="detailContainer">
             <h6>Marca </h6>
@@ -70,7 +71,7 @@ const Detail = ({ product }) => {
             </div>
           </footer>
         </div>
-      ) : null}
+      </Collapse>
     </div>
   );
 };
