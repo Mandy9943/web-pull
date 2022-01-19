@@ -9,7 +9,7 @@ const OfferSection = () => {
         </div>
         <div className="contentOffer">
           <p>
-            Obtén descuentos en tu compra de <strong>2 o más productos</strong>
+            Obtén descuentos en tu compra de <span>2 o más productos</span>
           </p>
         </div>
       </div>

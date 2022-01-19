@@ -23,6 +23,7 @@ const SwiperSlider = ({
   price,
   stock,
   discount_percentage,
+  movil = true,
 }) => {
   // Para usar en el HomeProduct del Product Detail Movil
   const HomeProduct = (
@@ -134,7 +135,13 @@ const SwiperSlider = ({
   // Para el uso del specialOfferMovil en productDetailMobil
   const specialOffer = (
     <div className="swiperSliderDetail">
-      <Swiper pagination={true} className={type}>
+      <Swiper
+        pagination={true}
+        className={type}
+        slidePerView="auto"
+        slidesPerGroup="2"
+        freeMode={true}
+      >
         <SwiperSlide>
           <DiscountPrice
             priceProduct={price}
@@ -144,17 +151,19 @@ const SwiperSlider = ({
             altImg={altImg}
             images={images}
             discountPercentageBd={discount_percentage}
+            movil={movil}
           />
         </SwiperSlide>
         <SwiperSlide>
           <DiscountPrice
             priceProduct={price}
-            discountPercentage={15}
+            discountPercentage={10}
             stock={stock}
-            quantityProduct={3}
+            quantityProduct={2}
             altImg={altImg}
             images={images}
             discountPercentageBd={discount_percentage}
+            movil={movil}
           />
         </SwiperSlide>
       </Swiper>
