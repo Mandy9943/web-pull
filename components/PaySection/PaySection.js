@@ -809,7 +809,7 @@ class PaySection extends Component {
       first_name: name,
       city: this.state.city,
       address: this.state.address,
-      email: email,
+      email: Cookies.get("email"),
       second_email: this.state.email,
       phone: this.state.mobile_phone,
       second_phone: "",
@@ -823,20 +823,32 @@ class PaySection extends Component {
           ? "Usuario Registrado que Presionó el Botón Comprar"
           : "Usuario Invitado (Y Usuario Registrado) que Presionó el botón de Continuar con la transacción",
       category: item.props.data.category.name,
-      sub_category: "",
-      price_product: item.price,
+      sub_category: item.props.data.sub_category,
+      price_product: String(item.price),
       product_title: item.props.data.product_global_title.slice(0, 250),
       product_description: item.props.data.description,
       product_id: String(item.props.data.product_global_id),
-      product_link: "",
       product_image: item.props.data.images[0].url,
       product_brand: item.props.data.brand,
       category_id: String(item.props.data.category_id),
       product_category: String(item.props.data.breadcum[0].name),
-      product_subcategory: String(item.props.data.category.name),
+      product_subcategory: String(item.props.data.sub_category),
       rating: rating,
+      cost_of_goods_sold: String(item.props.data.cost_of_goods_sold),
+      asin_link: item.props.data.asin_link,
+      gross_margin: String(item.props.data.gross_margin),
+      gross_margin_percent: String(
+        parseFloat(
+          item.props.data.gross_margin / item.props.data.price
+        ).toFixed(2)
+      ),
+      margin_percent: String(item.props.data.margin_percent),
+      product_link: item.props.data.product_link,
+      weight: String(item.props.data.weight),
     };
+
     const error = await createleadClient(data);
+    console.log(error);
   }
 
   render() {
@@ -970,7 +982,7 @@ class PaySection extends Component {
     var hmacID = createHmacSHA1(this.state.identification);
     this.state.user_id = hmacID;
 
-    const extra1 = JSON.stringify({      
+    const extra1 = JSON.stringify({
       id: hmacID,
       street: this.state.address,
       city: this.state.city,
@@ -978,7 +990,7 @@ class PaySection extends Component {
       product_id: this.props.props.data.product_id,
     });
 
-    console.log("extra1 Desktop", extra1);
+    // console.log("extra1 Desktop", extra1);
 
     var extra2 = JSON.stringify({
       qty: quantity,
@@ -991,7 +1003,7 @@ class PaySection extends Component {
         new Date().getTime(),
     });
 
-    console.log("extra2 Desktop", extra2);
+    // console.log("extra2 Desktop", extra2);
 
     var extra3 = JSON.stringify({
       cid: this.state.clientId,
@@ -1001,7 +1013,7 @@ class PaySection extends Component {
       last_name: this.state.lastName,
     });
 
-    console.log("extrar3 Desktop", extra3);
+    // console.log("extrar3 Desktop", extra3);
 
     var md5 = require("md5");
     var ref_code = "kieroco-" + new Date().getTime();
@@ -1284,7 +1296,6 @@ class PaySection extends Component {
         )}
       </div>
     );
-    console.log("item", this.props);
     return (
       <div className="pay">
         <div

@@ -25,6 +25,7 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const FormProductDetail = ({ handleClose, open, userIp }) => {
   const productData = useAppSelector(selectData);
+  // console.log(productData);
   const [state, setState] = useState({
     cantidad: 0,
     dimensions: {},
@@ -78,24 +79,55 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
     // user.user_id = createHmacSHA1(user.email);
     // sendIdentifyEvent(user);
     const userData = {
-      name: getValues().firstName,
+      first_name: getValues().firstName,
       email: getValues().email,
-      lastName: getValues().lastName,
-      user_id: state.user_id,
+      last_name: getValues().lastName,
+      id: state.user_id,
       city: getValues().city,
       address: getValues().address,
-      mobile_phone: getValues().phoneNumber,
+      phone: getValues().phoneNumber,
     };
+    if (productData.rating !== undefined) {
+      var rating = toString(productData.rating / 10);
+    } else {
+      rating = "N/A";
+    }
     const data = {
       ...userData,
-      category: productData.category,
-      product_global_price: productData.price,
-      product_global_title: productData.title,
+      second_phone: "",
+      second_email: "",
+      type_id: "",
+      num_id: "",
+      country: "",
+      lead_type:
+        "Usuario Invitado (Y Usuario Registrado) que Presionó el botón de Continuar con la transacción",
+      category: productData.category.name,
+      // product_global_price: productData.price,
+
       description: productData.description,
       product_global_id: productData.product_id,
       images: productData.img,
-      brand: productData.brand,
-      category_id: productData.category_id,
+
+      sub_category: productData.sub_category,
+      price_product: String(productData.price),
+      product_title: productData.title,
+      product_description: productData.description,
+      product_id: String(productData.product_id),
+      product_image: productData.img[0].url, //duda
+      product_brand: productData.brand,
+      category_id: String(productData.category_id),
+      product_category: "", //productData.breadcum[0].name,
+      product_subcategory: String(productData.sub_category),
+      rating: rating,
+      cost_of_goods_sold: String(productData.cost_of_goods_sold),
+      asin_link: productData.asin_link,
+      gross_margin: String(productData.gross_margin),
+      gross_margin_percent: String(
+        parseFloat(productData.gross_margin / productData.price).toFixed(2)
+      ),
+      margin_percent: String(productData.margin_percent),
+      product_link: productData.product_link,
+      weight: String(productData.weight),
     };
 
     createlead(data, 2);
@@ -173,7 +205,7 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
     product_id: productData.product_id,
   });
 
-  console.log("extra1 Mobile", extra1);
+  // console.log("extra1 Mobile", extra1);
 
   const extra2 = JSON.stringify({
     qty: quantity,
@@ -186,7 +218,7 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
       new Date().getTime(),
   });
 
-  console.log("extra2 Mobile", extra2);
+  // console.log("extra2 Mobile", extra2);
 
   const extra3 = JSON.stringify({
     cid: state.clientId,
@@ -196,7 +228,7 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
     last_name: values.lastName,
   });
 
-  console.log("extra3 Mobile", extra3);
+  // console.log("extra3 Mobile", extra3);
 
   var md5 = require("md5");
   var ref_code = "kieroco-" + new Date().getTime();
