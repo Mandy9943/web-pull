@@ -91,4 +91,21 @@
     letter-spacing: 0.02em;
     color: #000000;
   }
+
+  #InfoProductDetail .info .envios h3 {
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 26px;
+    letter-spacing: 0.03em;
+    text-align: left;
+  }
+  #InfoProductDetail .info .envios p {
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 36px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
 }
