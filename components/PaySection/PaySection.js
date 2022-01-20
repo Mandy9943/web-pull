@@ -982,7 +982,7 @@ class PaySection extends Component {
       id: hmacID,
       street: this.state.address,
       city: this.state.city,
-      user_id: this.props.props.data.user_id,
+      user_id: this.props.props.data.user.user_id,
       product_id: this.props.props.data.product_id,
     });
 
