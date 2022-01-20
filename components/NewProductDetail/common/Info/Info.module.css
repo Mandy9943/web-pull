@@ -81,6 +81,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 70px 0 80px 0;
   }
   #InfoProductDetail .title h4 {
     font-family: Montserrat;
@@ -107,5 +108,9 @@
     line-height: 36px;
     letter-spacing: 0em;
     text-align: left;
+  }
+  #InfoProductDetail .info .envios .icon img {
+    padding-bottom: 12px !important;
+    height: 64px !important;
   }
 }
