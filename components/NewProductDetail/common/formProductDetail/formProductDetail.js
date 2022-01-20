@@ -32,7 +32,7 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
     variantsSpinner: !productData.m_pgid,
     modalAddr: false,
     user: "",
-    user_id: Cookies.get("user_id") || 16,
+    user_id: Cookies.get("user_id") || "",
     email: "",
     mobile_phone: "",
     city: "",
@@ -51,7 +51,6 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
     gclid: "",
     clientId: "",
   });
-
   const {
     register,
 

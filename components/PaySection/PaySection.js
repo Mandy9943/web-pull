@@ -38,7 +38,7 @@ class PaySection extends Component {
       userIp: props.props.userIp,
       modalAddr: false,
       user: "",
-      user_id: "",
+      user_id: Cookies.get("user_id") || "",
       email: "",
       mobile_phone: "",
       city: "",
@@ -986,7 +986,7 @@ class PaySection extends Component {
       id: hmacID,
       street: this.state.address,
       city: this.state.city,
-      user_id: this.props.props.data.user.user_id,
+      user_id: this.state.user_id,
       product_id: this.props.props.data.product_id,
     });
 
