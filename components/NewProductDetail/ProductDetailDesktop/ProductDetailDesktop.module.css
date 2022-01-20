@@ -7,23 +7,8 @@
   align-content: center;
 }
 
-#ProductDetailDesktop .container {
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-#ProductDetailDesktop .container .containerspecialOffer {
-  padding: 0;
-  margin-top: 16px;
-  width: 80vw !important;
-}
-
-#ProductDetailDesktop .container .containerspecialOffer .swiperSliderDetail {
-  padding: 0;
-  border-radius: 20px !important;
+#ProductDetailDesktop .containerspecialOffer .specialOffer {
+  width: 80% !important;
 }
 #footerWrapper {
   padding: 0 !important;

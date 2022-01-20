@@ -1,146 +1,94 @@
 #InfoProductDetail {
-    background: #fff;
-    padding: 24px 25px 0;
+  background: #fff;
+  padding: 24px 25px 0;
+  display: flex;
+  flex-direction: column;
 }
-
-/*Definiciones de los areas*/
-
-#InfoProductDetail .info .envios {
-    grid-area: envios;
-}
-
-#InfoProductDetail .info .compras {
-    grid-area: compras;
-}
-
-#InfoProductDetail .info .garantia {
-    grid-area: garantia;
-}
-
 
 #InfoProductDetail .title {
-    margin: 0 25px 25px 25px;
+  margin: 0 25px 25px 25px;
 }
 
 #InfoProductDetail .title h4 {
-    font-size: 18px;
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
-    font-weight: bold;
-    display: flex;
+  font-size: 18px;
+  font-family: Montserrat, sans-serif;
+  font-style: normal;
+  font-weight: bold;
 }
 
 #InfoProductDetail .title h4 .company {
-    margin-left: 4px;
-    color: #cf0a2c;
+  margin-left: 4px;
+  color: #cf0a2c;
+  display: inline;
 }
 
 #InfoProductDetail .info {
-    display: grid;
-    grid-template-areas:
-    "envios"
-    "compras"
-    "garantia";
-}
-
-#InfoProductDetail .info > div {
-    display: flex;
-    align-items: center;
-    margin-bottom: 28px;
-    grid-template-columns: repeat(3, 1fr);
-    width: 100%;
-    padding: 0 30px;
+  align-items: center;
+  justify-content: center;
+  margin-left: 30px;
 }
 
 #InfoProductDetail .info .envios {
-    margin-left: -4px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 28px;
+  width: 100%;
 }
 
-#InfoProductDetail .info .icon {
-    align-items: center;
-    margin-right: 27px;
+#InfoProductDetail .info .envios:first-of-type {
+  margin-left: -4px;
 }
 
+#InfoProductDetail .info .envios .icon {
+  align-items: center;
+  margin-right: 27px;
+}
 
-#InfoProductDetail .info .icon img {
-    padding-bottom: 12px !important;
-    height: 38px !important;
+#InfoProductDetail .info .envios .icon img {
+  padding-bottom: 12px !important;
+  height: 38px !important;
 }
 
 #InfoProductDetail .info .text {
-    flex: 1;
-    padding-right: 80px;
+  flex: 1;
+  padding-right: 80px;
 }
 
 #InfoProductDetail .text h3 {
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 14px;
-    line-height: 17px;
-    color: #000000;
-    margin: 4px 0;
+  font-family: Montserrat, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+  margin: 4px 0;
 }
 
 #InfoProductDetail .text p {
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 16px;
-    color: #5d5d5d;
+  font-family: Montserrat, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  color: #5d5d5d;
 }
 
-/* Modo tablet or desktop */
-@media (min-width: 750px) {
-    #InfoProductDetail {
-        border-radius: 20px;
-    }
-
-    #InfoProductDetail .title {
-        margin: 50px 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    #InfoProductDetail .title h4 {
-        font-family: Montserrat, sans-serif;
-        font-style: normal;
-        font-weight: 800;
-        font-size: 42px;
-        line-height: 51px;
-        letter-spacing: 0.02em;
-        color: #000000;
-    }
-
-    #InfoProductDetail .info {
-        grid-template-areas: "envios compras garantia";
-        padding-bottom: 90px;
-    }
-
-
-    #InfoProductDetail .text h3 {
-        font-family: Montserrat, sans-serif;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 21px;
-        line-height: 26px;
-        letter-spacing: 0.03em;
-        margin-bottom: 4px;
-    }
-
-    #InfoProductDetail .text p {
-        font-family: Montserrat, sans-serif;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 21px;
-        line-height: 36px;
-        color: #5D5D5D;
-    }
-
-    #InfoProductDetail .info .icon img {
-        margin-right: 20px !important;
-        height: 50px !important;
-    }
+@media (min-width: 768px) {
+  #InfoProductDetail {
+    border-radius: 20px;
+  }
+  #InfoProductDetail .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #InfoProductDetail .title h4 {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 42px;
+    line-height: 51px;
+    letter-spacing: 0.02em;
+    color: #000000;
+  }
 }

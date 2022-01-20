@@ -1,4 +1,3 @@
-import { Box, Grid } from "@mui/material";
 import React, { useState } from "react";
 import DivindingLine from "../DivindingLine/DivindingLine";
 import Image from "next/image";

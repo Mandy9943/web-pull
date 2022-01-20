@@ -73,88 +73,64 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
   return (
     <div id="ProductDetailDesktop">
       <Suspense fallback={`loading`}>
+        <FormProductDetail
+          open={isForm}
+          handleClose={handleCloseForm}
+          userIp={userIp}
+        />
         <Nav
           user={user_data.user}
           jwt={user_data.jwt}
           home={true}
           authenticated={user_data.authenticated}
         />
-        <div className="container">
-          <FormProductDetail
-            open={isForm}
-            handleClose={handleCloseForm}
-            userIp={userIp}
-          />
+        <Header title={data.title} bredCumbs={data.breadcum} isDesktop />
 
-          <Header title={data.title} bredCumbs={data.breadcum} isDesktop />
-
-          <Box sx={{ flexGrow: 1 }} padding={"0 60px"}>
-            <Grid container spacing={2}>
-              <Grid item xs={8}>
-                <ProductImageDesk images={data.images} altImg={data.title} />
-                <Detail product={data} />
-                <Description product={data} />
-                <OurClient category={data?.breadcum[0]?.name.substring(0, 7)} />
-              </Grid>
-              <Grid item xs={4}>
-                <CheckoutProductDesk
-                  title={data.title}
-                  onClickBuy={handleOpenForm}
-                  price={data.price}
-                  stock={data.status === 0 ? 0 : data.stock}
-                  discount_percentage={data.discount_percentage}
-                />
-              </Grid>
+        <Box sx={{ flexGrow: 1 }} padding={"0 60px"}>
+          <Grid container spacing={2}>
+            <Grid item xs={8}>
+              <ProductImageDesk images={data.images} altImg={data.title} />
+              <Detail product={data} />
+              <Description product={data} />
+              <OurClient category={data?.breadcum[0]?.name.substring(0, 7)} />
             </Grid>
-          </Box>
-          <FormProductDetail
-            open={isForm}
-            handleClose={handleCloseForm}
-            userIp={userIp}
-          />
-
-          <Header title={data.title} bredCumbs={data.breadcum} isDesktop />
-
-          <Box sx={{ flexGrow: 1 }} padding={"0 60px"}>
-            <Grid container spacing={2}>
-              <Grid item xs={8}>
-                <ProductImageDesk images={data.images} altImg={data.title} />
-                <Detail product={data} />
-                <Description product={data} />
-                <OurClient category={data?.breadcum[0]?.name.substring(0, 7)} />
-              </Grid>
-              <Grid item xs={4}>
-                <CheckoutProductDesk
-                  title={data.title}
-                  onClickBuy={handleOpenForm}
-                  price={data.price}
-                  stock={data.status === 0 ? 0 : data.stock}
-                  discount_percentage={data.discount_percentage}
-                />
-              </Grid>
+            <Grid item xs={4}>
+              <CheckoutProductDesk
+                title={data.title}
+                onClickBuy={handleOpenForm}
+                price={data.price}
+                stock={data.status === 0 ? 0 : data.stock}
+                discount_percentage={data.discount_percentage}
+              />
             </Grid>
-          </Box>
-          <Info />
-          <div className="containerspecialOffer">
-            <SwiperSlider
-              type={"specialOffer"}
-              price={data.price}
-              images={data.images}
-              altImg={data.title}
-              stock={data.status === 0 ? 0 : data.stock}
-              discount_percentage={data.discount_percentage}
-              movil={false}
-            />
-          </div>
-          <SellerInfo />
-        </div>
-        <Benefits />
-        <Subscription />
-
-        <FooterSocial />
+          </Grid>
+          <Grid container rowSpacing={1}>
+            <Grid item md={12} xs={12}>
+              <Info />
+            </Grid>
+            {/* <Grid item md={12} xs={12}> */}
+            {/* [> [> <div className="containerspecialOffer"> <] <] */}
+            {/* [> [>   <SwiperSlider <] <] */}
+            {/* [> [>     type={"specialOffer"} <] <] */}
+            {/* [> [>     price={data.price} <] <] */}
+            {/* [> [>     images={data.images} <] <] */}
+            {/* [> [>     altImg={data.title} <] <] */}
+            {/* [> [>     stock={data.status === 0 ? 0 : data.stock} <] <] */}
+            {/* [> [>     discount_percentage={data.discount_percentage} <] <] */}
+            {/* [> [>     movil={false} <] <] */}
+            {/* [> [>   /> <] <] */}
+            {/* [> [> </div> <] <] */}
+            {/* </Grid> */}
+            {/*  <Grid item md={12} xs={12}> */}
+            {/* <SellerInfo /> */}
+            {/* </Grid> */}
+          </Grid>
+        </Box>
+        {/*      <Benefits /> */}
+        {/* <Subscription /> */}
       </Suspense>
-      <Footer />
-      <FooterSocial />
+      {/*  <Footer /> */}
+      {/* <FooterSocial /> */}
     </div>
   );
 };
