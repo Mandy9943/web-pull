@@ -1,33 +1,33 @@
-#CheckoutProductDesk{
+#CheckoutProductDesk {
   padding: 30px 20px;
   background-color: #fff;
   border-radius: 10px;
   width: 100%;
   position: relative;
 }
-#CheckoutProductDesk .title{
+#CheckoutProductDesk .title {
   margin-bottom: 40px;
 }
-#CheckoutProductDesk .title h1{
+#CheckoutProductDesk .title h1 {
   font-family: Montserrat;
   font-style: normal;
   font-weight: 800;
   font-size: 22px;
   line-height: 28px;
- 
+
   letter-spacing: 0.02em;
   color: #000000;
 }
 
-#CheckoutProductDesk .oldPrice{
+#CheckoutProductDesk .oldPrice {
   font: normal normal normal 14px/18px Montserrat;
   letter-spacing: 1px;
-  color: #5D5D5D;
+  color: #5d5d5d;
   text-decoration: line-through;
   margin-bottom: 10px;
 }
 
-#CheckoutProductDesk .price{
+#CheckoutProductDesk .price {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -50,22 +50,22 @@
   flex-direction: row;
 }
 #CheckoutProductDesk .price .percent {
-   /* Header 1 */
+  /* Header 1 */
 
-   font-family: Montserrat;
-   font-style: normal;
-   font-weight: 800;
-   font-size: 18px;
-   line-height: 22px;
-   /* identical to box height */
- 
-   letter-spacing: 0.02em;
- 
-   /* Discount Blue */
- 
-   color: #1fc2e6;
- 
-   text-transform: uppercase;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 22px;
+  /* identical to box height */
+
+  letter-spacing: 0.02em;
+
+  /* Discount Blue */
+
+  color: #1fc2e6;
+
+  text-transform: uppercase;
 }
 
 #CheckoutProductDesk .count {
