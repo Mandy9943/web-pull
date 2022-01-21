@@ -245,9 +245,7 @@ class ProductDetail extends Component {
     };
     // console.log(item);
     // console.log(this.props);
-    Cookies.get("email") && Cookies.get("user_id")
-      ? this.createlead(item)
-      : null;
+    Cookies.get("email") ? this.createlead(item) : null;
   }
 
   async createlead() {
