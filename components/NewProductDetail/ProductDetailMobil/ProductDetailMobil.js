@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import React, { Suspense, useEffect, useState } from "react";
-
+import Cookies from "js-cookie";
 // import backGround from "../../../assets/img/productDetail/fondo-rojo-landing-view@2x.svg";
 import CheckoutProduct from "../common/CheckoutProduct/CheckoutProduct";
 import Header from "../common/Header/Header";
@@ -89,12 +89,12 @@ const ProductDetailMobil = ({ user_data, data, userIp }) => {
 
   useEffect(() => {
     sendProductViewed(data);
+    Cookies.get("email") ? createlead(data, 1) : null;
   }, [data]);
 
   // const [isForm, setIsForm] = useState(false);
   const [isWhatsappBanner, setIsWhatsappBanner] = useState(true);
   const scrolledPayButton = useScrollY(700, false);
-  createlead(data, 1);
   const isForm = useAppSelector(selectIsFormOpen);
   const dispatch = useAppDispatch();
   useEffect(() => {

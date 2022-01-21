@@ -38,7 +38,7 @@ class PaySection extends Component {
       userIp: props.props.userIp,
       modalAddr: false,
       user: "",
-      user_id: "",
+      user_id: Cookies.get("user_id") || "",
       email: "",
       mobile_phone: "",
       city: "",
@@ -563,7 +563,7 @@ class PaySection extends Component {
     //   },
     // });
 
-    this.createlead(this.props, 2);
+    Cookies.get("email") ? this.createlead(this.props, 2) : null;
   };
 
   checkoutOption = () => {
@@ -805,11 +805,15 @@ class PaySection extends Component {
     } else {
       rating = "N/A";
     }
+
+    let userEmail = Cookies.get("email")
+      ? Cookies.get("email")
+      : this.state.email;
     var data = {
       first_name: name,
       city: this.state.city,
       address: this.state.address,
-      email: Cookies.get("email"),
+      email: userEmail,
       second_email: this.state.email,
       phone: this.state.mobile_phone,
       second_phone: "",
@@ -981,16 +985,16 @@ class PaySection extends Component {
 
     var hmacID = createHmacSHA1(this.state.identification);
     this.state.user_id = hmacID;
-
+    const idUser = Cookies.get("user_id") ? Cookies.get("user_id") : "";
     const extra1 = JSON.stringify({
       id: hmacID,
       street: this.state.address,
       city: this.state.city,
-      user_id: this.props.props.data.user.user_id,
+      user_id: idUser,
       product_id: this.props.props.data.product_id,
     });
 
-    // console.log("extra1 Desktop", extra1);
+    console.log("extra1 Desktop", extra1);
 
     var extra2 = JSON.stringify({
       qty: quantity,

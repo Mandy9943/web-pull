@@ -32,7 +32,7 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
     variantsSpinner: !productData.m_pgid,
     modalAddr: false,
     user: "",
-    user_id: Cookies.get("user_id") || 16,
+    user_id: Cookies.get("user_id") || "",
     email: "",
     mobile_phone: "",
     city: "",
@@ -51,7 +51,6 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
     gclid: "",
     clientId: "",
   });
-
   const {
     register,
 
@@ -73,6 +72,9 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
   });
 
   const onSubmit = () => {
+    let userEmail = Cookies.get("email")
+      ? Cookies.get("email")
+      : getValues().email;
     // --------klaviyo---------
 
     // let user = getValues();
@@ -80,7 +82,7 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
     // sendIdentifyEvent(user);
     const userData = {
       first_name: getValues().firstName,
-      email: getValues().email,
+      email: userEmail,
       last_name: getValues().lastName,
       id: state.user_id,
       city: getValues().city,
@@ -95,7 +97,7 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
     const data = {
       ...userData,
       second_phone: "",
-      second_email: "",
+      second_email: getValues().email,
       type_id: "",
       num_id: "",
       country: "",
@@ -196,12 +198,12 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
   const hmacID = CryptoJS.HmacSHA1(state.identification, "abc").toString(
     CryptoJS.enc.Hex
   );
-
+  const idUser = Cookies.get("user_id") ? Cookies.get("user_id") : "";
   const extra1 = JSON.stringify({
     id: hmacID,
     street: values.address,
     city: values.city,
-    user_id: state.user_id,
+    user_id: idUser,
     product_id: productData.product_id,
   });
 
