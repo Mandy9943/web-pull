@@ -57,6 +57,13 @@ const DiscountPrice = ({
   const desktopRender = (
     <>
       <OfferSection />
+      <Discount
+        quantityProduct={quantityProduct}
+        discountPercentage={discountPercentage}
+        images={images}
+        altImg={altImg}
+        movil={false}
+      />
     </>
   );
   return (

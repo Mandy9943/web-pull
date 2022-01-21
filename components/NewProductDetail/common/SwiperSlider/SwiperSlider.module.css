@@ -73,6 +73,11 @@
 
 /* Para el sepecialOffer  */
 .swiperSliderDetail .specialOffer {
-  width: 80vw;
+  width: 89vw;
   height: auto;
+}
+
+.swiperSliderDetail .specialOffer .swiper-slide {
+  height: auto;
+  border-radius: 5px;
 }
