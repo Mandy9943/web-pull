@@ -981,16 +981,16 @@ class PaySection extends Component {
 
     var hmacID = createHmacSHA1(this.state.identification);
     this.state.user_id = hmacID;
-
+    const idUser = Cookies.get("user_id") ? Cookies.get("user_id") : "";
     const extra1 = JSON.stringify({
       id: hmacID,
       street: this.state.address,
       city: this.state.city,
-      user_id: this.state.user_id,
+      user_id: idUser,
       product_id: this.props.props.data.product_id,
     });
 
-    // console.log("extra1 Desktop", extra1);
+    console.log("extra1 Desktop", extra1);
 
     var extra2 = JSON.stringify({
       qty: quantity,

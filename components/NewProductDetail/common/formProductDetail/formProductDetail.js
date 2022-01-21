@@ -195,12 +195,12 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
   const hmacID = CryptoJS.HmacSHA1(state.identification, "abc").toString(
     CryptoJS.enc.Hex
   );
-
+  const idUser = Cookies.get("user_id") ? Cookies.get("user_id") : "";
   const extra1 = JSON.stringify({
     id: hmacID,
     street: values.address,
     city: values.city,
-    user_id: state.user_id,
+    user_id: idUser,
     product_id: productData.product_id,
   });
 
