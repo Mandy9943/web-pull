@@ -1207,6 +1207,7 @@ class PaySection extends Component {
                 cursor: "pointer",
                 margin: "125px auto 15px auto",
               }}
+              onClick={() => this.createlead(this.props, 2)}
               name="Submit"
               type="submit"
               value="Continuar con la transacción"
