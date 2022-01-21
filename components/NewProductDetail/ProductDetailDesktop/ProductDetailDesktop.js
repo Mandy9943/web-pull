@@ -2,6 +2,7 @@ import React, { Suspense, useEffect } from "react";
 import PropTypes from "prop-types";
 import {
   handleActivateBack,
+  handleDeactivateBack,
   sendCheckoutStepViewed,
   sendProductViewed,
 } from "../../../lib/functions";
@@ -28,6 +29,16 @@ const Nav = dynamic(() => import("../../Common/Nav/Nav"));
 const ProductDetailDesktop = ({ user_data, data, userIp }) => {
   const isForm = useAppSelector(selectIsFormOpen);
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (isForm === true) {
+      dispatch(openForm(true));
+      handleDeactivateBack(() => {
+        dispatch(openForm(false));
+        handleActivateBack();
+      });
+    }
+  }, [isForm, dispatch]);
 
   const handleCloseForm = () => {
     sendCheckoutStepViewed(data, 2);
