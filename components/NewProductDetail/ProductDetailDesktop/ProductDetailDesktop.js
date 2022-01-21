@@ -108,21 +108,25 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
             <Grid item md={12} xs={12}>
               <Info />
             </Grid>
+            <Grid
+              sx={{ borderRadius: "20px", overflow: "hidden" }}
+              item
+              md={12}
+              xs={12}
+              className="containerspecialOffer"
+            >
+              <SwiperSlider
+                type={"specialOffer"}
+                price={data.price}
+                images={data.images}
+                altImg={data.title}
+                stock={data.status === 0 ? 0 : data.stock}
+                discount_percentage={data.discount_percentage}
+                movil={false}
+              />
+            </Grid>
             {/* <Grid item md={12} xs={12}> */}
-            {/* [> [> <div className="containerspecialOffer"> <] <] */}
-            {/* [> [>   <SwiperSlider <] <] */}
-            {/* [> [>     type={"specialOffer"} <] <] */}
-            {/* [> [>     price={data.price} <] <] */}
-            {/* [> [>     images={data.images} <] <] */}
-            {/* [> [>     altImg={data.title} <] <] */}
-            {/* [> [>     stock={data.status === 0 ? 0 : data.stock} <] <] */}
-            {/* [> [>     discount_percentage={data.discount_percentage} <] <] */}
-            {/* [> [>     movil={false} <] <] */}
-            {/* [> [>   /> <] <] */}
-            {/* [> [> </div> <] <] */}
-            {/* </Grid> */}
-            {/*  <Grid item md={12} xs={12}> */}
-            {/* <SellerInfo /> */}
+            {/*   <SellerInfo /> */}
             {/* </Grid> */}
           </Grid>
         </Box>

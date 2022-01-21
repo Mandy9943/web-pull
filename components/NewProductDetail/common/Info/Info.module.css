@@ -92,7 +92,9 @@
     letter-spacing: 0.02em;
     color: #000000;
   }
-
+  #InfoProductDetail .info {
+    margin-bottom: 90px;
+  }
   #InfoProductDetail .info .envios h3 {
     font-size: 21px;
     font-style: normal;
