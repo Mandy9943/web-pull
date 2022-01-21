@@ -563,7 +563,7 @@ class PaySection extends Component {
     //   },
     // });
 
-    this.createlead(this.props, 2);
+    Cookies.get("email") ? this.createlead(this.props, 2) : null;
   };
 
   checkoutOption = () => {
@@ -805,11 +805,15 @@ class PaySection extends Component {
     } else {
       rating = "N/A";
     }
+
+    let userEmail = Cookies.get("email")
+      ? Cookies.get("email")
+      : this.state.email;
     var data = {
       first_name: name,
       city: this.state.city,
       address: this.state.address,
-      email: Cookies.get("email"),
+      email: userEmail,
       second_email: this.state.email,
       phone: this.state.mobile_phone,
       second_phone: "",

@@ -72,6 +72,9 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
   });
 
   const onSubmit = () => {
+    let userEmail = Cookies.get("email")
+      ? Cookies.get("email")
+      : getValues().email;
     // --------klaviyo---------
 
     // let user = getValues();
@@ -79,7 +82,7 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
     // sendIdentifyEvent(user);
     const userData = {
       first_name: getValues().firstName,
-      email: getValues().email,
+      email: userEmail,
       last_name: getValues().lastName,
       id: state.user_id,
       city: getValues().city,
@@ -94,7 +97,7 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
     const data = {
       ...userData,
       second_phone: "",
-      second_email: "",
+      second_email: getValues().email,
       type_id: "",
       num_id: "",
       country: "",
