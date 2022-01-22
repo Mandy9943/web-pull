@@ -63,15 +63,21 @@
 @media (min-width: 768px) {
   .containerDiscount {
     padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: space-around;
+    justify-content: center;
   }
-  .wrapperDiscount {
+
+  .containerDiscount .wrapperDiscount {
     display: flex;
     flex-direction: row;
     margin-top: 94px;
+    align-items: end;
   }
 
   .wrapperDiscount .cantDiscount {
-    margin-right: 45px;
+    margin-right: 20px;
     font-family: Montserrat;
     font-style: normal;
     font-weight: 900;
@@ -82,7 +88,7 @@
   }
 
   .wrapperDiscount .wrapperImage {
-    margin-right: 60px;
+    margin-right: 30px;
   }
   .wrapperDiscount .wrapperImage .wrapperAnullProperties {
     height: 200px;
@@ -98,8 +104,8 @@
     line-height: 137px;
     letter-spacing: 0em;
     text-align: left;
-    margin-bottom: 0;
-    padding-bottom: 0;
+    margin: 0;
+    padding: 0;
   }
   .wrapperDiscount .wrapperPercent .textDiscount {
     font-family: Montserrat;
@@ -109,5 +115,15 @@
     line-height: 39px;
     letter-spacing: 0.03em;
     text-align: left;
+  }
+
+  .wrapperPercent {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .wrapperPercent p {
+    display: inline;
   }
 }

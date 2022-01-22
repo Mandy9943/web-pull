@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
   handleFormatNumber,
   setDiscount,
@@ -19,14 +20,16 @@ const PriceSaving = ({ priceProduct, quantityProduct }) => {
           <p className="lastPrice">
             Costaba $ {handleFormatNumber(FirstPriceProduct)}
           </p>
-          <p className="savingPrice">
-            Ahorra {"$"}
-            {handleFormatNumber(Saving)}
-          </p>
+          <p className="savingPrice">Ahorra $ {handleFormatNumber(Saving)}</p>
         </div>
       </div>
     </div>
   );
+};
+
+PriceSaving.PropTypes = {
+  priceProduct: PropTypes.number.isRequired,
+  quantityProduct: PropTypes.number.isRequired,
 };
 
 export default PriceSaving;
