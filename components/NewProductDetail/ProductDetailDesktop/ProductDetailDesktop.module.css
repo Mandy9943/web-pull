@@ -16,3 +16,8 @@
 .footer {
   border-top: unset !important;
 }
+
+.containerSellerInfo {
+  display: flex;
+  min-width: 768px;
+}
