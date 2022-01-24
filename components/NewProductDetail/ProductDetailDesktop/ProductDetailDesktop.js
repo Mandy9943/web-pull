@@ -141,6 +141,7 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
               item
               md={12}
               xs={12}
+              className="containerSellerInfo"
             >
               <SellerInfo movil={false} />
             </Grid>

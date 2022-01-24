@@ -64,6 +64,7 @@
   letter-spacing: 0.03em;
   color: #5d5d5d;
   padding-left: 22px;
+  white-space: nowrap;
 }
 
 #SellerInfo .certificate {
@@ -119,6 +120,7 @@
   line-height: 16px;
   color: #5d5d5d;
   margin-bottom: 22px;
+  white-space: nowrap;
 }
 
 #SellerInfo footer hr {
@@ -176,4 +178,105 @@
 }
 
 @media (min-width: 768px) {
+  #SellerInfo {
+    min-width: 768px;
+    margin-top: 16px;
+    padding: 0 2% 0 0;
+    width: 100%;
+    border-radius: 20px;
+    grid-template-areas:
+      "header header header"
+      "picture certificate certificate"
+      "picture footer footer";
+  }
+
+  #SellerInfo header {
+    margin-top: 60px;
+    margin-bottom: 20px;
+  }
+
+  #SellerInfo header h4 {
+    font-style: normal;
+    font-weight: 800;
+    font-size: 42px;
+    line-height: 51px;
+    letter-spacing: 0.02em;
+  }
+
+  #SellerInfo picture {
+    display: flex;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: unset !important;
+  }
+
+  #SellerInfo picture .anullProperties img {
+    width: auto !important;
+    height: 148px !important;
+  }
+
+  #SellerInfo picture h4 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 39px;
+    letter-spacing: 0.03em;
+    color: #5d5d5d;
+  }
+
+  #SellerInfo .certificate {
+    margin-top: 73px;
+    margin-bottom: 11px;
+  }
+
+  #SellerInfo .certificate h6 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    color: #1fc2e6;
+  }
+
+  #SellerInfo .certificate .anullProperties div img {
+    margin-right: 7px !important;
+    height: 14px !important;
+    width: 14px !important;
+  }
+  #SellerInfo footer hr {
+    width: 100%;
+    border: 1px solid #d1d1d1;
+  }
+
+  #SellerInfo footer h3 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  #SellerInfo footer .info {
+    margin-top: 18px;
+    margin-bottom: 18px;
+  }
+
+  #SellerInfo footer .info .block h3 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 39px;
+    text-align: center;
+    letter-spacing: 0.03em;
+    padding: unset;
+    margin: unset;
+  }
+
+  #SellerInfo footer .info .block p {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    margin: 5px 0 0 0;
+    padding: unset;
+  }
 }
