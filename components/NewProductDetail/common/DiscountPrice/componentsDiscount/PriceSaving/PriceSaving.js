@@ -18,9 +18,9 @@ const PriceSaving = ({ priceProduct, quantityProduct }) => {
         </div>
         <div className="wrapperOtherPrices">
           <p className="lastPrice">
-            Costaba $ {handleFormatNumber(FirstPriceProduct)}
+            Costaba ${handleFormatNumber(FirstPriceProduct)}
           </p>
-          <p className="savingPrice">Ahorra $ {handleFormatNumber(Saving)}</p>
+          <p className="savingPrice">Ahorra ${handleFormatNumber(Saving)}</p>
         </div>
       </div>
     </div>

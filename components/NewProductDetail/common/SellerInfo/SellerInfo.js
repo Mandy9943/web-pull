@@ -6,8 +6,9 @@ import Image from "next/image";
 import "./SellerInfo.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import PropTypes from "prop-types";
 
-const SellerInfo = () => {
+const SellerInfo = ({ movil = true }) => {
   const [conteo, setConteo] = useState(0);
   useEffect(() => {
     let start = 0;
@@ -21,8 +22,8 @@ const SellerInfo = () => {
       if (start === end) clearInterval(timer);
     }, incrementTime);
   }, []);
-  return (
-    <section id="SellerInfo">
+  const movilRender = (
+    <>
       <header>
         <h4>Información sobre el vendedor</h4>
       </header>
@@ -66,8 +67,16 @@ const SellerInfo = () => {
         </div>
         <hr />
       </footer>
-    </section>
+    </>
+  );
+
+  const desktopRender = <>desktopRender</>;
+  return (
+    <section id="SellerInfo">{movil ? movilRender : desktopRender}</section>
   );
 };
 
+SellerInfo.PropTypes = {
+  movil: PropTypes.boolean,
+};
 export default SellerInfo;

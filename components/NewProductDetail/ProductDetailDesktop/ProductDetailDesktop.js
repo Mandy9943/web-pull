@@ -136,9 +136,14 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
                 movil={false}
               />
             </Grid>
-            {/* <Grid item md={12} xs={12}> */}
-            {/*   <SellerInfo /> */}
-            {/* </Grid> */}
+            <Grid
+              sx={{ borderRadius: "20px", overflow: "hidden" }}
+              item
+              md={12}
+              xs={12}
+            >
+              <SellerInfo movil={false} />
+            </Grid>
           </Grid>
         </Box>
         {/*      <Benefits /> */}
