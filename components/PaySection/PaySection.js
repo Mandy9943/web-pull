@@ -861,6 +861,7 @@ class PaySection extends Component {
       this.setState({ modalAddr: true });
       if (Cookies.get("email") !== undefined) {
         this.createlead(this.props, 1);
+        console.log("entra aqui");
       }
 
       const concatCategories = () => {
