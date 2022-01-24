@@ -44,8 +44,63 @@
   width: 104px;
 }
 
+/* Para los moviles */
 @media (max-width: 360px) {
   .containerPriceSaving .wrapperOtherPrices {
     padding: 0px 10px;
+  }
+}
+
+/* Para los desktop*/
+@media (min-width: 768px) {
+  .containerPriceSaving .wrapperOtherPrices {
+    display: flex;
+    padding: 0;
+    align-items: space-between;
+    justify-content: space-between;
+    margin: 14px 0 0 0;
+  }
+
+  .containerPriceSaving .wrapperPrice .wrapperCurrentPrice .currentPrice {
+    font-family: Montserrat;
+    font-size: 42px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 51px;
+    letter-spacing: 0.02em;
+    text-align: center;
+  }
+
+  .containerPriceSaving .wrapperOtherPrices {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .containerPriceSaving .wrapperOtherPrices .lastPrice {
+    font-family: Montserrat;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+    display: inline;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-right: 14px;
+  }
+  .containerPriceSaving .wrapperOtherPrices .savingPrice {
+    font-family: Montserrat;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: left;
+    display: inline;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }

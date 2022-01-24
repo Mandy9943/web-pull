@@ -57,6 +57,35 @@ const DiscountPrice = ({
   const desktopRender = (
     <>
       <OfferSection />
+      <div className="containerBox">
+        <Discount
+          quantityProduct={quantityProduct}
+          discountPercentage={discountPercentage}
+          images={images}
+          altImg={altImg}
+          movil={false}
+        />
+        <div className="price">
+          <PriceSaving
+            priceProduct={priceProduct}
+            discountPercentage={discountPercentage}
+            quantityProduct={quantityProduct}
+          />
+          <div className="widthButton">
+            {stock <= 0 ? (
+              <CheckoutButton text="SIN STOCK" rounded notShowCar disabled />
+            ) : (
+              <CheckoutButton
+                text="Comprar"
+                rounded
+                secundary
+                notShowCar
+                onClick={handleOpenForm}
+              />
+            )}
+          </div>
+        </div>
+      </div>
     </>
   );
   return (

@@ -157,9 +157,9 @@ const SwiperSlider = ({
         <SwiperSlide>
           <DiscountPrice
             priceProduct={price}
-            discountPercentage={10}
+            discountPercentage={15}
             stock={stock}
-            quantityProduct={2}
+            quantityProduct={3}
             altImg={altImg}
             images={images}
             discountPercentageBd={discount_percentage}

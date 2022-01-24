@@ -105,7 +105,7 @@ const ProductDetailMobil = ({ user_data, data, userIp }) => {
         handleActivateBack();
       });
     }
-  }, [isForm]);
+  }, [isForm, dispatch]);
 
   const handleCloseForm = () => {
     sendCheckoutStepViewed(data, 2);

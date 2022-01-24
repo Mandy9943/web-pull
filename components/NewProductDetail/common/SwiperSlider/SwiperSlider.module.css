@@ -66,10 +66,32 @@
   height: 512px;
 }
 
-/* .swiperSliderDetail .HomeProduct .mdc-ripple-surface {
-  box-shadow: 0px 2px 5px 5px rgba(0, 0, 0, 0.185);
-} */
 .swiperSliderDetail .HomeProduct .swiper-slide-next,
 .swiper-slide-prev {
   transform: none !important;
+}
+
+/* Para el sepecialOffer  */
+.swiperSliderDetail .specialOffer {
+  width: 89vw;
+  height: auto;
+}
+
+.swiperSliderDetail .specialOffer .swiper-slide {
+  height: auto;
+  border-radius: 5px;
+}
+
+.swiperSliderDetail
+  .swiper-container-horizontal.specialOffer
+  > .swiper-pagination-bullets
+  .swiper-pagination-bullet {
+  border-radius: 10px;
+  width: 32px;
+  height: 6px;
+  background-color: #d1d1d1;
+}
+
+.specialOffer .swiper-pagination-bullet-active .swiper-pagination-bullet {
+  background-color: #5d5d5d;
 }
