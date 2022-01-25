@@ -10,6 +10,7 @@ import Loading from "../../components/Common/Loading/Loading";
 import { useAppDispatch } from "../../lib/hooks/redux";
 import { setData } from "../../redux/feature/pay/paySlice";
 import { setNumber } from "../../redux/feature/whatsapp/whatsappReducer";
+import Cookies from "js-cookie";
 
 const Detail = dynamic(() => import("../../components/ProductDetail"), {
   ssr: false,
@@ -48,6 +49,7 @@ function Product({ data, u_data, userIp }) {
   }, []);
 
   useEffect(() => {
+    console.log("dataa", data);
     dispatch(
       setData({
         category: data.category,
@@ -58,10 +60,20 @@ function Product({ data, u_data, userIp }) {
         brand: data.brand,
         description: data.description,
         category_id: data.category_id,
+        asin_link: data.asin_link,
+        sub_category: data.sub_category,
+        breadcum: data.breadcum,
+        product_link: data.product_link,
+        weight: data.weight,
+        cost_of_goods_sold: data.cost_of_goods_sold,
+        earnings_percentage: data.earnings_percentage,
+        gross_margin: data.gross_margin,
+        margin_percent: data.margin_percent,
       })
     );
-
-    createlead(data, 3);
+    // "Samsung Electronics SM-T590NZKAXAR Galaxy Tab A, 10.5 ", Negro (Renovado)"
+    // "Samsung Electronics SM-T590NZKAXAR Galaxy Tab A, 10.5 ", Negro (Renovado)"
+    Cookies.get("email") ? createlead(data, 3) : null;
   }, [data, dispatch]);
 
   return (
@@ -188,12 +200,12 @@ function Product({ data, u_data, userIp }) {
               userIp={userIp}
             />
           ) : (
-            // <Detail user_data={u_data} data={data} userIp={userIp} />
-            <ProductDetailDesktop
-              user_data={u_data}
-              data={data}
-              userIp={userIp}
-            />
+            <Detail user_data={u_data} data={data} userIp={userIp} />
+            // <ProductDetailDesktop
+            //   user_data={u_data}
+            //   data={data}
+            //   userIp={userIp}
+            // />
           )}
         </>
       )}

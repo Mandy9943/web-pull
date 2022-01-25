@@ -12,6 +12,9 @@ const initialState = {
   count: 0,
   breadcum: "",
   isFormOpen: false,
+  asin_link: "",
+  sub_category: "",
+  product_link: "",
 };
 
 export const paySlice = createSlice({
@@ -36,6 +39,15 @@ export const paySlice = createSlice({
       state.description = action.payload.description;
       state.category_id = action.payload.category_id;
       state.breadcum = action.payload.breadcum;
+      state.asin_link = action.payload.asin_link;
+      state.sub_category = action.payload.sub_category;
+      state.breadcum = action.payload.breadcum;
+      state.product_link = action.payload.product_link;
+      state.weight = action.payload.weight;
+      state.cost_of_goods_sold = action.payload.cost_of_goods_sold;
+      state.earnings_percentage = action.payload.earnings_percentage;
+      state.gross_margin = action.payload.gross_margin;
+      state.margin_percent = action.payload.margin_percent;
     },
     openForm: (state, action) => {
       state.isFormOpen = action.payload;

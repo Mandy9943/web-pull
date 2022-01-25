@@ -71,7 +71,7 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
     resolver: yupResolver(formSchema),
   });
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     let userEmail = Cookies.get("email")
       ? Cookies.get("email")
       : getValues().email;
@@ -87,7 +87,7 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
       id: state.user_id,
       city: getValues().city,
       address: getValues().address,
-      phone: getValues().phoneNumber,
+      mobile_phone: getValues().phoneNumber, //mobile_phone before phone
     };
     if (productData.rating !== undefined) {
       var rating = toString(productData.rating / 10);
@@ -100,27 +100,27 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
       second_email: getValues().email,
       type_id: "",
       num_id: "",
-      country: "",
+      country: "CO",
       lead_type:
         "Usuario Invitado (Y Usuario Registrado) que Presionó el botón de Continuar con la transacción",
-      category: productData.category.name,
+      category: productData.category,
       // product_global_price: productData.price,
 
       description: productData.description,
       product_global_id: productData.product_id,
       images: productData.img,
-
+      breadcum: productData.breadcum,
       sub_category: productData.sub_category,
-      price_product: String(productData.price),
-      product_title: productData.title,
+      product_global_price: String(productData.price), //product_global_price before product_price
+      product_global_title: productData.title, //product_global_title before product_title
       product_description: productData.description,
       product_id: String(productData.product_id),
       product_image: productData.img[0].url, //duda
-      product_brand: productData.brand,
+      brand: productData.brand, //brand before product_brand
       category_id: String(productData.category_id),
-      product_category: "", //productData.breadcum[0].name,
+      product_category: productData.breadcum[0].name, //productData.breadcum[0].name,
       product_subcategory: String(productData.sub_category),
-      rating: rating,
+      rating: productData.rating,
       cost_of_goods_sold: String(productData.cost_of_goods_sold),
       asin_link: productData.asin_link,
       gross_margin: String(productData.gross_margin),
@@ -132,6 +132,7 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
       weight: String(productData.weight),
     };
 
+    // console.log(productData, "otra", data)
     createlead(data, 2);
     handleClose();
   };

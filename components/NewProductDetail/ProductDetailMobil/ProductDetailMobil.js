@@ -85,19 +85,13 @@ const SellerInfo = dynamic(() => import("../common/SellerInfo/SellerInfo"), {
 });
 
 const ProductDetailMobil = ({ user_data, data, userIp }) => {
-  // console.log("data", data);
-
-  useEffect(() => {
-    sendProductViewed(data);
-    Cookies.get("email") ? createlead(data, 1) : null;
-  }, [data]);
-
   // const [isForm, setIsForm] = useState(false);
   const [isWhatsappBanner, setIsWhatsappBanner] = useState(true);
   const scrolledPayButton = useScrollY(700, false);
   const isForm = useAppSelector(selectIsFormOpen);
   const dispatch = useAppDispatch();
   useEffect(() => {
+    sendProductViewed(data);
     if (isForm === true) {
       dispatch(openForm(true));
       handleDeactivateBack(() => {
@@ -105,7 +99,7 @@ const ProductDetailMobil = ({ user_data, data, userIp }) => {
         handleActivateBack();
       });
     }
-  }, [isForm, dispatch]);
+  }, [isForm, dispatch, data]);
 
   const handleCloseForm = () => {
     sendCheckoutStepViewed(data, 2);
@@ -116,6 +110,7 @@ const ProductDetailMobil = ({ user_data, data, userIp }) => {
   const handleOpenForm = () => {
     sendCheckoutStepViewed(data, 1);
     dispatch(openForm(true));
+    Cookies.get("email") ? createlead(data, 1) : null;
   };
   const handleCloseWhatsappBanner = () => {
     setIsWhatsappBanner(false);

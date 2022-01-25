@@ -181,6 +181,7 @@ class ProductDetail extends Component {
     // });
 
     sendProductViewed(this.props.data);
+    // console.log(this.props.data);
 
     // console.log(productViewedData)
 
@@ -245,45 +246,55 @@ class ProductDetail extends Component {
     };
     // console.log(item);
     // console.log(this.props);
-    Cookies.get("email") ? this.createlead(item) : null;
+    // Cookies.get("email") ? this.createlead(item) : null;
   }
 
-  async createlead() {
-    if (this.props.data.rating !== undefined) {
-      var rating = toString(this.props.data.rating / 10);
-    } else {
-      rating = "N/A";
-    }
-    var data = {
-      first_name: Cookies.get("name"),
-      city: "",
-      address: "",
-      email: Cookies.get("email"),
-      second_email: "",
-      phone: "",
-      second_phone: "",
-      last_name: Cookies.get("last_name"),
-      type_id: "",
-      num_id: "",
-      id: Cookies.get("user_id"),
-      country: "",
-      lead_type: "Usuario Registrado que Accedió a los Detalles del Producto",
-      category: this.props.data.category.name,
-      sub_category: "",
-      price_product: this.props.data.price,
-      product_title: this.props.data.product_global_title,
-      product_description: this.props.data.description,
-      product_id: String(this.props.data.product_id),
-      product_link: "",
-      product_image: this.props.data.images[0].url,
-      product_brand: this.props.data.brand,
-      product_category: String(this.props.data.breadcum[0].name),
-      product_subcategory: String(this.props.data.category.name),
-      category_id: String(this.props.data.category_id),
-      rating: rating,
-    };
-    const error = await createleadClient(data);
-  }
+  // async createlead() {
+  //   if (this.props.data.rating !== undefined) {
+  //     var rating = toString(this.props.data.rating / 10);
+  //   } else {
+  //     rating = "N/A";
+  //   }
+  //   var data = {
+  //     first_name: Cookies.get("name"),
+  //     city: "",
+  //     address: "",
+  //     email: Cookies.get("email"),
+  //     second_email: "",
+  //     phone: "",
+  //     second_phone: "",
+  //     last_name: Cookies.get("last_name"),
+  //     type_id: "",
+  //     num_id: "",
+  //     id: Cookies.get("user_id"),
+  //     country: "",
+  //     lead_type: "Usuario Registrado que Accedió a los Detalles del Producto",
+  //     category: this.props.data.category.name,
+  //     sub_category: this.props.data.sub_category,
+  //     price_product: this.props.data.price,
+  //     product_title: this.props.data.product_global_title,
+  //     product_description: this.props.data.description,
+  //     product_id: String(this.props.data.product_id),
+  //     product_image: this.props.data.images[0].url,
+  //     product_brand: this.props.data.brand,
+  //     product_category: String(this.props.data.breadcum[0].name),
+  //     product_subcategory: String(this.props.data.sub_category),
+  //     category_id: String(this.props.data.category_id),
+  //     rating: rating,
+  //     cost_of_goods_sold: this.props.data.cost_of_goods_sold,
+  //     asin_link: this.props.data.asin_link,
+  //     gross_margin: this.props.data.gross_margin,
+  //     margin_percent: this.props.data.margin_percent,
+  //     product_link: this.props.data.product_link,
+  //     weight: this.props.data.weight,
+  //     gross_margin_percent: String(
+  //       parseFloat(
+  //         this.props.data.gross_margin / this.props.data.price
+  //       ).toFixed(2)
+  //     ),
+  //   };
+  //   const error = await createleadClient(data);
+  // }
 
   async reLoadData(pgid) {
     // Esta funcion se llama cuando se encuentra un match de variantes

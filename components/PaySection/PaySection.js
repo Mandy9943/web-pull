@@ -21,8 +21,8 @@ import {
   handleFormatName,
   sendCheckoutStepViewed,
   setDiscount,
+  handleFormatUrl,
 } from "../../lib/functions";
-import { handleFormatUrl } from "../../lib/functions";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import { Button, Modal } from 'react-bootstrap';
 import { createleadClient } from "../../lib/zoho";
@@ -563,7 +563,7 @@ class PaySection extends Component {
     //   },
     // });
 
-    Cookies.get("email") ? this.createlead(this.props, 2) : null;
+    this.createlead(this.props, 2);
   };
 
   checkoutOption = () => {
@@ -829,7 +829,7 @@ class PaySection extends Component {
       category: item.props.data.category.name,
       sub_category: item.props.data.sub_category,
       price_product: String(item.price),
-      product_title: item.props.data.product_global_title.slice(0, 250),
+      product_title: item.props.data.product_global_title.substring(0, 250),
       product_description: item.props.data.description,
       product_id: String(item.props.data.product_global_id),
       product_image: item.props.data.images[0].url,
@@ -994,7 +994,7 @@ class PaySection extends Component {
       product_id: this.props.props.data.product_id,
     });
 
-    console.log("extra1 Desktop", extra1);
+    // console.log("extra1 Desktop", extra1);
 
     var extra2 = JSON.stringify({
       qty: quantity,
@@ -1207,7 +1207,6 @@ class PaySection extends Component {
                 cursor: "pointer",
                 margin: "125px auto 15px auto",
               }}
-              onClick={() => this.createlead(this.props, 2)}
               name="Submit"
               type="submit"
               value="Continuar con la transacción"
