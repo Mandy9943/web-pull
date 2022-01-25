@@ -222,6 +222,7 @@ class Category extends Component {
     // 	console.log('dataProducts', response.data.results);
     // 	console.log()
     // });
+    // console.log(this.props.params.price_range)
     let products = searchProducts(
       // 'search',
       this.props.data.type,
@@ -229,14 +230,16 @@ class Category extends Component {
       page,
       this.props.data.search,
       brand,
-      price,
+      this.props.data.params.price_range.length > 1
+        ? this.props.data.params.price_range
+        : price,
       category
         ? category
         : this.props.data.type === "category"
         ? this.state.categoryName
         : category,
       sortBy,
-      orderBy,
+      orderBy ? orderBy : this.props.data.params.order,
       this.state.categoryLevel
     );
 
