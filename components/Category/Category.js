@@ -188,7 +188,6 @@ class Category extends Component {
     // Filters
     this.state.filters.forEach((value) => {
       const item = value.split("|");
-      console.log(item);
       switch (item[0]) {
         case "price":
           let valueArray = value.split("|")[1].split(" ");
