@@ -6,7 +6,7 @@ import {
   sendCheckoutStepViewed,
   sendProductViewed,
 } from "../../../lib/functions";
-import FooterSocial from "../common/FooterSocial/FooterSocial";
+//import FooterSocial from "../common/FooterSocial/FooterSocial";
 
 import "./ProductDetailDesktop.module.css";
 import dynamic from "next/dynamic";
@@ -46,17 +46,17 @@ const Benefits = dynamic(() => import("../common/Benefits/Benefits"), {
   suspense: true,
 });
 
-const Subscription = dynamic(
-  () => import("../common/Subscription/Subscription"),
-  {
-    ssr: false,
-    loading: () => <p>...</p>,
-  }
-);
-const Footer = dynamic(() => import("../../Common/Footer"), {
-  ssr: false,
-  suspense: true,
-});
+//const Subscription = dynamic(
+//  () => import("../common/Subscription/Subscription"),
+//  {
+//    ssr: false,
+//    loading: () => <p>...</p>,
+//  }
+//);
+//const Footer = dynamic(() => import("../../Common/Footer"), {
+//  ssr: false,
+//  suspense: true,
+//});
 const ProductDetailDesktop = ({ user_data, data, userIp }) => {
   console.log({ data, userIp });
   const isForm = useAppSelector(selectIsFormOpen);
@@ -102,7 +102,7 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
           authenticated={user_data.authenticated}
         />
         <Header title={data.title} bredCumbs={data.breadcum} isDesktop />
-        <Box sx={{ flexGrow: 1 }} padding={"0 60px"}>
+        <Box sx={{ flexGrow: 1 }} padding={"0 60px"} mb={8}>
           <Grid container spacing={2}>
             <Grid item xs={8}>
               <ProductImageDesk images={data.images} altImg={data.title} />
@@ -152,10 +152,16 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
             </Grid>
           </Grid>
         </Box>
-        <Benefits />
-        <Subscription />
-        <Footer />
-        <FooterSocial />
+        <Box>
+          <Grid container direction="column" flexWrap="nowrap">
+            <Grid item md={12} sm={12}>
+              <Benefits />
+            </Grid>
+          </Grid>
+        </Box>
+        {/* <Subscription /> */}
+        {/* <Footer /> */}
+        {/* <FooterSocial /> */}
       </Suspense>
     </div>
   );
