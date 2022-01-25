@@ -39,6 +39,7 @@ class Category extends Component {
       existsCategoryMenu: true,
       categoryName: this.props.data.search,
       categoryLevel: "",
+      priceFilter: "",
     };
   }
 
@@ -187,7 +188,7 @@ class Category extends Component {
     // Filters
     this.state.filters.forEach((value) => {
       const item = value.split("|");
-
+      console.log(item);
       switch (item[0]) {
         case "price":
           let valueArray = value.split("|")[1].split(" ");
@@ -222,7 +223,6 @@ class Category extends Component {
     // 	console.log('dataProducts', response.data.results);
     // 	console.log()
     // });
-    // console.log(this.props.params.price_range)
     let products = searchProducts(
       // 'search',
       this.props.data.type,
@@ -230,7 +230,9 @@ class Category extends Component {
       page,
       this.props.data.search,
       brand,
-      this.props.data.params.price_range.length > 1
+      price.length
+        ? price
+        : this.props.data.params.price_range.length > 1
         ? this.props.data.params.price_range
         : price,
       category
