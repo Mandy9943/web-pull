@@ -49,7 +49,6 @@ function Product({ data, u_data, userIp }) {
   }, []);
 
   useEffect(() => {
-    console.log("dataa", data);
     dispatch(
       setData({
         category: data.category,
@@ -71,8 +70,6 @@ function Product({ data, u_data, userIp }) {
         margin_percent: data.margin_percent,
       })
     );
-    // "Samsung Electronics SM-T590NZKAXAR Galaxy Tab A, 10.5 ", Negro (Renovado)"
-    // "Samsung Electronics SM-T590NZKAXAR Galaxy Tab A, 10.5 ", Negro (Renovado)"
     Cookies.get("email") ? createlead(data, 3) : null;
   }, [data, dispatch]);
 
