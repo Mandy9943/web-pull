@@ -43,14 +43,14 @@ const Benefits = dynamic(() => import("../common/Benefits/Benefits"), {
   suspense: true,
 });
 
-const Subscription = dynamic(
-  () => import("../common/Subscription/Subscription"),
-  {
-    ssr: false,
-    loading: () => <p>...</p>,
-  }
-);
-const Footer = dynamic(() => import("../../Common/Footer"));
+// const Subscription = dynamic(
+//   () => import("../common/Subscription/Subscription"),
+//   {
+//     ssr: false,
+//     loading: () => <p>...</p>,
+//   }
+// );
+// const Footer = dynamic(() => import("../../Common/Footer"));
 const ProductDetailDesktop = ({ user_data, data, userIp }) => {
   console.log({ data, userIp });
   const isForm = useAppSelector(selectIsFormOpen);
@@ -147,7 +147,16 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
             </Grid>
           </Grid>
         </Box>
-        {/*      <Benefits /> */}
+        <Box sx={{ flexGrow: 1 }} padding={"0"}>
+          <Grid container spacing="2">
+            <Grid item md={12} xs={12}>
+              <RecommendedProducts category={data.category} />
+            </Grid>
+            <Grid item>
+              <Benefits />
+            </Grid>
+          </Grid>
+        </Box>
         {/* <Subscription /> */}
       </Suspense>
       {/*  <Footer /> */}
