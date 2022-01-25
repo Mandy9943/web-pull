@@ -40,6 +40,18 @@ module.exports = withSourceMaps(
             new OptimizeCSSAssetsPlugin({}),
           ],
         },
+        webpack: (config, options) => {
+          if (config.optimization.splitChunks) {
+            config.optimization.splitChunks.cacheGroups.shared = {
+              name: "kiero",
+              test: /\.css$/,
+              chunks: "all",
+              enforce: true,
+            };
+          }
+
+          return config;
+        },
 
         swcMinify: true,
         sourceMap: true,
