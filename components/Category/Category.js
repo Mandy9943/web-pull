@@ -39,6 +39,7 @@ class Category extends Component {
       existsCategoryMenu: true,
       categoryName: this.props.data.search,
       categoryLevel: "",
+      priceFilter: "",
     };
   }
 
@@ -187,7 +188,6 @@ class Category extends Component {
     // Filters
     this.state.filters.forEach((value) => {
       const item = value.split("|");
-
       switch (item[0]) {
         case "price":
           let valueArray = value.split("|")[1].split(" ");
@@ -229,14 +229,18 @@ class Category extends Component {
       page,
       this.props.data.search,
       brand,
-      price,
+      price.length
+        ? price
+        : this.props.data.params.price_range.length > 1
+        ? this.props.data.params.price_range
+        : price,
       category
         ? category
         : this.props.data.type === "category"
         ? this.state.categoryName
         : category,
       sortBy,
-      orderBy,
+      orderBy ? orderBy : this.props.data.params.order,
       this.state.categoryLevel
     );
 
