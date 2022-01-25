@@ -1,20 +1,33 @@
 import React from "react";
+import Image from "next/image";
+import { Grid } from "@material-ui/core";
+
 import "./Benefits.module.css";
 import benefit_01 from "../../../../assets/img/productDetail/01-benefit@2x.svg";
 import benefit_02 from "../../../../assets/img/productDetail/02-benefit@2x.svg";
 import benefit_03 from "../../../../assets/img/productDetail/03-benefit@2x.svg";
 import benefit_04 from "../../../../assets/img/productDetail/Best Support 4 Graphic.svg";
 import benefit_05 from "../../../../assets/img/productDetail/Best Discounts 05 Graphic.svg";
-import Image from "next/image";
 
 const Benefits = () => {
   return (
-    <div id="Benefits">
+    <Grid
+      container
+      id="Benefits"
+      alignItems="center"
+      direction="row"
+      justifyContent="center"
+    >
       <h2>
         Beneficios de comprar con <div className="red">KIERO</div>
       </h2>
-      <div className="beneficio">
-        <div className="box">
+      <Grid
+        container
+        alignItems="center"
+        justifyContent="center"
+        className="benefit"
+      >
+        <Grid item sm={6} md={4} xs={12}>
           <div className="anullProperties">
             <Image
               src={benefit_01}
@@ -28,8 +41,8 @@ const Benefits = () => {
             hacemos que sea fácil para los clientes obtener lo que quieren,
             cuando lo desean.
           </p>
-        </div>
-        <div className="box">
+        </Grid>
+        <Grid item sm={6} md={4} xs={12}>
           <div className="anullProperties">
             <Image src={benefit_02} alt="Devolucion" layout="fill" />
           </div>
@@ -38,8 +51,8 @@ const Benefits = () => {
             ¿No te gusta? ¡Devuélvelo! En Kiero, garantizamos su seguridad,
             compre con confianza y paz, estamos con usted en todo momento.
           </p>
-        </div>
-        <div className="box">
+        </Grid>
+        <Grid item sm={6} md={4} xs={12}>
           <div className="anullProperties">
             <Image src={benefit_03} alt="Garantia" layout="fill" />
           </div>
@@ -48,8 +61,8 @@ const Benefits = () => {
             Este equipo ha sido cubierto con una garantía de un mes por
             cualquier defecto de fabrica.
           </p>
-        </div>
-        <div className="box">
+        </Grid>
+        <Grid item sm={6} md={4} xs={12}>
           <div className="anullProperties">
             <Image src={benefit_04} alt="Soporte" layout="fill" />
           </div>
@@ -59,8 +72,8 @@ const Benefits = () => {
             encontrar las mejores ofertas, los productos que busca y todo lo que
             necesite. Le guiamos con su compra en un mercado hecho para usted.
           </p>
-        </div>
-        <div className="box">
+        </Grid>
+        <Grid item sm={6} xs={12}>
           <div className="anullProperties">
             <Image src={benefit_05} alt="Descuento" layout="fill" />
           </div>
@@ -70,9 +83,9 @@ const Benefits = () => {
             en torno a su conveniencia y le brinda las mejores ofertas y
             promociones
           </p>
-        </div>
-      </div>
-    </div>
+        </Grid>
+      </Grid>
+    </Grid>
   );
 };
 
