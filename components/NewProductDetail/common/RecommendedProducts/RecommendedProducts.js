@@ -21,6 +21,7 @@ const RecommendedProducts = ({
   category,
   spaceBetween = 30,
   lenProduct = 10,
+  movil = true,
 }) => {
   const [products, setProducts] = useState([]);
 
@@ -46,7 +47,7 @@ const RecommendedProducts = ({
       </div>
       <div className="slider">
         <Swiper
-          slidesPerView={1.4}
+          slidesPerView={movil ? 1.4 : 4}
           spaceBetween={spaceBetween}
           freeMode={true}
           centeredSlides={true}
@@ -73,6 +74,7 @@ RecommendedProducts.prototype = {
   category: PropTypes.string.isRequired,
   spaceBetween: PropTypes.number,
   lenProduct: PropTypes.number,
+  movil: PropTypes.bool.isRequired,
 };
 
 export default RecommendedProducts;
