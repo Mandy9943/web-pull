@@ -17,11 +17,12 @@ const Info = () => {
       </div>
       <Grid
         container
-        rowSpacing={{ xs: 2 }}
-        columnSpacing={{ md: 1 }}
+        rowSpacing={{ xs: 1, md: 2 }}
         className="info"
+        alignItems="center"
+        justifyContent="center"
       >
-        <Grid item md={4} xs={12} sm={4} className="envios">
+        <Grid item md={4} xs={12} sm={12} className="envios">
           <div className="icon">
             <div className="anullProperties">
               <Image src={envios} alt="Envios gratis" layout="fill" />
@@ -34,7 +35,7 @@ const Info = () => {
             </p>
           </div>
         </Grid>
-        <Grid item md={4} xs={12} sm={4} className="envios">
+        <Grid item md={4} xs={12} sm={12} className="envios">
           <div className="icon">
             <div className="anullProperties">
               <Image src={compras} alt="Compra Protegida" layout="fill" />
@@ -47,7 +48,7 @@ const Info = () => {
             </p>
           </div>
         </Grid>
-        <Grid item md={4} xs={12} sm={4} className="envios">
+        <Grid item md={4} xs={12} sm={12} className="envios">
           <div className="icon">
             <div className="anullProperties">
               <Image src={garantia} alt="Garantia del Vendedor" layout="fill" />
