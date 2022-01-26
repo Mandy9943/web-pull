@@ -45,13 +45,13 @@ const Benefits = dynamic(() => import("../common/Benefits/Benefits"), {
   suspense: true,
 });
 
-const Subscription = dynamic(
-  () => import("../common/Subscription/Subscription"),
-  {
-    ssr: false,
-    loading: () => <p>...</p>,
-  }
-);
+// const Subscription = dynamic(
+//   () => import("../common/Subscription/Subscription"),
+//   {
+//     ssr: false,
+//     loading: () => <p>...</p>,
+//   }
+// );
 const Footer = dynamic(() => import("../../Common/Footer"), {
   ssr: false,
   suspense: true,
@@ -167,9 +167,9 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
             <Grid item md={12} sm={12}>
               <Benefits />
             </Grid>
-            <Grid item md={12} sm={12}>
-              <Subscription />
-            </Grid>
+            {/*<Grid item md={12} sm={12}>*/}
+            {/*  <Subscription />*/}
+            {/*</Grid>*/}
           </Grid>
           <Grid item md={12}>
             <Footer />
