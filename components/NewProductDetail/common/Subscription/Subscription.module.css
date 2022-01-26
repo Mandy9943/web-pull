@@ -7,7 +7,7 @@
   justify-content: center;
 }
 
-#Subscription .title h3 {
+#Subscription .title h4 {
   font-size: 24px;
   font-style: normal;
   font-weight: 800;
@@ -64,20 +64,25 @@
     display: grid;
     margin-bottom: 0;
     height: 879px;
+    max-width: 90vm;
+    width: 90vm;
     grid-auto-rows: 1fr;
     grid-template-areas:
       "imagen titulo"
       "imagen boton";
   }
+
   #Subscription .anullProperties {
     grid-area: imagen;
     width: 50vw;
   }
+
   #Subscription .anullProperties img {
     padding-top: 10px !important;
     width: 100% !important;
     height: 400px !important;
   }
+
   #Subscription .title {
     display: flex;
     flex-direction: column;
@@ -85,6 +90,7 @@
     align-items: flex-start;
     grid-area: titulo;
   }
+
   #Subscription .title h3 {
     font-style: normal;
     font-weight: 800;
@@ -93,6 +99,7 @@
     letter-spacing: 0.02em;
     margin-right: 250px;
   }
+
   #Subscription .title p {
     font-style: normal;
     font-weight: 500;
@@ -100,6 +107,7 @@
     line-height: 36px;
     margin-right: 250px;
   }
+
   #Subscription .button {
     grid-area: boton;
     display: flex;
@@ -108,6 +116,7 @@
     justify-content: flex-start;
     align-content: flex-end;
   }
+
   #Subscription .button input {
     font-style: normal;
     font-weight: 500;
