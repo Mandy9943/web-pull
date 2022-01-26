@@ -80,7 +80,7 @@ class Category extends Component {
           categoryLevel:
             response.data.results.length > 0 ? response.data.level : "",
         });
-        this.loadProducts(this.state.page, "", "", this.props.data.search);
+        this.loadProducts(0, this.state.page, "", "", this.props.data.search);
         if (this.state.categoryLevel === "") {
           this.setState({ existsCategoryMenu: false });
         } else {
@@ -93,7 +93,7 @@ class Category extends Component {
     }
 
     if (this.props.data.type !== "category") {
-      this.loadProducts(this.state.page);
+      this.loadProducts(0, this.state.page);
       this.loadAllFilters();
     }
   }
@@ -121,7 +121,7 @@ class Category extends Component {
     this.setState({ page: p });
     document.location = `${this.props.path.split("?")[0]}?page=${p}`;
     // console.log(document.location);
-    this.loadProducts(p);
+    this.loadProducts(0, p);
     // console.log(p);
   };
 
@@ -147,7 +147,7 @@ class Category extends Component {
       page: this.state.page,
     });
 
-    this.loadProducts(1, "", "", categoryLevel);
+    this.loadProducts(0, 1, "", "", categoryLevel);
     if (loadFilter) this.loadAllFilters();
   };
 
@@ -159,32 +159,38 @@ class Category extends Component {
       page: 1,
     });
 
-    this.loadProducts(1);
+    this.loadProducts(0, 1);
   };
 
   sortProducts = (sortType) => {
     switch (sortType) {
       case "1":
-        this.loadProducts(1, "price", "desc");
+        this.loadProducts(0, 1, "price", "desc");
         break;
       case "2":
-        this.loadProducts(1, "price", "asc");
+        this.loadProducts(0, 1, "price", "asc");
         break;
       default:
-        this.loadProducts(1);
+        this.loadProducts(1, 1);
     }
 
     this.setState({ page: 1 });
   };
 
-  loadProducts(page, sortBy = "", orderBy = "", categoryLevel = "") {
+  loadProducts(
+    priceRelevant = "",
+    page,
+    sortBy = "",
+    orderBy = "",
+    categoryLevel = ""
+  ) {
     this.setState({
       products: null,
     });
-    let price = "";
+    let price = "200000-5500000";
     let brand = "";
     let category = "";
-
+    priceRelevant === 1 ? (price = "200000-5500000") : null;
     // Filters
     this.state.filters.forEach((value) => {
       const item = value.split("|");
