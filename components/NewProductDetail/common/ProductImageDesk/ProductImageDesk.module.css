@@ -45,3 +45,12 @@
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
 }
+
+#RecommendedProducts
+  .swiper-container-horizontal.recomendedSwiper
+  > .swiper-pagination-bullets
+  .swiper-pagination-bullet {
+  border-radius: 10px !important;
+  height: 4px;
+  background: #5d5d5d;
+}
