@@ -4,6 +4,7 @@
   border-radius: 10px;
   width: 100%;
   position: relative;
+  box-sizing: border-box;
 }
 #CheckoutProductDesk .title {
   margin-bottom: 40px;
