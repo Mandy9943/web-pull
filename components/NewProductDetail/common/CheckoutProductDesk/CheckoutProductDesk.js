@@ -1,9 +1,21 @@
+import { Paper } from "@mui/material";
 import React from "react";
 import CheckoutButton from "../CheckoutButton/CheckoutButton";
 import Counter from "../Counter/Counter";
 import PayMethod from "../PayMethod/PayMethod";
 import WhatsappBanner from "../WhatsappBanner/WhatsappBanner";
 import "./CheckoutProductDesk.module.css";
+import { styled } from "@mui/material/styles";
+const CheckoutProductDeskWrapper = styled(Paper)(() => ({
+  width: "100%",
+  boxSizing: "border-box",
+  borderRadius: "10px",
+  justifyContent: "space-between",
+  padding: "30px 20px",
+  marginBottom: "12px",
+  position: "relative",
+}));
+
 const CheckoutProductDesk = ({
   title,
   price,
@@ -13,7 +25,7 @@ const CheckoutProductDesk = ({
 }) => {
   const count = Math.ceil(Math.random() * 50);
   return (
-    <div id="CheckoutProductDesk">
+    <CheckoutProductDeskWrapper elevation={4} id="CheckoutProductDesk">
       <div className="title">
         <h1>{title.length > 80 ? title.substr(0, 80) + "..." : title}</h1>
       </div>
@@ -69,7 +81,7 @@ const CheckoutProductDesk = ({
       </div>
       <PayMethod isDektop />
       <WhatsappBanner isDesktop />
-    </div>
+    </CheckoutProductDeskWrapper>
   );
 };
 
