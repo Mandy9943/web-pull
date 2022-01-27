@@ -2,6 +2,12 @@ import React, { useState } from "react";
 import DivindingLine from "../DivindingLine/DivindingLine";
 import Image from "next/image";
 import "./ProductImageDesk.module.css";
+import { styled } from "@mui/material/styles";
+import { Paper } from "@mui/material";
+const ActualImg = styled(Paper)(({ theme }) => ({
+  borderRadius: "10px",
+}));
+
 const ProductImageDesk = ({ images, altImg }) => {
   const [actualImage, setActualImage] = useState(images[0].url);
   const handleClickImage = (imageURL) => {
@@ -38,7 +44,7 @@ const ProductImageDesk = ({ images, altImg }) => {
         color="#D1D1D1"
       />
       <div className="actualImageWrapper">
-        <div className="actualImage">
+        <ActualImg elevation={6}>
           <div className="anullProperties">
             <Image
               layout="fill"
@@ -47,7 +53,7 @@ const ProductImageDesk = ({ images, altImg }) => {
               alt={"Producto de kiero " + altImg.substr(0, 80)}
             />
           </div>
-        </div>
+        </ActualImg>
       </div>
     </div>
   );
