@@ -10,7 +10,7 @@ const ProductImageDesk = ({ images, altImg }) => {
   return (
     <div className="ProductImageDesk">
       <div className="deskImages">
-        {images.map((image) => {
+        {images.slice(0, 6).map((image) => {
           return (
             <div
               className={`content ${
@@ -31,7 +31,12 @@ const ProductImageDesk = ({ images, altImg }) => {
           );
         })}
       </div>
-      <DivindingLine width="2px" height="auto" margin="0 4vw" color="#D1D1D1" />
+      <DivindingLine
+        width="2px"
+        height="auto"
+        margin="0 0 0 4vw"
+        color="#D1D1D1"
+      />
       <div className="actualImageWrapper">
         <div className="actualImage">
           <div className="anullProperties">
