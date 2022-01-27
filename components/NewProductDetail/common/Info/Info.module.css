@@ -4,13 +4,16 @@
   display: flex;
   flex-direction: column;
 }
-
 #InfoProductDetail .title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
   margin: 0 25px 25px 25px;
 }
 
 #InfoProductDetail .title h4 {
-  font-size: 18px;
+  font-size: 5vw;
   font-family: Montserrat, sans-serif;
   font-style: normal;
   font-weight: bold;
@@ -62,7 +65,7 @@
   font-family: Montserrat, sans-serif;
   font-style: normal;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 4vw;
   /*line-height: 17px;*/
   color: #000000;
   margin: 4px 0;
@@ -72,7 +75,7 @@
   font-family: Montserrat, sans-serif;
   font-style: normal;
   font-weight: normal;
-  font-size: 12px;
+  font-size: 3.5vw;
   /*line-height: 16px;*/
   color: #5d5d5d;
 }
@@ -85,6 +88,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 6% 0;
   }
   #InfoProductDetail .title h4 {
     font-family: Montserrat, sans-serif;
@@ -96,23 +100,25 @@
     color: #000000;
   }
   #InfoProductDetail .info {
-    margin-bottom: 50px;
-    margin-left: unset;
+    margin: 0 2% 7.5% 2%;
   }
   #InfoProductDetail .info .envios {
     align-items: center;
     justify-content: space-evenly;
+    height: 20% !important;
+    width: auto;
   }
   #InfoProductDetail .info .envios h3 {
-    font-size: 1.5vm;
+    font-size: 1.5vw;
     font-style: normal;
     font-weight: 700;
     line-height: 26px;
     letter-spacing: 0;
     text-align: left;
+    margin-bottom: 2%;
   }
   #InfoProductDetail .info .envios p {
-    font-size: 1vm;
+    font-size: 1vw;
     font-style: normal;
     font-weight: 500;
     line-height: unset;
@@ -120,7 +126,8 @@
     text-align: left;
   }
   #InfoProductDetail .info .envios .icon img {
-    height: 100% !important;
+    height: 5vw !important;
+    width: auto !important;
   }
 
   #InfoProductDetail .info .envios:first-of-type {
