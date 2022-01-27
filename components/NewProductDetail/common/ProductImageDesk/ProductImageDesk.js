@@ -23,50 +23,48 @@ const ProductImageDesk = ({ images, altImg }) => {
     setActualImage(imageURL);
   };
   return (
-    <div className="ProductImageDesk">
-      <ProductImgDesk elevation={6}>
-        <div className="deskImages">
-          {images.slice(0, 6).map((image) => {
-            return (
-              <div
-                className={`content ${
-                  actualImage === image.url && "selectedContent"
-                }`}
-                key={image.url}
-                onClick={() => handleClickImage(image.url)}
-              >
-                <div className="anullProperties">
-                  <Image
-                    layout="fill"
-                    data-src={image.url}
-                    src={image.url}
-                    alt={"Producto de kiero " + altImg.substr(0, 80)}
-                  />
-                </div>
+    <ProductImgDesk elevation={4} className="ProductImageDesk">
+      <div className="deskImages">
+        {images.slice(0, 6).map((image) => {
+          return (
+            <div
+              className={`content ${
+                actualImage === image.url && "selectedContent"
+              }`}
+              key={image.url}
+              onClick={() => handleClickImage(image.url)}
+            >
+              <div className="anullProperties">
+                <Image
+                  layout="fill"
+                  data-src={image.url}
+                  src={image.url}
+                  alt={"Producto de kiero " + altImg.substr(0, 80)}
+                />
               </div>
-            );
-          })}
-        </div>
-        <DivindingLine
-          width="2px"
-          height="auto"
-          margin="0 0 0 4vw"
-          color="#D1D1D1"
-        />
-        <div className="actualImageWrapper">
-          <ActualImg elevation={6}>
-            <div className="anullProperties">
-              <Image
-                layout="fill"
-                data-src={actualImage}
-                src={actualImage}
-                alt={"Producto de kiero " + altImg.substr(0, 80)}
-              />
             </div>
-          </ActualImg>
-        </div>
-      </ProductImgDesk>
-    </div>
+          );
+        })}
+      </div>
+      <DivindingLine
+        width="2px"
+        height="auto"
+        margin="0 0 0 4vw"
+        color="#D1D1D1"
+      />
+      <div className="actualImageWrapper">
+        <ActualImg elevation={6}>
+          <div className="anullProperties">
+            <Image
+              layout="fill"
+              data-src={actualImage}
+              src={actualImage}
+              alt={"Producto de kiero " + altImg.substr(0, 80)}
+            />
+          </div>
+        </ActualImg>
+      </div>
+    </ProductImgDesk>
   );
 };
 

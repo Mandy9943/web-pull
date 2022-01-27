@@ -25,65 +25,63 @@ const CheckoutProductDesk = ({
 }) => {
   const count = Math.ceil(Math.random() * 50);
   return (
-    <div id="CheckoutProductDesk">
-      <CheckoutProductDeskWrapper elevation={6}>
-        <div className="title">
-          <h1>{title.length > 80 ? title.substr(0, 80) + "..." : title}</h1>
-        </div>
-        <span className="oldPrice">
+    <CheckoutProductDeskWrapper elevation={4} id="CheckoutProductDesk">
+      <div className="title">
+        <h1>{title.length > 80 ? title.substr(0, 80) + "..." : title}</h1>
+      </div>
+      <span className="oldPrice">
+        ${" "}
+        {parseInt(
+          price / (1 - parseFloat("." + discount_percentage).toFixed(2))
+        )
+          .toString()
+          .split(".")[0]
+          .replace(/(.)(?=(\d{3})+$)/g, "$1.")}
+      </span>
+      <div className="price">
+        <span className="realPrice">
           ${" "}
-          {parseInt(
-            price / (1 - parseFloat("." + discount_percentage).toFixed(2))
-          )
+          {price
             .toString()
             .split(".")[0]
-            .replace(/(.)(?=(\d{3})+$)/g, "$1.")}
+            .replace(/(.)(?=(\d{3})+$)/g, "$1.")}{" "}
+          {/* <p>COP</p> */}
         </span>
-        <div className="price">
-          <span className="realPrice">
-            ${" "}
-            {price
-              .toString()
-              .split(".")[0]
-              .replace(/(.)(?=(\d{3})+$)/g, "$1.")}{" "}
-            {/* <p>COP</p> */}
-          </span>
-          <span className="percent">
-            -{parseFloat(discount_percentage).toFixed(0)}% OFF
-          </span>
+        <span className="percent">
+          -{parseFloat(discount_percentage).toFixed(0)}% OFF
+        </span>
+      </div>
+      <div className="count">
+        <div className="countText">
+          <h3>Solo quedan</h3>
+          {stock > 0 ? (
+            <p>{stock} en stock </p>
+          ) : (
+            <p className="noAvilable">(Stock Agotado)</p>
+          )}
         </div>
-        <div className="count">
-          <div className="countText">
-            <h3>Solo quedan</h3>
-            {stock > 0 ? (
-              <p>{stock} en stock </p>
-            ) : (
-              <p className="noAvilable">(Stock Agotado)</p>
-            )}
-          </div>
-          <div className="countCounter">
-            <Counter stock={stock} />
-          </div>
+        <div className="countCounter">
+          <Counter stock={stock} />
         </div>
-        <div className="buyButton">
-          <CheckoutButton
-            text="Comprar"
-            disabled={stock <= 0}
-            onClick={onClickBuy}
-            rounded
-          />
-        </div>
-        <div className="purchased">
-          <p>
-            {" "}
-            <span className="number">{count}</span> Personas han comprado este
-            producto recientemente.
-          </p>
-        </div>
-        <PayMethod isDektop />
-        <WhatsappBanner isDesktop />
-      </CheckoutProductDeskWrapper>
-    </div>
+      </div>
+      <div className="buyButton">
+        <CheckoutButton
+          text="Comprar"
+          disabled={stock <= 0}
+          onClick={onClickBuy}
+          rounded
+        />
+      </div>
+      <div className="purchased">
+        <p>
+          {" "}
+          <span className="number">{count}</span> Personas han comprado este
+          producto recientemente.
+        </p>
+      </div>
+      <PayMethod isDektop />
+      <WhatsappBanner isDesktop />
+    </CheckoutProductDeskWrapper>
   );
 };
 
