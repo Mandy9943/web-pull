@@ -5,16 +5,23 @@ import compras from "../../../../assets/img/productDetail/union-2@2x.svg";
 import garantia from "../../../../assets/img/productDetail/union-3@2x.svg";
 
 import Image from "next/image";
-import { Grid } from "@mui/material";
+import { Grid, Box } from "@mui/material";
 
 const Info = () => {
   return (
-    <div id="InfoProductDetail">
-      <div className="title">
+    <Box id="InfoProductDetail" flexDirection="column">
+      <Grid
+        xs={12}
+        container
+        alignItems="center"
+        justifyContent="center"
+        flexWrap
+        className="title"
+      >
         <h4>
           Porqué Comprar con <p className="company">Kiero</p>
         </h4>
-      </div>
+      </Grid>
       <Grid
         container
         rowSpacing={{ xs: 1, md: 2 }}
@@ -60,7 +67,7 @@ const Info = () => {
           </div>
         </Grid>
       </Grid>
-    </div>
+    </Box>
   );
 };
 

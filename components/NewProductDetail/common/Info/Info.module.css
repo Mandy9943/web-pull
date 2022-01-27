@@ -1,9 +1,8 @@
 #InfoProductDetail {
   background: #fff;
   padding: 24px 25px 0;
-  display: flex;
-  flex-direction: column;
 }
+
 #InfoProductDetail .title {
   display: flex;
   align-items: center;
@@ -80,15 +79,45 @@
   color: #5d5d5d;
 }
 
-@media (min-width: 768px) {
+/* Modo Tablet*/
+@media (min-width: 768px) and (max-width: 1024px) {
+  #InfoProductDetail .title {
+    padding-top: 5vw;
+  }
+  #InfoProductDetail .title h4 {
+    font-size: 5vw;
+  }
+
+  #InfoProductDetail .envios .text h3 {
+    font-size: 3.5vw;
+  }
+
+  #InfoProductDetail .envios .text p {
+    font-size: 3vw;
+  }
+
+  #InfoProductDetail .info {
+    padding-bottom: 5vw;
+  }
+
+  #InfoProductDetail .info .envios .icon img {
+    height: 6vw !important;
+    width: auto !important;
+  }
+}
+
+/* Modo Desktop*/
+@media (min-width: 1025px) {
   #InfoProductDetail {
     border-radius: 20px;
   }
+
   #InfoProductDetail .title {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 6% 0;
+    padding-top: 2.5vw;
+    margin: 2.5vw 0;
+  }
+  #InfoProductDetail .info {
+    padding-bottom: 5vw;
   }
   #InfoProductDetail .title h4 {
     font-family: Montserrat, sans-serif;
@@ -99,15 +128,18 @@
     letter-spacing: unset;
     color: #000000;
   }
+
   #InfoProductDetail .info {
     margin: 0 2% 7.5% 2%;
   }
+
   #InfoProductDetail .info .envios {
     align-items: center;
     justify-content: space-evenly;
     height: 20% !important;
     width: auto;
   }
+
   #InfoProductDetail .info .envios h3 {
     font-size: 1.5vw;
     font-style: normal;
@@ -117,6 +149,7 @@
     text-align: left;
     margin-bottom: 2%;
   }
+
   #InfoProductDetail .info .envios p {
     font-size: 1vw;
     font-style: normal;
@@ -125,6 +158,7 @@
     letter-spacing: 0;
     text-align: left;
   }
+
   #InfoProductDetail .info .envios .icon img {
     height: 5vw !important;
     width: auto !important;
