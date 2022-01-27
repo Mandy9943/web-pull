@@ -10,10 +10,10 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 const SellerInfo = () => {
   const [conteo, setConteo] = useState(0);
   useEffect(() => {
-    let start = 0;
+    let start = 500;
     const end = 547;
     if (start === end) return;
-    let totalmilSecDur = 30;
+    let totalmilSecDur = 20;
     let incrementTime = (totalmilSecDur / end) * 1000;
     let timer = setInterval(() => {
       start += 1;
