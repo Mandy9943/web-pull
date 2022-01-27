@@ -49,8 +49,9 @@ const RecommendedProducts = ({
     };
   } else {
     sliderConfig = {
-      slidesPerView: 5,
+      slidesPerView: 6,
       spaceBetween: spaceBetween,
+      loop: true,
       pagination: {
         clickable: true,
       },
