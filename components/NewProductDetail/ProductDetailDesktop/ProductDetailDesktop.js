@@ -45,13 +45,13 @@ const Benefits = dynamic(() => import("../common/Benefits/Benefits"), {
   suspense: true,
 });
 
-const Subscription = dynamic(
-  () => import("../common/Subscription/Subscription"),
-  {
-    ssr: false,
-    loading: () => <p>...</p>,
-  }
-);
+// const Subscription = dynamic(
+//   () => import("../common/Subscription/Subscription"),
+//   {
+//     ssr: false,
+//     loading: () => <p>...</p>,
+//   }
+// );
 const Footer = dynamic(() => import("../../Common/Footer"), {
   ssr: false,
   suspense: true,
