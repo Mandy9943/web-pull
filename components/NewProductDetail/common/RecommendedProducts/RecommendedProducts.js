@@ -33,6 +33,29 @@ const RecommendedProducts = ({
     };
     getProducts();
   }, []);
+
+  let sliderConfig = {};
+
+  if (movil) {
+    sliderConfig = {
+      slidesPerView: 1.4,
+      spaceBetween: spaceBetween,
+      freeMode: true,
+      centeredSlides: true,
+
+      pagination: {
+        clickable: true,
+      },
+    };
+  } else {
+    sliderConfig = {
+      slidesPerView: 5,
+      spaceBetween: spaceBetween,
+      pagination: {
+        clickable: true,
+      },
+    };
+  }
   return (
     <div id="RecommendedProducts">
       <div className="cabecera">
@@ -46,17 +69,7 @@ const RecommendedProducts = ({
         <h3> COMPRARON</h3>
       </div>
       <div className="slider">
-        <Swiper
-          slidesPerView={movil ? 1.4 : 4}
-          spaceBetween={spaceBetween}
-          freeMode={true}
-          centeredSlides={true}
-          loop={true}
-          pagination={{
-            clickable: true,
-          }}
-          className="recomendedSwiper"
-        >
+        <Swiper {...sliderConfig} className="recomendedSwiper">
           {products.map((product, i) => {
             return (
               <SwiperSlide key={i}>
