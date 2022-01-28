@@ -13,6 +13,7 @@ const Info = () => {
       <Grid
         xs={12}
         container
+        item
         alignItems="center"
         justifyContent="center"
         flexWrap
