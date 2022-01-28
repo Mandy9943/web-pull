@@ -9,18 +9,18 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 const SellerInfo = () => {
   const [conteo, setConteo] = useState(0);
-  // useEffect(() => {
-  //   let start = 0;
-  //   const end = 547;
-  //   if (start === end) return;
-  //   let totalmilSecDur = 20;
-  //   let incrementTime = (totalmilSecDur / end) * 1000;
-  //   let timer = setInterval(() => {
-  //     start += 4;
-  //     setConteo(start);
-  //     if (start >= end) clearInterval(timer);
-  //   }, incrementTime);
-  // }, []);
+  useEffect(() => {
+    let start = 0;
+    const end = 547;
+    if (start === end) return;
+    let totalmilSecDur = 20;
+    let incrementTime = (totalmilSecDur / end) * 1000;
+    let timer = setInterval(() => {
+      start += 4;
+      setConteo(start);
+      if (start >= end) clearInterval(timer);
+    }, incrementTime);
+  }, []);
   return (
     <section id="SellerInfo">
       <header>
