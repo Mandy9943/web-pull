@@ -135,13 +135,7 @@ const SwiperSlider = ({
   // Para el uso del specialOfferMovil en productDetailMobil
   const specialOffer = (
     <div className="swiperSliderDetail">
-      <Swiper
-        pagination={true}
-        className={type}
-        slidePerView="auto"
-        slidesPerGroup="2"
-        freeMode={true}
-      >
+      <Swiper pagination={true} className={type}>
         <SwiperSlide>
           <DiscountPrice
             priceProduct={price}

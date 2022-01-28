@@ -65,6 +65,9 @@
 }
 
 @media (min-width: 768px) {
+  #Benefits {
+    border: none;
+  }
   #Benefits h2 {
     margin-top: 110px;
     font-style: normal;
@@ -94,5 +97,9 @@
     line-height: 25px;
     text-align: center;
     margin-right: 2%;
+  }
+
+  #Benefits .benefit {
+    margin-bottom: 90px;
   }
 }

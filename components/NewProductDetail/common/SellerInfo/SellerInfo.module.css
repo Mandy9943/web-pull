@@ -36,7 +36,7 @@
   font-family: Montserrat, sans-serif;
   font-style: normal;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 5.2vw;
   line-height: 22px;
   letter-spacing: 0.03em;
   color: #000000;
@@ -59,9 +59,8 @@
   font-family: Montserrat, sans-serif;
   font-style: normal;
   font-weight: bold;
-  font-size: 18px;
-  line-height: 22px;
-  letter-spacing: 0.03em;
+  font-size: 5vw;
+  letter-spacing: 0.03rem;
   color: #5d5d5d;
   padding-left: 22px;
   white-space: nowrap;
@@ -90,7 +89,7 @@
   font-family: Montserrat, sans-serif;
   font-style: normal;
   font-weight: bold;
-  font-size: 12px;
+  font-size: 3vw;
   line-height: 15px;
   color: #1fc2e6;
   padding-right: 28px;
@@ -98,9 +97,9 @@
 
 #SellerInfo .certificate svg {
   color: #1fc2e6;
-  margin-right: 3px;
-  height: 8px;
-  width: 8px;
+  margin-right: 1vw;
+  height: 2.5vw;
+  width: 2.5vw;
 }
 
 #SellerInfo footer {
@@ -116,8 +115,8 @@
   font-family: Montserrat, sans-serif;
   font-style: normal;
   font-weight: normal;
-  font-size: 11px;
-  line-height: 16px;
+  font-size: 3.5vw;
+  line-height: 4vw;
   color: #5d5d5d;
   margin-bottom: 22px;
   white-space: nowrap;

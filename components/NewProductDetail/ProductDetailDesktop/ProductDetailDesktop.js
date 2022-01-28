@@ -6,12 +6,10 @@ import {
   sendCheckoutStepViewed,
   sendProductViewed,
 } from "../../../lib/functions";
-//import FooterSocial from "../common/FooterSocial/FooterSocial";
-
+import FooterSocial from "../common/FooterSocial/FooterSocial";
 import "./ProductDetailDesktop.module.css";
 import dynamic from "next/dynamic";
 import Info from "../common/Info/Info";
-// import RecommendedProducts from "../common/RecommendedProducts/RecommendedProducts";
 import Header from "../common/Header/Header";
 import FormProductDetail from "../common/formProductDetail/formProductDetail";
 import { useAppDispatch, useAppSelector } from "../../../lib/hooks/redux";
@@ -22,12 +20,13 @@ import {
 import { Box, Grid } from "@mui/material";
 import ProductImageDesk from "../common/ProductImageDesk/ProductImageDesk";
 import Description from "../common/Description/Description";
+import OurClient from "../common/OurClient/OurClient";
+import CheckoutProductDesk from "../common/CheckoutProductDesk/CheckoutProductDesk";
+
 const Detail = dynamic(() => import("../common/Detail/Detail"), {
   ssr: false,
   suspense: false,
 });
-import OurClient from "../common/OurClient/OurClient";
-import CheckoutProductDesk from "../common/CheckoutProductDesk/CheckoutProductDesk";
 
 const Nav = dynamic(() => import("../../Common/Nav/Nav"));
 
@@ -46,17 +45,25 @@ const Benefits = dynamic(() => import("../common/Benefits/Benefits"), {
   suspense: true,
 });
 
-//const Subscription = dynamic(
-//  () => import("../common/Subscription/Subscription"),
-//  {
-//    ssr: false,
-//    loading: () => <p>...</p>,
-//  }
-//);
-//const Footer = dynamic(() => import("../../Common/Footer"), {
-//  ssr: false,
-//  suspense: true,
-//});
+// const Subscription = dynamic(
+//   () => import("../common/Subscription/Subscription"),
+//   {
+//     ssr: false,
+//     loading: () => <p>...</p>,
+//   }
+// );
+const Footer = dynamic(() => import("../../Common/Footer"), {
+  ssr: false,
+  suspense: true,
+});
+
+const RecommendedProducts = dynamic(
+  () => import("../common/RecommendedProducts/RecommendedProducts"),
+  {
+    ssr: false,
+    suspense: true,
+  }
+);
 const ProductDetailDesktop = ({ user_data, data, userIp }) => {
   console.log({ data, userIp });
   const isForm = useAppSelector(selectIsFormOpen);
@@ -104,13 +111,13 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
         <Header title={data.title} bredCumbs={data.breadcum} isDesktop />
         <Box sx={{ flexGrow: 1 }} padding={"0 60px"} mb={8}>
           <Grid container spacing={2}>
-            <Grid item xs={8}>
+            <Grid item sm={8}>
               <ProductImageDesk images={data.images} altImg={data.title} />
               <Detail product={data} />
               <Description product={data} />
               <OurClient category={data?.breadcum[0]?.name.substring(0, 7)} />
             </Grid>
-            <Grid item xs={4}>
+            <Grid item sm={4}>
               <CheckoutProductDesk
                 title={data.title}
                 onClickBuy={handleOpenForm}
@@ -120,8 +127,14 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
               />
             </Grid>
           </Grid>
-          <Grid container rowSpacing={1}>
-            <Grid item md={12} xs={12}>
+          <Grid
+            container
+            rowSpacing={1}
+            sx={{ width: "100%" }}
+            alignItems="center"
+            justifyContent="center"
+          >
+            <Grid item sm={12}>
               <Info />
             </Grid>
             <Grid
@@ -154,14 +167,21 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
         </Box>
         <Box>
           <Grid container direction="column" flexWrap="nowrap">
+            <Grid sx={{ overflow: "hidden" }} item md={12} sm={12}>
+              <RecommendedProducts category={data.category} movil={false} />
+            </Grid>
             <Grid item md={12} sm={12}>
               <Benefits />
             </Grid>
+            {/*<Grid item md={12} sm={12}>*/}
+            {/*  <Subscription />*/}
+            {/*</Grid>*/}
+          </Grid>
+          <Grid item md={12}>
+            <Footer />
+            <FooterSocial />
           </Grid>
         </Box>
-        {/* <Subscription /> */}
-        {/* <Footer /> */}
-        {/* <FooterSocial /> */}
       </Suspense>
     </div>
   );

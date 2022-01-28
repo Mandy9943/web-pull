@@ -21,6 +21,7 @@ const RecommendedProducts = ({
   category,
   spaceBetween = 30,
   lenProduct = 10,
+  movil = true,
 }) => {
   const [products, setProducts] = useState([]);
 
@@ -32,6 +33,30 @@ const RecommendedProducts = ({
     };
     getProducts();
   }, []);
+
+  let sliderConfig = {};
+
+  if (movil) {
+    sliderConfig = {
+      slidesPerView: 1.4,
+      spaceBetween: spaceBetween,
+      freeMode: true,
+      centeredSlides: true,
+
+      pagination: {
+        clickable: true,
+      },
+    };
+  } else {
+    sliderConfig = {
+      slidesPerView: 6,
+      spaceBetween: spaceBetween,
+      loop: true,
+      pagination: {
+        clickable: true,
+      },
+    };
+  }
   return (
     <div id="RecommendedProducts">
       <div className="cabecera">
@@ -45,17 +70,7 @@ const RecommendedProducts = ({
         <h3> COMPRARON</h3>
       </div>
       <div className="slider">
-        <Swiper
-          slidesPerView={1.4}
-          spaceBetween={spaceBetween}
-          freeMode={true}
-          centeredSlides={true}
-          loop={true}
-          pagination={{
-            clickable: true,
-          }}
-          className="recomendedSwiper"
-        >
+        <Swiper {...sliderConfig} className="recomendedSwiper">
           {products.map((product, i) => {
             return (
               <SwiperSlide key={i}>
@@ -73,6 +88,7 @@ RecommendedProducts.prototype = {
   category: PropTypes.string.isRequired,
   spaceBetween: PropTypes.number,
   lenProduct: PropTypes.number,
+  movil: PropTypes.bool.isRequired,
 };
 
 export default RecommendedProducts;

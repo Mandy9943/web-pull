@@ -5,23 +5,31 @@ import compras from "../../../../assets/img/productDetail/union-2@2x.svg";
 import garantia from "../../../../assets/img/productDetail/union-3@2x.svg";
 
 import Image from "next/image";
-import { Grid } from "@mui/material";
+import { Grid, Box } from "@mui/material";
 
 const Info = () => {
   return (
-    <div id="InfoProductDetail">
-      <div className="title">
+    <Box id="InfoProductDetail" flexDirection="column">
+      <Grid
+        xs={12}
+        container
+        alignItems="center"
+        justifyContent="center"
+        flexWrap
+        className="title"
+      >
         <h4>
           Porqué Comprar con <p className="company">Kiero</p>
         </h4>
-      </div>
+      </Grid>
       <Grid
         container
-        rowSpacing={{ xs: 2 }}
-        columnSpacing={{ md: 1 }}
+        rowSpacing={{ xs: 1, md: 2 }}
         className="info"
+        alignItems="center"
+        justifyContent="center"
       >
-        <Grid item md={4} xs={12} sm={4} className="envios">
+        <Grid item md={4} xs={12} sm={12} className="envios">
           <div className="icon">
             <div className="anullProperties">
               <Image src={envios} alt="Envios gratis" layout="fill" />
@@ -34,7 +42,7 @@ const Info = () => {
             </p>
           </div>
         </Grid>
-        <Grid item md={4} xs={12} sm={4} className="envios">
+        <Grid item md={4} xs={12} sm={12} className="envios">
           <div className="icon">
             <div className="anullProperties">
               <Image src={compras} alt="Compra Protegida" layout="fill" />
@@ -47,7 +55,7 @@ const Info = () => {
             </p>
           </div>
         </Grid>
-        <Grid item md={4} xs={12} sm={4} className="envios">
+        <Grid item md={4} xs={12} sm={12} className="envios">
           <div className="icon">
             <div className="anullProperties">
               <Image src={garantia} alt="Garantia del Vendedor" layout="fill" />
@@ -59,7 +67,7 @@ const Info = () => {
           </div>
         </Grid>
       </Grid>
-    </div>
+    </Box>
   );
 };
 

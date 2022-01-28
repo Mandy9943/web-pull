@@ -849,6 +849,10 @@ class PaySection extends Component {
       margin_percent: String(item.props.data.margin_percent),
       product_link: item.props.data.product_link,
       weight: String(item.props.data.weight),
+      main_link: item.props.data.main_link ? item.props.data.main_link : "",
+      subcategory_link: item.props.data.subcategory_link
+        ? item.props.data.subcategory_link
+        : "",
     };
 
     const error = await createleadClient(data);
