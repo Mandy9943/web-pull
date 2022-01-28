@@ -12,6 +12,7 @@ import Skeleton from "@mui/material/Skeleton";
 // import Swiper core and required modules
 import SwiperCore, { EffectCoverflow, Pagination } from "swiper";
 import DiscountPrice from "../DiscountPrice/DiscountPrice";
+import PropTypes from "prop-types";
 
 // install Swiper modules
 SwiperCore.use([EffectCoverflow, Pagination]);
@@ -173,6 +174,16 @@ const SwiperSlider = ({
     render = specialOffer;
   }
   return render;
+};
+
+SwiperSlider.propTypes = {
+  images: PropTypes.array.isRequired,
+  altImg: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  stock: PropTypes.number.isRequired,
+  discount_percentage: PropTypes.string.isRequired,
+  movil: PropTypes.bool.isRequired,
 };
 
 export default SwiperSlider;

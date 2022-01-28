@@ -7,7 +7,6 @@ import PriceSaving from "./componentsDiscount/PriceSaving/PriceSaving";
 import "./DiscountPrice.module.css";
 import { useAppDispatch } from "../../../../lib/hooks/redux";
 import { openForm, setCount } from "../../../../redux/feature/pay/paySlice";
-// import { sendCheckoutStepViewed } from "../../../../lib/functions";
 const DiscountPrice = ({
   priceProduct,
   discountPercentage,
