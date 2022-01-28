@@ -52,7 +52,7 @@ const Discount = ({
   );
 };
 
-Discount.PropTypes = {
+Discount.propTypes = {
   images: PropTypes.arrayOf(PropTypes.object).isRequired,
   quantityProduct: PropTypes.number.isRequired,
   altImg: PropTypes.string.isRequired,

@@ -77,7 +77,7 @@ const Detail = ({ product }) => {
   );
 };
 
-Detail.PropTypes = {
+Detail.propTypes = {
   product: PropTypes.object.isRequired,
 };
 
