@@ -111,13 +111,13 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
         <Header title={data.title} bredCumbs={data.breadcum} isDesktop />
         <Box sx={{ flexGrow: 1 }} padding={"0 60px"} mb={8}>
           <Grid container spacing={2}>
-            <Grid item xs={8}>
+            <Grid item sm={8}>
               <ProductImageDesk images={data.images} altImg={data.title} />
               <Detail product={data} />
               <Description product={data} />
               <OurClient category={data?.breadcum[0]?.name.substring(0, 7)} />
             </Grid>
-            <Grid item xs={4}>
+            <Grid item sm={4}>
               <CheckoutProductDesk
                 title={data.title}
                 onClickBuy={handleOpenForm}
@@ -134,54 +134,54 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
             alignItems="center"
             justifyContent="center"
           >
-            <Grid item md={12} xs={12}>
+            <Grid item sm={12}>
               <Info />
             </Grid>
-            {/*<Grid*/}
-            {/*  sx={{ borderRadius: "20px", overflow: "hidden" }}*/}
-            {/*  item*/}
-            {/*  md={12}*/}
-            {/*  xs={12}*/}
-            {/*  className="containerspecialOffer"*/}
-            {/*>*/}
-            {/*  <SwiperSlider*/}
-            {/*    type={"specialOffer"}*/}
-            {/*    price={data.price}*/}
-            {/*    images={data.images}*/}
-            {/*    altImg={data.title}*/}
-            {/*    stock={data.status === 0 ? 0 : data.stock}*/}
-            {/*    discount_percentage={data.discount_percentage}*/}
-            {/*    movil={false}*/}
-            {/*  />*/}
-            {/*</Grid>*/}
-            {/*<Grid*/}
-            {/*  sx={{ borderRadius: "20px", overflow: "hidden" }}*/}
-            {/*  item*/}
-            {/*  md={12}*/}
-            {/*  xs={12}*/}
-            {/*  className="containerSellerInfo"*/}
-            {/*>*/}
-            {/*  <SellerInfo movil={false} />*/}
-            {/*</Grid>*/}
+            <Grid
+              sx={{ borderRadius: "20px", overflow: "hidden" }}
+              item
+              md={12}
+              xs={12}
+              className="containerspecialOffer"
+            >
+              <SwiperSlider
+                type={"specialOffer"}
+                price={data.price}
+                images={data.images}
+                altImg={data.title}
+                stock={data.status === 0 ? 0 : data.stock}
+                discount_percentage={data.discount_percentage}
+                movil={false}
+              />
+            </Grid>
+            <Grid
+              sx={{ borderRadius: "20px", overflow: "hidden" }}
+              item
+              md={12}
+              xs={12}
+              className="containerSellerInfo"
+            >
+              <SellerInfo movil={false} />
+            </Grid>
           </Grid>
         </Box>
-        {/*<Box>*/}
-        {/*  <Grid container direction="column" flexWrap="nowrap">*/}
-        {/*    <Grid sx={{ overflow: "hidden" }} item md={12} sm={12}>*/}
-        {/*      <RecommendedProducts category={data.category} movil={false} />*/}
-        {/*    </Grid>*/}
-        {/*    <Grid item md={12} sm={12}>*/}
-        {/*      <Benefits />*/}
-        {/*    </Grid>*/}
-        {/*    /!*<Grid item md={12} sm={12}>*!/*/}
-        {/*    /!*  <Subscription />*!/*/}
-        {/*    /!*</Grid>*!/*/}
-        {/*  </Grid>*/}
-        {/*  <Grid item md={12}>*/}
-        {/*    <Footer />*/}
-        {/*    <FooterSocial />*/}
-        {/*  </Grid>*/}
-        {/*</Box>*/}
+        <Box>
+          <Grid container direction="column" flexWrap="nowrap">
+            <Grid sx={{ overflow: "hidden" }} item md={12} sm={12}>
+              <RecommendedProducts category={data.category} movil={false} />
+            </Grid>
+            <Grid item md={12} sm={12}>
+              <Benefits />
+            </Grid>
+            {/*<Grid item md={12} sm={12}>*/}
+            {/*  <Subscription />*/}
+            {/*</Grid>*/}
+          </Grid>
+          <Grid item md={12}>
+            <Footer />
+            <FooterSocial />
+          </Grid>
+        </Box>
       </Suspense>
     </div>
   );

@@ -124,3 +124,7 @@
     height: 100% !important;
   }
 }
+
+#RecommendedProducts .swiper-container .swiper-pagination-bullets {
+  width: 96%;
+}

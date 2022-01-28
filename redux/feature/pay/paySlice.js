@@ -15,6 +15,7 @@ const initialState = {
   asin_link: "",
   sub_category: "",
   product_link: "",
+  main_link: "",
 };
 
 export const paySlice = createSlice({
@@ -48,6 +49,7 @@ export const paySlice = createSlice({
       state.earnings_percentage = action.payload.earnings_percentage;
       state.gross_margin = action.payload.gross_margin;
       state.margin_percent = action.payload.margin_percent;
+      state.main_link = action.payload.main_link;
     },
     openForm: (state, action) => {
       state.isFormOpen = action.payload;
