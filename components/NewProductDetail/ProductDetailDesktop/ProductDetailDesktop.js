@@ -137,7 +137,7 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
             <Grid item sm={12}>
               <Info />
             </Grid>
-            {/* <Grid
+            <Grid
               sx={{ borderRadius: "20px", overflow: "hidden" }}
               item
               md={12}
@@ -153,8 +153,8 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
                 discount_percentage={data.discount_percentage}
                 movil={false}
               />
-            </Grid> */}
-            {/*     <Grid
+            </Grid>
+            <Grid
               sx={{ borderRadius: "20px", overflow: "hidden" }}
               item
               md={12}
@@ -162,21 +162,21 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
               className="containerSellerInfo"
             >
               <SellerInfo movil={false} />
-            </Grid> */}
+            </Grid>
           </Grid>
         </Box>
         <Box>
-          {/*  <Grid container direction="column" flexWrap="nowrap">
+          <Grid container direction="column" flexWrap="nowrap">
             <Grid sx={{ overflow: "hidden" }} item md={12} sm={12}>
               <RecommendedProducts category={data.category} movil={false} />
             </Grid>
             <Grid item md={12} sm={12}>
               <Benefits />
-            </Grid> */}
-          {/*<Grid item md={12} sm={12}>*/}
-          {/*  <Subscription />*/}
-          {/*</Grid>*/}
-          {/*  </Grid> */}
+            </Grid>
+            {/*<Grid item md={12} sm={12}>*/}
+            {/*  <Subscription />*/}
+            {/*</Grid>*/}
+          </Grid>
           <Grid item md={12}>
             <Footer />
             <FooterSocial />
