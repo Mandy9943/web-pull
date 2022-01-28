@@ -48,6 +48,10 @@ function Product({ data, u_data, userIp }) {
     dispatch(setNumber());
   }, []);
 
+  const dataMainLink = () => {
+    let dataMain = data.images.find((element) => element.main == 1);
+    return dataMain.url ? dataMain.url : "";
+  };
   useEffect(() => {
     dispatch(
       setData({
@@ -68,6 +72,7 @@ function Product({ data, u_data, userIp }) {
         earnings_percentage: data.earnings_percentage,
         gross_margin: data.gross_margin,
         margin_percent: data.margin_percent,
+        main_link: dataMainLink(),
       })
     );
     Cookies.get("email") ? createlead(data, 3) : null;
@@ -263,7 +268,12 @@ export async function getServerSideProps(context) {
     authenticated: isAuthenticated(context),
     jwt: jwt ? jwt : "",
   };
-
+  const propsData = [];
+  propsData.push(data.data);
+  const dataMainLink = data.data.images.find((element) => element.main == 1);
+  propsData.forEach((object) => {
+    object.main_link = dataMainLink.url;
+  });
   return { props: { data: data.data, u_data, userIp: ipData } };
 }
 

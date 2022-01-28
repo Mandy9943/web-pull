@@ -187,10 +187,11 @@ class Category extends Component {
     this.setState({
       products: null,
     });
-    let price = "200000-5500000";
+    // let price = "200000-5500000";
+    let price = "";
     let brand = "";
     let category = "";
-    priceRelevant === 1 ? (price = "200000-5500000") : null;
+    // priceRelevant === 1 ? (price = "200000-5500000") : null;
     // Filters
     this.state.filters.forEach((value) => {
       const item = value.split("|");

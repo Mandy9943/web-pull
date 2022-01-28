@@ -130,9 +130,12 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
       margin_percent: String(productData.margin_percent),
       product_link: productData.product_link,
       weight: String(productData.weight),
+      main_link: productData.main_link ? productData.main_link : "",
+      subcategory_link: productData.subcategory_link
+        ? productData.subcategory_link
+        : "",
     };
 
-    // console.log(productData, "otra", data)
     createlead(data, 2);
     handleClose();
   };
