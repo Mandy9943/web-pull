@@ -134,16 +134,10 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
             alignItems="center"
             justifyContent="center"
           >
-            <Grid item sm={12}>
+            <Grid item sm={12} className="containerInfo">
               <Info />
             </Grid>
-            <Grid
-              // sx={{ borderRadius: "20px", overflow: "hidden" }}
-              item
-              md={12}
-              xs={12}
-              className="containerspecialOffer"
-            >
+            <Grid item sm={12} className="containerspecialOffer">
               <SwiperSlider
                 type={"specialOffer"}
                 price={data.price}
@@ -154,13 +148,7 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
                 movil={false}
               />
             </Grid>
-            <Grid
-              // sx={{ borderRadius: "20px", overflow: "hidden" }}
-              item
-              md={12}
-              xs={12}
-              className="containerSellerInfo"
-            >
+            <Grid item md={12} className="containerSellerInfo">
               <SellerInfo movil={false} />
             </Grid>
           </Grid>

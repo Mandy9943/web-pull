@@ -19,4 +19,11 @@
 .containerSellerInfo {
   display: flex;
   min-width: 768px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.containerspecialOffer {
+  border-radius: 20px;
+  overflow: hidden;
 }

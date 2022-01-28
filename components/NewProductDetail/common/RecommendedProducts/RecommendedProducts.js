@@ -84,8 +84,8 @@ const RecommendedProducts = ({
   );
 };
 
-RecommendedProducts.prototype = {
-  category: PropTypes.string.isRequired,
+RecommendedProducts.propTypes = {
+  category: PropTypes.object.isRequired,
   spaceBetween: PropTypes.number,
   lenProduct: PropTypes.number,
   movil: PropTypes.bool.isRequired,
