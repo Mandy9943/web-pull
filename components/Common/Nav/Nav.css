@@ -360,7 +360,7 @@
     grid-template-columns: 1fr 4fr 2fr;
   }
 }
-@media (max-width: 925px) {
+@media (max-width: 950px) {
   .infoContainer {
     top: 110px;
   }

@@ -40,7 +40,7 @@ const ProductDetailDesktop = dynamic(
 
 function Product({ data, u_data, userIp }) {
   const dispatch = useAppDispatch();
-  const mobileView = useResize(768);
+  const mobileView = useResize(767);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {

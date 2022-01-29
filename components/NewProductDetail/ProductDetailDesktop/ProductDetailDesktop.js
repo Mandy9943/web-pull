@@ -22,6 +22,8 @@ import ProductImageDesk from "../common/ProductImageDesk/ProductImageDesk";
 import Description from "../common/Description/Description";
 import OurClient from "../common/OurClient/OurClient";
 import CheckoutProductDesk from "../common/CheckoutProductDesk/CheckoutProductDesk";
+import useResize from "../../../lib/hooks/useResize";
+import CheckoutProduct from "../common/CheckoutProduct/CheckoutProduct";
 
 const Detail = dynamic(() => import("../common/Detail/Detail"), {
   ssr: false,
@@ -64,7 +66,9 @@ const RecommendedProducts = dynamic(
     suspense: true,
   }
 );
+
 const ProductDetailDesktop = ({ user_data, data, userIp }) => {
+  const tabletView = useResize(1000);
   console.log({ data, userIp });
   const isForm = useAppSelector(selectIsFormOpen);
   const dispatch = useAppDispatch();
@@ -110,23 +114,43 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
         />
         <Header title={data.title} bredCumbs={data.breadcum} isDesktop />
         <Box sx={{ flexGrow: 1 }} padding={"0 60px"} mb={8}>
-          <Grid container spacing={2}>
-            <Grid item sm={8}>
-              <ProductImageDesk images={data.images} altImg={data.title} />
-              <Detail product={data} />
-              <Description product={data} />
-              <OurClient category={data?.breadcum[0]?.name.substring(0, 7)} />
+          {tabletView ? (
+            <Grid container>
+              <Grid item sm={12}>
+                <ProductImageDesk images={data.images} altImg={data.title} />
+                <CheckoutProduct
+                  onClickBuy={handleOpenForm}
+                  price={data.price}
+                  stock={data.status === 0 ? 0 : data.stock}
+                  discount_percentage={data.discount_percentage}
+                  table
+                />
+                {/* <Detail product={data} />
+                <Description product={data} />
+                <OurClient category={data?.breadcum[0]?.name.substring(0, 7)} /> */}
+              </Grid>
             </Grid>
-            <Grid item sm={4}>
-              <CheckoutProductDesk
-                title={data.title}
-                onClickBuy={handleOpenForm}
-                price={data.price}
-                stock={data.status === 0 ? 0 : data.stock}
-                discount_percentage={data.discount_percentage}
-              />
+          ) : (
+            <Grid container spacing={2}>
+              <Grid item sm={8}>
+                <ProductImageDesk images={data.images} altImg={data.title} />
+                <Detail product={data} />
+                <Description product={data} />
+                <OurClient category={data?.breadcum[0]?.name.substring(0, 7)} />
+              </Grid>
+
+              <Grid item sm={4}>
+                <CheckoutProductDesk
+                  title={data.title}
+                  onClickBuy={handleOpenForm}
+                  price={data.price}
+                  stock={data.status === 0 ? 0 : data.stock}
+                  discount_percentage={data.discount_percentage}
+                />
+              </Grid>
             </Grid>
-          </Grid>
+          )}
+
           <Grid
             container
             rowSpacing={1}
@@ -134,10 +158,10 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
             alignItems="center"
             justifyContent="center"
           >
-            <Grid item sm={12}>
+            {/*     <Grid item sm={12}>
               <Info />
-            </Grid>
-            {/* <Grid
+            </Grid> */}
+            <Grid
               sx={{ borderRadius: "20px", overflow: "hidden" }}
               item
               md={12}
@@ -151,9 +175,9 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
                 altImg={data.title}
                 stock={data.status === 0 ? 0 : data.stock}
                 discount_percentage={data.discount_percentage}
-                movil={false}
+                movil={true}
               />
-            </Grid> */}
+            </Grid>
             {/*     <Grid
               sx={{ borderRadius: "20px", overflow: "hidden" }}
               item
@@ -177,10 +201,10 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
           {/*  <Subscription />*/}
           {/*</Grid>*/}
           {/*  </Grid> */}
-          <Grid item md={12}>
+          {/* <Grid item md={12}>
             <Footer />
             <FooterSocial />
-          </Grid>
+          </Grid> */}
         </Box>
       </Suspense>
     </div>
