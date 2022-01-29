@@ -118,13 +118,13 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
             <Grid container>
               <Grid item sm={12}>
                 <ProductImageDesk images={data.images} altImg={data.title} />
-                <CheckoutProduct
+                {/* <CheckoutProduct
                   onClickBuy={handleOpenForm}
                   price={data.price}
                   stock={data.status === 0 ? 0 : data.stock}
                   discount_percentage={data.discount_percentage}
                   table
-                />
+                /> */}
                 {/* <Detail product={data} />
                 <Description product={data} />
                 <OurClient category={data?.breadcum[0]?.name.substring(0, 7)} /> */}
@@ -151,34 +151,34 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
             </Grid>
           )}
 
-          <Grid
+          {/* <Grid
             container
             rowSpacing={1}
             sx={{ width: "100%" }}
             alignItems="center"
             justifyContent="center"
           >
-            {/*     <Grid item sm={12}>
+            <Grid item sm={12}>
               <Info />
             </Grid> */}
-            <Grid
-              sx={{ borderRadius: "20px", overflow: "hidden" }}
-              item
-              md={12}
-              xs={12}
-              className="containerspecialOffer"
-            >
-              <SwiperSlider
-                type={"specialOffer"}
-                price={data.price}
-                images={data.images}
-                altImg={data.title}
-                stock={data.status === 0 ? 0 : data.stock}
-                discount_percentage={data.discount_percentage}
-                movil={true}
-              />
-            </Grid>
-            {/*     <Grid
+          <Grid
+            sx={{ borderRadius: "20px", overflow: "hidden" }}
+            item
+            md={12}
+            xs={12}
+            className="containerspecialOffer"
+          >
+            <SwiperSlider
+              type={"specialOffer"}
+              price={data.price}
+              images={data.images}
+              altImg={data.title}
+              stock={data.status === 0 ? 0 : data.stock}
+              discount_percentage={data.discount_percentage}
+              movil={false}
+            />
+          </Grid>
+          {/*     <Grid
               sx={{ borderRadius: "20px", overflow: "hidden" }}
               item
               md={12}
@@ -187,7 +187,7 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
             >
               <SellerInfo movil={false} />
             </Grid> */}
-          </Grid>
+          {/* </Grid> */}
         </Box>
         <Box>
           {/*  <Grid container direction="column" flexWrap="nowrap">

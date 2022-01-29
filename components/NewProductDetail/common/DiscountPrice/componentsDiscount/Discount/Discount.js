@@ -3,6 +3,7 @@ import Image from "next/image";
 import "./Discount.module.css";
 
 import { PropTypes } from "prop-types";
+import { Typography } from "@mui/material";
 
 const Discount = ({
   quantityProduct,
@@ -24,6 +25,9 @@ const Discount = ({
         </div>
         <div className="wrapperPercent">
           <p className="percentDiscount">{discountPercentage}%</p>
+          <Typography variant="h3" gutterBottom component="div">
+            h3. Heading
+          </Typography>
           <p className="textDiscount">DESCUENTO</p>
         </div>
       </div>
