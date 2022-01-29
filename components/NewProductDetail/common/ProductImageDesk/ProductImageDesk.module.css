@@ -4,7 +4,7 @@
   flex-wrap: wrap;
   min-width: 150px;
   padding: 30px 0;
-  min-height: 320px;
+  height: 350px;
 }
 .ProductImageDesk .deskImages .content {
   flex: 0 0 44%;
@@ -15,7 +15,7 @@
 .ProductImageDesk .deskImages .content img {
   width: 100% !important;
   border-radius: 10px;
-  max-height: 90px !important;
+  max-height: 120px !important;
 }
 .ProductImageDesk .deskImages .selectedContent img {
   border: 2px solid #cf0a2c !important;

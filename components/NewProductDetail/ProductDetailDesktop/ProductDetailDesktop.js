@@ -221,10 +221,10 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
             {/*  <Subscription />*/}
             {/*</Grid>*/}
           </Grid>
-          {/* <Grid item md={12}>
+          <Grid item md={12}>
             <Footer />
             <FooterSocial />
-          </Grid> */}
+          </Grid>
         </Box>
       </Suspense>
     </div>
