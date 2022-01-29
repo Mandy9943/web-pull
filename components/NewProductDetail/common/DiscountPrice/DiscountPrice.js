@@ -7,6 +7,7 @@ import PriceSaving from "./componentsDiscount/PriceSaving/PriceSaving";
 import "./DiscountPrice.module.css";
 import { useAppDispatch } from "../../../../lib/hooks/redux";
 import { openForm, setCount } from "../../../../redux/feature/pay/paySlice";
+import { Box } from "@mui/material";
 // import { sendCheckoutStepViewed } from "../../../../lib/functions";
 const DiscountPrice = ({
   priceProduct,
@@ -57,7 +58,16 @@ const DiscountPrice = ({
   const desktopRender = (
     <>
       <OfferSection />
-      <div className="containerBox">
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: { lg: "row", md: "column", sm: "column" },
+          justifyContent: "center",
+
+          alignItems: "center",
+          width: "100%",
+        }}
+      >
         <Discount
           quantityProduct={quantityProduct}
           discountPercentage={discountPercentage}
@@ -65,13 +75,25 @@ const DiscountPrice = ({
           altImg={altImg}
           movil={false}
         />
-        <div className="price">
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            width: { md: "60%", lg: "auto" },
+          }}
+        >
           <PriceSaving
             priceProduct={priceProduct}
             discountPercentage={discountPercentage}
             quantityProduct={quantityProduct}
           />
-          <div className="widthButton">
+          <Box
+            sx={{
+              width: { xs: "auto" },
+            }}
+            className="widthButton"
+          >
             {stock <= 0 ? (
               <CheckoutButton text="SIN STOCK" rounded notShowCar disabled />
             ) : (
@@ -83,9 +105,9 @@ const DiscountPrice = ({
                 onClick={handleOpenForm}
               />
             )}
-          </div>
-        </div>
-      </div>
+          </Box>
+        </Box>
+      </Box>
     </>
   );
   return (

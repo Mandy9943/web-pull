@@ -118,16 +118,16 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
             <Grid container>
               <Grid item sm={12}>
                 <ProductImageDesk images={data.images} altImg={data.title} />
-                {/* <CheckoutProduct
+                <CheckoutProduct
                   onClickBuy={handleOpenForm}
                   price={data.price}
                   stock={data.status === 0 ? 0 : data.stock}
                   discount_percentage={data.discount_percentage}
                   table
-                /> */}
-                {/* <Detail product={data} />
+                />
+                <Detail product={data} />
                 <Description product={data} />
-                <OurClient category={data?.breadcum[0]?.name.substring(0, 7)} /> */}
+                <OurClient category={data?.breadcum[0]?.name.substring(0, 7)} />
               </Grid>
             </Grid>
           ) : (
@@ -190,17 +190,17 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
           {/* </Grid> */}
         </Box>
         <Box>
-          {/*  <Grid container direction="column" flexWrap="nowrap">
+          <Grid container direction="column" flexWrap="nowrap">
             <Grid sx={{ overflow: "hidden" }} item md={12} sm={12}>
               <RecommendedProducts category={data.category} movil={false} />
             </Grid>
-            <Grid item md={12} sm={12}>
+            {/* <Grid item md={12} sm={12}>
               <Benefits />
             </Grid> */}
-          {/*<Grid item md={12} sm={12}>*/}
-          {/*  <Subscription />*/}
-          {/*</Grid>*/}
-          {/*  </Grid> */}
+            {/*<Grid item md={12} sm={12}>*/}
+            {/*  <Subscription />*/}
+            {/*</Grid>*/}
+          </Grid>
           {/* <Grid item md={12}>
             <Footer />
             <FooterSocial />
