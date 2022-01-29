@@ -24,6 +24,8 @@ import OurClient from "../common/OurClient/OurClient";
 import CheckoutProductDesk from "../common/CheckoutProductDesk/CheckoutProductDesk";
 import useResize from "../../../lib/hooks/useResize";
 import CheckoutProduct from "../common/CheckoutProduct/CheckoutProduct";
+import { useState } from "react";
+import WhatsappBanner from "../common/WhatsappBanner/WhatsappBanner";
 
 const Detail = dynamic(() => import("../common/Detail/Detail"), {
   ssr: false,
@@ -72,7 +74,7 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
   console.log({ data, userIp });
   const isForm = useAppSelector(selectIsFormOpen);
   const dispatch = useAppDispatch();
-
+  const [isWhatsappBanner, setIsWhatsappBanner] = useState(true);
   useEffect(() => {
     if (isForm === true) {
       dispatch(openForm(true));
@@ -98,20 +100,38 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
     sendProductViewed(data);
   }, [data]);
 
+  const handleCloseWhatsappBanner = () => {
+    setIsWhatsappBanner(false);
+  };
+
+  let navClass = ["Nav"];
+  if (isWhatsappBanner) {
+    navClass.push("Nav-mt");
+  }
+
   return (
     <div id="ProductDetailDesktop">
       <Suspense fallback={`loading`}>
+        {isWhatsappBanner && tabletView && (
+          <WhatsappBanner
+            close={handleCloseWhatsappBanner}
+            productId={data.product_global_id}
+          />
+        )}
         <FormProductDetail
           open={isForm}
           handleClose={handleCloseForm}
           userIp={userIp}
         />
-        <Nav
-          user={user_data.user}
-          jwt={user_data.jwt}
-          home={true}
-          authenticated={user_data.authenticated}
-        />
+        <div className={navClass.join(" ")}>
+          <Nav
+            user={user_data.user}
+            jwt={user_data.jwt}
+            home={true}
+            authenticated={user_data.authenticated}
+          />
+        </div>
+
         <Header title={data.title} bredCumbs={data.breadcum} isDesktop />
         <Box sx={{ flexGrow: 1 }} padding={"0 60px"} mb={8}>
           {tabletView ? (
