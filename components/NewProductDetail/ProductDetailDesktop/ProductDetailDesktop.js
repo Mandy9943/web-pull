@@ -22,6 +22,10 @@ import ProductImageDesk from "../common/ProductImageDesk/ProductImageDesk";
 import Description from "../common/Description/Description";
 import OurClient from "../common/OurClient/OurClient";
 import CheckoutProductDesk from "../common/CheckoutProductDesk/CheckoutProductDesk";
+import useResize from "../../../lib/hooks/useResize";
+import CheckoutProduct from "../common/CheckoutProduct/CheckoutProduct";
+import { useState } from "react";
+import WhatsappBanner from "../common/WhatsappBanner/WhatsappBanner";
 
 const Detail = dynamic(() => import("../common/Detail/Detail"), {
   ssr: false,
@@ -64,11 +68,13 @@ const RecommendedProducts = dynamic(
     suspense: true,
   }
 );
+
 const ProductDetailDesktop = ({ user_data, data, userIp }) => {
+  const tabletView = useResize(1000);
   console.log({ data, userIp });
   const isForm = useAppSelector(selectIsFormOpen);
   const dispatch = useAppDispatch();
-
+  const [isWhatsappBanner, setIsWhatsappBanner] = useState(true);
   useEffect(() => {
     if (isForm === true) {
       dispatch(openForm(true));
@@ -94,40 +100,78 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
     sendProductViewed(data);
   }, [data]);
 
+  const handleCloseWhatsappBanner = () => {
+    setIsWhatsappBanner(false);
+  };
+
+  let navClass = ["Nav"];
+  if (isWhatsappBanner) {
+    navClass.push("Nav-mt");
+  }
+
   return (
     <div id="ProductDetailDesktop">
       <Suspense fallback={`loading`}>
+        {isWhatsappBanner && tabletView && (
+          <WhatsappBanner
+            close={handleCloseWhatsappBanner}
+            productId={data.product_global_id}
+          />
+        )}
         <FormProductDetail
           open={isForm}
           handleClose={handleCloseForm}
           userIp={userIp}
         />
-        <Nav
-          user={user_data.user}
-          jwt={user_data.jwt}
-          home={true}
-          authenticated={user_data.authenticated}
-        />
+        <div className={navClass.join(" ")}>
+          <Nav
+            user={user_data.user}
+            jwt={user_data.jwt}
+            home={true}
+            authenticated={user_data.authenticated}
+          />
+        </div>
+
         <Header title={data.title} bredCumbs={data.breadcum} isDesktop />
         <Box sx={{ flexGrow: 1 }} padding={"0 60px"} mb={8}>
-          <Grid container spacing={2}>
-            <Grid item sm={8}>
-              <ProductImageDesk images={data.images} altImg={data.title} />
-              <Detail product={data} />
-              <Description product={data} />
-              <OurClient category={data?.breadcum[0]?.name.substring(0, 7)} />
+          {tabletView ? (
+            <Grid container>
+              <Grid item sm={12}>
+                <ProductImageDesk images={data.images} altImg={data.title} />
+                <CheckoutProduct
+                  onClickBuy={handleOpenForm}
+                  price={data.price}
+                  stock={data.status === 0 ? 0 : data.stock}
+                  discount_percentage={data.discount_percentage}
+                  table
+                />
+                <Detail product={data} />
+                <Description product={data} />
+                <OurClient category={data?.breadcum[0]?.name.substring(0, 7)} />
+              </Grid>
             </Grid>
-            <Grid item sm={4}>
-              <CheckoutProductDesk
-                title={data.title}
-                onClickBuy={handleOpenForm}
-                price={data.price}
-                stock={data.status === 0 ? 0 : data.stock}
-                discount_percentage={data.discount_percentage}
-              />
+          ) : (
+            <Grid container spacing={2}>
+              <Grid item sm={8}>
+                <ProductImageDesk images={data.images} altImg={data.title} />
+                <Detail product={data} />
+                <Description product={data} />
+                <OurClient category={data?.breadcum[0]?.name.substring(0, 7)} />
+              </Grid>
+
+              <Grid item sm={4}>
+                <CheckoutProductDesk
+                  title={data.title}
+                  onClickBuy={handleOpenForm}
+                  price={data.price}
+                  stock={data.status === 0 ? 0 : data.stock}
+                  discount_percentage={data.discount_percentage}
+                />
+              </Grid>
             </Grid>
-          </Grid>
-          <Grid
+          )}
+
+          {/* <Grid
             container
             rowSpacing={1}
             sx={{ width: "100%" }}
@@ -136,31 +180,43 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
           >
             <Grid item sm={12} className="containerInfo">
               <Info />
-            </Grid>
-            <Grid item sm={12} className="containerspecialOffer">
-              <SwiperSlider
-                type={"specialOffer"}
-                price={data.price}
-                images={data.images}
-                altImg={data.title}
-                stock={data.status === 0 ? 0 : data.stock}
-                discount_percentage={data.discount_percentage}
-                movil={false}
-              />
-            </Grid>
-            <Grid item md={12} className="containerSellerInfo">
-              <SellerInfo movil={false} />
-            </Grid>
+            </Grid> */}
+          <Grid
+            sx={{ borderRadius: "20px", overflow: "hidden" }}
+            item
+            md={12}
+            xs={12}
+            className="containerspecialOffer"
+          >
+            <SwiperSlider
+              type={"specialOffer"}
+              price={data.price}
+              images={data.images}
+              altImg={data.title}
+              stock={data.status === 0 ? 0 : data.stock}
+              discount_percentage={data.discount_percentage}
+              movil={false}
+            />
           </Grid>
+          {/*     <Grid
+              sx={{ borderRadius: "20px", overflow: "hidden" }}
+              item
+              md={12}
+              xs={12}
+              className="containerSellerInfo"
+            >
+              <SellerInfo movil={false} />
+            </Grid> */}
+          {/* </Grid> */}
         </Box>
         <Box>
           <Grid container direction="column" flexWrap="nowrap">
             <Grid sx={{ overflow: "hidden" }} item md={12} sm={12}>
               <RecommendedProducts category={data.category} movil={false} />
             </Grid>
-            <Grid item md={12} sm={12}>
+            {/* <Grid item md={12} sm={12}>
               <Benefits />
-            </Grid>
+            </Grid> */}
             {/*<Grid item md={12} sm={12}>*/}
             {/*  <Subscription />*/}
             {/*</Grid>*/}

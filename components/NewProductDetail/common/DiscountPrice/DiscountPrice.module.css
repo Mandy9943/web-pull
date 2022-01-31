@@ -8,23 +8,11 @@
 }
 
 @media (min-width: 768px) {
-  .containerDiscountPrice {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-self: center;
-    padding: 0;
-    width: 100%;
-    height: auto;
-    margin: 0 0 89px 0;
-  }
-
   .containerDiscountPrice .containerDiscount {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-right: 69px;
   }
   .containerDiscountPrice .containerBox {
     display: flex;
@@ -33,7 +21,7 @@
     align-items: flex-end;
     width: 100%;
   }
-  .containerDiscountPrice .containerBox .widthButton {
+  .containerDiscountPrice .widthButton {
     padding: 0;
     width: 100%;
   }

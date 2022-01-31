@@ -3,6 +3,7 @@ import Image from "next/image";
 import "./Discount.module.css";
 
 import { PropTypes } from "prop-types";
+import { Box } from "@mui/material";
 
 const Discount = ({
   quantityProduct,
@@ -12,22 +13,23 @@ const Discount = ({
   movil = true,
 }) => {
   const desktopRender = (
-    <>
-      <div className=" wrapperDiscount">
-        <p className="cantDiscount">x{quantityProduct}</p>
-        <div className="wrapperImage">
-          <div className="wrapperAnullProperties">
-            <div className="anullProperties">
-              <Image alt={altImg} src={images[0].url} layout="fill" />
-            </div>
+    <Box
+      sx={{ display: "flex", flexDirection: "row", alignItems: "end" }}
+      className="wrapperDiscount"
+    >
+      <p className="cantDiscount">x{quantityProduct}</p>
+      <div className="wrapperImage">
+        <div className="wrapperAnullProperties">
+          <div className="anullProperties">
+            <Image alt={altImg} src={images[0].url} layout="fill" />
           </div>
         </div>
-        <div className="wrapperPercent">
-          <p className="percentDiscount">{discountPercentage}%</p>
-          <p className="textDiscount">DESCUENTO</p>
-        </div>
       </div>
-    </>
+      <div className="wrapperPercent">
+        <p className="percentDiscount">{discountPercentage}%</p>
+        <p className="textDiscount">DESCUENTO</p>
+      </div>
+    </Box>
   );
   const movilRender = (
     <>
@@ -46,9 +48,19 @@ const Discount = ({
     </>
   );
   return (
-    <div className="containerDiscount">
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "row",
+        padding: { lg: "0", md: "0 20px" },
+        backgroundColor: "white",
+        paddingBottom: "20px",
+        marginRight: { md: "0", lg: "69px" },
+      }}
+      className="containerDiscount"
+    >
       {movil === true ? movilRender : desktopRender}
-    </div>
+    </Box>
   );
 };
 

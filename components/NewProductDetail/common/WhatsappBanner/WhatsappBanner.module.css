@@ -9,7 +9,7 @@
   display: flex;
   z-index: 999;
   align-items: center;
-  font-size: 3.5vw;
+  font-size: clamp(13px, 3.5vw, 20px);
   height: 50px;
 }
 
@@ -46,7 +46,7 @@
   align-items: center;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1001px) {
   #WhatsappBanner {
     position: absolute;
     bottom: 0;

@@ -133,10 +133,15 @@ const SwiperSlider = ({
     </div>
   );
 
-  // Para el uso del specialOfferMovil en productDetailMobil
+  // Para el uso del specialOffer in desktop
   const specialOffer = (
     <div className="swiperSliderDetail">
-      <Swiper pagination={true} className={type}>
+      <Swiper
+        pagination={{
+          clickable: true,
+        }}
+        className={type}
+      >
         <SwiperSlide>
           <DiscountPrice
             priceProduct={price}
