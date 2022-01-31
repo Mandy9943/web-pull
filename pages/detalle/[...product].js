@@ -12,10 +12,10 @@ import { setData } from "../../redux/feature/pay/paySlice";
 import { setNumber } from "../../redux/feature/whatsapp/whatsappReducer";
 import Cookies from "js-cookie";
 
-const Detail = dynamic(() => import("../../components/ProductDetail"), {
-  ssr: false,
-  loading: () => <Loading />,
-});
+// const Detail = dynamic(() => import("../../components/ProductDetail"), {
+//   ssr: false,
+//   loading: () => <Loading />,
+// });
 const ProductDetailMobil = dynamic(
   () =>
     import(
