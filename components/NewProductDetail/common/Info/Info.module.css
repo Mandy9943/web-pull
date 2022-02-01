@@ -90,6 +90,9 @@
     flex-direction: column;
   }
 
+  #InfoProductDetail .envios .text {
+    margin-right: 1.5%;
+  }
   #InfoProductDetail .envios .text h3 {
     font-size: 3.5vw;
   }

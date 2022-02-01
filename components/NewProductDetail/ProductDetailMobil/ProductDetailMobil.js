@@ -47,13 +47,13 @@ const Benefits = dynamic(() => import("../common/Benefits/Benefits"), {
 const HelpCenter = dynamic(() => import("../common/HelpCenter/HelpCenter"), {
   suspense: true,
 });
-const Subscription = dynamic(
-  () => import("../common/Subscription/Subscription"),
-  {
-    ssr: false,
-    loading: () => <p>...</p>,
-  }
-);
+// const Subscription = dynamic(
+//   () => import("../common/Subscription/Subscription"),
+//   {
+//     ssr: false,
+//     loading: () => <p>...</p>,
+//   }
+// );
 const RecommendedProducts = dynamic(
   () => import("../common/RecommendedProducts/RecommendedProducts"),
   {
