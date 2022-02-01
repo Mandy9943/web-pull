@@ -1,6 +1,9 @@
 /* #HeaderProductDatailMobil * {
   box-sizing: border-box;
 } */
+#HeaderProductDatailMobil .bredcumbs::-webkit-scrollbar {
+  display: none;
+}
 #HeaderProductDatailMobil {
   width: 100%;
   padding: 0 0 20px 0;
@@ -57,7 +60,8 @@
 
 @media (min-width: 768px) {
   #HeaderProductDatailMobil .bredcumbs {
-    padding-bottom: 16px;
+    height: 40px;
+    /* padding-bottom: 16px; */
     /* position: static; */
   }
   #HeaderProductDatailMobil .bredItem {
