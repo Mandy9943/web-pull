@@ -105,7 +105,7 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
   };
 
   let navClass = ["Nav"];
-  if (isWhatsappBanner) {
+  if (isWhatsappBanner && tabletView) {
     navClass.push("Nav-mt");
   }
 
@@ -198,16 +198,15 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
               movil={false}
             />
           </Grid>
-          {/*     <Grid
-              sx={{ borderRadius: "20px", overflow: "hidden" }}
-              item
-              md={12}
-              xs={12}
-              className="containerSellerInfo"
-            >
-              <SellerInfo movil={false} />
-            </Grid> */}
-          {/* </Grid> */}
+          {/* <Grid
+            sx={{ borderRadius: "20px", overflow: "hidden" }}
+            item
+            md={12}
+            xs={12}
+            className="containerSellerInfo"
+          >
+            <SellerInfo movil={false} />
+          </Grid> */}
         </Box>
         <Box>
           <Grid container direction="column" flexWrap="nowrap">
@@ -217,9 +216,9 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
             {/* <Grid item md={12} sm={12}>
               <Benefits />
             </Grid> */}
-            {/*<Grid item md={12} sm={12}>*/}
-            {/*  <Subscription />*/}
-            {/*</Grid>*/}
+            {/*  <Grid item md={12} sm={12}>
+              <Subscription />
+            </Grid> */}
           </Grid>
           <Grid item md={12}>
             <Footer />
