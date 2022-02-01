@@ -162,11 +162,11 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
         //////
         // FBCLID
         let _fbc = Cookies.get("_fbc");
-        fbclid = _fbc ? _fbc.slice(19) : undefined;
-        if (!fbclid) {
-          const match = /fbclid=([^&#]*)/.exec(window.location.search);
-          fbclid = match ? match[1] : undefined;
-        }
+        fbclid = _fbc ? _fbc : undefined;
+        // if (!fbclid) {
+        //   const match = /fbclid=([^&#]*)/.exec(window.location.search);
+        //   fbclid = match ? match[1] : undefined;
+        // }
         //////
         // fb_browser_id
         fb_browser_id = Cookies.get("_fbp");
