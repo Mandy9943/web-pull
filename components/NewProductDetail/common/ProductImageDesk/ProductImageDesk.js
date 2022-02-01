@@ -54,7 +54,9 @@ const ProductImageDesk = ({ images, altImg }) => {
         color="#D1D1D1"
       />
       <div className="actualImageWrapper">
-        <ActualImg elevation={6}>
+        <ActualImg>
+          {" "}
+          {/*elevation={6}*/}
           <div className="anullProperties">
             <Image
               layout="fill"

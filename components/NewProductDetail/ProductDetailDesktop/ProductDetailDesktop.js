@@ -133,7 +133,7 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
         </div>
 
         <Header title={data.title} bredCumbs={data.breadcum} isDesktop />
-        <Box sx={{ flexGrow: 1 }} padding={"0 60px"} mb={8}>
+        <Box sx={{ flexGrow: 1 }} width={"98%"} margin={"auto"} mb={8}>
           {tabletView ? (
             <Grid container>
               <Grid item sm={12}>
