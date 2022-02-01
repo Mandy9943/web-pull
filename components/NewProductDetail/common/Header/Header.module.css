@@ -4,6 +4,7 @@
 #HeaderProductDatailMobil {
   width: 100%;
   padding: 0 0 20px 0;
+  margin-bottom: 60px;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -55,14 +56,9 @@
 }
 
 @media (min-width: 768px) {
-  #HeaderProductDatailMobil {
-    margin-bottom: 15px;
-  }
   #HeaderProductDatailMobil .bredcumbs {
     padding-bottom: 16px;
-    position: static;
-    margin-bottom: 0px;
-    overflow-x: unset;
+    /* position: static; */
   }
   #HeaderProductDatailMobil .bredItem {
     font-family: Montserrat;
