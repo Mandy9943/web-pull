@@ -83,19 +83,25 @@ const SwiperSlider = ({
         ) : (
           images.map((image) => {
             return (
-              <SwiperSlide key={image.file_id} className="mdc-ripple-surface">
+              <SwiperSlide
+                key={image.file_id}
+                className="mdc-ripple-surface sliderMovil"
+              >
                 <Skeleton
                   variant="rectangular"
                   height={324}
                   width={300}
                   className="skeletonProductDetail"
                 />
-                <Image
-                  layout="fill"
-                  data-src={image.url}
-                  src={image.url}
-                  alt={"Producto de kiero " + altImg.substr(0, 80)}
-                />
+                <div className="anullProperties">
+                  <Image
+                    layout="fill"
+                    className="imageMovil"
+                    data-src={image.url}
+                    src={image.url}
+                    alt={"Producto de kiero " + altImg.substr(0, 80)}
+                  />
+                </div>
               </SwiperSlide>
             );
           })
