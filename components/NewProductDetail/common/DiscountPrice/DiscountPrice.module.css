@@ -4,7 +4,7 @@
 .containerDiscountPrice .widthButton {
   padding: 0 20px;
   background-color: white;
-  padding-bottom: 100px;
+  padding-bottom: 20px;
 }
 
 @media (min-width: 768px) {
