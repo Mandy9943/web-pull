@@ -1,24 +1,13 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
+import SectionTitle from "../SectionTitle/SectionTitle";
 const OfferSection = () => {
   return (
     <>
       <Box sx={{ marginTop: "60px" }}>
-        <Box>
-          <Typography gutterBottom component="div">
-            <Box
-              sx={{
-                color: "#cf0a2c",
-                fontWeight: 900,
-                textAlign: "center",
-                letterSpacing: "0.1rem",
-                fontSize: { xs: 28, sm: 45 },
-              }}
-            >
-              OFERTA ESPECIAL
-            </Box>
-          </Typography>
-        </Box>
+        <SectionTitle color="#CF0A2C" center big>
+          OFERTA ESPECIAL
+        </SectionTitle>
         <Box sx={{ padding: "0 29px 43px 29px" }}>
           <Typography gutterBottom component="div">
             <Box

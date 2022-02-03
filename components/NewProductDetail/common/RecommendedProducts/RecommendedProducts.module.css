@@ -91,12 +91,10 @@
   }
 
   #RecommendedProducts .cabecera {
-    display: grid;
-    grid-template-areas:
-      "divindingLine divindingLine"
-      "h3_1 h3_2";
+    display: flex;
     justify-content: center;
     align-content: center;
+    flex-direction: column;
   }
 
   #RecommendedProducts .divindingLine {

@@ -15,6 +15,7 @@ import {
   handleDeactivateBack,
 } from "../../../../lib/functions";
 import { Box } from "@mui/system";
+import SectionTitle from "../SectionTitle/SectionTitle";
 const OurClient = ({ category }) => {
   const [countClient, setCountClient] = useState(4);
   const lista = review(category).slice(0, countClient);
@@ -45,9 +46,19 @@ const OurClient = ({ category }) => {
     <section id="OurClient" className={collapse === false ? "closed" : "open"}>
       <header onClick={handleOnClick}>
         <div className="left">
-          <h4>
-            Nuestros Clientes de <div className="company">KIERO</div>
-          </h4>
+          <SectionTitle>
+            Nuestros Clientes de{" "}
+            <Box
+              sx={{
+                color: "#cf0a2c",
+                display: "inline",
+              }}
+              className="company"
+            >
+              KIERO
+            </Box>
+          </SectionTitle>
+
           <div className="clasification">
             <FontAwesomeIcon icon={faStar} />
             <FontAwesomeIcon icon={faStar} />
