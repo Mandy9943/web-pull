@@ -85,7 +85,7 @@ export default CheckoutProduct;
 CheckoutProduct.propTypes = {
   price: PropTypes.number.isRequired,
   stock: PropTypes.number.isRequired,
-  discount_percentage: PropTypes.number.isRequired,
+  discount_percentage: PropTypes.string.isRequired,
   onClickBuy: PropTypes.func.isRequired,
   table: PropTypes.bool,
 };

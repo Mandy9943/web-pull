@@ -91,7 +91,7 @@ RecommendedProducts.propTypes = {
   category: PropTypes.object.isRequired,
   spaceBetween: PropTypes.number,
   lenProduct: PropTypes.number,
-  movil: PropTypes.bool.isRequired,
+  movil: PropTypes.bool,
 };
 
 export default RecommendedProducts;

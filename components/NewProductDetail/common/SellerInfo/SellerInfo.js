@@ -59,7 +59,7 @@ const SellerInfo = () => {
             <h4>Spice Stock SAS.</h4>
           </Grid>
           <Grid container mobile={12} tablet={12} desktop={6}>
-            <Grid items className="certificate">
+            <Grid item className="certificate">
               <div className="anullProperties">
                 <Image src={cert} layout="fill" alt="Certificado" />
               </div>

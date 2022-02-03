@@ -218,7 +218,7 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
               xs={12}
               className="containerSellerInfo"
             >
-              <SellerInfo movil={false} />
+              <SellerInfo  />
             </Grid> */}
           </Grid>
         </Box>
