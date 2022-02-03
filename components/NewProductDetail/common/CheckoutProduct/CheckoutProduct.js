@@ -2,11 +2,26 @@ import React from "react";
 import CheckoutButton from "../CheckoutButton/CheckoutButton";
 import Counter from "../Counter/Counter";
 import "./CheckoutProduct.module.css";
+import PropTypes from "prop-types";
+import { Box } from "@mui/system";
 
-const CheckoutProduct = ({ price, stock, discount_percentage, onClickBuy }) => {
+const CheckoutProduct = ({
+  price,
+  stock,
+  discount_percentage,
+  onClickBuy,
+  table,
+}) => {
   const count = Math.ceil(Math.random() * 50);
   return (
-    <div id="CheckoutProductMobil">
+    <Box
+      id="CheckoutProductMobil"
+      sx={
+        table
+          ? { marginBottom: "12px", borderRadius: "10px", height: "100%" }
+          : {}
+      }
+    >
       <div className="productPrice">
         <div className="price">
           <span>
@@ -61,8 +76,16 @@ const CheckoutProduct = ({ price, stock, discount_percentage, onClickBuy }) => {
           producto recientemente.
         </p>
       </div>
-    </div>
+    </Box>
   );
 };
 
 export default CheckoutProduct;
+
+CheckoutProduct.propTypes = {
+  price: PropTypes.number.isRequired,
+  stock: PropTypes.number.isRequired,
+  discount_percentage: PropTypes.number.isRequired,
+  onClickBuy: PropTypes.func.isRequired,
+  table: PropTypes.bool,
+};

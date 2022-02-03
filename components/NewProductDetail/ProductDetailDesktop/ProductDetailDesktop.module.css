@@ -1,11 +1,6 @@
-/* #ProductDetailDesktop {
-  background-color: #e5e5e5;
-  display: grid;
-  justify-items: center;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-} */
+#ProductDetailDesktop {
+  position: relative;
+}
 
 #footerWrapper {
   padding: 0 !important;
@@ -19,4 +14,19 @@
 .containerSellerInfo {
   display: flex;
   min-width: 768px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.containerspecialOffer {
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.containerRecommentProducts {
+  overflow: hidden;
+}
+
+.Nav-mt {
+  margin-top: 50.4px;
 }

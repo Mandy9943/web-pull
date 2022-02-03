@@ -19,7 +19,7 @@ const Detail = dynamic(() => import("../../components/ProductDetail"), {
 const ProductDetailMobil = dynamic(
   () =>
     import(
-      "../../components/NewProductDetail/ProductDetailMobil/ProductDetailMobil"
+      "../../components/NewProductDetail/ProductDetailMovil/ProductDetailMovil"
     ),
   {
     ssr: false,
@@ -40,7 +40,7 @@ const ProductDetailDesktop = dynamic(
 
 function Product({ data, u_data, userIp }) {
   const dispatch = useAppDispatch();
-  const mobileView = useResize(768);
+  const mobileView = useResize(767);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -202,12 +202,12 @@ function Product({ data, u_data, userIp }) {
               userIp={userIp}
             />
           ) : (
-            <Detail user_data={u_data} data={data} userIp={userIp} />
-            // <ProductDetailDesktop
-            //   user_data={u_data}
-            //   data={data}
-            //   userIp={userIp}
-            // />
+            // <Detail user_data={u_data} data={data} userIp={userIp} />
+            <ProductDetailDesktop
+              user_data={u_data}
+              data={data}
+              userIp={userIp}
+            />
           )}
         </>
       )}

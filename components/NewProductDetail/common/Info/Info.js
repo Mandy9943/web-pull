@@ -5,65 +5,205 @@ import compras from "../../../../assets/img/productDetail/union-2@2x.svg";
 import garantia from "../../../../assets/img/productDetail/union-3@2x.svg";
 
 import Image from "next/image";
-import { Grid, Box } from "@mui/material";
+import { Grid, Box, Typography } from "@mui/material";
+import SectionTitle from "../SectionTitle/SectionTitle";
 
 const Info = () => {
   return (
-    <Box id="InfoProductDetail" flexDirection="column">
+    <Box
+      id="InfoProductDetail"
+      flexDirection="column"
+      sx={{ backgroundColor: "#fff", padding: { xs: "0 20px", sm: "0 50px" } }}
+    >
       <Grid
         xs={12}
         container
+        item
         alignItems="center"
         justifyContent="center"
         flexWrap
         className="title"
+        sx={{
+          flexWrap: "nowrap",
+          paddingTop: "3vw",
+          paddingBottom: "3vw",
+        }}
       >
-        <h4>
-          Porqué Comprar con <p className="company">Kiero</p>
-        </h4>
+        <SectionTitle>
+          Porqué Comprar con{" "}
+          <Box
+            sx={{
+              color: "#cf0a2c",
+              display: "inline",
+            }}
+            className="company"
+          >
+            Kiero
+          </Box>
+        </SectionTitle>
       </Grid>
-      <Grid
-        container
-        rowSpacing={{ xs: 1, md: 2 }}
-        className="info"
-        alignItems="center"
-        justifyContent="center"
-      >
-        <Grid item md={4} xs={12} sm={12} className="envios">
+      <Grid container alignItems="center">
+        <Grid
+          item
+          xs={12}
+          sm={6}
+          md={4}
+          sx={{
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+            gap: "15px",
+            flexWrap: "nowrap",
+            paddingBottom: "20px",
+            paddingRight: "20px",
+          }}
+        >
           <div className="icon">
             <div className="anullProperties">
               <Image src={envios} alt="Envios gratis" layout="fill" />
             </div>
           </div>
           <div className="text">
-            <h3>Envío Gratuito</h3>
-            <p>
-              Nuestros productos son importados. Entrega de 3 a 9 días hábiles.
-            </p>
+            <Box>
+              <Typography gutterBottom component="div">
+                <Box
+                  sx={{
+                    fontFamily: "Montserrat",
+                    fontStyle: "normal",
+                    fontWeight: "bold",
+                    fontSize: "16px",
+                    lineHeight: "26px",
+                  }}
+                >
+                  Envío Gratuito
+                </Box>
+              </Typography>
+            </Box>
+
+            <Box>
+              <Typography gutterBottom component="div">
+                <Box
+                  sx={{
+                    color: "#5D5D5D",
+                    fontFamily: "Montserrat",
+                    fontStyle: "normal",
+                    fontWeight: "500",
+                    fontSize: "16px",
+                  }}
+                >
+                  Nuestros productos son importados. Entrega de 3 a 9 días
+                  hábiles.
+                </Box>
+              </Typography>
+            </Box>
           </div>
         </Grid>
-        <Grid item md={4} xs={12} sm={12} className="envios">
+        <Grid
+          item
+          xs={12}
+          sm={6}
+          md={4}
+          sx={{
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+            gap: "15px",
+            flexWrap: "nowrap",
+            paddingBottom: "20px",
+            paddingRight: "20px",
+          }}
+        >
           <div className="icon">
             <div className="anullProperties">
               <Image src={compras} alt="Compra Protegida" layout="fill" />
             </div>
           </div>
           <div className="text">
-            <h3>Compra Protegida</h3>
-            <p>
-              En caso de que surja algún problema, te devolveremos el dinero.
-            </p>
+            <Box>
+              <Typography gutterBottom component="div">
+                <Box
+                  sx={{
+                    fontFamily: "Montserrat",
+                    fontStyle: "normal",
+                    fontWeight: "bold",
+                    fontSize: "16px",
+                    lineHeight: "26px",
+                  }}
+                >
+                  Compra Protegida
+                </Box>
+              </Typography>
+            </Box>
+
+            <Box>
+              <Typography gutterBottom component="div">
+                <Box
+                  sx={{
+                    color: "#5D5D5D",
+                    fontFamily: "Montserrat",
+                    fontStyle: "normal",
+                    fontWeight: "500",
+                    fontSize: "16px",
+                  }}
+                >
+                  En caso de que surja algún problema, te devolveremos el
+                  dinero.
+                </Box>
+              </Typography>
+            </Box>
           </div>
         </Grid>
-        <Grid item md={4} xs={12} sm={12} className="envios">
+        <Grid
+          item
+          xs={12}
+          sm={6}
+          md={4}
+          sx={{
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+            gap: "15px",
+            flexWrap: "nowrap",
+            paddingBottom: "20px",
+          }}
+        >
           <div className="icon">
             <div className="anullProperties">
               <Image src={garantia} alt="Garantia del Vendedor" layout="fill" />
             </div>
           </div>
           <div className="text">
-            <h3>Garantía del Vendedor</h3>
-            <p>Garantía por defecto de fábrica de (1) mes.</p>
+            <Box>
+              <Typography gutterBottom component="div">
+                <Box
+                  sx={{
+                    fontFamily: "Montserrat",
+                    fontStyle: "normal",
+                    fontWeight: "bold",
+                    fontSize: "16px",
+                    lineHeight: "26px",
+                  }}
+                >
+                  Garantía del Vendedor
+                </Box>
+              </Typography>
+            </Box>
+
+            <Box>
+              <Typography gutterBottom component="div">
+                <Box
+                  sx={{
+                    color: "#5D5D5D",
+                    fontFamily: "Montserrat",
+                    fontStyle: "normal",
+                    fontWeight: "500",
+                    fontSize: "16px",
+                  }}
+                >
+                  Garantía por defecto de fábrica de (1) mes.
+                </Box>
+              </Typography>
+            </Box>
           </div>
         </Grid>
       </Grid>

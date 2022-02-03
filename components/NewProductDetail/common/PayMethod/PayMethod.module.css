@@ -4,6 +4,7 @@
   padding: 36px 10px 0px 10px;
   box-sizing: border-box;
 }
+
 .noBorder {
   border: none !important;
 }
@@ -26,23 +27,38 @@
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
   row-gap: 20px;
-  padding: 0px 0px;
   margin: 24px 0px;
   justify-content: center;
   box-sizing: border-box;
 }
+#PayMethod,
+.isTablet .link {
+  grid-template-columns: repeat(2, 1fr) !important;
+  grid-template-rows: repeat(3, 1fr) !important;
+}
 
 #PayMethod .link .imgContainer img {
-  width: 100% !important;
+  width: 90px !important;
   height: auto !important;
   margin: auto !important;
   max-width: 93px !important;
+}
+
+#PayMethod .link .imgContainer .anullProperties {
+  display: flex;
+  justify-content: center;
 }
 
 @media (min-width: 768px) {
   #PayMethod {
     padding: 36px 0 20px;
   }
+  #PayMethod,
+  .isTablet {
+    border-radius: 10px;
+    padding: 36px 10px 0px 30px;
+  }
+
   #PayMethod .link .imgContainer {
     display: flex;
     justify-content: start;

@@ -5,13 +5,38 @@
   background-color: white;
 }
 
+.swiperSliderDetail .sliderMovil .anullProperties {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.swiperSliderDetail .sliderMovil .anullProperties div {
+  display: flex !important;
+  height: 100% !important;
+  width: 100% !important;
+  margin: auto !important;
+  justify-content: center;
+  background: white;
+}
+
+.swiperSliderDetail .sliderMovil .anullProperties div img {
+  /* margin: auto !important; */
+  max-height: 100% !important;
+  max-width: 100% !important;
+  width: auto !important;
+  height: auto !important;
+}
+
 .swiperSliderDetail .swiper {
   width: 100%;
   padding-top: 50px;
   padding-bottom: 50px;
 }
 
-.swiperSliderDetail .swiper-slide {
+.swiperSliderDetail .HomeProduct .swiper-slide {
   background-position: center;
   background-size: cover;
   width: 300px;
@@ -49,10 +74,10 @@
   background: #5f5f5f;
 }
 
-.swiperSliderDetail .swiper-container {
+.swiperSliderDetail .HomeProduct {
   margin-bottom: auto;
   margin-top: 0;
-  height: 340px;
+  height: 350px;
 }
 
 .swiperSliderDetail .swiper-container .swiper-pagination-bullets {
@@ -63,7 +88,7 @@
 }
 .swiperSliderDetail .specialOfferMovil {
   width: 100vw;
-  height: 512px;
+  /* height: 512px; */
 }
 
 .swiperSliderDetail .HomeProduct .swiper-slide-next,

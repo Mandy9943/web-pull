@@ -22,6 +22,11 @@ import ProductImageDesk from "../common/ProductImageDesk/ProductImageDesk";
 import Description from "../common/Description/Description";
 import OurClient from "../common/OurClient/OurClient";
 import CheckoutProductDesk from "../common/CheckoutProductDesk/CheckoutProductDesk";
+import useResize from "../../../lib/hooks/useResize";
+import CheckoutProduct from "../common/CheckoutProduct/CheckoutProduct";
+import { useState } from "react";
+import WhatsappBanner from "../common/WhatsappBanner/WhatsappBanner";
+import PayMethod from "../common/PayMethod/PayMethod";
 
 const Detail = dynamic(() => import("../common/Detail/Detail"), {
   ssr: false,
@@ -64,11 +69,13 @@ const RecommendedProducts = dynamic(
     suspense: true,
   }
 );
+
 const ProductDetailDesktop = ({ user_data, data, userIp }) => {
+  const tabletView = useResize(1000);
   console.log({ data, userIp });
   const isForm = useAppSelector(selectIsFormOpen);
   const dispatch = useAppDispatch();
-
+  const [isWhatsappBanner, setIsWhatsappBanner] = useState(true);
   useEffect(() => {
     if (isForm === true) {
       dispatch(openForm(true));
@@ -94,39 +101,89 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
     sendProductViewed(data);
   }, [data]);
 
+  const handleCloseWhatsappBanner = () => {
+    setIsWhatsappBanner(false);
+  };
+
+  let navClass = ["Nav"];
+  if (isWhatsappBanner && tabletView) {
+    navClass.push("Nav-mt");
+  }
+
   return (
     <div id="ProductDetailDesktop">
       <Suspense fallback={`loading`}>
+        {isWhatsappBanner && tabletView && (
+          <WhatsappBanner
+            close={handleCloseWhatsappBanner}
+            productId={data.product_global_id}
+          />
+        )}
         <FormProductDetail
           open={isForm}
           handleClose={handleCloseForm}
           userIp={userIp}
         />
-        <Nav
-          user={user_data.user}
-          jwt={user_data.jwt}
-          home={true}
-          authenticated={user_data.authenticated}
-        />
+        <div className={navClass.join(" ")}>
+          <Nav
+            user={user_data.user}
+            jwt={user_data.jwt}
+            home={true}
+            authenticated={user_data.authenticated}
+          />
+        </div>
+
         <Header title={data.title} bredCumbs={data.breadcum} isDesktop />
-        <Box sx={{ flexGrow: 1 }} padding={"0 60px"} mb={8}>
-          <Grid container spacing={2}>
-            <Grid item sm={8}>
-              <ProductImageDesk images={data.images} altImg={data.title} />
-              <Detail product={data} />
-              <Description product={data} />
-              <OurClient category={data?.breadcum[0]?.name.substring(0, 7)} />
+        <Box sx={{ flexGrow: 1 }} width={"98%"} margin={"auto"} mb={8}>
+          {tabletView ? (
+            <Grid container>
+              <Grid item sm={12}>
+                <ProductImageDesk images={data.images} altImg={data.title} />
+                <Grid
+                  container
+                  gap={1}
+                  wrap="nowrap"
+                  sx={{ marginBottom: "12px" }}
+                >
+                  <Grid item sm={4}>
+                    <PayMethod isTablet />
+                  </Grid>
+                  <Grid item sm={8}>
+                    <CheckoutProduct
+                      onClickBuy={handleOpenForm}
+                      price={data.price}
+                      stock={data.status === 0 ? 0 : data.stock}
+                      discount_percentage={data.discount_percentage}
+                      table
+                    />
+                  </Grid>
+                </Grid>
+                <Detail product={data} />
+                <Description product={data} />
+                <OurClient category={data?.breadcum[0]?.name.substring(0, 7)} />
+              </Grid>
             </Grid>
-            <Grid item sm={4}>
-              <CheckoutProductDesk
-                title={data.title}
-                onClickBuy={handleOpenForm}
-                price={data.price}
-                stock={data.status === 0 ? 0 : data.stock}
-                discount_percentage={data.discount_percentage}
-              />
+          ) : (
+            <Grid container spacing={2}>
+              <Grid item sm={8}>
+                <ProductImageDesk images={data.images} altImg={data.title} />
+                <Detail product={data} />
+                <Description product={data} />
+                <OurClient category={data?.breadcum[0]?.name.substring(0, 7)} />
+              </Grid>
+
+              <Grid item sm={4}>
+                <CheckoutProductDesk
+                  title={data.title}
+                  onClickBuy={handleOpenForm}
+                  price={data.price}
+                  stock={data.status === 0 ? 0 : data.stock}
+                  discount_percentage={data.discount_percentage}
+                />
+              </Grid>
             </Grid>
-          </Grid>
+          )}
+
           <Grid
             container
             rowSpacing={1}
@@ -134,7 +191,7 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
             alignItems="center"
             justifyContent="center"
           >
-            <Grid item sm={12}>
+            <Grid item sm={12} className="containerInfo">
               <Info />
             </Grid>
             <Grid
@@ -154,7 +211,7 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
                 movil={false}
               />
             </Grid>
-            <Grid
+            {/* <Grid
               sx={{ borderRadius: "20px", overflow: "hidden" }}
               item
               md={12}
@@ -162,7 +219,7 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
               className="containerSellerInfo"
             >
               <SellerInfo movil={false} />
-            </Grid>
+            </Grid> */}
           </Grid>
         </Box>
         <Box>
@@ -170,12 +227,12 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
             <Grid sx={{ overflow: "hidden" }} item md={12} sm={12}>
               <RecommendedProducts category={data.category} movil={false} />
             </Grid>
-            <Grid item md={12} sm={12}>
+            {/* <Grid item md={12} sm={12}>
               <Benefits />
             </Grid>
-            {/*<Grid item md={12} sm={12}>*/}
-            {/*  <Subscription />*/}
-            {/*</Grid>*/}
+             <Grid item md={12} sm={12}>
+              <Subscription />
+              </Grid> */}
           </Grid>
           <Grid item md={12}>
             <Footer />

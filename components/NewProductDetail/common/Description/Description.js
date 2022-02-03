@@ -6,6 +6,7 @@ import abierto from "../../../../assets/img/productDetail/l-nea-86@2x.svg";
 import Image from "next/image";
 import arrow from "../../../../assets/img/productDetail/arrow-down@2x.svg";
 import { Collapse } from "@mui/material";
+import SectionTitle from "../SectionTitle/SectionTitle";
 
 function Description({ product }) {
   const [collapse, setCollapse] = useState(false);
@@ -18,7 +19,8 @@ function Description({ product }) {
   return (
     <div id="Description" className={collapse === false ? "closed" : "open"}>
       <div className="titulo" onClick={handleOnClick}>
-        <h3>Descripción</h3>
+        <SectionTitle>Descripción</SectionTitle>
+
         <div className="anullProperties">
           <Image
             loading="lazy"

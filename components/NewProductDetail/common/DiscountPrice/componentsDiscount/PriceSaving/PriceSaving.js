@@ -27,7 +27,7 @@ const PriceSaving = ({ priceProduct, quantityProduct }) => {
   );
 };
 
-PriceSaving.PropTypes = {
+PriceSaving.propTypes = {
   priceProduct: PropTypes.number.isRequired,
   quantityProduct: PropTypes.number.isRequired,
 };

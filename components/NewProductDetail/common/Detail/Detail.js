@@ -7,6 +7,7 @@ import arrow from "../../../../assets/img/productDetail/arrow-down@2x.svg";
 
 import Image from "next/image";
 import { Collapse } from "@mui/material";
+import SectionTitle from "../SectionTitle/SectionTitle";
 
 const Detail = ({ product }) => {
   const [collapse, setCollapse] = useState(false);
@@ -20,7 +21,7 @@ const Detail = ({ product }) => {
   return (
     <div id="DetailInfo" className={collapse === false ? "closed" : "open"}>
       <div className="titulo" onClick={handleOnClick}>
-        <h3>Detalles</h3>
+        <SectionTitle>Detalles del Producto</SectionTitle>
         <div className="anullProperties">
           <Image src={desglosar} alt="Icono del desglose" layout="fill" />
         </div>
@@ -77,7 +78,7 @@ const Detail = ({ product }) => {
   );
 };
 
-Detail.PropTypes = {
+Detail.propTypes = {
   product: PropTypes.object.isRequired,
 };
 

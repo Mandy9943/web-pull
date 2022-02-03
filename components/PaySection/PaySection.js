@@ -102,11 +102,11 @@ class PaySection extends Component {
         //////
         // FBCLID
         let _fbc = Cookies.get("_fbc");
-        this.fbclid = _fbc ? _fbc.slice(19) : undefined;
-        if (!this.JSONfbclid) {
-          const match = /fbclid=([^&#]*)/.exec(window.location.search);
-          this.fbclid = match ? match[1] : undefined;
-        }
+        this.fbclid = _fbc ? _fbc : undefined;
+        // if (!this.JSONfbclid) {
+        //   const match = /fbclid=([^&#]*)/.exec(window.location.search);
+        //   this.fbclid = match ? match[1] : undefined;
+        // }
         //////
         // fb_browser_id
         this.fb_browser_id = Cookies.get("_fbp");
@@ -854,9 +854,9 @@ class PaySection extends Component {
         ? item.props.data.subcategory_link
         : "",
     };
-
+    console.log("pay section", step, data);
     const error = await createleadClient(data);
-    console.log(error);
+    // console.log(error);
   }
 
   render() {

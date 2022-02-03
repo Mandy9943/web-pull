@@ -6,6 +6,7 @@ import { styled } from "@mui/material/styles";
 import { Paper } from "@mui/material";
 const ActualImg = styled(Paper)(() => ({
   borderRadius: "10px",
+  width: "100%",
 }));
 const ProductImgDesk = styled(Paper)(() => ({
   width: "100%",
@@ -49,11 +50,13 @@ const ProductImageDesk = ({ images, altImg }) => {
       <DivindingLine
         width="2px"
         height="auto"
-        margin="0 0 0 4vw"
+        margin="0 2vw 0 4vw"
         color="#D1D1D1"
       />
       <div className="actualImageWrapper">
-        <ActualImg elevation={6}>
+        <ActualImg>
+          {" "}
+          {/*elevation={6}*/}
           <div className="anullProperties">
             <Image
               layout="fill"
