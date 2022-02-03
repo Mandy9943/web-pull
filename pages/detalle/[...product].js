@@ -19,7 +19,7 @@ const Detail = dynamic(() => import("../../components/ProductDetail"), {
 const ProductDetailMobil = dynamic(
   () =>
     import(
-      "../../components/NewProductDetail/ProductDetailMobil/ProductDetailMobil"
+      "../../components/NewProductDetail/ProductDetailMovil/ProductDetailMovil"
     ),
   {
     ssr: false,

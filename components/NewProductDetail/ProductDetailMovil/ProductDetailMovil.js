@@ -10,7 +10,7 @@ import {
   sendCheckoutStepViewed,
 } from "../../../lib/functions.js";
 
-import "./ProductDetailMobil.module.css";
+import "./ProductDetailMovil.module.css";
 
 import useScrollY from "../../../lib/hooks/useScrollY";
 import { createlead, sendProductViewed } from "../../../lib/functions";

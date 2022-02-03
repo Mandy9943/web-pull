@@ -26,6 +26,7 @@ import useResize from "../../../lib/hooks/useResize";
 import CheckoutProduct from "../common/CheckoutProduct/CheckoutProduct";
 import { useState } from "react";
 import WhatsappBanner from "../common/WhatsappBanner/WhatsappBanner";
+import PayMethod from "../common/PayMethod/PayMethod";
 
 const Detail = dynamic(() => import("../common/Detail/Detail"), {
   ssr: false,
@@ -138,13 +139,25 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
             <Grid container>
               <Grid item sm={12}>
                 <ProductImageDesk images={data.images} altImg={data.title} />
-                <CheckoutProduct
-                  onClickBuy={handleOpenForm}
-                  price={data.price}
-                  stock={data.status === 0 ? 0 : data.stock}
-                  discount_percentage={data.discount_percentage}
-                  table
-                />
+                <Grid
+                  container
+                  gap={1}
+                  wrap="nowrap"
+                  sx={{ marginBottom: "12px" }}
+                >
+                  <Grid item sm={4}>
+                    <PayMethod isTablet />
+                  </Grid>
+                  <Grid item sm={8}>
+                    <CheckoutProduct
+                      onClickBuy={handleOpenForm}
+                      price={data.price}
+                      stock={data.status === 0 ? 0 : data.stock}
+                      discount_percentage={data.discount_percentage}
+                      table
+                    />
+                  </Grid>
+                </Grid>
                 <Detail product={data} />
                 <Description product={data} />
                 <OurClient category={data?.breadcum[0]?.name.substring(0, 7)} />

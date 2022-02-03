@@ -8,11 +8,15 @@ import efecty from "../../../../assets/img/productDetail/efecty@2x.png";
 import "./PayMethod.module.css";
 
 import Image from "next/image";
+import PropTypes from "prop-types";
 
-const PayMethod = ({ isDektop }) => {
+const PayMethod = ({ isDektop, isTablet }) => {
   const payMethodClass = [""];
   if (isDektop) {
     payMethodClass.push("noBorder");
+  }
+  if (isTablet) {
+    payMethodClass.push("isTablet");
   }
   return (
     <div id="PayMethod" className={payMethodClass.join(" ")}>
@@ -60,3 +64,8 @@ const PayMethod = ({ isDektop }) => {
 };
 
 export default PayMethod;
+
+PayMethod.propTypes = {
+  isDektop: PropTypes.bool,
+  isTablet: PropTypes.bool,
+};

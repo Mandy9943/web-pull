@@ -16,7 +16,11 @@ const CheckoutProduct = ({
   return (
     <Box
       id="CheckoutProductMobil"
-      sx={table ? { marginBottom: "12px", borderRadius: "10px" } : {}}
+      sx={
+        table
+          ? { marginBottom: "12px", borderRadius: "10px", height: "100%" }
+          : {}
+      }
     >
       <div className="productPrice">
         <div className="price">
