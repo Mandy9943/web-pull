@@ -25,7 +25,7 @@ const Info = () => {
         className="title"
         sx={{
           flexWrap: "nowrap",
-          paddingBottom: "20px",
+          paddingTop: "3vw",
           paddingBottom: "3vw",
         }}
       >
