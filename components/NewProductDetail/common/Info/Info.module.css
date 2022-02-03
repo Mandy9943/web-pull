@@ -80,7 +80,7 @@
   }
 }
 
-/* Modo Desktop*/
+/* Modo Table*/
 @media (min-width: 768px) {
   #InfoProductDetail {
     border-radius: 10px;

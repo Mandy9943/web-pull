@@ -71,7 +71,7 @@ const Info = () => {
                     fontFamily: "Montserrat",
                     fontStyle: "normal",
                     fontWeight: "bold",
-                    fontSize: "18px",
+                    fontSize: "16px",
                     lineHeight: "26px",
                   }}
                 >
@@ -88,7 +88,7 @@ const Info = () => {
                     fontFamily: "Montserrat",
                     fontStyle: "normal",
                     fontWeight: "500",
-                    fontSize: "18px",
+                    fontSize: "16px",
                   }}
                 >
                   Nuestros productos son importados. Entrega de 3 a 9 días
@@ -126,7 +126,7 @@ const Info = () => {
                     fontFamily: "Montserrat",
                     fontStyle: "normal",
                     fontWeight: "bold",
-                    fontSize: "18px",
+                    fontSize: "16px",
                     lineHeight: "26px",
                   }}
                 >
@@ -143,7 +143,7 @@ const Info = () => {
                     fontFamily: "Montserrat",
                     fontStyle: "normal",
                     fontWeight: "500",
-                    fontSize: "18px",
+                    fontSize: "16px",
                   }}
                 >
                   En caso de que surja algún problema, te devolveremos el
@@ -180,7 +180,7 @@ const Info = () => {
                     fontFamily: "Montserrat",
                     fontStyle: "normal",
                     fontWeight: "bold",
-                    fontSize: "18px",
+                    fontSize: "16px",
                     lineHeight: "26px",
                   }}
                 >
@@ -197,7 +197,7 @@ const Info = () => {
                     fontFamily: "Montserrat",
                     fontStyle: "normal",
                     fontWeight: "500",
-                    fontSize: "18px",
+                    fontSize: "16px",
                   }}
                 >
                   Garantía por defecto de fábrica de (1) mes.
