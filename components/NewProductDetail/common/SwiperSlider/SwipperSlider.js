@@ -112,7 +112,7 @@ const SwiperSlider = ({
   // Para el uso del specialOfferMovil en productDetailMobil
   const specialOfferMovil = (
     <div className="swiperSliderDetail">
-      <Swiper pagination={true} className={type}>
+      <Swiper className={type}>
         <SwiperSlide>
           <DiscountPrice
             priceProduct={price}
@@ -186,10 +186,10 @@ SwiperSlider.propTypes = {
   images: PropTypes.array.isRequired,
   altImg: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  stock: PropTypes.number.isRequired,
-  discount_percentage: PropTypes.string.isRequired,
-  movil: PropTypes.bool.isRequired,
+  price: PropTypes.number,
+  stock: PropTypes.number,
+  discount_percentage: PropTypes.string,
+  movil: PropTypes.bool,
 };
 
 export default SwiperSlider;
