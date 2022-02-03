@@ -80,12 +80,15 @@
   }
 }
 
+/* Modo Table*/
+@media (min-width: 768px) {
+  #InfoProductDetail {
+    border-radius: 10px;
+  }
+}
+
 /* Modo Desktop*/
 @media (min-width: 1025px) {
-  #InfoProductDetail {
-    border-radius: 20px;
-  }
-
   #InfoProductDetail .title {
     padding-top: 2.5vw;
     justify-content: center;

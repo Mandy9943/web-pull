@@ -14,7 +14,7 @@ const SectionTitle = ({ big, center, color, children }) => {
             fontStyle: "normal",
             color: color,
             textAlign: center ? "center" : "start",
-            fontSize: big ? { xs: 32, sm: 52 } : { xs: 20, sm: 32 },
+            fontSize: big ? { xs: 30, sm: 52 } : { xs: 22, sm: 32 },
           }}
         >
           {children}
