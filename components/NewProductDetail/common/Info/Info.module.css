@@ -3,28 +3,6 @@
   padding: 24px 25px 0;
 }
 
-#InfoProductDetail .title {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-wrap: nowrap;
-  padding-top: 5vw;
-  margin-bottom: 4vw;
-}
-
-#InfoProductDetail .title h4 {
-  font-size: 5vw;
-  font-family: Montserrat, sans-serif;
-  font-style: normal;
-  font-weight: bold;
-}
-
-#InfoProductDetail .title h4 .company {
-  margin-left: 4px;
-  color: #cf0a2c;
-  display: inline;
-}
-
 #InfoProductDetail .info {
   align-items: center;
   justify-content: center;

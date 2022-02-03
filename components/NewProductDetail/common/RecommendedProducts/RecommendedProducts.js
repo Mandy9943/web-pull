@@ -16,6 +16,8 @@ import "./RecommendedProducts.module.css";
 import RecommendedProductsCard from "./RecommendedProductsCard";
 import DivindingLine from "../DivindingLine/DivindingLine";
 import PropTypes from "prop-types";
+import { Box, Typography } from "@mui/material";
+import SectionTitle from "../SectionTitle/SectionTitle";
 
 const RecommendedProducts = ({
   category,
@@ -66,8 +68,9 @@ const RecommendedProducts = ({
           width="122px"
           margin="auto auto 10px auto"
         />
-        <h3>OTROS TAMBIÉN</h3>
-        <h3> COMPRARON</h3>
+        <SectionTitle color="#CF0A2C" center>
+          OTROS TAMBIÉN COMPRARON
+        </SectionTitle>
       </div>
       <div className="slider">
         <Swiper {...sliderConfig} className="recomendedSwiper">
