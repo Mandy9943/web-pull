@@ -7,7 +7,7 @@
 #HeaderProductDatailMobil {
   width: 100%;
   padding: 0 0 20px 0;
-  margin-bottom: 60px;
+  /* margin-bottom: 60px; */
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -59,6 +59,9 @@
 }
 
 @media (min-width: 768px) {
+  #HeaderProductDatailMobil {
+    margin-bottom: 60px;
+  }
   #HeaderProductDatailMobil .bredcumbs {
     height: 40px;
     /* padding-bottom: 16px; */

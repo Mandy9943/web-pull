@@ -5,6 +5,31 @@
   background-color: white;
 }
 
+.swiperSliderDetail .sliderMovil .anullProperties {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.swiperSliderDetail .sliderMovil .anullProperties div {
+  display: flex !important;
+  height: 100% !important;
+  width: 100% !important;
+  margin: auto !important;
+  justify-content: center;
+  background: white;
+}
+
+.swiperSliderDetail .sliderMovil .anullProperties div img {
+  /* margin: auto !important; */
+  max-height: 100% !important;
+  max-width: 100% !important;
+  width: auto !important;
+  height: auto !important;
+}
+
 .swiperSliderDetail .swiper {
   width: 100%;
   padding-top: 50px;

@@ -50,6 +50,7 @@
 
 .containerDiscount .wrapperImage .wrapperAnullProperties .anullProperties div {
   margin: 0 auto !important;
+  display: flex !important;
 }
 
 .wrapperAnullProperties .anullProperties img {
@@ -57,6 +58,7 @@
   height: auto !important;
   max-width: 100% !important;
   max-height: 100% !important;
+  margin: auto !important;
 }
 
 .containerDiscount .cantDiscount {
