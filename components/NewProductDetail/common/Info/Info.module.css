@@ -81,11 +81,14 @@
 }
 
 /* Modo Desktop*/
-@media (min-width: 1025px) {
+@media (min-width: 768px) {
   #InfoProductDetail {
-    border-radius: 20px;
+    border-radius: 10px;
   }
+}
 
+/* Modo Desktop*/
+@media (min-width: 1025px) {
   #InfoProductDetail .title {
     padding-top: 2.5vw;
     justify-content: center;
