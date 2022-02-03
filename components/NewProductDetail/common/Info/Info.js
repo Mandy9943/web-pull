@@ -41,7 +41,14 @@ const Info = () => {
           alignItems="center"
           justifyContent="center"
         >
-          <Grid item mobile={12} tablet={12} laptop={4} className="envios">
+          <Grid
+            item
+            mobile={12}
+            tablet={12}
+            laptop={4}
+            desktop={4}
+            className="envios"
+          >
             <div className="icon">
               <div className="anullProperties">
                 <Image src={envios} alt="Envios gratis" layout="fill" />
@@ -55,7 +62,14 @@ const Info = () => {
               </p>
             </div>
           </Grid>
-          <Grid item mobile={12} tablet={12} laptop={4} className="envios">
+          <Grid
+            item
+            mobile={12}
+            tablet={12}
+            laptop={4}
+            desktop={4}
+            className="envios"
+          >
             <div className="icon">
               <div className="anullProperties">
                 <Image src={compras} alt="Compra Protegida" layout="fill" />
@@ -68,7 +82,14 @@ const Info = () => {
               </p>
             </div>
           </Grid>
-          <Grid item mobile={12} tablet={12} laptop={4} className="envios">
+          <Grid
+            item
+            mobile={12}
+            tablet={12}
+            laptop={4}
+            desktop={4}
+            className="envios"
+          >
             <div className="icon">
               <div className="anullProperties">
                 <Image
