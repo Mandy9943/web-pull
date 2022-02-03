@@ -978,7 +978,7 @@ function Results({ data, session }) {
 export async function getServerSideProps(context) {
   let { query } = context;
   let priceFilter = query.rangePrice ? query.rangePrice : "";
-  let orderFilter = query.rangePrice ? "asc" : "relevant";
+  let orderFilter = query.rangePrice ? "asc" : "desc";
   var dataFirstUpperCase = String(context.params.category).split("", 1);
   var dataCategoryName = String(context.params.category).slice(1);
   // console.log(String(dataFirstUpperCase[0].toUpperCase()) + dataCategoryName.replace(/-/g, " "))
