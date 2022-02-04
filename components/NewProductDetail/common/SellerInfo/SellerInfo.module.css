@@ -4,29 +4,29 @@
   padding-top: 10px;
   display: grid;
   grid-template-areas:
-    "header"
-    "picture"
+    "headerSeller"
+    "pictureSeller"
     "certificate"
-    "footer";
+    "footerSeller";
 }
 
-#SellerInfo .footer {
-  grid-area: footer;
+#SellerInfo .footerSeller {
+  grid-area: footeSellerr;
 }
 
-#SellerInfo .picture {
-  grid-area: picture;
+#SellerInfo .pictureSeller {
+  grid-area: pictureSellerSeller;
 }
 
 #SellerInfo .certificate {
   grid-area: certificate;
 }
 
-#SellerInfo .header {
-  grid-area: header;
+#SellerInfo .headerSeller {
+  grid-area: headerSeller;
 }
 
-#SellerInfo .header h4 {
+#SellerInfo .headerSeller h4 {
   font-family: Montserrat, sans-serif;
   font-style: normal;
   font-weight: bold;
@@ -37,16 +37,16 @@
   height: 22px;
 }
 
-#SellerInfo .picture {
+#SellerInfo .pictureSellerSeller {
   margin: 30px 25px 0 30px;
 }
 
-#SellerInfo .picture div img {
+#SellerInfo .pictureSellerSeller div img {
   height: 5rem !important;
   width: 100% !important;
 }
 
-#SellerInfo .picture h4 {
+#SellerInfo .pictureSellerSeller h4 {
   font-family: Montserrat, sans-serif;
   font-style: normal;
   font-weight: bold;
@@ -93,7 +93,7 @@
   width: 2.5vw;
 }
 
-#SellerInfo .footer {
+#SellerInfo .footerSeller {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -102,7 +102,7 @@
   flex-direction: column;
 }
 
-#SellerInfo .footer h3 {
+#SellerInfo .footerSeller h3 {
   font-family: Montserrat, sans-serif;
   font-style: normal;
   font-weight: normal;
@@ -113,7 +113,7 @@
   white-space: nowrap;
 }
 
-#SellerInfo .footer hr {
+#SellerInfo .footerSeller hr {
   position: static;
   border: 1px solid #d1d1d1;
   height: 0;
@@ -121,14 +121,14 @@
   width: 74%;
 }
 
-#SellerInfo .footer .info {
+#SellerInfo .footerSeller .info {
   display: flex;
   flex-direction: row;
   padding-top: 11px;
   height: 72px;
 }
 
-#SellerInfo .footer .info .block {
+#SellerInfo .footerSeller .info .block {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -136,7 +136,7 @@
   height: 49px;
 }
 
-#SellerInfo .footer .info .block h3 {
+#SellerInfo .footerSeller .info .block h3 {
   font-family: Montserrat, sans-serif;
   font-size: 16px;
   font-style: normal;
@@ -148,7 +148,7 @@
   padding-top: 10px;
 }
 
-#SellerInfo .footer .info .block p {
+#SellerInfo .footerSeller .info .block p {
   font-family: Montserrat, sans-serif;
   font-size: 10px;
   font-style: normal;
@@ -161,7 +161,7 @@
   padding-right: 12px;
 }
 
-#SellerInfo .footer .info .block .anullProperties div {
+#SellerInfo .footerSeller .info .block .anullProperties div {
   align-items: center !important;
   justify-content: center !important;
   display: flex !important;
@@ -174,17 +174,17 @@
     width: 100%;
     border-radius: 20px;
     grid-template-areas:
-      "header header header"
-      "picture certificate certificate"
-      "picture footer footer";
+      "headerSeller headerSeller headerSeller"
+      "pictureSeller certificate certificate"
+      "pictureSeller footerSeller footerSeller";
   }
 
-  #SellerInfo .header {
+  #SellerInfo .headerSeller {
     margin-top: 60px;
     margin-bottom: 20px;
   }
 
-  #SellerInfo .header h4 {
+  #SellerInfo .headerSeller h4 {
     font-style: normal;
     font-weight: 800;
     font-size: 42px;
@@ -192,18 +192,18 @@
     letter-spacing: 0.02em;
   }
 
-  #SellerInfo .picture {
+  #SellerInfo .pictureSeller {
     align-items: center !important;
     justify-content: center !important;
     padding: unset !important;
   }
 
-  #SellerInfo .picture .anullProperties img {
+  #SellerInfo .pictureSeller .anullProperties img {
     width: auto !important;
     height: 148px !important;
   }
 
-  #SellerInfo .picture h4 {
+  #SellerInfo .pictureSeller h4 {
     font-style: normal;
     font-weight: bold;
     font-size: 32px;
@@ -230,24 +230,24 @@
     height: 14px !important;
     width: 14px !important;
   }
-  #SellerInfo .footer hr {
+  #SellerInfo .footerSeller hr {
     width: 100%;
     border: 1px solid #d1d1d1;
   }
 
-  #SellerInfo .footer h3 {
+  #SellerInfo .footerSeller h3 {
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
     line-height: 24px;
   }
 
-  #SellerInfo .footer .info {
+  #SellerInfo .footerSeller .info {
     margin-top: 18px;
     margin-bottom: 18px;
   }
 
-  #SellerInfo .footer .info .block h3 {
+  #SellerInfo .footerSeller .info .block h3 {
     font-style: normal;
     font-weight: bold;
     font-size: 32px;
@@ -258,7 +258,7 @@
     margin: unset;
   }
 
-  #SellerInfo .footer .info .block p {
+  #SellerInfo .footerSeller .info .block p {
     font-style: normal;
     font-weight: bold;
     font-size: 18px;

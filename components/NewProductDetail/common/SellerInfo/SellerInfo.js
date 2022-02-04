@@ -40,14 +40,14 @@ const SellerInfo = () => {
           container
           sx={{ alignItems: "center", justifyContent: "center" }}
           mobile={12}
-          className="header"
+          className="headerSeller"
         >
           <h4>Información sobre el vendedor</h4>
         </Grid>
-        <Grid container className="container">
+        <Grid container className="containerSeller">
           <Grid
             container
-            className="picture"
+            className="pictureSeller"
             sx={{ alignItems: "center", justifyContent: "center" }}
             mobile={12}
             tablet={12}
@@ -59,7 +59,7 @@ const SellerInfo = () => {
             <h4>Spice Stock SAS.</h4>
           </Grid>
           <Grid container mobile={12} tablet={12} desktop={6}>
-            <Grid items className="certificate">
+            <Grid item className="certificate">
               <div className="anullProperties">
                 <Image src={cert} layout="fill" alt="Certificado" />
               </div>
@@ -70,7 +70,7 @@ const SellerInfo = () => {
               <FontAwesomeIcon icon={faStar} />
               <FontAwesomeIcon icon={faStar} />
             </Grid>
-            <Grid container className="footer">
+            <Grid container className="footerSeller">
               <h3>Es uno de nuestros mejores vendedores</h3>
               <hr />
               <Grid className="info">

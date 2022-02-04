@@ -1,58 +1,55 @@
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import './SellerInfo.css';
-import './SellerMovil.css';
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import "./SellerInfo.css";
+import "./SellerMovil.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight, faTruck } from "@fortawesome/free-solid-svg-icons";
 //Importa el logo Spice
 import spice from "../../assets/img/seller/spice.jpeg";
-import { getSellerByProduct } from '../../services/productsApi';
-import UserProfile from '../../assets/img/default-user.jpg'
+import { getSellerByProduct } from "../../services/productsApi";
+import UserProfile from "../../assets/img/default-user.jpg";
 
 function SellerInfo({ productId }) {
-	const [seller, setSeller] = useState();
+  const [seller, setSeller] = useState();
 
-	useEffect(() => {
-		getSeller();
-		return () => {
-			setSeller();
-		};
-	}, []);
+  useEffect(() => {
+    getSeller();
+    return () => {
+      setSeller();
+    };
+  }, []);
 
-	const getSeller = () => {
-		if (productId) {
-			getSellerByProduct(productId).then((rs) => setSeller(rs.data));
-		}
-	};
+  const getSeller = () => {
+    if (productId) {
+      getSellerByProduct(productId).then((rs) => setSeller(rs.data));
+    }
+  };
 
-	// console.log(seller);
+  // console.log(seller);
 
-	return (
-		<>
-			<div className="title-seller-bar">
-				<p>Vendedor</p>
-				<p><FontAwesomeIcon icon={faAngleRight} /></p>
-			</div>
-			<div className="profile-seller">
-				<div className="wrap-img-profile-seller">
-					<img
-						alt={seller?.name}
-						src={spice}
-					/>
-				</div>
-				<div className="info-profile-seller">
-					<p>
-						Spice Stock SAS.
-					</p>
-				</div>
-				{seller?.leader && (
-					<div className="seller-leader">
-						<div></div>
-						<p>{'Vendedor Lider'}</p>
-					</div>
-				)}
-			</div>
-{/* 			{seller?.products.map((item, index) => (
+  return (
+    <>
+      <div className="title-seller-bar">
+        <p>Vendedor</p>
+        <p>
+          <FontAwesomeIcon icon={faAngleRight} />
+        </p>
+      </div>
+      <div className="profile-seller">
+        <div className="wrap-img-profile-seller">
+          <img alt={seller?.name} src={spice} />
+        </div>
+        <div className="info-profile-seller">
+          <p>Spice Stock SAS.</p>
+        </div>
+        {seller?.leader && (
+          <div className="seller-leader">
+            <div></div>
+            <p>{"Vendedor Lider"}</p>
+          </div>
+        )}
+      </div>
+      {/* 			{seller?.products.map((item, index) => (
 				<div className="seller-products" key={index}>
 					<img
 						alt={'foto de vendedor ' + seller?.name + seller?.last_name}
@@ -77,14 +74,16 @@ function SellerInfo({ productId }) {
 				</div>
 			))} */}
 
-			<div className='seller-info'>
-				<p>Este producto viene de Estados Unidos</p>
-				<p>Entrega de 3 a 9 días hábiles</p>
-				<p className="title-section accent info-section">Envio Gratis</p>
-			</div>
-			<Link href={'/'}><a className="link-more">Mira más productos de este vendedor</a></Link>
-		</>
-	);
+      <div className="seller-info">
+        <p>Este producto viene de Estados Unidos</p>
+        <p>Entrega de 3 a 9 días hábiles</p>
+        <p className="title-section accent info-section">Envio Gratis</p>
+      </div>
+      <Link href={"/"}>
+        <a className="link-more">Mira más productos de este vendedor</a>
+      </Link>
+    </>
+  );
 }
 
 export default SellerInfo;
