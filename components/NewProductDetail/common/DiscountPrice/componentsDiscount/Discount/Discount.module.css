@@ -15,7 +15,7 @@
 
 .containerDiscount .wrapperPercent {
   flex-direction: column;
-  margin-right: 30px;
+  margin-right: clamp(10px, 2.5vw, 30px);
 }
 
 .containerDiscount .wrapperPercent .percentDiscount {
