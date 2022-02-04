@@ -4,10 +4,10 @@
   padding: 0 20px;
   background-color: white;
   padding-bottom: 20px;
+  justify-content: center;
 }
 
 .containerDiscount .wrapperDiscount {
-  width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,6 +15,7 @@
 
 .containerDiscount .wrapperPercent {
   flex-direction: column;
+  margin-right: clamp(10px, 2.5vw, 30px);
 }
 
 .containerDiscount .wrapperPercent .percentDiscount {
@@ -36,8 +37,8 @@
 }
 
 .containerDiscount .wrapperImage .wrapperAnullProperties {
-  height: 69px;
-  width: 69px;
+  height: 100px;
+  width: 100px;
   border-radius: 10px;
   margin-right: 16px;
 }
@@ -55,7 +56,7 @@
 
 .wrapperAnullProperties .anullProperties img {
   width: auto !important;
-  height: auto !important;
+  height: 100% !important;
   max-width: 100% !important;
   max-height: 100% !important;
   margin: auto !important;
