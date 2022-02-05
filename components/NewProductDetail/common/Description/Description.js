@@ -32,7 +32,10 @@ function Description({ product }) {
       </div>
       <Collapse in={collapse === true}>
         <div className="detalles">
-          <p className="texto">{product.information}</p>
+          <p
+            className="texto"
+            dangerouslySetInnerHTML={{ __html: product.description }}
+          />
           <footer>
             <div className="anullProperties">
               <Image
