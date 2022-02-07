@@ -1,13 +1,4 @@
 .SellerInfo {
-  background: #fff;
-  transition: all 0.3s ease;
-  padding-top: 10px;
-  display: grid;
-  grid-template-areas:
-    "header"
-    "picture"
-    "certificate"
-    "footer";
 }
 
 .SellerInfo footer {
@@ -92,7 +83,7 @@
   padding-right: 28px;
 }
 
-.SellerInfo .certificate svg {
+.SellerInfo .starSellerIcon {
   color: #1fc2e6;
   margin-right: 1vw;
   height: 2.5vw;
