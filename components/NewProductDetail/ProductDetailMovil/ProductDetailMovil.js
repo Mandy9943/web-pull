@@ -40,6 +40,9 @@ const Detail = dynamic(() => import("../common/Detail/Detail"), {
 const Description = dynamic(() => import("../common/Description/Description"), {
   suspense: true,
 });
+const Information = dynamic(() => import("../common/Information/Information"), {
+  suspense: true,
+});
 
 const Benefits = dynamic(() => import("../common/Benefits/Benefits"), {
   suspense: true,
@@ -171,6 +174,7 @@ const ProductDetailMobil = ({ user_data, data, userIp }) => {
         <PayMethod />
         <Detail product={data} />
         <Description product={data} />
+        <Information product={data} />
         <OurClient category={data?.breadcum[0]?.name.substring(0, 7)} />
         <SwiperSlider
           type={"specialOfferMovil"}
