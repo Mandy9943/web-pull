@@ -1,48 +1,10 @@
-.SellerInfo {
-}
 
 .SellerInfo footer {
   grid-area: footer;
 }
 
-.SellerInfo picture {
-  grid-area: picture;
-}
-
 .SellerInfo .certificate {
   grid-area: certificate;
-}
-
-.SellerInfo header {
-  grid-area: header;
-}
-
-.SellerInfo header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.SellerInfo header h4 {
-  font-style: normal;
-  font-weight: bold;
-  font-size: 5.2vw;
-  line-height: 22px;
-  letter-spacing: 0.03em;
-  color: #000000;
-  height: 22px;
-}
-
-.SellerInfo picture {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 30px 25px 0 30px;
-}
-
-.SellerInfo picture div img {
-  height: 5rem !important;
-  width: 100% !important;
 }
 
 .SellerInfo picture h4 {
@@ -161,7 +123,7 @@
   display: flex !important;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .SellerInfo {
     min-width: 768px;
     padding: 0 2% 0 0;
@@ -193,9 +155,9 @@
     padding: unset !important;
   }
 
-  .SellerInfo picture .anullProperties img {
-    width: auto !important;
-    height: 148px !important;
+  .SellerInfo .pictureSeller_image {
+    width: 100% !important;
+    height: 100% !important;
   }
 
   .SellerInfo picture h4 {
@@ -261,5 +223,12 @@
     text-align: center;
     margin: 5px 0 0 0;
     padding: unset;
+  }
+}
+
+@media (min-width: 1025px) {
+  .SellerInfo .pictureSeller_image {
+    width: 100% !important;
+    height: 10vw !important;
   }
 }

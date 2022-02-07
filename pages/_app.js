@@ -49,7 +49,7 @@ export default function MyApp({ Component, pageProps }) {
       values: {
         xs: 0,
         sm: 768,
-        md: 1024,
+        md: 1025,
         lg: 1280,
       },
     },
