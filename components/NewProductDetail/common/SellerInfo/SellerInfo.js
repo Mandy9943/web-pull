@@ -7,6 +7,7 @@ import "./SellerInfo.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { Box, Grid } from "@mui/material";
+import { Typography } from "@mui/material";
 import SectionTitle from "../SectionTitle/SectionTitle";
 
 const SellerInfo = () => {
@@ -25,7 +26,7 @@ const SellerInfo = () => {
   }, []);
   useEffect(() => {
     handleConteo();
-  }, [handleConteo]);
+  }, []);
 
   return (
     <Box
@@ -33,41 +34,70 @@ const SellerInfo = () => {
       sx={{
         width: "100%",
         backgroundColor: "#fff",
-        transition: "all 0.3s ease",
       }}
     >
       <Grid
         container
         sx={{
-          alignItems: { xs: "center" },
-          justifyContent: { xs: "center" },
+          alignItems: "center",
+          justifyContent: "center",
         }}
         xs={12}
         className="headerSeller"
       >
         <SectionTitle>Información sobre el vendedor</SectionTitle>
       </Grid>
-      <Grid container className="containerSeller">
+      <Grid
+        container
+        className="containerSeller"
+        sx={{
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: { md: "row", lg: "row" },
+          flexWrap: { lg: "nowrap", md: "nowrap" },
+        }}
+      >
         <Grid
           container
           className="pictureSeller"
           sx={{
-            alignItems: { xs: "center" },
-            justifyContent: { xs: "center" },
+            alignItems: "center",
+            justifyContent: "center",
+            m: { xs: "0 3vw", sm: "0 5vw", md: "0 3vw", lg: "0 3vw" },
           }}
           xs={12}
+          sm={12}
           md={6}
+          lg={4}
         >
-          <Grid xs={12} md={6} item>
+          <Grid xs={6} item>
             <div className="anullProperties">
-              <Image src={spice} layout="fill" alt="Imagen del vendedor" />
+              <Image
+                src={spice}
+                layout="fill"
+                alt="Imagen del vendedor"
+                className="pictureSeller_image"
+              />
             </div>
           </Grid>
-          <Grid xs={12} md={6} item>
-            <h4>Spice Stock SAS.</h4>
+          <Grid xs={6} item>
+            <Typography
+              gutterBottom
+              component="h4"
+              sx={{
+                fontStyle: "normal",
+                fontWeight: "bold",
+                color: "#5d5d5d",
+                letterSpacing: "0",
+                fontSize: { xs: "6vw", sm: "5.3vw", md: "3vw", lg: "2.3vw" },
+                marginLeft: { xs: "5vw", sm: "4vw", md: "2.3vw", lg: "1vw" },
+              }}
+            >
+              Spice Stock LLC.
+            </Typography>
           </Grid>
         </Grid>
-        <Grid container xs={12} md={6}>
+        <Grid container xs={12} sm={12} md={6} lg={8}>
           <Grid item className="certificate">
             <div className="anullProperties">
               <Image src={cert} layout="fill" alt="Certificado" />
