@@ -7,6 +7,7 @@ import "./SellerInfo.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { createTheme, ThemeProvider, Box, Grid } from "@mui/material";
+import SectionTitle from "../SectionTitle/SectionTitle";
 
 const SellerInfo = () => {
   const [conteo, setConteo] = useState(0);
@@ -26,39 +27,51 @@ const SellerInfo = () => {
   const theme = createTheme({
     breakpoints: {
       values: {
-        mobile: 0,
-        tablet: 640,
-        laptop: 1025,
-        desktop: 1200,
+        xs: 0,
+        sm: 768,
+        md: 1024,
+        lg: 1280,
       },
     },
   });
   return (
     <ThemeProvider theme={theme}>
-      <Box id="SellerInfo">
+      <Box
+        className="SellerInfo"
+        sx={{ width: "100%", backgroundColor: "#fff" }}
+      >
         <Grid
           container
-          sx={{ alignItems: "center", justifyContent: "center" }}
-          mobile={12}
+          sx={{
+            alignItems: { xs: "center" },
+            justifyContent: { xs: "center" },
+          }}
+          xs={12}
           className="headerSeller"
         >
-          <h4>Información sobre el vendedor</h4>
+          <SectionTitle>Información sobre el vendedor</SectionTitle>
         </Grid>
         <Grid container className="containerSeller">
           <Grid
             container
             className="pictureSeller"
-            sx={{ alignItems: "center", justifyContent: "center" }}
-            mobile={12}
-            tablet={12}
-            desktop={6}
+            sx={{
+              alignItems: { xs: "center" },
+              justifyContent: { xs: "center" },
+            }}
+            xs={12}
+            md={6}
           >
-            <div className="anullProperties">
-              <Image src={spice} layout="fill" alt="Imagen del vendedor" />
-            </div>
-            <h4>Spice Stock SAS.</h4>
+            <Grid xs={12} md={6} item>
+              <div className="anullProperties">
+                <Image src={spice} layout="fill" alt="Imagen del vendedor" />
+              </div>
+            </Grid>
+            <Grid xs={12} md={6} item>
+              <h4>Spice Stock SAS.</h4>
+            </Grid>
           </Grid>
-          <Grid container mobile={12} tablet={12} desktop={6}>
+          <Grid container xs={12} md={6}>
             <Grid item className="certificate">
               <div className="anullProperties">
                 <Image src={cert} layout="fill" alt="Certificado" />
