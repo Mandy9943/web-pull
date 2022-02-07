@@ -124,7 +124,10 @@ class DetailProductInfo extends Component {
           <div>
             <h3 className="title-section accent">Información:</h3>
             <br />
-            <div className="justifyText">{this.props.information}</div>
+            <div
+              className="justifyText"
+              dangerouslySetInnerHTML={{ __html: this.props.information }}
+            />
           </div>
         );
       }
