@@ -171,7 +171,7 @@ class Category extends Component {
         this.loadProducts(0, 1, "price", "asc");
         break;
       default:
-        this.loadProducts(1, 1, "price", "desc");
+        this.loadProducts(1, 1, "price", "relevant");
     }
 
     this.setState({ page: 1 });
