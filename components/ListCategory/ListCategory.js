@@ -14,6 +14,7 @@ import Image from "next/image";
 import ProductCardGrid from "./ProductCardGrid";
 import ProductCardList from "./ProductCardList";
 import { sendProductListViewed, sendProductClick } from "../../lib/functions";
+import dataJson from "./data.json";
 
 class ListCategory extends Component {
   constructor(props) {
@@ -298,6 +299,53 @@ class ListCategory extends Component {
   };
 
   render() {
+    const renderGrid = (product) => {
+      let dataProduct = [];
+      let getRelevance = product.filter((data) => data.relevance);
+      if (getRelevance.length) {
+        const sorted = [...getRelevance].sort(
+          (a, b) => a.relevance - b.relevance
+        );
+        dataProduct.push(sorted);
+        dataProduct[0].push(
+          ...product.filter((data) => data.relevance == null)
+        );
+      } else {
+        dataProduct.push(product);
+      }
+      return dataProduct[0].map((product, i) => (
+        <ProductCardGrid
+          product={product}
+          i={i}
+          handleDataInfoSearch={this.handleDataInfoSearch}
+          key={i}
+        />
+      ));
+    };
+
+    const renderList = (product) => {
+      let dataProduct = [];
+      let getRelevance = product.filter((data) => data.relevance);
+      if (getRelevance.length) {
+        const sorted = [...getRelevance].sort(
+          (a, b) => a.relevance - b.relevance
+        );
+        dataProduct.push(sorted);
+        dataProduct[0].push(
+          ...product.filter((data) => data.relevance == null)
+        );
+      } else {
+        dataProduct.push(product);
+      }
+      return dataProduct[0].map((product, i) => (
+        <ProductCardList
+          product={product}
+          i={i}
+          handleDataInfoSearch={this.handleDataInfoSearch}
+          key={i}
+        />
+      ));
+    };
     const Class = this.props.format === "grid" ? "grid" : "list";
     let productListEmpty = [];
     for (let i = 0; i < 10; i++) {
@@ -310,22 +358,24 @@ class ListCategory extends Component {
         <div className={Class}>
           {this.props?.products?.length > 0 &&
             (this.props.format === "grid"
-              ? this.props.products.map((product, i) => (
-                  <ProductCardGrid
-                    product={product}
-                    i={i}
-                    handleDataInfoSearch={this.handleDataInfoSearch}
-                    key={i}
-                  />
+              ? renderGrid(dataJson)
+              : // <ProductCardGrid
+                //   product={product}
+                //   i={i}
+                //   handleDataInfoSearch={this.handleDataInfoSearch}
+                //   key={i}
+                // />
+
+                renderList(
+                  dataJson
                 ))
-              : this.props.products.map((product, i) => (
-                  <ProductCardList
-                    product={product}
-                    i={i}
-                    handleDataInfoSearch={this.handleDataInfoSearch}
-                    key={i}
-                  />
-                )))}
+            // <ProductCardList
+            //   product={product}
+            //   i={i}
+            //   handleDataInfoSearch={this.handleDataInfoSearch}
+            //   key={i}
+            // />
+          }
         </div>
 
         {(!this.props.products || this.props.products.length === 0) && (
