@@ -14,7 +14,7 @@ import Image from "next/image";
 import ProductCardGrid from "./ProductCardGrid";
 import ProductCardList from "./ProductCardList";
 import { sendProductListViewed, sendProductClick } from "../../lib/functions";
-import dataJson from "./data.json";
+// import dataJson from "./data.json";
 
 class ListCategory extends Component {
   constructor(props) {
@@ -356,19 +356,18 @@ class ListCategory extends Component {
         <CategoryBanners category={this.props.category} />
 
         <div className={Class}>
-          {this.props?.products?.length > 0 &&
-            (this.props.format === "grid"
-              ? renderGrid(dataJson)
-              : // <ProductCardGrid
-                //   product={product}
-                //   i={i}
-                //   handleDataInfoSearch={this.handleDataInfoSearch}
-                //   key={i}
-                // />
+          {
+            this.props?.products?.length > 0 &&
+              (this.props.format === "grid"
+                ? renderGrid(this.props.products)
+                : // <ProductCardGrid
+                  //   product={product}
+                  //   i={i}
+                  //   handleDataInfoSearch={this.handleDataInfoSearch}
+                  //   key={i}
+                  // />
 
-                renderList(
-                  dataJson
-                ))
+                  renderList(this.props.products))
             // <ProductCardList
             //   product={product}
             //   i={i}
