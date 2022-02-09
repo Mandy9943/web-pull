@@ -48,9 +48,9 @@ const SellerInfo = dynamic(() => import("../common/SellerInfo/SellerInfo"), {
   suspense: true,
 });
 
-const Benefits = dynamic(() => import("../common/Benefits/Benefits"), {
-  suspense: true,
-});
+// const Benefits = dynamic(() => import("../common/Benefits/Benefits"), {
+//   suspense: true,
+// });
 
 // const Subscription = dynamic(
 //   () => import("../common/Subscription/Subscription"),
@@ -214,15 +214,15 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
                 movil={false}
               />
             </Grid>
-            {/* <Grid
+            <Grid
               sx={{ borderRadius: "20px", overflow: "hidden" }}
               item
               md={12}
               xs={12}
               className="containerSellerInfo"
             >
-              <SellerInfo  />
-            </Grid> */}
+              <SellerInfo />
+            </Grid>
           </Grid>
         </Box>
         <Box>

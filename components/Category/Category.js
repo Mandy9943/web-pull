@@ -260,7 +260,6 @@ class Category extends Component {
       });
     });
   }
-
   loadAllFilters(level = "", category = "") {
     let filters = searchFilters(this.props.data.search, level, category);
 

@@ -10,11 +10,10 @@ const SectionTitle = ({ big, center, color, children }) => {
         <Box
           sx={{
             fontWeight: big ? 900 : 800,
-            fontFamily: " Montserrat, sans-serif",
             fontStyle: "normal",
             color: color,
             textAlign: center ? "center" : "start",
-            fontSize: big ? { xs: 30, sm: 52 } : { xs: 22, sm: 32 },
+            fontSize: big ? { xs: 30, md: 52 } : { xs: 22, md: 32 },
           }}
         >
           {children}
@@ -24,8 +23,7 @@ const SectionTitle = ({ big, center, color, children }) => {
   );
 };
 
-export default SectionTitle;
-
 SectionTitle.propTypes = {
   big: PropTypes.bool,
 };
+export default SectionTitle;

@@ -12,6 +12,14 @@
 #RecommendedProductsCard .product {
   display: flex;
   flex-direction: column;
+  height: 290px;
+}
+
+#RecommendedProductsCard .product .anullProperties div {
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center;
+  height: 270px;
 }
 
 #RecommendedProductsCard .product img {
@@ -19,8 +27,10 @@
   position: relative;
 }
 #RecommendedProductsCard .product .productImg {
-  height: 240px !important;
-  width: 240px !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  height: auto !important;
+  width: auto !important;
 }
 
 #RecommendedProductsCard .product .irImg {

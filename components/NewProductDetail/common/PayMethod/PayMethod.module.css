@@ -44,6 +44,11 @@
   max-width: 93px !important;
 }
 
+#PayMethod .link .imgContainer .anullProperties {
+  display: flex;
+  justify-content: center;
+}
+
 @media (min-width: 768px) {
   #PayMethod {
     padding: 36px 0 20px;

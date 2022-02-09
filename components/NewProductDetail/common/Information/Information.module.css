@@ -1,4 +1,4 @@
-#Description {
+#Information {
   border-top: 2px solid #e4e4e4;
   border-bottom: 2px solid #e4e4e4;
   background: #fff;
@@ -6,21 +6,21 @@
   padding: 10px 25px;
 }
 
-#Description .closed {
+#Information .closed {
   height: 76px;
   width: auto;
 }
 
-#Description .open {
+#Information .open {
   height: 601px;
   width: auto;
 }
 
-#Description .detalles {
+#Information .detalles {
   margin-top: 20px;
 }
 
-#Description .titulo {
+#Information .titulo {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -28,7 +28,7 @@
   cursor: pointer;
 }
 
-#Description .titulo h3 {
+#Information .titulo h3 {
   font-family: Montserrat, sans-serif;
   font-style: normal;
   font-weight: bold;
@@ -37,7 +37,7 @@
   color: #000000;
 }
 
-#Description .detalles .texto {
+#Information .detalles .texto {
   font-family: Montserrat, sans-serif;
   font-style: normal;
   font-weight: normal;
@@ -48,7 +48,7 @@
   text-align: justify;
 }
 
-#Description footer {
+#Information footer {
   align-items: center;
   justify-content: center;
   display: grid;
@@ -57,12 +57,12 @@
   height: 79px;
 }
 
-#Description footer img {
+#Information footer img {
   cursor: pointer;
 }
 
 @media (min-width: 768px) {
-  #Description {
+  #Information {
     border-radius: 10px;
     margin-bottom: 12px;
     border: none;
