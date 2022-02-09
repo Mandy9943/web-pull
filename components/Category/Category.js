@@ -246,7 +246,7 @@ class Category extends Component {
         : this.props.data.type === "category"
         ? this.state.categoryName
         : category,
-      sortBy,
+      sortBy ? sortBy : "relevance",
       orderBy ? orderBy : this.props.data.params.order,
       this.state.categoryLevel
     );
