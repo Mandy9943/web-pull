@@ -1,6 +1,7 @@
 import React, { Suspense, useEffect } from "react";
 import PropTypes from "prop-types";
 import {
+  createlead,
   handleActivateBack,
   handleDeactivateBack,
   sendCheckoutStepViewed,
@@ -27,6 +28,7 @@ import CheckoutProduct from "../common/CheckoutProduct/CheckoutProduct";
 import { useState } from "react";
 import WhatsappBanner from "../common/WhatsappBanner/WhatsappBanner";
 import PayMethod from "../common/PayMethod/PayMethod";
+import Cookies from "js-cookie";
 
 const Detail = dynamic(() => import("../common/Detail/Detail"), {
   ssr: false,
@@ -95,6 +97,7 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
   const handleOpenForm = () => {
     sendCheckoutStepViewed(data, 1);
     dispatch(openForm(true));
+    Cookies.get("email") ? createlead(data, 1) : null;
   };
 
   useEffect(() => {

@@ -43,6 +43,7 @@ const RecommendedProducts = ({
       slidesPerView: 1.4,
       spaceBetween: spaceBetween,
       freeMode: true,
+      loop: true,
       centeredSlides: true,
 
       pagination: {
