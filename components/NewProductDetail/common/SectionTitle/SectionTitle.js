@@ -3,17 +3,16 @@ import { Box } from "@mui/system";
 import React from "react";
 import PropTypes from "prop-types";
 
-const SectionTitle = ({ big, center, color, children }) => {
+const SectionTitle = ({ big, center, color, children, variant = "h5" }) => {
   return (
     <Box>
-      <Typography gutterBottom component="div">
+      <Typography gutterBottom component="h2" variant={variant}>
         <Box
           sx={{
             fontWeight: big ? 900 : 800,
             fontStyle: "normal",
             color: color,
             textAlign: center ? "center" : "start",
-            fontSize: big ? { xs: 30, md: 52 } : { xs: 22, md: 32 },
           }}
         >
           {children}
@@ -25,5 +24,8 @@ const SectionTitle = ({ big, center, color, children }) => {
 
 SectionTitle.propTypes = {
   big: PropTypes.bool,
+  variant: PropTypes.string,
+  center: PropTypes.bool,
+  color: PropTypes.string,
 };
 export default SectionTitle;

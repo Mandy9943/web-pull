@@ -3,7 +3,7 @@ import Image from "next/image";
 import "./Discount.module.css";
 
 import { PropTypes } from "prop-types";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 const Discount = ({
   quantityProduct,
@@ -17,7 +17,17 @@ const Discount = ({
       sx={{ display: "flex", flexDirection: "row", alignItems: "end" }}
       className="wrapperDiscount"
     >
-      <p className="cantDiscount">x{quantityProduct}</p>
+      <Typography variant="h3" component="div">
+        <Box
+          sx={{
+            color: "#5f5f5f",
+            fontWeight: "900",
+            marginRight: "20px",
+          }}
+        >
+          x{quantityProduct}
+        </Box>
+      </Typography>
       <div className="wrapperImage">
         <div className="wrapperAnullProperties">
           <div className="anullProperties">
@@ -26,16 +36,53 @@ const Discount = ({
         </div>
       </div>
       <div className="wrapperPercent">
-        <p className="percentDiscount">{discountPercentage}%</p>
-        <p className="textDiscount">DESCUENTO</p>
+        <Typography variant="h1" component="div">
+          <Box
+            sx={{
+              color: "#1fc2e5",
+              fontWeight: "800",
+            }}
+          >
+            {discountPercentage}%
+          </Box>
+        </Typography>
+
+        <Typography variant="subtitle1" component="div">
+          <Box
+            sx={{
+              color: "#1fc2e5",
+              fontWeight: "700",
+              letterSpacing: "1px",
+            }}
+          >
+            DESCUENTO
+          </Box>
+        </Typography>
       </div>
     </Box>
   );
   const movilRender = (
     <>
       <div className="wrapperDiscount wrapperPercent">
-        <p className="percentDiscount">{discountPercentage}%</p>
-        <p className="textDiscount">DESCUENTO</p>
+        <Typography variant="h1" component="div">
+          <Box
+            sx={{
+              color: "#1fc2e5",
+              fontWeight: "800",
+            }}
+          >
+            {discountPercentage}%
+          </Box>
+        </Typography>
+        <Typography variant="subtitle1" component="div">
+          <Box
+            sx={{
+              color: "#1fc2e5",
+            }}
+          >
+            DESCUENTO
+          </Box>
+        </Typography>
       </div>
       <div className=" wrapperDiscount wrapperImage">
         <div className="wrapperAnullProperties">
@@ -43,7 +90,17 @@ const Discount = ({
             <Image alt={altImg} src={images[0].url} layout="fill" />
           </div>
         </div>
-        <p className="cantDiscount">x{quantityProduct}</p>
+        <Typography variant="h3" component="div">
+          <Box
+            sx={{
+              color: "#5f5f5f",
+              fontWeight: "900",
+              marginRight: "20px",
+            }}
+          >
+            x{quantityProduct}
+          </Box>
+        </Typography>
       </div>
     </>
   );

@@ -171,7 +171,7 @@ class Category extends Component {
         this.loadProducts(0, 1, "price", "asc");
         break;
       default:
-        this.loadProducts(1, 1, "price", "desc");
+        this.loadProducts(1, 1, "relevance", "desc");
     }
 
     this.setState({ page: 1 });
@@ -180,7 +180,7 @@ class Category extends Component {
   loadProducts(
     priceRelevant = "",
     page,
-    sortBy = "",
+    sortBy = "relevance",
     orderBy = "",
     categoryLevel = ""
   ) {
@@ -246,7 +246,7 @@ class Category extends Component {
         : this.props.data.type === "category"
         ? this.state.categoryName
         : category,
-      sortBy,
+      sortBy ? sortBy : "relevance",
       orderBy ? orderBy : this.props.data.params.order,
       this.state.categoryLevel
     );
@@ -260,7 +260,6 @@ class Category extends Component {
       });
     });
   }
-
   loadAllFilters(level = "", category = "") {
     let filters = searchFilters(this.props.data.search, level, category);
 
