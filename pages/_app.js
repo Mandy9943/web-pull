@@ -61,15 +61,24 @@ export default function MyApp({ Component, pageProps }) {
       fontFamily: "Montserrat, sans-serif",
 
       subtitle1: {
-        fontWeight: "bold",
-        fontSize: "1.3rem",
         color: "black",
+        fontWeight: "bold",
+        fontSize: "1rem",
+        "@media (min-width:768px)": {
+          fontSize: "1.3rem",
+        },
       },
       subtitle2: {
+        color: "black",
         fontWeight: "bold",
         fontStyle: "normal",
         fontSize: "1rem",
-        color: "black",
+      },
+      h1: {
+        fontSize: "4rem",
+        "@media (min-width:768px)": {
+          fontSize: "5.6rem",
+        },
       },
       h3: {
         fontSize: "1.85rem",
@@ -90,6 +99,12 @@ export default function MyApp({ Component, pageProps }) {
         fontSize: "1.4rem",
         "@media (min-width:768px)": {
           fontSize: "1.5rem",
+        },
+      },
+      body2: {
+        fontSize: "12px",
+        "@media (min-width:768px)": {
+          fontSize: "0.875rem",
         },
       },
     },
