@@ -25,7 +25,7 @@ const SectionTitle = ({ big, center, color, children, variant = "h5" }) => {
 SectionTitle.propTypes = {
   big: PropTypes.bool,
   variant: PropTypes.string,
-  center: PropTypes.string,
+  center: PropTypes.bool,
   color: PropTypes.string,
 };
 export default SectionTitle;
