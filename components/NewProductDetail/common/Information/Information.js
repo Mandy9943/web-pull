@@ -5,7 +5,7 @@ import abierto from "../../../../assets/img/productDetail/l-nea-86@2x.svg";
 
 import Image from "next/image";
 import arrow from "../../../../assets/img/productDetail/arrow-down@2x.svg";
-import { Collapse } from "@mui/material";
+import { Collapse, Typography } from "@mui/material";
 import SectionTitle from "../SectionTitle/SectionTitle";
 
 function Information({ product }) {
@@ -32,10 +32,9 @@ function Information({ product }) {
       </div>
       <Collapse in={collapse === true}>
         <div className="detalles">
-          <p
-            className="texto"
-            dangerouslySetInnerHTML={{ __html: product.information }}
-          />
+          <Typography component="div" variant="body1">
+            <p dangerouslySetInnerHTML={{ __html: product.information }} />
+          </Typography>
           <footer>
             <div className="anullProperties">
               <Image
