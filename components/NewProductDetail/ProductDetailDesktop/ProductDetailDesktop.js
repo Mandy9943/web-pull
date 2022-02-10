@@ -21,6 +21,7 @@ import {
 import { Box, Grid } from "@mui/material";
 import ProductImageDesk from "../common/ProductImageDesk/ProductImageDesk";
 import Description from "../common/Description/Description";
+import Information from "../common/Information/Information";
 import OurClient from "../common/OurClient/OurClient";
 import CheckoutProductDesk from "../common/CheckoutProductDesk/CheckoutProductDesk";
 import useResize from "../../../lib/hooks/useResize";
@@ -163,6 +164,7 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
                 </Grid>
                 <Detail product={data} />
                 <Description product={data} />
+                <Information product={data} />
                 <OurClient category={data?.breadcum[0]?.name.substring(0, 7)} />
               </Grid>
             </Grid>
@@ -172,6 +174,7 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
                 <ProductImageDesk images={data.images} altImg={data.title} />
                 <Detail product={data} />
                 <Description product={data} />
+                <Information product={data} />
                 <OurClient category={data?.breadcum[0]?.name.substring(0, 7)} />
               </Grid>
 
