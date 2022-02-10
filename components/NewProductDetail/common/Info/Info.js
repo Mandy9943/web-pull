@@ -30,7 +30,7 @@ const Info = () => {
         }}
       >
         <SectionTitle variant="h4">
-          Porqué Comprar con{" "}
+          ¿Porqué Comprar con{" "}
           <Box
             sx={{
               color: "#cf0a2c",
@@ -38,7 +38,7 @@ const Info = () => {
             }}
             className="company"
           >
-            Kiero
+            Kiero?
           </Box>
         </SectionTitle>
       </Grid>

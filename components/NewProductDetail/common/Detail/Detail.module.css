@@ -44,12 +44,6 @@
 }
 
 #DetailInfo .detalles .detailContainer h6 {
-  font-family: Montserrat, sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 12px;
-  line-height: 16px;
-  color: #5d5d5d;
   margin-bottom: 16px;
   flex-grow: 1;
 }
