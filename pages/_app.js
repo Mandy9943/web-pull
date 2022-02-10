@@ -53,6 +53,14 @@ export default function MyApp({ Component, pageProps }) {
         lg: 1280,
       },
     },
+    typography: {
+      subtitle2: {
+        fontWeight: "bold",
+        fontFamily: "Montserrat",
+        fontStyle: "normal",
+        fontSize: "1rem",
+      },
+    },
   });
   return (
     <ThemeProvider theme={theme}>

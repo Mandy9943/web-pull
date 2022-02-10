@@ -69,7 +69,7 @@ const RecommendedProducts = ({
           width="122px"
           margin="auto auto 10px auto"
         />
-        <SectionTitle color="#CF0A2C" center>
+        <SectionTitle color="#CF0A2C" center variant="h4">
           OTROS TAMBIÉN COMPRARON
         </SectionTitle>
       </div>
