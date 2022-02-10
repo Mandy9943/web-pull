@@ -2,6 +2,7 @@
   background: #fff;
   transition: all 0.3s ease;
   padding: 10px 25px;
+  border-bottom: 4px solid #e4e4e4;
 }
 
 #HelpCenter .closed {

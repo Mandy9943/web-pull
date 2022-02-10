@@ -9,6 +9,7 @@ import "./PayMethod.module.css";
 
 import Image from "next/image";
 import PropTypes from "prop-types";
+import SectionTitle from "../SectionTitle/SectionTitle";
 
 const PayMethod = ({ isDektop, isTablet }) => {
   const payMethodClass = [""];
@@ -21,7 +22,7 @@ const PayMethod = ({ isDektop, isTablet }) => {
   return (
     <div id="PayMethod" className={payMethodClass.join(" ")}>
       <div className="titulo">
-        <h3>Métodos de pago</h3>
+        <SectionTitle variant="h5">Métodos de pago</SectionTitle>
       </div>
       <div className="link ">
         <div className="imgContainer">

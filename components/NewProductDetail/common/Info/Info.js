@@ -29,8 +29,8 @@ const Info = () => {
           paddingBottom: "3vw",
         }}
       >
-        <SectionTitle>
-          Porqué Comprar con{" "}
+        <SectionTitle variant="h4">
+          ¿Porqué Comprar con{" "}
           <Box
             sx={{
               color: "#cf0a2c",
@@ -38,7 +38,7 @@ const Info = () => {
             }}
             className="company"
           >
-            Kiero
+            Kiero?
           </Box>
         </SectionTitle>
       </Grid>
@@ -65,30 +65,16 @@ const Info = () => {
           </div>
           <div className="text">
             <Box>
-              <Typography gutterBottom component="div">
-                <Box
-                  sx={{
-                    fontFamily: "Montserrat",
-                    fontStyle: "normal",
-                    fontWeight: "bold",
-                    fontSize: "16px",
-                    lineHeight: "26px",
-                  }}
-                >
-                  Envío Gratuito
-                </Box>
+              <Typography gutterBottom component="div" variant="subtitle2">
+                Envío Gratuito
               </Typography>
             </Box>
 
             <Box>
-              <Typography gutterBottom component="div">
+              <Typography gutterBottom component="div" variant="body1">
                 <Box
                   sx={{
                     color: "#5D5D5D",
-                    fontFamily: "Montserrat",
-                    fontStyle: "normal",
-                    fontWeight: "500",
-                    fontSize: "16px",
                   }}
                 >
                   Nuestros productos son importados. Entrega de 3 a 9 días
@@ -120,30 +106,16 @@ const Info = () => {
           </div>
           <div className="text">
             <Box>
-              <Typography gutterBottom component="div">
-                <Box
-                  sx={{
-                    fontFamily: "Montserrat",
-                    fontStyle: "normal",
-                    fontWeight: "bold",
-                    fontSize: "16px",
-                    lineHeight: "26px",
-                  }}
-                >
-                  Compra Protegida
-                </Box>
+              <Typography gutterBottom component="div" variant="subtitle2">
+                Compra Protegida
               </Typography>
             </Box>
 
             <Box>
-              <Typography gutterBottom component="div">
+              <Typography gutterBottom component="div" variant="body1">
                 <Box
                   sx={{
                     color: "#5D5D5D",
-                    fontFamily: "Montserrat",
-                    fontStyle: "normal",
-                    fontWeight: "500",
-                    fontSize: "16px",
                   }}
                 >
                   En caso de que surja algún problema, te devolveremos el
@@ -174,30 +146,16 @@ const Info = () => {
           </div>
           <div className="text">
             <Box>
-              <Typography gutterBottom component="div">
-                <Box
-                  sx={{
-                    fontFamily: "Montserrat",
-                    fontStyle: "normal",
-                    fontWeight: "bold",
-                    fontSize: "16px",
-                    lineHeight: "26px",
-                  }}
-                >
-                  Garantía del Vendedor
-                </Box>
+              <Typography gutterBottom component="div" variant="subtitle2">
+                Garantía del Vendedor
               </Typography>
             </Box>
 
             <Box>
-              <Typography gutterBottom component="div">
+              <Typography gutterBottom component="div" variant="body1">
                 <Box
                   sx={{
                     color: "#5D5D5D",
-                    fontFamily: "Montserrat",
-                    fontStyle: "normal",
-                    fontWeight: "500",
-                    fontSize: "16px",
                   }}
                 >
                   Garantía por defecto de fábrica de (1) mes.
