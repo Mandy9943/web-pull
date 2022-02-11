@@ -23,10 +23,6 @@
     height: 3vw !important;
     width: auto !important;
   }
-  .SellerInfo .block .anullProperties img {
-    height: 4.5vw !important;
-    width: auto !important;
-  }
 
   .SellerInfo .starSellerIcon {
     height: 3vw;
@@ -35,10 +31,6 @@
 }
 
 @media (min-width: 1025px) {
-  .SellerInfo .pictureSeller_image {
-    width: 100% !important;
-    height: 10vw !important;
-  }
   .SellerInfo .starSellerIcon {
     margin-right: 0.5vw;
     height: 1.5vw;
