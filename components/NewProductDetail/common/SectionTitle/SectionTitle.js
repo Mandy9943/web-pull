@@ -3,17 +3,17 @@ import { Box } from "@mui/system";
 import React from "react";
 import PropTypes from "prop-types";
 
-const SectionTitle = ({ big, center, color, children }) => {
+const SectionTitle = ({ center, color, children }) => {
   return (
     <Box>
       <Typography gutterBottom component="div">
         <Box
           sx={{
-            fontWeight: big ? 900 : 800,
+            fontWeight: { xs: "700", sm: "700", md: "800" },
             fontStyle: "normal",
             color: color,
             textAlign: center ? "center" : "start",
-            fontSize: big ? { xs: 30, md: 52 } : { xs: 22, md: 32 },
+            fontSize: { xs: "5vw", sm: "3.5vw", md: "3vw", lg: "3vw" },
           }}
         >
           {children}
