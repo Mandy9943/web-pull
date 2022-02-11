@@ -217,7 +217,7 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
                 movil={false}
               />
             </Grid>
-            {/* <Grid
+            <Grid
               sx={{ borderRadius: "20px", overflow: "hidden" }}
               item
               md={12}
@@ -225,7 +225,7 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
               className="containerSellerInfo"
             >
               <SellerInfo />
-            </Grid> */}
+            </Grid>
           </Grid>
         </Box>
         <Box>
