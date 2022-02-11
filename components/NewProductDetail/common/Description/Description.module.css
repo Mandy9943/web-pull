@@ -44,6 +44,8 @@
   font-size: 14px;
   line-height: 21px;
   color: #5f5f5f;
+  word-break: break-word;
+  text-align: justify;
 }
 
 #Description footer {

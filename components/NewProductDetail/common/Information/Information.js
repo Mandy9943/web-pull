@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Description.module.css";
+import "./Information.module.css";
 import cerrado from "../../../../assets/img/productDetail/icono-desplegar@2x.svg";
 import abierto from "../../../../assets/img/productDetail/l-nea-86@2x.svg";
 
@@ -8,7 +8,7 @@ import arrow from "../../../../assets/img/productDetail/arrow-down@2x.svg";
 import { Collapse, Typography } from "@mui/material";
 import SectionTitle from "../SectionTitle/SectionTitle";
 
-function Description({ product }) {
+function Information({ product }) {
   const [collapse, setCollapse] = useState(false);
   const [desglosar, setDesglosar] = useState(cerrado);
 
@@ -17,9 +17,9 @@ function Description({ product }) {
     setCollapse(!collapse);
   };
   return (
-    <div id="Description" className={collapse === false ? "closed" : "open"}>
+    <div id="Information" className={collapse === false ? "closed" : "open"}>
       <div className="titulo" onClick={handleOnClick}>
-        <SectionTitle>Descripción</SectionTitle>
+        <SectionTitle>Información</SectionTitle>
 
         <div className="anullProperties">
           <Image
@@ -33,7 +33,7 @@ function Description({ product }) {
       <Collapse in={collapse === true}>
         <div className="detalles">
           <Typography component="div" variant="body1">
-            <p dangerouslySetInnerHTML={{ __html: product.description }} />
+            <p dangerouslySetInnerHTML={{ __html: product.information }} />
           </Typography>
           <footer>
             <div className="anullProperties">
@@ -51,4 +51,4 @@ function Description({ product }) {
   );
 }
 
-export default Description;
+export default Information;

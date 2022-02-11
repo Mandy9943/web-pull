@@ -1,6 +1,7 @@
 import React, { Suspense, useEffect } from "react";
 import PropTypes from "prop-types";
 import {
+  createlead,
   handleActivateBack,
   handleDeactivateBack,
   sendCheckoutStepViewed,
@@ -20,6 +21,7 @@ import {
 import { Box, Grid } from "@mui/material";
 import ProductImageDesk from "../common/ProductImageDesk/ProductImageDesk";
 import Description from "../common/Description/Description";
+import Information from "../common/Information/Information";
 import OurClient from "../common/OurClient/OurClient";
 import CheckoutProductDesk from "../common/CheckoutProductDesk/CheckoutProductDesk";
 import useResize from "../../../lib/hooks/useResize";
@@ -27,6 +29,7 @@ import CheckoutProduct from "../common/CheckoutProduct/CheckoutProduct";
 import { useState } from "react";
 import WhatsappBanner from "../common/WhatsappBanner/WhatsappBanner";
 import PayMethod from "../common/PayMethod/PayMethod";
+import Cookies from "js-cookie";
 
 const Detail = dynamic(() => import("../common/Detail/Detail"), {
   ssr: false,
@@ -46,9 +49,9 @@ const SellerInfo = dynamic(() => import("../common/SellerInfo/SellerInfo"), {
   suspense: true,
 });
 
-// const Benefits = dynamic(() => import("../common/Benefits/Benefits"), {
-//   suspense: true,
-// });
+const Benefits = dynamic(() => import("../common/Benefits/Benefits"), {
+  suspense: true,
+});
 
 // const Subscription = dynamic(
 //   () => import("../common/Subscription/Subscription"),
@@ -95,6 +98,7 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
   const handleOpenForm = () => {
     sendCheckoutStepViewed(data, 1);
     dispatch(openForm(true));
+    Cookies.get("email") ? createlead(data, 1) : null;
   };
 
   useEffect(() => {
@@ -160,6 +164,7 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
                 </Grid>
                 <Detail product={data} />
                 <Description product={data} />
+                <Information product={data} />
                 <OurClient category={data?.breadcum[0]?.name.substring(0, 7)} />
               </Grid>
             </Grid>
@@ -169,6 +174,7 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
                 <ProductImageDesk images={data.images} altImg={data.title} />
                 <Detail product={data} />
                 <Description product={data} />
+                <Information product={data} />
                 <OurClient category={data?.breadcum[0]?.name.substring(0, 7)} />
               </Grid>
 
@@ -211,7 +217,7 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
                 movil={false}
               />
             </Grid>
-            <Grid
+            {/* <Grid
               sx={{ borderRadius: "20px", overflow: "hidden" }}
               item
               md={12}
@@ -219,7 +225,7 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
               className="containerSellerInfo"
             >
               <SellerInfo />
-            </Grid>
+            </Grid> */}
           </Grid>
         </Box>
         <Box>
@@ -229,10 +235,10 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
             </Grid>
             {/* <Grid item md={12} sm={12}>
               <Benefits />
-            </Grid>
-             <Grid item md={12} sm={12}>
+            </Grid> */}
+            {/* <Grid item md={12} sm={12}>
               <Subscription />
-              </Grid> */}
+            </Grid> */}
           </Grid>
           <Grid item md={12}>
             <Footer />

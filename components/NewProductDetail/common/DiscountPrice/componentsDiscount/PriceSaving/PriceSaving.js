@@ -5,6 +5,7 @@ import {
   setDiscount,
 } from "../../../../../../lib/functions";
 import "./PriceSaving.module.css";
+import { Box, Typography } from "@mui/material";
 
 const PriceSaving = ({ priceProduct, quantityProduct }) => {
   let PriceDiscount = setDiscount(priceProduct, quantityProduct);
@@ -14,13 +15,39 @@ const PriceSaving = ({ priceProduct, quantityProduct }) => {
     <div className="containerPriceSaving">
       <div className="wrapperPrice">
         <div className="wrapperCurrentPrice">
-          <p className="currentPrice">$ {handleFormatNumber(PriceDiscount)}</p>
+          <Typography variant="h4" component="div">
+            <Box
+              sx={{
+                color: "#000",
+                fontWeight: "800",
+              }}
+            >
+              $ {handleFormatNumber(PriceDiscount)}
+            </Box>
+          </Typography>
         </div>
         <div className="wrapperOtherPrices">
-          <p className="lastPrice">
-            Costaba ${handleFormatNumber(FirstPriceProduct)}
-          </p>
-          <p className="savingPrice">Ahorra ${handleFormatNumber(Saving)}</p>
+          <Typography variant="body2" component="div">
+            <Box
+              sx={{
+                color: "#969696",
+                fontWeight: 500,
+                marginRight: "20px",
+              }}
+            >
+              Costaba ${handleFormatNumber(FirstPriceProduct)}
+            </Box>
+          </Typography>
+          <Typography variant="body2" component="div">
+            <Box
+              sx={{
+                color: "#cf0a2c",
+                fontWeight: 500,
+              }}
+            >
+              Ahorra ${handleFormatNumber(Saving)}
+            </Box>
+          </Typography>
         </div>
       </div>
     </div>

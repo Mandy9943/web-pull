@@ -112,7 +112,12 @@ const SwiperSlider = ({
   // Para el uso del specialOfferMovil en productDetailMobil
   const specialOfferMovil = (
     <div className="swiperSliderDetail">
-      <Swiper className={type}>
+      <Swiper
+        className={type}
+        pagination={{
+          clickable: true,
+        }}
+      >
         <SwiperSlide>
           <DiscountPrice
             priceProduct={price}
@@ -142,7 +147,12 @@ const SwiperSlider = ({
   // Para el uso del specialOffer in desktop
   const specialOffer = (
     <div className="swiperSliderDetail">
-      <Swiper className={type}>
+      <Swiper
+        className={type}
+        pagination={{
+          clickable: true,
+        }}
+      >
         <SwiperSlide>
           <DiscountPrice
             priceProduct={price}

@@ -854,7 +854,7 @@ class PaySection extends Component {
         ? item.props.data.subcategory_link
         : "",
     };
-    console.log("pay section", step, data);
+    // console.log("pay section", step, data);
     const error = await createleadClient(data);
     // console.log(error);
   }

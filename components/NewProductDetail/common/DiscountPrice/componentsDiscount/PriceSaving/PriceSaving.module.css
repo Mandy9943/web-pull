@@ -10,38 +10,12 @@
   justify-content: center;
 }
 
-.containerPriceSaving .wrapperCurrentPrice .currentPrice {
-  font-size: 32px;
-  color: #000000;
-  line-height: 30.01px;
-  font-weight: 800;
-  position: static;
-  width: auto;
-  text-align: center;
-}
-
 .containerPriceSaving .wrapperOtherPrices {
   display: flex;
   justify-content: space-between;
   padding: 0px 38px;
   align-items: center;
   margin-top: 14px;
-}
-
-.containerPriceSaving .wrapperOtherPrices .lastPrice {
-  font-size: 14px;
-  color: #969696;
-  font-weight: 500;
-  position: static;
-  width: auto;
-}
-
-.containerPriceSaving .wrapperOtherPrices .savingPrice {
-  font-size: 12px;
-  color: #cf0a2c;
-  font-weight: 500;
-  position: static;
-  width: 104px;
 }
 
 /* Para los moviles */

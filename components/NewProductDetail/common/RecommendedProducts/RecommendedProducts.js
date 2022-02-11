@@ -43,6 +43,7 @@ const RecommendedProducts = ({
       slidesPerView: 1.4,
       spaceBetween: spaceBetween,
       freeMode: true,
+      loop: true,
       centeredSlides: true,
 
       pagination: {
@@ -68,7 +69,7 @@ const RecommendedProducts = ({
           width="122px"
           margin="auto auto 10px auto"
         />
-        <SectionTitle color="#CF0A2C" center>
+        <SectionTitle color="#CF0A2C" center variant="h4">
           OTROS TAMBIÉN COMPRARON
         </SectionTitle>
       </div>

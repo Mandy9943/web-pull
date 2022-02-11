@@ -53,6 +53,61 @@ export default function MyApp({ Component, pageProps }) {
         lg: 1280,
       },
     },
+
+    typography: {
+      allVariants: {
+        color: "#5d5d5d",
+      },
+      fontFamily: "Montserrat, sans-serif",
+
+      subtitle1: {
+        color: "black",
+        fontWeight: "bold",
+        fontSize: "1rem",
+        "@media (min-width:768px)": {
+          fontSize: "1.3rem",
+        },
+      },
+      subtitle2: {
+        color: "black",
+        fontWeight: "bold",
+        fontStyle: "normal",
+        fontSize: "1rem",
+      },
+      h1: {
+        fontSize: "4rem",
+        "@media (min-width:768px)": {
+          fontSize: "5.6rem",
+        },
+      },
+      h3: {
+        fontSize: "1.85rem",
+        "@media (min-width:768px)": {
+          fontSize: "3rem",
+        },
+      },
+      h4: {
+        fontSize: "1.65rem",
+        "@media (min-width:768px)": {
+          fontSize: "2.125rem",
+        },
+
+        color: "black",
+      },
+      h5: {
+        color: "black",
+        fontSize: "1.4rem",
+        "@media (min-width:768px)": {
+          fontSize: "1.5rem",
+        },
+      },
+      body2: {
+        fontSize: "12px",
+        "@media (min-width:768px)": {
+          fontSize: "0.875rem",
+        },
+      },
+    },
   });
   return (
     <ThemeProvider theme={theme}>

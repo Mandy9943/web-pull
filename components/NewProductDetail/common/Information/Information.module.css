@@ -1,4 +1,4 @@
-#DetailInfo {
+#Information {
   border-top: 2px solid #e4e4e4;
   border-bottom: 2px solid #e4e4e4;
   background: #fff;
@@ -6,17 +6,21 @@
   padding: 10px 25px;
 }
 
-#DetailInfo .closed {
+#Information .closed {
   height: 76px;
   width: auto;
 }
 
-#DetailInfo .open {
+#Information .open {
   height: 601px;
   width: auto;
 }
 
-#DetailInfo .titulo {
+#Information .detalles {
+  margin-top: 20px;
+}
+
+#Information .titulo {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -24,48 +28,27 @@
   cursor: pointer;
 }
 
-#DetailInfo .titulo h3 {
+#Information .titulo h3 {
   font-family: Montserrat, sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 21px;
   line-height: 26px;
   color: #000000;
-  margin-right: auto;
 }
 
-#DetailInfo .detalles {
-  display: grid;
-  align-items: center;
-}
-
-#DetailInfo .detalles .detailContainer {
-  display: flex;
-}
-
-#DetailInfo .detalles .detailContainer h6 {
-  margin-bottom: 16px;
-  flex-grow: 1;
-}
-
-#DetailInfo .detalles .detailContainer h5 {
+#Information .detalles .texto {
   font-family: Montserrat, sans-serif;
   font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 15px;
-  letter-spacing: 0.02em;
-  color: #000000;
-  margin-bottom: 16px;
-  flex-grow: 1;
-  max-width: 146px;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 21px;
+  color: #5f5f5f;
+  word-break: break-word;
+  text-align: justify;
 }
 
-#DetailInfo footer img {
-  grid-area: arrow;
-}
-
-#DetailInfo footer {
+#Information footer {
   align-items: center;
   justify-content: center;
   display: grid;
@@ -74,17 +57,14 @@
   height: 79px;
 }
 
-#DetailInfo footer img {
+#Information footer img {
   cursor: pointer;
 }
 
 @media (min-width: 768px) {
-  #DetailInfo {
+  #Information {
     border-radius: 10px;
     margin-bottom: 12px;
     border: none;
-  }
-  #DetailInfo .detalles {
-    display: block;
   }
 }

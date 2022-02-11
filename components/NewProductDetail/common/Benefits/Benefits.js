@@ -8,6 +8,7 @@ import benefit_02 from "../../../../assets/img/productDetail/02-benefit@2x.svg";
 import benefit_03 from "../../../../assets/img/productDetail/03-benefit@2x.svg";
 import benefit_04 from "../../../../assets/img/productDetail/Best Support 4 Graphic.svg";
 import benefit_05 from "../../../../assets/img/productDetail/Best Discounts 05 Graphic.svg";
+import SectionTitle from "../SectionTitle/SectionTitle";
 
 const Benefits = () => {
   return (
@@ -18,9 +19,10 @@ const Benefits = () => {
       direction="row"
       justifyContent="center"
     >
-      <h2>
+      <SectionTitle variant="h4" center>
         Beneficios de comprar con <div className="red">KIERO</div>
-      </h2>
+      </SectionTitle>
+
       <Grid
         container
         alignItems="center"
