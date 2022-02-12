@@ -101,7 +101,7 @@ export default function MyApp({ Component, pageProps }) {
       },
       h5: {
         color: "black",
-        fontSize: "1.4rem",
+        fontSize: "1.3rem",
         "@media (min-width:768px)": {
           fontSize: "1.5rem",
         },
