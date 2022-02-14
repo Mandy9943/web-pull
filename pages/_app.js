@@ -4,6 +4,7 @@ import Router, { useRouter } from "next/router";
 import { createTheme, ThemeProvider } from "@mui/material";
 
 import Head from "next/head";
+import "../normalize.css";
 import "../styles.css";
 // import GeneralChat from '../components/generalChat/index.js';
 // import SocketChat from "../components/Services/socket";

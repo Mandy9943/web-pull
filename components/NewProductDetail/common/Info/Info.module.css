@@ -1,3 +1,9 @@
+#productDetailMobil #InfoProductDetail .icon {
+  width: 40px;
+  display: flex;
+  justify-content: center;
+}
+
 #InfoProductDetail .envios {
   display: flex;
   align-items: center;
