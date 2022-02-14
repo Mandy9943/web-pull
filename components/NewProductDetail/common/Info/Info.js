@@ -6,6 +6,7 @@ import garantia from "../../../../assets/img/productDetail/union-3@2x.svg";
 
 import Image from "next/image";
 import { Grid, Box, Typography } from "@mui/material";
+import SectionTitle from "../SectionTitle/SectionTitle";
 
 const Info = () => {
   return (
@@ -28,7 +29,7 @@ const Info = () => {
           paddingBottom: "3vw",
         }}
       >
-        <Typography component="h2">
+        <SectionTitle variant="h4">
           ¿Porqué Comprar con{" "}
           <Box
             sx={{
@@ -37,10 +38,9 @@ const Info = () => {
             }}
             className="company"
           >
-            Kiero
+            Kiero?
           </Box>
-        </Typography>
-        ?
+        </SectionTitle>
       </Grid>
       <Grid container alignItems="center">
         <Grid

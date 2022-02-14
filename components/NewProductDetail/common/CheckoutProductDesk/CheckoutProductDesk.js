@@ -16,14 +16,14 @@ const CheckoutProductDeskWrapper = styled(Paper)(() => ({
   position: "relative",
 }));
 
-useEffect(() => {
-  //   const scrollDiv = document.querySelector("#CheckoutProductDesk");
-  //   scrollDiv.addEventListener("scroll", event => {
-  //     console.log("Top",scrollDiv.scrollTop,"Bottom",scrollDiv.scrollBottom)
-  // }, { passive: true });
-  // let coords = scrollDiv.getBoundingClientRect();
-  // console.log("coords",coords.top)
-}, []);
+// useEffect(() => {
+//   //   const scrollDiv = document.querySelector("#CheckoutProductDesk");
+//   //   scrollDiv.addEventListener("scroll", event => {
+//   //     console.log("Top",scrollDiv.scrollTop,"Bottom",scrollDiv.scrollBottom)
+//   // }, { passive: true });
+//   // let coords = scrollDiv.getBoundingClientRect();
+//   // console.log("coords",coords.top)
+// }, []);
 
 const CheckoutProductDesk = ({
   title,

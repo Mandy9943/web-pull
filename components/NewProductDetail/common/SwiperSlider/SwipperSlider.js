@@ -93,15 +93,13 @@ const SwiperSlider = ({
                   width={300}
                   className="skeletonProductDetail"
                 />
-                <div className="anullProperties">
-                  <Image
-                    layout="fill"
-                    className="imageMovil"
-                    data-src={image.url}
-                    src={image.url}
-                    alt={"Producto de kiero " + altImg.substr(0, 80)}
-                  />
-                </div>
+                <Image
+                  layout="fill"
+                  className="imageMovil"
+                  data-src={image.url}
+                  src={image.url}
+                  alt={"Producto de kiero " + altImg.substr(0, 80)}
+                />
               </SwiperSlide>
             );
           })
