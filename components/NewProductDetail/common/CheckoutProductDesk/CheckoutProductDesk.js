@@ -1,5 +1,5 @@
 import { Paper } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import CheckoutButton from "../CheckoutButton/CheckoutButton";
 import Counter from "../Counter/Counter";
 import PayMethod from "../PayMethod/PayMethod";
@@ -15,6 +15,15 @@ const CheckoutProductDeskWrapper = styled(Paper)(() => ({
   marginBottom: "12px",
   position: "relative",
 }));
+
+useEffect(() => {
+  //   const scrollDiv = document.querySelector("#CheckoutProductDesk");
+  //   scrollDiv.addEventListener("scroll", event => {
+  //     console.log("Top",scrollDiv.scrollTop,"Bottom",scrollDiv.scrollBottom)
+  // }, { passive: true });
+  // let coords = scrollDiv.getBoundingClientRect();
+  // console.log("coords",coords.top)
+}, []);
 
 const CheckoutProductDesk = ({
   title,
