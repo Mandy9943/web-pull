@@ -10,10 +10,11 @@
 }
 
 .SellerInfo .pictureSeller_image {
-  width: 100% !important;
-  height: 100% !important;
+  width: 90% !important;
+  height: 90% !important;
 }
 @media (min-width: 768px) and (max-width: 1024px) {
+
   .SellerInfo .pictureSeller_image {
     width: 100% !important;
     height: 100% !important;

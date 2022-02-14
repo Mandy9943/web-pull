@@ -52,7 +52,7 @@ const SellerInfo = () => {
             fontWeight: { xs: "700", sm: "700", md: "800" },
             fontStyle: "normal",
             textAlign: "center",
-            fontSize: { xs: "5vw", sm: "4.3vw", md: "3vw", lg: "3vw" },
+            fontSize: { xs: "5vw", sm: "4vw", md: "3vw", lg: "3vw" },
             m: {
               xs: "3vw 0 4vw 0",
               sm: "2vw 0 3vw 0",
@@ -120,7 +120,7 @@ const SellerInfo = () => {
                 fontWeight: "bold",
                 color: "#5d5d5d",
                 letterSpacing: "0",
-                fontSize: { xs: "6vw", sm: "5.3vw", md: "3vw", lg: "3vw" },
+                fontSize: { xs: "6vw", sm: "5vw", md: "3vw", lg: "3vw" },
                 marginLeft: { xs: "5vw", sm: "4vw", md: "2.3vw", lg: "1vw" },
                 mt: { xs: "1vw", sm: "0" },
               }}
