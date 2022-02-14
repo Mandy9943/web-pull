@@ -1,90 +1,90 @@
 .wrap-question {
-	padding: 40px;
-	border-top: 0.5px solid #e2e2e2;
+  padding: 40px;
+  border-top: 0.5px solid #e2e2e2;
 }
 
 .wrap-question h3 {
-	color: #111111;
-	font-size: 15px;
-	font-weight: 500;
-	-webkit-text-size-adjust: none;
+  color: #111111;
+  font-size: 15px;
+  font-weight: 500;
+  -webkit-text-size-adjust: none;
 }
 
 .wrap-question-buttons {
-	display: -ms-grid;
-	display: grid;
-	-ms-grid-columns: (auto) [3];
-	grid-template-columns: repeat(3, auto);
-	grid-gap: 15px;
-	margin: 10px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (auto) [3];
+  grid-template-columns: repeat(3, auto);
+  grid-gap: 15px;
+  margin: 10px;
 }
 
 .wrap-question-buttons .button-question-product-detail {
-	color: white;
-	font-size: 14px;
-	font-weight: 500;
-	padding: 5px;
-	background-color: #bdbdbd;
-	border: none;
-	-webkit-text-size-adjust: none;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 5px;
+  background-color: #bdbdbd;
+  border: none;
+  -webkit-text-size-adjust: none;
 }
 
 .wrap-question-buttons .button-question-product-detail:hover {
-	background: #cf0a2c;
-	color: white;
+  background: #cf0a2c;
+  color: white;
 }
 
 .wrap-question-input {
-	color: #111111;
-	display: -ms-grid;
-	display: grid;
-	-ms-grid-columns: 3fr 1fr;
-	grid-template-columns: 3fr 1fr;
-	grid-gap: 15px;
+  color: #111111;
+  display: -ms-grid;
+  /* display: grid; */
+  -ms-grid-columns: 3fr 1fr;
+  grid-template-columns: 3fr 1fr;
+  grid-gap: 15px;
 }
 
 #paymentDetailModal {
-	height: 200px;
+  height: 200px;
 }
 
 .wrap-question-input .button-question-product-detail {
-	background: #cf0a2c !important;
-	color: white !important;
-	font-weight: 500;
-	border: none !important;
-	width: 180px;
-	float: right;
+  background: #cf0a2c !important;
+  color: white !important;
+  font-weight: 500;
+  border: none !important;
+  width: 180px;
+  float: right;
 }
 
 .warranty-questions h3 {
-	text-align: center;
+  text-align: center;
 }
 
 .send-questions h3 span {
-	color: #cf0a2c;
+  color: #cf0a2c;
 }
 
 .send-questions .check {
-	color: #cf0a2c;
+  color: #cf0a2c;
 }
 .payment-questions h3 {
-	text-align: center;
+  text-align: center;
 }
 
 .payment-questions .pay-online-question {
-	width: 250px;
-	position: relative;
-	left: -40px;
+  width: 250px;
+  position: relative;
+  left: -40px;
 }
 .payment-questions .pay-transfer-question {
-	width: 250px;
-	position: relative;
-	left: -30px;
+  width: 250px;
+  position: relative;
+  left: -30px;
 }
 .payment-questions .pay-credit-question {
-	width: 250px;
-	position: relative;
-	left: -28px;
+  width: 250px;
+  position: relative;
+  left: -28px;
 }
 
 /* .button-question-product-detail {
@@ -95,29 +95,29 @@
 } */
 
 @media (max-width: 768px) {
-	.wrap-question {
-		padding: 30px 20px;
-	}
-	.wrap-question-input {
-		display: inline-block;
-		width: 95%;
-		font-size: 14px;
-		-webkit-text-size-adjust: none;
-	}
-	.wrap-question-buttons {
-		display: -ms-grid;
-		display: grid;
-		-ms-grid-columns: (auto) [3];
-		grid-template-columns: repeat(3, auto);
-		grid-gap: 10px;
-	}
-	.wrap-question-input .button-question-product-detail {
-		background: #cf0a2c !important;
-		color: white !important;
-		font-weight: 600;
-		border: none !important;
-		width: 100%;
-		margin-top: 10px;
-	}
+  .wrap-question {
+    padding: 30px 20px;
+  }
+  .wrap-question-input {
+    display: inline-block;
+    width: 95%;
+    font-size: 14px;
+    -webkit-text-size-adjust: none;
+  }
+  .wrap-question-buttons {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (auto) [3];
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 10px;
+  }
+  .wrap-question-input .button-question-product-detail {
+    background: #cf0a2c !important;
+    color: white !important;
+    font-weight: 600;
+    border: none !important;
+    width: 100%;
+    margin-top: 10px;
+  }
 }
 /*# sourceMappingURL=Question.css.map */
