@@ -1,13 +1,5 @@
-import {
-  TextField,
-  Checkbox,
-  Button,
-  DialogActions,
-  FormControlLabel,
-} from "@material-ui/core";
 import React, { useState } from "react";
 import FormDialog from "./components/FormDialog/FormDialog";
-import "./formProductDetail.module.css";
 import Link from "next/link";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -19,35 +11,28 @@ import { handleFormatName } from "../../../../lib/functions";
 import CryptoJS from "crypto-js";
 import Cookies from "js-cookie";
 import { useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
+
+import {
+  Grid,
+  IconButton,
+  styled,
+  Typography,
+  Checkbox,
+  Button,
+  DialogActions,
+  FormControlLabel,
+  Box,
+  TextField,
+} from "@mui/material";
+import Close from "@material-ui/icons/Close";
 // import requestIp from "request-ip";
 
 const FormProductDetail = ({ handleClose, open, userIp }) => {
   const productData = useAppSelector(selectData);
   // console.log(productData);
   const [state, setState] = useState({
-    cantidad: 0,
-    dimensions: {},
-    variantsSpinner: !productData.m_pgid,
-    modalAddr: false,
-    user: "",
     user_id: Cookies.get("user_id") || "",
-    email: "",
-    mobile_phone: "",
-    city: "",
-    region: "",
-    address: "",
-    neighborhood: "",
-    lastName: "",
-    dataTransaction: [],
-    validForm: true,
-    disabledButton: true,
-    termsOfService: "",
     identification: "0",
-    typeIdentification: "0T",
-    typeIdentificationName: "0TN",
-    display: "none",
     gclid: "",
     clientId: "",
   });
@@ -247,112 +232,133 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
   return (
     <div>
       <FormDialog open={open}>
-        <div id="FormProductDetail">
-          <span className="closeButton" onClick={handleClose}>
-            <FontAwesomeIcon icon={faTimes} />
-          </span>
-          <p className="formProductDetail-title">
-            Por favor agregue los datos de envío
-          </p>
-          <div className="form-wrapper">
-            <div className="fromProductDetail-wrapper-textfields">
-              <TextField
-                {...register("firstName")}
-                className="fromProductDetail-textfields font-size"
-                margin="dense"
-                id="firstName"
-                label="Nombres"
-                type="text"
-                variant="outlined"
-                color="secondary"
-                error={errors.firstName}
-                helperText={errors?.firstName?.message}
-                required
-              />
-              <TextField
-                {...register("lastName")}
-                className="fromProductDetail-textfields font-size"
-                margin="dense"
-                id="lastName"
-                label="Apellidos"
-                type="text"
-                variant="outlined"
-                color="secondary"
-                error={errors.lastName}
-                helperText={errors?.lastName?.message}
-                required
-              />
-            </div>
-            <TextField
-              {...register("email")}
-              className="font-size"
-              margin="dense"
-              id="email"
-              label="Correo"
-              type="text"
-              fullWidth
-              variant="outlined"
-              color="secondary"
-              error={errors.email}
-              helperText={errors?.email?.message}
-              required
-            />
-            <TextField
-              {...register("phoneNumber")}
-              className="font-size"
-              margin="dense"
-              id="phoneNumber"
-              label="Telefono Movil"
-              type="text"
-              fullWidth
-              variant="outlined"
-              color="secondary"
-              error={errors.phoneNumber}
-              helperText={errors?.phoneNumber?.message}
-              required
-            />
-            <TextField
-              {...register("city")}
-              className="font-size"
-              margin="dense"
-              id="city"
-              label="Ciudad"
-              type="text"
-              fullWidth
-              variant="outlined"
-              color="secondary"
-              error={errors.city}
-              helperText={errors?.city?.message}
-              required
-            />
-            <TextField
-              {...register("address")}
-              className="font-size"
-              margin="dense"
-              id="address"
-              label="Direccion"
-              type="text"
-              fullWidth
-              color="secondary"
-              variant="outlined"
-              error={errors.address}
-              helperText={errors?.address?.message}
-              required
-            />
+        <Box
+          id="FormProductDetail"
+          sx={{ position: "relative", paddingTop: "15px" }}
+        >
+          <Box sx={{ position: "absolute", top: "-20px", right: "-24px" }}>
+            <IconButton onClick={handleClose}>
+              <Close />
+            </IconButton>
+          </Box>
+          <Typography component="div">
+            <Box
+              sx={{
+                textAlign: { xs: "center", sm: "left" },
+                fontSize: "18px",
+                margin: "10px 0",
+              }}
+            >
+              Por favor agregue los datos de envío
+            </Box>
+          </Typography>
+          <Box>
+            <Box sx={{ flexGrow: 1 }}>
+              <Grid container>
+                <Grid item xs={12} sm={6} sx={{ paddingRight: { sm: "15px" } }}>
+                  <TextFieldS
+                    size="small"
+                    {...register("firstName")}
+                    margin="dense"
+                    id="firstName"
+                    label="Nombres"
+                    type="text"
+                    variant="outlined"
+                    error={errors.firstName}
+                    helperText={errors?.firstName?.message}
+                    required
+                  />
+                </Grid>
 
-            <div className="wrapper-checkbox">
+                <Grid item xs={12} sm={6}>
+                  <TextFieldS
+                    size="small"
+                    {...register("lastName")}
+                    margin="dense"
+                    id="lastName"
+                    label="Apellidos"
+                    type="text"
+                    variant="outlined"
+                    error={errors.lastName}
+                    helperText={errors?.lastName?.message}
+                    required
+                  />
+                </Grid>
+                <Grid xs={12}>
+                  <TextFieldS
+                    size="small"
+                    {...register("email")}
+                    margin="dense"
+                    id="email"
+                    label="Correo"
+                    type="text"
+                    fullWidth
+                    variant="outlined"
+                    error={errors.email}
+                    helperText={errors?.email?.message}
+                    required
+                  />
+                </Grid>
+
+                <Grid xs={12}>
+                  <TextFieldS
+                    size="small"
+                    {...register("phoneNumber")}
+                    margin="dense"
+                    id="phoneNumber"
+                    label="Telefono Movil"
+                    type="text"
+                    fullWidth
+                    variant="outlined"
+                    error={errors.phoneNumber}
+                    helperText={errors?.phoneNumber?.message}
+                    required
+                  />
+                  <Grid xs={12}>
+                    <TextFieldS
+                      size="small"
+                      {...register("city")}
+                      margin="dense"
+                      id="city"
+                      label="Ciudad"
+                      type="text"
+                      fullWidth
+                      variant="outlined"
+                      error={errors.city}
+                      helperText={errors?.city?.message}
+                      required
+                    />
+                  </Grid>
+                  <Grid xs={12}>
+                    <TextFieldS
+                      size="small"
+                      {...register("address")}
+                      margin="dense"
+                      id="address"
+                      label="Direccion"
+                      type="text"
+                      fullWidth
+                      variant="outlined"
+                      error={errors.address}
+                      helperText={errors?.address?.message}
+                      required
+                    />
+                  </Grid>
+                </Grid>
+              </Grid>
+            </Box>
+
+            <Box sx={{ display: "flex", marginTop: "25px" }}>
               <Controller
                 name="agreePolicy"
                 control={control}
                 render={({ field }) => (
                   <FormControlLabel
-                    className="font-size"
                     margin="dense"
-                    color="secondary"
                     error={errors.agreePolicy}
                     required
                     label={
-                      <p className="agreePolicy">
+                      <Typography component="p" variant="body2">
                         Antes de continuar debes aceptar los{" "}
                         <Link href="/terminos">
                           <a>terminos</a>
@@ -366,7 +372,7 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
                           <a>política de privacidad</a>
                         </Link>{" "}
                         de KieroMarketplace
-                      </p>
+                      </Typography>
                     }
                     control={
                       <Checkbox
@@ -384,16 +390,16 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
                 onChange={(e) =>
                   register.agreePolicy.onChange(e.target.checked)
                 }
-                className="font-size"
+              
                 margin="dense"
                 type="text"
-                color="secondary"
+                
                 error={errors.agreePolicy}
                 helperText={errors?.agreePolicy?.message}
                 required
               /> */}
-            </div>
-          </div>
+            </Box>
+          </Box>
           <form
             className="finish-pay"
             method="post"
@@ -465,23 +471,26 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
             />
 
             <DialogActions>
-              <div className="FormDialog-button">
+              <Box sx={{ margin: "20px 0" }}>
                 <Button
                   onClick={onSubmit}
                   type="submit"
-                  color="secondary"
                   variant="contained"
                   disabled={dirtyFields === {} || !isValid}
                 >
                   Continuar con la transacción
                 </Button>
-              </div>
+              </Box>
             </DialogActions>
           </form>
-        </div>
+        </Box>
       </FormDialog>
     </div>
   );
 };
 
 export default FormProductDetail;
+
+const TextFieldS = styled(TextField)(() => ({
+  width: "100%",
+}));

@@ -178,7 +178,7 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
                 <OurClient category={data?.breadcum[0]?.name.substring(0, 7)} />
               </Grid>
 
-              <Grid item sm={4}>
+              <Grid item sm={4} className="checkoutDesktop">
                 <CheckoutProductDesk
                   title={data.title}
                   onClickBuy={handleOpenForm}
