@@ -1,3 +1,9 @@
+#InfoProductDetail .icon {
+  width: 40px;
+  display: flex;
+  justify-content: center;
+}
+
 #InfoProductDetail .envios {
   display: flex;
   align-items: center;
@@ -81,7 +87,7 @@
 }
 
 /* Modo Table*/
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   #InfoProductDetail {
     border-radius: 10px;
   }

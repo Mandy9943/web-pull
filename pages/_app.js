@@ -4,6 +4,7 @@ import Router, { useRouter } from "next/router";
 import { createTheme, ThemeProvider } from "@mui/material";
 
 import Head from "next/head";
+import "../normalize.css";
 import "../styles.css";
 // import GeneralChat from '../components/generalChat/index.js';
 // import SocketChat from "../components/Services/socket";
@@ -45,6 +46,11 @@ export default function MyApp({ Component, pageProps }) {
   }, []);
 
   const theme = createTheme({
+    palette: {
+      primary: {
+        main: "#cf0a2c",
+      },
+    },
     breakpoints: {
       values: {
         xs: 0,
@@ -96,7 +102,7 @@ export default function MyApp({ Component, pageProps }) {
       },
       h5: {
         color: "black",
-        fontSize: "1.4rem",
+        fontSize: "1.3rem",
         "@media (min-width:768px)": {
           fontSize: "1.5rem",
         },
