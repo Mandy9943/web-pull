@@ -2,6 +2,7 @@
   border-bottom: 4px solid #e4e4e4;
   background: #fff;
   transition: all 0.3s ease;
+  padding: 30px 25px;
 }
 
 #Benefits .benefit {
@@ -61,7 +62,7 @@
   align-items: center;
   flex-direction: column;
   flex-wrap: nowrap;
-  margin: 1% 0;
+  margin: 40px 0;
 }
 
 @media (min-width: 768px) {
