@@ -29,7 +29,7 @@ const Info = () => {
           paddingBottom: "3vw",
         }}
       >
-        <SectionTitle variant="h4">
+        <SectionTitle variant="h5">
           ¿Porqué Comprar con{" "}
           <Box
             sx={{
