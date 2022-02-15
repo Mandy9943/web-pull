@@ -12,8 +12,7 @@ import { Typography } from "@mui/material";
 const SellerInfo = () => {
   const [conteo, setConteo] = useState(0);
   const handleConteo = useCallback(() => {
-    // let start = 0;
-    let start = 547;
+    let start = 0;
     const end = 547;
     if (start === end) return;
     let totalmilSecDur = 20;
@@ -52,7 +51,6 @@ const SellerInfo = () => {
             fontWeight: { xs: "700", sm: "700", md: "800" },
             fontStyle: "normal",
             textAlign: "center",
-            fontSize: { xs: "5vw", sm: "4vw", md: "3vw", lg: "3vw" },
             m: {
               xs: "3vw 0 4vw 0",
               sm: "2vw 0 3vw 0",
@@ -61,6 +59,7 @@ const SellerInfo = () => {
             },
           }}
           component="h3"
+          variant="h5"
         >
           Información sobre el vendedor
         </Typography>
@@ -73,6 +72,7 @@ const SellerInfo = () => {
           justifyContent: "center",
           flexDirection: { md: "row", lg: "row" },
           flexWrap: { lg: "nowrap", md: "nowrap" },
+          paddingBottom: { xs: "10vw", sm: "10vw", md: "10vw", lg: "10vw" },
         }}
       >
         <Grid
@@ -93,7 +93,15 @@ const SellerInfo = () => {
           md={6}
           lg={6}
         >
-          <Grid xs={6} item>
+          <Grid
+            xs={6}
+            container
+            sx={{
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "flex-end",
+            }}
+          >
             <div className="anullProperties">
               <Image
                 src={spice}
@@ -115,6 +123,7 @@ const SellerInfo = () => {
             <Typography
               gutterBottom
               component="h4"
+              variant="h4"
               sx={{
                 fontStyle: "normal",
                 fontWeight: "bold",
@@ -135,9 +144,9 @@ const SellerInfo = () => {
           sm={12}
           md={6}
           lg={6}
-          sx={{
-            paddingBottom: { xs: "10vw", sm: "10vw", md: "10vw", lg: "10vw" },
-          }}
+          // sx={{
+          //   paddingBottom: { xs: "10vw", sm: "10vw", md: "10vw", lg: "10vw" },
+          // }}
           className="infoSeller"
         >
           <Grid
