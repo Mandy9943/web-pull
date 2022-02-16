@@ -1,5 +1,5 @@
 import { Paper } from "@mui/material";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import CheckoutButton from "../CheckoutButton/CheckoutButton";
 import Counter from "../Counter/Counter";
 import PayMethod from "../PayMethod/PayMethod";
@@ -16,15 +16,6 @@ const CheckoutProductDeskWrapper = styled(Paper)(() => ({
   position: "relative",
 }));
 
-// useEffect(() => {
-//   //   const scrollDiv = document.querySelector("#CheckoutProductDesk");
-//   //   scrollDiv.addEventListener("scroll", event => {
-//   //     console.log("Top",scrollDiv.scrollTop,"Bottom",scrollDiv.scrollBottom)
-//   // }, { passive: true });
-//   // let coords = scrollDiv.getBoundingClientRect();
-//   // console.log("coords",coords.top)
-// }, []);
-
 const CheckoutProductDesk = ({
   title,
   price,
@@ -33,6 +24,35 @@ const CheckoutProductDesk = ({
   onClickBuy,
 }) => {
   const count = Math.ceil(Math.random() * 50);
+  const [dataGpsCheckout, setDataGpsCheckout] = useState(0);
+  const [dataGpsFooter, setDataGpsFooter] = useState(0);
+  useEffect(() => {
+    const scrollCheckout = document.querySelector("#CheckoutProductDesk");
+    const scrollFooter = document.querySelector(".containerInfo");
+
+    // scrollDiv.addEventListener("scroll", event => {
+    //   console.log("Top",scrollDiv.scrollTop,"Bottom",scrollDiv.scrollBottom)
+    // }, { passive: true });
+    const functionDataScroll = () => {
+      let coordsCheckout = scrollCheckout.getBoundingClientRect();
+      let coordsFooter = scrollFooter.getBoundingClientRect();
+      setDataGpsCheckout(coordsCheckout.top);
+      setDataGpsFooter(coordsFooter.top);
+    };
+    functionDataScroll();
+
+    window.addEventListener("scroll", functionDataScroll);
+    return () => {
+      window.removeEventListener("scroll", functionDataScroll);
+    };
+  }, []);
+
+  console.log(
+    "checkout",
+    Math.round(dataGpsCheckout),
+    "footer",
+    Math.round(dataGpsFooter)
+  );
   return (
     <CheckoutProductDeskWrapper elevation={4} id="CheckoutProductDesk">
       <div className="title">
