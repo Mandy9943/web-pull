@@ -1,20 +1,27 @@
-.SellerInfo .certificateSeller_image {
-  height: 4vw !important;
-  width: 100% !important;
-}
+/* Modo Mobile */
+@media (max-width: 767px) {
+  .SellerInfo .certificateSeller_image {
+    height: 3vw !important;
+    width: 100% !important;
+  }
 
-.SellerInfo .starSellerIcon {
-  margin-right: 1vw;
-  height: 4vw;
-  width: auto;
-}
+  .SellerInfo .starSellerIcon {
+    margin-right: 1vw;
+    height: 2.5vw;
+    width: auto;
+  }
+  .SellerInfo .pictureSeller_image {
+    width: 120% !important;
+    height: auto !important;
+  }
 
-.SellerInfo .pictureSeller_image {
-  width: 90% !important;
-  height: 90% !important;
+  .SellerInfo .pictureSeller_ok {
+    width: 120% !important;
+    height: auto !important;
+  }
 }
+/* Modo Tablet */
 @media (min-width: 768px) and (max-width: 1024px) {
-
   .SellerInfo .pictureSeller_image {
     width: 100% !important;
     height: 100% !important;
@@ -30,7 +37,7 @@
     width: auto;
   }
 }
-
+/* Modo Desktop*/
 @media (min-width: 1025px) {
   .SellerInfo .starSellerIcon {
     margin-right: 0.5vw;
