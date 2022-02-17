@@ -1,18 +1,23 @@
-.SellerInfo .certificateSeller_image {
-  height: 4vw !important;
-  width: 100% !important;
-}
-
-.SellerInfo .starSellerIcon {
-  margin-right: 1vw;
-  height: 4vw;
-  width: auto;
-}
-
+/* Modo Mobile */
 @media (max-width: 767px) {
-  .SellerInfo .pictureSeller_image {
+  .SellerInfo .certificateSeller_image {
+    height: 3vw !important;
     width: 100% !important;
-    height: 100% !important;
+  }
+
+  .SellerInfo .starSellerIcon {
+    margin-right: 1vw;
+    height: 2.5vw;
+    width: auto;
+  }
+  .SellerInfo .pictureSeller_image {
+    width: 120% !important;
+    height: auto !important;
+  }
+
+  .SellerInfo .pictureSeller_ok {
+    width: 120% !important;
+    height: auto !important;
   }
 }
 /* Modo Tablet */
