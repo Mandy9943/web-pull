@@ -12,7 +12,7 @@ import { Typography } from "@mui/material";
 const SellerInfo = () => {
   const [conteo, setConteo] = useState(0);
   const handleConteo = useCallback(() => {
-    let start = 0;
+    let start = 547;
     const end = 547;
     if (start === end) return;
     let totalmilSecDur = 20;
@@ -98,8 +98,13 @@ const SellerInfo = () => {
             container
             sx={{
               flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "flex-end",
+              alignItems: {
+                xs: "center",
+                sm: "center",
+                md: "flex-end",
+                lg: "flex-end",
+              },
+              justifyContent: "center",
             }}
           >
             <div className="anullProperties">
@@ -123,32 +128,20 @@ const SellerInfo = () => {
             <Typography
               gutterBottom
               component="h4"
-              variant="h4"
               sx={{
                 fontStyle: "normal",
                 fontWeight: "bold",
                 color: "#5d5d5d",
                 letterSpacing: "0",
-                fontSize: { xs: "6vw", sm: "5vw", md: "3vw", lg: "3vw" },
-                marginLeft: { xs: "5vw", sm: "4vw", md: "2.3vw", lg: "1vw" },
-                mt: { xs: "1vw", sm: "0" },
+                fontSize: { xs: "1.5rem", sm: "2rem", md: "2rem", lg: "3vw" },
+                m: { xs: "1vw 0", sm: "0 15%", md: "0 15%" },
               }}
             >
               Spice Stock LLC.
             </Typography>
           </Grid>
         </Grid>
-        <Grid
-          container
-          xs={12}
-          sm={12}
-          md={6}
-          lg={6}
-          // sx={{
-          //   paddingBottom: { xs: "10vw", sm: "10vw", md: "10vw", lg: "10vw" },
-          // }}
-          className="infoSeller"
-        >
+        <Grid container xs={12} sm={12} md={6} lg={6} className="infoSeller">
           <Grid
             container
             className="certificate"

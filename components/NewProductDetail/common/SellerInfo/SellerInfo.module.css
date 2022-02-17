@@ -9,12 +9,18 @@
   width: auto;
 }
 
-.SellerInfo .pictureSeller_image {
-  width: 90% !important;
-  height: 90% !important;
+@media (max-width: 767px) {
+  .SellerInfo .pictureSeller_image {
+    width: 100% !important;
+    height: 100% !important;
+  }
 }
 /* Modo Tablet */
 @media (min-width: 768px) and (max-width: 1024px) {
+  .SellerInfo .pictureSeller_image {
+    width: 100% !important;
+    height: 100% !important;
+  }
 
   .SellerInfo .certificateSeller_image {
     height: 3vw !important;
