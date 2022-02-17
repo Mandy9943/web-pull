@@ -134,15 +134,23 @@ const SellerInfo = () => {
                 fontWeight: "bold",
                 color: "#5d5d5d",
                 letterSpacing: "0",
-                fontSize: { xs: "1.3rem", sm: "2rem", md: "2rem", lg: "3vw" },
-                m: { xs: "1vw 0", sm: "1vw 3vw", md: "1vw 0", lg: "1vw 0" },
+                fontSize: { xs: "1.3rem", sm: "2rem", md: "2.2rem" },
+                m: { xs: "1vw 0", sm: "1vw 3vw", md: "1vw 1vw 1vw 3vw" },
               }}
             >
               Spice Stock <Box sx={{ display: "block" }}>LLC.</Box>
             </Typography>
           </Grid>
         </Grid>
-        <Grid container xs={12} sm={12} md={6} lg={6} className="infoSeller">
+        <Grid
+          container
+          xs={12}
+          sm={12}
+          md={6}
+          lg={6}
+          className="infoSeller"
+          sx={{ m: { md: "0 1vw" } }}
+        >
           <Grid
             container
             className="certificate"
@@ -175,8 +183,8 @@ const SellerInfo = () => {
                 fontStyle: "normal",
                 color: "#1fc2e6",
                 fontWeight: "bold",
-                m: { xs: "0 10vw 0 0", sm: "0 8vw 0 0" },
-                fontSize: { xs: "3vw", sm: "2vw", md: "1.5vw", lg: "2vw" },
+                m: { xs: "0 10vw 0 0", sm: "0 8vw 0 0", md: "0 5vw 0 0" },
+                fontSize: { xs: "3vw", sm: "2vw", md: "1.5vw" },
               }}
             >
               Certificado de calidad
@@ -215,7 +223,7 @@ const SellerInfo = () => {
               alignItems: "center",
               justifyContent: "center",
               flexDirection: "column",
-              marginX: { xs: "3vw", sm: "2vw" },
+              marginX: { xs: "3vw", sm: "2vw", md: "1vw" },
             }}
           >
             <Typography
@@ -226,8 +234,8 @@ const SellerInfo = () => {
                 fontWeight: "normal",
                 color: "#5d5d5d",
                 whiteSpace: "nowrap",
-                fontSize: { xs: "3vw", sm: "2vw", md: "1.5vw", lg: "2vw" },
-                marginBottom: { xs: "4vw", sm: "4vw", md: "3vw", lg: "3vw" },
+                fontSize: { xs: "3vw", sm: "2vw", md: "1.5vw" },
+                marginBottom: { xs: "4vw", sm: "4vw", md: "2.5vw" },
               }}
             >
               Es uno de nuestros mejores vendedores
@@ -280,7 +288,6 @@ const SellerInfo = () => {
                       xs: "3vw",
                       sm: "2.5vw",
                       md: "1.5vw",
-                      lg: "1.5vw",
                     },
                     fontWeight: { xs: "500", sm: "bold", md: "700", lg: "700" },
                     letterSpacing: "0.02rem",
