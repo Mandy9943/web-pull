@@ -85,8 +85,8 @@ const SellerInfo = () => {
             m: {
               xs: "3vw 3vw 3vw 3vw",
               sm: "0 5vw 5vw 5vw",
-              md: "0 3vw ",
-              lg: "0 3vw ",
+              md: "0 3vw",
+              lg: "0 3vw",
             },
           }}
           xs={12}
@@ -101,7 +101,7 @@ const SellerInfo = () => {
               flexDirection: "column",
               alignItems: {
                 xs: "center",
-                sm: "center",
+                sm: "flex-end",
                 md: "flex-end",
                 lg: "flex-end",
               },
@@ -123,7 +123,7 @@ const SellerInfo = () => {
             sx={{
               display: "flex",
               alignItems: "center",
-              justifyContent: "center",
+              justifyContent: { xs: "center", sm: "flex-start" },
             }}
           >
             <Typography
@@ -135,10 +135,10 @@ const SellerInfo = () => {
                 color: "#5d5d5d",
                 letterSpacing: "0",
                 fontSize: { xs: "1.3rem", sm: "2rem", md: "2rem", lg: "3vw" },
-                m: { xs: "1vw 2vw", sm: "0 15%", md: "0 15%" },
+                m: { xs: "1vw 0", sm: "1vw 3vw", md: "1vw 0", lg: "1vw 0" },
               }}
             >
-              Spice Stock LLC.
+              Spice Stock <Box sx={{ display: "block" }}>LLC.</Box>
             </Typography>
           </Grid>
         </Grid>
@@ -175,8 +175,8 @@ const SellerInfo = () => {
                 fontStyle: "normal",
                 color: "#1fc2e6",
                 fontWeight: "bold",
-                m: { xs: "0 10vw 0 0" },
-                fontSize: { xs: "3vw", sm: "2.5vw", md: "1.5vw", lg: "2vw" },
+                m: { xs: "0 10vw 0 0", sm: "0 8vw 0 0" },
+                fontSize: { xs: "3vw", sm: "2vw", md: "1.5vw", lg: "2vw" },
               }}
             >
               Certificado de calidad
@@ -226,7 +226,7 @@ const SellerInfo = () => {
                 fontWeight: "normal",
                 color: "#5d5d5d",
                 whiteSpace: "nowrap",
-                fontSize: { xs: "3vw", sm: "2.5vw", md: "1.5vw", lg: "2vw" },
+                fontSize: { xs: "3vw", sm: "2vw", md: "1.5vw", lg: "2vw" },
                 marginBottom: { xs: "4vw", sm: "4vw", md: "3vw", lg: "3vw" },
               }}
             >
@@ -278,7 +278,7 @@ const SellerInfo = () => {
                   sx={{
                     fontSize: {
                       xs: "3vw",
-                      sm: "3vw",
+                      sm: "2.5vw",
                       md: "1.5vw",
                       lg: "1.5vw",
                     },
@@ -315,7 +315,7 @@ const SellerInfo = () => {
                   sx={{
                     fontSize: {
                       xs: "3vw",
-                      sm: "3vw",
+                      sm: "2.5vw",
                       md: "1.5vw",
                       lg: "1.5vw",
                     },
@@ -351,7 +351,7 @@ const SellerInfo = () => {
                   sx={{
                     fontSize: {
                       xs: "3vw",
-                      sm: "3vw",
+                      sm: "2.5vw",
                       md: "1.5vw",
                       lg: "1.5vw",
                     },
@@ -370,6 +370,7 @@ const SellerInfo = () => {
               sx={{
                 width: { xs: "90%", md: "100%" },
                 border: "1px solid #d1d1d1",
+                m: "0",
               }}
             />
           </Grid>
