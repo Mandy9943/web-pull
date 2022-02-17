@@ -28,13 +28,18 @@
   }
 
   .SellerInfo .certificateSeller_image {
-    height: 3vw !important;
+    height: 2vw !important;
     width: auto !important;
   }
 
   .SellerInfo .starSellerIcon {
-    height: 3vw;
+    height: 2vw;
     width: auto;
+  }
+
+  .SellerInfo .pictureSeller_ok {
+    width: 120% !important;
+    height: auto !important;
   }
 }
 /* Modo Desktop*/
@@ -47,5 +52,15 @@
   .SellerInfo .certificateSeller_image {
     height: 2vw !important;
     width: auto !important;
+  }
+
+  .SellerInfo .pictureSeller_ok {
+    width: 120% !important;
+    height: auto !important;
+  }
+
+  .SellerInfo .pictureSeller_image {
+    width: 100% !important;
+    height: auto !important;
   }
 }
