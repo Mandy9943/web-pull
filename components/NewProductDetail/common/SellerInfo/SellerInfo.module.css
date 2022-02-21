@@ -11,7 +11,7 @@
     width: auto;
   }
   .SellerInfo .pictureSeller_image {
-    width: 120% !important;
+    width: 6rem !important;
     height: auto !important;
   }
 
@@ -23,8 +23,8 @@
 /* Modo Tablet */
 @media (min-width: 768px) and (max-width: 1024px) {
   .SellerInfo .pictureSeller_image {
-    width: 100% !important;
-    height: 100% !important;
+    width: 10rem !important;
+    height: auto !important;
   }
 
   .SellerInfo .certificateSeller_image {
@@ -63,4 +63,15 @@
     width: 100% !important;
     height: auto !important;
   }
+}
+
+/* Correciones*/
+
+@media (max-width: 306px) {
+  .SellerInfo_pictureSelect_text {
+    margin: 0 !important;
+    white-space: nowrap;
+    font-size: 1rem !important;
+  }
+
 }

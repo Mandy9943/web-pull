@@ -134,9 +134,14 @@ const SellerInfo = () => {
                 fontWeight: "bold",
                 color: "#5d5d5d",
                 letterSpacing: "0",
-                fontSize: { xs: "1.3rem", sm: "2rem", md: "2.2rem" },
-                m: { xs: "1vw 0", sm: "1vw 3vw", md: "1vw 1vw 1vw 3vw" },
+                fontSize: { xs: "1rem", sm: "1.5rem", md: "2rem" },
+                m: {
+                  xs: "0 0 0 1rem",
+                  sm: "0 0 0 1.5rem",
+                  md: "0 0 0 2rem",
+                },
               }}
+              className="SellerInfo_pictureSelect_text"
             >
               Spice Stock <Box sx={{ display: "block" }}>LLC.</Box>
             </Typography>
