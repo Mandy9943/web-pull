@@ -189,7 +189,7 @@ const SellerInfo = () => {
                 color: "#1fc2e6",
                 fontWeight: "bold",
                 m: { xs: "0 10vw 0 0", sm: "0 8vw 0 0", md: "0 5vw 0 0" },
-                fontSize: { xs: "3vw", sm: "2vw", md: "1.5vw" },
+                fontSize: { xs: "0.5rem", sm: "2vw", md: "1.5vw" },
               }}
             >
               Certificado de calidad
