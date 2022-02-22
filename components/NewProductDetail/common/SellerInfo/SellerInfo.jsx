@@ -41,7 +41,7 @@ const SellerInfo = () => {
         container
         sx={{
           alignItems: "center",
-          justifyContent: "center",
+          justifyContent: "center !important",
         }}
         xs={12}
         className="headerSeller"
@@ -123,7 +123,7 @@ const SellerInfo = () => {
             sx={{
               display: "flex",
               alignItems: "center",
-              justifyContent: { xs: "center", sm: "flex-start" },
+              justifyContent: "flex-start",
             }}
           >
             <Typography
