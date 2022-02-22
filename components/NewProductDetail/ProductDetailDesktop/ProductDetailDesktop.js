@@ -30,7 +30,6 @@ import { useState } from "react";
 import WhatsappBanner from "../common/WhatsappBanner/WhatsappBanner";
 import PayMethod from "../common/PayMethod/PayMethod";
 import Cookies from "js-cookie";
-import { ParallaxProvider } from "react-scroll-parallax";
 
 const Detail = dynamic(() => import("../common/Detail/Detail"), {
   ssr: false,

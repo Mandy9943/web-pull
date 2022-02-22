@@ -6,7 +6,6 @@ import PayMethod from "../PayMethod/PayMethod";
 import WhatsappBanner from "../WhatsappBanner/WhatsappBanner";
 import "./CheckoutProductDesk.module.css";
 import { styled } from "@mui/material/styles";
-import { useParallax, Parallax } from "react-scroll-parallax";
 const CheckoutProductDeskWrapper = styled(Paper)(() => ({
   width: "100%",
   boxSizing: "border-box",
