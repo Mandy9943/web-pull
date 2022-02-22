@@ -12,8 +12,8 @@ import { Typography } from "@mui/material";
 const SellerInfo = () => {
   const [conteo, setConteo] = useState(0);
   const handleConteo = useCallback(() => {
-    // let start = 0;
     let start = 547;
+    // let start = 0;
     const end = 547;
     if (start === end) return;
     let totalmilSecDur = 20;
@@ -41,7 +41,7 @@ const SellerInfo = () => {
         container
         sx={{
           alignItems: "center",
-          justifyContent: "center",
+          justifyContent: "center !important",
         }}
         xs={12}
         className="headerSeller"
@@ -52,7 +52,6 @@ const SellerInfo = () => {
             fontWeight: { xs: "700", sm: "700", md: "800" },
             fontStyle: "normal",
             textAlign: "center",
-            fontSize: { xs: "5vw", sm: "4vw", md: "3vw", lg: "3vw" },
             m: {
               xs: "3vw 0 4vw 0",
               sm: "2vw 0 3vw 0",
@@ -61,6 +60,7 @@ const SellerInfo = () => {
             },
           }}
           component="h3"
+          variant="h5"
         >
           Información sobre el vendedor
         </Typography>
@@ -73,6 +73,7 @@ const SellerInfo = () => {
           justifyContent: "center",
           flexDirection: { md: "row", lg: "row" },
           flexWrap: { lg: "nowrap", md: "nowrap" },
+          paddingBottom: { xs: "10vw", sm: "10vw", md: "10vw", lg: "10vw" },
         }}
       >
         <Grid
@@ -82,10 +83,10 @@ const SellerInfo = () => {
             alignItems: "center",
             justifyContent: "center",
             m: {
-              xs: "0 3vw 3vw 3vw",
+              xs: "3vw 3vw 3vw 3vw",
               sm: "0 5vw 5vw 5vw",
-              md: "0 3vw ",
-              lg: "0 3vw ",
+              md: "0 3vw",
+              lg: "0 3vw",
             },
           }}
           xs={12}
@@ -93,7 +94,20 @@ const SellerInfo = () => {
           md={6}
           lg={6}
         >
-          <Grid xs={6} item>
+          <Grid
+            xs={6}
+            container
+            sx={{
+              flexDirection: "column",
+              alignItems: {
+                xs: "center",
+                sm: "flex-end",
+                md: "flex-end",
+                lg: "flex-end",
+              },
+              justifyContent: "center",
+            }}
+          >
             <div className="anullProperties">
               <Image
                 src={spice}
@@ -109,7 +123,7 @@ const SellerInfo = () => {
             sx={{
               display: "flex",
               alignItems: "center",
-              justifyContent: "center",
+              justifyContent: "flex-start",
             }}
           >
             <Typography
@@ -120,12 +134,16 @@ const SellerInfo = () => {
                 fontWeight: "bold",
                 color: "#5d5d5d",
                 letterSpacing: "0",
-                fontSize: { xs: "6vw", sm: "5vw", md: "3vw", lg: "3vw" },
-                marginLeft: { xs: "5vw", sm: "4vw", md: "2.3vw", lg: "1vw" },
-                mt: { xs: "1vw", sm: "0" },
+                fontSize: { xs: "1rem", sm: "1.5rem", md: "2rem" },
+                m: {
+                  xs: "0 0 0 1rem",
+                  sm: "0 0 0 1.5rem",
+                  md: "0 0 0 2rem",
+                },
               }}
+              className="SellerInfo_pictureSelect_text"
             >
-              Spice Stock LLC.
+              Spice Stock <Box sx={{ display: "block" }}>LLC.</Box>
             </Typography>
           </Grid>
         </Grid>
@@ -135,10 +153,8 @@ const SellerInfo = () => {
           sm={12}
           md={6}
           lg={6}
-          sx={{
-            paddingBottom: { xs: "10vw", sm: "10vw", md: "10vw", lg: "10vw" },
-          }}
           className="infoSeller"
+          sx={{ m: { md: "0 1vw" } }}
         >
           <Grid
             container
@@ -172,8 +188,8 @@ const SellerInfo = () => {
                 fontStyle: "normal",
                 color: "#1fc2e6",
                 fontWeight: "bold",
-                paddingRight: { xs: "1vw" },
-                fontSize: { xs: "4vw", sm: "2.5vw", md: "1.5vw", lg: "2vw" },
+                m: { xs: "0 10vw 0 0", sm: "0 8vw 0 0", md: "0 5vw 0 0" },
+                fontSize: { xs: "3vw", sm: "2vw", md: "1.5vw" },
               }}
             >
               Certificado de calidad
@@ -212,7 +228,7 @@ const SellerInfo = () => {
               alignItems: "center",
               justifyContent: "center",
               flexDirection: "column",
-              marginX: { xs: "3vw", sm: "2vw" },
+              marginX: { xs: "3vw", sm: "2vw", md: "1vw" },
             }}
           >
             <Typography
@@ -223,8 +239,8 @@ const SellerInfo = () => {
                 fontWeight: "normal",
                 color: "#5d5d5d",
                 whiteSpace: "nowrap",
-                fontSize: { xs: "4vw", sm: "2.5vw", md: "1.5vw", lg: "2vw" },
-                marginBottom: { xs: "4vw", sm: "4vw", md: "3vw", lg: "3vw" },
+                fontSize: { xs: "3vw", sm: "2vw", md: "1.5vw" },
+                marginBottom: { xs: "4vw", sm: "4vw", md: "2.5vw" },
               }}
             >
               Es uno de nuestros mejores vendedores
@@ -234,6 +250,7 @@ const SellerInfo = () => {
               sx={{
                 width: { xs: "90%", md: "100%" },
                 border: "1px solid #d1d1d1",
+                m: "0",
               }}
             />
             <Grid
@@ -241,7 +258,7 @@ const SellerInfo = () => {
               sx={{
                 flexDirection: "row",
                 m: {
-                  xs: "2vw 0 2vw 0 ",
+                  xs: "1vw 0 1vw 0 ",
                   sm: "1vw 0 1vw 0",
                   md: "1vw 0 1vw 0",
                   lg: "1vw 0 1vw 0",
@@ -274,9 +291,8 @@ const SellerInfo = () => {
                   sx={{
                     fontSize: {
                       xs: "3vw",
-                      sm: "3vw",
+                      sm: "2.5vw",
                       md: "1.5vw",
-                      lg: "1.5vw",
                     },
                     fontWeight: { xs: "500", sm: "bold", md: "700", lg: "700" },
                     letterSpacing: "0.02rem",
@@ -298,7 +314,12 @@ const SellerInfo = () => {
                 }}
               >
                 <div className="anullProperties">
-                  <Image src={ok} alt="ok" layout="fill" />
+                  <Image
+                    src={ok}
+                    alt="ok"
+                    layout="fill"
+                    className="pictureSeller_ok"
+                  />
                 </div>
 
                 <Typography
@@ -306,7 +327,7 @@ const SellerInfo = () => {
                   sx={{
                     fontSize: {
                       xs: "3vw",
-                      sm: "3vw",
+                      sm: "2.5vw",
                       md: "1.5vw",
                       lg: "1.5vw",
                     },
@@ -330,14 +351,19 @@ const SellerInfo = () => {
                 }}
               >
                 <div className="anullProperties">
-                  <Image src={ok} alt="ok" layout="fill" />
+                  <Image
+                    src={ok}
+                    alt="ok"
+                    layout="fill"
+                    className="pictureSeller_ok"
+                  />
                 </div>
                 <Typography
                   component="p"
                   sx={{
                     fontSize: {
                       xs: "3vw",
-                      sm: "3vw",
+                      sm: "2.5vw",
                       md: "1.5vw",
                       lg: "1.5vw",
                     },
@@ -356,6 +382,7 @@ const SellerInfo = () => {
               sx={{
                 width: { xs: "90%", md: "100%" },
                 border: "1px solid #d1d1d1",
+                m: "0",
               }}
             />
           </Grid>
