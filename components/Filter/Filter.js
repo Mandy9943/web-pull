@@ -39,6 +39,7 @@ class Filter extends Component {
     this.validateToPrice = this.validateToPrice.bind(this);
     this.toggleMenuOrder = this.toggleMenuOrder.bind(this);
     this.toggleMenuFilter = this.toggleMenuFilter.bind(this);
+    this.toggleBackMenuFilter = this.toggleBackMenuFilter.bind(this);
   }
   res_categories = [];
   componentDidMount() {
@@ -78,6 +79,12 @@ class Filter extends Component {
 
   toggleMenuFilter() {
     this.setState({ menuFilter: !this.state.menuFilter });
+  }
+
+  toggleBackMenuFilter() {
+    window.onpopstate = undefined;
+    window.history.back();
+    this.toggleMenuFilter();
   }
 
   ShowAllCategories() {
@@ -644,7 +651,7 @@ class Filter extends Component {
               <li>
                 <FontAwesomeIcon
                   icon={faBars}
-                  onClick={this.toggleMenuFilter}
+                  onClick={this.toggleBackMenuFilter}
                 />
               </li>
               <li>Filtrar</li>
