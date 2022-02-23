@@ -12,8 +12,11 @@ import {
   faWindowClose,
   faTruck,
   faChevronRight,
+  faBars,
 } from "@fortawesome/free-solid-svg-icons";
 import { withRouter } from "next/router";
+import Button from "../Common/Button/Button";
+
 class Filter extends Component {
   constructor(props) {
     super(props);
@@ -640,7 +643,7 @@ class Filter extends Component {
             <ul>
               <li>
                 <FontAwesomeIcon
-                  icon={faTimes}
+                  icon={faBars}
                   onClick={this.toggleMenuFilter}
                 />
               </li>
@@ -718,6 +721,14 @@ class Filter extends Component {
                 </details>
               </li>
             </ul>
+            <div className="wrap-app-button">
+              <Button
+                text="Aplicar"
+                onClick={this.toggleMenuFilter}
+                type="Button"
+                fontSize="small"
+              />
+            </div>
           </div>
         </div>
       </>
