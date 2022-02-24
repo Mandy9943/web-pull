@@ -9,6 +9,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getData } from "../../../services/userApi";
 import Modal from "../Modal/Modal";
 import NotificationItem from "../NotificationItem";
+import {
+  handleActivateBack,
+  handleDeactivateBack,
+} from "../../../lib/functions";
 import MenuCategories from "../MenuCategories";
 import {
   faBars,
@@ -49,6 +53,22 @@ class Nav extends Component {
       modalLogout: false,
     };
     this.toggleModalLogout = this.toggleModalLogout.bind(this);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.modal2 !== this.state.modal2) {
+      if (this.state.modal2 === true) {
+        this.setState({ modale2: true });
+
+        handleDeactivateBack(() => {
+          this.setState({ modal2: false });
+
+          handleActivateBack();
+        });
+      } else {
+        handleActivateBack();
+      }
+    }
   }
 
   toggleModalLogout() {
