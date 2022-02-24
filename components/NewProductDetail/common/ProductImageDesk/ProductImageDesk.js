@@ -24,7 +24,7 @@ const ProductImageDesk = ({ images, altImg }) => {
     setActualImage(imageURL);
   };
   return (
-    <ProductImgDesk elevation={4} className="ProductImageDesk">
+    <ProductImgDesk className="ProductImageDesk">
       <div className="deskImages">
         {images.slice(0, 6).map((image) => {
           return (

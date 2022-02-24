@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 import "./Button.css";
 
-export default function Button({text, onClick, type}) {
-    return (
-        <button onClick={onClick} type={type} className="main-button">
-            <p>{text}</p>
-        </button>
-    )
+export default function Button({ text, onClick, type, fontSize }) {
+  return (
+    <button onClick={onClick} type={type} className={`${fontSize} main-button`}>
+      <p>{text}</p>
+    </button>
+  );
 }
