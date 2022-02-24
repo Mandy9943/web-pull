@@ -50,9 +50,9 @@ const SellerInfo = dynamic(() => import("../common/SellerInfo/SellerInfo"), {
   suspense: true,
 });
 
-const Benefits = dynamic(() => import("../common/Benefits/Benefits"), {
-  suspense: true,
-});
+// const Benefits = dynamic(() => import("../common/Benefits/Benefits"), {
+//   suspense: true,
+// });
 
 // const Subscription = dynamic(
 //   () => import("../common/Subscription/Subscription"),
@@ -76,7 +76,9 @@ const RecommendedProducts = dynamic(
 
 const ProductDetailDesktop = ({ user_data, data, userIp }) => {
   const tabletView = useResize(1000);
-  console.log({ data, userIp });
+  if (process.env.NODE_ENV !== "production") {
+    console.log({ data, userIp });
+  }
   const isForm = useAppSelector(selectIsFormOpen);
   const dispatch = useAppDispatch();
   const [isWhatsappBanner, setIsWhatsappBanner] = useState(true);
