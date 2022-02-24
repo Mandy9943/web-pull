@@ -41,8 +41,8 @@ const SellerInfo = () => {
         sx={{
           alignItems: "center",
           justifyContent: "center !important",
+          flexBasis: "100%",
         }}
-        xs={12}
         className="headerSeller"
       >
         <Typography
@@ -98,12 +98,7 @@ const SellerInfo = () => {
             container
             sx={{
               flexDirection: "column",
-              alignItems: {
-                xs: "center",
-                sm: "flex-end",
-                md: "flex-end",
-                lg: "flex-end",
-              },
+              alignItems: "flex-end",
               justifyContent: "center",
             }}
           >
@@ -187,8 +182,8 @@ const SellerInfo = () => {
                 fontStyle: "normal",
                 color: "#1fc2e6",
                 fontWeight: "bold",
-                m: { xs: "0 10vw 0 0", sm: "0 8vw 0 0", md: "0 5vw 0 0" },
-                fontSize: { xs: "0.5rem", sm: "2vw", md: "1.5vw" },
+                m: { xs: "0 2rem 0 0", sm: "0 2rem 0 0", md: "0 2rem 0 0" },
+                fontSize: { xs: "0.7rem", sm: "1rem", md: "1rem" },
               }}
             >
               Certificado de calidad
@@ -238,8 +233,8 @@ const SellerInfo = () => {
                 fontWeight: "normal",
                 color: "#5d5d5d",
                 whiteSpace: "nowrap",
-                fontSize: { xs: "3vw", sm: "2vw", md: "1.5vw" },
-                marginBottom: { xs: "4vw", sm: "4vw", md: "2.5vw" },
+                fontSize: { xs: "0.7rem", sm: "1rem", md: "1rem" },
+                marginBottom: { xs: "1rem", sm: "1.5rem", md: "1.5rem" },
               }}
             >
               Es uno de nuestros mejores vendedores
@@ -279,7 +274,7 @@ const SellerInfo = () => {
                     fontStyle: "normal",
                     fontWeight: { xs: "700", md: "700", sm: "bold", lg: "700" },
                     color: "#000",
-                    fontSize: { xs: "4vw", sm: "4vw", md: "2.7vw", lg: "2vw" },
+                    fontSize: { xs: "1.2rem", sm: "1.5rem", md: "1.5rem" },
                   }}
                   component="h3"
                 >
@@ -289,9 +284,9 @@ const SellerInfo = () => {
                   component="p"
                   sx={{
                     fontSize: {
-                      xs: "3vw",
-                      sm: "2.5vw",
-                      md: "1.5vw",
+                      xs: "0.7rem",
+                      sm: "1rem",
+                      md: "1rem",
                     },
                     fontWeight: { xs: "500", sm: "bold", md: "700", lg: "700" },
                     letterSpacing: "0.02rem",
@@ -299,7 +294,8 @@ const SellerInfo = () => {
                     color: { xs: "#000", sm: "#969696" },
                   }}
                 >
-                  Ventas en los últimos 2 meses.
+                  Ventas en los{" "}
+                  <Box sx={{ display: "block" }}> últimos 2 meses.</Box>
                 </Typography>
               </Grid>
               <Grid
@@ -325,10 +321,9 @@ const SellerInfo = () => {
                   component="p"
                   sx={{
                     fontSize: {
-                      xs: "3vw",
-                      sm: "2.5vw",
-                      md: "1.5vw",
-                      lg: "1.5vw",
+                      xs: "0.7rem",
+                      sm: "1rem",
+                      md: "1rem",
                     },
                     fontWeight: { xs: "500", sm: "bold", md: "700", lg: "700" },
                     letterSpacing: "0.02rem",
@@ -336,7 +331,7 @@ const SellerInfo = () => {
                     color: { xs: "#000", sm: "#969696" },
                   }}
                 >
-                  Brinda buena atención.
+                  Brinda buena <Box sx={{ display: "block" }}> atención.</Box>
                 </Typography>
               </Grid>
               <Grid
@@ -361,10 +356,9 @@ const SellerInfo = () => {
                   component="p"
                   sx={{
                     fontSize: {
-                      xs: "3vw",
-                      sm: "2.5vw",
-                      md: "1.5vw",
-                      lg: "1.5vw",
+                      xs: "0.7rem",
+                      sm: "1rem",
+                      md: "1rem",
                     },
                     fontWeight: { xs: "500", sm: "bold", md: "700", lg: "700" },
                     letterSpacing: "0.02rem",
@@ -372,7 +366,8 @@ const SellerInfo = () => {
                     color: { xs: "#000", sm: "#969696" },
                   }}
                 >
-                  Entrega gratis y a tiempo.
+                  Entrega gratis{" "}
+                  <Box sx={{ display: "block" }}>y a tiempo.</Box>
                 </Typography>
               </Grid>
             </Grid>
