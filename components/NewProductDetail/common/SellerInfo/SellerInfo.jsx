@@ -12,8 +12,7 @@ import { Typography } from "@mui/material";
 const SellerInfo = () => {
   const [conteo, setConteo] = useState(0);
   const handleConteo = useCallback(() => {
-    let start = 547;
-    // let start = 0;
+    let start = 0;
     const end = 547;
     if (start === end) return;
     let totalmilSecDur = 20;
