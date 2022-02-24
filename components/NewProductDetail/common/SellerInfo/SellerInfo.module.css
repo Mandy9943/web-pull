@@ -6,17 +6,17 @@
   }
 
   .SellerInfo .starSellerIcon {
-    margin-right: 1vw;
-    height: 2.5vw;
+    margin-right: 0.2rem;
+    height: 0.5rem;
     width: auto;
   }
   .SellerInfo .pictureSeller_image {
-    width: 6rem !important;
+    width: 9rem !important;
     height: auto !important;
   }
 
   .SellerInfo .pictureSeller_ok {
-    width: 120% !important;
+    width: 100% !important;
     height: auto !important;
   }
 }
@@ -73,5 +73,4 @@
     white-space: nowrap;
     font-size: 1rem !important;
   }
-
 }
