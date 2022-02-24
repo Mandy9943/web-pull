@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Link from "next/link";
 import { getFront } from "../../lib/request";
 import "./Filter.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,17 +8,17 @@ import {
   faTimes,
   faAngleRight,
   faChevronCircleRight,
-  faWindowClose,
-  faTruck,
   faChevronRight,
   faBars,
 } from "@fortawesome/free-solid-svg-icons";
 import { withRouter } from "next/router";
 import Button from "../Common/Button/Button";
+import { handleActivateBack, handleDeactivateBack } from "../../lib/functions";
 
 class Filter extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       fromPrice: "",
       toPrice: "",
@@ -39,7 +38,7 @@ class Filter extends Component {
     this.validateToPrice = this.validateToPrice.bind(this);
     this.toggleMenuOrder = this.toggleMenuOrder.bind(this);
     this.toggleMenuFilter = this.toggleMenuFilter.bind(this);
-    this.toggleBackMenuFilter = this.toggleBackMenuFilter.bind(this);
+    this.closeMenuFilter = this.closeMenuFilter.bind(this);
   }
   res_categories = [];
   componentDidMount() {
@@ -80,11 +79,23 @@ class Filter extends Component {
   toggleMenuFilter() {
     this.setState({ menuFilter: !this.state.menuFilter });
   }
+  closeMenuFilter() {
+    console.log("cerrar");
+    this.setState({ menuFilter: false });
+    handleActivateBack();
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.menuFilter !== this.state.menuFilter) {
+      if (this.state.menuFilter === true) {
+        this.setState({ menuFilter: true });
 
-  toggleBackMenuFilter() {
-    window.onpopstate = undefined;
-    window.history.back();
-    this.toggleMenuFilter();
+        handleDeactivateBack(() => {
+          this.setState({ menuFilter: false });
+
+          handleActivateBack();
+        });
+      }
+    }
   }
 
   ShowAllCategories() {
@@ -649,10 +660,7 @@ class Filter extends Component {
           >
             <ul>
               <li>
-                <FontAwesomeIcon
-                  icon={faBars}
-                  onClick={this.toggleBackMenuFilter}
-                />
+                <FontAwesomeIcon icon={faBars} onClick={this.closeMenuFilter} />
               </li>
               <li>Filtrar</li>
               {filters}
@@ -731,7 +739,7 @@ class Filter extends Component {
             <div className="wrap-app-button">
               <Button
                 text="Aplicar"
-                onClick={this.toggleMenuFilter}
+                onClick={this.closeMenuFilter}
                 type="Button"
                 fontSize="small"
               />
