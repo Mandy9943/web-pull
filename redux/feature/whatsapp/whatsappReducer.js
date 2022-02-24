@@ -11,8 +11,9 @@ export const whatsappSlice = createSlice({
   initialState,
   reducers: {
     setNumber: (state, action) => {
-      if (state.pretty === "") {
-        const { pretty, format } = getNumberWhatsapp();
+      if (state.pretty === "" && state.format === "") {
+        const category = action.payload?.category ?? "all";
+        const { pretty, format } = getNumberWhatsapp(category);
         state.pretty = pretty;
         state.format = format;
       }
@@ -23,5 +24,6 @@ export const { setNumber } = whatsappSlice.actions;
 
 export const selectPretty = (state) => state.whatsapp.pretty;
 export const selectFormat = (state) => state.whatsapp.format;
+export const selectedCategory = (state) => state.whatsapp.category;
 
 export default whatsappSlice.reducer;
