@@ -80,7 +80,6 @@ class Filter extends Component {
     this.setState({ menuFilter: !this.state.menuFilter });
   }
   closeMenuFilter() {
-    console.log("cerrar");
     this.setState({ menuFilter: false });
     handleActivateBack();
   }
@@ -660,7 +659,10 @@ class Filter extends Component {
           >
             <ul>
               <li>
-                <FontAwesomeIcon icon={faBars} onClick={this.closeMenuFilter} />
+                <FontAwesomeIcon
+                  icon={faTimes}
+                  onClick={this.closeMenuFilter}
+                />
               </li>
               <li>Filtrar</li>
               {filters}
