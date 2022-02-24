@@ -94,9 +94,8 @@ function Product({ data, u_data, userIp }) {
             0,
             60
           )} a ${data.price} - Envío
-      gratis - Encuentra más productos de ${
-        data.category ? data.category.name : ""
-      }`.substring(0, 159)}
+      gratis - Encuentra más productos de ${data.category ? data.category.name : ""
+            }`.substring(0, 159)}
         />
         <meta name="keywords" content={`${data.title}`} />
         <meta
@@ -128,9 +127,8 @@ function Product({ data, u_data, userIp }) {
         <meta name="twitter: image" content={`${data.images[0].url}`} />
         <meta
           property="og:title"
-          content={`Compra en Kiero.co - Encuentra ${
-            data.category ? data.category.name : ""
-          } en Kiero.co`}
+          content={`Compra en Kiero.co - Encuentra ${data.category ? data.category.name : ""
+            } en Kiero.co`}
         />
         <meta
           property="og:description"
@@ -217,8 +215,7 @@ function Product({ data, u_data, userIp }) {
 
 // This gets called on every request
 export async function getServerSideProps(context) {
-  let { req } = context;
-  let { query } = context;
+  let { req, query } = context;
   let ipData = req.headers["x-real-ip"] || req.connection.remoteAddress;
   // Fetch data from external API
   let temp_p = String(context.params.product).split("_");
