@@ -24,6 +24,5 @@ export const { setNumber } = whatsappSlice.actions;
 
 export const selectPretty = (state) => state.whatsapp.pretty;
 export const selectFormat = (state) => state.whatsapp.format;
-export const selectedCategory = (state) => state.whatsapp.category;
 
 export default whatsappSlice.reducer;
