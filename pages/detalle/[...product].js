@@ -75,8 +75,8 @@ function Product({ data, u_data, userIp }) {
       })
     );
     Cookies.get("email") ? createlead(data, 3) : null;
-    dispatch(setNumber({ category: data.category.name }));
-  }, [data, dispatch]);
+    dispatch(setNumber({ category: data.breadcum[0].name }));
+  }, [data, dispatch, dataMainLink]);
 
   return (
     <div>
