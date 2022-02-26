@@ -22,7 +22,7 @@ import SectionTitle from "../SectionTitle/SectionTitle";
 const RecommendedProducts = ({
   category,
   spaceBetween = 70,
-  lenProduct = 10,
+  lenProduct = 15,
   movil = true,
 }) => {
   const [products, setProducts] = useState([]);
@@ -52,12 +52,14 @@ const RecommendedProducts = ({
     };
   } else {
     sliderConfig = {
-      slidesPerView: 6,
+      slidesPerView: "auto",
       spaceBetween: spaceBetween,
-      loop: true,
+      // loop: true,
       pagination: {
         clickable: true,
+        dynamicBullets: true,
       },
+      navigation: true,
     };
   }
   return (
