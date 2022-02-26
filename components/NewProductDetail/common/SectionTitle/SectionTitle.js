@@ -9,6 +9,7 @@ const SectionTitle = ({ center, color, children, variant = "h5" }) => {
       <Typography gutterBottom component="h2" variant={variant}>
         <Box
           sx={{
+            fontSize: { md: "40px", xs: "30px" },
             fontWeight: { xs: "700", sm: "700", md: "800" },
             fontStyle: "normal",
             color: color,

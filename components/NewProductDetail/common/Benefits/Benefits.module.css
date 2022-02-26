@@ -2,12 +2,19 @@
   border-bottom: 4px solid #e4e4e4;
   background: #fff;
   transition: all 0.3s ease;
-  padding: 30px 25px;
+  padding: 10px 25px;
+  width: 100%;
 }
 
-#Benefits .benefit {
-  padding: 0 2%;
+#Benefits .benefit .benefitContainer {
+  height: 400px;
+  max-width: 400px;
 }
+#Benefits .benefit .benefitContainer .container {
+  display: flex;
+  justify-content: center;
+}
+
 #Benefits h2 {
   font-family: Montserrat, sans-serif;
   font-size: 24px;
@@ -41,7 +48,7 @@
   line-height: 26px;
   letter-spacing: 0;
   text-align: center;
-  margin: 0 3px 18px 3px;
+  margin: 0px 0px 0px 0px;
   color: #000000;
 }
 
