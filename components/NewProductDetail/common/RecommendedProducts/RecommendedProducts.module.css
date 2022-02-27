@@ -35,6 +35,11 @@
   border-radius: 5px;
 }
 
+#RecommendedProducts .swiper-slide {
+  /* margin-right: 400px; */
+  margin: 0 70px;
+}
+
 #RecommendedProducts .swiper-container .swiper-pagination-bullets {
   position: absolute;
   bottom: 0;
@@ -70,7 +75,7 @@
 
 @media (min-width: 768px) {
   #RecommendedProducts {
-    margin-top: 80px;
+    margin-top: 20px;
   }
 
   #RecommendedProducts .divindingLine {

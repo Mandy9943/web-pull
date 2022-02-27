@@ -10,12 +10,17 @@ import Image from "next/image";
 import Skeleton from "@mui/material/Skeleton";
 
 // import Swiper core and required modules
-import SwiperCore, { EffectCoverflow, Pagination } from "swiper";
+import SwiperCore, {
+  EffectCoverflow,
+  Pagination,
+  Keyboard,
+  Mousewheel,
+} from "swiper";
 import DiscountPrice from "../DiscountPrice/DiscountPrice";
 import PropTypes from "prop-types";
 
 // install Swiper modules
-SwiperCore.use([EffectCoverflow, Pagination]);
+SwiperCore.use([EffectCoverflow, Pagination, Keyboard, Mousewheel]);
 
 const SwiperSlider = ({
   images,
@@ -149,6 +154,12 @@ const SwiperSlider = ({
         className={type}
         pagination={{
           clickable: true,
+        }}
+        keyboard={{
+          enabled: true,
+        }}
+        mousewheel={{
+          forceToAxis: true,
         }}
       >
         <SwiperSlide>
