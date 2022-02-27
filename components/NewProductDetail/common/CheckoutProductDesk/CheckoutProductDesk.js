@@ -26,7 +26,7 @@ const CheckoutProductDesk = ({
   const count = Math.ceil(Math.random() * 50);
 
   return (
-    <CheckoutProductDeskWrapper elevation={4} id="CheckoutProductDesk">
+    <CheckoutProductDeskWrapper id="CheckoutProductDesk">
       <div className="title">
         <h1>{title.length > 80 ? title.substr(0, 80) + "..." : title}</h1>
       </div>

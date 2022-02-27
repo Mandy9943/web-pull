@@ -4,6 +4,11 @@
   cursor: pointer;
 }
 
+.ancho {
+  margin-right: 100px;
+  width: 240px;
+}
+
 #RecommendedProductsCard .skeletonProductDetail {
   background-color: rgba(0, 0, 0, 0.7) !important;
   border-radius: 5px;

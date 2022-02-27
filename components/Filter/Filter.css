@@ -442,4 +442,8 @@ details > summary:first-of-type {
 .breadcrumb span {
   cursor: pointer;
 }
+
+.wrap-app-button {
+  width: 30%;
+}
 /*# sourceMappingURL=Filter.css.map */
