@@ -21,7 +21,7 @@ import SectionTitle from "../SectionTitle/SectionTitle";
 
 const RecommendedProducts = ({
   category,
-  spaceBetween = 30,
+  spaceBetween = 200,
   lenProduct = 10,
   movil = true,
 }) => {

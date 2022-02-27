@@ -35,6 +35,10 @@
   border-radius: 5px;
 }
 
+#RecommendedProducts .swiper-slide {
+  margin-right: 400px;
+}
+
 #RecommendedProducts .swiper-container .swiper-pagination-bullets {
   position: absolute;
   bottom: 0;
