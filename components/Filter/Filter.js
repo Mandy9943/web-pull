@@ -39,6 +39,7 @@ class Filter extends Component {
     this.toggleMenuOrder = this.toggleMenuOrder.bind(this);
     this.toggleMenuFilter = this.toggleMenuFilter.bind(this);
     this.closeMenuFilter = this.closeMenuFilter.bind(this);
+    this.closeMenuOrder = this.closeMenuOrder.bind(this);
   }
   res_categories = [];
   componentDidMount() {
@@ -83,6 +84,12 @@ class Filter extends Component {
     this.setState({ menuFilter: false });
     handleActivateBack();
   }
+
+  closeMenuOrder() {
+    this.setState({ menuOrder: false });
+    handleActivateBack();
+  }
+
   componentDidUpdate(prevProps, prevState) {
     if (prevState.menuFilter !== this.state.menuFilter) {
       if (this.state.menuFilter === true) {
@@ -90,6 +97,18 @@ class Filter extends Component {
 
         handleDeactivateBack(() => {
           this.setState({ menuFilter: false });
+
+          handleActivateBack();
+        });
+      }
+    }
+
+    if (prevState.menuOrder !== this.state.menuOrder) {
+      if (this.state.menuOrder === true) {
+        this.setState({ menuOrder: true });
+
+        handleDeactivateBack(() => {
+          this.setState({ menuOrder: false });
 
           handleActivateBack();
         });
@@ -103,6 +122,7 @@ class Filter extends Component {
 
   setSort(event) {
     this.setState({ menuOrder: false });
+    handleActivateBack();
     this.props.sortProducts("" + event.target.value);
   }
 
@@ -623,10 +643,7 @@ class Filter extends Component {
           >
             <ul>
               <li>
-                <FontAwesomeIcon
-                  icon={faTimes}
-                  onClick={this.toggleMenuOrder}
-                />
+                <FontAwesomeIcon icon={faTimes} onClick={this.closeMenuOrder} />
               </li>
               <li>Ordenar</li>
               <li
