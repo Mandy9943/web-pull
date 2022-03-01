@@ -11,7 +11,8 @@ import { Typography } from "@mui/material";
 
 const SellerInfo = () => {
   const [conteo, setConteo] = useState(0);
-  const handleConteo = useCallback(() => {
+
+  useEffect(() => {
     let start = 0;
     const end = 547;
     if (start === end) return;
@@ -22,9 +23,9 @@ const SellerInfo = () => {
       setConteo(start);
       if (start >= end) clearInterval(timer);
     }, incrementTime);
-  }, []);
-  useEffect(() => {
-    handleConteo();
+    return () => {
+      clearInterval(timer);
+    };
   }, []);
 
   return (
@@ -72,7 +73,7 @@ const SellerInfo = () => {
           justifyContent: "center",
           flexDirection: { md: "row", lg: "row" },
           flexWrap: { lg: "nowrap", md: "nowrap" },
-          paddingBottom: { xs: "10vw", sm: "10vw", md: "10vw", lg: "10vw" },
+          paddingBottom: { xs: "10vw", sm: "3vw", md: "3vw", lg: "3vw" },
         }}
       >
         <Grid
@@ -88,13 +89,10 @@ const SellerInfo = () => {
               lg: "0 3vw",
             },
           }}
-          xs={12}
-          sm={12}
-          md={6}
-          lg={6}
         >
           <Grid
             xs={6}
+            item
             container
             sx={{
               flexDirection: "column",
@@ -113,6 +111,7 @@ const SellerInfo = () => {
           </Grid>
           <Grid
             xs={6}
+            item
             container
             sx={{
               display: "flex",
@@ -137,19 +136,22 @@ const SellerInfo = () => {
               }}
               className="SellerInfo_pictureSelect_text"
             >
-              Spice Stock <Box sx={{ display: "block" }}>LLC.</Box>
+              Spice Stock{" "}
+              <Typography
+                sx={{
+                  fontStyle: "normal",
+                  fontWeight: "bold",
+                  color: "#5d5d5d",
+                  letterSpacing: "0",
+                  fontSize: { xs: "1rem", sm: "1.5rem", md: "2rem" },
+                }}
+              >
+                LLC.
+              </Typography>
             </Typography>
           </Grid>
         </Grid>
-        <Grid
-          container
-          xs={12}
-          sm={12}
-          md={6}
-          lg={6}
-          className="infoSeller"
-          sx={{ m: { md: "0 1vw" } }}
-        >
+        <Grid container className="infoSeller" sx={{ m: { md: "0 1vw" } }}>
           <Grid
             container
             className="certificate"
@@ -267,6 +269,7 @@ const SellerInfo = () => {
                   justifyContent: "flex-end",
                 }}
                 xs={4}
+                item
                 className="block"
               >
                 <Typography
@@ -281,7 +284,7 @@ const SellerInfo = () => {
                   {conteo}
                 </Typography>
                 <Typography
-                  component="p"
+                  component="div"
                   sx={{
                     fontSize: {
                       xs: "0.7rem",
@@ -295,12 +298,33 @@ const SellerInfo = () => {
                   }}
                 >
                   Ventas en los{" "}
-                  <Box sx={{ display: "block" }}> últimos 2 meses.</Box>
+                  <Typography
+                    sx={{
+                      fontSize: {
+                        xs: "0.7rem",
+                        sm: "1rem",
+                        md: "1rem",
+                      },
+                      fontWeight: {
+                        xs: "500",
+                        sm: "bold",
+                        md: "700",
+                        lg: "700",
+                      },
+                      letterSpacing: "0.02rem",
+                      textAlign: "center",
+                      color: { xs: "#000", sm: "#969696" },
+                    }}
+                  >
+                    {" "}
+                    últimos 2 meses.
+                  </Typography>
                 </Typography>
               </Grid>
               <Grid
                 container
                 xs={4}
+                item
                 className="block"
                 sx={{
                   flexDirection: "column",
@@ -318,7 +342,7 @@ const SellerInfo = () => {
                 </div>
 
                 <Typography
-                  component="p"
+                  component="div"
                   sx={{
                     fontSize: {
                       xs: "0.7rem",
@@ -331,12 +355,33 @@ const SellerInfo = () => {
                     color: { xs: "#000", sm: "#969696" },
                   }}
                 >
-                  Brinda buena <Box sx={{ display: "block" }}> atención.</Box>
+                  Brinda buena
+                  <Typography
+                    sx={{
+                      fontSize: {
+                        xs: "0.7rem",
+                        sm: "1rem",
+                        md: "1rem",
+                      },
+                      fontWeight: {
+                        xs: "500",
+                        sm: "bold",
+                        md: "700",
+                        lg: "700",
+                      },
+                      letterSpacing: "0.02rem",
+                      textAlign: "center",
+                      color: { xs: "#000", sm: "#969696" },
+                    }}
+                  >
+                    atención.
+                  </Typography>
                 </Typography>
               </Grid>
               <Grid
                 container
                 xs={4}
+                item
                 className="block"
                 sx={{
                   flexDirection: "column",
@@ -353,7 +398,7 @@ const SellerInfo = () => {
                   />
                 </div>
                 <Typography
-                  component="p"
+                  component="div"
                   sx={{
                     fontSize: {
                       xs: "0.7rem",
@@ -367,7 +412,26 @@ const SellerInfo = () => {
                   }}
                 >
                   Entrega gratis{" "}
-                  <Box sx={{ display: "block" }}>y a tiempo.</Box>
+                  <Typography
+                    sx={{
+                      fontSize: {
+                        xs: "0.7rem",
+                        sm: "1rem",
+                        md: "1rem",
+                      },
+                      fontWeight: {
+                        xs: "500",
+                        sm: "bold",
+                        md: "700",
+                        lg: "700",
+                      },
+                      letterSpacing: "0.02rem",
+                      textAlign: "center",
+                      color: { xs: "#000", sm: "#969696" },
+                    }}
+                  >
+                    y a tiempo
+                  </Typography>
                 </Typography>
               </Grid>
             </Grid>

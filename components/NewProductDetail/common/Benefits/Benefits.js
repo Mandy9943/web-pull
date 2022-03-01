@@ -18,7 +18,6 @@ const Benefits = () => {
       alignItems="center"
       direction="row"
       justifyContent="center"
-      xs={12}
       sx={{
         marginBottom: "50px",
       }}
@@ -32,7 +31,6 @@ const Benefits = () => {
         alignItems="center"
         justifyContent="center"
         className="benefit"
-        xs={12}
       >
         <Grid item sm={12} md={4} xs={12}>
           <Box
