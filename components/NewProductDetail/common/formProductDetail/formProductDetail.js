@@ -284,7 +284,7 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
                     required
                   />
                 </Grid>
-                <Grid xs={12}>
+                <Grid item xs={12}>
                   <TextFieldS
                     size="small"
                     {...register("email")}
@@ -300,7 +300,7 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
                   />
                 </Grid>
 
-                <Grid xs={12}>
+                <Grid item xs={12}>
                   <TextFieldS
                     size="small"
                     {...register("phoneNumber")}
@@ -314,7 +314,7 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
                     helperText={errors?.phoneNumber?.message}
                     required
                   />
-                  <Grid xs={12}>
+                  <Grid item xs={12}>
                     <TextFieldS
                       size="small"
                       {...register("city")}
@@ -329,7 +329,7 @@ const FormProductDetail = ({ handleClose, open, userIp }) => {
                       required
                     />
                   </Grid>
-                  <Grid xs={12}>
+                  <Grid item xs={12}>
                     <TextFieldS
                       size="small"
                       {...register("address")}

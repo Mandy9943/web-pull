@@ -60,10 +60,10 @@ const RecommendedProducts = ({
       },
       mousewheel: {
         forceToAxis: true,
-      },
+      } /* ,
       keyBoard: {
         enabled: true,
-      },
+      }, */,
       // freeMode: true,
       // navigation: true,
     };
