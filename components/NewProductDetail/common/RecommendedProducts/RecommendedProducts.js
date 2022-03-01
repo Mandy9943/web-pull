@@ -7,10 +7,15 @@ import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.scss";
 
 // import Swiper core and required modules
-import SwiperCore, { Pagination, Mousewheel, Keyboard } from "swiper";
+import SwiperCore, {
+  Pagination,
+  Mousewheel,
+  Keyboard,
+  Navigation,
+} from "swiper";
 
 // install Swiper modules
-SwiperCore.use([Pagination, Mousewheel, Keyboard]);
+SwiperCore.use([Pagination, Mousewheel, Keyboard, Navigation]);
 
 import "./RecommendedProducts.module.css";
 import RecommendedProductsCard from "./RecommendedProductsCard";
@@ -51,16 +56,16 @@ const RecommendedProducts = ({
     };
   } else {
     sliderConfig = {
-      slidesPerView: 3,
+      slidesPerView: "auto",
       spaceBetween: spaceBetween,
-      loop: true,
+      // loop: true,
       pagination: {
         clickable: true,
         // dynamicBullets: true,
       },
-      // mousewheel: {
-      //   forceToAxis: true,
-      // } /* ,
+      mousewheel: {
+        forceToAxis: true,
+      } /* ,
       // keyBoard: {
       //   enabled: true,
       // }, */,
