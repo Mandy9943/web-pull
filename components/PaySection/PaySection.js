@@ -862,10 +862,10 @@ class PaySection extends Component {
     // console.log(error);
   }
 
-  async createtrace(email,json){
-    var data = JSON.stringify(json);
-    const error = await createTraceLead(email, data);
-  }
+  // async createtrace(email,json){
+  //   var data = JSON.stringify(json);
+  //   const error = await createTraceLead(email, data);
+  // }
 
   render() {
     const renderPayu = () => {

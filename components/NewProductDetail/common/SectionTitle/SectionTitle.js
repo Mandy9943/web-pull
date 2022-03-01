@@ -11,7 +11,7 @@ const SectionTitle = ({ center, color, children, variant = "h5", benefit }) => {
           sx={{
             fontSize: {
               md: benefit ? "2rem" : "calc(100% + .2rem)",
-              xs: "calc(100% + .1rem);",
+              xs: benefit ? "2rem" : "calc(100% + .1rem);",
             },
             fontWeight: { xs: "700", sm: "700", md: "800" },
             fontStyle: "normal",
@@ -31,5 +31,6 @@ SectionTitle.propTypes = {
   variant: PropTypes.string,
   center: PropTypes.bool,
   color: PropTypes.string,
+  benefit: PropTypes.bool,
 };
 export default SectionTitle;

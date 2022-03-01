@@ -61,7 +61,7 @@ const RecommendedProducts = ({
       mousewheel: {
         forceToAxis: true,
       },
-      keyboard: {
+      keyBoard: {
         enabled: true,
       },
       // freeMode: true,
