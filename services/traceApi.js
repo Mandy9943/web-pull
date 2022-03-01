@@ -1,9 +1,22 @@
 import { post } from "../lib/request";
-export const traceLead = async (email, json) => {
+export const traceLead = async (
+  email,
+  json,
+  first_name,
+  last_name,
+  phone,
+  product_category,
+  product_subcategory
+) => {
   try {
     const res = await post("/saveTraceLead", {
       email: email,
       json: json,
+      first_name: first_name,
+      last_name: last_name,
+      phone: phone,
+      product_category: product_category,
+      product_subcategory: product_subcategory,
     });
     return res.data;
   } catch (error) {
