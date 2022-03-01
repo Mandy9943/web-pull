@@ -31,5 +31,6 @@ SectionTitle.propTypes = {
   variant: PropTypes.string,
   center: PropTypes.bool,
   color: PropTypes.string,
+  benefit: PropTypes.bool,
 };
 export default SectionTitle;
