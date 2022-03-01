@@ -58,14 +58,14 @@ const RecommendedProducts = ({
         clickable: true,
         // dynamicBullets: true,
       },
-      mousewheel: {
-        forceToAxis: true,
-      } /* ,
-      keyBoard: {
-        enabled: true,
-      }, */,
-      // freeMode: true,
-      // navigation: true,
+      // mousewheel: {
+      //   forceToAxis: true,
+      // } /* ,
+      // keyBoard: {
+      //   enabled: true,
+      // }, */,
+      // // freeMode: true,
+      navigation: true,
     };
   }
   return (

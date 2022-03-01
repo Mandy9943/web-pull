@@ -73,7 +73,7 @@ const SellerInfo = () => {
           justifyContent: "center",
           flexDirection: { md: "row", lg: "row" },
           flexWrap: { lg: "nowrap", md: "nowrap" },
-          paddingBottom: { xs: "10vw", sm: "10vw", md: "10vw", lg: "10vw" },
+          paddingBottom: { xs: "10vw", sm: "3vw", md: "3vw", lg: "3vw" },
         }}
       >
         <Grid
