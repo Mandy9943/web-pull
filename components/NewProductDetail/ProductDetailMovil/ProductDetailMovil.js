@@ -93,6 +93,7 @@ const ProductDetailMobil = ({ user_data, data, userIp }) => {
   const scrolledPayButton = useScrollY(700, false);
   const isForm = useAppSelector(selectIsFormOpen);
   const dispatch = useAppDispatch();
+
   useEffect(() => {
     sendProductViewed(data);
     if (isForm === true) {

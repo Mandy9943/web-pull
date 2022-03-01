@@ -195,6 +195,20 @@
   }
 }
 
+@media (max-width: 900px) {
+  .CardInPerfil button {
+    font-size: 9px !important;
+    margin-top: 0px;
+    position: relative;
+    top: unset;
+    right: unset;
+  }
+  .CardInPerfil h3 {
+    font-size: 12px !important;
+
+    padding: 0;
+  }
+}
 @media (max-width: 800px) {
   .producto-card .product-card-img img {
     min-height: 14vw;

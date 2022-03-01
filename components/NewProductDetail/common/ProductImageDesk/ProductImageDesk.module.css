@@ -71,7 +71,7 @@
   .swiper-container-horizontal.recomendedSwiper
   > .swiper-pagination-bullets
   .swiper-pagination-bullet {
-  border-radius: 10px !important;
+  /* border-radius: 10px !important; */
   height: 4px;
   background: #5d5d5d;
 }

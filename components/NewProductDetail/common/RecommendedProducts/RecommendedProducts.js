@@ -7,10 +7,10 @@ import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.scss";
 
 // import Swiper core and required modules
-import SwiperCore, { Pagination } from "swiper";
+import SwiperCore, { Pagination, Mousewheel, Keyboard } from "swiper";
 
 // install Swiper modules
-SwiperCore.use([Pagination]);
+SwiperCore.use([Pagination, Mousewheel, Keyboard]);
 
 import "./RecommendedProducts.module.css";
 import RecommendedProductsCard from "./RecommendedProductsCard";
@@ -21,8 +21,8 @@ import SectionTitle from "../SectionTitle/SectionTitle";
 
 const RecommendedProducts = ({
   category,
-  spaceBetween = 30,
-  lenProduct = 10,
+  spaceBetween = 0,
+  lenProduct = 15,
   movil = true,
 }) => {
   const [products, setProducts] = useState([]);
@@ -45,19 +45,27 @@ const RecommendedProducts = ({
       freeMode: true,
       loop: true,
       centeredSlides: true,
-
       pagination: {
         clickable: true,
       },
     };
   } else {
     sliderConfig = {
-      slidesPerView: 6,
+      slidesPerView: 3,
       spaceBetween: spaceBetween,
       loop: true,
       pagination: {
         clickable: true,
+        // dynamicBullets: true,
       },
+      mousewheel: {
+        forceToAxis: true,
+      },
+      keyBoard: {
+        enabled: true,
+      },
+      // freeMode: true,
+      // navigation: true,
     };
   }
   return (

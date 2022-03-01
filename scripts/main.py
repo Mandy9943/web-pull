@@ -27,11 +27,13 @@ def config(archivo='.env', seccion='postgresql'):
             db[param[0]] = param[1]
         return db
     else:
-        raise Exception('Secccion {0} no encontrada en el archivo {1}'.format(seccion, archivo))
+        raise Exception(
+            'Secccion {0} no encontrada en el archivo {1}'.format(seccion, archivo))
 
 
 def tratar_url(url):
-    traduccion = ''.maketrans('ãàáäâáèéëêìíïîõòóöôùúüûñç·/_,:;', 'aaaaaaeeeeiiiiooooouuuunc------')
+    traduccion = ''.maketrans(
+        'ãàáäâáèéëêìíïîõòóöôùúüûñç·/_,:;', 'aaaaaaeeeeiiiiooooouuuunc------')
     new_url = url.lower().translate(traduccion)
     new_url = new_url.capitalize()
     new_url = re.sub(r'\W+', "-", new_url)
@@ -43,7 +45,8 @@ def tratar_url(url):
 def crear_sitemap(list_of_urls, tipo, limite, posicion):
     list_of_urls.loc[:, 'name'] = ''
 
-    new_df = [list_of_urls[i:i + limite] for i in range(0, list_of_urls.shape[0], limite)]
+    new_df = [list_of_urls[i:i + limite]
+              for i in range(0, list_of_urls.shape[0], limite)]
 
     for i, v in enumerate(new_df):
         v.loc[:, 'name'] = str(v.iloc[0, 1]) + str(i)
@@ -75,7 +78,7 @@ def crear_sitemap(list_of_urls, tipo, limite, posicion):
         if not os.path.exists("sitemap"):
             os.makedirs("sitemap")
 
-        with  gzip.open(filename + '.gz', 'wt') as f:
+        with gzip.open(filename + '.gz', 'wt') as f:
             f.write(sitemap_output)
             f.close()
 
@@ -95,7 +98,8 @@ def conexion_producto(cur, limite):
             tqdm.pandas(desc="Descargando los productos {0}".format(posicion))
             df.progress_apply(lambda x: x)
             df['title'] = df['title'].apply(lambda x: tratar_url(str(x)))
-            df['url'] = "https://kiero.co/detalle/" + df['product_id'].apply(str) + "_" + df['title'] + "/"
+            df['url'] = "https://kiero.co/detalle/" + \
+                df['product_id'].apply(str) + "_" + df['title'] + "/"
             cantidad += tamanho
             posicion += 1
             crear_sitemap(df[['url']], 'producto', limite, posicion - 1)
@@ -114,7 +118,8 @@ def conexion_categoria(cur, limite):
         df = pd.read_sql(sql, cur)
         tamanho = df.shape[0]
         if tamanho > 0:
-            tqdm.pandas(desc="Descargando las categorias de la pagina {0}".format(posicion))
+            tqdm.pandas(
+                desc="Descargando las categorias de la pagina {0}".format(posicion))
             df.progress_apply(lambda x: x)
             df['replace'] = df['replace'].apply(lambda x: tratar_url(str(x)))
             df['url'] = "https://kiero.co/categoria/" + df['replace'] + "/"
@@ -134,7 +139,8 @@ def conectar():
         print("Cargando configurancion")
         params_db = config()
         params = config(seccion='configuracion')
-        limite = int(int(params['limite']) if params['limite'] is not None else 1000)
+        limite = int(int(params['limite'])
+                     if params['limite'] is not None else 1000)
         print("Limite de URL defino con ", limite)
 
         # Conexion al servidor de PostgreSQL
@@ -153,7 +159,8 @@ def conectar():
 
         # Creando fichero index
         print("Generando el index del sitemap-index.xml")
-        xml = "<?xml version='1.0' encoding='UTF-8'?>" + "<sitemapindex xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>"
+        xml = "<?xml version='1.0' encoding='UTF-8'?>" + \
+            "<sitemapindex xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>"
         lastmod_date = datetime.now().strftime('%Y-%m-%d')
         for i in tqdm(range(math.ceil(tamano_producto / limite)), desc='Agregando el indice del producto'):
             xml += '''
@@ -169,7 +176,8 @@ def conectar():
                     </sitemap>'''.format(i, lastmod_date)
         xml += '</sitemapindex>'
 
-        formatter = xmlformatter.Formatter(indent="1", indent_char="\t", encoding_output="UTF-8", preserve=["literal"])
+        formatter = xmlformatter.Formatter(
+            indent="1", indent_char="\t", encoding_output="UTF-8", preserve=["literal"])
         xml = formatter.format_string(xml)
         filename = "sitemap/sitemap-index.xml"
         if not os.path.exists("sitemap"):

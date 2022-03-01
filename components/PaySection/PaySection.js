@@ -26,6 +26,7 @@ import {
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import { Button, Modal } from 'react-bootstrap';
 import { createleadClient } from "../../lib/zoho";
+import { createTraceLead } from "../../lib/trace";
 import { sendIdentifyEvent, createHmacSHA1 } from "../../lib/functions.js";
 
 class PaySection extends Component {
@@ -856,8 +857,15 @@ class PaySection extends Component {
     };
     // console.log("pay section", step, data);
     const error = await createleadClient(data);
+    // this.createtrace(email,json);
+
     // console.log(error);
   }
+
+  // async createtrace(email,json){
+  //   var data = JSON.stringify(json);
+  //   const error = await createTraceLead(email, data);
+  // }
 
   render() {
     const renderPayu = () => {

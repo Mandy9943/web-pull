@@ -4,6 +4,7 @@ import Ripples from "react-ripples";
 import "./CheckoutButton.module.css";
 
 import Image from "next/image";
+import { Button } from "@mui/material";
 const CheckoutButton = ({
   text,
   disabled,
@@ -30,22 +31,20 @@ const CheckoutButton = ({
   };
 
   return (
-    <Ripples className="ripple-effect-detail-mobile">
-      <div
-        id="CheckoutButton"
-        className={buttonClass.join(" ")}
-        onClick={handleOnClick}
-      >
-        <span className="button-text">{text}</span>
-        {!notShowCar && (
-          <span className="icon-shoping-cart">
-            <div className="anullProperties">
-              <Image src={CartIcon} alt="Shoping Cart" layout="fill" />
-            </div>
-          </span>
-        )}
-      </div>
-    </Ripples>
+    <Button
+      id="CheckoutButton"
+      className={buttonClass.join(" ")}
+      onClick={handleOnClick}
+    >
+      <span className="button-text">{text}</span>
+      {!notShowCar && (
+        <span className="icon-shoping-cart">
+          <div className="anullProperties">
+            <Image src={CartIcon} alt="Shoping Cart" layout="fill" />
+          </div>
+        </span>
+      )}
+    </Button>
   );
 };
 

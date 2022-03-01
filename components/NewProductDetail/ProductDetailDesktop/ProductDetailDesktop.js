@@ -75,7 +75,9 @@ const RecommendedProducts = dynamic(
 
 const ProductDetailDesktop = ({ user_data, data, userIp }) => {
   const tabletView = useResize(1000);
-  console.log({ data, userIp });
+  if (process.env.NODE_ENV !== "production") {
+    console.log({ data, userIp });
+  }
   const isForm = useAppSelector(selectIsFormOpen);
   const dispatch = useAppDispatch();
   const [isWhatsappBanner, setIsWhatsappBanner] = useState(true);
@@ -138,7 +140,12 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
         </div>
 
         <Header title={data.title} bredCumbs={data.breadcum} isDesktop />
-        <Box sx={{ flexGrow: 1 }} width={"98%"} margin={"auto"} mb={8}>
+        <Box
+          sx={{ flexGrow: 1 }}
+          width={"98%"}
+          margin={"0 auto !important"}
+          mb={8}
+        >
           {tabletView ? (
             <Grid container>
               <Grid item sm={12}>
@@ -233,9 +240,9 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
             <Grid sx={{ overflow: "hidden" }} item md={12} sm={12}>
               <RecommendedProducts category={data.category} movil={false} />
             </Grid>
-            {/* <Grid item md={12} sm={12}>
+            <Grid item md={12} sm={12}>
               <Benefits />
-            </Grid> */}
+            </Grid>
             {/* <Grid item md={12} sm={12}>
               <Subscription />
             </Grid> */}

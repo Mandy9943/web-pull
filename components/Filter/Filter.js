@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Link from "next/link";
 import { getFront } from "../../lib/request";
 import "./Filter.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,14 +8,17 @@ import {
   faTimes,
   faAngleRight,
   faChevronCircleRight,
-  faWindowClose,
-  faTruck,
   faChevronRight,
+  faBars,
 } from "@fortawesome/free-solid-svg-icons";
 import { withRouter } from "next/router";
+import Button from "../Common/Button/Button";
+import { handleActivateBack, handleDeactivateBack } from "../../lib/functions";
+
 class Filter extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       fromPrice: "",
       toPrice: "",
@@ -36,6 +38,8 @@ class Filter extends Component {
     this.validateToPrice = this.validateToPrice.bind(this);
     this.toggleMenuOrder = this.toggleMenuOrder.bind(this);
     this.toggleMenuFilter = this.toggleMenuFilter.bind(this);
+    this.closeMenuFilter = this.closeMenuFilter.bind(this);
+    this.closeMenuOrder = this.closeMenuOrder.bind(this);
   }
   res_categories = [];
   componentDidMount() {
@@ -76,6 +80,41 @@ class Filter extends Component {
   toggleMenuFilter() {
     this.setState({ menuFilter: !this.state.menuFilter });
   }
+  closeMenuFilter() {
+    this.setState({ menuFilter: false });
+    handleActivateBack();
+  }
+
+  closeMenuOrder() {
+    this.setState({ menuOrder: false });
+    handleActivateBack();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.menuFilter !== this.state.menuFilter) {
+      if (this.state.menuFilter === true) {
+        this.setState({ menuFilter: true });
+
+        handleDeactivateBack(() => {
+          this.setState({ menuFilter: false });
+
+          handleActivateBack();
+        });
+      }
+    }
+
+    if (prevState.menuOrder !== this.state.menuOrder) {
+      if (this.state.menuOrder === true) {
+        this.setState({ menuOrder: true });
+
+        handleDeactivateBack(() => {
+          this.setState({ menuOrder: false });
+
+          handleActivateBack();
+        });
+      }
+    }
+  }
 
   ShowAllCategories() {
     this.setState({ categorySize: this.state.categorySize + 10 });
@@ -83,6 +122,7 @@ class Filter extends Component {
 
   setSort(event) {
     this.setState({ menuOrder: false });
+    handleActivateBack();
     this.props.sortProducts("" + event.target.value);
   }
 
@@ -603,10 +643,7 @@ class Filter extends Component {
           >
             <ul>
               <li>
-                <FontAwesomeIcon
-                  icon={faTimes}
-                  onClick={this.toggleMenuOrder}
-                />
+                <FontAwesomeIcon icon={faTimes} onClick={this.closeMenuOrder} />
               </li>
               <li>Ordenar</li>
               <li
@@ -641,7 +678,7 @@ class Filter extends Component {
               <li>
                 <FontAwesomeIcon
                   icon={faTimes}
-                  onClick={this.toggleMenuFilter}
+                  onClick={this.closeMenuFilter}
                 />
               </li>
               <li>Filtrar</li>
@@ -718,6 +755,14 @@ class Filter extends Component {
                 </details>
               </li>
             </ul>
+            <div className="wrap-app-button">
+              <Button
+                text="Aplicar"
+                onClick={this.closeMenuFilter}
+                type="Button"
+                fontSize="small"
+              />
+            </div>
           </div>
         </div>
       </>

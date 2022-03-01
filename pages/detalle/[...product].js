@@ -45,7 +45,6 @@ function Product({ data, u_data, userIp }) {
 
   useEffect(() => {
     setIsLoading(false);
-    dispatch(setNumber());
   }, []);
 
   const dataMainLink = () => {
@@ -76,7 +75,8 @@ function Product({ data, u_data, userIp }) {
       })
     );
     Cookies.get("email") ? createlead(data, 3) : null;
-  }, [data, dispatch]);
+    dispatch(setNumber({ category: data.breadcum[0].name }));
+  }, [data, dispatch, dataMainLink]);
 
   return (
     <div>
@@ -217,8 +217,7 @@ function Product({ data, u_data, userIp }) {
 
 // This gets called on every request
 export async function getServerSideProps(context) {
-  let { req } = context;
-  let { query } = context;
+  let { req, query } = context;
   let ipData = req.headers["x-real-ip"] || req.connection.remoteAddress;
   // Fetch data from external API
   let temp_p = String(context.params.product).split("_");

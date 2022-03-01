@@ -5,15 +5,17 @@
   margin: 5px auto;
   width: auto;
   padding: 10px 0;
-  background-color: #CF0A2C;
+  background-color: #cf0a2c;
   color: white;
   text-align: center;
   width: 80%;
-  font-size: 18px;
+}
+
+.small {
+  font-size: 15px;
 }
 
 .main-button p {
-  font-size: 18px;
   width: 100%;
   padding: 0px 15px;
 }
@@ -21,8 +23,8 @@
 .cancel-btn {
   font-size: 18px;
   background-color: white !important;
-  border: 1px solid #CF0A2C;
-  color: #CF0A2C !important;
+  border: 1px solid #cf0a2c;
+  color: #cf0a2c !important;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -44,6 +46,6 @@
 .cancel-btn a {
   width: 100%;
   text-align: center;
-  color: #CF0A2C !important;
+  color: #cf0a2c !important;
 }
 /*# sourceMappingURL=Button.css.map */

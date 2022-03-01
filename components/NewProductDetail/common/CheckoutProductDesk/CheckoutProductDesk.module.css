@@ -1,6 +1,13 @@
 #CheckoutProductDesk .title {
   margin-bottom: 40px;
 }
+
+#CheckoutProductDesk {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
 #CheckoutProductDesk .title h1 {
   font-family: Montserrat;
   font-style: normal;

@@ -27,12 +27,17 @@
   border-radius: 5px;
   background: #ffffff center;
   width: 240px !important;
-  height: 337px !important;
+  height: 395px !important;
   /* width: 155px !important; */
 }
 
 #RecommendedProducts .swiper-slide div img {
   border-radius: 5px;
+}
+
+#RecommendedProducts .swiper-slide {
+  /* margin-right: 400px; */
+  margin: 0 70px;
 }
 
 #RecommendedProducts .swiper-container .swiper-pagination-bullets {
@@ -70,7 +75,7 @@
 
 @media (min-width: 768px) {
   #RecommendedProducts {
-    margin-top: 80px;
+    margin-top: 20px;
   }
 
   #RecommendedProducts .divindingLine {
