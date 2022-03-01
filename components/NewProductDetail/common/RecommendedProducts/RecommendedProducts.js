@@ -65,12 +65,13 @@ const RecommendedProducts = ({
       },
       mousewheel: {
         forceToAxis: true,
-      } /* ,
-      // keyBoard: {
-      //   enabled: true,
-      // }, */,
-      // // freeMode: true,
+      },
+      keyboard: {
+        enabled: true,
+      },
+      // freeMode: true,
       navigation: true,
+      modules: { Navigation, Keyboard },
     };
   }
   return (

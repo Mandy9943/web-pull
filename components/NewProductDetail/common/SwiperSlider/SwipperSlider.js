@@ -163,7 +163,7 @@ const SwiperSlider = ({
           forceToAxis: true,
         }}
         navigation={true}
-        modules={[Navigation]}
+        modules={[Navigation, Keyboard]}
       >
         <SwiperSlide>
           <DiscountPrice
