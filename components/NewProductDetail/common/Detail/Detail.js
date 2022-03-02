@@ -21,7 +21,7 @@ const Detail = ({ product }) => {
   return (
     <div id="DetailInfo" className={collapse === false ? "closed" : "open"}>
       <div className="titulo" onClick={handleOnClick}>
-        <SectionTitle>Detalles del Producto</SectionTitle>
+        <SectionTitle percent="60">Detalles del Producto</SectionTitle>
         <div className="anullProperties">
           <Image src={desglosar} alt="Icono del desglose" layout="fill" />
         </div>
