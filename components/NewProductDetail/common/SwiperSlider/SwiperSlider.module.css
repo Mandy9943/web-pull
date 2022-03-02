@@ -1,7 +1,7 @@
 .swiperSliderDetail {
   height: 100%;
   width: 100%;
-  padding-bottom: 90px;
+  padding-bottom: 6vw;
   background-color: white;
 }
 
@@ -29,6 +29,11 @@
   width: auto !important;
   height: auto !important;
 } */
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #5d5d5d !important;
+}
 
 .swiperSliderDetail .swiper {
   width: 100%;

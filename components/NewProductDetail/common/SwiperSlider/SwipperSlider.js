@@ -15,12 +15,13 @@ import SwiperCore, {
   Pagination,
   Keyboard,
   Mousewheel,
+  Navigation,
 } from "swiper";
 import DiscountPrice from "../DiscountPrice/DiscountPrice";
 import PropTypes from "prop-types";
 
 // install Swiper modules
-SwiperCore.use([EffectCoverflow, Pagination, Keyboard, Mousewheel]);
+SwiperCore.use([EffectCoverflow, Pagination, Keyboard, Mousewheel, Navigation]);
 
 const SwiperSlider = ({
   images,
@@ -161,6 +162,8 @@ const SwiperSlider = ({
         mousewheel={{
           forceToAxis: true,
         }}
+        navigation={true}
+        modules={[Navigation, Keyboard]}
       >
         <SwiperSlide>
           <DiscountPrice
