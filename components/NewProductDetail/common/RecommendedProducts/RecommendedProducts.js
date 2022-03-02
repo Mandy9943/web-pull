@@ -69,7 +69,7 @@ const RecommendedProducts = ({
       keyboard: {
         enabled: true,
       },
-      // freeMode: true,
+      freeMode: true,
       navigation: true,
       modules: { Navigation, Keyboard },
     };
