@@ -6,7 +6,8 @@ export const traceLead = async (
   last_name,
   phone,
   product_category,
-  product_subcategory
+  product_subcategory,
+  lead_type
 ) => {
   try {
     const res = await post("/saveTraceLead", {
@@ -17,6 +18,7 @@ export const traceLead = async (
       phone: phone,
       product_category: product_category,
       product_subcategory: product_subcategory,
+      lead_type: lead_type,
     });
     return res.data;
   } catch (error) {
