@@ -78,7 +78,6 @@ module.exports = withSourceMaps(
             "127.0.0.1",
           ],
         },
-
         eslint: {
           dirs: ["services"], // Solo consultar en "services"
         },

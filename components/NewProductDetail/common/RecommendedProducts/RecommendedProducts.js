@@ -58,7 +58,7 @@ const RecommendedProducts = ({
     sliderConfig = {
       slidesPerView: "auto",
       spaceBetween: spaceBetween,
-      speed: 150,
+      speed: 100,
       // loop: true,
       pagination: {
         clickable: true,
