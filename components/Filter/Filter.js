@@ -126,6 +126,10 @@ class Filter extends Component {
     this.props.sortProducts("" + event.target.value);
   }
 
+  setSortDesktop(event) {
+    this.props.sortProducts("" + event.target.value);
+  }
+
   viewAll = (ele, ref) => {
     ele.classList.add("display-none");
     if (ref === "brands")
@@ -338,7 +342,7 @@ class Filter extends Component {
                 <div className="text">Ordenar publicaciones</div>
                 <div className="wrap-filter-button">
                   <select
-                    onChange={(e) => this.setSort(e)}
+                    onChange={(e) => this.setSortDesktop(e)}
                     className="select-filter"
                   >
                     <option value="0">Más relevantes</option>
