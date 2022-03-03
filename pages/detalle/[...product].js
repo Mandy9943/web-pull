@@ -47,7 +47,6 @@ function Product({ data, u_data, userIp }) {
     let dataMain = data.images.find((element) => element.main == 1);
     return dataMain.url ? dataMain.url : "";
   };
-  const sendLead = (data) => {};
   useEffect(() => {
     setIsLoading(false);
     dispatch(
