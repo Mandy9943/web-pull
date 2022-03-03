@@ -34,7 +34,7 @@ const ProductDetailDesktop = dynamic(
     ),
   {
     ssr: false,
-    loading: () => <Loading />,
+    // loading: () => <Loading />,
   }
 );
 
@@ -43,18 +43,13 @@ function Product({ data, u_data, userIp }) {
   const mobileView = useResize(767);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    setIsLoading(false);
-  }, []);
-
   const dataMainLink = () => {
     let dataMain = data.images.find((element) => element.main == 1);
     return dataMain.url ? dataMain.url : "";
   };
-  const sendLead = (data) => {
-    Cookies.get("email") ? createlead(data, 3) : null;
-  };
+  const sendLead = (data) => {};
   useEffect(() => {
+    setIsLoading(false);
     dispatch(
       setData({
         category: data.category,
@@ -77,10 +72,9 @@ function Product({ data, u_data, userIp }) {
         main_link: dataMainLink(),
       })
     );
-    // u_data.authenticated ? createlead(data,3) : null ;
     dispatch(setNumber({ category: data.breadcum[0].name }));
-    sendLead(data);
-  }, [data, dispatch, dataMainLink]);
+    Cookies.get("email") ? createlead(data, 3) : null;
+  }, [data, dispatch]);
   return (
     <div>
       <Head>
@@ -205,12 +199,12 @@ function Product({ data, u_data, userIp }) {
               userIp={userIp}
             />
           ) : (
-            <Detail user_data={u_data} data={data} userIp={userIp} />
-            // <ProductDetailDesktop
-            //   user_data={u_data}
-            //   data={data}
-            //   userIp={userIp}
-            // />
+            // <Detail user_data={u_data} data={data} userIp={userIp} />
+            <ProductDetailDesktop
+              user_data={u_data}
+              data={data}
+              userIp={userIp}
+            />
           )}
         </>
       )}
