@@ -34,7 +34,7 @@ const ProductDetailDesktop = dynamic(
     ),
   {
     ssr: false,
-    loading: () => <Loading />,
+    // loading: () => <Loading />,
   }
 );
 
@@ -43,15 +43,12 @@ function Product({ data, u_data, userIp }) {
   const mobileView = useResize(767);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    setIsLoading(false);
-  }, []);
-
   const dataMainLink = () => {
     let dataMain = data.images.find((element) => element.main == 1);
     return dataMain.url ? dataMain.url : "";
   };
   useEffect(() => {
+    setIsLoading(false);
     dispatch(
       setData({
         category: data.category,
@@ -74,10 +71,9 @@ function Product({ data, u_data, userIp }) {
         main_link: dataMainLink(),
       })
     );
-    Cookies.get("email") ? createlead(data, 3) : null;
     dispatch(setNumber({ category: data.breadcum[0].name }));
-  }, [data, dispatch, dataMainLink]);
-
+    Cookies.get("email") ? createlead(data, 3) : null;
+  }, [data, dispatch]);
   return (
     <div>
       <Head>

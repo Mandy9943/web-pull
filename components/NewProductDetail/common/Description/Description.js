@@ -19,7 +19,7 @@ function Description({ product }) {
   return (
     <div id="Description" className={collapse === false ? "closed" : "open"}>
       <div className="titulo" onClick={handleOnClick}>
-        <SectionTitle>Descripción</SectionTitle>
+        <SectionTitle percent="60">Descripción</SectionTitle>
 
         <div className="anullProperties">
           <Image

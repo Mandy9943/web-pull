@@ -27,7 +27,7 @@ import SectionTitle from "../SectionTitle/SectionTitle";
 const RecommendedProducts = ({
   category,
   spaceBetween = 0,
-  lenProduct = 15,
+  lenProduct = 12,
   movil = true,
 }) => {
   const [products, setProducts] = useState([]);
@@ -58,9 +58,11 @@ const RecommendedProducts = ({
     sliderConfig = {
       slidesPerView: "auto",
       spaceBetween: spaceBetween,
+      speed: 100,
       // loop: true,
       pagination: {
         clickable: true,
+
         // dynamicBullets: true,
       },
       mousewheel: {
@@ -69,7 +71,7 @@ const RecommendedProducts = ({
       keyboard: {
         enabled: true,
       },
-      // freeMode: true,
+      freeMode: true,
       navigation: true,
       modules: { Navigation, Keyboard },
     };

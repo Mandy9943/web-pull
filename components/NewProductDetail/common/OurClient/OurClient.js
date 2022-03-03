@@ -46,7 +46,7 @@ const OurClient = ({ category }) => {
     <section id="OurClient" className={collapse === false ? "closed" : "open"}>
       <header onClick={handleOnClick}>
         <div className="left">
-          <SectionTitle>
+          <SectionTitle percent="60">
             Nuestros Clientes de{" "}
             <Box
               sx={{

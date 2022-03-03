@@ -80,6 +80,7 @@ const ProductDetailDesktop = ({ user_data, data, userIp }) => {
   }
   const isForm = useAppSelector(selectIsFormOpen);
   const dispatch = useAppDispatch();
+
   const [isWhatsappBanner, setIsWhatsappBanner] = useState(true);
   useEffect(() => {
     if (isForm === true) {

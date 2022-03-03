@@ -857,6 +857,16 @@ class PaySection extends Component {
     };
     // console.log("pay section", step, data);
     const error = await createleadClient(data);
+    await createTraceLead(
+      email,
+      JSON.stringify(data),
+      name,
+      last_name,
+      data["phone"],
+      data["product_category"],
+      data["product_subcategory"],
+      data["lead_type"]
+    );
     // this.createtrace(email,json);
 
     // console.log(error);
