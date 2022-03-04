@@ -146,7 +146,7 @@ const SellerInfo = () => {
                   fontSize: { xs: "1rem", sm: "1.5rem", md: "2rem" },
                 }}
               >
-                LLC.
+                SAS.
               </Typography>
             </Typography>
           </Grid>

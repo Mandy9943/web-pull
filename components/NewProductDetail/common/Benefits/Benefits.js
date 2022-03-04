@@ -55,7 +55,7 @@ const Benefits = () => {
             </Box>
 
             <p>
-              Con envío gratuito y un tiempo de entrega de 3 a 7 días hábiles,
+              Con envío gratuito y un tiempo de entrega de 3 a 9 días hábiles,
               hacemos que sea fácil para los clientes obtener lo que quieren,
               cuando lo desean.
             </p>
