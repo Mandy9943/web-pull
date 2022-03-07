@@ -198,7 +198,7 @@ function Product({ data, u_data, userIp }) {
               userIp={userIp}
             />
           ) : (
-            // <Detail user_data={u_data} data={data} userIp={userIp} />
+            /*        <Detail user_data={u_data} data={data} userIp={userIp} /> */
             <ProductDetailDesktop
               user_data={u_data}
               data={data}
